@@ -18,7 +18,7 @@ let value: ConnectSessionTokenAuthLink = {
     ConnectSessionTokenAuthLinkCategories.HrisLegacy,
     ConnectSessionTokenAuthLinkCategories.Documents,
   ],
-  createdAt: new Date("2023-12-28T02:31:12.899Z"),
+  createdAt: new Date("2024-12-27T02:31:12.899Z"),
   id: 2460.63,
   organizationId: 6658.59,
   originOwnerId: "<id>",

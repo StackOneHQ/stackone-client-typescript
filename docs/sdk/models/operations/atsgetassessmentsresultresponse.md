@@ -4,16 +4,16 @@
 
 ```typescript
 import { AtsGetAssessmentsResultResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AssessmentsAttachmentValue, AssessmentsResultsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssessmentResultValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsGetAssessmentsResultResponse = {
-  assessmentsResultsResult: {
+  assessmentResultsResult: {
     data: {
       attachments: [
         {
           contentType: {
             sourceValue: "Text",
-            value: AssessmentsAttachmentValue.Text,
+            value: AttachmentValue.Text,
           },
           url: "http://example.com/resume.pdf",
         },
@@ -27,7 +27,7 @@ let value: AtsGetAssessmentsResultResponse = {
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       result: {
         sourceValue: "Passed",
-        value: AssessmentsResultsValue.Passed,
+        value: AssessmentResultValue.Passed,
       },
       resultUrl: "https://exmaple.com/result?id=xyz",
       score: {
@@ -56,10 +56,10 @@ let value: AtsGetAssessmentsResultResponse = {
 
 ## Fields
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `assessmentsResultsResult`                                                                | [shared.AssessmentsResultsResult](../../../sdk/models/shared/assessmentsresultsresult.md) | :heavy_minus_sign:                                                                        | The assessments result with the given identifier was retrieved.                           |
-| `contentType`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | HTTP response content type for this operation                                             |
-| `headers`                                                                                 | Record<string, *string*[]>                                                                | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `statusCode`                                                                              | *number*                                                                                  | :heavy_check_mark:                                                                        | HTTP response status code for this operation                                              |
-| `rawResponse`                                                                             | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                     | :heavy_check_mark:                                                                        | Raw HTTP response; suitable for custom response parsing                                   |
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `assessmentResultsResult`                                                               | [shared.AssessmentResultsResult](../../../sdk/models/shared/assessmentresultsresult.md) | :heavy_minus_sign:                                                                      | The assessments result with the given identifier was retrieved.                         |
+| `contentType`                                                                           | *string*                                                                                | :heavy_check_mark:                                                                      | HTTP response content type for this operation                                           |
+| `headers`                                                                               | Record<string, *string*[]>                                                              | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `statusCode`                                                                            | *number*                                                                                | :heavy_check_mark:                                                                      | HTTP response status code for this operation                                            |
+| `rawResponse`                                                                           | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                   | :heavy_check_mark:                                                                      | Raw HTTP response; suitable for custom response parsing                                 |

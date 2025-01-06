@@ -33,7 +33,7 @@ export type AtsGetAssessmentsPackageResponse = {
   /**
    * The assessments package with the given identifier was retrieved.
    */
-  assessmentsPackagesResult?: shared.AssessmentsPackagesResult | undefined;
+  assessmentPackageResult?: shared.AssessmentPackageResult | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -131,7 +131,7 @@ export const AtsGetAssessmentsPackageResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  AssessmentsPackagesResult: shared.AssessmentsPackagesResult$inboundSchema
+  AssessmentPackageResult: shared.AssessmentPackageResult$inboundSchema
     .optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
@@ -139,7 +139,7 @@ export const AtsGetAssessmentsPackageResponse$inboundSchema: z.ZodType<
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "AssessmentsPackagesResult": "assessmentsPackagesResult",
+    "AssessmentPackageResult": "assessmentPackageResult",
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
@@ -149,9 +149,7 @@ export const AtsGetAssessmentsPackageResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsGetAssessmentsPackageResponse$Outbound = {
-  AssessmentsPackagesResult?:
-    | shared.AssessmentsPackagesResult$Outbound
-    | undefined;
+  AssessmentPackageResult?: shared.AssessmentPackageResult$Outbound | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
@@ -164,7 +162,7 @@ export const AtsGetAssessmentsPackageResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsGetAssessmentsPackageResponse
 > = z.object({
-  assessmentsPackagesResult: shared.AssessmentsPackagesResult$outboundSchema
+  assessmentPackageResult: shared.AssessmentPackageResult$outboundSchema
     .optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
@@ -174,7 +172,7 @@ export const AtsGetAssessmentsPackageResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    assessmentsPackagesResult: "AssessmentsPackagesResult",
+    assessmentPackageResult: "AssessmentPackageResult",
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",

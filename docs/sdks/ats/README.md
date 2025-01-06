@@ -305,8 +305,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.createBackgroundCheckPackage({
     atsCreateBackgroundCheckPackagesRequestDto: {
-      description: "Standard background package for hires",
-      name: "Standard Background Check",
+      description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+      name: "Test 1",
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -351,8 +351,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsCreateBackgroundCheckPackage(stackOne, {
     atsCreateBackgroundCheckPackagesRequestDto: {
-      description: "Standard background package for hires",
-      name: "Standard Background Check",
+      description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+      name: "Test 1",
       passthrough: {
         "other_known_names": "John Doe",
       },

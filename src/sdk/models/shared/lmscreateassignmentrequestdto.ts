@@ -56,6 +56,10 @@ export type LmsCreateAssignmentRequestDto = {
    */
   dueDate?: string | null | undefined;
   /**
+   * The external reference associated with this assignment
+   */
+  externalReference?: string | null | undefined;
+  /**
    * The external reference of the learning object associated with this assignment
    */
   learningObjectExternalReference?: string | null | undefined;
@@ -339,6 +343,7 @@ export const LmsCreateAssignmentRequestDto$inboundSchema: z.ZodType<
 > = z.object({
   created_at: z.nullable(z.string()).optional(),
   due_date: z.nullable(z.string()).optional(),
+  external_reference: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -350,6 +355,7 @@ export const LmsCreateAssignmentRequestDto$inboundSchema: z.ZodType<
   return remap$(v, {
     "created_at": "createdAt",
     "due_date": "dueDate",
+    "external_reference": "externalReference",
     "learning_object_external_reference": "learningObjectExternalReference",
     "learning_object_id": "learningObjectId",
   });
@@ -359,6 +365,7 @@ export const LmsCreateAssignmentRequestDto$inboundSchema: z.ZodType<
 export type LmsCreateAssignmentRequestDto$Outbound = {
   created_at?: string | null | undefined;
   due_date?: string | null | undefined;
+  external_reference?: string | null | undefined;
   learning_object_external_reference?: string | null | undefined;
   learning_object_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
@@ -374,6 +381,7 @@ export const LmsCreateAssignmentRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.nullable(z.string()).optional(),
   dueDate: z.nullable(z.string()).optional(),
+  externalReference: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -385,6 +393,7 @@ export const LmsCreateAssignmentRequestDto$outboundSchema: z.ZodType<
   return remap$(v, {
     createdAt: "created_at",
     dueDate: "due_date",
+    externalReference: "external_reference",
     learningObjectExternalReference: "learning_object_external_reference",
     learningObjectId: "learning_object_id",
   });

@@ -93,6 +93,10 @@ export type Assignment = {
    */
   dueDate?: string | null | undefined;
   /**
+   * The external reference associated with this assignment
+   */
+  externalReference?: string | null | undefined;
+  /**
    * The ID associated with this assignment
    */
   id?: string | null | undefined;
@@ -614,6 +618,7 @@ export const Assignment$inboundSchema: z.ZodType<
   course_id: z.nullable(z.string()).optional(),
   created_at: z.nullable(z.string()).optional(),
   due_date: z.nullable(z.string()).optional(),
+  external_reference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
@@ -634,6 +639,7 @@ export const Assignment$inboundSchema: z.ZodType<
     "course_id": "courseId",
     "created_at": "createdAt",
     "due_date": "dueDate",
+    "external_reference": "externalReference",
     "learning_object_external_reference": "learningObjectExternalReference",
     "learning_object_id": "learningObjectId",
     "learning_object_type": "learningObjectType",
@@ -652,6 +658,7 @@ export type Assignment$Outbound = {
   course_id?: string | null | undefined;
   created_at?: string | null | undefined;
   due_date?: string | null | undefined;
+  external_reference?: string | null | undefined;
   id?: string | null | undefined;
   learning_object_external_reference?: string | null | undefined;
   learning_object_id?: string | null | undefined;
@@ -676,6 +683,7 @@ export const Assignment$outboundSchema: z.ZodType<
   courseId: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.string()).optional(),
   dueDate: z.nullable(z.string()).optional(),
+  externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),
@@ -696,6 +704,7 @@ export const Assignment$outboundSchema: z.ZodType<
     courseId: "course_id",
     createdAt: "created_at",
     dueDate: "due_date",
+    externalReference: "external_reference",
     learningObjectExternalReference: "learning_object_external_reference",
     learningObjectId: "learning_object_id",
     learningObjectType: "learning_object_type",

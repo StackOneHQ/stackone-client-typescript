@@ -143,7 +143,7 @@ export async function atsListAssessmentsPackages(
     | ConnectionError
   >(
     M.json(200, operations.AtsListAssessmentsPackagesResponse$inboundSchema, {
-      key: "AssessmentsPackagesPaginated",
+      key: "AssessmentPackagePaginated",
     }),
     M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
     M.fail(408),

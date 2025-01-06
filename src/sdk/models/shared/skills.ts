@@ -25,6 +25,7 @@ export type SkillsSourceValue =
 export enum SkillsValue {
   Primary = "primary",
   Secondary = "secondary",
+  Tertiary = "tertiary",
 }
 export type SkillsValueOpen = OpenEnum<typeof SkillsValue>;
 

@@ -57,7 +57,12 @@ async function run() {
           active: true,
           categories: [
             {
-              name: "Technology",
+              id: "16873-IT345",
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -77,9 +82,8 @@ async function run() {
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
-              id: "cx2367ndc8dgsbjhka9ry4",
-              name: "Software Engineering",
-              remoteId: "SE-001",
+              id: "12345",
+              name: "Sales Techniques",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -126,7 +130,12 @@ async function run() {
           active: true,
           categories: [
             {
-              name: "Technology",
+              id: "16873-IT345",
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -146,9 +155,8 @@ async function run() {
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
-              id: "cx2367ndc8dgsbjhka9ry4",
-              name: "Software Engineering",
-              remoteId: "SE-001",
+              id: "12345",
+              name: "Sales Techniques",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -248,7 +256,6 @@ async function run() {
             {
               id: "16873-IT345",
               name: "Information-Technology",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -288,7 +295,6 @@ async function run() {
             {
               id: "16873-IT345",
               name: "Information-Technology",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -365,7 +371,6 @@ async function run() {
             {
               id: "16873-IT345",
               name: "Information-Technology",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -405,7 +410,6 @@ async function run() {
             {
               id: "16873-IT345",
               name: "Information-Technology",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -1596,7 +1600,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listAssignments({
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1632,7 +1636,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListAssignments(stackOne, {
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1784,7 +1788,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCompletions({
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1818,7 +1822,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCompletions(stackOne, {
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2152,7 +2156,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUserAssignments({
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2189,7 +2193,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUserAssignments(stackOne, {
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2250,7 +2254,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUserCompletions({
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2285,7 +2289,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUserCompletions(stackOne, {
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2602,7 +2606,6 @@ async function run() {
         {
           id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1",
@@ -2666,7 +2669,6 @@ async function run() {
         {
           id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1",
@@ -2759,7 +2761,6 @@ async function run() {
         {
           id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1",
@@ -2829,7 +2830,6 @@ async function run() {
         {
           id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1",

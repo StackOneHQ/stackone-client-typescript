@@ -8,11 +8,11 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AssessmentsPackages,
-  AssessmentsPackages$inboundSchema,
-  AssessmentsPackages$Outbound,
-  AssessmentsPackages$outboundSchema,
-} from "./assessmentspackages.js";
+  Package,
+  Package$inboundSchema,
+  Package$Outbound,
+  Package$outboundSchema,
+} from "./package.js";
 
 export type BackgroundCheckPackage = {
   /**
@@ -34,7 +34,7 @@ export type BackgroundCheckPackage = {
   /**
    * Package tests
    */
-  tests?: Array<AssessmentsPackages> | null | undefined;
+  tests?: Array<Package> | null | undefined;
 };
 
 /** @internal */
@@ -47,7 +47,7 @@ export const BackgroundCheckPackage$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  tests: z.nullable(z.array(AssessmentsPackages$inboundSchema)).optional(),
+  tests: z.nullable(z.array(Package$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "remote_id": "remoteId",
@@ -60,7 +60,7 @@ export type BackgroundCheckPackage$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
-  tests?: Array<AssessmentsPackages$Outbound> | null | undefined;
+  tests?: Array<Package$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -73,7 +73,7 @@ export const BackgroundCheckPackage$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  tests: z.nullable(z.array(AssessmentsPackages$outboundSchema)).optional(),
+  tests: z.nullable(z.array(Package$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     remoteId: "remote_id",

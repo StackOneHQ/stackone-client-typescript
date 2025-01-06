@@ -33,7 +33,7 @@ export type AtsGetAssessmentsRequestResponse = {
   /**
    * The assessments order with the given identifier was retrieved.
    */
-  assessmentsOrderResult?: shared.AssessmentsOrderResult | undefined;
+  assessmentOrderResult?: shared.AssessmentOrderResult | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -131,15 +131,14 @@ export const AtsGetAssessmentsRequestResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  AssessmentsOrderResult: shared.AssessmentsOrderResult$inboundSchema
-    .optional(),
+  AssessmentOrderResult: shared.AssessmentOrderResult$inboundSchema.optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "AssessmentsOrderResult": "assessmentsOrderResult",
+    "AssessmentOrderResult": "assessmentOrderResult",
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
@@ -149,7 +148,7 @@ export const AtsGetAssessmentsRequestResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsGetAssessmentsRequestResponse$Outbound = {
-  AssessmentsOrderResult?: shared.AssessmentsOrderResult$Outbound | undefined;
+  AssessmentOrderResult?: shared.AssessmentOrderResult$Outbound | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
@@ -162,8 +161,7 @@ export const AtsGetAssessmentsRequestResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsGetAssessmentsRequestResponse
 > = z.object({
-  assessmentsOrderResult: shared.AssessmentsOrderResult$outboundSchema
-    .optional(),
+  assessmentOrderResult: shared.AssessmentOrderResult$outboundSchema.optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
@@ -172,7 +170,7 @@ export const AtsGetAssessmentsRequestResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    assessmentsOrderResult: "AssessmentsOrderResult",
+    assessmentOrderResult: "AssessmentOrderResult",
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",

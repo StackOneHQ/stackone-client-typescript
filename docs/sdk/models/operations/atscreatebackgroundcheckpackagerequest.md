@@ -7,8 +7,9 @@ import { AtsCreateBackgroundCheckPackageRequest } from "@stackone/stackone-clien
 
 let value: AtsCreateBackgroundCheckPackageRequest = {
   atsCreateBackgroundCheckPackagesRequestDto: {
-    description: "Standard background package for hires",
-    name: "Standard Background Check",
+    description:
+      "Skills test to gauge a candidate's proficiency in job-specific skills",
+    name: "Test 1",
     passthrough: {
       "other_known_names": "John Doe",
     },

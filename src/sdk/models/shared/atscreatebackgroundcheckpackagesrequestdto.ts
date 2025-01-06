@@ -7,11 +7,11 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  CreateAssessmentsPackages,
-  CreateAssessmentsPackages$inboundSchema,
-  CreateAssessmentsPackages$Outbound,
-  CreateAssessmentsPackages$outboundSchema,
-} from "./createassessmentspackages.js";
+  CreatePackage,
+  CreatePackage$inboundSchema,
+  CreatePackage$Outbound,
+  CreatePackage$outboundSchema,
+} from "./createpackage.js";
 
 export type AtsCreateBackgroundCheckPackagesRequestDto = {
   /**
@@ -29,7 +29,7 @@ export type AtsCreateBackgroundCheckPackagesRequestDto = {
   /**
    * Package tests
    */
-  tests?: Array<CreateAssessmentsPackages> | null | undefined;
+  tests?: Array<CreatePackage> | null | undefined;
 };
 
 /** @internal */
@@ -39,8 +39,7 @@ export const AtsCreateBackgroundCheckPackagesRequestDto$inboundSchema:
       description: z.nullable(z.string()).optional(),
       name: z.nullable(z.string()).optional(),
       passthrough: z.nullable(z.record(z.any())).optional(),
-      tests: z.nullable(z.array(CreateAssessmentsPackages$inboundSchema))
-        .optional(),
+      tests: z.nullable(z.array(CreatePackage$inboundSchema)).optional(),
     });
 
 /** @internal */
@@ -48,7 +47,7 @@ export type AtsCreateBackgroundCheckPackagesRequestDto$Outbound = {
   description?: string | null | undefined;
   name?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
-  tests?: Array<CreateAssessmentsPackages$Outbound> | null | undefined;
+  tests?: Array<CreatePackage$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -61,8 +60,7 @@ export const AtsCreateBackgroundCheckPackagesRequestDto$outboundSchema:
     description: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
     passthrough: z.nullable(z.record(z.any())).optional(),
-    tests: z.nullable(z.array(CreateAssessmentsPackages$outboundSchema))
-      .optional(),
+    tests: z.nullable(z.array(CreatePackage$outboundSchema)).optional(),
   });
 
 /**

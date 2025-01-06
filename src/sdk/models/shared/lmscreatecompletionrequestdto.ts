@@ -69,6 +69,10 @@ export type LmsCreateCompletionRequestDto = {
    */
   externalId?: string | null | undefined;
   /**
+   * The external reference associated with this completion
+   */
+  externalReference?: string | null | undefined;
+  /**
    * The external reference of the learning object associated with this completion
    */
   learningObjectExternalReference?: string | null | undefined;
@@ -350,6 +354,7 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
   external_id: z.nullable(z.string()).optional(),
+  external_reference: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -362,6 +367,7 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
     "content_external_reference": "contentExternalReference",
     "content_id": "contentId",
     "external_id": "externalId",
+    "external_reference": "externalReference",
     "learning_object_external_reference": "learningObjectExternalReference",
     "learning_object_id": "learningObjectId",
   });
@@ -373,6 +379,7 @@ export type LmsCreateCompletionRequestDto$Outbound = {
   content_external_reference?: string | null | undefined;
   content_id?: string | null | undefined;
   external_id?: string | null | undefined;
+  external_reference?: string | null | undefined;
   learning_object_external_reference?: string | null | undefined;
   learning_object_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
@@ -389,6 +396,7 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
   externalId: z.nullable(z.string()).optional(),
+  externalReference: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -401,6 +409,7 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
     contentExternalReference: "content_external_reference",
     contentId: "content_id",
     externalId: "external_id",
+    externalReference: "external_reference",
     learningObjectExternalReference: "learning_object_external_reference",
     learningObjectId: "learning_object_id",
   });

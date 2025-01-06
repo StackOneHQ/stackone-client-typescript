@@ -145,7 +145,7 @@ export async function atsGetAssessmentsRequest(
     | ConnectionError
   >(
     M.json(200, operations.AtsGetAssessmentsRequestResponse$inboundSchema, {
-      key: "AssessmentsOrderResult",
+      key: "AssessmentOrderResult",
     }),
     M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
     M.fail(408),

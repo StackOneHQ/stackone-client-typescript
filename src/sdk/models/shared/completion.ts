@@ -110,6 +110,10 @@ export type Completion = {
    */
   externalId?: string | null | undefined;
   /**
+   * The external reference associated with this completion
+   */
+  externalReference?: string | null | undefined;
+  /**
    * The ID associated with this completion
    */
   id?: string | null | undefined;
@@ -651,6 +655,7 @@ export const Completion$inboundSchema: z.ZodType<
   course_id: z.nullable(z.string()).optional(),
   created_at: z.nullable(z.string()).optional(),
   external_id: z.nullable(z.string()).optional(),
+  external_reference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
@@ -676,6 +681,7 @@ export const Completion$inboundSchema: z.ZodType<
     "course_id": "courseId",
     "created_at": "createdAt",
     "external_id": "externalId",
+    "external_reference": "externalReference",
     "learning_object_external_reference": "learningObjectExternalReference",
     "learning_object_id": "learningObjectId",
     "learning_object_type": "learningObjectType",
@@ -699,6 +705,7 @@ export type Completion$Outbound = {
   course_id?: string | null | undefined;
   created_at?: string | null | undefined;
   external_id?: string | null | undefined;
+  external_reference?: string | null | undefined;
   id?: string | null | undefined;
   learning_object_external_reference?: string | null | undefined;
   learning_object_id?: string | null | undefined;
@@ -730,6 +737,7 @@ export const Completion$outboundSchema: z.ZodType<
   courseId: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.string()).optional(),
   externalId: z.nullable(z.string()).optional(),
+  externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),
@@ -755,6 +763,7 @@ export const Completion$outboundSchema: z.ZodType<
     courseId: "course_id",
     createdAt: "created_at",
     externalId: "external_id",
+    externalReference: "external_reference",
     learningObjectExternalReference: "learning_object_external_reference",
     learningObjectId: "learning_object_id",
     learningObjectType: "learning_object_type",
