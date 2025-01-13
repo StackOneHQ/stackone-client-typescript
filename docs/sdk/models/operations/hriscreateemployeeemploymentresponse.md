@@ -35,7 +35,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
       "<value>",
     ],
   },
-  statusCode: 306,
+  statusCode: 409,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

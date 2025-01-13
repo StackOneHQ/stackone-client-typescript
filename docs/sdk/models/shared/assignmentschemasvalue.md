@@ -5,7 +5,7 @@
 ```typescript
 import { AssignmentSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssignmentSchemasValue = AssignmentSchemasValue.Pending;
+let value: AssignmentSchemasValue = AssignmentSchemasValue.InProgress;
 ```
 
 ## Values

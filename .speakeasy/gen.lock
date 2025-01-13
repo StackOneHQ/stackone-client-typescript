@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e87f54efc9ddf298c64016b91a275959
+  docChecksum: c5ababaf6020bef668cfe6421f7b5afb
   docVersion: 1.0.0
-  speakeasyVersion: 1.462.2
-  generationVersion: 2.486.1
-  releaseVersion: 4.17.8
-  configChecksum: 75c157650c77a5551f3ddcc5fdff4ef0
+  speakeasyVersion: 1.468.2
+  generationVersion: 2.493.4
+  releaseVersion: 4.17.9
+  configChecksum: b12cd1e9b6491f46c7e4bcb5bf93458e
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -21,7 +21,7 @@ features:
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    examples: 2.81.4
+    examples: 2.81.5
     globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
@@ -38,7 +38,6 @@ generatedFiles:
   - .eslintrc.cjs
   - .gitattributes
   - .npmignore
-  - CONTRIBUTING.md
   - FUNCTIONS.md
   - RUNTIMES.md
   - USAGE.md
@@ -349,6 +348,7 @@ generatedFiles:
   - docs/sdk/models/operations/iamlistusersqueryparamfilter.md
   - docs/sdk/models/operations/iamlistusersrequest.md
   - docs/sdk/models/operations/iamlistusersresponse.md
+  - docs/sdk/models/operations/jobstatus.md
   - docs/sdk/models/operations/learningobjecttype.md
   - docs/sdk/models/operations/lmsbatchupsertcontentrequest.md
   - docs/sdk/models/operations/lmsbatchupsertcontentresponse.md

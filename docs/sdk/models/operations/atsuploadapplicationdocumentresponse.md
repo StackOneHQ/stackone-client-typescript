@@ -12,7 +12,7 @@ let value: AtsUploadApplicationDocumentResponse = {
       "<value>",
     ],
   },
-  statusCode: 306,
+  statusCode: 428,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -26,7 +26,7 @@ let value: LmsListCategoriesResponse = {
       "<value>",
     ],
   },
-  statusCode: 306,
+  statusCode: 422,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

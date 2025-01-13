@@ -8,7 +8,7 @@ Filter to select assignment by learning object type.
 import { LmsListUserAssignmentsQueryParamLearningObjectType } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsListUserAssignmentsQueryParamLearningObjectType =
-  LmsListUserAssignmentsQueryParamLearningObjectType.Content;
+  LmsListUserAssignmentsQueryParamLearningObjectType.Course;
 ```
 
 ## Values

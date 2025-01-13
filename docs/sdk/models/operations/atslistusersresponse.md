@@ -12,7 +12,7 @@ let value: AtsListUsersResponse = {
       "<value>",
     ],
   },
-  statusCode: 501,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
