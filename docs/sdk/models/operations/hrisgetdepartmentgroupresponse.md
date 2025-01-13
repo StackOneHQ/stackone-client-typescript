@@ -40,7 +40,7 @@ let value: HrisGetDepartmentGroupResponse = {
       "<value>",
     ],
   },
-  statusCode: 410,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

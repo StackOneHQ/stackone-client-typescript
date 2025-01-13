@@ -10,7 +10,17 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
+ * The job_status of the job
+ */
+export enum JobStatus {
+  Open = "open",
+  Draft = "draft",
+}
+
+/**
  * The status of the job
+ *
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export enum Status {
   Open = "open",
@@ -22,7 +32,13 @@ export enum Status {
  */
 export type AtsListJobsQueryParamFilter = {
   /**
+   * The job_status of the job
+   */
+  jobStatus?: JobStatus | null | undefined;
+  /**
    * The status of the job
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   status?: Status | null | undefined;
   /**
@@ -109,6 +125,25 @@ export type AtsListJobsResponse = {
 };
 
 /** @internal */
+export const JobStatus$inboundSchema: z.ZodNativeEnum<typeof JobStatus> = z
+  .nativeEnum(JobStatus);
+
+/** @internal */
+export const JobStatus$outboundSchema: z.ZodNativeEnum<typeof JobStatus> =
+  JobStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace JobStatus$ {
+  /** @deprecated use `JobStatus$inboundSchema` instead. */
+  export const inboundSchema = JobStatus$inboundSchema;
+  /** @deprecated use `JobStatus$outboundSchema` instead. */
+  export const outboundSchema = JobStatus$outboundSchema;
+}
+
+/** @internal */
 export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
   .nativeEnum(Status);
 
@@ -133,16 +168,19 @@ export const AtsListJobsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  job_status: z.nullable(JobStatus$inboundSchema).optional(),
   status: z.nullable(Status$inboundSchema).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "job_status": "jobStatus",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type AtsListJobsQueryParamFilter$Outbound = {
+  job_status?: string | null | undefined;
   status?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
@@ -153,10 +191,12 @@ export const AtsListJobsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListJobsQueryParamFilter
 > = z.object({
+  jobStatus: z.nullable(JobStatus$outboundSchema).optional(),
   status: z.nullable(Status$outboundSchema).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    jobStatus: "job_status",
     updatedAfter: "updated_after",
   });
 });
