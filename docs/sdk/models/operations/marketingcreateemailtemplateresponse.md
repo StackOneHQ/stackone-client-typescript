@@ -21,7 +21,7 @@ let value: MarketingCreateEmailTemplateResponse = {
       "<value>",
     ],
   },
-  statusCode: 408,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

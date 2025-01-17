@@ -21,7 +21,7 @@ let value: AtsCreateCandidateNoteResponse = {
       "<value>",
     ],
   },
-  statusCode: 507,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

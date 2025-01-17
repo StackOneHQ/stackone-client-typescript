@@ -11,12 +11,8 @@ let value: LmsBatchUpsertContentResponse = {
       [
         "Missing field: name",
       ],
-      [
-        "<value>",
-      ],
-      [
-        "<value>",
-      ],
+      [],
+      [],
     ],
     message: "Batch operation accepted",
     statusCode: 202,
@@ -28,7 +24,7 @@ let value: LmsBatchUpsertContentResponse = {
       "<value>",
     ],
   },
-  statusCode: 201,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

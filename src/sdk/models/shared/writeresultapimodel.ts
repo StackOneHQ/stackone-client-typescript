@@ -13,12 +13,19 @@ import {
   ProviderErrorApiModel$Outbound,
   ProviderErrorApiModel$outboundSchema,
 } from "./providererrorapimodel.js";
+import {
+  UnifiedWarningApiModel,
+  UnifiedWarningApiModel$inboundSchema,
+  UnifiedWarningApiModel$Outbound,
+  UnifiedWarningApiModel$outboundSchema,
+} from "./unifiedwarningapimodel.js";
 
 export type WriteResultApiModel = {
   message?: string | null | undefined;
   providerErrors?: Array<ProviderErrorApiModel> | null | undefined;
   statusCode?: number | null | undefined;
   timestamp?: Date | null | undefined;
+  unifiedWarnings?: Array<UnifiedWarningApiModel> | null | undefined;
 };
 
 /** @internal */
@@ -34,9 +41,12 @@ export const WriteResultApiModel$inboundSchema: z.ZodType<
   timestamp: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  unified_warnings: z.nullable(z.array(UnifiedWarningApiModel$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "provider_errors": "providerErrors",
+    "unified_warnings": "unifiedWarnings",
   });
 });
 
@@ -46,6 +56,7 @@ export type WriteResultApiModel$Outbound = {
   provider_errors?: Array<ProviderErrorApiModel$Outbound> | null | undefined;
   statusCode?: number | null | undefined;
   timestamp?: string | null | undefined;
+  unified_warnings?: Array<UnifiedWarningApiModel$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -59,9 +70,12 @@ export const WriteResultApiModel$outboundSchema: z.ZodType<
     .optional(),
   statusCode: z.nullable(z.number()).optional(),
   timestamp: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  unifiedWarnings: z.nullable(z.array(UnifiedWarningApiModel$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     providerErrors: "provider_errors",
+    unifiedWarnings: "unified_warnings",
   });
 });
 

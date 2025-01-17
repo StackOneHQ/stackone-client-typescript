@@ -10,12 +10,8 @@ let value: BatchResultApiModel = {
     [
       "Missing field: name",
     ],
-    [
-      "<value>",
-    ],
-    [
-      "<value>",
-    ],
+    [],
+    [],
   ],
   message: "Batch operation accepted",
   statusCode: 202,

@@ -10,7 +10,6 @@ import {
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
   JobPostingValue,
-  Question2,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsGetJobPostingResponse = {
@@ -85,7 +84,7 @@ let value: AtsGetJobPostingResponse = {
             {
               id: "question002",
               parentQuestion: null,
-              required: Question2.True,
+              required: false,
               text: "What are your hobbies?",
               type: {},
             },
@@ -275,7 +274,7 @@ let value: AtsGetJobPostingResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 308,
+  statusCode: 403,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

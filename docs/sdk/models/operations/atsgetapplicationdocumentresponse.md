@@ -34,7 +34,7 @@ let value: AtsGetApplicationDocumentResponse = {
       "<value>",
     ],
   },
-  statusCode: 203,
+  statusCode: 303,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -3,6 +3,7 @@
  */
 
 export * from "./atscreateapplication.js";
+export * from "./atscreateapplicationnote.js";
 export * from "./atscreatebackgroundcheckpackage.js";
 export * from "./atscreatecandidate.js";
 export * from "./atscreatecandidatenote.js";
@@ -12,6 +13,7 @@ export * from "./atsdownloadapplicationdocument.js";
 export * from "./atsgetapplication.js";
 export * from "./atsgetapplicationcustomfielddefinition.js";
 export * from "./atsgetapplicationdocument.js";
+export * from "./atsgetapplicationnote.js";
 export * from "./atsgetapplicationoffer.js";
 export * from "./atsgetapplicationscheduledinterview.js";
 export * from "./atsgetapplicationscorecard.js";
@@ -37,6 +39,7 @@ export * from "./atsgetrejectedreason.js";
 export * from "./atsgetuser.js";
 export * from "./atslistapplicationcustomfielddefinitions.js";
 export * from "./atslistapplicationdocuments.js";
+export * from "./atslistapplicationnotes.js";
 export * from "./atslistapplications.js";
 export * from "./atslistapplicationscorecards.js";
 export * from "./atslistapplicationsoffers.js";
@@ -61,6 +64,7 @@ export * from "./atslistusers.js";
 export * from "./atsmoveapplication.js";
 export * from "./atsrejectapplication.js";
 export * from "./atsupdateapplication.js";
+export * from "./atsupdateapplicationnote.js";
 export * from "./atsupdatecandidate.js";
 export * from "./atsupdatejob.js";
 export * from "./atsuploadapplicationdocument.js";

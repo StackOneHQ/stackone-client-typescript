@@ -5,6 +5,7 @@
 import { StackOneCore } from "../core.js";
 import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -63,14 +64,14 @@ export async function lmsCreateUserAssignment(
 
   const path = pathToFunc("/unified/lms/users/{id}/assignments")(pathParams);
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
     }),
-  });
+  }));
 
   const securityInput = await extractSecurity(client._options.security);
   const requestSecurity = resolveGlobalSecurity(securityInput);
@@ -134,8 +135,9 @@ export async function lmsCreateUserAssignment(
     M.json(201, operations.LmsCreateUserAssignmentResponse$inboundSchema, {
       key: "CreateResult",
     }),
-    M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

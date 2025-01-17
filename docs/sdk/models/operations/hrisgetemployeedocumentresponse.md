@@ -34,7 +34,7 @@ let value: HrisGetEmployeeDocumentResponse = {
       updatedAt: new Date("2021-01-02T01:01:01.000Z"),
     },
   },
-  statusCode: 308,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

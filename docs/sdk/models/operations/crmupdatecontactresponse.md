@@ -59,7 +59,7 @@ let value: CrmUpdateContactResponse = {
       "<value>",
     ],
   },
-  statusCode: 302,
+  statusCode: 409,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

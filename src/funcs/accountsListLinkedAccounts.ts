@@ -5,6 +5,7 @@
 import { StackOneCore } from "../core.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -64,9 +65,9 @@ export async function accountsListLinkedAccounts(
     "status": payload.status,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const securityInput = await extractSecurity(client._options.security);
   const requestSecurity = resolveGlobalSecurity(securityInput);
@@ -131,8 +132,9 @@ export async function accountsListLinkedAccounts(
     M.json(200, operations.StackoneListLinkedAccountsResponse$inboundSchema, {
       key: "classes",
     }),
-    M.fail([400, 403, 429, "4XX", 500, 501, "5XX"]),
+    M.fail([400, 403, 429, "4XX"]),
     M.fail(408),
+    M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

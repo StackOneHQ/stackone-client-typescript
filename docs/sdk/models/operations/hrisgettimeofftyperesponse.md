@@ -20,7 +20,7 @@ let value: HrisGetTimeOffTypeResponse = {
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   },
-  statusCode: 508,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

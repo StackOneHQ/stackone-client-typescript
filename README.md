@@ -117,6 +117,7 @@ run();
 ### [ats](docs/sdks/ats/README.md)
 
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
+* [createApplicationNote](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 * [createBackgroundCheckPackage](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
@@ -126,6 +127,7 @@ run();
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
 * [getApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
 * [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
+* [getApplicationNote](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
@@ -151,6 +153,7 @@ run();
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
 * [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
 * [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
+* [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
@@ -175,6 +178,7 @@ run();
 * [moveApplication](docs/sdks/ats/README.md#moveapplication) - Move Application
 * [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
+* [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
@@ -643,6 +647,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
+- [`atsCreateApplicationNote`](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 - [`atsCreateBackgroundCheckPackage`](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 - [`atsCreateCandidate`](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 - [`atsCreateCandidateNote`](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
@@ -652,6 +657,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetApplication`](docs/sdks/ats/README.md#getapplication) - Get Application
 - [`atsGetApplicationCustomFieldDefinition`](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
 - [`atsGetApplicationDocument`](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
+- [`atsGetApplicationNote`](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
 - [`atsGetApplicationOffer`](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 - [`atsGetApplicationScheduledInterview`](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
 - [`atsGetApplicationScorecard`](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
@@ -677,6 +683,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetUser`](docs/sdks/ats/README.md#getuser) - Get User
 - [`atsListApplicationCustomFieldDefinitions`](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
 - [`atsListApplicationDocuments`](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
+- [`atsListApplicationNotes`](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 - [`atsListApplications`](docs/sdks/ats/README.md#listapplications) - List Applications
 - [`atsListApplicationScorecards`](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 - [`atsListApplicationsOffers`](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
@@ -701,6 +708,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsMoveApplication`](docs/sdks/ats/README.md#moveapplication) - Move Application
 - [`atsRejectApplication`](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 - [`atsUpdateApplication`](docs/sdks/ats/README.md#updateapplication) - Update an Application
+- [`atsUpdateApplicationNote`](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
 - [`atsUpdateCandidate`](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 - [`atsUpdateJob`](docs/sdks/ats/README.md#updatejob) - Update Job
 - [`atsUploadApplicationDocument`](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document

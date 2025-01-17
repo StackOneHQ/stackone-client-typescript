@@ -60,10 +60,6 @@ Batch Upload Employee Document
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {
-  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
-  HrisDocumentsUploadRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -76,21 +72,7 @@ async function run() {
   const result = await stackOne.hris.batchUploadEmployeeDocument({
     hrisBatchDocumentUploadRequestDto: {
       items: [
-        {
-          category: {},
-          categoryId: "6530",
-          confidential: {
-            sourceValue: "public",
-            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
-          },
-          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
-          fileFormat: {
-            sourceValue: "abc",
-            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
-          },
-          name: "weather-forecast",
-          path: "/path/to/file",
-        },
+
       ],
     },
     id: "<id>",
@@ -111,10 +93,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisBatchUploadEmployeeDocument } from "@stackone/stackone-client-ts/funcs/hrisBatchUploadEmployeeDocument.js";
-import {
-  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
-  HrisDocumentsUploadRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -129,21 +107,7 @@ async function run() {
   const res = await hrisBatchUploadEmployeeDocument(stackOne, {
     hrisBatchDocumentUploadRequestDto: {
       items: [
-        {
-          category: {},
-          categoryId: "6530",
-          confidential: {
-            sourceValue: "public",
-            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
-          },
-          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
-          fileFormat: {
-            sourceValue: "abc",
-            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
-          },
-          name: "weather-forecast",
-          path: "/path/to/file",
-        },
+  
       ],
     },
     id: "<id>",
@@ -191,7 +155,6 @@ Creates an employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
-  CountryCodeEnumValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -210,54 +173,22 @@ async function run() {
     hrisCreateEmployeeRequestDto: {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
-        {
-          createdAt: new Date("2021-01-01T00:00:00Z"),
-          description: "Health insurance for employees",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Health Insurance",
-          provider: "Aetna",
-          updatedAt: new Date("2021-01-01T00:00:00Z"),
-        },
+
       ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
-        {
-          value: CountryCodeEnumValue.Us,
-        },
+
       ],
       companyName: "Example Corp",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
       employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employeeId: "1687-3",
-          employmentContractType: {},
-          employmentType: {},
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {},
-          payPeriod: {},
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+
       ],
       firstName: "Issac",
       hireDate: new Date("2021-01-01T00:00.000Z"),
@@ -335,7 +266,6 @@ The standalone function version of this method:
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisCreateEmployee } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployee.js";
 import {
-  CountryCodeEnumValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -356,54 +286,22 @@ async function run() {
     hrisCreateEmployeeRequestDto: {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
-        {
-          createdAt: new Date("2021-01-01T00:00:00Z"),
-          description: "Health insurance for employees",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Health Insurance",
-          provider: "Aetna",
-          updatedAt: new Date("2021-01-01T00:00:00Z"),
-        },
+  
       ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
-        {
-          value: CountryCodeEnumValue.Us,
-        },
+  
       ],
       companyName: "Example Corp",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+  
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
       employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employeeId: "1687-3",
-          employmentContractType: {},
-          employmentType: {},
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {},
-          payPeriod: {},
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+  
       ],
       firstName: "Issac",
       hireDate: new Date("2021-01-01T00:00.000Z"),
@@ -4135,7 +4033,6 @@ Updates an employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
-  CountryCodeEnumValue,
   HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -4154,54 +4051,22 @@ async function run() {
     hrisUpdateEmployeeRequestDto: {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
-        {
-          createdAt: new Date("2021-01-01T00:00:00Z"),
-          description: "Health insurance for employees",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Health Insurance",
-          provider: "Aetna",
-          updatedAt: new Date("2021-01-01T00:00:00Z"),
-        },
+
       ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
-        {
-          value: CountryCodeEnumValue.Us,
-        },
+
       ],
       companyName: "Example Corp",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
       employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employeeId: "1687-3",
-          employmentContractType: {},
-          employmentType: {},
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {},
-          payPeriod: {},
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+
       ],
       firstName: "Issac",
       hireDate: new Date("2021-01-01T00:00.000Z"),
@@ -4280,7 +4145,6 @@ The standalone function version of this method:
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisUpdateEmployee } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployee.js";
 import {
-  CountryCodeEnumValue,
   HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -4301,54 +4165,22 @@ async function run() {
     hrisUpdateEmployeeRequestDto: {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
-        {
-          createdAt: new Date("2021-01-01T00:00:00Z"),
-          description: "Health insurance for employees",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Health Insurance",
-          provider: "Aetna",
-          updatedAt: new Date("2021-01-01T00:00:00Z"),
-        },
+  
       ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
-        {
-          value: CountryCodeEnumValue.Us,
-        },
+  
       ],
       companyName: "Example Corp",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+  
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
       employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employeeId: "1687-3",
-          employmentContractType: {},
-          employmentType: {},
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {},
-          payPeriod: {},
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+  
       ],
       firstName: "Issac",
       hireDate: new Date("2021-01-01T00:00.000Z"),

@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [createApplication](#createapplication) - Create Application
+* [createApplicationNote](#createapplicationnote) - Create Application Note
 * [createBackgroundCheckPackage](#createbackgroundcheckpackage) - Create Background Check Package
 * [createCandidate](#createcandidate) - Create Candidate
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
@@ -15,6 +16,7 @@
 * [getApplication](#getapplication) - Get Application
 * [getApplicationCustomFieldDefinition](#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
 * [getApplicationDocument](#getapplicationdocument) - Get Application Document
+* [getApplicationNote](#getapplicationnote) - Get Application Note
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
 * [getApplicationScheduledInterview](#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
@@ -40,6 +42,7 @@
 * [getUser](#getuser) - Get User
 * [listApplicationCustomFieldDefinitions](#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
 * [listApplicationDocuments](#listapplicationdocuments) - List Application Documents
+* [listApplicationNotes](#listapplicationnotes) - List Application Notes
 * [listApplicationScorecards](#listapplicationscorecards) - List Application Scorecards
 * [listApplications](#listapplications) - List Applications
 * [listApplicationsOffers](#listapplicationsoffers) - List Application Offers
@@ -64,6 +67,7 @@
 * [moveApplication](#moveapplication) - Move Application
 * [rejectApplication](#rejectapplication) - Reject Application
 * [updateApplication](#updateapplication) - Update an Application
+* [updateApplicationNote](#updateapplicationnote) - Update an Application Note
 * [updateCandidate](#updatecandidate) - Update Candidate
 * [updateJob](#updatejob) - Update Job
 * [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
@@ -96,14 +100,7 @@ async function run() {
         company: "Company Inc.",
         country: "United States",
         customFields: [
-          {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Training Completion Status",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: "Completed",
-            valueId: "value_456",
-          },
+
         ],
         email: "sestier.romain123@gmail.com",
         firstName: "Romain",
@@ -115,10 +112,7 @@ async function run() {
         },
         phoneNumber: "+1234567890",
         socialLinks: [
-          {
-            type: "linkedin",
-            url: "https://www.linkedin.com/in/romainsestier/",
-          },
+
         ],
         title: "Software Engineer",
         unifiedCustomFields: {
@@ -193,14 +187,7 @@ async function run() {
         company: "Company Inc.",
         country: "United States",
         customFields: [
-          {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Training Completion Status",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: "Completed",
-            valueId: "value_456",
-          },
+  
         ],
         email: "sestier.romain123@gmail.com",
         firstName: "Romain",
@@ -212,10 +199,7 @@ async function run() {
         },
         phoneNumber: "+1234567890",
         socialLinks: [
-          {
-            type: "linkedin",
-            url: "https://www.linkedin.com/in/romainsestier/",
-          },
+  
         ],
         title: "Software Engineer",
         unifiedCustomFields: {
@@ -279,6 +263,124 @@ run();
 ### Response
 
 **Promise\<[operations.AtsCreateApplicationResponse](../../sdk/models/operations/atscreateapplicationresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createApplicationNote
+
+Create Application Note
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.createApplicationNote({
+    atsCreateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsCreateApplicationNote } from "@stackone/stackone-client-ts/funcs/atsCreateApplicationNote.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsCreateApplicationNote(stackOne, {
+    atsCreateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsCreateApplicationNoteRequest](../../sdk/models/operations/atscreateapplicationnoterequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsCreateApplicationNoteResponse](../../sdk/models/operations/atscreateapplicationnoteresponse.md)\>**
 
 ### Errors
 
@@ -424,14 +526,7 @@ async function run() {
       company: "Company Inc.",
       country: "United States",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+
       ],
       email: "sestier.romain123@gmail.com",
       firstName: "Romain",
@@ -443,10 +538,7 @@ async function run() {
       },
       phoneNumber: "+1234567890",
       socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
+
       ],
       title: "Software Engineer",
       unifiedCustomFields: {
@@ -487,14 +579,7 @@ async function run() {
       company: "Company Inc.",
       country: "United States",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+  
       ],
       email: "sestier.romain123@gmail.com",
       firstName: "Romain",
@@ -506,10 +591,7 @@ async function run() {
       },
       phoneNumber: "+1234567890",
       socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
+  
       ],
       title: "Software Engineer",
       unifiedCustomFields: {
@@ -573,9 +655,7 @@ async function run() {
     atsCreateNotesRequestDto: {
       authorId: "1234567890",
       content: [
-        {
-          body: "This candidate seems like a good fit for the role",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -614,9 +694,7 @@ async function run() {
     atsCreateNotesRequestDto: {
       authorId: "1234567890",
       content: [
-        {
-          body: "This candidate seems like a good fit for the role",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -909,11 +987,7 @@ async function run() {
   const result = await stackOne.ats.createOffer({
     atsCreateOfferRequestDto: {
       offerHistory: [
-        {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          startDate: new Date("2021-01-01T01:01:01.000Z"),
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
+
       ],
       offerStatus: {
         sourceValue: "Pending",
@@ -956,11 +1030,7 @@ async function run() {
   const res = await atsCreateOffer(stackOne, {
     atsCreateOfferRequestDto: {
       offerHistory: [
-        {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          startDate: new Date("2021-01-01T01:01:01.000Z"),
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
+  
       ],
       offerStatus: {
         sourceValue: "Pending",
@@ -1359,6 +1429,94 @@ run();
 ### Response
 
 **Promise\<[operations.AtsGetApplicationDocumentResponse](../../sdk/models/operations/atsgetapplicationdocumentresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getApplicationNote
+
+Get Application Note
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getApplicationNote({
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsGetApplicationNote } from "@stackone/stackone-client-ts/funcs/atsGetApplicationNote.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsGetApplicationNote(stackOne, {
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetApplicationNoteRequest](../../sdk/models/operations/atsgetapplicationnoterequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsGetApplicationNoteResponse](../../sdk/models/operations/atsgetapplicationnoteresponse.md)\>**
 
 ### Errors
 
@@ -3560,6 +3718,100 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## listApplicationNotes
+
+List Application Notes
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listApplicationNotes({
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsListApplicationNotes } from "@stackone/stackone-client-ts/funcs/atsListApplicationNotes.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsListApplicationNotes(stackOne, {
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListApplicationNotesRequest](../../sdk/models/operations/atslistapplicationnotesrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsListApplicationNotesResponse](../../sdk/models/operations/atslistapplicationnotesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## listApplicationScorecards
 
 List Application Scorecards
@@ -5729,14 +5981,7 @@ async function run() {
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+
       ],
       interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       passthrough: {
@@ -5785,14 +6030,7 @@ async function run() {
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+  
       ],
       interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       passthrough: {
@@ -5840,6 +6078,126 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## updateApplicationNote
+
+Update an Application Note
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.updateApplicationNote({
+    atsUpdateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsUpdateApplicationNote } from "@stackone/stackone-client-ts/funcs/atsUpdateApplicationNote.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsUpdateApplicationNote(stackOne, {
+    atsUpdateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsUpdateApplicationNoteRequest](../../sdk/models/operations/atsupdateapplicationnoterequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsUpdateApplicationNoteResponse](../../sdk/models/operations/atsupdateapplicationnoteresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## updateCandidate
 
 Update Candidate
@@ -5866,21 +6224,11 @@ async function run() {
       company: "Company Inc.",
       country: "United States",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+
       ],
       email: "sestier.romain123@gmail.com",
       emails: [
-        {
-          type: "personal",
-          value: "sestier.romain123@gmail.com",
-        },
+
       ],
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -5890,15 +6238,10 @@ async function run() {
         "other_known_names": "John Doe",
       },
       phoneNumbers: [
-        {
-          phone: "+447700112233",
-        },
+
       ],
       socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
+
       ],
       title: "Software Engineer",
       unifiedCustomFields: {
@@ -5944,21 +6287,11 @@ async function run() {
       company: "Company Inc.",
       country: "United States",
       customFields: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
+  
       ],
       email: "sestier.romain123@gmail.com",
       emails: [
-        {
-          type: "personal",
-          value: "sestier.romain123@gmail.com",
-        },
+  
       ],
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -5968,15 +6301,10 @@ async function run() {
         "other_known_names": "John Doe",
       },
       phoneNumbers: [
-        {
-          phone: "+447700112233",
-        },
+  
       ],
       socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
+  
       ],
       title: "Software Engineer",
       unifiedCustomFields: {
@@ -6075,16 +6403,7 @@ async function run() {
         },
       ],
       interviewStages: [
-        {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
+
       ],
       jobStatus: {
         sourceValue: "Published",
@@ -6171,16 +6490,7 @@ async function run() {
         },
       ],
       interviewStages: [
-        {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
+  
       ],
       jobStatus: {
         sourceValue: "Published",
