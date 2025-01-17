@@ -12,7 +12,7 @@ let value: AtsUpdateApplicationResponse = {
       "<value>",
     ],
   },
-  statusCode: 506,
+  statusCode: 413,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

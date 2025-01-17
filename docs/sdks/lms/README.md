@@ -40,7 +40,6 @@ Batch Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -53,45 +52,7 @@ async function run() {
   const result = await stackOne.lms.batchUpsertContent({
     lmsBatchUpsertContentRequestDto: {
       items: [
-        {
-          active: true,
-          categories: [
-            {
-              id: "16873-IT345",
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-          ],
-          contentUrl: "https://www.youtube.com/watch?v=16873",
-          courseIds: [
-            "16873-SOFTWARE-ENG-COURSE",
-          ],
-          coverUrl: "https://www.googledrive.com/?v=16873",
-          description: "This video acts as learning content for software engineers.",
-          duration: "P3Y6M4DT12H30M5S",
-          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-          languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-          ],
-          order: 1,
-          shortDescription: "This course is a valuable resource and acts as learning content for...",
-          skills: [
-            {
-              id: "12345",
-              name: "Sales Techniques",
-            },
-          ],
-          title: "Software Engineer Lv 1",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+
       ],
     },
     xAccountId: "<value>",
@@ -111,7 +72,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertContent.js";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -126,45 +86,7 @@ async function run() {
   const res = await lmsBatchUpsertContent(stackOne, {
     lmsBatchUpsertContentRequestDto: {
       items: [
-        {
-          active: true,
-          categories: [
-            {
-              id: "16873-IT345",
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-          ],
-          contentUrl: "https://www.youtube.com/watch?v=16873",
-          courseIds: [
-            "16873-SOFTWARE-ENG-COURSE",
-          ],
-          coverUrl: "https://www.googledrive.com/?v=16873",
-          description: "This video acts as learning content for software engineers.",
-          duration: "P3Y6M4DT12H30M5S",
-          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-          languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-          ],
-          order: 1,
-          shortDescription: "This course is a valuable resource and acts as learning content for...",
-          skills: [
-            {
-              id: "12345",
-              name: "Sales Techniques",
-            },
-          ],
-          title: "Software Engineer Lv 1",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+  
       ],
     },
     xAccountId: "<value>",
@@ -287,9 +209,7 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
+
           ],
           skills: [
             {
@@ -402,9 +322,7 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
+  
           ],
           skills: [
             {
@@ -914,7 +832,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCategory({
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,level,language",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -945,7 +863,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCategory(stackOne, {
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,level,language",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1696,7 +1614,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCategories({
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,level,language",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1730,7 +1648,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCategories(stackOne, {
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,level,language",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2570,7 +2488,6 @@ Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2597,9 +2514,7 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
-        {
-          value: LanguageEnumValue.EnGB,
-        },
+
       ],
       order: 1,
       skills: [
@@ -2631,7 +2546,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsUpsertContent.js";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2660,9 +2574,7 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
-        {
-          value: LanguageEnumValue.EnGB,
-        },
+  
       ],
       order: 1,
       skills: [

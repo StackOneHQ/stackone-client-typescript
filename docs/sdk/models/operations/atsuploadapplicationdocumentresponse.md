@@ -12,7 +12,7 @@ let value: AtsUploadApplicationDocumentResponse = {
       "<value>",
     ],
   },
-  statusCode: 428,
+  statusCode: 404,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -28,6 +28,12 @@ let value: AtsUploadApplicationDocumentResponse = {
     ],
     statusCode: 201,
     timestamp: new Date("2021-01-01T01:01:01.000Z"),
+    unifiedWarnings: [
+      {
+        message:
+          "The provided field type is not supported in the current model.",
+      },
+    ],
   },
 };
 ```

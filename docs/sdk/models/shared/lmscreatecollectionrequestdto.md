@@ -3,12 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { LmsCreateCollectionRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelValue, LmsCreateCollectionRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCollectionRequestDto = {
   categories: [
     {
       id: "16873-IT345",
+      language: {
+        value: CreateCategoriesApiModelValue.EnGB,
+      },
       name: "Information-Technology",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",

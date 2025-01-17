@@ -166,7 +166,7 @@ let value: IamGetUserResponse = {
       username: "hansolo1977",
     },
   },
-  statusCode: 208,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

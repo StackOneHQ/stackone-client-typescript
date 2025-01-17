@@ -16,7 +16,7 @@ let value: LmsCreateAssignmentRequestDto = {
   },
   progress: 40,
   status: {
-    value: LmsCreateAssignmentRequestDtoValue.Pending,
+    value: LmsCreateAssignmentRequestDtoValue.InProgress,
   },
 };
 ```

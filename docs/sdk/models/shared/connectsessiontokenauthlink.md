@@ -6,21 +6,21 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://big-scenario.biz",
+  authLinkUrl: "https://rapid-league.info/",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
+    ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.Marketing,
+    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
     ConnectSessionTokenAuthLinkCategories.Documents,
   ],
-  createdAt: new Date("2023-09-27T16:26:45.665Z"),
-  id: 6658.59,
-  organizationId: 5173.09,
+  createdAt: new Date("2025-02-13T09:44:27.866Z"),
+  id: 4148.57,
+  organizationId: 3605.45,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",

@@ -11,12 +11,8 @@ let value: HrisBatchUploadEmployeeDocumentResponse = {
       [
         "Missing field: name",
       ],
-      [
-        "<value>",
-      ],
-      [
-        "<value>",
-      ],
+      [],
+      [],
     ],
     message: "Batch operation accepted",
     statusCode: 202,
@@ -28,7 +24,7 @@ let value: HrisBatchUploadEmployeeDocumentResponse = {
       "<value>",
     ],
   },
-  statusCode: 506,
+  statusCode: 202,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

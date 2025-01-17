@@ -7,7 +7,7 @@ Filter to select assignment by learning object type.
 ```typescript
 import { LearningObjectType } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LearningObjectType = LearningObjectType.Content;
+let value: LearningObjectType = LearningObjectType.Collection;
 ```
 
 ## Values

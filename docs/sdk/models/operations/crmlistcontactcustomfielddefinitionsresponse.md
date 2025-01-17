@@ -27,7 +27,7 @@ let value: CrmListContactCustomFieldDefinitionsResponse = {
       "<value>",
     ],
   },
-  statusCode: 226,
+  statusCode: 302,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

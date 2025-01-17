@@ -3,7 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { LanguageEnumValue, LmsBatchUpsertContentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelValue,
+  LanguageEnumValue,
+  LmsBatchUpsertContentRequestDto,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsBatchUpsertContentRequestDto = {
   items: [
@@ -12,6 +16,9 @@ let value: LmsBatchUpsertContentRequestDto = {
       categories: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",

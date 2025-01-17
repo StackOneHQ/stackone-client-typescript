@@ -3,6 +3,7 @@
  */
 
 import { atsCreateApplication } from "../funcs/atsCreateApplication.js";
+import { atsCreateApplicationNote } from "../funcs/atsCreateApplicationNote.js";
 import { atsCreateBackgroundCheckPackage } from "../funcs/atsCreateBackgroundCheckPackage.js";
 import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsCreateCandidateNote } from "../funcs/atsCreateCandidateNote.js";
@@ -12,6 +13,7 @@ import { atsDownloadApplicationDocument } from "../funcs/atsDownloadApplicationD
 import { atsGetApplication } from "../funcs/atsGetApplication.js";
 import { atsGetApplicationCustomFieldDefinition } from "../funcs/atsGetApplicationCustomFieldDefinition.js";
 import { atsGetApplicationDocument } from "../funcs/atsGetApplicationDocument.js";
+import { atsGetApplicationNote } from "../funcs/atsGetApplicationNote.js";
 import { atsGetApplicationOffer } from "../funcs/atsGetApplicationOffer.js";
 import { atsGetApplicationScheduledInterview } from "../funcs/atsGetApplicationScheduledInterview.js";
 import { atsGetApplicationScorecard } from "../funcs/atsGetApplicationScorecard.js";
@@ -37,6 +39,7 @@ import { atsGetRejectedReason } from "../funcs/atsGetRejectedReason.js";
 import { atsGetUser } from "../funcs/atsGetUser.js";
 import { atsListApplicationCustomFieldDefinitions } from "../funcs/atsListApplicationCustomFieldDefinitions.js";
 import { atsListApplicationDocuments } from "../funcs/atsListApplicationDocuments.js";
+import { atsListApplicationNotes } from "../funcs/atsListApplicationNotes.js";
 import { atsListApplications } from "../funcs/atsListApplications.js";
 import { atsListApplicationScorecards } from "../funcs/atsListApplicationScorecards.js";
 import { atsListApplicationsOffers } from "../funcs/atsListApplicationsOffers.js";
@@ -61,6 +64,7 @@ import { atsListUsers } from "../funcs/atsListUsers.js";
 import { atsMoveApplication } from "../funcs/atsMoveApplication.js";
 import { atsRejectApplication } from "../funcs/atsRejectApplication.js";
 import { atsUpdateApplication } from "../funcs/atsUpdateApplication.js";
+import { atsUpdateApplicationNote } from "../funcs/atsUpdateApplicationNote.js";
 import { atsUpdateCandidate } from "../funcs/atsUpdateCandidate.js";
 import { atsUpdateJob } from "../funcs/atsUpdateJob.js";
 import { atsUploadApplicationDocument } from "../funcs/atsUploadApplicationDocument.js";
@@ -77,6 +81,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsCreateApplicationResponse> {
     return unwrapAsync(atsCreateApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Application Note
+   */
+  async createApplicationNote(
+    request: operations.AtsCreateApplicationNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateApplicationNoteResponse> {
+    return unwrapAsync(atsCreateApplicationNote(
       this,
       request,
       options,
@@ -203,6 +221,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsGetApplicationDocumentResponse> {
     return unwrapAsync(atsGetApplicationDocument(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Application Note
+   */
+  async getApplicationNote(
+    request: operations.AtsGetApplicationNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationNoteResponse> {
+    return unwrapAsync(atsGetApplicationNote(
       this,
       request,
       options,
@@ -560,6 +592,20 @@ export class Ats extends ClientSDK {
   }
 
   /**
+   * List Application Notes
+   */
+  async listApplicationNotes(
+    request: operations.AtsListApplicationNotesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationNotesResponse> {
+    return unwrapAsync(atsListApplicationNotes(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Application Scorecards
    */
   async listApplicationScorecards(
@@ -889,6 +935,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsUpdateApplicationResponse> {
     return unwrapAsync(atsUpdateApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update an Application Note
+   */
+  async updateApplicationNote(
+    request: operations.AtsUpdateApplicationNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateApplicationNoteResponse> {
+    return unwrapAsync(atsUpdateApplicationNote(
       this,
       request,
       options,

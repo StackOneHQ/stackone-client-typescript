@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsBatchUpsertContentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsBatchUpsertContentRequest = {
   lmsBatchUpsertContentRequestDto: {
@@ -14,6 +14,9 @@ let value: LmsBatchUpsertContentRequest = {
         categories: [
           {
             id: "16873-IT345",
+            language: {
+              value: CreateCategoriesApiModelValue.EnGB,
+            },
             name: "Information-Technology",
             unifiedCustomFields: {
               "my_project_custom_field_1": "REF-1236",

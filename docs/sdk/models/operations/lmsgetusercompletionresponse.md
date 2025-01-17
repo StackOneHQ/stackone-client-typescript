@@ -31,7 +31,7 @@ let value: LmsGetUserCompletionResponse = {
       "<value>",
     ],
   },
-  statusCode: 407,
+  statusCode: 306,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

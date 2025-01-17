@@ -29,7 +29,7 @@ let value: MarketingGetEmailTemplateResponse = {
       "<value>",
     ],
   },
-  statusCode: 409,
+  statusCode: 431,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

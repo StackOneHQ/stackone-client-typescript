@@ -69,7 +69,7 @@ let value: AtsListCandidatesResponse = {
       "<value>",
     ],
   },
-  statusCode: 305,
+  statusCode: 206,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

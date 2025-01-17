@@ -4,12 +4,16 @@
 
 ```typescript
 import { LmsCreateCollectionRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCollectionRequest = {
   lmsCreateCollectionRequestDto: {
     categories: [
       {
         id: "16873-IT345",
+        language: {
+          value: CreateCategoriesApiModelValue.EnGB,
+        },
         name: "Information-Technology",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",

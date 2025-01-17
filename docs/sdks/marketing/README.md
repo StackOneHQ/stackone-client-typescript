@@ -142,7 +142,6 @@ Create Email Templates
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -155,14 +154,7 @@ async function run() {
   const result = await stackOne.marketing.createEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: EmailMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -185,7 +177,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateEmailTemplate.js";
-import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -200,14 +191,7 @@ async function run() {
   const res = await marketingCreateEmailTemplate(stackOne, {
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: EmailMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -256,7 +240,6 @@ Create In-App Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -269,14 +252,7 @@ async function run() {
   const result = await stackOne.marketing.createInAppTemplate({
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: InAppMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -299,7 +275,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateInAppTemplate.js";
-import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -314,14 +289,7 @@ async function run() {
   const res = await marketingCreateInAppTemplate(stackOne, {
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: InAppMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -372,7 +340,6 @@ Create Omni-Channel Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -385,13 +352,7 @@ async function run() {
   const result = await stackOne.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: CreateMessageValue.Email,
-          },
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -414,7 +375,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateOmniChannelTemplate.js";
-import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -429,13 +389,7 @@ async function run() {
   const res = await marketingCreateOmniChannelTemplate(stackOne, {
     marketingCreateTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: CreateMessageValue.Email,
-          },
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -484,7 +438,6 @@ Create Push Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -497,14 +450,7 @@ async function run() {
   const result = await stackOne.marketing.createPushTemplate({
     marketingCreatePushTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: PushMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -527,7 +473,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreatePushTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreatePushTemplate.js";
-import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -542,14 +487,7 @@ async function run() {
   const res = await marketingCreatePushTemplate(stackOne, {
     marketingCreatePushTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: PushMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -598,7 +536,6 @@ Create SMS Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -611,14 +548,7 @@ async function run() {
   const result = await stackOne.marketing.createSmsTemplate({
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: SmsMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -641,7 +571,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateSmsTemplate.js";
-import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -656,14 +585,7 @@ async function run() {
   const res = await marketingCreateSmsTemplate(stackOne, {
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: SmsMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2066,7 +1988,6 @@ Update Email Templates
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2079,14 +2000,7 @@ async function run() {
   const result = await stackOne.marketing.updateEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: EmailMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2110,7 +2024,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateEmailTemplate.js";
-import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2125,14 +2038,7 @@ async function run() {
   const res = await marketingUpdateEmailTemplate(stackOne, {
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: EmailMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2182,7 +2088,6 @@ Update In-App Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2195,14 +2100,7 @@ async function run() {
   const result = await stackOne.marketing.updateInAppTemplate({
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: InAppMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2226,7 +2124,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateInAppTemplate.js";
-import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2241,14 +2138,7 @@ async function run() {
   const res = await marketingUpdateInAppTemplate(stackOne, {
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: InAppMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2300,7 +2190,6 @@ Update Omni-Channel Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2313,13 +2202,7 @@ async function run() {
   const result = await stackOne.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: CreateMessageValue.Email,
-          },
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2343,7 +2226,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateOmniChannelTemplate.js";
-import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2358,13 +2240,7 @@ async function run() {
   const res = await marketingUpdateOmniChannelTemplate(stackOne, {
     marketingCreateTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: CreateMessageValue.Email,
-          },
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2414,7 +2290,6 @@ Update Push Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2427,14 +2302,7 @@ async function run() {
   const result = await stackOne.marketing.updatePushTemplate({
     marketingCreatePushTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: PushMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2458,7 +2326,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdatePushTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdatePushTemplate.js";
-import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2473,14 +2340,7 @@ async function run() {
   const res = await marketingUpdatePushTemplate(stackOne, {
     marketingCreatePushTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: PushMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2530,7 +2390,6 @@ Update SMS Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2543,14 +2402,7 @@ async function run() {
   const result = await stackOne.marketing.updateSmsTemplate({
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: SmsMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -2574,7 +2426,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateSmsTemplate.js";
-import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2589,14 +2440,7 @@ async function run() {
   const res = await marketingUpdateSmsTemplate(stackOne, {
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: SmsMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
+  
       ],
       passthrough: {
         "other_known_names": "John Doe",
