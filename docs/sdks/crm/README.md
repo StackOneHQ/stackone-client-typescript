@@ -82,7 +82,7 @@ async function run() {
         "123-456-7890",
       ],
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -159,7 +159,7 @@ async function run() {
         "123-456-7890",
       ],
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -214,7 +214,8 @@ async function run() {
   const result = await stackOne.crm.getAccount({
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -245,7 +246,8 @@ async function run() {
   const res = await crmGetAccount(stackOne, {
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -301,7 +303,8 @@ async function run() {
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -333,7 +336,8 @@ async function run() {
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -391,6 +395,8 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -426,6 +432,8 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -482,7 +490,8 @@ async function run() {
   const result = await stackOne.crm.getList({
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -513,7 +522,8 @@ async function run() {
   const res = await crmGetList(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -570,8 +580,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -604,8 +616,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -662,6 +676,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -696,6 +712,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -755,8 +773,10 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -790,8 +810,10 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -848,8 +870,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -882,8 +906,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -943,7 +969,14 @@ async function run() {
       ],
       companyName: "Apple Inc.",
       customFields: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
       ],
       dealIds: [
         "deal-001",
@@ -962,7 +995,7 @@ async function run() {
       ],
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -998,7 +1031,14 @@ async function run() {
       ],
       companyName: "Apple Inc.",
       customFields: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
       ],
       dealIds: [
         "deal-001",
@@ -1017,7 +1057,7 @@ async function run() {
       ],
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {

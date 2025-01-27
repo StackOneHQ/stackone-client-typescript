@@ -110,6 +110,10 @@ export type LmsUpsertContentRequestDto = {
    */
   order?: number | null | undefined;
   /**
+   * The name of the content provider
+   */
+  provider?: string | null | undefined;
+  /**
    * A short description or summary for the content
    */
   shortDescription?: string | null | undefined;
@@ -392,6 +396,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
+  provider: z.nullable(z.string()).optional(),
   short_description: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
@@ -424,6 +429,7 @@ export type LmsUpsertContentRequestDto$Outbound = {
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
   order?: number | null | undefined;
+  provider?: string | null | undefined;
   short_description?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   title?: string | null | undefined;
@@ -450,6 +456,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
+  provider: z.nullable(z.string()).optional(),
   shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),

@@ -10,9 +10,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * ATS Job Postings Filter
  */
 export type AtsListJobPostingsQueryParamFilter = {
+  /**
+   * Use a string with a date to only select results created after that given date
+   */
+  createdAfter?: string | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -25,7 +29,7 @@ export type AtsListJobPostingsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * ATS Job Postings Filter
    */
   filter?: AtsListJobPostingsQueryParamFilter | null | undefined;
   /**
@@ -98,15 +102,18 @@ export const AtsListJobPostingsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created_after: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_after": "createdAfter",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type AtsListJobPostingsQueryParamFilter$Outbound = {
+  created_after?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -116,9 +123,11 @@ export const AtsListJobPostingsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListJobPostingsQueryParamFilter
 > = z.object({
+  createdAfter: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAfter: "created_after",
     updatedAfter: "updated_after",
   });
 });

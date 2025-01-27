@@ -85,8 +85,10 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   for await (const page of result) {
@@ -367,8 +369,10 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   for await (const page of result) {

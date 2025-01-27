@@ -120,7 +120,9 @@ async function run() {
       ConnectSessionCreateCategories.Ats,
       ConnectSessionCreateCategories.Documents,
     ],
-    originOwnerId: "<value>",
+    expiresIn: 1800,
+    multiple: false,
+    originOwnerId: "<id>",
     originOwnerName: "<value>",
   });
 
@@ -162,7 +164,9 @@ async function run() {
       ConnectSessionCreateCategories.Ats,
       ConnectSessionCreateCategories.Documents,
     ],
-    originOwnerId: "<value>",
+    expiresIn: 1800,
+    multiple: false,
+    originOwnerId: "<id>",
     originOwnerName: "<value>",
   });
 

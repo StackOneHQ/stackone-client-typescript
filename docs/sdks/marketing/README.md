@@ -60,7 +60,7 @@ async function run() {
         value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -99,7 +99,7 @@ async function run() {
         value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -142,6 +142,7 @@ Create Email Templates
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -154,13 +155,28 @@ async function run() {
   const result = await stackOne.marketing.createEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: EmailMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: EmailMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -177,6 +193,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateEmailTemplate.js";
+import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -191,13 +208,28 @@ async function run() {
   const res = await marketingCreateEmailTemplate(stackOne, {
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: EmailMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: EmailMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -240,6 +272,7 @@ Create In-App Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -252,13 +285,20 @@ async function run() {
   const result = await stackOne.marketing.createInAppTemplate({
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: InAppMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -275,6 +315,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateInAppTemplate.js";
+import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -289,13 +330,20 @@ async function run() {
   const res = await marketingCreateInAppTemplate(stackOne, {
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: InAppMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -340,6 +388,7 @@ Create Omni-Channel Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -352,13 +401,33 @@ async function run() {
   const result = await stackOne.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -375,6 +444,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateOmniChannelTemplate.js";
+import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -389,13 +459,33 @@ async function run() {
   const res = await marketingCreateOmniChannelTemplate(stackOne, {
     marketingCreateTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -438,6 +528,7 @@ Create Push Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -450,13 +541,36 @@ async function run() {
   const result = await stackOne.marketing.createPushTemplate({
     marketingCreatePushTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -473,6 +587,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreatePushTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreatePushTemplate.js";
+import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -487,13 +602,36 @@ async function run() {
   const res = await marketingCreatePushTemplate(stackOne, {
     marketingCreatePushTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -536,6 +674,7 @@ Create SMS Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -548,13 +687,36 @@ async function run() {
   const result = await stackOne.marketing.createSmsTemplate({
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -571,6 +733,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateSmsTemplate.js";
+import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -585,13 +748,36 @@ async function run() {
   const res = await marketingCreateSmsTemplate(stackOne, {
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -646,7 +832,8 @@ async function run() {
   const result = await stackOne.marketing.getCampaign({
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -677,7 +864,8 @@ async function run() {
   const res = await marketingGetCampaign(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -732,7 +920,8 @@ async function run() {
   const result = await stackOne.marketing.getContentBlock({
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -763,7 +952,8 @@ async function run() {
   const res = await marketingGetContentBlock(stackOne, {
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -818,7 +1008,8 @@ async function run() {
   const result = await stackOne.marketing.getEmailTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -849,7 +1040,8 @@ async function run() {
   const res = await marketingGetEmailTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -904,7 +1096,8 @@ async function run() {
   const result = await stackOne.marketing.getInAppTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -935,7 +1128,8 @@ async function run() {
   const res = await marketingGetInAppTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -992,7 +1186,8 @@ async function run() {
   const result = await stackOne.marketing.getOmniChannelTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1023,7 +1218,8 @@ async function run() {
   const res = await marketingGetOmniChannelTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1078,7 +1274,8 @@ async function run() {
   const result = await stackOne.marketing.getPushTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1109,7 +1306,8 @@ async function run() {
   const res = await marketingGetPushTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1164,7 +1362,8 @@ async function run() {
   const result = await stackOne.marketing.getSmsTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1195,7 +1394,8 @@ async function run() {
   const res = await marketingGetSmsTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1252,8 +1452,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1286,8 +1488,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1344,8 +1548,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1378,8 +1584,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1436,8 +1644,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1470,8 +1680,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1528,8 +1740,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1562,8 +1776,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1622,8 +1838,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1656,8 +1874,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1714,8 +1934,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1748,8 +1970,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1806,8 +2030,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1840,8 +2066,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1905,7 +2133,7 @@ async function run() {
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1945,7 +2173,7 @@ async function run() {
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1988,6 +2216,7 @@ Update Email Templates
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2000,14 +2229,21 @@ async function run() {
   const result = await stackOne.marketing.updateEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: EmailMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2024,6 +2260,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateEmailTemplate.js";
+import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2038,14 +2275,21 @@ async function run() {
   const res = await marketingUpdateEmailTemplate(stackOne, {
     marketingCreateEmailTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: EmailMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2088,6 +2332,7 @@ Update In-App Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2100,14 +2345,29 @@ async function run() {
   const result = await stackOne.marketing.updateInAppTemplate({
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: InAppMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: InAppMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2124,6 +2384,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateInAppTemplate.js";
+import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2138,14 +2399,29 @@ async function run() {
   const res = await marketingUpdateInAppTemplate(stackOne, {
     marketingCreateInAppTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: InAppMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: InAppMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2190,6 +2466,7 @@ Update Omni-Channel Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2202,14 +2479,20 @@ async function run() {
   const result = await stackOne.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2226,6 +2509,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateOmniChannelTemplate.js";
+import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2240,14 +2524,20 @@ async function run() {
   const res = await marketingUpdateOmniChannelTemplate(stackOne, {
     marketingCreateTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: CreateMessageValue.Email,
+          },
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2290,6 +2580,7 @@ Update Push Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2302,14 +2593,37 @@ async function run() {
   const result = await stackOne.marketing.updatePushTemplate({
     marketingCreatePushTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2326,6 +2640,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdatePushTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdatePushTemplate.js";
+import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2340,14 +2655,37 @@ async function run() {
   const res = await marketingUpdatePushTemplate(stackOne, {
     marketingCreatePushTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: PushMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2390,6 +2728,7 @@ Update SMS Template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2402,14 +2741,21 @@ async function run() {
   const result = await stackOne.marketing.updateSmsTemplate({
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2426,6 +2772,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateSmsTemplate.js";
+import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2440,14 +2787,21 @@ async function run() {
   const res = await marketingUpdateSmsTemplate(stackOne, {
     marketingCreateSmsTemplateRequestDto: {
       messages: [
-  
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+            sourceValue: "Email",
+            value: SmsMessagesValue.Email,
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {

@@ -29,6 +29,7 @@ let value: CourseResult = {
         value: LanguageEnumValue.EnGB,
       },
     ],
+    provider: "Course Provider",
     remoteContentIds: [
       "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       "e3cb75bf-aa84-466e-a6c1-b8322b257a49",

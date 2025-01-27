@@ -40,6 +40,7 @@ Batch Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -52,10 +53,134 @@ async function run() {
   const result = await stackOne.lms.batchUpsertContent({
     lmsBatchUpsertContentRequestDto: {
       items: [
-
+        {
+          active: true,
+          categories: [
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          contentUrl: "https://www.youtube.com/watch?v=16873",
+          courseIds: [
+            "16873-SOFTWARE-ENG-COURSE",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          description: "This video acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          order: 1,
+          provider: "Content Provider",
+          shortDescription: "This course is a valuable resource and acts as learning content for...",
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
+          ],
+          title: "Software Engineer Lv 1",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          active: true,
+          categories: [
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          contentUrl: "https://www.youtube.com/watch?v=16873",
+          courseIds: [
+            "16873-SOFTWARE-ENG-COURSE",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          description: "This video acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          order: 1,
+          provider: "Content Provider",
+          shortDescription: "This course is a valuable resource and acts as learning content for...",
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
+          ],
+          title: "Software Engineer Lv 1",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
       ],
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -72,6 +197,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertContent.js";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -86,10 +212,134 @@ async function run() {
   const res = await lmsBatchUpsertContent(stackOne, {
     lmsBatchUpsertContentRequestDto: {
       items: [
-  
+        {
+          active: true,
+          categories: [
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          contentUrl: "https://www.youtube.com/watch?v=16873",
+          courseIds: [
+            "16873-SOFTWARE-ENG-COURSE",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          description: "This video acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          order: 1,
+          provider: "Content Provider",
+          shortDescription: "This course is a valuable resource and acts as learning content for...",
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
+          ],
+          title: "Software Engineer Lv 1",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          active: true,
+          categories: [
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          contentUrl: "https://www.youtube.com/watch?v=16873",
+          courseIds: [
+            "16873-SOFTWARE-ENG-COURSE",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          description: "This video acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          order: 1,
+          provider: "Content Provider",
+          shortDescription: "This course is a valuable resource and acts as learning content for...",
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
+          ],
+          title: "Software Engineer Lv 1",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
       ],
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -132,7 +382,7 @@ Batch Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -149,13 +399,28 @@ async function run() {
           active: true,
           categories: [
             {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
               name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -173,7 +438,11 @@ async function run() {
             {
               value: LanguageEnumValue.EnGB,
             },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
           ],
+          provider: "Course Provider",
           skills: [
             {
               id: "16873-IT345",
@@ -191,13 +460,56 @@ async function run() {
           active: true,
           categories: [
             {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
               name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -209,9 +521,23 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
-
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
           ],
+          provider: "Course Provider",
           skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
             {
               id: "16873-IT345",
               name: "Information-Technology",
@@ -243,7 +569,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertCourse.js";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -262,13 +588,28 @@ async function run() {
           active: true,
           categories: [
             {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
               name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -286,7 +627,11 @@ async function run() {
             {
               value: LanguageEnumValue.EnGB,
             },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
           ],
+          provider: "Course Provider",
           skills: [
             {
               id: "16873-IT345",
@@ -304,13 +649,56 @@ async function run() {
           active: true,
           categories: [
             {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
               name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -322,9 +710,23 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
-  
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
           ],
+          provider: "Course Provider",
           skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+            },
             {
               id: "16873-IT345",
               name: "Information-Technology",
@@ -382,6 +784,7 @@ Create Collection
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -395,7 +798,37 @@ async function run() {
     lmsCreateCollectionRequestDto: {
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -411,6 +844,15 @@ async function run() {
       ],
       skills: [
         {
+          id: "16873-IT345",
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
           name: "Information-Technology",
         },
       ],
@@ -437,6 +879,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsCreateCollection } from "@stackone/stackone-client-ts/funcs/lmsCreateCollection.js";
+import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -452,7 +895,37 @@ async function run() {
     lmsCreateCollectionRequestDto: {
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -468,6 +941,15 @@ async function run() {
       ],
       skills: [
         {
+          id: "16873-IT345",
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
           name: "Information-Technology",
         },
       ],
@@ -534,6 +1016,7 @@ async function run() {
     lmsCreateAssignmentRequestDto: {
       createdAt: "2021-07-21T14:00:00.000Z",
       dueDate: "2021-07-21T14:00:00.000Z",
+      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -578,6 +1061,7 @@ async function run() {
     lmsCreateAssignmentRequestDto: {
       createdAt: "2021-07-21T14:00:00.000Z",
       dueDate: "2021-07-21T14:00:00.000Z",
+      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -644,9 +1128,7 @@ async function run() {
   const result = await stackOne.lms.createUserCompletion({
     lmsCreateCompletionRequestDto: {
       completedAt: "2021-07-21T14:00:00.000Z",
-      contentExternalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT",
-      contentId: "16873-ENG-VIDEO-1",
-      externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
+      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -654,7 +1136,7 @@ async function run() {
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -685,9 +1167,7 @@ async function run() {
   const res = await lmsCreateUserCompletion(stackOne, {
     lmsCreateCompletionRequestDto: {
       completedAt: "2021-07-21T14:00:00.000Z",
-      contentExternalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT",
-      contentId: "16873-ENG-VIDEO-1",
-      externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
+      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -695,7 +1175,7 @@ async function run() {
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -749,7 +1229,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getAssignment({
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -779,7 +1260,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetAssignment(stackOne, {
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -834,7 +1316,8 @@ async function run() {
   const result = await stackOne.lms.getCategory({
     fields: "id,remote_id,name,active,level,language",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -865,7 +1348,8 @@ async function run() {
   const res = await lmsGetCategory(stackOne, {
     fields: "id,remote_id,name,active,level,language",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -919,7 +1403,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getCompletion({
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -949,7 +1434,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetCompletion(stackOne, {
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1002,9 +1488,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1033,9 +1520,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1088,9 +1576,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCourse({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1119,9 +1608,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCourse(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1176,7 +1666,8 @@ async function run() {
   const result = await stackOne.lms.getSkill({
     fields: "id,remote_id,name,active,level",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1207,7 +1698,8 @@ async function run() {
   const res = await lmsGetSkill(stackOne, {
     fields: "id,remote_id,name,active,level",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1262,7 +1754,8 @@ async function run() {
   const result = await stackOne.lms.getUser({
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1293,7 +1786,8 @@ async function run() {
   const res = await lmsGetUser(stackOne, {
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
-    xAccountId: "<value>",
+    raw: false,
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1347,8 +1841,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getUserAssignment({
     id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+    raw: false,
+    subResourceId: "<id>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1378,8 +1873,9 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetUserAssignment(stackOne, {
     id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+    raw: false,
+    subResourceId: "<id>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1433,8 +1929,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getUserCompletion({
     id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+    raw: false,
+    subResourceId: "<id>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1464,8 +1961,9 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetUserCompletion(stackOne, {
     id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+    raw: false,
+    subResourceId: "<id>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1522,10 +2020,12 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1558,10 +2058,12 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1618,8 +2120,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1652,8 +2156,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1710,8 +2216,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1744,8 +2252,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1798,12 +2308,14 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1832,12 +2344,14 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1890,12 +2404,14 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCourses({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -1924,12 +2440,14 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCourses(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -1986,8 +2504,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2020,8 +2540,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2079,10 +2601,12 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    pageSize: "25",
+    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2116,10 +2640,12 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    pageSize: "25",
+    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2177,8 +2703,10 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2212,8 +2740,10 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2270,8 +2800,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2304,8 +2836,10 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2348,6 +2882,7 @@ Update Collection
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2361,7 +2896,37 @@ async function run() {
     lmsCreateCollectionRequestDto: {
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -2377,6 +2942,11 @@ async function run() {
       ],
       skills: [
         {
+          id: "16873-IT345",
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
           name: "Information-Technology",
         },
       ],
@@ -2404,6 +2974,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpdateCollection } from "@stackone/stackone-client-ts/funcs/lmsUpdateCollection.js";
+import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2419,7 +2990,37 @@ async function run() {
     lmsCreateCollectionRequestDto: {
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -2435,6 +3036,11 @@ async function run() {
       ],
       skills: [
         {
+          id: "16873-IT345",
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
           name: "Information-Technology",
         },
       ],
@@ -2488,6 +3094,7 @@ Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2502,7 +3109,26 @@ async function run() {
       active: true,
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -2514,9 +3140,13 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
-
+        {
+          value: LanguageEnumValue.EnGB,
+        },
       ],
       order: 1,
+      provider: "Content Provider",
+      shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "16873-IT345",
@@ -2529,7 +3159,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2546,6 +3176,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsUpsertContent.js";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2562,7 +3193,26 @@ async function run() {
       active: true,
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -2574,9 +3224,13 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
-  
+        {
+          value: LanguageEnumValue.EnGB,
+        },
       ],
       order: 1,
+      provider: "Content Provider",
+      shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "16873-IT345",
@@ -2589,7 +3243,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2632,7 +3286,7 @@ Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2647,13 +3301,33 @@ async function run() {
       active: true,
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       content: [
         {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
+          order: 1,
           title: "Software Engineer Lv 1",
         },
       ],
@@ -2669,6 +3343,7 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      provider: "Course Provider",
       skills: [
         {
           id: "16873-IT345",
@@ -2699,7 +3374,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsUpsertCourse.js";
-import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2716,13 +3391,33 @@ async function run() {
       active: true,
       categories: [
         {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
           name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       content: [
         {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
+          order: 1,
           title: "Software Engineer Lv 1",
         },
       ],
@@ -2738,6 +3433,7 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      provider: "Course Provider",
       skills: [
         {
           id: "16873-IT345",

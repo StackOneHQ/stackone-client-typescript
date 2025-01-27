@@ -112,6 +112,10 @@ export type Content = {
    */
   order?: number | null | undefined;
   /**
+   * The name of the content provider
+   */
+  provider?: string | null | undefined;
+  /**
    * Provider's unique identifier of the parent course ID associated with this content
    */
   remoteCourseIds?: Array<string> | null | undefined;
@@ -382,6 +386,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     id: z.nullable(z.string()).optional(),
     languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
     order: z.nullable(z.number()).optional(),
+    provider: z.nullable(z.string()).optional(),
     remote_course_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
     short_description: z.nullable(z.string()).optional(),
@@ -416,6 +421,7 @@ export type Content$Outbound = {
   id?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
   order?: number | null | undefined;
+  provider?: string | null | undefined;
   remote_course_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
   short_description?: string | null | undefined;
@@ -443,6 +449,7 @@ export const Content$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
+  provider: z.nullable(z.string()).optional(),
   remoteCourseIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
   shortDescription: z.nullable(z.string()).optional(),
