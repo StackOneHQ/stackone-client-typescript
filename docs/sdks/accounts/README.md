@@ -274,7 +274,9 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.accounts.listLinkedAccounts({});
+  const result = await stackOne.accounts.listLinkedAccounts({
+    pageSize: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -301,7 +303,9 @@ const stackOne = new StackOneCore({
 });
 
 async function run() {
-  const res = await accountsListLinkedAccounts(stackOne, {});
+  const res = await accountsListLinkedAccounts(stackOne, {
+    pageSize: 25,
+  });
 
   if (!res.ok) {
     throw res.error;

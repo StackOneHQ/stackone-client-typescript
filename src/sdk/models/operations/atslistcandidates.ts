@@ -14,6 +14,10 @@ import * as shared from "../shared/index.js";
  */
 export type AtsListCandidatesQueryParamFilter = {
   /**
+   * Use a string with a date to only select results created after that given date
+   */
+  createdAfter?: string | null | undefined;
+  /**
    * Filter to select candidates by email
    */
   email?: string | null | undefined;
@@ -102,16 +106,19 @@ export const AtsListCandidatesQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created_after: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_after": "createdAfter",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type AtsListCandidatesQueryParamFilter$Outbound = {
+  created_after?: string | null | undefined;
   email?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
@@ -122,10 +129,12 @@ export const AtsListCandidatesQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListCandidatesQueryParamFilter
 > = z.object({
+  createdAfter: z.nullable(z.string()).optional(),
   email: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAfter: "created_after",
     updatedAfter: "updated_after",
   });
 });

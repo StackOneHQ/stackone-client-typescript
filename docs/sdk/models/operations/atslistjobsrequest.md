@@ -10,6 +10,7 @@ let value: AtsListJobsRequest = {
   fields:
     "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
   filter: {
+    createdAfter: "2020-01-01T00:00:00.000Z",
     updatedAfter: "2020-01-01T00:00:00.000Z",
   },
   include: "custom_fields",

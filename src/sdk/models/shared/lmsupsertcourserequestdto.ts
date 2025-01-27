@@ -70,6 +70,10 @@ export type LmsUpsertCourseRequestDto = {
    */
   languages?: Array<LanguageEnum> | null | undefined;
   /**
+   * The name of the course provider
+   */
+  provider?: string | null | undefined;
+  /**
    * The skills associated with this content
    */
   skills?: Array<CreateSkillsApiModel> | null | undefined;
@@ -103,6 +107,7 @@ export const LmsUpsertCourseRequestDto$inboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
+  provider: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
@@ -127,6 +132,7 @@ export type LmsUpsertCourseRequestDto$Outbound = {
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
+  provider?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -149,6 +155,7 @@ export const LmsUpsertCourseRequestDto$outboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
+  provider: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),

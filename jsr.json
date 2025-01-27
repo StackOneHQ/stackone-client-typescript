@@ -2,7 +2,7 @@
 
 {
   "name": "@stackone/stackone-client-ts",
-  "version": "4.17.10",
+  "version": "4.17.11",
   "exports": {
     ".": "./src/index.ts",    
     "./sdk/models/errors": "./src/sdk/models/errors/index.ts",    

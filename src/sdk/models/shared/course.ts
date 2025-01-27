@@ -68,6 +68,10 @@ export type Course = {
    */
   languages?: Array<LanguageEnum> | null | undefined;
   /**
+   * The name of the course provider
+   */
+  provider?: string | null | undefined;
+  /**
    * Provider's unique identifier of the child content IDs associated with this course
    */
   remoteContentIds?: Array<string> | null | undefined;
@@ -110,6 +114,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
     external_reference: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
+    provider: z.nullable(z.string()).optional(),
     remote_content_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
     skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
@@ -142,6 +147,7 @@ export type Course$Outbound = {
   external_reference?: string | null | undefined;
   id?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
+  provider?: string | null | undefined;
   remote_content_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
   skills?: Array<Skills$Outbound> | null | undefined;
@@ -167,6 +173,7 @@ export const Course$outboundSchema: z.ZodType<
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
+  provider: z.nullable(z.string()).optional(),
   remoteContentIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(Skills$outboundSchema)).optional(),

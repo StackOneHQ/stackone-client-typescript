@@ -36,6 +36,7 @@ let value: LmsUpsertContentRequest = {
       },
     ],
     order: 1,
+    provider: "Content Provider",
     shortDescription:
       "This course is a valuable resource and acts as learning content for...",
     skills: [

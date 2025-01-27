@@ -44,6 +44,7 @@ let value: LmsBatchUpsertCourseRequestDto = {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      provider: "Course Provider",
       skills: [
         {
           id: "16873-IT345",
