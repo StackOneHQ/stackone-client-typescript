@@ -5,7 +5,7 @@
 ```typescript
 import { CategorySchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CategorySchemasValue = CategorySchemasValue.Tertiary;
+let value: CategorySchemasValue = CategorySchemasValue.Primary;
 ```
 
 ## Values

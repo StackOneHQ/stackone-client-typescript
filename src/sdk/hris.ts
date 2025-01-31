@@ -24,6 +24,7 @@ import { hrisGetEmployment } from "../funcs/hrisGetEmployment.js";
 import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
+import { hrisGetTimeEntries } from "../funcs/hrisGetTimeEntries.js";
 import { hrisGetTimeOffRequest } from "../funcs/hrisGetTimeOffRequest.js";
 import { hrisGetTimeOffType } from "../funcs/hrisGetTimeOffType.js";
 import { hrisListBenefits } from "../funcs/hrisListBenefits.js";
@@ -41,6 +42,7 @@ import { hrisListEmployments } from "../funcs/hrisListEmployments.js";
 import { hrisListGroups } from "../funcs/hrisListGroups.js";
 import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
+import { hrisListTimeEntries } from "../funcs/hrisListTimeEntries.js";
 import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
 import { hrisListTimeOffTypes } from "../funcs/hrisListTimeOffTypes.js";
 import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
@@ -363,6 +365,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get Time Entry
+   */
+  async getTimeEntries(
+    request: operations.HrisGetTimeEntriesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetTimeEntriesResponse> {
+    return unwrapAsync(hrisGetTimeEntries(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get time off request
    */
   async getTimeOffRequest(
@@ -596,6 +612,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisListLocationsResponse> {
     return unwrapAsync(hrisListLocations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Time Entries
+   */
+  async listTimeEntries(
+    request: operations.HrisListTimeEntriesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisListTimeEntriesResponse> {
+    return unwrapAsync(hrisListTimeEntries(
       this,
       request,
       options,

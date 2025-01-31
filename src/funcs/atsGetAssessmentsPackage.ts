@@ -3,12 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
-import {
-  encodeDeepObjectQuery,
-  encodeFormQuery,
-  encodeSimple,
-  queryJoin,
-} from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -67,15 +62,11 @@ export async function atsGetAssessmentsPackage(
 
   const path = pathToFunc("/unified/ats/assessments/packages/{id}")(pathParams);
 
-  const query = queryJoin(
-    encodeDeepObjectQuery({
-      "proxy": payload.proxy,
-    }),
-    encodeFormQuery({
-      "fields": payload.fields,
-      "raw": payload.raw,
-    }),
-  );
+  const query = encodeFormQuery({
+    "fields": payload.fields,
+    "proxy": payload.proxy,
+    "raw": payload.raw,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -148,8 +139,8 @@ export async function atsGetAssessmentsPackage(
     M.json(200, operations.AtsGetAssessmentsPackageResponse$inboundSchema, {
       key: "AssessmentPackageResult",
     }),
-    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

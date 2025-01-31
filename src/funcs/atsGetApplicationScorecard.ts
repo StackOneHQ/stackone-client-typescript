@@ -154,8 +154,8 @@ export async function atsGetApplicationScorecard(
     M.json(200, operations.AtsGetApplicationScorecardResponse$inboundSchema, {
       key: "ScorecardsResult",
     }),
-    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

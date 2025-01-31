@@ -65,6 +65,8 @@
 * [listRejectedReasons](#listrejectedreasons) - List Rejected Reasons
 * [listUsers](#listusers) - List Users
 * [moveApplication](#moveapplication) - Move Application
+* [orderAssessmentsRequest](#orderassessmentsrequest) - Order Assessments Request
+* [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
 * [rejectApplication](#rejectapplication) - Reject Application
 * [updateApplication](#updateapplication) - Update an Application
 * [updateApplicationNote](#updateapplicationnote) - Update an Application Note
@@ -1314,7 +1316,6 @@ async function run() {
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
     include: "attachments,custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1348,7 +1349,6 @@ async function run() {
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
     include: "attachments,custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1407,8 +1407,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1444,8 +1442,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1502,7 +1498,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationDocument({
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1535,7 +1530,6 @@ async function run() {
   const res = await atsGetApplicationDocument(stackOne, {
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1592,7 +1586,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationNote({
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1625,7 +1618,6 @@ async function run() {
   const res = await atsGetApplicationNote(stackOne, {
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1682,7 +1674,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationOffer({
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1715,7 +1706,6 @@ async function run() {
   const res = await atsGetApplicationOffer(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1772,7 +1762,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationScheduledInterview({
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1805,7 +1794,6 @@ async function run() {
   const res = await atsGetApplicationScheduledInterview(stackOne, {
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1862,7 +1850,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationScorecard({
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1895,7 +1882,6 @@ async function run() {
   const res = await atsGetApplicationScorecard(stackOne, {
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1951,7 +1937,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getAssessmentsPackage({
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1982,7 +1967,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsGetAssessmentsPackage(stackOne, {
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2038,7 +2022,6 @@ async function run() {
   const result = await stackOne.ats.getAssessmentsRequest({
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2070,7 +2053,6 @@ async function run() {
   const res = await atsGetAssessmentsRequest(stackOne, {
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2126,7 +2108,6 @@ async function run() {
   const result = await stackOne.ats.getAssessmentsResult({
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2158,7 +2139,6 @@ async function run() {
   const res = await atsGetAssessmentsResult(stackOne, {
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2214,7 +2194,6 @@ async function run() {
   const result = await stackOne.ats.getBackgroundCheckPackage({
     fields: "id,remote_id,name,description,tests",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2246,7 +2225,6 @@ async function run() {
   const res = await atsGetBackgroundCheckPackage(stackOne, {
     fields: "id,remote_id,name,description,tests",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2302,7 +2280,6 @@ async function run() {
   const result = await stackOne.ats.getBackgroundCheckRequest({
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2334,7 +2311,6 @@ async function run() {
   const res = await atsGetBackgroundCheckRequest(stackOne, {
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2390,7 +2366,6 @@ async function run() {
   const result = await stackOne.ats.getBackgroundCheckResult({
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2422,7 +2397,6 @@ async function run() {
   const res = await atsGetBackgroundCheckResult(stackOne, {
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2479,7 +2453,6 @@ async function run() {
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2512,7 +2485,6 @@ async function run() {
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2571,8 +2543,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2608,8 +2578,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2666,7 +2634,6 @@ async function run() {
   const result = await stackOne.ats.getCandidateNote({
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2699,7 +2666,6 @@ async function run() {
   const res = await atsGetCandidateNote(stackOne, {
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2756,7 +2722,6 @@ async function run() {
   const result = await stackOne.ats.getDepartment({
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2788,7 +2753,6 @@ async function run() {
   const res = await atsGetDepartment(stackOne, {
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2844,7 +2808,6 @@ async function run() {
   const result = await stackOne.ats.getInterview({
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2876,7 +2839,6 @@ async function run() {
   const res = await atsGetInterview(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2932,7 +2894,6 @@ async function run() {
   const result = await stackOne.ats.getInterviewStage({
     fields: "id,remote_id,name,order,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2964,7 +2925,6 @@ async function run() {
   const res = await atsGetInterviewStage(stackOne, {
     fields: "id,remote_id,name,order,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3022,7 +2982,6 @@ async function run() {
     fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3056,7 +3015,6 @@ async function run() {
     fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3115,8 +3073,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3152,8 +3108,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3211,7 +3165,6 @@ async function run() {
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3244,7 +3197,6 @@ async function run() {
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3300,7 +3252,6 @@ async function run() {
   const result = await stackOne.ats.getList({
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3332,7 +3283,6 @@ async function run() {
   const res = await atsGetList(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3388,7 +3338,6 @@ async function run() {
   const result = await stackOne.ats.getLocation({
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3420,7 +3369,6 @@ async function run() {
   const res = await atsGetLocation(stackOne, {
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3476,7 +3424,6 @@ async function run() {
   const result = await stackOne.ats.getOffer({
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3508,7 +3455,6 @@ async function run() {
   const res = await atsGetOffer(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3564,7 +3510,6 @@ async function run() {
   const result = await stackOne.ats.getRejectedReason({
     fields: "id,remote_id,label,type,rejected_reason_type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3596,7 +3541,6 @@ async function run() {
   const res = await atsGetRejectedReason(stackOne, {
     fields: "id,remote_id,label,type,rejected_reason_type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3652,7 +3596,6 @@ async function run() {
   const result = await stackOne.ats.getUser({
     fields: "id,remote_id,first_name,last_name,name,email",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3684,7 +3627,6 @@ async function run() {
   const res = await atsGetUser(stackOne, {
     fields: "id,remote_id,first_name,last_name,name,email",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3742,8 +3684,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3778,8 +3718,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3839,8 +3777,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3876,8 +3812,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3937,8 +3871,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3974,8 +3906,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4035,8 +3965,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4072,8 +4000,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4136,8 +4062,6 @@ async function run() {
     },
     include: "attachments,custom_fields",
     jobId: "cxQiyiuasdFKfdsYfer",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4176,8 +4100,6 @@ async function run() {
     },
     include: "attachments,custom_fields",
     jobId: "cxQiyiuasdFKfdsYfer",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4237,8 +4159,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4274,8 +4194,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4335,8 +4253,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4372,8 +4288,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4431,8 +4345,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4466,8 +4378,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4526,8 +4436,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4562,8 +4470,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4622,8 +4528,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4658,8 +4562,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4718,8 +4620,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4754,8 +4654,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4815,8 +4713,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4852,8 +4748,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4914,8 +4808,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4952,8 +4844,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5012,8 +4902,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5048,8 +4936,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5108,8 +4994,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5144,8 +5028,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5205,8 +5087,6 @@ async function run() {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5242,8 +5122,6 @@ async function run() {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5302,8 +5180,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5338,8 +5214,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5400,8 +5274,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "questionnaires",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5438,8 +5310,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "questionnaires",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5501,8 +5371,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5540,8 +5408,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5600,8 +5466,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5636,8 +5500,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5696,8 +5558,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5732,8 +5592,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5792,8 +5650,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5828,8 +5684,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5888,8 +5742,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5924,8 +5776,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5984,8 +5834,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6020,8 +5868,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6147,6 +5993,496 @@ run();
 ### Response
 
 **Promise\<[operations.AtsMoveApplicationResponse](../../sdk/models/operations/atsmoveapplicationresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## orderAssessmentsRequest
+
+Order Assessments Request
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsCreateCandidatesAssessmentsRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.orderAssessmentsRequest({
+    atsCreateCandidatesAssessmentsRequestDto: {
+      application: {
+        applicationStatus: {
+          sourceValue: "Hired",
+          value: AtsCreateCandidatesAssessmentsRequestDtoValue.Hired,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      candidate: {
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
+        firstName: "Romain",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        lastName: "Sestier",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      job: {
+        hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+        ],
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        title: "Software Engineer",
+      },
+      package: {
+        description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Test 1",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      requester: {
+        email: "john.doe@gmail.com",
+        firstName: "John",
+        lastName: "Doe",
+        remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        role: "Software Engineer",
+        userId: "123456",
+      },
+      resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
+    },
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsOrderAssessmentsRequest } from "@stackone/stackone-client-ts/funcs/atsOrderAssessmentsRequest.js";
+import { AtsCreateCandidatesAssessmentsRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsOrderAssessmentsRequest(stackOne, {
+    atsCreateCandidatesAssessmentsRequestDto: {
+      application: {
+        applicationStatus: {
+          sourceValue: "Hired",
+          value: AtsCreateCandidatesAssessmentsRequestDtoValue.Hired,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      candidate: {
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
+        firstName: "Romain",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        lastName: "Sestier",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      job: {
+        hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+        ],
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        title: "Software Engineer",
+      },
+      package: {
+        description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Test 1",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      requester: {
+        email: "john.doe@gmail.com",
+        firstName: "John",
+        lastName: "Doe",
+        remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        role: "Software Engineer",
+        userId: "123456",
+      },
+      resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
+    },
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsOrderAssessmentsRequestRequest](../../sdk/models/operations/atsorderassessmentsrequestrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsOrderAssessmentsRequestResponse](../../sdk/models/operations/atsorderassessmentsrequestresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## orderBackgroundCheckRequest
+
+Order Background Check Request
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsCreateBackgroundCheckOrderRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.orderBackgroundCheckRequest({
+    atsCreateBackgroundCheckOrderRequestDto: {
+      application: {
+        applicationStatus: {
+          sourceValue: "Hired",
+          value: AtsCreateBackgroundCheckOrderRequestDtoValue.Hired,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      candidate: {
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
+        firstName: "Romain",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        lastName: "Sestier",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      job: {
+        hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+        ],
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        title: "Software Engineer",
+      },
+      package: {
+        description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Test 1",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        tests: [
+          {
+            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Test 1",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          {
+            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Test 1",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          {
+            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Test 1",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+        ],
+      },
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      requester: {
+        email: "john.doe@gmail.com",
+        firstName: "John",
+        lastName: "Doe",
+        remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        role: "Software Engineer",
+        userId: "123456",
+      },
+      resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
+    },
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsOrderBackgroundCheckRequest } from "@stackone/stackone-client-ts/funcs/atsOrderBackgroundCheckRequest.js";
+import { AtsCreateBackgroundCheckOrderRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsOrderBackgroundCheckRequest(stackOne, {
+    atsCreateBackgroundCheckOrderRequestDto: {
+      application: {
+        applicationStatus: {
+          sourceValue: "Hired",
+          value: AtsCreateBackgroundCheckOrderRequestDtoValue.Hired,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      candidate: {
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
+        firstName: "Romain",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        lastName: "Sestier",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      job: {
+        hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+        ],
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        title: "Software Engineer",
+      },
+      package: {
+        description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Test 1",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        tests: [
+          {
+            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Test 1",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          {
+            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Test 1",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          {
+            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Test 1",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+        ],
+      },
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      requester: {
+        email: "john.doe@gmail.com",
+        firstName: "John",
+        lastName: "Doe",
+        remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        role: "Software Engineer",
+        userId: "123456",
+      },
+      resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
+    },
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsOrderBackgroundCheckRequestRequest](../../sdk/models/operations/atsorderbackgroundcheckrequestrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsOrderBackgroundCheckRequestResponse](../../sdk/models/operations/atsorderbackgroundcheckrequestresponse.md)\>**
 
 ### Errors
 

@@ -11,6 +11,13 @@ let value: LmsBatchUpsertContentRequest = {
     items: [
       {
         active: true,
+        additionalData: [
+          {
+            id: "learning_outcomes",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            value: {},
+          },
+        ],
         categories: [
           {
             id: "16873-IT345",
@@ -40,8 +47,6 @@ let value: LmsBatchUpsertContentRequest = {
         ],
         order: 1,
         provider: "Content Provider",
-        shortDescription:
-          "This course is a valuable resource and acts as learning content for...",
         skills: [
           {
             id: "12345",

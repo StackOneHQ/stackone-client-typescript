@@ -40,7 +40,7 @@ let value: HrisListLocationsResponse = {
       "<value>",
     ],
   },
-  statusCode: 424,
+  statusCode: 510,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

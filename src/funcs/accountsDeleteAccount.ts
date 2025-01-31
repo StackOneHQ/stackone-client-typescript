@@ -128,8 +128,8 @@ export async function accountsDeleteAccount(
     M.json(200, operations.StackoneDeleteAccountResponse$inboundSchema, {
       key: "LinkedAccount",
     }),
-    M.fail([400, 403, 404, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 404, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

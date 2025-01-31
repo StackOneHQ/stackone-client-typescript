@@ -21,7 +21,7 @@ let value: MarketingUpdateInAppTemplateResponse = {
       "<value>",
     ],
   },
-  statusCode: 302,
+  statusCode: 202,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

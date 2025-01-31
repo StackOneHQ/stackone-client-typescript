@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AdditionalData,
+  AdditionalData$inboundSchema,
+  AdditionalData$Outbound,
+  AdditionalData$outboundSchema,
+} from "./additionaldata.js";
+import {
   Category,
   Category$inboundSchema,
   Category$Outbound,
@@ -67,6 +73,10 @@ export type Content = {
    * Whether the content is active and available for users.
    */
   active?: boolean | null | undefined;
+  /**
+   * The additional_data associated with this content
+   */
+  additionalData?: Array<AdditionalData> | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -125,6 +135,8 @@ export type Content = {
   remoteId?: string | null | undefined;
   /**
    * A short description or summary for the content
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   shortDescription?: string | null | undefined;
   /**
@@ -374,6 +386,8 @@ export function contentContentTypeFromJSON(
 export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
   z.object({
     active: z.nullable(z.boolean()).optional(),
+    additional_data: z.nullable(z.array(AdditionalData$inboundSchema))
+      .optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_type: z.nullable(z.lazy(() => ContentContentType$inboundSchema))
       .optional(),
@@ -395,6 +409,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   }).transform((v) => {
     return remap$(v, {
+      "additional_data": "additionalData",
       "content_type": "contentType",
       "content_url": "contentUrl",
       "course_ids": "courseIds",
@@ -410,6 +425,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 /** @internal */
 export type Content$Outbound = {
   active?: boolean | null | undefined;
+  additional_data?: Array<AdditionalData$Outbound> | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
   content_url?: string | null | undefined;
@@ -437,6 +453,7 @@ export const Content$outboundSchema: z.ZodType<
   Content
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
+  additionalData: z.nullable(z.array(AdditionalData$outboundSchema)).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentType: z.nullable(z.lazy(() => ContentContentType$outboundSchema))
     .optional(),
@@ -458,6 +475,7 @@ export const Content$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    additionalData: "additional_data",
     contentType: "content_type",
     contentUrl: "content_url",
     courseIds: "course_ids",

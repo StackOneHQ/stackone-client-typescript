@@ -25,7 +25,7 @@ let value: HrisGetEmployeeCustomFieldDefinitionResponse = {
       "<value>",
     ],
   },
-  statusCode: 407,
+  statusCode: 203,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

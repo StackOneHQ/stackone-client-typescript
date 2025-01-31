@@ -8,7 +8,7 @@ Confidential status of the job
 import { AtsUpdateJobRequestDtoConfidential } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsUpdateJobRequestDtoConfidential =
-  AtsUpdateJobRequestDtoConfidential.True;
+  AtsUpdateJobRequestDtoConfidential.False;
 ```
 
 ## Values

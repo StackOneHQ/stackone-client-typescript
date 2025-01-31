@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AdditionalData,
+  AdditionalData$inboundSchema,
+  AdditionalData$Outbound,
+  AdditionalData$outboundSchema,
+} from "./additionaldata.js";
+import {
   CreateCategoriesApiModel,
   CreateCategoriesApiModel$inboundSchema,
   CreateCategoriesApiModel$Outbound,
@@ -70,6 +76,10 @@ export type LmsUpsertContentRequestDto = {
    */
   active?: boolean | null | undefined;
   /**
+   * The additional_data associated with this content
+   */
+  additionalData?: Array<AdditionalData> | null | undefined;
+  /**
    * The categories associated with this content
    */
   categories?: Array<CreateCategoriesApiModel> | null | undefined;
@@ -115,6 +125,8 @@ export type LmsUpsertContentRequestDto = {
   provider?: string | null | undefined;
   /**
    * A short description or summary for the content
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   shortDescription?: string | null | undefined;
   /**
@@ -383,6 +395,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
+  additional_data: z.nullable(z.array(AdditionalData$inboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
   content_type: z.nullable(
@@ -403,6 +416,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "additional_data": "additionalData",
     "content_type": "contentType",
     "content_url": "contentUrl",
     "course_ids": "courseIds",
@@ -416,6 +430,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsUpsertContentRequestDto$Outbound = {
   active?: boolean | null | undefined;
+  additional_data?: Array<AdditionalData$Outbound> | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
   content_type?:
     | LmsUpsertContentRequestDtoContentType$Outbound
@@ -443,6 +458,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   LmsUpsertContentRequestDto
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
+  additionalData: z.nullable(z.array(AdditionalData$outboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),
   contentType: z.nullable(
@@ -463,6 +479,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    additionalData: "additional_data",
     contentType: "content_type",
     contentUrl: "content_url",
     courseIds: "course_ids",

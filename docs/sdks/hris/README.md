@@ -27,6 +27,7 @@
 * [getGroup](#getgroup) - Get Group
 * [getJob](#getjob) - Get Job
 * [getLocation](#getlocation) - Get Location
+* [getTimeEntries](#gettimeentries) - Get Time Entry
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
 * [getTimeOffType](#gettimeofftype) - Get time off type
 * [listBenefits](#listbenefits) - List benefits
@@ -44,6 +45,7 @@
 * [listGroups](#listgroups) - List Groups
 * [listJobs](#listjobs) - List Jobs
 * [listLocations](#listlocations) - List locations
+* [listTimeEntries](#listtimeentries) - List Time Entries
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
 * [listTimeOffTypes](#listtimeofftypes) - List time off types
 * [updateEmployee](#updateemployee) - Updates an employee
@@ -1142,7 +1144,6 @@ async function run() {
   const result = await stackOne.hris.getBenefit({
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1174,7 +1175,6 @@ async function run() {
   const res = await hrisGetBenefit(stackOne, {
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1230,7 +1230,6 @@ async function run() {
   const result = await stackOne.hris.getCompany({
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1262,7 +1261,6 @@ async function run() {
   const res = await hrisGetCompany(stackOne, {
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1318,7 +1316,6 @@ async function run() {
   const result = await stackOne.hris.getCostCenterGroup({
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1350,7 +1347,6 @@ async function run() {
   const res = await hrisGetCostCenterGroup(stackOne, {
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1406,7 +1402,6 @@ async function run() {
   const result = await stackOne.hris.getDepartmentGroup({
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1438,7 +1433,6 @@ async function run() {
   const res = await hrisGetDepartmentGroup(stackOne, {
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1496,7 +1490,6 @@ async function run() {
     fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1530,7 +1523,6 @@ async function run() {
     fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1589,8 +1581,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1626,8 +1616,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1684,7 +1672,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1717,7 +1704,6 @@ async function run() {
   const res = await hrisGetEmployeeDocument(stackOne, {
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1774,7 +1760,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeeDocumentCategory({
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1806,7 +1791,6 @@ async function run() {
   const res = await hrisGetEmployeeDocumentCategory(stackOne, {
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1863,7 +1847,6 @@ async function run() {
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1897,7 +1880,6 @@ async function run() {
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1954,7 +1936,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeesTimeOffRequest({
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1987,7 +1968,6 @@ async function run() {
   const res = await hrisGetEmployeesTimeOffRequest(stackOne, {
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2044,7 +2024,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeesWorkEligibility({
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2077,7 +2056,6 @@ async function run() {
   const res = await hrisGetEmployeesWorkEligibility(stackOne, {
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2135,7 +2113,6 @@ async function run() {
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2168,7 +2145,6 @@ async function run() {
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2224,7 +2200,6 @@ async function run() {
   const result = await stackOne.hris.getGroup({
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2256,7 +2231,6 @@ async function run() {
   const res = await hrisGetGroup(stackOne, {
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2312,7 +2286,6 @@ async function run() {
   const result = await stackOne.hris.getJob({
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2344,7 +2317,6 @@ async function run() {
   const res = await hrisGetJob(stackOne, {
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2400,7 +2372,6 @@ async function run() {
   const result = await stackOne.hris.getLocation({
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2432,7 +2403,6 @@ async function run() {
   const res = await hrisGetLocation(stackOne, {
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2468,6 +2438,92 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## getTimeEntries
+
+Get Time Entry
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getTimeEntries({
+    fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetTimeEntries } from "@stackone/stackone-client-ts/funcs/hrisGetTimeEntries.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetTimeEntries(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetTimeEntriesRequest](../../sdk/models/operations/hrisgettimeentriesrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisGetTimeEntriesResponse](../../sdk/models/operations/hrisgettimeentriesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## getTimeOffRequest
 
 Get time off request
@@ -2488,7 +2544,6 @@ async function run() {
   const result = await stackOne.hris.getTimeOffRequest({
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2520,7 +2575,6 @@ async function run() {
   const res = await hrisGetTimeOffRequest(stackOne, {
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2576,7 +2630,6 @@ async function run() {
   const result = await stackOne.hris.getTimeOffType({
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2608,7 +2661,6 @@ async function run() {
   const res = await hrisGetTimeOffType(stackOne, {
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2666,8 +2718,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2702,8 +2752,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2762,8 +2810,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2798,8 +2844,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2858,8 +2902,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2894,8 +2936,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2954,8 +2994,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2990,8 +3028,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3050,8 +3086,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3086,8 +3120,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3146,8 +3178,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3182,8 +3212,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3243,8 +3271,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3280,8 +3306,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3342,8 +3366,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3380,8 +3402,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3441,8 +3461,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3478,8 +3496,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3539,8 +3555,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3576,8 +3590,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3638,8 +3650,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3678,8 +3688,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3741,8 +3749,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3778,8 +3784,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3838,8 +3842,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3874,8 +3876,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3934,8 +3934,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3970,8 +3968,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4030,8 +4026,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4066,8 +4060,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4104,6 +4096,102 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## listTimeEntries
+
+List Time Entries
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listTimeEntries({
+    fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at",
+    filter: {
+      endTime: "2020-01-01T00:00:00.000Z",
+      startTime: "2020-01-01T00:00:00.000Z",
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListTimeEntries } from "@stackone/stackone-client-ts/funcs/hrisListTimeEntries.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListTimeEntries(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at",
+    filter: {
+      endTime: "2020-01-01T00:00:00.000Z",
+      startTime: "2020-01-01T00:00:00.000Z",
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListTimeEntriesRequest](../../sdk/models/operations/hrislisttimeentriesrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisListTimeEntriesResponse](../../sdk/models/operations/hrislisttimeentriesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## listTimeOffRequests
 
 List time off requests
@@ -4126,8 +4214,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4162,8 +4248,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4222,8 +4306,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4258,8 +4340,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4358,21 +4438,6 @@ async function run() {
       departmentId: "3093",
       displayName: "Sir Issac Newton",
       employeeNumber: "125",
-      employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employeeId: "1687-3",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-      ],
       firstName: "Issac",
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
@@ -4505,21 +4570,6 @@ async function run() {
       departmentId: "3093",
       displayName: "Sir Issac Newton",
       employeeNumber: "125",
-      employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employeeId: "1687-3",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-      ],
       firstName: "Issac",
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {

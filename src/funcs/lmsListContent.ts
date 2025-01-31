@@ -145,8 +145,8 @@ export async function lmsListContent(
     M.json(200, operations.LmsListContentResponse$inboundSchema, {
       key: "ContentPaginated",
     }),
-    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

@@ -19,12 +19,6 @@ import {
   CountryCodeEnum$outboundSchema,
 } from "./countrycodeenum.js";
 import {
-  CreateEmploymentApiModel,
-  CreateEmploymentApiModel$inboundSchema,
-  CreateEmploymentApiModel$Outbound,
-  CreateEmploymentApiModel$outboundSchema,
-} from "./createemploymentapimodel.js";
-import {
   CreateHRISBenefit,
   CreateHRISBenefit$inboundSchema,
   CreateHRISBenefit$Outbound,
@@ -9388,10 +9382,6 @@ export type HrisUpdateEmployeeRequestDto = {
     | null
     | undefined;
   /**
-   * The employee employments
-   */
-  employments?: Array<CreateEmploymentApiModel> | null | undefined;
-  /**
    * The employee ethnicity
    */
   ethnicity?: HrisUpdateEmployeeRequestDtoEthnicity | null | undefined;
@@ -13545,8 +13535,6 @@ export const HrisUpdateEmployeeRequestDto$inboundSchema: z.ZodType<
   employment_type: z.nullable(
     z.lazy(() => HrisUpdateEmployeeRequestDtoEmploymentType$inboundSchema),
   ).optional(),
-  employments: z.nullable(z.array(CreateEmploymentApiModel$inboundSchema))
-    .optional(),
   ethnicity: z.nullable(
     z.lazy(() => HrisUpdateEmployeeRequestDtoEthnicity$inboundSchema),
   ).optional(),
@@ -13653,7 +13641,6 @@ export type HrisUpdateEmployeeRequestDto$Outbound = {
     | HrisUpdateEmployeeRequestDtoEmploymentType$Outbound
     | null
     | undefined;
-  employments?: Array<CreateEmploymentApiModel$Outbound> | null | undefined;
   ethnicity?: HrisUpdateEmployeeRequestDtoEthnicity$Outbound | null | undefined;
   first_name?: string | null | undefined;
   gender?: HrisUpdateEmployeeRequestDtoGender$Outbound | null | undefined;
@@ -13725,8 +13712,6 @@ export const HrisUpdateEmployeeRequestDto$outboundSchema: z.ZodType<
   employmentType: z.nullable(
     z.lazy(() => HrisUpdateEmployeeRequestDtoEmploymentType$outboundSchema),
   ).optional(),
-  employments: z.nullable(z.array(CreateEmploymentApiModel$outboundSchema))
-    .optional(),
   ethnicity: z.nullable(
     z.lazy(() => HrisUpdateEmployeeRequestDtoEthnicity$outboundSchema),
   ).optional(),

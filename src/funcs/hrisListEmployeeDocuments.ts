@@ -153,8 +153,8 @@ export async function hrisListEmployeeDocuments(
     M.json(200, operations.HrisListEmployeeDocumentsResponse$inboundSchema, {
       key: "HrisDocumentsPaginated",
     }),
-    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

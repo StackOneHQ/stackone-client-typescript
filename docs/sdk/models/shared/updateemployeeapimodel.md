@@ -50,25 +50,6 @@ let value: UpdateEmployeeApiModel = {
   employmentContractType: {},
   employmentStatus: {},
   employmentType: {},
-  employments: [
-    {
-      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-      employeeId: "1687-3",
-      employmentContractType: {},
-      employmentType: {},
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      jobTitle: "Software Engineer",
-      payCurrency: "USD",
-      payFrequency: {},
-      payPeriod: {},
-      payRate: "40.00",
-      timeWorked: "P0Y0M0DT8H0M0S",
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
-    },
-  ],
   ethnicity: {},
   firstName: "Issac",
   gender: {},
@@ -151,7 +132,6 @@ let value: UpdateEmployeeApiModel = {
 | `employmentContractType`                                                                                                          | [shared.UpdateEmployeeApiModelEmploymentContractType](../../../sdk/models/shared/updateemployeeapimodelemploymentcontracttype.md) | :heavy_minus_sign:                                                                                                                | The employment work schedule type (e.g., full-time, part-time)                                                                    | full_time                                                                                                                         |
 | `employmentStatus`                                                                                                                | [shared.UpdateEmployeeApiModelEmploymentStatus](../../../sdk/models/shared/updateemployeeapimodelemploymentstatus.md)             | :heavy_minus_sign:                                                                                                                | The employee employment status                                                                                                    | active                                                                                                                            |
 | `employmentType`                                                                                                                  | [shared.UpdateEmployeeApiModelEmploymentType](../../../sdk/models/shared/updateemployeeapimodelemploymenttype.md)                 | :heavy_minus_sign:                                                                                                                | The employee employment type                                                                                                      | full_time                                                                                                                         |
-| `employments`                                                                                                                     | [shared.CreateEmploymentApiModel](../../../sdk/models/shared/createemploymentapimodel.md)[]                                       | :heavy_minus_sign:                                                                                                                | The employee employments                                                                                                          |                                                                                                                                   |
 | `ethnicity`                                                                                                                       | [shared.UpdateEmployeeApiModelEthnicity](../../../sdk/models/shared/updateemployeeapimodelethnicity.md)                           | :heavy_minus_sign:                                                                                                                | The employee ethnicity                                                                                                            | white                                                                                                                             |
 | `firstName`                                                                                                                       | *string*                                                                                                                          | :heavy_minus_sign:                                                                                                                | The employee first name                                                                                                           | Issac                                                                                                                             |
 | `gender`                                                                                                                          | [shared.UpdateEmployeeApiModelGender](../../../sdk/models/shared/updateemployeeapimodelgender.md)                                 | :heavy_minus_sign:                                                                                                                | The employee gender                                                                                                               | male                                                                                                                              |

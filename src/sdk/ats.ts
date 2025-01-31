@@ -62,6 +62,8 @@ import { atsListOffers } from "../funcs/atsListOffers.js";
 import { atsListRejectedReasons } from "../funcs/atsListRejectedReasons.js";
 import { atsListUsers } from "../funcs/atsListUsers.js";
 import { atsMoveApplication } from "../funcs/atsMoveApplication.js";
+import { atsOrderAssessmentsRequest } from "../funcs/atsOrderAssessmentsRequest.js";
+import { atsOrderBackgroundCheckRequest } from "../funcs/atsOrderBackgroundCheckRequest.js";
 import { atsRejectApplication } from "../funcs/atsRejectApplication.js";
 import { atsUpdateApplication } from "../funcs/atsUpdateApplication.js";
 import { atsUpdateApplicationNote } from "../funcs/atsUpdateApplicationNote.js";
@@ -907,6 +909,34 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsMoveApplicationResponse> {
     return unwrapAsync(atsMoveApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Order Assessments Request
+   */
+  async orderAssessmentsRequest(
+    request: operations.AtsOrderAssessmentsRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsOrderAssessmentsRequestResponse> {
+    return unwrapAsync(atsOrderAssessmentsRequest(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Order Background Check Request
+   */
+  async orderBackgroundCheckRequest(
+    request: operations.AtsOrderBackgroundCheckRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsOrderBackgroundCheckRequestResponse> {
+    return unwrapAsync(atsOrderBackgroundCheckRequest(
       this,
       request,
       options,

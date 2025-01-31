@@ -23,7 +23,7 @@ export type SourceValue = Four | string | number | boolean | Array<any>;
 /**
  * The Channels of the campaign.
  */
-export enum Value {
+export enum ChannelsEnumValue {
   Email = "email",
   Sms = "sms",
   WebPush = "web_push",
@@ -35,7 +35,7 @@ export enum Value {
 /**
  * The Channels of the campaign.
  */
-export type ValueOpen = OpenEnum<typeof Value>;
+export type ChannelsEnumValueOpen = OpenEnum<typeof ChannelsEnumValue>;
 
 export type ChannelsEnum = {
   /**
@@ -52,7 +52,7 @@ export type ChannelsEnum = {
   /**
    * The Channels of the campaign.
    */
-  value?: ValueOpen | null | undefined;
+  value?: ChannelsEnumValueOpen | null | undefined;
 };
 
 /** @internal */
@@ -155,20 +155,23 @@ export function sourceValueFromJSON(
 }
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, unknown> =
-  z
-    .union([
-      z.nativeEnum(Value),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const ChannelsEnumValue$inboundSchema: z.ZodType<
+  ChannelsEnumValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ChannelsEnumValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
-export const Value$outboundSchema: z.ZodType<
-  ValueOpen,
+export const ChannelsEnumValue$outboundSchema: z.ZodType<
+  ChannelsEnumValueOpen,
   z.ZodTypeDef,
-  ValueOpen
+  ChannelsEnumValueOpen
 > = z.union([
-  z.nativeEnum(Value),
+  z.nativeEnum(ChannelsEnumValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -176,11 +179,11 @@ export const Value$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Value$ {
-  /** @deprecated use `Value$inboundSchema` instead. */
-  export const inboundSchema = Value$inboundSchema;
-  /** @deprecated use `Value$outboundSchema` instead. */
-  export const outboundSchema = Value$outboundSchema;
+export namespace ChannelsEnumValue$ {
+  /** @deprecated use `ChannelsEnumValue$inboundSchema` instead. */
+  export const inboundSchema = ChannelsEnumValue$inboundSchema;
+  /** @deprecated use `ChannelsEnumValue$outboundSchema` instead. */
+  export const outboundSchema = ChannelsEnumValue$outboundSchema;
 }
 
 /** @internal */
@@ -198,7 +201,7 @@ export const ChannelsEnum$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(Value$inboundSchema).optional(),
+  value: z.nullable(ChannelsEnumValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -233,7 +236,7 @@ export const ChannelsEnum$outboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(Value$outboundSchema).optional(),
+  value: z.nullable(ChannelsEnumValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

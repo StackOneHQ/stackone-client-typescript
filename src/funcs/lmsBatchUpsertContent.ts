@@ -128,8 +128,8 @@ export async function lmsBatchUpsertContent(
     M.json(202, operations.LmsBatchUpsertContentResponse$inboundSchema, {
       key: "BatchResultApiModel",
     }),
-    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
