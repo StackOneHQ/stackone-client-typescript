@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The value of the additional data
  */
-export type Value = {};
+export type Value = string | Array<string>;
 
 export type AdditionalData = {
   /**
@@ -25,22 +25,22 @@ export type AdditionalData = {
   /**
    * The value of the additional data
    */
-  value?: Value | null | undefined;
+  value?: string | Array<string> | null | undefined;
 };
 
 /** @internal */
 export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .object({});
+  .union([z.string(), z.array(z.string())]);
 
 /** @internal */
-export type Value$Outbound = {};
+export type Value$Outbound = string | Array<string>;
 
 /** @internal */
 export const Value$outboundSchema: z.ZodType<
   Value$Outbound,
   z.ZodTypeDef,
   Value
-> = z.object({});
+> = z.union([z.string(), z.array(z.string())]);
 
 /**
  * @internal
@@ -77,7 +77,7 @@ export const AdditionalData$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  value: z.nullable(z.lazy(() => Value$inboundSchema)).optional(),
+  value: z.nullable(z.union([z.string(), z.array(z.string())])).optional(),
 }).transform((v) => {
   return remap$(v, {
     "remote_id": "remoteId",
@@ -88,7 +88,7 @@ export const AdditionalData$inboundSchema: z.ZodType<
 export type AdditionalData$Outbound = {
   id?: string | null | undefined;
   remote_id?: string | null | undefined;
-  value?: Value$Outbound | null | undefined;
+  value?: string | Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -99,7 +99,7 @@ export const AdditionalData$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  value: z.nullable(z.lazy(() => Value$outboundSchema)).optional(),
+  value: z.nullable(z.union([z.string(), z.array(z.string())])).optional(),
 }).transform((v) => {
   return remap$(v, {
     remoteId: "remote_id",

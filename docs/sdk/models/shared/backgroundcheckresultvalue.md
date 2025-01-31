@@ -17,6 +17,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
 | `Cancelled`            | cancelled              |
+| `Completed`            | completed              |
 | `Expired`              | expired                |
 | `Failed`               | failed                 |
 | `Passed`               | passed                 |
