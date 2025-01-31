@@ -2,15 +2,20 @@
 
 The value of the additional data
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: Value = {};
+const value: string = "This is additional data";
 ```
 
-## Fields
+### `string[]`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: string[] = [
+  "This is additional data",
+];
+```
+

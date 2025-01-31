@@ -51,6 +51,7 @@ export type BackgroundCheckResultSourceValue =
  */
 export enum BackgroundCheckResultValue {
   Cancelled = "cancelled",
+  Completed = "completed",
   Expired = "expired",
   Failed = "failed",
   Passed = "passed",

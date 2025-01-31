@@ -51,6 +51,7 @@ export type AssessmentResultSourceValue =
  */
 export enum AssessmentResultValue {
   Cancelled = "cancelled",
+  Completed = "completed",
   Expired = "expired",
   Failed = "failed",
   Passed = "passed",

@@ -17,7 +17,7 @@ let value: LmsBatchUpsertContentRequestDto = {
         {
           id: "learning_outcomes",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          value: {},
+          value: "This is additional data",
         },
       ],
       categories: [
