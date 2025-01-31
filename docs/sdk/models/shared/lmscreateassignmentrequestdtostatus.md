@@ -8,7 +8,7 @@ The status of the assignment
 import { LmsCreateAssignmentRequestDtoStatus, LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateAssignmentRequestDtoStatus = {
-  value: LmsCreateAssignmentRequestDtoValue.InProgress,
+  value: LmsCreateAssignmentRequestDtoValue.Completed,
 };
 ```
 

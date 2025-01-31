@@ -4,7 +4,7 @@
 
 ```typescript
 import { MarketingGetCampaignResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CampaignSchemasValue, CampaignValue, MessageValue, Value } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CampaignSchemasValue, CampaignValue, ChannelsEnumValue, MessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingGetCampaignResponse = {
   campaignResult: {
@@ -12,7 +12,7 @@ let value: MarketingGetCampaignResponse = {
       channels: [
         {
           sourceValue: "SMS",
-          value: Value.Sms,
+          value: ChannelsEnumValue.Sms,
         },
       ],
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -64,7 +64,7 @@ let value: MarketingGetCampaignResponse = {
       },
       status: {
         sourceValue: "Email",
-        value: CampaignSchemasValue.Draft,
+        value: CampaignSchemasValue.Archived,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
@@ -75,7 +75,7 @@ let value: MarketingGetCampaignResponse = {
       "<value>",
     ],
   },
-  statusCode: 418,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

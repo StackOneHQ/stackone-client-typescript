@@ -85,8 +85,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -178,6 +176,8 @@ run();
 * [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
 * [listUsers](docs/sdks/ats/README.md#listusers) - List Users
 * [moveApplication](docs/sdks/ats/README.md#moveapplication) - Move Application
+* [orderAssessmentsRequest](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
+* [orderBackgroundCheckRequest](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
 * [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
@@ -232,6 +232,7 @@ run();
 * [getGroup](docs/sdks/hris/README.md#getgroup) - Get Group
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
+* [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 * [getTimeOffType](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
@@ -249,6 +250,7 @@ run();
 * [listGroups](docs/sdks/hris/README.md#listgroups) - List Groups
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
+* [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [listTimeOffTypes](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
@@ -331,10 +333,6 @@ run();
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 
 
-### [webhooks](docs/sdks/webhooks/README.md)
-
-* [create](docs/sdks/webhooks/README.md#create)
-
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -369,8 +367,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -710,6 +706,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsListRejectedReasons`](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
 - [`atsListUsers`](docs/sdks/ats/README.md#listusers) - List Users
 - [`atsMoveApplication`](docs/sdks/ats/README.md#moveapplication) - Move Application
+- [`atsOrderAssessmentsRequest`](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
+- [`atsOrderBackgroundCheckRequest`](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
 - [`atsRejectApplication`](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 - [`atsUpdateApplication`](docs/sdks/ats/README.md#updateapplication) - Update an Application
 - [`atsUpdateApplicationNote`](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
@@ -752,6 +750,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetGroup`](docs/sdks/hris/README.md#getgroup) - Get Group
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
 - [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Location
+- [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 - [`hrisGetTimeOffRequest`](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 - [`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
 - [`hrisListBenefits`](docs/sdks/hris/README.md#listbenefits) - List benefits
@@ -769,6 +768,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListGroups`](docs/sdks/hris/README.md#listgroups) - List Groups
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List locations
+- [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 - [`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
 - [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Updates an employee
@@ -833,7 +833,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
-- [`webhooksCreate`](docs/sdks/webhooks/README.md#create)
 - ~~[`marketingCreateOmniChannelTemplate`](docs/sdks/marketing/README.md#createomnichanneltemplate)~~ - Create Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingGetOmniChannelTemplate`](docs/sdks/marketing/README.md#getomnichanneltemplate)~~ - Get Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingListOmniChannelTemplates`](docs/sdks/marketing/README.md#listomnichanneltemplates)~~ - List Omni-Channel Templates :warning: **Deprecated**

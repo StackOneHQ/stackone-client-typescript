@@ -132,8 +132,8 @@ export async function accountsListLinkedAccounts(
     M.json(200, operations.StackoneListLinkedAccountsResponse$inboundSchema, {
       key: "classes",
     }),
-    M.fail([400, 403, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

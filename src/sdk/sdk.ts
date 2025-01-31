@@ -13,7 +13,6 @@ import { Iam } from "./iam.js";
 import { Lms } from "./lms.js";
 import { Marketing } from "./marketing.js";
 import { Proxy } from "./proxy.js";
-import { Webhooks } from "./webhooks.js";
 
 export class StackOne extends ClientSDK {
   private _accounts?: Accounts;
@@ -64,10 +63,5 @@ export class StackOne extends ClientSDK {
   private _proxy?: Proxy;
   get proxy(): Proxy {
     return (this._proxy ??= new Proxy(this._options));
-  }
-
-  private _webhooks?: Webhooks;
-  get webhooks(): Webhooks {
-    return (this._webhooks ??= new Webhooks(this._options));
   }
 }

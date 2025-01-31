@@ -1,26 +1,16 @@
 # Value
 
-The Channels of the campaign.
+The value of the additional data
 
 ## Example Usage
 
 ```typescript
 import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Value = Value.Sms;
+let value: Value = {};
 ```
 
-## Values
+## Fields
 
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
-
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `Email`                | email                  |
-| `Sms`                  | sms                    |
-| `WebPush`              | web_push               |
-| `IosPush`              | ios_push               |
-| `AndroidPush`          | android_push           |
-| `Unknown`              | unknown                |
-| `UnmappedValue`        | unmapped_value         |
-| -                      | `Unrecognized<string>` |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

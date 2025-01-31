@@ -1229,7 +1229,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getAssignment({
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1260,7 +1259,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetAssignment(stackOne, {
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1316,7 +1314,6 @@ async function run() {
   const result = await stackOne.lms.getCategory({
     fields: "id,remote_id,name,active,level,language",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1348,7 +1345,6 @@ async function run() {
   const res = await lmsGetCategory(stackOne, {
     fields: "id,remote_id,name,active,level,language",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1403,7 +1399,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getCompletion({
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1434,7 +1429,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetCompletion(stackOne, {
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1490,7 +1484,6 @@ async function run() {
   const result = await stackOne.lms.getContent({
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1522,7 +1515,6 @@ async function run() {
   const res = await lmsGetContent(stackOne, {
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1578,7 +1570,6 @@ async function run() {
   const result = await stackOne.lms.getCourse({
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1610,7 +1601,6 @@ async function run() {
   const res = await lmsGetCourse(stackOne, {
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1666,7 +1656,6 @@ async function run() {
   const result = await stackOne.lms.getSkill({
     fields: "id,remote_id,name,active,level",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1698,7 +1687,6 @@ async function run() {
   const res = await lmsGetSkill(stackOne, {
     fields: "id,remote_id,name,active,level",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1754,7 +1742,6 @@ async function run() {
   const result = await stackOne.lms.getUser({
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1786,7 +1773,6 @@ async function run() {
   const res = await lmsGetUser(stackOne, {
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1841,7 +1827,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getUserAssignment({
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1873,7 +1858,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetUserAssignment(stackOne, {
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1929,7 +1913,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getUserCompletion({
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1961,7 +1944,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetUserCompletion(stackOne, {
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2020,8 +2002,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -2058,8 +2038,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -2120,8 +2098,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2156,8 +2132,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2216,8 +2190,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2252,8 +2224,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2312,8 +2282,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2348,8 +2316,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2408,8 +2374,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2444,8 +2408,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2504,8 +2466,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2540,8 +2500,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2601,8 +2559,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -2640,8 +2596,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -2703,8 +2657,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2740,8 +2692,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2800,8 +2750,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2836,8 +2784,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });

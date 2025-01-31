@@ -15,7 +15,6 @@ Proxy Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { Method } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -30,7 +29,6 @@ async function run() {
       headers: {
         "Content-Type": "application/json",
       },
-      method: Method.Get,
       path: "/employees/directory",
       url: "https://api.sample-integration.com/v1",
     },
@@ -51,7 +49,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { proxyProxyRequest } from "@stackone/stackone-client-ts/funcs/proxyProxyRequest.js";
-import { Method } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -68,7 +65,6 @@ async function run() {
       headers: {
         "Content-Type": "application/json",
       },
-      method: Method.Get,
       path: "/employees/directory",
       url: "https://api.sample-integration.com/v1",
     },

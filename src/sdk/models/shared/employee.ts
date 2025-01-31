@@ -110,6 +110,8 @@ export type EmployeeValueOpen = OpenEnum<typeof EmployeeValue>;
 
 /**
  * The employment work schedule type (e.g., full-time, part-time)
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type EmployeeEmploymentContractType = {
   sourceValue?:
@@ -201,6 +203,8 @@ export type EmployeeSchemasEmploymentTypeValueOpen = OpenEnum<
 
 /**
  * The employee employment type
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type EmployeeEmploymentType = {
   /**
@@ -705,6 +709,8 @@ export type HomeLocation = {
 
 /**
  * The employee job description
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type JobDescription = {
   text?: string | null | undefined;
@@ -1803,6 +1809,8 @@ export type Employee = {
   companyName?: string | null | undefined;
   /**
    * The employee cost centers
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   costCenters?: Array<CostCenters> | null | undefined;
   /**
@@ -1819,10 +1827,14 @@ export type Employee = {
   dateOfBirth?: Date | null | undefined;
   /**
    * The employee department
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   department?: string | null | undefined;
   /**
    * The employee department id
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   departmentId?: string | null | undefined;
   /**
@@ -1835,6 +1847,8 @@ export type Employee = {
   employeeNumber?: string | null | undefined;
   /**
    * The employment work schedule type (e.g., full-time, part-time)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   employmentContractType?: EmployeeEmploymentContractType | null | undefined;
   /**
@@ -1843,6 +1857,8 @@ export type Employee = {
   employmentStatus?: EmploymentStatus | null | undefined;
   /**
    * The employee employment type
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   employmentType?: EmployeeEmploymentType | null | undefined;
   /**
@@ -1879,14 +1895,20 @@ export type Employee = {
   id?: string | null | undefined;
   /**
    * The employee job description
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   jobDescription?: JobDescription | null | undefined;
   /**
    * The employee job id
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   jobId?: string | null | undefined;
   /**
    * The employee job title
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   jobTitle?: string | null | undefined;
   /**
@@ -1895,6 +1917,8 @@ export type Employee = {
   lastName?: string | null | undefined;
   /**
    * The employee manager ID
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   managerId?: string | null | undefined;
   /**
@@ -1931,6 +1955,8 @@ export type Employee = {
   remoteManagerId?: string | null | undefined;
   /**
    * The employee start date
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   startDate?: Date | null | undefined;
   /**

@@ -9,6 +9,13 @@ let value: ContentPaginated = {
   data: [
     {
       active: true,
+      additionalData: [
+        {
+          id: "learning_outcomes",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          value: {},
+        },
+      ],
       categories: [
         {
           id: "12345",
@@ -38,8 +45,6 @@ let value: ContentPaginated = {
         "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      shortDescription:
-        "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "12345",

@@ -33,7 +33,7 @@ let value: LmsListUserCompletionsResponse = {
       "<value>",
     ],
   },
-  statusCode: 507,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

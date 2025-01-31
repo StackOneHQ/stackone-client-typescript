@@ -127,8 +127,8 @@ export async function atsCreateJob(
     M.json(200, operations.AtsCreateJobResponse$inboundSchema, {
       key: "CreateResult",
     }),
-    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

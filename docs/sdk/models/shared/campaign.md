@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Campaign, CampaignSchemasValue, CampaignValue, MessageValue, Value } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Campaign, CampaignSchemasValue, CampaignValue, ChannelsEnumValue, MessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Campaign = {
   channels: [
     {
       sourceValue: "SMS",
-      value: Value.Sms,
+      value: ChannelsEnumValue.Sms,
     },
   ],
   createdAt: new Date("2021-01-01T01:01:01.000Z"),

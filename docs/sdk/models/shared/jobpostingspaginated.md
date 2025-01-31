@@ -10,6 +10,7 @@ import {
   JobPostingSchemasValue,
   JobPostingsPaginated,
   JobPostingValue,
+  Question2,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingsPaginated = {
@@ -78,7 +79,7 @@ let value: JobPostingsPaginated = {
             {
               id: "question002",
               parentQuestion: null,
-              required: false,
+              required: Question2.False,
               text: "What are your hobbies?",
               type: {},
             },

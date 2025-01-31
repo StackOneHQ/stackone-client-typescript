@@ -22,13 +22,16 @@ import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import { Result } from "../sdk/types/fp.js";
 
-export async function webhooksCreate(
+/**
+ * Order Assessments Request
+ */
+export async function atsOrderAssessmentsRequest(
   client: StackOneCore,
-  request: operations.CreateRequest,
+  request: operations.AtsOrderAssessmentsRequestRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.CreateResponse,
+    operations.AtsOrderAssessmentsRequestResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -40,23 +43,21 @@ export async function webhooksCreate(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.CreateRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.AtsOrderAssessmentsRequestRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.RequestBody, { explode: true });
+  const body = encodeJSON(
+    "body",
+    payload.AtsCreateCandidatesAssessmentsRequestDto,
+    { explode: true },
+  );
 
-  const pathParams = {
-    id: encodeSimple("id", payload.id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/webhooks/{id}/events")(pathParams);
+  const path = pathToFunc("/unified/ats/assessments/orders")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export async function webhooksCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "create",
+    operationID: "ats_order_assessments_request",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -99,18 +100,7 @@ export async function webhooksCreate(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "403",
-      "404",
-      "408",
-      "412",
-      "429",
-      "4XX",
-      "500",
-      "501",
-      "5XX",
-    ],
+    errorCodes: ["400", "403", "408", "412", "429", "4XX", "500", "501", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -128,7 +118,7 @@ export async function webhooksCreate(
   };
 
   const [result] = await M.match<
-    operations.CreateResponse,
+    operations.AtsOrderAssessmentsRequestResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -137,9 +127,11 @@ export async function webhooksCreate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(207, operations.CreateResponse$inboundSchema, { key: "classes" }),
-    M.fail([400, 403, 404, 412, 429, "4XX"]),
+    M.json(200, operations.AtsOrderAssessmentsRequestResponse$inboundSchema, {
+      key: "CreateAssessmentOrderResult",
+    }),
     M.fail(408),
+    M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
