@@ -181,6 +181,8 @@ run();
 * [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
+* [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
+* [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
@@ -232,6 +234,7 @@ run();
 * [getGroup](docs/sdks/hris/README.md#getgroup) - Get Group
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
+* [getTeamGroup](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 * [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 * [getTimeOffType](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
@@ -250,6 +253,7 @@ run();
 * [listGroups](docs/sdks/hris/README.md#listgroups) - List Groups
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
+* [listTeamGroups](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [listTimeOffTypes](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
@@ -277,6 +281,7 @@ run();
 * [createCollection](docs/sdks/lms/README.md#createcollection) - Create Collection
 * [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
+* [deleteUserCompletion](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
 * [getAssignment](docs/sdks/lms/README.md#getassignment) - Get Assignment
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
@@ -359,14 +364,11 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.hris.listEmployees({
-    expand: "company,employments,work_location,home_location,groups",
-    fields:
-      "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+  const result = await stackOne.ats.listApplicationCustomFieldDefinitions({
+    fields: "id,remote_id,name,description,type,options",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    include: "avatar_url,avatar,custom_fields,job_description,benefits",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -711,6 +713,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsRejectApplication`](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 - [`atsUpdateApplication`](docs/sdks/ats/README.md#updateapplication) - Update an Application
 - [`atsUpdateApplicationNote`](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
+- [`atsUpdateAssessmentsResult`](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
+- [`atsUpdateBackgroundCheckResult`](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 - [`atsUpdateCandidate`](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 - [`atsUpdateJob`](docs/sdks/ats/README.md#updatejob) - Update Job
 - [`atsUploadApplicationDocument`](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
@@ -750,6 +754,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetGroup`](docs/sdks/hris/README.md#getgroup) - Get Group
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
 - [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Location
+- [`hrisGetTeamGroup`](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 - [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 - [`hrisGetTimeOffRequest`](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 - [`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
@@ -768,6 +773,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListGroups`](docs/sdks/hris/README.md#listgroups) - List Groups
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List locations
+- [`hrisListTeamGroups`](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 - [`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
@@ -789,6 +795,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsCreateCollection`](docs/sdks/lms/README.md#createcollection) - Create Collection
 - [`lmsCreateUserAssignment`](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 - [`lmsCreateUserCompletion`](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
+- [`lmsDeleteUserCompletion`](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
 - [`lmsGetAssignment`](docs/sdks/lms/README.md#getassignment) - Get Assignment
 - [`lmsGetCategory`](docs/sdks/lms/README.md#getcategory) - Get Category
 - [`lmsGetCompletion`](docs/sdks/lms/README.md#getcompletion) - Get Completion

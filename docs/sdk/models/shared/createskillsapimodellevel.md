@@ -1,6 +1,8 @@
-# CreateSkillsApiModelLevel
+# ~~CreateSkillsApiModelLevel~~
 
 The hierarchal level of the skill
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ## Example Usage
 
@@ -12,7 +14,7 @@ let value: CreateSkillsApiModelLevel = {};
 
 ## Fields
 
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                               | *shared.CreateSkillsApiModelSourceValue*                                                    | :heavy_minus_sign:                                                                          | N/A                                                                                         |
-| `value`                                                                                     | [shared.CreateSkillsApiModelValue](../../../sdk/models/shared/createskillsapimodelvalue.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                       | *shared.CreateSkillsApiModelSchemasLevelSourceValue*                                                                | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |
+| `value`                                                                                                             | [shared.CreateSkillsApiModelSchemasLevelValue](../../../sdk/models/shared/createskillsapimodelschemaslevelvalue.md) | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |

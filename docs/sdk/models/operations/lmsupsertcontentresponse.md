@@ -12,7 +12,7 @@ let value: LmsUpsertContentResponse = {
       "<value>",
     ],
   },
-  statusCode: 307,
+  statusCode: 406,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

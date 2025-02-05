@@ -63,21 +63,11 @@ export type LmsCreateCompletionRequestDto = {
    */
   contentId?: string | null | undefined;
   /**
-   * The external ID associated with this completion
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  externalId?: string | null | undefined;
-  /**
-   * The external reference associated with this completion
-   */
-  externalReference?: string | null | undefined;
-  /**
-   * The external reference of the learning object associated with this completion
+   * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
    */
   learningObjectExternalReference?: string | null | undefined;
   /**
-   * The id of the learning object associated with this completion
+   * The id of the learning object associated with this completion. This is not required unless specified in an integration.
    */
   learningObjectId?: string | null | undefined;
   /**
@@ -353,8 +343,6 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
   completed_at: z.nullable(z.string()).optional(),
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
-  external_id: z.nullable(z.string()).optional(),
-  external_reference: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -366,8 +354,6 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
     "completed_at": "completedAt",
     "content_external_reference": "contentExternalReference",
     "content_id": "contentId",
-    "external_id": "externalId",
-    "external_reference": "externalReference",
     "learning_object_external_reference": "learningObjectExternalReference",
     "learning_object_id": "learningObjectId",
   });
@@ -378,8 +364,6 @@ export type LmsCreateCompletionRequestDto$Outbound = {
   completed_at?: string | null | undefined;
   content_external_reference?: string | null | undefined;
   content_id?: string | null | undefined;
-  external_id?: string | null | undefined;
-  external_reference?: string | null | undefined;
   learning_object_external_reference?: string | null | undefined;
   learning_object_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
@@ -395,8 +379,6 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
   completedAt: z.nullable(z.string()).optional(),
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
-  externalId: z.nullable(z.string()).optional(),
-  externalReference: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -408,8 +390,6 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
     completedAt: "completed_at",
     contentExternalReference: "content_external_reference",
     contentId: "content_id",
-    externalId: "external_id",
-    externalReference: "external_reference",
     learningObjectExternalReference: "learning_object_external_reference",
     learningObjectId: "learning_object_id",
   });

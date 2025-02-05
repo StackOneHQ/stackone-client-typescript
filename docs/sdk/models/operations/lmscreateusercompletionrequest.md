@@ -8,7 +8,6 @@ import { LmsCreateUserCompletionRequest } from "@stackone/stackone-client-ts/sdk
 let value: LmsCreateUserCompletionRequest = {
   lmsCreateCompletionRequestDto: {
     completedAt: "2021-07-21T14:00:00.000Z",
-    externalReference: "e3gd34-23tr21-er234-345er56",
     learningObjectExternalReference: "learning-content-123",
     learningObjectId: "e3gd34-23tr21-er234-345er56",
     passthrough: {

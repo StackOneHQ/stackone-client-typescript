@@ -4,7 +4,7 @@
 
 ```typescript
 import {
-  CreateCategoriesApiModelValue,
+  CreateCategoriesApiModelSchemasValue,
   LanguageEnumValue,
   LmsBatchUpsertContentRequestDto,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -24,7 +24,7 @@ let value: LmsBatchUpsertContentRequestDto = {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -34,9 +34,6 @@ let value: LmsBatchUpsertContentRequestDto = {
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description:
         "This video acts as learning content for software engineers.",
@@ -48,7 +45,6 @@ let value: LmsBatchUpsertContentRequestDto = {
         },
       ],
       order: 1,
-      provider: "Content Provider",
       skills: [
         {
           id: "12345",

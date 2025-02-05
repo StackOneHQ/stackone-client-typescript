@@ -5,7 +5,7 @@
 ```typescript
 import { SkillsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: SkillsValue = SkillsValue.Primary;
+let value: SkillsValue = SkillsValue.Three;
 ```
 
 ## Values
@@ -14,7 +14,9 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `Primary`              | primary                |
-| `Secondary`            | secondary              |
-| `Tertiary`             | tertiary               |
+| `One`                  | 1                      |
+| `Two`                  | 2                      |
+| `Three`                | 3                      |
+| `Four`                 | 4                      |
+| `Five`                 | 5                      |
 | -                      | `Unrecognized<string>` |

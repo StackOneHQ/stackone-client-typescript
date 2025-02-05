@@ -94,6 +94,8 @@ export type Assignment = {
   dueDate?: string | null | undefined;
   /**
    * The external reference associated with this assignment
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   externalReference?: string | null | undefined;
   /**
@@ -101,11 +103,11 @@ export type Assignment = {
    */
   id?: string | null | undefined;
   /**
-   * The external reference of the learning object associated with this assignment
+   * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
    */
   learningObjectExternalReference?: string | null | undefined;
   /**
-   * The learning_object_id associated with this assignment
+   * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
    */
   learningObjectId?: string | null | undefined;
   /**

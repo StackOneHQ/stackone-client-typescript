@@ -8,7 +8,7 @@ Filter to select completions by learning object type.
 import { LmsListUserCompletionsQueryParamLearningObjectType } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsListUserCompletionsQueryParamLearningObjectType =
-  LmsListUserCompletionsQueryParamLearningObjectType.Content;
+  LmsListUserCompletionsQueryParamLearningObjectType.Collection;
 ```
 
 ## Values

@@ -79,7 +79,7 @@ let value: JobPostingsPaginated = {
             {
               id: "question002",
               parentQuestion: null,
-              required: Question2.False,
+              required: Question2.True,
               text: "What are your hobbies?",
               type: {},
             },

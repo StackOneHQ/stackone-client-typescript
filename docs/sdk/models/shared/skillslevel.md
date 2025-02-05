@@ -1,6 +1,8 @@
-# SkillsLevel
+# ~~SkillsLevel~~
 
 The hierarchal level of the skill
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ## Example Usage
 
@@ -12,7 +14,7 @@ let value: SkillsLevel = {};
 
 ## Fields
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `sourceValue`                                                   | *shared.SkillsSourceValue*                                      | :heavy_minus_sign:                                              | N/A                                                             |
-| `value`                                                         | [shared.SkillsValue](../../../sdk/models/shared/skillsvalue.md) | :heavy_minus_sign:                                              | N/A                                                             |
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                           | *shared.SkillsSchemasLevelSourceValue*                                                  | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `value`                                                                                 | [shared.SkillsSchemasLevelValue](../../../sdk/models/shared/skillsschemaslevelvalue.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |

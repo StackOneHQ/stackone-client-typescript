@@ -24,6 +24,7 @@ import { hrisGetEmployment } from "../funcs/hrisGetEmployment.js";
 import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
+import { hrisGetTeamGroup } from "../funcs/hrisGetTeamGroup.js";
 import { hrisGetTimeEntries } from "../funcs/hrisGetTimeEntries.js";
 import { hrisGetTimeOffRequest } from "../funcs/hrisGetTimeOffRequest.js";
 import { hrisGetTimeOffType } from "../funcs/hrisGetTimeOffType.js";
@@ -42,6 +43,7 @@ import { hrisListEmployments } from "../funcs/hrisListEmployments.js";
 import { hrisListGroups } from "../funcs/hrisListGroups.js";
 import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
+import { hrisListTeamGroups } from "../funcs/hrisListTeamGroups.js";
 import { hrisListTimeEntries } from "../funcs/hrisListTimeEntries.js";
 import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
 import { hrisListTimeOffTypes } from "../funcs/hrisListTimeOffTypes.js";
@@ -365,6 +367,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get Team Group
+   */
+  async getTeamGroup(
+    request: operations.HrisGetTeamGroupRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetTeamGroupResponse> {
+    return unwrapAsync(hrisGetTeamGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Time Entry
    */
   async getTimeEntries(
@@ -412,8 +428,10 @@ export class Hris extends ClientSDK {
   async listBenefits(
     request: operations.HrisListBenefitsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListBenefitsResponse> {
-    return unwrapAsync(hrisListBenefits(
+  ): Promise<
+    PageIterator<operations.HrisListBenefitsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListBenefits(
       this,
       request,
       options,
@@ -426,8 +444,10 @@ export class Hris extends ClientSDK {
   async listCompanies(
     request: operations.HrisListCompaniesRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListCompaniesResponse> {
-    return unwrapAsync(hrisListCompanies(
+  ): Promise<
+    PageIterator<operations.HrisListCompaniesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListCompanies(
       this,
       request,
       options,
@@ -440,8 +460,13 @@ export class Hris extends ClientSDK {
   async listCostCenterGroups(
     request: operations.HrisListCostCenterGroupsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListCostCenterGroupsResponse> {
-    return unwrapAsync(hrisListCostCenterGroups(
+  ): Promise<
+    PageIterator<
+      operations.HrisListCostCenterGroupsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListCostCenterGroups(
       this,
       request,
       options,
@@ -454,8 +479,13 @@ export class Hris extends ClientSDK {
   async listDepartmentGroups(
     request: operations.HrisListDepartmentGroupsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListDepartmentGroupsResponse> {
-    return unwrapAsync(hrisListDepartmentGroups(
+  ): Promise<
+    PageIterator<
+      operations.HrisListDepartmentGroupsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListDepartmentGroups(
       this,
       request,
       options,
@@ -468,8 +498,13 @@ export class Hris extends ClientSDK {
   async listEmployeeCategories(
     request: operations.HrisListEmployeeCategoriesRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmployeeCategoriesResponse> {
-    return unwrapAsync(hrisListEmployeeCategories(
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeCategoriesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeCategories(
       this,
       request,
       options,
@@ -496,8 +531,13 @@ export class Hris extends ClientSDK {
   async listEmployeeDocuments(
     request: operations.HrisListEmployeeDocumentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmployeeDocumentsResponse> {
-    return unwrapAsync(hrisListEmployeeDocuments(
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeDocumentsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeDocuments(
       this,
       request,
       options,
@@ -510,8 +550,13 @@ export class Hris extends ClientSDK {
   async listEmployeeEmployments(
     request: operations.HrisListEmployeeEmploymentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmployeeEmploymentsResponse> {
-    return unwrapAsync(hrisListEmployeeEmployments(
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeEmploymentsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeEmployments(
       this,
       request,
       options,
@@ -524,8 +569,13 @@ export class Hris extends ClientSDK {
   async listEmployeeTimeOffRequests(
     request: operations.HrisListEmployeeTimeOffRequestsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmployeeTimeOffRequestsResponse> {
-    return unwrapAsync(hrisListEmployeeTimeOffRequests(
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeTimeOffRequestsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeTimeOffRequests(
       this,
       request,
       options,
@@ -538,8 +588,13 @@ export class Hris extends ClientSDK {
   async listEmployeeWorkEligibility(
     request: operations.HrisListEmployeeWorkEligibilityRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmployeeWorkEligibilityResponse> {
-    return unwrapAsync(hrisListEmployeeWorkEligibility(
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeWorkEligibilityResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeWorkEligibility(
       this,
       request,
       options,
@@ -568,8 +623,10 @@ export class Hris extends ClientSDK {
   async listEmployments(
     request: operations.HrisListEmploymentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmploymentsResponse> {
-    return unwrapAsync(hrisListEmployments(
+  ): Promise<
+    PageIterator<operations.HrisListEmploymentsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListEmployments(
       this,
       request,
       options,
@@ -582,8 +639,10 @@ export class Hris extends ClientSDK {
   async listGroups(
     request: operations.HrisListGroupsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListGroupsResponse> {
-    return unwrapAsync(hrisListGroups(
+  ): Promise<
+    PageIterator<operations.HrisListGroupsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListGroups(
       this,
       request,
       options,
@@ -596,8 +655,10 @@ export class Hris extends ClientSDK {
   async listJobs(
     request: operations.HrisListJobsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListJobsResponse> {
-    return unwrapAsync(hrisListJobs(
+  ): Promise<
+    PageIterator<operations.HrisListJobsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListJobs(
       this,
       request,
       options,
@@ -610,8 +671,24 @@ export class Hris extends ClientSDK {
   async listLocations(
     request: operations.HrisListLocationsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListLocationsResponse> {
-    return unwrapAsync(hrisListLocations(
+  ): Promise<
+    PageIterator<operations.HrisListLocationsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListLocations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Team Groups
+   */
+  async listTeamGroups(
+    request: operations.HrisListTeamGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisListTeamGroupsResponse> {
+    return unwrapAsync(hrisListTeamGroups(
       this,
       request,
       options,
@@ -624,8 +701,10 @@ export class Hris extends ClientSDK {
   async listTimeEntries(
     request: operations.HrisListTimeEntriesRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListTimeEntriesResponse> {
-    return unwrapAsync(hrisListTimeEntries(
+  ): Promise<
+    PageIterator<operations.HrisListTimeEntriesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListTimeEntries(
       this,
       request,
       options,
@@ -638,8 +717,10 @@ export class Hris extends ClientSDK {
   async listTimeOffRequests(
     request: operations.HrisListTimeOffRequestsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListTimeOffRequestsResponse> {
-    return unwrapAsync(hrisListTimeOffRequests(
+  ): Promise<
+    PageIterator<operations.HrisListTimeOffRequestsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListTimeOffRequests(
       this,
       request,
       options,
@@ -652,8 +733,10 @@ export class Hris extends ClientSDK {
   async listTimeOffTypes(
     request: operations.HrisListTimeOffTypesRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListTimeOffTypesResponse> {
-    return unwrapAsync(hrisListTimeOffTypes(
+  ): Promise<
+    PageIterator<operations.HrisListTimeOffTypesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListTimeOffTypes(
       this,
       request,
       options,
