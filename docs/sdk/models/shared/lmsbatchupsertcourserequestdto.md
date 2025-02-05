@@ -3,7 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { CreateCategoriesApiModelValue, LanguageEnumValue, LmsBatchUpsertCourseRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasLanguageValue,
+  LanguageEnumValue,
+  LmsBatchUpsertCourseRequestDto,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsBatchUpsertCourseRequestDto = {
   items: [
@@ -13,7 +18,7 @@ let value: LmsBatchUpsertCourseRequestDto = {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -31,9 +36,6 @@ let value: LmsBatchUpsertCourseRequestDto = {
           title: "Software Engineer Lv 1",
         },
       ],
-      contentIds: [
-        "16873-SOFTWARE-ENG-Content",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description:
         "This course acts as learning content for software engineers.",
@@ -44,10 +46,12 @@ let value: LmsBatchUpsertCourseRequestDto = {
           value: LanguageEnumValue.EnGB,
         },
       ],
-      provider: "Course Provider",
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],

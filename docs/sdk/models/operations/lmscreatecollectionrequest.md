@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsCreateCollectionRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasLanguageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCollectionRequest = {
   lmsCreateCollectionRequestDto: {
@@ -12,7 +12,7 @@ let value: LmsCreateCollectionRequest = {
       {
         id: "16873-IT345",
         language: {
-          value: CreateCategoriesApiModelValue.EnGB,
+          value: CreateCategoriesApiModelSchemasValue.EnGB,
         },
         name: "Information-Technology",
         unifiedCustomFields: {
@@ -36,6 +36,9 @@ let value: LmsCreateCollectionRequest = {
     skills: [
       {
         id: "16873-IT345",
+        language: {
+          value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+        },
         name: "Information-Technology",
       },
     ],

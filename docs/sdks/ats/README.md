@@ -70,6 +70,8 @@
 * [rejectApplication](#rejectapplication) - Reject Application
 * [updateApplication](#updateapplication) - Update an Application
 * [updateApplicationNote](#updateapplicationnote) - Update an Application Note
+* [updateAssessmentsResult](#updateassessmentsresult) - Update Assessments Result
+* [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
 * [updateCandidate](#updatecandidate) - Update Candidate
 * [updateJob](#updatejob) - Update Job
 * [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
@@ -3688,8 +3690,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -3728,8 +3732,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -3781,8 +3787,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -3822,8 +3830,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -3875,8 +3885,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -3916,8 +3928,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -3969,8 +3983,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4010,8 +4026,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4066,8 +4084,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4110,8 +4130,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4163,8 +4185,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4204,8 +4228,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4257,8 +4283,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4298,8 +4326,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4349,8 +4379,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4388,8 +4420,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4440,8 +4474,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4480,8 +4516,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4532,8 +4570,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4572,8 +4612,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4624,8 +4666,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4664,8 +4708,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4717,8 +4763,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4758,8 +4806,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4812,8 +4862,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4854,8 +4906,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4906,8 +4960,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4946,8 +5002,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4998,8 +5056,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5038,8 +5098,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5091,8 +5153,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5132,8 +5196,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5184,8 +5250,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5224,8 +5292,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5278,8 +5348,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5320,8 +5392,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5375,8 +5449,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5418,8 +5494,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5470,8 +5548,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5510,8 +5590,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5562,8 +5644,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5602,8 +5686,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5654,8 +5740,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5694,8 +5782,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5746,8 +5836,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5786,8 +5878,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5838,8 +5932,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5878,8 +5974,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -6833,6 +6931,352 @@ run();
 ### Response
 
 **Promise\<[operations.AtsUpdateApplicationNoteResponse](../../sdk/models/operations/atsupdateapplicationnoteresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateAssessmentsResult
+
+Update Assessments Result
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsUpdateCandidatesAssessmentsResultsRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.updateAssessmentsResult({
+    atsUpdateCandidatesAssessmentsResultsRequestDto: {
+      attachments: [
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+      ],
+      candidate: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      result: {
+        sourceValue: "Passed",
+        value: AtsUpdateCandidatesAssessmentsResultsRequestDtoValue.Passed,
+      },
+      resultUrl: "https://exmaple.com/result?id=xyz",
+      score: {
+        label: "Percentage",
+        max: "100",
+        min: "0",
+        value: "80",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      submissionDate: new Date("2021-01-01T01:01:01.000Z"),
+      summary: "Test is passed",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsUpdateAssessmentsResult } from "@stackone/stackone-client-ts/funcs/atsUpdateAssessmentsResult.js";
+import { AtsUpdateCandidatesAssessmentsResultsRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsUpdateAssessmentsResult(stackOne, {
+    atsUpdateCandidatesAssessmentsResultsRequestDto: {
+      attachments: [
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+      ],
+      candidate: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      result: {
+        sourceValue: "Passed",
+        value: AtsUpdateCandidatesAssessmentsResultsRequestDtoValue.Passed,
+      },
+      resultUrl: "https://exmaple.com/result?id=xyz",
+      score: {
+        label: "Percentage",
+        max: "100",
+        min: "0",
+        value: "80",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      submissionDate: new Date("2021-01-01T01:01:01.000Z"),
+      summary: "Test is passed",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsUpdateAssessmentsResultRequest](../../sdk/models/operations/atsupdateassessmentsresultrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsUpdateAssessmentsResultResponse](../../sdk/models/operations/atsupdateassessmentsresultresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateBackgroundCheckResult
+
+Update Background Check Result
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsUpdateBackgroundCheckResultRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.updateBackgroundCheckResult({
+    atsUpdateBackgroundCheckResultRequestDto: {
+      attachments: [
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+      ],
+      candidate: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      result: {
+        sourceValue: "Passed",
+        value: AtsUpdateBackgroundCheckResultRequestDtoValue.Passed,
+      },
+      resultUrl: "https://exmaple.com/result?id=xyz",
+      score: {
+        label: "Percentage",
+        max: "100",
+        min: "0",
+        value: "80",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      submissionDate: new Date("2021-01-01T01:01:01.000Z"),
+      summary: "Test is passed",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsUpdateBackgroundCheckResult } from "@stackone/stackone-client-ts/funcs/atsUpdateBackgroundCheckResult.js";
+import { AtsUpdateBackgroundCheckResultRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsUpdateBackgroundCheckResult(stackOne, {
+    atsUpdateBackgroundCheckResultRequestDto: {
+      attachments: [
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+        {
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentValue.Text,
+          },
+          url: "http://example.com/resume.pdf",
+        },
+      ],
+      candidate: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        profileUrl: "https://exmaple.com/candidate?id=xyz",
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      result: {
+        sourceValue: "Passed",
+        value: AtsUpdateBackgroundCheckResultRequestDtoValue.Passed,
+      },
+      resultUrl: "https://exmaple.com/result?id=xyz",
+      score: {
+        label: "Percentage",
+        max: "100",
+        min: "0",
+        value: "80",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      submissionDate: new Date("2021-01-01T01:01:01.000Z"),
+      summary: "Test is passed",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsUpdateBackgroundCheckResultRequest](../../sdk/models/operations/atsupdatebackgroundcheckresultrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsUpdateBackgroundCheckResultResponse](../../sdk/models/operations/atsupdatebackgroundcheckresultresponse.md)\>**
 
 ### Errors
 

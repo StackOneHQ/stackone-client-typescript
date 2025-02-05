@@ -3,6 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
+import { dlv } from "../lib/dlv.js";
 import {
   encodeDeepObjectQuery,
   encodeFormQuery,
@@ -26,6 +27,12 @@ import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import { Result } from "../sdk/types/fp.js";
+import {
+  createPageIterator,
+  haltIterator,
+  PageIterator,
+  Paginator,
+} from "../sdk/types/operations.js";
 
 /**
  * List Application Documents
@@ -35,15 +42,18 @@ export async function atsListApplicationDocuments(
   request: operations.AtsListApplicationDocumentsRequest,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.AtsListApplicationDocumentsResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
+  PageIterator<
+    Result<
+      operations.AtsListApplicationDocumentsResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    { cursor: string }
   >
 > {
   const parsed = safeParse(
@@ -53,7 +63,7 @@ export async function atsListApplicationDocuments(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return haltIterator(parsed);
   }
   const payload = parsed.value;
   const body = null;
@@ -105,8 +115,18 @@ export async function atsListApplicationDocuments(
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["429", "408"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -120,7 +140,7 @@ export async function atsListApplicationDocuments(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return haltIterator(requestRes);
   }
   const req = requestRes.value;
 
@@ -131,7 +151,7 @@ export async function atsListApplicationDocuments(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return haltIterator(doResult);
   }
   const response = doResult.value;
 
@@ -143,7 +163,7 @@ export async function atsListApplicationDocuments(
     Headers: {},
   };
 
-  const [result] = await M.match<
+  const [result, raw] = await M.match<
     operations.AtsListApplicationDocumentsResponse,
     | SDKError
     | SDKValidationError
@@ -161,8 +181,44 @@ export async function atsListApplicationDocuments(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return haltIterator(result);
   }
 
-  return result;
+  const nextFunc = (
+    responseData: unknown,
+  ): {
+    next: Paginator<
+      Result<
+        operations.AtsListApplicationDocumentsResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
+    const nextCursor = dlv(responseData, "next");
+    if (nextCursor == null) {
+      return { next: () => null };
+    }
+
+    const nextVal = () =>
+      atsListApplicationDocuments(
+        client,
+        {
+          ...request,
+          next: nextCursor,
+        },
+        options,
+      );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
+  };
+
+  const page = { ...result, ...nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

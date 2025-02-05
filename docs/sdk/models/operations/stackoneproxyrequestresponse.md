@@ -12,7 +12,7 @@ let value: StackoneProxyRequestResponse = {
       "<value>",
     ],
   },
-  statusCode: 504,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

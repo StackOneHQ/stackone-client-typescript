@@ -3,14 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { CreateCategoriesApiModelValue, LmsCreateCollectionRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasLanguageValue,
+  LmsCreateCollectionRequestDto,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCollectionRequestDto = {
   categories: [
     {
       id: "16873-IT345",
       language: {
-        value: CreateCategoriesApiModelValue.EnGB,
+        value: CreateCategoriesApiModelSchemasValue.EnGB,
       },
       name: "Information-Technology",
       unifiedCustomFields: {
@@ -34,6 +38,9 @@ let value: LmsCreateCollectionRequestDto = {
   skills: [
     {
       id: "16873-IT345",
+      language: {
+        value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+      },
       name: "Information-Technology",
     },
   ],

@@ -67,10 +67,13 @@ import { atsOrderBackgroundCheckRequest } from "../funcs/atsOrderBackgroundCheck
 import { atsRejectApplication } from "../funcs/atsRejectApplication.js";
 import { atsUpdateApplication } from "../funcs/atsUpdateApplication.js";
 import { atsUpdateApplicationNote } from "../funcs/atsUpdateApplicationNote.js";
+import { atsUpdateAssessmentsResult } from "../funcs/atsUpdateAssessmentsResult.js";
+import { atsUpdateBackgroundCheckResult } from "../funcs/atsUpdateBackgroundCheckResult.js";
 import { atsUpdateCandidate } from "../funcs/atsUpdateCandidate.js";
 import { atsUpdateJob } from "../funcs/atsUpdateJob.js";
 import { atsUploadApplicationDocument } from "../funcs/atsUploadApplicationDocument.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
@@ -571,8 +574,13 @@ export class Ats extends ClientSDK {
   async listApplicationCustomFieldDefinitions(
     request: operations.AtsListApplicationCustomFieldDefinitionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationCustomFieldDefinitionsResponse> {
-    return unwrapAsync(atsListApplicationCustomFieldDefinitions(
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationCustomFieldDefinitionsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationCustomFieldDefinitions(
       this,
       request,
       options,
@@ -585,8 +593,13 @@ export class Ats extends ClientSDK {
   async listApplicationDocuments(
     request: operations.AtsListApplicationDocumentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationDocumentsResponse> {
-    return unwrapAsync(atsListApplicationDocuments(
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationDocumentsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationDocuments(
       this,
       request,
       options,
@@ -599,8 +612,10 @@ export class Ats extends ClientSDK {
   async listApplicationNotes(
     request: operations.AtsListApplicationNotesRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationNotesResponse> {
-    return unwrapAsync(atsListApplicationNotes(
+  ): Promise<
+    PageIterator<operations.AtsListApplicationNotesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListApplicationNotes(
       this,
       request,
       options,
@@ -613,8 +628,13 @@ export class Ats extends ClientSDK {
   async listApplicationScorecards(
     request: operations.AtsListApplicationScorecardsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationScorecardsResponse> {
-    return unwrapAsync(atsListApplicationScorecards(
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationScorecardsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationScorecards(
       this,
       request,
       options,
@@ -627,8 +647,10 @@ export class Ats extends ClientSDK {
   async listApplications(
     request: operations.AtsListApplicationsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationsResponse> {
-    return unwrapAsync(atsListApplications(
+  ): Promise<
+    PageIterator<operations.AtsListApplicationsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListApplications(
       this,
       request,
       options,
@@ -641,8 +663,13 @@ export class Ats extends ClientSDK {
   async listApplicationsOffers(
     request: operations.AtsListApplicationsOffersRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationsOffersResponse> {
-    return unwrapAsync(atsListApplicationsOffers(
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationsOffersResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationsOffers(
       this,
       request,
       options,
@@ -655,8 +682,13 @@ export class Ats extends ClientSDK {
   async listApplicationsScheduledInterviews(
     request: operations.AtsListApplicationsScheduledInterviewsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListApplicationsScheduledInterviewsResponse> {
-    return unwrapAsync(atsListApplicationsScheduledInterviews(
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationsScheduledInterviewsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationsScheduledInterviews(
       this,
       request,
       options,
@@ -669,8 +701,13 @@ export class Ats extends ClientSDK {
   async listAssessmentsPackages(
     request: operations.AtsListAssessmentsPackagesRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListAssessmentsPackagesResponse> {
-    return unwrapAsync(atsListAssessmentsPackages(
+  ): Promise<
+    PageIterator<
+      operations.AtsListAssessmentsPackagesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListAssessmentsPackages(
       this,
       request,
       options,
@@ -683,8 +720,13 @@ export class Ats extends ClientSDK {
   async listBackgroundCheckPackages(
     request: operations.AtsListBackgroundCheckPackagesRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListBackgroundCheckPackagesResponse> {
-    return unwrapAsync(atsListBackgroundCheckPackages(
+  ): Promise<
+    PageIterator<
+      operations.AtsListBackgroundCheckPackagesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListBackgroundCheckPackages(
       this,
       request,
       options,
@@ -697,8 +739,13 @@ export class Ats extends ClientSDK {
   async listBackgroundCheckRequest(
     request: operations.AtsListBackgroundCheckRequestRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListBackgroundCheckRequestResponse> {
-    return unwrapAsync(atsListBackgroundCheckRequest(
+  ): Promise<
+    PageIterator<
+      operations.AtsListBackgroundCheckRequestResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListBackgroundCheckRequest(
       this,
       request,
       options,
@@ -711,8 +758,13 @@ export class Ats extends ClientSDK {
   async listCandidateCustomFieldDefinitions(
     request: operations.AtsListCandidateCustomFieldDefinitionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListCandidateCustomFieldDefinitionsResponse> {
-    return unwrapAsync(atsListCandidateCustomFieldDefinitions(
+  ): Promise<
+    PageIterator<
+      operations.AtsListCandidateCustomFieldDefinitionsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListCandidateCustomFieldDefinitions(
       this,
       request,
       options,
@@ -725,8 +777,10 @@ export class Ats extends ClientSDK {
   async listCandidateNotes(
     request: operations.AtsListCandidateNotesRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListCandidateNotesResponse> {
-    return unwrapAsync(atsListCandidateNotes(
+  ): Promise<
+    PageIterator<operations.AtsListCandidateNotesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListCandidateNotes(
       this,
       request,
       options,
@@ -739,8 +793,10 @@ export class Ats extends ClientSDK {
   async listCandidates(
     request: operations.AtsListCandidatesRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListCandidatesResponse> {
-    return unwrapAsync(atsListCandidates(
+  ): Promise<
+    PageIterator<operations.AtsListCandidatesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListCandidates(
       this,
       request,
       options,
@@ -753,8 +809,10 @@ export class Ats extends ClientSDK {
   async listDepartments(
     request: operations.AtsListDepartmentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListDepartmentsResponse> {
-    return unwrapAsync(atsListDepartments(
+  ): Promise<
+    PageIterator<operations.AtsListDepartmentsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListDepartments(
       this,
       request,
       options,
@@ -767,8 +825,10 @@ export class Ats extends ClientSDK {
   async listInterviewStages(
     request: operations.AtsListInterviewStagesRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListInterviewStagesResponse> {
-    return unwrapAsync(atsListInterviewStages(
+  ): Promise<
+    PageIterator<operations.AtsListInterviewStagesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListInterviewStages(
       this,
       request,
       options,
@@ -781,8 +841,10 @@ export class Ats extends ClientSDK {
   async listInterviews(
     request: operations.AtsListInterviewsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListInterviewsResponse> {
-    return unwrapAsync(atsListInterviews(
+  ): Promise<
+    PageIterator<operations.AtsListInterviewsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListInterviews(
       this,
       request,
       options,
@@ -795,8 +857,13 @@ export class Ats extends ClientSDK {
   async listJobCustomFieldDefinitions(
     request: operations.AtsListJobCustomFieldDefinitionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListJobCustomFieldDefinitionsResponse> {
-    return unwrapAsync(atsListJobCustomFieldDefinitions(
+  ): Promise<
+    PageIterator<
+      operations.AtsListJobCustomFieldDefinitionsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListJobCustomFieldDefinitions(
       this,
       request,
       options,
@@ -809,8 +876,10 @@ export class Ats extends ClientSDK {
   async listJobPostings(
     request: operations.AtsListJobPostingsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListJobPostingsResponse> {
-    return unwrapAsync(atsListJobPostings(
+  ): Promise<
+    PageIterator<operations.AtsListJobPostingsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListJobPostings(
       this,
       request,
       options,
@@ -823,8 +892,8 @@ export class Ats extends ClientSDK {
   async listJobs(
     request: operations.AtsListJobsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListJobsResponse> {
-    return unwrapAsync(atsListJobs(
+  ): Promise<PageIterator<operations.AtsListJobsResponse, { cursor: string }>> {
+    return unwrapResultIterator(atsListJobs(
       this,
       request,
       options,
@@ -837,8 +906,10 @@ export class Ats extends ClientSDK {
   async listLists(
     request: operations.AtsListListsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListListsResponse> {
-    return unwrapAsync(atsListLists(
+  ): Promise<
+    PageIterator<operations.AtsListListsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListLists(
       this,
       request,
       options,
@@ -851,8 +922,10 @@ export class Ats extends ClientSDK {
   async listLocations(
     request: operations.AtsListLocationsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListLocationsResponse> {
-    return unwrapAsync(atsListLocations(
+  ): Promise<
+    PageIterator<operations.AtsListLocationsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListLocations(
       this,
       request,
       options,
@@ -865,8 +938,10 @@ export class Ats extends ClientSDK {
   async listOffers(
     request: operations.AtsListOffersRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListOffersResponse> {
-    return unwrapAsync(atsListOffers(
+  ): Promise<
+    PageIterator<operations.AtsListOffersResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListOffers(
       this,
       request,
       options,
@@ -879,8 +954,10 @@ export class Ats extends ClientSDK {
   async listRejectedReasons(
     request: operations.AtsListRejectedReasonsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListRejectedReasonsResponse> {
-    return unwrapAsync(atsListRejectedReasons(
+  ): Promise<
+    PageIterator<operations.AtsListRejectedReasonsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListRejectedReasons(
       this,
       request,
       options,
@@ -893,8 +970,10 @@ export class Ats extends ClientSDK {
   async listUsers(
     request: operations.AtsListUsersRequest,
     options?: RequestOptions,
-  ): Promise<operations.AtsListUsersResponse> {
-    return unwrapAsync(atsListUsers(
+  ): Promise<
+    PageIterator<operations.AtsListUsersResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsListUsers(
       this,
       request,
       options,
@@ -979,6 +1058,34 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsUpdateApplicationNoteResponse> {
     return unwrapAsync(atsUpdateApplicationNote(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Assessments Result
+   */
+  async updateAssessmentsResult(
+    request: operations.AtsUpdateAssessmentsResultRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateAssessmentsResultResponse> {
+    return unwrapAsync(atsUpdateAssessmentsResult(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Background Check Result
+   */
+  async updateBackgroundCheckResult(
+    request: operations.AtsUpdateBackgroundCheckResultRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateBackgroundCheckResultResponse> {
+    return unwrapAsync(atsUpdateBackgroundCheckResult(
       this,
       request,
       options,

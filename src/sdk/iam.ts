@@ -11,6 +11,7 @@ import { iamListPolicies } from "../funcs/iamListPolicies.js";
 import { iamListRoles } from "../funcs/iamListRoles.js";
 import { iamListUsers } from "../funcs/iamListUsers.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
@@ -77,8 +78,10 @@ export class Iam extends ClientSDK {
   async listGroups(
     request: operations.IamListGroupsRequest,
     options?: RequestOptions,
-  ): Promise<operations.IamListGroupsResponse> {
-    return unwrapAsync(iamListGroups(
+  ): Promise<
+    PageIterator<operations.IamListGroupsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(iamListGroups(
       this,
       request,
       options,
@@ -91,8 +94,10 @@ export class Iam extends ClientSDK {
   async listPolicies(
     request: operations.IamListPoliciesRequest,
     options?: RequestOptions,
-  ): Promise<operations.IamListPoliciesResponse> {
-    return unwrapAsync(iamListPolicies(
+  ): Promise<
+    PageIterator<operations.IamListPoliciesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(iamListPolicies(
       this,
       request,
       options,
@@ -105,8 +110,10 @@ export class Iam extends ClientSDK {
   async listRoles(
     request: operations.IamListRolesRequest,
     options?: RequestOptions,
-  ): Promise<operations.IamListRolesResponse> {
-    return unwrapAsync(iamListRoles(
+  ): Promise<
+    PageIterator<operations.IamListRolesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(iamListRoles(
       this,
       request,
       options,
@@ -119,8 +126,10 @@ export class Iam extends ClientSDK {
   async listUsers(
     request: operations.IamListUsersRequest,
     options?: RequestOptions,
-  ): Promise<operations.IamListUsersResponse> {
-    return unwrapAsync(iamListUsers(
+  ): Promise<
+    PageIterator<operations.IamListUsersResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(iamListUsers(
       this,
       request,
       options,

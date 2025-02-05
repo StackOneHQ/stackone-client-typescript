@@ -10,6 +10,7 @@
 * [createCollection](#createcollection) - Create Collection
 * [createUserAssignment](#createuserassignment) - Create User Assignment
 * [createUserCompletion](#createusercompletion) - Create User Completion
+* [deleteUserCompletion](#deleteusercompletion) - Delete User Completion
 * [getAssignment](#getassignment) - Get Assignment
 * [getCategory](#getcategory) - Get Category
 * [getCompletion](#getcompletion) - Get Completion
@@ -40,7 +41,7 @@ Batch Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -59,7 +60,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -70,7 +71,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -81,7 +82,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -91,9 +92,6 @@ async function run() {
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
-          courseIds: [
-            "16873-SOFTWARE-ENG-COURSE",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -104,7 +102,6 @@ async function run() {
             },
           ],
           order: 1,
-          provider: "Content Provider",
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
@@ -124,7 +121,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -135,7 +132,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -145,9 +142,6 @@ async function run() {
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
-          courseIds: [
-            "16873-SOFTWARE-ENG-COURSE",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -164,7 +158,6 @@ async function run() {
             },
           ],
           order: 1,
-          provider: "Content Provider",
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
@@ -197,7 +190,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertContent.js";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -218,7 +211,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -229,7 +222,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -240,7 +233,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -250,9 +243,6 @@ async function run() {
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
-          courseIds: [
-            "16873-SOFTWARE-ENG-COURSE",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -263,7 +253,6 @@ async function run() {
             },
           ],
           order: 1,
-          provider: "Content Provider",
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
@@ -283,7 +272,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -294,7 +283,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -304,9 +293,6 @@ async function run() {
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
-          courseIds: [
-            "16873-SOFTWARE-ENG-COURSE",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -323,7 +309,6 @@ async function run() {
             },
           ],
           order: 1,
-          provider: "Content Provider",
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
@@ -382,7 +367,7 @@ Batch Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -401,7 +386,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -424,9 +409,6 @@ async function run() {
               title: "Software Engineer Lv 1",
             },
           ],
-          contentIds: [
-            "16873-SOFTWARE-ENG-Content",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -442,7 +424,6 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          provider: "Course Provider",
           skills: [
             {
               id: "16873-IT345",
@@ -462,7 +443,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -473,7 +454,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -484,7 +465,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -513,9 +494,6 @@ async function run() {
               title: "Software Engineer Lv 1",
             },
           ],
-          contentIds: [
-            "16873-SOFTWARE-ENG-Content",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -528,7 +506,6 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          provider: "Course Provider",
           skills: [
             {
               id: "16873-IT345",
@@ -569,7 +546,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertCourse.js";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -590,7 +567,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -613,9 +590,6 @@ async function run() {
               title: "Software Engineer Lv 1",
             },
           ],
-          contentIds: [
-            "16873-SOFTWARE-ENG-Content",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -631,7 +605,6 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          provider: "Course Provider",
           skills: [
             {
               id: "16873-IT345",
@@ -651,7 +624,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -662,7 +635,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -673,7 +646,7 @@ async function run() {
             {
               id: "16873-IT345",
               language: {
-                value: CreateCategoriesApiModelValue.EnGB,
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
               },
               name: "Information-Technology",
               unifiedCustomFields: {
@@ -702,9 +675,6 @@ async function run() {
               title: "Software Engineer Lv 1",
             },
           ],
-          contentIds: [
-            "16873-SOFTWARE-ENG-Content",
-          ],
           coverUrl: "https://www.googledrive.com/?v=16873",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
@@ -717,7 +687,6 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          provider: "Course Provider",
           skills: [
             {
               id: "16873-IT345",
@@ -784,7 +753,7 @@ Create Collection
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -800,7 +769,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -811,7 +780,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -822,7 +791,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -879,7 +848,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsCreateCollection } from "@stackone/stackone-client-ts/funcs/lmsCreateCollection.js";
-import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -897,7 +866,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -908,7 +877,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -919,7 +888,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -1128,7 +1097,6 @@ async function run() {
   const result = await stackOne.lms.createUserCompletion({
     lmsCreateCompletionRequestDto: {
       completedAt: "2021-07-21T14:00:00.000Z",
-      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -1167,7 +1135,6 @@ async function run() {
   const res = await lmsCreateUserCompletion(stackOne, {
     lmsCreateCompletionRequestDto: {
       completedAt: "2021-07-21T14:00:00.000Z",
-      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -1203,6 +1170,92 @@ run();
 ### Response
 
 **Promise\<[operations.LmsCreateUserCompletionResponse](../../sdk/models/operations/lmscreateusercompletionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## deleteUserCompletion
+
+Delete User Completion
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.deleteUserCompletion({
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { lmsDeleteUserCompletion } from "@stackone/stackone-client-ts/funcs/lmsDeleteUserCompletion.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await lmsDeleteUserCompletion(stackOne, {
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsDeleteUserCompletionRequest](../../sdk/models/operations/lmsdeleteusercompletionrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.LmsDeleteUserCompletionResponse](../../sdk/models/operations/lmsdeleteusercompletionresponse.md)\>**
 
 ### Errors
 
@@ -2008,8 +2061,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2050,8 +2105,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2102,8 +2159,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2142,8 +2201,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2194,8 +2255,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2234,8 +2297,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2286,8 +2351,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2326,8 +2393,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2378,8 +2447,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2418,8 +2489,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2470,8 +2543,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2510,8 +2585,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2565,8 +2642,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2608,8 +2687,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2661,8 +2742,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2702,8 +2785,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2754,8 +2839,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2794,8 +2881,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -2828,7 +2917,7 @@ Update Collection
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2844,7 +2933,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -2855,7 +2944,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -2866,7 +2955,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -2920,7 +3009,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpdateCollection } from "@stackone/stackone-client-ts/funcs/lmsUpdateCollection.js";
-import { CreateCategoriesApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2938,7 +3027,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -2949,7 +3038,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -2960,7 +3049,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3040,7 +3129,7 @@ Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -3057,7 +3146,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3068,7 +3157,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3078,9 +3167,6 @@ async function run() {
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
@@ -3091,7 +3177,6 @@ async function run() {
         },
       ],
       order: 1,
-      provider: "Content Provider",
       shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
@@ -3122,7 +3207,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsUpsertContent.js";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3141,7 +3226,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3152,7 +3237,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3162,9 +3247,6 @@ async function run() {
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
@@ -3175,7 +3257,6 @@ async function run() {
         },
       ],
       order: 1,
-      provider: "Content Provider",
       shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
@@ -3232,7 +3313,7 @@ Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -3249,7 +3330,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3260,7 +3341,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3277,9 +3358,6 @@ async function run() {
           title: "Software Engineer Lv 1",
         },
       ],
-      contentIds: [
-        "16873-SOFTWARE-ENG-Content",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This course acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
@@ -3289,7 +3367,6 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
-      provider: "Course Provider",
       skills: [
         {
           id: "16873-IT345",
@@ -3320,7 +3397,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsUpsertCourse.js";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3339,7 +3416,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3350,7 +3427,7 @@ async function run() {
         {
           id: "16873-IT345",
           language: {
-            value: CreateCategoriesApiModelValue.EnGB,
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
           },
           name: "Information-Technology",
           unifiedCustomFields: {
@@ -3367,9 +3444,6 @@ async function run() {
           title: "Software Engineer Lv 1",
         },
       ],
-      contentIds: [
-        "16873-SOFTWARE-ENG-Content",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This course acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
@@ -3379,7 +3453,6 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
-      provider: "Course Provider",
       skills: [
         {
           id: "16873-IT345",

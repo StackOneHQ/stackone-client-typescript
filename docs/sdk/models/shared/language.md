@@ -5,16 +5,16 @@ The language associated with this category
 ## Example Usage
 
 ```typescript
-import { CategoryValue, Language } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CategorySchemasValue, Language } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Language = {
-  value: CategoryValue.EnGB,
+  value: CategorySchemasValue.EnGB,
 };
 ```
 
 ## Fields
 
-| Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `sourceValue`                                                       | *shared.CategorySourceValue*                                        | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
-| `value`                                                             | [shared.CategoryValue](../../../sdk/models/shared/categoryvalue.md) | :heavy_minus_sign:                                                  | The Locale Code of the language                                     | en_GB                                                               |
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `sourceValue`                                                                     | *shared.CategorySchemasSourceValue*                                               | :heavy_minus_sign:                                                                | N/A                                                                               |                                                                                   |
+| `value`                                                                           | [shared.CategorySchemasValue](../../../sdk/models/shared/categoryschemasvalue.md) | :heavy_minus_sign:                                                                | The Locale Code of the language                                                   | en_GB                                                                             |

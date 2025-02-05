@@ -4,7 +4,11 @@
 
 ```typescript
 import { LmsUpsertCourseRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasLanguageValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpsertCourseRequest = {
   lmsUpsertCourseRequestDto: {
@@ -13,7 +17,7 @@ let value: LmsUpsertCourseRequest = {
       {
         id: "16873-IT345",
         language: {
-          value: CreateCategoriesApiModelValue.EnGB,
+          value: CreateCategoriesApiModelSchemasValue.EnGB,
         },
         name: "Information-Technology",
         unifiedCustomFields: {
@@ -31,9 +35,6 @@ let value: LmsUpsertCourseRequest = {
         title: "Software Engineer Lv 1",
       },
     ],
-    contentIds: [
-      "16873-SOFTWARE-ENG-Content",
-    ],
     coverUrl: "https://www.googledrive.com/?v=16873",
     description: "This course acts as learning content for software engineers.",
     duration: "P3Y6M4DT12H30M5S",
@@ -43,10 +44,12 @@ let value: LmsUpsertCourseRequest = {
         value: LanguageEnumValue.EnGB,
       },
     ],
-    provider: "Course Provider",
     skills: [
       {
         id: "16873-IT345",
+        language: {
+          value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+        },
         name: "Information-Technology",
       },
     ],

@@ -46,10 +46,6 @@ export type LmsUpsertCourseRequestDto = {
    */
   content?: Array<CreateContentApiModel> | null | undefined;
   /**
-   * The child IDs associated with this course
-   */
-  contentIds?: Array<string> | null | undefined;
-  /**
    * The URL of the thumbnail image associated with the course.
    */
   coverUrl?: string | null | undefined;
@@ -69,10 +65,6 @@ export type LmsUpsertCourseRequestDto = {
    * The languages associated with this course
    */
   languages?: Array<LanguageEnum> | null | undefined;
-  /**
-   * The name of the course provider
-   */
-  provider?: string | null | undefined;
   /**
    * The skills associated with this content
    */
@@ -101,20 +93,17 @@ export const LmsUpsertCourseRequestDto$inboundSchema: z.ZodType<
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
   content: z.nullable(z.array(CreateContentApiModel$inboundSchema)).optional(),
-  content_ids: z.nullable(z.array(z.string())).optional(),
   cover_url: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
-  provider: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "content_ids": "contentIds",
     "cover_url": "coverUrl",
     "external_reference": "externalReference",
     "unified_custom_fields": "unifiedCustomFields",
@@ -126,13 +115,11 @@ export type LmsUpsertCourseRequestDto$Outbound = {
   active?: boolean | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
   content?: Array<CreateContentApiModel$Outbound> | null | undefined;
-  content_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
-  provider?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -149,20 +136,17 @@ export const LmsUpsertCourseRequestDto$outboundSchema: z.ZodType<
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),
   content: z.nullable(z.array(CreateContentApiModel$outboundSchema)).optional(),
-  contentIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
-  provider: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    contentIds: "content_ids",
     coverUrl: "cover_url",
     externalReference: "external_reference",
     unifiedCustomFields: "unified_custom_fields",

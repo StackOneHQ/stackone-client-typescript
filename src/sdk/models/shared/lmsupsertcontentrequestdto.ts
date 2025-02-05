@@ -92,10 +92,6 @@ export type LmsUpsertContentRequestDto = {
    */
   contentUrl?: string | null | undefined;
   /**
-   * The parent IDs associated with this content
-   */
-  courseIds?: Array<string> | null | undefined;
-  /**
    * The URL of the thumbnail image associated with the content.
    */
   coverUrl?: string | null | undefined;
@@ -119,10 +115,6 @@ export type LmsUpsertContentRequestDto = {
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
-  /**
-   * The name of the content provider
-   */
-  provider?: string | null | undefined;
   /**
    * A short description or summary for the content
    *
@@ -402,14 +394,12 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => LmsUpsertContentRequestDtoContentType$inboundSchema),
   ).optional(),
   content_url: z.nullable(z.string()).optional(),
-  course_ids: z.nullable(z.array(z.string())).optional(),
   cover_url: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
-  provider: z.nullable(z.string()).optional(),
   short_description: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
@@ -419,7 +409,6 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
     "additional_data": "additionalData",
     "content_type": "contentType",
     "content_url": "contentUrl",
-    "course_ids": "courseIds",
     "cover_url": "coverUrl",
     "external_reference": "externalReference",
     "short_description": "shortDescription",
@@ -437,14 +426,12 @@ export type LmsUpsertContentRequestDto$Outbound = {
     | null
     | undefined;
   content_url?: string | null | undefined;
-  course_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
   order?: number | null | undefined;
-  provider?: string | null | undefined;
   short_description?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   title?: string | null | undefined;
@@ -465,14 +452,12 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => LmsUpsertContentRequestDtoContentType$outboundSchema),
   ).optional(),
   contentUrl: z.nullable(z.string()).optional(),
-  courseIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
-  provider: z.nullable(z.string()).optional(),
   shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
@@ -482,7 +467,6 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
     additionalData: "additional_data",
     contentType: "content_type",
     contentUrl: "content_url",
-    courseIds: "course_ids",
     coverUrl: "cover_url",
     externalReference: "external_reference",
     shortDescription: "short_description",

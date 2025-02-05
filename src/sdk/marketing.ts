@@ -29,6 +29,7 @@ import { marketingUpdateOmniChannelTemplate } from "../funcs/marketingUpdateOmni
 import { marketingUpdatePushTemplate } from "../funcs/marketingUpdatePushTemplate.js";
 import { marketingUpdateSmsTemplate } from "../funcs/marketingUpdateSmsTemplate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
@@ -225,8 +226,10 @@ export class Marketing extends ClientSDK {
   async listCampaigns(
     request: operations.MarketingListCampaignsRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListCampaignsResponse> {
-    return unwrapAsync(marketingListCampaigns(
+  ): Promise<
+    PageIterator<operations.MarketingListCampaignsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(marketingListCampaigns(
       this,
       request,
       options,
@@ -239,8 +242,13 @@ export class Marketing extends ClientSDK {
   async listContentBlocks(
     request: operations.MarketingListContentBlocksRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListContentBlocksResponse> {
-    return unwrapAsync(marketingListContentBlocks(
+  ): Promise<
+    PageIterator<
+      operations.MarketingListContentBlocksResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(marketingListContentBlocks(
       this,
       request,
       options,
@@ -253,8 +261,13 @@ export class Marketing extends ClientSDK {
   async listEmailTemplates(
     request: operations.MarketingListEmailTemplatesRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListEmailTemplatesResponse> {
-    return unwrapAsync(marketingListEmailTemplates(
+  ): Promise<
+    PageIterator<
+      operations.MarketingListEmailTemplatesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(marketingListEmailTemplates(
       this,
       request,
       options,
@@ -267,8 +280,13 @@ export class Marketing extends ClientSDK {
   async listInAppTemplates(
     request: operations.MarketingListInAppTemplatesRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListInAppTemplatesResponse> {
-    return unwrapAsync(marketingListInAppTemplates(
+  ): Promise<
+    PageIterator<
+      operations.MarketingListInAppTemplatesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(marketingListInAppTemplates(
       this,
       request,
       options,
@@ -283,8 +301,13 @@ export class Marketing extends ClientSDK {
   async listOmniChannelTemplates(
     request: operations.MarketingListOmniChannelTemplatesRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListOmniChannelTemplatesResponse> {
-    return unwrapAsync(marketingListOmniChannelTemplates(
+  ): Promise<
+    PageIterator<
+      operations.MarketingListOmniChannelTemplatesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(marketingListOmniChannelTemplates(
       this,
       request,
       options,
@@ -297,8 +320,13 @@ export class Marketing extends ClientSDK {
   async listPushTemplates(
     request: operations.MarketingListPushTemplatesRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListPushTemplatesResponse> {
-    return unwrapAsync(marketingListPushTemplates(
+  ): Promise<
+    PageIterator<
+      operations.MarketingListPushTemplatesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(marketingListPushTemplates(
       this,
       request,
       options,
@@ -311,8 +339,13 @@ export class Marketing extends ClientSDK {
   async listSmsTemplates(
     request: operations.MarketingListSmsTemplatesRequest,
     options?: RequestOptions,
-  ): Promise<operations.MarketingListSmsTemplatesResponse> {
-    return unwrapAsync(marketingListSmsTemplates(
+  ): Promise<
+    PageIterator<
+      operations.MarketingListSmsTemplatesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(marketingListSmsTemplates(
       this,
       request,
       options,

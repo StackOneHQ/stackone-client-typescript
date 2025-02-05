@@ -13,6 +13,7 @@ import { crmListContacts } from "../funcs/crmListContacts.js";
 import { crmListLists } from "../funcs/crmListLists.js";
 import { crmUpdateContact } from "../funcs/crmUpdateContact.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
@@ -93,8 +94,10 @@ export class Crm extends ClientSDK {
   async listAccounts(
     request: operations.CrmListAccountsRequest,
     options?: RequestOptions,
-  ): Promise<operations.CrmListAccountsResponse> {
-    return unwrapAsync(crmListAccounts(
+  ): Promise<
+    PageIterator<operations.CrmListAccountsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(crmListAccounts(
       this,
       request,
       options,
@@ -107,8 +110,13 @@ export class Crm extends ClientSDK {
   async listContactCustomFieldDefinitions(
     request: operations.CrmListContactCustomFieldDefinitionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.CrmListContactCustomFieldDefinitionsResponse> {
-    return unwrapAsync(crmListContactCustomFieldDefinitions(
+  ): Promise<
+    PageIterator<
+      operations.CrmListContactCustomFieldDefinitionsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(crmListContactCustomFieldDefinitions(
       this,
       request,
       options,
@@ -121,8 +129,10 @@ export class Crm extends ClientSDK {
   async listContacts(
     request: operations.CrmListContactsRequest,
     options?: RequestOptions,
-  ): Promise<operations.CrmListContactsResponse> {
-    return unwrapAsync(crmListContacts(
+  ): Promise<
+    PageIterator<operations.CrmListContactsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(crmListContacts(
       this,
       request,
       options,
@@ -135,8 +145,10 @@ export class Crm extends ClientSDK {
   async listLists(
     request: operations.CrmListListsRequest,
     options?: RequestOptions,
-  ): Promise<operations.CrmListListsResponse> {
-    return unwrapAsync(crmListLists(
+  ): Promise<
+    PageIterator<operations.CrmListListsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(crmListLists(
       this,
       request,
       options,

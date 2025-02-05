@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsUpsertContentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CreateCategoriesApiModelValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpsertContentRequest = {
   lmsUpsertContentRequestDto: {
@@ -20,7 +20,7 @@ let value: LmsUpsertContentRequest = {
       {
         id: "16873-IT345",
         language: {
-          value: CreateCategoriesApiModelValue.EnGB,
+          value: CreateCategoriesApiModelSchemasValue.EnGB,
         },
         name: "Information-Technology",
         unifiedCustomFields: {
@@ -30,9 +30,6 @@ let value: LmsUpsertContentRequest = {
       },
     ],
     contentUrl: "https://www.youtube.com/watch?v=16873",
-    courseIds: [
-      "16873-SOFTWARE-ENG-COURSE",
-    ],
     coverUrl: "https://www.googledrive.com/?v=16873",
     description: "This video acts as learning content for software engineers.",
     duration: "P3Y6M4DT12H30M5S",
@@ -43,7 +40,6 @@ let value: LmsUpsertContentRequest = {
       },
     ],
     order: 1,
-    provider: "Content Provider",
     skills: [
       {
         id: "12345",

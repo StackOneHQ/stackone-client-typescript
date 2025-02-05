@@ -111,6 +111,8 @@ export type Completion = {
   externalId?: string | null | undefined;
   /**
    * The external reference associated with this completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   externalReference?: string | null | undefined;
   /**
@@ -118,11 +120,11 @@ export type Completion = {
    */
   id?: string | null | undefined;
   /**
-   * The external reference of the learning object associated with this completion
+   * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
    */
   learningObjectExternalReference?: string | null | undefined;
   /**
-   * The id of the learning object associated with this completion
+   * The id of the learning object associated with this completion. This is not required unless specified in an integration.
    */
   learningObjectId?: string | null | undefined;
   /**

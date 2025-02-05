@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsListCategoriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CategoryValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CategorySchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsListCategoriesResponse = {
   categoriesPaginated: {
@@ -13,7 +13,7 @@ let value: LmsListCategoriesResponse = {
         active: true,
         id: "16873-IT345",
         language: {
-          value: CategoryValue.EnGB,
+          value: CategorySchemasValue.EnGB,
         },
         name: "Information-Technology",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -30,7 +30,7 @@ let value: LmsListCategoriesResponse = {
       "<value>",
     ],
   },
-  statusCode: 201,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

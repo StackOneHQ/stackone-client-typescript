@@ -22,10 +22,43 @@ export type CreateCategoriesApiModelSourceValue =
   | boolean
   | Array<any>;
 
+export enum CreateCategoriesApiModelValue {
+  Primary = "primary",
+  Secondary = "secondary",
+  Tertiary = "tertiary",
+}
+export type CreateCategoriesApiModelValueOpen = OpenEnum<
+  typeof CreateCategoriesApiModelValue
+>;
+
+/**
+ * The hierarchal level of the category
+ */
+export type CreateCategoriesApiModelHierarchy = {
+  sourceValue?:
+    | CreateCategoriesApiModel4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: CreateCategoriesApiModelValueOpen | null | undefined;
+};
+
+export type CreateCategoriesApiModelSchemas4 = {};
+
+export type CreateCategoriesApiModelSchemasSourceValue =
+  | CreateCategoriesApiModelSchemas4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
 /**
  * The Locale Code of the language
  */
-export enum CreateCategoriesApiModelValue {
+export enum CreateCategoriesApiModelSchemasValue {
   ARAR = "ar_AR",
   AaER = "aa_ER",
   AfNA = "af_NA",
@@ -440,8 +473,8 @@ export enum CreateCategoriesApiModelValue {
 /**
  * The Locale Code of the language
  */
-export type CreateCategoriesApiModelValueOpen = OpenEnum<
-  typeof CreateCategoriesApiModelValue
+export type CreateCategoriesApiModelSchemasValueOpen = OpenEnum<
+  typeof CreateCategoriesApiModelSchemasValue
 >;
 
 /**
@@ -449,7 +482,7 @@ export type CreateCategoriesApiModelValueOpen = OpenEnum<
  */
 export type CreateCategoriesApiModelLanguage = {
   sourceValue?:
-    | CreateCategoriesApiModel4
+    | CreateCategoriesApiModelSchemas4
     | string
     | number
     | boolean
@@ -459,43 +492,49 @@ export type CreateCategoriesApiModelLanguage = {
   /**
    * The Locale Code of the language
    */
-  value?: CreateCategoriesApiModelValueOpen | null | undefined;
+  value?: CreateCategoriesApiModelSchemasValueOpen | null | undefined;
 };
 
-export type CreateCategoriesApiModelSchemas4 = {};
+export type CreateCategoriesApiModelSchemasLevel4 = {};
 
-export type CreateCategoriesApiModelSchemasSourceValue =
-  | CreateCategoriesApiModelSchemas4
+export type CreateCategoriesApiModelSchemasLevelSourceValue =
+  | CreateCategoriesApiModelSchemasLevel4
   | string
   | number
   | boolean
   | Array<any>;
 
-export enum CreateCategoriesApiModelSchemasValue {
+export enum CreateCategoriesApiModelSchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
 }
-export type CreateCategoriesApiModelSchemasValueOpen = OpenEnum<
-  typeof CreateCategoriesApiModelSchemasValue
+export type CreateCategoriesApiModelSchemasLevelValueOpen = OpenEnum<
+  typeof CreateCategoriesApiModelSchemasLevelValue
 >;
 
 /**
  * The hierarchal level of the category
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type CreateCategoriesApiModelLevel = {
   sourceValue?:
-    | CreateCategoriesApiModelSchemas4
+    | CreateCategoriesApiModelSchemasLevel4
     | string
     | number
     | boolean
     | Array<any>
     | null
     | undefined;
-  value?: CreateCategoriesApiModelSchemasValueOpen | null | undefined;
+  value?: CreateCategoriesApiModelSchemasLevelValueOpen | null | undefined;
 };
 
 export type CreateCategoriesApiModel = {
+  /**
+   * The hierarchal level of the category
+   */
+  hierarchy?: CreateCategoriesApiModelHierarchy | null | undefined;
   /**
    * The ID associated with this category
    */
@@ -506,6 +545,8 @@ export type CreateCategoriesApiModel = {
   language?: CreateCategoriesApiModelLanguage | null | undefined;
   /**
    * The hierarchal level of the category
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   level?: CreateCategoriesApiModelLevel | null | undefined;
   /**
@@ -669,8 +710,8 @@ export namespace CreateCategoriesApiModelValue$ {
 }
 
 /** @internal */
-export const CreateCategoriesApiModelLanguage$inboundSchema: z.ZodType<
-  CreateCategoriesApiModelLanguage,
+export const CreateCategoriesApiModelHierarchy$inboundSchema: z.ZodType<
+  CreateCategoriesApiModelHierarchy,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -691,7 +732,7 @@ export const CreateCategoriesApiModelLanguage$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CreateCategoriesApiModelLanguage$Outbound = {
+export type CreateCategoriesApiModelHierarchy$Outbound = {
   source_value?:
     | CreateCategoriesApiModel4$Outbound
     | string
@@ -704,10 +745,10 @@ export type CreateCategoriesApiModelLanguage$Outbound = {
 };
 
 /** @internal */
-export const CreateCategoriesApiModelLanguage$outboundSchema: z.ZodType<
-  CreateCategoriesApiModelLanguage$Outbound,
+export const CreateCategoriesApiModelHierarchy$outboundSchema: z.ZodType<
+  CreateCategoriesApiModelHierarchy$Outbound,
   z.ZodTypeDef,
-  CreateCategoriesApiModelLanguage
+  CreateCategoriesApiModelHierarchy
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -729,32 +770,33 @@ export const CreateCategoriesApiModelLanguage$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateCategoriesApiModelLanguage$ {
-  /** @deprecated use `CreateCategoriesApiModelLanguage$inboundSchema` instead. */
-  export const inboundSchema = CreateCategoriesApiModelLanguage$inboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelLanguage$outboundSchema` instead. */
-  export const outboundSchema = CreateCategoriesApiModelLanguage$outboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelLanguage$Outbound` instead. */
-  export type Outbound = CreateCategoriesApiModelLanguage$Outbound;
+export namespace CreateCategoriesApiModelHierarchy$ {
+  /** @deprecated use `CreateCategoriesApiModelHierarchy$inboundSchema` instead. */
+  export const inboundSchema = CreateCategoriesApiModelHierarchy$inboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelHierarchy$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCategoriesApiModelHierarchy$outboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelHierarchy$Outbound` instead. */
+  export type Outbound = CreateCategoriesApiModelHierarchy$Outbound;
 }
 
-export function createCategoriesApiModelLanguageToJSON(
-  createCategoriesApiModelLanguage: CreateCategoriesApiModelLanguage,
+export function createCategoriesApiModelHierarchyToJSON(
+  createCategoriesApiModelHierarchy: CreateCategoriesApiModelHierarchy,
 ): string {
   return JSON.stringify(
-    CreateCategoriesApiModelLanguage$outboundSchema.parse(
-      createCategoriesApiModelLanguage,
+    CreateCategoriesApiModelHierarchy$outboundSchema.parse(
+      createCategoriesApiModelHierarchy,
     ),
   );
 }
 
-export function createCategoriesApiModelLanguageFromJSON(
+export function createCategoriesApiModelHierarchyFromJSON(
   jsonString: string,
-): SafeParseResult<CreateCategoriesApiModelLanguage, SDKValidationError> {
+): SafeParseResult<CreateCategoriesApiModelHierarchy, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateCategoriesApiModelLanguage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCategoriesApiModelLanguage' from JSON`,
+    (x) => CreateCategoriesApiModelHierarchy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCategoriesApiModelHierarchy' from JSON`,
   );
 }
 
@@ -918,8 +960,8 @@ export namespace CreateCategoriesApiModelSchemasValue$ {
 }
 
 /** @internal */
-export const CreateCategoriesApiModelLevel$inboundSchema: z.ZodType<
-  CreateCategoriesApiModelLevel,
+export const CreateCategoriesApiModelLanguage$inboundSchema: z.ZodType<
+  CreateCategoriesApiModelLanguage,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -941,9 +983,268 @@ export const CreateCategoriesApiModelLevel$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CreateCategoriesApiModelLevel$Outbound = {
+export type CreateCategoriesApiModelLanguage$Outbound = {
   source_value?:
     | CreateCategoriesApiModelSchemas4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateCategoriesApiModelLanguage$outboundSchema: z.ZodType<
+  CreateCategoriesApiModelLanguage$Outbound,
+  z.ZodTypeDef,
+  CreateCategoriesApiModelLanguage
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => CreateCategoriesApiModelSchemas4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateCategoriesApiModelSchemasValue$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCategoriesApiModelLanguage$ {
+  /** @deprecated use `CreateCategoriesApiModelLanguage$inboundSchema` instead. */
+  export const inboundSchema = CreateCategoriesApiModelLanguage$inboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelLanguage$outboundSchema` instead. */
+  export const outboundSchema = CreateCategoriesApiModelLanguage$outboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelLanguage$Outbound` instead. */
+  export type Outbound = CreateCategoriesApiModelLanguage$Outbound;
+}
+
+export function createCategoriesApiModelLanguageToJSON(
+  createCategoriesApiModelLanguage: CreateCategoriesApiModelLanguage,
+): string {
+  return JSON.stringify(
+    CreateCategoriesApiModelLanguage$outboundSchema.parse(
+      createCategoriesApiModelLanguage,
+    ),
+  );
+}
+
+export function createCategoriesApiModelLanguageFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCategoriesApiModelLanguage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCategoriesApiModelLanguage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCategoriesApiModelLanguage' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateCategoriesApiModelSchemasLevel4$inboundSchema: z.ZodType<
+  CreateCategoriesApiModelSchemasLevel4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CreateCategoriesApiModelSchemasLevel4$Outbound = {};
+
+/** @internal */
+export const CreateCategoriesApiModelSchemasLevel4$outboundSchema: z.ZodType<
+  CreateCategoriesApiModelSchemasLevel4$Outbound,
+  z.ZodTypeDef,
+  CreateCategoriesApiModelSchemasLevel4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCategoriesApiModelSchemasLevel4$ {
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevel4$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCategoriesApiModelSchemasLevel4$inboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevel4$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCategoriesApiModelSchemasLevel4$outboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevel4$Outbound` instead. */
+  export type Outbound = CreateCategoriesApiModelSchemasLevel4$Outbound;
+}
+
+export function createCategoriesApiModelSchemasLevel4ToJSON(
+  createCategoriesApiModelSchemasLevel4: CreateCategoriesApiModelSchemasLevel4,
+): string {
+  return JSON.stringify(
+    CreateCategoriesApiModelSchemasLevel4$outboundSchema.parse(
+      createCategoriesApiModelSchemasLevel4,
+    ),
+  );
+}
+
+export function createCategoriesApiModelSchemasLevel4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCategoriesApiModelSchemasLevel4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateCategoriesApiModelSchemasLevel4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCategoriesApiModelSchemasLevel4' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateCategoriesApiModelSchemasLevelSourceValue$inboundSchema:
+  z.ZodType<
+    CreateCategoriesApiModelSchemasLevelSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => CreateCategoriesApiModelSchemasLevel4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type CreateCategoriesApiModelSchemasLevelSourceValue$Outbound =
+  | CreateCategoriesApiModelSchemasLevel4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CreateCategoriesApiModelSchemasLevelSourceValue$outboundSchema:
+  z.ZodType<
+    CreateCategoriesApiModelSchemasLevelSourceValue$Outbound,
+    z.ZodTypeDef,
+    CreateCategoriesApiModelSchemasLevelSourceValue
+  > = z.union([
+    z.lazy(() => CreateCategoriesApiModelSchemasLevel4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCategoriesApiModelSchemasLevelSourceValue$ {
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevelSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCategoriesApiModelSchemasLevelSourceValue$inboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevelSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCategoriesApiModelSchemasLevelSourceValue$outboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevelSourceValue$Outbound` instead. */
+  export type Outbound =
+    CreateCategoriesApiModelSchemasLevelSourceValue$Outbound;
+}
+
+export function createCategoriesApiModelSchemasLevelSourceValueToJSON(
+  createCategoriesApiModelSchemasLevelSourceValue:
+    CreateCategoriesApiModelSchemasLevelSourceValue,
+): string {
+  return JSON.stringify(
+    CreateCategoriesApiModelSchemasLevelSourceValue$outboundSchema.parse(
+      createCategoriesApiModelSchemasLevelSourceValue,
+    ),
+  );
+}
+
+export function createCategoriesApiModelSchemasLevelSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateCategoriesApiModelSchemasLevelSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateCategoriesApiModelSchemasLevelSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateCategoriesApiModelSchemasLevelSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateCategoriesApiModelSchemasLevelValue$inboundSchema: z.ZodType<
+  CreateCategoriesApiModelSchemasLevelValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CreateCategoriesApiModelSchemasLevelValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CreateCategoriesApiModelSchemasLevelValue$outboundSchema:
+  z.ZodType<
+    CreateCategoriesApiModelSchemasLevelValueOpen,
+    z.ZodTypeDef,
+    CreateCategoriesApiModelSchemasLevelValueOpen
+  > = z.union([
+    z.nativeEnum(CreateCategoriesApiModelSchemasLevelValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateCategoriesApiModelSchemasLevelValue$ {
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevelValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateCategoriesApiModelSchemasLevelValue$inboundSchema;
+  /** @deprecated use `CreateCategoriesApiModelSchemasLevelValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateCategoriesApiModelSchemasLevelValue$outboundSchema;
+}
+
+/** @internal */
+export const CreateCategoriesApiModelLevel$inboundSchema: z.ZodType<
+  CreateCategoriesApiModelLevel,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CreateCategoriesApiModelSchemasLevel4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateCategoriesApiModelSchemasLevelValue$inboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type CreateCategoriesApiModelLevel$Outbound = {
+  source_value?:
+    | CreateCategoriesApiModelSchemasLevel4$Outbound
     | string
     | number
     | boolean
@@ -961,14 +1262,14 @@ export const CreateCategoriesApiModelLevel$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModelSchemas4$outboundSchema),
+      z.lazy(() => CreateCategoriesApiModelSchemasLevel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(CreateCategoriesApiModelSchemasValue$outboundSchema)
+  value: z.nullable(CreateCategoriesApiModelSchemasLevelValue$outboundSchema)
     .optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1015,6 +1316,9 @@ export const CreateCategoriesApiModel$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  hierarchy: z.nullable(
+    z.lazy(() => CreateCategoriesApiModelHierarchy$inboundSchema),
+  ).optional(),
   id: z.nullable(z.string()).optional(),
   language: z.nullable(
     z.lazy(() => CreateCategoriesApiModelLanguage$inboundSchema),
@@ -1031,6 +1335,7 @@ export const CreateCategoriesApiModel$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateCategoriesApiModel$Outbound = {
+  hierarchy?: CreateCategoriesApiModelHierarchy$Outbound | null | undefined;
   id?: string | null | undefined;
   language?: CreateCategoriesApiModelLanguage$Outbound | null | undefined;
   level?: CreateCategoriesApiModelLevel$Outbound | null | undefined;
@@ -1044,6 +1349,9 @@ export const CreateCategoriesApiModel$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateCategoriesApiModel
 > = z.object({
+  hierarchy: z.nullable(
+    z.lazy(() => CreateCategoriesApiModelHierarchy$outboundSchema),
+  ).optional(),
   id: z.nullable(z.string()).optional(),
   language: z.nullable(
     z.lazy(() => CreateCategoriesApiModelLanguage$outboundSchema),

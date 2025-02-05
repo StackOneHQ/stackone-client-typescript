@@ -7,6 +7,7 @@ import { lmsBatchUpsertCourse } from "../funcs/lmsBatchUpsertCourse.js";
 import { lmsCreateCollection } from "../funcs/lmsCreateCollection.js";
 import { lmsCreateUserAssignment } from "../funcs/lmsCreateUserAssignment.js";
 import { lmsCreateUserCompletion } from "../funcs/lmsCreateUserCompletion.js";
+import { lmsDeleteUserCompletion } from "../funcs/lmsDeleteUserCompletion.js";
 import { lmsGetAssignment } from "../funcs/lmsGetAssignment.js";
 import { lmsGetCategory } from "../funcs/lmsGetCategory.js";
 import { lmsGetCompletion } from "../funcs/lmsGetCompletion.js";
@@ -29,6 +30,7 @@ import { lmsUpdateCollection } from "../funcs/lmsUpdateCollection.js";
 import { lmsUpsertContent } from "../funcs/lmsUpsertContent.js";
 import { lmsUpsertCourse } from "../funcs/lmsUpsertCourse.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
@@ -97,6 +99,20 @@ export class Lms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.LmsCreateUserCompletionResponse> {
     return unwrapAsync(lmsCreateUserCompletion(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete User Completion
+   */
+  async deleteUserCompletion(
+    request: operations.LmsDeleteUserCompletionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.LmsDeleteUserCompletionResponse> {
+    return unwrapAsync(lmsDeleteUserCompletion(
       this,
       request,
       options,
@@ -235,8 +251,10 @@ export class Lms extends ClientSDK {
   async listAssignments(
     request: operations.LmsListAssignmentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListAssignmentsResponse> {
-    return unwrapAsync(lmsListAssignments(
+  ): Promise<
+    PageIterator<operations.LmsListAssignmentsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListAssignments(
       this,
       request,
       options,
@@ -249,8 +267,10 @@ export class Lms extends ClientSDK {
   async listCategories(
     request: operations.LmsListCategoriesRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListCategoriesResponse> {
-    return unwrapAsync(lmsListCategories(
+  ): Promise<
+    PageIterator<operations.LmsListCategoriesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListCategories(
       this,
       request,
       options,
@@ -263,8 +283,10 @@ export class Lms extends ClientSDK {
   async listCompletions(
     request: operations.LmsListCompletionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListCompletionsResponse> {
-    return unwrapAsync(lmsListCompletions(
+  ): Promise<
+    PageIterator<operations.LmsListCompletionsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListCompletions(
       this,
       request,
       options,
@@ -277,8 +299,10 @@ export class Lms extends ClientSDK {
   async listContent(
     request: operations.LmsListContentRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListContentResponse> {
-    return unwrapAsync(lmsListContent(
+  ): Promise<
+    PageIterator<operations.LmsListContentResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListContent(
       this,
       request,
       options,
@@ -291,8 +315,10 @@ export class Lms extends ClientSDK {
   async listCourses(
     request: operations.LmsListCoursesRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListCoursesResponse> {
-    return unwrapAsync(lmsListCourses(
+  ): Promise<
+    PageIterator<operations.LmsListCoursesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListCourses(
       this,
       request,
       options,
@@ -305,8 +331,10 @@ export class Lms extends ClientSDK {
   async listSkills(
     request: operations.LmsListSkillsRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListSkillsResponse> {
-    return unwrapAsync(lmsListSkills(
+  ): Promise<
+    PageIterator<operations.LmsListSkillsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListSkills(
       this,
       request,
       options,
@@ -319,8 +347,10 @@ export class Lms extends ClientSDK {
   async listUserAssignments(
     request: operations.LmsListUserAssignmentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListUserAssignmentsResponse> {
-    return unwrapAsync(lmsListUserAssignments(
+  ): Promise<
+    PageIterator<operations.LmsListUserAssignmentsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListUserAssignments(
       this,
       request,
       options,
@@ -333,8 +363,10 @@ export class Lms extends ClientSDK {
   async listUserCompletions(
     request: operations.LmsListUserCompletionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListUserCompletionsResponse> {
-    return unwrapAsync(lmsListUserCompletions(
+  ): Promise<
+    PageIterator<operations.LmsListUserCompletionsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListUserCompletions(
       this,
       request,
       options,
@@ -347,8 +379,10 @@ export class Lms extends ClientSDK {
   async listUsers(
     request: operations.LmsListUsersRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsListUsersResponse> {
-    return unwrapAsync(lmsListUsers(
+  ): Promise<
+    PageIterator<operations.LmsListUsersResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(lmsListUsers(
       this,
       request,
       options,

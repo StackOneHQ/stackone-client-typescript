@@ -21,7 +21,7 @@ let value: AtsUpdateJobResponse = {
       "<value>",
     ],
   },
-  statusCode: 300,
+  statusCode: 406,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
