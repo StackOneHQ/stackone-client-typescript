@@ -9333,7 +9333,13 @@ export type HrisUpdateEmployeeRequestDto = {
    */
   citizenships?: Array<CountryCodeEnum> | null | undefined;
   /**
+   * The employee company id
+   */
+  companyId?: string | null | undefined;
+  /**
    * The employee company name
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   companyName?: string | null | undefined;
   /**
@@ -13515,6 +13521,7 @@ export const HrisUpdateEmployeeRequestDto$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$inboundSchema)).optional(),
+  company_id: z.nullable(z.string()).optional(),
   company_name: z.nullable(z.string()).optional(),
   custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   date_of_birth: z.nullable(
@@ -13585,6 +13592,7 @@ export const HrisUpdateEmployeeRequestDto$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "avatar_url": "avatarUrl",
+    "company_id": "companyId",
     "company_name": "companyName",
     "custom_fields": "customFields",
     "date_of_birth": "dateOfBirth",
@@ -13622,6 +13630,7 @@ export type HrisUpdateEmployeeRequestDto$Outbound = {
   benefits?: Array<CreateHRISBenefit$Outbound> | null | undefined;
   birthday?: string | null | undefined;
   citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
+  company_id?: string | null | undefined;
   company_name?: string | null | undefined;
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   date_of_birth?: string | null | undefined;
@@ -13694,6 +13703,7 @@ export const HrisUpdateEmployeeRequestDto$outboundSchema: z.ZodType<
   benefits: z.nullable(z.array(CreateHRISBenefit$outboundSchema)).optional(),
   birthday: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
+  companyId: z.nullable(z.string()).optional(),
   companyName: z.nullable(z.string()).optional(),
   customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   dateOfBirth: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -13756,6 +13766,7 @@ export const HrisUpdateEmployeeRequestDto$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     avatarUrl: "avatar_url",
+    companyId: "company_id",
     companyName: "company_name",
     customFields: "custom_fields",
     dateOfBirth: "date_of_birth",

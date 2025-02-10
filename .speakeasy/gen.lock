@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: f8850c380fb58883ca99cc81f3cde99e
+  docChecksum: 9eec4c5c15d4d64ae989adc4600e9b4f
   docVersion: 1.0.0
-  speakeasyVersion: 1.484.1
-  generationVersion: 2.503.2
-  releaseVersion: 4.17.14
-  configChecksum: 65255dcb1efc88144ebed410e9227d9f
+  speakeasyVersion: 1.487.1
+  generationVersion: 2.506.0
+  releaseVersion: 4.18.0
+  configChecksum: 205685297e7fbc4cd579327cf9ec3cfa
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.22
+    core: 3.19.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -238,6 +238,8 @@ generatedFiles:
   - docs/sdk/models/operations/hriscreateemployeeemploymentresponse.md
   - docs/sdk/models/operations/hriscreateemployeerequest.md
   - docs/sdk/models/operations/hriscreateemployeeresponse.md
+  - docs/sdk/models/operations/hriscreateemployeeskillrequest.md
+  - docs/sdk/models/operations/hriscreateemployeeskillresponse.md
   - docs/sdk/models/operations/hriscreateemployeetimeoffrequestrequest.md
   - docs/sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md
   - docs/sdk/models/operations/hriscreateemployeeworkeligibilityrequestrequest.md
@@ -734,7 +736,6 @@ generatedFiles:
   - docs/sdk/models/shared/companiespaginated.md
   - docs/sdk/models/shared/company.md
   - docs/sdk/models/shared/companyresult.md
-  - docs/sdk/models/shared/competency.md
   - docs/sdk/models/shared/completion.md
   - docs/sdk/models/shared/completion4.md
   - docs/sdk/models/shared/completionlearningobjecttype.md
@@ -842,12 +843,12 @@ generatedFiles:
   - docs/sdk/models/shared/createskillsapimodellanguage.md
   - docs/sdk/models/shared/createskillsapimodellevel.md
   - docs/sdk/models/shared/createskillsapimodelschemas4.md
-  - docs/sdk/models/shared/createskillsapimodelschemaslanguage4.md
-  - docs/sdk/models/shared/createskillsapimodelschemaslanguagesourcevalue.md
-  - docs/sdk/models/shared/createskillsapimodelschemaslanguagevalue.md
   - docs/sdk/models/shared/createskillsapimodelschemaslevel4.md
   - docs/sdk/models/shared/createskillsapimodelschemaslevelsourcevalue.md
   - docs/sdk/models/shared/createskillsapimodelschemaslevelvalue.md
+  - docs/sdk/models/shared/createskillsapimodelschemasproficiency4.md
+  - docs/sdk/models/shared/createskillsapimodelschemasproficiencysourcevalue.md
+  - docs/sdk/models/shared/createskillsapimodelschemasproficiencyvalue.md
   - docs/sdk/models/shared/createskillsapimodelschemassourcevalue.md
   - docs/sdk/models/shared/createskillsapimodelschemasvalue.md
   - docs/sdk/models/shared/createskillsapimodelsourcevalue.md
@@ -1146,6 +1147,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrislocationsourcevalue.md
   - docs/sdk/models/shared/hrislocationspaginated.md
   - docs/sdk/models/shared/hrislocationvalue.md
+  - docs/sdk/models/shared/hrisskillscreaterequestdto.md
   - docs/sdk/models/shared/hristeam.md
   - docs/sdk/models/shared/hristeam4.md
   - docs/sdk/models/shared/hristeamsourcevalue.md
@@ -1431,6 +1433,7 @@ generatedFiles:
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/phonenumbertype.md
   - docs/sdk/models/shared/preferredlanguage.md
+  - docs/sdk/models/shared/proficiency.md
   - docs/sdk/models/shared/providererrorapimodel.md
   - docs/sdk/models/shared/proxyrequestbody.md
   - docs/sdk/models/shared/pushmessagecontentsschemas.md
@@ -1497,18 +1500,18 @@ generatedFiles:
   - docs/sdk/models/shared/skillresult.md
   - docs/sdk/models/shared/skills.md
   - docs/sdk/models/shared/skills4.md
-  - docs/sdk/models/shared/skillscompetency.md
   - docs/sdk/models/shared/skillshierarchy.md
   - docs/sdk/models/shared/skillslanguage.md
   - docs/sdk/models/shared/skillslevel.md
   - docs/sdk/models/shared/skillspaginated.md
+  - docs/sdk/models/shared/skillsproficiency.md
   - docs/sdk/models/shared/skillsschemas4.md
-  - docs/sdk/models/shared/skillsschemaslanguage4.md
-  - docs/sdk/models/shared/skillsschemaslanguagesourcevalue.md
-  - docs/sdk/models/shared/skillsschemaslanguagevalue.md
   - docs/sdk/models/shared/skillsschemaslevel4.md
   - docs/sdk/models/shared/skillsschemaslevelsourcevalue.md
   - docs/sdk/models/shared/skillsschemaslevelvalue.md
+  - docs/sdk/models/shared/skillsschemasproficiency4.md
+  - docs/sdk/models/shared/skillsschemasproficiencysourcevalue.md
+  - docs/sdk/models/shared/skillsschemasproficiencyvalue.md
   - docs/sdk/models/shared/skillsschemassourcevalue.md
   - docs/sdk/models/shared/skillsschemasvalue.md
   - docs/sdk/models/shared/skillssourcevalue.md
@@ -1762,6 +1765,7 @@ generatedFiles:
   - src/funcs/hrisBatchUploadEmployeeDocument.ts
   - src/funcs/hrisCreateEmployee.ts
   - src/funcs/hrisCreateEmployeeEmployment.ts
+  - src/funcs/hrisCreateEmployeeSkill.ts
   - src/funcs/hrisCreateEmployeeTimeOffRequest.ts
   - src/funcs/hrisCreateEmployeeWorkEligibilityRequest.ts
   - src/funcs/hrisCreateTimeOffRequest.ts
@@ -1987,6 +1991,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisbatchuploademployeedocument.ts
   - src/sdk/models/operations/hriscreateemployee.ts
   - src/sdk/models/operations/hriscreateemployeeemployment.ts
+  - src/sdk/models/operations/hriscreateemployeeskill.ts
   - src/sdk/models/operations/hriscreateemployeetimeoffrequest.ts
   - src/sdk/models/operations/hriscreateemployeeworkeligibilityrequest.ts
   - src/sdk/models/operations/hriscreatetimeoffrequest.ts
@@ -2253,6 +2258,7 @@ generatedFiles:
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
+  - src/sdk/models/shared/hrisskillscreaterequestdto.ts
   - src/sdk/models/shared/hristeam.ts
   - src/sdk/models/shared/hristeamspaginated.ts
   - src/sdk/models/shared/hristeamsresult.ts
@@ -4006,7 +4012,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "interview_stage_id": "18bcbb1b-3cbc-4198-a999-460861d19480", "passthrough": {"other_known_names": "John Doe"}, "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}}
+        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "passthrough": {"other_known_names": "John Doe"}, "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}}
       responses:
         "200":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -4513,7 +4519,7 @@ examples:
           id: "<id>"
         query:
           raw: false
-          fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number"
+          fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number"
           expand: "company,employments,work_location,home_location,groups"
           include: "avatar_url,avatar,custom_fields,job_description,benefits"
         header:
@@ -5147,7 +5153,7 @@ examples:
       parameters:
         query:
           raw: false
-          fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number"
+          fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           page_size: "25"
           updated_after: "2020-01-01T00:00:00.000Z"
@@ -5727,7 +5733,7 @@ examples:
           id: "<id>"
         query:
           raw: false
-          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider"
+          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider"
         header:
           x-account-id: "<id>"
       responses:
@@ -5777,7 +5783,7 @@ examples:
           id: "<id>"
         query:
           raw: false
-          fields: "id,remote_id,name,active,level,language,hierarchy,competency"
+          fields: "id,remote_id,name,active,level,language,hierarchy,proficiency"
         header:
           x-account-id: "<id>"
       responses:
@@ -5937,7 +5943,7 @@ examples:
       parameters:
         query:
           raw: false
-          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider"
+          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           page_size: "25"
           updated_after: "2020-01-01T00:00:00.000Z"
@@ -5991,7 +5997,7 @@ examples:
       parameters:
         query:
           raw: false
-          fields: "id,remote_id,name,active,level,language,hierarchy,competency"
+          fields: "id,remote_id,name,active,level,language,hierarchy,proficiency"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           page_size: "25"
           updated_after: "2020-01-01T00:00:00.000Z"
@@ -6749,5 +6755,17 @@ examples:
       responses:
         "201":
           application/json: {"message": "Record deleted successfully.", "statusCode": 204, "timestamp": "2021-01-01T01:01:01.000Z"}
+  hris_create_employee_skill:
+    speakeasy-default-hris-create-employee-skill:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"id": "16873-IT345", "name": "Information-Technology"}
+      responses:
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
 examplesVersion: 1.0.0
 generatedTests: {}

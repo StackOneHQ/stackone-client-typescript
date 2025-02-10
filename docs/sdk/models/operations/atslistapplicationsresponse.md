@@ -85,7 +85,6 @@ let value: AtsListApplicationsResponse = {
         },
         interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
         jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
-        locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
         locationIds: [
           "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
         ],

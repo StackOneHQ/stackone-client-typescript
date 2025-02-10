@@ -18,6 +18,10 @@ export type CreateContentApiModel = {
    */
   description?: string | null | undefined;
   /**
+   * The external ID associated with this content
+   */
+  externalReference?: string | null | undefined;
+  /**
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
@@ -35,11 +39,13 @@ export const CreateContentApiModel$inboundSchema: z.ZodType<
 > = z.object({
   content_url: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
+  external_reference: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   title: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "content_url": "contentUrl",
+    "external_reference": "externalReference",
   });
 });
 
@@ -47,6 +53,7 @@ export const CreateContentApiModel$inboundSchema: z.ZodType<
 export type CreateContentApiModel$Outbound = {
   content_url?: string | null | undefined;
   description?: string | null | undefined;
+  external_reference?: string | null | undefined;
   order?: number | null | undefined;
   title?: string | null | undefined;
 };
@@ -59,11 +66,13 @@ export const CreateContentApiModel$outboundSchema: z.ZodType<
 > = z.object({
   contentUrl: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
+  externalReference: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   title: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contentUrl: "content_url",
+    externalReference: "external_reference",
   });
 });
 

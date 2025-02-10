@@ -19,7 +19,7 @@ let value: HrisUpdateEmployeeResponse = {
       "<value>",
     ],
   },
-  statusCode: 505,
+  statusCode: 305,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -42,7 +42,7 @@ let value: HrisUpdateEmployeeResponse = {
         value: CountryCodeEnumValue.Us,
       },
     ],
-    companyName: "Example Corp",
+    companyId: "1234567890",
     customFields: [
       {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

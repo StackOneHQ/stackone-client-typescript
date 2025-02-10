@@ -12,7 +12,7 @@ let value: HrisListTimeEntriesResponse = {
       "<value>",
     ],
   },
-  statusCode: 208,
+  statusCode: 400,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -15,7 +15,7 @@ export type Value = string | Array<string>;
 
 export type AdditionalData = {
   /**
-   * The type of the additional data
+   * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
    */
   id?: string | null | undefined;
   /**

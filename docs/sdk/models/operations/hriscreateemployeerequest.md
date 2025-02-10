@@ -32,7 +32,7 @@ let value: HrisCreateEmployeeRequest = {
         value: CountryCodeEnumValue.Us,
       },
     ],
-    companyName: "Example Corp",
+    companyId: "1234567890",
     costCenters: [
       {
         distributionPercentage: 100,

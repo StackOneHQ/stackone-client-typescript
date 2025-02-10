@@ -5,7 +5,7 @@
 ```typescript
 import { EmploymentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentValue = EmploymentValue.FullTime;
+let value: EmploymentValue = EmploymentValue.PartTime;
 ```
 
 ## Values

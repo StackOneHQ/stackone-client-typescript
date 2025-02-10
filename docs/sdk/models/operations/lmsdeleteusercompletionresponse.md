@@ -17,7 +17,7 @@ let value: LmsDeleteUserCompletionResponse = {
       "<value>",
     ],
   },
-  statusCode: 202,
+  statusCode: 306,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

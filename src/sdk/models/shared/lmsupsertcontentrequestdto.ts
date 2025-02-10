@@ -112,6 +112,10 @@ export type LmsUpsertContentRequestDto = {
    */
   languages?: Array<LanguageEnum> | null | undefined;
   /**
+   * The mobile friendly URL of the content
+   */
+  mobileLaunchContentUrl?: string | null | undefined;
+  /**
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
@@ -399,6 +403,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
+  mobile_launch_content_url: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   short_description: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
@@ -411,6 +416,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
     "content_url": "contentUrl",
     "cover_url": "coverUrl",
     "external_reference": "externalReference",
+    "mobile_launch_content_url": "mobileLaunchContentUrl",
     "short_description": "shortDescription",
     "unified_custom_fields": "unifiedCustomFields",
   });
@@ -431,6 +437,7 @@ export type LmsUpsertContentRequestDto$Outbound = {
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
+  mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   short_description?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
@@ -457,6 +464,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
+  mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
@@ -469,6 +477,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
     contentUrl: "content_url",
     coverUrl: "cover_url",
     externalReference: "external_reference",
+    mobileLaunchContentUrl: "mobile_launch_content_url",
     shortDescription: "short_description",
     unifiedCustomFields: "unified_custom_fields",
   });

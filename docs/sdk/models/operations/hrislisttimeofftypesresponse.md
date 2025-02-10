@@ -22,7 +22,7 @@ let value: HrisListTimeOffTypesResponse = {
       },
     ],
   },
-  statusCode: 201,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

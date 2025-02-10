@@ -6,7 +6,7 @@
 import { LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateAssignmentRequestDtoValue =
-  LmsCreateAssignmentRequestDtoValue.InProgress;
+  LmsCreateAssignmentRequestDtoValue.Completed;
 ```
 
 ## Values

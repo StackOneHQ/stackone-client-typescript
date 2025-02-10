@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasLanguageValue,
+  CreateSkillsApiModelSchemasValue,
   LmsCreateCollectionRequestDto,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -39,7 +39,7 @@ let value: LmsCreateCollectionRequestDto = {
     {
       id: "16873-IT345",
       language: {
-        value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+        value: CreateSkillsApiModelSchemasValue.EnGB,
       },
       name: "Information-Technology",
     },

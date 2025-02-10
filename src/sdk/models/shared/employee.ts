@@ -1804,7 +1804,13 @@ export type Employee = {
    */
   company?: EmployeeCompany | null | undefined;
   /**
+   * The employee company id
+   */
+  companyId?: string | null | undefined;
+  /**
    * The employee company name
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   companyName?: string | null | undefined;
   /**
@@ -5729,6 +5735,7 @@ export const Employee$inboundSchema: z.ZodType<
   ).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$inboundSchema)).optional(),
   company: z.nullable(z.lazy(() => EmployeeCompany$inboundSchema)).optional(),
+  company_id: z.nullable(z.string()).optional(),
   company_name: z.nullable(z.string()).optional(),
   cost_centers: z.nullable(z.array(CostCenters$inboundSchema)).optional(),
   created_at: z.nullable(
@@ -5800,6 +5807,7 @@ export const Employee$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "avatar_url": "avatarUrl",
+    "company_id": "companyId",
     "company_name": "companyName",
     "cost_centers": "costCenters",
     "created_at": "createdAt",
@@ -5845,6 +5853,7 @@ export type Employee$Outbound = {
   birthday?: string | null | undefined;
   citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
   company?: EmployeeCompany$Outbound | null | undefined;
+  company_id?: string | null | undefined;
   company_name?: string | null | undefined;
   cost_centers?: Array<CostCenters$Outbound> | null | undefined;
   created_at?: string | null | undefined;
@@ -5904,6 +5913,7 @@ export const Employee$outboundSchema: z.ZodType<
   birthday: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
   company: z.nullable(z.lazy(() => EmployeeCompany$outboundSchema)).optional(),
+  companyId: z.nullable(z.string()).optional(),
   companyName: z.nullable(z.string()).optional(),
   costCenters: z.nullable(z.array(CostCenters$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -5963,6 +5973,7 @@ export const Employee$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     avatarUrl: "avatar_url",
+    companyId: "company_id",
     companyName: "company_name",
     costCenters: "cost_centers",
     createdAt: "created_at",

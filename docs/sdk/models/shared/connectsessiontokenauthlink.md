@@ -6,21 +6,21 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://wiggly-term.biz",
+  authLinkUrl: "https://frequent-wriggler.biz",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.Documents,
+    ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
+    ConnectSessionTokenAuthLinkCategories.Documents,
     ConnectSessionTokenAuthLinkCategories.Documents,
   ],
-  createdAt: new Date("2023-04-27T01:45:19.792Z"),
-  id: 9509.53,
-  organizationId: 2334.2,
+  createdAt: new Date("2023-09-13T19:53:11.039Z"),
+  id: 6897.68,
+  organizationId: 583.56,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",

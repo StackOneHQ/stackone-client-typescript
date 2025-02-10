@@ -1,4 +1,4 @@
-# SkillsSchemasLanguageSourceValue
+# SkillsSchemasProficiencySourceValue
 
 
 ## Supported Types
@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 8672.9;
+const value: number = 6995.75;
 ```
 
 ### `boolean`
@@ -21,10 +21,10 @@ const value: number = 8672.9;
 const value: boolean = false;
 ```
 
-### `shared.SkillsSchemasLanguage4`
+### `shared.SkillsSchemasProficiency4`
 
 ```typescript
-const value: shared.SkillsSchemasLanguage4 = {};
+const value: shared.SkillsSchemasProficiency4 = {};
 ```
 
 ### `any[]`

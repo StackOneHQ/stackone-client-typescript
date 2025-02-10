@@ -6,7 +6,7 @@
 import { LmsUpsertCourseRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
   CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasLanguageValue,
+  CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -31,6 +31,7 @@ let value: LmsUpsertCourseRequest = {
         contentUrl: "https://www.youtube.com/watch?v=16873",
         description:
           "This video acts as learning content for software engineers.",
+        externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
         order: 1,
         title: "Software Engineer Lv 1",
       },
@@ -48,7 +49,7 @@ let value: LmsUpsertCourseRequest = {
       {
         id: "16873-IT345",
         language: {
-          value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+          value: CreateSkillsApiModelSchemasValue.EnGB,
         },
         name: "Information-Technology",
       },

@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsCreateCollectionRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasLanguageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCollectionRequest = {
   lmsCreateCollectionRequestDto: {
@@ -37,7 +37,7 @@ let value: LmsCreateCollectionRequest = {
       {
         id: "16873-IT345",
         language: {
-          value: CreateSkillsApiModelSchemasLanguageValue.EnGB,
+          value: CreateSkillsApiModelSchemasValue.EnGB,
         },
         name: "Information-Technology",
       },
