@@ -28,7 +28,7 @@ let value: HrisListCompaniesResponse = {
       "<value>",
     ],
   },
-  statusCode: 226,
+  statusCode: 423,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

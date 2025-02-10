@@ -32,7 +32,7 @@ let value: HrisUpdateEmployeeRequest = {
         value: CountryCodeEnumValue.Us,
       },
     ],
-    companyName: "Example Corp",
+    companyId: "1234567890",
     customFields: [
       {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

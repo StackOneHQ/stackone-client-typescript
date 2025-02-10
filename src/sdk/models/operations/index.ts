@@ -85,6 +85,7 @@ export * from "./crmupdatecontact.js";
 export * from "./hrisbatchuploademployeedocument.js";
 export * from "./hriscreateemployee.js";
 export * from "./hriscreateemployeeemployment.js";
+export * from "./hriscreateemployeeskill.js";
 export * from "./hriscreateemployeetimeoffrequest.js";
 export * from "./hriscreateemployeeworkeligibilityrequest.js";
 export * from "./hriscreatetimeoffrequest.js";

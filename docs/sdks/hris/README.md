@@ -8,6 +8,7 @@
 * [batchUploadEmployeeDocument](#batchuploademployeedocument) - Batch Upload Employee Document
 * [createEmployee](#createemployee) - Creates an employee
 * [createEmployeeEmployment](#createemployeeemployment) - Create Employee Employment
+* [createEmployeeSkill](#createemployeeskill) - Create Employee Skill
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
@@ -677,6 +678,98 @@ run();
 ### Response
 
 **Promise\<[operations.HrisCreateEmployeeEmploymentResponse](../../sdk/models/operations/hriscreateemployeeemploymentresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createEmployeeSkill
+
+Create Employee Skill
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.createEmployeeSkill({
+    hrisSkillsCreateRequestDto: {
+      id: "16873-IT345",
+      name: "Information-Technology",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisCreateEmployeeSkill } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployeeSkill.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisCreateEmployeeSkill(stackOne, {
+    hrisSkillsCreateRequestDto: {
+      id: "16873-IT345",
+      name: "Information-Technology",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisCreateEmployeeSkillRequest](../../sdk/models/operations/hriscreateemployeeskillrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisCreateEmployeeSkillResponse](../../sdk/models/operations/hriscreateemployeeskillresponse.md)\>**
 
 ### Errors
 

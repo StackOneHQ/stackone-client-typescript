@@ -149,6 +149,7 @@ export * from "./hrisgroupsresult.js";
 export * from "./hrislocation.js";
 export * from "./hrislocationresult.js";
 export * from "./hrislocationspaginated.js";
+export * from "./hrisskillscreaterequestdto.js";
 export * from "./hristeam.js";
 export * from "./hristeamspaginated.js";
 export * from "./hristeamsresult.js";

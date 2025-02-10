@@ -39,6 +39,7 @@ let value: LmsUpsertContentRequest = {
         value: LanguageEnumValue.EnGB,
       },
     ],
+    mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
     order: 1,
     skills: [
       {

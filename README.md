@@ -215,6 +215,7 @@ run();
 * [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
 * [createEmployeeEmployment](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
+* [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
@@ -735,6 +736,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisBatchUploadEmployeeDocument`](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 - [`hrisCreateEmployee`](docs/sdks/hris/README.md#createemployee) - Creates an employee
 - [`hrisCreateEmployeeEmployment`](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
+- [`hrisCreateEmployeeSkill`](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 - [`hrisCreateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 - [`hrisCreateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 - [`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request

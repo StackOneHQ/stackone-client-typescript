@@ -20,7 +20,7 @@ let value: LmsListAssignmentsResponse = {
         remoteLearningObjectId: "e3cb55bf-aa84-466e-a6c1-b8302b257a49",
         remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
         status: {
-          value: AssignmentSchemasValue.Pending,
+          value: AssignmentSchemasValue.Completed,
         },
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
@@ -37,7 +37,7 @@ let value: LmsListAssignmentsResponse = {
       "<value>",
     ],
   },
-  statusCode: 308,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

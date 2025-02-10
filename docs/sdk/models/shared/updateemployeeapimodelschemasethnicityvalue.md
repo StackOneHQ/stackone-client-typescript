@@ -6,7 +6,7 @@
 import { UpdateEmployeeApiModelSchemasEthnicityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UpdateEmployeeApiModelSchemasEthnicityValue =
-  UpdateEmployeeApiModelSchemasEthnicityValue.UnmappedValue;
+  UpdateEmployeeApiModelSchemasEthnicityValue.Other;
 ```
 
 ## Values

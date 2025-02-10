@@ -7,7 +7,7 @@ import { HrisUpdateEmployeeRequestDtoSchemasEthnicityValue } from "@stackone/sta
 
 let value: HrisUpdateEmployeeRequestDtoSchemasEthnicityValue =
   HrisUpdateEmployeeRequestDtoSchemasEthnicityValue
-    .NativeHawaiianOrPacificIslander;
+    .AmericanIndianOrAlaskaNative;
 ```
 
 ## Values

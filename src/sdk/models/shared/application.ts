@@ -246,6 +246,8 @@ export type Application = {
   jobId?: string | null | undefined;
   /**
    * Unique identifier of the location
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   locationId?: string | null | undefined;
   /**

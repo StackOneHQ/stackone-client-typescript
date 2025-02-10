@@ -1,11 +1,11 @@
-# SkillsSchemasLanguage4
+# SkillsSchemasProficiency4
 
 ## Example Usage
 
 ```typescript
-import { SkillsSchemasLanguage4 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { SkillsSchemasProficiency4 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: SkillsSchemasLanguage4 = {};
+let value: SkillsSchemasProficiency4 = {};
 ```
 
 ## Fields

@@ -39,6 +39,7 @@ let value: LmsGetContentResponse = {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
       provider: "Content Provider",
       remoteCourseIds: [
@@ -65,7 +66,7 @@ let value: LmsGetContentResponse = {
       "<value>",
     ],
   },
-  statusCode: 102,
+  statusCode: 424,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

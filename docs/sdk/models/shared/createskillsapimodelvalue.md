@@ -5,7 +5,7 @@
 ```typescript
 import { CreateSkillsApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CreateSkillsApiModelValue = CreateSkillsApiModelValue.Three;
+let value: CreateSkillsApiModelValue = CreateSkillsApiModelValue.Tertiary;
 ```
 
 ## Values
@@ -14,9 +14,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `One`                  | 1                      |
-| `Two`                  | 2                      |
-| `Three`                | 3                      |
-| `Four`                 | 4                      |
-| `Five`                 | 5                      |
+| `Primary`              | primary                |
+| `Secondary`            | secondary              |
+| `Tertiary`             | tertiary               |
 | -                      | `Unrecognized<string>` |

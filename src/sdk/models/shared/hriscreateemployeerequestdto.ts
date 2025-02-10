@@ -9345,7 +9345,13 @@ export type HrisCreateEmployeeRequestDto = {
    */
   citizenships?: Array<CountryCodeEnum> | null | undefined;
   /**
+   * The employee company id
+   */
+  companyId?: string | null | undefined;
+  /**
    * The employee company name
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   companyName?: string | null | undefined;
   /**
@@ -13513,6 +13519,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$inboundSchema)).optional(),
+  company_id: z.nullable(z.string()).optional(),
   company_name: z.nullable(z.string()).optional(),
   cost_centers: z.nullable(z.array(CreateCostCenterApiModel$inboundSchema))
     .optional(),
@@ -13587,6 +13594,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "avatar_url": "avatarUrl",
+    "company_id": "companyId",
     "company_name": "companyName",
     "cost_centers": "costCenters",
     "custom_fields": "customFields",
@@ -13625,6 +13633,7 @@ export type HrisCreateEmployeeRequestDto$Outbound = {
   benefits?: Array<CreateHRISBenefit$Outbound> | null | undefined;
   birthday?: string | null | undefined;
   citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
+  company_id?: string | null | undefined;
   company_name?: string | null | undefined;
   cost_centers?: Array<CreateCostCenterApiModel$Outbound> | null | undefined;
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
@@ -13699,6 +13708,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
   benefits: z.nullable(z.array(CreateHRISBenefit$outboundSchema)).optional(),
   birthday: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
+  companyId: z.nullable(z.string()).optional(),
   companyName: z.nullable(z.string()).optional(),
   costCenters: z.nullable(z.array(CreateCostCenterApiModel$outboundSchema))
     .optional(),
@@ -13765,6 +13775,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     avatarUrl: "avatar_url",
+    companyId: "company_id",
     companyName: "company_name",
     costCenters: "cost_centers",
     customFields: "custom_fields",

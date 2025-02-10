@@ -6,7 +6,7 @@
 import { HrisCreateEmploymentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmploymentRequestDtoValue =
-  HrisCreateEmploymentRequestDtoValue.UnmappedValue;
+  HrisCreateEmploymentRequestDtoValue.PartTime;
 ```
 
 ## Values

@@ -12,7 +12,7 @@ let value: LmsGetUserResponse = {
       "<value>",
     ],
   },
-  statusCode: 302,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

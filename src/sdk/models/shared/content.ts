@@ -118,6 +118,10 @@ export type Content = {
    */
   languages?: Array<LanguageEnum> | null | undefined;
   /**
+   * The mobile friendly URL of the content
+   */
+  mobileLaunchContentUrl?: string | null | undefined;
+  /**
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
@@ -399,6 +403,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     external_reference: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
+    mobile_launch_content_url: z.nullable(z.string()).optional(),
     order: z.nullable(z.number()).optional(),
     provider: z.nullable(z.string()).optional(),
     remote_course_ids: z.nullable(z.array(z.string())).optional(),
@@ -415,6 +420,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
       "course_ids": "courseIds",
       "cover_url": "coverUrl",
       "external_reference": "externalReference",
+      "mobile_launch_content_url": "mobileLaunchContentUrl",
       "remote_course_ids": "remoteCourseIds",
       "remote_id": "remoteId",
       "short_description": "shortDescription",
@@ -436,6 +442,7 @@ export type Content$Outbound = {
   external_reference?: string | null | undefined;
   id?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
+  mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   provider?: string | null | undefined;
   remote_course_ids?: Array<string> | null | undefined;
@@ -465,6 +472,7 @@ export const Content$outboundSchema: z.ZodType<
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
+  mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   provider: z.nullable(z.string()).optional(),
   remoteCourseIds: z.nullable(z.array(z.string())).optional(),
@@ -481,6 +489,7 @@ export const Content$outboundSchema: z.ZodType<
     courseIds: "course_ids",
     coverUrl: "cover_url",
     externalReference: "external_reference",
+    mobileLaunchContentUrl: "mobile_launch_content_url",
     remoteCourseIds: "remote_course_ids",
     remoteId: "remote_id",
     shortDescription: "short_description",

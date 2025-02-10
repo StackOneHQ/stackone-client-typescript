@@ -46,7 +46,7 @@ let value: EmployeeResult = {
       },
       updatedAt: new Date("2024-02-23T00:00:00.000Z"),
     },
-    companyName: "Example Corp",
+    companyId: "1234567890",
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     customFields: [
       {

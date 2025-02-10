@@ -22,7 +22,6 @@ let value: AtsUpdateApplicationRequest = {
         valueId: "value_456",
       },
     ],
-    interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
     passthrough: {
       "other_known_names": "John Doe",
     },

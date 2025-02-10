@@ -1,4 +1,4 @@
-# CreateSkillsApiModelSchemasLanguageSourceValue
+# CreateSkillsApiModelSchemasProficiencySourceValue
 
 
 ## Supported Types
@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 9587.41;
+const value: number = 5896.95;
 ```
 
 ### `boolean`
@@ -21,10 +21,10 @@ const value: number = 9587.41;
 const value: boolean = false;
 ```
 
-### `shared.CreateSkillsApiModelSchemasLanguage4`
+### `shared.CreateSkillsApiModelSchemasProficiency4`
 
 ```typescript
-const value: shared.CreateSkillsApiModelSchemasLanguage4 = {};
+const value: shared.CreateSkillsApiModelSchemasProficiency4 = {};
 ```
 
 ### `any[]`

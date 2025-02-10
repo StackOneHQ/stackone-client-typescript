@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsListSkillsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { SkillsSchemasLanguageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { SkillsSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsListSkillsResponse = {
   contentType: "<value>",
@@ -19,14 +19,14 @@ let value: LmsListSkillsResponse = {
         active: true,
         id: "16873-IT345",
         language: {
-          value: SkillsSchemasLanguageValue.EnGB,
+          value: SkillsSchemasValue.EnGB,
         },
         name: "Information-Technology",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     ],
   },
-  statusCode: 502,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

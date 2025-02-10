@@ -39,6 +39,7 @@ export type LinkedAccount = {
   originOwnerName: string;
   originUsername?: string | null | undefined;
   provider: string;
+  providerName?: string | null | undefined;
   setupInformation?: SetupInformation | null | undefined;
   status: LinkedAccountStatusOpen;
   statusReasons?: Array<StatusReason> | null | undefined;
@@ -183,6 +184,7 @@ export const LinkedAccount$inboundSchema: z.ZodType<
   origin_owner_name: z.string(),
   origin_username: z.nullable(z.string()).optional(),
   provider: z.string(),
+  provider_name: z.nullable(z.string()).optional(),
   setup_information: z.nullable(z.lazy(() => SetupInformation$inboundSchema))
     .optional(),
   status: LinkedAccountStatus$inboundSchema,
@@ -194,6 +196,7 @@ export const LinkedAccount$inboundSchema: z.ZodType<
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",
     "origin_username": "originUsername",
+    "provider_name": "providerName",
     "setup_information": "setupInformation",
     "status_reasons": "statusReasons",
     "updated_at": "updatedAt",
@@ -210,6 +213,7 @@ export type LinkedAccount$Outbound = {
   origin_owner_name: string;
   origin_username?: string | null | undefined;
   provider: string;
+  provider_name?: string | null | undefined;
   setup_information?: SetupInformation$Outbound | null | undefined;
   status: string;
   status_reasons?: Array<StatusReason$Outbound> | null | undefined;
@@ -230,6 +234,7 @@ export const LinkedAccount$outboundSchema: z.ZodType<
   originOwnerName: z.string(),
   originUsername: z.nullable(z.string()).optional(),
   provider: z.string(),
+  providerName: z.nullable(z.string()).optional(),
   setupInformation: z.nullable(z.lazy(() => SetupInformation$outboundSchema))
     .optional(),
   status: LinkedAccountStatus$outboundSchema,
@@ -241,6 +246,7 @@ export const LinkedAccount$outboundSchema: z.ZodType<
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",
     originUsername: "origin_username",
+    providerName: "provider_name",
     setupInformation: "setup_information",
     statusReasons: "status_reasons",
     updatedAt: "updated_at",

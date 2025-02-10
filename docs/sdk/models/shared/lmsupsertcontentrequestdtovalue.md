@@ -6,7 +6,7 @@
 import { LmsUpsertContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpsertContentRequestDtoValue =
-  LmsUpsertContentRequestDtoValue.Video;
+  LmsUpsertContentRequestDtoValue.Quiz;
 ```
 
 ## Values
