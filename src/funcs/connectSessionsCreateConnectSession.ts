@@ -64,6 +64,7 @@ export async function connectSessionsCreateConnectSession(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_create_connect_session",
     oAuth2Scopes: [],
 

@@ -96,6 +96,7 @@ export async function atsGetApplicationScheduledInterview(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_application_scheduled_interview",
     oAuth2Scopes: [],
 

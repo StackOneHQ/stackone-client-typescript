@@ -88,6 +88,7 @@ export async function lmsGetAssignment(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_get_assignment",
     oAuth2Scopes: [],
 

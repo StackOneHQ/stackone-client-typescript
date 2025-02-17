@@ -76,6 +76,7 @@ export async function atsMoveApplication(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_move_application",
     oAuth2Scopes: [],
 

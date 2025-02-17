@@ -10,25 +10,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter to select completions by learning object type.
- */
-export enum LmsListUserCompletionsQueryParamLearningObjectType {
-  Content = "content",
-  Course = "course",
-  Collection = "collection",
-}
-
-/**
  * LMS Completions Filter
  */
 export type LmsListUserCompletionsQueryParamFilter = {
-  /**
-   * Filter to select completions by learning object type.
-   */
-  learningObjectType?:
-    | LmsListUserCompletionsQueryParamLearningObjectType
-    | null
-    | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -100,48 +84,20 @@ export type LmsListUserCompletionsResponse = {
 };
 
 /** @internal */
-export const LmsListUserCompletionsQueryParamLearningObjectType$inboundSchema:
-  z.ZodNativeEnum<typeof LmsListUserCompletionsQueryParamLearningObjectType> = z
-    .nativeEnum(LmsListUserCompletionsQueryParamLearningObjectType);
-
-/** @internal */
-export const LmsListUserCompletionsQueryParamLearningObjectType$outboundSchema:
-  z.ZodNativeEnum<typeof LmsListUserCompletionsQueryParamLearningObjectType> =
-    LmsListUserCompletionsQueryParamLearningObjectType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListUserCompletionsQueryParamLearningObjectType$ {
-  /** @deprecated use `LmsListUserCompletionsQueryParamLearningObjectType$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsListUserCompletionsQueryParamLearningObjectType$inboundSchema;
-  /** @deprecated use `LmsListUserCompletionsQueryParamLearningObjectType$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsListUserCompletionsQueryParamLearningObjectType$outboundSchema;
-}
-
-/** @internal */
 export const LmsListUserCompletionsQueryParamFilter$inboundSchema: z.ZodType<
   LmsListUserCompletionsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  learning_object_type: z.nullable(
-    LmsListUserCompletionsQueryParamLearningObjectType$inboundSchema,
-  ).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "learning_object_type": "learningObjectType",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type LmsListUserCompletionsQueryParamFilter$Outbound = {
-  learning_object_type?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -151,13 +107,9 @@ export const LmsListUserCompletionsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListUserCompletionsQueryParamFilter
 > = z.object({
-  learningObjectType: z.nullable(
-    LmsListUserCompletionsQueryParamLearningObjectType$outboundSchema,
-  ).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    learningObjectType: "learning_object_type",
     updatedAfter: "updated_after",
   });
 });

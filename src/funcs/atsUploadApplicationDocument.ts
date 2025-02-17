@@ -81,6 +81,7 @@ export async function atsUploadApplicationDocument(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_upload_application_document",
     oAuth2Scopes: [],
 

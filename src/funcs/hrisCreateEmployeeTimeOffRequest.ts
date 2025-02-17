@@ -79,6 +79,7 @@ export async function hrisCreateEmployeeTimeOffRequest(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_create_employee_time_off_request",
     oAuth2Scopes: [],
 

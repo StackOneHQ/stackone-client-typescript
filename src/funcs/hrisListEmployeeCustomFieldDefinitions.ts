@@ -88,6 +88,7 @@ export async function hrisListEmployeeCustomFieldDefinitions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_list_employee_custom_field_definitions",
     oAuth2Scopes: [],
 

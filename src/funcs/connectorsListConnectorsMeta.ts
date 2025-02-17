@@ -67,6 +67,7 @@ export async function connectorsListConnectorsMeta(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_list_connectors_meta",
     oAuth2Scopes: [],
 

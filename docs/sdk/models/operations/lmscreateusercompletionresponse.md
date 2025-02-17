@@ -21,7 +21,7 @@ let value: LmsCreateUserCompletionResponse = {
       "<value>",
     ],
   },
-  statusCode: 202,
+  statusCode: 424,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

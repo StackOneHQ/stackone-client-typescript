@@ -89,6 +89,7 @@ export async function hrisGetCostCenterGroup(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_get_cost_center_group",
     oAuth2Scopes: [],
 

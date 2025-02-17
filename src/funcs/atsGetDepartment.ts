@@ -88,6 +88,7 @@ export async function atsGetDepartment(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_department",
     oAuth2Scopes: [],
 

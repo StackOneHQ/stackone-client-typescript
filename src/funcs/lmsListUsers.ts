@@ -96,6 +96,7 @@ export async function lmsListUsers(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_list_users",
     oAuth2Scopes: [],
 

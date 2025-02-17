@@ -72,6 +72,7 @@ export async function marketingCreateContentBlock(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_create_content_block",
     oAuth2Scopes: [],
 

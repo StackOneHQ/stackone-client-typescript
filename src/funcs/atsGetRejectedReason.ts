@@ -89,6 +89,7 @@ export async function atsGetRejectedReason(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_rejected_reason",
     oAuth2Scopes: [],
 

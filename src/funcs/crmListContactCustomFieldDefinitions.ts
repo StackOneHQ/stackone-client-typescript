@@ -98,6 +98,7 @@ export async function crmListContactCustomFieldDefinitions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "crm_list_contact_custom_field_definitions",
     oAuth2Scopes: [],
 

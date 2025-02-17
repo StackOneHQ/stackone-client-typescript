@@ -81,6 +81,7 @@ export async function atsUpdateAssessmentsResult(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_update_assessments_result",
     oAuth2Scopes: [],
 

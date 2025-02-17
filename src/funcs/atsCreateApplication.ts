@@ -70,6 +70,7 @@ export async function atsCreateApplication(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_create_application",
     oAuth2Scopes: [],
 

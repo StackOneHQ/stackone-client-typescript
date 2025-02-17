@@ -72,6 +72,7 @@ export async function marketingCreatePushTemplate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_create_push_template",
     oAuth2Scopes: [],
 

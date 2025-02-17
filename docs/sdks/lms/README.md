@@ -41,7 +41,11 @@ Batch Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -56,6 +60,18 @@ async function run() {
       items: [
         {
           active: true,
+          additionalData: [
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+          ],
           categories: [
             {
               id: "16873-IT345",
@@ -101,11 +117,15 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -117,6 +137,23 @@ async function run() {
         },
         {
           active: true,
+          additionalData: [
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+          ],
           categories: [
             {
               id: "16873-IT345",
@@ -157,11 +194,15 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -190,7 +231,11 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertContent.js";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -207,6 +252,18 @@ async function run() {
       items: [
         {
           active: true,
+          additionalData: [
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+          ],
           categories: [
             {
               id: "16873-IT345",
@@ -252,11 +309,15 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -268,6 +329,23 @@ async function run() {
         },
         {
           active: true,
+          additionalData: [
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
+          ],
           categories: [
             {
               id: "16873-IT345",
@@ -308,11 +386,15 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -367,7 +449,11 @@ Batch Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -399,12 +485,14 @@ async function run() {
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -427,6 +515,9 @@ async function run() {
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -478,18 +569,21 @@ async function run() {
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -509,14 +603,23 @@ async function run() {
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -546,7 +649,11 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertCourse.js";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -580,12 +687,14 @@ async function run() {
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -608,6 +717,9 @@ async function run() {
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -659,18 +771,21 @@ async function run() {
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
+              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -690,14 +805,23 @@ async function run() {
           skills: [
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
             {
               id: "16873-IT345",
+              language: {
+                value: CreateSkillsApiModelSchemasValue.EnGB,
+              },
               name: "Information-Technology",
             },
           ],
@@ -753,7 +877,7 @@ Create Collection
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -814,14 +938,23 @@ async function run() {
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -848,7 +981,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsCreateCollection } from "@stackone/stackone-client-ts/funcs/lmsCreateCollection.js";
-import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -911,14 +1044,23 @@ async function run() {
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -2917,7 +3059,7 @@ Update Collection
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2978,10 +3120,16 @@ async function run() {
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -3009,7 +3157,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpdateCollection } from "@stackone/stackone-client-ts/funcs/lmsUpdateCollection.js";
-import { CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, CreateSkillsApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3072,10 +3220,16 @@ async function run() {
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -3129,7 +3283,11 @@ Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -3142,6 +3300,18 @@ async function run() {
   const result = await stackOne.lms.upsertContent({
     lmsUpsertContentRequestDto: {
       active: true,
+      additionalData: [
+        {
+          id: "learning_outcomes",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          value: "This is additional data",
+        },
+        {
+          id: "learning_outcomes",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          value: "This is additional data",
+        },
+      ],
       categories: [
         {
           id: "16873-IT345",
@@ -3176,11 +3346,15 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
       shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -3207,7 +3381,11 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsUpsertContent.js";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3222,6 +3400,18 @@ async function run() {
   const res = await lmsUpsertContent(stackOne, {
     lmsUpsertContentRequestDto: {
       active: true,
+      additionalData: [
+        {
+          id: "learning_outcomes",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          value: "This is additional data",
+        },
+        {
+          id: "learning_outcomes",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          value: "This is additional data",
+        },
+      ],
       categories: [
         {
           id: "16873-IT345",
@@ -3256,11 +3446,15 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
       shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -3313,7 +3507,11 @@ Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -3354,6 +3552,7 @@ async function run() {
         {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           order: 1,
           title: "Software Engineer Lv 1",
         },
@@ -3370,6 +3569,9 @@ async function run() {
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],
@@ -3397,7 +3599,11 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsUpsertCourse.js";
-import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateCategoriesApiModelSchemasValue,
+  CreateSkillsApiModelSchemasValue,
+  LanguageEnumValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3440,6 +3646,7 @@ async function run() {
         {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           order: 1,
           title: "Software Engineer Lv 1",
         },
@@ -3456,6 +3663,9 @@ async function run() {
       skills: [
         {
           id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
           name: "Information-Technology",
         },
       ],

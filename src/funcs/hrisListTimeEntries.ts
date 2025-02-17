@@ -97,6 +97,7 @@ export async function hrisListTimeEntries(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_list_time_entries",
     oAuth2Scopes: [],
 

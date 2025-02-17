@@ -99,6 +99,7 @@ export async function atsListJobs(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_list_jobs",
     oAuth2Scopes: [],
 

@@ -109,6 +109,7 @@ export async function atsListApplicationScorecards(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_list_application_scorecards",
     oAuth2Scopes: [],
 

@@ -88,6 +88,7 @@ export async function crmGetAccount(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "crm_get_account",
     oAuth2Scopes: [],
 

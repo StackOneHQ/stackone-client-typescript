@@ -77,6 +77,7 @@ export async function lmsUpdateCollection(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_update_collection",
     oAuth2Scopes: [],
 

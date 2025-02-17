@@ -88,6 +88,7 @@ export async function atsGetOffer(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_offer",
     oAuth2Scopes: [],
 

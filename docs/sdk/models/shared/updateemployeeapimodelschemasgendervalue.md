@@ -6,7 +6,7 @@
 import { UpdateEmployeeApiModelSchemasGenderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UpdateEmployeeApiModelSchemasGenderValue =
-  UpdateEmployeeApiModelSchemasGenderValue.Other;
+  UpdateEmployeeApiModelSchemasGenderValue.Female;
 ```
 
 ## Values

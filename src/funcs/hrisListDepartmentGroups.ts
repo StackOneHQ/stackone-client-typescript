@@ -97,6 +97,7 @@ export async function hrisListDepartmentGroups(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_list_department_groups",
     oAuth2Scopes: [],
 

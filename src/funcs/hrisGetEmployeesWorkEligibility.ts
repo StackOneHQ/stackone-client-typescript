@@ -97,6 +97,7 @@ export async function hrisGetEmployeesWorkEligibility(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_get_employees_work_eligibility",
     oAuth2Scopes: [],
 

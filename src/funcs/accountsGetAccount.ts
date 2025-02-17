@@ -69,6 +69,7 @@ export async function accountsGetAccount(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_get_account",
     oAuth2Scopes: [],
 

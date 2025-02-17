@@ -88,6 +88,7 @@ export async function hrisGetLocation(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_get_location",
     oAuth2Scopes: [],
 

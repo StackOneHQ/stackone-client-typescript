@@ -89,6 +89,7 @@ export async function iamGetRole(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "iam_get_role",
     oAuth2Scopes: [],
 

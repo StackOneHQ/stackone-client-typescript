@@ -79,6 +79,7 @@ export async function lmsGetUser(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_get_user",
     oAuth2Scopes: [],
 

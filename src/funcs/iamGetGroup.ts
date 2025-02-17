@@ -89,6 +89,7 @@ export async function iamGetGroup(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "iam_get_group",
     oAuth2Scopes: [],
 

@@ -99,6 +99,7 @@ export async function atsListJobCustomFieldDefinitions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_list_job_custom_field_definitions",
     oAuth2Scopes: [],
 

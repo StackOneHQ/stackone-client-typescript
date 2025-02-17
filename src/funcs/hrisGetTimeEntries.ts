@@ -88,6 +88,7 @@ export async function hrisGetTimeEntries(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_get_time_entries",
     oAuth2Scopes: [],
 

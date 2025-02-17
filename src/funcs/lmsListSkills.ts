@@ -96,6 +96,7 @@ export async function lmsListSkills(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_list_skills",
     oAuth2Scopes: [],
 

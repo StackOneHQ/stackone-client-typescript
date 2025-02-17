@@ -70,6 +70,7 @@ export async function accountsDeleteAccount(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_delete_account",
     oAuth2Scopes: [],
 

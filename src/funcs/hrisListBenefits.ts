@@ -96,6 +96,7 @@ export async function hrisListBenefits(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_list_benefits",
     oAuth2Scopes: [],
 

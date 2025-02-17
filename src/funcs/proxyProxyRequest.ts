@@ -68,6 +68,7 @@ export async function proxyProxyRequest(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_proxy_request",
     oAuth2Scopes: [],
 

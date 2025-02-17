@@ -69,6 +69,7 @@ export async function crmCreateContact(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "crm_create_contact",
     oAuth2Scopes: [],
 

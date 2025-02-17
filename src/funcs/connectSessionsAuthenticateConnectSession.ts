@@ -64,6 +64,7 @@ export async function connectSessionsAuthenticateConnectSession(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_authenticate_connect_session",
     oAuth2Scopes: [],
 

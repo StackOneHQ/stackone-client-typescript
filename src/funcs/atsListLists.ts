@@ -96,6 +96,7 @@ export async function atsListLists(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_list_lists",
     oAuth2Scopes: [],
 

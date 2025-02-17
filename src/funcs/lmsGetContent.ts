@@ -79,6 +79,7 @@ export async function lmsGetContent(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_get_content",
     oAuth2Scopes: [],
 

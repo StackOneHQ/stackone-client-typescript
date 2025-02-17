@@ -97,6 +97,7 @@ export async function iamListRoles(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "iam_list_roles",
     oAuth2Scopes: [],
 

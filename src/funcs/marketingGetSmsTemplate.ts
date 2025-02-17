@@ -89,6 +89,7 @@ export async function marketingGetSmsTemplate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_get_sms_template",
     oAuth2Scopes: [],
 

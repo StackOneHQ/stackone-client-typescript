@@ -69,6 +69,7 @@ export async function atsCreateJob(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_create_job",
     oAuth2Scopes: [],
 
