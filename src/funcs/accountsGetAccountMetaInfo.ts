@@ -70,6 +70,7 @@ export async function accountsGetAccountMetaInfo(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_get_account_meta_info",
     oAuth2Scopes: [],
 

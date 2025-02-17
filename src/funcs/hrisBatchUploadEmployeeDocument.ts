@@ -81,6 +81,7 @@ export async function hrisBatchUploadEmployeeDocument(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_batch_upload_employee_document",
     oAuth2Scopes: [],
 

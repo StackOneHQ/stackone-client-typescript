@@ -74,6 +74,7 @@ export async function atsCreateBackgroundCheckPackage(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_create_background_check_package",
     oAuth2Scopes: [],
 

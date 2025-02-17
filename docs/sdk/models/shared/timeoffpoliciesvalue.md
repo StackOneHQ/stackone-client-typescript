@@ -1,0 +1,27 @@
+# TimeOffPoliciesValue
+
+## Example Usage
+
+```typescript
+import { TimeOffPoliciesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: TimeOffPoliciesValue = TimeOffPoliciesValue.UnmappedValue;
+```
+
+## Values
+
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Paid`                 | paid                   |
+| `Unpaid`               | unpaid                 |
+| `Holiday`              | holiday                |
+| `Vacation`             | vacation               |
+| `Sick`                 | sick                   |
+| `Personal`             | personal               |
+| `InLieu`               | in_lieu                |
+| `Bereavement`          | bereavement            |
+| `JuryDuty`             | jury_duty              |
+| `UnmappedValue`        | unmapped_value         |
+| -                      | `Unrecognized<string>` |

@@ -80,6 +80,7 @@ export async function lmsDeleteUserCompletion(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_delete_user_completion",
     oAuth2Scopes: [],
 
@@ -145,9 +146,10 @@ export async function lmsDeleteUserCompletion(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, operations.LmsDeleteUserCompletionResponse$inboundSchema, {
+    M.json(200, operations.LmsDeleteUserCompletionResponse$inboundSchema, {
       key: "DeleteResult",
     }),
+    M.nil(204, operations.LmsDeleteUserCompletionResponse$inboundSchema),
     M.fail(408),
     M.fail([400, 403, 412, 429, "4XX"]),
     M.fail([500, 501, "5XX"]),

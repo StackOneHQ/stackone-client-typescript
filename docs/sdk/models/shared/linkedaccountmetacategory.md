@@ -5,7 +5,7 @@
 ```typescript
 import { LinkedAccountMetaCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LinkedAccountMetaCategory = LinkedAccountMetaCategory.Crm;
+let value: LinkedAccountMetaCategory = LinkedAccountMetaCategory.Stackone;
 ```
 
 ## Values

@@ -21,14 +21,17 @@ import { hrisGetEmployeeDocumentCategory } from "../funcs/hrisGetEmployeeDocumen
 import { hrisGetEmployeeEmployment } from "../funcs/hrisGetEmployeeEmployment.js";
 import { hrisGetEmployeesTimeOffRequest } from "../funcs/hrisGetEmployeesTimeOffRequest.js";
 import { hrisGetEmployeesWorkEligibility } from "../funcs/hrisGetEmployeesWorkEligibility.js";
+import { hrisGetEmployeeTimeOffBalance } from "../funcs/hrisGetEmployeeTimeOffBalance.js";
 import { hrisGetEmployment } from "../funcs/hrisGetEmployment.js";
 import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
 import { hrisGetTeamGroup } from "../funcs/hrisGetTeamGroup.js";
 import { hrisGetTimeEntries } from "../funcs/hrisGetTimeEntries.js";
+import { hrisGetTimeOffPolicy } from "../funcs/hrisGetTimeOffPolicy.js";
 import { hrisGetTimeOffRequest } from "../funcs/hrisGetTimeOffRequest.js";
 import { hrisGetTimeOffType } from "../funcs/hrisGetTimeOffType.js";
+import { hrisInviteEmployee } from "../funcs/hrisInviteEmployee.js";
 import { hrisListBenefits } from "../funcs/hrisListBenefits.js";
 import { hrisListCompanies } from "../funcs/hrisListCompanies.js";
 import { hrisListCostCenterGroups } from "../funcs/hrisListCostCenterGroups.js";
@@ -38,6 +41,7 @@ import { hrisListEmployeeCustomFieldDefinitions } from "../funcs/hrisListEmploye
 import { hrisListEmployeeDocuments } from "../funcs/hrisListEmployeeDocuments.js";
 import { hrisListEmployeeEmployments } from "../funcs/hrisListEmployeeEmployments.js";
 import { hrisListEmployees } from "../funcs/hrisListEmployees.js";
+import { hrisListEmployeeTimeOffBalances } from "../funcs/hrisListEmployeeTimeOffBalances.js";
 import { hrisListEmployeeTimeOffRequests } from "../funcs/hrisListEmployeeTimeOffRequests.js";
 import { hrisListEmployeeWorkEligibility } from "../funcs/hrisListEmployeeWorkEligibility.js";
 import { hrisListEmployments } from "../funcs/hrisListEmployments.js";
@@ -46,6 +50,7 @@ import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
 import { hrisListTeamGroups } from "../funcs/hrisListTeamGroups.js";
 import { hrisListTimeEntries } from "../funcs/hrisListTimeEntries.js";
+import { hrisListTimeOffPolicies } from "../funcs/hrisListTimeOffPolicies.js";
 import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
 import { hrisListTimeOffTypes } from "../funcs/hrisListTimeOffTypes.js";
 import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
@@ -298,6 +303,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get Employee Time Off Balance
+   */
+  async getEmployeeTimeOffBalance(
+    request: operations.HrisGetEmployeeTimeOffBalanceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetEmployeeTimeOffBalanceResponse> {
+    return unwrapAsync(hrisGetEmployeeTimeOffBalance(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Employees Time Off Request
    */
   async getEmployeesTimeOffRequest(
@@ -410,6 +429,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get Time Off Policy
+   */
+  async getTimeOffPolicy(
+    request: operations.HrisGetTimeOffPolicyRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetTimeOffPolicyResponse> {
+    return unwrapAsync(hrisGetTimeOffPolicy(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get time off request
    */
   async getTimeOffRequest(
@@ -431,6 +464,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetTimeOffTypeResponse> {
     return unwrapAsync(hrisGetTimeOffType(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Invite Employee
+   */
+  async inviteEmployee(
+    request: operations.HrisInviteEmployeeRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisInviteEmployeeResponse> {
+    return unwrapAsync(hrisInviteEmployee(
       this,
       request,
       options,
@@ -579,6 +626,25 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * List Employee Time Off Balances
+   */
+  async listEmployeeTimeOffBalances(
+    request: operations.HrisListEmployeeTimeOffBalancesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeTimeOffBalancesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeTimeOffBalances(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Employee Time Off Requests
    */
   async listEmployeeTimeOffRequests(
@@ -720,6 +786,22 @@ export class Hris extends ClientSDK {
     PageIterator<operations.HrisListTimeEntriesResponse, { cursor: string }>
   > {
     return unwrapResultIterator(hrisListTimeEntries(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Time Off Policies
+   */
+  async listTimeOffPolicies(
+    request: operations.HrisListTimeOffPoliciesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListTimeOffPoliciesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListTimeOffPolicies(
       this,
       request,
       options,

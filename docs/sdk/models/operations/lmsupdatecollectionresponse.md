@@ -12,7 +12,7 @@ let value: LmsUpdateCollectionResponse = {
       "<value>",
     ],
   },
-  statusCode: 406,
+  statusCode: 307,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

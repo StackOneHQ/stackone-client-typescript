@@ -88,6 +88,7 @@ export async function hrisGetGroup(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_get_group",
     oAuth2Scopes: [],
 

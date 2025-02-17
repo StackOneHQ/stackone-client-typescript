@@ -91,6 +91,7 @@ export async function marketingGetInAppTemplate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_get_in_app_template",
     oAuth2Scopes: [],
 

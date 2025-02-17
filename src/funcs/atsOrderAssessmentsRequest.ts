@@ -72,6 +72,7 @@ export async function atsOrderAssessmentsRequest(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_order_assessments_request",
     oAuth2Scopes: [],
 

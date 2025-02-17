@@ -97,6 +97,7 @@ export async function hrisListTimeOffTypes(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_list_time_off_types",
     oAuth2Scopes: [],
 

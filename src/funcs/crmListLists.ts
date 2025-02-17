@@ -96,6 +96,7 @@ export async function crmListLists(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "crm_list_lists",
     oAuth2Scopes: [],
 

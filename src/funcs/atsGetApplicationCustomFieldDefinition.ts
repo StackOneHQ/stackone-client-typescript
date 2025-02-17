@@ -97,6 +97,7 @@ export async function atsGetApplicationCustomFieldDefinition(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_application_custom_field_definition",
     oAuth2Scopes: [],
 

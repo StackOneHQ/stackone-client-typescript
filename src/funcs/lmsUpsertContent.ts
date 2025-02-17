@@ -69,6 +69,7 @@ export async function lmsUpsertContent(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_upsert_content",
     oAuth2Scopes: [],
 

@@ -91,6 +91,7 @@ export async function marketingGetEmailTemplate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_get_email_template",
     oAuth2Scopes: [],
 

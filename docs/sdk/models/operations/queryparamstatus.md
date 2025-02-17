@@ -7,7 +7,7 @@ Filter to select assignment by status
 ```typescript
 import { QueryParamStatus } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: QueryParamStatus = QueryParamStatus.InProgress;
+let value: QueryParamStatus = QueryParamStatus.Pending;
 ```
 
 ## Values

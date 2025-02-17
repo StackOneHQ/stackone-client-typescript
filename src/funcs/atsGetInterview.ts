@@ -88,6 +88,7 @@ export async function atsGetInterview(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_interview",
     oAuth2Scopes: [],
 

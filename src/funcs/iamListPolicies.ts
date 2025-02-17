@@ -97,6 +97,7 @@ export async function iamListPolicies(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "iam_list_policies",
     oAuth2Scopes: [],
 

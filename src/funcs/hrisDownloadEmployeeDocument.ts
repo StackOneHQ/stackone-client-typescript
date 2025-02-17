@@ -86,6 +86,7 @@ export async function hrisDownloadEmployeeDocument(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_download_employee_document",
     oAuth2Scopes: [],
 

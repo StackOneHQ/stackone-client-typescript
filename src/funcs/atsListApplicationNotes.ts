@@ -105,6 +105,7 @@ export async function atsListApplicationNotes(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_list_application_notes",
     oAuth2Scopes: [],
 

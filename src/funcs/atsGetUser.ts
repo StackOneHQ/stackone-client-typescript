@@ -88,6 +88,7 @@ export async function atsGetUser(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_user",
     oAuth2Scopes: [],
 

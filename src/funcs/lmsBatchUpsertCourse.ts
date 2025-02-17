@@ -70,6 +70,7 @@ export async function lmsBatchUpsertCourse(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_batch_upsert_course",
     oAuth2Scopes: [],
 

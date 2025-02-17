@@ -74,6 +74,7 @@ export async function connectorsGetConnectorMeta(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_get_connector_meta",
     oAuth2Scopes: [],
 

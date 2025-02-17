@@ -89,6 +89,7 @@ export async function iamGetUser(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "iam_get_user",
     oAuth2Scopes: [],
 

@@ -95,6 +95,7 @@ export async function atsGetCandidateNote(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_candidate_note",
     oAuth2Scopes: [],
 

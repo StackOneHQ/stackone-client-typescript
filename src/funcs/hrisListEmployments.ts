@@ -98,6 +98,7 @@ export async function hrisListEmployments(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_list_employments",
     oAuth2Scopes: [],
 

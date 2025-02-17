@@ -73,6 +73,7 @@ export async function accountsListLinkedAccounts(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_list_linked_accounts",
     oAuth2Scopes: [],
 

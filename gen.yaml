@@ -7,11 +7,12 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 4.18.0
+  version: 4.18.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

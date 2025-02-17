@@ -74,6 +74,7 @@ export async function atsOrderBackgroundCheckRequest(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_order_background_check_request",
     oAuth2Scopes: [],
 

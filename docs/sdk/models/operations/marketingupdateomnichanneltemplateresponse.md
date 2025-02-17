@@ -21,7 +21,7 @@ let value: MarketingUpdateOmniChannelTemplateResponse = {
       "<value>",
     ],
   },
-  statusCode: 103,
+  statusCode: 415,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

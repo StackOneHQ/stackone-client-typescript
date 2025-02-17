@@ -12,7 +12,7 @@ let value: HrisGetTimeOffRequestResponse = {
       "<value>",
     ],
   },
-  statusCode: 301,
+  statusCode: 226,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

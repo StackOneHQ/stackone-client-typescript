@@ -86,6 +86,7 @@ export async function atsDownloadApplicationDocument(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_download_application_document",
     oAuth2Scopes: [],
 

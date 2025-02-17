@@ -89,6 +89,7 @@ export async function marketingGetCampaign(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_get_campaign",
     oAuth2Scopes: [],
 

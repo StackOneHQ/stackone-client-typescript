@@ -84,7 +84,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -162,6 +162,10 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              type: {
+                sourceValue: "Short Text",
+                value: CreateAnswerValue.ShortText,
+              },
               values: [
                 "Yes",
                 "No Travel",
@@ -196,7 +200,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateApplication } from "@stackone/stackone-client-ts/funcs/atsCreateApplication.js";
-import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -276,6 +280,10 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              type: {
+                sourceValue: "Short Text",
+                value: CreateAnswerValue.ShortText,
+              },
               values: [
                 "Yes",
                 "No Travel",
@@ -336,6 +344,7 @@ Create Application Note
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -362,6 +371,10 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsCreateNotesRequestDtoValue.Public,
+      },
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -381,6 +394,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateApplicationNote } from "@stackone/stackone-client-ts/funcs/atsCreateApplicationNote.js";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -408,6 +422,10 @@ async function run() {
       ],
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
     id: "<id>",
@@ -736,6 +754,7 @@ Create Candidate Note
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -756,6 +775,10 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsCreateNotesRequestDtoValue.Public,
+      },
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -775,6 +798,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateCandidateNote } from "@stackone/stackone-client-ts/funcs/atsCreateCandidateNote.js";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -796,6 +820,10 @@ async function run() {
       ],
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
     id: "<id>",
@@ -6824,6 +6852,7 @@ Update an Application Note
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsUpdateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -6850,6 +6879,10 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsUpdateNotesRequestDtoValue.Public,
+      },
     },
     id: "<id>",
     subResourceId: "<id>",
@@ -6870,6 +6903,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsUpdateApplicationNote } from "@stackone/stackone-client-ts/funcs/atsUpdateApplicationNote.js";
+import { AtsUpdateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -6897,6 +6931,10 @@ async function run() {
       ],
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsUpdateNotesRequestDtoValue.Public,
       },
     },
     id: "<id>",

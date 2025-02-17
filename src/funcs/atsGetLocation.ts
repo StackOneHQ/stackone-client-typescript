@@ -88,6 +88,7 @@ export async function atsGetLocation(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_get_location",
     oAuth2Scopes: [],
 

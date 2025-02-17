@@ -45,7 +45,7 @@ let value: HrisListCostCenterGroupsResponse = {
       "<value>",
     ],
   },
-  statusCode: 500,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

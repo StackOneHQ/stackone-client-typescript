@@ -73,6 +73,7 @@ export async function accountsUpdateAccount(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "stackone_update_account",
     oAuth2Scopes: [],
 

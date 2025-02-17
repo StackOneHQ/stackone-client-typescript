@@ -77,6 +77,7 @@ export async function lmsCreateUserAssignment(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lms_create_user_assignment",
     oAuth2Scopes: [],
 

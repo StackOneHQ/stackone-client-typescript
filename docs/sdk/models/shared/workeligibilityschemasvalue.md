@@ -6,7 +6,7 @@
 import { WorkEligibilitySchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: WorkEligibilitySchemasValue =
-  WorkEligibilitySchemasValue.BirthCertificate;
+  WorkEligibilitySchemasValue.DriverLicense;
 ```
 
 ## Values

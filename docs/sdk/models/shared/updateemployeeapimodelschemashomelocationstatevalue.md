@@ -6,7 +6,7 @@
 import { UpdateEmployeeApiModelSchemasHomeLocationStateValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UpdateEmployeeApiModelSchemasHomeLocationStateValue =
-  UpdateEmployeeApiModelSchemasHomeLocationStateValue.InAp;
+  UpdateEmployeeApiModelSchemasHomeLocationStateValue.Lk5;
 ```
 
 ## Values

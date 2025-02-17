@@ -83,6 +83,7 @@ export async function atsUpdateBackgroundCheckResult(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_update_background_check_result",
     oAuth2Scopes: [],
 

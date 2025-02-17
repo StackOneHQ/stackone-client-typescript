@@ -83,6 +83,7 @@ export async function atsUpdateApplicationNote(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "ats_update_application_note",
     oAuth2Scopes: [],
 

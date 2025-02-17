@@ -93,6 +93,7 @@ export async function hrisGetEmployeeDocumentCategory(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "hris_get_employee_document_category",
     oAuth2Scopes: [],
 

@@ -83,6 +83,7 @@ export async function marketingUpdateOmniChannelTemplate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "marketing_update_omni_channel_template",
     oAuth2Scopes: [],
 
