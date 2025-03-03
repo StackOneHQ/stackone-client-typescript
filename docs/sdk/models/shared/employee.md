@@ -7,10 +7,13 @@ import {
   CountryCodeEnumValue,
   Employee,
   EmployeeSchemasHomeLocationValue,
-  EmployeeSchemasNationalIdentityNumberTypeValue,
-  EmployeeSchemasNationalIdentityNumberValue,
   EmployeeSchemasWorkLocationValue,
+  EmploymentSchemasDepartmentValue,
+  EmploymentSchemasDivisionValue,
+  HRISCostCenterValue,
   HRISGroupValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Employee = {
@@ -70,31 +73,37 @@ let value: Employee = {
         label: "Full-Time",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
-      costCenter: {
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "Engineering",
-        ownerIds: [
-          "cxIQNjUyEDM0",
-          "cxIQNjQzNzA0MQ",
-        ],
-        parentIds: [
-          "cxIQNjUyNDM0",
-          "cxIQNjQzNzI0MQ",
-        ],
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        remoteOwnerIds: [
-          "475364",
-          "4327652",
-        ],
-        remoteParentIds: [
-          "652434",
-          "6437241",
-        ],
-        unifiedCustomFields: {
-          "my_project_custom_field_1": "REF-1236",
-          "my_project_custom_field_2": "some other value",
+      costCenters: [
+        {
+          distributionPercentage: 85,
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Engineering",
+          ownerIds: [
+            "cxIQNjUyEDM0",
+            "cxIQNjQzNzA0MQ",
+          ],
+          parentIds: [
+            "cxIQNjUyNDM0",
+            "cxIQNjQzNzI0MQ",
+          ],
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteOwnerIds: [
+            "475364",
+            "4327652",
+          ],
+          remoteParentIds: [
+            "652434",
+            "6437241",
+          ],
+          type: {
+            value: HRISCostCenterValue.Team,
+          },
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
-      },
+      ],
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       department: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -116,6 +125,9 @@ let value: Employee = {
           "652434",
           "6437241",
         ],
+        type: {
+          value: EmploymentSchemasDepartmentValue.Team,
+        },
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -141,6 +153,9 @@ let value: Employee = {
           "652434",
           "6437241",
         ],
+        type: {
+          value: EmploymentSchemasDivisionValue.Team,
+        },
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -254,15 +269,17 @@ let value: Employee = {
   lastName: "Newton",
   maritalStatus: {},
   name: "Issac Newton",
-  nationalIdentityNumber: {
-    country: {
-      value: EmployeeSchemasNationalIdentityNumberValue.Us,
+  nationalIdentityNumbers: [
+    {
+      country: {
+        value: NationalIdentityNumberApiModelValue.Us,
+      },
+      type: {
+        value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+      },
+      value: "123456789",
     },
-    type: {
-      value: EmployeeSchemasNationalIdentityNumberTypeValue.Ssn,
-    },
-    value: "123456789",
-  },
+  ],
   personalEmail: "isaac.newton@example.com",
   personalPhoneNumber: "+1234567890",
   preferredLanguage: {},
@@ -342,7 +359,8 @@ let value: Employee = {
 | ~~`managerId`~~                                                                                                                                                                         | *string*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The employee manager ID                                | 67890                                                                                                                                                                                   |
 | `maritalStatus`                                                                                                                                                                         | [shared.MaritalStatus](../../../sdk/models/shared/maritalstatus.md)                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                      | The employee marital status                                                                                                                                                             | single                                                                                                                                                                                  |
 | `name`                                                                                                                                                                                  | *string*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | The employee name                                                                                                                                                                       | Issac Newton                                                                                                                                                                            |
-| `nationalIdentityNumber`                                                                                                                                                                | [shared.NationalIdentityNumber](../../../sdk/models/shared/nationalidentitynumber.md)                                                                                                   | :heavy_minus_sign:                                                                                                                                                                      | The national identity number                                                                                                                                                            |                                                                                                                                                                                         |
+| ~~`nationalIdentityNumber`~~                                                                                                                                                            | [shared.NationalIdentityNumber](../../../sdk/models/shared/nationalidentitynumber.md)                                                                                                   | :heavy_minus_sign:                                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The national identity number                           |                                                                                                                                                                                         |
+| `nationalIdentityNumbers`                                                                                                                                                               | [shared.NationalIdentityNumberApiModel](../../../sdk/models/shared/nationalidentitynumberapimodel.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                                                                      | The national identity numbers                                                                                                                                                           |                                                                                                                                                                                         |
 | `personalEmail`                                                                                                                                                                         | *string*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | The employee personal email                                                                                                                                                             | isaac.newton@example.com                                                                                                                                                                |
 | `personalPhoneNumber`                                                                                                                                                                   | *string*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | The employee personal phone number                                                                                                                                                      | +1234567890                                                                                                                                                                             |
 | `preferredLanguage`                                                                                                                                                                     | [shared.PreferredLanguage](../../../sdk/models/shared/preferredlanguage.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                      | The employee preferred language                                                                                                                                                         | en_US                                                                                                                                                                                   |

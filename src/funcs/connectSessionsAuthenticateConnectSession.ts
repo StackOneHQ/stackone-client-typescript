@@ -21,16 +21,17 @@ import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import * as shared from "../sdk/models/shared/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
  * Authenticate Connect Session
  */
-export async function connectSessionsAuthenticateConnectSession(
+export function connectSessionsAuthenticateConnectSession(
   client: StackOneCore,
   request: shared.ConnectSessionAuthenticate,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.StackoneAuthenticateConnectSessionResponse,
     | SDKError
@@ -42,13 +43,39 @@ export async function connectSessionsAuthenticateConnectSession(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: shared.ConnectSessionAuthenticate,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.StackoneAuthenticateConnectSessionResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => shared.ConnectSessionAuthenticate$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
@@ -64,7 +91,7 @@ export async function connectSessionsAuthenticateConnectSession(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "stackone_authenticate_connect_session",
     oAuth2Scopes: [],
 
@@ -97,7 +124,7 @@ export async function connectSessionsAuthenticateConnectSession(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -108,7 +135,7 @@ export async function connectSessionsAuthenticateConnectSession(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -140,8 +167,8 @@ export async function connectSessionsAuthenticateConnectSession(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

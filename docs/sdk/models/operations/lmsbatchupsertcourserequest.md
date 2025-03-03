@@ -34,6 +34,8 @@ let value: LmsBatchUpsertCourseRequest = {
             description:
               "This video acts as learning content for software engineers.",
             externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+            mobileLaunchContentUrl:
+              "https://www.mobile.youtube.com/watch?v=16873",
             order: 1,
             title: "Software Engineer Lv 1",
           },

@@ -8,7 +8,7 @@ The status of the assignment
 import { AssignmentSchemasValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Status = {
-  value: AssignmentSchemasValue.InProgress,
+  value: AssignmentSchemasValue.Completed,
 };
 ```
 

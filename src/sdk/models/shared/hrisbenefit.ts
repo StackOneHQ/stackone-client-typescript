@@ -31,6 +31,7 @@ export enum HRISBenefitValue {
   Other = "other",
   HealthInsurance = "health_insurance",
   Insurance = "insurance",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the benefit

@@ -6,7 +6,7 @@
 import { HrisCreateWorkEligibilityRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateWorkEligibilityRequestDtoSchemasValue =
-  HrisCreateWorkEligibilityRequestDtoSchemasValue.DriverLicense;
+  HrisCreateWorkEligibilityRequestDtoSchemasValue.Other;
 ```
 
 ## Values

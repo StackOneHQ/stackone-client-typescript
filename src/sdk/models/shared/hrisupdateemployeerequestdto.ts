@@ -30,6 +30,12 @@ import {
   CustomFields$Outbound,
   CustomFields$outboundSchema,
 } from "./customfields.js";
+import {
+  NationalIdentityNumberApiModel,
+  NationalIdentityNumberApiModel$inboundSchema,
+  NationalIdentityNumberApiModel$Outbound,
+  NationalIdentityNumberApiModel$outboundSchema,
+} from "./nationalidentitynumberapimodel.js";
 
 /**
  * The employee avatar
@@ -4966,6 +4972,8 @@ export type HrisUpdateEmployeeRequestDtoType = {
 
 /**
  * The national identity number
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type HrisUpdateEmployeeRequestDtoNationalIdentityNumber = {
   /**
@@ -5086,6 +5094,7 @@ export enum HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue {
   Tha = "tha",
   Tir = "tir",
   Tig = "tig",
+  Zho = "zho",
   UnmappedValue = "unmapped_value",
 }
 /**
@@ -9433,9 +9442,18 @@ export type HrisUpdateEmployeeRequestDto = {
   name?: string | null | undefined;
   /**
    * The national identity number
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   nationalIdentityNumber?:
     | HrisUpdateEmployeeRequestDtoNationalIdentityNumber
+    | null
+    | undefined;
+  /**
+   * The national identity numbers
+   */
+  nationalIdentityNumbers?:
+    | Array<NationalIdentityNumberApiModel>
     | null
     | undefined;
   /**
@@ -13568,6 +13586,9 @@ export const HrisUpdateEmployeeRequestDto$inboundSchema: z.ZodType<
       HrisUpdateEmployeeRequestDtoNationalIdentityNumber$inboundSchema
     ),
   ).optional(),
+  national_identity_numbers: z.nullable(
+    z.array(NationalIdentityNumberApiModel$inboundSchema),
+  ).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   personal_email: z.nullable(z.string()).optional(),
   personal_phone_number: z.nullable(z.string()).optional(),
@@ -13611,6 +13632,7 @@ export const HrisUpdateEmployeeRequestDto$inboundSchema: z.ZodType<
     "manager_id": "managerId",
     "marital_status": "maritalStatus",
     "national_identity_number": "nationalIdentityNumber",
+    "national_identity_numbers": "nationalIdentityNumbers",
     "personal_email": "personalEmail",
     "personal_phone_number": "personalPhoneNumber",
     "preferred_language": "preferredLanguage",
@@ -13669,6 +13691,10 @@ export type HrisUpdateEmployeeRequestDto$Outbound = {
   name?: string | null | undefined;
   national_identity_number?:
     | HrisUpdateEmployeeRequestDtoNationalIdentityNumber$Outbound
+    | null
+    | undefined;
+  national_identity_numbers?:
+    | Array<NationalIdentityNumberApiModel$Outbound>
     | null
     | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
@@ -13746,6 +13772,9 @@ export const HrisUpdateEmployeeRequestDto$outboundSchema: z.ZodType<
       HrisUpdateEmployeeRequestDtoNationalIdentityNumber$outboundSchema
     ),
   ).optional(),
+  nationalIdentityNumbers: z.nullable(
+    z.array(NationalIdentityNumberApiModel$outboundSchema),
+  ).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   personalEmail: z.nullable(z.string()).optional(),
   personalPhoneNumber: z.nullable(z.string()).optional(),
@@ -13785,6 +13814,7 @@ export const HrisUpdateEmployeeRequestDto$outboundSchema: z.ZodType<
     managerId: "manager_id",
     maritalStatus: "marital_status",
     nationalIdentityNumber: "national_identity_number",
+    nationalIdentityNumbers: "national_identity_numbers",
     personalEmail: "personal_email",
     personalPhoneNumber: "personal_phone_number",
     preferredLanguage: "preferred_language",

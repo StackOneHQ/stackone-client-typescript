@@ -1,11 +1,13 @@
 # TimeOffPoliciesValue
 
+The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+
 ## Example Usage
 
 ```typescript
 import { TimeOffPoliciesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffPoliciesValue = TimeOffPoliciesValue.UnmappedValue;
+let value: TimeOffPoliciesValue = TimeOffPoliciesValue.Holiday;
 ```
 
 ## Values

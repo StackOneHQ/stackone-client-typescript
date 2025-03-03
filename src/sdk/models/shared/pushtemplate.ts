@@ -16,6 +16,10 @@ import {
 
 export type PushTemplate = {
   /**
+   * Date of creation
+   */
+  createdAt?: Date | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -26,6 +30,10 @@ export type PushTemplate = {
    */
   remoteId?: string | null | undefined;
   tags?: Array<string> | null | undefined;
+  /**
+   * Date of last update
+   */
+  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -34,24 +42,34 @@ export const PushTemplate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   id: z.nullable(z.string()).optional(),
   messages: z.nullable(z.array(PushMessages$inboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_at": "createdAt",
     "remote_id": "remoteId",
+    "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PushTemplate$Outbound = {
+  created_at?: string | null | undefined;
   id?: string | null | undefined;
   messages?: Array<PushMessages$Outbound> | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
   tags?: Array<string> | null | undefined;
+  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -60,14 +78,18 @@ export const PushTemplate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PushTemplate
 > = z.object({
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   id: z.nullable(z.string()).optional(),
   messages: z.nullable(z.array(PushMessages$outboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAt: "created_at",
     remoteId: "remote_id",
+    updatedAt: "updated_at",
   });
 });
 

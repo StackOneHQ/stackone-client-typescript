@@ -5,7 +5,7 @@
 ```typescript
 import { SkillsSchemasProficiencyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: SkillsSchemasProficiencyValue = SkillsSchemasProficiencyValue.Three;
+let value: SkillsSchemasProficiencyValue = SkillsSchemasProficiencyValue.One;
 ```
 
 ## Values

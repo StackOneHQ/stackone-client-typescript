@@ -26,6 +26,7 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 import {
   createPageIterator,
@@ -37,11 +38,11 @@ import {
 /**
  * List Employee Documents
  */
-export async function hrisListEmployeeDocuments(
+export function hrisListEmployeeDocuments(
   client: StackOneCore,
   request: operations.HrisListEmployeeDocumentsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   PageIterator<
     Result<
       operations.HrisListEmployeeDocumentsResponse,
@@ -56,6 +57,35 @@ export async function hrisListEmployeeDocuments(
     { cursor: string }
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.HrisListEmployeeDocumentsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    PageIterator<
+      Result<
+        operations.HrisListEmployeeDocumentsResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >,
+      { cursor: string }
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -63,7 +93,7 @@ export async function hrisListEmployeeDocuments(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return haltIterator(parsed);
+    return [haltIterator(parsed), { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -104,7 +134,7 @@ export async function hrisListEmployeeDocuments(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "hris_list_employee_documents",
     oAuth2Scopes: [],
 
@@ -138,7 +168,7 @@ export async function hrisListEmployeeDocuments(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return haltIterator(requestRes);
+    return [haltIterator(requestRes), { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -149,7 +179,7 @@ export async function hrisListEmployeeDocuments(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return haltIterator(doResult);
+    return [haltIterator(doResult), { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -179,7 +209,11 @@ export async function hrisListEmployeeDocuments(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return haltIterator(result);
+    return [haltIterator(result), {
+      status: "complete",
+      request: req,
+      response,
+    }];
   }
 
   const nextFunc = (
@@ -200,7 +234,7 @@ export async function hrisListEmployeeDocuments(
     "~next"?: { cursor: string };
   } => {
     const nextCursor = dlv(responseData, "next");
-    if (nextCursor == null) {
+    if (typeof nextCursor !== "string") {
       return { next: () => null };
     }
 
@@ -218,5 +252,9 @@ export async function hrisListEmployeeDocuments(
   };
 
   const page = { ...result, ...nextFunc(raw) };
-  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
+  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
+    status: "complete",
+    request: req,
+    response,
+  }];
 }

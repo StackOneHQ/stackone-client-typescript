@@ -25,16 +25,17 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get User Assignment
  */
-export async function lmsGetUserAssignment(
+export function lmsGetUserAssignment(
   client: StackOneCore,
   request: operations.LmsGetUserAssignmentRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.LmsGetUserAssignmentResponse,
     | SDKError
@@ -46,6 +47,32 @@ export async function lmsGetUserAssignment(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.LmsGetUserAssignmentRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.LmsGetUserAssignmentResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -53,7 +80,7 @@ export async function lmsGetUserAssignment(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -95,7 +122,7 @@ export async function lmsGetUserAssignment(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "lms_get_user_assignment",
     oAuth2Scopes: [],
 
@@ -129,7 +156,7 @@ export async function lmsGetUserAssignment(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -140,7 +167,7 @@ export async function lmsGetUserAssignment(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -170,8 +197,8 @@ export async function lmsGetUserAssignment(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

@@ -31,6 +31,12 @@ import {
   LanguageEnum$outboundSchema,
 } from "./languageenum.js";
 import {
+  LocalisationModel,
+  LocalisationModel$inboundSchema,
+  LocalisationModel$Outbound,
+  LocalisationModel$outboundSchema,
+} from "./localisationmodel.js";
+import {
   Skills,
   Skills$inboundSchema,
   Skills$Outbound,
@@ -50,6 +56,8 @@ export enum ContentValue {
   Video = "video",
   Quiz = "quiz",
   Document = "document",
+  Audio = "audio",
+  Article = "article",
 }
 export type ContentValueOpen = OpenEnum<typeof ContentValue>;
 
@@ -98,6 +106,10 @@ export type Content = {
    */
   coverUrl?: string | null | undefined;
   /**
+   * The date on which the content was created.
+   */
+  createdAt?: Date | null | undefined;
+  /**
    * The description of the content
    */
   description?: string | null | undefined;
@@ -117,6 +129,10 @@ export type Content = {
    * The languages associated with this content
    */
   languages?: Array<LanguageEnum> | null | undefined;
+  /**
+   * Localised content information
+   */
+  localisations?: Array<LocalisationModel> | null | undefined;
   /**
    * The mobile friendly URL of the content
    */
@@ -148,6 +164,10 @@ export type Content = {
    */
   skills?: Array<Skills> | null | undefined;
   /**
+   * A list of tags associated with the content
+   */
+  tags?: Array<string> | null | undefined;
+  /**
    * The title of the content
    */
   title?: string | null | undefined;
@@ -155,6 +175,10 @@ export type Content = {
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
+  /**
+   * The date on which the content was last updated.
+   */
+  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -398,11 +422,16 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     content_url: z.nullable(z.string()).optional(),
     course_ids: z.nullable(z.array(z.string())).optional(),
     cover_url: z.nullable(z.string()).optional(),
+    created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
     description: z.nullable(z.string()).optional(),
     duration: z.nullable(z.string()).optional(),
     external_reference: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
+    localisations: z.nullable(z.array(LocalisationModel$inboundSchema))
+      .optional(),
     mobile_launch_content_url: z.nullable(z.string()).optional(),
     order: z.nullable(z.number()).optional(),
     provider: z.nullable(z.string()).optional(),
@@ -410,8 +439,12 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     remote_id: z.nullable(z.string()).optional(),
     short_description: z.nullable(z.string()).optional(),
     skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
+    tags: z.nullable(z.array(z.string())).optional(),
     title: z.nullable(z.string()).optional(),
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
+    updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "additional_data": "additionalData",
@@ -419,12 +452,14 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
       "content_url": "contentUrl",
       "course_ids": "courseIds",
       "cover_url": "coverUrl",
+      "created_at": "createdAt",
       "external_reference": "externalReference",
       "mobile_launch_content_url": "mobileLaunchContentUrl",
       "remote_course_ids": "remoteCourseIds",
       "remote_id": "remoteId",
       "short_description": "shortDescription",
       "unified_custom_fields": "unifiedCustomFields",
+      "updated_at": "updatedAt",
     });
   });
 
@@ -437,11 +472,13 @@ export type Content$Outbound = {
   content_url?: string | null | undefined;
   course_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
+  created_at?: string | null | undefined;
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   id?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
+  localisations?: Array<LocalisationModel$Outbound> | null | undefined;
   mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   provider?: string | null | undefined;
@@ -449,8 +486,10 @@ export type Content$Outbound = {
   remote_id?: string | null | undefined;
   short_description?: string | null | undefined;
   skills?: Array<Skills$Outbound> | null | undefined;
+  tags?: Array<string> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
+  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -467,11 +506,14 @@ export const Content$outboundSchema: z.ZodType<
   contentUrl: z.nullable(z.string()).optional(),
   courseIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
+  localisations: z.nullable(z.array(LocalisationModel$outboundSchema))
+    .optional(),
   mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   provider: z.nullable(z.string()).optional(),
@@ -479,8 +521,10 @@ export const Content$outboundSchema: z.ZodType<
   remoteId: z.nullable(z.string()).optional(),
   shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
+  tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     additionalData: "additional_data",
@@ -488,12 +532,14 @@ export const Content$outboundSchema: z.ZodType<
     contentUrl: "content_url",
     courseIds: "course_ids",
     coverUrl: "cover_url",
+    createdAt: "created_at",
     externalReference: "external_reference",
     mobileLaunchContentUrl: "mobile_launch_content_url",
     remoteCourseIds: "remote_course_ids",
     remoteId: "remote_id",
     shortDescription: "short_description",
     unifiedCustomFields: "unified_custom_fields",
+    updatedAt: "updated_at",
   });
 });
 

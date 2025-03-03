@@ -31,7 +31,11 @@ let value: AtsCreateApplicationRequestDto = {
     passthrough: {
       "other_known_names": "John Doe",
     },
-    phoneNumber: "+1234567890",
+    phoneNumbers: [
+      {
+        phone: "+447700112233",
+      },
+    ],
     socialLinks: [
       {
         type: "linkedin",

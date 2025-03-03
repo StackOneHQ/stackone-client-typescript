@@ -768,8 +768,10 @@ export class Hris extends ClientSDK {
   async listTeamGroups(
     request: operations.HrisListTeamGroupsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListTeamGroupsResponse> {
-    return unwrapAsync(hrisListTeamGroups(
+  ): Promise<
+    PageIterator<operations.HrisListTeamGroupsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListTeamGroups(
       this,
       request,
       options,

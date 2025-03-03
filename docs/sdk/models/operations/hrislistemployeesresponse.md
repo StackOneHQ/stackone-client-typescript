@@ -7,10 +7,13 @@ import { HrisListEmployeesResponse } from "@stackone/stackone-client-ts/sdk/mode
 import {
   CountryCodeEnumValue,
   EmployeeSchemasHomeLocationValue,
-  EmployeeSchemasNationalIdentityNumberTypeValue,
-  EmployeeSchemasNationalIdentityNumberValue,
   EmployeeSchemasWorkLocationValue,
+  EmploymentSchemasDepartmentValue,
+  EmploymentSchemasDivisionValue,
+  HRISCostCenterValue,
   HRISGroupValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisListEmployeesResponse = {
@@ -74,31 +77,37 @@ let value: HrisListEmployeesResponse = {
               label: "Full-Time",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             },
-            costCenter: {
-              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              name: "Engineering",
-              ownerIds: [
-                "cxIQNjUyEDM0",
-                "cxIQNjQzNzA0MQ",
-              ],
-              parentIds: [
-                "cxIQNjUyNDM0",
-                "cxIQNjQzNzI0MQ",
-              ],
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              remoteOwnerIds: [
-                "475364",
-                "4327652",
-              ],
-              remoteParentIds: [
-                "652434",
-                "6437241",
-              ],
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
+            costCenters: [
+              {
+                distributionPercentage: 85,
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                name: "Engineering",
+                ownerIds: [
+                  "cxIQNjUyEDM0",
+                  "cxIQNjQzNzA0MQ",
+                ],
+                parentIds: [
+                  "cxIQNjUyNDM0",
+                  "cxIQNjQzNzI0MQ",
+                ],
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                remoteOwnerIds: [
+                  "475364",
+                  "4327652",
+                ],
+                remoteParentIds: [
+                  "652434",
+                  "6437241",
+                ],
+                type: {
+                  value: HRISCostCenterValue.Team,
+                },
+                unifiedCustomFields: {
+                  "my_project_custom_field_1": "REF-1236",
+                  "my_project_custom_field_2": "some other value",
+                },
               },
-            },
+            ],
             createdAt: new Date("2021-01-01T01:01:01.000Z"),
             department: {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -120,6 +129,9 @@ let value: HrisListEmployeesResponse = {
                 "652434",
                 "6437241",
               ],
+              type: {
+                value: EmploymentSchemasDepartmentValue.Team,
+              },
               unifiedCustomFields: {
                 "my_project_custom_field_1": "REF-1236",
                 "my_project_custom_field_2": "some other value",
@@ -145,6 +157,9 @@ let value: HrisListEmployeesResponse = {
                 "652434",
                 "6437241",
               ],
+              type: {
+                value: EmploymentSchemasDivisionValue.Team,
+              },
               unifiedCustomFields: {
                 "my_project_custom_field_1": "REF-1236",
                 "my_project_custom_field_2": "some other value",
@@ -258,15 +273,17 @@ let value: HrisListEmployeesResponse = {
         lastName: "Newton",
         maritalStatus: {},
         name: "Issac Newton",
-        nationalIdentityNumber: {
-          country: {
-            value: EmployeeSchemasNationalIdentityNumberValue.Us,
+        nationalIdentityNumbers: [
+          {
+            country: {
+              value: NationalIdentityNumberApiModelValue.Us,
+            },
+            type: {
+              value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+            },
+            value: "123456789",
           },
-          type: {
-            value: EmployeeSchemasNationalIdentityNumberTypeValue.Ssn,
-          },
-          value: "123456789",
-        },
+        ],
         personalEmail: "isaac.newton@example.com",
         personalPhoneNumber: "+1234567890",
         preferredLanguage: {},

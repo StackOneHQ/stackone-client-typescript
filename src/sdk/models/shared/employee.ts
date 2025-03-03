@@ -48,6 +48,12 @@ import {
   HRISGroup$Outbound,
   HRISGroup$outboundSchema,
 } from "./hrisgroup.js";
+import {
+  NationalIdentityNumberApiModel,
+  NationalIdentityNumberApiModel$inboundSchema,
+  NationalIdentityNumberApiModel$Outbound,
+  NationalIdentityNumberApiModel$outboundSchema,
+} from "./nationalidentitynumberapimodel.js";
 
 /**
  * The employee avatar
@@ -1225,6 +1231,8 @@ export type EmployeeType = {
 
 /**
  * The national identity number
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type NationalIdentityNumber = {
   /**
@@ -1345,6 +1353,7 @@ export enum EmployeeSchemasPreferredLanguageValue {
   Tha = "tha",
   Tir = "tir",
   Tig = "tig",
+  Zho = "zho",
   UnmappedValue = "unmapped_value",
 }
 /**
@@ -1937,8 +1946,17 @@ export type Employee = {
   name?: string | null | undefined;
   /**
    * The national identity number
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   nationalIdentityNumber?: NationalIdentityNumber | null | undefined;
+  /**
+   * The national identity numbers
+   */
+  nationalIdentityNumbers?:
+    | Array<NationalIdentityNumberApiModel>
+    | null
+    | undefined;
   /**
    * The employee personal email
    */
@@ -5780,6 +5798,9 @@ export const Employee$inboundSchema: z.ZodType<
   national_identity_number: z.nullable(
     z.lazy(() => NationalIdentityNumber$inboundSchema),
   ).optional(),
+  national_identity_numbers: z.nullable(
+    z.array(NationalIdentityNumberApiModel$inboundSchema),
+  ).optional(),
   personal_email: z.nullable(z.string()).optional(),
   personal_phone_number: z.nullable(z.string()).optional(),
   preferred_language: z.nullable(z.lazy(() => PreferredLanguage$inboundSchema))
@@ -5829,6 +5850,7 @@ export const Employee$inboundSchema: z.ZodType<
     "manager_id": "managerId",
     "marital_status": "maritalStatus",
     "national_identity_number": "nationalIdentityNumber",
+    "national_identity_numbers": "nationalIdentityNumbers",
     "personal_email": "personalEmail",
     "personal_phone_number": "personalPhoneNumber",
     "preferred_language": "preferredLanguage",
@@ -5885,6 +5907,10 @@ export type Employee$Outbound = {
   marital_status?: MaritalStatus$Outbound | null | undefined;
   name?: string | null | undefined;
   national_identity_number?: NationalIdentityNumber$Outbound | null | undefined;
+  national_identity_numbers?:
+    | Array<NationalIdentityNumberApiModel$Outbound>
+    | null
+    | undefined;
   personal_email?: string | null | undefined;
   personal_phone_number?: string | null | undefined;
   preferred_language?: PreferredLanguage$Outbound | null | undefined;
@@ -5952,6 +5978,9 @@ export const Employee$outboundSchema: z.ZodType<
   nationalIdentityNumber: z.nullable(
     z.lazy(() => NationalIdentityNumber$outboundSchema),
   ).optional(),
+  nationalIdentityNumbers: z.nullable(
+    z.array(NationalIdentityNumberApiModel$outboundSchema),
+  ).optional(),
   personalEmail: z.nullable(z.string()).optional(),
   personalPhoneNumber: z.nullable(z.string()).optional(),
   preferredLanguage: z.nullable(z.lazy(() => PreferredLanguage$outboundSchema))
@@ -5995,6 +6024,7 @@ export const Employee$outboundSchema: z.ZodType<
     managerId: "manager_id",
     maritalStatus: "marital_status",
     nationalIdentityNumber: "national_identity_number",
+    nationalIdentityNumbers: "national_identity_numbers",
     personalEmail: "personal_email",
     personalPhoneNumber: "personal_phone_number",
     preferredLanguage: "preferred_language",

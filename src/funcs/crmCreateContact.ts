@@ -20,16 +20,17 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
  * Creates a new Contact
  */
-export async function crmCreateContact(
+export function crmCreateContact(
   client: StackOneCore,
   request: operations.CrmCreateContactRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.CrmCreateContactResponse,
     | SDKError
@@ -41,13 +42,39 @@ export async function crmCreateContact(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.CrmCreateContactRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.CrmCreateContactResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => operations.CrmCreateContactRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.CrmCreateContactRequestDto, {
@@ -69,7 +96,7 @@ export async function crmCreateContact(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "crm_create_contact",
     oAuth2Scopes: [],
 
@@ -102,7 +129,7 @@ export async function crmCreateContact(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -113,7 +140,7 @@ export async function crmCreateContact(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -143,8 +170,8 @@ export async function crmCreateContact(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }
