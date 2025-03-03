@@ -16,7 +16,7 @@ export type HrisListEmployeeTimeOffRequestsQueryParamFilter = {
   /**
    * List of time off type ids to filter by.
    */
-  type?: Array<string> | null | undefined;
+  typeIds?: Array<string> | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -94,17 +94,18 @@ export const HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: z.nullable(z.array(z.string())).optional(),
+    type_ids: z.nullable(z.array(z.string())).optional(),
     updated_after: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
+      "type_ids": "typeIds",
       "updated_after": "updatedAfter",
     });
   });
 
 /** @internal */
 export type HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound = {
-  type?: Array<string> | null | undefined;
+  type_ids?: Array<string> | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -115,10 +116,11 @@ export const HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema:
     z.ZodTypeDef,
     HrisListEmployeeTimeOffRequestsQueryParamFilter
   > = z.object({
-    type: z.nullable(z.array(z.string())).optional(),
+    typeIds: z.nullable(z.array(z.string())).optional(),
     updatedAfter: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
+      typeIds: "type_ids",
       updatedAfter: "updated_after",
     });
   });

@@ -3,7 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Employment } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  Employment,
+  EmploymentSchemasDepartmentValue,
+  EmploymentSchemasDivisionValue,
+  HRISCostCenterValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Employment = {
   active: true,
@@ -13,31 +18,37 @@ let value: Employment = {
     label: "Full-Time",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   },
-  costCenter: {
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    name: "Engineering",
-    ownerIds: [
-      "cxIQNjUyEDM0",
-      "cxIQNjQzNzA0MQ",
-    ],
-    parentIds: [
-      "cxIQNjUyNDM0",
-      "cxIQNjQzNzI0MQ",
-    ],
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    remoteOwnerIds: [
-      "475364",
-      "4327652",
-    ],
-    remoteParentIds: [
-      "652434",
-      "6437241",
-    ],
-    unifiedCustomFields: {
-      "my_project_custom_field_1": "REF-1236",
-      "my_project_custom_field_2": "some other value",
+  costCenters: [
+    {
+      distributionPercentage: 85,
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      name: "Engineering",
+      ownerIds: [
+        "cxIQNjUyEDM0",
+        "cxIQNjQzNzA0MQ",
+      ],
+      parentIds: [
+        "cxIQNjUyNDM0",
+        "cxIQNjQzNzI0MQ",
+      ],
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      remoteOwnerIds: [
+        "475364",
+        "4327652",
+      ],
+      remoteParentIds: [
+        "652434",
+        "6437241",
+      ],
+      type: {
+        value: HRISCostCenterValue.Team,
+      },
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
-  },
+  ],
   createdAt: new Date("2021-01-01T01:01:01.000Z"),
   department: {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -59,6 +70,9 @@ let value: Employment = {
       "652434",
       "6437241",
     ],
+    type: {
+      value: EmploymentSchemasDepartmentValue.Team,
+    },
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",
@@ -84,6 +98,9 @@ let value: Employment = {
       "652434",
       "6437241",
     ],
+    type: {
+      value: EmploymentSchemasDivisionValue.Team,
+    },
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",
@@ -143,7 +160,8 @@ let value: Employment = {
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `active`                                                                                                                                                                                | *boolean*                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                      | The employment active status                                                                                                                                                            | true                                                                                                                                                                                    |
 | `contractType`                                                                                                                                                                          | [shared.ContractType](../../../sdk/models/shared/contracttype.md)                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                      | The employment work schedule type                                                                                                                                                       |                                                                                                                                                                                         |
-| `costCenter`                                                                                                                                                                            | [shared.CostCenter](../../../sdk/models/shared/costcenter.md)                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                      | The employee cost_center                                                                                                                                                                |                                                                                                                                                                                         |
+| ~~`costCenter`~~                                                                                                                                                                        | [shared.CostCenter](../../../sdk/models/shared/costcenter.md)                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The employee cost_center                               |                                                                                                                                                                                         |
+| `costCenters`                                                                                                                                                                           | [shared.HRISCostCenter](../../../sdk/models/shared/hriscostcenter.md)[]                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                      | The employee cost_centers                                                                                                                                                               |                                                                                                                                                                                         |
 | `createdAt`                                                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                           | :heavy_minus_sign:                                                                                                                                                                      | The created_at date                                                                                                                                                                     | 2021-01-01T01:01:01.000Z                                                                                                                                                                |
 | `department`                                                                                                                                                                            | [shared.EmploymentDepartment](../../../sdk/models/shared/employmentdepartment.md)                                                                                                       | :heavy_minus_sign:                                                                                                                                                                      | The employee department                                                                                                                                                                 |                                                                                                                                                                                         |
 | `division`                                                                                                                                                                              | [shared.Division](../../../sdk/models/shared/division.md)                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                      | The employee division                                                                                                                                                                   |                                                                                                                                                                                         |

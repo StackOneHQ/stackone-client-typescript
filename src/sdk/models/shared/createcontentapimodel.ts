@@ -22,6 +22,10 @@ export type CreateContentApiModel = {
    */
   externalReference?: string | null | undefined;
   /**
+   * The mobile friendly URL of the content
+   */
+  mobileLaunchContentUrl?: string | null | undefined;
+  /**
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
@@ -40,12 +44,14 @@ export const CreateContentApiModel$inboundSchema: z.ZodType<
   content_url: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
+  mobile_launch_content_url: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   title: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "content_url": "contentUrl",
     "external_reference": "externalReference",
+    "mobile_launch_content_url": "mobileLaunchContentUrl",
   });
 });
 
@@ -54,6 +60,7 @@ export type CreateContentApiModel$Outbound = {
   content_url?: string | null | undefined;
   description?: string | null | undefined;
   external_reference?: string | null | undefined;
+  mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   title?: string | null | undefined;
 };
@@ -67,12 +74,14 @@ export const CreateContentApiModel$outboundSchema: z.ZodType<
   contentUrl: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
+  mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   title: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contentUrl: "content_url",
     externalReference: "external_reference",
+    mobileLaunchContentUrl: "mobile_launch_content_url",
   });
 });
 

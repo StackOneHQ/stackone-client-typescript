@@ -20,16 +20,17 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
  * Create Employee Work Eligibility Request
  */
-export async function hrisCreateEmployeeWorkEligibilityRequest(
+export function hrisCreateEmployeeWorkEligibilityRequest(
   client: StackOneCore,
   request: operations.HrisCreateEmployeeWorkEligibilityRequestRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.HrisCreateEmployeeWorkEligibilityRequestResponse,
     | SDKError
@@ -41,6 +42,32 @@ export async function hrisCreateEmployeeWorkEligibilityRequest(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.HrisCreateEmployeeWorkEligibilityRequestRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.HrisCreateEmployeeWorkEligibilityRequestResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -49,7 +76,7 @@ export async function hrisCreateEmployeeWorkEligibilityRequest(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.HrisCreateWorkEligibilityRequestDto, {
@@ -80,7 +107,7 @@ export async function hrisCreateEmployeeWorkEligibilityRequest(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "hris_create_employee_work_eligibility_request",
     oAuth2Scopes: [],
 
@@ -113,7 +140,7 @@ export async function hrisCreateEmployeeWorkEligibilityRequest(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -124,7 +151,7 @@ export async function hrisCreateEmployeeWorkEligibilityRequest(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -156,8 +183,8 @@ export async function hrisCreateEmployeeWorkEligibilityRequest(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

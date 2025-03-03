@@ -29,6 +29,7 @@ let value: LmsGetContentResponse = {
         "16874-SOFTWARE-ENG-COURSE",
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
+      createdAt: new Date("2021-07-21T14:00:00.000Z"),
       description:
         "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
@@ -37,6 +38,13 @@ let value: LmsGetContentResponse = {
       languages: [
         {
           value: LanguageEnumValue.EnGB,
+        },
+      ],
+      localisations: [
+        {
+          description:
+            "This video acts as learning content for software engineers.",
+          title: "Software Engineer Lv 1",
         },
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
@@ -53,11 +61,16 @@ let value: LmsGetContentResponse = {
           name: "Sales Techniques",
         },
       ],
+      tags: [
+        "Sales Techniques",
+        "Customer Service",
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
+      updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     },
   },
   contentType: "<value>",

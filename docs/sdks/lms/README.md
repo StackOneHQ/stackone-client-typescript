@@ -45,6 +45,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalisationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -109,12 +110,22 @@ async function run() {
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
           coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: new Date("2021-07-21T14:00:00.000Z"),
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
             {
               value: LanguageEnumValue.EnGB,
+            },
+          ],
+          localisations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalisationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
             },
           ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
@@ -129,11 +140,16 @@ async function run() {
               name: "Information-Technology",
             },
           ],
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
+          updatedAt: new Date("2021-07-21T14:00:00.000Z"),
         },
         {
           active: true,
@@ -180,6 +196,7 @@ async function run() {
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
           coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: new Date("2021-07-21T14:00:00.000Z"),
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -194,6 +211,15 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          localisations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalisationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+          ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           shortDescription: "This course is a valuable resource and acts as learning content for...",
@@ -206,11 +232,16 @@ async function run() {
               name: "Information-Technology",
             },
           ],
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
+          updatedAt: new Date("2021-07-21T14:00:00.000Z"),
         },
       ],
     },
@@ -235,6 +266,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalisationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -301,12 +333,22 @@ async function run() {
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
           coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: new Date("2021-07-21T14:00:00.000Z"),
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
             {
               value: LanguageEnumValue.EnGB,
+            },
+          ],
+          localisations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalisationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
             },
           ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
@@ -321,11 +363,16 @@ async function run() {
               name: "Information-Technology",
             },
           ],
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
+          updatedAt: new Date("2021-07-21T14:00:00.000Z"),
         },
         {
           active: true,
@@ -372,6 +419,7 @@ async function run() {
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
           coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: new Date("2021-07-21T14:00:00.000Z"),
           description: "This video acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -386,6 +434,15 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          localisations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalisationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+          ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           shortDescription: "This course is a valuable resource and acts as learning content for...",
@@ -398,11 +455,16 @@ async function run() {
               name: "Information-Technology",
             },
           ],
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
+          updatedAt: new Date("2021-07-21T14:00:00.000Z"),
         },
       ],
     },
@@ -486,6 +548,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -493,6 +556,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -570,6 +634,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -577,6 +642,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -584,6 +650,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -688,6 +755,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -695,6 +763,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -772,6 +841,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -779,6 +849,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -786,6 +857,7 @@ async function run() {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
               externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
               order: 1,
               title: "Software Engineer Lv 1",
             },
@@ -3287,6 +3359,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalisationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -3338,12 +3411,22 @@ async function run() {
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
       coverUrl: "https://www.googledrive.com/?v=16873",
+      createdAt: new Date("2021-07-21T14:00:00.000Z"),
       description: "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
           value: LanguageEnumValue.EnGB,
+        },
+      ],
+      localisations: [
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalisationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
         },
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
@@ -3358,11 +3441,16 @@ async function run() {
           name: "Information-Technology",
         },
       ],
+      tags: [
+        "Sales Techniques",
+        "Customer Service",
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
+      updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     },
     xAccountId: "<id>",
   });
@@ -3385,6 +3473,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalisationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -3438,12 +3527,22 @@ async function run() {
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
       coverUrl: "https://www.googledrive.com/?v=16873",
+      createdAt: new Date("2021-07-21T14:00:00.000Z"),
       description: "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
           value: LanguageEnumValue.EnGB,
+        },
+      ],
+      localisations: [
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalisationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
         },
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
@@ -3458,11 +3557,16 @@ async function run() {
           name: "Information-Technology",
         },
       ],
+      tags: [
+        "Sales Techniques",
+        "Customer Service",
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
+      updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     },
     xAccountId: "<id>",
   });
@@ -3553,6 +3657,7 @@ async function run() {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           title: "Software Engineer Lv 1",
         },
@@ -3647,6 +3752,7 @@ async function run() {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
           title: "Software Engineer Lv 1",
         },

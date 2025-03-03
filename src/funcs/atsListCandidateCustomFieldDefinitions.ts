@@ -26,6 +26,7 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 import {
   createPageIterator,
@@ -37,11 +38,11 @@ import {
 /**
  * List Candidate Custom Field Definitions
  */
-export async function atsListCandidateCustomFieldDefinitions(
+export function atsListCandidateCustomFieldDefinitions(
   client: StackOneCore,
   request: operations.AtsListCandidateCustomFieldDefinitionsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   PageIterator<
     Result<
       operations.AtsListCandidateCustomFieldDefinitionsResponse,
@@ -56,6 +57,35 @@ export async function atsListCandidateCustomFieldDefinitions(
     { cursor: string }
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.AtsListCandidateCustomFieldDefinitionsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    PageIterator<
+      Result<
+        operations.AtsListCandidateCustomFieldDefinitionsResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >,
+      { cursor: string }
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -64,7 +94,7 @@ export async function atsListCandidateCustomFieldDefinitions(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return haltIterator(parsed);
+    return [haltIterator(parsed), { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -98,7 +128,7 @@ export async function atsListCandidateCustomFieldDefinitions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "ats_list_candidate_custom_field_definitions",
     oAuth2Scopes: [],
 
@@ -132,7 +162,7 @@ export async function atsListCandidateCustomFieldDefinitions(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return haltIterator(requestRes);
+    return [haltIterator(requestRes), { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -143,7 +173,7 @@ export async function atsListCandidateCustomFieldDefinitions(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return haltIterator(doResult);
+    return [haltIterator(doResult), { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -175,7 +205,11 @@ export async function atsListCandidateCustomFieldDefinitions(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return haltIterator(result);
+    return [haltIterator(result), {
+      status: "complete",
+      request: req,
+      response,
+    }];
   }
 
   const nextFunc = (
@@ -196,7 +230,7 @@ export async function atsListCandidateCustomFieldDefinitions(
     "~next"?: { cursor: string };
   } => {
     const nextCursor = dlv(responseData, "next");
-    if (nextCursor == null) {
+    if (typeof nextCursor !== "string") {
       return { next: () => null };
     }
 
@@ -214,5 +248,9 @@ export async function atsListCandidateCustomFieldDefinitions(
   };
 
   const page = { ...result, ...nextFunc(raw) };
-  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
+  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
+    status: "complete",
+    request: req,
+    response,
+  }];
 }

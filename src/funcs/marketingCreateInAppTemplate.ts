@@ -20,16 +20,17 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
  * Create In-App Template
  */
-export async function marketingCreateInAppTemplate(
+export function marketingCreateInAppTemplate(
   client: StackOneCore,
   request: operations.MarketingCreateInAppTemplateRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.MarketingCreateInAppTemplateResponse,
     | SDKError
@@ -41,6 +42,32 @@ export async function marketingCreateInAppTemplate(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.MarketingCreateInAppTemplateRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.MarketingCreateInAppTemplateResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -50,7 +77,7 @@ export async function marketingCreateInAppTemplate(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON(
@@ -74,7 +101,7 @@ export async function marketingCreateInAppTemplate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "marketing_create_in_app_template",
     oAuth2Scopes: [],
 
@@ -107,7 +134,7 @@ export async function marketingCreateInAppTemplate(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -118,7 +145,7 @@ export async function marketingCreateInAppTemplate(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -148,8 +175,8 @@ export async function marketingCreateInAppTemplate(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

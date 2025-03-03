@@ -3,6 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
+import { dlv } from "../lib/dlv.js";
 import {
   encodeDeepObjectQuery,
   encodeFormQuery,
@@ -25,26 +26,65 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
+import {
+  createPageIterator,
+  haltIterator,
+  PageIterator,
+  Paginator,
+} from "../sdk/types/operations.js";
 
 /**
  * List Team Groups
  */
-export async function hrisListTeamGroups(
+export function hrisListTeamGroups(
+  client: StackOneCore,
+  request: operations.HrisListTeamGroupsRequest,
+  options?: RequestOptions,
+): APIPromise<
+  PageIterator<
+    Result<
+      operations.HrisListTeamGroupsResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    { cursor: string }
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
   client: StackOneCore,
   request: operations.HrisListTeamGroupsRequest,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.HrisListTeamGroupsResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    PageIterator<
+      Result<
+        operations.HrisListTeamGroupsResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >,
+      { cursor: string }
+    >,
+    APICall,
+  ]
 > {
   const parsed = safeParse(
     request,
@@ -52,7 +92,7 @@ export async function hrisListTeamGroups(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [haltIterator(parsed), { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -86,7 +126,7 @@ export async function hrisListTeamGroups(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "hris_list_team_groups",
     oAuth2Scopes: [],
 
@@ -120,7 +160,7 @@ export async function hrisListTeamGroups(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [haltIterator(requestRes), { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -131,7 +171,7 @@ export async function hrisListTeamGroups(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [haltIterator(doResult), { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -143,7 +183,7 @@ export async function hrisListTeamGroups(
     Headers: {},
   };
 
-  const [result] = await M.match<
+  const [result, raw] = await M.match<
     operations.HrisListTeamGroupsResponse,
     | SDKError
     | SDKValidationError
@@ -161,8 +201,52 @@ export async function hrisListTeamGroups(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [haltIterator(result), {
+      status: "complete",
+      request: req,
+      response,
+    }];
   }
 
-  return result;
+  const nextFunc = (
+    responseData: unknown,
+  ): {
+    next: Paginator<
+      Result<
+        operations.HrisListTeamGroupsResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
+    const nextCursor = dlv(responseData, "next");
+    if (typeof nextCursor !== "string") {
+      return { next: () => null };
+    }
+
+    const nextVal = () =>
+      hrisListTeamGroups(
+        client,
+        {
+          ...request,
+          next: nextCursor,
+        },
+        options,
+      );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
+  };
+
+  const page = { ...result, ...nextFunc(raw) };
+  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
+    status: "complete",
+    request: req,
+    response,
+  }];
 }

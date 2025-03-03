@@ -20,16 +20,17 @@ import {
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
  * List Connectors Meta Information for all providers
  */
-export async function connectorsListConnectorsMeta(
+export function connectorsListConnectorsMeta(
   client: StackOneCore,
   request: operations.StackoneListConnectorsMetaRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.StackoneListConnectorsMetaResponse,
     | SDKError
@@ -41,6 +42,32 @@ export async function connectorsListConnectorsMeta(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.StackoneListConnectorsMetaRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.StackoneListConnectorsMetaResponse,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -48,7 +75,7 @@ export async function connectorsListConnectorsMeta(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -67,7 +94,7 @@ export async function connectorsListConnectorsMeta(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "stackone_list_connectors_meta",
     oAuth2Scopes: [],
 
@@ -101,7 +128,7 @@ export async function connectorsListConnectorsMeta(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -112,7 +139,7 @@ export async function connectorsListConnectorsMeta(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -142,8 +169,8 @@ export async function connectorsListConnectorsMeta(
     M.fail([500, 501, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

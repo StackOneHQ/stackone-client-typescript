@@ -5,7 +5,7 @@
 ```typescript
 import { UpdateEmployeeApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: UpdateEmployeeApiModelValue = UpdateEmployeeApiModelValue.Shifts;
+let value: UpdateEmployeeApiModelValue = UpdateEmployeeApiModelValue.FullTime;
 ```
 
 ## Values

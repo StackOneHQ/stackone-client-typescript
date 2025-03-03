@@ -6,7 +6,7 @@
 import { CreateSkillsApiModelSchemasProficiencyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateSkillsApiModelSchemasProficiencyValue =
-  CreateSkillsApiModelSchemasProficiencyValue.One;
+  CreateSkillsApiModelSchemasProficiencyValue.Five;
 ```
 
 ## Values

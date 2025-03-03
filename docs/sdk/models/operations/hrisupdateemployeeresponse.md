@@ -6,9 +6,9 @@
 import { HrisUpdateEmployeeResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
   CountryCodeEnumValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
   UpdateEmployeeApiModelSchemasHomeLocationValue,
-  UpdateEmployeeApiModelSchemasNationalIdentityNumberTypeValue,
-  UpdateEmployeeApiModelSchemasNationalIdentityNumberValue,
   UpdateEmployeeApiModelSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -87,15 +87,17 @@ let value: HrisUpdateEmployeeResponse = {
     managerId: "67890",
     maritalStatus: {},
     name: "Issac Newton",
-    nationalIdentityNumber: {
-      country: {
-        value: UpdateEmployeeApiModelSchemasNationalIdentityNumberValue.Us,
+    nationalIdentityNumbers: [
+      {
+        country: {
+          value: NationalIdentityNumberApiModelValue.Us,
+        },
+        type: {
+          value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+        },
+        value: "123456789",
       },
-      type: {
-        value: UpdateEmployeeApiModelSchemasNationalIdentityNumberTypeValue.Ssn,
-      },
-      value: "123456789",
-    },
+    ],
     personalEmail: "isaac.newton@example.com",
     personalPhoneNumber: "+1234567890",
     preferredLanguage: {},

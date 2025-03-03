@@ -7,7 +7,7 @@ The type of the benefit
 ```typescript
 import { HRISBenefitValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISBenefitValue = HRISBenefitValue.Insurance;
+let value: HRISBenefitValue = HRISBenefitValue.UnmappedValue;
 ```
 
 ## Values
@@ -21,4 +21,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Other`                | other                  |
 | `HealthInsurance`      | health_insurance       |
 | `Insurance`            | insurance              |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

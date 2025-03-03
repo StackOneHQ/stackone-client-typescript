@@ -84,7 +84,7 @@ export type TimeEntriesStatus = {
 
 export type TimeEntries = {
   /**
-   * The duration of the break in hours
+   * The duration of the break taken during time entry in hours
    */
   breakDuration?: number | null | undefined;
   /**
@@ -92,7 +92,7 @@ export type TimeEntries = {
    */
   createdAt?: Date | null | undefined;
   /**
-   * The employee ID associated with this employment
+   * The employee ID associated with this time entry
    */
   employeeId?: string | null | undefined;
   /**
@@ -116,7 +116,7 @@ export type TimeEntries = {
    */
   location?: Location | null | undefined;
   /**
-   * Provider's unique identifier of the employee associated with this employment
+   * Provider's unique identifier of the employee associated with this time entry
    */
   remoteEmployeeId?: string | null | undefined;
   /**

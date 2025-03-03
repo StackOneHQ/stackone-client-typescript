@@ -36,6 +36,12 @@ import {
   LanguageEnum$Outbound,
   LanguageEnum$outboundSchema,
 } from "./languageenum.js";
+import {
+  LocalisationModel,
+  LocalisationModel$inboundSchema,
+  LocalisationModel$Outbound,
+  LocalisationModel$outboundSchema,
+} from "./localisationmodel.js";
 
 export type LmsUpsertContentRequestDto4 = {};
 
@@ -50,6 +56,8 @@ export enum LmsUpsertContentRequestDtoValue {
   Video = "video",
   Quiz = "quiz",
   Document = "document",
+  Audio = "audio",
+  Article = "article",
 }
 export type LmsUpsertContentRequestDtoValueOpen = OpenEnum<
   typeof LmsUpsertContentRequestDtoValue
@@ -96,6 +104,10 @@ export type LmsUpsertContentRequestDto = {
    */
   coverUrl?: string | null | undefined;
   /**
+   * The date on which the content was created.
+   */
+  createdAt?: Date | null | undefined;
+  /**
    * The description of the content
    */
   description?: string | null | undefined;
@@ -111,6 +123,10 @@ export type LmsUpsertContentRequestDto = {
    * The languages associated with this content
    */
   languages?: Array<LanguageEnum> | null | undefined;
+  /**
+   * Localised content information
+   */
+  localisations?: Array<LocalisationModel> | null | undefined;
   /**
    * The mobile friendly URL of the content
    */
@@ -130,6 +146,10 @@ export type LmsUpsertContentRequestDto = {
    */
   skills?: Array<CreateSkillsApiModel> | null | undefined;
   /**
+   * A list of tags associated with the content
+   */
+  tags?: Array<string> | null | undefined;
+  /**
    * The title of the content
    */
   title?: string | null | undefined;
@@ -137,6 +157,10 @@ export type LmsUpsertContentRequestDto = {
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
+  /**
+   * The date on which the content was last updated.
+   */
+  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -399,26 +423,37 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   ).optional(),
   content_url: z.nullable(z.string()).optional(),
   cover_url: z.nullable(z.string()).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
+  localisations: z.nullable(z.array(LocalisationModel$inboundSchema))
+    .optional(),
   mobile_launch_content_url: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   short_description: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
+  tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "additional_data": "additionalData",
     "content_type": "contentType",
     "content_url": "contentUrl",
     "cover_url": "coverUrl",
+    "created_at": "createdAt",
     "external_reference": "externalReference",
     "mobile_launch_content_url": "mobileLaunchContentUrl",
     "short_description": "shortDescription",
     "unified_custom_fields": "unifiedCustomFields",
+    "updated_at": "updatedAt",
   });
 });
 
@@ -433,16 +468,20 @@ export type LmsUpsertContentRequestDto$Outbound = {
     | undefined;
   content_url?: string | null | undefined;
   cover_url?: string | null | undefined;
+  created_at?: string | null | undefined;
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
+  localisations?: Array<LocalisationModel$Outbound> | null | undefined;
   mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   short_description?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
+  tags?: Array<string> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
+  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -460,26 +499,33 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   ).optional(),
   contentUrl: z.nullable(z.string()).optional(),
   coverUrl: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
+  localisations: z.nullable(z.array(LocalisationModel$outboundSchema))
+    .optional(),
   mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
   shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
+  tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     additionalData: "additional_data",
     contentType: "content_type",
     contentUrl: "content_url",
     coverUrl: "cover_url",
+    createdAt: "created_at",
     externalReference: "external_reference",
     mobileLaunchContentUrl: "mobile_launch_content_url",
     shortDescription: "short_description",
     unifiedCustomFields: "unified_custom_fields",
+    updatedAt: "updated_at",
   });
 });
 

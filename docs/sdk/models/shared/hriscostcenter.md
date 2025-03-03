@@ -6,6 +6,7 @@
 import { HRISCostCenter, HRISCostCenterValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISCostCenter = {
+  distributionPercentage: 85,
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   name: "Engineering",
   ownerIds: [
@@ -39,6 +40,7 @@ let value: HRISCostCenter = {
 
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `distributionPercentage`                                                                     | *number*                                                                                     | :heavy_minus_sign:                                                                           | The distribution percentage for cost_center                                                  | 85                                                                                           |
 | `id`                                                                                         | *string*                                                                                     | :heavy_minus_sign:                                                                           | Unique identifier                                                                            | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                         |
 | `name`                                                                                       | *string*                                                                                     | :heavy_minus_sign:                                                                           | The name of the group                                                                        | Engineering                                                                                  |
 | `ownerIds`                                                                                   | *string*[]                                                                                   | :heavy_minus_sign:                                                                           | The list of group owner ids of the given group                                               | [<br/>"cxIQNjUyEDM0",<br/>"cxIQNjQzNzA0MQ"<br/>]                                             |

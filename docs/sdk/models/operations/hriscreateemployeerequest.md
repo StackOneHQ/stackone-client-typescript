@@ -7,9 +7,9 @@ import { HrisCreateEmployeeRequest } from "@stackone/stackone-client-ts/sdk/mode
 import {
   CountryCodeEnumValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequest = {
@@ -103,18 +103,17 @@ let value: HrisCreateEmployeeRequest = {
     managerId: "67890",
     maritalStatus: {},
     name: "Issac Newton",
-    nationalIdentityNumber: {
-      country: {
-        value:
-          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+    nationalIdentityNumbers: [
+      {
+        country: {
+          value: NationalIdentityNumberApiModelValue.Us,
+        },
+        type: {
+          value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+        },
+        value: "123456789",
       },
-      type: {
-        value:
-          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue
-            .Ssn,
-      },
-      value: "123456789",
-    },
+    ],
     passthrough: {
       "other_known_names": "John Doe",
     },

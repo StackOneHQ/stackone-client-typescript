@@ -25,6 +25,12 @@ import {
   CustomFields$outboundSchema,
 } from "./customfields.js";
 import {
+  PhoneNumber,
+  PhoneNumber$inboundSchema,
+  PhoneNumber$Outbound,
+  PhoneNumber$outboundSchema,
+} from "./phonenumber.js";
+import {
   SocialLink,
   SocialLink$inboundSchema,
   SocialLink$Outbound,
@@ -135,8 +141,14 @@ export type AtsCreateApplicationRequestDtoCandidate = {
   passthrough?: { [k: string]: any } | null | undefined;
   /**
    * The candidate personal phone number
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   phoneNumber?: string | null | undefined;
+  /**
+   * List of candidate phone numbers including the type of the number when available
+   */
+  phoneNumbers?: Array<PhoneNumber> | null | undefined;
   /**
    * List of candidate social links
    */
@@ -481,6 +493,7 @@ export const AtsCreateApplicationRequestDtoCandidate$inboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   phone_number: z.nullable(z.string()).optional(),
+  phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
   social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
@@ -491,6 +504,7 @@ export const AtsCreateApplicationRequestDtoCandidate$inboundSchema: z.ZodType<
     "hired_at": "hiredAt",
     "last_name": "lastName",
     "phone_number": "phoneNumber",
+    "phone_numbers": "phoneNumbers",
     "social_links": "socialLinks",
     "unified_custom_fields": "unifiedCustomFields",
   });
@@ -508,6 +522,7 @@ export type AtsCreateApplicationRequestDtoCandidate$Outbound = {
   name?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   phone_number?: string | null | undefined;
+  phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
   social_links?: Array<SocialLink$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -529,6 +544,7 @@ export const AtsCreateApplicationRequestDtoCandidate$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   phoneNumber: z.nullable(z.string()).optional(),
+  phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
   socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
@@ -539,6 +555,7 @@ export const AtsCreateApplicationRequestDtoCandidate$outboundSchema: z.ZodType<
     hiredAt: "hired_at",
     lastName: "last_name",
     phoneNumber: "phone_number",
+    phoneNumbers: "phone_numbers",
     socialLinks: "social_links",
     unifiedCustomFields: "unified_custom_fields",
   });

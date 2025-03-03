@@ -175,6 +175,8 @@ import {
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -358,6 +360,26 @@ async function run() {
         },
         value: "123456789",
       },
+      nationalIdentityNumbers: [
+        {
+          country: {
+            value: NationalIdentityNumberApiModelValue.Us,
+          },
+          type: {
+            value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+          },
+          value: "123456789",
+        },
+        {
+          country: {
+            value: NationalIdentityNumberApiModelValue.Us,
+          },
+          type: {
+            value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+          },
+          value: "123456789",
+        },
+      ],
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -417,6 +439,8 @@ import {
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -602,6 +626,26 @@ async function run() {
         },
         value: "123456789",
       },
+      nationalIdentityNumbers: [
+        {
+          country: {
+            value: NationalIdentityNumberApiModelValue.Us,
+          },
+          type: {
+            value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+          },
+          value: "123456789",
+        },
+        {
+          country: {
+            value: NationalIdentityNumberApiModelValue.Us,
+          },
+          type: {
+            value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+          },
+          value: "123456789",
+        },
+      ],
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -838,8 +882,18 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.createEmployeeSkill({
-    hrisSkillsCreateRequestDto: {
+    entitySkillsCreateRequestDto: {
       id: "16873-IT345",
+      maximumProficiency: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Expert",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      minimumProficiency: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Expert",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       name: "Information-Technology",
     },
     id: "<id>",
@@ -872,8 +926,18 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisCreateEmployeeSkill(stackOne, {
-    hrisSkillsCreateRequestDto: {
+    entitySkillsCreateRequestDto: {
       id: "16873-IT345",
+      maximumProficiency: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Expert",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      minimumProficiency: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Expert",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       name: "Information-Technology",
     },
     id: "<id>",
@@ -4864,8 +4928,10 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -4904,8 +4970,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -5334,6 +5402,8 @@ import {
   HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -5425,6 +5495,17 @@ async function run() {
         },
         value: "123456789",
       },
+      nationalIdentityNumbers: [
+        {
+          country: {
+            value: NationalIdentityNumberApiModelValue.Us,
+          },
+          type: {
+            value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+          },
+          value: "123456789",
+        },
+      ],
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -5482,6 +5563,8 @@ import {
   HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
+  NationalIdentityNumberApiModelSchemasValue,
+  NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -5575,6 +5658,17 @@ async function run() {
         },
         value: "123456789",
       },
+      nationalIdentityNumbers: [
+        {
+          country: {
+            value: NationalIdentityNumberApiModelValue.Us,
+          },
+          type: {
+            value: NationalIdentityNumberApiModelSchemasValue.Ssn,
+          },
+          value: "123456789",
+        },
+      ],
       passthrough: {
         "other_known_names": "John Doe",
       },

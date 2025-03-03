@@ -11,6 +11,7 @@ let value: MarketingListEmailTemplatesResponse = {
   emailTemplatesPaginated: {
     data: [
       {
+        createdAt: new Date("2021-01-01T00:00:00.000Z"),
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         messages: [
           {
@@ -23,6 +24,7 @@ let value: MarketingListEmailTemplatesResponse = {
           },
         ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        updatedAt: new Date("2021-01-01T00:00:00.000Z"),
       },
     ],
   },

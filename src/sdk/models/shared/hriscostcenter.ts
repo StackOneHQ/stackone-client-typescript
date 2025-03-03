@@ -50,6 +50,10 @@ export type HRISCostCenterType = {
 
 export type HRISCostCenter = {
   /**
+   * The distribution percentage for cost_center
+   */
+  distributionPercentage?: number | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -324,6 +328,7 @@ export const HRISCostCenter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  distribution_percentage: z.nullable(z.number()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   owner_ids: z.nullable(z.array(z.string())).optional(),
@@ -335,6 +340,7 @@ export const HRISCostCenter$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "distribution_percentage": "distributionPercentage",
     "owner_ids": "ownerIds",
     "parent_ids": "parentIds",
     "remote_id": "remoteId",
@@ -346,6 +352,7 @@ export const HRISCostCenter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HRISCostCenter$Outbound = {
+  distribution_percentage?: number | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   owner_ids?: Array<string> | null | undefined;
@@ -363,6 +370,7 @@ export const HRISCostCenter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISCostCenter
 > = z.object({
+  distributionPercentage: z.nullable(z.number()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerIds: z.nullable(z.array(z.string())).optional(),
@@ -374,6 +382,7 @@ export const HRISCostCenter$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    distributionPercentage: "distribution_percentage",
     ownerIds: "owner_ids",
     parentIds: "parent_ids",
     remoteId: "remote_id",

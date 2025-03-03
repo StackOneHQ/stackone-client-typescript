@@ -22,6 +22,9 @@ export type TimeOffBalancesSourceValue =
   | boolean
   | Array<any>;
 
+/**
+ * The unified value for the duration unit of the time off balance. If the provider does not specify this unit, the value will be set to unknown
+ */
 export enum TimeOffBalancesValue {
   Minutes = "minutes",
   Hours = "hours",
@@ -29,7 +32,11 @@ export enum TimeOffBalancesValue {
   Weeks = "weeks",
   Months = "months",
   Years = "years",
+  Unknown = "unknown",
 }
+/**
+ * The unified value for the duration unit of the time off balance. If the provider does not specify this unit, the value will be set to unknown
+ */
 export type TimeOffBalancesValueOpen = OpenEnum<typeof TimeOffBalancesValue>;
 
 /**
@@ -44,6 +51,9 @@ export type BalanceUnit = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified value for the duration unit of the time off balance. If the provider does not specify this unit, the value will be set to unknown
+   */
   value?: TimeOffBalancesValueOpen | null | undefined;
 };
 
@@ -56,6 +66,9 @@ export type TimeOffBalancesSchemasSourceValue =
   | boolean
   | Array<any>;
 
+/**
+ * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+ */
 export enum TimeOffBalancesSchemasValue {
   Paid = "paid",
   Unpaid = "unpaid",
@@ -68,6 +81,9 @@ export enum TimeOffBalancesSchemasValue {
   JuryDuty = "jury_duty",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+ */
 export type TimeOffBalancesSchemasValueOpen = OpenEnum<
   typeof TimeOffBalancesSchemasValue
 >;
@@ -84,6 +100,9 @@ export type TimeOffBalancesType = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+   */
   value?: TimeOffBalancesSchemasValueOpen | null | undefined;
 };
 
@@ -159,9 +178,17 @@ export type TimeOffBalances = {
    */
   policyId?: string | null | undefined;
   /**
+   * Provider's unique identifier of the employee associated with this balance
+   */
+  remoteEmployeeId?: string | null | undefined;
+  /**
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * Provider's unique identifier of the time off policy id associated with this balance
+   */
+  remotePolicyId?: string | null | undefined;
   /**
    * The updated_at date of this time off balance
    */
@@ -734,7 +761,9 @@ export const TimeOffBalances$inboundSchema: z.ZodType<
   initial_balance: z.nullable(z.number()).optional(),
   policy: z.nullable(z.lazy(() => Policy$inboundSchema)).optional(),
   policy_id: z.nullable(z.string()).optional(),
+  remote_employee_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  remote_policy_id: z.nullable(z.string()).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -747,7 +776,9 @@ export const TimeOffBalances$inboundSchema: z.ZodType<
     "employee_id": "employeeId",
     "initial_balance": "initialBalance",
     "policy_id": "policyId",
+    "remote_employee_id": "remoteEmployeeId",
     "remote_id": "remoteId",
+    "remote_policy_id": "remotePolicyId",
     "updated_at": "updatedAt",
   });
 });
@@ -763,7 +794,9 @@ export type TimeOffBalances$Outbound = {
   initial_balance?: number | null | undefined;
   policy?: Policy$Outbound | null | undefined;
   policy_id?: string | null | undefined;
+  remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
+  remote_policy_id?: string | null | undefined;
   updated_at?: string | null | undefined;
 };
 
@@ -784,7 +817,9 @@ export const TimeOffBalances$outboundSchema: z.ZodType<
   initialBalance: z.nullable(z.number()).optional(),
   policy: z.nullable(z.lazy(() => Policy$outboundSchema)).optional(),
   policyId: z.nullable(z.string()).optional(),
+  remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remotePolicyId: z.nullable(z.string()).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -795,7 +830,9 @@ export const TimeOffBalances$outboundSchema: z.ZodType<
     employeeId: "employee_id",
     initialBalance: "initial_balance",
     policyId: "policy_id",
+    remoteEmployeeId: "remote_employee_id",
     remoteId: "remote_id",
+    remotePolicyId: "remote_policy_id",
     updatedAt: "updated_at",
   });
 });

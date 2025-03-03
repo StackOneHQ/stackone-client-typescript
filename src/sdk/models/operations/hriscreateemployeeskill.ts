@@ -10,7 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisCreateEmployeeSkillRequest = {
-  hrisSkillsCreateRequestDto: shared.HrisSkillsCreateRequestDto;
+  entitySkillsCreateRequestDto: shared.EntitySkillsCreateRequestDto;
   id: string;
   /**
    * The account identifier
@@ -44,19 +44,20 @@ export const HrisCreateEmployeeSkillRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  HrisSkillsCreateRequestDto: shared.HrisSkillsCreateRequestDto$inboundSchema,
+  EntitySkillsCreateRequestDto:
+    shared.EntitySkillsCreateRequestDto$inboundSchema,
   id: z.string(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "HrisSkillsCreateRequestDto": "hrisSkillsCreateRequestDto",
+    "EntitySkillsCreateRequestDto": "entitySkillsCreateRequestDto",
     "x-account-id": "xAccountId",
   });
 });
 
 /** @internal */
 export type HrisCreateEmployeeSkillRequest$Outbound = {
-  HrisSkillsCreateRequestDto: shared.HrisSkillsCreateRequestDto$Outbound;
+  EntitySkillsCreateRequestDto: shared.EntitySkillsCreateRequestDto$Outbound;
   id: string;
   "x-account-id": string;
 };
@@ -67,12 +68,13 @@ export const HrisCreateEmployeeSkillRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisCreateEmployeeSkillRequest
 > = z.object({
-  hrisSkillsCreateRequestDto: shared.HrisSkillsCreateRequestDto$outboundSchema,
+  entitySkillsCreateRequestDto:
+    shared.EntitySkillsCreateRequestDto$outboundSchema,
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    hrisSkillsCreateRequestDto: "HrisSkillsCreateRequestDto",
+    entitySkillsCreateRequestDto: "EntitySkillsCreateRequestDto",
     xAccountId: "x-account-id",
   });
 });

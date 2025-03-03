@@ -114,5 +114,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Tha`                  | tha                    |
 | `Tir`                  | tir                    |
 | `Tig`                  | tig                    |
+| `Zho`                  | zho                    |
 | `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

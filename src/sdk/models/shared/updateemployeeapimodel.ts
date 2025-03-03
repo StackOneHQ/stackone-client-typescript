@@ -30,6 +30,12 @@ import {
   CustomFields$Outbound,
   CustomFields$outboundSchema,
 } from "./customfields.js";
+import {
+  NationalIdentityNumberApiModel,
+  NationalIdentityNumberApiModel$inboundSchema,
+  NationalIdentityNumberApiModel$Outbound,
+  NationalIdentityNumberApiModel$outboundSchema,
+} from "./nationalidentitynumberapimodel.js";
 
 /**
  * The employee avatar
@@ -4959,6 +4965,8 @@ export type UpdateEmployeeApiModelType = {
 
 /**
  * The national identity number
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type UpdateEmployeeApiModelNationalIdentityNumber = {
   /**
@@ -5079,6 +5087,7 @@ export enum UpdateEmployeeApiModelSchemasPreferredLanguageValue {
   Tha = "tha",
   Tir = "tir",
   Tig = "tig",
+  Zho = "zho",
   UnmappedValue = "unmapped_value",
 }
 /**
@@ -9416,9 +9425,18 @@ export type UpdateEmployeeApiModel = {
   name?: string | null | undefined;
   /**
    * The national identity number
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   nationalIdentityNumber?:
     | UpdateEmployeeApiModelNationalIdentityNumber
+    | null
+    | undefined;
+  /**
+   * The national identity numbers
+   */
+  nationalIdentityNumbers?:
+    | Array<NationalIdentityNumberApiModel>
     | null
     | undefined;
   /**
@@ -13391,6 +13409,9 @@ export const UpdateEmployeeApiModel$inboundSchema: z.ZodType<
   national_identity_number: z.nullable(
     z.lazy(() => UpdateEmployeeApiModelNationalIdentityNumber$inboundSchema),
   ).optional(),
+  national_identity_numbers: z.nullable(
+    z.array(NationalIdentityNumberApiModel$inboundSchema),
+  ).optional(),
   personal_email: z.nullable(z.string()).optional(),
   personal_phone_number: z.nullable(z.string()).optional(),
   preferred_language: z.nullable(
@@ -13433,6 +13454,7 @@ export const UpdateEmployeeApiModel$inboundSchema: z.ZodType<
     "manager_id": "managerId",
     "marital_status": "maritalStatus",
     "national_identity_number": "nationalIdentityNumber",
+    "national_identity_numbers": "nationalIdentityNumbers",
     "personal_email": "personalEmail",
     "personal_phone_number": "personalPhoneNumber",
     "preferred_language": "preferredLanguage",
@@ -13491,6 +13513,10 @@ export type UpdateEmployeeApiModel$Outbound = {
   name?: string | null | undefined;
   national_identity_number?:
     | UpdateEmployeeApiModelNationalIdentityNumber$Outbound
+    | null
+    | undefined;
+  national_identity_numbers?:
+    | Array<NationalIdentityNumberApiModel$Outbound>
     | null
     | undefined;
   personal_email?: string | null | undefined;
@@ -13561,6 +13587,9 @@ export const UpdateEmployeeApiModel$outboundSchema: z.ZodType<
   nationalIdentityNumber: z.nullable(
     z.lazy(() => UpdateEmployeeApiModelNationalIdentityNumber$outboundSchema),
   ).optional(),
+  nationalIdentityNumbers: z.nullable(
+    z.array(NationalIdentityNumberApiModel$outboundSchema),
+  ).optional(),
   personalEmail: z.nullable(z.string()).optional(),
   personalPhoneNumber: z.nullable(z.string()).optional(),
   preferredLanguage: z.nullable(
@@ -13599,6 +13628,7 @@ export const UpdateEmployeeApiModel$outboundSchema: z.ZodType<
     managerId: "manager_id",
     maritalStatus: "marital_status",
     nationalIdentityNumber: "national_identity_number",
+    nationalIdentityNumbers: "national_identity_numbers",
     personalEmail: "personal_email",
     personalPhoneNumber: "personal_phone_number",
     preferredLanguage: "preferred_language",
