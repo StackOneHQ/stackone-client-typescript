@@ -28,6 +28,7 @@ export enum HRISDepartmentValue {
   Division = "division",
   Group = "group",
   Project = "project",
+  Team = "team",
 }
 export type HRISDepartmentValueOpen = OpenEnum<typeof HRISDepartmentValue>;
 

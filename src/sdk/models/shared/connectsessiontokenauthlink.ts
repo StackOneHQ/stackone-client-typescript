@@ -20,6 +20,11 @@ export enum ConnectSessionTokenAuthLinkCategories {
   Documents = "documents",
 }
 
+/**
+ * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+ */
+export type ConnectSessionTokenAuthLinkMetadata = {};
+
 export type ConnectSessionTokenAuthLink = {
   accountId?: string | null | undefined;
   authLinkUrl: string;
@@ -27,6 +32,10 @@ export type ConnectSessionTokenAuthLink = {
   createdAt: Date;
   id: number;
   label?: string | null | undefined;
+  /**
+   * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+   */
+  metadata?: ConnectSessionTokenAuthLinkMetadata | null | undefined;
   organizationId: number;
   originOwnerId: string;
   originOwnerName: string;
@@ -61,6 +70,59 @@ export namespace ConnectSessionTokenAuthLinkCategories$ {
 }
 
 /** @internal */
+export const ConnectSessionTokenAuthLinkMetadata$inboundSchema: z.ZodType<
+  ConnectSessionTokenAuthLinkMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type ConnectSessionTokenAuthLinkMetadata$Outbound = {};
+
+/** @internal */
+export const ConnectSessionTokenAuthLinkMetadata$outboundSchema: z.ZodType<
+  ConnectSessionTokenAuthLinkMetadata$Outbound,
+  z.ZodTypeDef,
+  ConnectSessionTokenAuthLinkMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConnectSessionTokenAuthLinkMetadata$ {
+  /** @deprecated use `ConnectSessionTokenAuthLinkMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    ConnectSessionTokenAuthLinkMetadata$inboundSchema;
+  /** @deprecated use `ConnectSessionTokenAuthLinkMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    ConnectSessionTokenAuthLinkMetadata$outboundSchema;
+  /** @deprecated use `ConnectSessionTokenAuthLinkMetadata$Outbound` instead. */
+  export type Outbound = ConnectSessionTokenAuthLinkMetadata$Outbound;
+}
+
+export function connectSessionTokenAuthLinkMetadataToJSON(
+  connectSessionTokenAuthLinkMetadata: ConnectSessionTokenAuthLinkMetadata,
+): string {
+  return JSON.stringify(
+    ConnectSessionTokenAuthLinkMetadata$outboundSchema.parse(
+      connectSessionTokenAuthLinkMetadata,
+    ),
+  );
+}
+
+export function connectSessionTokenAuthLinkMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectSessionTokenAuthLinkMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ConnectSessionTokenAuthLinkMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectSessionTokenAuthLinkMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   ConnectSessionTokenAuthLink,
   z.ZodTypeDef,
@@ -74,6 +136,9 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
+  metadata: z.nullable(
+    z.lazy(() => ConnectSessionTokenAuthLinkMetadata$inboundSchema),
+  ).optional(),
   organization_id: z.number(),
   origin_owner_id: z.string(),
   origin_owner_name: z.string(),
@@ -102,6 +167,7 @@ export type ConnectSessionTokenAuthLink$Outbound = {
   created_at: string;
   id: number;
   label?: string | null | undefined;
+  metadata?: ConnectSessionTokenAuthLinkMetadata$Outbound | null | undefined;
   organization_id: number;
   origin_owner_id: string;
   origin_owner_name: string;
@@ -125,6 +191,9 @@ export const ConnectSessionTokenAuthLink$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
+  metadata: z.nullable(
+    z.lazy(() => ConnectSessionTokenAuthLinkMetadata$outboundSchema),
+  ).optional(),
   organizationId: z.number(),
   originOwnerId: z.string(),
   originOwnerName: z.string(),

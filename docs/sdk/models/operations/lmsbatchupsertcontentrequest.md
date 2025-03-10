@@ -43,11 +43,16 @@ let value: LmsBatchUpsertContentRequest = {
             value: LanguageEnumValue.EnGB,
           },
         ],
-        localisations: [
+        localizations: [
           {
             description:
-              "This video acts as learning content for software engineers.",
+              "This course acts as learning resource for software engineers.",
             title: "Software Engineer Lv 1",
+          },
+          {
+            description:
+              "This course acts as learning resource for software engineers.",
+            title: "Software Engineer: A comprehensive guide",
           },
         ],
         mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",

@@ -44,7 +44,7 @@ let value: HrisGetCostCenterGroupResponse = {
       "<value>",
     ],
   },
-  statusCode: 203,
+  statusCode: 428,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

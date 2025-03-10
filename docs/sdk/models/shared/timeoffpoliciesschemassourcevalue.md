@@ -1,4 +1,4 @@
-# LocalisationModelSourceValue
+# TimeOffPoliciesSchemasSourceValue
 
 
 ## Supported Types
@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 6041.18;
+const value: number = 3518.93;
 ```
 
 ### `boolean`
@@ -21,10 +21,10 @@ const value: number = 6041.18;
 const value: boolean = false;
 ```
 
-### `shared.LocalisationModel4`
+### `shared.TimeOffPoliciesSchemas4`
 
 ```typescript
-const value: shared.LocalisationModel4 = {};
+const value: shared.TimeOffPoliciesSchemas4 = {};
 ```
 
 ### `any[]`

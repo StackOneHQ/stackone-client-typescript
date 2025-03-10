@@ -12,7 +12,7 @@ let value: HrisGetEmployeeTimeOffBalanceResponse = {
       "<value>",
     ],
   },
-  statusCode: 202,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -28,8 +28,15 @@ let value: HrisGetEmployeeTimeOffBalanceResponse = {
       policy: {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         description: "Usable for regional and national holidays of employees.",
+        durationUnit: {},
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Holidays",
+        reasons: [
+          {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+        ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         type: {},
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),

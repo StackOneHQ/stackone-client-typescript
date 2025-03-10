@@ -1,13 +1,13 @@
 # TimeOffBalancesSchemasValue
 
-The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
 
 ## Example Usage
 
 ```typescript
 import { TimeOffBalancesSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffBalancesSchemasValue = TimeOffBalancesSchemasValue.Holiday;
+let value: TimeOffBalancesSchemasValue = TimeOffBalancesSchemasValue.Hours;
 ```
 
 ## Values
@@ -16,14 +16,11 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `Paid`                 | paid                   |
-| `Unpaid`               | unpaid                 |
-| `Holiday`              | holiday                |
-| `Vacation`             | vacation               |
-| `Sick`                 | sick                   |
-| `Personal`             | personal               |
-| `InLieu`               | in_lieu                |
-| `Bereavement`          | bereavement            |
-| `JuryDuty`             | jury_duty              |
-| `UnmappedValue`        | unmapped_value         |
+| `Minutes`              | minutes                |
+| `Hours`                | hours                  |
+| `Days`                 | days                   |
+| `Weeks`                | weeks                  |
+| `Months`               | months                 |
+| `Years`                | years                  |
+| `Unknown`              | unknown                |
 | -                      | `Unrecognized<string>` |

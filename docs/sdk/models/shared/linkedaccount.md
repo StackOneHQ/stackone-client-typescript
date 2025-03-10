@@ -6,13 +6,13 @@
 import { LinkedAccount, LinkedAccountStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LinkedAccount = {
-  createdAt: new Date("2025-10-10T18:19:46.748Z"),
+  createdAt: new Date("2023-11-22T00:36:57.586Z"),
   id: "<id>",
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   provider: "<value>",
-  status: LinkedAccountStatus.Active,
-  updatedAt: new Date("2023-09-12T23:01:13.510Z"),
+  status: LinkedAccountStatus.Error,
+  updatedAt: new Date("2023-10-01T08:44:41.136Z"),
 };
 ```
 

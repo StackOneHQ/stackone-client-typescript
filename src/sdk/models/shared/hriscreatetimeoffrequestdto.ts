@@ -23,6 +23,18 @@ export enum HrisCreateTimeOffRequestDto2 {
  */
 export type EndHalfDay = boolean | HrisCreateTimeOffRequestDto2;
 
+export type HrisCreateTimeOffRequestDtoReason = {
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+};
+
 export enum HrisCreateTimeOffRequestDtoSchemas2 {
   True = "true",
   False = "false",
@@ -136,6 +148,7 @@ export type HrisCreateTimeOffRequestDto = {
    * Value to pass through to the provider
    */
   passthrough?: { [k: string]: any } | null | undefined;
+  reason?: HrisCreateTimeOffRequestDtoReason | null | undefined;
   /**
    * The start date of the time off request
    */
@@ -152,6 +165,10 @@ export type HrisCreateTimeOffRequestDto = {
    * The status of the time off request
    */
   status?: HrisCreateTimeOffRequestDtoStatus | null | undefined;
+  /**
+   * The time off policy id associated with this time off request
+   */
+  timeOffPolicyId?: string | null | undefined;
   /**
    * The type of the time off request
    */
@@ -220,6 +237,77 @@ export function endHalfDayFromJSON(
     jsonString,
     (x) => EndHalfDay$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'EndHalfDay' from JSON`,
+  );
+}
+
+/** @internal */
+export const HrisCreateTimeOffRequestDtoReason$inboundSchema: z.ZodType<
+  HrisCreateTimeOffRequestDtoReason,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
+});
+
+/** @internal */
+export type HrisCreateTimeOffRequestDtoReason$Outbound = {
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateTimeOffRequestDtoReason$outboundSchema: z.ZodType<
+  HrisCreateTimeOffRequestDtoReason$Outbound,
+  z.ZodTypeDef,
+  HrisCreateTimeOffRequestDtoReason
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateTimeOffRequestDtoReason$ {
+  /** @deprecated use `HrisCreateTimeOffRequestDtoReason$inboundSchema` instead. */
+  export const inboundSchema = HrisCreateTimeOffRequestDtoReason$inboundSchema;
+  /** @deprecated use `HrisCreateTimeOffRequestDtoReason$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateTimeOffRequestDtoReason$outboundSchema;
+  /** @deprecated use `HrisCreateTimeOffRequestDtoReason$Outbound` instead. */
+  export type Outbound = HrisCreateTimeOffRequestDtoReason$Outbound;
+}
+
+export function hrisCreateTimeOffRequestDtoReasonToJSON(
+  hrisCreateTimeOffRequestDtoReason: HrisCreateTimeOffRequestDtoReason,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDtoReason$outboundSchema.parse(
+      hrisCreateTimeOffRequestDtoReason,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoReasonFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDtoReason, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestDtoReason$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDtoReason' from JSON`,
   );
 }
 
@@ -806,6 +894,9 @@ export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
     z.union([z.boolean(), HrisCreateTimeOffRequestDto2$inboundSchema]),
   ).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
+  reason: z.nullable(
+    z.lazy(() => HrisCreateTimeOffRequestDtoReason$inboundSchema),
+  ).optional(),
   start_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -815,6 +906,7 @@ export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
   status: z.nullable(
     z.lazy(() => HrisCreateTimeOffRequestDtoStatus$inboundSchema),
   ).optional(),
+  time_off_policy_id: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => HrisCreateTimeOffRequestDtoType$inboundSchema))
     .optional(),
 }).transform((v) => {
@@ -825,6 +917,7 @@ export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
     "end_half_day": "endHalfDay",
     "start_date": "startDate",
     "start_half_day": "startHalfDay",
+    "time_off_policy_id": "timeOffPolicyId",
   });
 });
 
@@ -835,9 +928,11 @@ export type HrisCreateTimeOffRequestDto$Outbound = {
   end_date?: string | null | undefined;
   end_half_day?: boolean | string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
+  reason?: HrisCreateTimeOffRequestDtoReason$Outbound | null | undefined;
   start_date?: string | null | undefined;
   start_half_day?: boolean | string | null | undefined;
   status?: HrisCreateTimeOffRequestDtoStatus$Outbound | null | undefined;
+  time_off_policy_id?: string | null | undefined;
   type?: HrisCreateTimeOffRequestDtoType$Outbound | null | undefined;
 };
 
@@ -854,6 +949,9 @@ export const HrisCreateTimeOffRequestDto$outboundSchema: z.ZodType<
     z.union([z.boolean(), HrisCreateTimeOffRequestDto2$outboundSchema]),
   ).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
+  reason: z.nullable(
+    z.lazy(() => HrisCreateTimeOffRequestDtoReason$outboundSchema),
+  ).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   startHalfDay: z.nullable(
     z.union([z.boolean(), HrisCreateTimeOffRequestDtoSchemas2$outboundSchema]),
@@ -861,6 +959,7 @@ export const HrisCreateTimeOffRequestDto$outboundSchema: z.ZodType<
   status: z.nullable(
     z.lazy(() => HrisCreateTimeOffRequestDtoStatus$outboundSchema),
   ).optional(),
+  timeOffPolicyId: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => HrisCreateTimeOffRequestDtoType$outboundSchema))
     .optional(),
 }).transform((v) => {
@@ -871,6 +970,7 @@ export const HrisCreateTimeOffRequestDto$outboundSchema: z.ZodType<
     endHalfDay: "end_half_day",
     startDate: "start_date",
     startHalfDay: "start_half_day",
+    timeOffPolicyId: "time_off_policy_id",
   });
 });
 

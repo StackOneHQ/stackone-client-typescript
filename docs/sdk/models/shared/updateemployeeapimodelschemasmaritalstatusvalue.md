@@ -6,7 +6,7 @@
 import { UpdateEmployeeApiModelSchemasMaritalStatusValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UpdateEmployeeApiModelSchemasMaritalStatusValue =
-  UpdateEmployeeApiModelSchemasMaritalStatusValue.Divorced;
+  UpdateEmployeeApiModelSchemasMaritalStatusValue.DomesticPartnership;
 ```
 
 ## Values

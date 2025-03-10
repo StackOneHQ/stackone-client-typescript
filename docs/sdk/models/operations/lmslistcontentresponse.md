@@ -11,13 +11,6 @@ let value: LmsListContentResponse = {
     data: [
       {
         active: true,
-        additionalData: [
-          {
-            id: "learning_outcomes",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            value: "This is additional data",
-          },
-        ],
         categories: [
           {
             id: "12345",
@@ -41,7 +34,7 @@ let value: LmsListContentResponse = {
             value: LanguageEnumValue.EnGB,
           },
         ],
-        localisations: [
+        localizations: [
           {
             description:
               "This video acts as learning content for software engineers.",
@@ -81,7 +74,7 @@ let value: LmsListContentResponse = {
       "<value>",
     ],
   },
-  statusCode: 306,
+  statusCode: 406,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

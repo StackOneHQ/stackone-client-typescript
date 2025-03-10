@@ -8,13 +8,6 @@ import { ContentResult, LanguageEnumValue } from "@stackone/stackone-client-ts/s
 let value: ContentResult = {
   data: {
     active: true,
-    additionalData: [
-      {
-        id: "learning_outcomes",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        value: "This is additional data",
-      },
-    ],
     categories: [
       {
         id: "12345",
@@ -37,7 +30,7 @@ let value: ContentResult = {
         value: LanguageEnumValue.EnGB,
       },
     ],
-    localisations: [
+    localizations: [
       {
         description:
           "This video acts as learning content for software engineers.",

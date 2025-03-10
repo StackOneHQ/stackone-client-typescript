@@ -123,6 +123,7 @@ run();
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createJob](docs/sdks/ats/README.md#createjob) - Create Job
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
+* [deleteBackgroundCheckPackage](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
 * [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
 * [getApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
@@ -182,6 +183,7 @@ run();
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
 * [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
+* [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 * [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
@@ -229,6 +231,7 @@ run();
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
+* [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 * [getEmployeeTimeOffBalance](docs/sdks/hris/README.md#getemployeetimeoffbalance) - Get Employee Time Off Balance
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
@@ -250,6 +253,7 @@ run();
 * [listEmployeeCustomFieldDefinitions](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
+* [listEmployeeSkills](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
 * [listEmployeeTimeOffBalances](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployeeWorkEligibility](docs/sdks/hris/README.md#listemployeeworkeligibility) - List Employee Work Eligibility
@@ -661,6 +665,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsCreateCandidateNote`](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 - [`atsCreateJob`](docs/sdks/ats/README.md#createjob) - Create Job
 - [`atsCreateOffer`](docs/sdks/ats/README.md#createoffer) - Creates an offer
+- [`atsDeleteBackgroundCheckPackage`](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
 - [`atsDownloadApplicationDocument`](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 - [`atsGetApplication`](docs/sdks/ats/README.md#getapplication) - Get Application
 - [`atsGetApplicationCustomFieldDefinition`](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
@@ -720,6 +725,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsUpdateApplication`](docs/sdks/ats/README.md#updateapplication) - Update an Application
 - [`atsUpdateApplicationNote`](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
 - [`atsUpdateAssessmentsResult`](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
+- [`atsUpdateBackgroundCheckPackage`](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 - [`atsUpdateBackgroundCheckResult`](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 - [`atsUpdateCandidate`](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 - [`atsUpdateJob`](docs/sdks/ats/README.md#updatejob) - Update Job
@@ -755,6 +761,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetEmployeeDocument`](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 - [`hrisGetEmployeeDocumentCategory`](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 - [`hrisGetEmployeeEmployment`](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
+- [`hrisGetEmployeeSkill`](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 - [`hrisGetEmployeesTimeOffRequest`](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 - [`hrisGetEmployeesWorkEligibility`](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
 - [`hrisGetEmployeeTimeOffBalance`](docs/sdks/hris/README.md#getemployeetimeoffbalance) - Get Employee Time Off Balance
@@ -777,6 +784,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListEmployeeDocuments`](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 - [`hrisListEmployeeEmployments`](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 - [`hrisListEmployees`](docs/sdks/hris/README.md#listemployees) - List Employees
+- [`hrisListEmployeeSkills`](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
 - [`hrisListEmployeeTimeOffBalances`](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
 - [`hrisListEmployeeTimeOffRequests`](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 - [`hrisListEmployeeWorkEligibility`](docs/sdks/hris/README.md#listemployeeworkeligibility) - List Employee Work Eligibility

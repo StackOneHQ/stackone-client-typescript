@@ -1,13 +1,13 @@
-# LocalisationModelValue
+# EntitySkillsValue
 
 The Locale Code of the language
 
 ## Example Usage
 
 ```typescript
-import { LocalisationModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EntitySkillsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LocalisationModelValue = LocalisationModelValue.EnGB;
+let value: EntitySkillsValue = EntitySkillsValue.EnGB;
 ```
 
 ## Values

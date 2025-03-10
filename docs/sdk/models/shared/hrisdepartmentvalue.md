@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Division`             | division               |
 | `Group`                | group                  |
 | `Project`              | project                |
+| `Team`                 | team                   |
 | -                      | `Unrecognized<string>` |

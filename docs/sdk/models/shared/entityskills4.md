@@ -1,11 +1,11 @@
-# LocalisationModel4
+# EntitySkills4
 
 ## Example Usage
 
 ```typescript
-import { LocalisationModel4 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EntitySkills4 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LocalisationModel4 = {};
+let value: EntitySkills4 = {};
 ```
 
 ## Fields

@@ -12,6 +12,12 @@ import {
 } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  Reason,
+  Reason$inboundSchema,
+  Reason$Outbound,
+  Reason$outboundSchema,
+} from "./reason.js";
 
 export type TimeOffBalances4 = {};
 
@@ -23,7 +29,7 @@ export type TimeOffBalancesSourceValue =
   | Array<any>;
 
 /**
- * The unified value for the duration unit of the time off balance. If the provider does not specify this unit, the value will be set to unknown
+ * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
  */
 export enum TimeOffBalancesValue {
   Minutes = "minutes",
@@ -35,7 +41,7 @@ export enum TimeOffBalancesValue {
   Unknown = "unknown",
 }
 /**
- * The unified value for the duration unit of the time off balance. If the provider does not specify this unit, the value will be set to unknown
+ * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
  */
 export type TimeOffBalancesValueOpen = OpenEnum<typeof TimeOffBalancesValue>;
 
@@ -52,7 +58,7 @@ export type BalanceUnit = {
     | null
     | undefined;
   /**
-   * The unified value for the duration unit of the time off balance. If the provider does not specify this unit, the value will be set to unknown
+   * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
    */
   value?: TimeOffBalancesValueOpen | null | undefined;
 };
@@ -67,9 +73,55 @@ export type TimeOffBalancesSchemasSourceValue =
   | Array<any>;
 
 /**
- * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+ * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
  */
 export enum TimeOffBalancesSchemasValue {
+  Minutes = "minutes",
+  Hours = "hours",
+  Days = "days",
+  Weeks = "weeks",
+  Months = "months",
+  Years = "years",
+  Unknown = "unknown",
+}
+/**
+ * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+ */
+export type TimeOffBalancesSchemasValueOpen = OpenEnum<
+  typeof TimeOffBalancesSchemasValue
+>;
+
+/**
+ * The duration unit of the current policy
+ */
+export type TimeOffBalancesDurationUnit = {
+  sourceValue?:
+    | TimeOffBalancesSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+   */
+  value?: TimeOffBalancesSchemasValueOpen | null | undefined;
+};
+
+export type TimeOffBalancesSchemasPolicy4 = {};
+
+export type TimeOffBalancesSchemasPolicySourceValue =
+  | TimeOffBalancesSchemasPolicy4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+ */
+export enum TimeOffBalancesSchemasPolicyValue {
   Paid = "paid",
   Unpaid = "unpaid",
   Holiday = "holiday",
@@ -84,8 +136,8 @@ export enum TimeOffBalancesSchemasValue {
 /**
  * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
  */
-export type TimeOffBalancesSchemasValueOpen = OpenEnum<
-  typeof TimeOffBalancesSchemasValue
+export type TimeOffBalancesSchemasPolicyValueOpen = OpenEnum<
+  typeof TimeOffBalancesSchemasPolicyValue
 >;
 
 /**
@@ -93,7 +145,7 @@ export type TimeOffBalancesSchemasValueOpen = OpenEnum<
  */
 export type TimeOffBalancesType = {
   sourceValue?:
-    | TimeOffBalancesSchemas4
+    | TimeOffBalancesSchemasPolicy4
     | string
     | number
     | boolean
@@ -103,7 +155,7 @@ export type TimeOffBalancesType = {
   /**
    * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
    */
-  value?: TimeOffBalancesSchemasValueOpen | null | undefined;
+  value?: TimeOffBalancesSchemasPolicyValueOpen | null | undefined;
 };
 
 /**
@@ -119,6 +171,10 @@ export type Policy = {
    */
   description?: string | null | undefined;
   /**
+   * The duration unit of the current policy
+   */
+  durationUnit?: TimeOffBalancesDurationUnit | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -126,6 +182,7 @@ export type Policy = {
    * The name of this policy
    */
   name?: string | null | undefined;
+  reasons?: Array<Reason> | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -573,8 +630,8 @@ export namespace TimeOffBalancesSchemasValue$ {
 }
 
 /** @internal */
-export const TimeOffBalancesType$inboundSchema: z.ZodType<
-  TimeOffBalancesType,
+export const TimeOffBalancesDurationUnit$inboundSchema: z.ZodType<
+  TimeOffBalancesDurationUnit,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -595,9 +652,258 @@ export const TimeOffBalancesType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type TimeOffBalancesType$Outbound = {
+export type TimeOffBalancesDurationUnit$Outbound = {
   source_value?:
     | TimeOffBalancesSchemas4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const TimeOffBalancesDurationUnit$outboundSchema: z.ZodType<
+  TimeOffBalancesDurationUnit$Outbound,
+  z.ZodTypeDef,
+  TimeOffBalancesDurationUnit
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => TimeOffBalancesSchemas4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(TimeOffBalancesSchemasValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TimeOffBalancesDurationUnit$ {
+  /** @deprecated use `TimeOffBalancesDurationUnit$inboundSchema` instead. */
+  export const inboundSchema = TimeOffBalancesDurationUnit$inboundSchema;
+  /** @deprecated use `TimeOffBalancesDurationUnit$outboundSchema` instead. */
+  export const outboundSchema = TimeOffBalancesDurationUnit$outboundSchema;
+  /** @deprecated use `TimeOffBalancesDurationUnit$Outbound` instead. */
+  export type Outbound = TimeOffBalancesDurationUnit$Outbound;
+}
+
+export function timeOffBalancesDurationUnitToJSON(
+  timeOffBalancesDurationUnit: TimeOffBalancesDurationUnit,
+): string {
+  return JSON.stringify(
+    TimeOffBalancesDurationUnit$outboundSchema.parse(
+      timeOffBalancesDurationUnit,
+    ),
+  );
+}
+
+export function timeOffBalancesDurationUnitFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffBalancesDurationUnit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffBalancesDurationUnit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffBalancesDurationUnit' from JSON`,
+  );
+}
+
+/** @internal */
+export const TimeOffBalancesSchemasPolicy4$inboundSchema: z.ZodType<
+  TimeOffBalancesSchemasPolicy4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type TimeOffBalancesSchemasPolicy4$Outbound = {};
+
+/** @internal */
+export const TimeOffBalancesSchemasPolicy4$outboundSchema: z.ZodType<
+  TimeOffBalancesSchemasPolicy4$Outbound,
+  z.ZodTypeDef,
+  TimeOffBalancesSchemasPolicy4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TimeOffBalancesSchemasPolicy4$ {
+  /** @deprecated use `TimeOffBalancesSchemasPolicy4$inboundSchema` instead. */
+  export const inboundSchema = TimeOffBalancesSchemasPolicy4$inboundSchema;
+  /** @deprecated use `TimeOffBalancesSchemasPolicy4$outboundSchema` instead. */
+  export const outboundSchema = TimeOffBalancesSchemasPolicy4$outboundSchema;
+  /** @deprecated use `TimeOffBalancesSchemasPolicy4$Outbound` instead. */
+  export type Outbound = TimeOffBalancesSchemasPolicy4$Outbound;
+}
+
+export function timeOffBalancesSchemasPolicy4ToJSON(
+  timeOffBalancesSchemasPolicy4: TimeOffBalancesSchemasPolicy4,
+): string {
+  return JSON.stringify(
+    TimeOffBalancesSchemasPolicy4$outboundSchema.parse(
+      timeOffBalancesSchemasPolicy4,
+    ),
+  );
+}
+
+export function timeOffBalancesSchemasPolicy4FromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffBalancesSchemasPolicy4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffBalancesSchemasPolicy4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffBalancesSchemasPolicy4' from JSON`,
+  );
+}
+
+/** @internal */
+export const TimeOffBalancesSchemasPolicySourceValue$inboundSchema: z.ZodType<
+  TimeOffBalancesSchemasPolicySourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TimeOffBalancesSchemasPolicy4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type TimeOffBalancesSchemasPolicySourceValue$Outbound =
+  | TimeOffBalancesSchemasPolicy4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const TimeOffBalancesSchemasPolicySourceValue$outboundSchema: z.ZodType<
+  TimeOffBalancesSchemasPolicySourceValue$Outbound,
+  z.ZodTypeDef,
+  TimeOffBalancesSchemasPolicySourceValue
+> = z.union([
+  z.lazy(() => TimeOffBalancesSchemasPolicy4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TimeOffBalancesSchemasPolicySourceValue$ {
+  /** @deprecated use `TimeOffBalancesSchemasPolicySourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    TimeOffBalancesSchemasPolicySourceValue$inboundSchema;
+  /** @deprecated use `TimeOffBalancesSchemasPolicySourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    TimeOffBalancesSchemasPolicySourceValue$outboundSchema;
+  /** @deprecated use `TimeOffBalancesSchemasPolicySourceValue$Outbound` instead. */
+  export type Outbound = TimeOffBalancesSchemasPolicySourceValue$Outbound;
+}
+
+export function timeOffBalancesSchemasPolicySourceValueToJSON(
+  timeOffBalancesSchemasPolicySourceValue:
+    TimeOffBalancesSchemasPolicySourceValue,
+): string {
+  return JSON.stringify(
+    TimeOffBalancesSchemasPolicySourceValue$outboundSchema.parse(
+      timeOffBalancesSchemasPolicySourceValue,
+    ),
+  );
+}
+
+export function timeOffBalancesSchemasPolicySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TimeOffBalancesSchemasPolicySourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TimeOffBalancesSchemasPolicySourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TimeOffBalancesSchemasPolicySourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const TimeOffBalancesSchemasPolicyValue$inboundSchema: z.ZodType<
+  TimeOffBalancesSchemasPolicyValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(TimeOffBalancesSchemasPolicyValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const TimeOffBalancesSchemasPolicyValue$outboundSchema: z.ZodType<
+  TimeOffBalancesSchemasPolicyValueOpen,
+  z.ZodTypeDef,
+  TimeOffBalancesSchemasPolicyValueOpen
+> = z.union([
+  z.nativeEnum(TimeOffBalancesSchemasPolicyValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TimeOffBalancesSchemasPolicyValue$ {
+  /** @deprecated use `TimeOffBalancesSchemasPolicyValue$inboundSchema` instead. */
+  export const inboundSchema = TimeOffBalancesSchemasPolicyValue$inboundSchema;
+  /** @deprecated use `TimeOffBalancesSchemasPolicyValue$outboundSchema` instead. */
+  export const outboundSchema =
+    TimeOffBalancesSchemasPolicyValue$outboundSchema;
+}
+
+/** @internal */
+export const TimeOffBalancesType$inboundSchema: z.ZodType<
+  TimeOffBalancesType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => TimeOffBalancesSchemasPolicy4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(TimeOffBalancesSchemasPolicyValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type TimeOffBalancesType$Outbound = {
+  source_value?:
+    | TimeOffBalancesSchemasPolicy4$Outbound
     | string
     | number
     | boolean
@@ -615,14 +921,15 @@ export const TimeOffBalancesType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalancesSchemas4$outboundSchema),
+      z.lazy(() => TimeOffBalancesSchemasPolicy4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(TimeOffBalancesSchemasValue$outboundSchema).optional(),
+  value: z.nullable(TimeOffBalancesSchemasPolicyValue$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -667,8 +974,12 @@ export const Policy$inboundSchema: z.ZodType<Policy, z.ZodTypeDef, unknown> = z
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
     description: z.nullable(z.string()).optional(),
+    duration_unit: z.nullable(
+      z.lazy(() => TimeOffBalancesDurationUnit$inboundSchema),
+    ).optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
+    reasons: z.nullable(z.array(Reason$inboundSchema)).optional(),
     remote_id: z.nullable(z.string()).optional(),
     type: z.nullable(z.lazy(() => TimeOffBalancesType$inboundSchema))
       .optional(),
@@ -678,6 +989,7 @@ export const Policy$inboundSchema: z.ZodType<Policy, z.ZodTypeDef, unknown> = z
   }).transform((v) => {
     return remap$(v, {
       "created_at": "createdAt",
+      "duration_unit": "durationUnit",
       "remote_id": "remoteId",
       "updated_at": "updatedAt",
     });
@@ -687,8 +999,10 @@ export const Policy$inboundSchema: z.ZodType<Policy, z.ZodTypeDef, unknown> = z
 export type Policy$Outbound = {
   created_at?: string | null | undefined;
   description?: string | null | undefined;
+  duration_unit?: TimeOffBalancesDurationUnit$Outbound | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
+  reasons?: Array<Reason$Outbound> | null | undefined;
   remote_id?: string | null | undefined;
   type?: TimeOffBalancesType$Outbound | null | undefined;
   updated_at?: string | null | undefined;
@@ -702,14 +1016,19 @@ export const Policy$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
+  durationUnit: z.nullable(
+    z.lazy(() => TimeOffBalancesDurationUnit$outboundSchema),
+  ).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  reasons: z.nullable(z.array(Reason$outboundSchema)).optional(),
   remoteId: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => TimeOffBalancesType$outboundSchema)).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     createdAt: "created_at",
+    durationUnit: "duration_unit",
     remoteId: "remote_id",
     updatedAt: "updated_at",
   });

@@ -49,6 +49,18 @@ let value: LmsBatchUpsertCourseRequestDto = {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      localizations: [
+        {
+          description:
+            "This course acts as learning resource for software engineers.",
+          title: "Software Engineer Lv 1",
+        },
+        {
+          description:
+            "This course acts as learning resource for software engineers.",
+          title: "Software Engineer: A comprehensive guide",
+        },
+      ],
       skills: [
         {
           id: "16873-IT345",

@@ -45,7 +45,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
-  LocalisationModelValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -119,11 +119,18 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          localisations: [
+          localizations: [
             {
               description: "This video acts as learning content for software engineers.",
               language: {
-                value: LocalisationModelValue.EnGB,
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
               },
               title: "Software Engineer Lv 1",
             },
@@ -211,11 +218,18 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          localisations: [
+          localizations: [
             {
               description: "This video acts as learning content for software engineers.",
               language: {
-                value: LocalisationModelValue.EnGB,
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
               },
               title: "Software Engineer Lv 1",
             },
@@ -266,7 +280,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
-  LocalisationModelValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -342,11 +356,18 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          localisations: [
+          localizations: [
             {
               description: "This video acts as learning content for software engineers.",
               language: {
-                value: LocalisationModelValue.EnGB,
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
               },
               title: "Software Engineer Lv 1",
             },
@@ -434,11 +455,18 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
-          localisations: [
+          localizations: [
             {
               description: "This video acts as learning content for software engineers.",
               language: {
-                value: LocalisationModelValue.EnGB,
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
               },
               title: "Software Engineer Lv 1",
             },
@@ -515,6 +543,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -576,6 +605,22 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          localizations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+          ],
           skills: [
             {
               id: "16873-IT345",
@@ -667,6 +712,22 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          localizations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+          ],
           skills: [
             {
               id: "16873-IT345",
@@ -720,6 +781,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -783,6 +845,22 @@ async function run() {
               value: LanguageEnumValue.EnGB,
             },
           ],
+          localizations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+          ],
           skills: [
             {
               id: "16873-IT345",
@@ -872,6 +950,22 @@ async function run() {
             },
             {
               value: LanguageEnumValue.EnGB,
+            },
+          ],
+          localizations: [
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
+            },
+            {
+              description: "This video acts as learning content for software engineers.",
+              language: {
+                value: LocalizationModelValue.EnGB,
+              },
+              title: "Software Engineer Lv 1",
             },
           ],
           skills: [
@@ -3359,7 +3453,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
-  LocalisationModelValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -3420,11 +3514,18 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
-      localisations: [
+      localizations: [
         {
           description: "This video acts as learning content for software engineers.",
           language: {
-            value: LocalisationModelValue.EnGB,
+            value: LocalizationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
+        },
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalizationModelValue.EnGB,
           },
           title: "Software Engineer Lv 1",
         },
@@ -3473,7 +3574,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
-  LocalisationModelValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -3536,11 +3637,18 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
-      localisations: [
+      localizations: [
         {
           description: "This video acts as learning content for software engineers.",
           language: {
-            value: LocalisationModelValue.EnGB,
+            value: LocalizationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
+        },
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalizationModelValue.EnGB,
           },
           title: "Software Engineer Lv 1",
         },
@@ -3615,6 +3723,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -3671,6 +3780,22 @@ async function run() {
           value: LanguageEnumValue.EnGB,
         },
       ],
+      localizations: [
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalizationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
+        },
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalizationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
+        },
+      ],
       skills: [
         {
           id: "16873-IT345",
@@ -3708,6 +3833,7 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
+  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -3764,6 +3890,22 @@ async function run() {
       languages: [
         {
           value: LanguageEnumValue.EnGB,
+        },
+      ],
+      localizations: [
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalizationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
+        },
+        {
+          description: "This video acts as learning content for software engineers.",
+          language: {
+            value: LocalizationModelValue.EnGB,
+          },
+          title: "Software Engineer Lv 1",
         },
       ],
       skills: [

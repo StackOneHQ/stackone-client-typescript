@@ -9,6 +9,7 @@ import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsCreateCandidateNote } from "../funcs/atsCreateCandidateNote.js";
 import { atsCreateJob } from "../funcs/atsCreateJob.js";
 import { atsCreateOffer } from "../funcs/atsCreateOffer.js";
+import { atsDeleteBackgroundCheckPackage } from "../funcs/atsDeleteBackgroundCheckPackage.js";
 import { atsDownloadApplicationDocument } from "../funcs/atsDownloadApplicationDocument.js";
 import { atsGetApplication } from "../funcs/atsGetApplication.js";
 import { atsGetApplicationCustomFieldDefinition } from "../funcs/atsGetApplicationCustomFieldDefinition.js";
@@ -68,6 +69,7 @@ import { atsRejectApplication } from "../funcs/atsRejectApplication.js";
 import { atsUpdateApplication } from "../funcs/atsUpdateApplication.js";
 import { atsUpdateApplicationNote } from "../funcs/atsUpdateApplicationNote.js";
 import { atsUpdateAssessmentsResult } from "../funcs/atsUpdateAssessmentsResult.js";
+import { atsUpdateBackgroundCheckPackage } from "../funcs/atsUpdateBackgroundCheckPackage.js";
 import { atsUpdateBackgroundCheckResult } from "../funcs/atsUpdateBackgroundCheckResult.js";
 import { atsUpdateCandidate } from "../funcs/atsUpdateCandidate.js";
 import { atsUpdateJob } from "../funcs/atsUpdateJob.js";
@@ -170,6 +172,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsCreateOfferResponse> {
     return unwrapAsync(atsCreateOffer(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Background Check Package
+   */
+  async deleteBackgroundCheckPackage(
+    request: operations.AtsDeleteBackgroundCheckPackageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsDeleteBackgroundCheckPackageResponse> {
+    return unwrapAsync(atsDeleteBackgroundCheckPackage(
       this,
       request,
       options,
@@ -1072,6 +1088,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsUpdateAssessmentsResultResponse> {
     return unwrapAsync(atsUpdateAssessmentsResult(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Background Check Package
+   */
+  async updateBackgroundCheckPackage(
+    request: operations.AtsUpdateBackgroundCheckPackageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateBackgroundCheckPackageResponse> {
+    return unwrapAsync(atsUpdateBackgroundCheckPackage(
       this,
       request,
       options,

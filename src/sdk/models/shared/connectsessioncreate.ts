@@ -23,7 +23,7 @@ export enum ConnectSessionCreateCategories {
 /**
  * The metadata for the connection
  */
-export type Metadata = {};
+export type ConnectSessionCreateMetadata = {};
 
 export type ConnectSessionCreate = {
   /**
@@ -45,7 +45,7 @@ export type ConnectSessionCreate = {
   /**
    * The metadata for the connection
    */
-  metadata?: Metadata | null | undefined;
+  metadata?: ConnectSessionCreateMetadata | null | undefined;
   /**
    * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
    */
@@ -90,46 +90,52 @@ export namespace ConnectSessionCreateCategories$ {
 }
 
 /** @internal */
-export const Metadata$inboundSchema: z.ZodType<
-  Metadata,
+export const ConnectSessionCreateMetadata$inboundSchema: z.ZodType<
+  ConnectSessionCreateMetadata,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type Metadata$Outbound = {};
+export type ConnectSessionCreateMetadata$Outbound = {};
 
 /** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
+export const ConnectSessionCreateMetadata$outboundSchema: z.ZodType<
+  ConnectSessionCreateMetadata$Outbound,
   z.ZodTypeDef,
-  Metadata
+  ConnectSessionCreateMetadata
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
+export namespace ConnectSessionCreateMetadata$ {
+  /** @deprecated use `ConnectSessionCreateMetadata$inboundSchema` instead. */
+  export const inboundSchema = ConnectSessionCreateMetadata$inboundSchema;
+  /** @deprecated use `ConnectSessionCreateMetadata$outboundSchema` instead. */
+  export const outboundSchema = ConnectSessionCreateMetadata$outboundSchema;
+  /** @deprecated use `ConnectSessionCreateMetadata$Outbound` instead. */
+  export type Outbound = ConnectSessionCreateMetadata$Outbound;
 }
 
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+export function connectSessionCreateMetadataToJSON(
+  connectSessionCreateMetadata: ConnectSessionCreateMetadata,
+): string {
+  return JSON.stringify(
+    ConnectSessionCreateMetadata$outboundSchema.parse(
+      connectSessionCreateMetadata,
+    ),
+  );
 }
 
-export function metadataFromJSON(
+export function connectSessionCreateMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<Metadata, SDKValidationError> {
+): SafeParseResult<ConnectSessionCreateMetadata, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Metadata' from JSON`,
+    (x) => ConnectSessionCreateMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectSessionCreateMetadata' from JSON`,
   );
 }
 
@@ -144,7 +150,8 @@ export const ConnectSessionCreate$inboundSchema: z.ZodType<
     .optional(),
   expires_in: z.nullable(z.number().default(1800)),
   label: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
+  metadata: z.nullable(z.lazy(() => ConnectSessionCreateMetadata$inboundSchema))
+    .optional(),
   multiple: z.nullable(z.boolean().default(false)),
   origin_owner_id: z.string(),
   origin_owner_name: z.string(),
@@ -166,7 +173,7 @@ export type ConnectSessionCreate$Outbound = {
   categories?: Array<string> | null | undefined;
   expires_in: number | null;
   label?: string | null | undefined;
-  metadata?: Metadata$Outbound | null | undefined;
+  metadata?: ConnectSessionCreateMetadata$Outbound | null | undefined;
   multiple: boolean | null;
   origin_owner_id: string;
   origin_owner_name: string;
@@ -185,7 +192,9 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
     .optional(),
   expiresIn: z.nullable(z.number().default(1800)),
   label: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
+  metadata: z.nullable(
+    z.lazy(() => ConnectSessionCreateMetadata$outboundSchema),
+  ).optional(),
   multiple: z.nullable(z.boolean().default(false)),
   originOwnerId: z.string(),
   originOwnerName: z.string(),
