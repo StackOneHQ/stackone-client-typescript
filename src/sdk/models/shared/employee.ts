@@ -37,6 +37,12 @@ import {
   Employment$outboundSchema,
 } from "./employment.js";
 import {
+  EntitySkills,
+  EntitySkills$inboundSchema,
+  EntitySkills$Outbound,
+  EntitySkills$outboundSchema,
+} from "./entityskills.js";
+import {
   HRISBenefit,
   HRISBenefit$inboundSchema,
   HRISBenefit$Outbound,
@@ -1977,6 +1983,10 @@ export type Employee = {
    * Provider's unique identifier of the manager
    */
   remoteManagerId?: string | null | undefined;
+  /**
+   * The employee skills
+   */
+  skills?: Array<EntitySkills> | null | undefined;
   /**
    * The employee start date
    *
@@ -5807,6 +5817,7 @@ export const Employee$inboundSchema: z.ZodType<
     .optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_manager_id: z.nullable(z.string()).optional(),
+  skills: z.nullable(z.array(EntitySkills$inboundSchema)).optional(),
   start_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -5916,6 +5927,7 @@ export type Employee$Outbound = {
   preferred_language?: PreferredLanguage$Outbound | null | undefined;
   remote_id?: string | null | undefined;
   remote_manager_id?: string | null | undefined;
+  skills?: Array<EntitySkills$Outbound> | null | undefined;
   start_date?: string | null | undefined;
   tenure?: number | null | undefined;
   termination_date?: string | null | undefined;
@@ -5987,6 +5999,7 @@ export const Employee$outboundSchema: z.ZodType<
     .optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteManagerId: z.nullable(z.string()).optional(),
+  skills: z.nullable(z.array(EntitySkills$outboundSchema)).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   tenure: z.nullable(z.number()).optional(),
   terminationDate: z.nullable(z.date().transform(v => v.toISOString()))

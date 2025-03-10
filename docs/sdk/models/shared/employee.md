@@ -10,6 +10,7 @@ import {
   EmployeeSchemasWorkLocationValue,
   EmploymentSchemasDepartmentValue,
   EmploymentSchemasDivisionValue,
+  EntitySkillsValue,
   HRISCostCenterValue,
   HRISGroupValue,
   NationalIdentityNumberApiModelSchemasValue,
@@ -285,6 +286,27 @@ let value: Employee = {
   preferredLanguage: {},
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   remoteManagerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+  skills: [
+    {
+      active: true,
+      id: "16873-IT345",
+      language: {
+        value: EntitySkillsValue.EnGB,
+      },
+      maximumProficiency: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Expert",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      minimumProficiency: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Expert",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      name: "Information-Technology",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    },
+  ],
   tenure: 2,
   terminationDate: new Date("2021-01-01T00:00:00Z"),
   unifiedCustomFields: {
@@ -366,6 +388,7 @@ let value: Employee = {
 | `preferredLanguage`                                                                                                                                                                     | [shared.PreferredLanguage](../../../sdk/models/shared/preferredlanguage.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                      | The employee preferred language                                                                                                                                                         | en_US                                                                                                                                                                                   |
 | `remoteId`                                                                                                                                                                              | *string*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | Provider's unique identifier                                                                                                                                                            | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                                                                                                    |
 | `remoteManagerId`                                                                                                                                                                       | *string*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | Provider's unique identifier of the manager                                                                                                                                             | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                                                                                                                    |
+| `skills`                                                                                                                                                                                | [shared.EntitySkills](../../../sdk/models/shared/entityskills.md)[]                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                      | The employee skills                                                                                                                                                                     |                                                                                                                                                                                         |
 | ~~`startDate`~~                                                                                                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                           | :heavy_minus_sign:                                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The employee start date                                | 2021-01-01T00:00.000Z                                                                                                                                                                   |
 | `tenure`                                                                                                                                                                                | *number*                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                      | The employee tenure                                                                                                                                                                     | 2                                                                                                                                                                                       |
 | `terminationDate`                                                                                                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                           | :heavy_minus_sign:                                                                                                                                                                      | The employee termination date                                                                                                                                                           | 2021-01-01T00:00:00Z                                                                                                                                                                    |

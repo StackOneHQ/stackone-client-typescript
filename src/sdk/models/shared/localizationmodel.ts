@@ -13,10 +13,10 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type LocalisationModel4 = {};
+export type LocalizationModel4 = {};
 
-export type LocalisationModelSourceValue =
-  | LocalisationModel4
+export type LocalizationModelSourceValue =
+  | LocalizationModel4
   | string
   | number
   | boolean
@@ -25,7 +25,7 @@ export type LocalisationModelSourceValue =
 /**
  * The Locale Code of the language
  */
-export enum LocalisationModelValue {
+export enum LocalizationModelValue {
   ARAR = "ar_AR",
   AaER = "aa_ER",
   AfNA = "af_NA",
@@ -440,16 +440,16 @@ export enum LocalisationModelValue {
 /**
  * The Locale Code of the language
  */
-export type LocalisationModelValueOpen = OpenEnum<
-  typeof LocalisationModelValue
+export type LocalizationModelValueOpen = OpenEnum<
+  typeof LocalizationModelValue
 >;
 
 /**
- * The language associated with this localisation details
+ * The language associated with the localization details
  */
-export type LocalisationModelLanguage = {
+export type LocalizationModelLanguage = {
   sourceValue?:
-    | LocalisationModel4
+    | LocalizationModel4
     | string
     | number
     | boolean
@@ -459,18 +459,18 @@ export type LocalisationModelLanguage = {
   /**
    * The Locale Code of the language
    */
-  value?: LocalisationModelValueOpen | null | undefined;
+  value?: LocalizationModelValueOpen | null | undefined;
 };
 
-export type LocalisationModel = {
+export type LocalizationModel = {
   /**
    * The description of the content
    */
   description?: string | null | undefined;
   /**
-   * The language associated with this localisation details
+   * The language associated with the localization details
    */
-  language?: LocalisationModelLanguage | null | undefined;
+  language?: LocalizationModelLanguage | null | undefined;
   /**
    * The title of the content
    */
@@ -478,60 +478,60 @@ export type LocalisationModel = {
 };
 
 /** @internal */
-export const LocalisationModel4$inboundSchema: z.ZodType<
-  LocalisationModel4,
+export const LocalizationModel4$inboundSchema: z.ZodType<
+  LocalizationModel4,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type LocalisationModel4$Outbound = {};
+export type LocalizationModel4$Outbound = {};
 
 /** @internal */
-export const LocalisationModel4$outboundSchema: z.ZodType<
-  LocalisationModel4$Outbound,
+export const LocalizationModel4$outboundSchema: z.ZodType<
+  LocalizationModel4$Outbound,
   z.ZodTypeDef,
-  LocalisationModel4
+  LocalizationModel4
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LocalisationModel4$ {
-  /** @deprecated use `LocalisationModel4$inboundSchema` instead. */
-  export const inboundSchema = LocalisationModel4$inboundSchema;
-  /** @deprecated use `LocalisationModel4$outboundSchema` instead. */
-  export const outboundSchema = LocalisationModel4$outboundSchema;
-  /** @deprecated use `LocalisationModel4$Outbound` instead. */
-  export type Outbound = LocalisationModel4$Outbound;
+export namespace LocalizationModel4$ {
+  /** @deprecated use `LocalizationModel4$inboundSchema` instead. */
+  export const inboundSchema = LocalizationModel4$inboundSchema;
+  /** @deprecated use `LocalizationModel4$outboundSchema` instead. */
+  export const outboundSchema = LocalizationModel4$outboundSchema;
+  /** @deprecated use `LocalizationModel4$Outbound` instead. */
+  export type Outbound = LocalizationModel4$Outbound;
 }
 
-export function localisationModel4ToJSON(
-  localisationModel4: LocalisationModel4,
+export function localizationModel4ToJSON(
+  localizationModel4: LocalizationModel4,
 ): string {
   return JSON.stringify(
-    LocalisationModel4$outboundSchema.parse(localisationModel4),
+    LocalizationModel4$outboundSchema.parse(localizationModel4),
   );
 }
 
-export function localisationModel4FromJSON(
+export function localizationModel4FromJSON(
   jsonString: string,
-): SafeParseResult<LocalisationModel4, SDKValidationError> {
+): SafeParseResult<LocalizationModel4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LocalisationModel4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LocalisationModel4' from JSON`,
+    (x) => LocalizationModel4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalizationModel4' from JSON`,
   );
 }
 
 /** @internal */
-export const LocalisationModelSourceValue$inboundSchema: z.ZodType<
-  LocalisationModelSourceValue,
+export const LocalizationModelSourceValue$inboundSchema: z.ZodType<
+  LocalizationModelSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LocalisationModel4$inboundSchema),
+  z.lazy(() => LocalizationModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -539,20 +539,20 @@ export const LocalisationModelSourceValue$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type LocalisationModelSourceValue$Outbound =
-  | LocalisationModel4$Outbound
+export type LocalizationModelSourceValue$Outbound =
+  | LocalizationModel4$Outbound
   | string
   | number
   | boolean
   | Array<any>;
 
 /** @internal */
-export const LocalisationModelSourceValue$outboundSchema: z.ZodType<
-  LocalisationModelSourceValue$Outbound,
+export const LocalizationModelSourceValue$outboundSchema: z.ZodType<
+  LocalizationModelSourceValue$Outbound,
   z.ZodTypeDef,
-  LocalisationModelSourceValue
+  LocalizationModelSourceValue
 > = z.union([
-  z.lazy(() => LocalisationModel4$outboundSchema),
+  z.lazy(() => LocalizationModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -563,53 +563,53 @@ export const LocalisationModelSourceValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LocalisationModelSourceValue$ {
-  /** @deprecated use `LocalisationModelSourceValue$inboundSchema` instead. */
-  export const inboundSchema = LocalisationModelSourceValue$inboundSchema;
-  /** @deprecated use `LocalisationModelSourceValue$outboundSchema` instead. */
-  export const outboundSchema = LocalisationModelSourceValue$outboundSchema;
-  /** @deprecated use `LocalisationModelSourceValue$Outbound` instead. */
-  export type Outbound = LocalisationModelSourceValue$Outbound;
+export namespace LocalizationModelSourceValue$ {
+  /** @deprecated use `LocalizationModelSourceValue$inboundSchema` instead. */
+  export const inboundSchema = LocalizationModelSourceValue$inboundSchema;
+  /** @deprecated use `LocalizationModelSourceValue$outboundSchema` instead. */
+  export const outboundSchema = LocalizationModelSourceValue$outboundSchema;
+  /** @deprecated use `LocalizationModelSourceValue$Outbound` instead. */
+  export type Outbound = LocalizationModelSourceValue$Outbound;
 }
 
-export function localisationModelSourceValueToJSON(
-  localisationModelSourceValue: LocalisationModelSourceValue,
+export function localizationModelSourceValueToJSON(
+  localizationModelSourceValue: LocalizationModelSourceValue,
 ): string {
   return JSON.stringify(
-    LocalisationModelSourceValue$outboundSchema.parse(
-      localisationModelSourceValue,
+    LocalizationModelSourceValue$outboundSchema.parse(
+      localizationModelSourceValue,
     ),
   );
 }
 
-export function localisationModelSourceValueFromJSON(
+export function localizationModelSourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<LocalisationModelSourceValue, SDKValidationError> {
+): SafeParseResult<LocalizationModelSourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LocalisationModelSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LocalisationModelSourceValue' from JSON`,
+    (x) => LocalizationModelSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalizationModelSourceValue' from JSON`,
   );
 }
 
 /** @internal */
-export const LocalisationModelValue$inboundSchema: z.ZodType<
-  LocalisationModelValueOpen,
+export const LocalizationModelValue$inboundSchema: z.ZodType<
+  LocalizationModelValueOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(LocalisationModelValue),
+    z.nativeEnum(LocalizationModelValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const LocalisationModelValue$outboundSchema: z.ZodType<
-  LocalisationModelValueOpen,
+export const LocalizationModelValue$outboundSchema: z.ZodType<
+  LocalizationModelValueOpen,
   z.ZodTypeDef,
-  LocalisationModelValueOpen
+  LocalizationModelValueOpen
 > = z.union([
-  z.nativeEnum(LocalisationModelValue),
+  z.nativeEnum(LocalizationModelValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -617,29 +617,29 @@ export const LocalisationModelValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LocalisationModelValue$ {
-  /** @deprecated use `LocalisationModelValue$inboundSchema` instead. */
-  export const inboundSchema = LocalisationModelValue$inboundSchema;
-  /** @deprecated use `LocalisationModelValue$outboundSchema` instead. */
-  export const outboundSchema = LocalisationModelValue$outboundSchema;
+export namespace LocalizationModelValue$ {
+  /** @deprecated use `LocalizationModelValue$inboundSchema` instead. */
+  export const inboundSchema = LocalizationModelValue$inboundSchema;
+  /** @deprecated use `LocalizationModelValue$outboundSchema` instead. */
+  export const outboundSchema = LocalizationModelValue$outboundSchema;
 }
 
 /** @internal */
-export const LocalisationModelLanguage$inboundSchema: z.ZodType<
-  LocalisationModelLanguage,
+export const LocalizationModelLanguage$inboundSchema: z.ZodType<
+  LocalizationModelLanguage,
   z.ZodTypeDef,
   unknown
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LocalisationModel4$inboundSchema),
+      z.lazy(() => LocalizationModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(LocalisationModelValue$inboundSchema).optional(),
+  value: z.nullable(LocalizationModelValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -647,9 +647,9 @@ export const LocalisationModelLanguage$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type LocalisationModelLanguage$Outbound = {
+export type LocalizationModelLanguage$Outbound = {
   source_value?:
-    | LocalisationModel4$Outbound
+    | LocalizationModel4$Outbound
     | string
     | number
     | boolean
@@ -660,21 +660,21 @@ export type LocalisationModelLanguage$Outbound = {
 };
 
 /** @internal */
-export const LocalisationModelLanguage$outboundSchema: z.ZodType<
-  LocalisationModelLanguage$Outbound,
+export const LocalizationModelLanguage$outboundSchema: z.ZodType<
+  LocalizationModelLanguage$Outbound,
   z.ZodTypeDef,
-  LocalisationModelLanguage
+  LocalizationModelLanguage
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LocalisationModel4$outboundSchema),
+      z.lazy(() => LocalizationModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(LocalisationModelValue$outboundSchema).optional(),
+  value: z.nullable(LocalizationModelValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -685,60 +685,60 @@ export const LocalisationModelLanguage$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LocalisationModelLanguage$ {
-  /** @deprecated use `LocalisationModelLanguage$inboundSchema` instead. */
-  export const inboundSchema = LocalisationModelLanguage$inboundSchema;
-  /** @deprecated use `LocalisationModelLanguage$outboundSchema` instead. */
-  export const outboundSchema = LocalisationModelLanguage$outboundSchema;
-  /** @deprecated use `LocalisationModelLanguage$Outbound` instead. */
-  export type Outbound = LocalisationModelLanguage$Outbound;
+export namespace LocalizationModelLanguage$ {
+  /** @deprecated use `LocalizationModelLanguage$inboundSchema` instead. */
+  export const inboundSchema = LocalizationModelLanguage$inboundSchema;
+  /** @deprecated use `LocalizationModelLanguage$outboundSchema` instead. */
+  export const outboundSchema = LocalizationModelLanguage$outboundSchema;
+  /** @deprecated use `LocalizationModelLanguage$Outbound` instead. */
+  export type Outbound = LocalizationModelLanguage$Outbound;
 }
 
-export function localisationModelLanguageToJSON(
-  localisationModelLanguage: LocalisationModelLanguage,
+export function localizationModelLanguageToJSON(
+  localizationModelLanguage: LocalizationModelLanguage,
 ): string {
   return JSON.stringify(
-    LocalisationModelLanguage$outboundSchema.parse(localisationModelLanguage),
+    LocalizationModelLanguage$outboundSchema.parse(localizationModelLanguage),
   );
 }
 
-export function localisationModelLanguageFromJSON(
+export function localizationModelLanguageFromJSON(
   jsonString: string,
-): SafeParseResult<LocalisationModelLanguage, SDKValidationError> {
+): SafeParseResult<LocalizationModelLanguage, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LocalisationModelLanguage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LocalisationModelLanguage' from JSON`,
+    (x) => LocalizationModelLanguage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalizationModelLanguage' from JSON`,
   );
 }
 
 /** @internal */
-export const LocalisationModel$inboundSchema: z.ZodType<
-  LocalisationModel,
+export const LocalizationModel$inboundSchema: z.ZodType<
+  LocalizationModel,
   z.ZodTypeDef,
   unknown
 > = z.object({
   description: z.nullable(z.string()).optional(),
-  language: z.nullable(z.lazy(() => LocalisationModelLanguage$inboundSchema))
+  language: z.nullable(z.lazy(() => LocalizationModelLanguage$inboundSchema))
     .optional(),
   title: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
-export type LocalisationModel$Outbound = {
+export type LocalizationModel$Outbound = {
   description?: string | null | undefined;
-  language?: LocalisationModelLanguage$Outbound | null | undefined;
+  language?: LocalizationModelLanguage$Outbound | null | undefined;
   title?: string | null | undefined;
 };
 
 /** @internal */
-export const LocalisationModel$outboundSchema: z.ZodType<
-  LocalisationModel$Outbound,
+export const LocalizationModel$outboundSchema: z.ZodType<
+  LocalizationModel$Outbound,
   z.ZodTypeDef,
-  LocalisationModel
+  LocalizationModel
 > = z.object({
   description: z.nullable(z.string()).optional(),
-  language: z.nullable(z.lazy(() => LocalisationModelLanguage$outboundSchema))
+  language: z.nullable(z.lazy(() => LocalizationModelLanguage$outboundSchema))
     .optional(),
   title: z.nullable(z.string()).optional(),
 });
@@ -747,29 +747,29 @@ export const LocalisationModel$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LocalisationModel$ {
-  /** @deprecated use `LocalisationModel$inboundSchema` instead. */
-  export const inboundSchema = LocalisationModel$inboundSchema;
-  /** @deprecated use `LocalisationModel$outboundSchema` instead. */
-  export const outboundSchema = LocalisationModel$outboundSchema;
-  /** @deprecated use `LocalisationModel$Outbound` instead. */
-  export type Outbound = LocalisationModel$Outbound;
+export namespace LocalizationModel$ {
+  /** @deprecated use `LocalizationModel$inboundSchema` instead. */
+  export const inboundSchema = LocalizationModel$inboundSchema;
+  /** @deprecated use `LocalizationModel$outboundSchema` instead. */
+  export const outboundSchema = LocalizationModel$outboundSchema;
+  /** @deprecated use `LocalizationModel$Outbound` instead. */
+  export type Outbound = LocalizationModel$Outbound;
 }
 
-export function localisationModelToJSON(
-  localisationModel: LocalisationModel,
+export function localizationModelToJSON(
+  localizationModel: LocalizationModel,
 ): string {
   return JSON.stringify(
-    LocalisationModel$outboundSchema.parse(localisationModel),
+    LocalizationModel$outboundSchema.parse(localizationModel),
   );
 }
 
-export function localisationModelFromJSON(
+export function localizationModelFromJSON(
   jsonString: string,
-): SafeParseResult<LocalisationModel, SDKValidationError> {
+): SafeParseResult<LocalizationModel, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LocalisationModel$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LocalisationModel' from JSON`,
+    (x) => LocalizationModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalizationModel' from JSON`,
   );
 }

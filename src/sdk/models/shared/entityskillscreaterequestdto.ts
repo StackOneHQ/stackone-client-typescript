@@ -36,7 +36,7 @@ export type EntitySkillsCreateRequestDtoValueOpen = OpenEnum<
 /**
  * The proficiency level of the skill
  */
-export type MaximumProficiency = {
+export type EntitySkillsCreateRequestDtoMaximumProficiency = {
   /**
    * Unique identifier
    */
@@ -83,7 +83,7 @@ export type EntitySkillsCreateRequestDtoSchemasValueOpen = OpenEnum<
 /**
  * The proficiency level of the skill
  */
-export type MinimumProficiency = {
+export type EntitySkillsCreateRequestDtoMinimumProficiency = {
   /**
    * Unique identifier
    */
@@ -115,11 +115,17 @@ export type EntitySkillsCreateRequestDto = {
   /**
    * The proficiency level of the skill
    */
-  maximumProficiency?: MaximumProficiency | null | undefined;
+  maximumProficiency?:
+    | EntitySkillsCreateRequestDtoMaximumProficiency
+    | null
+    | undefined;
   /**
    * The proficiency level of the skill
    */
-  minimumProficiency?: MinimumProficiency | null | undefined;
+  minimumProficiency?:
+    | EntitySkillsCreateRequestDtoMinimumProficiency
+    | null
+    | undefined;
   /**
    * The name associated with this skill
    */
@@ -286,33 +292,35 @@ export namespace EntitySkillsCreateRequestDtoValue$ {
 }
 
 /** @internal */
-export const MaximumProficiency$inboundSchema: z.ZodType<
-  MaximumProficiency,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsCreateRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-    "source_value": "sourceValue",
+export const EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema:
+  z.ZodType<
+    EntitySkillsCreateRequestDtoMaximumProficiency,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()).optional(),
+    source_value: z.nullable(
+      z.union([
+        z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(EntitySkillsCreateRequestDtoValue$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "remote_id": "remoteId",
+      "source_value": "sourceValue",
+    });
   });
-});
 
 /** @internal */
-export type MaximumProficiency$Outbound = {
+export type EntitySkillsCreateRequestDtoMaximumProficiency$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
@@ -328,60 +336,73 @@ export type MaximumProficiency$Outbound = {
 };
 
 /** @internal */
-export const MaximumProficiency$outboundSchema: z.ZodType<
-  MaximumProficiency$Outbound,
-  z.ZodTypeDef,
-  MaximumProficiency
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => EntitySkillsCreateRequestDto4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsCreateRequestDtoValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    sourceValue: "source_value",
+export const EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema:
+  z.ZodType<
+    EntitySkillsCreateRequestDtoMaximumProficiency$Outbound,
+    z.ZodTypeDef,
+    EntitySkillsCreateRequestDtoMaximumProficiency
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    remoteId: z.nullable(z.string()).optional(),
+    sourceValue: z.nullable(
+      z.union([
+        z.lazy(() => EntitySkillsCreateRequestDto4$outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(EntitySkillsCreateRequestDtoValue$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      remoteId: "remote_id",
+      sourceValue: "source_value",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace MaximumProficiency$ {
-  /** @deprecated use `MaximumProficiency$inboundSchema` instead. */
-  export const inboundSchema = MaximumProficiency$inboundSchema;
-  /** @deprecated use `MaximumProficiency$outboundSchema` instead. */
-  export const outboundSchema = MaximumProficiency$outboundSchema;
-  /** @deprecated use `MaximumProficiency$Outbound` instead. */
-  export type Outbound = MaximumProficiency$Outbound;
+export namespace EntitySkillsCreateRequestDtoMaximumProficiency$ {
+  /** @deprecated use `EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema` instead. */
+  export const inboundSchema =
+    EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema;
+  /** @deprecated use `EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema` instead. */
+  export const outboundSchema =
+    EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema;
+  /** @deprecated use `EntitySkillsCreateRequestDtoMaximumProficiency$Outbound` instead. */
+  export type Outbound =
+    EntitySkillsCreateRequestDtoMaximumProficiency$Outbound;
 }
 
-export function maximumProficiencyToJSON(
-  maximumProficiency: MaximumProficiency,
+export function entitySkillsCreateRequestDtoMaximumProficiencyToJSON(
+  entitySkillsCreateRequestDtoMaximumProficiency:
+    EntitySkillsCreateRequestDtoMaximumProficiency,
 ): string {
   return JSON.stringify(
-    MaximumProficiency$outboundSchema.parse(maximumProficiency),
+    EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema.parse(
+      entitySkillsCreateRequestDtoMaximumProficiency,
+    ),
   );
 }
 
-export function maximumProficiencyFromJSON(
+export function entitySkillsCreateRequestDtoMaximumProficiencyFromJSON(
   jsonString: string,
-): SafeParseResult<MaximumProficiency, SDKValidationError> {
+): SafeParseResult<
+  EntitySkillsCreateRequestDtoMaximumProficiency,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => MaximumProficiency$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MaximumProficiency' from JSON`,
+    (x) =>
+      EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EntitySkillsCreateRequestDtoMaximumProficiency' from JSON`,
   );
 }
 
@@ -552,34 +573,35 @@ export namespace EntitySkillsCreateRequestDtoSchemasValue$ {
 }
 
 /** @internal */
-export const MinimumProficiency$inboundSchema: z.ZodType<
-  MinimumProficiency,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsCreateRequestDtoSchemasValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-    "source_value": "sourceValue",
+export const EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema:
+  z.ZodType<
+    EntitySkillsCreateRequestDtoMinimumProficiency,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()).optional(),
+    source_value: z.nullable(
+      z.union([
+        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(EntitySkillsCreateRequestDtoSchemasValue$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "remote_id": "remoteId",
+      "source_value": "sourceValue",
+    });
   });
-});
 
 /** @internal */
-export type MinimumProficiency$Outbound = {
+export type EntitySkillsCreateRequestDtoMinimumProficiency$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
@@ -595,60 +617,73 @@ export type MinimumProficiency$Outbound = {
 };
 
 /** @internal */
-export const MinimumProficiency$outboundSchema: z.ZodType<
-  MinimumProficiency$Outbound,
-  z.ZodTypeDef,
-  MinimumProficiency
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsCreateRequestDtoSchemasValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    sourceValue: "source_value",
+export const EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema:
+  z.ZodType<
+    EntitySkillsCreateRequestDtoMinimumProficiency$Outbound,
+    z.ZodTypeDef,
+    EntitySkillsCreateRequestDtoMinimumProficiency
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    remoteId: z.nullable(z.string()).optional(),
+    sourceValue: z.nullable(
+      z.union([
+        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(EntitySkillsCreateRequestDtoSchemasValue$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      remoteId: "remote_id",
+      sourceValue: "source_value",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace MinimumProficiency$ {
-  /** @deprecated use `MinimumProficiency$inboundSchema` instead. */
-  export const inboundSchema = MinimumProficiency$inboundSchema;
-  /** @deprecated use `MinimumProficiency$outboundSchema` instead. */
-  export const outboundSchema = MinimumProficiency$outboundSchema;
-  /** @deprecated use `MinimumProficiency$Outbound` instead. */
-  export type Outbound = MinimumProficiency$Outbound;
+export namespace EntitySkillsCreateRequestDtoMinimumProficiency$ {
+  /** @deprecated use `EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema` instead. */
+  export const inboundSchema =
+    EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema;
+  /** @deprecated use `EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema` instead. */
+  export const outboundSchema =
+    EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema;
+  /** @deprecated use `EntitySkillsCreateRequestDtoMinimumProficiency$Outbound` instead. */
+  export type Outbound =
+    EntitySkillsCreateRequestDtoMinimumProficiency$Outbound;
 }
 
-export function minimumProficiencyToJSON(
-  minimumProficiency: MinimumProficiency,
+export function entitySkillsCreateRequestDtoMinimumProficiencyToJSON(
+  entitySkillsCreateRequestDtoMinimumProficiency:
+    EntitySkillsCreateRequestDtoMinimumProficiency,
 ): string {
   return JSON.stringify(
-    MinimumProficiency$outboundSchema.parse(minimumProficiency),
+    EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema.parse(
+      entitySkillsCreateRequestDtoMinimumProficiency,
+    ),
   );
 }
 
-export function minimumProficiencyFromJSON(
+export function entitySkillsCreateRequestDtoMinimumProficiencyFromJSON(
   jsonString: string,
-): SafeParseResult<MinimumProficiency, SDKValidationError> {
+): SafeParseResult<
+  EntitySkillsCreateRequestDtoMinimumProficiency,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => MinimumProficiency$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MinimumProficiency' from JSON`,
+    (x) =>
+      EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EntitySkillsCreateRequestDtoMinimumProficiency' from JSON`,
   );
 }
 
@@ -660,10 +695,10 @@ export const EntitySkillsCreateRequestDto$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   maximum_proficiency: z.nullable(
-    z.lazy(() => MaximumProficiency$inboundSchema),
+    z.lazy(() => EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema),
   ).optional(),
   minimum_proficiency: z.nullable(
-    z.lazy(() => MinimumProficiency$inboundSchema),
+    z.lazy(() => EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema),
   ).optional(),
   name: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -676,8 +711,14 @@ export const EntitySkillsCreateRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type EntitySkillsCreateRequestDto$Outbound = {
   id?: string | null | undefined;
-  maximum_proficiency?: MaximumProficiency$Outbound | null | undefined;
-  minimum_proficiency?: MinimumProficiency$Outbound | null | undefined;
+  maximum_proficiency?:
+    | EntitySkillsCreateRequestDtoMaximumProficiency$Outbound
+    | null
+    | undefined;
+  minimum_proficiency?:
+    | EntitySkillsCreateRequestDtoMinimumProficiency$Outbound
+    | null
+    | undefined;
   name?: string | null | undefined;
 };
 
@@ -689,10 +730,10 @@ export const EntitySkillsCreateRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   maximumProficiency: z.nullable(
-    z.lazy(() => MaximumProficiency$outboundSchema),
+    z.lazy(() => EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema),
   ).optional(),
   minimumProficiency: z.nullable(
-    z.lazy(() => MinimumProficiency$outboundSchema),
+    z.lazy(() => EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema),
   ).optional(),
   name: z.nullable(z.string()).optional(),
 }).transform((v) => {

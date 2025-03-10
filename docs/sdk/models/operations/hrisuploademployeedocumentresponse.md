@@ -12,7 +12,7 @@ let value: HrisUploadEmployeeDocumentResponse = {
       "<value>",
     ],
   },
-  statusCode: 100,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

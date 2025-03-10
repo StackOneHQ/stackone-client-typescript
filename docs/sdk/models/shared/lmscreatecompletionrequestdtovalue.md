@@ -6,7 +6,7 @@
 import { LmsCreateCompletionRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCompletionRequestDtoValue =
-  LmsCreateCompletionRequestDtoValue.Pass;
+  LmsCreateCompletionRequestDtoValue.Fail;
 ```
 
 ## Values

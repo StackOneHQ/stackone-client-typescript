@@ -1,14 +1,14 @@
-# LocalisationModel
+# LocalizationModel
 
 ## Example Usage
 
 ```typescript
-import { LocalisationModel, LocalisationModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LocalizationModel, LocalizationModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LocalisationModel = {
+let value: LocalizationModel = {
   description: "This video acts as learning content for software engineers.",
   language: {
-    value: LocalisationModelValue.EnGB,
+    value: LocalizationModelValue.EnGB,
   },
   title: "Software Engineer Lv 1",
 };
@@ -19,5 +19,5 @@ let value: LocalisationModel = {
 | Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `description`                                                                               | *string*                                                                                    | :heavy_minus_sign:                                                                          | The description of the content                                                              | This video acts as learning content for software engineers.                                 |
-| `language`                                                                                  | [shared.LocalisationModelLanguage](../../../sdk/models/shared/localisationmodellanguage.md) | :heavy_minus_sign:                                                                          | The language associated with this localisation details                                      |                                                                                             |
+| `language`                                                                                  | [shared.LocalizationModelLanguage](../../../sdk/models/shared/localizationmodellanguage.md) | :heavy_minus_sign:                                                                          | The language associated with the localization details                                       |                                                                                             |
 | `title`                                                                                     | *string*                                                                                    | :heavy_minus_sign:                                                                          | The title of the content                                                                    | Software Engineer Lv 1                                                                      |

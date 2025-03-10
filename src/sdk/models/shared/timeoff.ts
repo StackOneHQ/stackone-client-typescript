@@ -23,6 +23,18 @@ export enum TimeOff2 {
  */
 export type TimeOffEndHalfDay = boolean | TimeOff2;
 
+export type TimeOffReason = {
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+};
+
 export enum TimeOffSchemas2 {
   True = "true",
   False = "false",
@@ -140,6 +152,7 @@ export type TimeOff = {
    * Unique identifier
    */
   id?: string | null | undefined;
+  reason?: TimeOffReason | null | undefined;
   /**
    * Provider's unique identifier of the approver
    */
@@ -153,6 +166,10 @@ export type TimeOff = {
    */
   remoteId?: string | null | undefined;
   /**
+   * Provider's unique identifier of the time off policy id associated with this time off request
+   */
+  remoteTimeOffPolicyId?: string | null | undefined;
+  /**
    * The start date of the time off request
    */
   startDate?: Date | null | undefined;
@@ -164,6 +181,10 @@ export type TimeOff = {
    * The status of the time off request
    */
   status?: TimeOffStatus | null | undefined;
+  /**
+   * The time off policy id associated with this time off request
+   */
+  timeOffPolicyId?: string | null | undefined;
   /**
    * The type of the time off request
    */
@@ -238,6 +259,70 @@ export function timeOffEndHalfDayFromJSON(
     jsonString,
     (x) => TimeOffEndHalfDay$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'TimeOffEndHalfDay' from JSON`,
+  );
+}
+
+/** @internal */
+export const TimeOffReason$inboundSchema: z.ZodType<
+  TimeOffReason,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
+});
+
+/** @internal */
+export type TimeOffReason$Outbound = {
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const TimeOffReason$outboundSchema: z.ZodType<
+  TimeOffReason$Outbound,
+  z.ZodTypeDef,
+  TimeOffReason
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TimeOffReason$ {
+  /** @deprecated use `TimeOffReason$inboundSchema` instead. */
+  export const inboundSchema = TimeOffReason$inboundSchema;
+  /** @deprecated use `TimeOffReason$outboundSchema` instead. */
+  export const outboundSchema = TimeOffReason$outboundSchema;
+  /** @deprecated use `TimeOffReason$Outbound` instead. */
+  export type Outbound = TimeOffReason$Outbound;
+}
+
+export function timeOffReasonToJSON(timeOffReason: TimeOffReason): string {
+  return JSON.stringify(TimeOffReason$outboundSchema.parse(timeOffReason));
+}
+
+export function timeOffReasonFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffReason, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffReason$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffReason' from JSON`,
   );
 }
 
@@ -777,9 +862,11 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
     end_half_day: z.nullable(z.union([z.boolean(), TimeOff2$inboundSchema]))
       .optional(),
     id: z.nullable(z.string()).optional(),
+    reason: z.nullable(z.lazy(() => TimeOffReason$inboundSchema)).optional(),
     remote_approver_id: z.nullable(z.string()).optional(),
     remote_employee_id: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
+    remote_time_off_policy_id: z.nullable(z.string()).optional(),
     start_date: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -787,6 +874,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
       z.union([z.boolean(), TimeOffSchemas2$inboundSchema]),
     ).optional(),
     status: z.nullable(z.lazy(() => TimeOffStatus$inboundSchema)).optional(),
+    time_off_policy_id: z.nullable(z.string()).optional(),
     type: z.nullable(z.lazy(() => TimeOffType$inboundSchema)).optional(),
     updated_date: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -801,8 +889,10 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
       "remote_approver_id": "remoteApproverId",
       "remote_employee_id": "remoteEmployeeId",
       "remote_id": "remoteId",
+      "remote_time_off_policy_id": "remoteTimeOffPolicyId",
       "start_date": "startDate",
       "start_half_day": "startHalfDay",
+      "time_off_policy_id": "timeOffPolicyId",
       "updated_date": "updatedDate",
     });
   });
@@ -816,12 +906,15 @@ export type TimeOff$Outbound = {
   end_date?: string | null | undefined;
   end_half_day?: boolean | string | null | undefined;
   id?: string | null | undefined;
+  reason?: TimeOffReason$Outbound | null | undefined;
   remote_approver_id?: string | null | undefined;
   remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
+  remote_time_off_policy_id?: string | null | undefined;
   start_date?: string | null | undefined;
   start_half_day?: boolean | string | null | undefined;
   status?: TimeOffStatus$Outbound | null | undefined;
+  time_off_policy_id?: string | null | undefined;
   type?: TimeOffType$Outbound | null | undefined;
   updated_date?: string | null | undefined;
 };
@@ -840,14 +933,17 @@ export const TimeOff$outboundSchema: z.ZodType<
   endHalfDay: z.nullable(z.union([z.boolean(), TimeOff2$outboundSchema]))
     .optional(),
   id: z.nullable(z.string()).optional(),
+  reason: z.nullable(z.lazy(() => TimeOffReason$outboundSchema)).optional(),
   remoteApproverId: z.nullable(z.string()).optional(),
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remoteTimeOffPolicyId: z.nullable(z.string()).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   startHalfDay: z.nullable(
     z.union([z.boolean(), TimeOffSchemas2$outboundSchema]),
   ).optional(),
   status: z.nullable(z.lazy(() => TimeOffStatus$outboundSchema)).optional(),
+  timeOffPolicyId: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => TimeOffType$outboundSchema)).optional(),
   updatedDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
@@ -860,8 +956,10 @@ export const TimeOff$outboundSchema: z.ZodType<
     remoteApproverId: "remote_approver_id",
     remoteEmployeeId: "remote_employee_id",
     remoteId: "remote_id",
+    remoteTimeOffPolicyId: "remote_time_off_policy_id",
     startDate: "start_date",
     startHalfDay: "start_half_day",
+    timeOffPolicyId: "time_off_policy_id",
     updatedDate: "updated_date",
   });
 });

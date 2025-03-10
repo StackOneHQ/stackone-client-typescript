@@ -20,12 +20,21 @@ export enum Categories {
   Documents = "documents",
 }
 
+/**
+ * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+ */
+export type Metadata = {};
+
 export type ConnectSession = {
   accountId?: string | null | undefined;
   categories?: Array<Categories> | null | undefined;
   createdAt: Date;
   id: number;
   label?: string | null | undefined;
+  /**
+   * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+   */
+  metadata?: Metadata | null | undefined;
   organizationId: number;
   originOwnerId: string;
   originOwnerName: string;
@@ -54,6 +63,50 @@ export namespace Categories$ {
 }
 
 /** @internal */
+export const Metadata$inboundSchema: z.ZodType<
+  Metadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type Metadata$Outbound = {};
+
+/** @internal */
+export const Metadata$outboundSchema: z.ZodType<
+  Metadata$Outbound,
+  z.ZodTypeDef,
+  Metadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Metadata$ {
+  /** @deprecated use `Metadata$inboundSchema` instead. */
+  export const inboundSchema = Metadata$inboundSchema;
+  /** @deprecated use `Metadata$outboundSchema` instead. */
+  export const outboundSchema = Metadata$outboundSchema;
+  /** @deprecated use `Metadata$Outbound` instead. */
+  export type Outbound = Metadata$Outbound;
+}
+
+export function metadataToJSON(metadata: Metadata): string {
+  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+}
+
+export function metadataFromJSON(
+  jsonString: string,
+): SafeParseResult<Metadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Metadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const ConnectSession$inboundSchema: z.ZodType<
   ConnectSession,
   z.ZodTypeDef,
@@ -64,6 +117,7 @@ export const ConnectSession$inboundSchema: z.ZodType<
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
   organization_id: z.number(),
   origin_owner_id: z.string(),
   origin_owner_name: z.string(),
@@ -89,6 +143,7 @@ export type ConnectSession$Outbound = {
   created_at: string;
   id: number;
   label?: string | null | undefined;
+  metadata?: Metadata$Outbound | null | undefined;
   organization_id: number;
   origin_owner_id: string;
   origin_owner_name: string;
@@ -108,6 +163,7 @@ export const ConnectSession$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
+  metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
   organizationId: z.number(),
   originOwnerId: z.string(),
   originOwnerName: z.string(),

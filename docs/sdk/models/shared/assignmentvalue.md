@@ -5,7 +5,7 @@
 ```typescript
 import { AssignmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssignmentValue = AssignmentValue.Content;
+let value: AssignmentValue = AssignmentValue.Collection;
 ```
 
 ## Values

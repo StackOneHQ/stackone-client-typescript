@@ -22,6 +22,7 @@
 * [getEmployeeDocument](#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeeEmployment](#getemployeeemployment) - Get Employee Employment
+* [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
 * [getEmployeeTimeOffBalance](#getemployeetimeoffbalance) - Get Employee Time Off Balance
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](#getemployeesworkeligibility) - Get Employees Work Eligibility
@@ -43,6 +44,7 @@
 * [listEmployeeCustomFieldDefinitions](#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
 * [listEmployeeEmployments](#listemployeeemployments) - List Employee Employments
+* [listEmployeeSkills](#listemployeeskills) - List Employee Skills
 * [listEmployeeTimeOffBalances](#listemployeetimeoffbalances) - List Employee Time Off Balances
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployeeWorkEligibility](#listemployeeworkeligibility) - List Employee Work Eligibility
@@ -1002,8 +1004,13 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -1043,8 +1050,13 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -1256,8 +1268,13 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
     },
     xAccountId: "<id>",
   });
@@ -1296,8 +1313,13 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
     },
     xAccountId: "<id>",
   });
@@ -2214,6 +2236,94 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## getEmployeeSkill
+
+Get Employee Skill
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getEmployeeSkill({
+    fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeeSkill } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeeSkill.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeeSkill(stackOne, {
+    fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetEmployeeSkillRequest](../../sdk/models/operations/hrisgetemployeeskillrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisGetEmployeeSkillResponse](../../sdk/models/operations/hrisgetemployeeskillresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## getEmployeeTimeOffBalance
 
 Get Employee Time Off Balance
@@ -3016,7 +3126,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeOffPolicy({
-    fields: "id,remote_id,name,description,type,updated_at,created_at",
+    fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3047,7 +3157,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTimeOffPolicy(stackOne, {
-    fields: "id,remote_id,name,description,type,updated_at,created_at",
+    fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4120,6 +4230,104 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## listEmployeeSkills
+
+List Employee Skills
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listEmployeeSkills({
+    fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeSkills } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeSkills.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeSkills(stackOne, {
+    fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListEmployeeSkillsRequest](../../sdk/models/operations/hrislistemployeeskillsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisListEmployeeSkillsResponse](../../sdk/models/operations/hrislistemployeeskillsresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## listEmployeeTimeOffBalances
 
 List Employee Time Off Balances
@@ -5116,7 +5324,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeOffPolicies({
-    fields: "id,remote_id,name,description,type,updated_at,created_at",
+    fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5152,7 +5360,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTimeOffPolicies(stackOne, {
-    fields: "id,remote_id,name,description,type,updated_at,created_at",
+    fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -6066,8 +6274,13 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -6107,8 +6320,13 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
     },
     id: "<id>",
     xAccountId: "<id>",

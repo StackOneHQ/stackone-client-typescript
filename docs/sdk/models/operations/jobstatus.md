@@ -7,7 +7,7 @@ The job_status of the job
 ```typescript
 import { JobStatus } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: JobStatus = JobStatus.Open;
+let value: JobStatus = JobStatus.Draft;
 ```
 
 ## Values

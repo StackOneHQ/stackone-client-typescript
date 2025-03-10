@@ -37,11 +37,11 @@ import {
   LanguageEnum$outboundSchema,
 } from "./languageenum.js";
 import {
-  LocalisationModel,
-  LocalisationModel$inboundSchema,
-  LocalisationModel$Outbound,
-  LocalisationModel$outboundSchema,
-} from "./localisationmodel.js";
+  LocalizationModel,
+  LocalizationModel$inboundSchema,
+  LocalizationModel$Outbound,
+  LocalizationModel$outboundSchema,
+} from "./localizationmodel.js";
 
 export type LmsUpsertContentRequestDto4 = {};
 
@@ -124,9 +124,9 @@ export type LmsUpsertContentRequestDto = {
    */
   languages?: Array<LanguageEnum> | null | undefined;
   /**
-   * Localised content information
+   * The localization data for this course
    */
-  localisations?: Array<LocalisationModel> | null | undefined;
+  localizations?: Array<LocalizationModel> | null | undefined;
   /**
    * The mobile friendly URL of the content
    */
@@ -430,7 +430,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
-  localisations: z.nullable(z.array(LocalisationModel$inboundSchema))
+  localizations: z.nullable(z.array(LocalizationModel$inboundSchema))
     .optional(),
   mobile_launch_content_url: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
@@ -473,7 +473,7 @@ export type LmsUpsertContentRequestDto$Outbound = {
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
-  localisations?: Array<LocalisationModel$Outbound> | null | undefined;
+  localizations?: Array<LocalizationModel$Outbound> | null | undefined;
   mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   short_description?: string | null | undefined;
@@ -504,7 +504,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
-  localisations: z.nullable(z.array(LocalisationModel$outboundSchema))
+  localizations: z.nullable(z.array(LocalizationModel$outboundSchema))
     .optional(),
   mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),

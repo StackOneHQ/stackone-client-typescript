@@ -80,7 +80,7 @@ let value: AtsListInterviewsResponse = {
       },
     ],
   },
-  statusCode: 305,
+  statusCode: 418,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

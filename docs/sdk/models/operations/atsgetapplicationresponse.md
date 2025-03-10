@@ -155,7 +155,7 @@ let value: AtsGetApplicationResponse = {
       "<value>",
     ],
   },
-  statusCode: 201,
+  statusCode: 203,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

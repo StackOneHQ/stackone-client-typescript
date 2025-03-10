@@ -31,7 +31,7 @@ let value: MarketingGetInAppTemplateResponse = {
       updatedAt: new Date("2021-01-01T00:00:00.000Z"),
     },
   },
-  statusCode: 504,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

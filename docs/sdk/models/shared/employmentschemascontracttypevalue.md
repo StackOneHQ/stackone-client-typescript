@@ -6,7 +6,7 @@
 import { EmploymentSchemasContractTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmploymentSchemasContractTypeValue =
-  EmploymentSchemasContractTypeValue.UnmappedValue;
+  EmploymentSchemasContractTypeValue.Shifts;
 ```
 
 ## Values

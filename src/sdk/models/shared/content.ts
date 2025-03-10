@@ -13,12 +13,6 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AdditionalData,
-  AdditionalData$inboundSchema,
-  AdditionalData$Outbound,
-  AdditionalData$outboundSchema,
-} from "./additionaldata.js";
-import {
   Category,
   Category$inboundSchema,
   Category$Outbound,
@@ -31,11 +25,11 @@ import {
   LanguageEnum$outboundSchema,
 } from "./languageenum.js";
 import {
-  LocalisationModel,
-  LocalisationModel$inboundSchema,
-  LocalisationModel$Outbound,
-  LocalisationModel$outboundSchema,
-} from "./localisationmodel.js";
+  LocalizationModel,
+  LocalizationModel$inboundSchema,
+  LocalizationModel$Outbound,
+  LocalizationModel$outboundSchema,
+} from "./localizationmodel.js";
 import {
   Skills,
   Skills$inboundSchema,
@@ -81,10 +75,6 @@ export type Content = {
    * Whether the content is active and available for users.
    */
   active?: boolean | null | undefined;
-  /**
-   * The additional_data associated with this content
-   */
-  additionalData?: Array<AdditionalData> | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -132,7 +122,7 @@ export type Content = {
   /**
    * Localised content information
    */
-  localisations?: Array<LocalisationModel> | null | undefined;
+  localizations?: Array<LocalizationModel> | null | undefined;
   /**
    * The mobile friendly URL of the content
    */
@@ -414,8 +404,6 @@ export function contentContentTypeFromJSON(
 export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
   z.object({
     active: z.nullable(z.boolean()).optional(),
-    additional_data: z.nullable(z.array(AdditionalData$inboundSchema))
-      .optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_type: z.nullable(z.lazy(() => ContentContentType$inboundSchema))
       .optional(),
@@ -430,7 +418,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     external_reference: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
-    localisations: z.nullable(z.array(LocalisationModel$inboundSchema))
+    localizations: z.nullable(z.array(LocalizationModel$inboundSchema))
       .optional(),
     mobile_launch_content_url: z.nullable(z.string()).optional(),
     order: z.nullable(z.number()).optional(),
@@ -447,7 +435,6 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     ).optional(),
   }).transform((v) => {
     return remap$(v, {
-      "additional_data": "additionalData",
       "content_type": "contentType",
       "content_url": "contentUrl",
       "course_ids": "courseIds",
@@ -466,7 +453,6 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 /** @internal */
 export type Content$Outbound = {
   active?: boolean | null | undefined;
-  additional_data?: Array<AdditionalData$Outbound> | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
   content_url?: string | null | undefined;
@@ -478,7 +464,7 @@ export type Content$Outbound = {
   external_reference?: string | null | undefined;
   id?: string | null | undefined;
   languages?: Array<LanguageEnum$Outbound> | null | undefined;
-  localisations?: Array<LocalisationModel$Outbound> | null | undefined;
+  localizations?: Array<LocalizationModel$Outbound> | null | undefined;
   mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
   provider?: string | null | undefined;
@@ -499,7 +485,6 @@ export const Content$outboundSchema: z.ZodType<
   Content
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
-  additionalData: z.nullable(z.array(AdditionalData$outboundSchema)).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentType: z.nullable(z.lazy(() => ContentContentType$outboundSchema))
     .optional(),
@@ -512,7 +497,7 @@ export const Content$outboundSchema: z.ZodType<
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
-  localisations: z.nullable(z.array(LocalisationModel$outboundSchema))
+  localizations: z.nullable(z.array(LocalizationModel$outboundSchema))
     .optional(),
   mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
@@ -527,7 +512,6 @@ export const Content$outboundSchema: z.ZodType<
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    additionalData: "additional_data",
     contentType: "content_type",
     contentUrl: "content_url",
     courseIds: "course_ids",

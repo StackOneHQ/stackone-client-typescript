@@ -37,7 +37,7 @@ let value: AtsListApplicationScorecardsResponse = {
                 label: "Problem Solving",
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 required: true,
-                type: FieldType.Number,
+                type: FieldType.Email,
                 values: [
                   "Excellent",
                   "Good",
@@ -55,7 +55,7 @@ let value: AtsListApplicationScorecardsResponse = {
       },
     ],
   },
-  statusCode: 507,
+  statusCode: 208,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -10,6 +10,7 @@ import {
   EmployeeSchemasWorkLocationValue,
   EmploymentSchemasDepartmentValue,
   EmploymentSchemasDivisionValue,
+  EntitySkillsValue,
   HRISCostCenterValue,
   HRISGroupValue,
   NationalIdentityNumberApiModelSchemasValue,
@@ -288,6 +289,27 @@ let value: HrisGetEmployeeResponse = {
       preferredLanguage: {},
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteManagerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          language: {
+            value: EntitySkillsValue.EnGB,
+          },
+          maximumProficiency: {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Expert",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          minimumProficiency: {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Expert",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
       unifiedCustomFields: {
@@ -328,7 +350,7 @@ let value: HrisGetEmployeeResponse = {
       "<value>",
     ],
   },
-  statusCode: 428,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

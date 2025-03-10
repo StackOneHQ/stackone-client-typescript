@@ -9,13 +9,6 @@ let value: ContentPaginated = {
   data: [
     {
       active: true,
-      additionalData: [
-        {
-          id: "learning_outcomes",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          value: "This is additional data",
-        },
-      ],
       categories: [
         {
           id: "12345",
@@ -39,7 +32,7 @@ let value: ContentPaginated = {
           value: LanguageEnumValue.EnGB,
         },
       ],
-      localisations: [
+      localizations: [
         {
           description:
             "This video acts as learning content for software engineers.",

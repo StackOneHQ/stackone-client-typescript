@@ -12,6 +12,8 @@ export type PatchAccountExternalDtoCredentials = {};
 
 export type Label = {};
 
+export type PatchAccountExternalDtoMetadata = {};
+
 export type Secrets = {};
 
 export type PatchAccountExternalDtoSetupInformation = {};
@@ -21,6 +23,7 @@ export type PatchAccountExternalDto = {
   credentials?: PatchAccountExternalDtoCredentials | null | undefined;
   environment?: string | null | undefined;
   label?: Label | null | undefined;
+  metadata?: PatchAccountExternalDtoMetadata | null | undefined;
   originOwnerId?: string | null | undefined;
   originOwnerName?: string | null | undefined;
   originUsername?: string | null | undefined;
@@ -119,6 +122,56 @@ export function labelFromJSON(
     jsonString,
     (x) => Label$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Label' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchAccountExternalDtoMetadata$inboundSchema: z.ZodType<
+  PatchAccountExternalDtoMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type PatchAccountExternalDtoMetadata$Outbound = {};
+
+/** @internal */
+export const PatchAccountExternalDtoMetadata$outboundSchema: z.ZodType<
+  PatchAccountExternalDtoMetadata$Outbound,
+  z.ZodTypeDef,
+  PatchAccountExternalDtoMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchAccountExternalDtoMetadata$ {
+  /** @deprecated use `PatchAccountExternalDtoMetadata$inboundSchema` instead. */
+  export const inboundSchema = PatchAccountExternalDtoMetadata$inboundSchema;
+  /** @deprecated use `PatchAccountExternalDtoMetadata$outboundSchema` instead. */
+  export const outboundSchema = PatchAccountExternalDtoMetadata$outboundSchema;
+  /** @deprecated use `PatchAccountExternalDtoMetadata$Outbound` instead. */
+  export type Outbound = PatchAccountExternalDtoMetadata$Outbound;
+}
+
+export function patchAccountExternalDtoMetadataToJSON(
+  patchAccountExternalDtoMetadata: PatchAccountExternalDtoMetadata,
+): string {
+  return JSON.stringify(
+    PatchAccountExternalDtoMetadata$outboundSchema.parse(
+      patchAccountExternalDtoMetadata,
+    ),
+  );
+}
+
+export function patchAccountExternalDtoMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchAccountExternalDtoMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchAccountExternalDtoMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchAccountExternalDtoMetadata' from JSON`,
   );
 }
 
@@ -234,6 +287,9 @@ export const PatchAccountExternalDto$inboundSchema: z.ZodType<
   ).optional(),
   environment: z.nullable(z.string()).optional(),
   label: z.nullable(z.lazy(() => Label$inboundSchema)).optional(),
+  metadata: z.nullable(
+    z.lazy(() => PatchAccountExternalDtoMetadata$inboundSchema),
+  ).optional(),
   origin_owner_id: z.nullable(z.string()).optional(),
   origin_owner_name: z.nullable(z.string()).optional(),
   origin_username: z.nullable(z.string()).optional(),
@@ -258,6 +314,7 @@ export type PatchAccountExternalDto$Outbound = {
   credentials?: PatchAccountExternalDtoCredentials$Outbound | null | undefined;
   environment?: string | null | undefined;
   label?: Label$Outbound | null | undefined;
+  metadata?: PatchAccountExternalDtoMetadata$Outbound | null | undefined;
   origin_owner_id?: string | null | undefined;
   origin_owner_name?: string | null | undefined;
   origin_username?: string | null | undefined;
@@ -281,6 +338,9 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
   ).optional(),
   environment: z.nullable(z.string()).optional(),
   label: z.nullable(z.lazy(() => Label$outboundSchema)).optional(),
+  metadata: z.nullable(
+    z.lazy(() => PatchAccountExternalDtoMetadata$outboundSchema),
+  ).optional(),
   originOwnerId: z.nullable(z.string()).optional(),
   originOwnerName: z.nullable(z.string()).optional(),
   originUsername: z.nullable(z.string()).optional(),
