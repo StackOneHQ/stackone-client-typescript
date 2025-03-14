@@ -18,6 +18,8 @@ export enum ConnectSessionCreateCategories {
   Lms = "lms",
   Stackone = "stackone",
   Documents = "documents",
+  Ticketing = "ticketing",
+  Screening = "screening",
 }
 
 /**

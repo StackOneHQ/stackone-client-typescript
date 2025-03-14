@@ -9,17 +9,19 @@ let value: ConnectSession = {
   categories: [
     Categories.Ats,
     Categories.Hris,
-    Categories.Ats,
+    Categories.HrisLegacy,
     Categories.Crm,
     Categories.Iam,
     Categories.Marketing,
     Categories.Lms,
-    Categories.Lms,
+    Categories.Hris,
     Categories.Documents,
+    Categories.Ticketing,
+    Categories.Screening,
   ],
-  createdAt: new Date("2025-08-24T08:46:06.475Z"),
-  id: 2724.37,
-  organizationId: 3790.57,
+  createdAt: new Date("2025-11-08T05:51:26.933Z"),
+  id: 2334.2,
+  organizationId: 6897.68,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -31,7 +33,7 @@ let value: ConnectSession = {
 | Field                                                                                                                                           | Type                                                                                                                                            | Required                                                                                                                                        | Description                                                                                                                                     | Example                                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
-| `categories`                                                                                                                                    | [shared.Categories](../../../sdk/models/shared/categories.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents"<br/>]              |
+| `categories`                                                                                                                                    | [shared.Categories](../../../sdk/models/shared/categories.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening"<br/>] |
 | `createdAt`                                                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                   | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `id`                                                                                                                                            | *number*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `label`                                                                                                                                         | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |

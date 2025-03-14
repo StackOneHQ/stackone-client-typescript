@@ -6,7 +6,7 @@
 import { CreateCategoriesApiModelSchemasLevelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateCategoriesApiModelSchemasLevelValue =
-  CreateCategoriesApiModelSchemasLevelValue.Secondary;
+  CreateCategoriesApiModelSchemasLevelValue.Primary;
 ```
 
 ## Values

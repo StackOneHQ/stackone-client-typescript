@@ -5,7 +5,7 @@
 ```typescript
 import { Categories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Categories = Categories.Lms;
+let value: Categories = Categories.Screening;
 ```
 
 ## Values
@@ -21,3 +21,5 @@ let value: Categories = Categories.Lms;
 | `Lms`        | lms          |
 | `Stackone`   | stackone     |
 | `Documents`  | documents    |
+| `Ticketing`  | ticketing    |
+| `Screening`  | screening    |

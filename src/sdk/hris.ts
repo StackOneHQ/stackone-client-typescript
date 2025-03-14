@@ -403,7 +403,7 @@ export class Hris extends ClientSDK {
   }
 
   /**
-   * Get Location
+   * Get Work Location
    */
   async getLocation(
     request: operations.HrisGetLocationRequest,
@@ -779,7 +779,7 @@ export class Hris extends ClientSDK {
   }
 
   /**
-   * List locations
+   * List Work Locations
    */
   async listLocations(
     request: operations.HrisListLocationsRequest,

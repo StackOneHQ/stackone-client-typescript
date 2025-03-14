@@ -832,6 +832,7 @@ async function run() {
   const result = await stackOne.marketing.getCampaign({
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -863,6 +864,7 @@ async function run() {
   const res = await marketingGetCampaign(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -918,6 +920,7 @@ async function run() {
   const result = await stackOne.marketing.getContentBlock({
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -949,6 +952,7 @@ async function run() {
   const res = await marketingGetContentBlock(stackOne, {
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1004,6 +1008,7 @@ async function run() {
   const result = await stackOne.marketing.getEmailTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1035,6 +1040,7 @@ async function run() {
   const res = await marketingGetEmailTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1090,6 +1096,7 @@ async function run() {
   const result = await stackOne.marketing.getInAppTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1121,6 +1128,7 @@ async function run() {
   const res = await marketingGetInAppTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1178,6 +1186,7 @@ async function run() {
   const result = await stackOne.marketing.getOmniChannelTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1209,6 +1218,7 @@ async function run() {
   const res = await marketingGetOmniChannelTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1264,6 +1274,7 @@ async function run() {
   const result = await stackOne.marketing.getPushTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1295,6 +1306,7 @@ async function run() {
   const res = await marketingGetPushTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1350,6 +1362,7 @@ async function run() {
   const result = await stackOne.marketing.getSmsTemplate({
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1381,6 +1394,7 @@ async function run() {
   const res = await marketingGetSmsTemplate(stackOne, {
     fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
+    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1438,6 +1452,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1474,6 +1490,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1534,6 +1552,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1570,6 +1590,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1630,6 +1652,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1666,6 +1690,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1726,6 +1752,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1762,6 +1790,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1824,6 +1854,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1860,6 +1892,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1920,6 +1954,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1956,6 +1992,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2016,6 +2054,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2052,6 +2092,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });

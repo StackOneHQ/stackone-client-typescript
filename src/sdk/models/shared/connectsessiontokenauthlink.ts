@@ -18,6 +18,8 @@ export enum ConnectSessionTokenAuthLinkCategories {
   Lms = "lms",
   Stackone = "stackone",
   Documents = "documents",
+  Ticketing = "ticketing",
+  Screening = "screening",
 }
 
 /**

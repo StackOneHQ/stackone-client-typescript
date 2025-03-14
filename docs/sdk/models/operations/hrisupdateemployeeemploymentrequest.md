@@ -7,8 +7,6 @@ import { HrisUpdateEmployeeEmploymentRequest } from "@stackone/stackone-client-t
 
 let value: HrisUpdateEmployeeEmploymentRequest = {
   hrisCreateEmploymentRequestDto: {
-    effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-    employeeId: "1687-3",
     employmentContractType: {},
     employmentType: {},
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

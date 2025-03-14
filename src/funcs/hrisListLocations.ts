@@ -36,7 +36,7 @@ import {
 } from "../sdk/types/operations.js";
 
 /**
- * List locations
+ * List Work Locations
  */
 export function hrisListLocations(
   client: StackOneCore,

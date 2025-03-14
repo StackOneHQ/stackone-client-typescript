@@ -235,12 +235,10 @@ export type HrisCreateEmploymentRequestDtoPayPeriod = {
 export type HrisCreateEmploymentRequestDto = {
   /**
    * The effective date of the employment contract
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   effectiveDate?: Date | null | undefined;
-  /**
-   * The employee ID associated with this employment
-   */
-  employeeId?: string | null | undefined;
   /**
    * The employment work schedule type (e.g., full-time, part-time)
    */
@@ -1408,7 +1406,6 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
   effective_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  employee_id: z.nullable(z.string()).optional(),
   employment_contract_type: z.nullable(
     z.lazy(() =>
       HrisCreateEmploymentRequestDtoEmploymentContractType$inboundSchema
@@ -1433,7 +1430,6 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "effective_date": "effectiveDate",
-    "employee_id": "employeeId",
     "employment_contract_type": "employmentContractType",
     "employment_type": "employmentType",
     "job_title": "jobTitle",
@@ -1449,7 +1445,6 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateEmploymentRequestDto$Outbound = {
   effective_date?: string | null | undefined;
-  employee_id?: string | null | undefined;
   employment_contract_type?:
     | HrisCreateEmploymentRequestDtoEmploymentContractType$Outbound
     | null
@@ -1483,7 +1478,6 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   effectiveDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
-  employeeId: z.nullable(z.string()).optional(),
   employmentContractType: z.nullable(
     z.lazy(() =>
       HrisCreateEmploymentRequestDtoEmploymentContractType$outboundSchema
@@ -1508,7 +1502,6 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     effectiveDate: "effective_date",
-    employeeId: "employee_id",
     employmentContractType: "employment_contract_type",
     employmentType: "employment_type",
     jobTitle: "job_title",

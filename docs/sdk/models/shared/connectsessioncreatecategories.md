@@ -5,8 +5,7 @@
 ```typescript
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ConnectSessionCreateCategories =
-  ConnectSessionCreateCategories.Marketing;
+let value: ConnectSessionCreateCategories = ConnectSessionCreateCategories.Crm;
 ```
 
 ## Values
@@ -22,3 +21,5 @@ let value: ConnectSessionCreateCategories =
 | `Lms`        | lms          |
 | `Stackone`   | stackone     |
 | `Documents`  | documents    |
+| `Ticketing`  | ticketing    |
+| `Screening`  | screening    |
