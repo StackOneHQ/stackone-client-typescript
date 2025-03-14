@@ -40,7 +40,7 @@ export type AtsListApplicationNotesRequest = {
    */
   page?: string | null | undefined;
   /**
-   * The number of results per page
+   * The number of results per page (default value is 25)
    */
   pageSize?: string | null | undefined;
   /**
@@ -48,7 +48,7 @@ export type AtsListApplicationNotesRequest = {
    */
   proxy?: { [k: string]: any } | null | undefined;
   /**
-   * Indicates that the raw request result is returned
+   * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
    */
   raw?: boolean | null | undefined;
   /**
@@ -175,9 +175,9 @@ export const AtsListApplicationNotesRequest$inboundSchema: z.ZodType<
   id: z.string(),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string().default("25")),
+  page_size: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean().default(false)),
+  raw: z.nullable(z.boolean()).optional(),
   sync_token: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
   "x-account-id": z.string(),
@@ -197,9 +197,9 @@ export type AtsListApplicationNotesRequest$Outbound = {
   id: string;
   next?: string | null | undefined;
   page?: string | null | undefined;
-  page_size: string | null;
+  page_size?: string | null | undefined;
   proxy?: { [k: string]: any } | null | undefined;
-  raw: boolean | null;
+  raw?: boolean | null | undefined;
   sync_token?: string | null | undefined;
   updated_after?: string | null | undefined;
   "x-account-id": string;
@@ -218,9 +218,9 @@ export const AtsListApplicationNotesRequest$outboundSchema: z.ZodType<
   id: z.string(),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
-  pageSize: z.nullable(z.string().default("25")),
+  pageSize: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean().default(false)),
+  raw: z.nullable(z.boolean()).optional(),
   syncToken: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
   xAccountId: z.string(),

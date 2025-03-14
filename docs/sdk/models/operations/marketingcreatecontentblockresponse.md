@@ -21,7 +21,7 @@ let value: MarketingCreateContentBlockResponse = {
       "<value>",
     ],
   },
-  statusCode: 500,
+  statusCode: 411,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

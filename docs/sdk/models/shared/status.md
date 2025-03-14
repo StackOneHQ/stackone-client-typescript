@@ -8,7 +8,7 @@ The status of the assignment
 import { AssignmentSchemasValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Status = {
-  value: AssignmentSchemasValue.Pending,
+  value: AssignmentSchemasValue.InProgress,
 };
 ```
 
@@ -17,4 +17,4 @@ let value: Status = {
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `sourceValue`                                                                         | *shared.AssignmentSchemasSourceValue*                                                 | :heavy_minus_sign:                                                                    | N/A                                                                                   |                                                                                       |
-| `value`                                                                               | [shared.AssignmentSchemasValue](../../../sdk/models/shared/assignmentschemasvalue.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   | in-progress                                                                           |
+| `value`                                                                               | [shared.AssignmentSchemasValue](../../../sdk/models/shared/assignmentschemasvalue.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   | in_progress                                                                           |

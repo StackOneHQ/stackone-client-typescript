@@ -28,7 +28,7 @@ export type AtsGetJobRequest = {
    */
   proxy?: { [k: string]: any } | null | undefined;
   /**
-   * Indicates that the raw request result is returned
+   * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
    */
   raw?: boolean | null | undefined;
   /**
@@ -68,7 +68,7 @@ export const AtsGetJobRequest$inboundSchema: z.ZodType<
   id: z.string(),
   include: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean().default(false)),
+  raw: z.nullable(z.boolean()).optional(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -83,7 +83,7 @@ export type AtsGetJobRequest$Outbound = {
   id: string;
   include?: string | null | undefined;
   proxy?: { [k: string]: any } | null | undefined;
-  raw: boolean | null;
+  raw?: boolean | null | undefined;
   "x-account-id": string;
 };
 
@@ -98,7 +98,7 @@ export const AtsGetJobRequest$outboundSchema: z.ZodType<
   id: z.string(),
   include: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean().default(false)),
+  raw: z.nullable(z.boolean()).optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {

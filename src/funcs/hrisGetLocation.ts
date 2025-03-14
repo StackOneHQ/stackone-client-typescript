@@ -29,7 +29,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Get Location
+ * Get Work Location
  */
 export function hrisGetLocation(
   client: StackOneCore,

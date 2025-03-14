@@ -6,21 +6,23 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://everlasting-commodity.info",
+  authLinkUrl: "https://unconscious-dress.info",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
+    ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.Stackone,
     ConnectSessionTokenAuthLinkCategories.Documents,
+    ConnectSessionTokenAuthLinkCategories.Documents,
+    ConnectSessionTokenAuthLinkCategories.Ticketing,
+    ConnectSessionTokenAuthLinkCategories.Screening,
   ],
-  createdAt: new Date("2023-09-18T13:33:39.569Z"),
-  id: 5023.89,
-  organizationId: 9425.84,
+  createdAt: new Date("2023-09-18T15:16:54.148Z"),
+  id: 1718.53,
+  organizationId: 4492.92,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -34,7 +36,7 @@ let value: ConnectSessionTokenAuthLink = {
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `authLinkUrl`                                                                                                                                   | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
-| `categories`                                                                                                                                    | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[]                           | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents"<br/>]              |
+| `categories`                                                                                                                                    | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[]                           | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening"<br/>] |
 | `createdAt`                                                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                   | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `id`                                                                                                                                            | *number*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `label`                                                                                                                                         | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |

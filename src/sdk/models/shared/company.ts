@@ -18,6 +18,10 @@ export type Company = {
    */
   displayName?: string | null | undefined;
   /**
+   * The full name of the company
+   */
+  fullName?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -46,6 +50,7 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
     display_name: z.nullable(z.string()).optional(),
+    full_name: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
@@ -57,6 +62,7 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
     return remap$(v, {
       "created_at": "createdAt",
       "display_name": "displayName",
+      "full_name": "fullName",
       "remote_id": "remoteId",
       "unified_custom_fields": "unifiedCustomFields",
       "updated_at": "updatedAt",
@@ -67,6 +73,7 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
 export type Company$Outbound = {
   created_at?: string | null | undefined;
   display_name?: string | null | undefined;
+  full_name?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
@@ -82,6 +89,7 @@ export const Company$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   displayName: z.nullable(z.string()).optional(),
+  fullName: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
@@ -91,6 +99,7 @@ export const Company$outboundSchema: z.ZodType<
   return remap$(v, {
     createdAt: "created_at",
     displayName: "display_name",
+    fullName: "full_name",
     remoteId: "remote_id",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",

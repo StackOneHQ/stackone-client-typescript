@@ -85,6 +85,8 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -238,7 +240,7 @@ run();
 * [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
 * [getGroup](docs/sdks/hris/README.md#getgroup) - Get Group
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
-* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
+* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
 * [getTeamGroup](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 * [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
@@ -261,7 +263,7 @@ run();
 * [listEmployments](docs/sdks/hris/README.md#listemployments) - List Employments
 * [listGroups](docs/sdks/hris/README.md#listgroups) - List Groups
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
-* [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
+* [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
 * [listTeamGroups](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
@@ -379,6 +381,8 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    pageSize: "25",
+    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -768,7 +772,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetEmployment`](docs/sdks/hris/README.md#getemployment) - Get Employment
 - [`hrisGetGroup`](docs/sdks/hris/README.md#getgroup) - Get Group
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
-- [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Location
+- [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Work Location
 - [`hrisGetTeamGroup`](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 - [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 - [`hrisGetTimeOffPolicy`](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
@@ -791,7 +795,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListEmployments`](docs/sdks/hris/README.md#listemployments) - List Employments
 - [`hrisListGroups`](docs/sdks/hris/README.md#listgroups) - List Groups
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
-- [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List locations
+- [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List Work Locations
 - [`hrisListTeamGroups`](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffPolicies`](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies

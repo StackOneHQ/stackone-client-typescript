@@ -13,6 +13,10 @@ export type UpdatePackage = {
    */
   description?: string | null | undefined;
   /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
    * Package name
    */
   name?: string | null | undefined;
@@ -25,12 +29,14 @@ export const UpdatePackage$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type UpdatePackage$Outbound = {
   description?: string | null | undefined;
+  id?: string | null | undefined;
   name?: string | null | undefined;
 };
 
@@ -41,6 +47,7 @@ export const UpdatePackage$outboundSchema: z.ZodType<
   UpdatePackage
 > = z.object({
   description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
 });
 

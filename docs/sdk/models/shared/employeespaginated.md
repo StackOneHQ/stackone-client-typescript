@@ -42,6 +42,7 @@ let value: EmployeesPaginated = {
       company: {
         createdAt: new Date("2023-02-23T00:00:00.000Z"),
         displayName: "StackOne",
+        fullName: "American Express Company",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "StackOne Technologies PLC",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
