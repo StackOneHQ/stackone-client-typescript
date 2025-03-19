@@ -113,6 +113,10 @@ export type Job = {
    */
   departmentIds?: Array<string> | null | undefined;
   /**
+   * Description of the job
+   */
+  description?: string | null | undefined;
+  /**
    * Hiring team for the job.
    */
   hiringTeam?: Array<JobHiringTeam> | null | undefined;
@@ -421,6 +425,7 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
     ).optional(),
     custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
     department_ids: z.nullable(z.array(z.string())).optional(),
+    description: z.nullable(z.string()).optional(),
     hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
     interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
@@ -460,6 +465,7 @@ export type Job$Outbound = {
   created_at?: string | null | undefined;
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   department_ids?: Array<string> | null | undefined;
+  description?: string | null | undefined;
   hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
   interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
@@ -482,6 +488,7 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
     createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
     customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
     departmentIds: z.nullable(z.array(z.string())).optional(),
+    description: z.nullable(z.string()).optional(),
     hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
     interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))

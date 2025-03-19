@@ -277,6 +277,7 @@ run();
 
 ### [iam](docs/sdks/iam/README.md)
 
+* [deleteUser](docs/sdks/iam/README.md#deleteuser) - Delete User
 * [getGroup](docs/sdks/iam/README.md#getgroup) - Get Group
 * [getPolicy](docs/sdks/iam/README.md#getpolicy) - Get Policy
 * [getRole](docs/sdks/iam/README.md#getrole) - Get Role
@@ -285,6 +286,7 @@ run();
 * [listPolicies](docs/sdks/iam/README.md#listpolicies) - List Policies
 * [listRoles](docs/sdks/iam/README.md#listroles) - List Roles
 * [listUsers](docs/sdks/iam/README.md#listusers) - List Users
+* [updateUser](docs/sdks/iam/README.md#updateuser) - Update User
 
 ### [lms](docs/sdks/lms/README.md)
 
@@ -806,6 +808,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisUpdateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 - [`hrisUpdateTimeOffRequest`](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 - [`hrisUploadEmployeeDocument`](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
+- [`iamDeleteUser`](docs/sdks/iam/README.md#deleteuser) - Delete User
 - [`iamGetGroup`](docs/sdks/iam/README.md#getgroup) - Get Group
 - [`iamGetPolicy`](docs/sdks/iam/README.md#getpolicy) - Get Policy
 - [`iamGetRole`](docs/sdks/iam/README.md#getrole) - Get Role
@@ -814,6 +817,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`iamListPolicies`](docs/sdks/iam/README.md#listpolicies) - List Policies
 - [`iamListRoles`](docs/sdks/iam/README.md#listroles) - List Roles
 - [`iamListUsers`](docs/sdks/iam/README.md#listusers) - List Users
+- [`iamUpdateUser`](docs/sdks/iam/README.md#updateuser) - Update User
 - [`lmsBatchUpsertContent`](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
 - [`lmsBatchUpsertCourse`](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
 - [`lmsCreateCollection`](docs/sdks/lms/README.md#createcollection) - Create Collection

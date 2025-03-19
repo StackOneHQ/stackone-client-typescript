@@ -1372,7 +1372,7 @@ export enum IamUser2 {
 /**
  * Indicates if the user is a bot or service user
  */
-export type IsBotUser = boolean | IamUser2;
+export type IamUserIsBotUser = boolean | IamUser2;
 
 export type IamUser4 = {};
 
@@ -2031,46 +2031,50 @@ export namespace IamUser2$ {
 }
 
 /** @internal */
-export const IsBotUser$inboundSchema: z.ZodType<
-  IsBotUser,
+export const IamUserIsBotUser$inboundSchema: z.ZodType<
+  IamUserIsBotUser,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), IamUser2$inboundSchema]);
 
 /** @internal */
-export type IsBotUser$Outbound = boolean | string;
+export type IamUserIsBotUser$Outbound = boolean | string;
 
 /** @internal */
-export const IsBotUser$outboundSchema: z.ZodType<
-  IsBotUser$Outbound,
+export const IamUserIsBotUser$outboundSchema: z.ZodType<
+  IamUserIsBotUser$Outbound,
   z.ZodTypeDef,
-  IsBotUser
+  IamUserIsBotUser
 > = z.union([z.boolean(), IamUser2$outboundSchema]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace IsBotUser$ {
-  /** @deprecated use `IsBotUser$inboundSchema` instead. */
-  export const inboundSchema = IsBotUser$inboundSchema;
-  /** @deprecated use `IsBotUser$outboundSchema` instead. */
-  export const outboundSchema = IsBotUser$outboundSchema;
-  /** @deprecated use `IsBotUser$Outbound` instead. */
-  export type Outbound = IsBotUser$Outbound;
+export namespace IamUserIsBotUser$ {
+  /** @deprecated use `IamUserIsBotUser$inboundSchema` instead. */
+  export const inboundSchema = IamUserIsBotUser$inboundSchema;
+  /** @deprecated use `IamUserIsBotUser$outboundSchema` instead. */
+  export const outboundSchema = IamUserIsBotUser$outboundSchema;
+  /** @deprecated use `IamUserIsBotUser$Outbound` instead. */
+  export type Outbound = IamUserIsBotUser$Outbound;
 }
 
-export function isBotUserToJSON(isBotUser: IsBotUser): string {
-  return JSON.stringify(IsBotUser$outboundSchema.parse(isBotUser));
+export function iamUserIsBotUserToJSON(
+  iamUserIsBotUser: IamUserIsBotUser,
+): string {
+  return JSON.stringify(
+    IamUserIsBotUser$outboundSchema.parse(iamUserIsBotUser),
+  );
 }
 
-export function isBotUserFromJSON(
+export function iamUserIsBotUserFromJSON(
   jsonString: string,
-): SafeParseResult<IsBotUser, SDKValidationError> {
+): SafeParseResult<IamUserIsBotUser, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IsBotUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IsBotUser' from JSON`,
+    (x) => IamUserIsBotUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserIsBotUser' from JSON`,
   );
 }
 

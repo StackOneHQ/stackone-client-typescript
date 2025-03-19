@@ -116,6 +116,10 @@ export type AtsCreateJobRequestDto = {
    */
   departmentIds?: Array<string> | null | undefined;
   /**
+   * Description of the job
+   */
+  description?: string | null | undefined;
+  /**
    * Hiring team for the job.
    */
   hiringTeam?: Array<JobHiringTeam> | null | undefined;
@@ -425,6 +429,7 @@ export const AtsCreateJobRequestDto$inboundSchema: z.ZodType<
   confidential: z.nullable(Confidential$inboundSchema).optional(),
   custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   department_ids: z.nullable(z.array(z.string())).optional(),
+  description: z.nullable(z.string()).optional(),
   hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
   interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
     .optional(),
@@ -452,6 +457,7 @@ export type AtsCreateJobRequestDto$Outbound = {
   confidential?: string | null | undefined;
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   department_ids?: Array<string> | null | undefined;
+  description?: string | null | undefined;
   hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
   interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
   job_status?: JobStatus$Outbound | null | undefined;
@@ -472,6 +478,7 @@ export const AtsCreateJobRequestDto$outboundSchema: z.ZodType<
   confidential: z.nullable(Confidential$outboundSchema).optional(),
   customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   departmentIds: z.nullable(z.array(z.string())).optional(),
+  description: z.nullable(z.string()).optional(),
   hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
   interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))
     .optional(),

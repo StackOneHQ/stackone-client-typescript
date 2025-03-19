@@ -9,7 +9,7 @@ import { CampaignSchemasValue, CampaignStatus } from "@stackone/stackone-client-
 
 let value: CampaignStatus = {
   sourceValue: "Email",
-  value: CampaignSchemasValue.Live,
+  value: CampaignSchemasValue.Draft,
 };
 ```
 

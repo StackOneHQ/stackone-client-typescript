@@ -18,6 +18,10 @@ export type LmsListUsersQueryParamFilter = {
    */
   email?: string | null | undefined;
   /**
+   * Filter to select users by external_reference
+   */
+  externalReference?: string | null | undefined;
+  /**
    * Use a string with a date to only select results updated after that given date
    */
   updatedAfter?: string | null | undefined;
@@ -93,9 +97,11 @@ export const LmsListUsersQueryParamFilter$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   email: z.nullable(z.string()).optional(),
+  external_reference: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "external_reference": "externalReference",
     "updated_after": "updatedAfter",
   });
 });
@@ -103,6 +109,7 @@ export const LmsListUsersQueryParamFilter$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsListUsersQueryParamFilter$Outbound = {
   email?: string | null | undefined;
+  external_reference?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -113,9 +120,11 @@ export const LmsListUsersQueryParamFilter$outboundSchema: z.ZodType<
   LmsListUsersQueryParamFilter
 > = z.object({
   email: z.nullable(z.string()).optional(),
+  externalReference: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    externalReference: "external_reference",
     updatedAfter: "updated_after",
   });
 });
