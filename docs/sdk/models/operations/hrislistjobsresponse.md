@@ -33,6 +33,7 @@ let value: HrisListJobsResponse = {
           "308571",
           "308572",
         ],
+        description: "Responsible for identifying business requirements",
         hiringTeam: [
           {
             email: "john.doe@gmail.com",

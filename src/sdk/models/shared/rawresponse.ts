@@ -8,7 +8,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RawResponse = {
-  body?: string | null | undefined;
+  body?: any | null | undefined;
   method: string;
   response?: { [k: string]: any } | null | undefined;
   url: string;
@@ -20,7 +20,7 @@ export const RawResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  body: z.nullable(z.string()).optional(),
+  body: z.nullable(z.any()).optional(),
   method: z.string(),
   response: z.nullable(z.record(z.any())).optional(),
   url: z.string(),
@@ -28,7 +28,7 @@ export const RawResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type RawResponse$Outbound = {
-  body?: string | null | undefined;
+  body?: any | null | undefined;
   method: string;
   response?: { [k: string]: any } | null | undefined;
   url: string;
@@ -40,7 +40,7 @@ export const RawResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RawResponse
 > = z.object({
-  body: z.nullable(z.string()).optional(),
+  body: z.nullable(z.any()).optional(),
   method: z.string(),
   response: z.nullable(z.record(z.any())).optional(),
   url: z.string(),

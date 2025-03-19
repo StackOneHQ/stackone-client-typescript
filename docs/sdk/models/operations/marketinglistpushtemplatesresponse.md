@@ -33,7 +33,7 @@ let value: MarketingListPushTemplatesResponse = {
       },
     ],
   },
-  statusCode: 500,
+  statusCode: 206,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

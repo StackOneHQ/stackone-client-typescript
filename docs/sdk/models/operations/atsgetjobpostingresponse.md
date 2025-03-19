@@ -110,7 +110,7 @@ let value: AtsGetJobPostingResponse = {
               ],
               parentQuestion: null,
               required: true,
-              text: "What is your favorite animal?",
+              text: "What is your favourite animal?",
               type: {},
             },
             {

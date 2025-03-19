@@ -1,0 +1,18 @@
+# IamUpdateUserRequestDtoStatus
+
+## Example Usage
+
+```typescript
+import { IamUpdateUserRequestDtoStatus, IamUpdateUserRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamUpdateUserRequestDtoStatus = {
+  value: IamUpdateUserRequestDtoValue.Enabled,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   | Example                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                                                                 | *shared.IamUpdateUserRequestDtoSourceValue*                                                                                                                   | :heavy_minus_sign:                                                                                                                                            | N/A                                                                                                                                                           |                                                                                                                                                               |
+| `value`                                                                                                                                                       | [shared.IamUpdateUserRequestDtoValue](../../../sdk/models/shared/iamupdateuserrequestdtovalue.md)                                                             | :heavy_minus_sign:                                                                                                                                            | The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin). | enabled                                                                                                                                                       |

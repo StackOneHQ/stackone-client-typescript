@@ -268,7 +268,7 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
-      displayName: "Sir Issac Newton",
+      displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
         employmentContractType: {},
@@ -353,7 +353,7 @@ async function run() {
         },
       ],
       ethnicity: {},
-      firstName: "Issac",
+      firstName: "Isaac",
       gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
@@ -377,7 +377,7 @@ async function run() {
       lastName: "Newton",
       managerId: "67890",
       maritalStatus: {},
-      name: "Issac Newton",
+      name: "Isaac Newton",
       nationalIdentityNumber: {
         country: {
           value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
@@ -558,7 +558,7 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
-      displayName: "Sir Issac Newton",
+      displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
         employmentContractType: {},
@@ -643,7 +643,7 @@ async function run() {
         },
       ],
       ethnicity: {},
-      firstName: "Issac",
+      firstName: "Isaac",
       gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
@@ -667,7 +667,7 @@ async function run() {
       lastName: "Newton",
       managerId: "67890",
       maritalStatus: {},
-      name: "Issac Newton",
+      name: "Isaac Newton",
       nationalIdentityNumber: {
         country: {
           value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
@@ -5843,7 +5843,7 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
-      displayName: "Sir Issac Newton",
+      displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
         employmentContractType: {},
@@ -5876,7 +5876,7 @@ async function run() {
         value: HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       ethnicity: {},
-      firstName: "Issac",
+      firstName: "Isaac",
       gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
@@ -5900,7 +5900,7 @@ async function run() {
       lastName: "Newton",
       managerId: "67890",
       maritalStatus: {},
-      name: "Issac Newton",
+      name: "Isaac Newton",
       nationalIdentityNumber: {
         country: {
           value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
@@ -6032,7 +6032,7 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       departmentId: "3093",
-      displayName: "Sir Issac Newton",
+      displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
         employmentContractType: {},
@@ -6065,7 +6065,7 @@ async function run() {
         value: HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       ethnicity: {},
-      firstName: "Issac",
+      firstName: "Isaac",
       gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
@@ -6089,7 +6089,7 @@ async function run() {
       lastName: "Newton",
       managerId: "67890",
       maritalStatus: {},
-      name: "Issac Newton",
+      name: "Isaac Newton",
       nationalIdentityNumber: {
         country: {
           value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,

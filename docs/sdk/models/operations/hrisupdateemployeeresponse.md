@@ -56,7 +56,7 @@ let value: HrisUpdateEmployeeResponse = {
     dateOfBirth: new Date("1990-01-01T00:00.000Z"),
     department: "Physics",
     departmentId: "3093",
-    displayName: "Sir Issac Newton",
+    displayName: "Sir Isaac Newton",
     employeeNumber: "125",
     employment: {
       employmentContractType: {},
@@ -77,7 +77,7 @@ let value: HrisUpdateEmployeeResponse = {
     employmentStatus: {},
     employmentType: {},
     ethnicity: {},
-    firstName: "Issac",
+    firstName: "Isaac",
     gender: {},
     hireDate: new Date("2021-01-01T00:00.000Z"),
     homeLocation: {
@@ -101,7 +101,7 @@ let value: HrisUpdateEmployeeResponse = {
     lastName: "Newton",
     managerId: "67890",
     maritalStatus: {},
-    name: "Issac Newton",
+    name: "Isaac Newton",
     nationalIdentityNumbers: [
       {
         country: {

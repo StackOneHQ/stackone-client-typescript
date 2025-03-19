@@ -162,7 +162,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.AtsCreateJobResponse$inboundSchema, {
+    M.json(201, operations.AtsCreateJobResponse$inboundSchema, {
       key: "CreateResult",
     }),
     M.fail(408),

@@ -31,7 +31,7 @@ let value: MarketingGetPushTemplateResponse = {
       updatedAt: new Date("2021-01-01T00:00:00.000Z"),
     },
   },
-  statusCode: 300,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

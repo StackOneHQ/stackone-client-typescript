@@ -65,7 +65,7 @@ let value: EmployeesPaginated = {
         },
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
-      displayName: "Sir Issac Newton",
+      displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employmentStatus: {},
       employments: [
@@ -213,7 +213,7 @@ let value: EmployeesPaginated = {
         },
       ],
       ethnicity: {},
-      firstName: "Issac",
+      firstName: "Isaac",
       gender: {},
       groups: [
         {
@@ -272,7 +272,7 @@ let value: EmployeesPaginated = {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Newton",
       maritalStatus: {},
-      name: "Issac Newton",
+      name: "Isaac Newton",
       nationalIdentityNumbers: [
         {
           country: {
