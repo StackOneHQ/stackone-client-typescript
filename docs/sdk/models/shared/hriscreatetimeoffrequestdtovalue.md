@@ -6,7 +6,7 @@
 import { HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateTimeOffRequestDtoValue =
-  HrisCreateTimeOffRequestDtoValue.UnmappedValue;
+  HrisCreateTimeOffRequestDtoValue.Approved;
 ```
 
 ## Values

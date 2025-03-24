@@ -25,6 +25,8 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Creates a time off request
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function hrisCreateTimeOffRequest(
   client: StackOneCore,

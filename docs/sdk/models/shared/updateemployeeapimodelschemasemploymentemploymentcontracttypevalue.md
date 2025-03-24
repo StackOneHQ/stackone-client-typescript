@@ -6,7 +6,8 @@
 import { UpdateEmployeeApiModelSchemasEmploymentEmploymentContractTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UpdateEmployeeApiModelSchemasEmploymentEmploymentContractTypeValue =
-  UpdateEmployeeApiModelSchemasEmploymentEmploymentContractTypeValue.PartTime;
+  UpdateEmployeeApiModelSchemasEmploymentEmploymentContractTypeValue
+    .UnmappedValue;
 ```
 
 ## Values

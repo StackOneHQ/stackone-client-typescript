@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: eb73fece924f27539cc805c510372de2
+  docChecksum: d40f3587d1e516ed260e46e8f57eb09b
   docVersion: 1.0.0
-  speakeasyVersion: 1.520.1
-  generationVersion: 2.556.1
-  releaseVersion: 4.19.3
-  configChecksum: 3deec26c7968d17838257f15a28e861c
+  speakeasyVersion: 1.523.0
+  generationVersion: 2.559.0
+  releaseVersion: 4.19.4
+  configChecksum: 1968206b4ec803f3691715fcef2122ec
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -369,6 +369,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisupdateemployeeemploymentresponse.md
   - docs/sdk/models/operations/hrisupdateemployeerequest.md
   - docs/sdk/models/operations/hrisupdateemployeeresponse.md
+  - docs/sdk/models/operations/hrisupdateemployeetimeoffrequestrequest.md
+  - docs/sdk/models/operations/hrisupdateemployeetimeoffrequestresponse.md
   - docs/sdk/models/operations/hrisupdateemployeeworkeligibilityrequestrequest.md
   - docs/sdk/models/operations/hrisupdateemployeeworkeligibilityrequestresponse.md
   - docs/sdk/models/operations/hrisupdatetimeoffrequestrequest.md
@@ -1985,6 +1987,7 @@ generatedFiles:
   - src/funcs/hrisListTimeOffTypes.ts
   - src/funcs/hrisUpdateEmployee.ts
   - src/funcs/hrisUpdateEmployeeEmployment.ts
+  - src/funcs/hrisUpdateEmployeeTimeOffRequest.ts
   - src/funcs/hrisUpdateEmployeeWorkEligibilityRequest.ts
   - src/funcs/hrisUpdateTimeOffRequest.ts
   - src/funcs/hrisUploadEmployeeDocument.ts
@@ -2222,6 +2225,7 @@ generatedFiles:
   - src/sdk/models/operations/hrislisttimeofftypes.ts
   - src/sdk/models/operations/hrisupdateemployee.ts
   - src/sdk/models/operations/hrisupdateemployeeemployment.ts
+  - src/sdk/models/operations/hrisupdateemployeetimeoffrequest.ts
   - src/sdk/models/operations/hrisupdateemployeeworkeligibilityrequest.ts
   - src/sdk/models/operations/hrisupdatetimeoffrequest.ts
   - src/sdk/models/operations/hrisuploademployeedocument.ts
@@ -7123,5 +7127,18 @@ examples:
       responses:
         "200":
           application/json: {"first_name": "Han", "is_bot_user": true, "last_name": "Solo", "name": "Han Solo", "passthrough": {"other_known_names": "John Doe"}, "primary_email_address": "han@stackone.com", "status": {"value": "enabled"}, "username": "hansolo1977"}
+  hris_update_employee_time_off_request:
+    speakeasy-default-hris-update-employee-time-off-request:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"approver_id": "1687-4", "employee_id": "1687-3", "end_date": "2021-01-01T01:01:01.000Z", "end_half_day": true, "passthrough": {"other_known_names": "John Doe"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "start_date": "2021-01-01T01:01:01.000Z", "start_half_day": true, "time_off_policy_id": "cx280928933"}
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
 examplesVersion: 1.0.0
 generatedTests: {}

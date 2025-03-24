@@ -110,6 +110,8 @@ export type TimeOffSchemasValueOpen = OpenEnum<typeof TimeOffSchemasValue>;
 
 /**
  * The type of the time off request
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type TimeOffType = {
   sourceValue?:
@@ -187,6 +189,8 @@ export type TimeOff = {
   timeOffPolicyId?: string | null | undefined;
   /**
    * The type of the time off request
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   type?: TimeOffType | null | undefined;
   /**

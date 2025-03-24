@@ -6,7 +6,7 @@
 import { EntitySkillsCreateRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EntitySkillsCreateRequestDtoSchemasValue =
-  EntitySkillsCreateRequestDtoSchemasValue.Three;
+  EntitySkillsCreateRequestDtoSchemasValue.Five;
 ```
 
 ## Values

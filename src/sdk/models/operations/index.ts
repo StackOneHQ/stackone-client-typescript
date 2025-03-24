@@ -139,6 +139,7 @@ export * from "./hrislisttimeoffrequests.js";
 export * from "./hrislisttimeofftypes.js";
 export * from "./hrisupdateemployee.js";
 export * from "./hrisupdateemployeeemployment.js";
+export * from "./hrisupdateemployeetimeoffrequest.js";
 export * from "./hrisupdateemployeeworkeligibilityrequest.js";
 export * from "./hrisupdatetimeoffrequest.js";
 export * from "./hrisuploademployeedocument.js";
