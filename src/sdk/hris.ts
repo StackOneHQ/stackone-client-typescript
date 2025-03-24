@@ -57,6 +57,7 @@ import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
 import { hrisListTimeOffTypes } from "../funcs/hrisListTimeOffTypes.js";
 import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
 import { hrisUpdateEmployeeEmployment } from "../funcs/hrisUpdateEmployeeEmployment.js";
+import { hrisUpdateEmployeeTimeOffRequest } from "../funcs/hrisUpdateEmployeeTimeOffRequest.js";
 import { hrisUpdateEmployeeWorkEligibilityRequest } from "../funcs/hrisUpdateEmployeeWorkEligibilityRequest.js";
 import { hrisUpdateTimeOffRequest } from "../funcs/hrisUpdateTimeOffRequest.js";
 import { hrisUploadEmployeeDocument } from "../funcs/hrisUploadEmployeeDocument.js";
@@ -152,6 +153,8 @@ export class Hris extends ClientSDK {
 
   /**
    * Creates a time off request
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async createTimeOffRequest(
     request: operations.HrisCreateTimeOffRequestRequest,
@@ -474,6 +477,8 @@ export class Hris extends ClientSDK {
 
   /**
    * Get time off type
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getTimeOffType(
     request: operations.HrisGetTimeOffTypeRequest,
@@ -860,6 +865,8 @@ export class Hris extends ClientSDK {
 
   /**
    * List time off types
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listTimeOffTypes(
     request: operations.HrisListTimeOffTypesRequest,
@@ -903,6 +910,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Update Employee Time Off Request
+   */
+  async updateEmployeeTimeOffRequest(
+    request: operations.HrisUpdateEmployeeTimeOffRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisUpdateEmployeeTimeOffRequestResponse> {
+    return unwrapAsync(hrisUpdateEmployeeTimeOffRequest(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update Employee Work Eligibility Request
    */
   async updateEmployeeWorkEligibilityRequest(
@@ -918,6 +939,8 @@ export class Hris extends ClientSDK {
 
   /**
    * Update time off request
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async updateTimeOffRequest(
     request: operations.HrisUpdateTimeOffRequestRequest,

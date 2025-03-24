@@ -11,7 +11,7 @@
 * [createEmployeeSkill](#createemployeeskill) - Create Employee Skill
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
-* [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
+* [~~createTimeOffRequest~~](#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [downloadEmployeeDocument](#downloademployeedocument) - Download Employee Document
 * [getBenefit](#getbenefit) - Get Benefit
 * [getCompany](#getcompany) - Get Company
@@ -34,7 +34,7 @@
 * [getTimeEntries](#gettimeentries) - Get Time Entry
 * [getTimeOffPolicy](#gettimeoffpolicy) - Get Time Off Policy
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
-* [getTimeOffType](#gettimeofftype) - Get time off type
+* [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [inviteEmployee](#inviteemployee) - Invite Employee
 * [listBenefits](#listbenefits) - List benefits
 * [listCompanies](#listcompanies) - List Companies
@@ -57,11 +57,12 @@
 * [listTimeEntries](#listtimeentries) - List Time Entries
 * [listTimeOffPolicies](#listtimeoffpolicies) - List Time Off Policies
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
-* [listTimeOffTypes](#listtimeofftypes) - List time off types
+* [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [updateEmployee](#updateemployee) - Updates an employee
 * [updateEmployeeEmployment](#updateemployeeemployment) - Update Employee Employment
+* [updateEmployeeTimeOffRequest](#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [updateEmployeeWorkEligibilityRequest](#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
-* [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
+* [~~updateTimeOffRequest~~](#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
 
 ## batchUploadEmployeeDocument
@@ -1288,9 +1289,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## createTimeOffRequest
+## ~~createTimeOffRequest~~
 
 Creates a time off request
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -3370,9 +3373,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getTimeOffType
+## ~~getTimeOffType~~
 
 Get time off type
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -5674,9 +5679,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## listTimeOffTypes
+## ~~listTimeOffTypes~~
 
 List time off types
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -6328,6 +6335,124 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## updateEmployeeTimeOffRequest
+
+Update Employee Time Off Request
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.updateEmployeeTimeOffRequest({
+    hrisCreateTimeOffRequestDto: {
+      approverId: "1687-4",
+      employeeId: "1687-3",
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUpdateEmployeeTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployeeTimeOffRequest.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUpdateEmployeeTimeOffRequest(stackOne, {
+    hrisCreateTimeOffRequestDto: {
+      approverId: "1687-4",
+      employeeId: "1687-3",
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      reason: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
+      timeOffPolicyId: "cx280928933",
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisUpdateEmployeeTimeOffRequestRequest](../../sdk/models/operations/hrisupdateemployeetimeoffrequestrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisUpdateEmployeeTimeOffRequestResponse](../../sdk/models/operations/hrisupdateemployeetimeoffrequestresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## updateEmployeeWorkEligibilityRequest
 
 Update Employee Work Eligibility Request
@@ -6478,9 +6603,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## updateTimeOffRequest
+## ~~updateTimeOffRequest~~
 
 Update time off request
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

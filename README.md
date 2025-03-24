@@ -222,7 +222,7 @@ run();
 * [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
-* [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
+* [~~createTimeOffRequest~~](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [downloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
@@ -245,7 +245,7 @@ run();
 * [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
-* [getTimeOffType](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
+* [~~getTimeOffType~~](docs/sdks/hris/README.md#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [inviteEmployee](docs/sdks/hris/README.md#inviteemployee) - Invite Employee
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
@@ -268,11 +268,12 @@ run();
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
-* [listTimeOffTypes](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
+* [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
+* [updateEmployeeTimeOffRequest](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
-* [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
+* [~~updateTimeOffRequest~~](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
 
 ### [iam](docs/sdks/iam/README.md)
@@ -756,7 +757,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisCreateEmployeeSkill`](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 - [`hrisCreateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 - [`hrisCreateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
-- [`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
 - [`hrisDownloadEmployeeDocument`](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 - [`hrisGetBenefit`](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 - [`hrisGetCompany`](docs/sdks/hris/README.md#getcompany) - Get Company
@@ -779,7 +779,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 - [`hrisGetTimeOffPolicy`](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
 - [`hrisGetTimeOffRequest`](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
-- [`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
 - [`hrisInviteEmployee`](docs/sdks/hris/README.md#inviteemployee) - Invite Employee
 - [`hrisListBenefits`](docs/sdks/hris/README.md#listbenefits) - List benefits
 - [`hrisListCompanies`](docs/sdks/hris/README.md#listcompanies) - List Companies
@@ -802,11 +801,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffPolicies`](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
-- [`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
 - [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 - [`hrisUpdateEmployeeEmployment`](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
+- [`hrisUpdateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 - [`hrisUpdateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
-- [`hrisUpdateTimeOffRequest`](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 - [`hrisUploadEmployeeDocument`](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
 - [`iamDeleteUser`](docs/sdks/iam/README.md#deleteuser) - Delete User
 - [`iamGetGroup`](docs/sdks/iam/README.md#getgroup) - Get Group
@@ -868,6 +866,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
+- ~~[`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest)~~ - Creates a time off request :warning: **Deprecated**
+- ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
+- ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**
+- ~~[`hrisUpdateTimeOffRequest`](docs/sdks/hris/README.md#updatetimeoffrequest)~~ - Update time off request :warning: **Deprecated**
 - ~~[`marketingCreateOmniChannelTemplate`](docs/sdks/marketing/README.md#createomnichanneltemplate)~~ - Create Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingGetOmniChannelTemplate`](docs/sdks/marketing/README.md#getomnichanneltemplate)~~ - Get Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingListOmniChannelTemplates`](docs/sdks/marketing/README.md#listomnichanneltemplates)~~ - List Omni-Channel Templates :warning: **Deprecated**

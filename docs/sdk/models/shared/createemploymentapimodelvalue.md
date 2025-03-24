@@ -5,8 +5,7 @@
 ```typescript
 import { CreateEmploymentApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CreateEmploymentApiModelValue =
-  CreateEmploymentApiModelValue.PartTime;
+let value: CreateEmploymentApiModelValue = CreateEmploymentApiModelValue.Shifts;
 ```
 
 ## Values

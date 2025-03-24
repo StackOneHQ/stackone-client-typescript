@@ -6,7 +6,7 @@
 import { EntitySkillsSchemasMinimumProficiencyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EntitySkillsSchemasMinimumProficiencyValue =
-  EntitySkillsSchemasMinimumProficiencyValue.Three;
+  EntitySkillsSchemasMinimumProficiencyValue.One;
 ```
 
 ## Values
