@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeesTimeOffRequestRequest = {
   /**
+   * The comma separated list of fields that will be expanded in the response
+   */
+  expand?: string | null | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -56,6 +60,7 @@ export const HrisGetEmployeesTimeOffRequestRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expand: z.nullable(z.string()).optional(),
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
   proxy: z.nullable(z.record(z.any())).optional(),
@@ -70,6 +75,7 @@ export const HrisGetEmployeesTimeOffRequestRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisGetEmployeesTimeOffRequestRequest$Outbound = {
+  expand?: string | null | undefined;
   fields?: string | null | undefined;
   id: string;
   proxy?: { [k: string]: any } | null | undefined;
@@ -84,6 +90,7 @@ export const HrisGetEmployeesTimeOffRequestRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisGetEmployeesTimeOffRequestRequest
 > = z.object({
+  expand: z.nullable(z.string()).optional(),
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
   proxy: z.nullable(z.record(z.any())).optional(),

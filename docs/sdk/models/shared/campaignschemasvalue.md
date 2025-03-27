@@ -7,7 +7,7 @@ The Status of the campaign.
 ```typescript
 import { CampaignSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CampaignSchemasValue = CampaignSchemasValue.Live;
+let value: CampaignSchemasValue = CampaignSchemasValue.Draft;
 ```
 
 ## Values

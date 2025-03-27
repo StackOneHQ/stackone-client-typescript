@@ -31,6 +31,10 @@ export type ConnectSession = {
   accountId?: string | null | undefined;
   categories?: Array<Categories> | null | undefined;
   createdAt: Date;
+  /**
+   * External trigger token to be used to trigger actions on the account
+   */
+  externalTriggerToken?: string | null | undefined;
   id: number;
   label?: string | null | undefined;
   /**
@@ -117,6 +121,7 @@ export const ConnectSession$inboundSchema: z.ZodType<
   account_id: z.nullable(z.string()).optional(),
   categories: z.nullable(z.array(Categories$inboundSchema)).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  external_trigger_token: z.nullable(z.string()).optional(),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
@@ -130,6 +135,7 @@ export const ConnectSession$inboundSchema: z.ZodType<
   return remap$(v, {
     "account_id": "accountId",
     "created_at": "createdAt",
+    "external_trigger_token": "externalTriggerToken",
     "organization_id": "organizationId",
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",
@@ -143,6 +149,7 @@ export type ConnectSession$Outbound = {
   account_id?: string | null | undefined;
   categories?: Array<string> | null | undefined;
   created_at: string;
+  external_trigger_token?: string | null | undefined;
   id: number;
   label?: string | null | undefined;
   metadata?: Metadata$Outbound | null | undefined;
@@ -163,6 +170,7 @@ export const ConnectSession$outboundSchema: z.ZodType<
   accountId: z.nullable(z.string()).optional(),
   categories: z.nullable(z.array(Categories$outboundSchema)).optional(),
   createdAt: z.date().transform(v => v.toISOString()),
+  externalTriggerToken: z.nullable(z.string()).optional(),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
@@ -176,6 +184,7 @@ export const ConnectSession$outboundSchema: z.ZodType<
   return remap$(v, {
     accountId: "account_id",
     createdAt: "created_at",
+    externalTriggerToken: "external_trigger_token",
     organizationId: "organization_id",
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",

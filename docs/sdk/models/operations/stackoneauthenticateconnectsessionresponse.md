@@ -22,6 +22,7 @@ let value: StackoneAuthenticateConnectSessionResponse = {
       Categories.Screening,
     ],
     createdAt: new Date("2024-09-14T13:50:38.886Z"),
+    externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
     id: 9255.97,
     organizationId: 710.36,
     originOwnerId: "<id>",

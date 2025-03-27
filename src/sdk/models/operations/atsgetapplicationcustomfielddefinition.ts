@@ -12,7 +12,7 @@ import * as shared from "../shared/index.js";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type Filter = {
+export type AtsGetApplicationCustomFieldDefinitionQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -27,7 +27,10 @@ export type AtsGetApplicationCustomFieldDefinitionRequest = {
   /**
    * Filter parameters that allow greater customisation of the list response
    */
-  filter?: Filter | null | undefined;
+  filter?:
+    | AtsGetApplicationCustomFieldDefinitionQueryParamFilter
+    | null
+    | undefined;
   id: string;
   /**
    * The unified cursor
@@ -86,8 +89,12 @@ export type AtsGetApplicationCustomFieldDefinitionResponse = {
 };
 
 /** @internal */
-export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
-  .object({
+export const AtsGetApplicationCustomFieldDefinitionQueryParamFilter$inboundSchema:
+  z.ZodType<
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
     updated_after: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -96,47 +103,63 @@ export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
   });
 
 /** @internal */
-export type Filter$Outbound = {
+export type AtsGetApplicationCustomFieldDefinitionQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
 
 /** @internal */
-export const Filter$outboundSchema: z.ZodType<
-  Filter$Outbound,
-  z.ZodTypeDef,
-  Filter
-> = z.object({
-  updatedAfter: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    updatedAfter: "updated_after",
+export const AtsGetApplicationCustomFieldDefinitionQueryParamFilter$outboundSchema:
+  z.ZodType<
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter
+  > = z.object({
+    updatedAfter: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      updatedAfter: "updated_after",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Filter$ {
-  /** @deprecated use `Filter$inboundSchema` instead. */
-  export const inboundSchema = Filter$inboundSchema;
-  /** @deprecated use `Filter$outboundSchema` instead. */
-  export const outboundSchema = Filter$outboundSchema;
-  /** @deprecated use `Filter$Outbound` instead. */
-  export type Outbound = Filter$Outbound;
+export namespace AtsGetApplicationCustomFieldDefinitionQueryParamFilter$ {
+  /** @deprecated use `AtsGetApplicationCustomFieldDefinitionQueryParamFilter$inboundSchema` instead. */
+  export const inboundSchema =
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter$inboundSchema;
+  /** @deprecated use `AtsGetApplicationCustomFieldDefinitionQueryParamFilter$outboundSchema` instead. */
+  export const outboundSchema =
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter$outboundSchema;
+  /** @deprecated use `AtsGetApplicationCustomFieldDefinitionQueryParamFilter$Outbound` instead. */
+  export type Outbound =
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter$Outbound;
 }
 
-export function filterToJSON(filter: Filter): string {
-  return JSON.stringify(Filter$outboundSchema.parse(filter));
+export function atsGetApplicationCustomFieldDefinitionQueryParamFilterToJSON(
+  atsGetApplicationCustomFieldDefinitionQueryParamFilter:
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationCustomFieldDefinitionQueryParamFilter$outboundSchema.parse(
+      atsGetApplicationCustomFieldDefinitionQueryParamFilter,
+    ),
+  );
 }
 
-export function filterFromJSON(
+export function atsGetApplicationCustomFieldDefinitionQueryParamFilterFromJSON(
   jsonString: string,
-): SafeParseResult<Filter, SDKValidationError> {
+): SafeParseResult<
+  AtsGetApplicationCustomFieldDefinitionQueryParamFilter,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Filter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Filter' from JSON`,
+    (x) =>
+      AtsGetApplicationCustomFieldDefinitionQueryParamFilter$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationCustomFieldDefinitionQueryParamFilter' from JSON`,
   );
 }
 
@@ -148,7 +171,11 @@ export const AtsGetApplicationCustomFieldDefinitionRequest$inboundSchema:
     unknown
   > = z.object({
     fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(z.lazy(() => Filter$inboundSchema)).optional(),
+    filter: z.nullable(
+      z.lazy(() =>
+        AtsGetApplicationCustomFieldDefinitionQueryParamFilter$inboundSchema
+      ),
+    ).optional(),
     id: z.string(),
     next: z.nullable(z.string()).optional(),
     page: z.nullable(z.string()).optional(),
@@ -168,7 +195,10 @@ export const AtsGetApplicationCustomFieldDefinitionRequest$inboundSchema:
 /** @internal */
 export type AtsGetApplicationCustomFieldDefinitionRequest$Outbound = {
   fields?: string | null | undefined;
-  filter?: Filter$Outbound | null | undefined;
+  filter?:
+    | AtsGetApplicationCustomFieldDefinitionQueryParamFilter$Outbound
+    | null
+    | undefined;
   id: string;
   next?: string | null | undefined;
   page?: string | null | undefined;
@@ -187,7 +217,11 @@ export const AtsGetApplicationCustomFieldDefinitionRequest$outboundSchema:
     AtsGetApplicationCustomFieldDefinitionRequest
   > = z.object({
     fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(z.lazy(() => Filter$outboundSchema)).optional(),
+    filter: z.nullable(
+      z.lazy(() =>
+        AtsGetApplicationCustomFieldDefinitionQueryParamFilter$outboundSchema
+      ),
+    ).optional(),
     id: z.string(),
     next: z.nullable(z.string()).optional(),
     page: z.nullable(z.string()).optional(),

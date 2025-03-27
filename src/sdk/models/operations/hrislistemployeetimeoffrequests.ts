@@ -25,6 +25,10 @@ export type HrisListEmployeeTimeOffRequestsQueryParamFilter = {
 
 export type HrisListEmployeeTimeOffRequestsRequest = {
   /**
+   * The comma separated list of fields that will be expanded in the response
+   */
+  expand?: string | null | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -174,6 +178,7 @@ export const HrisListEmployeeTimeOffRequestsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expand: z.nullable(z.string()).optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema),
@@ -196,6 +201,7 @@ export const HrisListEmployeeTimeOffRequestsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisListEmployeeTimeOffRequestsRequest$Outbound = {
+  expand?: string | null | undefined;
   fields?: string | null | undefined;
   filter?:
     | HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound
@@ -217,6 +223,7 @@ export const HrisListEmployeeTimeOffRequestsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListEmployeeTimeOffRequestsRequest
 > = z.object({
+  expand: z.nullable(z.string()).optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() =>

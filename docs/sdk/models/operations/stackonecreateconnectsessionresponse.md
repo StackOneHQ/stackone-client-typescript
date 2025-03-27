@@ -23,6 +23,7 @@ let value: StackoneCreateConnectSessionResponse = {
       ConnectSessionTokenAuthLinkCategories.Screening,
     ],
     createdAt: new Date("2025-05-05T11:02:22.031Z"),
+    externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
     id: 1182.74,
     organizationId: 6399.21,
     originOwnerId: "<id>",

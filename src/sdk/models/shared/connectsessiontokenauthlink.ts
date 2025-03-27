@@ -32,6 +32,10 @@ export type ConnectSessionTokenAuthLink = {
   authLinkUrl: string;
   categories?: Array<ConnectSessionTokenAuthLinkCategories> | null | undefined;
   createdAt: Date;
+  /**
+   * External trigger token to be used to trigger actions on the account
+   */
+  externalTriggerToken?: string | null | undefined;
   id: number;
   label?: string | null | undefined;
   /**
@@ -136,6 +140,7 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
     z.array(ConnectSessionTokenAuthLinkCategories$inboundSchema),
   ).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  external_trigger_token: z.nullable(z.string()).optional(),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(
@@ -153,6 +158,7 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
     "account_id": "accountId",
     "auth_link_url": "authLinkUrl",
     "created_at": "createdAt",
+    "external_trigger_token": "externalTriggerToken",
     "organization_id": "organizationId",
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",
@@ -167,6 +173,7 @@ export type ConnectSessionTokenAuthLink$Outbound = {
   auth_link_url: string;
   categories?: Array<string> | null | undefined;
   created_at: string;
+  external_trigger_token?: string | null | undefined;
   id: number;
   label?: string | null | undefined;
   metadata?: ConnectSessionTokenAuthLinkMetadata$Outbound | null | undefined;
@@ -191,6 +198,7 @@ export const ConnectSessionTokenAuthLink$outboundSchema: z.ZodType<
     z.array(ConnectSessionTokenAuthLinkCategories$outboundSchema),
   ).optional(),
   createdAt: z.date().transform(v => v.toISOString()),
+  externalTriggerToken: z.nullable(z.string()).optional(),
   id: z.number(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(
@@ -208,6 +216,7 @@ export const ConnectSessionTokenAuthLink$outboundSchema: z.ZodType<
     accountId: "account_id",
     authLinkUrl: "auth_link_url",
     createdAt: "created_at",
+    externalTriggerToken: "external_trigger_token",
     organizationId: "organization_id",
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",

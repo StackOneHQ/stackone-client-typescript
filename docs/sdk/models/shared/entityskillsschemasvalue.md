@@ -5,7 +5,7 @@
 ```typescript
 import { EntitySkillsSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EntitySkillsSchemasValue = EntitySkillsSchemasValue.Two;
+let value: EntitySkillsSchemasValue = EntitySkillsSchemasValue.Three;
 ```
 
 ## Values

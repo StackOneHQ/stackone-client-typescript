@@ -21,7 +21,7 @@ let value: HrisCreateEmployeeResponse = {
       "<value>",
     ],
   },
-  statusCode: 100,
+  statusCode: 503,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

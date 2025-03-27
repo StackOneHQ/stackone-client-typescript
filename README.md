@@ -257,6 +257,7 @@ run();
 * [listEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 * [listEmployeeSkills](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
 * [listEmployeeTimeOffBalances](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
+* [listEmployeeTimeOffPolicies](docs/sdks/hris/README.md#listemployeetimeoffpolicies) - List Assigned Time Off Policies
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployeeWorkEligibility](docs/sdks/hris/README.md#listemployeeworkeligibility) - List Employee Work Eligibility
 * [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
@@ -352,6 +353,12 @@ run();
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 
+### [requestLogs](docs/sdks/requestlogs/README.md)
+
+* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get a Log
+* [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+* [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
+
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -404,15 +411,41 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-If the request fails due to, for example 4XX or 5XX status codes, it will throw a `SDKError`.
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `sdk/models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `deleteAccount` method may throw the following errors:
 
-| Error Type      | Status Code | Content Type |
-| --------------- | ----------- | ------------ |
-| errors.SDKError | 4XX, 5XX    | \*/\*        |
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponse          | 400         | application/json |
+| errors.UnauthorizedResponse        | 401         | application/json |
+| errors.ForbiddenResponse           | 403         | application/json |
+| errors.NotFoundResponse            | 404         | application/json |
+| errors.RequestTimedOutResponse     | 408         | application/json |
+| errors.ConflictResponse            | 409         | application/json |
+| errors.UnprocessableEntityResponse | 422         | application/json |
+| errors.TooManyRequestsResponse     | 429         | application/json |
+| errors.InternalServerErrorResponse | 500         | application/json |
+| errors.NotImplementedResponse      | 501         | application/json |
+| errors.BadGatewayResponse          | 502         | application/json |
+| errors.SDKError                    | 4XX, 5XX    | \*/\*            |
+
+If the method throws an error and it is not captured by the known errors, it will default to throwing a `SDKError`.
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { SDKValidationError } from "@stackone/stackone-client-ts/sdk/models/errors";
+import {
+  BadGatewayResponse,
+  BadRequestResponse,
+  ConflictResponse,
+  ForbiddenResponse,
+  InternalServerErrorResponse,
+  NotFoundResponse,
+  NotImplementedResponse,
+  RequestTimedOutResponse,
+  SDKValidationError,
+  TooManyRequestsResponse,
+  UnauthorizedResponse,
+  UnprocessableEntityResponse,
+} from "@stackone/stackone-client-ts/sdk/models/errors";
 
 const stackOne = new StackOne({
   security: {
@@ -433,19 +466,66 @@ async function run() {
   } catch (err) {
     switch (true) {
       // The server response does not match the expected SDK schema
-      case (err instanceof SDKValidationError):
-        {
-          // Pretty-print will provide a human-readable multi-line error message
-          console.error(err.pretty());
-          // Raw value may also be inspected
-          console.error(err.rawValue);
-          return;
-        }
-        sdkerror.js;
-      // Server returned an error status code or an unknown content type
-      case (err instanceof SDKError): {
-        console.error(err.statusCode);
-        console.error(err.rawResponse.body);
+      case (err instanceof SDKValidationError): {
+        // Pretty-print will provide a human-readable multi-line error message
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      case (err instanceof BadRequestResponse): {
+        // Handle err.data$: BadRequestResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof UnauthorizedResponse): {
+        // Handle err.data$: UnauthorizedResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof ForbiddenResponse): {
+        // Handle err.data$: ForbiddenResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof NotFoundResponse): {
+        // Handle err.data$: NotFoundResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof RequestTimedOutResponse): {
+        // Handle err.data$: RequestTimedOutResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof ConflictResponse): {
+        // Handle err.data$: ConflictResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof UnprocessableEntityResponse): {
+        // Handle err.data$: UnprocessableEntityResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof TooManyRequestsResponse): {
+        // Handle err.data$: TooManyRequestsResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof InternalServerErrorResponse): {
+        // Handle err.data$: InternalServerErrorResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof NotImplementedResponse): {
+        // Handle err.data$: NotImplementedResponseData
+        console.error(err);
+        return;
+      }
+      case (err instanceof BadGatewayResponse): {
+        // Handle err.data$: BadGatewayResponseData
+        console.error(err);
         return;
       }
       default: {
@@ -791,6 +871,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListEmployees`](docs/sdks/hris/README.md#listemployees) - List Employees
 - [`hrisListEmployeeSkills`](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
 - [`hrisListEmployeeTimeOffBalances`](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
+- [`hrisListEmployeeTimeOffPolicies`](docs/sdks/hris/README.md#listemployeetimeoffpolicies) - List Assigned Time Off Policies
 - [`hrisListEmployeeTimeOffRequests`](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 - [`hrisListEmployeeWorkEligibility`](docs/sdks/hris/README.md#listemployeeworkeligibility) - List Employee Work Eligibility
 - [`hrisListEmployments`](docs/sdks/hris/README.md#listemployments) - List Employments
@@ -866,6 +947,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
+- [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get a Log
+- [`requestLogsListLogs`](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+- [`requestLogsListStepLogs`](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 - ~~[`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest)~~ - Creates a time off request :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**

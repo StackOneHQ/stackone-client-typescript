@@ -36,7 +36,7 @@ let value: HrisListEmployeeDocumentsResponse = {
       },
     ],
   },
-  statusCode: 226,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -21,7 +21,7 @@ let value: AtsCreateBackgroundCheckPackageResponse = {
       "<value>",
     ],
   },
-  statusCode: 417,
+  statusCode: 501,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

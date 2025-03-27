@@ -33,7 +33,7 @@ let value: AtsGetCandidateNoteResponse = {
       visibility: {},
     },
   },
-  statusCode: 204,
+  statusCode: 300,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

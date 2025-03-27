@@ -5,7 +5,7 @@
 ```typescript
 import { Categories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Categories = Categories.Ats;
+let value: Categories = Categories.Stackone;
 ```
 
 ## Values
