@@ -5,7 +5,7 @@
 ```typescript
 import { CreateSkillsApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CreateSkillsApiModelValue = CreateSkillsApiModelValue.Primary;
+let value: CreateSkillsApiModelValue = CreateSkillsApiModelValue.Secondary;
 ```
 
 ## Values

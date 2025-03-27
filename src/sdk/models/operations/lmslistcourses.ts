@@ -10,9 +10,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * LMS Courses Filter
  */
 export type LmsListCoursesQueryParamFilter = {
+  /**
+   * Filter to select courses by external_reference
+   */
+  externalReference?: string | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -25,7 +29,7 @@ export type LmsListCoursesRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * LMS Courses Filter
    */
   filter?: LmsListCoursesQueryParamFilter | null | undefined;
   /**
@@ -88,15 +92,18 @@ export const LmsListCoursesQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  external_reference: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "external_reference": "externalReference",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type LmsListCoursesQueryParamFilter$Outbound = {
+  external_reference?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -106,9 +113,11 @@ export const LmsListCoursesQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListCoursesQueryParamFilter
 > = z.object({
+  externalReference: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    externalReference: "external_reference",
     updatedAfter: "updated_after",
   });
 });

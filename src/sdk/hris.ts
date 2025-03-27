@@ -44,6 +44,7 @@ import { hrisListEmployeeEmployments } from "../funcs/hrisListEmployeeEmployment
 import { hrisListEmployees } from "../funcs/hrisListEmployees.js";
 import { hrisListEmployeeSkills } from "../funcs/hrisListEmployeeSkills.js";
 import { hrisListEmployeeTimeOffBalances } from "../funcs/hrisListEmployeeTimeOffBalances.js";
+import { hrisListEmployeeTimeOffPolicies } from "../funcs/hrisListEmployeeTimeOffPolicies.js";
 import { hrisListEmployeeTimeOffRequests } from "../funcs/hrisListEmployeeTimeOffRequests.js";
 import { hrisListEmployeeWorkEligibility } from "../funcs/hrisListEmployeeWorkEligibility.js";
 import { hrisListEmployments } from "../funcs/hrisListEmployments.js";
@@ -675,6 +676,25 @@ export class Hris extends ClientSDK {
     >
   > {
     return unwrapResultIterator(hrisListEmployeeTimeOffBalances(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Assigned Time Off Policies
+   */
+  async listEmployeeTimeOffPolicies(
+    request: operations.HrisListEmployeeTimeOffPoliciesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeTimeOffPoliciesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeTimeOffPolicies(
       this,
       request,
       options,

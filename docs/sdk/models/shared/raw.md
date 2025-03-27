@@ -1,5 +1,7 @@
 # Raw
 
+Raw error response from the provider
+
 ## Example Usage
 
 ```typescript

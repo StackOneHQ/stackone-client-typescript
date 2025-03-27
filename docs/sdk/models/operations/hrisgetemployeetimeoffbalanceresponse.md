@@ -12,7 +12,7 @@ let value: HrisGetEmployeeTimeOffBalanceResponse = {
       "<value>",
     ],
   },
-  statusCode: 204,
+  statusCode: 429,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

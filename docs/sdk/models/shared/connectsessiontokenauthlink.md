@@ -6,7 +6,7 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://decent-hyphenation.biz/",
+  authLinkUrl: "https://competent-newsstand.info/",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
@@ -15,14 +15,15 @@ let value: ConnectSessionTokenAuthLink = {
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
+    ConnectSessionTokenAuthLinkCategories.Screening,
     ConnectSessionTokenAuthLinkCategories.Documents,
     ConnectSessionTokenAuthLinkCategories.Ticketing,
     ConnectSessionTokenAuthLinkCategories.Screening,
   ],
-  createdAt: new Date("2024-07-04T14:51:08.243Z"),
-  id: 9425.84,
-  organizationId: 6339.98,
+  createdAt: new Date("2024-08-22T09:15:37.633Z"),
+  externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
+  id: 2748.23,
+  organizationId: 5922.31,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -38,6 +39,7 @@ let value: ConnectSessionTokenAuthLink = {
 | `authLinkUrl`                                                                                                                                   | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `categories`                                                                                                                                    | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[]                           | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening"<br/>] |
 | `createdAt`                                                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                   | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
+| `externalTriggerToken`                                                                                                                          | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | External trigger token to be used to trigger actions on the account                                                                             | f0bc3d88-2178-5423-8c81-b81d6c9da824                                                                                                            |
 | `id`                                                                                                                                            | *number*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `label`                                                                                                                                         | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `metadata`                                                                                                                                      | [shared.ConnectSessionTokenAuthLinkMetadata](../../../sdk/models/shared/connectsessiontokenauthlinkmetadata.md)                                 | :heavy_minus_sign:                                                                                                                              | Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan) |                                                                                                                                                 |

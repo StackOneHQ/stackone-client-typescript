@@ -21,7 +21,7 @@ let value: AtsMoveApplicationResponse = {
     statusCode: 200,
     timestamp: new Date("2021-01-01T01:01:01.000Z"),
   },
-  statusCode: 300,
+  statusCode: 203,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

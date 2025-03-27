@@ -17,7 +17,7 @@ let value: AtsOrderAssessmentsRequestResponse = {
       "<value>",
     ],
   },
-  statusCode: 413,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
