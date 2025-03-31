@@ -35,7 +35,7 @@ export type IamUpdateUserResponse = {
   /**
    * Record updated successfully.
    */
-  updateUserApiModel?: shared.UpdateUserApiModel | undefined;
+  updateResult?: shared.UpdateResult | undefined;
 };
 
 /** @internal */
@@ -118,14 +118,14 @@ export const IamUpdateUserResponse$inboundSchema: z.ZodType<
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  UpdateUserApiModel: shared.UpdateUserApiModel$inboundSchema.optional(),
+  UpdateResult: shared.UpdateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "UpdateUserApiModel": "updateUserApiModel",
+    "UpdateResult": "updateResult",
   });
 });
 
@@ -135,7 +135,7 @@ export type IamUpdateUserResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
-  UpdateUserApiModel?: shared.UpdateUserApiModel$Outbound | undefined;
+  UpdateResult?: shared.UpdateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -150,14 +150,14 @@ export const IamUpdateUserResponse$outboundSchema: z.ZodType<
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  updateUserApiModel: shared.UpdateUserApiModel$outboundSchema.optional(),
+  updateResult: shared.UpdateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    updateUserApiModel: "UpdateUserApiModel",
+    updateResult: "UpdateResult",
   });
 });
 

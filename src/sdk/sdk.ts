@@ -13,6 +13,7 @@ import { Iam } from "./iam.js";
 import { Lms } from "./lms.js";
 import { Marketing } from "./marketing.js";
 import { Proxy } from "./proxy.js";
+import { RequestLogs } from "./requestlogs.js";
 
 export class StackOne extends ClientSDK {
   private _accounts?: Accounts;
@@ -28,6 +29,11 @@ export class StackOne extends ClientSDK {
   private _connectors?: Connectors;
   get connectors(): Connectors {
     return (this._connectors ??= new Connectors(this._options));
+  }
+
+  private _requestLogs?: RequestLogs;
+  get requestLogs(): RequestLogs {
+    return (this._requestLogs ??= new RequestLogs(this._options));
   }
 
   private _ats?: Ats;

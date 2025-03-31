@@ -5,7 +5,7 @@
 ```typescript
 import { SkillsSchemasLevelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: SkillsSchemasLevelValue = SkillsSchemasLevelValue.Secondary;
+let value: SkillsSchemasLevelValue = SkillsSchemasLevelValue.Primary;
 ```
 
 ## Values

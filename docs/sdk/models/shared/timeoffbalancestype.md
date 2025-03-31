@@ -5,9 +5,11 @@ The type of this policy
 ## Example Usage
 
 ```typescript
-import { TimeOffBalancesType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOffBalancesSchemasPolicyValue, TimeOffBalancesType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffBalancesType = {};
+let value: TimeOffBalancesType = {
+  value: TimeOffBalancesSchemasPolicyValue.Holiday,
+};
 ```
 
 ## Fields

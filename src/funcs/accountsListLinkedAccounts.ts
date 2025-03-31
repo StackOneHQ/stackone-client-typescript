@@ -17,6 +17,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
+import * as errors from "../sdk/models/errors/index.js";
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
@@ -33,6 +34,17 @@ export function accountsListLinkedAccounts(
 ): APIPromise<
   Result<
     operations.StackoneListLinkedAccountsResponse,
+    | errors.BadRequestResponse
+    | errors.UnauthorizedResponse
+    | errors.ForbiddenResponse
+    | errors.NotFoundResponse
+    | errors.RequestTimedOutResponse
+    | errors.ConflictResponse
+    | errors.UnprocessableEntityResponse
+    | errors.TooManyRequestsResponse
+    | errors.InternalServerErrorResponse
+    | errors.NotImplementedResponse
+    | errors.BadGatewayResponse
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -57,6 +69,17 @@ async function $do(
   [
     Result<
       operations.StackoneListLinkedAccountsResponse,
+      | errors.BadRequestResponse
+      | errors.UnauthorizedResponse
+      | errors.ForbiddenResponse
+      | errors.NotFoundResponse
+      | errors.RequestTimedOutResponse
+      | errors.ConflictResponse
+      | errors.UnprocessableEntityResponse
+      | errors.TooManyRequestsResponse
+      | errors.InternalServerErrorResponse
+      | errors.NotImplementedResponse
+      | errors.BadGatewayResponse
       | SDKError
       | SDKValidationError
       | UnexpectedClientError
@@ -140,7 +163,21 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "408", "429", "4XX", "500", "501", "5XX"],
+    errorCodes: [
+      "400",
+      "401",
+      "403",
+      "404",
+      "408",
+      "409",
+      "422",
+      "429",
+      "4XX",
+      "500",
+      "501",
+      "502",
+      "5XX",
+    ],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -159,6 +196,17 @@ async function $do(
 
   const [result] = await M.match<
     operations.StackoneListLinkedAccountsResponse,
+    | errors.BadRequestResponse
+    | errors.UnauthorizedResponse
+    | errors.ForbiddenResponse
+    | errors.NotFoundResponse
+    | errors.RequestTimedOutResponse
+    | errors.ConflictResponse
+    | errors.UnprocessableEntityResponse
+    | errors.TooManyRequestsResponse
+    | errors.InternalServerErrorResponse
+    | errors.NotImplementedResponse
+    | errors.BadGatewayResponse
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -170,9 +218,21 @@ async function $do(
     M.json(200, operations.StackoneListLinkedAccountsResponse$inboundSchema, {
       key: "classes",
     }),
-    M.fail(408),
-    M.fail([400, 403, 429, "4XX"]),
-    M.fail([500, 501, "5XX"]),
+    M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
+    M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
+    M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),
+    M.jsonErr(404, errors.NotFoundResponse$inboundSchema),
+    M.jsonErr(408, errors.RequestTimedOutResponse$inboundSchema, {
+      hdrs: true,
+    }),
+    M.jsonErr(409, errors.ConflictResponse$inboundSchema),
+    M.jsonErr(422, errors.UnprocessableEntityResponse$inboundSchema),
+    M.jsonErr(429, errors.TooManyRequestsResponse$inboundSchema),
+    M.jsonErr(500, errors.InternalServerErrorResponse$inboundSchema),
+    M.jsonErr(501, errors.NotImplementedResponse$inboundSchema),
+    M.jsonErr(502, errors.BadGatewayResponse$inboundSchema),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

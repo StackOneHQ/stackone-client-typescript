@@ -35,7 +35,7 @@ let value: LmsGetAssignmentResponse = {
       "<value>",
     ],
   },
-  statusCode: 401,
+  statusCode: 422,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

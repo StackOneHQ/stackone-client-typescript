@@ -12,7 +12,7 @@ import * as shared from "../shared/index.js";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type QueryParamFilter = {
+export type AtsGetCandidateCustomFieldDefinitionQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -27,7 +27,10 @@ export type AtsGetCandidateCustomFieldDefinitionRequest = {
   /**
    * Filter parameters that allow greater customisation of the list response
    */
-  filter?: QueryParamFilter | null | undefined;
+  filter?:
+    | AtsGetCandidateCustomFieldDefinitionQueryParamFilter
+    | null
+    | undefined;
   id: string;
   /**
    * The unified cursor
@@ -86,64 +89,78 @@ export type AtsGetCandidateCustomFieldDefinitionResponse = {
 };
 
 /** @internal */
-export const QueryParamFilter$inboundSchema: z.ZodType<
-  QueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
+export const AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema:
+  z.ZodType<
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    updated_after: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "updated_after": "updatedAfter",
+    });
   });
-});
 
 /** @internal */
-export type QueryParamFilter$Outbound = {
+export type AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
 
 /** @internal */
-export const QueryParamFilter$outboundSchema: z.ZodType<
-  QueryParamFilter$Outbound,
-  z.ZodTypeDef,
-  QueryParamFilter
-> = z.object({
-  updatedAfter: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    updatedAfter: "updated_after",
+export const AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema:
+  z.ZodType<
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter
+  > = z.object({
+    updatedAfter: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      updatedAfter: "updated_after",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamFilter$ {
-  /** @deprecated use `QueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = QueryParamFilter$inboundSchema;
-  /** @deprecated use `QueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = QueryParamFilter$outboundSchema;
-  /** @deprecated use `QueryParamFilter$Outbound` instead. */
-  export type Outbound = QueryParamFilter$Outbound;
+export namespace AtsGetCandidateCustomFieldDefinitionQueryParamFilter$ {
+  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema` instead. */
+  export const inboundSchema =
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema;
+  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema` instead. */
+  export const outboundSchema =
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema;
+  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound` instead. */
+  export type Outbound =
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound;
 }
 
-export function queryParamFilterToJSON(
-  queryParamFilter: QueryParamFilter,
+export function atsGetCandidateCustomFieldDefinitionQueryParamFilterToJSON(
+  atsGetCandidateCustomFieldDefinitionQueryParamFilter:
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter,
 ): string {
   return JSON.stringify(
-    QueryParamFilter$outboundSchema.parse(queryParamFilter),
+    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema.parse(
+      atsGetCandidateCustomFieldDefinitionQueryParamFilter,
+    ),
   );
 }
 
-export function queryParamFilterFromJSON(
+export function atsGetCandidateCustomFieldDefinitionQueryParamFilterFromJSON(
   jsonString: string,
-): SafeParseResult<QueryParamFilter, SDKValidationError> {
+): SafeParseResult<
+  AtsGetCandidateCustomFieldDefinitionQueryParamFilter,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => QueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamFilter' from JSON`,
+    (x) =>
+      AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetCandidateCustomFieldDefinitionQueryParamFilter' from JSON`,
   );
 }
 
@@ -155,7 +172,11 @@ export const AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema:
     unknown
   > = z.object({
     fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
+    filter: z.nullable(
+      z.lazy(() =>
+        AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema
+      ),
+    ).optional(),
     id: z.string(),
     next: z.nullable(z.string()).optional(),
     page: z.nullable(z.string()).optional(),
@@ -175,7 +196,10 @@ export const AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema:
 /** @internal */
 export type AtsGetCandidateCustomFieldDefinitionRequest$Outbound = {
   fields?: string | null | undefined;
-  filter?: QueryParamFilter$Outbound | null | undefined;
+  filter?:
+    | AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound
+    | null
+    | undefined;
   id: string;
   next?: string | null | undefined;
   page?: string | null | undefined;
@@ -194,8 +218,11 @@ export const AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema:
     AtsGetCandidateCustomFieldDefinitionRequest
   > = z.object({
     fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema))
-      .optional(),
+    filter: z.nullable(
+      z.lazy(() =>
+        AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema
+      ),
+    ).optional(),
     id: z.string(),
     next: z.nullable(z.string()).optional(),
     page: z.nullable(z.string()).optional(),

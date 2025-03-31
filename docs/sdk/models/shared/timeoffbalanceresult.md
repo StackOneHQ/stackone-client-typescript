@@ -3,7 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { TimeOffBalanceResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  TimeOffBalanceResult,
+  TimeOffBalancesSchemasPolicyValue,
+  TimeOffBalancesSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TimeOffBalanceResult = {
   data: {
@@ -17,7 +21,9 @@ let value: TimeOffBalanceResult = {
     policy: {
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       description: "Usable for regional and national holidays of employees.",
-      durationUnit: {},
+      durationUnit: {
+        value: TimeOffBalancesSchemasValue.Hours,
+      },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "Holidays",
       reasons: [
@@ -27,7 +33,9 @@ let value: TimeOffBalanceResult = {
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      type: {},
+      type: {
+        value: TimeOffBalancesSchemasPolicyValue.Holiday,
+      },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     policyId: "cx280928937",

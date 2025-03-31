@@ -4,6 +4,7 @@
 
 ```typescript
 import { HrisListTimeOffPoliciesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { TimeOffPoliciesSchemasValue, TimeOffPoliciesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisListTimeOffPoliciesResponse = {
   contentType: "<value>",
@@ -12,7 +13,7 @@ let value: HrisListTimeOffPoliciesResponse = {
       "<value>",
     ],
   },
-  statusCode: 508,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -21,7 +22,9 @@ let value: HrisListTimeOffPoliciesResponse = {
       {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         description: "Usable for regional and national holidays of employees.",
-        durationUnit: {},
+        durationUnit: {
+          value: TimeOffPoliciesValue.Hours,
+        },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Holidays",
         reasons: [
@@ -31,7 +34,9 @@ let value: HrisListTimeOffPoliciesResponse = {
           },
         ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        type: {},
+        type: {
+          value: TimeOffPoliciesSchemasValue.Holiday,
+        },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
     ],

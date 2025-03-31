@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TimeOffBalances } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOffBalances, TimeOffBalancesSchemasPolicyValue, TimeOffBalancesSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TimeOffBalances = {
   balanceExpiryDate: new Date("2021-01-01T01:01:01.000Z"),
@@ -16,7 +16,9 @@ let value: TimeOffBalances = {
   policy: {
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     description: "Usable for regional and national holidays of employees.",
-    durationUnit: {},
+    durationUnit: {
+      value: TimeOffBalancesSchemasValue.Hours,
+    },
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     name: "Holidays",
     reasons: [
@@ -26,7 +28,9 @@ let value: TimeOffBalances = {
       },
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    type: {},
+    type: {
+      value: TimeOffBalancesSchemasPolicyValue.Holiday,
+    },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
   },
   policyId: "cx280928937",
@@ -48,7 +52,7 @@ let value: TimeOffBalances = {
 | `employeeId`                                                                                             | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | The employee id associated with this balance                                                             | cx280928937                                                                                              |
 | `id`                                                                                                     | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | Unique identifier                                                                                        | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                     |
 | `initialBalance`                                                                                         | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | The initial numeric balance for the associated employee and time off policy as of the balance start date | 8                                                                                                        |
-| `policy`                                                                                                 | [shared.Policy](../../../sdk/models/shared/policy.md)                                                    | :heavy_minus_sign:                                                                                       | The time off policy associated with this balance                                                         |                                                                                                          |
+| `policy`                                                                                                 | [shared.TimeOffBalancesPolicy](../../../sdk/models/shared/timeoffbalancespolicy.md)                      | :heavy_minus_sign:                                                                                       | The time off policy associated with this balance                                                         |                                                                                                          |
 | `policyId`                                                                                               | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | The time off policy id associated with this balance                                                      | cx280928937                                                                                              |
 | `remoteEmployeeId`                                                                                       | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | Provider's unique identifier of the employee associated with this balance                                | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                                     |
 | `remoteId`                                                                                               | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | Provider's unique identifier                                                                             | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                     |

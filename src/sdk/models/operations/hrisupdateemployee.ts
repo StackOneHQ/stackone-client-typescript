@@ -35,7 +35,7 @@ export type HrisUpdateEmployeeResponse = {
   /**
    * Record updated successfully
    */
-  updateEmployeeApiModel?: shared.UpdateEmployeeApiModel | undefined;
+  updateResult?: shared.UpdateResult | undefined;
 };
 
 /** @internal */
@@ -120,15 +120,14 @@ export const HrisUpdateEmployeeResponse$inboundSchema: z.ZodType<
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  UpdateEmployeeApiModel: shared.UpdateEmployeeApiModel$inboundSchema
-    .optional(),
+  UpdateResult: shared.UpdateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "UpdateEmployeeApiModel": "updateEmployeeApiModel",
+    "UpdateResult": "updateResult",
   });
 });
 
@@ -138,7 +137,7 @@ export type HrisUpdateEmployeeResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
-  UpdateEmployeeApiModel?: shared.UpdateEmployeeApiModel$Outbound | undefined;
+  UpdateResult?: shared.UpdateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -153,15 +152,14 @@ export const HrisUpdateEmployeeResponse$outboundSchema: z.ZodType<
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  updateEmployeeApiModel: shared.UpdateEmployeeApiModel$outboundSchema
-    .optional(),
+  updateResult: shared.UpdateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    updateEmployeeApiModel: "UpdateEmployeeApiModel",
+    updateResult: "UpdateResult",
   });
 });
 

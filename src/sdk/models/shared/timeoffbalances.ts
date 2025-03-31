@@ -161,7 +161,7 @@ export type TimeOffBalancesType = {
 /**
  * The time off policy associated with this balance
  */
-export type Policy = {
+export type TimeOffBalancesPolicy = {
   /**
    * The created_at date of this policy
    */
@@ -229,7 +229,7 @@ export type TimeOffBalances = {
   /**
    * The time off policy associated with this balance
    */
-  policy?: Policy | null | undefined;
+  policy?: TimeOffBalancesPolicy | null | undefined;
   /**
    * The time off policy id associated with this balance
    */
@@ -968,35 +968,37 @@ export function timeOffBalancesTypeFromJSON(
 }
 
 /** @internal */
-export const Policy$inboundSchema: z.ZodType<Policy, z.ZodTypeDef, unknown> = z
-  .object({
-    created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    description: z.nullable(z.string()).optional(),
-    duration_unit: z.nullable(
-      z.lazy(() => TimeOffBalancesDurationUnit$inboundSchema),
-    ).optional(),
-    id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    reasons: z.nullable(z.array(Reason$inboundSchema)).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    type: z.nullable(z.lazy(() => TimeOffBalancesType$inboundSchema))
-      .optional(),
-    updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "created_at": "createdAt",
-      "duration_unit": "durationUnit",
-      "remote_id": "remoteId",
-      "updated_at": "updatedAt",
-    });
+export const TimeOffBalancesPolicy$inboundSchema: z.ZodType<
+  TimeOffBalancesPolicy,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  description: z.nullable(z.string()).optional(),
+  duration_unit: z.nullable(
+    z.lazy(() => TimeOffBalancesDurationUnit$inboundSchema),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  reasons: z.nullable(z.array(Reason$inboundSchema)).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TimeOffBalancesType$inboundSchema)).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
+    "duration_unit": "durationUnit",
+    "remote_id": "remoteId",
+    "updated_at": "updatedAt",
   });
+});
 
 /** @internal */
-export type Policy$Outbound = {
+export type TimeOffBalancesPolicy$Outbound = {
   created_at?: string | null | undefined;
   description?: string | null | undefined;
   duration_unit?: TimeOffBalancesDurationUnit$Outbound | null | undefined;
@@ -1009,10 +1011,10 @@ export type Policy$Outbound = {
 };
 
 /** @internal */
-export const Policy$outboundSchema: z.ZodType<
-  Policy$Outbound,
+export const TimeOffBalancesPolicy$outboundSchema: z.ZodType<
+  TimeOffBalancesPolicy$Outbound,
   z.ZodTypeDef,
-  Policy
+  TimeOffBalancesPolicy
 > = z.object({
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
@@ -1038,26 +1040,30 @@ export const Policy$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Policy$ {
-  /** @deprecated use `Policy$inboundSchema` instead. */
-  export const inboundSchema = Policy$inboundSchema;
-  /** @deprecated use `Policy$outboundSchema` instead. */
-  export const outboundSchema = Policy$outboundSchema;
-  /** @deprecated use `Policy$Outbound` instead. */
-  export type Outbound = Policy$Outbound;
+export namespace TimeOffBalancesPolicy$ {
+  /** @deprecated use `TimeOffBalancesPolicy$inboundSchema` instead. */
+  export const inboundSchema = TimeOffBalancesPolicy$inboundSchema;
+  /** @deprecated use `TimeOffBalancesPolicy$outboundSchema` instead. */
+  export const outboundSchema = TimeOffBalancesPolicy$outboundSchema;
+  /** @deprecated use `TimeOffBalancesPolicy$Outbound` instead. */
+  export type Outbound = TimeOffBalancesPolicy$Outbound;
 }
 
-export function policyToJSON(policy: Policy): string {
-  return JSON.stringify(Policy$outboundSchema.parse(policy));
+export function timeOffBalancesPolicyToJSON(
+  timeOffBalancesPolicy: TimeOffBalancesPolicy,
+): string {
+  return JSON.stringify(
+    TimeOffBalancesPolicy$outboundSchema.parse(timeOffBalancesPolicy),
+  );
 }
 
-export function policyFromJSON(
+export function timeOffBalancesPolicyFromJSON(
   jsonString: string,
-): SafeParseResult<Policy, SDKValidationError> {
+): SafeParseResult<TimeOffBalancesPolicy, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Policy$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Policy' from JSON`,
+    (x) => TimeOffBalancesPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffBalancesPolicy' from JSON`,
   );
 }
 
@@ -1078,7 +1084,8 @@ export const TimeOffBalances$inboundSchema: z.ZodType<
   employee_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   initial_balance: z.nullable(z.number()).optional(),
-  policy: z.nullable(z.lazy(() => Policy$inboundSchema)).optional(),
+  policy: z.nullable(z.lazy(() => TimeOffBalancesPolicy$inboundSchema))
+    .optional(),
   policy_id: z.nullable(z.string()).optional(),
   remote_employee_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
@@ -1111,7 +1118,7 @@ export type TimeOffBalances$Outbound = {
   employee_id?: string | null | undefined;
   id?: string | null | undefined;
   initial_balance?: number | null | undefined;
-  policy?: Policy$Outbound | null | undefined;
+  policy?: TimeOffBalancesPolicy$Outbound | null | undefined;
   policy_id?: string | null | undefined;
   remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
@@ -1134,7 +1141,8 @@ export const TimeOffBalances$outboundSchema: z.ZodType<
   employeeId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   initialBalance: z.nullable(z.number()).optional(),
-  policy: z.nullable(z.lazy(() => Policy$outboundSchema)).optional(),
+  policy: z.nullable(z.lazy(() => TimeOffBalancesPolicy$outboundSchema))
+    .optional(),
   policyId: z.nullable(z.string()).optional(),
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
