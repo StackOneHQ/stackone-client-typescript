@@ -8,7 +8,7 @@ import { HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValu
 let value:
   HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValue =
     HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValue
-      .FullTime;
+      .PartTime;
 ```
 
 ## Values

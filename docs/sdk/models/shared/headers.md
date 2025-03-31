@@ -1,5 +1,7 @@
 # Headers
 
+Response headers
+
 ## Example Usage
 
 ```typescript

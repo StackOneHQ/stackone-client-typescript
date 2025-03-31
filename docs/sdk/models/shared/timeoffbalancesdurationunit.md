@@ -5,9 +5,11 @@ The duration unit of the current policy
 ## Example Usage
 
 ```typescript
-import { TimeOffBalancesDurationUnit } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOffBalancesDurationUnit, TimeOffBalancesSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffBalancesDurationUnit = {};
+let value: TimeOffBalancesDurationUnit = {
+  value: TimeOffBalancesSchemasValue.Hours,
+};
 ```
 
 ## Fields

@@ -57,6 +57,24 @@ actions:
         - "lang": "typescript"
           "label": "stackone_get_connector_meta"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectors.getConnectorMeta({\n    provider: \"<value>\",\n    include: \"field_path,unmapped_fields,resources,inactive,webhooks,static_fields\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/requests/logs"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport {\n  OrderBy,\n  OrderDirection,\n  QueryParamInclude,\n  QueryParamOrderBy,\n  QueryParamOrderDirection,\n} from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.listLogs({\n    orderBy: OrderBy.Service,\n    orderDirection: OrderDirection.Asc,\n    include: QueryParamInclude.StepLogs,\n    filter: {\n      accountIds: \"45355976281015164504,45355976281015164505\",\n      startDate: \"2020-01-01T00:00:00.000Z\",\n      endDate: \"2020-01-01T00:00:00.000Z\",\n      requestIds: \"adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c\",\n      sourceTypes: \"DASHBOARD,SYNTHETIC_WEBHOOK\",\n      httpMethods: \"GET,POST\",\n      providers: \"ashby,greenhouse\",\n      services: \"hris,ats\",\n      resources: \"employees,users\",\n      childResources: \"documents,time-off\",\n      subResources: \"documents,employees\",\n      actions: \"download,upload\",\n      statusCodes: \"200,400\",\n      success: true,\n      orderBy: QueryParamOrderBy.Service,\n      orderDirection: QueryParamOrderDirection.Asc,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/requests/logs/steps"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_step_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport {\n  StackoneListStepLogsQueryParamInclude,\n  StackoneListStepLogsQueryParamOrderBy,\n  StackoneListStepLogsQueryParamOrderDirection,\n  StackoneListStepLogsQueryParamRequestLogsOrderBy,\n  StackoneListStepLogsQueryParamRequestLogsOrderDirection,\n} from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.listStepLogs({\n    orderBy: StackoneListStepLogsQueryParamOrderBy.Status,\n    orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,\n    include: StackoneListStepLogsQueryParamInclude.StepLogs,\n    filter: {\n      accountIds: \"45355976281015164504,45355976281015164505\",\n      startDate: \"2020-01-01T00:00:00.000Z\",\n      endDate: \"2020-01-01T00:00:00.000Z\",\n      requestIds: \"adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c\",\n      httpMethods: \"GET,POST\",\n      providers: \"ashby,greenhouse\",\n      services: \"hris,ats\",\n      resources: \"employees,users\",\n      childResources: \"documents,time-off\",\n      subResources: \"documents,employees\",\n      actions: \"download,upload\",\n      statusCodes: \"200,400\",\n      success: true,\n      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Status,\n      orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/requests/logs/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { Include } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.getLog({\n    id: \"<id>\",\n    include: Include.StepLogs,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/ats/applications"]["get"]
     update:
       "x-codeSamples":
@@ -704,7 +722,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_employee_time_off_requests"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeTimeOffRequests({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeTimeOffRequests({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["post"]
     update:
       "x-codeSamples":
@@ -716,7 +734,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_get_employees_time_off_request"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeesTimeOffRequest({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at\",\n    xAccountId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeesTimeOffRequest({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy\",\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/time_off/{subResourceId}"]["patch"]
     update:
       "x-codeSamples":
@@ -735,6 +753,12 @@ actions:
         - "lang": "typescript"
           "label": "hris_get_employee_time_off_balance"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeeTimeOffBalance({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at\",\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/employees/{id}/time_off_policies"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_employee_time_off_policies"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeTimeOffPolicies({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility"]["get"]
     update:
       "x-codeSamples":
@@ -860,13 +884,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_time_off_requests"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listTimeOffRequests({\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listTimeOffRequests({\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    // Handle the page\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/time_off/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_get_time_off_request"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getTimeOffRequest({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at\",\n    xAccountId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getTimeOffRequest({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy\",\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/time_off_policies"]["get"]
     update:
       "x-codeSamples":

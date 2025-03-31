@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TimeOff } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOff, TimeOffSchemasPolicyTypeValue, TimeOffSchemasPolicyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TimeOff = {
   approverId: "1687-4",
@@ -13,6 +13,26 @@ let value: TimeOff = {
   endDate: new Date("2021-01-01T01:01:01.000Z"),
   endHalfDay: true,
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  policy: {
+    createdAt: new Date("2021-01-01T01:01:01.000Z"),
+    description: "Usable for regional and national holidays of employees.",
+    durationUnit: {
+      value: TimeOffSchemasPolicyValue.Hours,
+    },
+    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    name: "Holidays",
+    reasons: [
+      {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+    ],
+    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    type: {
+      value: TimeOffSchemasPolicyTypeValue.Holiday,
+    },
+    updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+  },
   reason: {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -39,6 +59,7 @@ let value: TimeOff = {
 | `endDate`                                                                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                             | :heavy_minus_sign:                                                                                                                                        | The end date of the time off request                                                                                                                      | 2021-01-01T01:01:01.000Z                                                                                                                                  |
 | `endHalfDay`                                                                                                                                              | *shared.TimeOffEndHalfDay*                                                                                                                                | :heavy_minus_sign:                                                                                                                                        | True if the end of the time off request ends half way through the day                                                                                     | true                                                                                                                                                      |
 | `id`                                                                                                                                                      | *string*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                        | Unique identifier                                                                                                                                         | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                                                                      |
+| `policy`                                                                                                                                                  | [shared.Policy](../../../sdk/models/shared/policy.md)                                                                                                     | :heavy_minus_sign:                                                                                                                                        | The time off policy associated with Time Off                                                                                                              |                                                                                                                                                           |
 | `reason`                                                                                                                                                  | [shared.TimeOffReason](../../../sdk/models/shared/timeoffreason.md)                                                                                       | :heavy_minus_sign:                                                                                                                                        | N/A                                                                                                                                                       |                                                                                                                                                           |
 | `remoteApproverId`                                                                                                                                        | *string*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                        | Provider's unique identifier of the approver                                                                                                              | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                                                                                      |
 | `remoteEmployeeId`                                                                                                                                        | *string*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                        | Provider's unique identifier of the employee                                                                                                              | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                                                                                      |

@@ -6,7 +6,7 @@
 import { EmploymentSchemasContractTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmploymentSchemasContractTypeValue =
-  EmploymentSchemasContractTypeValue.PartTime;
+  EmploymentSchemasContractTypeValue.FullTime;
 ```
 
 ## Values

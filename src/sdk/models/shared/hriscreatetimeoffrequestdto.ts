@@ -59,6 +59,7 @@ export enum HrisCreateTimeOffRequestDtoValue {
   Cancelled = "cancelled",
   Rejected = "rejected",
   Pending = "pending",
+  Deleted = "deleted",
   UnmappedValue = "unmapped_value",
 }
 export type HrisCreateTimeOffRequestDtoValueOpen = OpenEnum<

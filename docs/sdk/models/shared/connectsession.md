@@ -9,19 +9,20 @@ let value: ConnectSession = {
   categories: [
     Categories.Ats,
     Categories.Hris,
-    Categories.Documents,
+    Categories.Screening,
     Categories.Crm,
     Categories.Iam,
     Categories.Marketing,
     Categories.Lms,
-    Categories.Ticketing,
+    Categories.Screening,
     Categories.Documents,
     Categories.Ticketing,
     Categories.Screening,
   ],
-  createdAt: new Date("2023-10-26T14:10:48.354Z"),
-  id: 3790.57,
-  organizationId: 3742.96,
+  createdAt: new Date("2024-05-10T04:43:03.147Z"),
+  externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
+  id: 708.69,
+  organizationId: 2927.94,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -35,6 +36,7 @@ let value: ConnectSession = {
 | `accountId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `categories`                                                                                                                                    | [shared.Categories](../../../sdk/models/shared/categories.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening"<br/>] |
 | `createdAt`                                                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                   | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
+| `externalTriggerToken`                                                                                                                          | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | External trigger token to be used to trigger actions on the account                                                                             | f0bc3d88-2178-5423-8c81-b81d6c9da824                                                                                                            |
 | `id`                                                                                                                                            | *number*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `label`                                                                                                                                         | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `metadata`                                                                                                                                      | [shared.Metadata](../../../sdk/models/shared/metadata.md)                                                                                       | :heavy_minus_sign:                                                                                                                              | Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan) |                                                                                                                                                 |

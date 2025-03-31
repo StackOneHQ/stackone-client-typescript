@@ -5,7 +5,7 @@
 ```typescript
 import { TimeOffValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffValue = TimeOffValue.Rejected;
+let value: TimeOffValue = TimeOffValue.Approved;
 ```
 
 ## Values
@@ -18,5 +18,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Cancelled`            | cancelled              |
 | `Rejected`             | rejected               |
 | `Pending`              | pending                |
+| `Deleted`              | deleted                |
 | `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |
