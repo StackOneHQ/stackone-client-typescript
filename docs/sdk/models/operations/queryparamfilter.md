@@ -17,7 +17,7 @@ let value: QueryParamFilter = {
   childResources: "documents,time-off",
   endDate: "2020-01-01T00:00:00.000Z",
   httpMethods: "GET,POST",
-  orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.EventDatetime,
+  orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Service,
   orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,
   providers: "ashby,greenhouse",
   requestIds:

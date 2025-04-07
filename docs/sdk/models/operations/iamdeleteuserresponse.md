@@ -17,7 +17,7 @@ let value: IamDeleteUserResponse = {
       "<value>",
     ],
   },
-  statusCode: 205,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

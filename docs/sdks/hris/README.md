@@ -182,16 +182,11 @@ Creates an employee
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
   NationalIdentityNumberApiModelSchemasValue,
@@ -235,7 +230,6 @@ async function run() {
         },
       ],
       companyId: "1234567890",
-      companyName: "Example Corp",
       costCenters: [
         {
           distributionPercentage: 100,
@@ -314,58 +308,6 @@ async function run() {
         sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
-      employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-      ],
       ethnicity: {},
       firstName: "Isaac",
       gender: {},
@@ -392,15 +334,6 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Isaac Newton",
-      nationalIdentityNumber: {
-        country: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
-        },
-        type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
-        },
-        value: "123456789",
-      },
       nationalIdentityNumbers: [
         {
           country: {
@@ -470,16 +403,11 @@ import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisCreateEmployee } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployee.js";
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
   NationalIdentityNumberApiModelSchemasValue,
@@ -525,7 +453,6 @@ async function run() {
         },
       ],
       companyId: "1234567890",
-      companyName: "Example Corp",
       costCenters: [
         {
           distributionPercentage: 100,
@@ -604,58 +531,6 @@ async function run() {
         sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
-      employments: [
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-        {
-          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-          employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          jobTitle: "Software Engineer",
-          payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
-          payRate: "40.00",
-          timeWorked: "P0Y0M0DT8H0M0S",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-      ],
       ethnicity: {},
       firstName: "Isaac",
       gender: {},
@@ -682,15 +557,6 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Isaac Newton",
-      nationalIdentityNumber: {
-        country: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
-        },
-        type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
-        },
-        value: "123456789",
-      },
       nationalIdentityNumbers: [
         {
           country: {
@@ -812,7 +678,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.createEmployeeEmployment({
     hrisCreateEmploymentRequestDto: {
-      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentContractType: {},
       employmentType: {
         sourceValue: "Permanent",
@@ -875,7 +740,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisCreateEmployeeEmployment(stackOne, {
     hrisCreateEmploymentRequestDto: {
-      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentContractType: {},
       employmentType: {
         sourceValue: "Permanent",
@@ -1610,7 +1474,6 @@ async function run() {
   const result = await stackOne.hris.getBenefit({
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1642,7 +1505,6 @@ async function run() {
   const res = await hrisGetBenefit(stackOne, {
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1710,7 +1572,6 @@ async function run() {
   const result = await stackOne.hris.getCompany({
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1742,7 +1603,6 @@ async function run() {
   const res = await hrisGetCompany(stackOne, {
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1808,9 +1668,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getCostCenterGroup({
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1840,9 +1699,8 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetCostCenterGroup(stackOne, {
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1910,7 +1768,6 @@ async function run() {
   const result = await stackOne.hris.getDepartmentGroup({
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1942,7 +1799,6 @@ async function run() {
   const res = await hrisGetDepartmentGroup(stackOne, {
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2008,11 +1864,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployee({
-    expand: "company,employments,work_location,home_location,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    expand: "company,employments,work_location,home_location,groups,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2042,11 +1897,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployee(stackOne, {
-    expand: "company,employments,work_location,home_location,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    expand: "company,employments,work_location,home_location,groups,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2117,8 +1971,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2154,8 +2006,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2224,7 +2074,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2257,7 +2106,6 @@ async function run() {
   const res = await hrisGetEmployeeDocument(stackOne, {
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2326,7 +2174,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeeDocumentCategory({
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2358,7 +2205,6 @@ async function run() {
   const res = await hrisGetEmployeeDocumentCategory(stackOne, {
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2425,9 +2271,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeeEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2459,9 +2304,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeeEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2530,7 +2374,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeeSkill({
     fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2563,7 +2406,6 @@ async function run() {
   const res = await hrisGetEmployeeSkill(stackOne, {
     fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2633,7 +2475,6 @@ async function run() {
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2667,7 +2508,6 @@ async function run() {
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2735,9 +2575,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeesTimeOffRequest({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2769,9 +2608,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeesTimeOffRequest(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2840,7 +2678,6 @@ async function run() {
   const result = await stackOne.hris.getEmployeesWorkEligibility({
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2873,7 +2710,6 @@ async function run() {
   const res = await hrisGetEmployeesWorkEligibility(stackOne, {
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2941,9 +2777,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2974,9 +2809,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3044,7 +2878,6 @@ async function run() {
   const result = await stackOne.hris.getGroup({
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3076,7 +2909,6 @@ async function run() {
   const res = await hrisGetGroup(stackOne, {
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3144,7 +2976,6 @@ async function run() {
   const result = await stackOne.hris.getJob({
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3176,7 +3007,6 @@ async function run() {
   const res = await hrisGetJob(stackOne, {
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3244,7 +3074,6 @@ async function run() {
   const result = await stackOne.hris.getLocation({
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3276,7 +3105,6 @@ async function run() {
   const res = await hrisGetLocation(stackOne, {
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3344,7 +3172,6 @@ async function run() {
   const result = await stackOne.hris.getTeamGroup({
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3376,7 +3203,6 @@ async function run() {
   const res = await hrisGetTeamGroup(stackOne, {
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3444,7 +3270,6 @@ async function run() {
   const result = await stackOne.hris.getTimeEntries({
     fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3476,7 +3301,6 @@ async function run() {
   const res = await hrisGetTimeEntries(stackOne, {
     fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3544,7 +3368,6 @@ async function run() {
   const result = await stackOne.hris.getTimeOffPolicy({
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3576,7 +3399,6 @@ async function run() {
   const res = await hrisGetTimeOffPolicy(stackOne, {
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3643,9 +3465,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getTimeOffRequest({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3676,9 +3497,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetTimeOffRequest(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3748,7 +3568,6 @@ async function run() {
   const result = await stackOne.hris.getTimeOffType({
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3780,7 +3599,6 @@ async function run() {
   const res = await hrisGetTimeOffType(stackOne, {
     fields: "id,remote_id,name,active",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3956,8 +3774,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3994,8 +3810,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4068,8 +3882,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4106,8 +3918,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4176,12 +3986,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listCostCenterGroups({
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4214,12 +4022,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListCostCenterGroups(stackOne, {
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4292,8 +4098,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4330,8 +4134,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4404,8 +4206,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4442,8 +4242,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4516,8 +4314,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4552,8 +4348,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4625,8 +4419,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4664,8 +4456,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4735,13 +4525,11 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4775,13 +4563,11 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4855,8 +4641,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4894,8 +4678,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4970,8 +4752,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5010,8 +4790,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5191,13 +4969,11 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffRequests({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5231,13 +5007,11 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeTimeOffRequests(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5311,8 +5085,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5350,8 +5122,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5420,14 +5190,12 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployees({
-    expand: "company,employments,work_location,home_location,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    expand: "company,employments,work_location,home_location,groups,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5460,14 +5228,12 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployees(stackOne, {
-    expand: "company,employments,work_location,home_location,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    expand: "company,employments,work_location,home_location,groups,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5537,12 +5303,10 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5576,12 +5340,10 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5654,8 +5416,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5692,8 +5452,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5766,8 +5524,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5804,8 +5560,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5878,8 +5632,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5916,8 +5668,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5990,8 +5740,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6028,8 +5776,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6104,8 +5850,6 @@ async function run() {
       startTime: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6144,8 +5888,6 @@ async function run() {
       startTime: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6218,8 +5960,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6256,8 +5996,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6327,12 +6065,10 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listTimeOffRequests({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6366,12 +6102,10 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListTimeOffRequests(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6446,8 +6180,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6484,8 +6216,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6551,8 +6281,6 @@ import {
   HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisUpdateEmployeeRequestDtoSchemasEmploymentValue,
   HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
   NationalIdentityNumberApiModelSchemasValue,
@@ -6591,7 +6319,6 @@ async function run() {
         },
       ],
       companyId: "1234567890",
-      companyName: "Example Corp",
       customFields: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -6663,15 +6390,6 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Isaac Newton",
-      nationalIdentityNumber: {
-        country: {
-          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
-        },
-        type: {
-          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
-        },
-        value: "123456789",
-      },
       nationalIdentityNumbers: [
         {
           country: {
@@ -6738,8 +6456,6 @@ import {
   HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisUpdateEmployeeRequestDtoSchemasEmploymentValue,
   HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
   NationalIdentityNumberApiModelSchemasValue,
@@ -6780,7 +6496,6 @@ async function run() {
         },
       ],
       companyId: "1234567890",
-      companyName: "Example Corp",
       customFields: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -6852,15 +6567,6 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Isaac Newton",
-      nationalIdentityNumber: {
-        country: {
-          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
-        },
-        type: {
-          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
-        },
-        value: "123456789",
-      },
       nationalIdentityNumbers: [
         {
           country: {
@@ -6974,7 +6680,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.updateEmployeeEmployment({
     hrisCreateEmploymentRequestDto: {
-      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentContractType: {},
       employmentType: {
         sourceValue: "Permanent",
@@ -7038,7 +6743,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisUpdateEmployeeEmployment(stackOne, {
     hrisCreateEmploymentRequestDto: {
-      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentContractType: {},
       employmentType: {
         sourceValue: "Permanent",

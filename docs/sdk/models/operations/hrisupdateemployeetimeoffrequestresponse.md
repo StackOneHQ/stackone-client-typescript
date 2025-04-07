@@ -21,7 +21,7 @@ let value: HrisUpdateEmployeeTimeOffRequestResponse = {
       "<value>",
     ],
   },
-  statusCode: 201,
+  statusCode: 402,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

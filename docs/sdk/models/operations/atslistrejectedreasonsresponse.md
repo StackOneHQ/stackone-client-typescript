@@ -30,7 +30,7 @@ let value: AtsListRejectedReasonsResponse = {
       },
     ],
   },
-  statusCode: 100,
+  statusCode: 417,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

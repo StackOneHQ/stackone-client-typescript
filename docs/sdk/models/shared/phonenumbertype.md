@@ -7,7 +7,7 @@ Type of phone number
 ```typescript
 import { PhoneNumberType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: PhoneNumberType = PhoneNumberType.Work;
+let value: PhoneNumberType = PhoneNumberType.Other;
 ```
 
 ## Values

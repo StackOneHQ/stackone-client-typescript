@@ -157,7 +157,7 @@ let value: AtsListApplicationsResponse = {
       "<value>",
     ],
   },
-  statusCode: 301,
+  statusCode: 402,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

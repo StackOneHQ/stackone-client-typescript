@@ -8,7 +8,7 @@ Filter to select assignment by status
 import { LmsListUserAssignmentsQueryParamStatus } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsListUserAssignmentsQueryParamStatus =
-  LmsListUserAssignmentsQueryParamStatus.InProgress;
+  LmsListUserAssignmentsQueryParamStatus.Completed;
 ```
 
 ## Values

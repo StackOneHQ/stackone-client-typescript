@@ -26,7 +26,7 @@ let value: AtsListInterviewStagesResponse = {
       },
     ],
   },
-  statusCode: 501,
+  statusCode: 425,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

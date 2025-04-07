@@ -11,7 +11,7 @@ import {
   CreateMessage$inboundSchema,
   CreateMessage$Outbound,
   CreateMessage$outboundSchema,
-} from "./createmessage.js";
+} from "./message.js";
 
 export type MarketingCreateTemplateRequestDto = {
   messages?: Array<CreateMessage> | null | undefined;

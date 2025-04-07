@@ -6,7 +6,7 @@
 import { HrisUpdateEmployeeRequestDtoSchemasGenderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUpdateEmployeeRequestDtoSchemasGenderValue =
-  HrisUpdateEmployeeRequestDtoSchemasGenderValue.Female;
+  HrisUpdateEmployeeRequestDtoSchemasGenderValue.UnmappedValue;
 ```
 
 ## Values

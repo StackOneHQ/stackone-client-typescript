@@ -32,84 +32,6 @@ export type SmsMessageContentsSchemas = {
   from?: string | null | undefined;
 };
 
-export type MessageContent =
-  | SmsMessageContentsSchemas
-  | PushMessageContentsSchemas
-  | Schemas;
-
-export type CreateMessage4 = {};
-
-/**
- * The original value from the provider used to derive the unified message type.
- */
-export type CreateMessageSourceValue =
-  | CreateMessage4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/**
- * The unified message type.
- */
-export enum CreateMessageValue {
-  Email = "email",
-  Sms = "sms",
-  Push = "push",
-  WebPush = "web_push",
-  IosPush = "ios_push",
-  AndroidPush = "android_push",
-  AppPush = "app_push",
-  OmniChannel = "omni_channel",
-  ContentBlock = "content_block",
-  InApp = "in_app",
-  Unknown = "unknown",
-  UnmappedValue = "unmapped_value",
-}
-/**
- * The unified message type.
- */
-export type CreateMessageValueOpen = OpenEnum<typeof CreateMessageValue>;
-
-/**
- * Stackone enum identifying the type of message associated with the content.
- */
-export type MessageType = {
-  /**
-   * The original value from the provider used to derive the unified message type.
-   */
-  sourceValue?:
-    | CreateMessage4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  /**
-   * The unified message type.
-   */
-  value?: CreateMessageValueOpen | null | undefined;
-};
-
-export type CreateMessage = {
-  /**
-   * Unique identifier
-   */
-  id?: string | null | undefined;
-  messageContent?:
-    | SmsMessageContentsSchemas
-    | PushMessageContentsSchemas
-    | Schemas
-    | null
-    | undefined;
-  /**
-   * Stackone enum identifying the type of message associated with the content.
-   */
-  messageType?: MessageType | null | undefined;
-  name?: string | null | undefined;
-};
-
 export type MessageMessageContent =
   | SmsMessageContentsSchemas
   | PushMessageContentsSchemas
@@ -190,6 +112,84 @@ export type Message = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+};
+
+export type MessageContent =
+  | SmsMessageContentsSchemas
+  | PushMessageContentsSchemas
+  | Schemas;
+
+export type CreateMessage4 = {};
+
+/**
+ * The original value from the provider used to derive the unified message type.
+ */
+export type CreateMessageSourceValue =
+  | CreateMessage4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The unified message type.
+ */
+export enum CreateMessageValue {
+  Email = "email",
+  Sms = "sms",
+  Push = "push",
+  WebPush = "web_push",
+  IosPush = "ios_push",
+  AndroidPush = "android_push",
+  AppPush = "app_push",
+  OmniChannel = "omni_channel",
+  ContentBlock = "content_block",
+  InApp = "in_app",
+  Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified message type.
+ */
+export type CreateMessageValueOpen = OpenEnum<typeof CreateMessageValue>;
+
+/**
+ * Stackone enum identifying the type of message associated with the content.
+ */
+export type MessageType = {
+  /**
+   * The original value from the provider used to derive the unified message type.
+   */
+  sourceValue?:
+    | CreateMessage4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The unified message type.
+   */
+  value?: CreateMessageValueOpen | null | undefined;
+};
+
+export type CreateMessage = {
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  messageContent?:
+    | SmsMessageContentsSchemas
+    | PushMessageContentsSchemas
+    | Schemas
+    | null
+    | undefined;
+  /**
+   * Stackone enum identifying the type of message associated with the content.
+   */
+  messageType?: MessageType | null | undefined;
+  name?: string | null | undefined;
 };
 
 /** @internal */
@@ -373,372 +373,6 @@ export function smsMessageContentsSchemasFromJSON(
     jsonString,
     (x) => SmsMessageContentsSchemas$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SmsMessageContentsSchemas' from JSON`,
-  );
-}
-
-/** @internal */
-export const MessageContent$inboundSchema: z.ZodType<
-  MessageContent,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
-  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
-  z.lazy(() => Schemas$inboundSchema),
-]);
-
-/** @internal */
-export type MessageContent$Outbound =
-  | SmsMessageContentsSchemas$Outbound
-  | PushMessageContentsSchemas$Outbound
-  | Schemas$Outbound;
-
-/** @internal */
-export const MessageContent$outboundSchema: z.ZodType<
-  MessageContent$Outbound,
-  z.ZodTypeDef,
-  MessageContent
-> = z.union([
-  z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
-  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
-  z.lazy(() => Schemas$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessageContent$ {
-  /** @deprecated use `MessageContent$inboundSchema` instead. */
-  export const inboundSchema = MessageContent$inboundSchema;
-  /** @deprecated use `MessageContent$outboundSchema` instead. */
-  export const outboundSchema = MessageContent$outboundSchema;
-  /** @deprecated use `MessageContent$Outbound` instead. */
-  export type Outbound = MessageContent$Outbound;
-}
-
-export function messageContentToJSON(messageContent: MessageContent): string {
-  return JSON.stringify(MessageContent$outboundSchema.parse(messageContent));
-}
-
-export function messageContentFromJSON(
-  jsonString: string,
-): SafeParseResult<MessageContent, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessageContent$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessageContent' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateMessage4$inboundSchema: z.ZodType<
-  CreateMessage4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CreateMessage4$Outbound = {};
-
-/** @internal */
-export const CreateMessage4$outboundSchema: z.ZodType<
-  CreateMessage4$Outbound,
-  z.ZodTypeDef,
-  CreateMessage4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateMessage4$ {
-  /** @deprecated use `CreateMessage4$inboundSchema` instead. */
-  export const inboundSchema = CreateMessage4$inboundSchema;
-  /** @deprecated use `CreateMessage4$outboundSchema` instead. */
-  export const outboundSchema = CreateMessage4$outboundSchema;
-  /** @deprecated use `CreateMessage4$Outbound` instead. */
-  export type Outbound = CreateMessage4$Outbound;
-}
-
-export function createMessage4ToJSON(createMessage4: CreateMessage4): string {
-  return JSON.stringify(CreateMessage4$outboundSchema.parse(createMessage4));
-}
-
-export function createMessage4FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateMessage4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateMessage4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateMessage4' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateMessageSourceValue$inboundSchema: z.ZodType<
-  CreateMessageSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CreateMessage4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type CreateMessageSourceValue$Outbound =
-  | CreateMessage4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const CreateMessageSourceValue$outboundSchema: z.ZodType<
-  CreateMessageSourceValue$Outbound,
-  z.ZodTypeDef,
-  CreateMessageSourceValue
-> = z.union([
-  z.lazy(() => CreateMessage4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateMessageSourceValue$ {
-  /** @deprecated use `CreateMessageSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CreateMessageSourceValue$inboundSchema;
-  /** @deprecated use `CreateMessageSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CreateMessageSourceValue$outboundSchema;
-  /** @deprecated use `CreateMessageSourceValue$Outbound` instead. */
-  export type Outbound = CreateMessageSourceValue$Outbound;
-}
-
-export function createMessageSourceValueToJSON(
-  createMessageSourceValue: CreateMessageSourceValue,
-): string {
-  return JSON.stringify(
-    CreateMessageSourceValue$outboundSchema.parse(createMessageSourceValue),
-  );
-}
-
-export function createMessageSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateMessageSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateMessageSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateMessageSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateMessageValue$inboundSchema: z.ZodType<
-  CreateMessageValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(CreateMessageValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const CreateMessageValue$outboundSchema: z.ZodType<
-  CreateMessageValueOpen,
-  z.ZodTypeDef,
-  CreateMessageValueOpen
-> = z.union([
-  z.nativeEnum(CreateMessageValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateMessageValue$ {
-  /** @deprecated use `CreateMessageValue$inboundSchema` instead. */
-  export const inboundSchema = CreateMessageValue$inboundSchema;
-  /** @deprecated use `CreateMessageValue$outboundSchema` instead. */
-  export const outboundSchema = CreateMessageValue$outboundSchema;
-}
-
-/** @internal */
-export const MessageType$inboundSchema: z.ZodType<
-  MessageType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => CreateMessage4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateMessageValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type MessageType$Outbound = {
-  source_value?:
-    | CreateMessage4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const MessageType$outboundSchema: z.ZodType<
-  MessageType$Outbound,
-  z.ZodTypeDef,
-  MessageType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => CreateMessage4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateMessageValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessageType$ {
-  /** @deprecated use `MessageType$inboundSchema` instead. */
-  export const inboundSchema = MessageType$inboundSchema;
-  /** @deprecated use `MessageType$outboundSchema` instead. */
-  export const outboundSchema = MessageType$outboundSchema;
-  /** @deprecated use `MessageType$Outbound` instead. */
-  export type Outbound = MessageType$Outbound;
-}
-
-export function messageTypeToJSON(messageType: MessageType): string {
-  return JSON.stringify(MessageType$outboundSchema.parse(messageType));
-}
-
-export function messageTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<MessageType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessageType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessageType' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateMessage$inboundSchema: z.ZodType<
-  CreateMessage,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  message_content: z.nullable(
-    z.union([
-      z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
-      z.lazy(() => PushMessageContentsSchemas$inboundSchema),
-      z.lazy(() => Schemas$inboundSchema),
-    ]),
-  ).optional(),
-  message_type: z.nullable(z.lazy(() => MessageType$inboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "message_content": "messageContent",
-    "message_type": "messageType",
-  });
-});
-
-/** @internal */
-export type CreateMessage$Outbound = {
-  id?: string | null | undefined;
-  message_content?:
-    | SmsMessageContentsSchemas$Outbound
-    | PushMessageContentsSchemas$Outbound
-    | Schemas$Outbound
-    | null
-    | undefined;
-  message_type?: MessageType$Outbound | null | undefined;
-  name?: string | null | undefined;
-};
-
-/** @internal */
-export const CreateMessage$outboundSchema: z.ZodType<
-  CreateMessage$Outbound,
-  z.ZodTypeDef,
-  CreateMessage
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  messageContent: z.nullable(
-    z.union([
-      z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
-      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
-      z.lazy(() => Schemas$outboundSchema),
-    ]),
-  ).optional(),
-  messageType: z.nullable(z.lazy(() => MessageType$outboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    messageContent: "message_content",
-    messageType: "message_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateMessage$ {
-  /** @deprecated use `CreateMessage$inboundSchema` instead. */
-  export const inboundSchema = CreateMessage$inboundSchema;
-  /** @deprecated use `CreateMessage$outboundSchema` instead. */
-  export const outboundSchema = CreateMessage$outboundSchema;
-  /** @deprecated use `CreateMessage$Outbound` instead. */
-  export type Outbound = CreateMessage$Outbound;
-}
-
-export function createMessageToJSON(createMessage: CreateMessage): string {
-  return JSON.stringify(CreateMessage$outboundSchema.parse(createMessage));
-}
-
-export function createMessageFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateMessage, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateMessage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateMessage' from JSON`,
   );
 }
 
@@ -1117,5 +751,371 @@ export function messageFromJSON(
     jsonString,
     (x) => Message$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Message' from JSON`,
+  );
+}
+
+/** @internal */
+export const MessageContent$inboundSchema: z.ZodType<
+  MessageContent,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
+  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
+  z.lazy(() => Schemas$inboundSchema),
+]);
+
+/** @internal */
+export type MessageContent$Outbound =
+  | SmsMessageContentsSchemas$Outbound
+  | PushMessageContentsSchemas$Outbound
+  | Schemas$Outbound;
+
+/** @internal */
+export const MessageContent$outboundSchema: z.ZodType<
+  MessageContent$Outbound,
+  z.ZodTypeDef,
+  MessageContent
+> = z.union([
+  z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
+  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
+  z.lazy(() => Schemas$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MessageContent$ {
+  /** @deprecated use `MessageContent$inboundSchema` instead. */
+  export const inboundSchema = MessageContent$inboundSchema;
+  /** @deprecated use `MessageContent$outboundSchema` instead. */
+  export const outboundSchema = MessageContent$outboundSchema;
+  /** @deprecated use `MessageContent$Outbound` instead. */
+  export type Outbound = MessageContent$Outbound;
+}
+
+export function messageContentToJSON(messageContent: MessageContent): string {
+  return JSON.stringify(MessageContent$outboundSchema.parse(messageContent));
+}
+
+export function messageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageContent' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateMessage4$inboundSchema: z.ZodType<
+  CreateMessage4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CreateMessage4$Outbound = {};
+
+/** @internal */
+export const CreateMessage4$outboundSchema: z.ZodType<
+  CreateMessage4$Outbound,
+  z.ZodTypeDef,
+  CreateMessage4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessage4$ {
+  /** @deprecated use `CreateMessage4$inboundSchema` instead. */
+  export const inboundSchema = CreateMessage4$inboundSchema;
+  /** @deprecated use `CreateMessage4$outboundSchema` instead. */
+  export const outboundSchema = CreateMessage4$outboundSchema;
+  /** @deprecated use `CreateMessage4$Outbound` instead. */
+  export type Outbound = CreateMessage4$Outbound;
+}
+
+export function createMessage4ToJSON(createMessage4: CreateMessage4): string {
+  return JSON.stringify(CreateMessage4$outboundSchema.parse(createMessage4));
+}
+
+export function createMessage4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateMessage4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateMessage4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateMessage4' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateMessageSourceValue$inboundSchema: z.ZodType<
+  CreateMessageSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateMessage4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type CreateMessageSourceValue$Outbound =
+  | CreateMessage4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CreateMessageSourceValue$outboundSchema: z.ZodType<
+  CreateMessageSourceValue$Outbound,
+  z.ZodTypeDef,
+  CreateMessageSourceValue
+> = z.union([
+  z.lazy(() => CreateMessage4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessageSourceValue$ {
+  /** @deprecated use `CreateMessageSourceValue$inboundSchema` instead. */
+  export const inboundSchema = CreateMessageSourceValue$inboundSchema;
+  /** @deprecated use `CreateMessageSourceValue$outboundSchema` instead. */
+  export const outboundSchema = CreateMessageSourceValue$outboundSchema;
+  /** @deprecated use `CreateMessageSourceValue$Outbound` instead. */
+  export type Outbound = CreateMessageSourceValue$Outbound;
+}
+
+export function createMessageSourceValueToJSON(
+  createMessageSourceValue: CreateMessageSourceValue,
+): string {
+  return JSON.stringify(
+    CreateMessageSourceValue$outboundSchema.parse(createMessageSourceValue),
+  );
+}
+
+export function createMessageSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateMessageSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateMessageSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateMessageSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateMessageValue$inboundSchema: z.ZodType<
+  CreateMessageValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CreateMessageValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CreateMessageValue$outboundSchema: z.ZodType<
+  CreateMessageValueOpen,
+  z.ZodTypeDef,
+  CreateMessageValueOpen
+> = z.union([
+  z.nativeEnum(CreateMessageValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessageValue$ {
+  /** @deprecated use `CreateMessageValue$inboundSchema` instead. */
+  export const inboundSchema = CreateMessageValue$inboundSchema;
+  /** @deprecated use `CreateMessageValue$outboundSchema` instead. */
+  export const outboundSchema = CreateMessageValue$outboundSchema;
+}
+
+/** @internal */
+export const MessageType$inboundSchema: z.ZodType<
+  MessageType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CreateMessage4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateMessageValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type MessageType$Outbound = {
+  source_value?:
+    | CreateMessage4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const MessageType$outboundSchema: z.ZodType<
+  MessageType$Outbound,
+  z.ZodTypeDef,
+  MessageType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => CreateMessage4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateMessageValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MessageType$ {
+  /** @deprecated use `MessageType$inboundSchema` instead. */
+  export const inboundSchema = MessageType$inboundSchema;
+  /** @deprecated use `MessageType$outboundSchema` instead. */
+  export const outboundSchema = MessageType$outboundSchema;
+  /** @deprecated use `MessageType$Outbound` instead. */
+  export type Outbound = MessageType$Outbound;
+}
+
+export function messageTypeToJSON(messageType: MessageType): string {
+  return JSON.stringify(MessageType$outboundSchema.parse(messageType));
+}
+
+export function messageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageType' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateMessage$inboundSchema: z.ZodType<
+  CreateMessage,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  message_content: z.nullable(
+    z.union([
+      z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
+      z.lazy(() => PushMessageContentsSchemas$inboundSchema),
+      z.lazy(() => Schemas$inboundSchema),
+    ]),
+  ).optional(),
+  message_type: z.nullable(z.lazy(() => MessageType$inboundSchema)).optional(),
+  name: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "message_content": "messageContent",
+    "message_type": "messageType",
+  });
+});
+
+/** @internal */
+export type CreateMessage$Outbound = {
+  id?: string | null | undefined;
+  message_content?:
+    | SmsMessageContentsSchemas$Outbound
+    | PushMessageContentsSchemas$Outbound
+    | Schemas$Outbound
+    | null
+    | undefined;
+  message_type?: MessageType$Outbound | null | undefined;
+  name?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateMessage$outboundSchema: z.ZodType<
+  CreateMessage$Outbound,
+  z.ZodTypeDef,
+  CreateMessage
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  messageContent: z.nullable(
+    z.union([
+      z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
+      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
+      z.lazy(() => Schemas$outboundSchema),
+    ]),
+  ).optional(),
+  messageType: z.nullable(z.lazy(() => MessageType$outboundSchema)).optional(),
+  name: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    messageContent: "message_content",
+    messageType: "message_type",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessage$ {
+  /** @deprecated use `CreateMessage$inboundSchema` instead. */
+  export const inboundSchema = CreateMessage$inboundSchema;
+  /** @deprecated use `CreateMessage$outboundSchema` instead. */
+  export const outboundSchema = CreateMessage$outboundSchema;
+  /** @deprecated use `CreateMessage$Outbound` instead. */
+  export type Outbound = CreateMessage$Outbound;
+}
+
+export function createMessageToJSON(createMessage: CreateMessage): string {
+  return JSON.stringify(CreateMessage$outboundSchema.parse(createMessage));
+}
+
+export function createMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateMessage' from JSON`,
   );
 }

@@ -6,7 +6,7 @@
 import { EmployeeSchemasEthnicityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmployeeSchemasEthnicityValue =
-  EmployeeSchemasEthnicityValue.TwoOrMoreRaces;
+  EmployeeSchemasEthnicityValue.NativeHawaiianOrPacificIslander;
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { CustomFieldDefinitionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CustomFieldDefinitionValue = CustomFieldDefinitionValue.Date;
+let value: CustomFieldDefinitionValue = CustomFieldDefinitionValue.Checkbox;
 ```
 
 ## Values

@@ -7,7 +7,7 @@ The field to order the results by.
 ```typescript
 import { OrderBy } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: OrderBy = OrderBy.EventDatetime;
+let value: OrderBy = OrderBy.Status;
 ```
 
 ## Values

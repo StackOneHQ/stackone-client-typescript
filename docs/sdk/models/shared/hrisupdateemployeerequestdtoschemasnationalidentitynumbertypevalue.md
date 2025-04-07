@@ -160,4 +160,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Ein`                  | ein                    |
 | `Other`                | other                  |
 | `Unknown`              | unknown                |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

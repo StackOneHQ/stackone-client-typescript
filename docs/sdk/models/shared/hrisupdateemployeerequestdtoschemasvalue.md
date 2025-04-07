@@ -6,7 +6,7 @@
 import { HrisUpdateEmployeeRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUpdateEmployeeRequestDtoSchemasValue =
-  HrisUpdateEmployeeRequestDtoSchemasValue.UnmappedValue;
+  HrisUpdateEmployeeRequestDtoSchemasValue.Unknown;
 ```
 
 ## Values
