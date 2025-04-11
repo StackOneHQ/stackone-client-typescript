@@ -72,30 +72,13 @@ async function run() {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               value: "This is additional data",
             },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
           ],
           categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
             {
               id: "16873-IT345",
               language: {
@@ -118,6 +101,9 @@ async function run() {
             {
               value: LanguageEnumValue.EnGB,
             },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
           ],
           localizations: [
             {
@@ -137,7 +123,6 @@ async function run() {
           ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
-          shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
@@ -200,6 +185,17 @@ async function run() {
                 "my_project_custom_field_2": "some other value",
               },
             },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
           coverUrl: "https://www.googledrive.com/?v=16873",
@@ -208,12 +204,6 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
             {
               value: LanguageEnumValue.EnGB,
             },
@@ -236,7 +226,6 @@ async function run() {
           ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
-          shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
@@ -309,30 +298,13 @@ async function run() {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               value: "This is additional data",
             },
+            {
+              id: "learning_outcomes",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              value: "This is additional data",
+            },
           ],
           categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
             {
               id: "16873-IT345",
               language: {
@@ -355,6 +327,9 @@ async function run() {
             {
               value: LanguageEnumValue.EnGB,
             },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
           ],
           localizations: [
             {
@@ -374,7 +349,6 @@ async function run() {
           ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
-          shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
@@ -437,6 +411,17 @@ async function run() {
                 "my_project_custom_field_2": "some other value",
               },
             },
+            {
+              id: "16873-IT345",
+              language: {
+                value: CreateCategoriesApiModelSchemasValue.EnGB,
+              },
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
           coverUrl: "https://www.googledrive.com/?v=16873",
@@ -445,12 +430,6 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
             {
               value: LanguageEnumValue.EnGB,
             },
@@ -473,7 +452,6 @@ async function run() {
           ],
           mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
           order: 1,
-          shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "16873-IT345",
@@ -1329,7 +1307,6 @@ async function run() {
     lmsCreateAssignmentRequestDto: {
       createdAt: "2021-07-21T14:00:00.000Z",
       dueDate: "2021-07-21T14:00:00.000Z",
-      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -1374,7 +1351,6 @@ async function run() {
     lmsCreateAssignmentRequestDto: {
       createdAt: "2021-07-21T14:00:00.000Z",
       dueDate: "2021-07-21T14:00:00.000Z",
-      externalReference: "e3gd34-23tr21-er234-345er56",
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -1662,7 +1638,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getAssignment({
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1693,7 +1668,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetAssignment(stackOne, {
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1759,9 +1733,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCategory({
-    fields: "id,remote_id,name,active,level,language",
+    fields: "id,remote_id,name,active,hierarchy,level,language",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1791,9 +1764,8 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCategory(stackOne, {
-    fields: "id,remote_id,name,active,level,language",
+    fields: "id,remote_id,name,active,hierarchy,level,language",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1860,7 +1832,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getCompletion({
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1891,7 +1862,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetCompletion(stackOne, {
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1957,9 +1927,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1989,9 +1958,8 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2057,9 +2025,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCourse({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2089,9 +2056,8 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCourse(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2157,9 +2123,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getSkill({
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,hierarchy,language",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2189,9 +2154,8 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetSkill(stackOne, {
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,hierarchy,language",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2259,7 +2223,6 @@ async function run() {
   const result = await stackOne.lms.getUser({
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2291,7 +2254,6 @@ async function run() {
   const res = await lmsGetUser(stackOne, {
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2358,7 +2320,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getUserAssignment({
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2390,7 +2351,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetUserAssignment(stackOne, {
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2458,7 +2418,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.getUserCompletion({
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2490,7 +2449,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsGetUserCompletion(stackOne, {
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2561,8 +2519,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -2601,8 +2557,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -2673,12 +2627,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCategories({
-    fields: "id,remote_id,name,active,level,language",
+    fields: "id,remote_id,name,active,hierarchy,level,language",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2711,12 +2663,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCategories(stackOne, {
-    fields: "id,remote_id,name,active,level,language",
+    fields: "id,remote_id,name,active,hierarchy,level,language",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2789,8 +2739,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2827,8 +2775,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2897,12 +2843,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -2935,12 +2879,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3009,12 +2951,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCourses({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3047,12 +2987,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCourses(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3121,12 +3059,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listSkills({
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,hierarchy,language",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3159,12 +3095,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListSkills(stackOne, {
-    fields: "id,remote_id,name,active,level",
+    fields: "id,remote_id,name,active,hierarchy,language",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3238,8 +3172,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -3279,8 +3211,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     userId: "c28xyrc55866bvuv",
@@ -3356,8 +3286,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3395,8 +3323,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3469,8 +3395,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3507,8 +3431,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3845,17 +3767,6 @@ async function run() {
             "my_project_custom_field_2": "some other value",
           },
         },
-        {
-          id: "16873-IT345",
-          language: {
-            value: CreateCategoriesApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -3864,6 +3775,12 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+        {
+          value: LanguageEnumValue.EnGB,
+        },
         {
           value: LanguageEnumValue.EnGB,
         },
@@ -3886,7 +3803,6 @@ async function run() {
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
-      shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "16873-IT345",
@@ -3968,17 +3884,6 @@ async function run() {
             "my_project_custom_field_2": "some other value",
           },
         },
-        {
-          id: "16873-IT345",
-          language: {
-            value: CreateCategoriesApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -3987,6 +3892,12 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+        {
+          value: LanguageEnumValue.EnGB,
+        },
         {
           value: LanguageEnumValue.EnGB,
         },
@@ -4009,7 +3920,6 @@ async function run() {
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
-      shortDescription: "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
           id: "16873-IT345",

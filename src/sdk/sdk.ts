@@ -8,12 +8,14 @@ import { Ats } from "./ats.js";
 import { Connectors } from "./connectors.js";
 import { ConnectSessions } from "./connectsessions.js";
 import { Crm } from "./crm.js";
+import { Documents } from "./documents.js";
 import { Hris } from "./hris.js";
 import { Iam } from "./iam.js";
 import { Lms } from "./lms.js";
 import { Marketing } from "./marketing.js";
 import { Proxy } from "./proxy.js";
 import { RequestLogs } from "./requestlogs.js";
+import { Ticketing } from "./ticketing.js";
 
 export class StackOne extends ClientSDK {
   private _accounts?: Accounts;
@@ -46,6 +48,11 @@ export class StackOne extends ClientSDK {
     return (this._crm ??= new Crm(this._options));
   }
 
+  private _documents?: Documents;
+  get documents(): Documents {
+    return (this._documents ??= new Documents(this._options));
+  }
+
   private _hris?: Hris;
   get hris(): Hris {
     return (this._hris ??= new Hris(this._options));
@@ -69,5 +76,10 @@ export class StackOne extends ClientSDK {
   private _proxy?: Proxy;
   get proxy(): Proxy {
     return (this._proxy ??= new Proxy(this._options));
+  }
+
+  private _ticketing?: Ticketing;
+  get ticketing(): Ticketing {
+    return (this._ticketing ??= new Ticketing(this._options));
   }
 }

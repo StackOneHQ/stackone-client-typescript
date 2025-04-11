@@ -6,7 +6,7 @@
 import { ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLinkCategories =
-  ConnectSessionTokenAuthLinkCategories.Hris;
+  ConnectSessionTokenAuthLinkCategories.Ats;
 ```
 
 ## Values

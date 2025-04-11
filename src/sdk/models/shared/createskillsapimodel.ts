@@ -530,41 +530,6 @@ export type CreateSkillsApiModelLevel = {
   value?: CreateSkillsApiModelSchemasLevelValueOpen | null | undefined;
 };
 
-export type CreateSkillsApiModelSchemasProficiency4 = {};
-
-export type CreateSkillsApiModelSchemasProficiencySourceValue =
-  | CreateSkillsApiModelSchemasProficiency4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export enum CreateSkillsApiModelSchemasProficiencyValue {
-  One = "1",
-  Two = "2",
-  Three = "3",
-  Four = "4",
-  Five = "5",
-}
-export type CreateSkillsApiModelSchemasProficiencyValueOpen = OpenEnum<
-  typeof CreateSkillsApiModelSchemasProficiencyValue
->;
-
-/**
- * The user proficiency level of the skill ranked out of 5
- */
-export type Proficiency = {
-  sourceValue?:
-    | CreateSkillsApiModelSchemasProficiency4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: CreateSkillsApiModelSchemasProficiencyValueOpen | null | undefined;
-};
-
 export type CreateSkillsApiModel = {
   /**
    * The hierarchal level of the skill
@@ -588,10 +553,6 @@ export type CreateSkillsApiModel = {
    * The name associated with this skill
    */
   name?: string | null | undefined;
-  /**
-   * The user proficiency level of the skill ranked out of 5
-   */
-  proficiency?: Proficiency | null | undefined;
 };
 
 /** @internal */
@@ -1328,266 +1289,6 @@ export function createSkillsApiModelLevelFromJSON(
 }
 
 /** @internal */
-export const CreateSkillsApiModelSchemasProficiency4$inboundSchema: z.ZodType<
-  CreateSkillsApiModelSchemasProficiency4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CreateSkillsApiModelSchemasProficiency4$Outbound = {};
-
-/** @internal */
-export const CreateSkillsApiModelSchemasProficiency4$outboundSchema: z.ZodType<
-  CreateSkillsApiModelSchemasProficiency4$Outbound,
-  z.ZodTypeDef,
-  CreateSkillsApiModelSchemasProficiency4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSkillsApiModelSchemasProficiency4$ {
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiency4$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSkillsApiModelSchemasProficiency4$inboundSchema;
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiency4$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSkillsApiModelSchemasProficiency4$outboundSchema;
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiency4$Outbound` instead. */
-  export type Outbound = CreateSkillsApiModelSchemasProficiency4$Outbound;
-}
-
-export function createSkillsApiModelSchemasProficiency4ToJSON(
-  createSkillsApiModelSchemasProficiency4:
-    CreateSkillsApiModelSchemasProficiency4,
-): string {
-  return JSON.stringify(
-    CreateSkillsApiModelSchemasProficiency4$outboundSchema.parse(
-      createSkillsApiModelSchemasProficiency4,
-    ),
-  );
-}
-
-export function createSkillsApiModelSchemasProficiency4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateSkillsApiModelSchemasProficiency4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSkillsApiModelSchemasProficiency4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateSkillsApiModelSchemasProficiency4' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateSkillsApiModelSchemasProficiencySourceValue$inboundSchema:
-  z.ZodType<
-    CreateSkillsApiModelSchemasProficiencySourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.lazy(() => CreateSkillsApiModelSchemasProficiency4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.array(z.any()),
-  ]);
-
-/** @internal */
-export type CreateSkillsApiModelSchemasProficiencySourceValue$Outbound =
-  | CreateSkillsApiModelSchemasProficiency4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const CreateSkillsApiModelSchemasProficiencySourceValue$outboundSchema:
-  z.ZodType<
-    CreateSkillsApiModelSchemasProficiencySourceValue$Outbound,
-    z.ZodTypeDef,
-    CreateSkillsApiModelSchemasProficiencySourceValue
-  > = z.union([
-    z.lazy(() => CreateSkillsApiModelSchemasProficiency4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.array(z.any()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSkillsApiModelSchemasProficiencySourceValue$ {
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiencySourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSkillsApiModelSchemasProficiencySourceValue$inboundSchema;
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiencySourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSkillsApiModelSchemasProficiencySourceValue$outboundSchema;
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiencySourceValue$Outbound` instead. */
-  export type Outbound =
-    CreateSkillsApiModelSchemasProficiencySourceValue$Outbound;
-}
-
-export function createSkillsApiModelSchemasProficiencySourceValueToJSON(
-  createSkillsApiModelSchemasProficiencySourceValue:
-    CreateSkillsApiModelSchemasProficiencySourceValue,
-): string {
-  return JSON.stringify(
-    CreateSkillsApiModelSchemasProficiencySourceValue$outboundSchema.parse(
-      createSkillsApiModelSchemasProficiencySourceValue,
-    ),
-  );
-}
-
-export function createSkillsApiModelSchemasProficiencySourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateSkillsApiModelSchemasProficiencySourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateSkillsApiModelSchemasProficiencySourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateSkillsApiModelSchemasProficiencySourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateSkillsApiModelSchemasProficiencyValue$inboundSchema:
-  z.ZodType<
-    CreateSkillsApiModelSchemasProficiencyValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(CreateSkillsApiModelSchemasProficiencyValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-/** @internal */
-export const CreateSkillsApiModelSchemasProficiencyValue$outboundSchema:
-  z.ZodType<
-    CreateSkillsApiModelSchemasProficiencyValueOpen,
-    z.ZodTypeDef,
-    CreateSkillsApiModelSchemasProficiencyValueOpen
-  > = z.union([
-    z.nativeEnum(CreateSkillsApiModelSchemasProficiencyValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSkillsApiModelSchemasProficiencyValue$ {
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiencyValue$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSkillsApiModelSchemasProficiencyValue$inboundSchema;
-  /** @deprecated use `CreateSkillsApiModelSchemasProficiencyValue$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSkillsApiModelSchemasProficiencyValue$outboundSchema;
-}
-
-/** @internal */
-export const Proficiency$inboundSchema: z.ZodType<
-  Proficiency,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => CreateSkillsApiModelSchemasProficiency4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateSkillsApiModelSchemasProficiencyValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type Proficiency$Outbound = {
-  source_value?:
-    | CreateSkillsApiModelSchemasProficiency4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const Proficiency$outboundSchema: z.ZodType<
-  Proficiency$Outbound,
-  z.ZodTypeDef,
-  Proficiency
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => CreateSkillsApiModelSchemasProficiency4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateSkillsApiModelSchemasProficiencyValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Proficiency$ {
-  /** @deprecated use `Proficiency$inboundSchema` instead. */
-  export const inboundSchema = Proficiency$inboundSchema;
-  /** @deprecated use `Proficiency$outboundSchema` instead. */
-  export const outboundSchema = Proficiency$outboundSchema;
-  /** @deprecated use `Proficiency$Outbound` instead. */
-  export type Outbound = Proficiency$Outbound;
-}
-
-export function proficiencyToJSON(proficiency: Proficiency): string {
-  return JSON.stringify(Proficiency$outboundSchema.parse(proficiency));
-}
-
-export function proficiencyFromJSON(
-  jsonString: string,
-): SafeParseResult<Proficiency, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Proficiency$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Proficiency' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateSkillsApiModel$inboundSchema: z.ZodType<
   CreateSkillsApiModel,
   z.ZodTypeDef,
@@ -1602,7 +1303,6 @@ export const CreateSkillsApiModel$inboundSchema: z.ZodType<
   level: z.nullable(z.lazy(() => CreateSkillsApiModelLevel$inboundSchema))
     .optional(),
   name: z.nullable(z.string()).optional(),
-  proficiency: z.nullable(z.lazy(() => Proficiency$inboundSchema)).optional(),
 });
 
 /** @internal */
@@ -1612,7 +1312,6 @@ export type CreateSkillsApiModel$Outbound = {
   language?: CreateSkillsApiModelLanguage$Outbound | null | undefined;
   level?: CreateSkillsApiModelLevel$Outbound | null | undefined;
   name?: string | null | undefined;
-  proficiency?: Proficiency$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -1631,7 +1330,6 @@ export const CreateSkillsApiModel$outboundSchema: z.ZodType<
   level: z.nullable(z.lazy(() => CreateSkillsApiModelLevel$outboundSchema))
     .optional(),
   name: z.nullable(z.string()).optional(),
-  proficiency: z.nullable(z.lazy(() => Proficiency$outboundSchema)).optional(),
 });
 
 /**

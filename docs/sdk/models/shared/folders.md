@@ -1,0 +1,45 @@
+# Folders
+
+## Example Usage
+
+```typescript
+import { Folders } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Folders = {
+  createdAt: new Date("2023-02-23T00:00:00.000Z"),
+  description: "This is the description associated to the folder.",
+  driveId: "c28xyrc55866bvuv",
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  name: "Information-Technology",
+  ownerId: "c28xyrc55866bvuv",
+  parentFolderId: "c28xyrc55866bvuv",
+  path: "/path/to/folder",
+  remoteDriveId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  remoteOwnerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+  remoteParentFolderId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+  size: 1024,
+  updatedAt: new Date("2024-02-23T00:00:00.000Z"),
+  url: "https://drive.google.com/folder/d/nd8932h9d/view",
+};
+```
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The created date of the folder                                                                | 2023-02-23T00:00:00.000Z                                                                      |
+| `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The description of the folder                                                                 | This is the description associated to the folder.                                             |
+| `driveId`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The parent drive ID associated with this folder                                               | c28xyrc55866bvuv                                                                              |
+| `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | Unique identifier                                                                             | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                          |
+| `name`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name associated with this folder                                                          | Information-Technology                                                                        |
+| `ownerId`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The user ID of owner of this folder                                                           | c28xyrc55866bvuv                                                                              |
+| `parentFolderId`                                                                              | *string*                                                                                      | :heavy_minus_sign:                                                                            | The parent folder ID associated with this folder                                              | c28xyrc55866bvuv                                                                              |
+| `path`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The path where the folder is stored                                                           | /path/to/folder                                                                               |
+| `remoteDriveId`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | Provider's unique identifier of the parent drive associated with this folder                  | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                          |
+| `remoteId`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | Provider's unique identifier                                                                  | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                          |
+| `remoteOwnerId`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | Provider's unique identifier of the owner of this folder                                      | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                          |
+| `remoteParentFolderId`                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | Provider's unique identifier of the parent folder associated with this folder                 | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                          |
+| `size`                                                                                        | *number*                                                                                      | :heavy_minus_sign:                                                                            | The size of this folder in bytes                                                              | 1024                                                                                          |
+| `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The last updated date of the folder                                                           | 2024-02-23T00:00:00.000Z                                                                      |
+| `url`                                                                                         | *string*                                                                                      | :heavy_minus_sign:                                                                            | The url of the folder                                                                         | https://drive.google.com/folder/d/nd8932h9d/view                                              |

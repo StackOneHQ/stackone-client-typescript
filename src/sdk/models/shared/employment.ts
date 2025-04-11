@@ -125,6 +125,10 @@ export type EmploymentSchemasCostCenterType = {
  */
 export type CostCenter = {
   /**
+   * The id of the company that the group belongs to
+   */
+  companyId?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -140,6 +144,10 @@ export type CostCenter = {
    * The list of parent group ids of the given group
    */
   parentIds?: Array<string> | null | undefined;
+  /**
+   * Provider's id of the company that the group belongs to
+   */
+  remoteCompanyId?: string | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -204,6 +212,10 @@ export type EmploymentSchemasDepartmentType = {
  */
 export type EmploymentDepartment = {
   /**
+   * The id of the company that the group belongs to
+   */
+  companyId?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -219,6 +231,10 @@ export type EmploymentDepartment = {
    * The list of parent group ids of the given group
    */
   parentIds?: Array<string> | null | undefined;
+  /**
+   * Provider's id of the company that the group belongs to
+   */
+  remoteCompanyId?: string | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -283,6 +299,10 @@ export type EmploymentSchemasDivisionType = {
  */
 export type Division = {
   /**
+   * The id of the company that the group belongs to
+   */
+  companyId?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -298,6 +318,10 @@ export type Division = {
    * The list of parent group ids of the given group
    */
   parentIds?: Array<string> | null | undefined;
+  /**
+   * Provider's id of the company that the group belongs to
+   */
+  remoteCompanyId?: string | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -1334,10 +1358,12 @@ export const CostCenter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  company_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   owner_ids: z.nullable(z.array(z.string())).optional(),
   parent_ids: z.nullable(z.array(z.string())).optional(),
+  remote_company_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_owner_ids: z.nullable(z.array(z.string())).optional(),
   remote_parent_ids: z.nullable(z.array(z.string())).optional(),
@@ -1346,8 +1372,10 @@ export const CostCenter$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "company_id": "companyId",
     "owner_ids": "ownerIds",
     "parent_ids": "parentIds",
+    "remote_company_id": "remoteCompanyId",
     "remote_id": "remoteId",
     "remote_owner_ids": "remoteOwnerIds",
     "remote_parent_ids": "remoteParentIds",
@@ -1357,10 +1385,12 @@ export const CostCenter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CostCenter$Outbound = {
+  company_id?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   owner_ids?: Array<string> | null | undefined;
   parent_ids?: Array<string> | null | undefined;
+  remote_company_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_owner_ids?: Array<string> | null | undefined;
   remote_parent_ids?: Array<string> | null | undefined;
@@ -1374,10 +1404,12 @@ export const CostCenter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CostCenter
 > = z.object({
+  companyId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerIds: z.nullable(z.array(z.string())).optional(),
   parentIds: z.nullable(z.array(z.string())).optional(),
+  remoteCompanyId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
   remoteParentIds: z.nullable(z.array(z.string())).optional(),
@@ -1386,8 +1418,10 @@ export const CostCenter$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    companyId: "company_id",
     ownerIds: "owner_ids",
     parentIds: "parent_ids",
+    remoteCompanyId: "remote_company_id",
     remoteId: "remote_id",
     remoteOwnerIds: "remote_owner_ids",
     remoteParentIds: "remote_parent_ids",
@@ -1671,10 +1705,12 @@ export const EmploymentDepartment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  company_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   owner_ids: z.nullable(z.array(z.string())).optional(),
   parent_ids: z.nullable(z.array(z.string())).optional(),
+  remote_company_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_owner_ids: z.nullable(z.array(z.string())).optional(),
   remote_parent_ids: z.nullable(z.array(z.string())).optional(),
@@ -1683,8 +1719,10 @@ export const EmploymentDepartment$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "company_id": "companyId",
     "owner_ids": "ownerIds",
     "parent_ids": "parentIds",
+    "remote_company_id": "remoteCompanyId",
     "remote_id": "remoteId",
     "remote_owner_ids": "remoteOwnerIds",
     "remote_parent_ids": "remoteParentIds",
@@ -1694,10 +1732,12 @@ export const EmploymentDepartment$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EmploymentDepartment$Outbound = {
+  company_id?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   owner_ids?: Array<string> | null | undefined;
   parent_ids?: Array<string> | null | undefined;
+  remote_company_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_owner_ids?: Array<string> | null | undefined;
   remote_parent_ids?: Array<string> | null | undefined;
@@ -1711,10 +1751,12 @@ export const EmploymentDepartment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EmploymentDepartment
 > = z.object({
+  companyId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerIds: z.nullable(z.array(z.string())).optional(),
   parentIds: z.nullable(z.array(z.string())).optional(),
+  remoteCompanyId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
   remoteParentIds: z.nullable(z.array(z.string())).optional(),
@@ -1723,8 +1765,10 @@ export const EmploymentDepartment$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    companyId: "company_id",
     ownerIds: "owner_ids",
     parentIds: "parent_ids",
+    remoteCompanyId: "remote_company_id",
     remoteId: "remote_id",
     remoteOwnerIds: "remote_owner_ids",
     remoteParentIds: "remote_parent_ids",
@@ -2009,10 +2053,12 @@ export const Division$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  company_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   owner_ids: z.nullable(z.array(z.string())).optional(),
   parent_ids: z.nullable(z.array(z.string())).optional(),
+  remote_company_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_owner_ids: z.nullable(z.array(z.string())).optional(),
   remote_parent_ids: z.nullable(z.array(z.string())).optional(),
@@ -2021,8 +2067,10 @@ export const Division$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "company_id": "companyId",
     "owner_ids": "ownerIds",
     "parent_ids": "parentIds",
+    "remote_company_id": "remoteCompanyId",
     "remote_id": "remoteId",
     "remote_owner_ids": "remoteOwnerIds",
     "remote_parent_ids": "remoteParentIds",
@@ -2032,10 +2080,12 @@ export const Division$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Division$Outbound = {
+  company_id?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   owner_ids?: Array<string> | null | undefined;
   parent_ids?: Array<string> | null | undefined;
+  remote_company_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_owner_ids?: Array<string> | null | undefined;
   remote_parent_ids?: Array<string> | null | undefined;
@@ -2049,10 +2099,12 @@ export const Division$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Division
 > = z.object({
+  companyId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerIds: z.nullable(z.array(z.string())).optional(),
   parentIds: z.nullable(z.array(z.string())).optional(),
+  remoteCompanyId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
   remoteParentIds: z.nullable(z.array(z.string())).optional(),
@@ -2061,8 +2113,10 @@ export const Division$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    companyId: "company_id",
     ownerIds: "owner_ids",
     parentIds: "parent_ids",
+    remoteCompanyId: "remote_company_id",
     remoteId: "remote_id",
     remoteOwnerIds: "remote_owner_ids",
     remoteParentIds: "remote_parent_ids",

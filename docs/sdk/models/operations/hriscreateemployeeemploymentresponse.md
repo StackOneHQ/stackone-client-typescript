@@ -23,6 +23,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
       },
       costCenters: [
         {
+          companyId: "1234567890",
           distributionPercentage: 85,
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Engineering",
@@ -34,6 +35,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
             "cxIQNjUyNDM0",
             "cxIQNjQzNzI0MQ",
           ],
+          remoteCompanyId: "1234567890",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteOwnerIds: [
             "475364",
@@ -54,6 +56,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
       ],
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       department: {
+        companyId: "1234567890",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Engineering",
         ownerIds: [
@@ -64,6 +67,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
           "cxIQNjUyNDM0",
           "cxIQNjQzNzI0MQ",
         ],
+        remoteCompanyId: "1234567890",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteOwnerIds: [
           "475364",
@@ -82,6 +86,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
         },
       },
       division: {
+        companyId: "1234567890",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Engineering",
         ownerIds: [
@@ -92,6 +97,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
           "cxIQNjUyNDM0",
           "cxIQNjQzNzI0MQ",
         ],
+        remoteCompanyId: "1234567890",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteOwnerIds: [
           "475364",
@@ -161,7 +167,7 @@ let value: HrisCreateEmployeeEmploymentResponse = {
       "<value>",
     ],
   },
-  statusCode: 405,
+  statusCode: 102,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

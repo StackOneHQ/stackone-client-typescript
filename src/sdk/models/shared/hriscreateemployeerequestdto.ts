@@ -1412,6 +1412,7 @@ export enum HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue {
   Ein = "ein",
   Other = "other",
   Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the national identity number

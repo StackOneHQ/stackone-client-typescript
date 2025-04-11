@@ -3,6 +3,7 @@
  */
 
 import { hrisBatchUploadEmployeeDocument } from "../funcs/hrisBatchUploadEmployeeDocument.js";
+import { hrisCancelEmployeeTimeOffRequest } from "../funcs/hrisCancelEmployeeTimeOffRequest.js";
 import { hrisCreateEmployee } from "../funcs/hrisCreateEmployee.js";
 import { hrisCreateEmployeeEmployment } from "../funcs/hrisCreateEmployeeEmployment.js";
 import { hrisCreateEmployeeSkill } from "../funcs/hrisCreateEmployeeSkill.js";
@@ -76,6 +77,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisBatchUploadEmployeeDocumentResponse> {
     return unwrapAsync(hrisBatchUploadEmployeeDocument(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Cancel Employee Time Off Request
+   */
+  async cancelEmployeeTimeOffRequest(
+    request: operations.HrisCancelEmployeeTimeOffRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisCancelEmployeeTimeOffRequestResponse> {
+    return unwrapAsync(hrisCancelEmployeeTimeOffRequest(
       this,
       request,
       options,

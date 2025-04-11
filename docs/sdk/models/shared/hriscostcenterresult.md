@@ -7,6 +7,7 @@ import { HRISCostCenterResult, HRISCostCenterValue } from "@stackone/stackone-cl
 
 let value: HRISCostCenterResult = {
   data: {
+    companyId: "1234567890",
     distributionPercentage: 85,
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     name: "Engineering",
@@ -18,6 +19,7 @@ let value: HRISCostCenterResult = {
       "cxIQNjUyNDM0",
       "cxIQNjQzNzI0MQ",
     ],
+    remoteCompanyId: "1234567890",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteOwnerIds: [
       "475364",

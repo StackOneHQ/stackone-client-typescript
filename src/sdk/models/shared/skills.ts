@@ -526,41 +526,6 @@ export type SkillsLevel = {
   value?: SkillsSchemasLevelValueOpen | null | undefined;
 };
 
-export type SkillsSchemasProficiency4 = {};
-
-export type SkillsSchemasProficiencySourceValue =
-  | SkillsSchemasProficiency4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export enum SkillsSchemasProficiencyValue {
-  One = "1",
-  Two = "2",
-  Three = "3",
-  Four = "4",
-  Five = "5",
-}
-export type SkillsSchemasProficiencyValueOpen = OpenEnum<
-  typeof SkillsSchemasProficiencyValue
->;
-
-/**
- * The user proficiency level of the skill ranked out of 5
- */
-export type SkillsProficiency = {
-  sourceValue?:
-    | SkillsSchemasProficiency4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: SkillsSchemasProficiencyValueOpen | null | undefined;
-};
-
 export type Skills = {
   /**
    * Whether the skill is active and therefore available for use
@@ -588,10 +553,6 @@ export type Skills = {
    * The name associated with this skill
    */
   name?: string | null | undefined;
-  /**
-   * The user proficiency level of the skill ranked out of 5
-   */
-  proficiency?: SkillsProficiency | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -1279,244 +1240,6 @@ export function skillsLevelFromJSON(
 }
 
 /** @internal */
-export const SkillsSchemasProficiency4$inboundSchema: z.ZodType<
-  SkillsSchemasProficiency4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type SkillsSchemasProficiency4$Outbound = {};
-
-/** @internal */
-export const SkillsSchemasProficiency4$outboundSchema: z.ZodType<
-  SkillsSchemasProficiency4$Outbound,
-  z.ZodTypeDef,
-  SkillsSchemasProficiency4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasProficiency4$ {
-  /** @deprecated use `SkillsSchemasProficiency4$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasProficiency4$inboundSchema;
-  /** @deprecated use `SkillsSchemasProficiency4$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasProficiency4$outboundSchema;
-  /** @deprecated use `SkillsSchemasProficiency4$Outbound` instead. */
-  export type Outbound = SkillsSchemasProficiency4$Outbound;
-}
-
-export function skillsSchemasProficiency4ToJSON(
-  skillsSchemasProficiency4: SkillsSchemasProficiency4,
-): string {
-  return JSON.stringify(
-    SkillsSchemasProficiency4$outboundSchema.parse(skillsSchemasProficiency4),
-  );
-}
-
-export function skillsSchemasProficiency4FromJSON(
-  jsonString: string,
-): SafeParseResult<SkillsSchemasProficiency4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SkillsSchemasProficiency4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SkillsSchemasProficiency4' from JSON`,
-  );
-}
-
-/** @internal */
-export const SkillsSchemasProficiencySourceValue$inboundSchema: z.ZodType<
-  SkillsSchemasProficiencySourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => SkillsSchemasProficiency4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type SkillsSchemasProficiencySourceValue$Outbound =
-  | SkillsSchemasProficiency4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const SkillsSchemasProficiencySourceValue$outboundSchema: z.ZodType<
-  SkillsSchemasProficiencySourceValue$Outbound,
-  z.ZodTypeDef,
-  SkillsSchemasProficiencySourceValue
-> = z.union([
-  z.lazy(() => SkillsSchemasProficiency4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasProficiencySourceValue$ {
-  /** @deprecated use `SkillsSchemasProficiencySourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    SkillsSchemasProficiencySourceValue$inboundSchema;
-  /** @deprecated use `SkillsSchemasProficiencySourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    SkillsSchemasProficiencySourceValue$outboundSchema;
-  /** @deprecated use `SkillsSchemasProficiencySourceValue$Outbound` instead. */
-  export type Outbound = SkillsSchemasProficiencySourceValue$Outbound;
-}
-
-export function skillsSchemasProficiencySourceValueToJSON(
-  skillsSchemasProficiencySourceValue: SkillsSchemasProficiencySourceValue,
-): string {
-  return JSON.stringify(
-    SkillsSchemasProficiencySourceValue$outboundSchema.parse(
-      skillsSchemasProficiencySourceValue,
-    ),
-  );
-}
-
-export function skillsSchemasProficiencySourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<SkillsSchemasProficiencySourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      SkillsSchemasProficiencySourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SkillsSchemasProficiencySourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const SkillsSchemasProficiencyValue$inboundSchema: z.ZodType<
-  SkillsSchemasProficiencyValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(SkillsSchemasProficiencyValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const SkillsSchemasProficiencyValue$outboundSchema: z.ZodType<
-  SkillsSchemasProficiencyValueOpen,
-  z.ZodTypeDef,
-  SkillsSchemasProficiencyValueOpen
-> = z.union([
-  z.nativeEnum(SkillsSchemasProficiencyValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasProficiencyValue$ {
-  /** @deprecated use `SkillsSchemasProficiencyValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasProficiencyValue$inboundSchema;
-  /** @deprecated use `SkillsSchemasProficiencyValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasProficiencyValue$outboundSchema;
-}
-
-/** @internal */
-export const SkillsProficiency$inboundSchema: z.ZodType<
-  SkillsProficiency,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => SkillsSchemasProficiency4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(SkillsSchemasProficiencyValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type SkillsProficiency$Outbound = {
-  source_value?:
-    | SkillsSchemasProficiency4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const SkillsProficiency$outboundSchema: z.ZodType<
-  SkillsProficiency$Outbound,
-  z.ZodTypeDef,
-  SkillsProficiency
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => SkillsSchemasProficiency4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(SkillsSchemasProficiencyValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsProficiency$ {
-  /** @deprecated use `SkillsProficiency$inboundSchema` instead. */
-  export const inboundSchema = SkillsProficiency$inboundSchema;
-  /** @deprecated use `SkillsProficiency$outboundSchema` instead. */
-  export const outboundSchema = SkillsProficiency$outboundSchema;
-  /** @deprecated use `SkillsProficiency$Outbound` instead. */
-  export type Outbound = SkillsProficiency$Outbound;
-}
-
-export function skillsProficiencyToJSON(
-  skillsProficiency: SkillsProficiency,
-): string {
-  return JSON.stringify(
-    SkillsProficiency$outboundSchema.parse(skillsProficiency),
-  );
-}
-
-export function skillsProficiencyFromJSON(
-  jsonString: string,
-): SafeParseResult<SkillsProficiency, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SkillsProficiency$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SkillsProficiency' from JSON`,
-  );
-}
-
-/** @internal */
 export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
   .object({
     active: z.nullable(z.boolean()).optional(),
@@ -1526,8 +1249,6 @@ export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
     language: z.nullable(z.lazy(() => SkillsLanguage$inboundSchema)).optional(),
     level: z.nullable(z.lazy(() => SkillsLevel$inboundSchema)).optional(),
     name: z.nullable(z.string()).optional(),
-    proficiency: z.nullable(z.lazy(() => SkillsProficiency$inboundSchema))
-      .optional(),
     remote_id: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -1543,7 +1264,6 @@ export type Skills$Outbound = {
   language?: SkillsLanguage$Outbound | null | undefined;
   level?: SkillsLevel$Outbound | null | undefined;
   name?: string | null | undefined;
-  proficiency?: SkillsProficiency$Outbound | null | undefined;
   remote_id?: string | null | undefined;
 };
 
@@ -1560,8 +1280,6 @@ export const Skills$outboundSchema: z.ZodType<
   language: z.nullable(z.lazy(() => SkillsLanguage$outboundSchema)).optional(),
   level: z.nullable(z.lazy(() => SkillsLevel$outboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
-  proficiency: z.nullable(z.lazy(() => SkillsProficiency$outboundSchema))
-    .optional(),
   remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

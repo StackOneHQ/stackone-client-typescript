@@ -10,6 +10,7 @@ let value: HrisListDepartmentGroupsResponse = {
   hrisDepartmentsPaginated: {
     data: [
       {
+        companyId: "1234567890",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Engineering",
         ownerIds: [
@@ -20,6 +21,7 @@ let value: HrisListDepartmentGroupsResponse = {
           "cxIQNjUyNDM0",
           "cxIQNjQzNzI0MQ",
         ],
+        remoteCompanyId: "1234567890",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteOwnerIds: [
           "475364",
@@ -42,7 +44,7 @@ let value: HrisListDepartmentGroupsResponse = {
       "<value>",
     ],
   },
-  statusCode: 103,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
