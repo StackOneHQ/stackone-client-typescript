@@ -13,7 +13,7 @@ let value: HrisListEmployeeTimeOffRequestsResponse = {
       "<value>",
     ],
   },
-  statusCode: 409,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -7,7 +7,7 @@ Confidential status of the job
 ```typescript
 import { Confidential } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Confidential = Confidential.True;
+let value: Confidential = Confidential.False;
 ```
 
 ## Values

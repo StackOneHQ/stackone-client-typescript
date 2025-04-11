@@ -131,8 +131,10 @@ async function run() {
         passthrough: {
           "other_known_names": "John Doe",
         },
-        phoneNumber: "+1234567890",
         phoneNumbers: [
+          {
+            phone: "+447700112233",
+          },
           {
             phone: "+447700112233",
           },
@@ -257,8 +259,10 @@ async function run() {
         passthrough: {
           "other_known_names": "John Doe",
         },
-        phoneNumber: "+1234567890",
         phoneNumbers: [
+          {
+            phone: "+447700112233",
+          },
           {
             phone: "+447700112233",
           },
@@ -681,16 +685,20 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
-      phoneNumber: "+1234567890",
       phoneNumbers: [
-        {
-          phone: "+447700112233",
-        },
         {
           phone: "+447700112233",
         },
       ],
       socialLinks: [
+        {
+          type: "linkedin",
+          url: "https://www.linkedin.com/in/romainsestier/",
+        },
+        {
+          type: "linkedin",
+          url: "https://www.linkedin.com/in/romainsestier/",
+        },
         {
           type: "linkedin",
           url: "https://www.linkedin.com/in/romainsestier/",
@@ -760,16 +768,20 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
-      phoneNumber: "+1234567890",
       phoneNumbers: [
-        {
-          phone: "+447700112233",
-        },
         {
           phone: "+447700112233",
         },
       ],
       socialLinks: [
+        {
+          type: "linkedin",
+          url: "https://www.linkedin.com/in/romainsestier/",
+        },
+        {
+          type: "linkedin",
+          url: "https://www.linkedin.com/in/romainsestier/",
+        },
         {
           type: "linkedin",
           url: "https://www.linkedin.com/in/romainsestier/",
@@ -1470,6 +1482,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.downloadApplicationDocument({
+    exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
     subResourceId: "<id>",
@@ -1502,6 +1515,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsDownloadApplicationDocument(stackOne, {
+    exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
     subResourceId: "<id>",
@@ -1574,7 +1588,6 @@ async function run() {
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
     include: "attachments,custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1608,7 +1621,6 @@ async function run() {
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
     include: "attachments,custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -1679,8 +1691,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1716,8 +1726,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -1786,7 +1794,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationDocument({
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1819,7 +1826,6 @@ async function run() {
   const res = await atsGetApplicationDocument(stackOne, {
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1888,7 +1894,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationNote({
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1921,7 +1926,6 @@ async function run() {
   const res = await atsGetApplicationNote(stackOne, {
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -1990,7 +1994,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationOffer({
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2023,7 +2026,6 @@ async function run() {
   const res = await atsGetApplicationOffer(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2092,7 +2094,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationScheduledInterview({
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2125,7 +2126,6 @@ async function run() {
   const res = await atsGetApplicationScheduledInterview(stackOne, {
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2194,7 +2194,6 @@ async function run() {
   const result = await stackOne.ats.getApplicationScorecard({
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2227,7 +2226,6 @@ async function run() {
   const res = await atsGetApplicationScorecard(stackOne, {
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -2295,7 +2293,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getAssessmentsPackage({
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2326,7 +2323,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsGetAssessmentsPackage(stackOne, {
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2394,7 +2390,6 @@ async function run() {
   const result = await stackOne.ats.getAssessmentsRequest({
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2426,7 +2421,6 @@ async function run() {
   const res = await atsGetAssessmentsRequest(stackOne, {
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2494,7 +2488,6 @@ async function run() {
   const result = await stackOne.ats.getAssessmentsResult({
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2526,7 +2519,6 @@ async function run() {
   const res = await atsGetAssessmentsResult(stackOne, {
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2594,7 +2586,6 @@ async function run() {
   const result = await stackOne.ats.getBackgroundCheckPackage({
     fields: "id,remote_id,name,description,tests",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2626,7 +2617,6 @@ async function run() {
   const res = await atsGetBackgroundCheckPackage(stackOne, {
     fields: "id,remote_id,name,description,tests",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2694,7 +2684,6 @@ async function run() {
   const result = await stackOne.ats.getBackgroundCheckRequest({
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2726,7 +2715,6 @@ async function run() {
   const res = await atsGetBackgroundCheckRequest(stackOne, {
     fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2794,7 +2782,6 @@ async function run() {
   const result = await stackOne.ats.getBackgroundCheckResult({
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2826,7 +2813,6 @@ async function run() {
   const res = await atsGetBackgroundCheckResult(stackOne, {
     fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2895,7 +2881,6 @@ async function run() {
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2928,7 +2913,6 @@ async function run() {
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -2999,8 +2983,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3036,8 +3018,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3106,7 +3086,6 @@ async function run() {
   const result = await stackOne.ats.getCandidateNote({
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -3139,7 +3118,6 @@ async function run() {
   const res = await atsGetCandidateNote(stackOne, {
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    raw: false,
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
@@ -3208,7 +3186,6 @@ async function run() {
   const result = await stackOne.ats.getDepartment({
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3240,7 +3217,6 @@ async function run() {
   const res = await atsGetDepartment(stackOne, {
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3308,7 +3284,6 @@ async function run() {
   const result = await stackOne.ats.getInterview({
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3340,7 +3315,6 @@ async function run() {
   const res = await atsGetInterview(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3408,7 +3382,6 @@ async function run() {
   const result = await stackOne.ats.getInterviewStage({
     fields: "id,remote_id,name,order,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3440,7 +3413,6 @@ async function run() {
   const res = await atsGetInterviewStage(stackOne, {
     fields: "id,remote_id,name,order,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3507,10 +3479,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getJob({
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3541,10 +3512,9 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsGetJob(stackOne, {
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3615,8 +3585,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3652,8 +3620,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -3723,7 +3689,6 @@ async function run() {
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3756,7 +3721,6 @@ async function run() {
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3824,7 +3788,6 @@ async function run() {
   const result = await stackOne.ats.getList({
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3856,7 +3819,6 @@ async function run() {
   const res = await atsGetList(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3924,7 +3886,6 @@ async function run() {
   const result = await stackOne.ats.getLocation({
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -3956,7 +3917,6 @@ async function run() {
   const res = await atsGetLocation(stackOne, {
     fields: "id,remote_id,name",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4024,7 +3984,6 @@ async function run() {
   const result = await stackOne.ats.getOffer({
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4056,7 +4015,6 @@ async function run() {
   const res = await atsGetOffer(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4124,7 +4082,6 @@ async function run() {
   const result = await stackOne.ats.getRejectedReason({
     fields: "id,remote_id,label,type,rejected_reason_type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4156,7 +4113,6 @@ async function run() {
   const res = await atsGetRejectedReason(stackOne, {
     fields: "id,remote_id,label,type,rejected_reason_type",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4222,9 +4178,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getUser({
-    fields: "id,remote_id,first_name,last_name,name,email",
+    fields: "id,remote_id,first_name,last_name,name,email,phone",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4254,9 +4209,8 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetUser(stackOne, {
-    fields: "id,remote_id,first_name,last_name,name,email",
+    fields: "id,remote_id,first_name,last_name,name,email,phone",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -4326,8 +4280,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4364,8 +4316,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4439,8 +4389,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4478,8 +4426,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4553,8 +4499,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4592,8 +4536,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4667,8 +4609,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4706,8 +4646,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4784,8 +4722,6 @@ async function run() {
     },
     include: "attachments,custom_fields",
     jobId: "cxQiyiuasdFKfdsYfer",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4826,8 +4762,6 @@ async function run() {
     },
     include: "attachments,custom_fields",
     jobId: "cxQiyiuasdFKfdsYfer",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4901,8 +4835,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -4940,8 +4872,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5015,8 +4945,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5054,8 +4982,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5127,8 +5053,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5164,8 +5088,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5238,8 +5160,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5276,8 +5196,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5350,8 +5268,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5388,8 +5304,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5462,8 +5376,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5500,8 +5412,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5575,8 +5485,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5614,8 +5522,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5690,8 +5596,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5730,8 +5634,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5804,8 +5706,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5842,8 +5742,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5916,8 +5814,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -5954,8 +5850,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6029,8 +5923,6 @@ async function run() {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6068,8 +5960,6 @@ async function run() {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6142,8 +6032,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6180,8 +6068,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6256,8 +6142,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "questionnaires",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6296,8 +6180,6 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "questionnaires",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6367,14 +6249,12 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listJobs({
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     filter: {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6408,14 +6288,12 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsListJobs(stackOne, {
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     filter: {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6488,8 +6366,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6526,8 +6402,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6600,8 +6474,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6638,8 +6510,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6712,8 +6582,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6750,8 +6618,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6824,8 +6690,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6862,8 +6726,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6932,12 +6794,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listUsers({
-    fields: "id,remote_id,first_name,last_name,name,email",
+    fields: "id,remote_id,first_name,last_name,name,email,phone",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -6970,12 +6830,10 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListUsers(stackOne, {
-    fields: "id,remote_id,first_name,last_name,name,email",
+    fields: "id,remote_id,first_name,last_name,name,email,phone",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });

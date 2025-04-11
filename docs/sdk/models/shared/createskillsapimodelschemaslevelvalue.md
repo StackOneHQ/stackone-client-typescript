@@ -6,7 +6,7 @@
 import { CreateSkillsApiModelSchemasLevelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateSkillsApiModelSchemasLevelValue =
-  CreateSkillsApiModelSchemasLevelValue.Tertiary;
+  CreateSkillsApiModelSchemasLevelValue.Primary;
 ```
 
 ## Values

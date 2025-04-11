@@ -7,7 +7,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-LMS: The documentation for the StackOne Unified API - LMS
+Documents: The documentation for the StackOne Unified API - DOCUMENTS
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -78,15 +78,13 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployees({
-    expand: "company,employments,work_location,home_location,groups",
+    expand: "company,employments,work_location,home_location,groups,skills",
     fields:
-      "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+      "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -214,9 +212,22 @@ run();
 * [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 
+### [documents](docs/sdks/documents/README.md)
+
+* [downloadFile](docs/sdks/documents/README.md#downloadfile) - Download File
+* [getDrive](docs/sdks/documents/README.md#getdrive) - Get Drive
+* [getFile](docs/sdks/documents/README.md#getfile) - Get File
+* [getFolder](docs/sdks/documents/README.md#getfolder) - Get Folder
+* [listDrives](docs/sdks/documents/README.md#listdrives) - List Drives
+* [listFiles](docs/sdks/documents/README.md#listfiles) - List Files
+* [listFolders](docs/sdks/documents/README.md#listfolders) - List Folders
+* [searchFiles](docs/sdks/documents/README.md#searchfiles) - Search Files
+* [uploadFile](docs/sdks/documents/README.md#uploadfile) - Upload File
+
 ### [hris](docs/sdks/hris/README.md)
 
 * [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
+* [cancelEmployeeTimeOffRequest](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
 * [createEmployeeEmployment](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 * [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
@@ -360,6 +371,21 @@ run();
 * [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 
 
+### [ticketing](docs/sdks/ticketing/README.md)
+
+* [createTicket](docs/sdks/ticketing/README.md#createticket) - Create Ticket
+* [downloadTicketingAttachment](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment
+* [getAttachment](docs/sdks/ticketing/README.md#getattachment) - Get Attachment
+* [getCollection](docs/sdks/ticketing/README.md#getcollection) - Get Collection
+* [getComment](docs/sdks/ticketing/README.md#getcomment) - Get Comment
+* [getTicket](docs/sdks/ticketing/README.md#getticket) - Get Ticket
+* [getTicketType](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
+* [listAttachments](docs/sdks/ticketing/README.md#listattachments) - List Attachments
+* [listCollections](docs/sdks/ticketing/README.md#listcollections) - List Collections
+* [listComments](docs/sdks/ticketing/README.md#listcomments) - List Comments
+* [listTicketTypes](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
+* [listTickets](docs/sdks/ticketing/README.md#listtickets) - List Tickets
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -391,8 +417,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -831,7 +855,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`crmListContacts`](docs/sdks/crm/README.md#listcontacts) - List Contacts
 - [`crmListLists`](docs/sdks/crm/README.md#listlists) - Get all Lists
 - [`crmUpdateContact`](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
+- [`documentsDownloadFile`](docs/sdks/documents/README.md#downloadfile) - Download File
+- [`documentsGetDrive`](docs/sdks/documents/README.md#getdrive) - Get Drive
+- [`documentsGetFile`](docs/sdks/documents/README.md#getfile) - Get File
+- [`documentsGetFolder`](docs/sdks/documents/README.md#getfolder) - Get Folder
+- [`documentsListDrives`](docs/sdks/documents/README.md#listdrives) - List Drives
+- [`documentsListFiles`](docs/sdks/documents/README.md#listfiles) - List Files
+- [`documentsListFolders`](docs/sdks/documents/README.md#listfolders) - List Folders
+- [`documentsSearchFiles`](docs/sdks/documents/README.md#searchfiles) - Search Files
+- [`documentsUploadFile`](docs/sdks/documents/README.md#uploadfile) - Upload File
 - [`hrisBatchUploadEmployeeDocument`](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
+- [`hrisCancelEmployeeTimeOffRequest`](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
 - [`hrisCreateEmployee`](docs/sdks/hris/README.md#createemployee) - Creates an employee
 - [`hrisCreateEmployeeEmployment`](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 - [`hrisCreateEmployeeSkill`](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
@@ -950,6 +984,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get a Log
 - [`requestLogsListLogs`](docs/sdks/requestlogs/README.md#listlogs) - List Logs
 - [`requestLogsListStepLogs`](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
+- [`ticketingCreateTicket`](docs/sdks/ticketing/README.md#createticket) - Create Ticket
+- [`ticketingDownloadTicketingAttachment`](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment
+- [`ticketingGetAttachment`](docs/sdks/ticketing/README.md#getattachment) - Get Attachment
+- [`ticketingGetCollection`](docs/sdks/ticketing/README.md#getcollection) - Get Collection
+- [`ticketingGetComment`](docs/sdks/ticketing/README.md#getcomment) - Get Comment
+- [`ticketingGetTicket`](docs/sdks/ticketing/README.md#getticket) - Get Ticket
+- [`ticketingGetTicketType`](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
+- [`ticketingListAttachments`](docs/sdks/ticketing/README.md#listattachments) - List Attachments
+- [`ticketingListCollections`](docs/sdks/ticketing/README.md#listcollections) - List Collections
+- [`ticketingListComments`](docs/sdks/ticketing/README.md#listcomments) - List Comments
+- [`ticketingListTickets`](docs/sdks/ticketing/README.md#listtickets) - List Tickets
+- [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 - ~~[`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest)~~ - Creates a time off request :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**

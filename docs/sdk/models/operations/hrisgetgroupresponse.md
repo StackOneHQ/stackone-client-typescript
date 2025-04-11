@@ -10,6 +10,7 @@ let value: HrisGetGroupResponse = {
   contentType: "<value>",
   hrisGroupsResult: {
     data: {
+      companyId: "1234567890",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "Engineering",
       ownerIds: [
@@ -20,6 +21,7 @@ let value: HrisGetGroupResponse = {
         "cxIQNjUyNDM0",
         "cxIQNjQzNzI0MQ",
       ],
+      remoteCompanyId: "1234567890",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteOwnerIds: [
         "475364",
@@ -43,7 +45,7 @@ let value: HrisGetGroupResponse = {
       "<value>",
     ],
   },
-  statusCode: 100,
+  statusCode: 503,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

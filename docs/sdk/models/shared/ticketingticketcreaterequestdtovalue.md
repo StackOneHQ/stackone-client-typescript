@@ -1,0 +1,25 @@
+# TicketingTicketCreateRequestDtoValue
+
+The priority of the ticket.
+
+## Example Usage
+
+```typescript
+import { TicketingTicketCreateRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: TicketingTicketCreateRequestDtoValue =
+  TicketingTicketCreateRequestDtoValue.Medium;
+```
+
+## Values
+
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Lowest`               | lowest                 |
+| `Low`                  | low                    |
+| `Medium`               | medium                 |
+| `High`                 | high                   |
+| `Highest`              | highest                |
+| -                      | `Unrecognized<string>` |

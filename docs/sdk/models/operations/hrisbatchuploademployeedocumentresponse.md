@@ -24,7 +24,7 @@ let value: HrisBatchUploadEmployeeDocumentResponse = {
       "<value>",
     ],
   },
-  statusCode: 506,
+  statusCode: 303,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

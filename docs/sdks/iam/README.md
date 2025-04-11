@@ -133,7 +133,6 @@ async function run() {
     expand: "roles",
     fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -166,7 +165,6 @@ async function run() {
     expand: "roles",
     fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -235,7 +233,6 @@ async function run() {
     expand: "permissions",
     fields: "id,remote_id,name,permissions,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -268,7 +265,6 @@ async function run() {
     expand: "permissions",
     fields: "id,remote_id,name,permissions,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -337,7 +333,6 @@ async function run() {
     expand: "policies",
     fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -370,7 +365,6 @@ async function run() {
     expand: "policies",
     fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -439,7 +433,6 @@ async function run() {
     expand: "roles,groups",
     fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -472,7 +465,6 @@ async function run() {
     expand: "roles,groups",
     fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
     id: "<id>",
-    raw: false,
     xAccountId: "<id>",
   });
 
@@ -543,8 +535,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -582,8 +572,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -657,8 +645,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -696,8 +682,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -771,8 +755,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -810,8 +792,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -885,8 +865,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -924,8 +902,6 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    pageSize: "25",
-    raw: false,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });

@@ -81,6 +81,7 @@ let value: HrisListEmployeesResponse = {
             },
             costCenters: [
               {
+                companyId: "1234567890",
                 distributionPercentage: 85,
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 name: "Engineering",
@@ -92,6 +93,7 @@ let value: HrisListEmployeesResponse = {
                   "cxIQNjUyNDM0",
                   "cxIQNjQzNzI0MQ",
                 ],
+                remoteCompanyId: "1234567890",
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 remoteOwnerIds: [
                   "475364",
@@ -112,6 +114,7 @@ let value: HrisListEmployeesResponse = {
             ],
             createdAt: new Date("2021-01-01T01:01:01.000Z"),
             department: {
+              companyId: "1234567890",
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               name: "Engineering",
               ownerIds: [
@@ -122,6 +125,7 @@ let value: HrisListEmployeesResponse = {
                 "cxIQNjUyNDM0",
                 "cxIQNjQzNzI0MQ",
               ],
+              remoteCompanyId: "1234567890",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               remoteOwnerIds: [
                 "475364",
@@ -140,6 +144,7 @@ let value: HrisListEmployeesResponse = {
               },
             },
             division: {
+              companyId: "1234567890",
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               name: "Engineering",
               ownerIds: [
@@ -150,6 +155,7 @@ let value: HrisListEmployeesResponse = {
                 "cxIQNjUyNDM0",
                 "cxIQNjQzNzI0MQ",
               ],
+              remoteCompanyId: "1234567890",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               remoteOwnerIds: [
                 "475364",
@@ -219,6 +225,7 @@ let value: HrisListEmployeesResponse = {
         gender: {},
         groups: [
           {
+            companyId: "1234567890",
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             name: "Engineering",
             ownerIds: [
@@ -229,6 +236,7 @@ let value: HrisListEmployeesResponse = {
               "cxIQNjUyNDM0",
               "cxIQNjQzNzI0MQ",
             ],
+            remoteCompanyId: "1234567890",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteOwnerIds: [
               "475364",
@@ -353,7 +361,7 @@ let value: HrisListEmployeesResponse = {
       "<value>",
     ],
   },
-  statusCode: 201,
+  statusCode: 202,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

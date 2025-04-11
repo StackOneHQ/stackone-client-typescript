@@ -123,6 +123,7 @@ async function $do(
   )(pathParams);
 
   const query = encodeFormQuery({
+    "export_format": payload.export_format,
     "format": payload.format,
   });
 

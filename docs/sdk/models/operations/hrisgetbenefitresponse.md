@@ -23,7 +23,7 @@ let value: HrisGetBenefitResponse = {
       "<value>",
     ],
   },
-  statusCode: 100,
+  statusCode: 508,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

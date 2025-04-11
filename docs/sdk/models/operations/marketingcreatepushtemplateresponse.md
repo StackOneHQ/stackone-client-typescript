@@ -21,7 +21,7 @@ let value: MarketingCreatePushTemplateResponse = {
       "<value>",
     ],
   },
-  statusCode: 504,
+  statusCode: 303,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

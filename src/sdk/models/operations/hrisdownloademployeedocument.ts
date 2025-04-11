@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HrisDownloadEmployeeDocumentRequest = {
   /**
+   * The export format of the file
+   */
+  exportFormat?: string | null | undefined;
+  /**
    * The format to download the file in
    */
   format?: string | null | undefined;
@@ -47,18 +51,21 @@ export const HrisDownloadEmployeeDocumentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  export_format: z.nullable(z.string()).optional(),
   format: z.nullable(z.string()).optional(),
   id: z.string(),
   subResourceId: z.string(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
+    "export_format": "exportFormat",
     "x-account-id": "xAccountId",
   });
 });
 
 /** @internal */
 export type HrisDownloadEmployeeDocumentRequest$Outbound = {
+  export_format?: string | null | undefined;
   format?: string | null | undefined;
   id: string;
   subResourceId: string;
@@ -71,12 +78,14 @@ export const HrisDownloadEmployeeDocumentRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisDownloadEmployeeDocumentRequest
 > = z.object({
+  exportFormat: z.nullable(z.string()).optional(),
   format: z.nullable(z.string()).optional(),
   id: z.string(),
   subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    exportFormat: "export_format",
     xAccountId: "x-account-id",
   });
 });
