@@ -10,6 +10,8 @@ sources:
             - location: https://api.eu1.stackone.com/oas/iam.json
             - location: https://api.eu1.stackone.com/oas/marketing.json
             - location: https://api.eu1.stackone.com/oas/lms.json
+            - location: https://api.eu1.stackone.com/oas/ticketing.json
+            - location: https://api.eu1.stackone.com/oas/documents.json
         registry:
             location: registry.speakeasyapi.dev/stackone/stackone/my-source
 targets:
