@@ -6,24 +6,25 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://acidic-gastropod.name",
+  authLinkUrl: "https://overdue-custody.biz/",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.Screening,
+    ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.Ats,
+    ConnectSessionTokenAuthLinkCategories.Stackone,
     ConnectSessionTokenAuthLinkCategories.Documents,
     ConnectSessionTokenAuthLinkCategories.Ticketing,
     ConnectSessionTokenAuthLinkCategories.Screening,
+    ConnectSessionTokenAuthLinkCategories.Messaging,
   ],
-  createdAt: new Date("2024-03-20T21:54:24.613Z"),
+  createdAt: new Date("2024-10-26T04:36:09.304Z"),
   externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
-  id: 243.13,
-  organizationId: 3426.11,
+  id: 9450.34,
+  organizationId: 76.74,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -37,7 +38,7 @@ let value: ConnectSessionTokenAuthLink = {
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `authLinkUrl`                                                                                                                                   | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
-| `categories`                                                                                                                                    | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[]                           | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening"<br/>] |
+| `categories`                                                                                                                                    | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[]                           | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening",<br/>"messaging"<br/>] |
 | `createdAt`                                                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                   | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `externalTriggerToken`                                                                                                                          | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | External trigger token to be used to trigger actions on the account                                                                             | f0bc3d88-2178-5423-8c81-b81d6c9da824                                                                                                            |
 | `id`                                                                                                                                            | *number*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |

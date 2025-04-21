@@ -206,7 +206,6 @@ let value: HrisListEmployeesResponse = {
             remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             startDate: new Date("2021-01-01T01:01:01.000Z"),
-            timeWorked: "P0Y0M0DT8H0M0S",
             type: {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               label: "Permanent",
@@ -218,6 +217,10 @@ let value: HrisListEmployeesResponse = {
               "my_project_custom_field_2": "some other value",
             },
             updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+            workTime: {
+              duration: "P0Y0M0DT8H0M0S",
+              durationUnit: {},
+            },
           },
         ],
         ethnicity: {},
@@ -361,7 +364,7 @@ let value: HrisListEmployeesResponse = {
       "<value>",
     ],
   },
-  statusCode: 202,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -12,11 +12,13 @@
 * [getComment](#getcomment) - Get Comment
 * [getTicket](#getticket) - Get Ticket
 * [getTicketType](#gettickettype) - Get Ticket Type
+* [getUser](#getuser) - Get User
 * [listAttachments](#listattachments) - List Attachments
 * [listCollections](#listcollections) - List Collections
 * [listComments](#listcomments) - List Comments
 * [listTicketTypes](#listtickettypes) - List Ticket Types
 * [listTickets](#listtickets) - List Tickets
+* [listUsers](#listusers) - List Users
 
 ## createTicket
 
@@ -784,6 +786,104 @@ run();
 | errors.BadGatewayResponse          | 502                                | application/json                   |
 | errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
+## getUser
+
+Get User
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ticketing.getUser({
+    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { ticketingGetUser } from "@stackone/stackone-client-ts/funcs/ticketingGetUser.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await ticketingGetUser(stackOne, {
+    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.TicketingGetUserRequest](../../sdk/models/operations/ticketinggetuserrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.TicketingGetUserResponse](../../sdk/models/operations/ticketinggetuserresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
 ## listAttachments
 
 List Attachments
@@ -1309,6 +1409,114 @@ run();
 ### Response
 
 **Promise\<[operations.TicketingListTicketsResponse](../../sdk/models/operations/ticketinglistticketsresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## listUsers
+
+List Users
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ticketing.listUsers({
+    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { ticketingListUsers } from "@stackone/stackone-client-ts/funcs/ticketingListUsers.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await ticketingListUsers(stackOne, {
+    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.TicketingListUsersRequest](../../sdk/models/operations/ticketinglistusersrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.TicketingListUsersResponse](../../sdk/models/operations/ticketinglistusersresponse.md)\>**
 
 ### Errors
 

@@ -12,7 +12,7 @@ let value: TicketingListCommentsResponse = {
       "<value>",
     ],
   },
-  statusCode: 409,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

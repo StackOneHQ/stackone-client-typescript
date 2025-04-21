@@ -20,6 +20,7 @@ export enum Categories {
   Documents = "documents",
   Ticketing = "ticketing",
   Screening = "screening",
+  Messaging = "messaging",
 }
 
 /**

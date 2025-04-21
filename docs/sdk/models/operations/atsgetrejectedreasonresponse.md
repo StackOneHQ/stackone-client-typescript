@@ -28,7 +28,7 @@ let value: AtsGetRejectedReasonResponse = {
       },
     },
   },
-  statusCode: 307,
+  statusCode: 510,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -5,7 +5,7 @@
 ```typescript
 import { EmploymentSchemasTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentSchemasTypeValue = EmploymentSchemasTypeValue.External;
+let value: EmploymentSchemasTypeValue = EmploymentSchemasTypeValue.Intern;
 ```
 
 ## Values

@@ -20,6 +20,7 @@ export enum ConnectSessionCreateCategories {
   Documents = "documents",
   Ticketing = "ticketing",
   Screening = "screening",
+  Messaging = "messaging",
 }
 
 /**

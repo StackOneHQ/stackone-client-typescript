@@ -12,7 +12,7 @@ let value: MarketingListOmniChannelTemplatesResponse = {
       "<value>",
     ],
   },
-  statusCode: 208,
+  statusCode: 405,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

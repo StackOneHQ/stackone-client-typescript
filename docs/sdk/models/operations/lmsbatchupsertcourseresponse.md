@@ -24,7 +24,7 @@ let value: LmsBatchUpsertCourseResponse = {
       "<value>",
     ],
   },
-  statusCode: 505,
+  statusCode: 413,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

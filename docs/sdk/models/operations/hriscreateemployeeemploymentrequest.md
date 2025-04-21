@@ -18,10 +18,13 @@ let value: HrisCreateEmployeeEmploymentRequest = {
     payFrequency: {},
     payPeriod: {},
     payRate: "40.00",
-    timeWorked: "P0Y0M0DT8H0M0S",
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",
+    },
+    workTime: {
+      duration: "P0Y0M0DT8H0M0S",
+      durationUnit: {},
     },
   },
   id: "<id>",

@@ -9,20 +9,21 @@ let value: ConnectSession = {
   categories: [
     Categories.Ats,
     Categories.Hris,
-    Categories.Crm,
+    Categories.Ticketing,
     Categories.Crm,
     Categories.Iam,
     Categories.Marketing,
     Categories.Lms,
-    Categories.Stackone,
+    Categories.Lms,
     Categories.Documents,
     Categories.Ticketing,
     Categories.Screening,
+    Categories.Messaging,
   ],
-  createdAt: new Date("2025-08-21T15:23:28.345Z"),
+  createdAt: new Date("2023-01-19T07:50:09.278Z"),
   externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
-  id: 5436.78,
-  organizationId: 2826.99,
+  id: 2294.21,
+  organizationId: 2642.02,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -34,7 +35,7 @@ let value: ConnectSession = {
 | Field                                                                                                                                           | Type                                                                                                                                            | Required                                                                                                                                        | Description                                                                                                                                     | Example                                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
-| `categories`                                                                                                                                    | [shared.Categories](../../../sdk/models/shared/categories.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening"<br/>] |
+| `categories`                                                                                                                                    | [shared.Categories](../../../sdk/models/shared/categories.md)[]                                                                                 | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents",<br/>"ticketing",<br/>"screening",<br/>"messaging"<br/>] |
 | `createdAt`                                                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                   | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `externalTriggerToken`                                                                                                                          | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | External trigger token to be used to trigger actions on the account                                                                             | f0bc3d88-2178-5423-8c81-b81d6c9da824                                                                                                            |
 | `id`                                                                                                                                            | *number*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |

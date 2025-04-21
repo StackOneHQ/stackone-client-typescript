@@ -39,7 +39,7 @@ let value: DocumentsGetFileResponse = {
       "<value>",
     ],
   },
-  statusCode: 503,
+  statusCode: 202,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

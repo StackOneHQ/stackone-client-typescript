@@ -12,7 +12,7 @@ let value: AtsUpdateAssessmentsResultResponse = {
       "<value>",
     ],
   },
-  statusCode: 306,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

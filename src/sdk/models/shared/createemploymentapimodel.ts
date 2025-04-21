@@ -230,6 +230,61 @@ export type PayPeriod = {
   value?: CreateEmploymentApiModelSchemasPayPeriodValueOpen | null | undefined;
 };
 
+export type CreateEmploymentApiModelSchemasWorkTime4 = {};
+
+export type CreateEmploymentApiModelSchemasWorkTimeSourceValue =
+  | CreateEmploymentApiModelSchemasWorkTime4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The unified value for the duration unit.
+ */
+export enum CreateEmploymentApiModelSchemasWorkTimeValue {
+  Day = "day",
+  Week = "week",
+  Month = "month",
+  Year = "year",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified value for the duration unit.
+ */
+export type CreateEmploymentApiModelSchemasWorkTimeValueOpen = OpenEnum<
+  typeof CreateEmploymentApiModelSchemasWorkTimeValue
+>;
+
+/**
+ * The duration unit of the work time
+ */
+export type CreateEmploymentApiModelDurationUnit = {
+  sourceValue?:
+    | CreateEmploymentApiModelSchemasWorkTime4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The unified value for the duration unit.
+   */
+  value?: CreateEmploymentApiModelSchemasWorkTimeValueOpen | null | undefined;
+};
+
+export type WorkTime = {
+  /**
+   * The work time duration in ISO 8601 duration format
+   */
+  duration?: string | null | undefined;
+  /**
+   * The duration unit of the work time
+   */
+  durationUnit?: CreateEmploymentApiModelDurationUnit | null | undefined;
+};
+
 export type CreateEmploymentApiModel = {
   /**
    * The effective date of the employment contract
@@ -270,13 +325,10 @@ export type CreateEmploymentApiModel = {
    */
   payRate?: string | null | undefined;
   /**
-   * The time worked for the employee in ISO 8601 duration format
-   */
-  timeWorked?: string | null | undefined;
-  /**
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
+  workTime?: WorkTime | null | undefined;
 };
 
 /** @internal */
@@ -1288,6 +1340,343 @@ export function payPeriodFromJSON(
 }
 
 /** @internal */
+export const CreateEmploymentApiModelSchemasWorkTime4$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasWorkTime4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasWorkTime4$Outbound = {};
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasWorkTime4$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasWorkTime4$Outbound,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelSchemasWorkTime4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasWorkTime4$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTime4$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasWorkTime4$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTime4$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasWorkTime4$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTime4$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelSchemasWorkTime4$Outbound;
+}
+
+export function createEmploymentApiModelSchemasWorkTime4ToJSON(
+  createEmploymentApiModelSchemasWorkTime4:
+    CreateEmploymentApiModelSchemasWorkTime4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasWorkTime4$outboundSchema.parse(
+      createEmploymentApiModelSchemasWorkTime4,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasWorkTime4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasWorkTime4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasWorkTime4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasWorkTime4' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasWorkTimeSourceValue$inboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasWorkTimeSourceValue$Outbound =
+  | CreateEmploymentApiModelSchemasWorkTime4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasWorkTimeSourceValue$outboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue$Outbound,
+    z.ZodTypeDef,
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue
+  > = z.union([
+    z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasWorkTimeSourceValue$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTimeSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTimeSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTimeSourceValue$Outbound` instead. */
+  export type Outbound =
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSchemasWorkTimeSourceValueToJSON(
+  createEmploymentApiModelSchemasWorkTimeSourceValue:
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasWorkTimeSourceValue$outboundSchema.parse(
+      createEmploymentApiModelSchemasWorkTimeSourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasWorkTimeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasWorkTimeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasWorkTimeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasWorkTimeSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasWorkTimeValue$inboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasWorkTimeValueOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(CreateEmploymentApiModelSchemasWorkTimeValue),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasWorkTimeValue$outboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasWorkTimeValueOpen,
+    z.ZodTypeDef,
+    CreateEmploymentApiModelSchemasWorkTimeValueOpen
+  > = z.union([
+    z.nativeEnum(CreateEmploymentApiModelSchemasWorkTimeValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasWorkTimeValue$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTimeValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasWorkTimeValue$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasWorkTimeValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasWorkTimeValue$outboundSchema;
+}
+
+/** @internal */
+export const CreateEmploymentApiModelDurationUnit$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelDurationUnit,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateEmploymentApiModelSchemasWorkTimeValue$inboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type CreateEmploymentApiModelDurationUnit$Outbound = {
+  source_value?:
+    | CreateEmploymentApiModelSchemasWorkTime4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateEmploymentApiModelDurationUnit$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelDurationUnit$Outbound,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelDurationUnit
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateEmploymentApiModelSchemasWorkTimeValue$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelDurationUnit$ {
+  /** @deprecated use `CreateEmploymentApiModelDurationUnit$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelDurationUnit$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelDurationUnit$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelDurationUnit$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelDurationUnit$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelDurationUnit$Outbound;
+}
+
+export function createEmploymentApiModelDurationUnitToJSON(
+  createEmploymentApiModelDurationUnit: CreateEmploymentApiModelDurationUnit,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelDurationUnit$outboundSchema.parse(
+      createEmploymentApiModelDurationUnit,
+    ),
+  );
+}
+
+export function createEmploymentApiModelDurationUnitFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelDurationUnit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelDurationUnit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelDurationUnit' from JSON`,
+  );
+}
+
+/** @internal */
+export const WorkTime$inboundSchema: z.ZodType<
+  WorkTime,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  duration: z.nullable(z.string()).optional(),
+  duration_unit: z.nullable(
+    z.lazy(() => CreateEmploymentApiModelDurationUnit$inboundSchema),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "duration_unit": "durationUnit",
+  });
+});
+
+/** @internal */
+export type WorkTime$Outbound = {
+  duration?: string | null | undefined;
+  duration_unit?:
+    | CreateEmploymentApiModelDurationUnit$Outbound
+    | null
+    | undefined;
+};
+
+/** @internal */
+export const WorkTime$outboundSchema: z.ZodType<
+  WorkTime$Outbound,
+  z.ZodTypeDef,
+  WorkTime
+> = z.object({
+  duration: z.nullable(z.string()).optional(),
+  durationUnit: z.nullable(
+    z.lazy(() => CreateEmploymentApiModelDurationUnit$outboundSchema),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    durationUnit: "duration_unit",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WorkTime$ {
+  /** @deprecated use `WorkTime$inboundSchema` instead. */
+  export const inboundSchema = WorkTime$inboundSchema;
+  /** @deprecated use `WorkTime$outboundSchema` instead. */
+  export const outboundSchema = WorkTime$outboundSchema;
+  /** @deprecated use `WorkTime$Outbound` instead. */
+  export type Outbound = WorkTime$Outbound;
+}
+
+export function workTimeToJSON(workTime: WorkTime): string {
+  return JSON.stringify(WorkTime$outboundSchema.parse(workTime));
+}
+
+export function workTimeFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkTime, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkTime$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkTime' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   CreateEmploymentApiModel,
   z.ZodTypeDef,
@@ -1308,8 +1697,8 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
     .optional(),
   pay_period: z.nullable(z.lazy(() => PayPeriod$inboundSchema)).optional(),
   pay_rate: z.nullable(z.string()).optional(),
-  time_worked: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
+  work_time: z.nullable(z.lazy(() => WorkTime$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "effective_date": "effectiveDate",
@@ -1320,8 +1709,8 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
-    "time_worked": "timeWorked",
     "unified_custom_fields": "unifiedCustomFields",
+    "work_time": "workTime",
   });
 });
 
@@ -1336,8 +1725,8 @@ export type CreateEmploymentApiModel$Outbound = {
   pay_frequency?: PayFrequency$Outbound | null | undefined;
   pay_period?: PayPeriod$Outbound | null | undefined;
   pay_rate?: string | null | undefined;
-  time_worked?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
+  work_time?: WorkTime$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -1360,8 +1749,8 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
     .optional(),
   payPeriod: z.nullable(z.lazy(() => PayPeriod$outboundSchema)).optional(),
   payRate: z.nullable(z.string()).optional(),
-  timeWorked: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
+  workTime: z.nullable(z.lazy(() => WorkTime$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     effectiveDate: "effective_date",
@@ -1372,8 +1761,8 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
     payRate: "pay_rate",
-    timeWorked: "time_worked",
     unifiedCustomFields: "unified_custom_fields",
+    workTime: "work_time",
   });
 });
 

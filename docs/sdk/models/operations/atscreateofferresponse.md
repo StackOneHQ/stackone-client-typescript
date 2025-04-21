@@ -21,7 +21,7 @@ let value: AtsCreateOfferResponse = {
       "<value>",
     ],
   },
-  statusCode: 100,
+  statusCode: 303,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -6,7 +6,8 @@
 import { HrisUpdateEmployeeRequestDtoSchemasEthnicityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUpdateEmployeeRequestDtoSchemasEthnicityValue =
-  HrisUpdateEmployeeRequestDtoSchemasEthnicityValue.UnmappedValue;
+  HrisUpdateEmployeeRequestDtoSchemasEthnicityValue
+    .NativeHawaiianOrPacificIslander;
 ```
 
 ## Values

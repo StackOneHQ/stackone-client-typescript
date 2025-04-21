@@ -86,9 +86,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.batchUploadEmployeeDocument({
     hrisBatchDocumentUploadRequestDto: {
-      items: [
-
-      ],
+      items: [],
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -121,9 +119,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisBatchUploadEmployeeDocument(stackOne, {
     hrisBatchDocumentUploadRequestDto: {
-      items: [
-  
-      ],
+      items: [],
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -285,6 +281,7 @@ import {
   HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -395,10 +392,15 @@ async function run() {
           value: HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
-        timeWorked: "P0Y0M0DT8H0M0S",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
+        },
+        workTime: {
+          duration: "P0Y0M0DT8H0M0S",
+          durationUnit: {
+            value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+          },
         },
       },
       employmentContractType: {},
@@ -506,6 +508,7 @@ import {
   HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -618,10 +621,15 @@ async function run() {
           value: HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
-        timeWorked: "P0Y0M0DT8H0M0S",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
+        },
+        workTime: {
+          duration: "P0Y0M0DT8H0M0S",
+          durationUnit: {
+            value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+          },
         },
       },
       employmentContractType: {},
@@ -765,6 +773,7 @@ import {
   HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
   HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
   HrisCreateEmploymentRequestDtoSchemasValue,
+  HrisCreateEmploymentRequestDtoSchemasWorkTimeValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -797,10 +806,15 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
-      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
+      },
+      workTime: {
+        duration: "P0Y0M0DT8H0M0S",
+        durationUnit: {
+          value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
+        },
       },
     },
     id: "<id>",
@@ -825,6 +839,7 @@ import {
   HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
   HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
   HrisCreateEmploymentRequestDtoSchemasValue,
+  HrisCreateEmploymentRequestDtoSchemasWorkTimeValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -859,10 +874,15 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
-      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
+      },
+      workTime: {
+        duration: "P0Y0M0DT8H0M0S",
+        durationUnit: {
+          value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
+        },
       },
     },
     id: "<id>",
@@ -2372,7 +2392,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeeEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2405,7 +2425,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeeEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2878,7 +2898,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2910,7 +2930,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4626,7 +4646,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4664,7 +4684,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5404,7 +5424,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5441,7 +5461,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -6381,6 +6401,7 @@ import {
   HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
   HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisUpdateEmployeeRequestDtoSchemasEmploymentValue,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
   HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -6453,10 +6474,15 @@ async function run() {
           value: HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
-        timeWorked: "P0Y0M0DT8H0M0S",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
+        },
+        workTime: {
+          duration: "P0Y0M0DT8H0M0S",
+          durationUnit: {
+            value: HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+          },
         },
       },
       employmentContractType: {},
@@ -6556,6 +6582,7 @@ import {
   HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
   HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisUpdateEmployeeRequestDtoSchemasEmploymentValue,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
   HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -6630,10 +6657,15 @@ async function run() {
           value: HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
-        timeWorked: "P0Y0M0DT8H0M0S",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
+        },
+        workTime: {
+          duration: "P0Y0M0DT8H0M0S",
+          durationUnit: {
+            value: HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+          },
         },
       },
       employmentContractType: {},
@@ -6769,6 +6801,7 @@ import {
   HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
   HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
   HrisCreateEmploymentRequestDtoSchemasValue,
+  HrisCreateEmploymentRequestDtoSchemasWorkTimeValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -6801,10 +6834,15 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
-      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
+      },
+      workTime: {
+        duration: "P0Y0M0DT8H0M0S",
+        durationUnit: {
+          value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
+        },
       },
     },
     id: "<id>",
@@ -6830,6 +6868,7 @@ import {
   HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
   HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
   HrisCreateEmploymentRequestDtoSchemasValue,
+  HrisCreateEmploymentRequestDtoSchemasWorkTimeValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -6864,10 +6903,15 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
-      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
+      },
+      workTime: {
+        duration: "P0Y0M0DT8H0M0S",
+        durationUnit: {
+          value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
+        },
       },
     },
     id: "<id>",

@@ -380,11 +380,13 @@ run();
 * [getComment](docs/sdks/ticketing/README.md#getcomment) - Get Comment
 * [getTicket](docs/sdks/ticketing/README.md#getticket) - Get Ticket
 * [getTicketType](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
+* [getUser](docs/sdks/ticketing/README.md#getuser) - Get User
 * [listAttachments](docs/sdks/ticketing/README.md#listattachments) - List Attachments
 * [listCollections](docs/sdks/ticketing/README.md#listcollections) - List Collections
 * [listComments](docs/sdks/ticketing/README.md#listcomments) - List Comments
 * [listTicketTypes](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 * [listTickets](docs/sdks/ticketing/README.md#listtickets) - List Tickets
+* [listUsers](docs/sdks/ticketing/README.md#listusers) - List Users
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -991,11 +993,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingGetComment`](docs/sdks/ticketing/README.md#getcomment) - Get Comment
 - [`ticketingGetTicket`](docs/sdks/ticketing/README.md#getticket) - Get Ticket
 - [`ticketingGetTicketType`](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
+- [`ticketingGetUser`](docs/sdks/ticketing/README.md#getuser) - Get User
 - [`ticketingListAttachments`](docs/sdks/ticketing/README.md#listattachments) - List Attachments
 - [`ticketingListCollections`](docs/sdks/ticketing/README.md#listcollections) - List Collections
 - [`ticketingListComments`](docs/sdks/ticketing/README.md#listcomments) - List Comments
 - [`ticketingListTickets`](docs/sdks/ticketing/README.md#listtickets) - List Tickets
 - [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
+- [`ticketingListUsers`](docs/sdks/ticketing/README.md#listusers) - List Users
 - ~~[`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest)~~ - Creates a time off request :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**
