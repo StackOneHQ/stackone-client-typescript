@@ -84,7 +84,7 @@ let value: AtsListJobsResponse = {
       },
     ],
   },
-  statusCode: 511,
+  statusCode: 500,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

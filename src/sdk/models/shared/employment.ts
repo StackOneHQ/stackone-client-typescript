@@ -666,6 +666,61 @@ export type EmploymentSchemasType = {
   type?: EmploymentSchemasTypeType | null | undefined;
 };
 
+export type EmploymentSchemasWorkTime4 = {};
+
+export type EmploymentSchemasWorkTimeSourceValue =
+  | EmploymentSchemasWorkTime4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The unified value for the duration unit.
+ */
+export enum EmploymentSchemasWorkTimeValue {
+  Day = "day",
+  Week = "week",
+  Month = "month",
+  Year = "year",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified value for the duration unit.
+ */
+export type EmploymentSchemasWorkTimeValueOpen = OpenEnum<
+  typeof EmploymentSchemasWorkTimeValue
+>;
+
+/**
+ * The duration unit of the work time
+ */
+export type EmploymentDurationUnit = {
+  sourceValue?:
+    | EmploymentSchemasWorkTime4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The unified value for the duration unit.
+   */
+  value?: EmploymentSchemasWorkTimeValueOpen | null | undefined;
+};
+
+export type EmploymentWorkTime = {
+  /**
+   * The work time duration in ISO 8601 duration format
+   */
+  duration?: string | null | undefined;
+  /**
+   * The duration unit of the work time
+   */
+  durationUnit?: EmploymentDurationUnit | null | undefined;
+};
+
 export type Employment = {
   /**
    * The employment active status
@@ -768,10 +823,6 @@ export type Employment = {
    */
   startDate?: Date | null | undefined;
   /**
-   * The time worked for the employee in ISO 8601 duration format
-   */
-  timeWorked?: string | null | undefined;
-  /**
    * The type of employment
    */
   type?: EmploymentSchemasType | null | undefined;
@@ -783,6 +834,7 @@ export type Employment = {
    * The updated_at date
    */
   updatedAt?: Date | null | undefined;
+  workTime?: EmploymentWorkTime | null | undefined;
 };
 
 /** @internal */
@@ -3542,6 +3594,311 @@ export function employmentSchemasTypeFromJSON(
 }
 
 /** @internal */
+export const EmploymentSchemasWorkTime4$inboundSchema: z.ZodType<
+  EmploymentSchemasWorkTime4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type EmploymentSchemasWorkTime4$Outbound = {};
+
+/** @internal */
+export const EmploymentSchemasWorkTime4$outboundSchema: z.ZodType<
+  EmploymentSchemasWorkTime4$Outbound,
+  z.ZodTypeDef,
+  EmploymentSchemasWorkTime4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentSchemasWorkTime4$ {
+  /** @deprecated use `EmploymentSchemasWorkTime4$inboundSchema` instead. */
+  export const inboundSchema = EmploymentSchemasWorkTime4$inboundSchema;
+  /** @deprecated use `EmploymentSchemasWorkTime4$outboundSchema` instead. */
+  export const outboundSchema = EmploymentSchemasWorkTime4$outboundSchema;
+  /** @deprecated use `EmploymentSchemasWorkTime4$Outbound` instead. */
+  export type Outbound = EmploymentSchemasWorkTime4$Outbound;
+}
+
+export function employmentSchemasWorkTime4ToJSON(
+  employmentSchemasWorkTime4: EmploymentSchemasWorkTime4,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasWorkTime4$outboundSchema.parse(employmentSchemasWorkTime4),
+  );
+}
+
+export function employmentSchemasWorkTime4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemasWorkTime4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentSchemasWorkTime4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemasWorkTime4' from JSON`,
+  );
+}
+
+/** @internal */
+export const EmploymentSchemasWorkTimeSourceValue$inboundSchema: z.ZodType<
+  EmploymentSchemasWorkTimeSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => EmploymentSchemasWorkTime4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type EmploymentSchemasWorkTimeSourceValue$Outbound =
+  | EmploymentSchemasWorkTime4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const EmploymentSchemasWorkTimeSourceValue$outboundSchema: z.ZodType<
+  EmploymentSchemasWorkTimeSourceValue$Outbound,
+  z.ZodTypeDef,
+  EmploymentSchemasWorkTimeSourceValue
+> = z.union([
+  z.lazy(() => EmploymentSchemasWorkTime4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentSchemasWorkTimeSourceValue$ {
+  /** @deprecated use `EmploymentSchemasWorkTimeSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    EmploymentSchemasWorkTimeSourceValue$inboundSchema;
+  /** @deprecated use `EmploymentSchemasWorkTimeSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    EmploymentSchemasWorkTimeSourceValue$outboundSchema;
+  /** @deprecated use `EmploymentSchemasWorkTimeSourceValue$Outbound` instead. */
+  export type Outbound = EmploymentSchemasWorkTimeSourceValue$Outbound;
+}
+
+export function employmentSchemasWorkTimeSourceValueToJSON(
+  employmentSchemasWorkTimeSourceValue: EmploymentSchemasWorkTimeSourceValue,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasWorkTimeSourceValue$outboundSchema.parse(
+      employmentSchemasWorkTimeSourceValue,
+    ),
+  );
+}
+
+export function employmentSchemasWorkTimeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemasWorkTimeSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmploymentSchemasWorkTimeSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemasWorkTimeSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const EmploymentSchemasWorkTimeValue$inboundSchema: z.ZodType<
+  EmploymentSchemasWorkTimeValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(EmploymentSchemasWorkTimeValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const EmploymentSchemasWorkTimeValue$outboundSchema: z.ZodType<
+  EmploymentSchemasWorkTimeValueOpen,
+  z.ZodTypeDef,
+  EmploymentSchemasWorkTimeValueOpen
+> = z.union([
+  z.nativeEnum(EmploymentSchemasWorkTimeValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentSchemasWorkTimeValue$ {
+  /** @deprecated use `EmploymentSchemasWorkTimeValue$inboundSchema` instead. */
+  export const inboundSchema = EmploymentSchemasWorkTimeValue$inboundSchema;
+  /** @deprecated use `EmploymentSchemasWorkTimeValue$outboundSchema` instead. */
+  export const outboundSchema = EmploymentSchemasWorkTimeValue$outboundSchema;
+}
+
+/** @internal */
+export const EmploymentDurationUnit$inboundSchema: z.ZodType<
+  EmploymentDurationUnit,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => EmploymentSchemasWorkTime4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(EmploymentSchemasWorkTimeValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type EmploymentDurationUnit$Outbound = {
+  source_value?:
+    | EmploymentSchemasWorkTime4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const EmploymentDurationUnit$outboundSchema: z.ZodType<
+  EmploymentDurationUnit$Outbound,
+  z.ZodTypeDef,
+  EmploymentDurationUnit
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => EmploymentSchemasWorkTime4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(EmploymentSchemasWorkTimeValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentDurationUnit$ {
+  /** @deprecated use `EmploymentDurationUnit$inboundSchema` instead. */
+  export const inboundSchema = EmploymentDurationUnit$inboundSchema;
+  /** @deprecated use `EmploymentDurationUnit$outboundSchema` instead. */
+  export const outboundSchema = EmploymentDurationUnit$outboundSchema;
+  /** @deprecated use `EmploymentDurationUnit$Outbound` instead. */
+  export type Outbound = EmploymentDurationUnit$Outbound;
+}
+
+export function employmentDurationUnitToJSON(
+  employmentDurationUnit: EmploymentDurationUnit,
+): string {
+  return JSON.stringify(
+    EmploymentDurationUnit$outboundSchema.parse(employmentDurationUnit),
+  );
+}
+
+export function employmentDurationUnitFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentDurationUnit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentDurationUnit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentDurationUnit' from JSON`,
+  );
+}
+
+/** @internal */
+export const EmploymentWorkTime$inboundSchema: z.ZodType<
+  EmploymentWorkTime,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  duration: z.nullable(z.string()).optional(),
+  duration_unit: z.nullable(z.lazy(() => EmploymentDurationUnit$inboundSchema))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "duration_unit": "durationUnit",
+  });
+});
+
+/** @internal */
+export type EmploymentWorkTime$Outbound = {
+  duration?: string | null | undefined;
+  duration_unit?: EmploymentDurationUnit$Outbound | null | undefined;
+};
+
+/** @internal */
+export const EmploymentWorkTime$outboundSchema: z.ZodType<
+  EmploymentWorkTime$Outbound,
+  z.ZodTypeDef,
+  EmploymentWorkTime
+> = z.object({
+  duration: z.nullable(z.string()).optional(),
+  durationUnit: z.nullable(z.lazy(() => EmploymentDurationUnit$outboundSchema))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    durationUnit: "duration_unit",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentWorkTime$ {
+  /** @deprecated use `EmploymentWorkTime$inboundSchema` instead. */
+  export const inboundSchema = EmploymentWorkTime$inboundSchema;
+  /** @deprecated use `EmploymentWorkTime$outboundSchema` instead. */
+  export const outboundSchema = EmploymentWorkTime$outboundSchema;
+  /** @deprecated use `EmploymentWorkTime$Outbound` instead. */
+  export type Outbound = EmploymentWorkTime$Outbound;
+}
+
+export function employmentWorkTimeToJSON(
+  employmentWorkTime: EmploymentWorkTime,
+): string {
+  return JSON.stringify(
+    EmploymentWorkTime$outboundSchema.parse(employmentWorkTime),
+  );
+}
+
+export function employmentWorkTimeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentWorkTime, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentWorkTime$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentWorkTime' from JSON`,
+  );
+}
+
+/** @internal */
 export const Employment$inboundSchema: z.ZodType<
   Employment,
   z.ZodTypeDef,
@@ -3587,13 +3944,14 @@ export const Employment$inboundSchema: z.ZodType<
   start_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  time_worked: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => EmploymentSchemasType$inboundSchema))
     .optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  work_time: z.nullable(z.lazy(() => EmploymentWorkTime$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "contract_type": "contractType",
@@ -3613,9 +3971,9 @@ export const Employment$inboundSchema: z.ZodType<
     "remote_employee_id": "remoteEmployeeId",
     "remote_id": "remoteId",
     "start_date": "startDate",
-    "time_worked": "timeWorked",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",
+    "work_time": "workTime",
   });
 });
 
@@ -3647,10 +4005,10 @@ export type Employment$Outbound = {
   remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   start_date?: string | null | undefined;
-  time_worked?: string | null | undefined;
   type?: EmploymentSchemasType$Outbound | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   updated_at?: string | null | undefined;
+  work_time?: EmploymentWorkTime$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -3692,11 +4050,12 @@ export const Employment$outboundSchema: z.ZodType<
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  timeWorked: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => EmploymentSchemasType$outboundSchema))
     .optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  workTime: z.nullable(z.lazy(() => EmploymentWorkTime$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     contractType: "contract_type",
@@ -3716,9 +4075,9 @@ export const Employment$outboundSchema: z.ZodType<
     remoteEmployeeId: "remote_employee_id",
     remoteId: "remote_id",
     startDate: "start_date",
-    timeWorked: "time_worked",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",
+    workTime: "work_time",
   });
 });
 

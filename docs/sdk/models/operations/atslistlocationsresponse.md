@@ -24,7 +24,7 @@ let value: AtsListLocationsResponse = {
       "<value>",
     ],
   },
-  statusCode: 207,
+  statusCode: 304,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

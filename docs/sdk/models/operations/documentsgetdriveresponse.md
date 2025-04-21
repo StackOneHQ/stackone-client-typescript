@@ -23,7 +23,7 @@ let value: DocumentsGetDriveResponse = {
       "<value>",
     ],
   },
-  statusCode: 506,
+  statusCode: 508,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

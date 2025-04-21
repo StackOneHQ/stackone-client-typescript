@@ -5,7 +5,7 @@
 ```typescript
 import { Categories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Categories = Categories.HrisLegacy;
+let value: Categories = Categories.Hris;
 ```
 
 ## Values
@@ -23,3 +23,4 @@ let value: Categories = Categories.HrisLegacy;
 | `Documents`  | documents    |
 | `Ticketing`  | ticketing    |
 | `Screening`  | screening    |
+| `Messaging`  | messaging    |

@@ -5,7 +5,7 @@
 ```typescript
 import { TimeEntriesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeEntriesValue = TimeEntriesValue.Approved;
+let value: TimeEntriesValue = TimeEntriesValue.UnmappedValue;
 ```
 
 ## Values

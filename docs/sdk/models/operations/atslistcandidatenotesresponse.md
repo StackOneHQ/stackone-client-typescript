@@ -35,7 +35,7 @@ let value: AtsListCandidateNotesResponse = {
       },
     ],
   },
-  statusCode: 402,
+  statusCode: 205,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

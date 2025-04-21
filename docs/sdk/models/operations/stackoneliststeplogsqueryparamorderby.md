@@ -8,7 +8,7 @@ The field to order the results by.
 import { StackoneListStepLogsQueryParamOrderBy } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: StackoneListStepLogsQueryParamOrderBy =
-  StackoneListStepLogsQueryParamOrderBy.Provider;
+  StackoneListStepLogsQueryParamOrderBy.Status;
 ```
 
 ## Values

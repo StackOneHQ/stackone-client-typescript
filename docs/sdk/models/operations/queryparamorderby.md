@@ -7,7 +7,7 @@ The field to order the results by.
 ```typescript
 import { QueryParamOrderBy } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: QueryParamOrderBy = QueryParamOrderBy.Provider;
+let value: QueryParamOrderBy = QueryParamOrderBy.EventDatetime;
 ```
 
 ## Values

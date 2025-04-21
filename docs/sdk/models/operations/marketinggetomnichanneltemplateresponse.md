@@ -12,7 +12,7 @@ let value: MarketingGetOmniChannelTemplateResponse = {
       "<value>",
     ],
   },
-  statusCode: 201,
+  statusCode: 304,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

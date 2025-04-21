@@ -1,0 +1,18 @@
+# HrisCreateEmployeeRequestDtoDurationUnit
+
+The duration unit of the work time
+
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoDurationUnit } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoDurationUnit = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   | Example                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                                                                 | *shared.HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeSourceValue*                                                                                     | :heavy_minus_sign:                                                                                                                                            | N/A                                                                                                                                                           |                                                                                                                                                               |
+| `value`                                                                                                                                                       | [shared.HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue](../../../sdk/models/shared/hriscreateemployeerequestdtoschemasemploymentworktimevalue.md) | :heavy_minus_sign:                                                                                                                                            | The unified value for the duration unit.                                                                                                                      | month                                                                                                                                                         |

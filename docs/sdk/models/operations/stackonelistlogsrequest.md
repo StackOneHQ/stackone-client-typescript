@@ -19,7 +19,7 @@ let value: StackoneListLogsRequest = {
     childResources: "documents,time-off",
     endDate: "2020-01-01T00:00:00.000Z",
     httpMethods: "GET,POST",
-    orderBy: QueryParamOrderBy.EventDatetime,
+    orderBy: QueryParamOrderBy.Duration,
     orderDirection: QueryParamOrderDirection.Asc,
     providers: "ashby,greenhouse",
     requestIds:
@@ -33,7 +33,7 @@ let value: StackoneListLogsRequest = {
     success: true,
   },
   include: QueryParamInclude.StepLogs,
-  orderBy: OrderBy.Duration,
+  orderBy: OrderBy.Service,
   orderDirection: OrderDirection.Asc,
 };
 ```

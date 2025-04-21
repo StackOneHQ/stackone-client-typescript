@@ -5,7 +5,7 @@
 ```typescript
 import { Question2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Question2 = Question2.True;
+let value: Question2 = Question2.False;
 ```
 
 ## Values

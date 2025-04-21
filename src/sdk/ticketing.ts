@@ -9,11 +9,13 @@ import { ticketingGetCollection } from "../funcs/ticketingGetCollection.js";
 import { ticketingGetComment } from "../funcs/ticketingGetComment.js";
 import { ticketingGetTicket } from "../funcs/ticketingGetTicket.js";
 import { ticketingGetTicketType } from "../funcs/ticketingGetTicketType.js";
+import { ticketingGetUser } from "../funcs/ticketingGetUser.js";
 import { ticketingListAttachments } from "../funcs/ticketingListAttachments.js";
 import { ticketingListCollections } from "../funcs/ticketingListCollections.js";
 import { ticketingListComments } from "../funcs/ticketingListComments.js";
 import { ticketingListTickets } from "../funcs/ticketingListTickets.js";
 import { ticketingListTicketTypes } from "../funcs/ticketingListTicketTypes.js";
+import { ticketingListUsers } from "../funcs/ticketingListUsers.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
@@ -119,6 +121,20 @@ export class Ticketing extends ClientSDK {
   }
 
   /**
+   * Get User
+   */
+  async getUser(
+    request: operations.TicketingGetUserRequest,
+    options?: RequestOptions,
+  ): Promise<operations.TicketingGetUserResponse> {
+    return unwrapAsync(ticketingGetUser(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Attachments
    */
   async listAttachments(
@@ -201,6 +217,22 @@ export class Ticketing extends ClientSDK {
     PageIterator<operations.TicketingListTicketsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(ticketingListTickets(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Users
+   */
+  async listUsers(
+    request: operations.TicketingListUsersRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.TicketingListUsersResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(ticketingListUsers(
       this,
       request,
       options,

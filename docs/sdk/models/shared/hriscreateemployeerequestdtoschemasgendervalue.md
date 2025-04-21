@@ -6,7 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasGenderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasGenderValue =
-  HrisCreateEmployeeRequestDtoSchemasGenderValue.NotDisclosed;
+  HrisCreateEmployeeRequestDtoSchemasGenderValue.NonBinary;
 ```
 
 ## Values

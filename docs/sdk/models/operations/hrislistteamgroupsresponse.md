@@ -44,7 +44,7 @@ let value: HrisListTeamGroupsResponse = {
       "<value>",
     ],
   },
-  statusCode: 424,
+  statusCode: 203,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

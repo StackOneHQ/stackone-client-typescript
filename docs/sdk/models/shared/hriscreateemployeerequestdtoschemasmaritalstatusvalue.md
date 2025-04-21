@@ -6,7 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue =
-  HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Divorced;
+  HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Separated;
 ```
 
 ## Values

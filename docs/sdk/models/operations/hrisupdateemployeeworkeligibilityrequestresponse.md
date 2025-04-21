@@ -12,7 +12,7 @@ let value: HrisUpdateEmployeeWorkEligibilityRequestResponse = {
       "<value>",
     ],
   },
-  statusCode: 507,
+  statusCode: 203,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

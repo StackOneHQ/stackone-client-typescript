@@ -33,7 +33,7 @@ let value: MarketingListSmsTemplatesResponse = {
       },
     ],
   },
-  statusCode: 506,
+  statusCode: 511,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
