@@ -27,6 +27,10 @@ export type DocumentsGetFileRequest = {
    * The account identifier
    */
   xAccountId: string;
+  /**
+   * The session token
+   */
+  xStackoneApiSessionToken?: string | undefined;
 };
 
 export type DocumentsGetFileResponse = {
@@ -60,9 +64,11 @@ export const DocumentsGetFileRequest$inboundSchema: z.ZodType<
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
   "x-account-id": z.string(),
+  "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "x-account-id": "xAccountId",
+    "x-stackone-api-session-token": "xStackoneApiSessionToken",
   });
 });
 
@@ -73,6 +79,7 @@ export type DocumentsGetFileRequest$Outbound = {
   proxy?: { [k: string]: any } | null | undefined;
   raw?: boolean | null | undefined;
   "x-account-id": string;
+  "x-stackone-api-session-token"?: string | undefined;
 };
 
 /** @internal */
@@ -86,9 +93,11 @@ export const DocumentsGetFileRequest$outboundSchema: z.ZodType<
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
   xAccountId: z.string(),
+  xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     xAccountId: "x-account-id",
+    xStackoneApiSessionToken: "x-stackone-api-session-token",
   });
 });
 

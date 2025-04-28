@@ -120,11 +120,16 @@ async function $do(
   });
 
   const headers = new Headers(compactMap({
-    Accept: "application/octet-stream",
+    Accept: "*/*",
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
     }),
+    "x-stackone-api-session-token": encodeSimple(
+      "x-stackone-api-session-token",
+      payload["x-stackone-api-session-token"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
@@ -226,6 +231,7 @@ async function $do(
     | ConnectionError
   >(
     M.stream(200, operations.DocumentsDownloadFileResponse$inboundSchema, {
+      ctype: "*/*",
       key: "response-stream",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),

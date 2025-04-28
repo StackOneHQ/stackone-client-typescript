@@ -20,5 +20,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Rejected`             | rejected               |
 | `Pending`              | pending                |
 | `Deleted`              | deleted                |
+| `Draft`                | draft                  |
 | `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

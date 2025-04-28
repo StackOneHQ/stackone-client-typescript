@@ -232,6 +232,10 @@ async function $do(
       operations.HrisCancelEmployeeTimeOffRequestResponse$inboundSchema,
       { key: "DeleteResult" },
     ),
+    M.nil(
+      204,
+      operations.HrisCancelEmployeeTimeOffRequestResponse$inboundSchema,
+    ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),

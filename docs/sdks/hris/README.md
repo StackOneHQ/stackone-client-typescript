@@ -2392,7 +2392,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeeEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2425,7 +2425,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeeEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2898,7 +2898,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2930,7 +2930,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4646,7 +4646,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4684,7 +4684,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5424,7 +5424,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5461,7 +5461,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

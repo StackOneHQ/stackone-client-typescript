@@ -15,6 +15,10 @@ export type DocumentsSearchFilesRequest = {
    * The account identifier
    */
   xAccountId: string;
+  /**
+   * The session token
+   */
+  xStackoneApiSessionToken?: string | undefined;
 };
 
 export type DocumentsSearchFilesResponse = {
@@ -46,10 +50,12 @@ export const DocumentsSearchFilesRequest$inboundSchema: z.ZodType<
   DocumentsFilesSearchRequestDto:
     shared.DocumentsFilesSearchRequestDto$inboundSchema,
   "x-account-id": z.string(),
+  "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "DocumentsFilesSearchRequestDto": "documentsFilesSearchRequestDto",
     "x-account-id": "xAccountId",
+    "x-stackone-api-session-token": "xStackoneApiSessionToken",
   });
 });
 
@@ -58,6 +64,7 @@ export type DocumentsSearchFilesRequest$Outbound = {
   DocumentsFilesSearchRequestDto:
     shared.DocumentsFilesSearchRequestDto$Outbound;
   "x-account-id": string;
+  "x-stackone-api-session-token"?: string | undefined;
 };
 
 /** @internal */
@@ -69,10 +76,12 @@ export const DocumentsSearchFilesRequest$outboundSchema: z.ZodType<
   documentsFilesSearchRequestDto:
     shared.DocumentsFilesSearchRequestDto$outboundSchema,
   xAccountId: z.string(),
+  xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     documentsFilesSearchRequestDto: "DocumentsFilesSearchRequestDto",
     xAccountId: "x-account-id",
+    xStackoneApiSessionToken: "x-stackone-api-session-token",
   });
 });
 

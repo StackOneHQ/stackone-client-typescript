@@ -10,9 +10,36 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * Filter to select time-off policies by type
+ */
+export enum QueryParamType {
+  Sick = "sick",
+  UnmappedValue = "unmapped_value",
+  Vacation = "vacation",
+  LongTermDisability = "long_term_disability",
+  ShortTermDisability = "short_term_disability",
+  Absent = "absent",
+  CompTime = "comp_time",
+  Training = "training",
+  AnnualLeave = "annual_leave",
+  LeaveOfAbsence = "leave_of_absence",
+  Break = "break",
+  ChildCareLeave = "child_care_leave",
+  MaternityLeave = "maternity_leave",
+  JuryDuty = "jury_duty",
+  BereavementLeave = "bereavement_leave",
+  Sabbatical = "sabbatical",
+  Accident = "accident",
+}
+
+/**
+ * HRIS Time-Off Policies filters
  */
 export type HrisListTimeOffPoliciesQueryParamFilter = {
+  /**
+   * Filter to select time-off policies by type
+   */
+  type?: QueryParamType | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -25,7 +52,7 @@ export type HrisListTimeOffPoliciesRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * HRIS Time-Off Policies filters
    */
   filter?: HrisListTimeOffPoliciesQueryParamFilter | null | undefined;
   /**
@@ -83,11 +110,33 @@ export type HrisListTimeOffPoliciesResponse = {
 };
 
 /** @internal */
+export const QueryParamType$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamType
+> = z.nativeEnum(QueryParamType);
+
+/** @internal */
+export const QueryParamType$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamType
+> = QueryParamType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamType$ {
+  /** @deprecated use `QueryParamType$inboundSchema` instead. */
+  export const inboundSchema = QueryParamType$inboundSchema;
+  /** @deprecated use `QueryParamType$outboundSchema` instead. */
+  export const outboundSchema = QueryParamType$outboundSchema;
+}
+
+/** @internal */
 export const HrisListTimeOffPoliciesQueryParamFilter$inboundSchema: z.ZodType<
   HrisListTimeOffPoliciesQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  type: z.nullable(QueryParamType$inboundSchema).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -97,6 +146,7 @@ export const HrisListTimeOffPoliciesQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisListTimeOffPoliciesQueryParamFilter$Outbound = {
+  type?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -106,6 +156,7 @@ export const HrisListTimeOffPoliciesQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListTimeOffPoliciesQueryParamFilter
 > = z.object({
+  type: z.nullable(QueryParamType$outboundSchema).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
