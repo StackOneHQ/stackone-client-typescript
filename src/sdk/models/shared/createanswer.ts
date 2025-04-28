@@ -38,6 +38,7 @@ export enum CreateAnswerValue {
   Number = "number",
   Date = "date",
   Video = "video",
+  Url = "url",
 }
 /**
  * The type of the answer.

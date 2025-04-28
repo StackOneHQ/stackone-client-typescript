@@ -116,6 +116,11 @@ async function $do(
       explode: false,
       charEncoding: "none",
     }),
+    "x-stackone-api-session-token": encodeSimple(
+      "x-stackone-api-session-token",
+      payload["x-stackone-api-session-token"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);

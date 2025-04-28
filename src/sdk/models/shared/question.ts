@@ -113,6 +113,7 @@ export enum QuestionValue {
   Number = "number",
   Date = "date",
   Video = "video",
+  Url = "url",
 }
 /**
  * The type of the questions.

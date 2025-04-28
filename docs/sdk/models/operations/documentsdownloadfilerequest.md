@@ -21,3 +21,4 @@ let value: DocumentsDownloadFileRequest = {
 | `format`                           | *string*                           | :heavy_minus_sign:                 | The format to download the file in | base64                             |
 | `id`                               | *string*                           | :heavy_check_mark:                 | N/A                                |                                    |
 | `xAccountId`                       | *string*                           | :heavy_check_mark:                 | The account identifier             |                                    |
+| `xStackoneApiSessionToken`         | *string*                           | :heavy_minus_sign:                 | The session token                  |                                    |

@@ -8,11 +8,12 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 4.19.8
+  version: 4.19.9
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

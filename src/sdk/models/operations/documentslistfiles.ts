@@ -60,6 +60,10 @@ export type DocumentsListFilesRequest = {
    * The account identifier
    */
   xAccountId: string;
+  /**
+   * The session token
+   */
+  xStackoneApiSessionToken?: string | undefined;
 };
 
 export type DocumentsListFilesResponse = {
@@ -165,11 +169,13 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
   raw: z.nullable(z.boolean()).optional(),
   updated_after: z.nullable(z.string()).optional(),
   "x-account-id": z.string(),
+  "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "page_size": "pageSize",
     "updated_after": "updatedAfter",
     "x-account-id": "xAccountId",
+    "x-stackone-api-session-token": "xStackoneApiSessionToken",
   });
 });
 
@@ -184,6 +190,7 @@ export type DocumentsListFilesRequest$Outbound = {
   raw?: boolean | null | undefined;
   updated_after?: string | null | undefined;
   "x-account-id": string;
+  "x-stackone-api-session-token"?: string | undefined;
 };
 
 /** @internal */
@@ -203,11 +210,13 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   raw: z.nullable(z.boolean()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
   xAccountId: z.string(),
+  xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",
+    xStackoneApiSessionToken: "x-stackone-api-session-token",
   });
 });
 

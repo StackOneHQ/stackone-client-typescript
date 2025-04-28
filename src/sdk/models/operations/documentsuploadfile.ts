@@ -15,6 +15,10 @@ export type DocumentsUploadFileRequest = {
    * The account identifier
    */
   xAccountId: string;
+  /**
+   * The session token
+   */
+  xStackoneApiSessionToken?: string | undefined;
 };
 
 export type DocumentsUploadFileResponse = {
@@ -45,10 +49,12 @@ export const DocumentsUploadFileRequest$inboundSchema: z.ZodType<
 > = z.object({
   UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$inboundSchema,
   "x-account-id": z.string(),
+  "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "UnifiedUploadRequestDto": "unifiedUploadRequestDto",
     "x-account-id": "xAccountId",
+    "x-stackone-api-session-token": "xStackoneApiSessionToken",
   });
 });
 
@@ -56,6 +62,7 @@ export const DocumentsUploadFileRequest$inboundSchema: z.ZodType<
 export type DocumentsUploadFileRequest$Outbound = {
   UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$Outbound;
   "x-account-id": string;
+  "x-stackone-api-session-token"?: string | undefined;
 };
 
 /** @internal */
@@ -66,10 +73,12 @@ export const DocumentsUploadFileRequest$outboundSchema: z.ZodType<
 > = z.object({
   unifiedUploadRequestDto: shared.UnifiedUploadRequestDto$outboundSchema,
   xAccountId: z.string(),
+  xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     unifiedUploadRequestDto: "UnifiedUploadRequestDto",
     xAccountId: "x-account-id",
+    xStackoneApiSessionToken: "x-stackone-api-session-token",
   });
 });
 

@@ -22,6 +22,10 @@ export type DocumentsDownloadFileRequest = {
    * The account identifier
    */
   xAccountId: string;
+  /**
+   * The session token
+   */
+  xStackoneApiSessionToken?: string | undefined;
 };
 
 export type DocumentsDownloadFileResponse = {
@@ -54,10 +58,12 @@ export const DocumentsDownloadFileRequest$inboundSchema: z.ZodType<
   format: z.nullable(z.string()).optional(),
   id: z.string(),
   "x-account-id": z.string(),
+  "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "export_format": "exportFormat",
     "x-account-id": "xAccountId",
+    "x-stackone-api-session-token": "xStackoneApiSessionToken",
   });
 });
 
@@ -67,6 +73,7 @@ export type DocumentsDownloadFileRequest$Outbound = {
   format?: string | null | undefined;
   id: string;
   "x-account-id": string;
+  "x-stackone-api-session-token"?: string | undefined;
 };
 
 /** @internal */
@@ -79,10 +86,12 @@ export const DocumentsDownloadFileRequest$outboundSchema: z.ZodType<
   format: z.nullable(z.string()).optional(),
   id: z.string(),
   xAccountId: z.string(),
+  xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     exportFormat: "export_format",
     xAccountId: "x-account-id",
+    xStackoneApiSessionToken: "x-stackone-api-session-token",
   });
 });
 

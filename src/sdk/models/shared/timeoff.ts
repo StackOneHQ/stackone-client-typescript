@@ -200,6 +200,7 @@ export enum TimeOffValue {
   Rejected = "rejected",
   Pending = "pending",
   Deleted = "deleted",
+  Draft = "draft",
   UnmappedValue = "unmapped_value",
 }
 export type TimeOffValueOpen = OpenEnum<typeof TimeOffValue>;

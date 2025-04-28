@@ -777,6 +777,10 @@ export type Employment = {
    */
   endDate?: Date | null | undefined;
   /**
+   * the employee’s working percentage relative to a full-time employee
+   */
+  fte?: number | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -3928,6 +3932,7 @@ export const Employment$inboundSchema: z.ZodType<
   end_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  fte: z.nullable(z.number()).optional(),
   id: z.nullable(z.string()).optional(),
   job: z.nullable(z.lazy(() => EmploymentJob$inboundSchema)).optional(),
   job_title: z.nullable(z.string()).optional(),
@@ -3994,6 +3999,7 @@ export type Employment$Outbound = {
     | undefined;
   employment_type?: EmploymentEmploymentType$Outbound | null | undefined;
   end_date?: string | null | undefined;
+  fte?: number | null | undefined;
   id?: string | null | undefined;
   job?: EmploymentJob$Outbound | null | undefined;
   job_title?: string | null | undefined;
@@ -4036,6 +4042,7 @@ export const Employment$outboundSchema: z.ZodType<
     z.lazy(() => EmploymentEmploymentType$outboundSchema),
   ).optional(),
   endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  fte: z.nullable(z.number()).optional(),
   id: z.nullable(z.string()).optional(),
   job: z.nullable(z.lazy(() => EmploymentJob$outboundSchema)).optional(),
   jobTitle: z.nullable(z.string()).optional(),
