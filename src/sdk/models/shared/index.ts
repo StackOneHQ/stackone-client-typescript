@@ -305,7 +305,6 @@ export * from "./ticketingticketspaginated.js";
 export * from "./ticketingtickettype.js";
 export * from "./ticketingtickettypepaginated.js";
 export * from "./ticketingtickettyperesult.js";
-export * from "./ticketinguser.js";
 export * from "./ticketinguserresult.js";
 export * from "./ticketinguserspaginated.js";
 export * from "./timeentries.js";

@@ -10,9 +10,21 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * Filter collections by type
+ */
+export enum TicketingListCollectionsQueryParamType {
+  Project = "project",
+  Component = "component",
+}
+
+/**
+ * Ticketing Collections filters
  */
 export type TicketingListCollectionsQueryParamFilter = {
+  /**
+   * Filter collections by type
+   */
+  type?: TicketingListCollectionsQueryParamType | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -25,7 +37,7 @@ export type TicketingListCollectionsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * Ticketing Collections filters
    */
   filter?: TicketingListCollectionsQueryParamFilter | null | undefined;
   /**
@@ -85,11 +97,37 @@ export type TicketingListCollectionsResponse = {
 };
 
 /** @internal */
+export const TicketingListCollectionsQueryParamType$inboundSchema:
+  z.ZodNativeEnum<typeof TicketingListCollectionsQueryParamType> = z.nativeEnum(
+    TicketingListCollectionsQueryParamType,
+  );
+
+/** @internal */
+export const TicketingListCollectionsQueryParamType$outboundSchema:
+  z.ZodNativeEnum<typeof TicketingListCollectionsQueryParamType> =
+    TicketingListCollectionsQueryParamType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingListCollectionsQueryParamType$ {
+  /** @deprecated use `TicketingListCollectionsQueryParamType$inboundSchema` instead. */
+  export const inboundSchema =
+    TicketingListCollectionsQueryParamType$inboundSchema;
+  /** @deprecated use `TicketingListCollectionsQueryParamType$outboundSchema` instead. */
+  export const outboundSchema =
+    TicketingListCollectionsQueryParamType$outboundSchema;
+}
+
+/** @internal */
 export const TicketingListCollectionsQueryParamFilter$inboundSchema: z.ZodType<
   TicketingListCollectionsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  type: z.nullable(TicketingListCollectionsQueryParamType$inboundSchema)
+    .optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -99,6 +137,7 @@ export const TicketingListCollectionsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TicketingListCollectionsQueryParamFilter$Outbound = {
+  type?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -108,6 +147,8 @@ export const TicketingListCollectionsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingListCollectionsQueryParamFilter
 > = z.object({
+  type: z.nullable(TicketingListCollectionsQueryParamType$outboundSchema)
+    .optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
