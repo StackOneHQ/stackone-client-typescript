@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e2437e197d2e5046a0b1bcb5c4e6d858
+  docChecksum: a36672746856c854f33b217fbb5f73b8
   docVersion: 1.0.0
-  speakeasyVersion: 1.540.1
-  generationVersion: 2.593.4
-  releaseVersion: 4.19.9
-  configChecksum: 0fd653a4776f1df32a98a0fc7672711a
+  speakeasyVersion: 1.542.0
+  generationVersion: 2.596.2
+  releaseVersion: 4.19.10
+  configChecksum: fcba389c84b5b3d2422859029a8a0b8c
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.6
+    core: 3.21.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -626,6 +626,7 @@ generatedFiles:
   - docs/sdk/models/operations/ticketinglistattachmentsrequest.md
   - docs/sdk/models/operations/ticketinglistattachmentsresponse.md
   - docs/sdk/models/operations/ticketinglistcollectionsqueryparamfilter.md
+  - docs/sdk/models/operations/ticketinglistcollectionsqueryparamtype.md
   - docs/sdk/models/operations/ticketinglistcollectionsrequest.md
   - docs/sdk/models/operations/ticketinglistcollectionsresponse.md
   - docs/sdk/models/operations/ticketinglistcommentsqueryparamfilter.md
@@ -1850,7 +1851,12 @@ generatedFiles:
   - docs/sdk/models/shared/ticketinguseragentpropertiesschemas.md
   - docs/sdk/models/shared/ticketingusercontactpropertiesschemas.md
   - docs/sdk/models/shared/ticketinguserresult.md
+  - docs/sdk/models/shared/ticketinguserresult4.md
+  - docs/sdk/models/shared/ticketinguserresultadditionalproperties.md
   - docs/sdk/models/shared/ticketinguserresultdata.md
+  - docs/sdk/models/shared/ticketinguserresultsourcevalue.md
+  - docs/sdk/models/shared/ticketinguserresulttype.md
+  - docs/sdk/models/shared/ticketinguserresultvalue.md
   - docs/sdk/models/shared/ticketingusersourcevalue.md
   - docs/sdk/models/shared/ticketinguserspaginated.md
   - docs/sdk/models/shared/ticketingusertype.md
@@ -2816,7 +2822,6 @@ generatedFiles:
   - src/sdk/models/shared/ticketingtickettype.ts
   - src/sdk/models/shared/ticketingtickettypepaginated.ts
   - src/sdk/models/shared/ticketingtickettyperesult.ts
-  - src/sdk/models/shared/ticketinguser.ts
   - src/sdk/models/shared/ticketinguserresult.ts
   - src/sdk/models/shared/ticketinguserspaginated.ts
   - src/sdk/models/shared/timeentries.ts
@@ -11095,6 +11100,7 @@ examples:
       responses:
         "200":
           application/octet-stream: "x-file: example.file"
+          '*/*': "x-file: example.file"
         "400":
           application/json: {"data": {"message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":

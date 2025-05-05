@@ -123,7 +123,7 @@ async function $do(
   });
 
   const headers = new Headers(compactMap({
-    Accept: "application/octet-stream",
+    Accept: "*/*",
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
@@ -231,7 +231,7 @@ async function $do(
     M.stream(
       200,
       operations.TicketingDownloadTicketingAttachmentResponse$inboundSchema,
-      { key: "response-stream" },
+      { ctype: "*/*", key: "response-stream" },
     ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

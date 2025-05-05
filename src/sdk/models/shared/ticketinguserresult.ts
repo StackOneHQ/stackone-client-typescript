@@ -3,7 +3,13 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -13,29 +19,730 @@ import {
   RawResponse$outboundSchema,
 } from "./rawresponse.js";
 
-export type TicketingUserResultData = {};
+export type TicketingUserContactPropertiesSchemas = {
+  /**
+   * The account ID of the user
+   */
+  accountId?: string | null | undefined;
+  /**
+   * The first name of the user
+   */
+  firstName?: string | null | undefined;
+  /**
+   * The last name of the user
+   */
+  lastName?: string | null | undefined;
+};
+
+export type TicketingUserAgentPropertiesSchemas = {
+  /**
+   * If the user is disabled
+   */
+  disabled?: boolean | null | undefined;
+  /**
+   * The username of the user
+   */
+  username?: string | null | undefined;
+};
+
+export type TicketingUserResultAdditionalProperties =
+  | TicketingUserAgentPropertiesSchemas
+  | TicketingUserContactPropertiesSchemas;
+
+export type TicketingUserResult4 = {};
+
+/**
+ * The source value of the user type.
+ */
+export type TicketingUserResultSourceValue =
+  | TicketingUserResult4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The type of the user.
+ */
+export enum TicketingUserResultValue {
+  Agent = "agent",
+  Contact = "contact",
+}
+/**
+ * The type of the user.
+ */
+export type TicketingUserResultValueOpen = OpenEnum<
+  typeof TicketingUserResultValue
+>;
+
+export type TicketingUserResultType = {
+  /**
+   * The source value of the user type.
+   */
+  sourceValue?:
+    | TicketingUserResult4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The type of the user.
+   */
+  value?: TicketingUserResultValueOpen | null | undefined;
+};
+
+export type TicketingUserResultData = {
+  additionalProperties?:
+    | TicketingUserAgentPropertiesSchemas
+    | TicketingUserContactPropertiesSchemas
+    | null
+    | undefined;
+  /**
+   * The timestamp when the record was created
+   */
+  createdAt?: Date | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * John Doe
+   */
+  name?: string | null | undefined;
+  /**
+   * The user's primary email address
+   */
+  primaryEmail?: string | null | undefined;
+  /**
+   * The user's primary phone number
+   */
+  primaryPhone?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+  type?: TicketingUserResultType | null | undefined;
+  /**
+   * The timestamp when the record was last updated
+   */
+  updatedAt?: Date | null | undefined;
+};
 
 export type TicketingUserResult = {
   data?: TicketingUserResultData | null | undefined;
   raw?: Array<RawResponse> | null | undefined;
 };
 
+export type AdditionalProperties =
+  | TicketingUserAgentPropertiesSchemas
+  | TicketingUserContactPropertiesSchemas;
+
+export type TicketingUser4 = {};
+
+/**
+ * The source value of the user type.
+ */
+export type TicketingUserSourceValue =
+  | TicketingUser4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The type of the user.
+ */
+export enum TicketingUserValue {
+  Agent = "agent",
+  Contact = "contact",
+}
+/**
+ * The type of the user.
+ */
+export type TicketingUserValueOpen = OpenEnum<typeof TicketingUserValue>;
+
+export type TicketingUserType = {
+  /**
+   * The source value of the user type.
+   */
+  sourceValue?:
+    | TicketingUser4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The type of the user.
+   */
+  value?: TicketingUserValueOpen | null | undefined;
+};
+
+export type TicketingUser = {
+  additionalProperties?:
+    | TicketingUserAgentPropertiesSchemas
+    | TicketingUserContactPropertiesSchemas
+    | null
+    | undefined;
+  /**
+   * The timestamp when the record was created
+   */
+  createdAt?: Date | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * John Doe
+   */
+  name?: string | null | undefined;
+  /**
+   * The user's primary email address
+   */
+  primaryEmail?: string | null | undefined;
+  /**
+   * The user's primary phone number
+   */
+  primaryPhone?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+  type?: TicketingUserType | null | undefined;
+  /**
+   * The timestamp when the record was last updated
+   */
+  updatedAt?: Date | null | undefined;
+};
+
 /** @internal */
-export const TicketingUserResultData$inboundSchema: z.ZodType<
-  TicketingUserResultData,
+export const TicketingUserContactPropertiesSchemas$inboundSchema: z.ZodType<
+  TicketingUserContactPropertiesSchemas,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  account_id: z.nullable(z.string()).optional(),
+  first_name: z.nullable(z.string()).optional(),
+  last_name: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "account_id": "accountId",
+    "first_name": "firstName",
+    "last_name": "lastName",
+  });
+});
+
+/** @internal */
+export type TicketingUserContactPropertiesSchemas$Outbound = {
+  account_id?: string | null | undefined;
+  first_name?: string | null | undefined;
+  last_name?: string | null | undefined;
+};
+
+/** @internal */
+export const TicketingUserContactPropertiesSchemas$outboundSchema: z.ZodType<
+  TicketingUserContactPropertiesSchemas$Outbound,
+  z.ZodTypeDef,
+  TicketingUserContactPropertiesSchemas
+> = z.object({
+  accountId: z.nullable(z.string()).optional(),
+  firstName: z.nullable(z.string()).optional(),
+  lastName: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    accountId: "account_id",
+    firstName: "first_name",
+    lastName: "last_name",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserContactPropertiesSchemas$ {
+  /** @deprecated use `TicketingUserContactPropertiesSchemas$inboundSchema` instead. */
+  export const inboundSchema =
+    TicketingUserContactPropertiesSchemas$inboundSchema;
+  /** @deprecated use `TicketingUserContactPropertiesSchemas$outboundSchema` instead. */
+  export const outboundSchema =
+    TicketingUserContactPropertiesSchemas$outboundSchema;
+  /** @deprecated use `TicketingUserContactPropertiesSchemas$Outbound` instead. */
+  export type Outbound = TicketingUserContactPropertiesSchemas$Outbound;
+}
+
+export function ticketingUserContactPropertiesSchemasToJSON(
+  ticketingUserContactPropertiesSchemas: TicketingUserContactPropertiesSchemas,
+): string {
+  return JSON.stringify(
+    TicketingUserContactPropertiesSchemas$outboundSchema.parse(
+      ticketingUserContactPropertiesSchemas,
+    ),
+  );
+}
+
+export function ticketingUserContactPropertiesSchemasFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserContactPropertiesSchemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TicketingUserContactPropertiesSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserContactPropertiesSchemas' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserAgentPropertiesSchemas$inboundSchema: z.ZodType<
+  TicketingUserAgentPropertiesSchemas,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  disabled: z.nullable(z.boolean()).optional(),
+  username: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type TicketingUserAgentPropertiesSchemas$Outbound = {
+  disabled?: boolean | null | undefined;
+  username?: string | null | undefined;
+};
+
+/** @internal */
+export const TicketingUserAgentPropertiesSchemas$outboundSchema: z.ZodType<
+  TicketingUserAgentPropertiesSchemas$Outbound,
+  z.ZodTypeDef,
+  TicketingUserAgentPropertiesSchemas
+> = z.object({
+  disabled: z.nullable(z.boolean()).optional(),
+  username: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserAgentPropertiesSchemas$ {
+  /** @deprecated use `TicketingUserAgentPropertiesSchemas$inboundSchema` instead. */
+  export const inboundSchema =
+    TicketingUserAgentPropertiesSchemas$inboundSchema;
+  /** @deprecated use `TicketingUserAgentPropertiesSchemas$outboundSchema` instead. */
+  export const outboundSchema =
+    TicketingUserAgentPropertiesSchemas$outboundSchema;
+  /** @deprecated use `TicketingUserAgentPropertiesSchemas$Outbound` instead. */
+  export type Outbound = TicketingUserAgentPropertiesSchemas$Outbound;
+}
+
+export function ticketingUserAgentPropertiesSchemasToJSON(
+  ticketingUserAgentPropertiesSchemas: TicketingUserAgentPropertiesSchemas,
+): string {
+  return JSON.stringify(
+    TicketingUserAgentPropertiesSchemas$outboundSchema.parse(
+      ticketingUserAgentPropertiesSchemas,
+    ),
+  );
+}
+
+export function ticketingUserAgentPropertiesSchemasFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserAgentPropertiesSchemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TicketingUserAgentPropertiesSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserAgentPropertiesSchemas' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserResultAdditionalProperties$inboundSchema: z.ZodType<
+  TicketingUserResultAdditionalProperties,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TicketingUserAgentPropertiesSchemas$inboundSchema),
+  z.lazy(() => TicketingUserContactPropertiesSchemas$inboundSchema),
+]);
+
+/** @internal */
+export type TicketingUserResultAdditionalProperties$Outbound =
+  | TicketingUserAgentPropertiesSchemas$Outbound
+  | TicketingUserContactPropertiesSchemas$Outbound;
+
+/** @internal */
+export const TicketingUserResultAdditionalProperties$outboundSchema: z.ZodType<
+  TicketingUserResultAdditionalProperties$Outbound,
+  z.ZodTypeDef,
+  TicketingUserResultAdditionalProperties
+> = z.union([
+  z.lazy(() => TicketingUserAgentPropertiesSchemas$outboundSchema),
+  z.lazy(() => TicketingUserContactPropertiesSchemas$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResultAdditionalProperties$ {
+  /** @deprecated use `TicketingUserResultAdditionalProperties$inboundSchema` instead. */
+  export const inboundSchema =
+    TicketingUserResultAdditionalProperties$inboundSchema;
+  /** @deprecated use `TicketingUserResultAdditionalProperties$outboundSchema` instead. */
+  export const outboundSchema =
+    TicketingUserResultAdditionalProperties$outboundSchema;
+  /** @deprecated use `TicketingUserResultAdditionalProperties$Outbound` instead. */
+  export type Outbound = TicketingUserResultAdditionalProperties$Outbound;
+}
+
+export function ticketingUserResultAdditionalPropertiesToJSON(
+  ticketingUserResultAdditionalProperties:
+    TicketingUserResultAdditionalProperties,
+): string {
+  return JSON.stringify(
+    TicketingUserResultAdditionalProperties$outboundSchema.parse(
+      ticketingUserResultAdditionalProperties,
+    ),
+  );
+}
+
+export function ticketingUserResultAdditionalPropertiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TicketingUserResultAdditionalProperties,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TicketingUserResultAdditionalProperties$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TicketingUserResultAdditionalProperties' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserResult4$inboundSchema: z.ZodType<
+  TicketingUserResult4,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type TicketingUserResultData$Outbound = {};
+export type TicketingUserResult4$Outbound = {};
+
+/** @internal */
+export const TicketingUserResult4$outboundSchema: z.ZodType<
+  TicketingUserResult4$Outbound,
+  z.ZodTypeDef,
+  TicketingUserResult4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResult4$ {
+  /** @deprecated use `TicketingUserResult4$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserResult4$inboundSchema;
+  /** @deprecated use `TicketingUserResult4$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserResult4$outboundSchema;
+  /** @deprecated use `TicketingUserResult4$Outbound` instead. */
+  export type Outbound = TicketingUserResult4$Outbound;
+}
+
+export function ticketingUserResult4ToJSON(
+  ticketingUserResult4: TicketingUserResult4,
+): string {
+  return JSON.stringify(
+    TicketingUserResult4$outboundSchema.parse(ticketingUserResult4),
+  );
+}
+
+export function ticketingUserResult4FromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserResult4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUserResult4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserResult4' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserResultSourceValue$inboundSchema: z.ZodType<
+  TicketingUserResultSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TicketingUserResult4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type TicketingUserResultSourceValue$Outbound =
+  | TicketingUserResult4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const TicketingUserResultSourceValue$outboundSchema: z.ZodType<
+  TicketingUserResultSourceValue$Outbound,
+  z.ZodTypeDef,
+  TicketingUserResultSourceValue
+> = z.union([
+  z.lazy(() => TicketingUserResult4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResultSourceValue$ {
+  /** @deprecated use `TicketingUserResultSourceValue$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserResultSourceValue$inboundSchema;
+  /** @deprecated use `TicketingUserResultSourceValue$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserResultSourceValue$outboundSchema;
+  /** @deprecated use `TicketingUserResultSourceValue$Outbound` instead. */
+  export type Outbound = TicketingUserResultSourceValue$Outbound;
+}
+
+export function ticketingUserResultSourceValueToJSON(
+  ticketingUserResultSourceValue: TicketingUserResultSourceValue,
+): string {
+  return JSON.stringify(
+    TicketingUserResultSourceValue$outboundSchema.parse(
+      ticketingUserResultSourceValue,
+    ),
+  );
+}
+
+export function ticketingUserResultSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserResultSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUserResultSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserResultSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserResultValue$inboundSchema: z.ZodType<
+  TicketingUserResultValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(TicketingUserResultValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const TicketingUserResultValue$outboundSchema: z.ZodType<
+  TicketingUserResultValueOpen,
+  z.ZodTypeDef,
+  TicketingUserResultValueOpen
+> = z.union([
+  z.nativeEnum(TicketingUserResultValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResultValue$ {
+  /** @deprecated use `TicketingUserResultValue$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserResultValue$inboundSchema;
+  /** @deprecated use `TicketingUserResultValue$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserResultValue$outboundSchema;
+}
+
+/** @internal */
+export const TicketingUserResultType$inboundSchema: z.ZodType<
+  TicketingUserResultType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUserResult4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(TicketingUserResultValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type TicketingUserResultType$Outbound = {
+  source_value?:
+    | TicketingUserResult4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const TicketingUserResultType$outboundSchema: z.ZodType<
+  TicketingUserResultType$Outbound,
+  z.ZodTypeDef,
+  TicketingUserResultType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUserResult4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(TicketingUserResultValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResultType$ {
+  /** @deprecated use `TicketingUserResultType$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserResultType$inboundSchema;
+  /** @deprecated use `TicketingUserResultType$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserResultType$outboundSchema;
+  /** @deprecated use `TicketingUserResultType$Outbound` instead. */
+  export type Outbound = TicketingUserResultType$Outbound;
+}
+
+export function ticketingUserResultTypeToJSON(
+  ticketingUserResultType: TicketingUserResultType,
+): string {
+  return JSON.stringify(
+    TicketingUserResultType$outboundSchema.parse(ticketingUserResultType),
+  );
+}
+
+export function ticketingUserResultTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserResultType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUserResultType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserResultType' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserResultData$inboundSchema: z.ZodType<
+  TicketingUserResultData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  additional_properties: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUserAgentPropertiesSchemas$inboundSchema),
+      z.lazy(() => TicketingUserContactPropertiesSchemas$inboundSchema),
+    ]),
+  ).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  primary_email: z.nullable(z.string()).optional(),
+  primary_phone: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TicketingUserResultType$inboundSchema))
+    .optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "additional_properties": "additionalProperties",
+    "created_at": "createdAt",
+    "primary_email": "primaryEmail",
+    "primary_phone": "primaryPhone",
+    "remote_id": "remoteId",
+    "updated_at": "updatedAt",
+  });
+});
+
+/** @internal */
+export type TicketingUserResultData$Outbound = {
+  additional_properties?:
+    | TicketingUserAgentPropertiesSchemas$Outbound
+    | TicketingUserContactPropertiesSchemas$Outbound
+    | null
+    | undefined;
+  created_at?: string | null | undefined;
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  primary_email?: string | null | undefined;
+  primary_phone?: string | null | undefined;
+  remote_id?: string | null | undefined;
+  type?: TicketingUserResultType$Outbound | null | undefined;
+  updated_at?: string | null | undefined;
+};
 
 /** @internal */
 export const TicketingUserResultData$outboundSchema: z.ZodType<
   TicketingUserResultData$Outbound,
   z.ZodTypeDef,
   TicketingUserResultData
-> = z.object({});
+> = z.object({
+  additionalProperties: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUserAgentPropertiesSchemas$outboundSchema),
+      z.lazy(() => TicketingUserContactPropertiesSchemas$outboundSchema),
+    ]),
+  ).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  primaryEmail: z.nullable(z.string()).optional(),
+  primaryPhone: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TicketingUserResultType$outboundSchema))
+    .optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    additionalProperties: "additional_properties",
+    createdAt: "created_at",
+    primaryEmail: "primary_email",
+    primaryPhone: "primary_phone",
+    remoteId: "remote_id",
+    updatedAt: "updated_at",
+  });
+});
 
 /**
  * @internal
@@ -124,5 +831,400 @@ export function ticketingUserResultFromJSON(
     jsonString,
     (x) => TicketingUserResult$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'TicketingUserResult' from JSON`,
+  );
+}
+
+/** @internal */
+export const AdditionalProperties$inboundSchema: z.ZodType<
+  AdditionalProperties,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TicketingUserAgentPropertiesSchemas$inboundSchema),
+  z.lazy(() => TicketingUserContactPropertiesSchemas$inboundSchema),
+]);
+
+/** @internal */
+export type AdditionalProperties$Outbound =
+  | TicketingUserAgentPropertiesSchemas$Outbound
+  | TicketingUserContactPropertiesSchemas$Outbound;
+
+/** @internal */
+export const AdditionalProperties$outboundSchema: z.ZodType<
+  AdditionalProperties$Outbound,
+  z.ZodTypeDef,
+  AdditionalProperties
+> = z.union([
+  z.lazy(() => TicketingUserAgentPropertiesSchemas$outboundSchema),
+  z.lazy(() => TicketingUserContactPropertiesSchemas$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AdditionalProperties$ {
+  /** @deprecated use `AdditionalProperties$inboundSchema` instead. */
+  export const inboundSchema = AdditionalProperties$inboundSchema;
+  /** @deprecated use `AdditionalProperties$outboundSchema` instead. */
+  export const outboundSchema = AdditionalProperties$outboundSchema;
+  /** @deprecated use `AdditionalProperties$Outbound` instead. */
+  export type Outbound = AdditionalProperties$Outbound;
+}
+
+export function additionalPropertiesToJSON(
+  additionalProperties: AdditionalProperties,
+): string {
+  return JSON.stringify(
+    AdditionalProperties$outboundSchema.parse(additionalProperties),
+  );
+}
+
+export function additionalPropertiesFromJSON(
+  jsonString: string,
+): SafeParseResult<AdditionalProperties, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AdditionalProperties$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AdditionalProperties' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUser4$inboundSchema: z.ZodType<
+  TicketingUser4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type TicketingUser4$Outbound = {};
+
+/** @internal */
+export const TicketingUser4$outboundSchema: z.ZodType<
+  TicketingUser4$Outbound,
+  z.ZodTypeDef,
+  TicketingUser4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUser4$ {
+  /** @deprecated use `TicketingUser4$inboundSchema` instead. */
+  export const inboundSchema = TicketingUser4$inboundSchema;
+  /** @deprecated use `TicketingUser4$outboundSchema` instead. */
+  export const outboundSchema = TicketingUser4$outboundSchema;
+  /** @deprecated use `TicketingUser4$Outbound` instead. */
+  export type Outbound = TicketingUser4$Outbound;
+}
+
+export function ticketingUser4ToJSON(ticketingUser4: TicketingUser4): string {
+  return JSON.stringify(TicketingUser4$outboundSchema.parse(ticketingUser4));
+}
+
+export function ticketingUser4FromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUser4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUser4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUser4' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserSourceValue$inboundSchema: z.ZodType<
+  TicketingUserSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => TicketingUser4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type TicketingUserSourceValue$Outbound =
+  | TicketingUser4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const TicketingUserSourceValue$outboundSchema: z.ZodType<
+  TicketingUserSourceValue$Outbound,
+  z.ZodTypeDef,
+  TicketingUserSourceValue
+> = z.union([
+  z.lazy(() => TicketingUser4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserSourceValue$ {
+  /** @deprecated use `TicketingUserSourceValue$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserSourceValue$inboundSchema;
+  /** @deprecated use `TicketingUserSourceValue$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserSourceValue$outboundSchema;
+  /** @deprecated use `TicketingUserSourceValue$Outbound` instead. */
+  export type Outbound = TicketingUserSourceValue$Outbound;
+}
+
+export function ticketingUserSourceValueToJSON(
+  ticketingUserSourceValue: TicketingUserSourceValue,
+): string {
+  return JSON.stringify(
+    TicketingUserSourceValue$outboundSchema.parse(ticketingUserSourceValue),
+  );
+}
+
+export function ticketingUserSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUserSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUserValue$inboundSchema: z.ZodType<
+  TicketingUserValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(TicketingUserValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const TicketingUserValue$outboundSchema: z.ZodType<
+  TicketingUserValueOpen,
+  z.ZodTypeDef,
+  TicketingUserValueOpen
+> = z.union([
+  z.nativeEnum(TicketingUserValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserValue$ {
+  /** @deprecated use `TicketingUserValue$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserValue$inboundSchema;
+  /** @deprecated use `TicketingUserValue$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserValue$outboundSchema;
+}
+
+/** @internal */
+export const TicketingUserType$inboundSchema: z.ZodType<
+  TicketingUserType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUser4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(TicketingUserValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type TicketingUserType$Outbound = {
+  source_value?:
+    | TicketingUser4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const TicketingUserType$outboundSchema: z.ZodType<
+  TicketingUserType$Outbound,
+  z.ZodTypeDef,
+  TicketingUserType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUser4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(TicketingUserValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserType$ {
+  /** @deprecated use `TicketingUserType$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserType$inboundSchema;
+  /** @deprecated use `TicketingUserType$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserType$outboundSchema;
+  /** @deprecated use `TicketingUserType$Outbound` instead. */
+  export type Outbound = TicketingUserType$Outbound;
+}
+
+export function ticketingUserTypeToJSON(
+  ticketingUserType: TicketingUserType,
+): string {
+  return JSON.stringify(
+    TicketingUserType$outboundSchema.parse(ticketingUserType),
+  );
+}
+
+export function ticketingUserTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUserType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserType' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingUser$inboundSchema: z.ZodType<
+  TicketingUser,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  additional_properties: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUserAgentPropertiesSchemas$inboundSchema),
+      z.lazy(() => TicketingUserContactPropertiesSchemas$inboundSchema),
+    ]),
+  ).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  primary_email: z.nullable(z.string()).optional(),
+  primary_phone: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TicketingUserType$inboundSchema)).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "additional_properties": "additionalProperties",
+    "created_at": "createdAt",
+    "primary_email": "primaryEmail",
+    "primary_phone": "primaryPhone",
+    "remote_id": "remoteId",
+    "updated_at": "updatedAt",
+  });
+});
+
+/** @internal */
+export type TicketingUser$Outbound = {
+  additional_properties?:
+    | TicketingUserAgentPropertiesSchemas$Outbound
+    | TicketingUserContactPropertiesSchemas$Outbound
+    | null
+    | undefined;
+  created_at?: string | null | undefined;
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  primary_email?: string | null | undefined;
+  primary_phone?: string | null | undefined;
+  remote_id?: string | null | undefined;
+  type?: TicketingUserType$Outbound | null | undefined;
+  updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const TicketingUser$outboundSchema: z.ZodType<
+  TicketingUser$Outbound,
+  z.ZodTypeDef,
+  TicketingUser
+> = z.object({
+  additionalProperties: z.nullable(
+    z.union([
+      z.lazy(() => TicketingUserAgentPropertiesSchemas$outboundSchema),
+      z.lazy(() => TicketingUserContactPropertiesSchemas$outboundSchema),
+    ]),
+  ).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  primaryEmail: z.nullable(z.string()).optional(),
+  primaryPhone: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TicketingUserType$outboundSchema)).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    additionalProperties: "additional_properties",
+    createdAt: "created_at",
+    primaryEmail: "primary_email",
+    primaryPhone: "primary_phone",
+    remoteId: "remote_id",
+    updatedAt: "updated_at",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUser$ {
+  /** @deprecated use `TicketingUser$inboundSchema` instead. */
+  export const inboundSchema = TicketingUser$inboundSchema;
+  /** @deprecated use `TicketingUser$outboundSchema` instead. */
+  export const outboundSchema = TicketingUser$outboundSchema;
+  /** @deprecated use `TicketingUser$Outbound` instead. */
+  export type Outbound = TicketingUser$Outbound;
+}
+
+export function ticketingUserToJSON(ticketingUser: TicketingUser): string {
+  return JSON.stringify(TicketingUser$outboundSchema.parse(ticketingUser));
+}
+
+export function ticketingUserFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUser' from JSON`,
   );
 }

@@ -4,6 +4,7 @@
 
 ```typescript
 import { TicketingGetUserResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { TicketingUserResultValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TicketingGetUserResponse = {
   contentType: "<value>",
@@ -16,6 +17,25 @@ let value: TicketingGetUserResponse = {
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
+  ticketingUserResult: {
+    data: {
+      additionalProperties: {
+        disabled: false,
+        username: "johndoe",
+      },
+      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      name: "John Doe",
+      primaryEmail: "john.doe@example.com",
+      primaryPhone: "555-5555-5555",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      type: {
+        sourceValue: "Live",
+        value: TicketingUserResultValue.Agent,
+      },
+      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+    },
+  },
 };
 ```
 
