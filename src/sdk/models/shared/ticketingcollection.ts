@@ -19,6 +19,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export enum TicketingCollectionType {
   Project = "project",
   Component = "component",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the collection.

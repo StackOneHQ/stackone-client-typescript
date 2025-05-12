@@ -277,6 +277,7 @@ export enum AccountAddressSchemasValue {
   Ye = "YE",
   Zm = "ZM",
   Zw = "ZW",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The ISO 3166-1 alpha-2 code of the country.

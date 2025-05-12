@@ -61,7 +61,7 @@ let value: Campaign = {
   },
   status: {
     sourceValue: "Email",
-    value: CampaignSchemasValue.Live,
+    value: CampaignSchemasValue.UnmappedValue,
   },
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };

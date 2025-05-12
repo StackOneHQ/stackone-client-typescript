@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Draft`                | draft                  |
 | `Live`                 | live                   |
 | `Archived`             | archived               |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

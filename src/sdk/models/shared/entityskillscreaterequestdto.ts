@@ -28,6 +28,7 @@ export enum EntitySkillsCreateRequestDtoValue {
   Three = "3",
   Four = "4",
   Five = "5",
+  UnmappedValue = "unmapped_value",
 }
 export type EntitySkillsCreateRequestDtoValueOpen = OpenEnum<
   typeof EntitySkillsCreateRequestDtoValue
@@ -75,6 +76,7 @@ export enum EntitySkillsCreateRequestDtoSchemasValue {
   Three = "3",
   Four = "4",
   Five = "5",
+  UnmappedValue = "unmapped_value",
 }
 export type EntitySkillsCreateRequestDtoSchemasValueOpen = OpenEnum<
   typeof EntitySkillsCreateRequestDtoSchemasValue

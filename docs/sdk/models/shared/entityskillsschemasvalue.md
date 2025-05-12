@@ -5,7 +5,7 @@
 ```typescript
 import { EntitySkillsSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EntitySkillsSchemasValue = EntitySkillsSchemasValue.Four;
+let value: EntitySkillsSchemasValue = EntitySkillsSchemasValue.Five;
 ```
 
 ## Values
@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Three`                | 3                      |
 | `Four`                 | 4                      |
 | `Five`                 | 5                      |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

@@ -26,4 +26,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Date`                 | date                   |
 | `Video`                | video                  |
 | `Url`                  | url                    |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

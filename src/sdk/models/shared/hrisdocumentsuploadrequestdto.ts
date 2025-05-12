@@ -79,6 +79,7 @@ export type HrisDocumentsUploadRequestDtoSourceValue =
 export enum HrisDocumentsUploadRequestDtoSchemasValue {
   True = "true",
   False = "false",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * Whether the file is confidential or not

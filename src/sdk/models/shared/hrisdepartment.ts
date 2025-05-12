@@ -29,6 +29,7 @@ export enum HRISDepartmentValue {
   Group = "group",
   Project = "project",
   Team = "team",
+  UnmappedValue = "unmapped_value",
 }
 export type HRISDepartmentValueOpen = OpenEnum<typeof HRISDepartmentValue>;
 

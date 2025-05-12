@@ -8,7 +8,7 @@ Confidential status of the job
 import { AtsUpdateJobRequestDtoConfidential } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsUpdateJobRequestDtoConfidential =
-  AtsUpdateJobRequestDtoConfidential.False;
+  AtsUpdateJobRequestDtoConfidential.UnmappedValue;
 ```
 
 ## Values
@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `True`                 | true                   |
 | `False`                | false                  |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

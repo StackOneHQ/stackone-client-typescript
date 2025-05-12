@@ -32,6 +32,7 @@ export type NoteSourceValue = Note4 | string | number | boolean | Array<any>;
 export enum NoteValue {
   Private = "private",
   Public = "public",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The visibility of the notes.

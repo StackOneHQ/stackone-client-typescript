@@ -67,6 +67,7 @@ export type TicketingUserResultSourceValue =
 export enum TicketingUserResultValue {
   Agent = "agent",
   Contact = "contact",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the user.
@@ -157,6 +158,7 @@ export type TicketingUserSourceValue =
 export enum TicketingUserValue {
   Agent = "agent",
   Contact = "contact",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the user.

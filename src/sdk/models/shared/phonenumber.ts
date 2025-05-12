@@ -22,6 +22,7 @@ export enum PhoneNumberType {
   Home = "home",
   Unknown = "unknown",
   Other = "other",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * Type of phone number

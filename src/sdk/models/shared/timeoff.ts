@@ -49,6 +49,7 @@ export enum TimeOffSchemasPolicyValue {
   Months = "months",
   Years = "years",
   Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown

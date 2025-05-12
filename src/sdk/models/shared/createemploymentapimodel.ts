@@ -288,8 +288,6 @@ export type WorkTime = {
 export type CreateEmploymentApiModel = {
   /**
    * The effective date of the employment contract
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   effectiveDate?: Date | null | undefined;
   /**
@@ -304,6 +302,10 @@ export type CreateEmploymentApiModel = {
    * Unique identifier
    */
   id?: string | null | undefined;
+  /**
+   * The employee job id
+   */
+  jobId?: string | null | undefined;
   /**
    * The job title of the employee
    */
@@ -324,6 +326,10 @@ export type CreateEmploymentApiModel = {
    * The pay rate for the employee
    */
   payRate?: string | null | undefined;
+  /**
+   * The payroll code of the employee
+   */
+  payrollCode?: string | null | undefined;
   /**
    * Custom Unified Fields configured in your StackOne project
    */
@@ -1691,12 +1697,14 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   employment_type: z.nullable(z.lazy(() => EmploymentType$inboundSchema))
     .optional(),
   id: z.nullable(z.string()).optional(),
+  job_id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
   pay_currency: z.nullable(z.string()).optional(),
   pay_frequency: z.nullable(z.lazy(() => PayFrequency$inboundSchema))
     .optional(),
   pay_period: z.nullable(z.lazy(() => PayPeriod$inboundSchema)).optional(),
   pay_rate: z.nullable(z.string()).optional(),
+  payroll_code: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   work_time: z.nullable(z.lazy(() => WorkTime$inboundSchema)).optional(),
 }).transform((v) => {
@@ -1704,11 +1712,13 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
     "effective_date": "effectiveDate",
     "employment_contract_type": "employmentContractType",
     "employment_type": "employmentType",
+    "job_id": "jobId",
     "job_title": "jobTitle",
     "pay_currency": "payCurrency",
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
+    "payroll_code": "payrollCode",
     "unified_custom_fields": "unifiedCustomFields",
     "work_time": "workTime",
   });
@@ -1720,11 +1730,13 @@ export type CreateEmploymentApiModel$Outbound = {
   employment_contract_type?: EmploymentContractType$Outbound | null | undefined;
   employment_type?: EmploymentType$Outbound | null | undefined;
   id?: string | null | undefined;
+  job_id?: string | null | undefined;
   job_title?: string | null | undefined;
   pay_currency?: string | null | undefined;
   pay_frequency?: PayFrequency$Outbound | null | undefined;
   pay_period?: PayPeriod$Outbound | null | undefined;
   pay_rate?: string | null | undefined;
+  payroll_code?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   work_time?: WorkTime$Outbound | null | undefined;
 };
@@ -1743,12 +1755,14 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
   employmentType: z.nullable(z.lazy(() => EmploymentType$outboundSchema))
     .optional(),
   id: z.nullable(z.string()).optional(),
+  jobId: z.nullable(z.string()).optional(),
   jobTitle: z.nullable(z.string()).optional(),
   payCurrency: z.nullable(z.string()).optional(),
   payFrequency: z.nullable(z.lazy(() => PayFrequency$outboundSchema))
     .optional(),
   payPeriod: z.nullable(z.lazy(() => PayPeriod$outboundSchema)).optional(),
   payRate: z.nullable(z.string()).optional(),
+  payrollCode: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   workTime: z.nullable(z.lazy(() => WorkTime$outboundSchema)).optional(),
 }).transform((v) => {
@@ -1756,11 +1770,13 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
     effectiveDate: "effective_date",
     employmentContractType: "employment_contract_type",
     employmentType: "employment_type",
+    jobId: "job_id",
     jobTitle: "job_title",
     payCurrency: "pay_currency",
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
     payRate: "pay_rate",
+    payrollCode: "payroll_code",
     unifiedCustomFields: "unified_custom_fields",
     workTime: "work_time",
   });

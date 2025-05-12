@@ -26,6 +26,7 @@ export enum CompletionValue {
   Content = "content",
   Course = "course",
   Collection = "collection",
+  UnmappedValue = "unmapped_value",
 }
 export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
 
@@ -56,6 +57,7 @@ export type CompletionSchemasSourceValue =
 export enum CompletionSchemasValue {
   Pass = "Pass",
   Fail = "Fail",
+  UnmappedValue = "unmapped_value",
 }
 export type CompletionSchemasValueOpen = OpenEnum<
   typeof CompletionSchemasValue

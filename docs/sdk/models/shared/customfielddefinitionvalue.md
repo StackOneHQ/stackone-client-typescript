@@ -25,4 +25,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `MultiSelect`          | multi_select           |
 | `Url`                  | url                    |
 | `Other`                | other                  |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

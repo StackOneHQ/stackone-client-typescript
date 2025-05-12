@@ -26,6 +26,7 @@ export enum CategoryValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  UnmappedValue = "unmapped_value",
 }
 export type CategoryValueOpen = OpenEnum<typeof CategoryValue>;
 
@@ -467,6 +468,7 @@ export enum CategorySchemasValue {
   ZhSG = "zh_SG",
   ZhTW = "zh_TW",
   ZuZA = "zu_ZA",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Locale Code of the language
@@ -504,6 +506,7 @@ export enum CategorySchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  UnmappedValue = "unmapped_value",
 }
 export type CategorySchemasLevelValueOpen = OpenEnum<
   typeof CategorySchemasLevelValue

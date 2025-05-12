@@ -6,7 +6,7 @@
 import { LmsCreateCompletionRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCompletionRequestDtoValue =
-  LmsCreateCompletionRequestDtoValue.Fail;
+  LmsCreateCompletionRequestDtoValue.UnmappedValue;
 ```
 
 ## Values
@@ -17,4 +17,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `Pass`                 | Pass                   |
 | `Fail`                 | Fail                   |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

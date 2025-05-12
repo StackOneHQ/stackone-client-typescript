@@ -39,6 +39,7 @@ export enum CreateAnswerValue {
   Date = "date",
   Video = "video",
   Url = "url",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the answer.

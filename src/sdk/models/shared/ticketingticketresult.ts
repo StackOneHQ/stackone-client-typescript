@@ -68,6 +68,7 @@ export enum TicketingTicketResultValue {
   Medium = "medium",
   High = "high",
   Highest = "highest",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The priority of the ticket.
@@ -120,6 +121,7 @@ export enum TicketingTicketResultSchemasValue {
   ToDo = "to-do",
   InProgress = "in-progress",
   Closed = "closed",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The status of the ticket.

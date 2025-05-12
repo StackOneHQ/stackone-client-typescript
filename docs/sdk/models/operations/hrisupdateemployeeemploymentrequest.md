@@ -7,9 +7,11 @@ import { HrisUpdateEmployeeEmploymentRequest } from "@stackone/stackone-client-t
 
 let value: HrisUpdateEmployeeEmploymentRequest = {
   hrisCreateEmploymentRequestDto: {
+    effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
     employmentContractType: {},
     employmentType: {},
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    jobId: "5290",
     jobTitle: "Software Engineer",
     passthrough: {
       "other_known_names": "John Doe",
@@ -18,6 +20,7 @@ let value: HrisUpdateEmployeeEmploymentRequest = {
     payFrequency: {},
     payPeriod: {},
     payRate: "40.00",
+    payrollCode: "PC1",
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",

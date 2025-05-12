@@ -111,6 +111,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -118,6 +122,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -214,6 +222,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -221,6 +233,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -337,6 +353,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -344,6 +364,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -440,6 +464,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -447,6 +475,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -601,6 +633,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -608,6 +644,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -708,6 +748,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -715,6 +759,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -841,6 +889,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -848,6 +900,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -948,6 +1004,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
             {
@@ -955,6 +1015,10 @@ async function run() {
               language: {
                 value: LocalizationModelValue.EnGB,
               },
+              tags: [
+                "Sales Techniques",
+                "Customer Service",
+              ],
               title: "Software Engineer Lv 1",
             },
           ],
@@ -3791,6 +3855,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
         {
@@ -3798,6 +3866,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
       ],
@@ -3908,6 +3980,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
         {
@@ -3915,6 +3991,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
       ],
@@ -4062,6 +4142,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
         {
@@ -4069,6 +4153,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
       ],
@@ -4174,6 +4262,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
         {
@@ -4181,6 +4273,10 @@ async function run() {
           language: {
             value: LocalizationModelValue.EnGB,
           },
+          tags: [
+            "Sales Techniques",
+            "Customer Service",
+          ],
           title: "Software Engineer Lv 1",
         },
       ],

@@ -436,6 +436,7 @@ export enum EntitySkillsValue {
   ZhSG = "zh_SG",
   ZhTW = "zh_TW",
   ZuZA = "zu_ZA",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Locale Code of the language
@@ -475,6 +476,7 @@ export enum EntitySkillsSchemasValue {
   Three = "3",
   Four = "4",
   Five = "5",
+  UnmappedValue = "unmapped_value",
 }
 export type EntitySkillsSchemasValueOpen = OpenEnum<
   typeof EntitySkillsSchemasValue
@@ -522,6 +524,7 @@ export enum EntitySkillsSchemasMinimumProficiencyValue {
   Three = "3",
   Four = "4",
   Five = "5",
+  UnmappedValue = "unmapped_value",
 }
 export type EntitySkillsSchemasMinimumProficiencyValueOpen = OpenEnum<
   typeof EntitySkillsSchemasMinimumProficiencyValue

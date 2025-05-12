@@ -37,6 +37,7 @@ export type AtsUpdateNotesRequestDtoSourceValue =
 export enum AtsUpdateNotesRequestDtoValue {
   Private = "private",
   Public = "public",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The visibility of the notes.

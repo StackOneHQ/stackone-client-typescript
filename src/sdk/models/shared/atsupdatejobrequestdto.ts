@@ -37,6 +37,7 @@ import {
 export enum AtsUpdateJobRequestDtoConfidential {
   True = "true",
   False = "false",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * Confidential status of the job

@@ -58,6 +58,7 @@ export enum LmsUpsertContentRequestDtoValue {
   Document = "document",
   Audio = "audio",
   Article = "article",
+  UnmappedValue = "unmapped_value",
 }
 export type LmsUpsertContentRequestDtoValueOpen = OpenEnum<
   typeof LmsUpsertContentRequestDtoValue

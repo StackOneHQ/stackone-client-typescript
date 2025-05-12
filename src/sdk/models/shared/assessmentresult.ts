@@ -55,6 +55,7 @@ export enum AssessmentResultValue {
   Expired = "expired",
   Failed = "failed",
   Passed = "passed",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The result of the test.

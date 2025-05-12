@@ -52,6 +52,7 @@ export enum ContentValue {
   Document = "document",
   Audio = "audio",
   Article = "article",
+  UnmappedValue = "unmapped_value",
 }
 export type ContentValueOpen = OpenEnum<typeof ContentValue>;
 

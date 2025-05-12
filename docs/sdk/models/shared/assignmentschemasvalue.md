@@ -17,4 +17,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Pending`              | pending                |
 | `InProgress`           | in_progress            |
 | `Completed`            | completed              |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |
