@@ -149,6 +149,7 @@ export type JobPostingEmploymentType = {
 export enum Internal {
   True = "true",
   False = "false",
+  UnmappedValue = "unmapped_value",
 }
 export type InternalOpen = OpenEnum<typeof Internal>;
 

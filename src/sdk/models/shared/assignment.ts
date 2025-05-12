@@ -26,6 +26,7 @@ export enum AssignmentValue {
   Content = "content",
   Course = "course",
   Collection = "collection",
+  UnmappedValue = "unmapped_value",
 }
 export type AssignmentValueOpen = OpenEnum<typeof AssignmentValue>;
 
@@ -57,6 +58,7 @@ export enum AssignmentSchemasValue {
   Pending = "pending",
   InProgress = "in_progress",
   Completed = "completed",
+  UnmappedValue = "unmapped_value",
 }
 export type AssignmentSchemasValueOpen = OpenEnum<
   typeof AssignmentSchemasValue

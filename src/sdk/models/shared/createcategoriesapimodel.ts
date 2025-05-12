@@ -26,6 +26,7 @@ export enum CreateCategoriesApiModelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  UnmappedValue = "unmapped_value",
 }
 export type CreateCategoriesApiModelValueOpen = OpenEnum<
   typeof CreateCategoriesApiModelValue
@@ -469,6 +470,7 @@ export enum CreateCategoriesApiModelSchemasValue {
   ZhSG = "zh_SG",
   ZhTW = "zh_TW",
   ZuZA = "zu_ZA",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Locale Code of the language
@@ -508,6 +510,7 @@ export enum CreateCategoriesApiModelSchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  UnmappedValue = "unmapped_value",
 }
 export type CreateCategoriesApiModelSchemasLevelValueOpen = OpenEnum<
   typeof CreateCategoriesApiModelSchemasLevelValue

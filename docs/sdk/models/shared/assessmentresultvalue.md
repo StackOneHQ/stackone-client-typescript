@@ -21,4 +21,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Expired`              | expired                |
 | `Failed`               | failed                 |
 | `Passed`               | passed                 |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

@@ -26,6 +26,7 @@ export enum SkillsValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  UnmappedValue = "unmapped_value",
 }
 export type SkillsValueOpen = OpenEnum<typeof SkillsValue>;
 
@@ -467,6 +468,7 @@ export enum SkillsSchemasValue {
   ZhSG = "zh_SG",
   ZhTW = "zh_TW",
   ZuZA = "zu_ZA",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Locale Code of the language
@@ -504,6 +506,7 @@ export enum SkillsSchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  UnmappedValue = "unmapped_value",
 }
 export type SkillsSchemasLevelValueOpen = OpenEnum<
   typeof SkillsSchemasLevelValue

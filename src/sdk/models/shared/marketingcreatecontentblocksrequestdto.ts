@@ -33,6 +33,7 @@ export enum MarketingCreateContentBlocksRequestDtoValue {
   Html = "html",
   Image = "image",
   CodeSnippet = "code-snippet",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the content blocks.

@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `Project`              | project                |
 | `Component`            | component              |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

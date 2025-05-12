@@ -32,6 +32,7 @@ export enum ContentBlockValue {
   Draft = "draft",
   Live = "live",
   Archived = "archived",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Status of the content blocks.
@@ -79,6 +80,7 @@ export enum ContentBlockSchemasValue {
   Html = "html",
   Image = "image",
   CodeSnippet = "code-snippet",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the content blocks.

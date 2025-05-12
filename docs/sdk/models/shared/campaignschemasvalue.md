@@ -7,7 +7,7 @@ The Status of the campaign.
 ```typescript
 import { CampaignSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CampaignSchemasValue = CampaignSchemasValue.Live;
+let value: CampaignSchemasValue = CampaignSchemasValue.UnmappedValue;
 ```
 
 ## Values
@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Draft`                | draft                  |
 | `Archived`             | archived               |
 | `Live`                 | live                   |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

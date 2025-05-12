@@ -17,4 +17,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Content`              | content                |
 | `Course`               | course                 |
 | `Collection`           | collection             |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

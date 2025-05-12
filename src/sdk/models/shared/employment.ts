@@ -815,6 +815,10 @@ export type Employment = {
    */
   payRate?: string | null | undefined;
   /**
+   * The payroll code of the employee
+   */
+  payrollCode?: string | null | undefined;
+  /**
    * Provider's unique identifier of the employee associated with this employment
    */
   remoteEmployeeId?: string | null | undefined;
@@ -3944,6 +3948,7 @@ export const Employment$inboundSchema: z.ZodType<
   pay_period: z.nullable(z.lazy(() => EmploymentPayPeriod$inboundSchema))
     .optional(),
   pay_rate: z.nullable(z.string()).optional(),
+  payroll_code: z.nullable(z.string()).optional(),
   remote_employee_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   start_date: z.nullable(
@@ -3973,6 +3978,7 @@ export const Employment$inboundSchema: z.ZodType<
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
+    "payroll_code": "payrollCode",
     "remote_employee_id": "remoteEmployeeId",
     "remote_id": "remoteId",
     "start_date": "startDate",
@@ -4008,6 +4014,7 @@ export type Employment$Outbound = {
   pay_frequency?: EmploymentPayFrequency$Outbound | null | undefined;
   pay_period?: EmploymentPayPeriod$Outbound | null | undefined;
   pay_rate?: string | null | undefined;
+  payroll_code?: string | null | undefined;
   remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   start_date?: string | null | undefined;
@@ -4054,6 +4061,7 @@ export const Employment$outboundSchema: z.ZodType<
   payPeriod: z.nullable(z.lazy(() => EmploymentPayPeriod$outboundSchema))
     .optional(),
   payRate: z.nullable(z.string()).optional(),
+  payrollCode: z.nullable(z.string()).optional(),
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -4079,6 +4087,7 @@ export const Employment$outboundSchema: z.ZodType<
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
     payRate: "pay_rate",
+    payrollCode: "payroll_code",
     remoteEmployeeId: "remote_employee_id",
     remoteId: "remote_id",
     startDate: "start_date",

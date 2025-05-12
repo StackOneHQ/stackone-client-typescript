@@ -18,4 +18,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `Private`              | private                |
 | `Public`               | public                 |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

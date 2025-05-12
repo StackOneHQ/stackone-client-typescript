@@ -6,7 +6,7 @@
 import { LmsUpsertContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpsertContentRequestDtoValue =
-  LmsUpsertContentRequestDtoValue.Quiz;
+  LmsUpsertContentRequestDtoValue.Document;
 ```
 
 ## Values
@@ -20,4 +20,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Document`             | document               |
 | `Audio`                | audio                  |
 | `Article`              | article                |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

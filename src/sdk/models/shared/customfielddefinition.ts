@@ -43,6 +43,7 @@ export enum CustomFieldDefinitionValue {
   MultiSelect = "multi_select",
   Url = "url",
   Other = "other",
+  UnmappedValue = "unmapped_value",
 }
 export type CustomFieldDefinitionValueOpen = OpenEnum<
   typeof CustomFieldDefinitionValue

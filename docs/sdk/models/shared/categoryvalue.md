@@ -17,4 +17,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Primary`              | primary                |
 | `Secondary`            | secondary              |
 | `Tertiary`             | tertiary               |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

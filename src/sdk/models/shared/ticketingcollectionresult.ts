@@ -25,6 +25,7 @@ import {
 export enum TicketingCollectionResultType {
   Project = "project",
   Component = "component",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the collection.

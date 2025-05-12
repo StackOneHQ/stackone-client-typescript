@@ -15,4 +15,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
 | `Team`                 | team                   |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

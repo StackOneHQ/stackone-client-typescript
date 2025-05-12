@@ -6,7 +6,7 @@
 import { EntitySkillsSchemasMinimumProficiencyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EntitySkillsSchemasMinimumProficiencyValue =
-  EntitySkillsSchemasMinimumProficiencyValue.Five;
+  EntitySkillsSchemasMinimumProficiencyValue.UnmappedValue;
 ```
 
 ## Values
@@ -20,4 +20,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Three`                | 3                      |
 | `Four`                 | 4                      |
 | `Five`                 | 5                      |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

@@ -23,4 +23,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Months`               | months                 |
 | `Years`                | years                  |
 | `Unknown`              | unknown                |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

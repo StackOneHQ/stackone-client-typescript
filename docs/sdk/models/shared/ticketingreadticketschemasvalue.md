@@ -20,4 +20,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `ToDo`                 | to-do                  |
 | `InProgress`           | in-progress            |
 | `Closed`               | closed                 |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

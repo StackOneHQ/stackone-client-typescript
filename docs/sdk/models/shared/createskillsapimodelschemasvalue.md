@@ -427,4 +427,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `ZhSG`                 | zh_SG                  |
 | `ZhTW`                 | zh_TW                  |
 | `ZuZA`                 | zu_ZA                  |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

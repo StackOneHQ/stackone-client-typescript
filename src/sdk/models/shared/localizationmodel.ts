@@ -436,6 +436,7 @@ export enum LocalizationModelValue {
   ZhSG = "zh_SG",
   ZhTW = "zh_TW",
   ZuZA = "zu_ZA",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Locale Code of the language
@@ -471,6 +472,10 @@ export type LocalizationModel = {
    * The language associated with the localization details
    */
   language?: LocalizationModelLanguage | null | undefined;
+  /**
+   * The tags associated with the localization details
+   */
+  tags?: Array<string> | null | undefined;
   /**
    * The title of the content
    */
@@ -721,6 +726,7 @@ export const LocalizationModel$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   language: z.nullable(z.lazy(() => LocalizationModelLanguage$inboundSchema))
     .optional(),
+  tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
 });
 
@@ -728,6 +734,7 @@ export const LocalizationModel$inboundSchema: z.ZodType<
 export type LocalizationModel$Outbound = {
   description?: string | null | undefined;
   language?: LocalizationModelLanguage$Outbound | null | undefined;
+  tags?: Array<string> | null | undefined;
   title?: string | null | undefined;
 };
 
@@ -740,6 +747,7 @@ export const LocalizationModel$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   language: z.nullable(z.lazy(() => LocalizationModelLanguage$outboundSchema))
     .optional(),
+  tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
 });
 

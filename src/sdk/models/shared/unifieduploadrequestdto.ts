@@ -42,6 +42,7 @@ export type UnifiedUploadRequestDtoSourceValue =
 export enum UnifiedUploadRequestDtoValue {
   True = "true",
   False = "false",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * Whether the file is confidential or not

@@ -299,7 +299,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.createEmployee({
     hrisCreateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -375,13 +374,15 @@ async function run() {
       displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
-        employmentContractType: {},
         employmentType: {
           sourceValue: "Permanent",
           value: HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
         payCurrency: "USD",
         payFrequency: {
           sourceValue: "Hourly",
@@ -392,6 +393,7 @@ async function run() {
           value: HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
+        payrollCode: "PC1",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -403,15 +405,11 @@ async function run() {
           },
         },
       },
-      employmentContractType: {},
-      employmentStatus: {},
       employmentType: {
         sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
-      ethnicity: {},
       firstName: "Isaac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -424,7 +422,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -433,7 +430,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Isaac Newton",
       nationalIdentityNumbers: [
         {
@@ -478,7 +474,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -528,7 +523,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisCreateEmployee(stackOne, {
     hrisCreateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -604,13 +598,15 @@ async function run() {
       displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
-        employmentContractType: {},
         employmentType: {
           sourceValue: "Permanent",
           value: HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
         payCurrency: "USD",
         payFrequency: {
           sourceValue: "Hourly",
@@ -621,6 +617,7 @@ async function run() {
           value: HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
+        payrollCode: "PC1",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -632,15 +629,11 @@ async function run() {
           },
         },
       },
-      employmentContractType: {},
-      employmentStatus: {},
       employmentType: {
         sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
-      ethnicity: {},
       firstName: "Isaac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -653,7 +646,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -662,7 +654,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Isaac Newton",
       nationalIdentityNumbers: [
         {
@@ -707,7 +698,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -786,12 +776,13 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.createEmployeeEmployment({
     hrisCreateEmploymentRequestDto: {
-      employmentContractType: {},
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentType: {
         sourceValue: "Permanent",
         value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobId: "5290",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
@@ -806,6 +797,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      payrollCode: "PC1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -854,12 +846,13 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisCreateEmployeeEmployment(stackOne, {
     hrisCreateEmploymentRequestDto: {
-      employmentContractType: {},
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentType: {
         sourceValue: "Permanent",
         value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobId: "5290",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
@@ -874,6 +867,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      payrollCode: "PC1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -1209,7 +1203,6 @@ async function run() {
   const result = await stackOne.hris.createEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -1231,7 +1224,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -1271,7 +1263,6 @@ async function run() {
   const res = await hrisCreateEmployeeWorkEligibilityRequest(stackOne, {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -1293,7 +1284,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -1789,7 +1779,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getCostCenterGroup({
-    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1820,7 +1810,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetCostCenterGroup(stackOne, {
-    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1986,7 +1976,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployee({
     expand: "company,employments,work_location,home_location,groups,skills",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<id>",
@@ -2019,7 +2009,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployee(stackOne, {
     expand: "company,employments,work_location,home_location,groups,skills",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<id>",
@@ -2392,7 +2382,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeeEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2425,7 +2415,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeeEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2898,7 +2888,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2930,7 +2920,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4107,7 +4097,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listCostCenterGroups({
-    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4143,7 +4133,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListCostCenterGroups(stackOne, {
-    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4646,7 +4636,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4684,7 +4674,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5312,7 +5302,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployees({
     expand: "company,employments,work_location,home_location,groups,skills",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5350,7 +5340,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployees(stackOne, {
     expand: "company,employments,work_location,home_location,groups,skills",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5424,7 +5414,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5461,7 +5451,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,fte,effective_date,employment_type,employment_contract_type,work_time,payroll_code,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -6419,7 +6409,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.updateEmployee({
     hrisUpdateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -6457,13 +6446,15 @@ async function run() {
       displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
-        employmentContractType: {},
         employmentType: {
           sourceValue: "Permanent",
           value: HrisUpdateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
         payCurrency: "USD",
         payFrequency: {
           sourceValue: "Hourly",
@@ -6474,6 +6465,7 @@ async function run() {
           value: HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
+        payrollCode: "PC1",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -6485,15 +6477,11 @@ async function run() {
           },
         },
       },
-      employmentContractType: {},
-      employmentStatus: {},
       employmentType: {
         sourceValue: "Permanent",
         value: HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
-      ethnicity: {},
       firstName: "Isaac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -6506,7 +6494,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -6515,7 +6502,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Isaac Newton",
       nationalIdentityNumbers: [
         {
@@ -6551,7 +6537,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -6602,7 +6587,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisUpdateEmployee(stackOne, {
     hrisUpdateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -6640,13 +6624,15 @@ async function run() {
       displayName: "Sir Isaac Newton",
       employeeNumber: "125",
       employment: {
-        employmentContractType: {},
         employmentType: {
           sourceValue: "Permanent",
           value: HrisUpdateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
         payCurrency: "USD",
         payFrequency: {
           sourceValue: "Hourly",
@@ -6657,6 +6643,7 @@ async function run() {
           value: HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
         },
         payRate: "40.00",
+        payrollCode: "PC1",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -6668,15 +6655,11 @@ async function run() {
           },
         },
       },
-      employmentContractType: {},
-      employmentStatus: {},
       employmentType: {
         sourceValue: "Permanent",
         value: HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
-      ethnicity: {},
       firstName: "Isaac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -6689,7 +6672,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -6698,7 +6680,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Isaac Newton",
       nationalIdentityNumbers: [
         {
@@ -6734,7 +6715,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -6814,12 +6794,13 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.updateEmployeeEmployment({
     hrisCreateEmploymentRequestDto: {
-      employmentContractType: {},
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentType: {
         sourceValue: "Permanent",
         value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobId: "5290",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
@@ -6834,6 +6815,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      payrollCode: "PC1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -6883,12 +6865,13 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisUpdateEmployeeEmployment(stackOne, {
     hrisCreateEmploymentRequestDto: {
-      employmentContractType: {},
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employmentType: {
         sourceValue: "Permanent",
         value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobId: "5290",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
@@ -6903,6 +6886,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      payrollCode: "PC1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -7117,7 +7101,6 @@ async function run() {
   const result = await stackOne.hris.updateEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -7139,7 +7122,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -7180,7 +7162,6 @@ async function run() {
   const res = await hrisUpdateEmployeeWorkEligibilityRequest(stackOne, {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -7202,7 +7183,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },

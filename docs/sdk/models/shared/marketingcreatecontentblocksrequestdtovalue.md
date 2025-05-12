@@ -21,4 +21,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Html`                 | html                   |
 | `Image`                | image                  |
 | `CodeSnippet`          | code-snippet           |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

@@ -24,6 +24,7 @@ export type HRISTeamSourceValue =
 
 export enum HRISTeamValue {
   Team = "team",
+  UnmappedValue = "unmapped_value",
 }
 export type HRISTeamValueOpen = OpenEnum<typeof HRISTeamValue>;
 

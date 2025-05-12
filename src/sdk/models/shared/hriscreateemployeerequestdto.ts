@@ -347,7 +347,7 @@ export type HrisCreateEmployeeRequestDtoWorkTime = {
  */
 export type HrisCreateEmployeeRequestDtoEmployment = {
   /**
-   * The effective date of the employment contract
+   * The employee effective date
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -375,6 +375,10 @@ export type HrisCreateEmployeeRequestDtoEmployment = {
    */
   jobTitle?: string | null | undefined;
   /**
+   * Value to pass through to the provider
+   */
+  passthrough?: { [k: string]: any } | null | undefined;
+  /**
    * The currency used for pay
    */
   payCurrency?: string | null | undefined;
@@ -390,6 +394,10 @@ export type HrisCreateEmployeeRequestDtoEmployment = {
    * The pay rate for the employee
    */
   payRate?: string | null | undefined;
+  /**
+   * The payroll code of the employee
+   */
+  payrollCode?: string | null | undefined;
   /**
    * Custom Unified Fields configured in your StackOne project
    */
@@ -3805,6 +3813,7 @@ export const HrisCreateEmployeeRequestDtoEmployment$inboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
+  passthrough: z.nullable(z.record(z.any())).optional(),
   pay_currency: z.nullable(z.string()).optional(),
   pay_frequency: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoPayFrequency$inboundSchema),
@@ -3813,6 +3822,7 @@ export const HrisCreateEmployeeRequestDtoEmployment$inboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmployeeRequestDtoPayPeriod$inboundSchema),
   ).optional(),
   pay_rate: z.nullable(z.string()).optional(),
+  payroll_code: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   work_time: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoWorkTime$inboundSchema),
@@ -3827,6 +3837,7 @@ export const HrisCreateEmployeeRequestDtoEmployment$inboundSchema: z.ZodType<
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
+    "payroll_code": "payrollCode",
     "unified_custom_fields": "unifiedCustomFields",
     "work_time": "workTime",
   });
@@ -3845,6 +3856,7 @@ export type HrisCreateEmployeeRequestDtoEmployment$Outbound = {
     | undefined;
   id?: string | null | undefined;
   job_title?: string | null | undefined;
+  passthrough?: { [k: string]: any } | null | undefined;
   pay_currency?: string | null | undefined;
   pay_frequency?:
     | HrisCreateEmployeeRequestDtoPayFrequency$Outbound
@@ -3855,6 +3867,7 @@ export type HrisCreateEmployeeRequestDtoEmployment$Outbound = {
     | null
     | undefined;
   pay_rate?: string | null | undefined;
+  payroll_code?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   work_time?: HrisCreateEmployeeRequestDtoWorkTime$Outbound | null | undefined;
 };
@@ -3879,6 +3892,7 @@ export const HrisCreateEmployeeRequestDtoEmployment$outboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   jobTitle: z.nullable(z.string()).optional(),
+  passthrough: z.nullable(z.record(z.any())).optional(),
   payCurrency: z.nullable(z.string()).optional(),
   payFrequency: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoPayFrequency$outboundSchema),
@@ -3887,6 +3901,7 @@ export const HrisCreateEmployeeRequestDtoEmployment$outboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmployeeRequestDtoPayPeriod$outboundSchema),
   ).optional(),
   payRate: z.nullable(z.string()).optional(),
+  payrollCode: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   workTime: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoWorkTime$outboundSchema),
@@ -3901,6 +3916,7 @@ export const HrisCreateEmployeeRequestDtoEmployment$outboundSchema: z.ZodType<
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
     payRate: "pay_rate",
+    payrollCode: "payroll_code",
     unifiedCustomFields: "unified_custom_fields",
     workTime: "work_time",
   });

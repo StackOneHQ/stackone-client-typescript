@@ -21,4 +21,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Medium`               | medium                 |
 | `High`                 | high                   |
 | `Highest`              | highest                |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

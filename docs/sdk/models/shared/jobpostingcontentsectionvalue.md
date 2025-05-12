@@ -23,4 +23,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `CompanyOverview`      | company_overview       |
 | `Description`          | description            |
 | `Other`                | other                  |
+| `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

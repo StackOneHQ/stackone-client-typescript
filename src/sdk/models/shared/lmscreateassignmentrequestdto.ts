@@ -26,6 +26,7 @@ export enum LmsCreateAssignmentRequestDtoValue {
   Pending = "pending",
   InProgress = "in_progress",
   Completed = "completed",
+  UnmappedValue = "unmapped_value",
 }
 export type LmsCreateAssignmentRequestDtoValueOpen = OpenEnum<
   typeof LmsCreateAssignmentRequestDtoValue

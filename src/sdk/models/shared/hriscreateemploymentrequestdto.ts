@@ -293,8 +293,6 @@ export type HrisCreateEmploymentRequestDtoWorkTime = {
 export type HrisCreateEmploymentRequestDto = {
   /**
    * The effective date of the employment contract
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   effectiveDate?: Date | null | undefined;
   /**
@@ -315,6 +313,10 @@ export type HrisCreateEmploymentRequestDto = {
    * Unique identifier
    */
   id?: string | null | undefined;
+  /**
+   * The employee job id
+   */
+  jobId?: string | null | undefined;
   /**
    * The job title of the employee
    */
@@ -339,6 +341,10 @@ export type HrisCreateEmploymentRequestDto = {
    * The pay rate for the employee
    */
   payRate?: string | null | undefined;
+  /**
+   * The payroll code of the employee
+   */
+  payrollCode?: string | null | undefined;
   /**
    * Custom Unified Fields configured in your StackOne project
    */
@@ -1829,6 +1835,7 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmploymentRequestDtoEmploymentType$inboundSchema),
   ).optional(),
   id: z.nullable(z.string()).optional(),
+  job_id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   pay_currency: z.nullable(z.string()).optional(),
@@ -1839,6 +1846,7 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmploymentRequestDtoPayPeriod$inboundSchema),
   ).optional(),
   pay_rate: z.nullable(z.string()).optional(),
+  payroll_code: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   work_time: z.nullable(
     z.lazy(() => HrisCreateEmploymentRequestDtoWorkTime$inboundSchema),
@@ -1848,11 +1856,13 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
     "effective_date": "effectiveDate",
     "employment_contract_type": "employmentContractType",
     "employment_type": "employmentType",
+    "job_id": "jobId",
     "job_title": "jobTitle",
     "pay_currency": "payCurrency",
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
+    "payroll_code": "payrollCode",
     "unified_custom_fields": "unifiedCustomFields",
     "work_time": "workTime",
   });
@@ -1870,6 +1880,7 @@ export type HrisCreateEmploymentRequestDto$Outbound = {
     | null
     | undefined;
   id?: string | null | undefined;
+  job_id?: string | null | undefined;
   job_title?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   pay_currency?: string | null | undefined;
@@ -1882,6 +1893,7 @@ export type HrisCreateEmploymentRequestDto$Outbound = {
     | null
     | undefined;
   pay_rate?: string | null | undefined;
+  payroll_code?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   work_time?:
     | HrisCreateEmploymentRequestDtoWorkTime$Outbound
@@ -1906,6 +1918,7 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmploymentRequestDtoEmploymentType$outboundSchema),
   ).optional(),
   id: z.nullable(z.string()).optional(),
+  jobId: z.nullable(z.string()).optional(),
   jobTitle: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   payCurrency: z.nullable(z.string()).optional(),
@@ -1916,6 +1929,7 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmploymentRequestDtoPayPeriod$outboundSchema),
   ).optional(),
   payRate: z.nullable(z.string()).optional(),
+  payrollCode: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   workTime: z.nullable(
     z.lazy(() => HrisCreateEmploymentRequestDtoWorkTime$outboundSchema),
@@ -1925,11 +1939,13 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
     effectiveDate: "effective_date",
     employmentContractType: "employment_contract_type",
     employmentType: "employment_type",
+    jobId: "job_id",
     jobTitle: "job_title",
     payCurrency: "pay_currency",
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
     payRate: "pay_rate",
+    payrollCode: "payroll_code",
     unifiedCustomFields: "unified_custom_fields",
     workTime: "work_time",
   });

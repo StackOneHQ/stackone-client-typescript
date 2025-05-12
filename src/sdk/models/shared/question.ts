@@ -37,6 +37,7 @@ export type QuestionSchemasSourceValue =
 export enum QuestionSchemasValue {
   EqualsTo = "equals_to",
   Contains = "contains",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the question's condition
@@ -114,6 +115,7 @@ export enum QuestionValue {
   Date = "date",
   Video = "video",
   Url = "url",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The type of the questions.

@@ -60,6 +60,7 @@ export enum CampaignValue {
   Recurring = "recurring",
   Custom = "custom",
   Triggered = "triggered",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The schedule type of the campaign.
@@ -106,6 +107,7 @@ export enum CampaignSchemasValue {
   Draft = "draft",
   Archived = "archived",
   Live = "live",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The Status of the campaign.

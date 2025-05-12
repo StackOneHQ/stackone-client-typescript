@@ -25,6 +25,7 @@ export type LmsCreateCompletionRequestDtoSourceValue =
 export enum LmsCreateCompletionRequestDtoValue {
   Pass = "Pass",
   Fail = "Fail",
+  UnmappedValue = "unmapped_value",
 }
 export type LmsCreateCompletionRequestDtoValueOpen = OpenEnum<
   typeof LmsCreateCompletionRequestDtoValue

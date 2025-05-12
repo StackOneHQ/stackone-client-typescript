@@ -40,6 +40,7 @@ export enum TicketingTicketCreateRequestDtoValue {
   Medium = "medium",
   High = "high",
   Highest = "highest",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * The priority of the ticket.

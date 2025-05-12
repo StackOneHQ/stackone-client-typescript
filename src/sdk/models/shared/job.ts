@@ -37,6 +37,7 @@ import {
 export enum JobConfidential {
   True = "true",
   False = "false",
+  UnmappedValue = "unmapped_value",
 }
 /**
  * Confidential status of the job
