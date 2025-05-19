@@ -48,8 +48,11 @@ let value: TicketingTicketResult = {
     ],
     status: {
       id: "001",
-      sourceValue: "Backlog",
-      value: TicketingTicketResultSchemasValue.ToDo,
+      name: "Backlog",
+      type: {
+        sourceValue: "New",
+        value: TicketingTicketResultSchemasValue.ToDo,
+      },
     },
     tags: [
       "tag-001",

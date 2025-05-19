@@ -1,6 +1,6 @@
 # TicketingTicketResultSchemasSourceValue
 
-The source value of the ticket status.
+The source value of this status type
 
 
 ## Supported Types
@@ -8,13 +8,13 @@ The source value of the ticket status.
 ### `string`
 
 ```typescript
-const value: string = "Backlog";
+const value: string = "New";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = Backlog;
+const value: number = New;
 ```
 
 ### `boolean`
@@ -33,7 +33,7 @@ const value: shared.TicketingTicketResultSchemas4 = {};
 
 ```typescript
 const value: any[] = [
-  "Backlog",
+  "New",
 ];
 ```
 

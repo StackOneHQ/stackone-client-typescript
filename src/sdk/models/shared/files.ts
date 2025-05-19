@@ -1282,6 +1282,14 @@ export type Files = {
    */
   folderId?: string | null | undefined;
   /**
+   * Whether the file has children
+   */
+  hasChildren?: boolean | null | undefined;
+  /**
+   * Whether the file has content
+   */
+  hasContent?: boolean | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -1563,6 +1571,8 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
     file_format: z.nullable(z.lazy(() => FilesFileFormat$inboundSchema))
       .optional(),
     folder_id: z.nullable(z.string()).optional(),
+    has_children: z.nullable(z.boolean()).optional(),
+    has_content: z.nullable(z.boolean()).optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
     owner_id: z.nullable(z.string()).optional(),
@@ -1583,6 +1593,8 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
       "export_formats": "exportFormats",
       "file_format": "fileFormat",
       "folder_id": "folderId",
+      "has_children": "hasChildren",
+      "has_content": "hasContent",
       "owner_id": "ownerId",
       "remote_drive_id": "remoteDriveId",
       "remote_folder_id": "remoteFolderId",
@@ -1600,6 +1612,8 @@ export type Files$Outbound = {
   export_formats?: Array<string> | null | undefined;
   file_format?: FilesFileFormat$Outbound | null | undefined;
   folder_id?: string | null | undefined;
+  has_children?: boolean | null | undefined;
+  has_content?: boolean | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   owner_id?: string | null | undefined;
@@ -1626,6 +1640,8 @@ export const Files$outboundSchema: z.ZodType<
   fileFormat: z.nullable(z.lazy(() => FilesFileFormat$outboundSchema))
     .optional(),
   folderId: z.nullable(z.string()).optional(),
+  hasChildren: z.nullable(z.boolean()).optional(),
+  hasContent: z.nullable(z.boolean()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerId: z.nullable(z.string()).optional(),
@@ -1644,6 +1660,8 @@ export const Files$outboundSchema: z.ZodType<
     exportFormats: "export_formats",
     fileFormat: "file_format",
     folderId: "folder_id",
+    hasChildren: "has_children",
+    hasContent: "has_content",
     ownerId: "owner_id",
     remoteDriveId: "remote_drive_id",
     remoteFolderId: "remote_folder_id",

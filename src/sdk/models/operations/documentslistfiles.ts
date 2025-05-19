@@ -10,7 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * Documents Files Filter
  */
 export type DocumentsListFilesQueryParamFilter = {
   /**
@@ -25,7 +25,7 @@ export type DocumentsListFilesRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * Documents Files Filter
    */
   filter?: DocumentsListFilesQueryParamFilter | null | undefined;
   /**

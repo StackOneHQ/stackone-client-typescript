@@ -1,6 +1,6 @@
 # DocumentsListFoldersQueryParamFilter
 
-Filter parameters that allow greater customisation of the list response
+Documents Folders Filter
 
 ## Example Usage
 

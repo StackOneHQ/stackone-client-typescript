@@ -114,14 +114,6 @@ async function run() {
             value: "Completed",
             valueId: "value_456",
           },
-          {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Training Completion Status",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: "Completed",
-            valueId: "value_456",
-          },
         ],
         email: "sestier.romain123@gmail.com",
         firstName: "Romain",
@@ -132,9 +124,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumbers: [
-          {
-            phone: "+447700112233",
-          },
           {
             phone: "+447700112233",
           },
@@ -242,14 +231,6 @@ async function run() {
             value: "Completed",
             valueId: "value_456",
           },
-          {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Training Completion Status",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: "Completed",
-            valueId: "value_456",
-          },
         ],
         email: "sestier.romain123@gmail.com",
         firstName: "Romain",
@@ -260,9 +241,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumbers: [
-          {
-            phone: "+447700112233",
-          },
           {
             phone: "+447700112233",
           },
@@ -543,6 +521,10 @@ async function run() {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           name: "Test 1",
         },
+        {
+          description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+          name: "Test 1",
+        },
       ],
     },
     xAccountId: "<id>",
@@ -581,6 +563,10 @@ async function run() {
         "other_known_names": "John Doe",
       },
       tests: [
+        {
+          description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+          name: "Test 1",
+        },
         {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           name: "Test 1",
@@ -668,14 +654,6 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
       ],
       email: "sestier.romain123@gmail.com",
       firstName: "Romain",
@@ -689,12 +667,11 @@ async function run() {
         {
           phone: "+447700112233",
         },
+        {
+          phone: "+447700112233",
+        },
       ],
       socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
         {
           type: "linkedin",
           url: "https://www.linkedin.com/in/romainsestier/",
@@ -751,14 +728,6 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
       ],
       email: "sestier.romain123@gmail.com",
       firstName: "Romain",
@@ -772,12 +741,11 @@ async function run() {
         {
           phone: "+447700112233",
         },
+        {
+          phone: "+447700112233",
+        },
       ],
       socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
         {
           type: "linkedin",
           url: "https://www.linkedin.com/in/romainsestier/",
@@ -865,6 +833,9 @@ async function run() {
         {
           body: "This candidate seems like a good fit for the role",
         },
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -908,6 +879,9 @@ async function run() {
     atsCreateNotesRequestDto: {
       authorId: "1234567890",
       content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
         {
           body: "This candidate seems like a good fit for the role",
         },
@@ -1006,14 +980,6 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
       ],
       departmentIds: [
         "308570",
@@ -1038,8 +1004,36 @@ async function run() {
           role: "Software Engineer",
           userId: "123456",
         },
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
       ],
       interviewStages: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
         {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -1118,14 +1112,6 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
       ],
       departmentIds: [
         "308570",
@@ -1150,8 +1136,36 @@ async function run() {
           role: "Software Engineer",
           userId: "123456",
         },
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
       ],
       interviewStages: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
         {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -1254,11 +1268,6 @@ async function run() {
           startDate: new Date("2021-01-01T01:01:01.000Z"),
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
-        {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          startDate: new Date("2021-01-01T01:01:01.000Z"),
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
       ],
       offerStatus: {
         sourceValue: "Pending",
@@ -1301,11 +1310,6 @@ async function run() {
   const res = await atsCreateOffer(stackOne, {
     atsCreateOfferRequestDto: {
       offerHistory: [
-        {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          startDate: new Date("2021-01-01T01:01:01.000Z"),
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
         {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           startDate: new Date("2021-01-01T01:01:01.000Z"),
@@ -7257,14 +7261,6 @@ async function run() {
             type: "personal",
             value: "sestier.romain123@gmail.com",
           },
-          {
-            type: "personal",
-            value: "sestier.romain123@gmail.com",
-          },
-          {
-            type: "personal",
-            value: "sestier.romain123@gmail.com",
-          },
         ],
         firstName: "Romain",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -7278,6 +7274,22 @@ async function run() {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       job: {
         hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
           {
             email: "john.doe@gmail.com",
             firstName: "John",
@@ -7300,18 +7312,6 @@ async function run() {
         name: "Test 1",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         tests: [
-          {
-            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Test 1",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          },
-          {
-            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Test 1",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          },
           {
             description: "Skills test to gauge a candidate's proficiency in job-specific skills",
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -7382,14 +7382,6 @@ async function run() {
             type: "personal",
             value: "sestier.romain123@gmail.com",
           },
-          {
-            type: "personal",
-            value: "sestier.romain123@gmail.com",
-          },
-          {
-            type: "personal",
-            value: "sestier.romain123@gmail.com",
-          },
         ],
         firstName: "Romain",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -7403,6 +7395,22 @@ async function run() {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       job: {
         hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            role: "Software Engineer",
+            userId: "123456",
+          },
           {
             email: "john.doe@gmail.com",
             firstName: "John",
@@ -7425,18 +7433,6 @@ async function run() {
         name: "Test 1",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         tests: [
-          {
-            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Test 1",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          },
-          {
-            description: "Skills test to gauge a candidate's proficiency in job-specific skills",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Test 1",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          },
           {
             description: "Skills test to gauge a candidate's proficiency in job-specific skills",
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -7647,6 +7643,22 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -7693,6 +7705,22 @@ async function run() {
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Training Completion Status",
@@ -7783,12 +7811,6 @@ async function run() {
         {
           body: "This candidate seems like a good fit for the role",
         },
-        {
-          body: "This candidate seems like a good fit for the role",
-        },
-        {
-          body: "This candidate seems like a good fit for the role",
-        },
       ],
       passthrough: {
         "other_known_names": "John Doe",
@@ -7833,12 +7855,6 @@ async function run() {
     atsUpdateNotesRequestDto: {
       authorId: "1234567890",
       content: [
-        {
-          body: "This candidate seems like a good fit for the role",
-        },
-        {
-          body: "This candidate seems like a good fit for the role",
-        },
         {
           body: "This candidate seems like a good fit for the role",
         },
@@ -7928,20 +7944,6 @@ async function run() {
           },
           url: "http://example.com/resume.pdf",
         },
-        {
-          contentType: {
-            sourceValue: "Text",
-            value: AttachmentValue.Text,
-          },
-          url: "http://example.com/resume.pdf",
-        },
-        {
-          contentType: {
-            sourceValue: "Text",
-            value: AttachmentValue.Text,
-          },
-          url: "http://example.com/resume.pdf",
-        },
       ],
       candidate: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -7999,20 +8001,6 @@ async function run() {
   const res = await atsUpdateAssessmentsResult(stackOne, {
     atsUpdateCandidatesAssessmentsResultsRequestDto: {
       attachments: [
-        {
-          contentType: {
-            sourceValue: "Text",
-            value: AttachmentValue.Text,
-          },
-          url: "http://example.com/resume.pdf",
-        },
-        {
-          contentType: {
-            sourceValue: "Text",
-            value: AttachmentValue.Text,
-          },
-          url: "http://example.com/resume.pdf",
-        },
         {
           contentType: {
             sourceValue: "Text",
@@ -8127,11 +8115,6 @@ async function run() {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Test 1",
         },
-        {
-          description: "Skills test to gauge a candidate's proficiency in job-specific skills",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Test 1",
-        },
       ],
     },
     id: "<id>",
@@ -8171,11 +8154,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       tests: [
-        {
-          description: "Skills test to gauge a candidate's proficiency in job-specific skills",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Test 1",
-        },
         {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -8264,13 +8242,6 @@ async function run() {
           },
           url: "http://example.com/resume.pdf",
         },
-        {
-          contentType: {
-            sourceValue: "Text",
-            value: AttachmentValue.Text,
-          },
-          url: "http://example.com/resume.pdf",
-        },
       ],
       candidate: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -8328,13 +8299,6 @@ async function run() {
   const res = await atsUpdateBackgroundCheckResult(stackOne, {
     atsUpdateBackgroundCheckResultRequestDto: {
       attachments: [
-        {
-          contentType: {
-            sourceValue: "Text",
-            value: AttachmentValue.Text,
-          },
-          url: "http://example.com/resume.pdf",
-        },
         {
           contentType: {
             sourceValue: "Text",
@@ -8456,14 +8420,6 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
       ],
       email: "sestier.romain123@gmail.com",
       emails: [
@@ -8480,6 +8436,12 @@ async function run() {
         "other_known_names": "John Doe",
       },
       phoneNumbers: [
+        {
+          phone: "+447700112233",
+        },
+        {
+          phone: "+447700112233",
+        },
         {
           phone: "+447700112233",
         },
@@ -8550,14 +8512,6 @@ async function run() {
           value: "Completed",
           valueId: "value_456",
         },
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Training Completion Status",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
-          valueId: "value_456",
-        },
       ],
       email: "sestier.romain123@gmail.com",
       emails: [
@@ -8574,6 +8528,12 @@ async function run() {
         "other_known_names": "John Doe",
       },
       phoneNumbers: [
+        {
+          phone: "+447700112233",
+        },
+        {
+          phone: "+447700112233",
+        },
         {
           phone: "+447700112233",
         },
