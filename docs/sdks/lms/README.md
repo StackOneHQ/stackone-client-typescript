@@ -67,16 +67,6 @@ async function run() {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               value: "This is additional data",
             },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
           ],
           categories: [
             {
@@ -98,6 +88,9 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
             {
               value: LanguageEnumValue.EnGB,
             },
@@ -159,40 +152,8 @@ async function run() {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               value: "This is additional data",
             },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
           ],
           categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
             {
               id: "16873-IT345",
               language: {
@@ -212,6 +173,12 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
             {
               value: LanguageEnumValue.EnGB,
             },
@@ -309,16 +276,6 @@ async function run() {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               value: "This is additional data",
             },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
           ],
           categories: [
             {
@@ -340,6 +297,9 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
             {
               value: LanguageEnumValue.EnGB,
             },
@@ -401,40 +361,8 @@ async function run() {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               value: "This is additional data",
             },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
-            {
-              id: "learning_outcomes",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              value: "This is additional data",
-            },
           ],
           categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
             {
               id: "16873-IT345",
               language: {
@@ -454,6 +382,12 @@ async function run() {
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
             {
               value: LanguageEnumValue.EnGB,
             },
@@ -561,12 +495,6 @@ Batch Upsert Course
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {
-  CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasValue,
-  LanguageEnumValue,
-  LocalizationModelValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -578,225 +506,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.batchUpsertCourse({
     lmsBatchUpsertCourseRequestDto: {
-      items: [
-        {
-          active: true,
-          categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-          ],
-          content: [
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          coverUrl: "https://www.googledrive.com/?v=16873",
-          description: "This course acts as learning content for software engineers.",
-          duration: "P3Y6M4DT12H30M5S",
-          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-          languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-          ],
-          localizations: [
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          skills: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-          ],
-          title: "Software Engineer Lv 1",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-          url: "https://www.linkedinlearning.com/?v=16873",
-        },
-        {
-          active: true,
-          categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-          ],
-          content: [
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          coverUrl: "https://www.googledrive.com/?v=16873",
-          description: "This course acts as learning content for software engineers.",
-          duration: "P3Y6M4DT12H30M5S",
-          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-          languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-          ],
-          localizations: [
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          skills: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-          ],
-          title: "Software Engineer Lv 1",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-          url: "https://www.linkedinlearning.com/?v=16873",
-        },
-      ],
+      items: [],
     },
     xAccountId: "<id>",
   });
@@ -815,12 +525,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertCourse.js";
-import {
-  CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasValue,
-  LanguageEnumValue,
-  LocalizationModelValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -834,225 +538,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsBatchUpsertCourse(stackOne, {
     lmsBatchUpsertCourseRequestDto: {
-      items: [
-        {
-          active: true,
-          categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-          ],
-          content: [
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          coverUrl: "https://www.googledrive.com/?v=16873",
-          description: "This course acts as learning content for software engineers.",
-          duration: "P3Y6M4DT12H30M5S",
-          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-          languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-          ],
-          localizations: [
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          skills: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-          ],
-          title: "Software Engineer Lv 1",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-          url: "https://www.linkedinlearning.com/?v=16873",
-        },
-        {
-          active: true,
-          categories: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateCategoriesApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
-            },
-          ],
-          content: [
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-              mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          coverUrl: "https://www.googledrive.com/?v=16873",
-          description: "This course acts as learning content for software engineers.",
-          duration: "P3Y6M4DT12H30M5S",
-          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-          languages: [
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-            {
-              value: LanguageEnumValue.EnGB,
-            },
-          ],
-          localizations: [
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-            {
-              description: "This video acts as learning content for software engineers.",
-              language: {
-                value: LocalizationModelValue.EnGB,
-              },
-              tags: [
-                "Sales Techniques",
-                "Customer Service",
-              ],
-              title: "Software Engineer Lv 1",
-            },
-          ],
-          skills: [
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-            {
-              id: "16873-IT345",
-              language: {
-                value: CreateSkillsApiModelSchemasValue.EnGB,
-              },
-              name: "Information-Technology",
-            },
-          ],
-          title: "Software Engineer Lv 1",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-          url: "https://www.linkedinlearning.com/?v=16873",
-        },
-      ],
+      items: [],
     },
     xAccountId: "<id>",
   });
@@ -3577,28 +3063,6 @@ async function run() {
             "my_project_custom_field_2": "some other value",
           },
         },
-        {
-          id: "16873-IT345",
-          language: {
-            value: CreateCategoriesApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-        {
-          id: "16873-IT345",
-          language: {
-            value: CreateCategoriesApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This collection acts as learning pathway for software engineers.",
@@ -3666,28 +3130,6 @@ async function run() {
   const res = await lmsUpdateCollection(stackOne, {
     lmsCreateCollectionRequestDto: {
       categories: [
-        {
-          id: "16873-IT345",
-          language: {
-            value: CreateCategoriesApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
-        {
-          id: "16873-IT345",
-          language: {
-            value: CreateCategoriesApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
         {
           id: "16873-IT345",
           language: {
@@ -3831,6 +3273,17 @@ async function run() {
             "my_project_custom_field_2": "some other value",
           },
         },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -3839,12 +3292,6 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
-        {
-          value: LanguageEnumValue.EnGB,
-        },
-        {
-          value: LanguageEnumValue.EnGB,
-        },
         {
           value: LanguageEnumValue.EnGB,
         },
@@ -3956,6 +3403,17 @@ async function run() {
             "my_project_custom_field_2": "some other value",
           },
         },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateCategoriesApiModelSchemasValue.EnGB,
+          },
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -3964,12 +3422,6 @@ async function run() {
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
-        {
-          value: LanguageEnumValue.EnGB,
-        },
-        {
-          value: LanguageEnumValue.EnGB,
-        },
         {
           value: LanguageEnumValue.EnGB,
         },
@@ -4135,6 +3587,12 @@ async function run() {
         {
           value: LanguageEnumValue.EnGB,
         },
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+        {
+          value: LanguageEnumValue.EnGB,
+        },
       ],
       localizations: [
         {
@@ -4161,6 +3619,20 @@ async function run() {
         },
       ],
       skills: [
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
+          name: "Information-Technology",
+        },
         {
           id: "16873-IT345",
           language: {
@@ -4255,6 +3727,12 @@ async function run() {
         {
           value: LanguageEnumValue.EnGB,
         },
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+        {
+          value: LanguageEnumValue.EnGB,
+        },
       ],
       localizations: [
         {
@@ -4281,6 +3759,20 @@ async function run() {
         },
       ],
       skills: [
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
+          name: "Information-Technology",
+        },
+        {
+          id: "16873-IT345",
+          language: {
+            value: CreateSkillsApiModelSchemasValue.EnGB,
+          },
+          name: "Information-Technology",
+        },
         {
           id: "16873-IT345",
           language: {

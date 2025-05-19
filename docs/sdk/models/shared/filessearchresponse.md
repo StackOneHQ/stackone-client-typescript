@@ -19,6 +19,8 @@ let value: FilesSearchResponse = {
         value: FilesValue.Pdf,
       },
       folderId: "c28xyrc55866bvuv",
+      hasChildren: true,
+      hasContent: true,
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "Information-Technology",
       ownerId: "c28xyrc55866bvuv",

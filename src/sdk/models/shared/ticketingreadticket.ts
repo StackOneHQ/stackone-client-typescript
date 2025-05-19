@@ -99,7 +99,7 @@ export type Priority = {
 export type TicketingReadTicketSchemas4 = {};
 
 /**
- * The source value of the ticket status.
+ * The source value of this status type
  */
 export type TicketingReadTicketSchemasSourceValue =
   | TicketingReadTicketSchemas4
@@ -109,7 +109,7 @@ export type TicketingReadTicketSchemasSourceValue =
   | Array<any>;
 
 /**
- * The status of the ticket.
+ * The type of this status
  */
 export enum TicketingReadTicketSchemasValue {
   ToDo = "to-do",
@@ -118,22 +118,18 @@ export enum TicketingReadTicketSchemasValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The status of the ticket.
+ * The type of this status
  */
 export type TicketingReadTicketSchemasValueOpen = OpenEnum<
   typeof TicketingReadTicketSchemasValue
 >;
 
 /**
- * Current status of the ticket
+ * The type of this status
  */
-export type TicketingReadTicketStatus = {
+export type TicketingReadTicketSchemasType = {
   /**
-   * The id of the ticket status.
-   */
-  id?: string | null | undefined;
-  /**
-   * The source value of the ticket status.
+   * The source value of this status type
    */
   sourceValue?:
     | TicketingReadTicketSchemas4
@@ -144,9 +140,27 @@ export type TicketingReadTicketStatus = {
     | null
     | undefined;
   /**
-   * The status of the ticket.
+   * The type of this status
    */
   value?: TicketingReadTicketSchemasValueOpen | null | undefined;
+};
+
+/**
+ * Current status of the ticket
+ */
+export type TicketingReadTicketStatus = {
+  /**
+   * The id of the ticket status.
+   */
+  id?: string | null | undefined;
+  /**
+   * The name of the ticket status.
+   */
+  name?: string | null | undefined;
+  /**
+   * The type of this status
+   */
+  type?: TicketingReadTicketSchemasType | null | undefined;
 };
 
 /**
@@ -704,12 +718,11 @@ export namespace TicketingReadTicketSchemasValue$ {
 }
 
 /** @internal */
-export const TicketingReadTicketStatus$inboundSchema: z.ZodType<
-  TicketingReadTicketStatus,
+export const TicketingReadTicketSchemasType$inboundSchema: z.ZodType<
+  TicketingReadTicketSchemasType,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
       z.lazy(() => TicketingReadTicketSchemas4$inboundSchema),
@@ -727,8 +740,7 @@ export const TicketingReadTicketStatus$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type TicketingReadTicketStatus$Outbound = {
-  id?: string | null | undefined;
+export type TicketingReadTicketSchemasType$Outbound = {
   source_value?:
     | TicketingReadTicketSchemas4$Outbound
     | string
@@ -741,12 +753,11 @@ export type TicketingReadTicketStatus$Outbound = {
 };
 
 /** @internal */
-export const TicketingReadTicketStatus$outboundSchema: z.ZodType<
-  TicketingReadTicketStatus$Outbound,
+export const TicketingReadTicketSchemasType$outboundSchema: z.ZodType<
+  TicketingReadTicketSchemasType$Outbound,
   z.ZodTypeDef,
-  TicketingReadTicketStatus
+  TicketingReadTicketSchemasType
 > = z.object({
-  id: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
       z.lazy(() => TicketingReadTicketSchemas4$outboundSchema),
@@ -761,6 +772,70 @@ export const TicketingReadTicketStatus$outboundSchema: z.ZodType<
   return remap$(v, {
     sourceValue: "source_value",
   });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingReadTicketSchemasType$ {
+  /** @deprecated use `TicketingReadTicketSchemasType$inboundSchema` instead. */
+  export const inboundSchema = TicketingReadTicketSchemasType$inboundSchema;
+  /** @deprecated use `TicketingReadTicketSchemasType$outboundSchema` instead. */
+  export const outboundSchema = TicketingReadTicketSchemasType$outboundSchema;
+  /** @deprecated use `TicketingReadTicketSchemasType$Outbound` instead. */
+  export type Outbound = TicketingReadTicketSchemasType$Outbound;
+}
+
+export function ticketingReadTicketSchemasTypeToJSON(
+  ticketingReadTicketSchemasType: TicketingReadTicketSchemasType,
+): string {
+  return JSON.stringify(
+    TicketingReadTicketSchemasType$outboundSchema.parse(
+      ticketingReadTicketSchemasType,
+    ),
+  );
+}
+
+export function ticketingReadTicketSchemasTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingReadTicketSchemasType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingReadTicketSchemasType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingReadTicketSchemasType' from JSON`,
+  );
+}
+
+/** @internal */
+export const TicketingReadTicketStatus$inboundSchema: z.ZodType<
+  TicketingReadTicketStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TicketingReadTicketSchemasType$inboundSchema))
+    .optional(),
+});
+
+/** @internal */
+export type TicketingReadTicketStatus$Outbound = {
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  type?: TicketingReadTicketSchemasType$Outbound | null | undefined;
+};
+
+/** @internal */
+export const TicketingReadTicketStatus$outboundSchema: z.ZodType<
+  TicketingReadTicketStatus$Outbound,
+  z.ZodTypeDef,
+  TicketingReadTicketStatus
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => TicketingReadTicketSchemasType$outboundSchema))
+    .optional(),
 });
 
 /**

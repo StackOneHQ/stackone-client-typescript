@@ -1,6 +1,6 @@
 # TicketingTicketResultSchemasValue
 
-The status of the ticket.
+The type of this status
 
 ## Example Usage
 

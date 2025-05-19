@@ -38,6 +38,7 @@ export enum CreateAnswerValue {
   Number = "number",
   Date = "date",
   Video = "video",
+  ReferenceCheck = "reference_check",
   Url = "url",
   UnmappedValue = "unmapped_value",
 }

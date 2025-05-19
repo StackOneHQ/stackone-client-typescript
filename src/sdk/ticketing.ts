@@ -14,8 +14,10 @@ import { ticketingListAttachments } from "../funcs/ticketingListAttachments.js";
 import { ticketingListCollections } from "../funcs/ticketingListCollections.js";
 import { ticketingListComments } from "../funcs/ticketingListComments.js";
 import { ticketingListTickets } from "../funcs/ticketingListTickets.js";
+import { ticketingListTicketStatuses } from "../funcs/ticketingListTicketStatuses.js";
 import { ticketingListTicketTypes } from "../funcs/ticketingListTicketTypes.js";
 import { ticketingListUsers } from "../funcs/ticketingListUsers.js";
+import { ticketingUpdateTicket } from "../funcs/ticketingUpdateTicket.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
@@ -189,6 +191,25 @@ export class Ticketing extends ClientSDK {
   }
 
   /**
+   * List Ticket Statuses
+   */
+  async listTicketStatuses(
+    request: operations.TicketingListTicketStatusesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.TicketingListTicketStatusesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(ticketingListTicketStatuses(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Ticket Types
    */
   async listTicketTypes(
@@ -233,6 +254,20 @@ export class Ticketing extends ClientSDK {
     PageIterator<operations.TicketingListUsersResponse, { cursor: string }>
   > {
     return unwrapResultIterator(ticketingListUsers(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Ticket
+   */
+  async updateTicket(
+    request: operations.TicketingUpdateTicketRequest,
+    options?: RequestOptions,
+  ): Promise<operations.TicketingUpdateTicketResponse> {
+    return unwrapAsync(ticketingUpdateTicket(
       this,
       request,
       options,

@@ -22,9 +22,21 @@ export type Folders = {
    */
   driveId?: string | null | undefined;
   /**
+   * Whether the folder has children
+   */
+  hasChildren?: boolean | null | undefined;
+  /**
+   * Whether the folder has content
+   */
+  hasContent?: boolean | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
+  /**
+   * Whether the folder is at the root level of the drive
+   */
+  isRoot?: boolean | null | undefined;
   /**
    * The name associated with this folder
    */
@@ -79,7 +91,10 @@ export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
     ).optional(),
     description: z.nullable(z.string()).optional(),
     drive_id: z.nullable(z.string()).optional(),
+    has_children: z.nullable(z.boolean()).optional(),
+    has_content: z.nullable(z.boolean()).optional(),
     id: z.nullable(z.string()).optional(),
+    is_root: z.nullable(z.boolean()).optional(),
     name: z.nullable(z.string()).optional(),
     owner_id: z.nullable(z.string()).optional(),
     parent_folder_id: z.nullable(z.string()).optional(),
@@ -97,6 +112,9 @@ export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
     return remap$(v, {
       "created_at": "createdAt",
       "drive_id": "driveId",
+      "has_children": "hasChildren",
+      "has_content": "hasContent",
+      "is_root": "isRoot",
       "owner_id": "ownerId",
       "parent_folder_id": "parentFolderId",
       "remote_drive_id": "remoteDriveId",
@@ -112,7 +130,10 @@ export type Folders$Outbound = {
   created_at?: string | null | undefined;
   description?: string | null | undefined;
   drive_id?: string | null | undefined;
+  has_children?: boolean | null | undefined;
+  has_content?: boolean | null | undefined;
   id?: string | null | undefined;
+  is_root?: boolean | null | undefined;
   name?: string | null | undefined;
   owner_id?: string | null | undefined;
   parent_folder_id?: string | null | undefined;
@@ -135,7 +156,10 @@ export const Folders$outboundSchema: z.ZodType<
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
   driveId: z.nullable(z.string()).optional(),
+  hasChildren: z.nullable(z.boolean()).optional(),
+  hasContent: z.nullable(z.boolean()).optional(),
   id: z.nullable(z.string()).optional(),
+  isRoot: z.nullable(z.boolean()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerId: z.nullable(z.string()).optional(),
   parentFolderId: z.nullable(z.string()).optional(),
@@ -151,6 +175,9 @@ export const Folders$outboundSchema: z.ZodType<
   return remap$(v, {
     createdAt: "created_at",
     driveId: "drive_id",
+    hasChildren: "has_children",
+    hasContent: "has_content",
+    isRoot: "is_root",
     ownerId: "owner_id",
     parentFolderId: "parent_folder_id",
     remoteDriveId: "remote_drive_id",

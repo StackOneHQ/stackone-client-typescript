@@ -49,8 +49,11 @@ let value: TicketingTicketsPaginated = {
       ],
       status: {
         id: "001",
-        sourceValue: "Backlog",
-        value: TicketingReadTicketSchemasValue.ToDo,
+        name: "Backlog",
+        type: {
+          sourceValue: "New",
+          value: TicketingReadTicketSchemasValue.ToDo,
+        },
       },
       tags: [
         "tag-001",

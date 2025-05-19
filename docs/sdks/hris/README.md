@@ -24,6 +24,7 @@
 * [getEmployeeDocumentCategory](#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeeEmployment](#getemployeeemployment) - Get Employee Employment
 * [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
+* [getEmployeeTask](#getemployeetask) - Get Employee Task
 * [getEmployeeTimeOffBalance](#getemployeetimeoffbalance) - Get Employee Time Off Balance
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](#getemployeesworkeligibility) - Get Employees Work Eligibility
@@ -46,6 +47,7 @@
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
 * [listEmployeeEmployments](#listemployeeemployments) - List Employee Employments
 * [listEmployeeSkills](#listemployeeskills) - List Employee Skills
+* [listEmployeeTasks](#listemployeetasks) - List Employee Tasks
 * [listEmployeeTimeOffBalances](#listemployeetimeoffbalances) - List Employee Time Off Balances
 * [listEmployeeTimeOffPolicies](#listemployeetimeoffpolicies) - List Assigned Time Off Policies
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -75,6 +77,11 @@ Batch Upload Employee Document
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import {
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  HrisDocumentsUploadRequestDtoSchemasValue,
+  HrisDocumentsUploadRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -86,7 +93,44 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.batchUploadEmployeeDocument({
     hrisBatchDocumentUploadRequestDto: {
-      items: [],
+      items: [
+        {
+          category: {
+            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+            value: HrisDocumentsUploadRequestDtoValue.Shared,
+          },
+          categoryId: "6530",
+          confidential: {
+            sourceValue: "public",
+            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+          },
+          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+          fileFormat: {
+            sourceValue: "abc",
+            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+          },
+          name: "weather-forecast",
+          path: "/path/to/file",
+        },
+        {
+          category: {
+            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+            value: HrisDocumentsUploadRequestDtoValue.Shared,
+          },
+          categoryId: "6530",
+          confidential: {
+            sourceValue: "public",
+            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+          },
+          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+          fileFormat: {
+            sourceValue: "abc",
+            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+          },
+          name: "weather-forecast",
+          path: "/path/to/file",
+        },
+      ],
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -106,6 +150,11 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisBatchUploadEmployeeDocument } from "@stackone/stackone-client-ts/funcs/hrisBatchUploadEmployeeDocument.js";
+import {
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  HrisDocumentsUploadRequestDtoSchemasValue,
+  HrisDocumentsUploadRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -119,7 +168,44 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisBatchUploadEmployeeDocument(stackOne, {
     hrisBatchDocumentUploadRequestDto: {
-      items: [],
+      items: [
+        {
+          category: {
+            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+            value: HrisDocumentsUploadRequestDtoValue.Shared,
+          },
+          categoryId: "6530",
+          confidential: {
+            sourceValue: "public",
+            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+          },
+          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+          fileFormat: {
+            sourceValue: "abc",
+            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+          },
+          name: "weather-forecast",
+          path: "/path/to/file",
+        },
+        {
+          category: {
+            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+            value: HrisDocumentsUploadRequestDtoValue.Shared,
+          },
+          categoryId: "6530",
+          confidential: {
+            sourceValue: "public",
+            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+          },
+          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+          fileFormat: {
+            sourceValue: "abc",
+            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+          },
+          name: "weather-forecast",
+          path: "/path/to/file",
+        },
+      ],
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -2565,6 +2651,108 @@ run();
 | errors.BadGatewayResponse          | 502                                | application/json                   |
 | errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
+## getEmployeeTask
+
+Get Employee Task
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getEmployeeTask({
+    expand: "attachments",
+    fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeeTask } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeeTask.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeeTask(stackOne, {
+    expand: "attachments",
+    fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetEmployeeTaskRequest](../../sdk/models/operations/hrisgetemployeetaskrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisGetEmployeeTaskResponse](../../sdk/models/operations/hrisgetemployeetaskresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
 ## getEmployeeTimeOffBalance
 
 Get Employee Time Off Balance
@@ -4839,6 +5027,118 @@ run();
 | errors.BadGatewayResponse          | 502                                | application/json                   |
 | errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
+## listEmployeeTasks
+
+List Employee Tasks
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listEmployeeTasks({
+    expand: "attachments",
+    fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeTasks } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeTasks.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeTasks(stackOne, {
+    expand: "attachments",
+    fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListEmployeeTasksRequest](../../sdk/models/operations/hrislistemployeetasksrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisListEmployeeTasksResponse](../../sdk/models/operations/hrislistemployeetasksresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
 ## listEmployeeTimeOffBalances
 
 List Employee Time Off Balances
@@ -6419,18 +6719,31 @@ async function run() {
           provider: "Aetna",
           updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
+        {
+          createdAt: new Date("2021-01-01T00:00:00Z"),
+          description: "Health insurance for employees",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Health Insurance",
+          provider: "Aetna",
+          updatedAt: new Date("2021-01-01T00:00:00Z"),
+        },
       ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
           value: CountryCodeEnumValue.Us,
         },
-        {
-          value: CountryCodeEnumValue.Us,
-        },
       ],
       companyId: "1234567890",
       customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Training Completion Status",
@@ -6597,18 +6910,31 @@ async function run() {
           provider: "Aetna",
           updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
+        {
+          createdAt: new Date("2021-01-01T00:00:00Z"),
+          description: "Health insurance for employees",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Health Insurance",
+          provider: "Aetna",
+          updatedAt: new Date("2021-01-01T00:00:00Z"),
+        },
       ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
           value: CountryCodeEnumValue.Us,
         },
-        {
-          value: CountryCodeEnumValue.Us,
-        },
       ],
       companyId: "1234567890",
       customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Training Completion Status",
@@ -7391,7 +7717,7 @@ async function run() {
     hrisDocumentsUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-        value: HrisDocumentsUploadRequestDtoValue.UnmappedValue,
+        value: HrisDocumentsUploadRequestDtoValue.PolicyAgreement,
       },
       categoryId: "6530",
       confidential: {
@@ -7444,7 +7770,7 @@ async function run() {
     hrisDocumentsUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-        value: HrisDocumentsUploadRequestDtoValue.UnmappedValue,
+        value: HrisDocumentsUploadRequestDtoValue.PolicyAgreement,
       },
       categoryId: "6530",
       confidential: {

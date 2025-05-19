@@ -23,6 +23,7 @@ import { hrisGetEmployeeEmployment } from "../funcs/hrisGetEmployeeEmployment.js
 import { hrisGetEmployeeSkill } from "../funcs/hrisGetEmployeeSkill.js";
 import { hrisGetEmployeesTimeOffRequest } from "../funcs/hrisGetEmployeesTimeOffRequest.js";
 import { hrisGetEmployeesWorkEligibility } from "../funcs/hrisGetEmployeesWorkEligibility.js";
+import { hrisGetEmployeeTask } from "../funcs/hrisGetEmployeeTask.js";
 import { hrisGetEmployeeTimeOffBalance } from "../funcs/hrisGetEmployeeTimeOffBalance.js";
 import { hrisGetEmployment } from "../funcs/hrisGetEmployment.js";
 import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
@@ -44,6 +45,7 @@ import { hrisListEmployeeDocuments } from "../funcs/hrisListEmployeeDocuments.js
 import { hrisListEmployeeEmployments } from "../funcs/hrisListEmployeeEmployments.js";
 import { hrisListEmployees } from "../funcs/hrisListEmployees.js";
 import { hrisListEmployeeSkills } from "../funcs/hrisListEmployeeSkills.js";
+import { hrisListEmployeeTasks } from "../funcs/hrisListEmployeeTasks.js";
 import { hrisListEmployeeTimeOffBalances } from "../funcs/hrisListEmployeeTimeOffBalances.js";
 import { hrisListEmployeeTimeOffPolicies } from "../funcs/hrisListEmployeeTimeOffPolicies.js";
 import { hrisListEmployeeTimeOffRequests } from "../funcs/hrisListEmployeeTimeOffRequests.js";
@@ -331,6 +333,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetEmployeeSkillResponse> {
     return unwrapAsync(hrisGetEmployeeSkill(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Employee Task
+   */
+  async getEmployeeTask(
+    request: operations.HrisGetEmployeeTaskRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetEmployeeTaskResponse> {
+    return unwrapAsync(hrisGetEmployeeTask(
       this,
       request,
       options,
@@ -672,6 +688,22 @@ export class Hris extends ClientSDK {
     PageIterator<operations.HrisListEmployeeSkillsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(hrisListEmployeeSkills(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Employee Tasks
+   */
+  async listEmployeeTasks(
+    request: operations.HrisListEmployeeTasksRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListEmployeeTasksResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListEmployeeTasks(
       this,
       request,
       options,

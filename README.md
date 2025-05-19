@@ -245,6 +245,7 @@ run();
 * [getEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
 * [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
+* [getEmployeeTask](docs/sdks/hris/README.md#getemployeetask) - Get Employee Task
 * [getEmployeeTimeOffBalance](docs/sdks/hris/README.md#getemployeetimeoffbalance) - Get Employee Time Off Balance
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
@@ -267,6 +268,7 @@ run();
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 * [listEmployeeSkills](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
+* [listEmployeeTasks](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
 * [listEmployeeTimeOffBalances](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
 * [listEmployeeTimeOffPolicies](docs/sdks/hris/README.md#listemployeetimeoffpolicies) - List Assigned Time Off Policies
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -384,9 +386,11 @@ run();
 * [listAttachments](docs/sdks/ticketing/README.md#listattachments) - List Attachments
 * [listCollections](docs/sdks/ticketing/README.md#listcollections) - List Collections
 * [listComments](docs/sdks/ticketing/README.md#listcomments) - List Comments
+* [listTicketStatuses](docs/sdks/ticketing/README.md#listticketstatuses) - List Ticket Statuses
 * [listTicketTypes](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 * [listTickets](docs/sdks/ticketing/README.md#listtickets) - List Tickets
 * [listUsers](docs/sdks/ticketing/README.md#listusers) - List Users
+* [updateTicket](docs/sdks/ticketing/README.md#updateticket) - Update Ticket
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -886,6 +890,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetEmployeeSkill`](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 - [`hrisGetEmployeesTimeOffRequest`](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 - [`hrisGetEmployeesWorkEligibility`](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
+- [`hrisGetEmployeeTask`](docs/sdks/hris/README.md#getemployeetask) - Get Employee Task
 - [`hrisGetEmployeeTimeOffBalance`](docs/sdks/hris/README.md#getemployeetimeoffbalance) - Get Employee Time Off Balance
 - [`hrisGetEmployment`](docs/sdks/hris/README.md#getemployment) - Get Employment
 - [`hrisGetGroup`](docs/sdks/hris/README.md#getgroup) - Get Group
@@ -906,6 +911,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListEmployeeEmployments`](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 - [`hrisListEmployees`](docs/sdks/hris/README.md#listemployees) - List Employees
 - [`hrisListEmployeeSkills`](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
+- [`hrisListEmployeeTasks`](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
 - [`hrisListEmployeeTimeOffBalances`](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
 - [`hrisListEmployeeTimeOffPolicies`](docs/sdks/hris/README.md#listemployeetimeoffpolicies) - List Assigned Time Off Policies
 - [`hrisListEmployeeTimeOffRequests`](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -998,8 +1004,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingListCollections`](docs/sdks/ticketing/README.md#listcollections) - List Collections
 - [`ticketingListComments`](docs/sdks/ticketing/README.md#listcomments) - List Comments
 - [`ticketingListTickets`](docs/sdks/ticketing/README.md#listtickets) - List Tickets
+- [`ticketingListTicketStatuses`](docs/sdks/ticketing/README.md#listticketstatuses) - List Ticket Statuses
 - [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 - [`ticketingListUsers`](docs/sdks/ticketing/README.md#listusers) - List Users
+- [`ticketingUpdateTicket`](docs/sdks/ticketing/README.md#updateticket) - Update Ticket
 - ~~[`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest)~~ - Creates a time off request :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**

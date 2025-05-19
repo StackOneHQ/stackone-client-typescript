@@ -231,7 +231,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFile({
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -262,7 +262,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFile(stackOne, {
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -329,7 +329,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFolder({
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -360,7 +360,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFolder(stackOne, {
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -535,7 +535,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFiles({
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -571,7 +571,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFiles(stackOne, {
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -643,7 +643,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFolders({
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -679,7 +679,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFolders(stackOne, {
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

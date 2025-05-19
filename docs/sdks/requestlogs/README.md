@@ -150,7 +150,7 @@ async function run() {
       success: true,
     },
     include: QueryParamInclude.StepLogs,
-    orderBy: OrderBy.Service,
+    orderBy: OrderBy.Duration,
     orderDirection: OrderDirection.Asc,
   });
 
@@ -206,7 +206,7 @@ async function run() {
       success: true,
     },
     include: QueryParamInclude.StepLogs,
-    orderBy: OrderBy.Service,
+    orderBy: OrderBy.Duration,
     orderDirection: OrderDirection.Asc,
   });
 
@@ -284,7 +284,7 @@ async function run() {
       childResources: "documents,time-off",
       endDate: "2020-01-01T00:00:00.000Z",
       httpMethods: "GET,POST",
-      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Status,
+      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Service,
       orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,
       providers: "ashby,greenhouse",
       requestIds: "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
@@ -296,7 +296,7 @@ async function run() {
       success: true,
     },
     include: StackoneListStepLogsQueryParamInclude.StepLogs,
-    orderBy: StackoneListStepLogsQueryParamOrderBy.Status,
+    orderBy: StackoneListStepLogsQueryParamOrderBy.EventDatetime,
     orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,
   });
 
@@ -339,7 +339,7 @@ async function run() {
       childResources: "documents,time-off",
       endDate: "2020-01-01T00:00:00.000Z",
       httpMethods: "GET,POST",
-      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Status,
+      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Service,
       orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,
       providers: "ashby,greenhouse",
       requestIds: "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
@@ -351,7 +351,7 @@ async function run() {
       success: true,
     },
     include: StackoneListStepLogsQueryParamInclude.StepLogs,
-    orderBy: StackoneListStepLogsQueryParamOrderBy.Status,
+    orderBy: StackoneListStepLogsQueryParamOrderBy.EventDatetime,
     orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,
   });
 
