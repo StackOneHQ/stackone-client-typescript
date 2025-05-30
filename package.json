@@ -1,6 +1,6 @@
 {
   "name": "@stackone/stackone-client-ts",
-  "version": "4.19.12",
+  "version": "4.20.0",
   "author": "StackOne",
   "main": "./index.js",
   "sideEffects": false,
@@ -23,7 +23,7 @@
     "globals": "^15.14.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.22.0",
-    "zod": "^3.23.4"
+    "zod": "^3.25.17"
   },
   "dependencies": {
     

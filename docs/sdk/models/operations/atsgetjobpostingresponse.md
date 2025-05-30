@@ -262,6 +262,7 @@ let value: AtsGetJobPostingResponse = {
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteJobPostingId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+      startDate: new Date("2021-01-01T00:00:00.000Z"),
       status: {
         sourceValue: "Live",
         value: JobPostingSchemasStatusValue.Live,
@@ -274,7 +275,7 @@ let value: AtsGetJobPostingResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 100,
+  statusCode: 200,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

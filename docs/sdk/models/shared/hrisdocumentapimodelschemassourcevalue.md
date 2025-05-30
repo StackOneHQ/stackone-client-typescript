@@ -6,13 +6,13 @@
 ### `string`
 
 ```typescript
-const value: string = "abc";
+const value: string = "application/pdf";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = abc;
+const value: number = application / pdf;
 ```
 
 ### `boolean`
@@ -31,7 +31,7 @@ const value: shared.HrisDocumentApiModelSchemas4 = {};
 
 ```typescript
 const value: any[] = [
-  "abc",
+  "application/pdf",
 ];
 ```
 

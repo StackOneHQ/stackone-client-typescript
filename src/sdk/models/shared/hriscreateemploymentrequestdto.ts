@@ -34,6 +34,8 @@ export type HrisCreateEmploymentRequestDtoValueOpen = OpenEnum<
 
 /**
  * The employment work schedule type (e.g., full-time, part-time)
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type HrisCreateEmploymentRequestDtoEmploymentContractType = {
   sourceValue?:
@@ -90,6 +92,8 @@ export type HrisCreateEmploymentRequestDtoSchemasValueOpen = OpenEnum<
 
 /**
  * The type of employment (e.g., contractor, permanent)
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type HrisCreateEmploymentRequestDtoEmploymentType = {
   /**
@@ -107,6 +111,28 @@ export type HrisCreateEmploymentRequestDtoEmploymentType = {
    * The type of the employment.
    */
   value?: HrisCreateEmploymentRequestDtoSchemasValueOpen | null | undefined;
+};
+
+/**
+ * Represents the employee’s position within the organizational hierarchy.
+ */
+export type HrisCreateEmploymentRequestDtoGrade = {
+  /**
+   * description of the grade
+   */
+  description?: string | null | undefined;
+  /**
+   * The reference id
+   */
+  id?: string | null | undefined;
+  /**
+   * The reference name
+   */
+  name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 export type HrisCreateEmploymentRequestDtoSchemasPayFrequency4 = {};
@@ -242,7 +268,7 @@ export type HrisCreateEmploymentRequestDtoSchemasWorkTimeSourceValue =
   | Array<any>;
 
 /**
- * The unified value for the duration unit.
+ * The unified value for the period.
  */
 export enum HrisCreateEmploymentRequestDtoSchemasWorkTimeValue {
   Day = "day",
@@ -252,7 +278,7 @@ export enum HrisCreateEmploymentRequestDtoSchemasWorkTimeValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The unified value for the duration unit.
+ * The unified value for the period.
  */
 export type HrisCreateEmploymentRequestDtoSchemasWorkTimeValueOpen = OpenEnum<
   typeof HrisCreateEmploymentRequestDtoSchemasWorkTimeValue
@@ -271,7 +297,7 @@ export type HrisCreateEmploymentRequestDtoDurationUnit = {
     | null
     | undefined;
   /**
-   * The unified value for the duration unit.
+   * The unified value for the period.
    */
   value?:
     | HrisCreateEmploymentRequestDtoSchemasWorkTimeValueOpen
@@ -297,6 +323,8 @@ export type HrisCreateEmploymentRequestDto = {
   effectiveDate?: Date | null | undefined;
   /**
    * The employment work schedule type (e.g., full-time, part-time)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   employmentContractType?:
     | HrisCreateEmploymentRequestDtoEmploymentContractType
@@ -304,15 +332,21 @@ export type HrisCreateEmploymentRequestDto = {
     | undefined;
   /**
    * The type of employment (e.g., contractor, permanent)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   employmentType?:
     | HrisCreateEmploymentRequestDtoEmploymentType
     | null
     | undefined;
   /**
-   * Unique identifier
+   * The end date of employment
    */
-  id?: string | null | undefined;
+  endDate?: Date | null | undefined;
+  /**
+   * Represents the employee’s position within the organizational hierarchy.
+   */
+  grade?: HrisCreateEmploymentRequestDtoGrade | null | undefined;
   /**
    * The employee job id
    */
@@ -886,6 +920,82 @@ export function hrisCreateEmploymentRequestDtoEmploymentTypeFromJSON(
         JSON.parse(x),
       ),
     `Failed to parse 'HrisCreateEmploymentRequestDtoEmploymentType' from JSON`,
+  );
+}
+
+/** @internal */
+export const HrisCreateEmploymentRequestDtoGrade$inboundSchema: z.ZodType<
+  HrisCreateEmploymentRequestDtoGrade,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
+});
+
+/** @internal */
+export type HrisCreateEmploymentRequestDtoGrade$Outbound = {
+  description?: string | null | undefined;
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmploymentRequestDtoGrade$outboundSchema: z.ZodType<
+  HrisCreateEmploymentRequestDtoGrade$Outbound,
+  z.ZodTypeDef,
+  HrisCreateEmploymentRequestDtoGrade
+> = z.object({
+  description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmploymentRequestDtoGrade$ {
+  /** @deprecated use `HrisCreateEmploymentRequestDtoGrade$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisCreateEmploymentRequestDtoGrade$inboundSchema;
+  /** @deprecated use `HrisCreateEmploymentRequestDtoGrade$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateEmploymentRequestDtoGrade$outboundSchema;
+  /** @deprecated use `HrisCreateEmploymentRequestDtoGrade$Outbound` instead. */
+  export type Outbound = HrisCreateEmploymentRequestDtoGrade$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoGradeToJSON(
+  hrisCreateEmploymentRequestDtoGrade: HrisCreateEmploymentRequestDtoGrade,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoGrade$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoGrade,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoGradeFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmploymentRequestDtoGrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoGrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoGrade' from JSON`,
   );
 }
 
@@ -1834,7 +1944,12 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
   employment_type: z.nullable(
     z.lazy(() => HrisCreateEmploymentRequestDtoEmploymentType$inboundSchema),
   ).optional(),
-  id: z.nullable(z.string()).optional(),
+  end_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  grade: z.nullable(
+    z.lazy(() => HrisCreateEmploymentRequestDtoGrade$inboundSchema),
+  ).optional(),
   job_id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -1856,6 +1971,7 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
     "effective_date": "effectiveDate",
     "employment_contract_type": "employmentContractType",
     "employment_type": "employmentType",
+    "end_date": "endDate",
     "job_id": "jobId",
     "job_title": "jobTitle",
     "pay_currency": "payCurrency",
@@ -1879,7 +1995,8 @@ export type HrisCreateEmploymentRequestDto$Outbound = {
     | HrisCreateEmploymentRequestDtoEmploymentType$Outbound
     | null
     | undefined;
-  id?: string | null | undefined;
+  end_date?: string | null | undefined;
+  grade?: HrisCreateEmploymentRequestDtoGrade$Outbound | null | undefined;
   job_id?: string | null | undefined;
   job_title?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
@@ -1917,7 +2034,10 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
   employmentType: z.nullable(
     z.lazy(() => HrisCreateEmploymentRequestDtoEmploymentType$outboundSchema),
   ).optional(),
-  id: z.nullable(z.string()).optional(),
+  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  grade: z.nullable(
+    z.lazy(() => HrisCreateEmploymentRequestDtoGrade$outboundSchema),
+  ).optional(),
   jobId: z.nullable(z.string()).optional(),
   jobTitle: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
@@ -1939,6 +2059,7 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
     effectiveDate: "effective_date",
     employmentContractType: "employment_contract_type",
     employmentType: "employment_type",
+    endDate: "end_date",
     jobId: "job_id",
     jobTitle: "job_title",
     payCurrency: "pay_currency",

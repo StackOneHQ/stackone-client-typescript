@@ -11,7 +11,7 @@ let value: WorkEligibility = {
     categoryId: "6530",
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     fileFormat: {
-      sourceValue: "abc",
+      sourceValue: "application/pdf",
       value: WorkEligibilitySchemasDocumentValue.Pdf,
     },
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -29,8 +29,8 @@ let value: WorkEligibility = {
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   subType: "H1B",
   type: {},
-  validFrom: new Date("2021-01-01T00:00.000Z"),
-  validTo: new Date("2021-01-01T00:00.000Z"),
+  validFrom: new Date("2021-01-01T00:00:00.000Z"),
+  validTo: new Date("2021-01-01T00:00:00.000Z"),
 };
 ```
 
@@ -45,5 +45,5 @@ let value: WorkEligibility = {
 | `remoteId`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | Provider's unique identifier                                                                  | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                          |
 | `subType`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           | H1B                                                                                           |
 | `type`                                                                                        | [shared.WorkEligibilityType](../../../sdk/models/shared/workeligibilitytype.md)               | :heavy_minus_sign:                                                                            | N/A                                                                                           | visa                                                                                          |
-| `validFrom`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           | 2021-01-01T00:00.000Z                                                                         |
-| `validTo`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           | 2021-01-01T00:00.000Z                                                                         |
+| `validFrom`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           | 2021-01-01T00:00:00.000Z                                                                      |
+| `validTo`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           | 2021-01-01T00:00:00.000Z                                                                      |

@@ -82,7 +82,7 @@ export type Response = {
   statusCode?: number | null | undefined;
 };
 
-export type StepLogsApiModel = {
+export type StepLog = {
   /**
    * The account ID of the request
    */
@@ -366,52 +366,49 @@ export function responseFromJSON(
 }
 
 /** @internal */
-export const StepLogsApiModel$inboundSchema: z.ZodType<
-  StepLogsApiModel,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_id: z.nullable(z.string()).optional(),
-  action: z.nullable(z.string()).optional(),
-  child_resource: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
-  end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  http_method: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  is_worker: z.nullable(z.boolean()).optional(),
-  path: z.nullable(z.string()).optional(),
-  project_id: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
-  request: z.nullable(z.lazy(() => Request$inboundSchema)).optional(),
-  request_id: z.nullable(z.string()).optional(),
-  resource: z.nullable(z.string()).optional(),
-  response: z.nullable(z.lazy(() => Response$inboundSchema)).optional(),
-  service: z.nullable(z.string()).optional(),
-  start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  status: z.nullable(z.number()).optional(),
-  sub_resource: z.nullable(z.string()).optional(),
-  success: z.nullable(z.boolean()).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_id": "accountId",
-    "child_resource": "childResource",
-    "end_time": "endTime",
-    "http_method": "httpMethod",
-    "is_worker": "isWorker",
-    "project_id": "projectId",
-    "request_id": "requestId",
-    "start_time": "startTime",
-    "sub_resource": "subResource",
+export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
+  z.object({
+    account_id: z.nullable(z.string()).optional(),
+    action: z.nullable(z.string()).optional(),
+    child_resource: z.nullable(z.string()).optional(),
+    duration: z.nullable(z.number()).optional(),
+    end_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    http_method: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    is_worker: z.nullable(z.boolean()).optional(),
+    path: z.nullable(z.string()).optional(),
+    project_id: z.nullable(z.string()).optional(),
+    provider: z.nullable(z.string()).optional(),
+    request: z.nullable(z.lazy(() => Request$inboundSchema)).optional(),
+    request_id: z.nullable(z.string()).optional(),
+    resource: z.nullable(z.string()).optional(),
+    response: z.nullable(z.lazy(() => Response$inboundSchema)).optional(),
+    service: z.nullable(z.string()).optional(),
+    start_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    status: z.nullable(z.number()).optional(),
+    sub_resource: z.nullable(z.string()).optional(),
+    success: z.nullable(z.boolean()).optional(),
+    url: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_id": "accountId",
+      "child_resource": "childResource",
+      "end_time": "endTime",
+      "http_method": "httpMethod",
+      "is_worker": "isWorker",
+      "project_id": "projectId",
+      "request_id": "requestId",
+      "start_time": "startTime",
+      "sub_resource": "subResource",
+    });
   });
-});
 
 /** @internal */
-export type StepLogsApiModel$Outbound = {
+export type StepLog$Outbound = {
   account_id?: string | null | undefined;
   action?: string | null | undefined;
   child_resource?: string | null | undefined;
@@ -436,10 +433,10 @@ export type StepLogsApiModel$Outbound = {
 };
 
 /** @internal */
-export const StepLogsApiModel$outboundSchema: z.ZodType<
-  StepLogsApiModel$Outbound,
+export const StepLog$outboundSchema: z.ZodType<
+  StepLog$Outbound,
   z.ZodTypeDef,
-  StepLogsApiModel
+  StepLog
 > = z.object({
   accountId: z.nullable(z.string()).optional(),
   action: z.nullable(z.string()).optional(),
@@ -480,29 +477,25 @@ export const StepLogsApiModel$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace StepLogsApiModel$ {
-  /** @deprecated use `StepLogsApiModel$inboundSchema` instead. */
-  export const inboundSchema = StepLogsApiModel$inboundSchema;
-  /** @deprecated use `StepLogsApiModel$outboundSchema` instead. */
-  export const outboundSchema = StepLogsApiModel$outboundSchema;
-  /** @deprecated use `StepLogsApiModel$Outbound` instead. */
-  export type Outbound = StepLogsApiModel$Outbound;
+export namespace StepLog$ {
+  /** @deprecated use `StepLog$inboundSchema` instead. */
+  export const inboundSchema = StepLog$inboundSchema;
+  /** @deprecated use `StepLog$outboundSchema` instead. */
+  export const outboundSchema = StepLog$outboundSchema;
+  /** @deprecated use `StepLog$Outbound` instead. */
+  export type Outbound = StepLog$Outbound;
 }
 
-export function stepLogsApiModelToJSON(
-  stepLogsApiModel: StepLogsApiModel,
-): string {
-  return JSON.stringify(
-    StepLogsApiModel$outboundSchema.parse(stepLogsApiModel),
-  );
+export function stepLogToJSON(stepLog: StepLog): string {
+  return JSON.stringify(StepLog$outboundSchema.parse(stepLog));
 }
 
-export function stepLogsApiModelFromJSON(
+export function stepLogFromJSON(
   jsonString: string,
-): SafeParseResult<StepLogsApiModel, SDKValidationError> {
+): SafeParseResult<StepLog, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => StepLogsApiModel$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StepLogsApiModel' from JSON`,
+    (x) => StepLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StepLog' from JSON`,
   );
 }

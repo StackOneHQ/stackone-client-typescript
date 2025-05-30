@@ -66,7 +66,7 @@ let value: HrisListEmployeesResponse = {
             valueId: "value_456",
           },
         ],
-        dateOfBirth: new Date("1990-01-01T00:00.000Z"),
+        dateOfBirth: new Date("1990-01-01T00:00:00.000Z"),
         displayName: "Sir Isaac Newton",
         employeeNumber: "125",
         employmentStatus: {},
@@ -177,6 +177,13 @@ let value: HrisListEmployeesResponse = {
             employeeId: "1687-3",
             endDate: new Date("2021-01-01T01:01:01.000Z"),
             fte: 1,
+            grade: {
+              description:
+                "Mid-level employee demonstrating proficiency and autonomy.",
+              id: "1687-3",
+              name: "1687-4",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             job: {
               description: {
@@ -188,6 +195,7 @@ let value: HrisListEmployeesResponse = {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               title: "Software Engineer",
             },
+            jobTitle: "Software Engineer",
             manager: [
               {
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -207,7 +215,6 @@ let value: HrisListEmployeesResponse = {
             payrollCode: "PC1",
             remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            startDate: new Date("2021-01-01T01:01:01.000Z"),
             type: {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               label: "Permanent",
@@ -260,7 +267,7 @@ let value: HrisListEmployeesResponse = {
             },
           },
         ],
-        hireDate: new Date("2021-01-01T00:00.000Z"),
+        hireDate: new Date("2021-01-01T00:00:00.000Z"),
         homeLocation: {
           city: "Grantham",
           country: {
@@ -285,6 +292,7 @@ let value: HrisListEmployeesResponse = {
           zipCode: "NG33 5NR",
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        jobTitle: "Physicist",
         lastName: "Newton",
         maritalStatus: {},
         name: "Isaac Newton",

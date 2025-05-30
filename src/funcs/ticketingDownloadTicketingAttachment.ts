@@ -111,11 +111,15 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
+    subResourceId: encodeSimple("subResourceId", payload.subResourceId, {
+      explode: false,
+      charEncoding: "percent",
+    }),
   };
 
-  const path = pathToFunc("/unified/ticketing/attachments/{id}/download")(
-    pathParams,
-  );
+  const path = pathToFunc(
+    "/unified/ticketing/tickets/{id}/attachments/{subResourceId}/download",
+  )(pathParams);
 
   const query = encodeFormQuery({
     "export_format": payload.export_format,
@@ -134,6 +138,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "ticketing_download_ticketing_attachment",
     oAuth2Scopes: [],
@@ -165,6 +170,7 @@ async function $do(
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {

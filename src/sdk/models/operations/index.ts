@@ -242,6 +242,7 @@ export * from "./ticketinggettickettype.js";
 export * from "./ticketinggetuser.js";
 export * from "./ticketinglistattachments.js";
 export * from "./ticketinglistcollections.js";
+export * from "./ticketinglistcollectiontickettypes.js";
 export * from "./ticketinglistcomments.js";
 export * from "./ticketinglisttickets.js";
 export * from "./ticketinglistticketstatuses.js";

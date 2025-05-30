@@ -56,7 +56,7 @@ let value: AtsGetApplicationResponse = {
           categoryId: "6530",
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           fileFormat: {
-            sourceValue: "abc",
+            sourceValue: "application/pdf",
             value: AtsDocumentApiModelValue.Pdf,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

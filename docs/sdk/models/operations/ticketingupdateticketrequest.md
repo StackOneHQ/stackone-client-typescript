@@ -15,7 +15,7 @@ let value: TicketingUpdateTicketRequest = {
       "user-001",
       "user-002",
     ],
-    collections: [
+    collectionIds: [
       "collection-001",
       "collection-002",
     ],

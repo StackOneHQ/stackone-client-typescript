@@ -69,6 +69,10 @@ export type ConnectSessionCreate = {
    * The provider to connect to
    */
   provider?: string | null | undefined;
+  /**
+   * The provider version to connect to
+   */
+  providerVersion?: string | null | undefined;
 };
 
 /** @internal */
@@ -160,6 +164,7 @@ export const ConnectSessionCreate$inboundSchema: z.ZodType<
   origin_owner_name: z.string(),
   origin_username: z.nullable(z.string()).optional(),
   provider: z.nullable(z.string()).optional(),
+  provider_version: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
@@ -167,6 +172,7 @@ export const ConnectSessionCreate$inboundSchema: z.ZodType<
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",
     "origin_username": "originUsername",
+    "provider_version": "providerVersion",
   });
 });
 
@@ -182,6 +188,7 @@ export type ConnectSessionCreate$Outbound = {
   origin_owner_name: string;
   origin_username?: string | null | undefined;
   provider?: string | null | undefined;
+  provider_version?: string | null | undefined;
 };
 
 /** @internal */
@@ -203,6 +210,7 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
   originOwnerName: z.string(),
   originUsername: z.nullable(z.string()).optional(),
   provider: z.nullable(z.string()).optional(),
+  providerVersion: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",
@@ -210,6 +218,7 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",
     originUsername: "origin_username",
+    providerVersion: "provider_version",
   });
 });
 

@@ -98,14 +98,6 @@ export type QueryParamFilter = {
 };
 
 /**
- * The include parameter allows you to include additional data in the response.
- */
-export enum StackoneListStepLogsQueryParamInclude {
-  StepLogs = "step_logs",
-  AdvancedLogs = "advanced_logs",
-}
-
-/**
  * The field to order the results by.
  */
 export enum StackoneListStepLogsQueryParamOrderBy {
@@ -129,10 +121,6 @@ export type StackoneListStepLogsRequest = {
    * Filter parameters that allow greater customisation of the list response
    */
   filter?: QueryParamFilter | null | undefined;
-  /**
-   * The include parameter allows you to include additional data in the response.
-   */
-  include?: StackoneListStepLogsQueryParamInclude | null | undefined;
   /**
    * The unified cursor
    */
@@ -353,30 +341,6 @@ export function queryParamFilterFromJSON(
 }
 
 /** @internal */
-export const StackoneListStepLogsQueryParamInclude$inboundSchema:
-  z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamInclude> = z.nativeEnum(
-    StackoneListStepLogsQueryParamInclude,
-  );
-
-/** @internal */
-export const StackoneListStepLogsQueryParamInclude$outboundSchema:
-  z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamInclude> =
-    StackoneListStepLogsQueryParamInclude$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsQueryParamInclude$ {
-  /** @deprecated use `StackoneListStepLogsQueryParamInclude$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListStepLogsQueryParamInclude$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamInclude$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListStepLogsQueryParamInclude$outboundSchema;
-}
-
-/** @internal */
 export const StackoneListStepLogsQueryParamOrderBy$inboundSchema:
   z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamOrderBy> = z.nativeEnum(
     StackoneListStepLogsQueryParamOrderBy,
@@ -430,8 +394,6 @@ export const StackoneListStepLogsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
-  include: z.nullable(StackoneListStepLogsQueryParamInclude$inboundSchema)
-    .optional(),
   next: z.nullable(z.string()).optional(),
   order_by: z.nullable(StackoneListStepLogsQueryParamOrderBy$inboundSchema)
     .optional(),
@@ -450,7 +412,6 @@ export const StackoneListStepLogsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type StackoneListStepLogsRequest$Outbound = {
   filter?: QueryParamFilter$Outbound | null | undefined;
-  include?: string | null | undefined;
   next?: string | null | undefined;
   order_by?: string | null | undefined;
   order_direction?: string | null | undefined;
@@ -464,8 +425,6 @@ export const StackoneListStepLogsRequest$outboundSchema: z.ZodType<
   StackoneListStepLogsRequest
 > = z.object({
   filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
-  include: z.nullable(StackoneListStepLogsQueryParamInclude$outboundSchema)
-    .optional(),
   next: z.nullable(z.string()).optional(),
   orderBy: z.nullable(StackoneListStepLogsQueryParamOrderBy$outboundSchema)
     .optional(),

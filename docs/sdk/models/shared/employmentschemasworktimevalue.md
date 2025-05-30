@@ -1,6 +1,6 @@
 # EmploymentSchemasWorkTimeValue
 
-The unified value for the duration unit.
+The unified value for the period.
 
 ## Example Usage
 

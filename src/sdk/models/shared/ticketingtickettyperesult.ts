@@ -16,10 +16,6 @@ import {
 
 export type TicketingTicketTypeResultData = {
   /**
-   * The collection the ticket type belongs to.
-   */
-  collectionId?: string | null | undefined;
-  /**
    * The id of the ticket type.
    */
   id?: string | null | undefined;
@@ -27,6 +23,10 @@ export type TicketingTicketTypeResultData = {
    * The name of the ticket type.
    */
   name?: string | null | undefined;
+  /**
+   * The collection the ticket type belongs to.
+   */
+  parentCollectionId?: string | null | undefined;
 };
 
 export type TicketingTicketTypeResult = {
@@ -40,20 +40,20 @@ export const TicketingTicketTypeResultData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  collection_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  parent_collection_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "collection_id": "collectionId",
+    "parent_collection_id": "parentCollectionId",
   });
 });
 
 /** @internal */
 export type TicketingTicketTypeResultData$Outbound = {
-  collection_id?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
+  parent_collection_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -62,12 +62,12 @@ export const TicketingTicketTypeResultData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingTicketTypeResultData
 > = z.object({
-  collectionId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  parentCollectionId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    collectionId: "collection_id",
+    parentCollectionId: "parent_collection_id",
   });
 });
 

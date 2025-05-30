@@ -4,6 +4,7 @@
 
 ```typescript
 import {
+  TicketingCollectionType,
   TicketingReadTicketSchemasValue,
   TicketingReadTicketValue,
   TicketingTicketsPaginated,
@@ -18,8 +19,18 @@ let value: TicketingTicketsPaginated = {
       ],
       closedAt: new Date("2021-01-01T01:01:01.000Z"),
       collections: [
-        "collection-001",
-        "collection-002",
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          description: "Description of the project",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          key: "project-falcon",
+          name: "Project Falcon",
+          organizationId: "organization-001",
+          parentId: "collection-001",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          type: TicketingCollectionType.Project,
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
       ],
       content: [
         {
@@ -63,9 +74,9 @@ let value: TicketingTicketsPaginated = {
       ticketUrl: "https://help.company.com/tickets/SUP-5689",
       title: "System outage in production environment",
       type: {
-        collectionId: "collection-001",
         id: "001",
         name: "Task",
+        parentCollectionId: "collection-001",
       },
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",

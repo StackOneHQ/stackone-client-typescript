@@ -19,9 +19,9 @@ let value: TicketingListTicketTypesResponse = {
   ticketingTicketTypePaginated: {
     data: [
       {
-        collectionId: "collection-001",
         id: "001",
         name: "Task",
+        parentCollectionId: "collection-001",
       },
     ],
   },

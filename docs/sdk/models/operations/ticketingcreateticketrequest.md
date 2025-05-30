@@ -12,7 +12,7 @@ let value: TicketingCreateTicketRequest = {
       "user-001",
       "user-002",
     ],
-    collections: [
+    collectionIds: [
       "collection-001",
       "collection-002",
     ],
@@ -40,6 +40,10 @@ let value: TicketingCreateTicketRequest = {
     ],
     title: "System outage in production environment",
     type: "ticket-type-001",
+    unifiedCustomFields: {
+      "my_project_custom_field_1": "REF-1236",
+      "my_project_custom_field_2": "some other value",
+    },
   },
   xAccountId: "<id>",
 };

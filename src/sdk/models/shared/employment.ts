@@ -443,6 +443,28 @@ export type EmploymentEmploymentType = {
 };
 
 /**
+ * Represents the employee’s position within the organizational hierarchy.
+ */
+export type EmploymentGrade = {
+  /**
+   * description of the grade
+   */
+  description?: string | null | undefined;
+  /**
+   * The reference id
+   */
+  id?: string | null | undefined;
+  /**
+   * The reference name
+   */
+  name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+};
+
+/**
  * The employee job description
  */
 export type Description = {
@@ -676,7 +698,7 @@ export type EmploymentSchemasWorkTimeSourceValue =
   | Array<any>;
 
 /**
- * The unified value for the duration unit.
+ * The unified value for the period.
  */
 export enum EmploymentSchemasWorkTimeValue {
   Day = "day",
@@ -686,7 +708,7 @@ export enum EmploymentSchemasWorkTimeValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The unified value for the duration unit.
+ * The unified value for the period.
  */
 export type EmploymentSchemasWorkTimeValueOpen = OpenEnum<
   typeof EmploymentSchemasWorkTimeValue
@@ -705,7 +727,7 @@ export type EmploymentDurationUnit = {
     | null
     | undefined;
   /**
-   * The unified value for the duration unit.
+   * The unified value for the period.
    */
   value?: EmploymentSchemasWorkTimeValueOpen | null | undefined;
 };
@@ -773,13 +795,17 @@ export type Employment = {
    */
   employmentType?: EmploymentEmploymentType | null | undefined;
   /**
-   * The end_date of employment
+   * The end date of employment
    */
   endDate?: Date | null | undefined;
   /**
-   * the employee’s working percentage relative to a full-time employee
+   * the employee's working percentage relative to a full-time employee
    */
   fte?: number | null | undefined;
+  /**
+   * Represents the employee’s position within the organizational hierarchy.
+   */
+  grade?: EmploymentGrade | null | undefined;
   /**
    * Unique identifier
    */
@@ -790,8 +816,6 @@ export type Employment = {
   job?: EmploymentJob | null | undefined;
   /**
    * The job title of the employee
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   jobTitle?: string | null | undefined;
   /**
@@ -828,6 +852,8 @@ export type Employment = {
   remoteId?: string | null | undefined;
   /**
    * The start_date of employment
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   startDate?: Date | null | undefined;
   /**
@@ -2678,6 +2704,75 @@ export function employmentEmploymentTypeFromJSON(
 }
 
 /** @internal */
+export const EmploymentGrade$inboundSchema: z.ZodType<
+  EmploymentGrade,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
+});
+
+/** @internal */
+export type EmploymentGrade$Outbound = {
+  description?: string | null | undefined;
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const EmploymentGrade$outboundSchema: z.ZodType<
+  EmploymentGrade$Outbound,
+  z.ZodTypeDef,
+  EmploymentGrade
+> = z.object({
+  description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentGrade$ {
+  /** @deprecated use `EmploymentGrade$inboundSchema` instead. */
+  export const inboundSchema = EmploymentGrade$inboundSchema;
+  /** @deprecated use `EmploymentGrade$outboundSchema` instead. */
+  export const outboundSchema = EmploymentGrade$outboundSchema;
+  /** @deprecated use `EmploymentGrade$Outbound` instead. */
+  export type Outbound = EmploymentGrade$Outbound;
+}
+
+export function employmentGradeToJSON(
+  employmentGrade: EmploymentGrade,
+): string {
+  return JSON.stringify(EmploymentGrade$outboundSchema.parse(employmentGrade));
+}
+
+export function employmentGradeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentGrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentGrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentGrade' from JSON`,
+  );
+}
+
+/** @internal */
 export const Description$inboundSchema: z.ZodType<
   Description,
   z.ZodTypeDef,
@@ -3937,6 +4032,7 @@ export const Employment$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   fte: z.nullable(z.number()).optional(),
+  grade: z.nullable(z.lazy(() => EmploymentGrade$inboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   job: z.nullable(z.lazy(() => EmploymentJob$inboundSchema)).optional(),
   job_title: z.nullable(z.string()).optional(),
@@ -4006,6 +4102,7 @@ export type Employment$Outbound = {
   employment_type?: EmploymentEmploymentType$Outbound | null | undefined;
   end_date?: string | null | undefined;
   fte?: number | null | undefined;
+  grade?: EmploymentGrade$Outbound | null | undefined;
   id?: string | null | undefined;
   job?: EmploymentJob$Outbound | null | undefined;
   job_title?: string | null | undefined;
@@ -4050,6 +4147,7 @@ export const Employment$outboundSchema: z.ZodType<
   ).optional(),
   endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   fte: z.nullable(z.number()).optional(),
+  grade: z.nullable(z.lazy(() => EmploymentGrade$outboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   job: z.nullable(z.lazy(() => EmploymentJob$outboundSchema)).optional(),
   jobTitle: z.nullable(z.string()).optional(),

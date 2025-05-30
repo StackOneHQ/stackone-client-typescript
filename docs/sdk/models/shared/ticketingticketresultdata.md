@@ -4,6 +4,7 @@
 
 ```typescript
 import {
+  TicketingCollectionType,
   TicketingTicketResultData,
   TicketingTicketResultSchemasValue,
   TicketingTicketResultValue,
@@ -16,8 +17,18 @@ let value: TicketingTicketResultData = {
   ],
   closedAt: new Date("2021-01-01T01:01:01.000Z"),
   collections: [
-    "collection-001",
-    "collection-002",
+    {
+      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+      description: "Description of the project",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      key: "project-falcon",
+      name: "Project Falcon",
+      organizationId: "organization-001",
+      parentId: "collection-001",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      type: TicketingCollectionType.Project,
+      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+    },
   ],
   content: [
     {
@@ -61,9 +72,9 @@ let value: TicketingTicketResultData = {
   ticketUrl: "https://help.company.com/tickets/SUP-5689",
   title: "System outage in production environment",
   type: {
-    collectionId: "collection-001",
     id: "001",
     name: "Task",
+    parentCollectionId: "collection-001",
   },
   unifiedCustomFields: {
     "my_project_custom_field_1": "REF-1236",
@@ -79,7 +90,7 @@ let value: TicketingTicketResultData = {
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `assignees`                                                                                                 | *string*[]                                                                                                  | :heavy_minus_sign:                                                                                          | Agents assigned to the ticket                                                                               | [<br/>"user-001",<br/>"user-002"<br/>]                                                                      |
 | `closedAt`                                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)               | :heavy_minus_sign:                                                                                          | The date the ticket was closed                                                                              | 2021-01-01T01:01:01.000Z                                                                                    |
-| `collections`                                                                                               | *string*[]                                                                                                  | :heavy_minus_sign:                                                                                          | Collections the ticket belongs to                                                                           | [<br/>"collection-001",<br/>"collection-002"<br/>]                                                          |
+| `collections`                                                                                               | [shared.TicketingCollection](../../../sdk/models/shared/ticketingcollection.md)[]                           | :heavy_minus_sign:                                                                                          | Collections the ticket belongs to                                                                           |                                                                                                             |
 | `content`                                                                                                   | [shared.TicketingContent](../../../sdk/models/shared/ticketingcontent.md)[]                                 | :heavy_minus_sign:                                                                                          | Array of content associated with the ticket                                                                 |                                                                                                             |
 | `createdAt`                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)               | :heavy_minus_sign:                                                                                          | The timestamp when the record was created                                                                   | 2021-01-01T01:01:01.000Z                                                                                    |
 | `creatorId`                                                                                                 | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | The creator of the ticket                                                                                   | user-001                                                                                                    |

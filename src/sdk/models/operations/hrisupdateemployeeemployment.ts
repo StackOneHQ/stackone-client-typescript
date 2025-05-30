@@ -10,7 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisUpdateEmployeeEmploymentRequest = {
-  hrisCreateEmploymentRequestDto: shared.HrisCreateEmploymentRequestDto;
+  hrisUpdateEmploymentRequestDto: shared.HrisUpdateEmploymentRequestDto;
   id: string;
   subResourceId: string;
   /**
@@ -24,10 +24,6 @@ export type HrisUpdateEmployeeEmploymentResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
-  /**
-   * The employee employment was updated successfully.
-   */
-  employmentResult?: shared.EmploymentResult | undefined;
   headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
@@ -37,6 +33,10 @@ export type HrisUpdateEmployeeEmploymentResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
+  /**
+   * The employee employment was updated successfully.
+   */
+  updateResult?: shared.UpdateResult | undefined;
 };
 
 /** @internal */
@@ -45,22 +45,22 @@ export const HrisUpdateEmployeeEmploymentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  HrisCreateEmploymentRequestDto:
-    shared.HrisCreateEmploymentRequestDto$inboundSchema,
+  HrisUpdateEmploymentRequestDto:
+    shared.HrisUpdateEmploymentRequestDto$inboundSchema,
   id: z.string(),
   subResourceId: z.string(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "HrisCreateEmploymentRequestDto": "hrisCreateEmploymentRequestDto",
+    "HrisUpdateEmploymentRequestDto": "hrisUpdateEmploymentRequestDto",
     "x-account-id": "xAccountId",
   });
 });
 
 /** @internal */
 export type HrisUpdateEmployeeEmploymentRequest$Outbound = {
-  HrisCreateEmploymentRequestDto:
-    shared.HrisCreateEmploymentRequestDto$Outbound;
+  HrisUpdateEmploymentRequestDto:
+    shared.HrisUpdateEmploymentRequestDto$Outbound;
   id: string;
   subResourceId: string;
   "x-account-id": string;
@@ -72,14 +72,14 @@ export const HrisUpdateEmployeeEmploymentRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisUpdateEmployeeEmploymentRequest
 > = z.object({
-  hrisCreateEmploymentRequestDto:
-    shared.HrisCreateEmploymentRequestDto$outboundSchema,
+  hrisUpdateEmploymentRequestDto:
+    shared.HrisUpdateEmploymentRequestDto$outboundSchema,
   id: z.string(),
   subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    hrisCreateEmploymentRequestDto: "HrisCreateEmploymentRequestDto",
+    hrisUpdateEmploymentRequestDto: "HrisUpdateEmploymentRequestDto",
     xAccountId: "x-account-id",
   });
 });
@@ -127,27 +127,27 @@ export const HrisUpdateEmployeeEmploymentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-  EmploymentResult: shared.EmploymentResult$inboundSchema.optional(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
+  UpdateResult: shared.UpdateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
-    "EmploymentResult": "employmentResult",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
+    "UpdateResult": "updateResult",
   });
 });
 
 /** @internal */
 export type HrisUpdateEmployeeEmploymentResponse$Outbound = {
   ContentType: string;
-  EmploymentResult?: shared.EmploymentResult$Outbound | undefined;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
+  UpdateResult?: shared.UpdateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -157,19 +157,19 @@ export const HrisUpdateEmployeeEmploymentResponse$outboundSchema: z.ZodType<
   HrisUpdateEmployeeEmploymentResponse
 > = z.object({
   contentType: z.string(),
-  employmentResult: shared.EmploymentResult$outboundSchema.optional(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
+  updateResult: shared.UpdateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
-    employmentResult: "EmploymentResult",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
+    updateResult: "UpdateResult",
   });
 });
 

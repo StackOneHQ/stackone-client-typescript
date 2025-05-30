@@ -8,7 +8,7 @@ The file format of the file
 import { HrisDocumentApiModelFileFormat, HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentApiModelFileFormat = {
-  sourceValue: "abc",
+  sourceValue: "application/pdf",
   value: HrisDocumentApiModelSchemasValue.Pdf,
 };
 ```
@@ -17,5 +17,5 @@ let value: HrisDocumentApiModelFileFormat = {
 
 | Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               | Example                                                                                                   |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                                             | *shared.HrisDocumentApiModelSchemasSourceValue*                                                           | :heavy_minus_sign:                                                                                        | N/A                                                                                                       | abc                                                                                                       |
+| `sourceValue`                                                                                             | *shared.HrisDocumentApiModelSchemasSourceValue*                                                           | :heavy_minus_sign:                                                                                        | N/A                                                                                                       | application/pdf                                                                                           |
 | `value`                                                                                                   | [shared.HrisDocumentApiModelSchemasValue](../../../sdk/models/shared/hrisdocumentapimodelschemasvalue.md) | :heavy_minus_sign:                                                                                        | The file format of the file, expressed as a file extension                                                | pdf                                                                                                       |

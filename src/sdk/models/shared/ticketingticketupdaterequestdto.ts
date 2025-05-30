@@ -149,7 +149,7 @@ export type TicketingTicketUpdateRequestDto = {
   /**
    * Collections the ticket belongs to
    */
-  collections?: Array<string> | null | undefined;
+  collectionIds?: Array<string> | null | undefined;
   /**
    * Array of content associated with the ticket
    */
@@ -792,7 +792,7 @@ export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
-  collections: z.nullable(z.array(z.string())).optional(),
+  collection_ids: z.nullable(z.array(z.string())).optional(),
   content: z.nullable(z.array(TicketingContent$inboundSchema)).optional(),
   parent_id: z.nullable(z.string()).optional(),
   priority: z.nullable(
@@ -807,6 +807,7 @@ export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "collection_ids": "collectionIds",
     "parent_id": "parentId",
     "unified_custom_fields": "unifiedCustomFields",
   });
@@ -815,7 +816,7 @@ export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingTicketUpdateRequestDto$Outbound = {
   assignees?: Array<string> | null | undefined;
-  collections?: Array<string> | null | undefined;
+  collection_ids?: Array<string> | null | undefined;
   content?: Array<TicketingContent$Outbound> | null | undefined;
   parent_id?: string | null | undefined;
   priority?:
@@ -836,7 +837,7 @@ export const TicketingTicketUpdateRequestDto$outboundSchema: z.ZodType<
   TicketingTicketUpdateRequestDto
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
-  collections: z.nullable(z.array(z.string())).optional(),
+  collectionIds: z.nullable(z.array(z.string())).optional(),
   content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
   parentId: z.nullable(z.string()).optional(),
   priority: z.nullable(
@@ -851,6 +852,7 @@ export const TicketingTicketUpdateRequestDto$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    collectionIds: "collection_ids",
     parentId: "parent_id",
     unifiedCustomFields: "unified_custom_fields",
   });

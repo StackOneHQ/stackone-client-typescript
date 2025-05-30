@@ -26,7 +26,7 @@ export type HrisCreateEmployeeEmploymentResponse = {
   /**
    * The employee employment was created successfully.
    */
-  employmentResult?: shared.EmploymentResult | undefined;
+  createResult?: shared.CreateResult | undefined;
   headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
@@ -123,14 +123,14 @@ export const HrisCreateEmployeeEmploymentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-  EmploymentResult: shared.EmploymentResult$inboundSchema.optional(),
+  CreateResult: shared.CreateResult$inboundSchema.optional(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
-    "EmploymentResult": "employmentResult",
+    "CreateResult": "createResult",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -140,7 +140,7 @@ export const HrisCreateEmployeeEmploymentResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateEmployeeEmploymentResponse$Outbound = {
   ContentType: string;
-  EmploymentResult?: shared.EmploymentResult$Outbound | undefined;
+  CreateResult?: shared.CreateResult$Outbound | undefined;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
@@ -153,7 +153,7 @@ export const HrisCreateEmployeeEmploymentResponse$outboundSchema: z.ZodType<
   HrisCreateEmployeeEmploymentResponse
 > = z.object({
   contentType: z.string(),
-  employmentResult: shared.EmploymentResult$outboundSchema.optional(),
+  createResult: shared.CreateResult$outboundSchema.optional(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -162,7 +162,7 @@ export const HrisCreateEmployeeEmploymentResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
-    employmentResult: "EmploymentResult",
+    createResult: "CreateResult",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

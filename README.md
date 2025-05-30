@@ -384,6 +384,7 @@ run();
 * [getTicketType](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
 * [getUser](docs/sdks/ticketing/README.md#getuser) - Get User
 * [listAttachments](docs/sdks/ticketing/README.md#listattachments) - List Attachments
+* [listCollectionTicketTypes](docs/sdks/ticketing/README.md#listcollectiontickettypes) - List Collection Ticket Types
 * [listCollections](docs/sdks/ticketing/README.md#listcollections) - List Collections
 * [listComments](docs/sdks/ticketing/README.md#listcomments) - List Comments
 * [listTicketStatuses](docs/sdks/ticketing/README.md#listticketstatuses) - List Ticket Statuses
@@ -1002,6 +1003,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingGetUser`](docs/sdks/ticketing/README.md#getuser) - Get User
 - [`ticketingListAttachments`](docs/sdks/ticketing/README.md#listattachments) - List Attachments
 - [`ticketingListCollections`](docs/sdks/ticketing/README.md#listcollections) - List Collections
+- [`ticketingListCollectionTicketTypes`](docs/sdks/ticketing/README.md#listcollectiontickettypes) - List Collection Ticket Types
 - [`ticketingListComments`](docs/sdks/ticketing/README.md#listcomments) - List Comments
 - [`ticketingListTickets`](docs/sdks/ticketing/README.md#listtickets) - List Tickets
 - [`ticketingListTicketStatuses`](docs/sdks/ticketing/README.md#listticketstatuses) - List Ticket Statuses
