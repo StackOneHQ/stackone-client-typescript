@@ -6,8 +6,6 @@
 import {
   StackoneListStepLogsQueryParamOrderBy,
   StackoneListStepLogsQueryParamOrderDirection,
-  StackoneListStepLogsQueryParamRequestLogsOrderBy,
-  StackoneListStepLogsQueryParamRequestLogsOrderDirection,
   StackoneListStepLogsRequest,
 } from "@stackone/stackone-client-ts/sdk/models/operations";
 
@@ -18,8 +16,6 @@ let value: StackoneListStepLogsRequest = {
     childResources: "documents,time-off",
     endDate: "2020-01-01T00:00:00.000Z",
     httpMethods: "GET,POST",
-    orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Status,
-    orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,
     providers: "ashby,greenhouse",
     requestIds:
       "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",

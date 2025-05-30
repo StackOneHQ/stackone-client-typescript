@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 7db3bfaa417780527f414d0e263bd341
+  docChecksum: 3ca400331b919287003f988e31dc6769
   docVersion: 1.0.0
   speakeasyVersion: 1.554.1
   generationVersion: 2.616.1
-  releaseVersion: 4.20.0
-  configChecksum: 13d80ac40d3edf780c75f984e1717281
+  releaseVersion: 4.20.1
+  configChecksum: 36d16518b1be9c1429cafbbd8706c1db
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -601,8 +601,6 @@ generatedFiles:
   - docs/sdk/models/operations/stackonelistlogsresponse.md
   - docs/sdk/models/operations/stackoneliststeplogsqueryparamorderby.md
   - docs/sdk/models/operations/stackoneliststeplogsqueryparamorderdirection.md
-  - docs/sdk/models/operations/stackoneliststeplogsqueryparamrequestlogsorderby.md
-  - docs/sdk/models/operations/stackoneliststeplogsqueryparamrequestlogsorderdirection.md
   - docs/sdk/models/operations/stackoneliststeplogsrequest.md
   - docs/sdk/models/operations/stackoneliststeplogsresponse.md
   - docs/sdk/models/operations/stackoneproxyrequestrequest.md
@@ -836,6 +834,7 @@ generatedFiles:
   - docs/sdk/models/shared/balanceunit.md
   - docs/sdk/models/shared/batchresultapimodel.md
   - docs/sdk/models/shared/benefittype.md
+  - docs/sdk/models/shared/body.md
   - docs/sdk/models/shared/campaign.md
   - docs/sdk/models/shared/campaign2.md
   - docs/sdk/models/shared/campaign4.md
@@ -3316,7 +3315,7 @@ examples:
           order_by: "eventDatetime"
           order_direction: "asc"
           include: "step_logs"
-          filter: {"account_ids": "45355976281015164504,45355976281015164505", "actions": "download,upload", "child_resources": "documents,time-off", "end_date": "2020-01-01T00:00:00.000Z", "http_methods": "GET,POST", "order_by": "service", "order_direction": "asc", "providers": "ashby,greenhouse", "request_ids": "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c", "resources": "employees,users", "services": "hris,ats", "start_date": "2020-01-01T00:00:00.000Z", "status_codes": "200,400", "sub_resources": "documents,employees", "success": true}
+          filter: {"account_ids": "45355976281015164504,45355976281015164505", "actions": "download,upload", "child_resources": "documents,time-off", "end_date": "2020-01-01T00:00:00.000Z", "http_methods": "GET,POST", "providers": "ashby,greenhouse", "request_ids": "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c", "resources": "employees,users", "services": "hris,ats", "start_date": "2020-01-01T00:00:00.000Z", "status_codes": "200,400", "sub_resources": "documents,employees", "success": true}
       responses:
         "200":
           application/json: {"data": [{"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "http_method": "get", "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "service": "hris", "start_time": "2021-01-01T00:00:00Z", "status": 200, "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}, {"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "http_method": "get", "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "service": "hris", "start_time": "2021-01-01T00:00:00Z", "status": 200, "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}, {"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "http_method": "get", "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "service": "hris", "start_time": "2021-01-01T00:00:00Z", "status": 200, "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}]}

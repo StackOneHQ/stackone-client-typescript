@@ -10,25 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * The field to order the results by.
- */
-export enum StackoneListStepLogsQueryParamRequestLogsOrderBy {
-  Provider = "provider",
-  Service = "service",
-  Status = "status",
-  EventDatetime = "eventDatetime",
-  Duration = "duration",
-}
-
-/**
- * The direction to order the results by.
- */
-export enum StackoneListStepLogsQueryParamRequestLogsOrderDirection {
-  Asc = "asc",
-  Desc = "desc",
-}
-
-/**
  * Filter parameters that allow greater customisation of the list response
  */
 export type QueryParamFilter = {
@@ -52,17 +33,6 @@ export type QueryParamFilter = {
    * A comma-separated list of HTTP methods to filter the results by.
    */
   httpMethods?: string | null | undefined;
-  /**
-   * The field to order the results by.
-   */
-  orderBy?: StackoneListStepLogsQueryParamRequestLogsOrderBy | null | undefined;
-  /**
-   * The direction to order the results by.
-   */
-  orderDirection?:
-    | StackoneListStepLogsQueryParamRequestLogsOrderDirection
-    | null
-    | undefined;
   /**
    * A comma-separated list of provider keys to filter the results by.
    */
@@ -163,54 +133,6 @@ export type StackoneListStepLogsResponse = {
 };
 
 /** @internal */
-export const StackoneListStepLogsQueryParamRequestLogsOrderBy$inboundSchema:
-  z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamRequestLogsOrderBy> = z
-    .nativeEnum(StackoneListStepLogsQueryParamRequestLogsOrderBy);
-
-/** @internal */
-export const StackoneListStepLogsQueryParamRequestLogsOrderBy$outboundSchema:
-  z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamRequestLogsOrderBy> =
-    StackoneListStepLogsQueryParamRequestLogsOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsQueryParamRequestLogsOrderBy$ {
-  /** @deprecated use `StackoneListStepLogsQueryParamRequestLogsOrderBy$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListStepLogsQueryParamRequestLogsOrderBy$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamRequestLogsOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListStepLogsQueryParamRequestLogsOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListStepLogsQueryParamRequestLogsOrderDirection$inboundSchema:
-  z.ZodNativeEnum<
-    typeof StackoneListStepLogsQueryParamRequestLogsOrderDirection
-  > = z.nativeEnum(StackoneListStepLogsQueryParamRequestLogsOrderDirection);
-
-/** @internal */
-export const StackoneListStepLogsQueryParamRequestLogsOrderDirection$outboundSchema:
-  z.ZodNativeEnum<
-    typeof StackoneListStepLogsQueryParamRequestLogsOrderDirection
-  > = StackoneListStepLogsQueryParamRequestLogsOrderDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsQueryParamRequestLogsOrderDirection$ {
-  /** @deprecated use `StackoneListStepLogsQueryParamRequestLogsOrderDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListStepLogsQueryParamRequestLogsOrderDirection$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamRequestLogsOrderDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListStepLogsQueryParamRequestLogsOrderDirection$outboundSchema;
-}
-
-/** @internal */
 export const QueryParamFilter$inboundSchema: z.ZodType<
   QueryParamFilter,
   z.ZodTypeDef,
@@ -221,12 +143,6 @@ export const QueryParamFilter$inboundSchema: z.ZodType<
   child_resources: z.nullable(z.string()).optional(),
   end_date: z.nullable(z.string()).optional(),
   http_methods: z.nullable(z.string()).optional(),
-  order_by: z.nullable(
-    StackoneListStepLogsQueryParamRequestLogsOrderBy$inboundSchema,
-  ).optional(),
-  order_direction: z.nullable(
-    StackoneListStepLogsQueryParamRequestLogsOrderDirection$inboundSchema,
-  ).optional(),
   providers: z.nullable(z.string()).optional(),
   request_ids: z.nullable(z.string()).optional(),
   resources: z.nullable(z.string()).optional(),
@@ -241,8 +157,6 @@ export const QueryParamFilter$inboundSchema: z.ZodType<
     "child_resources": "childResources",
     "end_date": "endDate",
     "http_methods": "httpMethods",
-    "order_by": "orderBy",
-    "order_direction": "orderDirection",
     "request_ids": "requestIds",
     "start_date": "startDate",
     "status_codes": "statusCodes",
@@ -257,8 +171,6 @@ export type QueryParamFilter$Outbound = {
   child_resources?: string | null | undefined;
   end_date?: string | null | undefined;
   http_methods?: string | null | undefined;
-  order_by?: string | null | undefined;
-  order_direction?: string | null | undefined;
   providers?: string | null | undefined;
   request_ids?: string | null | undefined;
   resources?: string | null | undefined;
@@ -280,12 +192,6 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
   childResources: z.nullable(z.string()).optional(),
   endDate: z.nullable(z.string()).optional(),
   httpMethods: z.nullable(z.string()).optional(),
-  orderBy: z.nullable(
-    StackoneListStepLogsQueryParamRequestLogsOrderBy$outboundSchema,
-  ).optional(),
-  orderDirection: z.nullable(
-    StackoneListStepLogsQueryParamRequestLogsOrderDirection$outboundSchema,
-  ).optional(),
   providers: z.nullable(z.string()).optional(),
   requestIds: z.nullable(z.string()).optional(),
   resources: z.nullable(z.string()).optional(),
@@ -300,8 +206,6 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
     childResources: "child_resources",
     endDate: "end_date",
     httpMethods: "http_methods",
-    orderBy: "order_by",
-    orderDirection: "order_direction",
     requestIds: "request_ids",
     startDate: "start_date",
     statusCodes: "status_codes",

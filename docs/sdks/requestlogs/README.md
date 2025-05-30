@@ -264,8 +264,6 @@ import { StackOne } from "@stackone/stackone-client-ts";
 import {
   StackoneListStepLogsQueryParamOrderBy,
   StackoneListStepLogsQueryParamOrderDirection,
-  StackoneListStepLogsQueryParamRequestLogsOrderBy,
-  StackoneListStepLogsQueryParamRequestLogsOrderDirection,
 } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 const stackOne = new StackOne({
@@ -283,8 +281,6 @@ async function run() {
       childResources: "documents,time-off",
       endDate: "2020-01-01T00:00:00.000Z",
       httpMethods: "GET,POST",
-      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Service,
-      orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,
       providers: "ashby,greenhouse",
       requestIds: "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
       resources: "employees,users",
@@ -315,8 +311,6 @@ import { requestLogsListStepLogs } from "@stackone/stackone-client-ts/funcs/requ
 import {
   StackoneListStepLogsQueryParamOrderBy,
   StackoneListStepLogsQueryParamOrderDirection,
-  StackoneListStepLogsQueryParamRequestLogsOrderBy,
-  StackoneListStepLogsQueryParamRequestLogsOrderDirection,
 } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -336,8 +330,6 @@ async function run() {
       childResources: "documents,time-off",
       endDate: "2020-01-01T00:00:00.000Z",
       httpMethods: "GET,POST",
-      orderBy: StackoneListStepLogsQueryParamRequestLogsOrderBy.Service,
-      orderDirection: StackoneListStepLogsQueryParamRequestLogsOrderDirection.Asc,
       providers: "ashby,greenhouse",
       requestIds: "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
       resources: "employees,users",
