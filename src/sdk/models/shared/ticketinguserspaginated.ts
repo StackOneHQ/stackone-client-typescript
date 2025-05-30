@@ -17,7 +17,7 @@ import {
   TicketingUser$inboundSchema,
   TicketingUser$Outbound,
   TicketingUser$outboundSchema,
-} from "./ticketinguserresult.js";
+} from "./ticketinguser.js";
 
 export type TicketingUsersPaginated = {
   data?: Array<TicketingUser> | null | undefined;

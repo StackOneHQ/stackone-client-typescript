@@ -230,6 +230,10 @@ export type JobPosting = {
    * Provider's unique identifier of the job posting
    */
   remoteJobPostingId?: string | null | undefined;
+  /**
+   * The posting start date
+   */
+  startDate?: Date | null | undefined;
   status?: JobPostingStatus | null | undefined;
   title?: string | null | undefined;
   /**
@@ -1067,6 +1071,9 @@ export const JobPosting$inboundSchema: z.ZodType<
     .optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_job_posting_id: z.nullable(z.string()).optional(),
+  start_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   status: z.nullable(z.lazy(() => JobPostingStatus$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
@@ -1083,6 +1090,7 @@ export const JobPosting$inboundSchema: z.ZodType<
     "job_id": "jobId",
     "remote_id": "remoteId",
     "remote_job_posting_id": "remoteJobPostingId",
+    "start_date": "startDate",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",
   });
@@ -1107,6 +1115,7 @@ export type JobPosting$Outbound = {
   questionnaires?: Array<JobPostingQuestionnaire$Outbound> | null | undefined;
   remote_id?: string | null | undefined;
   remote_job_posting_id?: string | null | undefined;
+  start_date?: string | null | undefined;
   status?: JobPostingStatus$Outbound | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -1140,6 +1149,7 @@ export const JobPosting$outboundSchema: z.ZodType<
     .optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteJobPostingId: z.nullable(z.string()).optional(),
+  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(z.lazy(() => JobPostingStatus$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
@@ -1154,6 +1164,7 @@ export const JobPosting$outboundSchema: z.ZodType<
     jobId: "job_id",
     remoteId: "remote_id",
     remoteJobPostingId: "remote_job_posting_id",
+    startDate: "start_date",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",
   });

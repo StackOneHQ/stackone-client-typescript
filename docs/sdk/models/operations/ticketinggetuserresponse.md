@@ -19,12 +19,12 @@ let value: TicketingGetUserResponse = {
   }),
   ticketingUserResult: {
     data: {
-      additionalProperties: {
-        disabled: false,
-        username: "johndoe",
-      },
+      active: true,
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
+      customerAccountReference: "JohnDoe123",
+      firstName: "John",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      lastName: "Doe",
       name: "John Doe",
       primaryEmail: "john.doe@example.com",
       primaryPhone: "555-5555-5555",
@@ -34,6 +34,7 @@ let value: TicketingGetUserResponse = {
         value: TicketingUserResultValue.Agent,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+      username: "johndoe",
     },
   },
 };

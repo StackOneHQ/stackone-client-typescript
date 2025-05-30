@@ -120,6 +120,13 @@ let value: HrisListEmployeeEmploymentsResponse = {
         employeeId: "1687-3",
         endDate: new Date("2021-01-01T01:01:01.000Z"),
         fte: 1,
+        grade: {
+          description:
+            "Mid-level employee demonstrating proficiency and autonomy.",
+          id: "1687-3",
+          name: "1687-4",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         job: {
           description: {
@@ -131,6 +138,7 @@ let value: HrisListEmployeeEmploymentsResponse = {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           title: "Software Engineer",
         },
+        jobTitle: "Software Engineer",
         manager: [
           {
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -150,7 +158,6 @@ let value: HrisListEmployeeEmploymentsResponse = {
         payrollCode: "PC1",
         remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        startDate: new Date("2021-01-01T01:01:01.000Z"),
         type: {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           label: "Permanent",

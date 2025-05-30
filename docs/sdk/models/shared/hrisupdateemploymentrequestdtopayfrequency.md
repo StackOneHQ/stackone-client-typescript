@@ -1,0 +1,18 @@
+# HrisUpdateEmploymentRequestDtoPayFrequency
+
+The pay frequency
+
+## Example Usage
+
+```typescript
+import { HrisUpdateEmploymentRequestDtoPayFrequency } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisUpdateEmploymentRequestDtoPayFrequency = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           | Example                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                                                         | *shared.HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue*                                                                                 | :heavy_minus_sign:                                                                                                                                    | The source value of the pay frequency.                                                                                                                | Hourly                                                                                                                                                |
+| `value`                                                                                                                                               | [shared.HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue](../../../sdk/models/shared/hrisupdateemploymentrequestdtoschemaspayfrequencyvalue.md) | :heavy_minus_sign:                                                                                                                                    | The pay frequency of the job postings.                                                                                                                | hourly                                                                                                                                                |

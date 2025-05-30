@@ -10,7 +10,6 @@ import {
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
   JobPostingValue,
-  Question2,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingResult = {
@@ -78,7 +77,7 @@ let value: JobPostingResult = {
           {
             id: "question002",
             parentQuestion: null,
-            required: Question2.False,
+            required: false,
             text: "What are your hobbies?",
             type: {},
           },
@@ -256,6 +255,7 @@ let value: JobPostingResult = {
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteJobPostingId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+    startDate: new Date("2021-01-01T00:00:00.000Z"),
     status: {
       sourceValue: "Live",
       value: JobPostingSchemasStatusValue.Live,

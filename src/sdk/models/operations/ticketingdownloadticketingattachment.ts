@@ -18,6 +18,7 @@ export type TicketingDownloadTicketingAttachmentRequest = {
    */
   format?: string | null | undefined;
   id: string;
+  subResourceId: string;
   /**
    * The account identifier
    */
@@ -54,6 +55,7 @@ export const TicketingDownloadTicketingAttachmentRequest$inboundSchema:
     export_format: z.nullable(z.string()).optional(),
     format: z.nullable(z.string()).optional(),
     id: z.string(),
+    subResourceId: z.string(),
     "x-account-id": z.string(),
   }).transform((v) => {
     return remap$(v, {
@@ -67,6 +69,7 @@ export type TicketingDownloadTicketingAttachmentRequest$Outbound = {
   export_format?: string | null | undefined;
   format?: string | null | undefined;
   id: string;
+  subResourceId: string;
   "x-account-id": string;
 };
 
@@ -80,6 +83,7 @@ export const TicketingDownloadTicketingAttachmentRequest$outboundSchema:
     exportFormat: z.nullable(z.string()).optional(),
     format: z.nullable(z.string()).optional(),
     id: z.string(),
+    subResourceId: z.string(),
     xAccountId: z.string(),
   }).transform((v) => {
     return remap$(v, {

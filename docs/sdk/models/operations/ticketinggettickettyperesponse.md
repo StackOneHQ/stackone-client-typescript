@@ -18,9 +18,9 @@ let value: TicketingGetTicketTypeResponse = {
   }),
   ticketingTicketTypeResult: {
     data: {
-      collectionId: "collection-001",
       id: "001",
       name: "Task",
+      parentCollectionId: "collection-001",
     },
   },
 };

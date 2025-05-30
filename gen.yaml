@@ -3,6 +3,7 @@ generation:
   sdkClassName: StackOne
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
@@ -13,7 +14,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 4.19.12
+  version: 4.20.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

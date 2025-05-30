@@ -34,6 +34,8 @@ export type CreateEmploymentApiModelValueOpen = OpenEnum<
 
 /**
  * The employment work schedule type (e.g., full-time, part-time)
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type EmploymentContractType = {
   sourceValue?:
@@ -90,6 +92,8 @@ export type CreateEmploymentApiModelSchemasValueOpen = OpenEnum<
 
 /**
  * The type of employment (e.g., contractor, permanent)
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type EmploymentType = {
   /**
@@ -107,6 +111,28 @@ export type EmploymentType = {
    * The type of the employment.
    */
   value?: CreateEmploymentApiModelSchemasValueOpen | null | undefined;
+};
+
+/**
+ * Represents the employee’s position within the organizational hierarchy.
+ */
+export type Grade = {
+  /**
+   * description of the grade
+   */
+  description?: string | null | undefined;
+  /**
+   * The reference id
+   */
+  id?: string | null | undefined;
+  /**
+   * The reference name
+   */
+  name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 export type CreateEmploymentApiModelSchemasPayFrequency4 = {};
@@ -240,7 +266,7 @@ export type CreateEmploymentApiModelSchemasWorkTimeSourceValue =
   | Array<any>;
 
 /**
- * The unified value for the duration unit.
+ * The unified value for the period.
  */
 export enum CreateEmploymentApiModelSchemasWorkTimeValue {
   Day = "day",
@@ -250,7 +276,7 @@ export enum CreateEmploymentApiModelSchemasWorkTimeValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The unified value for the duration unit.
+ * The unified value for the period.
  */
 export type CreateEmploymentApiModelSchemasWorkTimeValueOpen = OpenEnum<
   typeof CreateEmploymentApiModelSchemasWorkTimeValue
@@ -269,7 +295,7 @@ export type CreateEmploymentApiModelDurationUnit = {
     | null
     | undefined;
   /**
-   * The unified value for the duration unit.
+   * The unified value for the period.
    */
   value?: CreateEmploymentApiModelSchemasWorkTimeValueOpen | null | undefined;
 };
@@ -292,16 +318,24 @@ export type CreateEmploymentApiModel = {
   effectiveDate?: Date | null | undefined;
   /**
    * The employment work schedule type (e.g., full-time, part-time)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   employmentContractType?: EmploymentContractType | null | undefined;
   /**
    * The type of employment (e.g., contractor, permanent)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   employmentType?: EmploymentType | null | undefined;
   /**
-   * Unique identifier
+   * The end date of employment
    */
-  id?: string | null | undefined;
+  endDate?: Date | null | undefined;
+  /**
+   * Represents the employee’s position within the organizational hierarchy.
+   */
+  grade?: Grade | null | undefined;
   /**
    * The employee job id
    */
@@ -817,6 +851,70 @@ export function employmentTypeFromJSON(
     jsonString,
     (x) => EmploymentType$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'EmploymentType' from JSON`,
+  );
+}
+
+/** @internal */
+export const Grade$inboundSchema: z.ZodType<Grade, z.ZodTypeDef, unknown> = z
+  .object({
+    description: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "remote_id": "remoteId",
+    });
+  });
+
+/** @internal */
+export type Grade$Outbound = {
+  description?: string | null | undefined;
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const Grade$outboundSchema: z.ZodType<
+  Grade$Outbound,
+  z.ZodTypeDef,
+  Grade
+> = z.object({
+  description: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Grade$ {
+  /** @deprecated use `Grade$inboundSchema` instead. */
+  export const inboundSchema = Grade$inboundSchema;
+  /** @deprecated use `Grade$outboundSchema` instead. */
+  export const outboundSchema = Grade$outboundSchema;
+  /** @deprecated use `Grade$Outbound` instead. */
+  export type Outbound = Grade$Outbound;
+}
+
+export function gradeToJSON(grade: Grade): string {
+  return JSON.stringify(Grade$outboundSchema.parse(grade));
+}
+
+export function gradeFromJSON(
+  jsonString: string,
+): SafeParseResult<Grade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Grade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Grade' from JSON`,
   );
 }
 
@@ -1696,7 +1794,10 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   ).optional(),
   employment_type: z.nullable(z.lazy(() => EmploymentType$inboundSchema))
     .optional(),
-  id: z.nullable(z.string()).optional(),
+  end_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  grade: z.nullable(z.lazy(() => Grade$inboundSchema)).optional(),
   job_id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
   pay_currency: z.nullable(z.string()).optional(),
@@ -1712,6 +1813,7 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
     "effective_date": "effectiveDate",
     "employment_contract_type": "employmentContractType",
     "employment_type": "employmentType",
+    "end_date": "endDate",
     "job_id": "jobId",
     "job_title": "jobTitle",
     "pay_currency": "payCurrency",
@@ -1729,7 +1831,8 @@ export type CreateEmploymentApiModel$Outbound = {
   effective_date?: string | null | undefined;
   employment_contract_type?: EmploymentContractType$Outbound | null | undefined;
   employment_type?: EmploymentType$Outbound | null | undefined;
-  id?: string | null | undefined;
+  end_date?: string | null | undefined;
+  grade?: Grade$Outbound | null | undefined;
   job_id?: string | null | undefined;
   job_title?: string | null | undefined;
   pay_currency?: string | null | undefined;
@@ -1754,7 +1857,8 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
   ).optional(),
   employmentType: z.nullable(z.lazy(() => EmploymentType$outboundSchema))
     .optional(),
-  id: z.nullable(z.string()).optional(),
+  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  grade: z.nullable(z.lazy(() => Grade$outboundSchema)).optional(),
   jobId: z.nullable(z.string()).optional(),
   jobTitle: z.nullable(z.string()).optional(),
   payCurrency: z.nullable(z.string()).optional(),
@@ -1770,6 +1874,7 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
     effectiveDate: "effective_date",
     employmentContractType: "employment_contract_type",
     employmentType: "employment_type",
+    endDate: "end_date",
     jobId: "job_id",
     jobTitle: "job_title",
     payCurrency: "pay_currency",

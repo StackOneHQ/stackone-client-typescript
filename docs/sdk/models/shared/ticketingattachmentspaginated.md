@@ -3,14 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { TicketingAttachmentsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TicketingAttachmentsPaginated, TicketingAttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TicketingAttachmentsPaginated = {
   data: [
     {
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
-      fileName: "screenshot.png",
-      fileType: "image/png",
+      fileFormat: {
+        sourceValue: "application/pdf",
+        value: TicketingAttachmentValue.Pdf,
+      },
+      fileName: "file.pdf",
       fileUrl: "https://example.com/files/screenshot.png",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

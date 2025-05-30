@@ -105,7 +105,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.HrisCreateEmploymentRequestDto, {
+  const body = encodeJSON("body", payload.HrisUpdateEmploymentRequestDto, {
     explode: true,
   });
 
@@ -137,6 +137,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "hris_update_employee_employment",
     oAuth2Scopes: [],
@@ -167,6 +168,7 @@ async function $do(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -231,7 +233,7 @@ async function $do(
     | ConnectionError
   >(
     M.json(200, operations.HrisUpdateEmployeeEmploymentResponse$inboundSchema, {
-      key: "EmploymentResult",
+      key: "UpdateResult",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

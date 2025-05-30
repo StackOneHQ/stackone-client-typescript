@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  TicketingCollection,
+  TicketingCollection$inboundSchema,
+  TicketingCollection$Outbound,
+  TicketingCollection$outboundSchema,
+} from "./ticketingcollection.js";
+import {
   TicketingContent,
   TicketingContent$inboundSchema,
   TicketingContent$Outbound,
@@ -168,10 +174,6 @@ export type TicketingReadTicketStatus = {
  */
 export type TicketingReadTicketType = {
   /**
-   * The collection the ticket type belongs to.
-   */
-  collectionId?: string | null | undefined;
-  /**
    * The id of the ticket type.
    */
   id?: string | null | undefined;
@@ -179,6 +181,10 @@ export type TicketingReadTicketType = {
    * The name of the ticket type.
    */
   name?: string | null | undefined;
+  /**
+   * The collection the ticket type belongs to.
+   */
+  parentCollectionId?: string | null | undefined;
 };
 
 export type TicketingReadTicket = {
@@ -193,7 +199,7 @@ export type TicketingReadTicket = {
   /**
    * Collections the ticket belongs to
    */
-  collections?: Array<string> | null | undefined;
+  collections?: Array<TicketingCollection> | null | undefined;
   /**
    * Array of content associated with the ticket
    */
@@ -875,20 +881,20 @@ export const TicketingReadTicketType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  collection_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  parent_collection_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "collection_id": "collectionId",
+    "parent_collection_id": "parentCollectionId",
   });
 });
 
 /** @internal */
 export type TicketingReadTicketType$Outbound = {
-  collection_id?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
+  parent_collection_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -897,12 +903,12 @@ export const TicketingReadTicketType$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingReadTicketType
 > = z.object({
-  collectionId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  parentCollectionId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    collectionId: "collection_id",
+    parentCollectionId: "parent_collection_id",
   });
 });
 
@@ -947,7 +953,8 @@ export const TicketingReadTicket$inboundSchema: z.ZodType<
   closed_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  collections: z.nullable(z.array(z.string())).optional(),
+  collections: z.nullable(z.array(TicketingCollection$inboundSchema))
+    .optional(),
   content: z.nullable(z.array(TicketingContent$inboundSchema)).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -989,7 +996,7 @@ export const TicketingReadTicket$inboundSchema: z.ZodType<
 export type TicketingReadTicket$Outbound = {
   assignees?: Array<string> | null | undefined;
   closed_at?: string | null | undefined;
-  collections?: Array<string> | null | undefined;
+  collections?: Array<TicketingCollection$Outbound> | null | undefined;
   content?: Array<TicketingContent$Outbound> | null | undefined;
   created_at?: string | null | undefined;
   creator_id?: string | null | undefined;
@@ -1017,7 +1024,8 @@ export const TicketingReadTicket$outboundSchema: z.ZodType<
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
   closedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  collections: z.nullable(z.array(z.string())).optional(),
+  collections: z.nullable(z.array(TicketingCollection$outboundSchema))
+    .optional(),
   content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   creatorId: z.nullable(z.string()).optional(),

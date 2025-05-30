@@ -262,7 +262,6 @@ List Step Logs
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
-  StackoneListStepLogsQueryParamInclude,
   StackoneListStepLogsQueryParamOrderBy,
   StackoneListStepLogsQueryParamOrderDirection,
   StackoneListStepLogsQueryParamRequestLogsOrderBy,
@@ -295,7 +294,6 @@ async function run() {
       subResources: "documents,employees",
       success: true,
     },
-    include: StackoneListStepLogsQueryParamInclude.StepLogs,
     orderBy: StackoneListStepLogsQueryParamOrderBy.EventDatetime,
     orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,
   });
@@ -315,7 +313,6 @@ The standalone function version of this method:
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { requestLogsListStepLogs } from "@stackone/stackone-client-ts/funcs/requestLogsListStepLogs.js";
 import {
-  StackoneListStepLogsQueryParamInclude,
   StackoneListStepLogsQueryParamOrderBy,
   StackoneListStepLogsQueryParamOrderDirection,
   StackoneListStepLogsQueryParamRequestLogsOrderBy,
@@ -350,7 +347,6 @@ async function run() {
       subResources: "documents,employees",
       success: true,
     },
-    include: StackoneListStepLogsQueryParamInclude.StepLogs,
     orderBy: StackoneListStepLogsQueryParamOrderBy.EventDatetime,
     orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,
   });

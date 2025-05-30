@@ -7,14 +7,14 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  StepLogsApiModel,
-  StepLogsApiModel$inboundSchema,
-  StepLogsApiModel$Outbound,
-  StepLogsApiModel$outboundSchema,
-} from "./steplogsapimodel.js";
+  StepLogPartial,
+  StepLogPartial$inboundSchema,
+  StepLogPartial$Outbound,
+  StepLogPartial$outboundSchema,
+} from "./steplogpartial.js";
 
 export type StepLogsPaginated = {
-  data: Array<StepLogsApiModel>;
+  data: Array<StepLogPartial>;
   next?: string | null | undefined;
 };
 
@@ -24,13 +24,13 @@ export const StepLogsPaginated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(StepLogsApiModel$inboundSchema),
+  data: z.array(StepLogPartial$inboundSchema),
   next: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type StepLogsPaginated$Outbound = {
-  data: Array<StepLogsApiModel$Outbound>;
+  data: Array<StepLogPartial$Outbound>;
   next?: string | null | undefined;
 };
 
@@ -40,7 +40,7 @@ export const StepLogsPaginated$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StepLogsPaginated
 > = z.object({
-  data: z.array(StepLogsApiModel$outboundSchema),
+  data: z.array(StepLogPartial$outboundSchema),
   next: z.nullable(z.string()).optional(),
 });
 

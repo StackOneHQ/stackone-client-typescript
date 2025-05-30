@@ -1,11 +1,11 @@
-# StepLogsApiModel
+# StepLogPartial
 
 ## Example Usage
 
 ```typescript
-import { StepLogsApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { StepLogPartial } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: StepLogsApiModel = {
+let value: StepLogPartial = {
   accountId: "45355976281015164504",
   action: "download",
   childResource: "time-off",
@@ -17,47 +17,8 @@ let value: StepLogsApiModel = {
   path: "/unified/hris/employees",
   projectId: "dev-project-68574",
   provider: "planday",
-  request: {
-    headers: {
-      "content-type": "application/json",
-      "authorization": "Bearer token",
-    },
-    id: "adbf752f-6457-4ddd-89b3-98ae2252b83b",
-    method: "get",
-    url: {
-      hostname: "example.com",
-      path: "/api/v1/resource",
-      queryParams: {
-        "page": 1,
-        "limit": 10,
-      },
-      url: "https://example.com/api/v1/resource",
-    },
-  },
   requestId: "adbf752f-6457-4ddd-89b3-98ae2252b83b",
   resource: "employees",
-  response: {
-    customMappingErrors: [
-      {
-        id: "adbf752f-6457-4ddd-89b3-98ae2252b83b",
-        message: "Invalid value",
-        targetField: "first_name",
-      },
-    ],
-    headers: {
-      "content-type": "application/json",
-      "authorization": "Bearer token",
-    },
-    providerErrors: [
-      {
-        headers: {},
-        raw: {},
-        status: 400,
-        url: "https://api.provider.com/v1/resource",
-      },
-    ],
-    statusCode: 200,
-  },
   service: "hris",
   startTime: new Date("2021-01-01T00:00:00Z"),
   status: 200,
@@ -82,10 +43,8 @@ let value: StepLogsApiModel = {
 | `path`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requested path                                                                            | /unified/hris/employees                                                                       |
 | `projectId`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | The project ID of the request                                                                 | dev-project-68574                                                                             |
 | `provider`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requested provider                                                                        | planday                                                                                       |
-| `request`                                                                                     | [shared.Request](../../../sdk/models/shared/request.md)                                       | :heavy_minus_sign:                                                                            | The advanced log request data                                                                 |                                                                                               |
 | `requestId`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | The request ID                                                                                | adbf752f-6457-4ddd-89b3-98ae2252b83b                                                          |
 | `resource`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requested resource                                                                        | employees                                                                                     |
-| `response`                                                                                    | [shared.Response](../../../sdk/models/shared/response.md)                                     | :heavy_minus_sign:                                                                            | The advanced log response data                                                                |                                                                                               |
 | `service`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requested service                                                                         | hris                                                                                          |
 | `startTime`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The request start time ISO8601 date string                                                    | 2021-01-01T00:00:00Z                                                                          |
 | `status`                                                                                      | *number*                                                                                      | :heavy_minus_sign:                                                                            | The requests response status code                                                             | 200                                                                                           |

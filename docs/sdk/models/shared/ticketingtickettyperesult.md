@@ -7,9 +7,9 @@ import { TicketingTicketTypeResult } from "@stackone/stackone-client-ts/sdk/mode
 
 let value: TicketingTicketTypeResult = {
   data: {
-    collectionId: "collection-001",
     id: "001",
     name: "Task",
+    parentCollectionId: "collection-001",
   },
 };
 ```

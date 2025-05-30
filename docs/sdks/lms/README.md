@@ -3231,12 +3231,7 @@ Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {
-  CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasValue,
-  LanguageEnumValue,
-  LocalizationModelValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -3298,37 +3293,20 @@ async function run() {
       ],
       localizations: [
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
+          description: "This course acts as learning resource for software engineers.",
           title: "Software Engineer Lv 1",
         },
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
-          title: "Software Engineer Lv 1",
+          description: "This course acts as learning resource for software engineers.",
+          title: "Software Engineer: A comprehensive guide",
         },
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
       skills: [
         {
-          id: "16873-IT345",
-          language: {
-            value: CreateSkillsApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
+          id: "12345",
+          name: "Sales Techniques",
         },
       ],
       tags: [
@@ -3359,12 +3337,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsUpsertContent.js";
-import {
-  CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasValue,
-  LanguageEnumValue,
-  LocalizationModelValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3428,37 +3401,20 @@ async function run() {
       ],
       localizations: [
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
+          description: "This course acts as learning resource for software engineers.",
           title: "Software Engineer Lv 1",
         },
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
-          title: "Software Engineer Lv 1",
+          description: "This course acts as learning resource for software engineers.",
+          title: "Software Engineer: A comprehensive guide",
         },
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
       skills: [
         {
-          id: "16873-IT345",
-          language: {
-            value: CreateSkillsApiModelSchemasValue.EnGB,
-          },
-          name: "Information-Technology",
+          id: "12345",
+          name: "Sales Techniques",
         },
       ],
       tags: [
@@ -3531,7 +3487,6 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
-  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -3596,26 +3551,12 @@ async function run() {
       ],
       localizations: [
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
+          description: "This course acts as learning resource for software engineers.",
           title: "Software Engineer Lv 1",
         },
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
-          title: "Software Engineer Lv 1",
+          description: "This course acts as learning resource for software engineers.",
+          title: "Software Engineer: A comprehensive guide",
         },
       ],
       skills: [
@@ -3669,7 +3610,6 @@ import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
   LanguageEnumValue,
-  LocalizationModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -3736,26 +3676,12 @@ async function run() {
       ],
       localizations: [
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
+          description: "This course acts as learning resource for software engineers.",
           title: "Software Engineer Lv 1",
         },
         {
-          description: "This video acts as learning content for software engineers.",
-          language: {
-            value: LocalizationModelValue.EnGB,
-          },
-          tags: [
-            "Sales Techniques",
-            "Customer Service",
-          ],
-          title: "Software Engineer Lv 1",
+          description: "This course acts as learning resource for software engineers.",
+          title: "Software Engineer: A comprehensive guide",
         },
       ],
       skills: [

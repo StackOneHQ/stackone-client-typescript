@@ -8,7 +8,7 @@ The file format of the file
 import { FilesFileFormat, FilesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: FilesFileFormat = {
-  sourceValue: "abc",
+  sourceValue: "application/pdf",
   value: FilesValue.Pdf,
 };
 ```
@@ -17,5 +17,5 @@ let value: FilesFileFormat = {
 
 | Field                                                         | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `sourceValue`                                                 | *shared.FilesSourceValue*                                     | :heavy_minus_sign:                                            | N/A                                                           | abc                                                           |
+| `sourceValue`                                                 | *shared.FilesSourceValue*                                     | :heavy_minus_sign:                                            | N/A                                                           | application/pdf                                               |
 | `value`                                                       | [shared.FilesValue](../../../sdk/models/shared/filesvalue.md) | :heavy_minus_sign:                                            | The file format of the file, expressed as a file extension    | pdf                                                           |

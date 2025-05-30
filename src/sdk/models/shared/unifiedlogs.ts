@@ -19,6 +19,12 @@ import {
   ProviderError$Outbound,
   ProviderError$outboundSchema,
 } from "./providererror.js";
+import {
+  StepLog,
+  StepLog$inboundSchema,
+  StepLog$Outbound,
+  StepLog$outboundSchema,
+} from "./steplog.js";
 
 /**
  * The request URL data
@@ -170,7 +176,7 @@ export type UnifiedLogs = {
   /**
    * The list of provider requests
    */
-  stepRequests?: Array<string> | null | undefined;
+  stepRequests?: Array<StepLog> | null | undefined;
   /**
    * The requested sub resource
    */
@@ -433,7 +439,7 @@ export const UnifiedLogs$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   status: z.nullable(z.number()).optional(),
-  step_requests: z.nullable(z.array(z.string())).optional(),
+  step_requests: z.nullable(z.array(StepLog$inboundSchema)).optional(),
   sub_resource: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
   url: z.nullable(z.string()).optional(),
@@ -479,7 +485,7 @@ export type UnifiedLogs$Outbound = {
   source_value?: string | null | undefined;
   start_time?: string | null | undefined;
   status?: number | null | undefined;
-  step_requests?: Array<string> | null | undefined;
+  step_requests?: Array<StepLog$Outbound> | null | undefined;
   sub_resource?: string | null | undefined;
   success?: boolean | null | undefined;
   url?: string | null | undefined;
@@ -515,7 +521,7 @@ export const UnifiedLogs$outboundSchema: z.ZodType<
   sourceValue: z.nullable(z.string()).optional(),
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(z.number()).optional(),
-  stepRequests: z.nullable(z.array(z.string())).optional(),
+  stepRequests: z.nullable(z.array(StepLog$outboundSchema)).optional(),
   subResource: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
   url: z.nullable(z.string()).optional(),

@@ -14,6 +14,7 @@
 * [getTicketType](#gettickettype) - Get Ticket Type
 * [getUser](#getuser) - Get User
 * [listAttachments](#listattachments) - List Attachments
+* [listCollectionTicketTypes](#listcollectiontickettypes) - List Collection Ticket Types
 * [listCollections](#listcollections) - List Collections
 * [listComments](#listcomments) - List Comments
 * [listTicketStatuses](#listticketstatuses) - List Ticket Statuses
@@ -46,7 +47,7 @@ async function run() {
         "user-001",
         "user-002",
       ],
-      collections: [
+      collectionIds: [
         "collection-001",
         "collection-002",
       ],
@@ -82,6 +83,10 @@ async function run() {
       ],
       title: "System outage in production environment",
       type: "ticket-type-001",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     xAccountId: "<id>",
   });
@@ -118,7 +123,7 @@ async function run() {
         "user-001",
         "user-002",
       ],
-      collections: [
+      collectionIds: [
         "collection-001",
         "collection-002",
       ],
@@ -154,6 +159,10 @@ async function run() {
       ],
       title: "System outage in production environment",
       type: "ticket-type-001",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     xAccountId: "<id>",
   });
@@ -223,6 +232,7 @@ async function run() {
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
+    subResourceId: "<id>",
     xAccountId: "<id>",
   });
 
@@ -255,6 +265,7 @@ async function run() {
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
+    subResourceId: "<id>",
     xAccountId: "<id>",
   });
 
@@ -320,7 +331,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getAttachment({
-    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_type,file_url,size,created_at,updated_at",
+    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -352,7 +363,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetAttachment(stackOne, {
-    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_type,file_url,size,created_at,updated_at",
+    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -716,7 +727,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getTicketType({
-    fields: "id,remote_id,name,collection",
+    fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -747,7 +758,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetTicketType(stackOne, {
-    fields: "id,remote_id,name,collection",
+    fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -814,7 +825,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getUser({
-    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -845,7 +856,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetUser(stackOne, {
-    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -912,7 +923,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listAttachments({
-    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_type,file_url,size,created_at,updated_at",
+    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -949,7 +960,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListAttachments(stackOne, {
-    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_type,file_url,size,created_at,updated_at",
+    fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -985,6 +996,114 @@ run();
 ### Response
 
 **Promise\<[operations.TicketingListAttachmentsResponse](../../sdk/models/operations/ticketinglistattachmentsresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## listCollectionTicketTypes
+
+List Collection Ticket Types
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ticketing.listCollectionTicketTypes({
+    fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { ticketingListCollectionTicketTypes } from "@stackone/stackone-client-ts/funcs/ticketingListCollectionTicketTypes.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await ticketingListCollectionTicketTypes(stackOne, {
+    fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.TicketingListCollectionTicketTypesRequest](../../sdk/models/operations/ticketinglistcollectiontickettypesrequest.md)                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.TicketingListCollectionTicketTypesResponse](../../sdk/models/operations/ticketinglistcollectiontickettypesresponse.md)\>**
 
 ### Errors
 
@@ -1348,7 +1467,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listTicketTypes({
-    fields: "id,remote_id,name,collection",
+    fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1384,7 +1503,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListTicketTypes(stackOne, {
-    fields: "id,remote_id,name,collection",
+    fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1564,7 +1683,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listUsers({
-    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1600,7 +1719,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListUsers(stackOne, {
-    fields: "id,remote_id,type,name,primary_email,primary_phone,additional_properties,created_at,updated_at",
+    fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1681,7 +1800,7 @@ async function run() {
         "user-001",
         "user-002",
       ],
-      collections: [
+      collectionIds: [
         "collection-001",
         "collection-002",
       ],
@@ -1762,7 +1881,7 @@ async function run() {
         "user-001",
         "user-002",
       ],
-      collections: [
+      collectionIds: [
         "collection-001",
         "collection-002",
       ],

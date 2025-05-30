@@ -162,21 +162,17 @@ async function run() {
         {
           answers: [
             {
-              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              id: "answer1",
               type: {
                 sourceValue: "Short Text",
                 value: CreateAnswerValue.ShortText,
               },
               values: [
                 "Yes",
-                "No Travel",
-                "It sounds pretty cool.",
-                "Excel",
-                "Power Point",
               ],
             },
           ],
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          id: "right_to_work",
         },
       ],
       source: {
@@ -279,21 +275,17 @@ async function run() {
         {
           answers: [
             {
-              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              id: "answer1",
               type: {
                 sourceValue: "Short Text",
                 value: CreateAnswerValue.ShortText,
               },
               values: [
                 "Yes",
-                "No Travel",
-                "It sounds pretty cool.",
-                "Excel",
-                "Power Point",
               ],
             },
           ],
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          id: "right_to_work",
         },
       ],
       source: {
@@ -3690,7 +3682,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJobPosting({
-    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
     xAccountId: "<id>",
@@ -3722,7 +3714,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetJobPosting(stackOne, {
-    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
     xAccountId: "<id>",
@@ -6140,7 +6132,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobPostings({
-    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
     filter: {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -6178,7 +6170,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListJobPostings(stackOne, {
-    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
     filter: {
       createdAfter: "2020-01-01T00:00:00.000Z",
       updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -8875,7 +8867,7 @@ async function run() {
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-        sourceValue: "abc",
+        sourceValue: "application/pdf",
         value: UnifiedUploadRequestDtoSchemasValue.Pdf,
       },
       name: "weather-forecast",
@@ -8924,7 +8916,7 @@ async function run() {
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-        sourceValue: "abc",
+        sourceValue: "application/pdf",
         value: UnifiedUploadRequestDtoSchemasValue.Pdf,
       },
       name: "weather-forecast",

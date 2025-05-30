@@ -14,7 +14,7 @@ let value: FileResult = {
       "application/pdf",
     ],
     fileFormat: {
-      sourceValue: "abc",
+      sourceValue: "application/pdf",
       value: FilesValue.Pdf,
     },
     folderId: "c28xyrc55866bvuv",

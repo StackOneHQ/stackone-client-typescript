@@ -82,7 +82,7 @@ export type TicketingTicketCreateRequestDto = {
   /**
    * Collections the ticket belongs to
    */
-  collections?: Array<string> | null | undefined;
+  collectionIds?: Array<string> | null | undefined;
   /**
    * Array of content associated with the ticket
    */
@@ -119,6 +119,10 @@ export type TicketingTicketCreateRequestDto = {
    * The type of the ticket
    */
   type?: string | null | undefined;
+  /**
+   * Custom Unified Fields configured in your StackOne project
+   */
+  unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -391,7 +395,7 @@ export const TicketingTicketCreateRequestDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
-  collections: z.nullable(z.array(z.string())).optional(),
+  collection_ids: z.nullable(z.array(z.string())).optional(),
   content: z.nullable(z.array(TicketingContent$inboundSchema)).optional(),
   creator_id: z.nullable(z.string()).optional(),
   organization_id: z.nullable(z.string()).optional(),
@@ -403,18 +407,21 @@ export const TicketingTicketCreateRequestDto$inboundSchema: z.ZodType<
   tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
   type: z.nullable(z.string()).optional(),
+  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "collection_ids": "collectionIds",
     "creator_id": "creatorId",
     "organization_id": "organizationId",
     "parent_id": "parentId",
+    "unified_custom_fields": "unifiedCustomFields",
   });
 });
 
 /** @internal */
 export type TicketingTicketCreateRequestDto$Outbound = {
   assignees?: Array<string> | null | undefined;
-  collections?: Array<string> | null | undefined;
+  collection_ids?: Array<string> | null | undefined;
   content?: Array<TicketingContent$Outbound> | null | undefined;
   creator_id?: string | null | undefined;
   organization_id?: string | null | undefined;
@@ -427,6 +434,7 @@ export type TicketingTicketCreateRequestDto$Outbound = {
   tags?: Array<string> | null | undefined;
   title?: string | null | undefined;
   type?: string | null | undefined;
+  unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -436,7 +444,7 @@ export const TicketingTicketCreateRequestDto$outboundSchema: z.ZodType<
   TicketingTicketCreateRequestDto
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
-  collections: z.nullable(z.array(z.string())).optional(),
+  collectionIds: z.nullable(z.array(z.string())).optional(),
   content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
   creatorId: z.nullable(z.string()).optional(),
   organizationId: z.nullable(z.string()).optional(),
@@ -448,11 +456,14 @@ export const TicketingTicketCreateRequestDto$outboundSchema: z.ZodType<
   tags: z.nullable(z.array(z.string())).optional(),
   title: z.nullable(z.string()).optional(),
   type: z.nullable(z.string()).optional(),
+  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    collectionIds: "collection_ids",
     creatorId: "creator_id",
     organizationId: "organization_id",
     parentId: "parent_id",
+    unifiedCustomFields: "unified_custom_fields",
   });
 });
 

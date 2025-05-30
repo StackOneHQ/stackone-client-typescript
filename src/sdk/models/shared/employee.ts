@@ -1933,8 +1933,6 @@ export type Employee = {
   jobId?: string | null | undefined;
   /**
    * The employee job title
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   jobTitle?: string | null | undefined;
   /**

@@ -8,9 +8,9 @@ import { TicketingTicketTypePaginated } from "@stackone/stackone-client-ts/sdk/m
 let value: TicketingTicketTypePaginated = {
   data: [
     {
-      collectionId: "collection-001",
       id: "001",
       name: "Task",
+      parentCollectionId: "collection-001",
     },
   ],
 };

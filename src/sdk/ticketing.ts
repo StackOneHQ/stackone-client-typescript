@@ -12,6 +12,7 @@ import { ticketingGetTicketType } from "../funcs/ticketingGetTicketType.js";
 import { ticketingGetUser } from "../funcs/ticketingGetUser.js";
 import { ticketingListAttachments } from "../funcs/ticketingListAttachments.js";
 import { ticketingListCollections } from "../funcs/ticketingListCollections.js";
+import { ticketingListCollectionTicketTypes } from "../funcs/ticketingListCollectionTicketTypes.js";
 import { ticketingListComments } from "../funcs/ticketingListComments.js";
 import { ticketingListTickets } from "../funcs/ticketingListTickets.js";
 import { ticketingListTicketStatuses } from "../funcs/ticketingListTicketStatuses.js";
@@ -149,6 +150,25 @@ export class Ticketing extends ClientSDK {
     >
   > {
     return unwrapResultIterator(ticketingListAttachments(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Collection Ticket Types
+   */
+  async listCollectionTicketTypes(
+    request: operations.TicketingListCollectionTicketTypesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.TicketingListCollectionTicketTypesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(ticketingListCollectionTicketTypes(
       this,
       request,
       options,

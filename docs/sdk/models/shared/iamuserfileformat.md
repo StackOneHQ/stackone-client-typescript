@@ -8,7 +8,7 @@ The file format of the file
 import { IamUserFileFormat, IamUserSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamUserFileFormat = {
-  sourceValue: "abc",
+  sourceValue: "application/pdf",
   value: IamUserSchemasValue.Pdf,
 };
 ```
@@ -17,5 +17,5 @@ let value: IamUserFileFormat = {
 
 | Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `sourceValue`                                                                   | *shared.IamUserSchemasSourceValue*                                              | :heavy_minus_sign:                                                              | N/A                                                                             | abc                                                                             |
+| `sourceValue`                                                                   | *shared.IamUserSchemasSourceValue*                                              | :heavy_minus_sign:                                                              | N/A                                                                             | application/pdf                                                                 |
 | `value`                                                                         | [shared.IamUserSchemasValue](../../../sdk/models/shared/iamuserschemasvalue.md) | :heavy_minus_sign:                                                              | The file format of the file, expressed as a file extension                      | pdf                                                                             |

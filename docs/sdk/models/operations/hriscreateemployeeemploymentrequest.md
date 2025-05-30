@@ -8,9 +8,13 @@ import { HrisCreateEmployeeEmploymentRequest } from "@stackone/stackone-client-t
 let value: HrisCreateEmployeeEmploymentRequest = {
   hrisCreateEmploymentRequestDto: {
     effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-    employmentContractType: {},
-    employmentType: {},
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    endDate: new Date("2021-01-01T01:01:01.000Z"),
+    grade: {
+      description: "Mid-level employee demonstrating proficiency and autonomy.",
+      id: "1687-3",
+      name: "1687-4",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    },
     jobId: "5290",
     jobTitle: "Software Engineer",
     passthrough: {

@@ -22,7 +22,7 @@ let value: UnifiedUploadRequestDto = {
   content:
     "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
   fileFormat: {
-    sourceValue: "abc",
+    sourceValue: "application/pdf",
     value: UnifiedUploadRequestDtoSchemasValue.Pdf,
   },
   name: "weather-forecast",

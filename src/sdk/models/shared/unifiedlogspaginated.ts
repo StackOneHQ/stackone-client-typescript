@@ -7,14 +7,14 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  UnifiedLogs,
-  UnifiedLogs$inboundSchema,
-  UnifiedLogs$Outbound,
-  UnifiedLogs$outboundSchema,
-} from "./unifiedlogs.js";
+  UnifiedLogsPartial,
+  UnifiedLogsPartial$inboundSchema,
+  UnifiedLogsPartial$Outbound,
+  UnifiedLogsPartial$outboundSchema,
+} from "./unifiedlogspartial.js";
 
 export type UnifiedLogsPaginated = {
-  data: Array<UnifiedLogs>;
+  data: Array<UnifiedLogsPartial>;
   next?: string | null | undefined;
 };
 
@@ -24,13 +24,13 @@ export const UnifiedLogsPaginated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(UnifiedLogs$inboundSchema),
+  data: z.array(UnifiedLogsPartial$inboundSchema),
   next: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type UnifiedLogsPaginated$Outbound = {
-  data: Array<UnifiedLogs$Outbound>;
+  data: Array<UnifiedLogsPartial$Outbound>;
   next?: string | null | undefined;
 };
 
@@ -40,7 +40,7 @@ export const UnifiedLogsPaginated$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UnifiedLogsPaginated
 > = z.object({
-  data: z.array(UnifiedLogs$outboundSchema),
+  data: z.array(UnifiedLogsPartial$outboundSchema),
   next: z.nullable(z.string()).optional(),
 });
 
