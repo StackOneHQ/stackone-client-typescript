@@ -3,6 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
+import { dlv } from "../lib/dlv.js";
 import {
   encodeDeepObjectQuery,
   encodeFormQuery,
@@ -28,6 +29,12 @@ import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
+import {
+  createPageIterator,
+  haltIterator,
+  PageIterator,
+  Paginator,
+} from "../sdk/types/operations.js";
 
 /**
  * List employee Custom Field Definitions
@@ -37,42 +44,7 @@ export function hrisListEmployeeCustomFieldDefinitions(
   request: operations.HrisListEmployeeCustomFieldDefinitionsRequest,
   options?: RequestOptions,
 ): APIPromise<
-  Result<
-    operations.HrisListEmployeeCustomFieldDefinitionsResponse,
-    | errors.BadRequestResponse
-    | errors.UnauthorizedResponse
-    | errors.ForbiddenResponse
-    | errors.NotFoundResponse
-    | errors.RequestTimedOutResponse
-    | errors.ConflictResponse
-    | errors.PreconditionFailedResponse
-    | errors.UnprocessableEntityResponse
-    | errors.TooManyRequestsResponse
-    | errors.InternalServerErrorResponse
-    | errors.NotImplementedResponse
-    | errors.BadGatewayResponse
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
-> {
-  return new APIPromise($do(
-    client,
-    request,
-    options,
-  ));
-}
-
-async function $do(
-  client: StackOneCore,
-  request: operations.HrisListEmployeeCustomFieldDefinitionsRequest,
-  options?: RequestOptions,
-): Promise<
-  [
+  PageIterator<
     Result<
       operations.HrisListEmployeeCustomFieldDefinitionsResponse,
       | errors.BadRequestResponse
@@ -95,6 +67,47 @@ async function $do(
       | RequestTimeoutError
       | ConnectionError
     >,
+    { cursor: string }
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.HrisListEmployeeCustomFieldDefinitionsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    PageIterator<
+      Result<
+        operations.HrisListEmployeeCustomFieldDefinitionsResponse,
+        | errors.BadRequestResponse
+        | errors.UnauthorizedResponse
+        | errors.ForbiddenResponse
+        | errors.NotFoundResponse
+        | errors.RequestTimedOutResponse
+        | errors.ConflictResponse
+        | errors.PreconditionFailedResponse
+        | errors.UnprocessableEntityResponse
+        | errors.TooManyRequestsResponse
+        | errors.InternalServerErrorResponse
+        | errors.NotImplementedResponse
+        | errors.BadGatewayResponse
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >,
+      { cursor: string }
+    >,
     APICall,
   ]
 > {
@@ -106,7 +119,7 @@ async function $do(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [parsed, { status: "invalid" }];
+    return [haltIterator(parsed), { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -176,7 +189,7 @@ async function $do(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [requestRes, { status: "invalid" }];
+    return [haltIterator(requestRes), { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -202,7 +215,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [doResult, { status: "request-error", request: req }];
+    return [haltIterator(doResult), { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -214,7 +227,7 @@ async function $do(
     Headers: {},
   };
 
-  const [result] = await M.match<
+  const [result, raw] = await M.match<
     operations.HrisListEmployeeCustomFieldDefinitionsResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
@@ -259,8 +272,64 @@ async function $do(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return [result, { status: "complete", request: req, response }];
+    return [haltIterator(result), {
+      status: "complete",
+      request: req,
+      response,
+    }];
   }
 
-  return [result, { status: "complete", request: req, response }];
+  const nextFunc = (
+    responseData: unknown,
+  ): {
+    next: Paginator<
+      Result<
+        operations.HrisListEmployeeCustomFieldDefinitionsResponse,
+        | errors.BadRequestResponse
+        | errors.UnauthorizedResponse
+        | errors.ForbiddenResponse
+        | errors.NotFoundResponse
+        | errors.RequestTimedOutResponse
+        | errors.ConflictResponse
+        | errors.PreconditionFailedResponse
+        | errors.UnprocessableEntityResponse
+        | errors.TooManyRequestsResponse
+        | errors.InternalServerErrorResponse
+        | errors.NotImplementedResponse
+        | errors.BadGatewayResponse
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
+    const nextCursor = dlv(responseData, "next");
+    if (typeof nextCursor !== "string") {
+      return { next: () => null };
+    }
+
+    const nextVal = () =>
+      hrisListEmployeeCustomFieldDefinitions(
+        client,
+        {
+          ...request,
+          next: nextCursor,
+        },
+        options,
+      );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
+  };
+
+  const page = { ...result, ...nextFunc(raw) };
+  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
+    status: "complete",
+    request: req,
+    response,
+  }];
 }

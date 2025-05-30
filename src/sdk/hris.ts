@@ -632,8 +632,13 @@ export class Hris extends ClientSDK {
   async listEmployeeCustomFieldDefinitions(
     request: operations.HrisListEmployeeCustomFieldDefinitionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.HrisListEmployeeCustomFieldDefinitionsResponse> {
-    return unwrapAsync(hrisListEmployeeCustomFieldDefinitions(
+  ): Promise<
+    PageIterator<
+      operations.HrisListEmployeeCustomFieldDefinitionsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(hrisListEmployeeCustomFieldDefinitions(
       this,
       request,
       options,

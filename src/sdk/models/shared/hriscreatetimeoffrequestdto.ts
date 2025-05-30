@@ -141,7 +141,7 @@ export type HrisCreateTimeOffRequestDto = {
    */
   employeeId?: string | null | undefined;
   /**
-   * The end date of the time off request
+   * Inclusive end date of the time off request (the time off includes this day).
    */
   endDate?: Date | null | undefined;
   /**
