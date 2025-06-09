@@ -12,7 +12,7 @@ const value: string = "application/pdf";
 ### `number`
 
 ```typescript
-const value: number = application / pdf;
+const value: number = NaN;
 ```
 
 ### `boolean`

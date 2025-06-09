@@ -7,9 +7,16 @@ The type of employment (e.g., contractor, permanent)
 ## Example Usage
 
 ```typescript
-import { HrisUpdateEmployeeRequestDtoSchemasEmploymentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentType,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisUpdateEmployeeRequestDtoSchemasEmploymentType = {};
+let value: HrisUpdateEmployeeRequestDtoSchemasEmploymentType = {
+  sourceValue: "Permanent",
+  value:
+    HrisUpdateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue.Permanent,
+};
 ```
 
 ## Fields

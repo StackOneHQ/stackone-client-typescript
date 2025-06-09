@@ -3,11 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { HrisCreateEmployeeRequestDtoWorkTime } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
+  HrisCreateEmployeeRequestDtoWorkTime,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoWorkTime = {
   duration: "P0Y0M0DT8H0M0S",
-  durationUnit: {},
+  durationUnit: {
+    value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+  },
 };
 ```
 

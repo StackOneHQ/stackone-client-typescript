@@ -4,43 +4,8 @@
 
 ```typescript
 import { HrisListEmployeeSkillsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { EntitySkillsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisListEmployeeSkillsResponse = {
-  contentType: "<value>",
-  entitySkillsPaginated: {
-    data: [
-      {
-        active: true,
-        id: "16873-IT345",
-        language: {
-          value: EntitySkillsValue.EnGB,
-        },
-        maximumProficiency: {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Expert",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
-        minimumProficiency: {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Expert",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
-        name: "Information-Technology",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      },
-    ],
-  },
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 506,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: HrisListEmployeeSkillsResponse = {};
 ```
 
 ## Fields

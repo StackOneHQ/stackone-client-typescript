@@ -5,23 +5,7 @@
 ```typescript
 import { AtsUpdateApplicationNoteResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsUpdateApplicationNoteResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 500,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  updateResult: {
-    message: "Record updated successfully.",
-    statusCode: 200,
-    timestamp: new Date("2021-01-01T01:01:01.000Z"),
-  },
-};
+let value: AtsUpdateApplicationNoteResponse = {};
 ```
 
 ## Fields

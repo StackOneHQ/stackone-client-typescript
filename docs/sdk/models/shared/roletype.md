@@ -5,9 +5,11 @@ The manager role type (e.g., admin, viewer)
 ## Example Usage
 
 ```typescript
-import { RoleType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmploymentManagerApiModelValue, RoleType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: RoleType = {};
+let value: RoleType = {
+  value: EmploymentManagerApiModelValue.Admin,
+};
 ```
 
 ## Fields

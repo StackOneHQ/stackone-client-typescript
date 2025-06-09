@@ -14,7 +14,7 @@ const value: string = "SMS";
 ### `number`
 
 ```typescript
-const value: number = SMS;
+const value: number = NaN;
 ```
 
 ### `boolean`

@@ -14,7 +14,7 @@ const value: string = "EqualsTo";
 ### `number`
 
 ```typescript
-const value: number = EqualsTo;
+const value: number = NaN;
 ```
 
 ### `boolean`

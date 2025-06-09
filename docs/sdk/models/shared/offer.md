@@ -8,13 +8,7 @@ import { Offer, OfferValue } from "@stackone/stackone-client-ts/sdk/models/share
 let value: Offer = {
   createdAt: new Date("2021-01-01T01:01:01.000Z"),
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  offerHistory: [
-    {
-      createdAt: new Date("2021-01-01T01:01:01.000Z"),
-      startDate: new Date("2021-01-01T01:01:01.000Z"),
-      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-    },
-  ],
+  offerHistory: null,
   offerStatus: {
     sourceValue: "Pending",
     value: OfferValue.Pending,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FileValue, TaskSchemasValue, TasksPaginated, TaskValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { FileValue, TaskSchemasValue, TasksPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TasksPaginated = {
   data: [
@@ -49,9 +49,7 @@ let value: TasksPaginated = {
       nextTaskId: "cx280928939",
       parentProcessName: "Onboarding Tasks",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      status: {
-        value: TaskValue.Open,
-      },
+      status: null,
       type: {
         value: TaskSchemasValue.Action,
       },

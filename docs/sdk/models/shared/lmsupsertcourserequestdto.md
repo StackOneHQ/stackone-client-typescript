@@ -6,7 +6,6 @@
 import {
   CreateCategoriesApiModelSchemasValue,
   CreateSkillsApiModelSchemasValue,
-  LanguageEnumValue,
   LmsUpsertCourseRequestDto,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -40,11 +39,7 @@ let value: LmsUpsertCourseRequestDto = {
   description: "This course acts as learning content for software engineers.",
   duration: "P3Y6M4DT12H30M5S",
   externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-  languages: [
-    {
-      value: LanguageEnumValue.EnGB,
-    },
-  ],
+  languages: null,
   localizations: [
     {
       description:

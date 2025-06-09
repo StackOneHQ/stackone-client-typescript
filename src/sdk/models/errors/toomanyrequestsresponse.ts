@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { StackOneError } from "./stackoneerror.js";
 
 export type TooManyRequestsResponseData = {
   /**
@@ -19,11 +20,7 @@ export type TooManyRequestsResponseData = {
   timestamp: Date;
 };
 
-export class TooManyRequestsResponse extends Error {
-  /**
-   * HTTP status code
-   */
-  statusCode: number;
+export class TooManyRequestsResponse extends StackOneError {
   /**
    * Timestamp when the error occurred
    */
@@ -32,14 +29,15 @@ export class TooManyRequestsResponse extends Error {
   /** The original data that was passed to this error instance. */
   data$: TooManyRequestsResponseData;
 
-  constructor(err: TooManyRequestsResponseData) {
+  constructor(
+    err: TooManyRequestsResponseData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.timestamp = err.timestamp;
 
     this.name = "TooManyRequestsResponse";
@@ -55,9 +53,16 @@ export const TooManyRequestsResponse$inboundSchema: z.ZodType<
   message: z.string(),
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new TooManyRequestsResponse(v);
+    return new TooManyRequestsResponse(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

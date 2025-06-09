@@ -90,7 +90,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -233,7 +232,6 @@ run();
 * [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
-* [~~createTimeOffRequest~~](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [downloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
@@ -287,7 +285,6 @@ run();
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 * [updateEmployeeTimeOffRequest](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
-* [~~updateTimeOffRequest~~](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
 
 ### [iam](docs/sdks/iam/README.md)
@@ -429,7 +426,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -442,41 +438,21 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `sdk/models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `deleteAccount` method may throw the following errors:
+[`StackOneError`](./src/sdk/models/errors/stackoneerror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponse          | 400         | application/json |
-| errors.UnauthorizedResponse        | 401         | application/json |
-| errors.ForbiddenResponse           | 403         | application/json |
-| errors.NotFoundResponse            | 404         | application/json |
-| errors.RequestTimedOutResponse     | 408         | application/json |
-| errors.ConflictResponse            | 409         | application/json |
-| errors.UnprocessableEntityResponse | 422         | application/json |
-| errors.TooManyRequestsResponse     | 429         | application/json |
-| errors.InternalServerErrorResponse | 500         | application/json |
-| errors.NotImplementedResponse      | 501         | application/json |
-| errors.BadGatewayResponse          | 502         | application/json |
-| errors.SDKError                    | 4XX, 5XX    | \*/\*            |
+| Property            | Type       | Description                                                                             |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.message`     | `string`   | Error message                                                                           |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                                                      |
+| `error.headers`     | `Headers`  | HTTP response headers                                                                   |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
+| `error.rawResponse` | `Response` | Raw HTTP response                                                                       |
+| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
-If the method throws an error and it is not captured by the known errors, it will default to throwing a `SDKError`.
-
+### Example
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {
-  BadGatewayResponse,
-  BadRequestResponse,
-  ConflictResponse,
-  ForbiddenResponse,
-  InternalServerErrorResponse,
-  NotFoundResponse,
-  NotImplementedResponse,
-  RequestTimedOutResponse,
-  SDKValidationError,
-  TooManyRequestsResponse,
-  UnauthorizedResponse,
-  UnprocessableEntityResponse,
-} from "@stackone/stackone-client-ts/sdk/models/errors";
+import * as errors from "@stackone/stackone-client-ts/sdk/models/errors";
 
 const stackOne = new StackOne({
   security: {
@@ -486,82 +462,27 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  let result;
   try {
-    result = await stackOne.accounts.deleteAccount({
+    const result = await stackOne.accounts.deleteAccount({
       id: "<id>",
     });
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      // The server response does not match the expected SDK schema
-      case (err instanceof SDKValidationError): {
-        // Pretty-print will provide a human-readable multi-line error message
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof BadRequestResponse): {
-        // Handle err.data$: BadRequestResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof UnauthorizedResponse): {
-        // Handle err.data$: UnauthorizedResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof ForbiddenResponse): {
-        // Handle err.data$: ForbiddenResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof NotFoundResponse): {
-        // Handle err.data$: NotFoundResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof RequestTimedOutResponse): {
-        // Handle err.data$: RequestTimedOutResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof ConflictResponse): {
-        // Handle err.data$: ConflictResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof UnprocessableEntityResponse): {
-        // Handle err.data$: UnprocessableEntityResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof TooManyRequestsResponse): {
-        // Handle err.data$: TooManyRequestsResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof InternalServerErrorResponse): {
-        // Handle err.data$: InternalServerErrorResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof NotImplementedResponse): {
-        // Handle err.data$: NotImplementedResponseData
-        console.error(err);
-        return;
-      }
-      case (err instanceof BadGatewayResponse): {
-        // Handle err.data$: BadGatewayResponseData
-        console.error(err);
-        return;
-      }
-      default: {
-        // Other errors such as network errors, see HTTPClientErrors for more details
-        throw err;
+  } catch (error) {
+    // The base class for HTTP error responses
+    if (error instanceof errors.StackOneError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.headers);
+
+      // Depending on the method different errors may be thrown
+      if (error instanceof errors.BadRequestResponse) {
+        console.log(error.data$.data); // errors.Data
+        console.log(error.data$.message); // string
+        console.log(error.data$.providerErrors); // ProviderError[]
+        console.log(error.data$.statusCode); // number
+        console.log(error.data$.timestamp); // Date
       }
     }
   }
@@ -571,17 +492,40 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+### Error Classes
+**Primary errors:**
+* [`StackOneError`](./src/sdk/models/errors/stackoneerror.ts): The base class for HTTP error responses.
+  * [`BadRequestResponse`](docs/sdk/models/errors/badrequestresponse.md): Invalid request. Status code `400`.
+  * [`UnauthorizedResponse`](docs/sdk/models/errors/unauthorizedresponse.md): Unauthorized access. Status code `401`.
+  * [`ForbiddenResponse`](docs/sdk/models/errors/forbiddenresponse.md): Forbidden. Status code `403`.
+  * [`NotFoundResponse`](docs/sdk/models/errors/notfoundresponse.md): Resource not found. Status code `404`.
+  * [`RequestTimedOutResponse`](docs/sdk/models/errors/requesttimedoutresponse.md): The request has timed out. Status code `408`.
+  * [`ConflictResponse`](docs/sdk/models/errors/conflictresponse.md): Conflict with current state. Status code `409`.
+  * [`UnprocessableEntityResponse`](docs/sdk/models/errors/unprocessableentityresponse.md): Validation error. Status code `422`.
+  * [`TooManyRequestsResponse`](docs/sdk/models/errors/toomanyrequestsresponse.md): Too many requests. Status code `429`.
+  * [`InternalServerErrorResponse`](docs/sdk/models/errors/internalservererrorresponse.md): Server error while executing the request. Status code `500`.
+  * [`NotImplementedResponse`](docs/sdk/models/errors/notimplementedresponse.md): This functionality is not implemented. Status code `501`.
+  * [`BadGatewayResponse`](docs/sdk/models/errors/badgatewayresponse.md): Bad gateway error. Status code `502`.
+  * [`PreconditionFailedResponse`](docs/sdk/models/errors/preconditionfailedresponse.md): Precondition failed: linked account belongs to a disabled integration. Status code `412`. *
 
-In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `sdk/models/errors/httpclienterrors.ts` module:
+<details><summary>Less common errors (6)</summary>
 
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/sdk/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/sdk/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/sdk/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`StackOneError`](./src/sdk/models/errors/stackoneerror.ts)**:
+* [`ResponseValidationError`](./src/sdk/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 
@@ -666,7 +610,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -713,7 +656,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -747,7 +689,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1010,10 +951,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 - [`ticketingListUsers`](docs/sdks/ticketing/README.md#listusers) - List Users
 - [`ticketingUpdateTicket`](docs/sdks/ticketing/README.md#updateticket) - Update Ticket
-- ~~[`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest)~~ - Creates a time off request :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**
-- ~~[`hrisUpdateTimeOffRequest`](docs/sdks/hris/README.md#updatetimeoffrequest)~~ - Update time off request :warning: **Deprecated**
 - ~~[`marketingCreateOmniChannelTemplate`](docs/sdks/marketing/README.md#createomnichanneltemplate)~~ - Create Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingGetOmniChannelTemplate`](docs/sdks/marketing/README.md#getomnichanneltemplate)~~ - Get Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingListOmniChannelTemplates`](docs/sdks/marketing/README.md#listomnichanneltemplates)~~ - List Omni-Channel Templates :warning: **Deprecated**

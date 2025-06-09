@@ -12,6 +12,7 @@ export * from "./notfoundresponse.js";
 export * from "./notimplementedresponse.js";
 export * from "./preconditionfailedresponse.js";
 export * from "./requesttimedoutresponse.js";
+export * from "./responsevalidationerror.js";
 export * from "./sdkerror.js";
 export * from "./sdkvalidationerror.js";
 export * from "./toomanyrequestsresponse.js";

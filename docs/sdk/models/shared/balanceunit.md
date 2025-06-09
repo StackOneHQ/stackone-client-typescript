@@ -5,9 +5,11 @@ The duration unit of the current balance
 ## Example Usage
 
 ```typescript
-import { BalanceUnit } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { BalanceUnit, TimeOffBalancesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: BalanceUnit = {};
+let value: BalanceUnit = {
+  value: TimeOffBalancesValue.Hours,
+};
 ```
 
 ## Fields

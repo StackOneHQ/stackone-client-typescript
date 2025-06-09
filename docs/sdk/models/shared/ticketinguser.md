@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TicketingUser, TicketingUserValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TicketingUser } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TicketingUser = {
   active: true,
@@ -16,10 +16,7 @@ let value: TicketingUser = {
   primaryEmail: "john.doe@example.com",
   primaryPhone: "555-5555-5555",
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  type: {
-    sourceValue: "Live",
-    value: TicketingUserValue.Agent,
-  },
+  type: null,
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
   username: "johndoe",
 };

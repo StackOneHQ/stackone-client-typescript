@@ -5,9 +5,11 @@ The type of the team group
 ## Example Usage
 
 ```typescript
-import { HRISTeamType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HRISTeamType, HRISTeamValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISTeamType = {};
+let value: HRISTeamType = {
+  value: HRISTeamValue.Team,
+};
 ```
 
 ## Fields

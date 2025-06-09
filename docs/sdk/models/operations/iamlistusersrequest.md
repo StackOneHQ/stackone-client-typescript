@@ -9,9 +9,7 @@ let value: IamListUsersRequest = {
   expand: "roles,groups",
   fields:
     "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
-  filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
-  },
+  filter: null,
   xAccountId: "<id>",
 };
 ```

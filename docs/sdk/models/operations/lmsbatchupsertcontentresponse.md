@@ -5,30 +5,7 @@
 ```typescript
 import { LmsBatchUpsertContentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsBatchUpsertContentResponse = {
-  batchResultApiModel: {
-    errors: [
-      [
-        "Missing field: name",
-      ],
-      [],
-      [],
-    ],
-    message: "Batch operation accepted",
-    statusCode: 202,
-    timestamp: new Date("2021-01-01T01:01:01.000Z"),
-  },
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 201,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: LmsBatchUpsertContentResponse = {};
 ```
 
 ## Fields

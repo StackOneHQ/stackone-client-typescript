@@ -3,18 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { HRISLocationResult, HRISLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HRISLocationResult, HRISLocationSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISLocationResult = {
   data: {
     city: "Grantham",
-    country: {
-      value: HRISLocationValue.Us,
-    },
+    country: null,
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     employeeId: "1687-3",
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    locationType: {},
+    locationType: {
+      sourceValue: "Home",
+      value: HRISLocationSchemasValue.Home,
+    },
     name: "Woolsthorpe Manor",
     phoneNumber: "+44 1476 860 364",
     remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",

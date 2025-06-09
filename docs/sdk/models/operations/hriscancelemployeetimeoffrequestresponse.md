@@ -5,23 +5,7 @@
 ```typescript
 import { HrisCancelEmployeeTimeOffRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisCancelEmployeeTimeOffRequestResponse = {
-  contentType: "<value>",
-  deleteResult: {
-    message: "Record deleted successfully.",
-    statusCode: 204,
-    timestamp: new Date("2021-01-01T01:01:01.000Z"),
-  },
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 302,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: HrisCancelEmployeeTimeOffRequestResponse = {};
 ```
 
 ## Fields

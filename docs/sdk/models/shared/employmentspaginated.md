@@ -4,8 +4,12 @@
 
 ```typescript
 import {
+  EmploymentManagerApiModelValue,
   EmploymentSchemasDepartmentValue,
   EmploymentSchemasDivisionValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasWorkTimeValue,
   EmploymentsPaginated,
   HRISCostCenterValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -126,16 +130,7 @@ let value: EmploymentsPaginated = {
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      job: {
-        description: {
-          text: "Testing the laws of motion",
-        },
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        ownerId: "5356",
-        parentId: "7577",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        title: "Software Engineer",
-      },
+      job: null,
       jobTitle: "Software Engineer",
       manager: [
         {
@@ -145,13 +140,21 @@ let value: EmploymentsPaginated = {
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             label: "Admin",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            roleType: {},
+            roleType: {
+              value: EmploymentManagerApiModelValue.Admin,
+            },
           },
         },
       ],
       payCurrency: "USD",
-      payFrequency: {},
-      payPeriod: {},
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: EmploymentSchemasPayFrequencyValue.Hourly,
+      },
+      payPeriod: {
+        sourceValue: "Hour",
+        value: EmploymentSchemasPayPeriodValue.Hour,
+      },
       payRate: "40.00",
       payrollCode: "PC1",
       remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -169,7 +172,9 @@ let value: EmploymentsPaginated = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       workTime: {
         duration: "P0Y0M0DT8H0M0S",
-        durationUnit: {},
+        durationUnit: {
+          value: EmploymentSchemasWorkTimeValue.Month,
+        },
       },
     },
   ],

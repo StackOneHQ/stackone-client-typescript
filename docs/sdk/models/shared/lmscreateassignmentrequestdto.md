@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LmsCreateAssignmentRequestDto, LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LmsCreateAssignmentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateAssignmentRequestDto = {
   createdAt: "2021-07-21T14:00:00.000Z",
@@ -14,9 +14,7 @@ let value: LmsCreateAssignmentRequestDto = {
     "other_known_names": "John Doe",
   },
   progress: 40,
-  status: {
-    value: LmsCreateAssignmentRequestDtoValue.InProgress,
-  },
+  status: null,
 };
 ```
 

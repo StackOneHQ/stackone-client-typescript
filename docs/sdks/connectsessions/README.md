@@ -29,7 +29,6 @@ async function run() {
     token: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -57,15 +56,12 @@ async function run() {
   const res = await connectSessionsAuthenticateConnectSession(stackOne, {
     token: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("connectSessionsAuthenticateConnectSession failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -138,7 +134,6 @@ async function run() {
     originOwnerName: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -182,15 +177,12 @@ async function run() {
     originOwnerId: "<id>",
     originOwnerName: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("connectSessionsCreateConnectSession failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

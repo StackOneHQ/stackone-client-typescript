@@ -14,7 +14,7 @@ const value: string = "Immediate";
 ### `number`
 
 ```typescript
-const value: number = Immediate;
+const value: number = NaN;
 ```
 
 ### `boolean`

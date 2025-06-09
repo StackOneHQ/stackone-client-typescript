@@ -5,18 +5,7 @@
 ```typescript
 import { StackoneUpdateAccountResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneUpdateAccountResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 100,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: StackoneUpdateAccountResponse = {};
 ```
 
 ## Fields

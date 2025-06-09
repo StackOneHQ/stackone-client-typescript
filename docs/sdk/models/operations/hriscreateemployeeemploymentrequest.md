@@ -6,34 +6,6 @@
 import { HrisCreateEmployeeEmploymentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisCreateEmployeeEmploymentRequest = {
-  hrisCreateEmploymentRequestDto: {
-    effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-    endDate: new Date("2021-01-01T01:01:01.000Z"),
-    grade: {
-      description: "Mid-level employee demonstrating proficiency and autonomy.",
-      id: "1687-3",
-      name: "1687-4",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
-    jobId: "5290",
-    jobTitle: "Software Engineer",
-    passthrough: {
-      "other_known_names": "John Doe",
-    },
-    payCurrency: "USD",
-    payFrequency: {},
-    payPeriod: {},
-    payRate: "40.00",
-    payrollCode: "PC1",
-    unifiedCustomFields: {
-      "my_project_custom_field_1": "REF-1236",
-      "my_project_custom_field_2": "some other value",
-    },
-    workTime: {
-      duration: "P0Y0M0DT8H0M0S",
-      durationUnit: {},
-    },
-  },
   id: "<id>",
   xAccountId: "<id>",
 };

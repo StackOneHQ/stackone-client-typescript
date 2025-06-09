@@ -5,27 +5,7 @@
 ```typescript
 import { AtsMoveApplicationResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsMoveApplicationResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  moveApplicationResult: {
-    data: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
-    message: "Application moved successfully.",
-    statusCode: 200,
-    timestamp: new Date("2021-01-01T01:01:01.000Z"),
-  },
-  statusCode: 502,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: AtsMoveApplicationResponse = {};
 ```
 
 ## Fields

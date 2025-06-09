@@ -3,12 +3,7 @@
 ## Example Usage
 
 ```typescript
-import {
-  TicketingCollectionType,
-  TicketingReadTicket,
-  TicketingReadTicketSchemasValue,
-  TicketingReadTicketValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TicketingCollectionType, TicketingReadTicket, TicketingReadTicketValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TicketingReadTicket = {
   assignees: [
@@ -59,10 +54,7 @@ let value: TicketingReadTicket = {
   status: {
     id: "001",
     name: "Backlog",
-    type: {
-      sourceValue: "New",
-      value: TicketingReadTicketSchemasValue.ToDo,
-    },
+    type: null,
   },
   tags: [
     "tag-001",

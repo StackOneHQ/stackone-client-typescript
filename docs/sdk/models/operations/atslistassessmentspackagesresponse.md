@@ -5,29 +5,7 @@
 ```typescript
 import { AtsListAssessmentsPackagesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListAssessmentsPackagesResponse = {
-  assessmentPackagePaginated: {
-    data: [
-      {
-        description:
-          "Skills test to gauge a candidate's proficiency in job-specific skills",
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "Test 1",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      },
-    ],
-  },
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 308,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: AtsListAssessmentsPackagesResponse = {};
 ```
 
 ## Fields

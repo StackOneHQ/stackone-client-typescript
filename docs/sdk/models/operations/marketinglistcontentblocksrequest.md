@@ -7,9 +7,7 @@ import { MarketingListContentBlocksRequest } from "@stackone/stackone-client-ts/
 
 let value: MarketingListContentBlocksRequest = {
   fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
-  filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
-  },
+  filter: null,
   xAccountId: "<id>",
 };
 ```

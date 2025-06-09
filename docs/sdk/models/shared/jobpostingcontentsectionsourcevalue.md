@@ -14,7 +14,7 @@ const value: string = "key_responsibilities";
 ### `number`
 
 ```typescript
-const value: number = key_responsibilities;
+const value: number = NaN;
 ```
 
 ### `boolean`

@@ -4,43 +4,8 @@
 
 ```typescript
 import { StackoneAuthenticateConnectSessionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { Categories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: StackoneAuthenticateConnectSessionResponse = {
-  connectSession: {
-    categories: [
-      Categories.Ats,
-      Categories.Hris,
-      Categories.Hris,
-      Categories.Crm,
-      Categories.Iam,
-      Categories.Marketing,
-      Categories.Lms,
-      Categories.Hris,
-      Categories.Documents,
-      Categories.Ticketing,
-      Categories.Screening,
-      Categories.Messaging,
-    ],
-    createdAt: new Date("2023-07-19T04:50:46.002Z"),
-    externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
-    id: 8267.13,
-    organizationId: 9459.67,
-    originOwnerId: "<id>",
-    originOwnerName: "<value>",
-    projectId: "<id>",
-  },
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 304,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: StackoneAuthenticateConnectSessionResponse = {};
 ```
 
 ## Fields

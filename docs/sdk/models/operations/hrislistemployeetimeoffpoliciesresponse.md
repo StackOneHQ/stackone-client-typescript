@@ -4,44 +4,8 @@
 
 ```typescript
 import { HrisListEmployeeTimeOffPoliciesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { TimeOffPoliciesSchemasValue, TimeOffPoliciesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisListEmployeeTimeOffPoliciesResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 207,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  timeOffPoliciesPaginated: {
-    data: [
-      {
-        createdAt: new Date("2021-01-01T01:01:01.000Z"),
-        description: "Usable for regional and national holidays of employees.",
-        durationUnit: {
-          value: TimeOffPoliciesValue.Hours,
-        },
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "Holidays",
-        reasons: [
-          {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          },
-        ],
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        type: {
-          value: TimeOffPoliciesSchemasValue.Holiday,
-        },
-        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-      },
-    ],
-  },
-};
+let value: HrisListEmployeeTimeOffPoliciesResponse = {};
 ```
 
 ## Fields

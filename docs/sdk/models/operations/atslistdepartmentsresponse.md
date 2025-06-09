@@ -5,30 +5,7 @@
 ```typescript
 import { AtsListDepartmentsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListDepartmentsResponse = {
-  contentType: "<value>",
-  departmentsPaginated: {
-    data: [
-      {
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        unifiedCustomFields: {
-          "my_project_custom_field_1": "REF-1236",
-          "my_project_custom_field_2": "some other value",
-        },
-      },
-    ],
-  },
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 226,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: AtsListDepartmentsResponse = {};
 ```
 
 ## Fields

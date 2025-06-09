@@ -12,7 +12,7 @@ const value: string = "public";
 ### `number`
 
 ```typescript
-const value: number = public;
+const value: number = NaN;
 ```
 
 ### `boolean`

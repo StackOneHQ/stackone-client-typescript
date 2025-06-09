@@ -3,11 +3,7 @@
 ## Example Usage
 
 ```typescript
-import {
-  CreateCategoriesApiModelSchemasValue,
-  CreateSkillsApiModelSchemasValue,
-  LmsCreateCollectionRequestDto,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LmsCreateCollectionRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateCollectionRequestDto = {
   categories: [
@@ -35,15 +31,7 @@ let value: LmsCreateCollectionRequestDto = {
     "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
   ],
-  skills: [
-    {
-      id: "16873-IT345",
-      language: {
-        value: CreateSkillsApiModelSchemasValue.EnGB,
-      },
-      name: "Information-Technology",
-    },
-  ],
+  skills: null,
   title: "Software Engineer Lv 1 Collection",
   unifiedCustomFields: {
     "my_project_custom_field_1": "REF-1236",

@@ -3,16 +3,10 @@
 ## Example Usage
 
 ```typescript
-import {
-  AtsCreateBackgroundCheckOrderRequestDtoApplication,
-  AtsCreateBackgroundCheckOrderRequestDtoValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateBackgroundCheckOrderRequestDtoApplication } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateBackgroundCheckOrderRequestDtoApplication = {
-  applicationStatus: {
-    sourceValue: "Hired",
-    value: AtsCreateBackgroundCheckOrderRequestDtoValue.Hired,
-  },
+  applicationStatus: null,
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   passthrough: {
     "other_known_names": "John Doe",

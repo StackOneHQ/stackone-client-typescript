@@ -6,7 +6,11 @@
 import {
   CountryCodeEnumValue,
   HrisCreateEmployeeRequestDto,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
   NationalIdentityNumberApiModelSchemasValue,
   NationalIdentityNumberApiModelValue,
@@ -56,19 +60,20 @@ let value: HrisCreateEmployeeRequestDto = {
   employeeNumber: "125",
   employment: {
     endDate: new Date("2021-01-01T01:01:01.000Z"),
-    grade: {
-      description: "Mid-level employee demonstrating proficiency and autonomy.",
-      id: "1687-3",
-      name: "1687-4",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
+    grade: null,
     jobTitle: "Software Engineer",
     passthrough: {
       "other_known_names": "John Doe",
     },
     payCurrency: "USD",
-    payFrequency: {},
-    payPeriod: {},
+    payFrequency: {
+      sourceValue: "Hourly",
+      value: HrisCreateEmployeeRequestDtoSchemasEmploymentValue.Hourly,
+    },
+    payPeriod: {
+      sourceValue: "Hour",
+      value: HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
+    },
     payRate: "40.00",
     payrollCode: "PC1",
     unifiedCustomFields: {
@@ -77,7 +82,9 @@ let value: HrisCreateEmployeeRequestDto = {
     },
     workTime: {
       duration: "P0Y0M0DT8H0M0S",
-      durationUnit: {},
+      durationUnit: {
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+      },
     },
   },
   employmentStatus: {},
@@ -122,7 +129,9 @@ let value: HrisCreateEmployeeRequestDto = {
   },
   personalEmail: "isaac.newton@example.com",
   personalPhoneNumber: "+1234567890",
-  preferredLanguage: {},
+  preferredLanguage: {
+    value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
+  },
   startDate: new Date("2021-01-01T00:00:00.000Z"),
   teamId: "2913",
   terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -186,7 +195,7 @@ let value: HrisCreateEmployeeRequestDto = {
 | `passthrough`                                                                                                                                                                             | Record<string, *any*>                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                        | Value to pass through to the provider                                                                                                                                                     | {<br/>"other_known_names": "John Doe"<br/>}                                                                                                                                               |
 | `personalEmail`                                                                                                                                                                           | *string*                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                        | The employee personal email                                                                                                                                                               | isaac.newton@example.com                                                                                                                                                                  |
 | `personalPhoneNumber`                                                                                                                                                                     | *string*                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                        | The employee personal phone number                                                                                                                                                        | +1234567890                                                                                                                                                                               |
-| `preferredLanguage`                                                                                                                                                                       | [shared.HrisCreateEmployeeRequestDtoPreferredLanguage](../../../sdk/models/shared/hriscreateemployeerequestdtopreferredlanguage.md)                                                       | :heavy_minus_sign:                                                                                                                                                                        | The employee preferred language                                                                                                                                                           | en_US                                                                                                                                                                                     |
+| `preferredLanguage`                                                                                                                                                                       | [shared.HrisCreateEmployeeRequestDtoPreferredLanguage](../../../sdk/models/shared/hriscreateemployeerequestdtopreferredlanguage.md)                                                       | :heavy_minus_sign:                                                                                                                                                                        | The employee preferred language                                                                                                                                                           | eng                                                                                                                                                                                       |
 | `startDate`                                                                                                                                                                               | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                             | :heavy_minus_sign:                                                                                                                                                                        | The employee start date                                                                                                                                                                   | 2021-01-01T00:00:00.000Z                                                                                                                                                                  |
 | `teamId`                                                                                                                                                                                  | *string*                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                        | The employee team id                                                                                                                                                                      | 2913                                                                                                                                                                                      |
 | `terminationDate`                                                                                                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                             | :heavy_minus_sign:                                                                                                                                                                        | The employee termination date                                                                                                                                                             | 2021-01-01T00:00:00Z                                                                                                                                                                      |

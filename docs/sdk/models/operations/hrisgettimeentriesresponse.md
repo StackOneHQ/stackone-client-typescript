@@ -5,45 +5,7 @@
 ```typescript
 import { HrisGetTimeEntriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetTimeEntriesResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 102,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  timeEntriesResult: {
-    data: {
-      breakDuration: 0.5,
-      createdAt: new Date("2023-02-23T00:00:00.000Z"),
-      employeeId: "1687-3",
-      endTime: new Date("2021-01-01T01:01:01.000Z"),
-      hoursWorked: 8,
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      laborType: {
-        code: "ABC123",
-      },
-      location: {
-        active: true,
-        id: "1687-3",
-        name: "1687-4",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      },
-      remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      startTime: new Date("2021-01-01T01:01:01.000Z"),
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
-      updatedAt: new Date("2024-02-23T00:00:00.000Z"),
-    },
-  },
-};
+let value: HrisGetTimeEntriesResponse = {};
 ```
 
 ## Fields

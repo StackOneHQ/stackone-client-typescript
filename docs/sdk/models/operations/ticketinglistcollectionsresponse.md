@@ -4,36 +4,8 @@
 
 ```typescript
 import { TicketingListCollectionsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { TicketingCollectionType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TicketingListCollectionsResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 407,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  ticketingCollectionsPaginated: {
-    data: [
-      {
-        createdAt: new Date("2021-01-01T01:01:01.000Z"),
-        description: "Description of the project",
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        key: "project-falcon",
-        name: "Project Falcon",
-        organizationId: "organization-001",
-        parentId: "collection-001",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        type: TicketingCollectionType.Project,
-        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-      },
-    ],
-  },
-};
+let value: TicketingListCollectionsResponse = {};
 ```
 
 ## Fields

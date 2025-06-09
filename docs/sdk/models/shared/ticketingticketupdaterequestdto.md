@@ -18,12 +18,7 @@ let value: TicketingTicketUpdateRequestDto = {
     "collection-001",
     "collection-002",
   ],
-  content: [
-    {
-      html: "<p>This is some content</p>",
-      plain: "This is some content",
-    },
-  ],
+  content: null,
   parentId: "ticket-002",
   priority: {
     id: "001",

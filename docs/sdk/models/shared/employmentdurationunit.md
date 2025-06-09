@@ -5,9 +5,11 @@ The duration unit of the work time
 ## Example Usage
 
 ```typescript
-import { EmploymentDurationUnit } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmploymentDurationUnit, EmploymentSchemasWorkTimeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentDurationUnit = {};
+let value: EmploymentDurationUnit = {
+  value: EmploymentSchemasWorkTimeValue.Month,
+};
 ```
 
 ## Fields

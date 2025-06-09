@@ -4,49 +4,8 @@
 
 ```typescript
 import { HrisGetEmployeesWorkEligibilityResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { WorkEligibilitySchemasDocumentValue, WorkEligibilityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisGetEmployeesWorkEligibilityResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 201,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  workEligibilityResult: {
-    data: {
-      document: {
-        category: {},
-        categoryId: "6530",
-        createdAt: new Date("2021-01-01T01:01:01.000Z"),
-        fileFormat: {
-          sourceValue: "application/pdf",
-          value: WorkEligibilitySchemasDocumentValue.Pdf,
-        },
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "My Document",
-        path: "/path/to/file",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        remoteUrl: "https://example.com/file.pdf",
-        updatedAt: new Date("2021-01-02T01:01:01.000Z"),
-      },
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      issuedBy: {
-        value: WorkEligibilityValue.Us,
-      },
-      number: "1234567890",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      subType: "H1B",
-      type: {},
-      validFrom: new Date("2021-01-01T00:00:00.000Z"),
-      validTo: new Date("2021-01-01T00:00:00.000Z"),
-    },
-  },
-};
+let value: HrisGetEmployeesWorkEligibilityResponse = {};
 ```
 
 ## Fields

@@ -4,38 +4,8 @@
 
 ```typescript
 import { MarketingGetPushTemplateResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: MarketingGetPushTemplateResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  pushTemplateResult: {
-    data: {
-      createdAt: new Date("2021-01-01T00:00:00.000Z"),
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: PushMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
-      ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      updatedAt: new Date("2021-01-01T00:00:00.000Z"),
-    },
-  },
-  statusCode: 100,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: MarketingGetPushTemplateResponse = {};
 ```
 
 ## Fields

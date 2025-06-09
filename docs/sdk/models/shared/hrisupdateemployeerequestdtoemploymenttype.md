@@ -7,9 +7,15 @@ The employee employment type
 ## Example Usage
 
 ```typescript
-import { HrisUpdateEmployeeRequestDtoEmploymentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisUpdateEmployeeRequestDtoEmploymentType,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisUpdateEmployeeRequestDtoEmploymentType = {};
+let value: HrisUpdateEmployeeRequestDtoEmploymentType = {
+  sourceValue: "Permanent",
+  value: HrisUpdateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
+};
 ```
 
 ## Fields

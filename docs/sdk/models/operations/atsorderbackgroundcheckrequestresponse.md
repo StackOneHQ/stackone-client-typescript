@@ -5,23 +5,7 @@
 ```typescript
 import { AtsOrderBackgroundCheckRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsOrderBackgroundCheckRequestResponse = {
-  contentType: "<value>",
-  createBackgroundCheckOrderResult: {
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    testUrl: "https://exmaple.com/integrations/candidate/test",
-  },
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 201,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: AtsOrderBackgroundCheckRequestResponse = {};
 ```
 
 ## Fields

@@ -8,13 +8,7 @@ The advanced log response data
 import { UnifiedLogsResponse } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UnifiedLogsResponse = {
-  customMappingErrors: [
-    {
-      id: "adbf752f-6457-4ddd-89b3-98ae2252b83b",
-      message: "Invalid value",
-      targetField: "first_name",
-    },
-  ],
+  customMappingErrors: null,
   headers: {
     "content-type": "application/json",
     "authorization": "Bearer token",

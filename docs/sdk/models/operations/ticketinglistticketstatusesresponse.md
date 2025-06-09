@@ -4,32 +4,8 @@
 
 ```typescript
 import { TicketingListTicketStatusesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { TicketingTicketStatusValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TicketingListTicketStatusesResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 206,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  ticketingTicketStatusesPaginated: {
-    data: [
-      {
-        id: "001",
-        name: "Backlog",
-        type: {
-          sourceValue: "New",
-          value: TicketingTicketStatusValue.ToDo,
-        },
-      },
-    ],
-  },
-};
+let value: TicketingListTicketStatusesResponse = {};
 ```
 
 ## Fields
