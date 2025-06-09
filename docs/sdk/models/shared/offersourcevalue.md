@@ -14,7 +14,7 @@ const value: string = "Pending";
 ### `number`
 
 ```typescript
-const value: number = Pending;
+const value: number = NaN;
 ```
 
 ### `boolean`

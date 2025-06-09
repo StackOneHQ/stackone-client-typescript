@@ -5,25 +5,7 @@
 ```typescript
 import { TicketingGetTicketTypeResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: TicketingGetTicketTypeResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 511,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  ticketingTicketTypeResult: {
-    data: {
-      id: "001",
-      name: "Task",
-      parentCollectionId: "collection-001",
-    },
-  },
-};
+let value: TicketingGetTicketTypeResponse = {};
 ```
 
 ## Fields

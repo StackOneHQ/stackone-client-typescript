@@ -5,7 +5,12 @@ The employee employment
 ## Example Usage
 
 ```typescript
-import { HrisCreateEmployeeRequestDtoEmployment } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisCreateEmployeeRequestDtoEmployment,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoEmployment = {
   endDate: new Date("2021-01-01T01:01:01.000Z"),
@@ -20,8 +25,14 @@ let value: HrisCreateEmployeeRequestDtoEmployment = {
     "other_known_names": "John Doe",
   },
   payCurrency: "USD",
-  payFrequency: {},
-  payPeriod: {},
+  payFrequency: {
+    sourceValue: "Hourly",
+    value: HrisCreateEmployeeRequestDtoSchemasEmploymentValue.Hourly,
+  },
+  payPeriod: {
+    sourceValue: "Hour",
+    value: HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
+  },
   payRate: "40.00",
   payrollCode: "PC1",
   unifiedCustomFields: {
@@ -30,7 +41,9 @@ let value: HrisCreateEmployeeRequestDtoEmployment = {
   },
   workTime: {
     duration: "P0Y0M0DT8H0M0S",
-    durationUnit: {},
+    durationUnit: {
+      value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+    },
   },
 };
 ```

@@ -3,16 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { MarketingCreateSmsTemplateRequestDto, SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { MarketingCreateSmsTemplateRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingCreateSmsTemplateRequestDto = {
   messages: [
     {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      messageType: {
-        sourceValue: "Email",
-        value: SmsMessagesValue.Email,
-      },
+      messageType: null,
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   ],

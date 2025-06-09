@@ -3,22 +3,28 @@
 ## Example Usage
 
 ```typescript
-import { CreateEmploymentApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateEmploymentApiModel,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasWorkTimeValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateEmploymentApiModel = {
   effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
   endDate: new Date("2021-01-01T01:01:01.000Z"),
-  grade: {
-    description: "Mid-level employee demonstrating proficiency and autonomy.",
-    id: "1687-3",
-    name: "1687-4",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  },
+  grade: null,
   jobId: "5290",
   jobTitle: "Software Engineer",
   payCurrency: "USD",
-  payFrequency: {},
-  payPeriod: {},
+  payFrequency: {
+    sourceValue: "Hourly",
+    value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
+  },
+  payPeriod: {
+    sourceValue: "Hour",
+    value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
+  },
   payRate: "40.00",
   payrollCode: "PC1",
   unifiedCustomFields: {
@@ -27,7 +33,9 @@ let value: CreateEmploymentApiModel = {
   },
   workTime: {
     duration: "P0Y0M0DT8H0M0S",
-    durationUnit: {},
+    durationUnit: {
+      value: CreateEmploymentApiModelSchemasWorkTimeValue.Month,
+    },
   },
 };
 ```

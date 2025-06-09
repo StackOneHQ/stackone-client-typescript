@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { IamPermissionValue, IamPolicy, IamResourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { IamPolicy, IamResourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamPolicy = {
   createdAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -28,9 +28,7 @@ let value: IamPolicy = {
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      type: {
-        value: IamPermissionValue.ReadWrite,
-      },
+      type: null,
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   ],

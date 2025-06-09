@@ -14,7 +14,7 @@ const value: string = "Unscheduled";
 ### `number`
 
 ```typescript
-const value: number = Unscheduled;
+const value: number = NaN;
 ```
 
 ### `boolean`

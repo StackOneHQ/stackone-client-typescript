@@ -6,21 +6,6 @@
 import { AtsCreateBackgroundCheckPackageRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsCreateBackgroundCheckPackageRequest = {
-  atsCreateBackgroundCheckPackagesRequestDto: {
-    description:
-      "Skills test to gauge a candidate's proficiency in job-specific skills",
-    name: "Test 1",
-    passthrough: {
-      "other_known_names": "John Doe",
-    },
-    tests: [
-      {
-        description:
-          "Skills test to gauge a candidate's proficiency in job-specific skills",
-        name: "Test 1",
-      },
-    ],
-  },
   xAccountId: "<id>",
 };
 ```

@@ -9,7 +9,6 @@ import { hrisCreateEmployeeEmployment } from "../funcs/hrisCreateEmployeeEmploym
 import { hrisCreateEmployeeSkill } from "../funcs/hrisCreateEmployeeSkill.js";
 import { hrisCreateEmployeeTimeOffRequest } from "../funcs/hrisCreateEmployeeTimeOffRequest.js";
 import { hrisCreateEmployeeWorkEligibilityRequest } from "../funcs/hrisCreateEmployeeWorkEligibilityRequest.js";
-import { hrisCreateTimeOffRequest } from "../funcs/hrisCreateTimeOffRequest.js";
 import { hrisDownloadEmployeeDocument } from "../funcs/hrisDownloadEmployeeDocument.js";
 import { hrisGetBenefit } from "../funcs/hrisGetBenefit.js";
 import { hrisGetCompany } from "../funcs/hrisGetCompany.js";
@@ -63,7 +62,6 @@ import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
 import { hrisUpdateEmployeeEmployment } from "../funcs/hrisUpdateEmployeeEmployment.js";
 import { hrisUpdateEmployeeTimeOffRequest } from "../funcs/hrisUpdateEmployeeTimeOffRequest.js";
 import { hrisUpdateEmployeeWorkEligibilityRequest } from "../funcs/hrisUpdateEmployeeWorkEligibilityRequest.js";
-import { hrisUpdateTimeOffRequest } from "../funcs/hrisUpdateTimeOffRequest.js";
 import { hrisUploadEmployeeDocument } from "../funcs/hrisUploadEmployeeDocument.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
@@ -163,22 +161,6 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisCreateEmployeeWorkEligibilityRequestResponse> {
     return unwrapAsync(hrisCreateEmployeeWorkEligibilityRequest(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Creates a time off request
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async createTimeOffRequest(
-    request: operations.HrisCreateTimeOffRequestRequest,
-    options?: RequestOptions,
-  ): Promise<operations.HrisCreateTimeOffRequestResponse> {
-    return unwrapAsync(hrisCreateTimeOffRequest(
       this,
       request,
       options,
@@ -1003,22 +985,6 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisUpdateEmployeeWorkEligibilityRequestResponse> {
     return unwrapAsync(hrisUpdateEmployeeWorkEligibilityRequest(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update time off request
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async updateTimeOffRequest(
-    request: operations.HrisUpdateTimeOffRequestRequest,
-    options?: RequestOptions,
-  ): Promise<operations.HrisUpdateTimeOffRequestResponse> {
-    return unwrapAsync(hrisUpdateTimeOffRequest(
       this,
       request,
       options,

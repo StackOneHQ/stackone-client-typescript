@@ -6,13 +6,17 @@
 import {
   CountryCodeEnumValue,
   EmployeeResult,
-  EmployeeSchemasHomeLocationValue,
+  EmployeeSchemasHomeLocationLocationTypeValue,
+  EmployeeSchemasPreferredLanguageValue,
+  EmployeeSchemasWorkLocationLocationTypeValue,
   EmployeeSchemasWorkLocationValue,
+  EmploymentManagerApiModelValue,
   EmploymentSchemasDepartmentValue,
-  EmploymentSchemasDivisionValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasWorkTimeValue,
   EntitySkillsValue,
   HRISCostCenterValue,
-  HRISGroupValue,
   NationalIdentityNumberApiModelSchemasValue,
   NationalIdentityNumberApiModelValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -38,19 +42,7 @@ let value: EmployeeResult = {
         value: CountryCodeEnumValue.Us,
       },
     ],
-    company: {
-      createdAt: new Date("2023-02-23T00:00:00.000Z"),
-      displayName: "StackOne",
-      fullName: "American Express Company",
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      name: "StackOne Technologies PLC",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
-      updatedAt: new Date("2024-02-23T00:00:00.000Z"),
-    },
+    company: null,
     companyId: "1234567890",
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     customFields: [
@@ -140,36 +132,7 @@ let value: EmployeeResult = {
             "my_project_custom_field_2": "some other value",
           },
         },
-        division: {
-          companyId: "1234567890",
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Engineering",
-          ownerIds: [
-            "cxIQNjUyEDM0",
-            "cxIQNjQzNzA0MQ",
-          ],
-          parentIds: [
-            "cxIQNjUyNDM0",
-            "cxIQNjQzNzI0MQ",
-          ],
-          remoteCompanyId: "1234567890",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteOwnerIds: [
-            "475364",
-            "4327652",
-          ],
-          remoteParentIds: [
-            "652434",
-            "6437241",
-          ],
-          type: {
-            value: EmploymentSchemasDivisionValue.Team,
-          },
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
-        },
+        division: null,
         effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
         employeeId: "1687-3",
         endDate: new Date("2021-01-01T01:01:01.000Z"),
@@ -201,13 +164,21 @@ let value: EmployeeResult = {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               label: "Admin",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              roleType: {},
+              roleType: {
+                value: EmploymentManagerApiModelValue.Admin,
+              },
             },
           },
         ],
         payCurrency: "USD",
-        payFrequency: {},
-        payPeriod: {},
+        payFrequency: {
+          sourceValue: "Hourly",
+          value: EmploymentSchemasPayFrequencyValue.Hourly,
+        },
+        payPeriod: {
+          sourceValue: "Hour",
+          value: EmploymentSchemasPayPeriodValue.Hour,
+        },
         payRate: "40.00",
         payrollCode: "PC1",
         remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -225,7 +196,9 @@ let value: EmployeeResult = {
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         workTime: {
           duration: "P0Y0M0DT8H0M0S",
-          durationUnit: {},
+          durationUnit: {
+            value: EmploymentSchemasWorkTimeValue.Month,
+          },
         },
       },
     ],
@@ -255,9 +228,7 @@ let value: EmployeeResult = {
           "652434",
           "6437241",
         ],
-        type: {
-          value: HRISGroupValue.Team,
-        },
+        type: null,
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -267,13 +238,14 @@ let value: EmployeeResult = {
     hireDate: new Date("2021-01-01T00:00:00.000Z"),
     homeLocation: {
       city: "Grantham",
-      country: {
-        value: EmployeeSchemasHomeLocationValue.Us,
-      },
+      country: null,
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      locationType: {},
+      locationType: {
+        sourceValue: "Home",
+        value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
+      },
       name: "Woolsthorpe Manor",
       phoneNumber: "+44 1476 860 364",
       remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -306,7 +278,9 @@ let value: EmployeeResult = {
     ],
     personalEmail: "isaac.newton@example.com",
     personalPhoneNumber: "+1234567890",
-    preferredLanguage: {},
+    preferredLanguage: {
+      value: EmployeeSchemasPreferredLanguageValue.Eng,
+    },
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteManagerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     skills: [
@@ -347,7 +321,10 @@ let value: EmployeeResult = {
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      locationType: {},
+      locationType: {
+        sourceValue: "Home",
+        value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
+      },
       name: "Woolsthorpe Manor",
       phoneNumber: "+44 1476 860 364",
       remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",

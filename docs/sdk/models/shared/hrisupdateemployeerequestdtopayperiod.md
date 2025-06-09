@@ -5,9 +5,15 @@ The pay period
 ## Example Usage
 
 ```typescript
-import { HrisUpdateEmployeeRequestDtoPayPeriod } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisUpdateEmployeeRequestDtoPayPeriod,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisUpdateEmployeeRequestDtoPayPeriod = {};
+let value: HrisUpdateEmployeeRequestDtoPayPeriod = {
+  sourceValue: "Hour",
+  value: HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriodValue.Hour,
+};
 ```
 
 ## Fields

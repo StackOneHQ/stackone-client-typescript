@@ -5,35 +5,7 @@
 ```typescript
 import { HrisListCompaniesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListCompaniesResponse = {
-  companiesPaginated: {
-    data: [
-      {
-        createdAt: new Date("2023-02-23T00:00:00.000Z"),
-        displayName: "StackOne",
-        fullName: "American Express Company",
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "StackOne Technologies PLC",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        unifiedCustomFields: {
-          "my_project_custom_field_1": "REF-1236",
-          "my_project_custom_field_2": "some other value",
-        },
-        updatedAt: new Date("2024-02-23T00:00:00.000Z"),
-      },
-    ],
-  },
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 501,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: HrisListCompaniesResponse = {};
 ```
 
 ## Fields

@@ -3,11 +3,7 @@
 ## Example Usage
 
 ```typescript
-import {
-  CreateCategoriesApiModelSchemasValue,
-  LanguageEnumValue,
-  LmsUpsertContentRequestDto,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModelSchemasValue, LmsUpsertContentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpsertContentRequestDto = {
   active: true,
@@ -37,11 +33,7 @@ let value: LmsUpsertContentRequestDto = {
   description: "This video acts as learning content for software engineers.",
   duration: "P3Y6M4DT12H30M5S",
   externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-  languages: [
-    {
-      value: LanguageEnumValue.EnGB,
-    },
-  ],
+  languages: null,
   localizations: [
     {
       description:

@@ -14,7 +14,7 @@ const value: string = "Normal";
 ### `number`
 
 ```typescript
-const value: number = Normal;
+const value: number = NaN;
 ```
 
 ### `boolean`

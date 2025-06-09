@@ -5,9 +5,14 @@ The employee preferred language
 ## Example Usage
 
 ```typescript
-import { HrisUpdateEmployeeRequestDtoPreferredLanguage } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisUpdateEmployeeRequestDtoPreferredLanguage,
+  HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisUpdateEmployeeRequestDtoPreferredLanguage = {};
+let value: HrisUpdateEmployeeRequestDtoPreferredLanguage = {
+  value: HrisUpdateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
+};
 ```
 
 ## Fields

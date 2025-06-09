@@ -3,7 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { HrisCreateEmploymentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisCreateEmploymentRequestDto,
+  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
+  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
+  HrisCreateEmploymentRequestDtoSchemasWorkTimeValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmploymentRequestDto = {
   effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
@@ -20,8 +25,14 @@ let value: HrisCreateEmploymentRequestDto = {
     "other_known_names": "John Doe",
   },
   payCurrency: "USD",
-  payFrequency: {},
-  payPeriod: {},
+  payFrequency: {
+    sourceValue: "Hourly",
+    value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
+  },
+  payPeriod: {
+    sourceValue: "Hour",
+    value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
+  },
   payRate: "40.00",
   payrollCode: "PC1",
   unifiedCustomFields: {
@@ -30,7 +41,9 @@ let value: HrisCreateEmploymentRequestDto = {
   },
   workTime: {
     duration: "P0Y0M0DT8H0M0S",
-    durationUnit: {},
+    durationUnit: {
+      value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
+    },
   },
 };
 ```

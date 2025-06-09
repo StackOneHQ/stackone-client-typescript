@@ -3,7 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Application, ApplicationValue, AtsDocumentApiModelValue, RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  AnswerValue,
+  Application,
+  ApplicationValue,
+  AtsDocumentApiModelValue,
+  RejectedReasonValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Application = {
   applicationStatus: {
@@ -89,7 +95,10 @@ let value: Application = {
       answers: [
         {
           id: "answer1",
-          type: {},
+          type: {
+            sourceValue: "Short Text",
+            value: AnswerValue.ShortText,
+          },
           values: [
             "Yes",
           ],

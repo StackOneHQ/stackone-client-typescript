@@ -5,18 +5,7 @@
 ```typescript
 import { StackoneListLinkedAccountsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneListLinkedAccountsResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 203,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: StackoneListLinkedAccountsResponse = {};
 ```
 
 ## Fields

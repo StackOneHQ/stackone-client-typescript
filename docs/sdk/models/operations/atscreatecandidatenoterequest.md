@@ -6,18 +6,6 @@
 import { AtsCreateCandidateNoteRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsCreateCandidateNoteRequest = {
-  atsCreateNotesRequestDto: {
-    authorId: "1234567890",
-    content: [
-      {
-        body: "This candidate seems like a good fit for the role",
-      },
-    ],
-    passthrough: {
-      "other_known_names": "John Doe",
-    },
-    visibility: {},
-  },
   id: "<id>",
   xAccountId: "<id>",
 };

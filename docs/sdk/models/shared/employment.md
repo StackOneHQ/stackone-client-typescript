@@ -5,19 +5,18 @@
 ```typescript
 import {
   Employment,
+  EmploymentManagerApiModelValue,
   EmploymentSchemasDepartmentValue,
   EmploymentSchemasDivisionValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasWorkTimeValue,
   HRISCostCenterValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Employment = {
   active: true,
-  contractType: {
-    contractType: {},
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    label: "Full-Time",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  },
+  contractType: null,
   costCenters: [
     {
       companyId: "1234567890",
@@ -142,13 +141,21 @@ let value: Employment = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         label: "Admin",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        roleType: {},
+        roleType: {
+          value: EmploymentManagerApiModelValue.Admin,
+        },
       },
     },
   ],
   payCurrency: "USD",
-  payFrequency: {},
-  payPeriod: {},
+  payFrequency: {
+    sourceValue: "Hourly",
+    value: EmploymentSchemasPayFrequencyValue.Hourly,
+  },
+  payPeriod: {
+    sourceValue: "Hour",
+    value: EmploymentSchemasPayPeriodValue.Hour,
+  },
   payRate: "40.00",
   payrollCode: "PC1",
   remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -166,7 +173,9 @@ let value: Employment = {
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
   workTime: {
     duration: "P0Y0M0DT8H0M0S",
-    durationUnit: {},
+    durationUnit: {
+      value: EmploymentSchemasWorkTimeValue.Month,
+    },
   },
 };
 ```

@@ -19,12 +19,7 @@ let value: AssessmentOrderResult = {
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
     candidate: {
-      emails: [
-        {
-          type: "personal",
-          value: "sestier.romain123@gmail.com",
-        },
-      ],
+      emails: null,
       firstName: "Romain",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Sestier",

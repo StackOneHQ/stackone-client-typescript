@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { NoteResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { NoteResult, NoteValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: NoteResult = {
   data: {
@@ -23,7 +23,10 @@ let value: NoteResult = {
       "my_project_custom_field_2": "some other value",
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-    visibility: {},
+    visibility: {
+      sourceValue: "Public",
+      value: NoteValue.Public,
+    },
   },
 };
 ```

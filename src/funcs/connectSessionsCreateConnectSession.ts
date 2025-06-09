@@ -18,8 +18,9 @@ import {
   UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
 import * as errors from "../sdk/models/errors/index.js";
-import { SDKError } from "../sdk/models/errors/sdkerror.js";
+import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
+import { StackOneError } from "../sdk/models/errors/stackoneerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import * as shared from "../sdk/models/shared/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
@@ -46,13 +47,14 @@ export function connectSessionsCreateConnectSession(
     | errors.InternalServerErrorResponse
     | errors.NotImplementedResponse
     | errors.BadGatewayResponse
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | StackOneError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -81,13 +83,14 @@ async function $do(
       | errors.InternalServerErrorResponse
       | errors.NotImplementedResponse
       | errors.BadGatewayResponse
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | StackOneError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -199,13 +202,14 @@ async function $do(
     | errors.InternalServerErrorResponse
     | errors.NotImplementedResponse
     | errors.BadGatewayResponse
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | StackOneError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(201, operations.StackoneCreateConnectSessionResponse$inboundSchema, {
       key: "ConnectSessionTokenAuthLink",
@@ -225,7 +229,7 @@ async function $do(
     M.jsonErr(502, errors.BadGatewayResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

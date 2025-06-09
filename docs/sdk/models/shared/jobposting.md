@@ -6,10 +6,15 @@
 import {
   Internal,
   JobPosting,
+  JobPostingCompensationSchemasTypeValue,
+  JobPostingCompensationSchemasValue,
+  JobPostingCompensationValue,
   JobPostingQuestionnaire2,
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
   JobPostingValue,
+  QuestionSchemasValue,
+  QuestionValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPosting = {
@@ -19,16 +24,31 @@ let value: JobPosting = {
       maxValue: "55000",
       minValue: "45000",
       name: "Base Salary",
-      payFrequency: {},
-      payPeriod: {},
-      type: {},
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: JobPostingCompensationValue.Hourly,
+      },
+      payPeriod: {
+        sourceValue: "Hour",
+        value: JobPostingCompensationSchemasValue.Hour,
+      },
+      type: {
+        sourceValue: "Salary",
+        value: JobPostingCompensationSchemasTypeValue.Salary,
+      },
       value: "50000",
     },
     {
       currency: "USD",
       name: "Bonus",
-      payFrequency: {},
-      type: {},
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: JobPostingCompensationValue.Hourly,
+      },
+      type: {
+        sourceValue: "Salary",
+        value: JobPostingCompensationSchemasTypeValue.Salary,
+      },
       value: "10%",
     },
   ],
@@ -71,14 +91,20 @@ let value: JobPosting = {
           parentQuestion: null,
           required: true,
           text: "What is your name?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question002",
           parentQuestion: null,
           required: false,
           text: "What are your hobbies?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question003",
@@ -103,7 +129,10 @@ let value: JobPosting = {
           parentQuestion: null,
           required: true,
           text: "What is your favourite animal?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question004",
@@ -120,7 +149,10 @@ let value: JobPosting = {
           parentQuestion: null,
           required: true,
           text: "Do you have previous work experience??",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question005",
@@ -139,7 +171,10 @@ let value: JobPosting = {
             },
           ],
           parentQuestion: {
-            conditionType: {},
+            conditionType: {
+              sourceValue: "EqualsTo",
+              value: QuestionSchemasValue.EqualsTo,
+            },
             id: "question004",
             optionIds: [
               "1",
@@ -147,7 +182,10 @@ let value: JobPosting = {
           },
           required: true,
           text: "What was the duration of your last employment?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
       ],
     },
@@ -161,7 +199,10 @@ let value: JobPosting = {
           parentQuestion: null,
           required: true,
           text: "Please upload your resume.",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question005",
@@ -182,25 +223,37 @@ let value: JobPosting = {
           parentQuestion: null,
           required: true,
           text: "Select the programming languages you are proficient in.",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question006",
           parentQuestion: null,
           text: "Are you willing to relocate?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question007",
           parentQuestion: null,
           text: "How many years of experience do you have?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question008",
           parentQuestion: null,
           text: "When did you start your most recent position?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question009",
@@ -217,7 +270,10 @@ let value: JobPosting = {
           parentQuestion: null,
           required: true,
           text: "Do you have Project Management Experience?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
         {
           id: "question010",
@@ -240,14 +296,20 @@ let value: JobPosting = {
             },
           ],
           parentQuestion: {
-            conditionType: {},
+            conditionType: {
+              sourceValue: "EqualsTo",
+              value: QuestionSchemasValue.EqualsTo,
+            },
             id: "question009",
             optionIds: [
               "1",
             ],
           },
           text: "How much Project Management experience do you have?",
-          type: {},
+          type: {
+            sourceValue: "ShortText",
+            value: QuestionValue.ShortText,
+          },
         },
       ],
     },

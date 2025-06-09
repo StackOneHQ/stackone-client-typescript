@@ -5,18 +5,7 @@
 ```typescript
 import { StackoneProxyRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneProxyRequestResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 500,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: StackoneProxyRequestResponse = {};
 ```
 
 ## Fields

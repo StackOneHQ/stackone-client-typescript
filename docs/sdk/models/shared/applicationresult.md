@@ -4,6 +4,7 @@
 
 ```typescript
 import {
+  AnswerValue,
   ApplicationResult,
   ApplicationValue,
   AtsDocumentApiModelValue,
@@ -16,31 +17,7 @@ let value: ApplicationResult = {
       sourceValue: "Hired",
       value: ApplicationValue.Hired,
     },
-    candidate: {
-      company: "Company Inc.",
-      email: "john.doe@example.com",
-      emails: [
-        {
-          type: "personal",
-          value: "sestier.romain123@gmail.com",
-        },
-      ],
-      firstName: "John",
-      lastName: "Doe",
-      name: "Romain Sestier",
-      phoneNumbers: [
-        {
-          phone: "+447700112233",
-        },
-      ],
-      socialLinks: [
-        {
-          type: "linkedin",
-          url: "https://www.linkedin.com/in/romainsestier/",
-        },
-      ],
-      title: "Software Engineer",
-    },
+    candidate: null,
     candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     customFields: [
@@ -95,7 +72,10 @@ let value: ApplicationResult = {
         answers: [
           {
             id: "answer1",
-            type: {},
+            type: {
+              sourceValue: "Short Text",
+              value: AnswerValue.ShortText,
+            },
             values: [
               "Yes",
             ],
@@ -140,11 +120,7 @@ let value: ApplicationResult = {
         url: "http://example.com/test-result/4565765/data",
       },
     ],
-    source: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      name: "LinkedIn",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
+    source: null,
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",

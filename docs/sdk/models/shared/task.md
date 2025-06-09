@@ -25,12 +25,7 @@ let value: Task = {
       updatedAt: new Date("2021-01-02T01:01:01.000Z"),
     },
   ],
-  comments: [
-    {
-      comment: "Approved based on in-person assessment",
-      createdAt: new Date("2024-03-15T10:00:00.000Z"),
-    },
-  ],
+  comments: null,
   completionDate: new Date("2024-03-19T15:30:00.000Z"),
   createdAt: new Date("2024-03-15T10:00:00.000Z"),
   description:

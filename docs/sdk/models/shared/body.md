@@ -14,6 +14,8 @@ const value: string = "<value>";
 ```typescript
 const value: { [k: string]: any } = {
   "key": "<value>",
+  "key1": "<value>",
+  "key2": "<value>",
 };
 ```
 
@@ -21,7 +23,9 @@ const value: { [k: string]: any } = {
 
 ```typescript
 const value: number[] = [
-  986366,
+  339048,
+  133621,
+  943799,
 ];
 ```
 

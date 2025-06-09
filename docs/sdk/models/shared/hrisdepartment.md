@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { HRISDepartment } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HRISDepartment, HRISDepartmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISDepartment = {
   companyId: "1234567890",
@@ -27,7 +27,9 @@ let value: HRISDepartment = {
     "652434",
     "6437241",
   ],
-  type: {},
+  type: {
+    value: HRISDepartmentValue.Department,
+  },
   unifiedCustomFields: {
     "my_project_custom_field_1": "REF-1236",
     "my_project_custom_field_2": "some other value",

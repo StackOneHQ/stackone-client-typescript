@@ -9,6 +9,8 @@ let value: LinkedAccountMeta = {
   category: LinkedAccountMetaCategory.Crm,
   models: {
     "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
   },
   provider: "<value>",
 };

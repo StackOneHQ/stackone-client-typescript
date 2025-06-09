@@ -5,26 +5,7 @@
 ```typescript
 import { MarketingGetOmniChannelTemplateResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingGetOmniChannelTemplateResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 304,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  templateResult: {
-    data: {
-      createdAt: new Date("2021-01-01T00:00:00.000Z"),
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      updatedAt: new Date("2021-01-01T00:00:00.000Z"),
-    },
-  },
-};
+let value: MarketingGetOmniChannelTemplateResponse = {};
 ```
 
 ## Fields

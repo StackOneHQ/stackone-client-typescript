@@ -4,42 +4,8 @@
 
 ```typescript
 import { TicketingListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { TicketingUserValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TicketingListUsersResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 508,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  ticketingUsersPaginated: {
-    data: [
-      {
-        active: true,
-        createdAt: new Date("2021-01-01T01:01:01.000Z"),
-        customerAccountReference: "JohnDoe123",
-        firstName: "John",
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        lastName: "Doe",
-        name: "John Doe",
-        primaryEmail: "john.doe@example.com",
-        primaryPhone: "555-5555-5555",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        type: {
-          sourceValue: "Live",
-          value: TicketingUserValue.Agent,
-        },
-        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        username: "johndoe",
-      },
-    ],
-  },
-};
+let value: TicketingListUsersResponse = {};
 ```
 
 ## Fields

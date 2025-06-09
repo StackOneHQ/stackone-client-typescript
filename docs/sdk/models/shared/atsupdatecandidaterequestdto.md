@@ -23,12 +23,7 @@ let value: AtsUpdateCandidateRequestDto = {
     },
   ],
   email: "sestier.romain123@gmail.com",
-  emails: [
-    {
-      type: "personal",
-      value: "sestier.romain123@gmail.com",
-    },
-  ],
+  emails: null,
   firstName: "Romain",
   hiredAt: new Date("2021-01-01T01:01:01.000Z"),
   lastName: "Sestier",
@@ -36,11 +31,7 @@ let value: AtsUpdateCandidateRequestDto = {
   passthrough: {
     "other_known_names": "John Doe",
   },
-  phoneNumbers: [
-    {
-      phone: "+447700112233",
-    },
-  ],
+  phoneNumbers: null,
   socialLinks: [
     {
       type: "linkedin",

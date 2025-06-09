@@ -5,26 +5,7 @@
 ```typescript
 import { HrisGetTimeOffTypeResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetTimeOffTypeResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  referenceResult: {
-    data: {
-      active: true,
-      id: "1687-3",
-      name: "1687-4",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
-  },
-  statusCode: 102,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: HrisGetTimeOffTypeResponse = {};
 ```
 
 ## Fields

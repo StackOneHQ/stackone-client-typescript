@@ -5,9 +5,15 @@ The pay frequency
 ## Example Usage
 
 ```typescript
-import { HrisUpdateEmployeeRequestDtoPayFrequency } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisUpdateEmployeeRequestDtoPayFrequency,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisUpdateEmployeeRequestDtoPayFrequency = {};
+let value: HrisUpdateEmployeeRequestDtoPayFrequency = {
+  sourceValue: "Hourly",
+  value: HrisUpdateEmployeeRequestDtoSchemasEmploymentValue.Hourly,
+};
 ```
 
 ## Fields

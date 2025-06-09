@@ -18,7 +18,7 @@ const value: number = 1284.03;
 ### `boolean`
 
 ```typescript
-const value: boolean = false;
+const value: boolean = true;
 ```
 
 ### `shared.EmploymentManagerApiModel4`
@@ -31,7 +31,9 @@ const value: shared.EmploymentManagerApiModel4 = {};
 
 ```typescript
 const value: any[] = [
-  "<value>",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

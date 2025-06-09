@@ -3,27 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { AssessmentOrder, AssessmentOrderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssessmentOrder } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AssessmentOrder = {
-  application: {
-    applicationStatus: {
-      sourceValue: "Hired",
-      value: AssessmentOrderValue.Hired,
-    },
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    passthrough: {
-      "other_known_names": "John Doe",
-    },
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  },
+  application: null,
   candidate: {
-    emails: [
-      {
-        type: "personal",
-        value: "sestier.romain123@gmail.com",
-      },
-    ],
+    emails: null,
     firstName: "Romain",
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     lastName: "Sestier",
@@ -34,24 +19,7 @@ let value: AssessmentOrder = {
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   },
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  job: {
-    hiringTeam: [
-      {
-        email: "john.doe@gmail.com",
-        firstName: "John",
-        lastName: "Doe",
-        remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        role: "Software Engineer",
-        userId: "123456",
-      },
-    ],
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    passthrough: {
-      "other_known_names": "John Doe",
-    },
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    title: "Software Engineer",
-  },
+  job: null,
   package: {
     description:
       "Skills test to gauge a candidate's proficiency in job-specific skills",

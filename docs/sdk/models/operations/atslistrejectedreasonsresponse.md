@@ -4,37 +4,8 @@
 
 ```typescript
 import { AtsListRejectedReasonsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsListRejectedReasonsResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  rejectedReasonsPaginated: {
-    data: [
-      {
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        label: "Failed Phone Screen",
-        rejectedReasonType: {
-          sourceValue: "RejectedByOrg",
-          value: RejectedReasonValue.RejectedByOrganization,
-        },
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        unifiedCustomFields: {
-          "my_project_custom_field_1": "REF-1236",
-          "my_project_custom_field_2": "some other value",
-        },
-      },
-    ],
-  },
-  statusCode: 417,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: AtsListRejectedReasonsResponse = {};
 ```
 
 ## Fields

@@ -63,7 +63,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -101,15 +100,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingCreateContentBlock failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -199,7 +195,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -259,15 +254,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingCreateEmailTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -357,7 +349,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -417,15 +408,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingCreateInAppTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -507,7 +495,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -557,15 +544,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingCreateOmniChannelTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -647,7 +631,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -699,15 +682,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingCreatePushTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -797,7 +777,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -857,15 +836,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingCreateSmsTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -925,7 +901,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -955,15 +930,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetCampaign failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1023,7 +995,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1053,15 +1024,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetContentBlock failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1121,7 +1089,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1151,15 +1118,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetEmailTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1219,7 +1183,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1249,15 +1212,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetInAppTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1319,7 +1279,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1349,15 +1308,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetOmniChannelTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1417,7 +1373,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1447,15 +1402,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetPushTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1515,7 +1467,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1545,15 +1496,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingGetSmsTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1617,7 +1565,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1651,16 +1598,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListCampaigns failed:", res.error);
   }
 }
 
@@ -1725,7 +1669,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1759,16 +1702,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListContentBlocks failed:", res.error);
   }
 }
 
@@ -1833,7 +1773,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1867,16 +1806,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListEmailTemplates failed:", res.error);
   }
 }
 
@@ -1941,7 +1877,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1975,16 +1910,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListInAppTemplates failed:", res.error);
   }
 }
 
@@ -2051,7 +1983,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2085,16 +2016,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListOmniChannelTemplates failed:", res.error);
   }
 }
 
@@ -2159,7 +2087,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2193,16 +2120,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListPushTemplates failed:", res.error);
   }
 }
 
@@ -2267,7 +2191,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2301,16 +2224,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("marketingListSmsTemplates failed:", res.error);
   }
 }
 
@@ -2380,7 +2300,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2419,15 +2338,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingUpdateContentBlock failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -2502,7 +2418,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2547,15 +2462,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingUpdateEmailTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -2630,7 +2542,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2675,15 +2586,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingUpdateInAppTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -2759,7 +2667,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2803,15 +2710,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingUpdateOmniChannelTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -2894,7 +2798,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2947,15 +2850,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingUpdatePushTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3030,7 +2930,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3075,15 +2974,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketingUpdateSmsTemplate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

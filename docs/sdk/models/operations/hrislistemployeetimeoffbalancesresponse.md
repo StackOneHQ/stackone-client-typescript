@@ -4,59 +4,8 @@
 
 ```typescript
 import { HrisListEmployeeTimeOffBalancesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { TimeOffBalancesSchemasPolicyValue, TimeOffBalancesSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisListEmployeeTimeOffBalancesResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 425,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-  timeOffBalancesPaginated: {
-    data: [
-      {
-        balanceExpiryDate: new Date("2021-01-01T01:01:01.000Z"),
-        balanceStartDate: new Date("2021-01-01T01:01:01.000Z"),
-        balanceUnit: {},
-        currentBalance: 8,
-        employeeId: "cx280928937",
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        initialBalance: 8,
-        policy: {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
-          description:
-            "Usable for regional and national holidays of employees.",
-          durationUnit: {
-            value: TimeOffBalancesSchemasValue.Hours,
-          },
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          name: "Holidays",
-          reasons: [
-            {
-              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            },
-          ],
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          type: {
-            value: TimeOffBalancesSchemasPolicyValue.Holiday,
-          },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-        },
-        policyId: "cx280928937",
-        remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        remotePolicyId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-      },
-    ],
-  },
-};
+let value: HrisListEmployeeTimeOffBalancesResponse = {};
 ```
 
 ## Fields

@@ -5,28 +5,7 @@
 ```typescript
 import { HrisListTimeOffTypesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListTimeOffTypesResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  referencePaginated: {
-    data: [
-      {
-        active: true,
-        id: "1687-3",
-        name: "1687-4",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      },
-    ],
-  },
-  statusCode: 500,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: HrisListTimeOffTypesResponse = {};
 ```
 
 ## Fields

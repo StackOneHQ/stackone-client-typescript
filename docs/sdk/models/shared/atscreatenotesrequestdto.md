@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AtsCreateNotesRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateNotesRequestDto, AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateNotesRequestDto = {
   authorId: "1234567890",
@@ -15,7 +15,10 @@ let value: AtsCreateNotesRequestDto = {
   passthrough: {
     "other_known_names": "John Doe",
   },
-  visibility: {},
+  visibility: {
+    sourceValue: "Public",
+    value: AtsCreateNotesRequestDtoValue.Public,
+  },
 };
 ```
 

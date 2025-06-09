@@ -4,18 +4,8 @@
 
 ```typescript
 import { MarketingCreateContentBlockRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingCreateContentBlockRequest = {
-  marketingCreateContentBlocksRequestDto: {
-    passthrough: {
-      "other_known_names": "John Doe",
-    },
-    type: {
-      sourceValue: "text",
-      value: MarketingCreateContentBlocksRequestDtoValue.Html,
-    },
-  },
   xAccountId: "<id>",
 };
 ```

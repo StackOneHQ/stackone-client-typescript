@@ -3,36 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { TimeOffBalances, TimeOffBalancesSchemasPolicyValue, TimeOffBalancesSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOffBalances, TimeOffBalancesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TimeOffBalances = {
   balanceExpiryDate: new Date("2021-01-01T01:01:01.000Z"),
   balanceStartDate: new Date("2021-01-01T01:01:01.000Z"),
-  balanceUnit: {},
+  balanceUnit: {
+    value: TimeOffBalancesValue.Hours,
+  },
   currentBalance: 8,
   employeeId: "cx280928937",
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   initialBalance: 8,
-  policy: {
-    createdAt: new Date("2021-01-01T01:01:01.000Z"),
-    description: "Usable for regional and national holidays of employees.",
-    durationUnit: {
-      value: TimeOffBalancesSchemasValue.Hours,
-    },
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    name: "Holidays",
-    reasons: [
-      {
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      },
-    ],
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    type: {
-      value: TimeOffBalancesSchemasPolicyValue.Holiday,
-    },
-    updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-  },
+  policy: null,
   policyId: "cx280928937",
   remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

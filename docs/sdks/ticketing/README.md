@@ -91,7 +91,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -166,15 +165,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingCreateTicket failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -236,7 +232,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -268,15 +263,12 @@ async function run() {
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingDownloadTicketingAttachment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -337,7 +329,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -368,15 +359,12 @@ async function run() {
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingGetAttachment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -436,7 +424,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -466,15 +453,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingGetCollection failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -535,7 +519,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -566,15 +549,12 @@ async function run() {
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingGetComment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -634,7 +614,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -664,15 +643,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingGetTicket failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -732,7 +708,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -762,15 +737,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingGetTicketType failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -830,7 +802,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -860,15 +831,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingGetUser failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -933,7 +901,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -968,16 +935,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListAttachments failed:", res.error);
   }
 }
 
@@ -1042,7 +1006,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1076,16 +1039,13 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListCollectionTicketTypes failed:", res.error);
   }
 }
 
@@ -1150,7 +1110,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1184,16 +1143,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListCollections failed:", res.error);
   }
 }
 
@@ -1259,7 +1215,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1294,16 +1249,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListComments failed:", res.error);
   }
 }
 
@@ -1368,7 +1320,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1402,16 +1353,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListTicketStatuses failed:", res.error);
   }
 }
 
@@ -1476,7 +1424,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1510,16 +1457,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListTicketTypes failed:", res.error);
   }
 }
 
@@ -1584,7 +1528,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1618,16 +1561,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListTickets failed:", res.error);
   }
 }
 
@@ -1692,7 +1632,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -1726,16 +1665,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("ticketingListUsers failed:", res.error);
   }
 }
 
@@ -1846,7 +1782,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1926,15 +1861,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ticketingUpdateTicket failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { StackOneError } from "./stackoneerror.js";
 
 export type ForbiddenResponseData = {
   /**
@@ -19,11 +20,7 @@ export type ForbiddenResponseData = {
   timestamp: Date;
 };
 
-export class ForbiddenResponse extends Error {
-  /**
-   * HTTP status code
-   */
-  statusCode: number;
+export class ForbiddenResponse extends StackOneError {
   /**
    * Timestamp when the error occurred
    */
@@ -32,14 +29,15 @@ export class ForbiddenResponse extends Error {
   /** The original data that was passed to this error instance. */
   data$: ForbiddenResponseData;
 
-  constructor(err: ForbiddenResponseData) {
+  constructor(
+    err: ForbiddenResponseData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.timestamp = err.timestamp;
 
     this.name = "ForbiddenResponse";
@@ -55,9 +53,16 @@ export const ForbiddenResponse$inboundSchema: z.ZodType<
   message: z.string(),
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new ForbiddenResponse(v);
+    return new ForbiddenResponse(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

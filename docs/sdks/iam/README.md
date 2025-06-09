@@ -38,7 +38,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -67,15 +66,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("iamDeleteUser failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -136,7 +132,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,15 +162,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("iamGetGroup failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -236,7 +228,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -267,15 +258,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("iamGetPolicy failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -336,7 +324,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -367,15 +354,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("iamGetRole failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -436,7 +420,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -467,15 +450,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("iamGetUser failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -540,7 +520,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -575,16 +554,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("iamListGroups failed:", res.error);
   }
 }
 
@@ -650,7 +626,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -685,16 +660,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("iamListPolicies failed:", res.error);
   }
 }
 
@@ -760,7 +732,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -795,16 +766,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("iamListRoles failed:", res.error);
   }
 }
 
@@ -870,7 +838,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -905,16 +872,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("iamListUsers failed:", res.error);
   }
 }
 
@@ -989,7 +953,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1033,15 +996,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("iamUpdateUser failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

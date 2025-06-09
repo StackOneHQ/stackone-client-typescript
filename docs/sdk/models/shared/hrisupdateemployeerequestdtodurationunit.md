@@ -5,9 +5,14 @@ The duration unit of the work time
 ## Example Usage
 
 ```typescript
-import { HrisUpdateEmployeeRequestDtoDurationUnit } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisUpdateEmployeeRequestDtoDurationUnit,
+  HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisUpdateEmployeeRequestDtoDurationUnit = {};
+let value: HrisUpdateEmployeeRequestDtoDurationUnit = {
+  value: HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
+};
 ```
 
 ## Fields

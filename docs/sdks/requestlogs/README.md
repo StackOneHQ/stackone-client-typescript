@@ -32,7 +32,6 @@ async function run() {
     include: Include.StepLogs,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,15 +61,12 @@ async function run() {
     id: "<id>",
     include: Include.StepLogs,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("requestLogsGetLog failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -154,7 +150,6 @@ async function run() {
     orderDirection: OrderDirection.Asc,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -209,15 +204,12 @@ async function run() {
     orderBy: OrderBy.Duration,
     orderDirection: OrderDirection.Asc,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("requestLogsListLogs failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -294,7 +286,6 @@ async function run() {
     orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -342,15 +333,12 @@ async function run() {
     orderBy: StackoneListStepLogsQueryParamOrderBy.EventDatetime,
     orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("requestLogsListStepLogs failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

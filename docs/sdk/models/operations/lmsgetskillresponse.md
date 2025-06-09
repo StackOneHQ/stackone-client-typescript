@@ -4,31 +4,8 @@
 
 ```typescript
 import { LmsGetSkillResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { SkillsSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsGetSkillResponse = {
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  skillResult: {
-    data: {
-      active: true,
-      id: "16873-IT345",
-      language: {
-        value: SkillsSchemasValue.EnGB,
-      },
-      name: "Information-Technology",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
-  },
-  statusCode: 300,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: LmsGetSkillResponse = {};
 ```
 
 ## Fields

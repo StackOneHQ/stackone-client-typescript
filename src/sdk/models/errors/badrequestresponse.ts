@@ -8,6 +8,7 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as shared from "../shared/index.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import { StackOneError } from "./stackoneerror.js";
 
 /**
  * Response headers
@@ -55,7 +56,7 @@ export type BadRequestResponseData = {
   timestamp: Date;
 };
 
-export class BadRequestResponse extends Error {
+export class BadRequestResponse extends StackOneError {
   /**
    * Error details
    */
@@ -65,10 +66,6 @@ export class BadRequestResponse extends Error {
    */
   providerErrors?: Array<shared.ProviderError> | null | undefined;
   /**
-   * HTTP status code
-   */
-  statusCode: number;
-  /**
    * Timestamp when the error occurred
    */
   timestamp: Date;
@@ -76,16 +73,17 @@ export class BadRequestResponse extends Error {
   /** The original data that was passed to this error instance. */
   data$: BadRequestResponseData;
 
-  constructor(err: BadRequestResponseData) {
+  constructor(
+    err: BadRequestResponseData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.data != null) this.data = err.data;
     if (err.providerErrors != null) this.providerErrors = err.providerErrors;
-    this.statusCode = err.statusCode;
     this.timestamp = err.timestamp;
 
     this.name = "BadRequestResponse";
@@ -195,13 +193,20 @@ export const BadRequestResponse$inboundSchema: z.ZodType<
     .optional(),
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "provider_errors": "providerErrors",
     });
 
-    return new BadRequestResponse(remapped);
+    return new BadRequestResponse(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

@@ -12,7 +12,7 @@ const value: string = "contains";
 ### `number`
 
 ```typescript
-const value: number = contains;
+const value: number = NaN;
 ```
 
 ### `boolean`

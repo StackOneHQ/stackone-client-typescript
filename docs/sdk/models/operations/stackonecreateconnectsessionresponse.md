@@ -4,45 +4,8 @@
 
 ```typescript
 import { StackoneCreateConnectSessionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: StackoneCreateConnectSessionResponse = {
-  connectSessionTokenAuthLink: {
-    authLinkUrl: "https://well-to-do-slipper.info",
-    categories: [
-      ConnectSessionTokenAuthLinkCategories.Ats,
-      ConnectSessionTokenAuthLinkCategories.Hris,
-      ConnectSessionTokenAuthLinkCategories.Messaging,
-      ConnectSessionTokenAuthLinkCategories.Crm,
-      ConnectSessionTokenAuthLinkCategories.Iam,
-      ConnectSessionTokenAuthLinkCategories.Marketing,
-      ConnectSessionTokenAuthLinkCategories.Lms,
-      ConnectSessionTokenAuthLinkCategories.Screening,
-      ConnectSessionTokenAuthLinkCategories.Documents,
-      ConnectSessionTokenAuthLinkCategories.Ticketing,
-      ConnectSessionTokenAuthLinkCategories.Screening,
-      ConnectSessionTokenAuthLinkCategories.Messaging,
-    ],
-    createdAt: new Date("2023-12-03T04:42:35.999Z"),
-    externalTriggerToken: "f0bc3d88-2178-5423-8c81-b81d6c9da824",
-    id: 8180.31,
-    organizationId: 5531.73,
-    originOwnerId: "<id>",
-    originOwnerName: "<value>",
-    projectId: "<id>",
-    token: "<value>",
-  },
-  contentType: "<value>",
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 101,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: StackoneCreateConnectSessionResponse = {};
 ```
 
 ## Fields

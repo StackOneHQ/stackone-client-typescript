@@ -5,9 +5,14 @@ The duration unit of the work time
 ## Example Usage
 
 ```typescript
-import { CreateEmploymentApiModelDurationUnit } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CreateEmploymentApiModelDurationUnit,
+  CreateEmploymentApiModelSchemasWorkTimeValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CreateEmploymentApiModelDurationUnit = {};
+let value: CreateEmploymentApiModelDurationUnit = {
+  value: CreateEmploymentApiModelSchemasWorkTimeValue.Month,
+};
 ```
 
 ## Fields

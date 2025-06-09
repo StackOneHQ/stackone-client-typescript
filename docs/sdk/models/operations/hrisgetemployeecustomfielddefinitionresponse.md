@@ -5,31 +5,7 @@
 ```typescript
 import { HrisGetEmployeeCustomFieldDefinitionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetEmployeeCustomFieldDefinitionResponse = {
-  contentType: "<value>",
-  customFieldDefinitionResultApiModel: {
-    data: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      options: [
-        "Not Started",
-        "In Progress",
-        "Completed",
-        "Overdue",
-      ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      type: {},
-    },
-  },
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 200,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: HrisGetEmployeeCustomFieldDefinitionResponse = {};
 ```
 
 ## Fields

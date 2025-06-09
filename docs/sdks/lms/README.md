@@ -234,7 +234,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -442,15 +441,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsBatchUpsertContent failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -511,7 +507,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -542,15 +537,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsBatchUpsertCourse failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -685,7 +677,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -790,15 +781,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsCreateCollection failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -871,7 +859,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -914,15 +901,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsCreateUserAssignment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -989,7 +973,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1026,15 +1009,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsCreateUserCompletion failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1094,7 +1074,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1124,15 +1103,12 @@ async function run() {
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsDeleteUserCompletion failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1191,7 +1167,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1220,15 +1195,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetAssignment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1288,7 +1260,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1318,15 +1289,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetCategory failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1385,7 +1353,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1414,15 +1381,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetCompletion failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1482,7 +1446,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1512,15 +1475,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetContent failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1580,7 +1540,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1610,15 +1569,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetCourse failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1678,7 +1634,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1708,15 +1663,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetSkill failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1776,7 +1728,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1806,15 +1757,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetUser failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1874,7 +1822,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1904,15 +1851,12 @@ async function run() {
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetUserAssignment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1972,7 +1916,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2002,15 +1945,12 @@ async function run() {
     subResourceId: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsGetUserCompletion failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -2076,7 +2016,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2112,16 +2051,13 @@ async function run() {
     userId: "c28xyrc55866bvuv",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListAssignments failed:", res.error);
   }
 }
 
@@ -2186,7 +2122,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2220,16 +2155,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListCategories failed:", res.error);
   }
 }
 
@@ -2294,7 +2226,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2328,16 +2259,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListCompletions failed:", res.error);
   }
 }
 
@@ -2402,7 +2330,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2436,16 +2363,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListContent failed:", res.error);
   }
 }
 
@@ -2510,7 +2434,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2544,16 +2467,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListCourses failed:", res.error);
   }
 }
 
@@ -2618,7 +2538,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2652,16 +2571,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListSkills failed:", res.error);
   }
 }
 
@@ -2729,7 +2645,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2766,16 +2681,13 @@ async function run() {
     userId: "c28xyrc55866bvuv",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListUserAssignments failed:", res.error);
   }
 }
 
@@ -2841,7 +2753,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2876,16 +2787,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListUserCompletions failed:", res.error);
   }
 }
 
@@ -2950,7 +2858,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -2984,16 +2891,13 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("lmsListUsers failed:", res.error);
   }
 }
 
@@ -3101,7 +3005,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3178,15 +3081,12 @@ async function run() {
     id: "<id>",
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsUpdateCollection failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3323,7 +3223,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3430,15 +3329,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsUpsertContent failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3592,7 +3488,6 @@ async function run() {
     xAccountId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3716,15 +3611,12 @@ async function run() {
     },
     xAccountId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("lmsUpsertCourse failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

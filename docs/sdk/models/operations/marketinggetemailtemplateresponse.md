@@ -4,38 +4,8 @@
 
 ```typescript
 import { MarketingGetEmailTemplateResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: MarketingGetEmailTemplateResponse = {
-  contentType: "<value>",
-  emailTemplateResult: {
-    data: {
-      createdAt: new Date("2021-01-01T00:00:00.000Z"),
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      messages: [
-        {
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageType: {
-            sourceValue: "Email",
-            value: EmailMessagesValue.Email,
-          },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
-      ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      updatedAt: new Date("2021-01-01T00:00:00.000Z"),
-    },
-  },
-  headers: {
-    "key": [
-      "<value>",
-    ],
-  },
-  statusCode: 301,
-  rawResponse: new Response("{\"message\": \"hello world\"}", {
-    headers: { "Content-Type": "application/json" },
-  }),
-};
+let value: MarketingGetEmailTemplateResponse = {};
 ```
 
 ## Fields

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { StackOneError } from "./stackoneerror.js";
 
 export type NotImplementedResponseData = {
   /**
@@ -19,11 +20,7 @@ export type NotImplementedResponseData = {
   timestamp: Date;
 };
 
-export class NotImplementedResponse extends Error {
-  /**
-   * HTTP status code
-   */
-  statusCode: number;
+export class NotImplementedResponse extends StackOneError {
   /**
    * Timestamp when the error occurred
    */
@@ -32,14 +29,15 @@ export class NotImplementedResponse extends Error {
   /** The original data that was passed to this error instance. */
   data$: NotImplementedResponseData;
 
-  constructor(err: NotImplementedResponseData) {
+  constructor(
+    err: NotImplementedResponseData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.timestamp = err.timestamp;
 
     this.name = "NotImplementedResponse";
@@ -55,9 +53,16 @@ export const NotImplementedResponse$inboundSchema: z.ZodType<
   message: z.string(),
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new NotImplementedResponse(v);
+    return new NotImplementedResponse(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

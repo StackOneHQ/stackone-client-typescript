@@ -27,12 +27,7 @@ let value: AssessmentResult = {
     value: AssessmentResultValue.Passed,
   },
   resultUrl: "https://exmaple.com/result?id=xyz",
-  score: {
-    label: "Percentage",
-    max: "100",
-    min: "0",
-    value: "80",
-  },
+  score: null,
   startDate: new Date("2021-01-01T01:01:01.000Z"),
   submissionDate: new Date("2021-01-01T01:01:01.000Z"),
   summary: "Test is passed",

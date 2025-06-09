@@ -45,12 +45,7 @@ let value: Candidate = {
     "523e1234-e89b-fdd2-a456-762545121101",
   ],
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  socialLinks: [
-    {
-      type: "linkedin",
-      url: "https://www.linkedin.com/in/romainsestier/",
-    },
-  ],
+  socialLinks: null,
   title: "Software Engineer",
   unifiedCustomFields: {
     "my_project_custom_field_1": "REF-1236",

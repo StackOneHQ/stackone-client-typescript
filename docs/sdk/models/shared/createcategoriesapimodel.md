@@ -3,13 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { CreateCategoriesApiModel, CreateCategoriesApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CreateCategoriesApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateCategoriesApiModel = {
   id: "16873-IT345",
-  language: {
-    value: CreateCategoriesApiModelSchemasValue.EnGB,
-  },
+  language: null,
   name: "Information-Technology",
   unifiedCustomFields: {
     "my_project_custom_field_1": "REF-1236",

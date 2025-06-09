@@ -5,9 +5,12 @@ Visibility of the note
 ## Example Usage
 
 ```typescript
-import { AtsUpdateNotesRequestDtoVisibility } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsUpdateNotesRequestDtoValue, AtsUpdateNotesRequestDtoVisibility } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsUpdateNotesRequestDtoVisibility = {};
+let value: AtsUpdateNotesRequestDtoVisibility = {
+  sourceValue: "Public",
+  value: AtsUpdateNotesRequestDtoValue.Public,
+};
 ```
 
 ## Fields

@@ -14,7 +14,7 @@ const value: string = "Permanent";
 ### `number`
 
 ```typescript
-const value: number = Permanent;
+const value: number = NaN;
 ```
 
 ### `boolean`

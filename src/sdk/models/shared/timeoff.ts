@@ -286,9 +286,9 @@ export type TimeOff = {
    */
   employeeId?: string | null | undefined;
   /**
-   * Inclusive end date of the time off request (the time off includes this day).
+   * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
    */
-  endDate?: Date | null | undefined;
+  endDate?: string | null | undefined;
   /**
    * True if the end of the time off request ends half way through the day
    */
@@ -319,9 +319,9 @@ export type TimeOff = {
    */
   remoteTimeOffPolicyId?: string | null | undefined;
   /**
-   * The start date of the time off request
+   * The start date of the time off request (ISO8601 date-time without timezone)
    */
-  startDate?: Date | null | undefined;
+  startDate?: string | null | undefined;
   /**
    * True if the start of the time off request begins half way through the day
    */
@@ -1571,9 +1571,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
     ).optional(),
     duration: z.nullable(z.string()).optional(),
     employee_id: z.nullable(z.string()).optional(),
-    end_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
+    end_date: z.nullable(z.string()).optional(),
     end_half_day: z.nullable(z.union([z.boolean(), TimeOff2$inboundSchema]))
       .optional(),
     id: z.nullable(z.string()).optional(),
@@ -1583,9 +1581,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
     remote_employee_id: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
     remote_time_off_policy_id: z.nullable(z.string()).optional(),
-    start_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
+    start_date: z.nullable(z.string()).optional(),
     start_half_day: z.nullable(
       z.union([z.boolean(), TimeOffSchemas2$inboundSchema]),
     ).optional(),
@@ -1646,7 +1642,7 @@ export const TimeOff$outboundSchema: z.ZodType<
   createdDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   duration: z.nullable(z.string()).optional(),
   employeeId: z.nullable(z.string()).optional(),
-  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  endDate: z.nullable(z.string()).optional(),
   endHalfDay: z.nullable(z.union([z.boolean(), TimeOff2$outboundSchema]))
     .optional(),
   id: z.nullable(z.string()).optional(),
@@ -1656,7 +1652,7 @@ export const TimeOff$outboundSchema: z.ZodType<
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteTimeOffPolicyId: z.nullable(z.string()).optional(),
-  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  startDate: z.nullable(z.string()).optional(),
   startHalfDay: z.nullable(
     z.union([z.boolean(), TimeOffSchemas2$outboundSchema]),
   ).optional(),

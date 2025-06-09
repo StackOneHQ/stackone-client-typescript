@@ -14,7 +14,7 @@ const value: string = "RejectedByOrg";
 ### `number`
 
 ```typescript
-const value: number = RejectedByOrg;
+const value: number = NaN;
 ```
 
 ### `boolean`
