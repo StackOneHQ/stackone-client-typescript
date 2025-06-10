@@ -65,7 +65,7 @@ export type Request = {
 /**
  * The advanced log response data
  */
-export type Response = {
+export type StepLogResponse = {
   body?: any | null | undefined;
   /**
    * The custom mapping errors
@@ -142,7 +142,7 @@ export type StepLog = {
   /**
    * The advanced log response data
    */
-  response?: Response | null | undefined;
+  response?: StepLogResponse | null | undefined;
   /**
    * The requested service
    */
@@ -290,8 +290,8 @@ export function requestFromJSON(
 }
 
 /** @internal */
-export const Response$inboundSchema: z.ZodType<
-  Response,
+export const StepLogResponse$inboundSchema: z.ZodType<
+  StepLogResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -310,7 +310,7 @@ export const Response$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Response$Outbound = {
+export type StepLogResponse$Outbound = {
   body?: any | null | undefined;
   custom_mapping_errors?: Array<CustomMappingError$Outbound> | null | undefined;
   headers?: { [k: string]: any } | null | undefined;
@@ -319,10 +319,10 @@ export type Response$Outbound = {
 };
 
 /** @internal */
-export const Response$outboundSchema: z.ZodType<
-  Response$Outbound,
+export const StepLogResponse$outboundSchema: z.ZodType<
+  StepLogResponse$Outbound,
   z.ZodTypeDef,
-  Response
+  StepLogResponse
 > = z.object({
   body: z.nullable(z.any()).optional(),
   customMappingErrors: z.nullable(z.array(CustomMappingError$outboundSchema))
@@ -342,26 +342,28 @@ export const Response$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Response$ {
-  /** @deprecated use `Response$inboundSchema` instead. */
-  export const inboundSchema = Response$inboundSchema;
-  /** @deprecated use `Response$outboundSchema` instead. */
-  export const outboundSchema = Response$outboundSchema;
-  /** @deprecated use `Response$Outbound` instead. */
-  export type Outbound = Response$Outbound;
+export namespace StepLogResponse$ {
+  /** @deprecated use `StepLogResponse$inboundSchema` instead. */
+  export const inboundSchema = StepLogResponse$inboundSchema;
+  /** @deprecated use `StepLogResponse$outboundSchema` instead. */
+  export const outboundSchema = StepLogResponse$outboundSchema;
+  /** @deprecated use `StepLogResponse$Outbound` instead. */
+  export type Outbound = StepLogResponse$Outbound;
 }
 
-export function responseToJSON(response: Response): string {
-  return JSON.stringify(Response$outboundSchema.parse(response));
+export function stepLogResponseToJSON(
+  stepLogResponse: StepLogResponse,
+): string {
+  return JSON.stringify(StepLogResponse$outboundSchema.parse(stepLogResponse));
 }
 
-export function responseFromJSON(
+export function stepLogResponseFromJSON(
   jsonString: string,
-): SafeParseResult<Response, SDKValidationError> {
+): SafeParseResult<StepLogResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Response$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Response' from JSON`,
+    (x) => StepLogResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StepLogResponse' from JSON`,
   );
 }
 
@@ -384,7 +386,8 @@ export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
     request: z.nullable(z.lazy(() => Request$inboundSchema)).optional(),
     request_id: z.nullable(z.string()).optional(),
     resource: z.nullable(z.string()).optional(),
-    response: z.nullable(z.lazy(() => Response$inboundSchema)).optional(),
+    response: z.nullable(z.lazy(() => StepLogResponse$inboundSchema))
+      .optional(),
     service: z.nullable(z.string()).optional(),
     start_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -423,7 +426,7 @@ export type StepLog$Outbound = {
   request?: Request$Outbound | null | undefined;
   request_id?: string | null | undefined;
   resource?: string | null | undefined;
-  response?: Response$Outbound | null | undefined;
+  response?: StepLogResponse$Outbound | null | undefined;
   service?: string | null | undefined;
   start_time?: string | null | undefined;
   status?: number | null | undefined;
@@ -452,7 +455,7 @@ export const StepLog$outboundSchema: z.ZodType<
   request: z.nullable(z.lazy(() => Request$outboundSchema)).optional(),
   requestId: z.nullable(z.string()).optional(),
   resource: z.nullable(z.string()).optional(),
-  response: z.nullable(z.lazy(() => Response$outboundSchema)).optional(),
+  response: z.nullable(z.lazy(() => StepLogResponse$outboundSchema)).optional(),
   service: z.nullable(z.string()).optional(),
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(z.number()).optional(),

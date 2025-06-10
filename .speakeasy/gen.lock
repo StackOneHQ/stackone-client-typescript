@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 53841e1168e991c94870239c82f07baf
+  docChecksum: a58ff307155dbf17e6f3736f89886636
   docVersion: 1.0.0
-  speakeasyVersion: 1.557.1
-  generationVersion: 2.623.2
-  releaseVersion: 4.20.2
-  configChecksum: a0cae575a0ea5397dd20284e0d83c492
+  speakeasyVersion: 1.559.0
+  generationVersion: 2.624.0
+  releaseVersion: 4.20.3
+  configChecksum: 8e5d30de50eca3b6fdb39f064068baab
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -33,7 +33,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.8
+    unions: 2.85.9
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -1840,6 +1840,7 @@ generatedFiles:
   - docs/sdk/models/shared/statusreason.md
   - docs/sdk/models/shared/steplog.md
   - docs/sdk/models/shared/steplogpartial.md
+  - docs/sdk/models/shared/steplogresponse.md
   - docs/sdk/models/shared/steplogspaginated.md
   - docs/sdk/models/shared/task.md
   - docs/sdk/models/shared/task4.md

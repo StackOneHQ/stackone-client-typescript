@@ -9,10 +9,12 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Body = string | { [k: string]: any } | Array<number>;
 
+export type Response = { [k: string]: any } | Array<any> | string;
+
 export type RawResponse = {
   body?: string | { [k: string]: any } | Array<number> | null | undefined;
   method: string;
-  response?: { [k: string]: any } | null | undefined;
+  response?: { [k: string]: any } | Array<any> | string | null | undefined;
   url: string;
 };
 
@@ -55,6 +57,50 @@ export function bodyFromJSON(
 }
 
 /** @internal */
+export const Response$inboundSchema: z.ZodType<
+  Response,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.record(z.any()), z.array(z.any()), z.string()]);
+
+/** @internal */
+export type Response$Outbound = { [k: string]: any } | Array<any> | string;
+
+/** @internal */
+export const Response$outboundSchema: z.ZodType<
+  Response$Outbound,
+  z.ZodTypeDef,
+  Response
+> = z.union([z.record(z.any()), z.array(z.any()), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Response$ {
+  /** @deprecated use `Response$inboundSchema` instead. */
+  export const inboundSchema = Response$inboundSchema;
+  /** @deprecated use `Response$outboundSchema` instead. */
+  export const outboundSchema = Response$outboundSchema;
+  /** @deprecated use `Response$Outbound` instead. */
+  export type Outbound = Response$Outbound;
+}
+
+export function responseToJSON(response: Response): string {
+  return JSON.stringify(Response$outboundSchema.parse(response));
+}
+
+export function responseFromJSON(
+  jsonString: string,
+): SafeParseResult<Response, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Response$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Response' from JSON`,
+  );
+}
+
+/** @internal */
 export const RawResponse$inboundSchema: z.ZodType<
   RawResponse,
   z.ZodTypeDef,
@@ -64,7 +110,9 @@ export const RawResponse$inboundSchema: z.ZodType<
     z.union([z.string(), z.record(z.any()), z.array(z.number().int())]),
   ).optional(),
   method: z.string(),
-  response: z.nullable(z.record(z.any())).optional(),
+  response: z.nullable(
+    z.union([z.record(z.any()), z.array(z.any()), z.string()]),
+  ).optional(),
   url: z.string(),
 });
 
@@ -72,7 +120,7 @@ export const RawResponse$inboundSchema: z.ZodType<
 export type RawResponse$Outbound = {
   body?: string | { [k: string]: any } | Array<number> | null | undefined;
   method: string;
-  response?: { [k: string]: any } | null | undefined;
+  response?: { [k: string]: any } | Array<any> | string | null | undefined;
   url: string;
 };
 
@@ -86,7 +134,9 @@ export const RawResponse$outboundSchema: z.ZodType<
     z.union([z.string(), z.record(z.any()), z.array(z.number().int())]),
   ).optional(),
   method: z.string(),
-  response: z.nullable(z.record(z.any())).optional(),
+  response: z.nullable(
+    z.union([z.record(z.any()), z.array(z.any()), z.string()]),
+  ).optional(),
   url: z.string(),
 });
 
