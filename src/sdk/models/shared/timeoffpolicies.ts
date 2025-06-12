@@ -77,16 +77,28 @@ export type TimeOffPoliciesSchemasSourceValue =
  * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
  */
 export enum TimeOffPoliciesSchemasValue {
+  Sick = "sick",
+  UnmappedValue = "unmapped_value",
+  Vacation = "vacation",
+  LongTermDisability = "long_term_disability",
+  ShortTermDisability = "short_term_disability",
+  Absent = "absent",
+  CompTime = "comp_time",
+  Training = "training",
+  AnnualLeave = "annual_leave",
+  LeaveOfAbsence = "leave_of_absence",
+  Break = "break",
+  ChildCareLeave = "child_care_leave",
+  MaternityLeave = "maternity_leave",
+  JuryDuty = "jury_duty",
+  Sabbatical = "sabbatical",
+  Accident = "accident",
   Paid = "paid",
   Unpaid = "unpaid",
   Holiday = "holiday",
-  Vacation = "vacation",
-  Sick = "sick",
   Personal = "personal",
   InLieu = "in_lieu",
   Bereavement = "bereavement",
-  JuryDuty = "jury_duty",
-  UnmappedValue = "unmapped_value",
 }
 /**
  * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value

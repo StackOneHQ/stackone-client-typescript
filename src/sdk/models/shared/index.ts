@@ -225,6 +225,7 @@ export * from "./lmsbatchupsertcourserequestdto.js";
 export * from "./lmscreateassignmentrequestdto.js";
 export * from "./lmscreatecollectionrequestdto.js";
 export * from "./lmscreatecompletionrequestdto.js";
+export * from "./lmscreatecontentrequestdto.js";
 export * from "./lmsupsertcontentrequestdto.js";
 export * from "./lmsupsertcourserequestdto.js";
 export * from "./lmsuser.js";

@@ -327,6 +327,7 @@ run();
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
 * [updateCollection](docs/sdks/lms/README.md#updatecollection) - Update Collection
+* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
 * [upsertCourse](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 
@@ -906,6 +907,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsListUserCompletions`](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 - [`lmsListUsers`](docs/sdks/lms/README.md#listusers) - List Users
 - [`lmsUpdateCollection`](docs/sdks/lms/README.md#updatecollection) - Update Collection
+- [`lmsUpdateContent`](docs/sdks/lms/README.md#updatecontent) - Update Content
 - [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
 - [`lmsUpsertCourse`](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 - [`marketingCreateContentBlock`](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block

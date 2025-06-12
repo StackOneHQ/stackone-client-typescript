@@ -189,6 +189,7 @@ export * from "./lmslistuserassignments.js";
 export * from "./lmslistusercompletions.js";
 export * from "./lmslistusers.js";
 export * from "./lmsupdatecollection.js";
+export * from "./lmsupdatecontent.js";
 export * from "./lmsupsertcontent.js";
 export * from "./lmsupsertcourse.js";
 export * from "./marketingcreatecontentblock.js";
