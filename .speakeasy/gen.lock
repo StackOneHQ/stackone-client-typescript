@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: a58ff307155dbf17e6f3736f89886636
+  docChecksum: 502f91a4c5eff125c3079fbe98a4b719
   docVersion: 1.0.0
-  speakeasyVersion: 1.559.0
-  generationVersion: 2.624.0
-  releaseVersion: 4.20.3
-  configChecksum: 8e5d30de50eca3b6fdb39f064068baab
+  speakeasyVersion: 1.561.0
+  generationVersion: 2.628.0
+  releaseVersion: 4.20.4
+  configChecksum: acbb2efe4e49aef2003626d974236d79
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.10
+    core: 3.21.11
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -506,6 +506,8 @@ generatedFiles:
   - docs/sdk/models/operations/lmslistusersresponse.md
   - docs/sdk/models/operations/lmsupdatecollectionrequest.md
   - docs/sdk/models/operations/lmsupdatecollectionresponse.md
+  - docs/sdk/models/operations/lmsupdatecontentrequest.md
+  - docs/sdk/models/operations/lmsupdatecontentresponse.md
   - docs/sdk/models/operations/lmsupsertcontentrequest.md
   - docs/sdk/models/operations/lmsupsertcontentresponse.md
   - docs/sdk/models/operations/lmsupsertcourserequest.md
@@ -1654,6 +1656,11 @@ generatedFiles:
   - docs/sdk/models/shared/lmscreatecompletionrequestdtoresult.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtosourcevalue.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtovalue.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdto.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdto4.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtocontenttype.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtosourcevalue.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtovalue.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto4.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtocontenttype.md
@@ -2263,6 +2270,7 @@ generatedFiles:
   - src/funcs/lmsListUserCompletions.ts
   - src/funcs/lmsListUsers.ts
   - src/funcs/lmsUpdateCollection.ts
+  - src/funcs/lmsUpdateContent.ts
   - src/funcs/lmsUpsertContent.ts
   - src/funcs/lmsUpsertCourse.ts
   - src/funcs/marketingCreateContentBlock.ts
@@ -2548,6 +2556,7 @@ generatedFiles:
   - src/sdk/models/operations/lmslistusercompletions.ts
   - src/sdk/models/operations/lmslistusers.ts
   - src/sdk/models/operations/lmsupdatecollection.ts
+  - src/sdk/models/operations/lmsupdatecontent.ts
   - src/sdk/models/operations/lmsupsertcontent.ts
   - src/sdk/models/operations/lmsupsertcourse.ts
   - src/sdk/models/operations/marketingcreatecontentblock.ts
@@ -2830,6 +2839,7 @@ generatedFiles:
   - src/sdk/models/shared/lmscreateassignmentrequestdto.ts
   - src/sdk/models/shared/lmscreatecollectionrequestdto.ts
   - src/sdk/models/shared/lmscreatecompletionrequestdto.ts
+  - src/sdk/models/shared/lmscreatecontentrequestdto.ts
   - src/sdk/models/shared/lmsupsertcontentrequestdto.ts
   - src/sdk/models/shared/lmsupsertcourserequestdto.ts
   - src/sdk/models/shared/lmsuser.ts
@@ -11827,6 +11837,42 @@ examples:
           application/json: {"data": [{"id": "001", "name": "Task", "parent_collection_id": "collection-001"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}, {"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  lms_update_content:
+    speakeasy-default-lms-update-content:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"active": true, "additional_data": [{"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}], "categories": [{"name": "Technology"}], "content_url": "https://www.youtube.com/watch?v=16873", "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}], "localizations": [{"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer Lv 1"}, {"description": "This video acts as learning content for software engineers.", "title": "Software Engineer Lv 1"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}
+      responses:
+        "201":
+          application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
           application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
         "403":

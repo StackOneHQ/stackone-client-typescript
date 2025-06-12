@@ -6,7 +6,7 @@
 import { HrisCreateTimeOffRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateTimeOffRequestDtoSchemasValue =
-  HrisCreateTimeOffRequestDtoSchemasValue.LongTermDisability;
+  HrisCreateTimeOffRequestDtoSchemasValue.Absent;
 ```
 
 ## Values
@@ -29,7 +29,12 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `ChildCareLeave`       | child_care_leave       |
 | `MaternityLeave`       | maternity_leave        |
 | `JuryDuty`             | jury_duty              |
-| `BereavementLeave`     | bereavement_leave      |
 | `Sabbatical`           | sabbatical             |
 | `Accident`             | accident               |
+| `Paid`                 | paid                   |
+| `Unpaid`               | unpaid                 |
+| `Holiday`              | holiday                |
+| `Personal`             | personal               |
+| `InLieu`               | in_lieu                |
+| `Bereavement`          | bereavement            |
 | -                      | `Unrecognized<string>` |

@@ -27,6 +27,7 @@ import { lmsListUserAssignments } from "../funcs/lmsListUserAssignments.js";
 import { lmsListUserCompletions } from "../funcs/lmsListUserCompletions.js";
 import { lmsListUsers } from "../funcs/lmsListUsers.js";
 import { lmsUpdateCollection } from "../funcs/lmsUpdateCollection.js";
+import { lmsUpdateContent } from "../funcs/lmsUpdateContent.js";
 import { lmsUpsertContent } from "../funcs/lmsUpsertContent.js";
 import { lmsUpsertCourse } from "../funcs/lmsUpsertCourse.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -397,6 +398,20 @@ export class Lms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.LmsUpdateCollectionResponse> {
     return unwrapAsync(lmsUpdateCollection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Content
+   */
+  async updateContent(
+    request: operations.LmsUpdateContentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.LmsUpdateContentResponse> {
+    return unwrapAsync(lmsUpdateContent(
       this,
       request,
       options,
