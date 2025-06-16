@@ -7,6 +7,8 @@ import {
   AtsCreateApplicationRequestDto,
   AtsCreateApplicationRequestDtoValue,
   CreateAnswerValue,
+  UnifiedUploadRequestDtoSchemasValue,
+  UnifiedUploadRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateApplicationRequestDto = {
@@ -53,6 +55,28 @@ let value: AtsCreateApplicationRequestDto = {
     },
   },
   candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+  documents: [
+    {
+      category: {
+        sourceValue:
+          "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
+        value: "reports, resumes",
+      },
+      categoryId: "6530",
+      confidential: {
+        sourceValue: "public",
+        value: UnifiedUploadRequestDtoValue.True,
+      },
+      content:
+        "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+      fileFormat: {
+        sourceValue: "application/pdf",
+        value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+      },
+      name: "weather-forecast",
+      path: "/path/to/file",
+    },
+  ],
   jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
   jobPostingId: "1c702a20-8de8-4d03-ac18-cbf4ac42eb51",
   locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
@@ -76,10 +100,7 @@ let value: AtsCreateApplicationRequestDto = {
       id: "right_to_work",
     },
   ],
-  source: {
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    name: "LinkedIn",
-  },
+  source: null,
 };
 ```
 
@@ -90,6 +111,7 @@ let value: AtsCreateApplicationRequestDto = {
 | `applicationStatus`                                                                                                                       | [shared.AtsCreateApplicationRequestDtoApplicationStatus](../../../sdk/models/shared/atscreateapplicationrequestdtoapplicationstatus.md)   | :heavy_minus_sign:                                                                                                                        | N/A                                                                                                                                       |                                                                                                                                           |
 | `candidate`                                                                                                                               | [shared.AtsCreateApplicationRequestDtoCandidate](../../../sdk/models/shared/atscreateapplicationrequestdtocandidate.md)                   | :heavy_minus_sign:                                                                                                                        | Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application. |                                                                                                                                           |
 | `candidateId`                                                                                                                             | *string*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Unique identifier of the candidate. Provide this OR candidate, but not both.                                                              | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                                                                      |
+| `documents`                                                                                                                               | [shared.UnifiedUploadRequestDto](../../../sdk/models/shared/unifieduploadrequestdto.md)[]                                                 | :heavy_minus_sign:                                                                                                                        | Document Properties. Providing this attempts to upload files with the application.                                                        |                                                                                                                                           |
 | `jobId`                                                                                                                                   | *string*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Unique identifier of the job                                                                                                              | 4071538b-3cac-4fbf-ac76-f78ed250ffdd                                                                                                      |
 | `jobPostingId`                                                                                                                            | *string*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Unique identifier of the job posting that is associated with application                                                                  | 1c702a20-8de8-4d03-ac18-cbf4ac42eb51                                                                                                      |
 | `locationId`                                                                                                                              | *string*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Unique identifier of the location                                                                                                         | dd8d41d1-5eb8-4408-9c87-9ba44604eae4                                                                                                      |
