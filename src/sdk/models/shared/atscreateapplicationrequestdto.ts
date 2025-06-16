@@ -36,6 +36,12 @@ import {
   SocialLink$Outbound,
   SocialLink$outboundSchema,
 } from "./sociallink.js";
+import {
+  UnifiedUploadRequestDto,
+  UnifiedUploadRequestDto$inboundSchema,
+  UnifiedUploadRequestDto$Outbound,
+  UnifiedUploadRequestDto$outboundSchema,
+} from "./unifieduploadrequestdto.js";
 
 export type AtsCreateApplicationRequestDto4 = {};
 
@@ -187,6 +193,10 @@ export type AtsCreateApplicationRequestDto = {
    * Unique identifier of the candidate. Provide this OR candidate, but not both.
    */
   candidateId?: string | null | undefined;
+  /**
+   * Document Properties. Providing this attempts to upload files with the application.
+   */
+  documents?: Array<UnifiedUploadRequestDto> | null | undefined;
   /**
    * Unique identifier of the job
    */
@@ -678,6 +688,8 @@ export const AtsCreateApplicationRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => AtsCreateApplicationRequestDtoCandidate$inboundSchema),
   ).optional(),
   candidate_id: z.nullable(z.string()).optional(),
+  documents: z.nullable(z.array(UnifiedUploadRequestDto$inboundSchema))
+    .optional(),
   job_id: z.nullable(z.string()).optional(),
   job_posting_id: z.nullable(z.string()).optional(),
   location_id: z.nullable(z.string()).optional(),
@@ -708,6 +720,7 @@ export type AtsCreateApplicationRequestDto$Outbound = {
     | null
     | undefined;
   candidate_id?: string | null | undefined;
+  documents?: Array<UnifiedUploadRequestDto$Outbound> | null | undefined;
   job_id?: string | null | undefined;
   job_posting_id?: string | null | undefined;
   location_id?: string | null | undefined;
@@ -731,6 +744,8 @@ export const AtsCreateApplicationRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => AtsCreateApplicationRequestDtoCandidate$outboundSchema),
   ).optional(),
   candidateId: z.nullable(z.string()).optional(),
+  documents: z.nullable(z.array(UnifiedUploadRequestDto$outboundSchema))
+    .optional(),
   jobId: z.nullable(z.string()).optional(),
   jobPostingId: z.nullable(z.string()).optional(),
   locationId: z.nullable(z.string()).optional(),
