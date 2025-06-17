@@ -34,8 +34,8 @@ export type SmsMessageContentsSchemas = {
 
 export type MessageContent =
   | SmsMessageContentsSchemas
-  | PushMessageContentsSchemas
-  | Schemas;
+  | Schemas
+  | PushMessageContentsSchemas;
 
 export type CreateMessage4 = {};
 
@@ -99,8 +99,8 @@ export type CreateMessage = {
   id?: string | null | undefined;
   messageContent?:
     | SmsMessageContentsSchemas
-    | PushMessageContentsSchemas
     | Schemas
+    | PushMessageContentsSchemas
     | null
     | undefined;
   /**
@@ -112,8 +112,8 @@ export type CreateMessage = {
 
 export type MessageMessageContent =
   | SmsMessageContentsSchemas
-  | PushMessageContentsSchemas
-  | Schemas;
+  | Schemas
+  | PushMessageContentsSchemas;
 
 export type Message4 = {};
 
@@ -177,8 +177,8 @@ export type Message = {
   id?: string | null | undefined;
   messageContent?:
     | SmsMessageContentsSchemas
-    | PushMessageContentsSchemas
     | Schemas
+    | PushMessageContentsSchemas
     | null
     | undefined;
   /**
@@ -383,15 +383,15 @@ export const MessageContent$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
-  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
   z.lazy(() => Schemas$inboundSchema),
+  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
 ]);
 
 /** @internal */
 export type MessageContent$Outbound =
   | SmsMessageContentsSchemas$Outbound
-  | PushMessageContentsSchemas$Outbound
-  | Schemas$Outbound;
+  | Schemas$Outbound
+  | PushMessageContentsSchemas$Outbound;
 
 /** @internal */
 export const MessageContent$outboundSchema: z.ZodType<
@@ -400,8 +400,8 @@ export const MessageContent$outboundSchema: z.ZodType<
   MessageContent
 > = z.union([
   z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
-  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
   z.lazy(() => Schemas$outboundSchema),
+  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
 ]);
 
 /**
@@ -666,8 +666,8 @@ export const CreateMessage$inboundSchema: z.ZodType<
   message_content: z.nullable(
     z.union([
       z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
-      z.lazy(() => PushMessageContentsSchemas$inboundSchema),
       z.lazy(() => Schemas$inboundSchema),
+      z.lazy(() => PushMessageContentsSchemas$inboundSchema),
     ]),
   ).optional(),
   message_type: z.nullable(z.lazy(() => MessageType$inboundSchema)).optional(),
@@ -684,8 +684,8 @@ export type CreateMessage$Outbound = {
   id?: string | null | undefined;
   message_content?:
     | SmsMessageContentsSchemas$Outbound
-    | PushMessageContentsSchemas$Outbound
     | Schemas$Outbound
+    | PushMessageContentsSchemas$Outbound
     | null
     | undefined;
   message_type?: MessageType$Outbound | null | undefined;
@@ -702,8 +702,8 @@ export const CreateMessage$outboundSchema: z.ZodType<
   messageContent: z.nullable(
     z.union([
       z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
-      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
       z.lazy(() => Schemas$outboundSchema),
+      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
     ]),
   ).optional(),
   messageType: z.nullable(z.lazy(() => MessageType$outboundSchema)).optional(),
@@ -749,15 +749,15 @@ export const MessageMessageContent$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
-  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
   z.lazy(() => Schemas$inboundSchema),
+  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
 ]);
 
 /** @internal */
 export type MessageMessageContent$Outbound =
   | SmsMessageContentsSchemas$Outbound
-  | PushMessageContentsSchemas$Outbound
-  | Schemas$Outbound;
+  | Schemas$Outbound
+  | PushMessageContentsSchemas$Outbound;
 
 /** @internal */
 export const MessageMessageContent$outboundSchema: z.ZodType<
@@ -766,8 +766,8 @@ export const MessageMessageContent$outboundSchema: z.ZodType<
   MessageMessageContent
 > = z.union([
   z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
-  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
   z.lazy(() => Schemas$outboundSchema),
+  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
 ]);
 
 /**
@@ -1037,8 +1037,8 @@ export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
     message_content: z.nullable(
       z.union([
         z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
-        z.lazy(() => PushMessageContentsSchemas$inboundSchema),
         z.lazy(() => Schemas$inboundSchema),
+        z.lazy(() => PushMessageContentsSchemas$inboundSchema),
       ]),
     ).optional(),
     message_type: z.nullable(z.lazy(() => MessageMessageType$inboundSchema))
@@ -1058,8 +1058,8 @@ export type Message$Outbound = {
   id?: string | null | undefined;
   message_content?:
     | SmsMessageContentsSchemas$Outbound
-    | PushMessageContentsSchemas$Outbound
     | Schemas$Outbound
+    | PushMessageContentsSchemas$Outbound
     | null
     | undefined;
   message_type?: MessageMessageType$Outbound | null | undefined;
@@ -1077,8 +1077,8 @@ export const Message$outboundSchema: z.ZodType<
   messageContent: z.nullable(
     z.union([
       z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
-      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
       z.lazy(() => Schemas$outboundSchema),
+      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
     ]),
   ).optional(),
   messageType: z.nullable(z.lazy(() => MessageMessageType$outboundSchema))
