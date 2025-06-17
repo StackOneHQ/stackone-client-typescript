@@ -168,6 +168,10 @@ export type Completion = {
    */
   result?: CompletionSchemasResult | null | undefined;
   /**
+   * ISO 8601 duration format representing the time spent on completing the learning object
+   */
+  timeSpent?: string | null | undefined;
+  /**
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
@@ -674,6 +678,7 @@ export const Completion$inboundSchema: z.ZodType<
   remote_user_id: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$inboundSchema))
     .optional(),
+  time_spent: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(z.string()).optional(),
   user_id: z.nullable(z.string()).optional(),
@@ -695,6 +700,7 @@ export const Completion$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
     "remote_learning_object_id": "remoteLearningObjectId",
     "remote_user_id": "remoteUserId",
+    "time_spent": "timeSpent",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",
     "user_id": "userId",
@@ -724,6 +730,7 @@ export type Completion$Outbound = {
   remote_learning_object_id?: string | null | undefined;
   remote_user_id?: string | null | undefined;
   result?: CompletionSchemasResult$Outbound | null | undefined;
+  time_spent?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   updated_at?: string | null | undefined;
   user_id?: string | null | undefined;
@@ -756,6 +763,7 @@ export const Completion$outboundSchema: z.ZodType<
   remoteUserId: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$outboundSchema))
     .optional(),
+  timeSpent: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   updatedAt: z.nullable(z.string()).optional(),
   userId: z.nullable(z.string()).optional(),
@@ -777,6 +785,7 @@ export const Completion$outboundSchema: z.ZodType<
     remoteId: "remote_id",
     remoteLearningObjectId: "remote_learning_object_id",
     remoteUserId: "remote_user_id",
+    timeSpent: "time_spent",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",
     userId: "user_id",

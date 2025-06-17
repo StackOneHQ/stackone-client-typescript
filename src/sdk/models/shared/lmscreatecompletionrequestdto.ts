@@ -79,6 +79,10 @@ export type LmsCreateCompletionRequestDto = {
    * The result of the completion
    */
   result?: LmsCreateCompletionRequestDtoResult | null | undefined;
+  /**
+   * ISO 8601 duration format representing the time spent on completing the learning object
+   */
+  timeSpent?: string | null | undefined;
 };
 
 /** @internal */
@@ -350,6 +354,7 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
   result: z.nullable(
     z.lazy(() => LmsCreateCompletionRequestDtoResult$inboundSchema),
   ).optional(),
+  time_spent: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "completed_at": "completedAt",
@@ -357,6 +362,7 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
     "content_id": "contentId",
     "learning_object_external_reference": "learningObjectExternalReference",
     "learning_object_id": "learningObjectId",
+    "time_spent": "timeSpent",
   });
 });
 
@@ -369,6 +375,7 @@ export type LmsCreateCompletionRequestDto$Outbound = {
   learning_object_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   result?: LmsCreateCompletionRequestDtoResult$Outbound | null | undefined;
+  time_spent?: string | null | undefined;
 };
 
 /** @internal */
@@ -386,6 +393,7 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
   result: z.nullable(
     z.lazy(() => LmsCreateCompletionRequestDtoResult$outboundSchema),
   ).optional(),
+  timeSpent: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     completedAt: "completed_at",
@@ -393,6 +401,7 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
     contentId: "content_id",
     learningObjectExternalReference: "learning_object_external_reference",
     learningObjectId: "learning_object_id",
+    timeSpent: "time_spent",
   });
 });
 
