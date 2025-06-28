@@ -17,5 +17,5 @@ let value: RawResponse = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `body`             | *shared.Body*      | :heavy_minus_sign: | N/A                |
 | `method`           | *string*           | :heavy_check_mark: | N/A                |
-| `response`         | *shared.Response*  | :heavy_minus_sign: | N/A                |
+| `response`         | *shared.ResponseT* | :heavy_minus_sign: | N/A                |
 | `url`              | *string*           | :heavy_check_mark: | N/A                |

@@ -39,6 +39,9 @@ import {
 
 /**
  * List Comments
+ *
+ * @remarks
+ * Retrieve a paginated list of comments for a ticket.
  */
 export function ticketingListComments(
   client: StackOneCore,

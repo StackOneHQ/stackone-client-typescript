@@ -5,6 +5,11 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,6 +33,19 @@ export enum Categories {
  */
 export type Metadata = {};
 
+/**
+ * The connect session account type
+ */
+export enum ConnectSessionType {
+  Production = "production",
+  Test = "test",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The connect session account type
+ */
+export type ConnectSessionTypeOpen = OpenEnum<typeof ConnectSessionType>;
+
 export type ConnectSession = {
   accountId?: string | null | undefined;
   categories?: Array<Categories> | null | undefined;
@@ -48,6 +66,10 @@ export type ConnectSession = {
   originUsername?: string | null | undefined;
   projectId: string;
   provider?: string | null | undefined;
+  /**
+   * The connect session account type
+   */
+  type?: ConnectSessionTypeOpen | null | undefined;
 };
 
 /** @internal */
@@ -114,6 +136,38 @@ export function metadataFromJSON(
 }
 
 /** @internal */
+export const ConnectSessionType$inboundSchema: z.ZodType<
+  ConnectSessionTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ConnectSessionType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ConnectSessionType$outboundSchema: z.ZodType<
+  ConnectSessionTypeOpen,
+  z.ZodTypeDef,
+  ConnectSessionTypeOpen
+> = z.union([
+  z.nativeEnum(ConnectSessionType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConnectSessionType$ {
+  /** @deprecated use `ConnectSessionType$inboundSchema` instead. */
+  export const inboundSchema = ConnectSessionType$inboundSchema;
+  /** @deprecated use `ConnectSessionType$outboundSchema` instead. */
+  export const outboundSchema = ConnectSessionType$outboundSchema;
+}
+
+/** @internal */
 export const ConnectSession$inboundSchema: z.ZodType<
   ConnectSession,
   z.ZodTypeDef,
@@ -132,6 +186,7 @@ export const ConnectSession$inboundSchema: z.ZodType<
   origin_username: z.nullable(z.string()).optional(),
   project_id: z.string(),
   provider: z.nullable(z.string()).optional(),
+  type: z.nullable(ConnectSessionType$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
@@ -160,6 +215,7 @@ export type ConnectSession$Outbound = {
   origin_username?: string | null | undefined;
   project_id: string;
   provider?: string | null | undefined;
+  type?: string | null | undefined;
 };
 
 /** @internal */
@@ -181,6 +237,7 @@ export const ConnectSession$outboundSchema: z.ZodType<
   originUsername: z.nullable(z.string()).optional(),
   projectId: z.string(),
   provider: z.nullable(z.string()).optional(),
+  type: z.nullable(ConnectSessionType$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",

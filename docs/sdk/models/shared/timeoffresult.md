@@ -8,6 +8,7 @@ import { TimeOffResult, TimeOffSchemasPolicyTypeValue, TimeOffSchemasPolicyValue
 let value: TimeOffResult = {
   data: {
     approverId: "1687-4",
+    comment: "Taking a day off for personal reasons",
     createdDate: new Date("2021-01-01T01:01:01.000Z"),
     duration: "P3Y6M4DT12H30M5S",
     employeeId: "1687-3",

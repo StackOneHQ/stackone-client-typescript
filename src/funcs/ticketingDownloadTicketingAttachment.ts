@@ -27,6 +27,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Download Attachment
+ *
+ * @remarks
+ * Download the attachment file from a ticket.
  */
 export function ticketingDownloadTicketingAttachment(
   client: StackOneCore,

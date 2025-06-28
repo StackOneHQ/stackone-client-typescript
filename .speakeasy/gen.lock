@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e6032ec7f4da034086e8e850366cc872
+  docChecksum: de3b06cae06289f1fbef62951e036dbc
   docVersion: 1.0.0
-  speakeasyVersion: 1.563.4
-  generationVersion: 2.630.6
-  releaseVersion: 4.20.6
-  configChecksum: b606a5c4c95681092d62d3163006eaf7
+  speakeasyVersion: 1.571.1
+  generationVersion: 2.640.2
+  releaseVersion: 4.21.0
+  configChecksum: 328bc9c9ad754e3297c48d51a5d9e790
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
+    constsAndDefaults: 0.1.12
     core: 3.21.11
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -26,6 +26,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
     groups: 2.81.2
+    inputOutputModels: 2.82.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -33,7 +34,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.10
+    unions: 2.85.11
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -90,14 +91,10 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationscorecardresponse.md
   - docs/sdk/models/operations/atsgetassessmentspackagerequest.md
   - docs/sdk/models/operations/atsgetassessmentspackageresponse.md
-  - docs/sdk/models/operations/atsgetassessmentsrequestrequest.md
-  - docs/sdk/models/operations/atsgetassessmentsrequestresponse.md
   - docs/sdk/models/operations/atsgetassessmentsresultrequest.md
   - docs/sdk/models/operations/atsgetassessmentsresultresponse.md
   - docs/sdk/models/operations/atsgetbackgroundcheckpackagerequest.md
   - docs/sdk/models/operations/atsgetbackgroundcheckpackageresponse.md
-  - docs/sdk/models/operations/atsgetbackgroundcheckrequestrequest.md
-  - docs/sdk/models/operations/atsgetbackgroundcheckrequestresponse.md
   - docs/sdk/models/operations/atsgetbackgroundcheckresultrequest.md
   - docs/sdk/models/operations/atsgetbackgroundcheckresultresponse.md
   - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionqueryparamfilter.md
@@ -157,9 +154,6 @@ generatedFiles:
   - docs/sdk/models/operations/atslistbackgroundcheckpackagesqueryparamfilter.md
   - docs/sdk/models/operations/atslistbackgroundcheckpackagesrequest.md
   - docs/sdk/models/operations/atslistbackgroundcheckpackagesresponse.md
-  - docs/sdk/models/operations/atslistbackgroundcheckrequestqueryparamfilter.md
-  - docs/sdk/models/operations/atslistbackgroundcheckrequestrequest.md
-  - docs/sdk/models/operations/atslistbackgroundcheckrequestresponse.md
   - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsqueryparamfilter.md
   - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsrequest.md
   - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsresponse.md
@@ -680,16 +674,6 @@ generatedFiles:
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationvalue.md
   - docs/sdk/models/shared/archived.md
-  - docs/sdk/models/shared/assessmentorder.md
-  - docs/sdk/models/shared/assessmentorder4.md
-  - docs/sdk/models/shared/assessmentorderapplication.md
-  - docs/sdk/models/shared/assessmentorderapplicationstatus.md
-  - docs/sdk/models/shared/assessmentordercandidate.md
-  - docs/sdk/models/shared/assessmentorderjob.md
-  - docs/sdk/models/shared/assessmentorderpackage.md
-  - docs/sdk/models/shared/assessmentorderresult.md
-  - docs/sdk/models/shared/assessmentordersourcevalue.md
-  - docs/sdk/models/shared/assessmentordervalue.md
   - docs/sdk/models/shared/assessmentpackage.md
   - docs/sdk/models/shared/assessmentpackagepaginated.md
   - docs/sdk/models/shared/assessmentpackageresult.md
@@ -722,7 +706,6 @@ generatedFiles:
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtocandidate.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtojob.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtopackage.md
-  - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtorequester.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtovalue.md
   - docs/sdk/models/shared/atscreatebackgroundcheckpackagesrequestdto.md
@@ -806,18 +789,6 @@ generatedFiles:
   - docs/sdk/models/shared/attachmentsourcevalue.md
   - docs/sdk/models/shared/attachmentvalue.md
   - docs/sdk/models/shared/avatar.md
-  - docs/sdk/models/shared/backgroundcheckorder.md
-  - docs/sdk/models/shared/backgroundcheckorder4.md
-  - docs/sdk/models/shared/backgroundcheckorderapplication.md
-  - docs/sdk/models/shared/backgroundcheckorderapplicationstatus.md
-  - docs/sdk/models/shared/backgroundcheckordercandidate.md
-  - docs/sdk/models/shared/backgroundcheckorderjob.md
-  - docs/sdk/models/shared/backgroundcheckorderpackage.md
-  - docs/sdk/models/shared/backgroundcheckorderpaginated.md
-  - docs/sdk/models/shared/backgroundcheckorderrequester.md
-  - docs/sdk/models/shared/backgroundcheckorderresult.md
-  - docs/sdk/models/shared/backgroundcheckordersourcevalue.md
-  - docs/sdk/models/shared/backgroundcheckordervalue.md
   - docs/sdk/models/shared/backgroundcheckpackage.md
   - docs/sdk/models/shared/backgroundcheckpackagepaginated.md
   - docs/sdk/models/shared/backgroundcheckpackageresult.md
@@ -886,9 +857,12 @@ generatedFiles:
   - docs/sdk/models/shared/connectsessioncreate.md
   - docs/sdk/models/shared/connectsessioncreatecategories.md
   - docs/sdk/models/shared/connectsessioncreatemetadata.md
+  - docs/sdk/models/shared/connectsessioncreatetype.md
   - docs/sdk/models/shared/connectsessiontokenauthlink.md
   - docs/sdk/models/shared/connectsessiontokenauthlinkcategories.md
   - docs/sdk/models/shared/connectsessiontokenauthlinkmetadata.md
+  - docs/sdk/models/shared/connectsessiontokenauthlinktype.md
+  - docs/sdk/models/shared/connectsessiontype.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contactspaginated.md
@@ -991,7 +965,6 @@ generatedFiles:
   - docs/sdk/models/shared/customfielddefinition.md
   - docs/sdk/models/shared/customfielddefinition4.md
   - docs/sdk/models/shared/customfielddefinitionresultapimodel.md
-  - docs/sdk/models/shared/customfielddefinitionschemas4.md
   - docs/sdk/models/shared/customfielddefinitionsourcevalue.md
   - docs/sdk/models/shared/customfielddefinitionspaginated.md
   - docs/sdk/models/shared/customfielddefinitiontype.md
@@ -1010,7 +983,7 @@ generatedFiles:
   - docs/sdk/models/shared/document.md
   - docs/sdk/models/shared/documentsfilessearchrequestdto.md
   - docs/sdk/models/shared/documentsfilessearchrequestdto4.md
-  - docs/sdk/models/shared/documentsfilessearchrequestdtosourcevalue.md
+  - docs/sdk/models/shared/documentsfilessearchrequestdtooperator.md
   - docs/sdk/models/shared/documentsfilessearchrequestdtovalue.md
   - docs/sdk/models/shared/draft.md
   - docs/sdk/models/shared/driveresult.md
@@ -1165,13 +1138,14 @@ generatedFiles:
   - docs/sdk/models/shared/fileformat.md
   - docs/sdk/models/shared/fileresult.md
   - docs/sdk/models/shared/files.md
+  - docs/sdk/models/shared/files2.md
   - docs/sdk/models/shared/files4.md
   - docs/sdk/models/shared/fileschemas4.md
   - docs/sdk/models/shared/fileschemassourcevalue.md
   - docs/sdk/models/shared/filesfileformat.md
   - docs/sdk/models/shared/filesourcevalue.md
   - docs/sdk/models/shared/filespaginated.md
-  - docs/sdk/models/shared/filessearchresponse.md
+  - docs/sdk/models/shared/filesschemas2.md
   - docs/sdk/models/shared/filessourcevalue.md
   - docs/sdk/models/shared/filesvalue.md
   - docs/sdk/models/shared/filet.md
@@ -1179,10 +1153,17 @@ generatedFiles:
   - docs/sdk/models/shared/filter.md
   - docs/sdk/models/shared/folderresult.md
   - docs/sdk/models/shared/folders.md
+  - docs/sdk/models/shared/folders2.md
+  - docs/sdk/models/shared/foldershaschildren.md
+  - docs/sdk/models/shared/foldershascontent.md
   - docs/sdk/models/shared/folderspaginated.md
+  - docs/sdk/models/shared/foldersschemas2.md
+  - docs/sdk/models/shared/foldersschemasisroot2.md
   - docs/sdk/models/shared/four.md
   - docs/sdk/models/shared/gender.md
   - docs/sdk/models/shared/grade.md
+  - docs/sdk/models/shared/haschildren.md
+  - docs/sdk/models/shared/hascontent.md
   - docs/sdk/models/shared/headers.md
   - docs/sdk/models/shared/hierarchy.md
   - docs/sdk/models/shared/homelocation.md
@@ -1572,6 +1553,7 @@ generatedFiles:
   - docs/sdk/models/shared/interviewvalue.md
   - docs/sdk/models/shared/inviteemployeeresult.md
   - docs/sdk/models/shared/isbotuser.md
+  - docs/sdk/models/shared/isroot.md
   - docs/sdk/models/shared/issuedby.md
   - docs/sdk/models/shared/job.md
   - docs/sdk/models/shared/job4.md
@@ -1635,6 +1617,7 @@ generatedFiles:
   - docs/sdk/models/shared/linkedaccountmeta.md
   - docs/sdk/models/shared/linkedaccountmetacategory.md
   - docs/sdk/models/shared/linkedaccountstatus.md
+  - docs/sdk/models/shared/linkedaccounttype.md
   - docs/sdk/models/shared/list.md
   - docs/sdk/models/shared/list4.md
   - docs/sdk/models/shared/listitem.md
@@ -1726,8 +1709,7 @@ generatedFiles:
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offerstatus.md
   - docs/sdk/models/shared/offervalue.md
-  - docs/sdk/models/shared/operationtype.md
-  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/operator.md
   - docs/sdk/models/shared/organization.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/package.md
@@ -1737,6 +1719,7 @@ generatedFiles:
   - docs/sdk/models/shared/patchaccountexternaldtocredentials.md
   - docs/sdk/models/shared/patchaccountexternaldtometadata.md
   - docs/sdk/models/shared/patchaccountexternaldtosetupinformation.md
+  - docs/sdk/models/shared/patchaccountexternaldtotype.md
   - docs/sdk/models/shared/payfrequency.md
   - docs/sdk/models/shared/payperiod.md
   - docs/sdk/models/shared/phonenumber.md
@@ -1759,6 +1742,7 @@ generatedFiles:
   - docs/sdk/models/shared/pushtemplate.md
   - docs/sdk/models/shared/pushtemplateresult.md
   - docs/sdk/models/shared/pushtemplatespaginated.md
+  - docs/sdk/models/shared/query.md
   - docs/sdk/models/shared/question.md
   - docs/sdk/models/shared/question2.md
   - docs/sdk/models/shared/question4.md
@@ -1786,11 +1770,11 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/rejectedreasontype.md
   - docs/sdk/models/shared/rejectedreasonvalue.md
-  - docs/sdk/models/shared/request.md
   - docs/sdk/models/shared/requester.md
+  - docs/sdk/models/shared/requestt.md
   - docs/sdk/models/shared/requiredt.md
   - docs/sdk/models/shared/resources.md
-  - docs/sdk/models/shared/response.md
+  - docs/sdk/models/shared/responset.md
   - docs/sdk/models/shared/result.md
   - docs/sdk/models/shared/resultlink.md
   - docs/sdk/models/shared/role.md
@@ -1810,6 +1794,9 @@ generatedFiles:
   - docs/sdk/models/shared/scorecardsection.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/scorecardsresult.md
+  - docs/sdk/models/shared/searchquery.md
+  - docs/sdk/models/shared/searchquery4.md
+  - docs/sdk/models/shared/searchqueryvalue.md
   - docs/sdk/models/shared/secrets.md
   - docs/sdk/models/shared/security.md
   - docs/sdk/models/shared/setupinformation.md
@@ -2096,10 +2083,8 @@ generatedFiles:
   - src/funcs/atsGetApplicationScheduledInterview.ts
   - src/funcs/atsGetApplicationScorecard.ts
   - src/funcs/atsGetAssessmentsPackage.ts
-  - src/funcs/atsGetAssessmentsRequest.ts
   - src/funcs/atsGetAssessmentsResult.ts
   - src/funcs/atsGetBackgroundCheckPackage.ts
-  - src/funcs/atsGetBackgroundCheckRequest.ts
   - src/funcs/atsGetBackgroundCheckResult.ts
   - src/funcs/atsGetCandidate.ts
   - src/funcs/atsGetCandidateCustomFieldDefinition.ts
@@ -2124,7 +2109,6 @@ generatedFiles:
   - src/funcs/atsListApplicationsScheduledInterviews.ts
   - src/funcs/atsListAssessmentsPackages.ts
   - src/funcs/atsListBackgroundCheckPackages.ts
-  - src/funcs/atsListBackgroundCheckRequest.ts
   - src/funcs/atsListCandidateCustomFieldDefinitions.ts
   - src/funcs/atsListCandidateNotes.ts
   - src/funcs/atsListCandidates.ts
@@ -2385,10 +2369,8 @@ generatedFiles:
   - src/sdk/models/operations/atsgetapplicationscheduledinterview.ts
   - src/sdk/models/operations/atsgetapplicationscorecard.ts
   - src/sdk/models/operations/atsgetassessmentspackage.ts
-  - src/sdk/models/operations/atsgetassessmentsrequest.ts
   - src/sdk/models/operations/atsgetassessmentsresult.ts
   - src/sdk/models/operations/atsgetbackgroundcheckpackage.ts
-  - src/sdk/models/operations/atsgetbackgroundcheckrequest.ts
   - src/sdk/models/operations/atsgetbackgroundcheckresult.ts
   - src/sdk/models/operations/atsgetcandidate.ts
   - src/sdk/models/operations/atsgetcandidatecustomfielddefinition.ts
@@ -2413,7 +2395,6 @@ generatedFiles:
   - src/sdk/models/operations/atslistapplicationsscheduledinterviews.ts
   - src/sdk/models/operations/atslistassessmentspackages.ts
   - src/sdk/models/operations/atslistbackgroundcheckpackages.ts
-  - src/sdk/models/operations/atslistbackgroundcheckrequest.ts
   - src/sdk/models/operations/atslistcandidatecustomfielddefinitions.ts
   - src/sdk/models/operations/atslistcandidatenotes.ts
   - src/sdk/models/operations/atslistcandidates.ts
@@ -2625,8 +2606,6 @@ generatedFiles:
   - src/sdk/models/shared/applicationattachment.ts
   - src/sdk/models/shared/applicationresult.ts
   - src/sdk/models/shared/applicationspaginated.ts
-  - src/sdk/models/shared/assessmentorder.ts
-  - src/sdk/models/shared/assessmentorderresult.ts
   - src/sdk/models/shared/assessmentpackage.ts
   - src/sdk/models/shared/assessmentpackagepaginated.ts
   - src/sdk/models/shared/assessmentpackageresult.ts
@@ -2659,9 +2638,6 @@ generatedFiles:
   - src/sdk/models/shared/atsupdatejobrequestdto.ts
   - src/sdk/models/shared/atsupdatenotesrequestdto.ts
   - src/sdk/models/shared/attachment.ts
-  - src/sdk/models/shared/backgroundcheckorder.ts
-  - src/sdk/models/shared/backgroundcheckorderpaginated.ts
-  - src/sdk/models/shared/backgroundcheckorderresult.ts
   - src/sdk/models/shared/backgroundcheckpackage.ts
   - src/sdk/models/shared/backgroundcheckpackagepaginated.ts
   - src/sdk/models/shared/backgroundcheckpackageresult.ts
@@ -2752,7 +2728,6 @@ generatedFiles:
   - src/sdk/models/shared/fileresult.ts
   - src/sdk/models/shared/files.ts
   - src/sdk/models/shared/filespaginated.ts
-  - src/sdk/models/shared/filessearchresponse.ts
   - src/sdk/models/shared/folderresult.ts
   - src/sdk/models/shared/folders.ts
   - src/sdk/models/shared/folderspaginated.ts
@@ -2890,6 +2865,7 @@ generatedFiles:
   - src/sdk/models/shared/scorecardsection.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/scorecardsresult.ts
+  - src/sdk/models/shared/searchquery.ts
   - src/sdk/models/shared/security.ts
   - src/sdk/models/shared/skillresult.ts
   - src/sdk/models/shared/skills.ts
@@ -2983,7 +2959,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"created_at": "2025-01-30T21:22:02.040Z", "id": "<id>", "origin_owner_id": "<id>", "origin_owner_name": "<value>", "provider": "<value>", "status": "error", "updated_at": "2023-10-15T07:09:50.321Z"}
+          application/json: {"created_at": "2025-01-30T21:22:02.040Z", "id": "<id>", "origin_owner_id": "<id>", "origin_owner_name": "<value>", "provider": "<value>", "status": "error", "type": "unmapped_value", "updated_at": "2023-10-15T07:09:50.321Z"}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -3013,7 +2989,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"created_at": "2025-10-07T17:30:47.570Z", "id": "<id>", "origin_owner_id": "<id>", "origin_owner_name": "<value>", "provider": "<value>", "status": "error", "updated_at": "2024-08-19T21:52:53.834Z"}
+          application/json: {"created_at": "2025-10-07T17:30:47.570Z", "id": "<id>", "origin_owner_id": "<id>", "origin_owner_name": "<value>", "provider": "<value>", "status": "error", "type": "unmapped_value", "updated_at": "2024-08-19T21:52:53.834Z"}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -3102,10 +3078,10 @@ examples:
         path:
           id: "<id>"
       requestBody:
-        application/json: {}
+        application/json: {"type": "test"}
       responses:
         "200":
-          application/json: {"created_at": "2025-01-13T01:08:52.070Z", "id": "<id>", "origin_owner_id": "<id>", "origin_owner_name": "<value>", "provider": "<value>", "status": "error", "updated_at": "2025-10-09T05:20:37.883Z"}
+          application/json: {"created_at": "2025-01-13T01:08:52.070Z", "id": "<id>", "origin_owner_id": "<id>", "origin_owner_name": "<value>", "provider": "<value>", "status": "error", "type": "unmapped_value", "updated_at": "2025-10-09T05:20:37.883Z"}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -3134,7 +3110,7 @@ examples:
         application/json: {"token": "<value>"}
       responses:
         "201":
-          application/json: {"categories": ["ats", "hris", "screening", "crm", "iam", "marketing", "lms", "messaging", "documents", "ticketing", "screening", "messaging"], "created_at": "2025-11-16T02:56:13.961Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "id": 5466.09, "organization_id": 5832.19, "origin_owner_id": "<id>", "origin_owner_name": "<value>", "project_id": "<id>"}
+          application/json: {"categories": ["ats", "hris", "screening", "crm", "iam", "marketing", "lms", "messaging", "documents", "ticketing", "screening", "messaging"], "created_at": "2025-11-16T02:56:13.961Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "id": 5466.09, "organization_id": 5832.19, "origin_owner_id": "<id>", "origin_owner_name": "<value>", "project_id": "<id>", "type": "unmapped_value"}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -3160,10 +3136,10 @@ examples:
   stackone_create_connect_session:
     speakeasy-default-stackone-create-connect-session:
       requestBody:
-        application/json: {"categories": ["ats", "hris", "documents", "crm", "iam", "marketing", "lms", "iam", "documents", "ticketing", "screening", "messaging"], "expires_in": 1800, "multiple": false, "origin_owner_id": "<id>", "origin_owner_name": "<value>"}
+        application/json: {"categories": ["ats", "hris", "documents", "crm", "iam", "marketing", "lms", "iam", "documents", "ticketing", "screening", "messaging"], "expires_in": 1800, "multiple": false, "origin_owner_id": "<id>", "origin_owner_name": "<value>", "type": "test"}
       responses:
         "201":
-          application/json: {"auth_link_url": "https://ajar-transom.biz/", "categories": ["ats", "hris", "crm", "crm", "iam", "marketing", "lms", "ats", "documents", "ticketing", "screening", "messaging"], "created_at": "2024-07-10T18:39:42.402Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "id": 8578.87, "organization_id": 1916.67, "origin_owner_id": "<id>", "origin_owner_name": "<value>", "project_id": "<id>", "token": "<value>"}
+          application/json: {"auth_link_url": "https://ajar-transom.biz/", "categories": ["ats", "hris", "crm", "crm", "iam", "marketing", "lms", "ats", "documents", "ticketing", "screening", "messaging"], "created_at": "2024-07-10T18:39:42.402Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "id": 8578.87, "organization_id": 1916.67, "origin_owner_id": "<id>", "origin_owner_name": "<value>", "project_id": "<id>", "token": "<value>", "type": "test"}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -3711,7 +3687,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -4186,7 +4162,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -4407,7 +4383,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -5032,7 +5008,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -5251,7 +5227,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6080,7 +6056,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6188,7 +6164,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6581,7 +6557,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"field": "name", "operation_type": {"source_value": "contains", "value": "contains"}, "params": {"filter": {"updated_after": "2020-01-01T00:00:00.000Z"}}, "passthrough": {"other_known_names": "John Doe"}, "query": "test"}
+        application/json: {"params": {"filter": {"updated_after": "2020-01-01T00:00:00.000Z"}}, "passthrough": {"other_known_names": "John Doe"}, "query": {"field": "name", "global_search": "test", "operator": "equal", "queries": [{"field": "name", "operator": "equal", "value": "john"}], "value": "john"}}
       responses:
         "200":
           application/json: {"data": [{"created_at": "2023-02-23T00:00:00.000Z", "description": "This is the description associated to the file.", "drive_id": "c28xyrc55866bvuv", "export_formats": ["application/pdf"], "file_format": {"source_value": "abc", "value": "pdf"}, "folder_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "path": "/path/to/file", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/file/d/nd8932h9d/view"}, {"created_at": "2023-02-23T00:00:00.000Z", "description": "This is the description associated to the file.", "drive_id": "c28xyrc55866bvuv", "export_formats": ["application/pdf"], "file_format": {"source_value": "abc", "value": "pdf"}, "folder_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "path": "/path/to/file", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/file/d/nd8932h9d/view"}]}
@@ -6828,7 +6804,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"approver_id": "1687-4", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "passthrough": {"other_known_names": "John Doe"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933"}
+        application/json: {"approver_id": "1687-4", "comment": "Taking a day off for personal reasons", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "passthrough": {"other_known_names": "John Doe"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933"}
       responses:
         "201":
           application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -7159,7 +7135,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -7415,13 +7391,13 @@ examples:
           id: "<id>"
           subResourceId: "<id>"
         query:
-          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy"
+          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy"
           expand: "policy"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"approver_id": "1687-4", "created_date": "2021-01-01T01:01:01.000Z", "duration": "P3Y6M4DT12H30M5S", "employee_id": "1687-3", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "policy": {"created_at": "2021-01-01T01:01:01.000Z", "description": "Usable for regional and national holidays of employees.", "duration_unit": {"value": "hours"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Holidays", "reasons": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"value": "holiday"}, "updated_at": "2021-01-01T01:01:01.000Z"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "remote_approver_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_employee_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_time_off_policy_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933", "updated_date": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"approver_id": "1687-4", "comment": "Taking a day off for personal reasons", "created_date": "2021-01-01T01:01:01.000Z", "duration": "P3Y6M4DT12H30M5S", "employee_id": "1687-3", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "policy": {"created_at": "2021-01-01T01:01:01.000Z", "description": "Usable for regional and national holidays of employees.", "duration_unit": {"value": "hours"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Holidays", "reasons": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"value": "holiday"}, "updated_at": "2021-01-01T01:01:01.000Z"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "remote_approver_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_employee_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_time_off_policy_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933", "updated_date": "2021-01-01T01:01:01.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -7742,13 +7718,13 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy"
+          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy"
           expand: "policy"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"approver_id": "1687-4", "created_date": "2021-01-01T01:01:01.000Z", "duration": "P3Y6M4DT12H30M5S", "employee_id": "1687-3", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "policy": {"created_at": "2021-01-01T01:01:01.000Z", "description": "Usable for regional and national holidays of employees.", "duration_unit": {"value": "hours"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Holidays", "reasons": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"value": "holiday"}, "updated_at": "2021-01-01T01:01:01.000Z"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "remote_approver_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_employee_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_time_off_policy_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933", "updated_date": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"approver_id": "1687-4", "comment": "Taking a day off for personal reasons", "created_date": "2021-01-01T01:01:01.000Z", "duration": "P3Y6M4DT12H30M5S", "employee_id": "1687-3", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "policy": {"created_at": "2021-01-01T01:01:01.000Z", "description": "Usable for regional and national holidays of employees.", "duration_unit": {"value": "hours"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Holidays", "reasons": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"value": "holiday"}, "updated_at": "2021-01-01T01:01:01.000Z"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "remote_approver_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_employee_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_time_off_policy_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933", "updated_date": "2021-01-01T01:01:01.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -8036,7 +8012,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": ["Not Started", "In Progress", "Completed", "Overdue"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -8298,7 +8274,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy"
+          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           expand: "policy"
@@ -8664,7 +8640,7 @@ examples:
     speakeasy-default-hris-list-time-off-requests:
       parameters:
         query:
-          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy"
+          fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           expand: "policy"
@@ -8815,7 +8791,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"approver_id": "1687-4", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "passthrough": {"other_known_names": "John Doe"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933"}
+        application/json: {"approver_id": "1687-4", "comment": "Taking a day off for personal reasons", "end_date": "2021-01-01T01:01:01.000", "end_half_day": true, "passthrough": {"other_known_names": "John Doe"}, "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "start_date": "2021-01-01T01:01:01.000", "start_half_day": true, "time_off_policy_id": "cx280928933"}
       responses:
         "200":
           application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}

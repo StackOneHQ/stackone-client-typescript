@@ -291,6 +291,10 @@ export type TimeOff = {
    */
   approverId?: string | null | undefined;
   /**
+   * Allows users to provide additional context or notes for their time off request
+   */
+  comment?: string | null | undefined;
+  /**
    * The created date of the time off request
    */
   createdDate?: Date | null | undefined;
@@ -1583,6 +1587,7 @@ export function timeOffTypeFromJSON(
 export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
   z.object({
     approver_id: z.nullable(z.string()).optional(),
+    comment: z.nullable(z.string()).optional(),
     created_date: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -1629,6 +1634,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
 /** @internal */
 export type TimeOff$Outbound = {
   approver_id?: string | null | undefined;
+  comment?: string | null | undefined;
   created_date?: string | null | undefined;
   duration?: string | null | undefined;
   employee_id?: string | null | undefined;
@@ -1656,6 +1662,7 @@ export const TimeOff$outboundSchema: z.ZodType<
   TimeOff
 > = z.object({
   approverId: z.nullable(z.string()).optional(),
+  comment: z.nullable(z.string()).optional(),
   createdDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   duration: z.nullable(z.string()).optional(),
   employeeId: z.nullable(z.string()).optional(),

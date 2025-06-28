@@ -27,6 +27,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Create Ticket
+ *
+ * @remarks
+ * Create a new ticket record.
  */
 export function ticketingCreateTicket(
   client: StackOneCore,

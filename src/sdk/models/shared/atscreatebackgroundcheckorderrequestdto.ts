@@ -189,7 +189,7 @@ export type AtsCreateBackgroundCheckOrderRequestDtoPackage = {
   tests?: Array<Package> | null | undefined;
 };
 
-export type AtsCreateBackgroundCheckOrderRequestDtoRequester = {
+export type Requester = {
   /**
    * Email of the hiring team member.
    */
@@ -239,10 +239,7 @@ export type AtsCreateBackgroundCheckOrderRequestDto = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
-  requester?:
-    | AtsCreateBackgroundCheckOrderRequestDtoRequester
-    | null
-    | undefined;
+  requester?: Requester | null | undefined;
   /**
    * Results update url
    */
@@ -901,29 +898,28 @@ export function atsCreateBackgroundCheckOrderRequestDtoPackageFromJSON(
 }
 
 /** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoRequester$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoRequester,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    email: z.nullable(z.string()).optional(),
-    first_name: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    remote_user_id: z.nullable(z.string()).optional(),
-    role: z.nullable(z.string()).optional(),
-    user_id: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "first_name": "firstName",
-      "last_name": "lastName",
-      "remote_user_id": "remoteUserId",
-      "user_id": "userId",
-    });
+export const Requester$inboundSchema: z.ZodType<
+  Requester,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.nullable(z.string()).optional(),
+  first_name: z.nullable(z.string()).optional(),
+  last_name: z.nullable(z.string()).optional(),
+  remote_user_id: z.nullable(z.string()).optional(),
+  role: z.nullable(z.string()).optional(),
+  user_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "first_name": "firstName",
+    "last_name": "lastName",
+    "remote_user_id": "remoteUserId",
+    "user_id": "userId",
   });
+});
 
 /** @internal */
-export type AtsCreateBackgroundCheckOrderRequestDtoRequester$Outbound = {
+export type Requester$Outbound = {
   email?: string | null | undefined;
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
@@ -933,67 +929,50 @@ export type AtsCreateBackgroundCheckOrderRequestDtoRequester$Outbound = {
 };
 
 /** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoRequester$outboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoRequester$Outbound,
-    z.ZodTypeDef,
-    AtsCreateBackgroundCheckOrderRequestDtoRequester
-  > = z.object({
-    email: z.nullable(z.string()).optional(),
-    firstName: z.nullable(z.string()).optional(),
-    lastName: z.nullable(z.string()).optional(),
-    remoteUserId: z.nullable(z.string()).optional(),
-    role: z.nullable(z.string()).optional(),
-    userId: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      firstName: "first_name",
-      lastName: "last_name",
-      remoteUserId: "remote_user_id",
-      userId: "user_id",
-    });
+export const Requester$outboundSchema: z.ZodType<
+  Requester$Outbound,
+  z.ZodTypeDef,
+  Requester
+> = z.object({
+  email: z.nullable(z.string()).optional(),
+  firstName: z.nullable(z.string()).optional(),
+  lastName: z.nullable(z.string()).optional(),
+  remoteUserId: z.nullable(z.string()).optional(),
+  role: z.nullable(z.string()).optional(),
+  userId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    firstName: "first_name",
+    lastName: "last_name",
+    remoteUserId: "remote_user_id",
+    userId: "user_id",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoRequester$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoRequester$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoRequester$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoRequester$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoRequester$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoRequester$Outbound` instead. */
-  export type Outbound =
-    AtsCreateBackgroundCheckOrderRequestDtoRequester$Outbound;
+export namespace Requester$ {
+  /** @deprecated use `Requester$inboundSchema` instead. */
+  export const inboundSchema = Requester$inboundSchema;
+  /** @deprecated use `Requester$outboundSchema` instead. */
+  export const outboundSchema = Requester$outboundSchema;
+  /** @deprecated use `Requester$Outbound` instead. */
+  export type Outbound = Requester$Outbound;
 }
 
-export function atsCreateBackgroundCheckOrderRequestDtoRequesterToJSON(
-  atsCreateBackgroundCheckOrderRequestDtoRequester:
-    AtsCreateBackgroundCheckOrderRequestDtoRequester,
-): string {
-  return JSON.stringify(
-    AtsCreateBackgroundCheckOrderRequestDtoRequester$outboundSchema.parse(
-      atsCreateBackgroundCheckOrderRequestDtoRequester,
-    ),
-  );
+export function requesterToJSON(requester: Requester): string {
+  return JSON.stringify(Requester$outboundSchema.parse(requester));
 }
 
-export function atsCreateBackgroundCheckOrderRequestDtoRequesterFromJSON(
+export function requesterFromJSON(
   jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoRequester,
-  SDKValidationError
-> {
+): SafeParseResult<Requester, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoRequester$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoRequester' from JSON`,
+    (x) => Requester$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Requester' from JSON`,
   );
 }
 
@@ -1022,11 +1001,7 @@ export const AtsCreateBackgroundCheckOrderRequestDto$inboundSchema: z.ZodType<
   ).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  requester: z.nullable(
-    z.lazy(() =>
-      AtsCreateBackgroundCheckOrderRequestDtoRequester$inboundSchema
-    ),
-  ).optional(),
+  requester: z.nullable(z.lazy(() => Requester$inboundSchema)).optional(),
   results_update_url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1053,10 +1028,7 @@ export type AtsCreateBackgroundCheckOrderRequestDto$Outbound = {
     | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   remote_id?: string | null | undefined;
-  requester?:
-    | AtsCreateBackgroundCheckOrderRequestDtoRequester$Outbound
-    | null
-    | undefined;
+  requester?: Requester$Outbound | null | undefined;
   results_update_url?: string | null | undefined;
 };
 
@@ -1085,11 +1057,7 @@ export const AtsCreateBackgroundCheckOrderRequestDto$outboundSchema: z.ZodType<
   ).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  requester: z.nullable(
-    z.lazy(() =>
-      AtsCreateBackgroundCheckOrderRequestDtoRequester$outboundSchema
-    ),
-  ).optional(),
+  requester: z.nullable(z.lazy(() => Requester$outboundSchema)).optional(),
   resultsUpdateUrl: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

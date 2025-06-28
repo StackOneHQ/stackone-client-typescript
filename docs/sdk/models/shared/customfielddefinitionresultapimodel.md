@@ -9,10 +9,24 @@ let value: CustomFieldDefinitionResultApiModel = {
   data: {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     options: [
-      "Not Started",
-      "In Progress",
-      "Completed",
-      "Overdue",
+      [
+        {
+          "id": "option_1",
+          "value": "Not Started",
+        },
+      ],
+      [
+        {
+          "id": "option_2",
+          "value": "In Progress",
+        },
+      ],
+      [
+        {
+          "id": "option_3",
+          "value": "Completed",
+        },
+      ],
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     type: {},

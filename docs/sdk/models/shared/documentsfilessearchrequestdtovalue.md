@@ -1,24 +1,39 @@
 # DocumentsFilesSearchRequestDtoValue
 
-The operation type of the query
+The value to search for
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { DocumentsFilesSearchRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: DocumentsFilesSearchRequestDtoValue =
-  DocumentsFilesSearchRequestDtoValue.Contains;
+const value: string = "john";
 ```
 
-## Values
+### `number`
 
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+```typescript
+const value: number = NaN;
+```
 
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `Contains`             | contains               |
-| `Equals`               | equals                 |
-| `NotEquals`            | not_equals             |
-| `UnmappedValue`        | unmapped_value         |
-| -                      | `Unrecognized<string>` |
+### `boolean`
+
+```typescript
+const value: boolean = true;
+```
+
+### `shared.DocumentsFilesSearchRequestDto4`
+
+```typescript
+const value: shared.DocumentsFilesSearchRequestDto4 = {};
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "john",
+];
+```
+

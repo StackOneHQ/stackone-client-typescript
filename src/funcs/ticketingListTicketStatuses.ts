@@ -39,6 +39,9 @@ import {
 
 /**
  * List Ticket Statuses
+ *
+ * @remarks
+ * Retrieve a paginated list of statuses for a ticket.
  */
 export function ticketingListTicketStatuses(
   client: StackOneCore,

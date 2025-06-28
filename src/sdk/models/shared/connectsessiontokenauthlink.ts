@@ -5,6 +5,11 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,6 +33,21 @@ export enum ConnectSessionTokenAuthLinkCategories {
  */
 export type ConnectSessionTokenAuthLinkMetadata = {};
 
+/**
+ * The connect session account type
+ */
+export enum ConnectSessionTokenAuthLinkType {
+  Production = "production",
+  Test = "test",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The connect session account type
+ */
+export type ConnectSessionTokenAuthLinkTypeOpen = OpenEnum<
+  typeof ConnectSessionTokenAuthLinkType
+>;
+
 export type ConnectSessionTokenAuthLink = {
   accountId?: string | null | undefined;
   authLinkUrl: string;
@@ -50,6 +70,10 @@ export type ConnectSessionTokenAuthLink = {
   projectId: string;
   provider?: string | null | undefined;
   token: string;
+  /**
+   * The connect session account type
+   */
+  type?: ConnectSessionTokenAuthLinkTypeOpen | null | undefined;
 };
 
 /** @internal */
@@ -130,6 +154,38 @@ export function connectSessionTokenAuthLinkMetadataFromJSON(
 }
 
 /** @internal */
+export const ConnectSessionTokenAuthLinkType$inboundSchema: z.ZodType<
+  ConnectSessionTokenAuthLinkTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ConnectSessionTokenAuthLinkType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ConnectSessionTokenAuthLinkType$outboundSchema: z.ZodType<
+  ConnectSessionTokenAuthLinkTypeOpen,
+  z.ZodTypeDef,
+  ConnectSessionTokenAuthLinkTypeOpen
+> = z.union([
+  z.nativeEnum(ConnectSessionTokenAuthLinkType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConnectSessionTokenAuthLinkType$ {
+  /** @deprecated use `ConnectSessionTokenAuthLinkType$inboundSchema` instead. */
+  export const inboundSchema = ConnectSessionTokenAuthLinkType$inboundSchema;
+  /** @deprecated use `ConnectSessionTokenAuthLinkType$outboundSchema` instead. */
+  export const outboundSchema = ConnectSessionTokenAuthLinkType$outboundSchema;
+}
+
+/** @internal */
 export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   ConnectSessionTokenAuthLink,
   z.ZodTypeDef,
@@ -154,6 +210,7 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   project_id: z.string(),
   provider: z.nullable(z.string()).optional(),
   token: z.string(),
+  type: z.nullable(ConnectSessionTokenAuthLinkType$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
@@ -185,6 +242,7 @@ export type ConnectSessionTokenAuthLink$Outbound = {
   project_id: string;
   provider?: string | null | undefined;
   token: string;
+  type?: string | null | undefined;
 };
 
 /** @internal */
@@ -212,6 +270,7 @@ export const ConnectSessionTokenAuthLink$outboundSchema: z.ZodType<
   projectId: z.string(),
   provider: z.nullable(z.string()).optional(),
   token: z.string(),
+  type: z.nullable(ConnectSessionTokenAuthLinkType$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",

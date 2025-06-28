@@ -45,7 +45,7 @@ export type Url = {
 /**
  * The advanced log request data
  */
-export type Request = {
+export type RequestT = {
   body?: any | null | undefined;
   headers?: { [k: string]: any } | null | undefined;
   /**
@@ -130,7 +130,7 @@ export type StepLog = {
   /**
    * The advanced log request data
    */
-  request?: Request | null | undefined;
+  request?: RequestT | null | undefined;
   /**
    * The request ID
    */
@@ -231,17 +231,20 @@ export function urlFromJSON(
 }
 
 /** @internal */
-export const Request$inboundSchema: z.ZodType<Request, z.ZodTypeDef, unknown> =
-  z.object({
-    body: z.nullable(z.any()).optional(),
-    headers: z.nullable(z.record(z.any())).optional(),
-    id: z.nullable(z.string()).optional(),
-    method: z.nullable(z.string()).optional(),
-    url: z.nullable(z.lazy(() => Url$inboundSchema)).optional(),
-  });
+export const RequestT$inboundSchema: z.ZodType<
+  RequestT,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  body: z.nullable(z.any()).optional(),
+  headers: z.nullable(z.record(z.any())).optional(),
+  id: z.nullable(z.string()).optional(),
+  method: z.nullable(z.string()).optional(),
+  url: z.nullable(z.lazy(() => Url$inboundSchema)).optional(),
+});
 
 /** @internal */
-export type Request$Outbound = {
+export type RequestT$Outbound = {
   body?: any | null | undefined;
   headers?: { [k: string]: any } | null | undefined;
   id?: string | null | undefined;
@@ -250,10 +253,10 @@ export type Request$Outbound = {
 };
 
 /** @internal */
-export const Request$outboundSchema: z.ZodType<
-  Request$Outbound,
+export const RequestT$outboundSchema: z.ZodType<
+  RequestT$Outbound,
   z.ZodTypeDef,
-  Request
+  RequestT
 > = z.object({
   body: z.nullable(z.any()).optional(),
   headers: z.nullable(z.record(z.any())).optional(),
@@ -266,26 +269,26 @@ export const Request$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Request$ {
-  /** @deprecated use `Request$inboundSchema` instead. */
-  export const inboundSchema = Request$inboundSchema;
-  /** @deprecated use `Request$outboundSchema` instead. */
-  export const outboundSchema = Request$outboundSchema;
-  /** @deprecated use `Request$Outbound` instead. */
-  export type Outbound = Request$Outbound;
+export namespace RequestT$ {
+  /** @deprecated use `RequestT$inboundSchema` instead. */
+  export const inboundSchema = RequestT$inboundSchema;
+  /** @deprecated use `RequestT$outboundSchema` instead. */
+  export const outboundSchema = RequestT$outboundSchema;
+  /** @deprecated use `RequestT$Outbound` instead. */
+  export type Outbound = RequestT$Outbound;
 }
 
-export function requestToJSON(request: Request): string {
-  return JSON.stringify(Request$outboundSchema.parse(request));
+export function requestToJSON(requestT: RequestT): string {
+  return JSON.stringify(RequestT$outboundSchema.parse(requestT));
 }
 
 export function requestFromJSON(
   jsonString: string,
-): SafeParseResult<Request, SDKValidationError> {
+): SafeParseResult<RequestT, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Request$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Request' from JSON`,
+    (x) => RequestT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestT' from JSON`,
   );
 }
 
@@ -383,7 +386,7 @@ export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
     path: z.nullable(z.string()).optional(),
     project_id: z.nullable(z.string()).optional(),
     provider: z.nullable(z.string()).optional(),
-    request: z.nullable(z.lazy(() => Request$inboundSchema)).optional(),
+    request: z.nullable(z.lazy(() => RequestT$inboundSchema)).optional(),
     request_id: z.nullable(z.string()).optional(),
     resource: z.nullable(z.string()).optional(),
     response: z.nullable(z.lazy(() => StepLogResponse$inboundSchema))
@@ -423,7 +426,7 @@ export type StepLog$Outbound = {
   path?: string | null | undefined;
   project_id?: string | null | undefined;
   provider?: string | null | undefined;
-  request?: Request$Outbound | null | undefined;
+  request?: RequestT$Outbound | null | undefined;
   request_id?: string | null | undefined;
   resource?: string | null | undefined;
   response?: StepLogResponse$Outbound | null | undefined;
@@ -452,7 +455,7 @@ export const StepLog$outboundSchema: z.ZodType<
   path: z.nullable(z.string()).optional(),
   projectId: z.nullable(z.string()).optional(),
   provider: z.nullable(z.string()).optional(),
-  request: z.nullable(z.lazy(() => Request$outboundSchema)).optional(),
+  request: z.nullable(z.lazy(() => RequestT$outboundSchema)).optional(),
   requestId: z.nullable(z.string()).optional(),
   resource: z.nullable(z.string()).optional(),
   response: z.nullable(z.lazy(() => StepLogResponse$outboundSchema)).optional(),

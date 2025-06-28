@@ -32,6 +32,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get Ticket Type
+ *
+ * @remarks
+ * Retrieve a single ticket type by its identifier.
  */
 export function ticketingGetTicketType(
   client: StackOneCore,

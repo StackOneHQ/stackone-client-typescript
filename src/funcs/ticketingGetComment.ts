@@ -32,6 +32,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get Comment
+ *
+ * @remarks
+ * Retrieve a single comment by its identifier for a ticket.
  */
 export function ticketingGetComment(
   client: StackOneCore,

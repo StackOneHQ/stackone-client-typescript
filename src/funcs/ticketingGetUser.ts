@@ -32,6 +32,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get User
+ *
+ * @remarks
+ * Retrieve a single user by their identifier.
  */
 export function ticketingGetUser(
   client: StackOneCore,

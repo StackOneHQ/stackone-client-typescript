@@ -25,7 +25,7 @@
 
 ## createTicket
 
-Create Ticket
+Create a new ticket record.
 
 ### Example Usage
 
@@ -209,7 +209,7 @@ run();
 
 ## downloadTicketingAttachment
 
-Download Attachment
+Download the attachment file from a ticket.
 
 ### Example Usage
 
@@ -307,7 +307,7 @@ run();
 
 ## getAttachment
 
-Get Attachment
+Retrieve the details of a single attachment for a ticket.
 
 ### Example Usage
 
@@ -403,7 +403,7 @@ run();
 
 ## getCollection
 
-Get Collection
+Retrieve a single collection by its identifier.
 
 ### Example Usage
 
@@ -497,7 +497,7 @@ run();
 
 ## getComment
 
-Get Comment
+Retrieve a single comment by its identifier for a ticket.
 
 ### Example Usage
 
@@ -593,7 +593,7 @@ run();
 
 ## getTicket
 
-Get Ticket
+Retrieve a single ticket by its identifier.
 
 ### Example Usage
 
@@ -687,7 +687,7 @@ run();
 
 ## getTicketType
 
-Get Ticket Type
+Retrieve a single ticket type by its identifier.
 
 ### Example Usage
 
@@ -781,7 +781,7 @@ run();
 
 ## getUser
 
-Get User
+Retrieve a single user by their identifier.
 
 ### Example Usage
 
@@ -875,7 +875,7 @@ run();
 
 ## listAttachments
 
-List Attachments
+Retrieve a paginated list of attachment details for a ticket.
 
 ### Example Usage
 
@@ -981,7 +981,7 @@ run();
 
 ## listCollectionTicketTypes
 
-List Collection Ticket Types
+Retrieve a paginated list of ticket types for a collection.
 
 ### Example Usage
 
@@ -1085,7 +1085,7 @@ run();
 
 ## listCollections
 
-List Collections
+Retrieve a paginated list of collections.
 
 ### Example Usage
 
@@ -1189,7 +1189,7 @@ run();
 
 ## listComments
 
-List Comments
+Retrieve a paginated list of comments for a ticket.
 
 ### Example Usage
 
@@ -1295,7 +1295,7 @@ run();
 
 ## listTicketStatuses
 
-List Ticket Statuses
+Retrieve a paginated list of statuses for a ticket.
 
 ### Example Usage
 
@@ -1399,7 +1399,7 @@ run();
 
 ## listTicketTypes
 
-List Ticket Types
+Retrieve a paginated list of all ticket types.
 
 ### Example Usage
 
@@ -1503,7 +1503,7 @@ run();
 
 ## listTickets
 
-List Tickets
+Retrieve a paginated list of tickets.
 
 ### Example Usage
 
@@ -1607,7 +1607,7 @@ run();
 
 ## listUsers
 
-List Users
+Retrieve a paginated list of users.
 
 ### Example Usage
 
@@ -1711,7 +1711,7 @@ run();
 
 ## updateTicket
 
-Update Ticket
+Update an existing ticket record by its identifier.
 
 ### Example Usage
 

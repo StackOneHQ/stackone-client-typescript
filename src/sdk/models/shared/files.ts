@@ -1256,6 +1256,26 @@ export type FilesFileFormat = {
   value?: FilesValueOpen | null | undefined;
 };
 
+export enum Files2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the file has children
+ */
+export type HasChildren = boolean | Files2;
+
+export enum FilesSchemas2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the file has content
+ */
+export type HasContent = boolean | FilesSchemas2;
+
 export type Files = {
   /**
    * The created date of the file
@@ -1284,11 +1304,11 @@ export type Files = {
   /**
    * Whether the file has children
    */
-  hasChildren?: boolean | null | undefined;
+  hasChildren?: boolean | Files2 | null | undefined;
   /**
    * Whether the file has content
    */
-  hasContent?: boolean | null | undefined;
+  hasContent?: boolean | FilesSchemas2 | null | undefined;
   /**
    * Unique identifier
    */
@@ -1560,6 +1580,134 @@ export function filesFileFormatFromJSON(
 }
 
 /** @internal */
+export const Files2$inboundSchema: z.ZodNativeEnum<typeof Files2> = z
+  .nativeEnum(Files2);
+
+/** @internal */
+export const Files2$outboundSchema: z.ZodNativeEnum<typeof Files2> =
+  Files2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Files2$ {
+  /** @deprecated use `Files2$inboundSchema` instead. */
+  export const inboundSchema = Files2$inboundSchema;
+  /** @deprecated use `Files2$outboundSchema` instead. */
+  export const outboundSchema = Files2$outboundSchema;
+}
+
+/** @internal */
+export const HasChildren$inboundSchema: z.ZodType<
+  HasChildren,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), Files2$inboundSchema]);
+
+/** @internal */
+export type HasChildren$Outbound = boolean | string;
+
+/** @internal */
+export const HasChildren$outboundSchema: z.ZodType<
+  HasChildren$Outbound,
+  z.ZodTypeDef,
+  HasChildren
+> = z.union([z.boolean(), Files2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HasChildren$ {
+  /** @deprecated use `HasChildren$inboundSchema` instead. */
+  export const inboundSchema = HasChildren$inboundSchema;
+  /** @deprecated use `HasChildren$outboundSchema` instead. */
+  export const outboundSchema = HasChildren$outboundSchema;
+  /** @deprecated use `HasChildren$Outbound` instead. */
+  export type Outbound = HasChildren$Outbound;
+}
+
+export function hasChildrenToJSON(hasChildren: HasChildren): string {
+  return JSON.stringify(HasChildren$outboundSchema.parse(hasChildren));
+}
+
+export function hasChildrenFromJSON(
+  jsonString: string,
+): SafeParseResult<HasChildren, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HasChildren$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HasChildren' from JSON`,
+  );
+}
+
+/** @internal */
+export const FilesSchemas2$inboundSchema: z.ZodNativeEnum<
+  typeof FilesSchemas2
+> = z.nativeEnum(FilesSchemas2);
+
+/** @internal */
+export const FilesSchemas2$outboundSchema: z.ZodNativeEnum<
+  typeof FilesSchemas2
+> = FilesSchemas2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FilesSchemas2$ {
+  /** @deprecated use `FilesSchemas2$inboundSchema` instead. */
+  export const inboundSchema = FilesSchemas2$inboundSchema;
+  /** @deprecated use `FilesSchemas2$outboundSchema` instead. */
+  export const outboundSchema = FilesSchemas2$outboundSchema;
+}
+
+/** @internal */
+export const HasContent$inboundSchema: z.ZodType<
+  HasContent,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), FilesSchemas2$inboundSchema]);
+
+/** @internal */
+export type HasContent$Outbound = boolean | string;
+
+/** @internal */
+export const HasContent$outboundSchema: z.ZodType<
+  HasContent$Outbound,
+  z.ZodTypeDef,
+  HasContent
+> = z.union([z.boolean(), FilesSchemas2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HasContent$ {
+  /** @deprecated use `HasContent$inboundSchema` instead. */
+  export const inboundSchema = HasContent$inboundSchema;
+  /** @deprecated use `HasContent$outboundSchema` instead. */
+  export const outboundSchema = HasContent$outboundSchema;
+  /** @deprecated use `HasContent$Outbound` instead. */
+  export type Outbound = HasContent$Outbound;
+}
+
+export function hasContentToJSON(hasContent: HasContent): string {
+  return JSON.stringify(HasContent$outboundSchema.parse(hasContent));
+}
+
+export function hasContentFromJSON(
+  jsonString: string,
+): SafeParseResult<HasContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HasContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HasContent' from JSON`,
+  );
+}
+
+/** @internal */
 export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
   .object({
     created_at: z.nullable(
@@ -1571,8 +1719,10 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
     file_format: z.nullable(z.lazy(() => FilesFileFormat$inboundSchema))
       .optional(),
     folder_id: z.nullable(z.string()).optional(),
-    has_children: z.nullable(z.boolean()).optional(),
-    has_content: z.nullable(z.boolean()).optional(),
+    has_children: z.nullable(z.union([z.boolean(), Files2$inboundSchema]))
+      .optional(),
+    has_content: z.nullable(z.union([z.boolean(), FilesSchemas2$inboundSchema]))
+      .optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
     owner_id: z.nullable(z.string()).optional(),
@@ -1612,8 +1762,8 @@ export type Files$Outbound = {
   export_formats?: Array<string> | null | undefined;
   file_format?: FilesFileFormat$Outbound | null | undefined;
   folder_id?: string | null | undefined;
-  has_children?: boolean | null | undefined;
-  has_content?: boolean | null | undefined;
+  has_children?: boolean | string | null | undefined;
+  has_content?: boolean | string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
   owner_id?: string | null | undefined;
@@ -1640,8 +1790,10 @@ export const Files$outboundSchema: z.ZodType<
   fileFormat: z.nullable(z.lazy(() => FilesFileFormat$outboundSchema))
     .optional(),
   folderId: z.nullable(z.string()).optional(),
-  hasChildren: z.nullable(z.boolean()).optional(),
-  hasContent: z.nullable(z.boolean()).optional(),
+  hasChildren: z.nullable(z.union([z.boolean(), Files2$outboundSchema]))
+    .optional(),
+  hasContent: z.nullable(z.union([z.boolean(), FilesSchemas2$outboundSchema]))
+    .optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   ownerId: z.nullable(z.string()).optional(),

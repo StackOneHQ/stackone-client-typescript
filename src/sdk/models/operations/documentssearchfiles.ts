@@ -29,7 +29,7 @@ export type DocumentsSearchFilesResponse = {
   /**
    * The list of files matching the search query was retrieved.
    */
-  filesSearchResponse?: shared.FilesSearchResponse | undefined;
+  filesPaginated?: shared.FilesPaginated | undefined;
   headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
@@ -125,14 +125,14 @@ export const DocumentsSearchFilesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-  FilesSearchResponse: shared.FilesSearchResponse$inboundSchema.optional(),
+  FilesPaginated: shared.FilesPaginated$inboundSchema.optional(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
-    "FilesSearchResponse": "filesSearchResponse",
+    "FilesPaginated": "filesPaginated",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -142,7 +142,7 @@ export const DocumentsSearchFilesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type DocumentsSearchFilesResponse$Outbound = {
   ContentType: string;
-  FilesSearchResponse?: shared.FilesSearchResponse$Outbound | undefined;
+  FilesPaginated?: shared.FilesPaginated$Outbound | undefined;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
@@ -155,7 +155,7 @@ export const DocumentsSearchFilesResponse$outboundSchema: z.ZodType<
   DocumentsSearchFilesResponse
 > = z.object({
   contentType: z.string(),
-  filesSearchResponse: shared.FilesSearchResponse$outboundSchema.optional(),
+  filesPaginated: shared.FilesPaginated$outboundSchema.optional(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -164,7 +164,7 @@ export const DocumentsSearchFilesResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
-    filesSearchResponse: "FilesSearchResponse",
+    filesPaginated: "FilesPaginated",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

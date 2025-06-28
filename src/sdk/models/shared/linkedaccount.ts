@@ -30,6 +30,19 @@ export enum LinkedAccountStatus {
 }
 export type LinkedAccountStatusOpen = OpenEnum<typeof LinkedAccountStatus>;
 
+/**
+ * The account type
+ */
+export enum LinkedAccountType {
+  Production = "production",
+  Test = "test",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The account type
+ */
+export type LinkedAccountTypeOpen = OpenEnum<typeof LinkedAccountType>;
+
 export type LinkedAccount = {
   createdAt: Date;
   credentials?: Credentials | null | undefined;
@@ -43,6 +56,10 @@ export type LinkedAccount = {
   setupInformation?: SetupInformation | null | undefined;
   status: LinkedAccountStatusOpen;
   statusReasons?: Array<StatusReason> | null | undefined;
+  /**
+   * The account type
+   */
+  type?: LinkedAccountTypeOpen | null | undefined;
   updatedAt: Date;
 };
 
@@ -171,6 +188,38 @@ export namespace LinkedAccountStatus$ {
 }
 
 /** @internal */
+export const LinkedAccountType$inboundSchema: z.ZodType<
+  LinkedAccountTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(LinkedAccountType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const LinkedAccountType$outboundSchema: z.ZodType<
+  LinkedAccountTypeOpen,
+  z.ZodTypeDef,
+  LinkedAccountTypeOpen
+> = z.union([
+  z.nativeEnum(LinkedAccountType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LinkedAccountType$ {
+  /** @deprecated use `LinkedAccountType$inboundSchema` instead. */
+  export const inboundSchema = LinkedAccountType$inboundSchema;
+  /** @deprecated use `LinkedAccountType$outboundSchema` instead. */
+  export const outboundSchema = LinkedAccountType$outboundSchema;
+}
+
+/** @internal */
 export const LinkedAccount$inboundSchema: z.ZodType<
   LinkedAccount,
   z.ZodTypeDef,
@@ -189,6 +238,7 @@ export const LinkedAccount$inboundSchema: z.ZodType<
     .optional(),
   status: LinkedAccountStatus$inboundSchema,
   status_reasons: z.nullable(z.array(StatusReason$inboundSchema)).optional(),
+  type: z.nullable(LinkedAccountType$inboundSchema).optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 }).transform((v) => {
   return remap$(v, {
@@ -217,6 +267,7 @@ export type LinkedAccount$Outbound = {
   setup_information?: SetupInformation$Outbound | null | undefined;
   status: string;
   status_reasons?: Array<StatusReason$Outbound> | null | undefined;
+  type?: string | null | undefined;
   updated_at: string;
 };
 
@@ -239,6 +290,7 @@ export const LinkedAccount$outboundSchema: z.ZodType<
     .optional(),
   status: LinkedAccountStatus$outboundSchema,
   statusReasons: z.nullable(z.array(StatusReason$outboundSchema)).optional(),
+  type: z.nullable(LinkedAccountType$outboundSchema).optional(),
   updatedAt: z.date().transform(v => v.toISOString()),
 }).transform((v) => {
   return remap$(v, {

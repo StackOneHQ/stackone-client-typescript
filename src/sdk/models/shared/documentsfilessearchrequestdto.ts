@@ -12,49 +12,12 @@ import {
 } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type DocumentsFilesSearchRequestDto4 = {};
-
-export type DocumentsFilesSearchRequestDtoSourceValue =
-  | DocumentsFilesSearchRequestDto4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/**
- * The operation type of the query
- */
-export enum DocumentsFilesSearchRequestDtoValue {
-  Contains = "contains",
-  Equals = "equals",
-  NotEquals = "not_equals",
-  UnmappedValue = "unmapped_value",
-}
-/**
- * The operation type of the query
- */
-export type DocumentsFilesSearchRequestDtoValueOpen = OpenEnum<
-  typeof DocumentsFilesSearchRequestDtoValue
->;
-
-/**
- * The operation type to use for the query. If not provided, the default operation is `contains`.
- */
-export type OperationType = {
-  sourceValue?:
-    | DocumentsFilesSearchRequestDto4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  /**
-   * The operation type of the query
-   */
-  value?: DocumentsFilesSearchRequestDtoValueOpen | null | undefined;
-};
+import {
+  SearchQuery,
+  SearchQuery$inboundSchema,
+  SearchQuery$Outbound,
+  SearchQuery$outboundSchema,
+} from "./searchquery.js";
 
 /**
  * Filter parameters that allow greater customisation of the list response
@@ -104,15 +67,74 @@ export type Params = {
   updatedAfter?: string | null | undefined;
 };
 
-export type DocumentsFilesSearchRequestDto = {
+/**
+ * The Operator of the query
+ */
+export enum DocumentsFilesSearchRequestDtoOperator {
+  Equal = "equal",
+  NotEqual = "not_equal",
+  Contain = "contain",
+  LessThan = "less_than",
+  GreaterThan = "greater_than",
+  LessThanOrEqual = "less_than_or_equal",
+  GreaterThanOrEqual = "greater_than_or_equal",
+  And = "and",
+  Or = "or",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The Operator of the query
+ */
+export type DocumentsFilesSearchRequestDtoOperatorOpen = OpenEnum<
+  typeof DocumentsFilesSearchRequestDtoOperator
+>;
+
+export type DocumentsFilesSearchRequestDto4 = {};
+
+/**
+ * The value to search for
+ */
+export type DocumentsFilesSearchRequestDtoValue =
+  | DocumentsFilesSearchRequestDto4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The search query
+ */
+export type Query = {
   /**
-   * The specific field to search within. If not provided, the search will be performed across all searchable text fields
+   * The specific field to search within
    */
   field?: string | null | undefined;
   /**
-   * The operation type to use for the query. If not provided, the default operation is `contains`.
+   * The global search string to search in all text field
    */
-  operationType?: OperationType | null | undefined;
+  globalSearch?: string | null | undefined;
+  /**
+   * The Operator of the query
+   */
+  operator?: DocumentsFilesSearchRequestDtoOperatorOpen | null | undefined;
+  /**
+   * Nested queries for complex search
+   */
+  queries?: Array<SearchQuery> | null | undefined;
+  /**
+   * The value to search for
+   */
+  value?:
+    | DocumentsFilesSearchRequestDto4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+};
+
+export type DocumentsFilesSearchRequestDto = {
   /**
    * The additional parameters of the query
    */
@@ -122,263 +144,10 @@ export type DocumentsFilesSearchRequestDto = {
    */
   passthrough?: { [k: string]: any } | null | undefined;
   /**
-   * The query to search for
+   * The search query
    */
-  query: string;
+  query?: Query | null | undefined;
 };
-
-/** @internal */
-export const DocumentsFilesSearchRequestDto4$inboundSchema: z.ZodType<
-  DocumentsFilesSearchRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type DocumentsFilesSearchRequestDto4$Outbound = {};
-
-/** @internal */
-export const DocumentsFilesSearchRequestDto4$outboundSchema: z.ZodType<
-  DocumentsFilesSearchRequestDto4$Outbound,
-  z.ZodTypeDef,
-  DocumentsFilesSearchRequestDto4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsFilesSearchRequestDto4$ {
-  /** @deprecated use `DocumentsFilesSearchRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = DocumentsFilesSearchRequestDto4$inboundSchema;
-  /** @deprecated use `DocumentsFilesSearchRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = DocumentsFilesSearchRequestDto4$outboundSchema;
-  /** @deprecated use `DocumentsFilesSearchRequestDto4$Outbound` instead. */
-  export type Outbound = DocumentsFilesSearchRequestDto4$Outbound;
-}
-
-export function documentsFilesSearchRequestDto4ToJSON(
-  documentsFilesSearchRequestDto4: DocumentsFilesSearchRequestDto4,
-): string {
-  return JSON.stringify(
-    DocumentsFilesSearchRequestDto4$outboundSchema.parse(
-      documentsFilesSearchRequestDto4,
-    ),
-  );
-}
-
-export function documentsFilesSearchRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsFilesSearchRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsFilesSearchRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsFilesSearchRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const DocumentsFilesSearchRequestDtoSourceValue$inboundSchema: z.ZodType<
-  DocumentsFilesSearchRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => DocumentsFilesSearchRequestDto4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type DocumentsFilesSearchRequestDtoSourceValue$Outbound =
-  | DocumentsFilesSearchRequestDto4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const DocumentsFilesSearchRequestDtoSourceValue$outboundSchema:
-  z.ZodType<
-    DocumentsFilesSearchRequestDtoSourceValue$Outbound,
-    z.ZodTypeDef,
-    DocumentsFilesSearchRequestDtoSourceValue
-  > = z.union([
-    z.lazy(() => DocumentsFilesSearchRequestDto4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.array(z.any()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsFilesSearchRequestDtoSourceValue$ {
-  /** @deprecated use `DocumentsFilesSearchRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    DocumentsFilesSearchRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `DocumentsFilesSearchRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentsFilesSearchRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `DocumentsFilesSearchRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = DocumentsFilesSearchRequestDtoSourceValue$Outbound;
-}
-
-export function documentsFilesSearchRequestDtoSourceValueToJSON(
-  documentsFilesSearchRequestDtoSourceValue:
-    DocumentsFilesSearchRequestDtoSourceValue,
-): string {
-  return JSON.stringify(
-    DocumentsFilesSearchRequestDtoSourceValue$outboundSchema.parse(
-      documentsFilesSearchRequestDtoSourceValue,
-    ),
-  );
-}
-
-export function documentsFilesSearchRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  DocumentsFilesSearchRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DocumentsFilesSearchRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'DocumentsFilesSearchRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const DocumentsFilesSearchRequestDtoValue$inboundSchema: z.ZodType<
-  DocumentsFilesSearchRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(DocumentsFilesSearchRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const DocumentsFilesSearchRequestDtoValue$outboundSchema: z.ZodType<
-  DocumentsFilesSearchRequestDtoValueOpen,
-  z.ZodTypeDef,
-  DocumentsFilesSearchRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(DocumentsFilesSearchRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsFilesSearchRequestDtoValue$ {
-  /** @deprecated use `DocumentsFilesSearchRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    DocumentsFilesSearchRequestDtoValue$inboundSchema;
-  /** @deprecated use `DocumentsFilesSearchRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentsFilesSearchRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const OperationType$inboundSchema: z.ZodType<
-  OperationType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => DocumentsFilesSearchRequestDto4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(
-    DocumentsFilesSearchRequestDtoValue$inboundSchema.default(
-      DocumentsFilesSearchRequestDtoValue.Contains,
-    ),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type OperationType$Outbound = {
-  source_value?:
-    | DocumentsFilesSearchRequestDto4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value: string | null;
-};
-
-/** @internal */
-export const OperationType$outboundSchema: z.ZodType<
-  OperationType$Outbound,
-  z.ZodTypeDef,
-  OperationType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => DocumentsFilesSearchRequestDto4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(
-    DocumentsFilesSearchRequestDtoValue$outboundSchema.default(
-      DocumentsFilesSearchRequestDtoValue.Contains,
-    ),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OperationType$ {
-  /** @deprecated use `OperationType$inboundSchema` instead. */
-  export const inboundSchema = OperationType$inboundSchema;
-  /** @deprecated use `OperationType$outboundSchema` instead. */
-  export const outboundSchema = OperationType$outboundSchema;
-  /** @deprecated use `OperationType$Outbound` instead. */
-  export type Outbound = OperationType$Outbound;
-}
-
-export function operationTypeToJSON(operationType: OperationType): string {
-  return JSON.stringify(OperationType$outboundSchema.parse(operationType));
-}
-
-export function operationTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<OperationType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OperationType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OperationType' from JSON`,
-  );
-}
 
 /** @internal */
 export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
@@ -511,30 +280,267 @@ export function paramsFromJSON(
 }
 
 /** @internal */
+export const DocumentsFilesSearchRequestDtoOperator$inboundSchema: z.ZodType<
+  DocumentsFilesSearchRequestDtoOperatorOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(DocumentsFilesSearchRequestDtoOperator),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const DocumentsFilesSearchRequestDtoOperator$outboundSchema: z.ZodType<
+  DocumentsFilesSearchRequestDtoOperatorOpen,
+  z.ZodTypeDef,
+  DocumentsFilesSearchRequestDtoOperatorOpen
+> = z.union([
+  z.nativeEnum(DocumentsFilesSearchRequestDtoOperator),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DocumentsFilesSearchRequestDtoOperator$ {
+  /** @deprecated use `DocumentsFilesSearchRequestDtoOperator$inboundSchema` instead. */
+  export const inboundSchema =
+    DocumentsFilesSearchRequestDtoOperator$inboundSchema;
+  /** @deprecated use `DocumentsFilesSearchRequestDtoOperator$outboundSchema` instead. */
+  export const outboundSchema =
+    DocumentsFilesSearchRequestDtoOperator$outboundSchema;
+}
+
+/** @internal */
+export const DocumentsFilesSearchRequestDto4$inboundSchema: z.ZodType<
+  DocumentsFilesSearchRequestDto4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type DocumentsFilesSearchRequestDto4$Outbound = {};
+
+/** @internal */
+export const DocumentsFilesSearchRequestDto4$outboundSchema: z.ZodType<
+  DocumentsFilesSearchRequestDto4$Outbound,
+  z.ZodTypeDef,
+  DocumentsFilesSearchRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DocumentsFilesSearchRequestDto4$ {
+  /** @deprecated use `DocumentsFilesSearchRequestDto4$inboundSchema` instead. */
+  export const inboundSchema = DocumentsFilesSearchRequestDto4$inboundSchema;
+  /** @deprecated use `DocumentsFilesSearchRequestDto4$outboundSchema` instead. */
+  export const outboundSchema = DocumentsFilesSearchRequestDto4$outboundSchema;
+  /** @deprecated use `DocumentsFilesSearchRequestDto4$Outbound` instead. */
+  export type Outbound = DocumentsFilesSearchRequestDto4$Outbound;
+}
+
+export function documentsFilesSearchRequestDto4ToJSON(
+  documentsFilesSearchRequestDto4: DocumentsFilesSearchRequestDto4,
+): string {
+  return JSON.stringify(
+    DocumentsFilesSearchRequestDto4$outboundSchema.parse(
+      documentsFilesSearchRequestDto4,
+    ),
+  );
+}
+
+export function documentsFilesSearchRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<DocumentsFilesSearchRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DocumentsFilesSearchRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DocumentsFilesSearchRequestDto4' from JSON`,
+  );
+}
+
+/** @internal */
+export const DocumentsFilesSearchRequestDtoValue$inboundSchema: z.ZodType<
+  DocumentsFilesSearchRequestDtoValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => DocumentsFilesSearchRequestDto4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type DocumentsFilesSearchRequestDtoValue$Outbound =
+  | DocumentsFilesSearchRequestDto4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const DocumentsFilesSearchRequestDtoValue$outboundSchema: z.ZodType<
+  DocumentsFilesSearchRequestDtoValue$Outbound,
+  z.ZodTypeDef,
+  DocumentsFilesSearchRequestDtoValue
+> = z.union([
+  z.lazy(() => DocumentsFilesSearchRequestDto4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DocumentsFilesSearchRequestDtoValue$ {
+  /** @deprecated use `DocumentsFilesSearchRequestDtoValue$inboundSchema` instead. */
+  export const inboundSchema =
+    DocumentsFilesSearchRequestDtoValue$inboundSchema;
+  /** @deprecated use `DocumentsFilesSearchRequestDtoValue$outboundSchema` instead. */
+  export const outboundSchema =
+    DocumentsFilesSearchRequestDtoValue$outboundSchema;
+  /** @deprecated use `DocumentsFilesSearchRequestDtoValue$Outbound` instead. */
+  export type Outbound = DocumentsFilesSearchRequestDtoValue$Outbound;
+}
+
+export function documentsFilesSearchRequestDtoValueToJSON(
+  documentsFilesSearchRequestDtoValue: DocumentsFilesSearchRequestDtoValue,
+): string {
+  return JSON.stringify(
+    DocumentsFilesSearchRequestDtoValue$outboundSchema.parse(
+      documentsFilesSearchRequestDtoValue,
+    ),
+  );
+}
+
+export function documentsFilesSearchRequestDtoValueFromJSON(
+  jsonString: string,
+): SafeParseResult<DocumentsFilesSearchRequestDtoValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DocumentsFilesSearchRequestDtoValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DocumentsFilesSearchRequestDtoValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const Query$inboundSchema: z.ZodType<Query, z.ZodTypeDef, unknown> = z
+  .object({
+    field: z.nullable(z.string()).optional(),
+    global_search: z.nullable(z.string()).optional(),
+    operator: z.nullable(DocumentsFilesSearchRequestDtoOperator$inboundSchema)
+      .optional(),
+    queries: z.nullable(z.array(SearchQuery$inboundSchema)).optional(),
+    value: z.nullable(
+      z.union([
+        z.lazy(() => DocumentsFilesSearchRequestDto4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "global_search": "globalSearch",
+    });
+  });
+
+/** @internal */
+export type Query$Outbound = {
+  field?: string | null | undefined;
+  global_search?: string | null | undefined;
+  operator?: string | null | undefined;
+  queries?: Array<SearchQuery$Outbound> | null | undefined;
+  value?:
+    | DocumentsFilesSearchRequestDto4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+};
+
+/** @internal */
+export const Query$outboundSchema: z.ZodType<
+  Query$Outbound,
+  z.ZodTypeDef,
+  Query
+> = z.object({
+  field: z.nullable(z.string()).optional(),
+  globalSearch: z.nullable(z.string()).optional(),
+  operator: z.nullable(DocumentsFilesSearchRequestDtoOperator$outboundSchema)
+    .optional(),
+  queries: z.nullable(z.array(SearchQuery$outboundSchema)).optional(),
+  value: z.nullable(
+    z.union([
+      z.lazy(() => DocumentsFilesSearchRequestDto4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    globalSearch: "global_search",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Query$ {
+  /** @deprecated use `Query$inboundSchema` instead. */
+  export const inboundSchema = Query$inboundSchema;
+  /** @deprecated use `Query$outboundSchema` instead. */
+  export const outboundSchema = Query$outboundSchema;
+  /** @deprecated use `Query$Outbound` instead. */
+  export type Outbound = Query$Outbound;
+}
+
+export function queryToJSON(query: Query): string {
+  return JSON.stringify(Query$outboundSchema.parse(query));
+}
+
+export function queryFromJSON(
+  jsonString: string,
+): SafeParseResult<Query, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Query$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Query' from JSON`,
+  );
+}
+
+/** @internal */
 export const DocumentsFilesSearchRequestDto$inboundSchema: z.ZodType<
   DocumentsFilesSearchRequestDto,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  field: z.nullable(z.string()).optional(),
-  operation_type: z.nullable(z.lazy(() => OperationType$inboundSchema))
-    .optional(),
   params: z.nullable(z.lazy(() => Params$inboundSchema)).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
-  query: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "operation_type": "operationType",
-  });
+  query: z.nullable(z.lazy(() => Query$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type DocumentsFilesSearchRequestDto$Outbound = {
-  field?: string | null | undefined;
-  operation_type?: OperationType$Outbound | null | undefined;
   params?: Params$Outbound | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
-  query: string;
+  query?: Query$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -543,16 +549,9 @@ export const DocumentsFilesSearchRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentsFilesSearchRequestDto
 > = z.object({
-  field: z.nullable(z.string()).optional(),
-  operationType: z.nullable(z.lazy(() => OperationType$outboundSchema))
-    .optional(),
   params: z.nullable(z.lazy(() => Params$outboundSchema)).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
-  query: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    operationType: "operation_type",
-  });
+  query: z.nullable(z.lazy(() => Query$outboundSchema)).optional(),
 });
 
 /**

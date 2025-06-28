@@ -13,8 +13,12 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 typescript:
-  version: 4.20.6
+  version: 4.21.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -23,6 +27,7 @@ typescript:
   author: StackOne
   baseErrorName: StackOneError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: true
