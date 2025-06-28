@@ -39,6 +39,9 @@ import {
 
 /**
  * List Attachments
+ *
+ * @remarks
+ * Retrieve a paginated list of attachment details for a ticket.
  */
 export function ticketingListAttachments(
   client: StackOneCore,

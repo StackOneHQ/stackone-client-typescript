@@ -227,7 +227,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, operations.DocumentsSearchFilesResponse$inboundSchema, {
-      key: "FilesSearchResponse",
+      key: "FilesPaginated",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

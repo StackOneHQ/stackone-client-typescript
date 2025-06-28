@@ -3,6 +3,8 @@
 
 ## Overview
 
+Customer or business accounts.
+
 ### Available Operations
 
 * [deleteAccount](#deleteaccount) - Delete Account
@@ -371,6 +373,7 @@ Update Account
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { PatchAccountExternalDtoType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -381,7 +384,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounts.updateAccount({
-    patchAccountExternalDto: {},
+    patchAccountExternalDto: {
+      type: PatchAccountExternalDtoType.Test,
+    },
     id: "<id>",
   });
 
@@ -398,6 +403,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { accountsUpdateAccount } from "@stackone/stackone-client-ts/funcs/accountsUpdateAccount.js";
+import { PatchAccountExternalDtoType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -410,7 +416,9 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountsUpdateAccount(stackOne, {
-    patchAccountExternalDto: {},
+    patchAccountExternalDto: {
+      type: PatchAccountExternalDtoType.Test,
+    },
     id: "<id>",
   });
   if (res.ok) {

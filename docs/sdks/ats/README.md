@@ -22,10 +22,8 @@
 * [getApplicationScheduledInterview](#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
-* [getAssessmentsRequest](#getassessmentsrequest) - Get Assessments Requests
 * [getAssessmentsResult](#getassessmentsresult) - Get Assessments Results
 * [getBackgroundCheckPackage](#getbackgroundcheckpackage) - Get Background Check Package
-* [getBackgroundCheckRequest](#getbackgroundcheckrequest) - Get Background Check Request
 * [getBackgroundCheckResult](#getbackgroundcheckresult) - Get Background Check Results
 * [getCandidate](#getcandidate) - Get Candidate
 * [getCandidateCustomFieldDefinition](#getcandidatecustomfielddefinition) - Get Candidate Custom Field Definition
@@ -50,7 +48,6 @@
 * [listApplicationsScheduledInterviews](#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
 * [listBackgroundCheckPackages](#listbackgroundcheckpackages) - List Background Check Packages
-* [listBackgroundCheckRequest](#listbackgroundcheckrequest) - List Background Check Request
 * [listCandidateCustomFieldDefinitions](#listcandidatecustomfielddefinitions) - List Candidate Custom Field Definitions
 * [listCandidateNotes](#listcandidatenotes) - List Candidate Notes
 * [listCandidates](#listcandidates) - List Candidates
@@ -2300,100 +2297,6 @@ run();
 | errors.BadGatewayResponse          | 502                                | application/json                   |
 | errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
-## getAssessmentsRequest
-
-Get Assessments Requests
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-const stackOne = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const result = await stackOne.ats.getAssessmentsRequest({
-    fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
-    id: "<id>",
-    xAccountId: "<id>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { atsGetAssessmentsRequest } from "@stackone/stackone-client-ts/funcs/atsGetAssessmentsRequest.js";
-
-// Use `StackOneCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const stackOne = new StackOneCore({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const res = await atsGetAssessmentsRequest(stackOne, {
-    fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
-    id: "<id>",
-    xAccountId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("atsGetAssessmentsRequest failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AtsGetAssessmentsRequestRequest](../../sdk/models/operations/atsgetassessmentsrequestrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.AtsGetAssessmentsRequestResponse](../../sdk/models/operations/atsgetassessmentsrequestresponse.md)\>**
-
-### Errors
-
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.BadRequestResponse          | 400                                | application/json                   |
-| errors.UnauthorizedResponse        | 401                                | application/json                   |
-| errors.ForbiddenResponse           | 403                                | application/json                   |
-| errors.NotFoundResponse            | 404                                | application/json                   |
-| errors.RequestTimedOutResponse     | 408                                | application/json                   |
-| errors.ConflictResponse            | 409                                | application/json                   |
-| errors.PreconditionFailedResponse  | 412                                | application/json                   |
-| errors.UnprocessableEntityResponse | 422                                | application/json                   |
-| errors.TooManyRequestsResponse     | 429                                | application/json                   |
-| errors.InternalServerErrorResponse | 500                                | application/json                   |
-| errors.NotImplementedResponse      | 501                                | application/json                   |
-| errors.BadGatewayResponse          | 502                                | application/json                   |
-| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
-
 ## getAssessmentsResult
 
 Get Assessments Results
@@ -2563,100 +2466,6 @@ run();
 ### Response
 
 **Promise\<[operations.AtsGetBackgroundCheckPackageResponse](../../sdk/models/operations/atsgetbackgroundcheckpackageresponse.md)\>**
-
-### Errors
-
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.BadRequestResponse          | 400                                | application/json                   |
-| errors.UnauthorizedResponse        | 401                                | application/json                   |
-| errors.ForbiddenResponse           | 403                                | application/json                   |
-| errors.NotFoundResponse            | 404                                | application/json                   |
-| errors.RequestTimedOutResponse     | 408                                | application/json                   |
-| errors.ConflictResponse            | 409                                | application/json                   |
-| errors.PreconditionFailedResponse  | 412                                | application/json                   |
-| errors.UnprocessableEntityResponse | 422                                | application/json                   |
-| errors.TooManyRequestsResponse     | 429                                | application/json                   |
-| errors.InternalServerErrorResponse | 500                                | application/json                   |
-| errors.NotImplementedResponse      | 501                                | application/json                   |
-| errors.BadGatewayResponse          | 502                                | application/json                   |
-| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
-
-## getBackgroundCheckRequest
-
-Get Background Check Request
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-const stackOne = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const result = await stackOne.ats.getBackgroundCheckRequest({
-    fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
-    id: "<id>",
-    xAccountId: "<id>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { atsGetBackgroundCheckRequest } from "@stackone/stackone-client-ts/funcs/atsGetBackgroundCheckRequest.js";
-
-// Use `StackOneCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const stackOne = new StackOneCore({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const res = await atsGetBackgroundCheckRequest(stackOne, {
-    fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
-    id: "<id>",
-    xAccountId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("atsGetBackgroundCheckRequest failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AtsGetBackgroundCheckRequestRequest](../../sdk/models/operations/atsgetbackgroundcheckrequestrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.AtsGetBackgroundCheckRequestResponse](../../sdk/models/operations/atsgetbackgroundcheckrequestresponse.md)\>**
 
 ### Errors
 
@@ -5045,110 +4854,6 @@ run();
 ### Response
 
 **Promise\<[operations.AtsListBackgroundCheckPackagesResponse](../../sdk/models/operations/atslistbackgroundcheckpackagesresponse.md)\>**
-
-### Errors
-
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.BadRequestResponse          | 400                                | application/json                   |
-| errors.UnauthorizedResponse        | 401                                | application/json                   |
-| errors.ForbiddenResponse           | 403                                | application/json                   |
-| errors.NotFoundResponse            | 404                                | application/json                   |
-| errors.RequestTimedOutResponse     | 408                                | application/json                   |
-| errors.ConflictResponse            | 409                                | application/json                   |
-| errors.PreconditionFailedResponse  | 412                                | application/json                   |
-| errors.UnprocessableEntityResponse | 422                                | application/json                   |
-| errors.TooManyRequestsResponse     | 429                                | application/json                   |
-| errors.InternalServerErrorResponse | 500                                | application/json                   |
-| errors.NotImplementedResponse      | 501                                | application/json                   |
-| errors.BadGatewayResponse          | 502                                | application/json                   |
-| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
-
-## listBackgroundCheckRequest
-
-List Background Check Request
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-const stackOne = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const result = await stackOne.ats.listBackgroundCheckRequest({
-    fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
-    filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<id>",
-  });
-
-  for await (const page of result) {
-    console.log(page);
-  }
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { atsListBackgroundCheckRequest } from "@stackone/stackone-client-ts/funcs/atsListBackgroundCheckRequest.js";
-
-// Use `StackOneCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const stackOne = new StackOneCore({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const res = await atsListBackgroundCheckRequest(stackOne, {
-    fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
-    filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    for await (const page of result) {
-    console.log(page);
-  }
-  } else {
-    console.log("atsListBackgroundCheckRequest failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AtsListBackgroundCheckRequestRequest](../../sdk/models/operations/atslistbackgroundcheckrequestrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.AtsListBackgroundCheckRequestResponse](../../sdk/models/operations/atslistbackgroundcheckrequestresponse.md)\>**
 
 ### Errors
 

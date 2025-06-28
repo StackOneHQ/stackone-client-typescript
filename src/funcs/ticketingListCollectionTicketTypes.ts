@@ -39,6 +39,9 @@ import {
 
 /**
  * List Collection Ticket Types
+ *
+ * @remarks
+ * Retrieve a paginated list of ticket types for a collection.
  */
 export function ticketingListCollectionTicketTypes(
   client: StackOneCore,

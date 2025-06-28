@@ -5,6 +5,11 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,6 +23,20 @@ export type Secrets = {};
 
 export type PatchAccountExternalDtoSetupInformation = {};
 
+/**
+ * The account type
+ */
+export enum PatchAccountExternalDtoType {
+  Production = "production",
+  Test = "test",
+}
+/**
+ * The account type
+ */
+export type PatchAccountExternalDtoTypeOpen = OpenEnum<
+  typeof PatchAccountExternalDtoType
+>;
+
 export type PatchAccountExternalDto = {
   authenticationConfigKey?: string | null | undefined;
   credentials?: PatchAccountExternalDtoCredentials | null | undefined;
@@ -30,6 +49,10 @@ export type PatchAccountExternalDto = {
   provider?: string | null | undefined;
   secrets?: Secrets | null | undefined;
   setupInformation?: PatchAccountExternalDtoSetupInformation | null | undefined;
+  /**
+   * The account type
+   */
+  type?: PatchAccountExternalDtoTypeOpen | null | undefined;
 };
 
 /** @internal */
@@ -276,6 +299,38 @@ export function patchAccountExternalDtoSetupInformationFromJSON(
 }
 
 /** @internal */
+export const PatchAccountExternalDtoType$inboundSchema: z.ZodType<
+  PatchAccountExternalDtoTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(PatchAccountExternalDtoType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const PatchAccountExternalDtoType$outboundSchema: z.ZodType<
+  PatchAccountExternalDtoTypeOpen,
+  z.ZodTypeDef,
+  PatchAccountExternalDtoTypeOpen
+> = z.union([
+  z.nativeEnum(PatchAccountExternalDtoType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchAccountExternalDtoType$ {
+  /** @deprecated use `PatchAccountExternalDtoType$inboundSchema` instead. */
+  export const inboundSchema = PatchAccountExternalDtoType$inboundSchema;
+  /** @deprecated use `PatchAccountExternalDtoType$outboundSchema` instead. */
+  export const outboundSchema = PatchAccountExternalDtoType$outboundSchema;
+}
+
+/** @internal */
 export const PatchAccountExternalDto$inboundSchema: z.ZodType<
   PatchAccountExternalDto,
   z.ZodTypeDef,
@@ -298,6 +353,11 @@ export const PatchAccountExternalDto$inboundSchema: z.ZodType<
   setup_information: z.nullable(
     z.lazy(() => PatchAccountExternalDtoSetupInformation$inboundSchema),
   ).optional(),
+  type: z.nullable(
+    PatchAccountExternalDtoType$inboundSchema.default(
+      PatchAccountExternalDtoType.Production,
+    ),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "authentication_config_key": "authenticationConfigKey",
@@ -324,6 +384,7 @@ export type PatchAccountExternalDto$Outbound = {
     | PatchAccountExternalDtoSetupInformation$Outbound
     | null
     | undefined;
+  type: string | null;
 };
 
 /** @internal */
@@ -349,6 +410,11 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
   setupInformation: z.nullable(
     z.lazy(() => PatchAccountExternalDtoSetupInformation$outboundSchema),
   ).optional(),
+  type: z.nullable(
+    PatchAccountExternalDtoType$outboundSchema.default(
+      PatchAccountExternalDtoType.Production,
+    ),
+  ),
 }).transform((v) => {
   return remap$(v, {
     authenticationConfigKey: "authentication_config_key",

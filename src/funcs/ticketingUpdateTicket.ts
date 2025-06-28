@@ -27,6 +27,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Update Ticket
+ *
+ * @remarks
+ * Update an existing ticket record by its identifier.
  */
 export function ticketingUpdateTicket(
   client: StackOneCore,

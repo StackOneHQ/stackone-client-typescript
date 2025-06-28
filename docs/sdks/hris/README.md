@@ -1141,6 +1141,7 @@ async function run() {
   const result = await stackOne.hris.createEmployeeTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
+      comment: "Taking a day off for personal reasons",
       endDate: "2021-01-01T01:01:01.000",
       endHalfDay: true,
       passthrough: {
@@ -1185,6 +1186,7 @@ async function run() {
   const res = await hrisCreateEmployeeTimeOffRequest(stackOne, {
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
+      comment: "Taking a day off for personal reasons",
       endDate: "2021-01-01T01:01:01.000",
       endHalfDay: true,
       passthrough: {
@@ -2672,7 +2674,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeesTimeOffRequest({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2704,7 +2706,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeesTimeOffRequest(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -3526,7 +3528,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getTimeOffRequest({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3557,7 +3559,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetTimeOffRequest(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -5086,7 +5088,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffRequests({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -5123,7 +5125,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeTimeOffRequests(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -6142,7 +6144,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listTimeOffRequests({
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -6178,7 +6180,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListTimeOffRequests(stackOne, {
     expand: "policy",
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy",
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -6947,6 +6949,7 @@ async function run() {
   const result = await stackOne.hris.updateEmployeeTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
+      comment: "Taking a day off for personal reasons",
       endDate: "2021-01-01T01:01:01.000",
       endHalfDay: true,
       passthrough: {
@@ -6992,6 +6995,7 @@ async function run() {
   const res = await hrisUpdateEmployeeTimeOffRequest(stackOne, {
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
+      comment: "Taking a day off for personal reasons",
       endDate: "2021-01-01T01:01:01.000",
       endHalfDay: true,
       passthrough: {

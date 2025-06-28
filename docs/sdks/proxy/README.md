@@ -3,6 +3,8 @@
 
 ## Overview
 
+Routing API requests through StackOne directly to the underlying provider.
+
 ### Available Operations
 
 * [proxyRequest](#proxyrequest) - Proxy Request

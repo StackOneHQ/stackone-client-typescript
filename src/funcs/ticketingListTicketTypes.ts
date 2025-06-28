@@ -39,6 +39,9 @@ import {
 
 /**
  * List Ticket Types
+ *
+ * @remarks
+ * Retrieve a paginated list of all ticket types.
  */
 export function ticketingListTicketTypes(
   client: StackOneCore,

@@ -15,17 +15,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomFieldDefinition4 = {};
 
-export type Options =
-  | CustomFieldDefinition4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export type CustomFieldDefinitionSchemas4 = {};
-
 export type CustomFieldDefinitionSourceValue =
-  | CustomFieldDefinitionSchemas4
+  | CustomFieldDefinition4
   | string
   | number
   | boolean
@@ -54,7 +45,7 @@ export type CustomFieldDefinitionValueOpen = OpenEnum<
  */
 export type CustomFieldDefinitionType = {
   sourceValue?:
-    | CustomFieldDefinitionSchemas4
+    | CustomFieldDefinition4
     | string
     | number
     | boolean
@@ -74,10 +65,7 @@ export type CustomFieldDefinition = {
   /**
    * An array of possible options for the custom field.
    */
-  options?:
-    | Array<CustomFieldDefinition4 | string | number | boolean | Array<any>>
-    | null
-    | undefined;
+  options?: Array<Array<any>> | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -137,120 +125,12 @@ export function customFieldDefinition4FromJSON(
 }
 
 /** @internal */
-export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => CustomFieldDefinition4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.array(z.any()),
-  ]);
-
-/** @internal */
-export type Options$Outbound =
-  | CustomFieldDefinition4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const Options$outboundSchema: z.ZodType<
-  Options$Outbound,
-  z.ZodTypeDef,
-  Options
-> = z.union([
-  z.lazy(() => CustomFieldDefinition4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Options$ {
-  /** @deprecated use `Options$inboundSchema` instead. */
-  export const inboundSchema = Options$inboundSchema;
-  /** @deprecated use `Options$outboundSchema` instead. */
-  export const outboundSchema = Options$outboundSchema;
-  /** @deprecated use `Options$Outbound` instead. */
-  export type Outbound = Options$Outbound;
-}
-
-export function optionsToJSON(options: Options): string {
-  return JSON.stringify(Options$outboundSchema.parse(options));
-}
-
-export function optionsFromJSON(
-  jsonString: string,
-): SafeParseResult<Options, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Options$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Options' from JSON`,
-  );
-}
-
-/** @internal */
-export const CustomFieldDefinitionSchemas4$inboundSchema: z.ZodType<
-  CustomFieldDefinitionSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CustomFieldDefinitionSchemas4$Outbound = {};
-
-/** @internal */
-export const CustomFieldDefinitionSchemas4$outboundSchema: z.ZodType<
-  CustomFieldDefinitionSchemas4$Outbound,
-  z.ZodTypeDef,
-  CustomFieldDefinitionSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinitionSchemas4$ {
-  /** @deprecated use `CustomFieldDefinitionSchemas4$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldDefinitionSchemas4$inboundSchema;
-  /** @deprecated use `CustomFieldDefinitionSchemas4$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldDefinitionSchemas4$outboundSchema;
-  /** @deprecated use `CustomFieldDefinitionSchemas4$Outbound` instead. */
-  export type Outbound = CustomFieldDefinitionSchemas4$Outbound;
-}
-
-export function customFieldDefinitionSchemas4ToJSON(
-  customFieldDefinitionSchemas4: CustomFieldDefinitionSchemas4,
-): string {
-  return JSON.stringify(
-    CustomFieldDefinitionSchemas4$outboundSchema.parse(
-      customFieldDefinitionSchemas4,
-    ),
-  );
-}
-
-export function customFieldDefinitionSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<CustomFieldDefinitionSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CustomFieldDefinitionSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CustomFieldDefinitionSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
 export const CustomFieldDefinitionSourceValue$inboundSchema: z.ZodType<
   CustomFieldDefinitionSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CustomFieldDefinitionSchemas4$inboundSchema),
+  z.lazy(() => CustomFieldDefinition4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -259,7 +139,7 @@ export const CustomFieldDefinitionSourceValue$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CustomFieldDefinitionSourceValue$Outbound =
-  | CustomFieldDefinitionSchemas4$Outbound
+  | CustomFieldDefinition4$Outbound
   | string
   | number
   | boolean
@@ -271,7 +151,7 @@ export const CustomFieldDefinitionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomFieldDefinitionSourceValue
 > = z.union([
-  z.lazy(() => CustomFieldDefinitionSchemas4$outboundSchema),
+  z.lazy(() => CustomFieldDefinition4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -351,7 +231,7 @@ export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CustomFieldDefinitionSchemas4$inboundSchema),
+      z.lazy(() => CustomFieldDefinition4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
@@ -368,7 +248,7 @@ export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
 /** @internal */
 export type CustomFieldDefinitionType$Outbound = {
   source_value?:
-    | CustomFieldDefinitionSchemas4$Outbound
+    | CustomFieldDefinition4$Outbound
     | string
     | number
     | boolean
@@ -386,7 +266,7 @@ export const CustomFieldDefinitionType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CustomFieldDefinitionSchemas4$outboundSchema),
+      z.lazy(() => CustomFieldDefinition4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
@@ -440,15 +320,7 @@ export const CustomFieldDefinition$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  options: z.nullable(
-    z.array(z.union([
-      z.lazy(() => CustomFieldDefinition4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ])),
-  ).optional(),
+  options: z.nullable(z.array(z.array(z.any()))).optional(),
   remote_id: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => CustomFieldDefinitionType$inboundSchema))
     .optional(),
@@ -463,12 +335,7 @@ export type CustomFieldDefinition$Outbound = {
   description?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
-  options?:
-    | Array<
-      CustomFieldDefinition4$Outbound | string | number | boolean | Array<any>
-    >
-    | null
-    | undefined;
+  options?: Array<Array<any>> | null | undefined;
   remote_id?: string | null | undefined;
   type?: CustomFieldDefinitionType$Outbound | null | undefined;
 };
@@ -482,15 +349,7 @@ export const CustomFieldDefinition$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  options: z.nullable(
-    z.array(z.union([
-      z.lazy(() => CustomFieldDefinition4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ])),
-  ).optional(),
+  options: z.nullable(z.array(z.array(z.any()))).optional(),
   remoteId: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => CustomFieldDefinitionType$outboundSchema))
     .optional(),

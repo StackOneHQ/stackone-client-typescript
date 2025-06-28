@@ -39,6 +39,9 @@ import {
 
 /**
  * List Collections
+ *
+ * @remarks
+ * Retrieve a paginated list of collections.
  */
 export function ticketingListCollections(
   client: StackOneCore,

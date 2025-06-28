@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Categories, ConnectSession } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Categories, ConnectSession, ConnectSessionType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSession = {
   categories: [
@@ -27,6 +27,7 @@ let value: ConnectSession = {
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
+  type: ConnectSessionType.Test,
 };
 ```
 
@@ -47,3 +48,4 @@ let value: ConnectSession = {
 | `originUsername`                                                                                                                                | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `projectId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `provider`                                                                                                                                      | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
+| `type`                                                                                                                                          | [shared.ConnectSessionType](../../../sdk/models/shared/connectsessiontype.md)                                                                   | :heavy_minus_sign:                                                                                                                              | The connect session account type                                                                                                                | [<br/>"PRODUCTION",<br/>"TEST"<br/>]                                                                                                            |

@@ -142,6 +142,10 @@ export type HrisCreateTimeOffRequestDto = {
    */
   approverId?: string | null | undefined;
   /**
+   * Allows users to provide additional context or notes for their time off request
+   */
+  comment?: string | null | undefined;
+  /**
    * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
    */
   endDate?: string | null | undefined;
@@ -893,6 +897,7 @@ export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   approver_id: z.nullable(z.string()).optional(),
+  comment: z.nullable(z.string()).optional(),
   end_date: z.nullable(z.string()).optional(),
   end_half_day: z.nullable(
     z.union([z.boolean(), HrisCreateTimeOffRequestDto2$inboundSchema]),
@@ -925,6 +930,7 @@ export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateTimeOffRequestDto$Outbound = {
   approver_id?: string | null | undefined;
+  comment?: string | null | undefined;
   end_date?: string | null | undefined;
   end_half_day?: boolean | string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
@@ -943,6 +949,7 @@ export const HrisCreateTimeOffRequestDto$outboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDto
 > = z.object({
   approverId: z.nullable(z.string()).optional(),
+  comment: z.nullable(z.string()).optional(),
   endDate: z.nullable(z.string()).optional(),
   endHalfDay: z.nullable(
     z.union([z.boolean(), HrisCreateTimeOffRequestDto2$outboundSchema]),

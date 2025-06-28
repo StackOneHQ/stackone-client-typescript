@@ -9,7 +9,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Body = string | { [k: string]: any } | Array<number>;
 
-export type Response = { [k: string]: any } | Array<any> | string;
+export type ResponseT = { [k: string]: any } | Array<any> | string;
 
 export type RawResponse = {
   body?: string | { [k: string]: any } | Array<number> | null | undefined;
@@ -57,46 +57,46 @@ export function bodyFromJSON(
 }
 
 /** @internal */
-export const Response$inboundSchema: z.ZodType<
-  Response,
+export const ResponseT$inboundSchema: z.ZodType<
+  ResponseT,
   z.ZodTypeDef,
   unknown
 > = z.union([z.record(z.any()), z.array(z.any()), z.string()]);
 
 /** @internal */
-export type Response$Outbound = { [k: string]: any } | Array<any> | string;
+export type ResponseT$Outbound = { [k: string]: any } | Array<any> | string;
 
 /** @internal */
-export const Response$outboundSchema: z.ZodType<
-  Response$Outbound,
+export const ResponseT$outboundSchema: z.ZodType<
+  ResponseT$Outbound,
   z.ZodTypeDef,
-  Response
+  ResponseT
 > = z.union([z.record(z.any()), z.array(z.any()), z.string()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Response$ {
-  /** @deprecated use `Response$inboundSchema` instead. */
-  export const inboundSchema = Response$inboundSchema;
-  /** @deprecated use `Response$outboundSchema` instead. */
-  export const outboundSchema = Response$outboundSchema;
-  /** @deprecated use `Response$Outbound` instead. */
-  export type Outbound = Response$Outbound;
+export namespace ResponseT$ {
+  /** @deprecated use `ResponseT$inboundSchema` instead. */
+  export const inboundSchema = ResponseT$inboundSchema;
+  /** @deprecated use `ResponseT$outboundSchema` instead. */
+  export const outboundSchema = ResponseT$outboundSchema;
+  /** @deprecated use `ResponseT$Outbound` instead. */
+  export type Outbound = ResponseT$Outbound;
 }
 
-export function responseToJSON(response: Response): string {
-  return JSON.stringify(Response$outboundSchema.parse(response));
+export function responseToJSON(responseT: ResponseT): string {
+  return JSON.stringify(ResponseT$outboundSchema.parse(responseT));
 }
 
 export function responseFromJSON(
   jsonString: string,
-): SafeParseResult<Response, SDKValidationError> {
+): SafeParseResult<ResponseT, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Response$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Response' from JSON`,
+    (x) => ResponseT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseT' from JSON`,
   );
 }
 

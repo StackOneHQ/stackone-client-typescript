@@ -27,6 +27,9 @@ import { unwrapAsync } from "./types/fp.js";
 export class Ticketing extends ClientSDK {
   /**
    * Create Ticket
+   *
+   * @remarks
+   * Create a new ticket record.
    */
   async createTicket(
     request: operations.TicketingCreateTicketRequest,
@@ -41,6 +44,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Download Attachment
+   *
+   * @remarks
+   * Download the attachment file from a ticket.
    */
   async downloadTicketingAttachment(
     request: operations.TicketingDownloadTicketingAttachmentRequest,
@@ -55,6 +61,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Get Attachment
+   *
+   * @remarks
+   * Retrieve the details of a single attachment for a ticket.
    */
   async getAttachment(
     request: operations.TicketingGetAttachmentRequest,
@@ -69,6 +78,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Get Collection
+   *
+   * @remarks
+   * Retrieve a single collection by its identifier.
    */
   async getCollection(
     request: operations.TicketingGetCollectionRequest,
@@ -83,6 +95,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Get Comment
+   *
+   * @remarks
+   * Retrieve a single comment by its identifier for a ticket.
    */
   async getComment(
     request: operations.TicketingGetCommentRequest,
@@ -97,6 +112,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Get Ticket
+   *
+   * @remarks
+   * Retrieve a single ticket by its identifier.
    */
   async getTicket(
     request: operations.TicketingGetTicketRequest,
@@ -111,6 +129,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Get Ticket Type
+   *
+   * @remarks
+   * Retrieve a single ticket type by its identifier.
    */
   async getTicketType(
     request: operations.TicketingGetTicketTypeRequest,
@@ -125,6 +146,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Get User
+   *
+   * @remarks
+   * Retrieve a single user by their identifier.
    */
   async getUser(
     request: operations.TicketingGetUserRequest,
@@ -139,6 +163,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Attachments
+   *
+   * @remarks
+   * Retrieve a paginated list of attachment details for a ticket.
    */
   async listAttachments(
     request: operations.TicketingListAttachmentsRequest,
@@ -158,6 +185,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Collection Ticket Types
+   *
+   * @remarks
+   * Retrieve a paginated list of ticket types for a collection.
    */
   async listCollectionTicketTypes(
     request: operations.TicketingListCollectionTicketTypesRequest,
@@ -177,6 +207,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Collections
+   *
+   * @remarks
+   * Retrieve a paginated list of collections.
    */
   async listCollections(
     request: operations.TicketingListCollectionsRequest,
@@ -196,6 +229,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Comments
+   *
+   * @remarks
+   * Retrieve a paginated list of comments for a ticket.
    */
   async listComments(
     request: operations.TicketingListCommentsRequest,
@@ -212,6 +248,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Ticket Statuses
+   *
+   * @remarks
+   * Retrieve a paginated list of statuses for a ticket.
    */
   async listTicketStatuses(
     request: operations.TicketingListTicketStatusesRequest,
@@ -231,6 +270,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Ticket Types
+   *
+   * @remarks
+   * Retrieve a paginated list of all ticket types.
    */
   async listTicketTypes(
     request: operations.TicketingListTicketTypesRequest,
@@ -250,6 +292,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Tickets
+   *
+   * @remarks
+   * Retrieve a paginated list of tickets.
    */
   async listTickets(
     request: operations.TicketingListTicketsRequest,
@@ -266,6 +311,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * List Users
+   *
+   * @remarks
+   * Retrieve a paginated list of users.
    */
   async listUsers(
     request: operations.TicketingListUsersRequest,
@@ -282,6 +330,9 @@ export class Ticketing extends ClientSDK {
 
   /**
    * Update Ticket
+   *
+   * @remarks
+   * Update an existing ticket record by its identifier.
    */
   async updateTicket(
     request: operations.TicketingUpdateTicketRequest,

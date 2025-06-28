@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConnectSessionCreate, ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ConnectSessionCreate, ConnectSessionCreateCategories, ConnectSessionCreateType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionCreate = {
   categories: [
@@ -22,6 +22,7 @@ let value: ConnectSessionCreate = {
   ],
   originOwnerId: "<id>",
   originOwnerName: "<value>",
+  type: ConnectSessionCreateType.Test,
 };
 ```
 
@@ -40,3 +41,4 @@ let value: ConnectSessionCreate = {
 | `originUsername`                                                                                                                                                    | *string*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                  | The origin username                                                                                                                                                 |                                                                                                                                                                     |
 | `provider`                                                                                                                                                          | *string*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                  | The provider to connect to                                                                                                                                          |                                                                                                                                                                     |
 | `providerVersion`                                                                                                                                                   | *string*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                  | The provider version to connect to                                                                                                                                  |                                                                                                                                                                     |
+| `type`                                                                                                                                                              | [shared.ConnectSessionCreateType](../../../sdk/models/shared/connectsessioncreatetype.md)                                                                           | :heavy_minus_sign:                                                                                                                                                  | The connect session account type                                                                                                                                    | [<br/>"PRODUCTION",<br/>"TEST"<br/>]                                                                                                                                |

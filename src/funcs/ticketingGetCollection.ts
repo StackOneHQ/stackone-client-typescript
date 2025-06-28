@@ -32,6 +32,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get Collection
+ *
+ * @remarks
+ * Retrieve a single collection by its identifier.
  */
 export function ticketingGetCollection(
   client: StackOneCore,

@@ -3,6 +3,8 @@
 
 ## Overview
 
+Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
+
 ### Available Operations
 
 * [authenticateConnectSession](#authenticateconnectsession) - Authenticate Connect Session
@@ -105,7 +107,7 @@ Create Connect Session
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ConnectSessionCreateCategories, ConnectSessionCreateType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -132,6 +134,7 @@ async function run() {
     ],
     originOwnerId: "<id>",
     originOwnerName: "<value>",
+    type: ConnectSessionCreateType.Test,
   });
 
   console.log(result);
@@ -147,7 +150,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { connectSessionsCreateConnectSession } from "@stackone/stackone-client-ts/funcs/connectSessionsCreateConnectSession.js";
-import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ConnectSessionCreateCategories, ConnectSessionCreateType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -176,6 +179,7 @@ async function run() {
     ],
     originOwnerId: "<id>",
     originOwnerName: "<value>",
+    type: ConnectSessionCreateType.Test,
   });
   if (res.ok) {
     const { value: result } = res;

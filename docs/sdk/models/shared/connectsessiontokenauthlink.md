@@ -3,7 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  ConnectSessionTokenAuthLink,
+  ConnectSessionTokenAuthLinkCategories,
+  ConnectSessionTokenAuthLinkType,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
   authLinkUrl: "https://well-to-do-slipper.info",
@@ -29,6 +33,7 @@ let value: ConnectSessionTokenAuthLink = {
   originOwnerName: "<value>",
   projectId: "<id>",
   token: "<value>",
+  type: ConnectSessionTokenAuthLinkType.Production,
 };
 ```
 
@@ -51,3 +56,4 @@ let value: ConnectSessionTokenAuthLink = {
 | `projectId`                                                                                                                                     | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `provider`                                                                                                                                      | *string*                                                                                                                                        | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
 | `token`                                                                                                                                         | *string*                                                                                                                                        | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |                                                                                                                                                 |
+| `type`                                                                                                                                          | [shared.ConnectSessionTokenAuthLinkType](../../../sdk/models/shared/connectsessiontokenauthlinktype.md)                                         | :heavy_minus_sign:                                                                                                                              | The connect session account type                                                                                                                | [<br/>"PRODUCTION",<br/>"TEST"<br/>]                                                                                                            |

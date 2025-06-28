@@ -32,6 +32,9 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get Attachment
+ *
+ * @remarks
+ * Retrieve the details of a single attachment for a ticket.
  */
 export function ticketingGetAttachment(
   client: StackOneCore,

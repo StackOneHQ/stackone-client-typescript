@@ -21,10 +21,10 @@ const value: number = 1284.03;
 const value: boolean = true;
 ```
 
-### `shared.CustomFieldDefinitionSchemas4`
+### `shared.CustomFieldDefinition4`
 
 ```typescript
-const value: shared.CustomFieldDefinitionSchemas4 = {};
+const value: shared.CustomFieldDefinition4 = {};
 ```
 
 ### `any[]`

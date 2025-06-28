@@ -713,6 +713,7 @@ Search Files
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { DocumentsFilesSearchRequestDtoOperator, Operator } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -724,10 +725,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.documents.searchFiles({
     documentsFilesSearchRequestDto: {
-      field: "name",
-      operationType: {
-        sourceValue: "contains",
-      },
       params: {
         filter: {
           updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -736,7 +733,19 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
-      query: "test",
+      query: {
+        field: "name",
+        globalSearch: "test",
+        operator: DocumentsFilesSearchRequestDtoOperator.Equal,
+        queries: [
+          {
+            field: "name",
+            operator: Operator.Equal,
+            value: "john",
+          },
+        ],
+        value: "john",
+      },
     },
     xAccountId: "<id>",
   });
@@ -754,6 +763,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { documentsSearchFiles } from "@stackone/stackone-client-ts/funcs/documentsSearchFiles.js";
+import { DocumentsFilesSearchRequestDtoOperator, Operator } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -767,10 +777,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await documentsSearchFiles(stackOne, {
     documentsFilesSearchRequestDto: {
-      field: "name",
-      operationType: {
-        sourceValue: "contains",
-      },
       params: {
         filter: {
           updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -779,7 +785,19 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
-      query: "test",
+      query: {
+        field: "name",
+        globalSearch: "test",
+        operator: DocumentsFilesSearchRequestDtoOperator.Equal,
+        queries: [
+          {
+            field: "name",
+            operator: Operator.Equal,
+            value: "john",
+          },
+        ],
+        value: "john",
+      },
     },
     xAccountId: "<id>",
   });
