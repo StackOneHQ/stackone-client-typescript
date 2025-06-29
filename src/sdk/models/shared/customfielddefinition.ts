@@ -12,6 +12,12 @@ import {
 } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  CustomFieldOption,
+  CustomFieldOption$inboundSchema,
+  CustomFieldOption$Outbound,
+  CustomFieldOption$outboundSchema,
+} from "./customfieldoption.js";
 
 export type CustomFieldDefinition4 = {};
 
@@ -65,7 +71,7 @@ export type CustomFieldDefinition = {
   /**
    * An array of possible options for the custom field.
    */
-  options?: Array<Array<any>> | null | undefined;
+  options?: Array<CustomFieldOption> | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -320,7 +326,7 @@ export const CustomFieldDefinition$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  options: z.nullable(z.array(z.array(z.any()))).optional(),
+  options: z.nullable(z.array(CustomFieldOption$inboundSchema)).optional(),
   remote_id: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => CustomFieldDefinitionType$inboundSchema))
     .optional(),
@@ -335,7 +341,7 @@ export type CustomFieldDefinition$Outbound = {
   description?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
-  options?: Array<Array<any>> | null | undefined;
+  options?: Array<CustomFieldOption$Outbound> | null | undefined;
   remote_id?: string | null | undefined;
   type?: CustomFieldDefinitionType$Outbound | null | undefined;
 };
@@ -349,7 +355,7 @@ export const CustomFieldDefinition$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  options: z.nullable(z.array(z.array(z.any()))).optional(),
+  options: z.nullable(z.array(CustomFieldOption$outboundSchema)).optional(),
   remoteId: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => CustomFieldDefinitionType$outboundSchema))
     .optional(),

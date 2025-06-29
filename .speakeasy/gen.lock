@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: de3b06cae06289f1fbef62951e036dbc
+  docChecksum: 7cc74415bd3a1ad4e0b0a506a5084460
   docVersion: 1.0.0
-  speakeasyVersion: 1.571.1
+  speakeasyVersion: 1.571.2
   generationVersion: 2.640.2
-  releaseVersion: 4.21.0
-  configChecksum: 328bc9c9ad754e3297c48d51a5d9e790
+  releaseVersion: 4.21.1
+  configChecksum: 882f1e7eeba43734d87bae47c1e02bcf
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -969,6 +969,7 @@ generatedFiles:
   - docs/sdk/models/shared/customfielddefinitionspaginated.md
   - docs/sdk/models/shared/customfielddefinitiontype.md
   - docs/sdk/models/shared/customfielddefinitionvalue.md
+  - docs/sdk/models/shared/customfieldoption.md
   - docs/sdk/models/shared/customfields.md
   - docs/sdk/models/shared/customfields4.md
   - docs/sdk/models/shared/customfieldsvalue.md
@@ -2698,6 +2699,7 @@ generatedFiles:
   - src/sdk/models/shared/customfielddefinition.ts
   - src/sdk/models/shared/customfielddefinitionresultapimodel.ts
   - src/sdk/models/shared/customfielddefinitionspaginated.ts
+  - src/sdk/models/shared/customfieldoption.ts
   - src/sdk/models/shared/customfields.ts
   - src/sdk/models/shared/custommappingerror.ts
   - src/sdk/models/shared/deleteresult.ts
@@ -3687,7 +3689,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_1", "value": "Not Started"}, {"id": "option_2", "value": "In Progress"}, {"id": "option_3", "value": "Completed"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -4162,7 +4164,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_1", "value": "Not Started"}, {"id": "option_2", "value": "In Progress"}, {"id": "option_3", "value": "Completed"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -4383,7 +4385,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_1", "value": "Not Started"}, {"id": "option_2", "value": "In Progress"}, {"id": "option_3", "value": "Completed"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -5008,7 +5010,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -5227,7 +5229,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6056,7 +6058,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_1", "value": "Not Started"}, {"id": "option_2", "value": "In Progress"}, {"id": "option_3", "value": "Completed"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6164,7 +6166,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -7135,7 +7137,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [[{"id": "option_1", "value": "Not Started"}], [{"id": "option_2", "value": "In Progress"}], [{"id": "option_3", "value": "Completed"}]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_1", "value": "Not Started"}, {"id": "option_2", "value": "In Progress"}, {"id": "option_3", "value": "Completed"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {}}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -8012,7 +8014,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [["Not Started"], ["In Progress"], ["Completed"], ["Overdue"]], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "options": [{"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}, {"id": "option_123", "value": "Not Started"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":

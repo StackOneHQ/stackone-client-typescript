@@ -104,6 +104,7 @@ export * from "./crmcreatecontactrequestdto.js";
 export * from "./customfielddefinition.js";
 export * from "./customfielddefinitionresultapimodel.js";
 export * from "./customfielddefinitionspaginated.js";
+export * from "./customfieldoption.js";
 export * from "./customfields.js";
 export * from "./custommappingerror.js";
 export * from "./deleteresult.js";
