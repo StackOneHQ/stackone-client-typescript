@@ -149,6 +149,7 @@ run();
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
+* [listApplicationChanges](docs/sdks/ats/README.md#listapplicationchanges) - List Application Changes
 * [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
 * [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 * [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
@@ -248,6 +249,7 @@ run();
 * [getGroup](docs/sdks/hris/README.md#getgroup) - Get Group
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
+* [getPosition](docs/sdks/hris/README.md#getposition) - Get Position
 * [getTeamGroup](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 * [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
@@ -273,6 +275,7 @@ run();
 * [listGroups](docs/sdks/hris/README.md#listgroups) - List Groups
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
+* [listPositions](docs/sdks/hris/README.md#listpositions) - List Positions
 * [listTeamGroups](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
@@ -300,8 +303,6 @@ run();
 ### [lms](docs/sdks/lms/README.md)
 
 * [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
-* [batchUpsertCourse](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
-* [createCollection](docs/sdks/lms/README.md#createcollection) - Create Collection
 * [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 * [deleteUserCompletion](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
@@ -323,10 +324,8 @@ run();
 * [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
-* [updateCollection](docs/sdks/lms/README.md#updatecollection) - Update Collection
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
-* [upsertCourse](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 
 ### [marketing](docs/sdks/marketing/README.md)
 
@@ -414,12 +413,13 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.ats.listApplicationCustomFieldDefinitions({
-    fields: "id,remote_id,name,description,type,options",
+  const result = await stackOne.ats.listApplicationChanges({
+    fields:
+      "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: "2020-01-01T00:00:00.000Z",
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    id: "<id>",
     xAccountId: "<id>",
   });
 
@@ -493,18 +493,18 @@ run();
 ### Error Classes
 **Primary errors:**
 * [`StackOneError`](./src/sdk/models/errors/stackoneerror.ts): The base class for HTTP error responses.
-  * [`BadRequestResponse`](docs/sdk/models/errors/badrequestresponse.md): Invalid request. Status code `400`.
-  * [`UnauthorizedResponse`](docs/sdk/models/errors/unauthorizedresponse.md): Unauthorized access. Status code `401`.
-  * [`ForbiddenResponse`](docs/sdk/models/errors/forbiddenresponse.md): Forbidden. Status code `403`.
-  * [`NotFoundResponse`](docs/sdk/models/errors/notfoundresponse.md): Resource not found. Status code `404`.
-  * [`RequestTimedOutResponse`](docs/sdk/models/errors/requesttimedoutresponse.md): The request has timed out. Status code `408`.
-  * [`ConflictResponse`](docs/sdk/models/errors/conflictresponse.md): Conflict with current state. Status code `409`.
-  * [`UnprocessableEntityResponse`](docs/sdk/models/errors/unprocessableentityresponse.md): Validation error. Status code `422`.
-  * [`TooManyRequestsResponse`](docs/sdk/models/errors/toomanyrequestsresponse.md): Too many requests. Status code `429`.
-  * [`InternalServerErrorResponse`](docs/sdk/models/errors/internalservererrorresponse.md): Server error while executing the request. Status code `500`.
-  * [`NotImplementedResponse`](docs/sdk/models/errors/notimplementedresponse.md): This functionality is not implemented. Status code `501`.
-  * [`BadGatewayResponse`](docs/sdk/models/errors/badgatewayresponse.md): Bad gateway error. Status code `502`.
-  * [`PreconditionFailedResponse`](docs/sdk/models/errors/preconditionfailedresponse.md): Precondition failed: linked account belongs to a disabled integration. Status code `412`. *
+  * [`BadRequestResponse`](./src/sdk/models/errors/badrequestresponse.ts): Invalid request. Status code `400`.
+  * [`UnauthorizedResponse`](./src/sdk/models/errors/unauthorizedresponse.ts): Unauthorized access. Status code `401`.
+  * [`ForbiddenResponse`](./src/sdk/models/errors/forbiddenresponse.ts): Forbidden. Status code `403`.
+  * [`NotFoundResponse`](./src/sdk/models/errors/notfoundresponse.ts): Resource not found. Status code `404`.
+  * [`RequestTimedOutResponse`](./src/sdk/models/errors/requesttimedoutresponse.ts): The request has timed out. Status code `408`.
+  * [`ConflictResponse`](./src/sdk/models/errors/conflictresponse.ts): Conflict with current state. Status code `409`.
+  * [`UnprocessableEntityResponse`](./src/sdk/models/errors/unprocessableentityresponse.ts): Validation error. Status code `422`.
+  * [`TooManyRequestsResponse`](./src/sdk/models/errors/toomanyrequestsresponse.ts): Too many requests. Status code `429`.
+  * [`InternalServerErrorResponse`](./src/sdk/models/errors/internalservererrorresponse.ts): Server error while executing the request. Status code `500`.
+  * [`NotImplementedResponse`](./src/sdk/models/errors/notimplementedresponse.ts): This functionality is not implemented. Status code `501`.
+  * [`BadGatewayResponse`](./src/sdk/models/errors/badgatewayresponse.ts): Bad gateway error. Status code `502`.
+  * [`PreconditionFailedResponse`](./src/sdk/models/errors/preconditionfailedresponse.ts): Precondition failed: linked account belongs to a disabled integration. Status code `412`. *
 
 <details><summary>Less common errors (6)</summary>
 
@@ -749,6 +749,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetOffer`](docs/sdks/ats/README.md#getoffer) - Get Offer
 - [`atsGetRejectedReason`](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
 - [`atsGetUser`](docs/sdks/ats/README.md#getuser) - Get User
+- [`atsListApplicationChanges`](docs/sdks/ats/README.md#listapplicationchanges) - List Application Changes
 - [`atsListApplicationCustomFieldDefinitions`](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
 - [`atsListApplicationDocuments`](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 - [`atsListApplicationNotes`](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
@@ -833,6 +834,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetGroup`](docs/sdks/hris/README.md#getgroup) - Get Group
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
 - [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Work Location
+- [`hrisGetPosition`](docs/sdks/hris/README.md#getposition) - Get Position
 - [`hrisGetTeamGroup`](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 - [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 - [`hrisGetTimeOffPolicy`](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
@@ -857,6 +859,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListGroups`](docs/sdks/hris/README.md#listgroups) - List Groups
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List Work Locations
+- [`hrisListPositions`](docs/sdks/hris/README.md#listpositions) - List Positions
 - [`hrisListTeamGroups`](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffPolicies`](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
@@ -877,8 +880,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`iamListUsers`](docs/sdks/iam/README.md#listusers) - List Users
 - [`iamUpdateUser`](docs/sdks/iam/README.md#updateuser) - Update User
 - [`lmsBatchUpsertContent`](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
-- [`lmsBatchUpsertCourse`](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
-- [`lmsCreateCollection`](docs/sdks/lms/README.md#createcollection) - Create Collection
 - [`lmsCreateUserAssignment`](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 - [`lmsCreateUserCompletion`](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 - [`lmsDeleteUserCompletion`](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
@@ -900,10 +901,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsListUserAssignments`](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 - [`lmsListUserCompletions`](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 - [`lmsListUsers`](docs/sdks/lms/README.md#listusers) - List Users
-- [`lmsUpdateCollection`](docs/sdks/lms/README.md#updatecollection) - Update Collection
 - [`lmsUpdateContent`](docs/sdks/lms/README.md#updatecontent) - Update Content
 - [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
-- [`lmsUpsertCourse`](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 - [`marketingCreateContentBlock`](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 - [`marketingCreateEmailTemplate`](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
 - [`marketingCreateInAppTemplate`](docs/sdks/marketing/README.md#createinapptemplate) - Create In-App Template

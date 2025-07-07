@@ -6,7 +6,7 @@
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionCreateCategories =
-  ConnectSessionCreateCategories.Messaging;
+  ConnectSessionCreateCategories.Accounting;
 ```
 
 ## Values
@@ -25,3 +25,4 @@ let value: ConnectSessionCreateCategories =
 | `Ticketing`  | ticketing    |
 | `Screening`  | screening    |
 | `Messaging`  | messaging    |
+| `Accounting` | accounting   |

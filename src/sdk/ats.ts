@@ -36,6 +36,7 @@ import { atsGetLocation } from "../funcs/atsGetLocation.js";
 import { atsGetOffer } from "../funcs/atsGetOffer.js";
 import { atsGetRejectedReason } from "../funcs/atsGetRejectedReason.js";
 import { atsGetUser } from "../funcs/atsGetUser.js";
+import { atsListApplicationChanges } from "../funcs/atsListApplicationChanges.js";
 import { atsListApplicationCustomFieldDefinitions } from "../funcs/atsListApplicationCustomFieldDefinitions.js";
 import { atsListApplicationDocuments } from "../funcs/atsListApplicationDocuments.js";
 import { atsListApplicationNotes } from "../funcs/atsListApplicationNotes.js";
@@ -547,6 +548,25 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsGetUserResponse> {
     return unwrapAsync(atsGetUser(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Application Changes
+   */
+  async listApplicationChanges(
+    request: operations.AtsListApplicationChangesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationChangesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationChanges(
       this,
       request,
       options,

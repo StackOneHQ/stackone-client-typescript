@@ -1,6 +1,6 @@
 # Active
 
-The reference status
+Whether the category is active and therefore available for use
 
 
 ## Supported Types
@@ -11,9 +11,9 @@ The reference status
 const value: boolean = true;
 ```
 
-### `shared.Reference2`
+### `shared.Category2`
 
 ```typescript
-const value: shared.Reference2 = Reference2.True;
+const value: shared.Category2 = Category2.True;
 ```
 

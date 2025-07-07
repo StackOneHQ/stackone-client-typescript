@@ -12,7 +12,7 @@ import * as shared from "../shared/index.js";
 /**
  * Filter to select assignment by status
  */
-export enum QueryParamStatus {
+export enum LmsListAssignmentsQueryParamStatus {
   Pending = "pending",
   InProgress = "in_progress",
   Completed = "completed",
@@ -25,7 +25,7 @@ export type LmsListAssignmentsQueryParamFilter = {
   /**
    * Filter to select assignment by status
    */
-  status?: QueryParamStatus | null | undefined;
+  status?: LmsListAssignmentsQueryParamStatus | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -104,24 +104,25 @@ export type LmsListAssignmentsResponse = {
 };
 
 /** @internal */
-export const QueryParamStatus$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = z.nativeEnum(QueryParamStatus);
+export const LmsListAssignmentsQueryParamStatus$inboundSchema: z.ZodNativeEnum<
+  typeof LmsListAssignmentsQueryParamStatus
+> = z.nativeEnum(LmsListAssignmentsQueryParamStatus);
 
 /** @internal */
-export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = QueryParamStatus$inboundSchema;
+export const LmsListAssignmentsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof LmsListAssignmentsQueryParamStatus
+> = LmsListAssignmentsQueryParamStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamStatus$ {
-  /** @deprecated use `QueryParamStatus$inboundSchema` instead. */
-  export const inboundSchema = QueryParamStatus$inboundSchema;
-  /** @deprecated use `QueryParamStatus$outboundSchema` instead. */
-  export const outboundSchema = QueryParamStatus$outboundSchema;
+export namespace LmsListAssignmentsQueryParamStatus$ {
+  /** @deprecated use `LmsListAssignmentsQueryParamStatus$inboundSchema` instead. */
+  export const inboundSchema = LmsListAssignmentsQueryParamStatus$inboundSchema;
+  /** @deprecated use `LmsListAssignmentsQueryParamStatus$outboundSchema` instead. */
+  export const outboundSchema =
+    LmsListAssignmentsQueryParamStatus$outboundSchema;
 }
 
 /** @internal */
@@ -130,7 +131,8 @@ export const LmsListAssignmentsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.nullable(QueryParamStatus$inboundSchema).optional(),
+  status: z.nullable(LmsListAssignmentsQueryParamStatus$inboundSchema)
+    .optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -150,7 +152,8 @@ export const LmsListAssignmentsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListAssignmentsQueryParamFilter
 > = z.object({
-  status: z.nullable(QueryParamStatus$outboundSchema).optional(),
+  status: z.nullable(LmsListAssignmentsQueryParamStatus$outboundSchema)
+    .optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

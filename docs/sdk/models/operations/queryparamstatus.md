@@ -1,19 +1,20 @@
 # QueryParamStatus
 
-Filter to select assignment by status
+Filter positions by status
 
 ## Example Usage
 
 ```typescript
 import { QueryParamStatus } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: QueryParamStatus = QueryParamStatus.InProgress;
+let value: QueryParamStatus = QueryParamStatus.Open;
 ```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Pending`    | pending      |
-| `InProgress` | in_progress  |
-| `Completed`  | completed    |
+| Name            | Value           |
+| --------------- | --------------- |
+| `Open`          | open            |
+| `Closed`        | closed          |
+| `Paused`        | paused          |
+| `UnmappedValue` | unmapped_value  |

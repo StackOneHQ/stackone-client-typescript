@@ -13,6 +13,16 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export enum Skills2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the skill is active and therefore available for use
+ */
+export type SkillsActive = boolean | Skills2;
+
 export type Skills4 = {};
 
 export type SkillsSourceValue =
@@ -533,7 +543,7 @@ export type Skills = {
   /**
    * Whether the skill is active and therefore available for use
    */
-  active?: boolean | null | undefined;
+  active?: boolean | Skills2 | null | undefined;
   /**
    * The hierarchal level of the skill
    */
@@ -561,6 +571,69 @@ export type Skills = {
    */
   remoteId?: string | null | undefined;
 };
+
+/** @internal */
+export const Skills2$inboundSchema: z.ZodNativeEnum<typeof Skills2> = z
+  .nativeEnum(Skills2);
+
+/** @internal */
+export const Skills2$outboundSchema: z.ZodNativeEnum<typeof Skills2> =
+  Skills2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Skills2$ {
+  /** @deprecated use `Skills2$inboundSchema` instead. */
+  export const inboundSchema = Skills2$inboundSchema;
+  /** @deprecated use `Skills2$outboundSchema` instead. */
+  export const outboundSchema = Skills2$outboundSchema;
+}
+
+/** @internal */
+export const SkillsActive$inboundSchema: z.ZodType<
+  SkillsActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), Skills2$inboundSchema]);
+
+/** @internal */
+export type SkillsActive$Outbound = boolean | string;
+
+/** @internal */
+export const SkillsActive$outboundSchema: z.ZodType<
+  SkillsActive$Outbound,
+  z.ZodTypeDef,
+  SkillsActive
+> = z.union([z.boolean(), Skills2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SkillsActive$ {
+  /** @deprecated use `SkillsActive$inboundSchema` instead. */
+  export const inboundSchema = SkillsActive$inboundSchema;
+  /** @deprecated use `SkillsActive$outboundSchema` instead. */
+  export const outboundSchema = SkillsActive$outboundSchema;
+  /** @deprecated use `SkillsActive$Outbound` instead. */
+  export type Outbound = SkillsActive$Outbound;
+}
+
+export function skillsActiveToJSON(skillsActive: SkillsActive): string {
+  return JSON.stringify(SkillsActive$outboundSchema.parse(skillsActive));
+}
+
+export function skillsActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<SkillsActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SkillsActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SkillsActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const Skills4$inboundSchema: z.ZodType<Skills4, z.ZodTypeDef, unknown> =
@@ -1245,7 +1318,8 @@ export function skillsLevelFromJSON(
 /** @internal */
 export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.nullable(z.boolean()).optional(),
+    active: z.nullable(z.union([z.boolean(), Skills2$inboundSchema]))
+      .optional(),
     hierarchy: z.nullable(z.lazy(() => SkillsHierarchy$inboundSchema))
       .optional(),
     id: z.nullable(z.string()).optional(),
@@ -1261,7 +1335,7 @@ export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Skills$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   hierarchy?: SkillsHierarchy$Outbound | null | undefined;
   id?: string | null | undefined;
   language?: SkillsLanguage$Outbound | null | undefined;
@@ -1276,7 +1350,7 @@ export const Skills$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Skills
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Skills2$outboundSchema])).optional(),
   hierarchy: z.nullable(z.lazy(() => SkillsHierarchy$outboundSchema))
     .optional(),
   id: z.nullable(z.string()).optional(),

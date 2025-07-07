@@ -5,7 +5,7 @@
 ```typescript
 import { LinkedAccountMetaCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LinkedAccountMetaCategory = LinkedAccountMetaCategory.Lms;
+let value: LinkedAccountMetaCategory = LinkedAccountMetaCategory.Stackone;
 ```
 
 ## Values
@@ -26,4 +26,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Ticketing`            | ticketing              |
 | `Screening`            | screening              |
 | `Messaging`            | messaging              |
+| `Accounting`           | accounting             |
 | -                      | `Unrecognized<string>` |

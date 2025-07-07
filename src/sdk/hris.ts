@@ -28,6 +28,7 @@ import { hrisGetEmployment } from "../funcs/hrisGetEmployment.js";
 import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
+import { hrisGetPosition } from "../funcs/hrisGetPosition.js";
 import { hrisGetTeamGroup } from "../funcs/hrisGetTeamGroup.js";
 import { hrisGetTimeEntries } from "../funcs/hrisGetTimeEntries.js";
 import { hrisGetTimeOffPolicy } from "../funcs/hrisGetTimeOffPolicy.js";
@@ -53,6 +54,7 @@ import { hrisListEmployments } from "../funcs/hrisListEmployments.js";
 import { hrisListGroups } from "../funcs/hrisListGroups.js";
 import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
+import { hrisListPositions } from "../funcs/hrisListPositions.js";
 import { hrisListTeamGroups } from "../funcs/hrisListTeamGroups.js";
 import { hrisListTimeEntries } from "../funcs/hrisListTimeEntries.js";
 import { hrisListTimeOffPolicies } from "../funcs/hrisListTimeOffPolicies.js";
@@ -427,6 +429,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetLocationResponse> {
     return unwrapAsync(hrisGetLocation(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Position
+   */
+  async getPosition(
+    request: operations.HrisGetPositionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetPositionResponse> {
+    return unwrapAsync(hrisGetPosition(
       this,
       request,
       options,
@@ -847,6 +863,22 @@ export class Hris extends ClientSDK {
     PageIterator<operations.HrisListLocationsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(hrisListLocations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Positions
+   */
+  async listPositions(
+    request: operations.HrisListPositionsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListPositionsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListPositions(
       this,
       request,
       options,

@@ -43,6 +43,18 @@ import {
   LocalizationModel$outboundSchema,
 } from "./localizationmodel.js";
 
+export enum LmsUpsertContentRequestDto2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the content is active and available for users.
+ */
+export type LmsUpsertContentRequestDtoActive =
+  | boolean
+  | LmsUpsertContentRequestDto2;
+
 export type LmsUpsertContentRequestDto4 = {};
 
 export type LmsUpsertContentRequestDtoSourceValue =
@@ -83,7 +95,7 @@ export type LmsUpsertContentRequestDto = {
   /**
    * Whether the content is active and available for users.
    */
-  active?: boolean | null | undefined;
+  active?: boolean | LmsUpsertContentRequestDto2 | null | undefined;
   /**
    * The additional_data associated with this content
    */
@@ -163,6 +175,77 @@ export type LmsUpsertContentRequestDto = {
    */
   updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const LmsUpsertContentRequestDto2$inboundSchema: z.ZodNativeEnum<
+  typeof LmsUpsertContentRequestDto2
+> = z.nativeEnum(LmsUpsertContentRequestDto2);
+
+/** @internal */
+export const LmsUpsertContentRequestDto2$outboundSchema: z.ZodNativeEnum<
+  typeof LmsUpsertContentRequestDto2
+> = LmsUpsertContentRequestDto2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsUpsertContentRequestDto2$ {
+  /** @deprecated use `LmsUpsertContentRequestDto2$inboundSchema` instead. */
+  export const inboundSchema = LmsUpsertContentRequestDto2$inboundSchema;
+  /** @deprecated use `LmsUpsertContentRequestDto2$outboundSchema` instead. */
+  export const outboundSchema = LmsUpsertContentRequestDto2$outboundSchema;
+}
+
+/** @internal */
+export const LmsUpsertContentRequestDtoActive$inboundSchema: z.ZodType<
+  LmsUpsertContentRequestDtoActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]);
+
+/** @internal */
+export type LmsUpsertContentRequestDtoActive$Outbound = boolean | string;
+
+/** @internal */
+export const LmsUpsertContentRequestDtoActive$outboundSchema: z.ZodType<
+  LmsUpsertContentRequestDtoActive$Outbound,
+  z.ZodTypeDef,
+  LmsUpsertContentRequestDtoActive
+> = z.union([z.boolean(), LmsUpsertContentRequestDto2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsUpsertContentRequestDtoActive$ {
+  /** @deprecated use `LmsUpsertContentRequestDtoActive$inboundSchema` instead. */
+  export const inboundSchema = LmsUpsertContentRequestDtoActive$inboundSchema;
+  /** @deprecated use `LmsUpsertContentRequestDtoActive$outboundSchema` instead. */
+  export const outboundSchema = LmsUpsertContentRequestDtoActive$outboundSchema;
+  /** @deprecated use `LmsUpsertContentRequestDtoActive$Outbound` instead. */
+  export type Outbound = LmsUpsertContentRequestDtoActive$Outbound;
+}
+
+export function lmsUpsertContentRequestDtoActiveToJSON(
+  lmsUpsertContentRequestDtoActive: LmsUpsertContentRequestDtoActive,
+): string {
+  return JSON.stringify(
+    LmsUpsertContentRequestDtoActive$outboundSchema.parse(
+      lmsUpsertContentRequestDtoActive,
+    ),
+  );
+}
+
+export function lmsUpsertContentRequestDtoActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpsertContentRequestDtoActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpsertContentRequestDtoActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpsertContentRequestDtoActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const LmsUpsertContentRequestDto4$inboundSchema: z.ZodType<
@@ -415,7 +498,9 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(
+    z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]),
+  ).optional(),
   additional_data: z.nullable(z.array(AdditionalData$inboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
@@ -460,7 +545,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LmsUpsertContentRequestDto$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   additional_data?: Array<AdditionalData$Outbound> | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
   content_type?:
@@ -491,7 +576,9 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsUpsertContentRequestDto
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(
+    z.union([z.boolean(), LmsUpsertContentRequestDto2$outboundSchema]),
+  ).optional(),
   additionalData: z.nullable(z.array(AdditionalData$outboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),

@@ -25,6 +25,7 @@ export enum LinkedAccountMetaCategory {
   Ticketing = "ticketing",
   Screening = "screening",
   Messaging = "messaging",
+  Accounting = "accounting",
 }
 export type LinkedAccountMetaCategoryOpen = OpenEnum<
   typeof LinkedAccountMetaCategory
