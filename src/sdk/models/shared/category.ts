@@ -13,6 +13,16 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export enum Category2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the category is active and therefore available for use
+ */
+export type Active = boolean | Category2;
+
 export type Category4 = {};
 
 export type CategorySourceValue =
@@ -533,7 +543,7 @@ export type Category = {
   /**
    * Whether the category is active and therefore available for use
    */
-  active?: boolean | null | undefined;
+  active?: boolean | Category2 | null | undefined;
   /**
    * The hierarchal level of the category
    */
@@ -565,6 +575,66 @@ export type Category = {
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
+
+/** @internal */
+export const Category2$inboundSchema: z.ZodNativeEnum<typeof Category2> = z
+  .nativeEnum(Category2);
+
+/** @internal */
+export const Category2$outboundSchema: z.ZodNativeEnum<typeof Category2> =
+  Category2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Category2$ {
+  /** @deprecated use `Category2$inboundSchema` instead. */
+  export const inboundSchema = Category2$inboundSchema;
+  /** @deprecated use `Category2$outboundSchema` instead. */
+  export const outboundSchema = Category2$outboundSchema;
+}
+
+/** @internal */
+export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
+  .union([z.boolean(), Category2$inboundSchema]);
+
+/** @internal */
+export type Active$Outbound = boolean | string;
+
+/** @internal */
+export const Active$outboundSchema: z.ZodType<
+  Active$Outbound,
+  z.ZodTypeDef,
+  Active
+> = z.union([z.boolean(), Category2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Active$ {
+  /** @deprecated use `Active$inboundSchema` instead. */
+  export const inboundSchema = Active$inboundSchema;
+  /** @deprecated use `Active$outboundSchema` instead. */
+  export const outboundSchema = Active$outboundSchema;
+  /** @deprecated use `Active$Outbound` instead. */
+  export type Outbound = Active$Outbound;
+}
+
+export function activeToJSON(active: Active): string {
+  return JSON.stringify(Active$outboundSchema.parse(active));
+}
+
+export function activeFromJSON(
+  jsonString: string,
+): SafeParseResult<Active, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Active$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Active' from JSON`,
+  );
+}
 
 /** @internal */
 export const Category4$inboundSchema: z.ZodType<
@@ -1254,7 +1324,8 @@ export const Category$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Category2$inboundSchema]))
+    .optional(),
   hierarchy: z.nullable(z.lazy(() => Hierarchy$inboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   language: z.nullable(z.lazy(() => Language$inboundSchema)).optional(),
@@ -1271,7 +1342,7 @@ export const Category$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Category$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   hierarchy?: Hierarchy$Outbound | null | undefined;
   id?: string | null | undefined;
   language?: Language$Outbound | null | undefined;
@@ -1287,7 +1358,8 @@ export const Category$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Category
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Category2$outboundSchema]))
+    .optional(),
   hierarchy: z.nullable(z.lazy(() => Hierarchy$outboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   language: z.nullable(z.lazy(() => Language$outboundSchema)).optional(),

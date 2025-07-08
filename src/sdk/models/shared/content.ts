@@ -37,6 +37,16 @@ import {
   Skills$outboundSchema,
 } from "./skills.js";
 
+export enum Content2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the content is active and available for users.
+ */
+export type ContentActive = boolean | Content2;
+
 export type Content4 = {};
 
 export type ContentSourceValue =
@@ -75,7 +85,7 @@ export type Content = {
   /**
    * Whether the content is active and available for users.
    */
-  active?: boolean | null | undefined;
+  active?: boolean | Content2 | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -171,6 +181,69 @@ export type Content = {
    */
   updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const Content2$inboundSchema: z.ZodNativeEnum<typeof Content2> = z
+  .nativeEnum(Content2);
+
+/** @internal */
+export const Content2$outboundSchema: z.ZodNativeEnum<typeof Content2> =
+  Content2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Content2$ {
+  /** @deprecated use `Content2$inboundSchema` instead. */
+  export const inboundSchema = Content2$inboundSchema;
+  /** @deprecated use `Content2$outboundSchema` instead. */
+  export const outboundSchema = Content2$outboundSchema;
+}
+
+/** @internal */
+export const ContentActive$inboundSchema: z.ZodType<
+  ContentActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), Content2$inboundSchema]);
+
+/** @internal */
+export type ContentActive$Outbound = boolean | string;
+
+/** @internal */
+export const ContentActive$outboundSchema: z.ZodType<
+  ContentActive$Outbound,
+  z.ZodTypeDef,
+  ContentActive
+> = z.union([z.boolean(), Content2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContentActive$ {
+  /** @deprecated use `ContentActive$inboundSchema` instead. */
+  export const inboundSchema = ContentActive$inboundSchema;
+  /** @deprecated use `ContentActive$outboundSchema` instead. */
+  export const outboundSchema = ContentActive$outboundSchema;
+  /** @deprecated use `ContentActive$Outbound` instead. */
+  export type Outbound = ContentActive$Outbound;
+}
+
+export function contentActiveToJSON(contentActive: ContentActive): string {
+  return JSON.stringify(ContentActive$outboundSchema.parse(contentActive));
+}
+
+export function contentActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const Content4$inboundSchema: z.ZodType<
@@ -404,7 +477,8 @@ export function contentContentTypeFromJSON(
 /** @internal */
 export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
   z.object({
-    active: z.nullable(z.boolean()).optional(),
+    active: z.nullable(z.union([z.boolean(), Content2$inboundSchema]))
+      .optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_type: z.nullable(z.lazy(() => ContentContentType$inboundSchema))
       .optional(),
@@ -453,7 +527,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Content$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
   content_url?: string | null | undefined;
@@ -485,7 +559,8 @@ export const Content$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Content
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Content2$outboundSchema]))
+    .optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentType: z.nullable(z.lazy(() => ContentContentType$outboundSchema))
     .optional(),

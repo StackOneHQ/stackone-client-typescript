@@ -43,6 +43,18 @@ import {
   LocalizationModel$outboundSchema,
 } from "./localizationmodel.js";
 
+export enum LmsCreateContentRequestDto2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the content is active and available for users.
+ */
+export type LmsCreateContentRequestDtoActive =
+  | boolean
+  | LmsCreateContentRequestDto2;
+
 export type LmsCreateContentRequestDto4 = {};
 
 export type LmsCreateContentRequestDtoSourceValue =
@@ -83,7 +95,7 @@ export type LmsCreateContentRequestDto = {
   /**
    * Whether the content is active and available for users.
    */
-  active?: boolean | null | undefined;
+  active?: boolean | LmsCreateContentRequestDto2 | null | undefined;
   /**
    * The additional_data associated with this content
    */
@@ -163,6 +175,77 @@ export type LmsCreateContentRequestDto = {
    */
   updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const LmsCreateContentRequestDto2$inboundSchema: z.ZodNativeEnum<
+  typeof LmsCreateContentRequestDto2
+> = z.nativeEnum(LmsCreateContentRequestDto2);
+
+/** @internal */
+export const LmsCreateContentRequestDto2$outboundSchema: z.ZodNativeEnum<
+  typeof LmsCreateContentRequestDto2
+> = LmsCreateContentRequestDto2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsCreateContentRequestDto2$ {
+  /** @deprecated use `LmsCreateContentRequestDto2$inboundSchema` instead. */
+  export const inboundSchema = LmsCreateContentRequestDto2$inboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDto2$outboundSchema` instead. */
+  export const outboundSchema = LmsCreateContentRequestDto2$outboundSchema;
+}
+
+/** @internal */
+export const LmsCreateContentRequestDtoActive$inboundSchema: z.ZodType<
+  LmsCreateContentRequestDtoActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), LmsCreateContentRequestDto2$inboundSchema]);
+
+/** @internal */
+export type LmsCreateContentRequestDtoActive$Outbound = boolean | string;
+
+/** @internal */
+export const LmsCreateContentRequestDtoActive$outboundSchema: z.ZodType<
+  LmsCreateContentRequestDtoActive$Outbound,
+  z.ZodTypeDef,
+  LmsCreateContentRequestDtoActive
+> = z.union([z.boolean(), LmsCreateContentRequestDto2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsCreateContentRequestDtoActive$ {
+  /** @deprecated use `LmsCreateContentRequestDtoActive$inboundSchema` instead. */
+  export const inboundSchema = LmsCreateContentRequestDtoActive$inboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoActive$outboundSchema` instead. */
+  export const outboundSchema = LmsCreateContentRequestDtoActive$outboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoActive$Outbound` instead. */
+  export type Outbound = LmsCreateContentRequestDtoActive$Outbound;
+}
+
+export function lmsCreateContentRequestDtoActiveToJSON(
+  lmsCreateContentRequestDtoActive: LmsCreateContentRequestDtoActive,
+): string {
+  return JSON.stringify(
+    LmsCreateContentRequestDtoActive$outboundSchema.parse(
+      lmsCreateContentRequestDtoActive,
+    ),
+  );
+}
+
+export function lmsCreateContentRequestDtoActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateContentRequestDtoActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateContentRequestDtoActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateContentRequestDtoActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const LmsCreateContentRequestDto4$inboundSchema: z.ZodType<
@@ -415,7 +498,9 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(
+    z.union([z.boolean(), LmsCreateContentRequestDto2$inboundSchema]),
+  ).optional(),
   additional_data: z.nullable(z.array(AdditionalData$inboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
@@ -460,7 +545,7 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LmsCreateContentRequestDto$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   additional_data?: Array<AdditionalData$Outbound> | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
   content_type?:
@@ -491,7 +576,9 @@ export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateContentRequestDto
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(
+    z.union([z.boolean(), LmsCreateContentRequestDto2$outboundSchema]),
+  ).optional(),
   additionalData: z.nullable(z.array(AdditionalData$outboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),

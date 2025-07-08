@@ -38,7 +38,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_create_connect_session"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { Categories } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectSessions.createConnectSession({\n    categories: [\n      Categories.Ats,\n      Categories.Hris,\n      Categories.Documents,\n      Categories.Crm,\n      Categories.Iam,\n      Categories.Marketing,\n      Categories.Lms,\n      Categories.Iam,\n      Categories.Documents,\n      Categories.Ticketing,\n      Categories.Screening,\n      Categories.Messaging,\n    ],\n    originOwnerId: \"<id>\",\n    originOwnerName: \"<value>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { Categories } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectSessions.createConnectSession({\n    categories: [\n      Categories.Ats,\n      Categories.Hris,\n      Categories.Ticketing,\n      Categories.Crm,\n      Categories.Iam,\n      Categories.Marketing,\n      Categories.Lms,\n      Categories.Iam,\n      Categories.Documents,\n      Categories.Ticketing,\n      Categories.Screening,\n      Categories.Messaging,\n      Categories.Accounting,\n    ],\n    originOwnerId: \"<id>\",\n    originOwnerName: \"<value>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/connect_sessions/authenticate"]["post"]
     update:
       "x-codeSamples":
@@ -99,6 +99,12 @@ actions:
         - "lang": "typescript"
           "label": "ats_update_application"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { AtsUpdateApplicationRequestDtoValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.updateApplication({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    atsUpdateApplicationRequestDto: {\n      passthrough: {\n        \"other_known_names\": \"John Doe\",\n      },\n      customFields: [\n        {\n          id: \"8187e5da-dc77-475e-9949-af0f1fa4e4e3\",\n          remoteId: \"8187e5da-dc77-475e-9949-af0f1fa4e4e3\",\n          name: \"Training Completion Status\",\n          value: \"Completed\",\n          valueId: \"value_456\",\n          remoteValueId: \"e3cb75bf-aa84-466e-a6c1-b8322b257a48\",\n        },\n      ],\n      applicationStatus: {\n        value: AtsUpdateApplicationRequestDtoValue.Hired,\n        sourceValue: \"Hired\",\n      },\n      source: {\n        id: \"8187e5da-dc77-475e-9949-af0f1fa4e4e3\",\n        name: \"LinkedIn\",\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/ats/applications/{id}/changes"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ats_list_application_changes"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.listApplicationChanges({\n    id: \"<id>\",\n    fields: \"event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values\",\n    filter: {\n      createdAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/ats/applications/{id}/documents"]["get"]
     update:
       "x-codeSamples":
@@ -921,6 +927,18 @@ actions:
         - "lang": "typescript"
           "label": "hris_get_location"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getLocation({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/positions"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_positions"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { Status } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listPositions({\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    status: Status.Open,\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/positions/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_get_position"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getPosition({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/time_entries"]["get"]
     update:
       "x-codeSamples":
@@ -1041,18 +1059,6 @@ actions:
         - "lang": "typescript"
           "label": "lms_get_category"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.lms.getCategory({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,active,hierarchy,level,language\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/unified/lms/collections"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "lms_create_collection"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { CreateCategoriesApiModelSchemasLanguageValue, CreateSkillsApiModelSchemasValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.lms.createCollection({\n    xAccountId: \"<id>\",\n    lmsCreateCollectionRequestDto: {\n      unifiedCustomFields: {\n        \"my_project_custom_field_1\": \"REF-1236\",\n        \"my_project_custom_field_2\": \"some other value\",\n      },\n      externalReference: \"SOFTWARE-ENG-LV1-TRAINING-collection-1\",\n      learningObjectIds: [\n        \"16873-SOFTWARE-ENG-COURSE\",\n        \"16874-SOFTWARE-ENG-COURSE\",\n      ],\n      remoteLearningObjectIds: [\n        \"e3cb75bf-aa84-466e-a6c1-b8322b257a48\",\n        \"e3cb75bf-aa84-466e-a6c1-b8322b257a49\",\n      ],\n      title: \"Software Engineer Lv 1 Collection\",\n      description: \"This collection acts as learning pathway for software engineers.\",\n      coverUrl: \"https://www.googledrive.com/?v=16873\",\n      categories: [\n        {\n          id: \"16873-IT345\",\n          unifiedCustomFields: {\n            \"my_project_custom_field_1\": \"REF-1236\",\n            \"my_project_custom_field_2\": \"some other value\",\n          },\n          name: \"Information-Technology\",\n          language: {\n            value: CreateCategoriesApiModelSchemasLanguageValue.EnGB,\n          },\n        },\n      ],\n      skills: [\n        {\n          id: \"16873-IT345\",\n          name: \"Information-Technology\",\n          language: {\n            value: CreateSkillsApiModelSchemasValue.EnGB,\n          },\n        },\n      ],\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/unified/lms/collections/{id}"]["patch"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "lms_update_collection"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { CreateSkillsApiModelSchemasValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.lms.updateCollection({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    lmsCreateCollectionRequestDto: {\n      unifiedCustomFields: {\n        \"my_project_custom_field_1\": \"REF-1236\",\n        \"my_project_custom_field_2\": \"some other value\",\n      },\n      externalReference: \"SOFTWARE-ENG-LV1-TRAINING-collection-1\",\n      learningObjectIds: [\n        \"16873-SOFTWARE-ENG-COURSE\",\n        \"16874-SOFTWARE-ENG-COURSE\",\n      ],\n      remoteLearningObjectIds: [\n        \"e3cb75bf-aa84-466e-a6c1-b8322b257a48\",\n        \"e3cb75bf-aa84-466e-a6c1-b8322b257a49\",\n      ],\n      title: \"Software Engineer Lv 1 Collection\",\n      description: \"This collection acts as learning pathway for software engineers.\",\n      coverUrl: \"https://www.googledrive.com/?v=16873\",\n      categories: null,\n      skills: [\n        {\n          id: \"16873-IT345\",\n          name: \"Information-Technology\",\n          language: {\n            value: CreateSkillsApiModelSchemasValue.EnGB,\n          },\n        },\n      ],\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/lms/completions"]["get"]
     update:
       "x-codeSamples":
@@ -1101,18 +1107,6 @@ actions:
         - "lang": "typescript"
           "label": "lms_list_courses"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.lms.listCourses({\n    fields: \"id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
-  - target: $["paths"]["/unified/lms/courses"]["put"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "lms_upsert_course"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { CreateSkillsApiModelSchemasValue, LanguageEnumValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.lms.upsertCourse({\n    xAccountId: \"<id>\",\n    lmsUpsertCourseRequestDto: {\n      unifiedCustomFields: {\n        \"my_project_custom_field_1\": \"REF-1236\",\n        \"my_project_custom_field_2\": \"some other value\",\n      },\n      externalReference: \"SOFTWARE-ENG-LV1-TRAINING-VIDEO-1\",\n      title: \"Software Engineer Lv 1\",\n      description: \"This course acts as learning content for software engineers.\",\n      languages: [\n        {\n          value: LanguageEnumValue.EnGB,\n        },\n      ],\n      coverUrl: \"https://www.googledrive.com/?v=16873\",\n      url: \"https://www.linkedinlearning.com/?v=16873\",\n      active: true,\n      duration: \"P3Y6M4DT12H30M5S\",\n      categories: null,\n      skills: [\n        {\n          id: \"16873-IT345\",\n          name: \"Information-Technology\",\n          language: {\n            value: CreateSkillsApiModelSchemasValue.EnGB,\n          },\n        },\n      ],\n      content: [\n        {\n          externalReference: \"SOFTWARE-ENG-LV1-TRAINING-VIDEO-1\",\n          title: \"Software Engineer Lv 1\",\n          description: \"This video acts as learning content for software engineers.\",\n          contentUrl: \"https://www.youtube.com/watch?v=16873\",\n          mobileLaunchContentUrl: \"https://www.mobile.youtube.com/watch?v=16873\",\n          order: 1,\n        },\n      ],\n      localizations: [\n        {\n          title: \"Software Engineer Lv 1\",\n          description: \"This course acts as learning resource for software engineers.\",\n        },\n        {\n          title: \"Software Engineer: A comprehensive guide\",\n          description: \"This course acts as learning resource for software engineers.\",\n        },\n      ],\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/unified/lms/courses/batch"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "lms_batch_upsert_course"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.lms.batchUpsertCourse({\n    xAccountId: \"<id>\",\n    lmsBatchUpsertCourseRequestDto: {\n      items: [],\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/lms/courses/{id}"]["get"]
     update:
       "x-codeSamples":

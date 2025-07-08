@@ -8,11 +8,21 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export enum LmsUser2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * The user active status
+ */
+export type LmsUserActive = boolean | LmsUser2;
+
 export type LmsUser = {
   /**
    * The user active status
    */
-  active?: boolean | null | undefined;
+  active?: boolean | LmsUser2 | null | undefined;
   /**
    * The created_at date
    */
@@ -52,9 +62,73 @@ export type LmsUser = {
 };
 
 /** @internal */
+export const LmsUser2$inboundSchema: z.ZodNativeEnum<typeof LmsUser2> = z
+  .nativeEnum(LmsUser2);
+
+/** @internal */
+export const LmsUser2$outboundSchema: z.ZodNativeEnum<typeof LmsUser2> =
+  LmsUser2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsUser2$ {
+  /** @deprecated use `LmsUser2$inboundSchema` instead. */
+  export const inboundSchema = LmsUser2$inboundSchema;
+  /** @deprecated use `LmsUser2$outboundSchema` instead. */
+  export const outboundSchema = LmsUser2$outboundSchema;
+}
+
+/** @internal */
+export const LmsUserActive$inboundSchema: z.ZodType<
+  LmsUserActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), LmsUser2$inboundSchema]);
+
+/** @internal */
+export type LmsUserActive$Outbound = boolean | string;
+
+/** @internal */
+export const LmsUserActive$outboundSchema: z.ZodType<
+  LmsUserActive$Outbound,
+  z.ZodTypeDef,
+  LmsUserActive
+> = z.union([z.boolean(), LmsUser2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsUserActive$ {
+  /** @deprecated use `LmsUserActive$inboundSchema` instead. */
+  export const inboundSchema = LmsUserActive$inboundSchema;
+  /** @deprecated use `LmsUserActive$outboundSchema` instead. */
+  export const outboundSchema = LmsUserActive$outboundSchema;
+  /** @deprecated use `LmsUserActive$Outbound` instead. */
+  export type Outbound = LmsUserActive$Outbound;
+}
+
+export function lmsUserActiveToJSON(lmsUserActive: LmsUserActive): string {
+  return JSON.stringify(LmsUserActive$outboundSchema.parse(lmsUserActive));
+}
+
+export function lmsUserActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUserActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUserActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUserActive' from JSON`,
+  );
+}
+
+/** @internal */
 export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> =
   z.object({
-    active: z.nullable(z.boolean()).optional(),
+    active: z.nullable(z.union([z.boolean(), LmsUser2$inboundSchema]))
+      .optional(),
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -81,7 +155,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type LmsUser$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   created_at?: string | null | undefined;
   email?: string | null | undefined;
   external_reference?: string | null | undefined;
@@ -99,7 +173,8 @@ export const LmsUser$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsUser
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), LmsUser2$outboundSchema]))
+    .optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   email: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),

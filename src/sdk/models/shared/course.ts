@@ -26,11 +26,21 @@ import {
   Skills$outboundSchema,
 } from "./skills.js";
 
+export enum Course2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the course is active and available for users.
+ */
+export type CourseActive = boolean | Course2;
+
 export type Course = {
   /**
    * Whether the course is active and available for users.
    */
-  active?: boolean | null | undefined;
+  active?: boolean | Course2 | null | undefined;
   /**
    * The categories associated with this course
    */
@@ -102,9 +112,73 @@ export type Course = {
 };
 
 /** @internal */
+export const Course2$inboundSchema: z.ZodNativeEnum<typeof Course2> = z
+  .nativeEnum(Course2);
+
+/** @internal */
+export const Course2$outboundSchema: z.ZodNativeEnum<typeof Course2> =
+  Course2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Course2$ {
+  /** @deprecated use `Course2$inboundSchema` instead. */
+  export const inboundSchema = Course2$inboundSchema;
+  /** @deprecated use `Course2$outboundSchema` instead. */
+  export const outboundSchema = Course2$outboundSchema;
+}
+
+/** @internal */
+export const CourseActive$inboundSchema: z.ZodType<
+  CourseActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), Course2$inboundSchema]);
+
+/** @internal */
+export type CourseActive$Outbound = boolean | string;
+
+/** @internal */
+export const CourseActive$outboundSchema: z.ZodType<
+  CourseActive$Outbound,
+  z.ZodTypeDef,
+  CourseActive
+> = z.union([z.boolean(), Course2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CourseActive$ {
+  /** @deprecated use `CourseActive$inboundSchema` instead. */
+  export const inboundSchema = CourseActive$inboundSchema;
+  /** @deprecated use `CourseActive$outboundSchema` instead. */
+  export const outboundSchema = CourseActive$outboundSchema;
+  /** @deprecated use `CourseActive$Outbound` instead. */
+  export type Outbound = CourseActive$Outbound;
+}
+
+export function courseActiveToJSON(courseActive: CourseActive): string {
+  return JSON.stringify(CourseActive$outboundSchema.parse(courseActive));
+}
+
+export function courseActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<CourseActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CourseActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CourseActive' from JSON`,
+  );
+}
+
+/** @internal */
 export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.nullable(z.boolean()).optional(),
+    active: z.nullable(z.union([z.boolean(), Course2$inboundSchema]))
+      .optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_ids: z.nullable(z.array(z.string())).optional(),
     cover_url: z.nullable(z.string()).optional(),
@@ -137,7 +211,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Course$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
@@ -163,7 +237,7 @@ export const Course$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Course
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Course2$outboundSchema])).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
