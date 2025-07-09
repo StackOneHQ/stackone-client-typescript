@@ -5,7 +5,11 @@
 ```typescript
 import { IamGetPolicyResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: IamGetPolicyResponse = {};
+let value: IamGetPolicyResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 20419,
+};
 ```
 
 ## Fields

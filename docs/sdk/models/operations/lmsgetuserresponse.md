@@ -5,7 +5,20 @@
 ```typescript
 import { LmsGetUserResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsGetUserResponse = {};
+let value: LmsGetUserResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key2": [],
+  },
+  statusCode: 704088,
+};
 ```
 
 ## Fields

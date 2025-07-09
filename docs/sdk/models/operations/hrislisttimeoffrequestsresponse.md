@@ -5,7 +5,16 @@
 ```typescript
 import { HrisListTimeOffRequestsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListTimeOffRequestsResponse = {};
+let value: HrisListTimeOffRequestsResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 201209,
+};
 ```
 
 ## Fields

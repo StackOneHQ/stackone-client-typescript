@@ -5,7 +5,11 @@
 ```typescript
 import { HrisGetEmployeeDocumentCategoryResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetEmployeeDocumentCategoryResponse = {};
+let value: HrisGetEmployeeDocumentCategoryResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 229615,
+};
 ```
 
 ## Fields

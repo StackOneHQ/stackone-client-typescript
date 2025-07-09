@@ -5,7 +5,23 @@
 ```typescript
 import { AtsOrderAssessmentsRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsOrderAssessmentsRequestResponse = {};
+let value: AtsOrderAssessmentsRequestResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 981479,
+};
 ```
 
 ## Fields

@@ -5,7 +5,23 @@
 ```typescript
 import { HrisGetEmployeeCustomFieldDefinitionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetEmployeeCustomFieldDefinitionResponse = {};
+let value: HrisGetEmployeeCustomFieldDefinitionResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 605643,
+};
 ```
 
 ## Fields

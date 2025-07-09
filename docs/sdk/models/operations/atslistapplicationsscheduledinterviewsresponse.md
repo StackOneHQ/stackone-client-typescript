@@ -5,7 +5,11 @@
 ```typescript
 import { AtsListApplicationsScheduledInterviewsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListApplicationsScheduledInterviewsResponse = {};
+let value: AtsListApplicationsScheduledInterviewsResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 338026,
+};
 ```
 
 ## Fields

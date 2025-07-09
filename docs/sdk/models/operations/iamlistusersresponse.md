@@ -5,7 +5,15 @@
 ```typescript
 import { IamListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: IamListUsersResponse = {};
+let value: IamListUsersResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 541447,
+};
 ```
 
 ## Fields

@@ -5,7 +5,18 @@
 ```typescript
 import { AtsUpdateApplicationNoteResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsUpdateApplicationNoteResponse = {};
+let value: AtsUpdateApplicationNoteResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 336558,
+};
 ```
 
 ## Fields

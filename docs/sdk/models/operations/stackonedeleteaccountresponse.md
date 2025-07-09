@@ -5,7 +5,21 @@
 ```typescript
 import { StackoneDeleteAccountResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneDeleteAccountResponse = {};
+let value: StackoneDeleteAccountResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 851664,
+};
 ```
 
 ## Fields

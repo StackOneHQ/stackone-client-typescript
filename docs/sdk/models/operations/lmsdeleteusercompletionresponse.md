@@ -5,7 +5,19 @@
 ```typescript
 import { LmsDeleteUserCompletionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsDeleteUserCompletionResponse = {};
+let value: LmsDeleteUserCompletionResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 976351,
+};
 ```
 
 ## Fields

@@ -5,7 +5,13 @@
 ```typescript
 import { AtsListLocationsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListLocationsResponse = {};
+let value: AtsListLocationsResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 595473,
+};
 ```
 
 ## Fields

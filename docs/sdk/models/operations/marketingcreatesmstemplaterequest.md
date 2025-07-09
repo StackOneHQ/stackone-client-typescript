@@ -6,6 +6,12 @@
 import { MarketingCreateSmsTemplateRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingCreateSmsTemplateRequest = {
+  marketingCreateSmsTemplateRequestDto: {
+    messages: null,
+    passthrough: {
+      "other_known_names": "John Doe",
+    },
+  },
   xAccountId: "<id>",
 };
 ```

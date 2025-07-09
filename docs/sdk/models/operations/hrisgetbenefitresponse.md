@@ -5,7 +5,17 @@
 ```typescript
 import { HrisGetBenefitResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetBenefitResponse = {};
+let value: HrisGetBenefitResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 822508,
+};
 ```
 
 ## Fields

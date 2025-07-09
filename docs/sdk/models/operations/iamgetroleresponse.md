@@ -5,7 +5,13 @@
 ```typescript
 import { IamGetRoleResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: IamGetRoleResponse = {};
+let value: IamGetRoleResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 99251,
+};
 ```
 
 ## Fields

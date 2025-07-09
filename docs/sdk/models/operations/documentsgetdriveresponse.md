@@ -5,7 +5,13 @@
 ```typescript
 import { DocumentsGetDriveResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: DocumentsGetDriveResponse = {};
+let value: DocumentsGetDriveResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 724366,
+};
 ```
 
 ## Fields

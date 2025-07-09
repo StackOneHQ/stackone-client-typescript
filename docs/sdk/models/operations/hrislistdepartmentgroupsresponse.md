@@ -5,7 +5,25 @@
 ```typescript
 import { HrisListDepartmentGroupsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListDepartmentGroupsResponse = {};
+let value: HrisListDepartmentGroupsResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 28853,
+};
 ```
 
 ## Fields

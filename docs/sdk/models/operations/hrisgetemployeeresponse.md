@@ -5,7 +5,18 @@
 ```typescript
 import { HrisGetEmployeeResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetEmployeeResponse = {};
+let value: HrisGetEmployeeResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 63545,
+};
 ```
 
 ## Fields

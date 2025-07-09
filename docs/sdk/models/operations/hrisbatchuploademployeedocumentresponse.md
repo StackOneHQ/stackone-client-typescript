@@ -5,7 +5,11 @@
 ```typescript
 import { HrisBatchUploadEmployeeDocumentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisBatchUploadEmployeeDocumentResponse = {};
+let value: HrisBatchUploadEmployeeDocumentResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 927943,
+};
 ```
 
 ## Fields

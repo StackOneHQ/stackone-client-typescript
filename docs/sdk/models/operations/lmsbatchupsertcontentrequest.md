@@ -6,6 +6,9 @@
 import { LmsBatchUpsertContentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsBatchUpsertContentRequest = {
+  lmsBatchUpsertContentRequestDto: {
+    items: [],
+  },
   xAccountId: "<id>",
 };
 ```

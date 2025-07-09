@@ -5,7 +5,11 @@
 ```typescript
 import { AtsDeleteBackgroundCheckPackageResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsDeleteBackgroundCheckPackageResponse = {};
+let value: AtsDeleteBackgroundCheckPackageResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 657157,
+};
 ```
 
 ## Fields

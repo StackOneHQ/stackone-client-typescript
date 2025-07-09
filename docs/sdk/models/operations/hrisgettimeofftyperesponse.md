@@ -5,7 +5,22 @@
 ```typescript
 import { HrisGetTimeOffTypeResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetTimeOffTypeResponse = {};
+let value: HrisGetTimeOffTypeResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 962776,
+};
 ```
 
 ## Fields

@@ -5,7 +5,14 @@
 ```typescript
 import { MarketingGetContentBlockResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingGetContentBlockResponse = {};
+let value: MarketingGetContentBlockResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [],
+  },
+  statusCode: 138946,
+};
 ```
 
 ## Fields

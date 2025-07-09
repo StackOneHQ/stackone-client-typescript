@@ -5,7 +5,20 @@
 ```typescript
 import { AtsUploadApplicationDocumentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsUploadApplicationDocumentResponse = {};
+let value: AtsUploadApplicationDocumentResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 859665,
+};
 ```
 
 ## Fields

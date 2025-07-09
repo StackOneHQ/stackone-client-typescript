@@ -250,6 +250,7 @@ run();
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
 * [getPosition](docs/sdks/hris/README.md#getposition) - Get Position
+* [getTask](docs/sdks/hris/README.md#gettask) - Get Task
 * [getTeamGroup](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 * [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
@@ -276,6 +277,7 @@ run();
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
 * [listPositions](docs/sdks/hris/README.md#listpositions) - List Positions
+* [listTasks](docs/sdks/hris/README.md#listtasks) - List Tasks
 * [listTeamGroups](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
@@ -835,6 +837,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
 - [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Work Location
 - [`hrisGetPosition`](docs/sdks/hris/README.md#getposition) - Get Position
+- [`hrisGetTask`](docs/sdks/hris/README.md#gettask) - Get Task
 - [`hrisGetTeamGroup`](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 - [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
 - [`hrisGetTimeOffPolicy`](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
@@ -860,6 +863,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List Work Locations
 - [`hrisListPositions`](docs/sdks/hris/README.md#listpositions) - List Positions
+- [`hrisListTasks`](docs/sdks/hris/README.md#listtasks) - List Tasks
 - [`hrisListTeamGroups`](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffPolicies`](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies

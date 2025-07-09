@@ -6,6 +6,7 @@
 import { StackoneUpdateAccountRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: StackoneUpdateAccountRequest = {
+  patchAccountExternalDto: {},
   id: "<id>",
 };
 ```

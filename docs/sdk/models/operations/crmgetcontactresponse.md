@@ -5,7 +5,18 @@
 ```typescript
 import { CrmGetContactResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: CrmGetContactResponse = {};
+let value: CrmGetContactResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [],
+  },
+  statusCode: 540973,
+};
 ```
 
 ## Fields

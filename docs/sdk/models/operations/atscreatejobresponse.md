@@ -5,7 +5,11 @@
 ```typescript
 import { AtsCreateJobResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsCreateJobResponse = {};
+let value: AtsCreateJobResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 829070,
+};
 ```
 
 ## Fields

@@ -5,7 +5,11 @@
 ```typescript
 import { DocumentsUploadFileResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: DocumentsUploadFileResponse = {};
+let value: DocumentsUploadFileResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 256817,
+};
 ```
 
 ## Fields

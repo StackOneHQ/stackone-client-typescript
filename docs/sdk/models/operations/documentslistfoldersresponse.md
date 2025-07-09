@@ -5,7 +5,19 @@
 ```typescript
 import { DocumentsListFoldersResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: DocumentsListFoldersResponse = {};
+let value: DocumentsListFoldersResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 517506,
+};
 ```
 
 ## Fields

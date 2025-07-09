@@ -5,7 +5,14 @@
 ```typescript
 import { IamDeleteUserResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: IamDeleteUserResponse = {};
+let value: IamDeleteUserResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [],
+  },
+  statusCode: 177175,
+};
 ```
 
 ## Fields

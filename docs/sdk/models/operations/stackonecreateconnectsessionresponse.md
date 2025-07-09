@@ -5,7 +5,11 @@
 ```typescript
 import { StackoneCreateConnectSessionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneCreateConnectSessionResponse = {};
+let value: StackoneCreateConnectSessionResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 163694,
+};
 ```
 
 ## Fields

@@ -5,7 +5,11 @@
 ```typescript
 import { HrisListEmployeeTasksResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListEmployeeTasksResponse = {};
+let value: HrisListEmployeeTasksResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 423521,
+};
 ```
 
 ## Fields

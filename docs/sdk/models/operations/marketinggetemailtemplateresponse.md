@@ -5,7 +5,13 @@
 ```typescript
 import { MarketingGetEmailTemplateResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingGetEmailTemplateResponse = {};
+let value: MarketingGetEmailTemplateResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 273554,
+};
 ```
 
 ## Fields

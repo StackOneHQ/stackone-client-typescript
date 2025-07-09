@@ -5,7 +5,11 @@
 ```typescript
 import { StackoneGetLogResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneGetLogResponse = {};
+let value: StackoneGetLogResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 471291,
+};
 ```
 
 ## Fields

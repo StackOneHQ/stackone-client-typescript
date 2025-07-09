@@ -5,7 +5,17 @@
 ```typescript
 import { AtsOrderBackgroundCheckRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsOrderBackgroundCheckRequestResponse = {};
+let value: AtsOrderBackgroundCheckRequestResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 735084,
+};
 ```
 
 ## Fields

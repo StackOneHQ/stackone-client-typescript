@@ -5,7 +5,15 @@
 ```typescript
 import { AtsListJobCustomFieldDefinitionsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListJobCustomFieldDefinitionsResponse = {};
+let value: AtsListJobCustomFieldDefinitionsResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 372848,
+};
 ```
 
 ## Fields

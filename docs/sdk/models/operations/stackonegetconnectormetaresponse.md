@@ -5,7 +5,13 @@
 ```typescript
 import { StackoneGetConnectorMetaResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneGetConnectorMetaResponse = {};
+let value: StackoneGetConnectorMetaResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 294723,
+};
 ```
 
 ## Fields

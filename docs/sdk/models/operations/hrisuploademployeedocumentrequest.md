@@ -4,8 +4,22 @@
 
 ```typescript
 import { HrisUploadEmployeeDocumentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { HrisDocumentsUploadRequestDtoSchemasFileFormatValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUploadEmployeeDocumentRequest = {
+  hrisDocumentsUploadRequestDto: {
+    category: {},
+    categoryId: "6530",
+    confidential: null,
+    content:
+      "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+    fileFormat: {
+      sourceValue: "application/pdf",
+      value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+    },
+    name: "weather-forecast",
+    path: "/path/to/file",
+  },
   id: "<id>",
   xAccountId: "<id>",
 };

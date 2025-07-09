@@ -5,7 +5,19 @@
 ```typescript
 import { AtsGetBackgroundCheckResultResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsGetBackgroundCheckResultResponse = {};
+let value: AtsGetBackgroundCheckResultResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 184276,
+};
 ```
 
 ## Fields
