@@ -5,7 +5,16 @@
 ```typescript
 import { AtsGetApplicationDocumentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsGetApplicationDocumentResponse = {};
+let value: AtsGetApplicationDocumentResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 328461,
+};
 ```
 
 ## Fields

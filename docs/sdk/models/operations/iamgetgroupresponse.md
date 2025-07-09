@@ -5,7 +5,25 @@
 ```typescript
 import { IamGetGroupResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: IamGetGroupResponse = {};
+let value: IamGetGroupResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 141789,
+};
 ```
 
 ## Fields

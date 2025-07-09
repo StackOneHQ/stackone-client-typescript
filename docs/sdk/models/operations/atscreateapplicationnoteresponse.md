@@ -5,7 +5,21 @@
 ```typescript
 import { AtsCreateApplicationNoteResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsCreateApplicationNoteResponse = {};
+let value: AtsCreateApplicationNoteResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 943334,
+};
 ```
 
 ## Fields

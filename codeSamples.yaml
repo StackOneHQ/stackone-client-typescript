@@ -939,6 +939,18 @@ actions:
         - "lang": "typescript"
           "label": "hris_get_position"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getPosition({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/tasks"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_tasks"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listTasks({\n    fields: \"id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    expand: \"attachments\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/tasks/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_get_task"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getTask({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at\",\n    expand: \"attachments\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/time_entries"]["get"]
     update:
       "x-codeSamples":

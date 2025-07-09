@@ -5,7 +5,11 @@
 ```typescript
 import { LmsBatchUpsertContentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsBatchUpsertContentResponse = {};
+let value: LmsBatchUpsertContentResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 16211,
+};
 ```
 
 ## Fields

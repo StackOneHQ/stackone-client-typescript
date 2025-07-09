@@ -5,7 +5,11 @@
 ```typescript
 import { TicketingCreateTicketResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: TicketingCreateTicketResponse = {};
+let value: TicketingCreateTicketResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 703017,
+};
 ```
 
 ## Fields

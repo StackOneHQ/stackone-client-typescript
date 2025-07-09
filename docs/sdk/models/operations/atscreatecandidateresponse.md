@@ -5,7 +5,15 @@
 ```typescript
 import { AtsCreateCandidateResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsCreateCandidateResponse = {};
+let value: AtsCreateCandidateResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 609964,
+};
 ```
 
 ## Fields

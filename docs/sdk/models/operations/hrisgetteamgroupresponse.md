@@ -5,7 +5,19 @@
 ```typescript
 import { HrisGetTeamGroupResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetTeamGroupResponse = {};
+let value: HrisGetTeamGroupResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key2": [],
+  },
+  statusCode: 477032,
+};
 ```
 
 ## Fields

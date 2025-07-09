@@ -5,7 +5,14 @@
 ```typescript
 import { MarketingListSmsTemplatesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingListSmsTemplatesResponse = {};
+let value: MarketingListSmsTemplatesResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [],
+  },
+  statusCode: 999523,
+};
 ```
 
 ## Fields

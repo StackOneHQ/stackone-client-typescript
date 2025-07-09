@@ -5,7 +5,21 @@
 ```typescript
 import { HrisCreateEmployeeTimeOffRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisCreateEmployeeTimeOffRequestResponse = {};
+let value: HrisCreateEmployeeTimeOffRequestResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 480737,
+};
 ```
 
 ## Fields

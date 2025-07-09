@@ -5,7 +5,16 @@
 ```typescript
 import { HrisGetLocationResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetLocationResponse = {};
+let value: HrisGetLocationResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [],
+  },
+  statusCode: 368347,
+};
 ```
 
 ## Fields

@@ -5,7 +5,11 @@
 ```typescript
 import { LmsListUserAssignmentsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsListUserAssignmentsResponse = {};
+let value: LmsListUserAssignmentsResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 221224,
+};
 ```
 
 ## Fields

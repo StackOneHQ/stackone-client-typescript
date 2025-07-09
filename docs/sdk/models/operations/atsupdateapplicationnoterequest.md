@@ -4,8 +4,20 @@
 
 ```typescript
 import { AtsUpdateApplicationNoteRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { AtsUpdateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsUpdateApplicationNoteRequest = {
+  atsUpdateNotesRequestDto: {
+    authorId: "1234567890",
+    content: null,
+    passthrough: {
+      "other_known_names": "John Doe",
+    },
+    visibility: {
+      sourceValue: "Public",
+      value: AtsUpdateNotesRequestDtoValue.Public,
+    },
+  },
   id: "<id>",
   subResourceId: "<id>",
   xAccountId: "<id>",

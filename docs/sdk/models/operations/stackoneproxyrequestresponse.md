@@ -5,7 +5,22 @@
 ```typescript
 import { StackoneProxyRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneProxyRequestResponse = {};
+let value: StackoneProxyRequestResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 467196,
+};
 ```
 
 ## Fields

@@ -29,6 +29,7 @@ import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
 import { hrisGetPosition } from "../funcs/hrisGetPosition.js";
+import { hrisGetTask } from "../funcs/hrisGetTask.js";
 import { hrisGetTeamGroup } from "../funcs/hrisGetTeamGroup.js";
 import { hrisGetTimeEntries } from "../funcs/hrisGetTimeEntries.js";
 import { hrisGetTimeOffPolicy } from "../funcs/hrisGetTimeOffPolicy.js";
@@ -55,6 +56,7 @@ import { hrisListGroups } from "../funcs/hrisListGroups.js";
 import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
 import { hrisListPositions } from "../funcs/hrisListPositions.js";
+import { hrisListTasks } from "../funcs/hrisListTasks.js";
 import { hrisListTeamGroups } from "../funcs/hrisListTeamGroups.js";
 import { hrisListTimeEntries } from "../funcs/hrisListTimeEntries.js";
 import { hrisListTimeOffPolicies } from "../funcs/hrisListTimeOffPolicies.js";
@@ -443,6 +445,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetPositionResponse> {
     return unwrapAsync(hrisGetPosition(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Task
+   */
+  async getTask(
+    request: operations.HrisGetTaskRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetTaskResponse> {
+    return unwrapAsync(hrisGetTask(
       this,
       request,
       options,
@@ -879,6 +895,22 @@ export class Hris extends ClientSDK {
     PageIterator<operations.HrisListPositionsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(hrisListPositions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Tasks
+   */
+  async listTasks(
+    request: operations.HrisListTasksRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListTasksResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListTasks(
       this,
       request,
       options,

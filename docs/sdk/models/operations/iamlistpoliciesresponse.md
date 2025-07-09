@@ -5,7 +5,21 @@
 ```typescript
 import { IamListPoliciesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: IamListPoliciesResponse = {};
+let value: IamListPoliciesResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 484358,
+};
 ```
 
 ## Fields

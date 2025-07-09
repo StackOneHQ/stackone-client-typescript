@@ -5,7 +5,11 @@
 ```typescript
 import { HrisGetTimeEntriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetTimeEntriesResponse = {};
+let value: HrisGetTimeEntriesResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 31462,
+};
 ```
 
 ## Fields

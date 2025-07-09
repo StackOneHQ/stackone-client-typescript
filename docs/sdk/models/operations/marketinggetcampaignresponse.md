@@ -5,7 +5,21 @@
 ```typescript
 import { MarketingGetCampaignResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingGetCampaignResponse = {};
+let value: MarketingGetCampaignResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 725033,
+};
 ```
 
 ## Fields

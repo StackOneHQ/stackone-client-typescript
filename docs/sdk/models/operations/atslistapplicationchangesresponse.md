@@ -5,7 +5,11 @@
 ```typescript
 import { AtsListApplicationChangesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListApplicationChangesResponse = {};
+let value: AtsListApplicationChangesResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 975157,
+};
 ```
 
 ## Fields

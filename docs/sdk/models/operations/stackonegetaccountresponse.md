@@ -5,7 +5,15 @@
 ```typescript
 import { StackoneGetAccountResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: StackoneGetAccountResponse = {};
+let value: StackoneGetAccountResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 672216,
+};
 ```
 
 ## Fields

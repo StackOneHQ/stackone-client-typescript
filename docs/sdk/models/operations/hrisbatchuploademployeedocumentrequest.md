@@ -6,6 +6,9 @@
 import { HrisBatchUploadEmployeeDocumentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisBatchUploadEmployeeDocumentRequest = {
+  hrisBatchDocumentUploadRequestDto: {
+    items: [],
+  },
   id: "<id>",
   xAccountId: "<id>",
 };

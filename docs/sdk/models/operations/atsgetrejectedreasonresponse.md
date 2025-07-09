@@ -5,7 +5,13 @@
 ```typescript
 import { AtsGetRejectedReasonResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsGetRejectedReasonResponse = {};
+let value: AtsGetRejectedReasonResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 939996,
+};
 ```
 
 ## Fields

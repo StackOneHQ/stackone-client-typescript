@@ -5,7 +5,13 @@
 ```typescript
 import { AtsCreateOfferResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsCreateOfferResponse = {};
+let value: AtsCreateOfferResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+  },
+  statusCode: 50802,
+};
 ```
 
 ## Fields

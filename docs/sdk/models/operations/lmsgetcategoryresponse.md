@@ -5,7 +5,17 @@
 ```typescript
 import { LmsGetCategoryResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsGetCategoryResponse = {};
+let value: LmsGetCategoryResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [],
+  },
+  statusCode: 919080,
+};
 ```
 
 ## Fields

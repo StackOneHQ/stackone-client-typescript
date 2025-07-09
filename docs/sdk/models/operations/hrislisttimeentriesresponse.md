@@ -5,7 +5,22 @@
 ```typescript
 import { HrisListTimeEntriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListTimeEntriesResponse = {};
+let value: HrisListTimeEntriesResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 76013,
+};
 ```
 
 ## Fields

@@ -5,7 +5,21 @@
 ```typescript
 import { AtsListCandidateCustomFieldDefinitionsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: AtsListCandidateCustomFieldDefinitionsResponse = {};
+let value: AtsListCandidateCustomFieldDefinitionsResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 989482,
+};
 ```
 
 ## Fields

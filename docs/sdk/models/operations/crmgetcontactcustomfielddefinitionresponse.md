@@ -5,7 +5,19 @@
 ```typescript
 import { CrmGetContactCustomFieldDefinitionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: CrmGetContactCustomFieldDefinitionResponse = {};
+let value: CrmGetContactCustomFieldDefinitionResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key1": [],
+    "key2": [],
+  },
+  statusCode: 925679,
+};
 ```
 
 ## Fields

@@ -5,7 +5,17 @@
 ```typescript
 import { MarketingListOmniChannelTemplatesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingListOmniChannelTemplatesResponse = {};
+let value: MarketingListOmniChannelTemplatesResponse = {
+  contentType: "<value>",
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  statusCode: 562542,
+};
 ```
 
 ## Fields

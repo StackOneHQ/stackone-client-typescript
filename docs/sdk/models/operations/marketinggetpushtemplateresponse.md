@@ -5,7 +5,11 @@
 ```typescript
 import { MarketingGetPushTemplateResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: MarketingGetPushTemplateResponse = {};
+let value: MarketingGetPushTemplateResponse = {
+  contentType: "<value>",
+  headers: {},
+  statusCode: 818601,
+};
 ```
 
 ## Fields
