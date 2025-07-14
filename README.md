@@ -233,8 +233,10 @@ run();
 * [downloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
+* [getCompanyGroup](docs/sdks/hris/README.md#getcompanygroup) - Get Company Group
 * [getCostCenterGroup](docs/sdks/hris/README.md#getcostcentergroup) - Get Cost Center Group
 * [getDepartmentGroup](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
+* [getDivisionGroup](docs/sdks/hris/README.md#getdivisiongroup) - Get Division Group
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [getEmployeeCustomFieldDefinition](docs/sdks/hris/README.md#getemployeecustomfielddefinition) - Get employee Custom Field Definition
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
@@ -259,8 +261,10 @@ run();
 * [inviteEmployee](docs/sdks/hris/README.md#inviteemployee) - Invite Employee
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
+* [listCompaniesGroups](docs/sdks/hris/README.md#listcompaniesgroups) - List Companies Groups
 * [listCostCenterGroups](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
 * [listDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
+* [listDivisionGroups](docs/sdks/hris/README.md#listdivisiongroups) - List Division Groups
 * [listEmployeeCategories](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
 * [listEmployeeCustomFieldDefinitions](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
@@ -820,8 +824,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisDownloadEmployeeDocument`](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 - [`hrisGetBenefit`](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 - [`hrisGetCompany`](docs/sdks/hris/README.md#getcompany) - Get Company
+- [`hrisGetCompanyGroup`](docs/sdks/hris/README.md#getcompanygroup) - Get Company Group
 - [`hrisGetCostCenterGroup`](docs/sdks/hris/README.md#getcostcentergroup) - Get Cost Center Group
 - [`hrisGetDepartmentGroup`](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
+- [`hrisGetDivisionGroup`](docs/sdks/hris/README.md#getdivisiongroup) - Get Division Group
 - [`hrisGetEmployee`](docs/sdks/hris/README.md#getemployee) - Get Employee
 - [`hrisGetEmployeeCustomFieldDefinition`](docs/sdks/hris/README.md#getemployeecustomfielddefinition) - Get employee Custom Field Definition
 - [`hrisGetEmployeeDocument`](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
@@ -845,8 +851,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisInviteEmployee`](docs/sdks/hris/README.md#inviteemployee) - Invite Employee
 - [`hrisListBenefits`](docs/sdks/hris/README.md#listbenefits) - List benefits
 - [`hrisListCompanies`](docs/sdks/hris/README.md#listcompanies) - List Companies
+- [`hrisListCompaniesGroups`](docs/sdks/hris/README.md#listcompaniesgroups) - List Companies Groups
 - [`hrisListCostCenterGroups`](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
 - [`hrisListDepartmentGroups`](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
+- [`hrisListDivisionGroups`](docs/sdks/hris/README.md#listdivisiongroups) - List Division Groups
 - [`hrisListEmployeeCategories`](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
 - [`hrisListEmployeeCustomFieldDefinitions`](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 - [`hrisListEmployeeDocuments`](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents

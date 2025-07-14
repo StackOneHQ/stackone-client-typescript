@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 89dda538c50aded838ef9a4745515920
+  docChecksum: 36fde2e78bcc34f481d418e4ac396a4d
   docVersion: 1.0.0
-  speakeasyVersion: 1.580.1
-  generationVersion: 2.656.3
-  releaseVersion: 4.22.0
-  configChecksum: 365b6161725b360431d3cfe4342bb1ef
+  speakeasyVersion: 1.581.0
+  generationVersion: 2.656.5
+  releaseVersion: 4.22.1
+  configChecksum: 9de86673d6a04e7724a8c564b8be0bef
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -289,12 +289,16 @@ generatedFiles:
   - docs/sdk/models/operations/hrisdownloademployeedocumentresponse.md
   - docs/sdk/models/operations/hrisgetbenefitrequest.md
   - docs/sdk/models/operations/hrisgetbenefitresponse.md
+  - docs/sdk/models/operations/hrisgetcompanygrouprequest.md
+  - docs/sdk/models/operations/hrisgetcompanygroupresponse.md
   - docs/sdk/models/operations/hrisgetcompanyrequest.md
   - docs/sdk/models/operations/hrisgetcompanyresponse.md
   - docs/sdk/models/operations/hrisgetcostcentergrouprequest.md
   - docs/sdk/models/operations/hrisgetcostcentergroupresponse.md
   - docs/sdk/models/operations/hrisgetdepartmentgrouprequest.md
   - docs/sdk/models/operations/hrisgetdepartmentgroupresponse.md
+  - docs/sdk/models/operations/hrisgetdivisiongrouprequest.md
+  - docs/sdk/models/operations/hrisgetdivisiongroupresponse.md
   - docs/sdk/models/operations/hrisgetemployeecustomfielddefinitionqueryparamfilter.md
   - docs/sdk/models/operations/hrisgetemployeecustomfielddefinitionrequest.md
   - docs/sdk/models/operations/hrisgetemployeecustomfielddefinitionresponse.md
@@ -343,6 +347,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistbenefitsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistbenefitsrequest.md
   - docs/sdk/models/operations/hrislistbenefitsresponse.md
+  - docs/sdk/models/operations/hrislistcompaniesgroupsqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistcompaniesgroupsrequest.md
+  - docs/sdk/models/operations/hrislistcompaniesgroupsresponse.md
   - docs/sdk/models/operations/hrislistcompaniesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistcompaniesrequest.md
   - docs/sdk/models/operations/hrislistcompaniesresponse.md
@@ -352,6 +359,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistdepartmentgroupsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistdepartmentgroupsrequest.md
   - docs/sdk/models/operations/hrislistdepartmentgroupsresponse.md
+  - docs/sdk/models/operations/hrislistdivisiongroupsqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistdivisiongroupsrequest.md
+  - docs/sdk/models/operations/hrislistdivisiongroupsresponse.md
   - docs/sdk/models/operations/hrislistemployeecategoriesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeecategoriesrequest.md
   - docs/sdk/models/operations/hrislistemployeecategoriesresponse.md
@@ -1340,6 +1350,13 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdepartmentsresult.md
   - docs/sdk/models/shared/hrisdepartmenttype.md
   - docs/sdk/models/shared/hrisdepartmentvalue.md
+  - docs/sdk/models/shared/hrisdivision.md
+  - docs/sdk/models/shared/hrisdivision4.md
+  - docs/sdk/models/shared/hrisdivisionsourcevalue.md
+  - docs/sdk/models/shared/hrisdivisionspaginated.md
+  - docs/sdk/models/shared/hrisdivisionsresult.md
+  - docs/sdk/models/shared/hrisdivisiontype.md
+  - docs/sdk/models/shared/hrisdivisionvalue.md
   - docs/sdk/models/shared/hrisdocumentapimodel.md
   - docs/sdk/models/shared/hrisdocumentapimodel4.md
   - docs/sdk/models/shared/hrisdocumentapimodelcategory.md
@@ -2210,8 +2227,10 @@ generatedFiles:
   - src/funcs/hrisDownloadEmployeeDocument.ts
   - src/funcs/hrisGetBenefit.ts
   - src/funcs/hrisGetCompany.ts
+  - src/funcs/hrisGetCompanyGroup.ts
   - src/funcs/hrisGetCostCenterGroup.ts
   - src/funcs/hrisGetDepartmentGroup.ts
+  - src/funcs/hrisGetDivisionGroup.ts
   - src/funcs/hrisGetEmployee.ts
   - src/funcs/hrisGetEmployeeCustomFieldDefinition.ts
   - src/funcs/hrisGetEmployeeDocument.ts
@@ -2236,8 +2255,10 @@ generatedFiles:
   - src/funcs/hrisInviteEmployee.ts
   - src/funcs/hrisListBenefits.ts
   - src/funcs/hrisListCompanies.ts
+  - src/funcs/hrisListCompaniesGroups.ts
   - src/funcs/hrisListCostCenterGroups.ts
   - src/funcs/hrisListDepartmentGroups.ts
+  - src/funcs/hrisListDivisionGroups.ts
   - src/funcs/hrisListEmployeeCategories.ts
   - src/funcs/hrisListEmployeeCustomFieldDefinitions.ts
   - src/funcs/hrisListEmployeeDocuments.ts
@@ -2493,8 +2514,10 @@ generatedFiles:
   - src/sdk/models/operations/hrisdownloademployeedocument.ts
   - src/sdk/models/operations/hrisgetbenefit.ts
   - src/sdk/models/operations/hrisgetcompany.ts
+  - src/sdk/models/operations/hrisgetcompanygroup.ts
   - src/sdk/models/operations/hrisgetcostcentergroup.ts
   - src/sdk/models/operations/hrisgetdepartmentgroup.ts
+  - src/sdk/models/operations/hrisgetdivisiongroup.ts
   - src/sdk/models/operations/hrisgetemployee.ts
   - src/sdk/models/operations/hrisgetemployeecustomfielddefinition.ts
   - src/sdk/models/operations/hrisgetemployeedocument.ts
@@ -2519,8 +2542,10 @@ generatedFiles:
   - src/sdk/models/operations/hrisinviteemployee.ts
   - src/sdk/models/operations/hrislistbenefits.ts
   - src/sdk/models/operations/hrislistcompanies.ts
+  - src/sdk/models/operations/hrislistcompaniesgroups.ts
   - src/sdk/models/operations/hrislistcostcentergroups.ts
   - src/sdk/models/operations/hrislistdepartmentgroups.ts
+  - src/sdk/models/operations/hrislistdivisiongroups.ts
   - src/sdk/models/operations/hrislistemployeecategories.ts
   - src/sdk/models/operations/hrislistemployeecustomfielddefinitions.ts
   - src/sdk/models/operations/hrislistemployeedocuments.ts
@@ -2791,6 +2816,9 @@ generatedFiles:
   - src/sdk/models/shared/hrisdepartment.ts
   - src/sdk/models/shared/hrisdepartmentspaginated.ts
   - src/sdk/models/shared/hrisdepartmentsresult.ts
+  - src/sdk/models/shared/hrisdivision.ts
+  - src/sdk/models/shared/hrisdivisionspaginated.ts
+  - src/sdk/models/shared/hrisdivisionsresult.ts
   - src/sdk/models/shared/hrisdocumentapimodel.ts
   - src/sdk/models/shared/hrisdocumentresult.ts
   - src/sdk/models/shared/hrisdocumentspaginated.ts
@@ -6423,12 +6451,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children"
+          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2023-02-23T00:00:00.000Z", "description": "This is the description associated to the file.", "drive_id": "c28xyrc55866bvuv", "export_formats": ["application/pdf"], "file_format": {"source_value": "application/pdf", "value": "pdf"}, "folder_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "path": "/path/to/file", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/file/d/nd8932h9d/view"}}
+          application/json: {"data": {"created_at": "2023-02-23T00:00:00.000Z", "default_download_format": "application/pdf", "description": "This is the description associated to the file.", "drive_id": "c28xyrc55866bvuv", "export_formats": ["application/pdf"], "file_format": {"source_value": "application/pdf", "value": "pdf"}, "folder_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "path": "/path/to/file", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/file/d/nd8932h9d/view"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6529,7 +6557,7 @@ examples:
     speakeasy-default-documents-list-files:
       parameters:
         query:
-          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children"
+          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -7100,7 +7128,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name"
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
         header:
           x-account-id: "<id>"
       responses:
@@ -7979,7 +8007,7 @@ examples:
     speakeasy-default-hris-list-department-groups:
       parameters:
         query:
-          fields: "id,remote_id,name"
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -12074,6 +12102,148 @@ examples:
           application/json: {"data": [{"assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "attachments": [{"category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "file_format": {"source_value": "application/pdf", "value": "pdf"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_url": "https://example.com/file.pdf", "updated_at": "2021-01-02T01:01:01.000Z"}], "comments": null, "completion_date": "2024-03-19T15:30:00.000Z", "created_at": "2024-03-15T10:00:00.000Z", "description": "Please complete all required onboarding documents in the employee portal", "due_date": "2024-03-20T23:59:59.000Z", "employee_id": "cx280928937", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "link_to_task": "https://provider.com/tasks/123", "name": "Complete onboarding documents", "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"value": "open"}, "type": null, "updated_at": "2024-03-19T15:30:00.000Z"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_company_group:
+    speakeasy-default-hris-get-company-group:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,full_name,display_name,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"created_at": "2023-02-23T00:00:00.000Z", "display_name": "StackOne", "full_name": "American Express Company", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "StackOne Technologies PLC", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2024-02-23T00:00:00.000Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_division_group:
+    speakeasy-default-hris-get-division-group:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"company_id": "1234567890", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Engineering", "owner_ids": ["cxIQNjUyEDM0", "cxIQNjQzNzA0MQ"], "parent_ids": ["cxIQNjUyNDM0", "cxIQNjQzNzI0MQ"], "remote_company_id": "1234567890", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_ids": ["475364", "4327652"], "remote_parent_ids": ["652434", "6437241"], "type": {"value": "division"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_companies_groups:
+    speakeasy-default-hris-list-companies-groups:
+      parameters:
+        query:
+          fields: "id,remote_id,name,full_name,display_name,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"created_at": "2023-02-23T00:00:00.000Z", "display_name": "StackOne", "full_name": "American Express Company", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "StackOne Technologies PLC", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2024-02-23T00:00:00.000Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_division_groups:
+    speakeasy-default-hris-list-division-groups:
+      parameters:
+        query:
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": []}
+        "400":
+          application/json: {"data": null, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
           application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
         "403":

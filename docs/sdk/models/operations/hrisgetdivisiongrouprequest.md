@@ -1,11 +1,11 @@
-# HrisGetDepartmentGroupRequest
+# HrisGetDivisionGroupRequest
 
 ## Example Usage
 
 ```typescript
-import { HrisGetDepartmentGroupRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { HrisGetDivisionGroupRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisGetDepartmentGroupRequest = {
+let value: HrisGetDivisionGroupRequest = {
   fields:
     "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
   id: "<id>",

@@ -1282,6 +1282,10 @@ export type Files = {
    */
   createdAt?: Date | null | undefined;
   /**
+   * Default download format
+   */
+  defaultDownloadFormat?: string | null | undefined;
+  /**
    * The description of the file
    */
   description?: string | null | undefined;
@@ -1713,6 +1717,7 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
+    default_download_format: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     drive_id: z.nullable(z.string()).optional(),
     export_formats: z.nullable(z.array(z.string())).optional(),
@@ -1739,6 +1744,7 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
   }).transform((v) => {
     return remap$(v, {
       "created_at": "createdAt",
+      "default_download_format": "defaultDownloadFormat",
       "drive_id": "driveId",
       "export_formats": "exportFormats",
       "file_format": "fileFormat",
@@ -1757,6 +1763,7 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Files$Outbound = {
   created_at?: string | null | undefined;
+  default_download_format?: string | null | undefined;
   description?: string | null | undefined;
   drive_id?: string | null | undefined;
   export_formats?: Array<string> | null | undefined;
@@ -1784,6 +1791,7 @@ export const Files$outboundSchema: z.ZodType<
   Files
 > = z.object({
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  defaultDownloadFormat: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   driveId: z.nullable(z.string()).optional(),
   exportFormats: z.nullable(z.array(z.string())).optional(),
@@ -1808,6 +1816,7 @@ export const Files$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     createdAt: "created_at",
+    defaultDownloadFormat: "default_download_format",
     driveId: "drive_id",
     exportFormats: "export_formats",
     fileFormat: "file_format",

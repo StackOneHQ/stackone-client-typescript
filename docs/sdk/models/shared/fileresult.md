@@ -8,6 +8,7 @@ import { FileResult, FilesValue } from "@stackone/stackone-client-ts/sdk/models/
 let value: FileResult = {
   data: {
     createdAt: new Date("2023-02-23T00:00:00.000Z"),
+    defaultDownloadFormat: "application/pdf",
     description: "This is the description associated to the file.",
     driveId: "c28xyrc55866bvuv",
     exportFormats: [
