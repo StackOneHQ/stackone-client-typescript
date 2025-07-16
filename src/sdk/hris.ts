@@ -12,8 +12,10 @@ import { hrisCreateEmployeeWorkEligibilityRequest } from "../funcs/hrisCreateEmp
 import { hrisDownloadEmployeeDocument } from "../funcs/hrisDownloadEmployeeDocument.js";
 import { hrisGetBenefit } from "../funcs/hrisGetBenefit.js";
 import { hrisGetCompany } from "../funcs/hrisGetCompany.js";
+import { hrisGetCompanyGroup } from "../funcs/hrisGetCompanyGroup.js";
 import { hrisGetCostCenterGroup } from "../funcs/hrisGetCostCenterGroup.js";
 import { hrisGetDepartmentGroup } from "../funcs/hrisGetDepartmentGroup.js";
+import { hrisGetDivisionGroup } from "../funcs/hrisGetDivisionGroup.js";
 import { hrisGetEmployee } from "../funcs/hrisGetEmployee.js";
 import { hrisGetEmployeeCustomFieldDefinition } from "../funcs/hrisGetEmployeeCustomFieldDefinition.js";
 import { hrisGetEmployeeDocument } from "../funcs/hrisGetEmployeeDocument.js";
@@ -38,8 +40,10 @@ import { hrisGetTimeOffType } from "../funcs/hrisGetTimeOffType.js";
 import { hrisInviteEmployee } from "../funcs/hrisInviteEmployee.js";
 import { hrisListBenefits } from "../funcs/hrisListBenefits.js";
 import { hrisListCompanies } from "../funcs/hrisListCompanies.js";
+import { hrisListCompaniesGroups } from "../funcs/hrisListCompaniesGroups.js";
 import { hrisListCostCenterGroups } from "../funcs/hrisListCostCenterGroups.js";
 import { hrisListDepartmentGroups } from "../funcs/hrisListDepartmentGroups.js";
+import { hrisListDivisionGroups } from "../funcs/hrisListDivisionGroups.js";
 import { hrisListEmployeeCategories } from "../funcs/hrisListEmployeeCategories.js";
 import { hrisListEmployeeCustomFieldDefinitions } from "../funcs/hrisListEmployeeCustomFieldDefinitions.js";
 import { hrisListEmployeeDocuments } from "../funcs/hrisListEmployeeDocuments.js";
@@ -214,6 +218,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get Company Group
+   */
+  async getCompanyGroup(
+    request: operations.HrisGetCompanyGroupRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetCompanyGroupResponse> {
+    return unwrapAsync(hrisGetCompanyGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Cost Center Group
    */
   async getCostCenterGroup(
@@ -235,6 +253,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetDepartmentGroupResponse> {
     return unwrapAsync(hrisGetDepartmentGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Division Group
+   */
+  async getDivisionGroup(
+    request: operations.HrisGetDivisionGroupRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetDivisionGroupResponse> {
+    return unwrapAsync(hrisGetDivisionGroup(
       this,
       request,
       options,
@@ -584,6 +616,22 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * List Companies Groups
+   */
+  async listCompaniesGroups(
+    request: operations.HrisListCompaniesGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListCompaniesGroupsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListCompaniesGroups(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Cost Center Groups
    */
   async listCostCenterGroups(
@@ -615,6 +663,22 @@ export class Hris extends ClientSDK {
     >
   > {
     return unwrapResultIterator(hrisListDepartmentGroups(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Division Groups
+   */
+  async listDivisionGroups(
+    request: operations.HrisListDivisionGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListDivisionGroupsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListDivisionGroups(
       this,
       request,
       options,

@@ -572,7 +572,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "documents_list_files"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.documents.listFiles({\n    fields: \"id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.documents.listFiles({\n    fields: \"id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/documents/files/search"]["post"]
     update:
       "x-codeSamples":
@@ -590,7 +590,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "documents_get_file"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.documents.getFile({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,created_at,updated_at,has_content,has_children\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.documents.getFile({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/documents/files/{id}/download"]["get"]
     update:
       "x-codeSamples":
@@ -861,6 +861,18 @@ actions:
         - "lang": "typescript"
           "label": "hris_list_groups"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listGroups({\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/groups/companies"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_companies_groups"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listCompaniesGroups({\n    fields: \"id,remote_id,name,full_name,display_name,created_at,updated_at\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/groups/companies/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_get_company_group"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getCompanyGroup({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,full_name,display_name,created_at,updated_at\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/groups/cost_centers"]["get"]
     update:
       "x-codeSamples":
@@ -878,13 +890,25 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_department_groups"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listDepartmentGroups({\n    fields: \"id,remote_id,name\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listDepartmentGroups({\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/groups/departments/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_get_department_group"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getDepartmentGroup({\n    id: \"<id>\",\n    fields: \"id,remote_id,name\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getDepartmentGroup({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/groups/divisions"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_division_groups"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listDivisionGroups({\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/groups/divisions/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_get_division_group"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getDivisionGroup({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/groups/teams"]["get"]
     update:
       "x-codeSamples":
