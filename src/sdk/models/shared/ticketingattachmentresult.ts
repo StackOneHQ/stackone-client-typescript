@@ -1269,7 +1269,7 @@ export type TicketingAttachmentResultFileFormat = {
   value?: TicketingAttachmentResultValueOpen | null | undefined;
 };
 
-export type Data = {
+export type TicketingAttachmentResultData = {
   /**
    * The timestamp when the record was created
    */
@@ -1313,7 +1313,7 @@ export type Data = {
 };
 
 export type TicketingAttachmentResult = {
-  data?: Data | null | undefined;
+  data?: TicketingAttachmentResultData | null | undefined;
   raw?: Array<RawResponse> | null | undefined;
 };
 
@@ -1561,39 +1561,42 @@ export function ticketingAttachmentResultFileFormatFromJSON(
 }
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    file_format: z.nullable(
-      z.lazy(() => TicketingAttachmentResultFileFormat$inboundSchema),
-    ).optional(),
-    file_name: z.nullable(z.string()).optional(),
-    file_url: z.nullable(z.string()).optional(),
-    id: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    size: z.nullable(z.number()).optional(),
-    ticket_id: z.nullable(z.string()).optional(),
-    updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    user_id: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "created_at": "createdAt",
-      "file_format": "fileFormat",
-      "file_name": "fileName",
-      "file_url": "fileUrl",
-      "remote_id": "remoteId",
-      "ticket_id": "ticketId",
-      "updated_at": "updatedAt",
-      "user_id": "userId",
-    });
+export const TicketingAttachmentResultData$inboundSchema: z.ZodType<
+  TicketingAttachmentResultData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  file_format: z.nullable(
+    z.lazy(() => TicketingAttachmentResultFileFormat$inboundSchema),
+  ).optional(),
+  file_name: z.nullable(z.string()).optional(),
+  file_url: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  size: z.nullable(z.number()).optional(),
+  ticket_id: z.nullable(z.string()).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  user_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
+    "file_format": "fileFormat",
+    "file_name": "fileName",
+    "file_url": "fileUrl",
+    "remote_id": "remoteId",
+    "ticket_id": "ticketId",
+    "updated_at": "updatedAt",
+    "user_id": "userId",
   });
+});
 
 /** @internal */
-export type Data$Outbound = {
+export type TicketingAttachmentResultData$Outbound = {
   created_at?: string | null | undefined;
   file_format?: TicketingAttachmentResultFileFormat$Outbound | null | undefined;
   file_name?: string | null | undefined;
@@ -1607,57 +1610,66 @@ export type Data$Outbound = {
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    fileFormat: z.nullable(
-      z.lazy(() => TicketingAttachmentResultFileFormat$outboundSchema),
-    ).optional(),
-    fileName: z.nullable(z.string()).optional(),
-    fileUrl: z.nullable(z.string()).optional(),
-    id: z.nullable(z.string()).optional(),
-    remoteId: z.nullable(z.string()).optional(),
-    size: z.nullable(z.number()).optional(),
-    ticketId: z.nullable(z.string()).optional(),
-    updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    userId: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      createdAt: "created_at",
-      fileFormat: "file_format",
-      fileName: "file_name",
-      fileUrl: "file_url",
-      remoteId: "remote_id",
-      ticketId: "ticket_id",
-      updatedAt: "updated_at",
-      userId: "user_id",
-    });
+export const TicketingAttachmentResultData$outboundSchema: z.ZodType<
+  TicketingAttachmentResultData$Outbound,
+  z.ZodTypeDef,
+  TicketingAttachmentResultData
+> = z.object({
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  fileFormat: z.nullable(
+    z.lazy(() => TicketingAttachmentResultFileFormat$outboundSchema),
+  ).optional(),
+  fileName: z.nullable(z.string()).optional(),
+  fileUrl: z.nullable(z.string()).optional(),
+  id: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  size: z.nullable(z.number()).optional(),
+  ticketId: z.nullable(z.string()).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  userId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    createdAt: "created_at",
+    fileFormat: "file_format",
+    fileName: "file_name",
+    fileUrl: "file_url",
+    remoteId: "remote_id",
+    ticketId: "ticket_id",
+    updatedAt: "updated_at",
+    userId: "user_id",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
+export namespace TicketingAttachmentResultData$ {
+  /** @deprecated use `TicketingAttachmentResultData$inboundSchema` instead. */
+  export const inboundSchema = TicketingAttachmentResultData$inboundSchema;
+  /** @deprecated use `TicketingAttachmentResultData$outboundSchema` instead. */
+  export const outboundSchema = TicketingAttachmentResultData$outboundSchema;
+  /** @deprecated use `TicketingAttachmentResultData$Outbound` instead. */
+  export type Outbound = TicketingAttachmentResultData$Outbound;
 }
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function ticketingAttachmentResultDataToJSON(
+  ticketingAttachmentResultData: TicketingAttachmentResultData,
+): string {
+  return JSON.stringify(
+    TicketingAttachmentResultData$outboundSchema.parse(
+      ticketingAttachmentResultData,
+    ),
+  );
 }
 
-export function dataFromJSON(
+export function ticketingAttachmentResultDataFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<TicketingAttachmentResultData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => TicketingAttachmentResultData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingAttachmentResultData' from JSON`,
   );
 }
 
@@ -1667,13 +1679,14 @@ export const TicketingAttachmentResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.nullable(z.lazy(() => Data$inboundSchema)).optional(),
+  data: z.nullable(z.lazy(() => TicketingAttachmentResultData$inboundSchema))
+    .optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type TicketingAttachmentResult$Outbound = {
-  data?: Data$Outbound | null | undefined;
+  data?: TicketingAttachmentResultData$Outbound | null | undefined;
   raw?: Array<RawResponse$Outbound> | null | undefined;
 };
 
@@ -1683,7 +1696,8 @@ export const TicketingAttachmentResult$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingAttachmentResult
 > = z.object({
-  data: z.nullable(z.lazy(() => Data$outboundSchema)).optional(),
+  data: z.nullable(z.lazy(() => TicketingAttachmentResultData$outboundSchema))
+    .optional(),
   raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
 });
 

@@ -31,6 +31,7 @@ import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
 import { hrisGetPosition } from "../funcs/hrisGetPosition.js";
+import { hrisGetShift } from "../funcs/hrisGetShift.js";
 import { hrisGetTask } from "../funcs/hrisGetTask.js";
 import { hrisGetTeamGroup } from "../funcs/hrisGetTeamGroup.js";
 import { hrisGetTimeEntries } from "../funcs/hrisGetTimeEntries.js";
@@ -60,6 +61,7 @@ import { hrisListGroups } from "../funcs/hrisListGroups.js";
 import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
 import { hrisListPositions } from "../funcs/hrisListPositions.js";
+import { hrisListShifts } from "../funcs/hrisListShifts.js";
 import { hrisListTasks } from "../funcs/hrisListTasks.js";
 import { hrisListTeamGroups } from "../funcs/hrisListTeamGroups.js";
 import { hrisListTimeEntries } from "../funcs/hrisListTimeEntries.js";
@@ -477,6 +479,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetPositionResponse> {
     return unwrapAsync(hrisGetPosition(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Shift
+   */
+  async getShift(
+    request: operations.HrisGetShiftRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetShiftResponse> {
+    return unwrapAsync(hrisGetShift(
       this,
       request,
       options,
@@ -959,6 +975,22 @@ export class Hris extends ClientSDK {
     PageIterator<operations.HrisListPositionsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(hrisListPositions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Shifts
+   */
+  async listShifts(
+    request: operations.HrisListShiftsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.HrisListShiftsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisListShifts(
       this,
       request,
       options,

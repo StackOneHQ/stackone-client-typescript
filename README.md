@@ -127,6 +127,7 @@ run();
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
 * [getApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
 * [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
+* [getApplicationDocumentCategory](docs/sdks/ats/README.md#getapplicationdocumentcategory) - Get Application Document Category
 * [getApplicationNote](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
@@ -151,6 +152,7 @@ run();
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
 * [listApplicationChanges](docs/sdks/ats/README.md#listapplicationchanges) - List Application Changes
 * [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
+* [listApplicationDocumentCategories](docs/sdks/ats/README.md#listapplicationdocumentcategories) - List Application Document Categories
 * [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 * [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
@@ -218,7 +220,6 @@ run();
 * [listDrives](docs/sdks/documents/README.md#listdrives) - List Drives
 * [listFiles](docs/sdks/documents/README.md#listfiles) - List Files
 * [listFolders](docs/sdks/documents/README.md#listfolders) - List Folders
-* [searchFiles](docs/sdks/documents/README.md#searchfiles) - Search Files
 * [uploadFile](docs/sdks/documents/README.md#uploadfile) - Upload File
 
 ### [hris](docs/sdks/hris/README.md)
@@ -252,6 +253,7 @@ run();
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
 * [getPosition](docs/sdks/hris/README.md#getposition) - Get Position
+* [getShift](docs/sdks/hris/README.md#getshift) - Get Shift
 * [getTask](docs/sdks/hris/README.md#gettask) - Get Task
 * [getTeamGroup](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 * [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
@@ -281,6 +283,7 @@ run();
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
 * [listPositions](docs/sdks/hris/README.md#listpositions) - List Positions
+* [listShifts](docs/sdks/hris/README.md#listshifts) - List Shifts
 * [listTasks](docs/sdks/hris/README.md#listtasks) - List Tasks
 * [listTeamGroups](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
@@ -733,6 +736,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetApplication`](docs/sdks/ats/README.md#getapplication) - Get Application
 - [`atsGetApplicationCustomFieldDefinition`](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
 - [`atsGetApplicationDocument`](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
+- [`atsGetApplicationDocumentCategory`](docs/sdks/ats/README.md#getapplicationdocumentcategory) - Get Application Document Category
 - [`atsGetApplicationNote`](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
 - [`atsGetApplicationOffer`](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 - [`atsGetApplicationScheduledInterview`](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
@@ -757,6 +761,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetUser`](docs/sdks/ats/README.md#getuser) - Get User
 - [`atsListApplicationChanges`](docs/sdks/ats/README.md#listapplicationchanges) - List Application Changes
 - [`atsListApplicationCustomFieldDefinitions`](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
+- [`atsListApplicationDocumentCategories`](docs/sdks/ats/README.md#listapplicationdocumentcategories) - List Application Document Categories
 - [`atsListApplicationDocuments`](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 - [`atsListApplicationNotes`](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 - [`atsListApplications`](docs/sdks/ats/README.md#listapplications) - List Applications
@@ -812,7 +817,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`documentsListDrives`](docs/sdks/documents/README.md#listdrives) - List Drives
 - [`documentsListFiles`](docs/sdks/documents/README.md#listfiles) - List Files
 - [`documentsListFolders`](docs/sdks/documents/README.md#listfolders) - List Folders
-- [`documentsSearchFiles`](docs/sdks/documents/README.md#searchfiles) - Search Files
 - [`documentsUploadFile`](docs/sdks/documents/README.md#uploadfile) - Upload File
 - [`hrisBatchUploadEmployeeDocument`](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 - [`hrisCancelEmployeeTimeOffRequest`](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
@@ -843,6 +847,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
 - [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Work Location
 - [`hrisGetPosition`](docs/sdks/hris/README.md#getposition) - Get Position
+- [`hrisGetShift`](docs/sdks/hris/README.md#getshift) - Get Shift
 - [`hrisGetTask`](docs/sdks/hris/README.md#gettask) - Get Task
 - [`hrisGetTeamGroup`](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 - [`hrisGetTimeEntries`](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
@@ -871,6 +876,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List Work Locations
 - [`hrisListPositions`](docs/sdks/hris/README.md#listpositions) - List Positions
+- [`hrisListShifts`](docs/sdks/hris/README.md#listshifts) - List Shifts
 - [`hrisListTasks`](docs/sdks/hris/README.md#listtasks) - List Tasks
 - [`hrisListTeamGroups`](docs/sdks/hris/README.md#listteamgroups) - List Team Groups
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries

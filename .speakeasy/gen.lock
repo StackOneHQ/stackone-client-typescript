@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 36fde2e78bcc34f481d418e4ac396a4d
+  docChecksum: c77bc001a25e5bf94b0ffa9eefc34b62
   docVersion: 1.0.0
-  speakeasyVersion: 1.581.0
-  generationVersion: 2.656.5
-  releaseVersion: 4.22.1
-  configChecksum: 9de86673d6a04e7724a8c564b8be0bef
+  speakeasyVersion: 1.583.0
+  generationVersion: 2.658.3
+  releaseVersion: 4.23.0
+  configChecksum: 5900c3da8855c056b3515cccae864fac
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -26,7 +26,6 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
     groups: 2.81.2
-    inputOutputModels: 2.82.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     openEnums: 0.1.1
@@ -77,6 +76,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationcustomfielddefinitionqueryparamfilter.md
   - docs/sdk/models/operations/atsgetapplicationcustomfielddefinitionrequest.md
   - docs/sdk/models/operations/atsgetapplicationcustomfielddefinitionresponse.md
+  - docs/sdk/models/operations/atsgetapplicationdocumentcategoryrequest.md
+  - docs/sdk/models/operations/atsgetapplicationdocumentcategoryresponse.md
   - docs/sdk/models/operations/atsgetapplicationdocumentrequest.md
   - docs/sdk/models/operations/atsgetapplicationdocumentresponse.md
   - docs/sdk/models/operations/atsgetapplicationnoterequest.md
@@ -133,6 +134,9 @@ generatedFiles:
   - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsrequest.md
   - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsresponse.md
+  - docs/sdk/models/operations/atslistapplicationdocumentcategoriesqueryparamfilter.md
+  - docs/sdk/models/operations/atslistapplicationdocumentcategoriesrequest.md
+  - docs/sdk/models/operations/atslistapplicationdocumentcategoriesresponse.md
   - docs/sdk/models/operations/atslistapplicationdocumentsqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationdocumentsrequest.md
   - docs/sdk/models/operations/atslistapplicationdocumentsresponse.md
@@ -266,8 +270,6 @@ generatedFiles:
   - docs/sdk/models/operations/documentslistfoldersqueryparamfilter.md
   - docs/sdk/models/operations/documentslistfoldersrequest.md
   - docs/sdk/models/operations/documentslistfoldersresponse.md
-  - docs/sdk/models/operations/documentssearchfilesrequest.md
-  - docs/sdk/models/operations/documentssearchfilesresponse.md
   - docs/sdk/models/operations/documentsuploadfilerequest.md
   - docs/sdk/models/operations/documentsuploadfileresponse.md
   - docs/sdk/models/operations/filter.md
@@ -330,6 +332,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgetlocationresponse.md
   - docs/sdk/models/operations/hrisgetpositionrequest.md
   - docs/sdk/models/operations/hrisgetpositionresponse.md
+  - docs/sdk/models/operations/hrisgetshiftrequest.md
+  - docs/sdk/models/operations/hrisgetshiftresponse.md
   - docs/sdk/models/operations/hrisgettaskrequest.md
   - docs/sdk/models/operations/hrisgettaskresponse.md
   - docs/sdk/models/operations/hrisgetteamgrouprequest.md
@@ -410,6 +414,10 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistpositionsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistpositionsrequest.md
   - docs/sdk/models/operations/hrislistpositionsresponse.md
+  - docs/sdk/models/operations/hrislistshiftsqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistshiftsqueryparamstatus.md
+  - docs/sdk/models/operations/hrislistshiftsrequest.md
+  - docs/sdk/models/operations/hrislistshiftsresponse.md
   - docs/sdk/models/operations/hrislisttasksqueryparamfilter.md
   - docs/sdk/models/operations/hrislisttasksrequest.md
   - docs/sdk/models/operations/hrislisttasksresponse.md
@@ -701,6 +709,7 @@ generatedFiles:
   - docs/sdk/models/shared/applicationspaginated.md
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationvalue.md
+  - docs/sdk/models/shared/approvalstatus.md
   - docs/sdk/models/shared/archived.md
   - docs/sdk/models/shared/assessmentpackage.md
   - docs/sdk/models/shared/assessmentpackagepaginated.md
@@ -1015,10 +1024,6 @@ generatedFiles:
   - docs/sdk/models/shared/description.md
   - docs/sdk/models/shared/division.md
   - docs/sdk/models/shared/document.md
-  - docs/sdk/models/shared/documentsfilessearchrequestdto.md
-  - docs/sdk/models/shared/documentsfilessearchrequestdto4.md
-  - docs/sdk/models/shared/documentsfilessearchrequestdtooperator.md
-  - docs/sdk/models/shared/documentsfilessearchrequestdtovalue.md
   - docs/sdk/models/shared/draft.md
   - docs/sdk/models/shared/driveresult.md
   - docs/sdk/models/shared/drives.md
@@ -1184,7 +1189,6 @@ generatedFiles:
   - docs/sdk/models/shared/filesvalue.md
   - docs/sdk/models/shared/filet.md
   - docs/sdk/models/shared/filevalue.md
-  - docs/sdk/models/shared/filter.md
   - docs/sdk/models/shared/folderresult.md
   - docs/sdk/models/shared/folders.md
   - docs/sdk/models/shared/folders2.md
@@ -1402,6 +1406,24 @@ generatedFiles:
   - docs/sdk/models/shared/hrislocationsourcevalue.md
   - docs/sdk/models/shared/hrislocationspaginated.md
   - docs/sdk/models/shared/hrislocationvalue.md
+  - docs/sdk/models/shared/hrisshift.md
+  - docs/sdk/models/shared/hrisshift4.md
+  - docs/sdk/models/shared/hrisshiftresult.md
+  - docs/sdk/models/shared/hrisshiftresult4.md
+  - docs/sdk/models/shared/hrisshiftresultapprovalstatus.md
+  - docs/sdk/models/shared/hrisshiftresultschemas4.md
+  - docs/sdk/models/shared/hrisshiftresultschemassourcevalue.md
+  - docs/sdk/models/shared/hrisshiftresultschemasvalue.md
+  - docs/sdk/models/shared/hrisshiftresultsourcevalue.md
+  - docs/sdk/models/shared/hrisshiftresultstatus.md
+  - docs/sdk/models/shared/hrisshiftresultvalue.md
+  - docs/sdk/models/shared/hrisshiftschemas4.md
+  - docs/sdk/models/shared/hrisshiftschemassourcevalue.md
+  - docs/sdk/models/shared/hrisshiftschemasvalue.md
+  - docs/sdk/models/shared/hrisshiftsourcevalue.md
+  - docs/sdk/models/shared/hrisshiftspaginated.md
+  - docs/sdk/models/shared/hrisshiftstatus.md
+  - docs/sdk/models/shared/hrisshiftvalue.md
   - docs/sdk/models/shared/hristeam.md
   - docs/sdk/models/shared/hristeam4.md
   - docs/sdk/models/shared/hristeamsourcevalue.md
@@ -1753,11 +1775,9 @@ generatedFiles:
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offerstatus.md
   - docs/sdk/models/shared/offervalue.md
-  - docs/sdk/models/shared/operator.md
   - docs/sdk/models/shared/organization.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/package.md
-  - docs/sdk/models/shared/params.md
   - docs/sdk/models/shared/parentquestion.md
   - docs/sdk/models/shared/patchaccountexternaldto.md
   - docs/sdk/models/shared/patchaccountexternaldtocredentials.md
@@ -1793,7 +1813,6 @@ generatedFiles:
   - docs/sdk/models/shared/pushtemplate.md
   - docs/sdk/models/shared/pushtemplateresult.md
   - docs/sdk/models/shared/pushtemplatespaginated.md
-  - docs/sdk/models/shared/query.md
   - docs/sdk/models/shared/question.md
   - docs/sdk/models/shared/question2.md
   - docs/sdk/models/shared/question4.md
@@ -1846,12 +1865,10 @@ generatedFiles:
   - docs/sdk/models/shared/scorecardsection.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/scorecardsresult.md
-  - docs/sdk/models/shared/searchquery.md
-  - docs/sdk/models/shared/searchquery4.md
-  - docs/sdk/models/shared/searchqueryvalue.md
   - docs/sdk/models/shared/secrets.md
   - docs/sdk/models/shared/security.md
   - docs/sdk/models/shared/setupinformation.md
+  - docs/sdk/models/shared/shiftbreak.md
   - docs/sdk/models/shared/skillresult.md
   - docs/sdk/models/shared/skills.md
   - docs/sdk/models/shared/skills2.md
@@ -1910,6 +1927,7 @@ generatedFiles:
   - docs/sdk/models/shared/ticketingattachmentfileformat.md
   - docs/sdk/models/shared/ticketingattachmentresult.md
   - docs/sdk/models/shared/ticketingattachmentresult4.md
+  - docs/sdk/models/shared/ticketingattachmentresultdata.md
   - docs/sdk/models/shared/ticketingattachmentresultfileformat.md
   - docs/sdk/models/shared/ticketingattachmentresultsourcevalue.md
   - docs/sdk/models/shared/ticketingattachmentresultvalue.md
@@ -2136,6 +2154,7 @@ generatedFiles:
   - src/funcs/atsGetApplication.ts
   - src/funcs/atsGetApplicationCustomFieldDefinition.ts
   - src/funcs/atsGetApplicationDocument.ts
+  - src/funcs/atsGetApplicationDocumentCategory.ts
   - src/funcs/atsGetApplicationNote.ts
   - src/funcs/atsGetApplicationOffer.ts
   - src/funcs/atsGetApplicationScheduledInterview.ts
@@ -2160,6 +2179,7 @@ generatedFiles:
   - src/funcs/atsGetUser.ts
   - src/funcs/atsListApplicationChanges.ts
   - src/funcs/atsListApplicationCustomFieldDefinitions.ts
+  - src/funcs/atsListApplicationDocumentCategories.ts
   - src/funcs/atsListApplicationDocuments.ts
   - src/funcs/atsListApplicationNotes.ts
   - src/funcs/atsListApplicationScorecards.ts
@@ -2215,7 +2235,6 @@ generatedFiles:
   - src/funcs/documentsListDrives.ts
   - src/funcs/documentsListFiles.ts
   - src/funcs/documentsListFolders.ts
-  - src/funcs/documentsSearchFiles.ts
   - src/funcs/documentsUploadFile.ts
   - src/funcs/hrisBatchUploadEmployeeDocument.ts
   - src/funcs/hrisCancelEmployeeTimeOffRequest.ts
@@ -2246,6 +2265,7 @@ generatedFiles:
   - src/funcs/hrisGetJob.ts
   - src/funcs/hrisGetLocation.ts
   - src/funcs/hrisGetPosition.ts
+  - src/funcs/hrisGetShift.ts
   - src/funcs/hrisGetTask.ts
   - src/funcs/hrisGetTeamGroup.ts
   - src/funcs/hrisGetTimeEntries.ts
@@ -2275,6 +2295,7 @@ generatedFiles:
   - src/funcs/hrisListJobs.ts
   - src/funcs/hrisListLocations.ts
   - src/funcs/hrisListPositions.ts
+  - src/funcs/hrisListShifts.ts
   - src/funcs/hrisListTasks.ts
   - src/funcs/hrisListTeamGroups.ts
   - src/funcs/hrisListTimeEntries.ts
@@ -2427,6 +2448,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetapplication.ts
   - src/sdk/models/operations/atsgetapplicationcustomfielddefinition.ts
   - src/sdk/models/operations/atsgetapplicationdocument.ts
+  - src/sdk/models/operations/atsgetapplicationdocumentcategory.ts
   - src/sdk/models/operations/atsgetapplicationnote.ts
   - src/sdk/models/operations/atsgetapplicationoffer.ts
   - src/sdk/models/operations/atsgetapplicationscheduledinterview.ts
@@ -2451,6 +2473,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetuser.ts
   - src/sdk/models/operations/atslistapplicationchanges.ts
   - src/sdk/models/operations/atslistapplicationcustomfielddefinitions.ts
+  - src/sdk/models/operations/atslistapplicationdocumentcategories.ts
   - src/sdk/models/operations/atslistapplicationdocuments.ts
   - src/sdk/models/operations/atslistapplicationnotes.ts
   - src/sdk/models/operations/atslistapplications.ts
@@ -2502,7 +2525,6 @@ generatedFiles:
   - src/sdk/models/operations/documentslistdrives.ts
   - src/sdk/models/operations/documentslistfiles.ts
   - src/sdk/models/operations/documentslistfolders.ts
-  - src/sdk/models/operations/documentssearchfiles.ts
   - src/sdk/models/operations/documentsuploadfile.ts
   - src/sdk/models/operations/hrisbatchuploademployeedocument.ts
   - src/sdk/models/operations/hriscancelemployeetimeoffrequest.ts
@@ -2533,6 +2555,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgetjob.ts
   - src/sdk/models/operations/hrisgetlocation.ts
   - src/sdk/models/operations/hrisgetposition.ts
+  - src/sdk/models/operations/hrisgetshift.ts
   - src/sdk/models/operations/hrisgettask.ts
   - src/sdk/models/operations/hrisgetteamgroup.ts
   - src/sdk/models/operations/hrisgettimeentries.ts
@@ -2562,6 +2585,7 @@ generatedFiles:
   - src/sdk/models/operations/hrislistjobs.ts
   - src/sdk/models/operations/hrislistlocations.ts
   - src/sdk/models/operations/hrislistpositions.ts
+  - src/sdk/models/operations/hrislistshifts.ts
   - src/sdk/models/operations/hrislisttasks.ts
   - src/sdk/models/operations/hrislistteamgroups.ts
   - src/sdk/models/operations/hrislisttimeentries.ts
@@ -2775,7 +2799,6 @@ generatedFiles:
   - src/sdk/models/shared/department.ts
   - src/sdk/models/shared/departmentresult.ts
   - src/sdk/models/shared/departmentspaginated.ts
-  - src/sdk/models/shared/documentsfilessearchrequestdto.ts
   - src/sdk/models/shared/driveresult.ts
   - src/sdk/models/shared/drives.ts
   - src/sdk/models/shared/drivespaginated.ts
@@ -2830,6 +2853,9 @@ generatedFiles:
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
+  - src/sdk/models/shared/hrisshift.ts
+  - src/sdk/models/shared/hrisshiftresult.ts
+  - src/sdk/models/shared/hrisshiftspaginated.ts
   - src/sdk/models/shared/hristeam.ts
   - src/sdk/models/shared/hristeamspaginated.ts
   - src/sdk/models/shared/hristeamsresult.ts
@@ -2939,8 +2965,8 @@ generatedFiles:
   - src/sdk/models/shared/scorecardsection.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/scorecardsresult.ts
-  - src/sdk/models/shared/searchquery.ts
   - src/sdk/models/shared/security.ts
+  - src/sdk/models/shared/shiftbreak.ts
   - src/sdk/models/shared/skillresult.ts
   - src/sdk/models/shared/skills.ts
   - src/sdk/models/shared/skillspaginated.ts
@@ -12244,6 +12270,145 @@ examples:
           application/json: {"data": []}
         "400":
           application/json: {"data": null, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_get_application_document_category:
+    speakeasy-default-ats-get-application-document-category:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,active"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"active": true, "id": "1687-3", "name": "1687-4", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_list_application_document_categories:
+    speakeasy-default-ats-list-application-document-categories:
+      parameters:
+        query:
+          fields: "id,remote_id,name,active"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"active": true, "id": "1687-3", "name": "1687-4", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_shift:
+    speakeasy-default-hris-get-shift:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"approval_status": {"source_value": "Approved", "value": "approved"}, "break_duration": "PT1H30M", "breaks": [{"created_at": "2024-03-20T10:00:00Z", "duration": "PT1H", "end_time": "2024-03-20T13:00:00Z", "id": "break_123456789", "is_paid": true, "start_time": "2024-03-20T12:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "company_id": "comp_123456789", "created_at": "2024-03-20T08:00:00Z", "employee_id": "emp_123456789", "end_time": "2024-03-20T17:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "location_id": "loc_123456789", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "start_time": "2024-03-20T09:00:00Z", "status": {"source_value": "Confirmed", "value": "confirmed"}, "updated_at": "2024-03-20T08:00:00Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_shifts:
+    speakeasy-default-hris-list-shifts:
+      parameters:
+        query:
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"approval_status": {"source_value": "Approved", "value": "approved"}, "break_duration": "PT1H30M", "breaks": [{"created_at": "2024-03-20T10:00:00Z", "duration": "PT1H", "end_time": "2024-03-20T13:00:00Z", "id": "break_123456789", "is_paid": true, "start_time": "2024-03-20T12:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "company_id": "comp_123456789", "created_at": "2024-03-20T08:00:00Z", "employee_id": "emp_123456789", "end_time": "2024-03-20T17:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "location_id": "loc_123456789", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "start_time": "2024-03-20T09:00:00Z", "status": {"source_value": "Confirmed", "value": "confirmed"}, "updated_at": "2024-03-20T08:00:00Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
           application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
         "403":

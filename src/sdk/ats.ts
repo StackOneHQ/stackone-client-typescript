@@ -14,6 +14,7 @@ import { atsDownloadApplicationDocument } from "../funcs/atsDownloadApplicationD
 import { atsGetApplication } from "../funcs/atsGetApplication.js";
 import { atsGetApplicationCustomFieldDefinition } from "../funcs/atsGetApplicationCustomFieldDefinition.js";
 import { atsGetApplicationDocument } from "../funcs/atsGetApplicationDocument.js";
+import { atsGetApplicationDocumentCategory } from "../funcs/atsGetApplicationDocumentCategory.js";
 import { atsGetApplicationNote } from "../funcs/atsGetApplicationNote.js";
 import { atsGetApplicationOffer } from "../funcs/atsGetApplicationOffer.js";
 import { atsGetApplicationScheduledInterview } from "../funcs/atsGetApplicationScheduledInterview.js";
@@ -38,6 +39,7 @@ import { atsGetRejectedReason } from "../funcs/atsGetRejectedReason.js";
 import { atsGetUser } from "../funcs/atsGetUser.js";
 import { atsListApplicationChanges } from "../funcs/atsListApplicationChanges.js";
 import { atsListApplicationCustomFieldDefinitions } from "../funcs/atsListApplicationCustomFieldDefinitions.js";
+import { atsListApplicationDocumentCategories } from "../funcs/atsListApplicationDocumentCategories.js";
 import { atsListApplicationDocuments } from "../funcs/atsListApplicationDocuments.js";
 import { atsListApplicationNotes } from "../funcs/atsListApplicationNotes.js";
 import { atsListApplications } from "../funcs/atsListApplications.js";
@@ -240,6 +242,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsGetApplicationDocumentResponse> {
     return unwrapAsync(atsGetApplicationDocument(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Application Document Category
+   */
+  async getApplicationDocumentCategory(
+    request: operations.AtsGetApplicationDocumentCategoryRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationDocumentCategoryResponse> {
+    return unwrapAsync(atsGetApplicationDocumentCategory(
       this,
       request,
       options,
@@ -586,6 +602,25 @@ export class Ats extends ClientSDK {
     >
   > {
     return unwrapResultIterator(atsListApplicationCustomFieldDefinitions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Application Document Categories
+   */
+  async listApplicationDocumentCategories(
+    request: operations.AtsListApplicationDocumentCategoriesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationDocumentCategoriesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationDocumentCategories(
       this,
       request,
       options,
