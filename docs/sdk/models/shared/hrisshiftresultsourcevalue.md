@@ -1,6 +1,4 @@
-# DocumentsFilesSearchRequestDtoValue
-
-The value to search for
+# HrisShiftResultSourceValue
 
 
 ## Supported Types
@@ -8,7 +6,7 @@ The value to search for
 ### `string`
 
 ```typescript
-const value: string = "john";
+const value: string = "Approved";
 ```
 
 ### `number`
@@ -23,17 +21,17 @@ const value: number = NaN;
 const value: boolean = true;
 ```
 
-### `shared.DocumentsFilesSearchRequestDto4`
+### `shared.HrisShiftResult4`
 
 ```typescript
-const value: shared.DocumentsFilesSearchRequestDto4 = {};
+const value: shared.HrisShiftResult4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
 const value: any[] = [
-  "john",
+  "Approved",
 ];
 ```
 

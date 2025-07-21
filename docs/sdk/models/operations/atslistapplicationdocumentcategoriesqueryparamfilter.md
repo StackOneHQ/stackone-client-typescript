@@ -1,13 +1,13 @@
-# Filter
+# AtsListApplicationDocumentCategoriesQueryParamFilter
 
 Filter parameters that allow greater customisation of the list response
 
 ## Example Usage
 
 ```typescript
-import { Filter } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsListApplicationDocumentCategoriesQueryParamFilter } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: Filter = {
+let value: AtsListApplicationDocumentCategoriesQueryParamFilter = {
   updatedAfter: "2020-01-01T00:00:00.000Z",
 };
 ```

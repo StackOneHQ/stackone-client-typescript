@@ -1,11 +1,11 @@
-# HrisListEmployeeCategoriesResponse
+# AtsListApplicationDocumentCategoriesResponse
 
 ## Example Usage
 
 ```typescript
-import { HrisListEmployeeCategoriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { AtsListApplicationDocumentCategoriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: HrisListEmployeeCategoriesResponse = {
+let value: AtsListApplicationDocumentCategoriesResponse = {
   contentType: "<value>",
   headers: {
     "key": [
@@ -13,11 +13,9 @@ let value: HrisListEmployeeCategoriesResponse = {
     ],
     "key1": [
       "<value 1>",
-      "<value 2>",
-      "<value 3>",
     ],
   },
-  statusCode: 546752,
+  statusCode: 902650,
 };
 ```
 
@@ -27,6 +25,6 @@ let value: HrisListEmployeeCategoriesResponse = {
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `contentType`                                                                 | *string*                                                                      | :heavy_check_mark:                                                            | HTTP response content type for this operation                                 |
 | `headers`                                                                     | Record<string, *string*[]>                                                    | :heavy_check_mark:                                                            | N/A                                                                           |
-| `referencePaginated`                                                          | [shared.ReferencePaginated](../../../sdk/models/shared/referencepaginated.md) | :heavy_minus_sign:                                                            | The list of employee document categories were retrieved.                      |
+| `referencePaginated`                                                          | [shared.ReferencePaginated](../../../sdk/models/shared/referencepaginated.md) | :heavy_minus_sign:                                                            | The list of application document categories were retrieved.                   |
 | `statusCode`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | HTTP response status code for this operation                                  |
 | `rawResponse`                                                                 | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)         | :heavy_check_mark:                                                            | Raw HTTP response; suitable for custom response parsing                       |

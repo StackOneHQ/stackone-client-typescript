@@ -9,7 +9,6 @@ import { documentsGetFolder } from "../funcs/documentsGetFolder.js";
 import { documentsListDrives } from "../funcs/documentsListDrives.js";
 import { documentsListFiles } from "../funcs/documentsListFiles.js";
 import { documentsListFolders } from "../funcs/documentsListFolders.js";
-import { documentsSearchFiles } from "../funcs/documentsSearchFiles.js";
 import { documentsUploadFile } from "../funcs/documentsUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
@@ -115,20 +114,6 @@ export class Documents extends ClientSDK {
     PageIterator<operations.DocumentsListFoldersResponse, { cursor: string }>
   > {
     return unwrapResultIterator(documentsListFolders(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Search Files
-   */
-  async searchFiles(
-    request: operations.DocumentsSearchFilesRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DocumentsSearchFilesResponse> {
-    return unwrapAsync(documentsSearchFiles(
       this,
       request,
       options,

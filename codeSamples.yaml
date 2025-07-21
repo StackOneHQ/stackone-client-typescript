@@ -369,6 +369,18 @@ actions:
         - "lang": "typescript"
           "label": "ats_get_department"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.getDepartment({\n    id: \"<id>\",\n    fields: \"id,remote_id,name\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/ats/documents/application_categories"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ats_list_application_document_categories"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.listApplicationDocumentCategories({\n    fields: \"id,remote_id,name,active\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/ats/documents/application_categories/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ats_get_application_document_category"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.getApplicationDocumentCategory({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,active\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/ats/interview_stages"]["get"]
     update:
       "x-codeSamples":
@@ -573,12 +585,6 @@ actions:
         - "lang": "typescript"
           "label": "documents_list_files"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.documents.listFiles({\n    fields: \"id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children\",\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
-  - target: $["paths"]["/unified/documents/files/search"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "documents_search_files"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { DocumentsFilesSearchRequestDtoOperator, Operator } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.documents.searchFiles({\n    xAccountId: \"<id>\",\n    documentsFilesSearchRequestDto: {\n      query: {\n        operator: DocumentsFilesSearchRequestDtoOperator.Equal,\n        queries: [\n          {\n            operator: Operator.Equal,\n            field: \"name\",\n            value: \"john\",\n          },\n        ],\n        field: \"name\",\n        globalSearch: \"test\",\n        value: \"john\",\n      },\n      params: {\n        filter: {\n          updatedAfter: \"2020-01-01T00:00:00.000Z\",\n        },\n      },\n      passthrough: {\n        \"other_known_names\": \"John Doe\",\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/documents/files/upload"]["post"]
     update:
       "x-codeSamples":
@@ -963,6 +969,18 @@ actions:
         - "lang": "typescript"
           "label": "hris_get_position"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getPosition({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/shifts"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_shifts"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listShifts({\n    filter: {\n      updatedAfter: \"2020-01-01T00:00:00.000Z\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/shifts/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_get_shift"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getShift({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/tasks"]["get"]
     update:
       "x-codeSamples":

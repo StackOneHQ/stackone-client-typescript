@@ -1,11 +1,11 @@
-# SearchQuery4
+# HrisShiftResult4
 
 ## Example Usage
 
 ```typescript
-import { SearchQuery4 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisShiftResult4 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: SearchQuery4 = {};
+let value: HrisShiftResult4 = {};
 ```
 
 ## Fields

@@ -3,7 +3,12 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import {
+  encodeDeepObjectQuery,
+  encodeFormQuery,
+  encodeSimple,
+  queryJoin,
+} from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -26,15 +31,15 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Search Files
+ * Get Application Document Category
  */
-export function documentsSearchFiles(
+export function atsGetApplicationDocumentCategory(
   client: StackOneCore,
-  request: operations.DocumentsSearchFilesRequest,
+  request: operations.AtsGetApplicationDocumentCategoryRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DocumentsSearchFilesResponse,
+    operations.AtsGetApplicationDocumentCategoryResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -66,12 +71,12 @@ export function documentsSearchFiles(
 
 async function $do(
   client: StackOneCore,
-  request: operations.DocumentsSearchFilesRequest,
+  request: operations.AtsGetApplicationDocumentCategoryRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DocumentsSearchFilesResponse,
+      operations.AtsGetApplicationDocumentCategoryResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -99,31 +104,44 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.DocumentsSearchFilesRequest$outboundSchema.parse(value),
+      operations.AtsGetApplicationDocumentCategoryRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.DocumentsFilesSearchRequestDto, {
-    explode: true,
-  });
+  const body = null;
 
-  const path = pathToFunc("/unified/documents/files/search")();
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/unified/ats/documents/application_categories/{id}")(
+    pathParams,
+  );
+
+  const query = queryJoin(
+    encodeDeepObjectQuery({
+      "proxy": payload.proxy,
+    }),
+    encodeFormQuery({
+      "fields": payload.fields,
+      "raw": payload.raw,
+    }),
+  );
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
     }),
-    "x-stackone-api-session-token": encodeSimple(
-      "x-stackone-api-session-token",
-      payload["x-stackone-api-session-token"],
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
@@ -132,7 +150,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "documents_search_files",
+    operationID: "ats_get_application_document_category",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -156,10 +174,11 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -204,7 +223,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DocumentsSearchFilesResponse,
+    operations.AtsGetApplicationDocumentCategoryResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -226,9 +245,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.DocumentsSearchFilesResponse$inboundSchema, {
-      key: "FilesPaginated",
-    }),
+    M.json(
+      200,
+      operations.AtsGetApplicationDocumentCategoryResponse$inboundSchema,
+      { key: "ReferenceResult" },
+    ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),

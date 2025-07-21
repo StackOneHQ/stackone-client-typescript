@@ -6,14 +6,7 @@
 import { ReferencePaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ReferencePaginated = {
-  data: [
-    {
-      active: true,
-      id: "1687-3",
-      name: "1687-4",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
-  ],
+  data: [],
 };
 ```
 

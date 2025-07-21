@@ -1,6 +1,4 @@
-# SearchQueryValue
-
-The value to search for
+# HrisShiftSourceValue
 
 
 ## Supported Types
@@ -8,7 +6,7 @@ The value to search for
 ### `string`
 
 ```typescript
-const value: string = "john";
+const value: string = "Approved";
 ```
 
 ### `number`
@@ -23,17 +21,17 @@ const value: number = NaN;
 const value: boolean = true;
 ```
 
-### `shared.SearchQuery4`
+### `shared.HrisShift4`
 
 ```typescript
-const value: shared.SearchQuery4 = {};
+const value: shared.HrisShift4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
 const value: any[] = [
-  "john",
+  "Approved",
 ];
 ```
 
