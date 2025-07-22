@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: d0fcd19d7704f75926c94f2a15a50118
+  docChecksum: 8748bae96f0ce9591c8dd5115aba69f6
   docVersion: 1.0.0
-  speakeasyVersion: 1.584.0
-  generationVersion: 2.660.0
-  releaseVersion: 4.23.1
-  configChecksum: 43c35dad56e53ebf2ae8bc627128c129
+  speakeasyVersion: 1.586.0
+  generationVersion: 2.661.4
+  releaseVersion: 4.23.2
+  configChecksum: 5bc98ec49a244d066f5403ebac7c057d
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -6481,7 +6481,8 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children"
+          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids"
+          include: "all_parent_folder_ids"
         header:
           x-account-id: "<id>"
       responses:
@@ -6517,7 +6518,8 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root"
+          fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids"
+          include: "all_parent_folder_ids"
         header:
           x-account-id: "<id>"
       responses:
@@ -6587,9 +6589,11 @@ examples:
     speakeasy-default-documents-list-files:
       parameters:
         query:
-          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children"
+          fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
+          nested_items: "false"
+          include: "all_parent_folder_ids"
         header:
           x-account-id: "<id>"
       responses:
@@ -6623,9 +6627,11 @@ examples:
     speakeasy-default-documents-list-folders:
       parameters:
         query:
-          fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root"
+          fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
+          nested_items: "false"
+          include: "all_parent_folder_ids"
         header:
           x-account-id: "<id>"
       responses:

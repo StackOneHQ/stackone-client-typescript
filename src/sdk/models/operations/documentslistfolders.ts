@@ -29,6 +29,14 @@ export type DocumentsListFoldersRequest = {
    */
   filter?: DocumentsListFoldersQueryParamFilter | null | undefined;
   /**
+   * The comma separated list of fields that will be included in the response
+   */
+  include?: string | null | undefined;
+  /**
+   * When "true" and used with filter[folder_id], the response includes Folders and their descendant Folders
+   */
+  nestedItems?: string | null | undefined;
+  /**
    * The unified cursor
    */
   next?: string | null | undefined;
@@ -159,6 +167,8 @@ export const DocumentsListFoldersRequest$inboundSchema: z.ZodType<
   filter: z.nullable(
     z.lazy(() => DocumentsListFoldersQueryParamFilter$inboundSchema),
   ).optional(),
+  include: z.nullable(z.string()).optional(),
+  nested_items: z.nullable(z.string().default("false")),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   page_size: z.nullable(z.string()).optional(),
@@ -168,6 +178,7 @@ export const DocumentsListFoldersRequest$inboundSchema: z.ZodType<
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
+    "nested_items": "nestedItems",
     "page_size": "pageSize",
     "updated_after": "updatedAfter",
     "x-account-id": "xAccountId",
@@ -178,6 +189,8 @@ export const DocumentsListFoldersRequest$inboundSchema: z.ZodType<
 export type DocumentsListFoldersRequest$Outbound = {
   fields?: string | null | undefined;
   filter?: DocumentsListFoldersQueryParamFilter$Outbound | null | undefined;
+  include?: string | null | undefined;
+  nested_items: string | null;
   next?: string | null | undefined;
   page?: string | null | undefined;
   page_size?: string | null | undefined;
@@ -197,6 +210,8 @@ export const DocumentsListFoldersRequest$outboundSchema: z.ZodType<
   filter: z.nullable(
     z.lazy(() => DocumentsListFoldersQueryParamFilter$outboundSchema),
   ).optional(),
+  include: z.nullable(z.string()).optional(),
+  nestedItems: z.nullable(z.string().default("false")),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   pageSize: z.nullable(z.string()).optional(),
@@ -206,6 +221,7 @@ export const DocumentsListFoldersRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    nestedItems: "nested_items",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

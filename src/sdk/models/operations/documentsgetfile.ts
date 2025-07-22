@@ -16,6 +16,10 @@ export type DocumentsGetFileRequest = {
   fields?: string | null | undefined;
   id: string;
   /**
+   * The comma separated list of fields that will be included in the response
+   */
+  include?: string | null | undefined;
+  /**
    * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
    */
   proxy?: { [k: string]: any } | null | undefined;
@@ -61,6 +65,7 @@ export const DocumentsGetFileRequest$inboundSchema: z.ZodType<
 > = z.object({
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
+  include: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
   "x-account-id": z.string(),
@@ -76,6 +81,7 @@ export const DocumentsGetFileRequest$inboundSchema: z.ZodType<
 export type DocumentsGetFileRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
+  include?: string | null | undefined;
   proxy?: { [k: string]: any } | null | undefined;
   raw?: boolean | null | undefined;
   "x-account-id": string;
@@ -90,6 +96,7 @@ export const DocumentsGetFileRequest$outboundSchema: z.ZodType<
 > = z.object({
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
+  include: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
   xAccountId: z.string(),

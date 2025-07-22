@@ -125,6 +125,8 @@ async function $do(
   const query = encodeFormQuery({
     "fields": payload.fields,
     "filter": payload.filter,
+    "include": payload.include,
+    "nested_items": payload.nested_items,
     "next": payload.next,
     "page": payload.page,
     "page_size": payload.page_size,

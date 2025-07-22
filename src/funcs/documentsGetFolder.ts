@@ -127,6 +127,7 @@ async function $do(
     }),
     encodeFormQuery({
       "fields": payload.fields,
+      "include": payload.include,
       "raw": payload.raw,
     }),
   );
