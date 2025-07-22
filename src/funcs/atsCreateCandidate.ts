@@ -220,7 +220,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.AtsCreateCandidateResponse$inboundSchema, {
+    M.json(201, operations.AtsCreateCandidateResponse$inboundSchema, {
       key: "CreateResult",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),

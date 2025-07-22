@@ -15,6 +15,12 @@ let value: LmsUpdateContentRequest = {
         value: "This is additional data",
       },
     ],
+    authors: [
+      {
+        id: "123",
+        name: "John Doe",
+      },
+    ],
     categories: [
       {
         name: "Technology",

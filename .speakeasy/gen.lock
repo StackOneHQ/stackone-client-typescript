@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: c77bc001a25e5bf94b0ffa9eefc34b62
+  docChecksum: d0fcd19d7704f75926c94f2a15a50118
   docVersion: 1.0.0
-  speakeasyVersion: 1.583.0
-  generationVersion: 2.658.3
-  releaseVersion: 4.23.0
-  configChecksum: 5900c3da8855c056b3515cccae864fac
+  speakeasyVersion: 1.584.0
+  generationVersion: 2.660.0
+  releaseVersion: 4.23.1
+  configChecksum: 43c35dad56e53ebf2ae8bc627128c129
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -825,6 +825,7 @@ generatedFiles:
   - docs/sdk/models/shared/attachmentcontenttype.md
   - docs/sdk/models/shared/attachmentsourcevalue.md
   - docs/sdk/models/shared/attachmentvalue.md
+  - docs/sdk/models/shared/authormodel.md
   - docs/sdk/models/shared/avatar.md
   - docs/sdk/models/shared/backgroundcheckpackage.md
   - docs/sdk/models/shared/backgroundcheckpackagepaginated.md
@@ -2733,6 +2734,7 @@ generatedFiles:
   - src/sdk/models/shared/atsupdatejobrequestdto.ts
   - src/sdk/models/shared/atsupdatenotesrequestdto.ts
   - src/sdk/models/shared/attachment.ts
+  - src/sdk/models/shared/authormodel.ts
   - src/sdk/models/shared/backgroundcheckpackage.ts
   - src/sdk/models/shared/backgroundcheckpackagepaginated.ts
   - src/sdk/models/shared/backgroundcheckpackageresult.ts
@@ -3560,6 +3562,8 @@ examples:
           application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
   ats_create_candidate_note:
     speakeasy-default-ats-create-candidate-note:
       parameters:
@@ -9713,12 +9717,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags"
+          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"active": true, "categories": [{"id": "12345", "name": "Technology"}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "localizations": [{"description": "This video acts as learning content for software engineers.", "title": "Software Engineer Lv 1"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "provider": "Content Provider", "remote_course_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}}
+          application/json: {"data": {"active": true, "authors": [{"id": "123", "name": "John Doe"}], "categories": [{"id": "12345", "name": "Technology"}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "localizations": [{"description": "This video acts as learning content for software engineers.", "title": "Software Engineer Lv 1"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "provider": "Content Provider", "remote_course_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -9749,12 +9753,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations"
+          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"active": true, "categories": [{"id": "12345", "name": "Technology"}], "content_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "provider": "Course Provider", "remote_content_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"id": "12345", "name": "Sales Techniques"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}}
+          application/json: {"data": {"active": true, "authors": [{"id": "123", "name": "John Doe"}], "categories": [{"id": "12345", "name": "Technology"}], "content_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "provider": "Course Provider", "remote_content_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"id": "12345", "name": "Sales Techniques"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10037,7 +10041,7 @@ examples:
     speakeasy-default-lms-list-content:
       parameters:
         query:
-          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags"
+          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -10073,7 +10077,7 @@ examples:
     speakeasy-default-lms-list-courses:
       parameters:
         query:
-          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations"
+          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -10297,7 +10301,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"active": true, "additional_data": [{"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}, {"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}], "categories": [{"id": "16873-IT345", "language": {"value": "en_GB"}, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, {"id": "16873-IT345", "language": {"value": "en_GB"}, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}], "localizations": [{"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer Lv 1"}, {"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer: A comprehensive guide"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}
+        application/json: {"active": true, "additional_data": [{"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}, {"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}], "authors": [{"id": "123", "name": "John Doe"}], "categories": [{"id": "16873-IT345", "language": {"value": "en_GB"}, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, {"id": "16873-IT345", "language": {"value": "en_GB"}, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}], "localizations": [{"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer Lv 1"}, {"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer: A comprehensive guide"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -11943,7 +11947,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"active": true, "additional_data": [{"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}], "categories": [{"name": "Technology"}], "content_url": "https://www.youtube.com/watch?v=16873", "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}], "localizations": [{"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer Lv 1"}, {"description": "This video acts as learning content for software engineers.", "title": "Software Engineer Lv 1"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}
+        application/json: {"active": true, "additional_data": [{"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}], "authors": [{"id": "123", "name": "John Doe"}], "categories": [{"name": "Technology"}], "content_url": "https://www.youtube.com/watch?v=16873", "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}], "localizations": [{"description": "This course acts as learning resource for software engineers.", "title": "Software Engineer Lv 1"}, {"description": "This video acts as learning content for software engineers.", "title": "Software Engineer Lv 1"}], "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "order": 1, "skills": [{"id": "12345", "name": "Sales Techniques"}], "tags": ["Sales Techniques", "Customer Service"], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z"}
       responses:
         "201":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
