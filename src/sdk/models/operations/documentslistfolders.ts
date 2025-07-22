@@ -14,6 +14,14 @@ import * as shared from "../shared/index.js";
  */
 export type DocumentsListFoldersQueryParamFilter = {
   /**
+   * Use to only include Folders within the specified Drive
+   */
+  driveId?: string | null | undefined;
+  /**
+   * Use to only include Folders within the specified Folder. Required when requesting nested items
+   */
+  folderId?: string | null | undefined;
+  /**
    * Use a string with a date to only select results updated after that given date
    */
   updatedAfter?: string | null | undefined;
@@ -96,15 +104,21 @@ export const DocumentsListFoldersQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  drive_id: z.nullable(z.string()).optional(),
+  folder_id: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "drive_id": "driveId",
+    "folder_id": "folderId",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type DocumentsListFoldersQueryParamFilter$Outbound = {
+  drive_id?: string | null | undefined;
+  folder_id?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -114,9 +128,13 @@ export const DocumentsListFoldersQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentsListFoldersQueryParamFilter
 > = z.object({
+  driveId: z.nullable(z.string()).optional(),
+  folderId: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    driveId: "drive_id",
+    folderId: "folder_id",
     updatedAfter: "updated_after",
   });
 });

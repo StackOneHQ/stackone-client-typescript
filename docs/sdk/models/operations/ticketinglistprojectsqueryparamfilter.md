@@ -1,13 +1,13 @@
-# TicketingListCollectionTicketTypesQueryParamFilter
+# TicketingListProjectsQueryParamFilter
 
 Filter parameters that allow greater customisation of the list response
 
 ## Example Usage
 
 ```typescript
-import { TicketingListCollectionTicketTypesQueryParamFilter } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { TicketingListProjectsQueryParamFilter } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: TicketingListCollectionTicketTypesQueryParamFilter = {
+let value: TicketingListProjectsQueryParamFilter = {
   updatedAfter: "2020-01-01T00:00:00.000Z",
 };
 ```

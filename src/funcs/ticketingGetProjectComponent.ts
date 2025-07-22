@@ -31,18 +31,18 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Get Collection
+ * Get Project Component
  *
  * @remarks
- * Retrieve a single collection by its identifier.
+ * Retrieve a single project component by its identifier.
  */
-export function ticketingGetCollection(
+export function ticketingGetProjectComponent(
   client: StackOneCore,
-  request: operations.TicketingGetCollectionRequest,
+  request: operations.TicketingGetProjectComponentRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.TicketingGetCollectionResponse,
+    operations.TicketingGetProjectComponentResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -74,12 +74,12 @@ export function ticketingGetCollection(
 
 async function $do(
   client: StackOneCore,
-  request: operations.TicketingGetCollectionRequest,
+  request: operations.TicketingGetProjectComponentRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.TicketingGetCollectionResponse,
+      operations.TicketingGetProjectComponentResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -107,7 +107,9 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.TicketingGetCollectionRequest$outboundSchema.parse(value),
+      operations.TicketingGetProjectComponentRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -121,9 +123,15 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
+    subResourceId: encodeSimple("subResourceId", payload.subResourceId, {
+      explode: false,
+      charEncoding: "percent",
+    }),
   };
 
-  const path = pathToFunc("/unified/ticketing/collections/{id}")(pathParams);
+  const path = pathToFunc(
+    "/unified/ticketing/projects/{id}/components/{subResourceId}",
+  )(pathParams);
 
   const query = queryJoin(
     encodeDeepObjectQuery({
@@ -149,7 +157,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "ticketing_get_collection",
+    operationID: "ticketing_get_project_component",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -222,7 +230,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.TicketingGetCollectionResponse,
+    operations.TicketingGetProjectComponentResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -244,8 +252,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.TicketingGetCollectionResponse$inboundSchema, {
-      key: "TicketingCollectionResult",
+    M.json(200, operations.TicketingGetProjectComponentResponse$inboundSchema, {
+      key: "TicketingComponentResult",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

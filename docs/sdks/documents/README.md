@@ -520,10 +520,15 @@ async function run() {
   const result = await stackOne.documents.listFiles({
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
+      content: "FAQ of the project",
+      createdAfter: "2020-01-01T00:00:00.000Z",
+      driveId: "1234567890",
+      folderId: "1234567890",
+      name: "john_doe_resume.pdf",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "all_parent_folder_ids",
-    nestedItems: null,
+    nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -557,10 +562,15 @@ async function run() {
   const res = await documentsListFiles(stackOne, {
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
+      content: "FAQ of the project",
+      createdAfter: "2020-01-01T00:00:00.000Z",
+      driveId: "1234567890",
+      folderId: "1234567890",
+      name: "john_doe_resume.pdf",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "all_parent_folder_ids",
-    nestedItems: null,
+    nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -628,10 +638,12 @@ async function run() {
   const result = await stackOne.documents.listFolders({
     fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
+      driveId: "1234567890",
+      folderId: "1234567890",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "all_parent_folder_ids",
-    nestedItems: null,
+    nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -665,10 +677,12 @@ async function run() {
   const res = await documentsListFolders(stackOne, {
     fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
+      driveId: "1234567890",
+      folderId: "1234567890",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "all_parent_folder_ids",
-    nestedItems: null,
+    nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });

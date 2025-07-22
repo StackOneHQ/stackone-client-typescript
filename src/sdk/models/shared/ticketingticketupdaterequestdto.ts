@@ -147,9 +147,9 @@ export type TicketingTicketUpdateRequestDto = {
    */
   assignees?: Array<string> | null | undefined;
   /**
-   * Collections the ticket belongs to
+   * Components to associate with the ticket
    */
-  collectionIds?: Array<string> | null | undefined;
+  componentIds?: string | null | undefined;
   /**
    * Array of content associated with the ticket
    */
@@ -162,6 +162,10 @@ export type TicketingTicketUpdateRequestDto = {
    * Priority of the ticket
    */
   priority?: TicketingTicketUpdateRequestDtoPriority | null | undefined;
+  /**
+   * Project the ticket belongs to
+   */
+  projectId?: string | null | undefined;
   /**
    * Users who reported the ticket
    */
@@ -792,12 +796,13 @@ export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
-  collection_ids: z.nullable(z.array(z.string())).optional(),
+  component_ids: z.nullable(z.string()).optional(),
   content: z.nullable(z.array(TicketingContent$inboundSchema)).optional(),
   parent_id: z.nullable(z.string()).optional(),
   priority: z.nullable(
     z.lazy(() => TicketingTicketUpdateRequestDtoPriority$inboundSchema),
   ).optional(),
+  project_id: z.nullable(z.string()).optional(),
   reporters: z.nullable(z.array(z.string())).optional(),
   status: z.nullable(
     z.lazy(() => TicketingTicketUpdateRequestDtoStatus$inboundSchema),
@@ -807,8 +812,9 @@ export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "collection_ids": "collectionIds",
+    "component_ids": "componentIds",
     "parent_id": "parentId",
+    "project_id": "projectId",
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
@@ -816,13 +822,14 @@ export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingTicketUpdateRequestDto$Outbound = {
   assignees?: Array<string> | null | undefined;
-  collection_ids?: Array<string> | null | undefined;
+  component_ids?: string | null | undefined;
   content?: Array<TicketingContent$Outbound> | null | undefined;
   parent_id?: string | null | undefined;
   priority?:
     | TicketingTicketUpdateRequestDtoPriority$Outbound
     | null
     | undefined;
+  project_id?: string | null | undefined;
   reporters?: Array<string> | null | undefined;
   status?: TicketingTicketUpdateRequestDtoStatus$Outbound | null | undefined;
   tags?: Array<string> | null | undefined;
@@ -837,12 +844,13 @@ export const TicketingTicketUpdateRequestDto$outboundSchema: z.ZodType<
   TicketingTicketUpdateRequestDto
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
-  collectionIds: z.nullable(z.array(z.string())).optional(),
+  componentIds: z.nullable(z.string()).optional(),
   content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
   parentId: z.nullable(z.string()).optional(),
   priority: z.nullable(
     z.lazy(() => TicketingTicketUpdateRequestDtoPriority$outboundSchema),
   ).optional(),
+  projectId: z.nullable(z.string()).optional(),
   reporters: z.nullable(z.array(z.string())).optional(),
   status: z.nullable(
     z.lazy(() => TicketingTicketUpdateRequestDtoStatus$outboundSchema),
@@ -852,8 +860,9 @@ export const TicketingTicketUpdateRequestDto$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    collectionIds: "collection_ids",
+    componentIds: "component_ids",
     parentId: "parent_id",
+    projectId: "project_id",
     unifiedCustomFields: "unified_custom_fields",
   });
 });

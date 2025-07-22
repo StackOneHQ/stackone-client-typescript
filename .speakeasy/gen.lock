@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 8748bae96f0ce9591c8dd5115aba69f6
+  docChecksum: 41e3aee6927fb0cee5e41091a0fabc58
   docVersion: 1.0.0
   speakeasyVersion: 1.586.0
   generationVersion: 2.661.4
-  releaseVersion: 4.23.2
-  configChecksum: 5bc98ec49a244d066f5403ebac7c057d
+  releaseVersion: 4.23.3
+  configChecksum: 3ce01ad45d44027e4891367589c9756b
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -631,10 +631,12 @@ generatedFiles:
   - docs/sdk/models/operations/ticketingdownloadticketingattachmentresponse.md
   - docs/sdk/models/operations/ticketinggetattachmentrequest.md
   - docs/sdk/models/operations/ticketinggetattachmentresponse.md
-  - docs/sdk/models/operations/ticketinggetcollectionrequest.md
-  - docs/sdk/models/operations/ticketinggetcollectionresponse.md
   - docs/sdk/models/operations/ticketinggetcommentrequest.md
   - docs/sdk/models/operations/ticketinggetcommentresponse.md
+  - docs/sdk/models/operations/ticketinggetprojectcomponentrequest.md
+  - docs/sdk/models/operations/ticketinggetprojectcomponentresponse.md
+  - docs/sdk/models/operations/ticketinggetprojectrequest.md
+  - docs/sdk/models/operations/ticketinggetprojectresponse.md
   - docs/sdk/models/operations/ticketinggetticketrequest.md
   - docs/sdk/models/operations/ticketinggetticketresponse.md
   - docs/sdk/models/operations/ticketinggettickettyperequest.md
@@ -644,16 +646,18 @@ generatedFiles:
   - docs/sdk/models/operations/ticketinglistattachmentsqueryparamfilter.md
   - docs/sdk/models/operations/ticketinglistattachmentsrequest.md
   - docs/sdk/models/operations/ticketinglistattachmentsresponse.md
-  - docs/sdk/models/operations/ticketinglistcollectionsqueryparamfilter.md
-  - docs/sdk/models/operations/ticketinglistcollectionsqueryparamtype.md
-  - docs/sdk/models/operations/ticketinglistcollectionsrequest.md
-  - docs/sdk/models/operations/ticketinglistcollectionsresponse.md
-  - docs/sdk/models/operations/ticketinglistcollectiontickettypesqueryparamfilter.md
-  - docs/sdk/models/operations/ticketinglistcollectiontickettypesrequest.md
-  - docs/sdk/models/operations/ticketinglistcollectiontickettypesresponse.md
   - docs/sdk/models/operations/ticketinglistcommentsqueryparamfilter.md
   - docs/sdk/models/operations/ticketinglistcommentsrequest.md
   - docs/sdk/models/operations/ticketinglistcommentsresponse.md
+  - docs/sdk/models/operations/ticketinglistprojectcomponentsqueryparamfilter.md
+  - docs/sdk/models/operations/ticketinglistprojectcomponentsrequest.md
+  - docs/sdk/models/operations/ticketinglistprojectcomponentsresponse.md
+  - docs/sdk/models/operations/ticketinglistprojectsqueryparamfilter.md
+  - docs/sdk/models/operations/ticketinglistprojectsrequest.md
+  - docs/sdk/models/operations/ticketinglistprojectsresponse.md
+  - docs/sdk/models/operations/ticketinglistprojecttickettypesqueryparamfilter.md
+  - docs/sdk/models/operations/ticketinglistprojecttickettypesrequest.md
+  - docs/sdk/models/operations/ticketinglistprojecttickettypesresponse.md
   - docs/sdk/models/operations/ticketinglistticketsqueryparamfilter.md
   - docs/sdk/models/operations/ticketinglistticketsrequest.md
   - docs/sdk/models/operations/ticketinglistticketsresponse.md
@@ -1935,17 +1939,19 @@ generatedFiles:
   - docs/sdk/models/shared/ticketingattachmentsourcevalue.md
   - docs/sdk/models/shared/ticketingattachmentspaginated.md
   - docs/sdk/models/shared/ticketingattachmentvalue.md
-  - docs/sdk/models/shared/ticketingcollection.md
-  - docs/sdk/models/shared/ticketingcollectionresult.md
-  - docs/sdk/models/shared/ticketingcollectionresultdata.md
-  - docs/sdk/models/shared/ticketingcollectionresulttype.md
-  - docs/sdk/models/shared/ticketingcollectionspaginated.md
-  - docs/sdk/models/shared/ticketingcollectiontype.md
   - docs/sdk/models/shared/ticketingcomment.md
   - docs/sdk/models/shared/ticketingcommentresult.md
   - docs/sdk/models/shared/ticketingcommentresultdata.md
   - docs/sdk/models/shared/ticketingcommentspaginated.md
+  - docs/sdk/models/shared/ticketingcomponent.md
+  - docs/sdk/models/shared/ticketingcomponentresult.md
+  - docs/sdk/models/shared/ticketingcomponentresultdata.md
+  - docs/sdk/models/shared/ticketingcomponentspaginated.md
   - docs/sdk/models/shared/ticketingcontent.md
+  - docs/sdk/models/shared/ticketingproject.md
+  - docs/sdk/models/shared/ticketingprojectresult.md
+  - docs/sdk/models/shared/ticketingprojectresultdata.md
+  - docs/sdk/models/shared/ticketingprojectspaginated.md
   - docs/sdk/models/shared/ticketingreadticket.md
   - docs/sdk/models/shared/ticketingreadticket4.md
   - docs/sdk/models/shared/ticketingreadticketschemas4.md
@@ -2375,15 +2381,17 @@ generatedFiles:
   - src/funcs/ticketingCreateTicket.ts
   - src/funcs/ticketingDownloadTicketingAttachment.ts
   - src/funcs/ticketingGetAttachment.ts
-  - src/funcs/ticketingGetCollection.ts
   - src/funcs/ticketingGetComment.ts
+  - src/funcs/ticketingGetProject.ts
+  - src/funcs/ticketingGetProjectComponent.ts
   - src/funcs/ticketingGetTicket.ts
   - src/funcs/ticketingGetTicketType.ts
   - src/funcs/ticketingGetUser.ts
   - src/funcs/ticketingListAttachments.ts
-  - src/funcs/ticketingListCollectionTicketTypes.ts
-  - src/funcs/ticketingListCollections.ts
   - src/funcs/ticketingListComments.ts
+  - src/funcs/ticketingListProjectComponents.ts
+  - src/funcs/ticketingListProjectTicketTypes.ts
+  - src/funcs/ticketingListProjects.ts
   - src/funcs/ticketingListTicketStatuses.ts
   - src/funcs/ticketingListTicketTypes.ts
   - src/funcs/ticketingListTickets.ts
@@ -2675,15 +2683,17 @@ generatedFiles:
   - src/sdk/models/operations/ticketingcreateticket.ts
   - src/sdk/models/operations/ticketingdownloadticketingattachment.ts
   - src/sdk/models/operations/ticketinggetattachment.ts
-  - src/sdk/models/operations/ticketinggetcollection.ts
   - src/sdk/models/operations/ticketinggetcomment.ts
+  - src/sdk/models/operations/ticketinggetproject.ts
+  - src/sdk/models/operations/ticketinggetprojectcomponent.ts
   - src/sdk/models/operations/ticketinggetticket.ts
   - src/sdk/models/operations/ticketinggettickettype.ts
   - src/sdk/models/operations/ticketinggetuser.ts
   - src/sdk/models/operations/ticketinglistattachments.ts
-  - src/sdk/models/operations/ticketinglistcollections.ts
-  - src/sdk/models/operations/ticketinglistcollectiontickettypes.ts
   - src/sdk/models/operations/ticketinglistcomments.ts
+  - src/sdk/models/operations/ticketinglistprojectcomponents.ts
+  - src/sdk/models/operations/ticketinglistprojects.ts
+  - src/sdk/models/operations/ticketinglistprojecttickettypes.ts
   - src/sdk/models/operations/ticketinglisttickets.ts
   - src/sdk/models/operations/ticketinglistticketstatuses.ts
   - src/sdk/models/operations/ticketinglisttickettypes.ts
@@ -2991,13 +3001,16 @@ generatedFiles:
   - src/sdk/models/shared/ticketingattachment.ts
   - src/sdk/models/shared/ticketingattachmentresult.ts
   - src/sdk/models/shared/ticketingattachmentspaginated.ts
-  - src/sdk/models/shared/ticketingcollection.ts
-  - src/sdk/models/shared/ticketingcollectionresult.ts
-  - src/sdk/models/shared/ticketingcollectionspaginated.ts
   - src/sdk/models/shared/ticketingcomment.ts
   - src/sdk/models/shared/ticketingcommentresult.ts
   - src/sdk/models/shared/ticketingcommentspaginated.ts
+  - src/sdk/models/shared/ticketingcomponent.ts
+  - src/sdk/models/shared/ticketingcomponentresult.ts
+  - src/sdk/models/shared/ticketingcomponentspaginated.ts
   - src/sdk/models/shared/ticketingcontent.ts
+  - src/sdk/models/shared/ticketingproject.ts
+  - src/sdk/models/shared/ticketingprojectresult.ts
+  - src/sdk/models/shared/ticketingprojectspaginated.ts
   - src/sdk/models/shared/ticketingreadticket.ts
   - src/sdk/models/shared/ticketingticketcreaterequestdto.ts
   - src/sdk/models/shared/ticketingticketresult.ts
@@ -6590,9 +6603,9 @@ examples:
       parameters:
         query:
           fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids"
-          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          filter: {"content": "FAQ of the project", "created_after": "2020-01-01T00:00:00.000Z", "drive_id": "1234567890", "folder_id": "1234567890", "name": "john_doe_resume.pdf", "updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
-          nested_items: "false"
+          nested_items: "true"
           include: "all_parent_folder_ids"
         header:
           x-account-id: "<id>"
@@ -6628,9 +6641,9 @@ examples:
       parameters:
         query:
           fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids"
-          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          filter: {"drive_id": "1234567890", "folder_id": "1234567890", "updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
-          nested_items: "false"
+          nested_items: "true"
           include: "all_parent_folder_ids"
         header:
           x-account-id: "<id>"
@@ -11331,7 +11344,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"assignees": ["user-001", "user-002"], "collection_ids": ["collection-001", "collection-002"], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "creator_id": "user-001", "organization_id": "organization-001", "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "reporters": ["user-001", "user-002"], "tags": ["tag-001", "tag-002"], "title": "System outage in production environment", "type": "ticket-type-001", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"assignees": ["user-001", "user-002"], "component_ids": "[\"component-001\",\"component-002\"]", "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "creator_id": "user-001", "organization_id": "organization-001", "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "project_id": "project-001", "reporters": ["user-001", "user-002"], "tags": ["tag-001", "tag-002"], "title": "System outage in production environment", "type": "ticket-type-001", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "201":
           application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -11513,12 +11526,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,collections,organization,created_at,updated_at"
+          fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "collections": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task", "parent_collection_id": "collection-001"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "components": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the component", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Component Falcon", "organization_id": "organization-001", "project_id": "project-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T01:01:01.000Z"}], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "projects": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Project Falcon", "organization_id": "organization-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T01:01:01.000Z"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task", "project_id": "project-001"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -11549,12 +11562,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id"
+          fields: "id,remote_id,name,project_id,remote_project_id"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "001", "name": "Task", "parent_collection_id": "collection-001"}}
+          application/json: {"data": {"id": "001", "name": "Task", "project_id": "project-001"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -11768,7 +11781,7 @@ examples:
     speakeasy-default-ticketing-list-ticket-types:
       parameters:
         query:
-          fields: "id,remote_id,name,parent_collection_id,remote_parent_collection_id"
+          fields: "id,remote_id,name,project_id,remote_project_id"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -11804,14 +11817,14 @@ examples:
     speakeasy-default-ticketing-list-tickets:
       parameters:
         query:
-          fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,collections,organization,created_at,updated_at"
+          fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "collections": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "collections": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "collections": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "key": "project-falcon", "name": "Project Falcon", "organization_id": "organization-001", "parent_id": "collection-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": "project", "updated_at": "2021-01-01T01:01:01.000Z"}], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}]}
+          application/json: {"data": [{"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"assignees": ["user-001", "user-002"], "closed_at": "2021-01-01T01:01:01.000Z", "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "created_at": "2021-01-01T01:01:01.000Z", "creator_id": "user-001", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "organization": {"domain": "company.com", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Company", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "ticket_number": "ticket-001", "ticket_url": "https://help.company.com/tickets/SUP-5689", "title": "System outage in production environment", "type": {"id": "001", "name": "Task"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -11880,7 +11893,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"assignees": ["user-001", "user-002"], "collection_ids": ["collection-001", "collection-002"], "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "title": "System outage in production environment", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"assignees": ["user-001", "user-002"], "component_ids": "[\"component-001\",\"component-002\"]", "content": [{"html": "<p>This is some content</p>", "plain": "This is some content"}, {"html": "<p>This is some content</p>", "plain": "This is some content"}], "parent_id": "ticket-002", "priority": {"id": "001", "source_value": "Normal", "value": "medium"}, "project_id": "project-001", "reporters": ["user-001", "user-002"], "status": {"id": "001", "name": "Backlog", "type": {"source_value": "New", "value": "to-do"}}, "tags": ["tag-001", "tag-002"], "title": "System outage in production environment", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "200":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -12417,6 +12430,188 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"approval_status": {"source_value": "Approved", "value": "approved"}, "break_duration": "PT1H30M", "breaks": [{"created_at": "2024-03-20T10:00:00Z", "duration": "PT1H", "end_time": "2024-03-20T13:00:00Z", "id": "break_123456789", "is_paid": true, "start_time": "2024-03-20T12:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "company_id": "comp_123456789", "created_at": "2024-03-20T08:00:00Z", "employee_id": "emp_123456789", "end_time": "2024-03-20T17:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "location_id": "loc_123456789", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "start_time": "2024-03-20T09:00:00Z", "status": {"source_value": "Confirmed", "value": "confirmed"}, "updated_at": "2024-03-20T08:00:00Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ticketing_get_project:
+    speakeasy-default-ticketing-get-project:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Project Falcon", "organization_id": "organization-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T01:01:01.000Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ticketing_get_project_component:
+    speakeasy-default-ticketing-get-project-component:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the component", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Component Falcon", "organization_id": "organization-001", "project_id": "project-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T01:01:01.000Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": null, "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ticketing_list_project_components:
+    speakeasy-default-ticketing-list-project-components:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at"
+          filter: null
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the component", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Component Falcon", "organization_id": "organization-001", "project_id": "project-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T01:01:01.000Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ticketing_list_project_ticket_types:
+    speakeasy-default-ticketing-list-project-ticket-types:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,project_id,remote_project_id"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "001", "name": "Task", "project_id": "project-001"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ticketing_list_projects:
+    speakeasy-default-ticketing-list-projects:
+      parameters:
+        query:
+          fields: "id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"created_at": "2021-01-01T01:01:01.000Z", "description": "Description of the project", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Project Falcon", "organization_id": "organization-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T01:01:01.000Z"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":

@@ -12,10 +12,7 @@ let value: TicketingCreateTicketRequest = {
       "user-001",
       "user-002",
     ],
-    collectionIds: [
-      "collection-001",
-      "collection-002",
-    ],
+    componentIds: "[\"component-001\",\"component-002\"]",
     content: null,
     creatorId: "user-001",
     organizationId: "organization-001",
@@ -25,6 +22,7 @@ let value: TicketingCreateTicketRequest = {
       sourceValue: "Normal",
       value: TicketingTicketCreateRequestDtoValue.Medium,
     },
+    projectId: "project-001",
     reporters: [
       "user-001",
       "user-002",

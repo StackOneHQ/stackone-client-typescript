@@ -5,15 +5,17 @@
 import { ticketingCreateTicket } from "../funcs/ticketingCreateTicket.js";
 import { ticketingDownloadTicketingAttachment } from "../funcs/ticketingDownloadTicketingAttachment.js";
 import { ticketingGetAttachment } from "../funcs/ticketingGetAttachment.js";
-import { ticketingGetCollection } from "../funcs/ticketingGetCollection.js";
 import { ticketingGetComment } from "../funcs/ticketingGetComment.js";
+import { ticketingGetProject } from "../funcs/ticketingGetProject.js";
+import { ticketingGetProjectComponent } from "../funcs/ticketingGetProjectComponent.js";
 import { ticketingGetTicket } from "../funcs/ticketingGetTicket.js";
 import { ticketingGetTicketType } from "../funcs/ticketingGetTicketType.js";
 import { ticketingGetUser } from "../funcs/ticketingGetUser.js";
 import { ticketingListAttachments } from "../funcs/ticketingListAttachments.js";
-import { ticketingListCollections } from "../funcs/ticketingListCollections.js";
-import { ticketingListCollectionTicketTypes } from "../funcs/ticketingListCollectionTicketTypes.js";
 import { ticketingListComments } from "../funcs/ticketingListComments.js";
+import { ticketingListProjectComponents } from "../funcs/ticketingListProjectComponents.js";
+import { ticketingListProjects } from "../funcs/ticketingListProjects.js";
+import { ticketingListProjectTicketTypes } from "../funcs/ticketingListProjectTicketTypes.js";
 import { ticketingListTickets } from "../funcs/ticketingListTickets.js";
 import { ticketingListTicketStatuses } from "../funcs/ticketingListTicketStatuses.js";
 import { ticketingListTicketTypes } from "../funcs/ticketingListTicketTypes.js";
@@ -77,23 +79,6 @@ export class Ticketing extends ClientSDK {
   }
 
   /**
-   * Get Collection
-   *
-   * @remarks
-   * Retrieve a single collection by its identifier.
-   */
-  async getCollection(
-    request: operations.TicketingGetCollectionRequest,
-    options?: RequestOptions,
-  ): Promise<operations.TicketingGetCollectionResponse> {
-    return unwrapAsync(ticketingGetCollection(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get Comment
    *
    * @remarks
@@ -104,6 +89,40 @@ export class Ticketing extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.TicketingGetCommentResponse> {
     return unwrapAsync(ticketingGetComment(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Project
+   *
+   * @remarks
+   * Retrieve a single project by its identifier.
+   */
+  async getProject(
+    request: operations.TicketingGetProjectRequest,
+    options?: RequestOptions,
+  ): Promise<operations.TicketingGetProjectResponse> {
+    return unwrapAsync(ticketingGetProject(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Project Component
+   *
+   * @remarks
+   * Retrieve a single project component by its identifier.
+   */
+  async getProjectComponent(
+    request: operations.TicketingGetProjectComponentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.TicketingGetProjectComponentResponse> {
+    return unwrapAsync(ticketingGetProjectComponent(
       this,
       request,
       options,
@@ -184,50 +203,6 @@ export class Ticketing extends ClientSDK {
   }
 
   /**
-   * List Collection Ticket Types
-   *
-   * @remarks
-   * Retrieve a paginated list of ticket types for a collection.
-   */
-  async listCollectionTicketTypes(
-    request: operations.TicketingListCollectionTicketTypesRequest,
-    options?: RequestOptions,
-  ): Promise<
-    PageIterator<
-      operations.TicketingListCollectionTicketTypesResponse,
-      { cursor: string }
-    >
-  > {
-    return unwrapResultIterator(ticketingListCollectionTicketTypes(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List Collections
-   *
-   * @remarks
-   * Retrieve a paginated list of collections.
-   */
-  async listCollections(
-    request: operations.TicketingListCollectionsRequest,
-    options?: RequestOptions,
-  ): Promise<
-    PageIterator<
-      operations.TicketingListCollectionsResponse,
-      { cursor: string }
-    >
-  > {
-    return unwrapResultIterator(ticketingListCollections(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * List Comments
    *
    * @remarks
@@ -240,6 +215,69 @@ export class Ticketing extends ClientSDK {
     PageIterator<operations.TicketingListCommentsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(ticketingListComments(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Project Components
+   *
+   * @remarks
+   * Retrieve a paginated list of project components.
+   */
+  async listProjectComponents(
+    request: operations.TicketingListProjectComponentsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.TicketingListProjectComponentsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(ticketingListProjectComponents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Project Ticket Types
+   *
+   * @remarks
+   * Retrieve a paginated list of ticket types for a project.
+   */
+  async listProjectTicketTypes(
+    request: operations.TicketingListProjectTicketTypesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.TicketingListProjectTicketTypesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(ticketingListProjectTicketTypes(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Projects
+   *
+   * @remarks
+   * Retrieve a paginated list of projects.
+   */
+  async listProjects(
+    request: operations.TicketingListProjectsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.TicketingListProjectsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(ticketingListProjects(
       this,
       request,
       options,

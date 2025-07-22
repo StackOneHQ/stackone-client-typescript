@@ -7,9 +7,7 @@ import { TicketingGetTicketResponse } from "@stackone/stackone-client-ts/sdk/mod
 
 let value: TicketingGetTicketResponse = {
   contentType: "<value>",
-  headers: {
-    "key": [],
-  },
+  headers: {},
   statusCode: 135125,
 };
 ```

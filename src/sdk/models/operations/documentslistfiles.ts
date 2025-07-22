@@ -14,6 +14,26 @@ import * as shared from "../shared/index.js";
  */
 export type DocumentsListFilesQueryParamFilter = {
   /**
+   * Search if the contents of the file contains the string (contents can include file metadata)
+   */
+  content?: string | null | undefined;
+  /**
+   * Use a string with a date to only select results created after that given date
+   */
+  createdAfter?: string | null | undefined;
+  /**
+   * Use to only include Files within the specified Drive
+   */
+  driveId?: string | null | undefined;
+  /**
+   * Use to only include Files within the specified Folder. Required when requesting nested items
+   */
+  folderId?: string | null | undefined;
+  /**
+   * Search if the name of the file contains the string
+   */
+  name?: string | null | undefined;
+  /**
    * Use a string with a date to only select results updated after that given date
    */
   updatedAfter?: string | null | undefined;
@@ -100,15 +120,28 @@ export const DocumentsListFilesQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  content: z.nullable(z.string()).optional(),
+  created_after: z.nullable(z.string()).optional(),
+  drive_id: z.nullable(z.string()).optional(),
+  folder_id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_after": "createdAfter",
+    "drive_id": "driveId",
+    "folder_id": "folderId",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type DocumentsListFilesQueryParamFilter$Outbound = {
+  content?: string | null | undefined;
+  created_after?: string | null | undefined;
+  drive_id?: string | null | undefined;
+  folder_id?: string | null | undefined;
+  name?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -118,9 +151,17 @@ export const DocumentsListFilesQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentsListFilesQueryParamFilter
 > = z.object({
+  content: z.nullable(z.string()).optional(),
+  createdAfter: z.nullable(z.string()).optional(),
+  driveId: z.nullable(z.string()).optional(),
+  folderId: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAfter: "created_after",
+    driveId: "drive_id",
+    folderId: "folder_id",
     updatedAfter: "updated_after",
   });
 });
