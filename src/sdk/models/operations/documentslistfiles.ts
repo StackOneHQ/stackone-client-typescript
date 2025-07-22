@@ -29,6 +29,14 @@ export type DocumentsListFilesRequest = {
    */
   filter?: DocumentsListFilesQueryParamFilter | null | undefined;
   /**
+   * The comma separated list of fields that will be included in the response
+   */
+  include?: string | null | undefined;
+  /**
+   * When "true" and used with filter[folder_id], the response includes Files and Files within descendant Folders
+   */
+  nestedItems?: string | null | undefined;
+  /**
    * The unified cursor
    */
   next?: string | null | undefined;
@@ -162,6 +170,8 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
   filter: z.nullable(
     z.lazy(() => DocumentsListFilesQueryParamFilter$inboundSchema),
   ).optional(),
+  include: z.nullable(z.string()).optional(),
+  nested_items: z.nullable(z.string().default("false")),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   page_size: z.nullable(z.string()).optional(),
@@ -172,6 +182,7 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
   "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "nested_items": "nestedItems",
     "page_size": "pageSize",
     "updated_after": "updatedAfter",
     "x-account-id": "xAccountId",
@@ -183,6 +194,8 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
 export type DocumentsListFilesRequest$Outbound = {
   fields?: string | null | undefined;
   filter?: DocumentsListFilesQueryParamFilter$Outbound | null | undefined;
+  include?: string | null | undefined;
+  nested_items: string | null;
   next?: string | null | undefined;
   page?: string | null | undefined;
   page_size?: string | null | undefined;
@@ -203,6 +216,8 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   filter: z.nullable(
     z.lazy(() => DocumentsListFilesQueryParamFilter$outboundSchema),
   ).optional(),
+  include: z.nullable(z.string()).optional(),
+  nestedItems: z.nullable(z.string().default("false")),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   pageSize: z.nullable(z.string()).optional(),
@@ -213,6 +228,7 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    nestedItems: "nested_items",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

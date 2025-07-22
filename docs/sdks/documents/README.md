@@ -222,8 +222,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFile({
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     id: "<id>",
+    include: "all_parent_folder_ids",
     xAccountId: "<id>",
   });
 
@@ -252,8 +253,9 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFile(stackOne, {
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     id: "<id>",
+    include: "all_parent_folder_ids",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -316,8 +318,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFolder({
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
     id: "<id>",
+    include: "all_parent_folder_ids",
     xAccountId: "<id>",
   });
 
@@ -346,8 +349,9 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFolder(stackOne, {
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
     id: "<id>",
+    include: "all_parent_folder_ids",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -514,10 +518,12 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFiles({
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "all_parent_folder_ids",
+    nestedItems: null,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -549,10 +555,12 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFiles(stackOne, {
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "all_parent_folder_ids",
+    nestedItems: null,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -618,10 +626,12 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFolders({
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "all_parent_folder_ids",
+    nestedItems: null,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
@@ -653,10 +663,12 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFolders(stackOne, {
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "all_parent_folder_ids",
+    nestedItems: null,
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
   });
