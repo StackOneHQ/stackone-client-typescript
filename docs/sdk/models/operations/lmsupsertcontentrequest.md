@@ -16,6 +16,12 @@ let value: LmsUpsertContentRequest = {
         value: "This is additional data",
       },
     ],
+    authors: [
+      {
+        id: "123",
+        name: "John Doe",
+      },
+    ],
     categories: [
       {
         id: "16873-IT345",

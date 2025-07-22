@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AuthorModel,
+  AuthorModel$inboundSchema,
+  AuthorModel$Outbound,
+  AuthorModel$outboundSchema,
+} from "./authormodel.js";
+import {
   Category,
   Category$inboundSchema,
   Category$Outbound,
@@ -86,6 +92,10 @@ export type Content = {
    * Whether the content is active and available for users.
    */
   active?: boolean | Content2 | null | undefined;
+  /**
+   * The authors of the content
+   */
+  authors?: Array<AuthorModel> | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -479,6 +489,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
   z.object({
     active: z.nullable(z.union([z.boolean(), Content2$inboundSchema]))
       .optional(),
+    authors: z.nullable(z.array(AuthorModel$inboundSchema)).optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_type: z.nullable(z.lazy(() => ContentContentType$inboundSchema))
       .optional(),
@@ -528,6 +539,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 /** @internal */
 export type Content$Outbound = {
   active?: boolean | string | null | undefined;
+  authors?: Array<AuthorModel$Outbound> | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
   content_url?: string | null | undefined;
@@ -561,6 +573,7 @@ export const Content$outboundSchema: z.ZodType<
 > = z.object({
   active: z.nullable(z.union([z.boolean(), Content2$outboundSchema]))
     .optional(),
+  authors: z.nullable(z.array(AuthorModel$outboundSchema)).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentType: z.nullable(z.lazy(() => ContentContentType$outboundSchema))
     .optional(),

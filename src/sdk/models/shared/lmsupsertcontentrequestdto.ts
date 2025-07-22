@@ -19,6 +19,12 @@ import {
   AdditionalData$outboundSchema,
 } from "./additionaldata.js";
 import {
+  AuthorModel,
+  AuthorModel$inboundSchema,
+  AuthorModel$Outbound,
+  AuthorModel$outboundSchema,
+} from "./authormodel.js";
+import {
   CreateCategoriesApiModel,
   CreateCategoriesApiModel$inboundSchema,
   CreateCategoriesApiModel$Outbound,
@@ -100,6 +106,10 @@ export type LmsUpsertContentRequestDto = {
    * The additional_data associated with this content
    */
   additionalData?: Array<AdditionalData> | null | undefined;
+  /**
+   * The authors of the content
+   */
+  authors?: Array<AuthorModel> | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -502,6 +512,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
     z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]),
   ).optional(),
   additional_data: z.nullable(z.array(AdditionalData$inboundSchema)).optional(),
+  authors: z.nullable(z.array(AuthorModel$inboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
   content_type: z.nullable(
@@ -547,6 +558,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
 export type LmsUpsertContentRequestDto$Outbound = {
   active?: boolean | string | null | undefined;
   additional_data?: Array<AdditionalData$Outbound> | null | undefined;
+  authors?: Array<AuthorModel$Outbound> | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
   content_type?:
     | LmsUpsertContentRequestDtoContentType$Outbound
@@ -580,6 +592,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
     z.union([z.boolean(), LmsUpsertContentRequestDto2$outboundSchema]),
   ).optional(),
   additionalData: z.nullable(z.array(AdditionalData$outboundSchema)).optional(),
+  authors: z.nullable(z.array(AuthorModel$outboundSchema)).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),
   contentType: z.nullable(

@@ -9,6 +9,12 @@ let value: CoursePaginated = {
   data: [
     {
       active: true,
+      authors: [
+        {
+          id: "123",
+          name: "John Doe",
+        },
+      ],
       categories: [
         {
           id: "12345",

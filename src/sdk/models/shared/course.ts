@@ -8,6 +8,12 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AuthorModel,
+  AuthorModel$inboundSchema,
+  AuthorModel$Outbound,
+  AuthorModel$outboundSchema,
+} from "./authormodel.js";
+import {
   Category,
   Category$inboundSchema,
   Category$Outbound,
@@ -41,6 +47,10 @@ export type Course = {
    * Whether the course is active and available for users.
    */
   active?: boolean | Course2 | null | undefined;
+  /**
+   * The authors of the course
+   */
+  authors?: Array<AuthorModel> | null | undefined;
   /**
    * The categories associated with this course
    */
@@ -179,6 +189,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
   .object({
     active: z.nullable(z.union([z.boolean(), Course2$inboundSchema]))
       .optional(),
+    authors: z.nullable(z.array(AuthorModel$inboundSchema)).optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_ids: z.nullable(z.array(z.string())).optional(),
     cover_url: z.nullable(z.string()).optional(),
@@ -212,6 +223,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Course$Outbound = {
   active?: boolean | string | null | undefined;
+  authors?: Array<AuthorModel$Outbound> | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
@@ -238,6 +250,7 @@ export const Course$outboundSchema: z.ZodType<
   Course
 > = z.object({
   active: z.nullable(z.union([z.boolean(), Course2$outboundSchema])).optional(),
+  authors: z.nullable(z.array(AuthorModel$outboundSchema)).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),

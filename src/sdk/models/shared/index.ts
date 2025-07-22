@@ -47,6 +47,7 @@ export * from "./atsupdatecandidatesassessmentsresultsrequestdto.js";
 export * from "./atsupdatejobrequestdto.js";
 export * from "./atsupdatenotesrequestdto.js";
 export * from "./attachment.js";
+export * from "./authormodel.js";
 export * from "./backgroundcheckpackage.js";
 export * from "./backgroundcheckpackagepaginated.js";
 export * from "./backgroundcheckpackageresult.js";

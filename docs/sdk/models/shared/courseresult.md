@@ -8,6 +8,12 @@ import { CourseResult, LanguageEnumValue } from "@stackone/stackone-client-ts/sd
 let value: CourseResult = {
   data: {
     active: true,
+    authors: [
+      {
+        id: "123",
+        name: "John Doe",
+      },
+    ],
     categories: [
       {
         id: "12345",
