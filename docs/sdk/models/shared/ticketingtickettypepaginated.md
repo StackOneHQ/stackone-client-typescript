@@ -10,7 +10,7 @@ let value: TicketingTicketTypePaginated = {
     {
       id: "001",
       name: "Task",
-      parentCollectionId: "collection-001",
+      projectId: "project-001",
     },
   ],
 };

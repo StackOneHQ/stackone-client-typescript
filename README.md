@@ -381,15 +381,17 @@ run();
 * [createTicket](docs/sdks/ticketing/README.md#createticket) - Create Ticket
 * [downloadTicketingAttachment](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment
 * [getAttachment](docs/sdks/ticketing/README.md#getattachment) - Get Attachment
-* [getCollection](docs/sdks/ticketing/README.md#getcollection) - Get Collection
 * [getComment](docs/sdks/ticketing/README.md#getcomment) - Get Comment
+* [getProject](docs/sdks/ticketing/README.md#getproject) - Get Project
+* [getProjectComponent](docs/sdks/ticketing/README.md#getprojectcomponent) - Get Project Component
 * [getTicket](docs/sdks/ticketing/README.md#getticket) - Get Ticket
 * [getTicketType](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
 * [getUser](docs/sdks/ticketing/README.md#getuser) - Get User
 * [listAttachments](docs/sdks/ticketing/README.md#listattachments) - List Attachments
-* [listCollectionTicketTypes](docs/sdks/ticketing/README.md#listcollectiontickettypes) - List Collection Ticket Types
-* [listCollections](docs/sdks/ticketing/README.md#listcollections) - List Collections
 * [listComments](docs/sdks/ticketing/README.md#listcomments) - List Comments
+* [listProjectComponents](docs/sdks/ticketing/README.md#listprojectcomponents) - List Project Components
+* [listProjectTicketTypes](docs/sdks/ticketing/README.md#listprojecttickettypes) - List Project Ticket Types
+* [listProjects](docs/sdks/ticketing/README.md#listprojects) - List Projects
 * [listTicketStatuses](docs/sdks/ticketing/README.md#listticketstatuses) - List Ticket Statuses
 * [listTicketTypes](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 * [listTickets](docs/sdks/ticketing/README.md#listtickets) - List Tickets
@@ -950,15 +952,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingCreateTicket`](docs/sdks/ticketing/README.md#createticket) - Create Ticket
 - [`ticketingDownloadTicketingAttachment`](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment
 - [`ticketingGetAttachment`](docs/sdks/ticketing/README.md#getattachment) - Get Attachment
-- [`ticketingGetCollection`](docs/sdks/ticketing/README.md#getcollection) - Get Collection
 - [`ticketingGetComment`](docs/sdks/ticketing/README.md#getcomment) - Get Comment
+- [`ticketingGetProject`](docs/sdks/ticketing/README.md#getproject) - Get Project
+- [`ticketingGetProjectComponent`](docs/sdks/ticketing/README.md#getprojectcomponent) - Get Project Component
 - [`ticketingGetTicket`](docs/sdks/ticketing/README.md#getticket) - Get Ticket
 - [`ticketingGetTicketType`](docs/sdks/ticketing/README.md#gettickettype) - Get Ticket Type
 - [`ticketingGetUser`](docs/sdks/ticketing/README.md#getuser) - Get User
 - [`ticketingListAttachments`](docs/sdks/ticketing/README.md#listattachments) - List Attachments
-- [`ticketingListCollections`](docs/sdks/ticketing/README.md#listcollections) - List Collections
-- [`ticketingListCollectionTicketTypes`](docs/sdks/ticketing/README.md#listcollectiontickettypes) - List Collection Ticket Types
 - [`ticketingListComments`](docs/sdks/ticketing/README.md#listcomments) - List Comments
+- [`ticketingListProjectComponents`](docs/sdks/ticketing/README.md#listprojectcomponents) - List Project Components
+- [`ticketingListProjects`](docs/sdks/ticketing/README.md#listprojects) - List Projects
+- [`ticketingListProjectTicketTypes`](docs/sdks/ticketing/README.md#listprojecttickettypes) - List Project Ticket Types
 - [`ticketingListTickets`](docs/sdks/ticketing/README.md#listtickets) - List Tickets
 - [`ticketingListTicketStatuses`](docs/sdks/ticketing/README.md#listticketstatuses) - List Ticket Statuses
 - [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types

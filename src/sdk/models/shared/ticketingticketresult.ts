@@ -19,17 +19,23 @@ import {
   RawResponse$outboundSchema,
 } from "./rawresponse.js";
 import {
-  TicketingCollection,
-  TicketingCollection$inboundSchema,
-  TicketingCollection$Outbound,
-  TicketingCollection$outboundSchema,
-} from "./ticketingcollection.js";
+  TicketingComponent,
+  TicketingComponent$inboundSchema,
+  TicketingComponent$Outbound,
+  TicketingComponent$outboundSchema,
+} from "./ticketingcomponent.js";
 import {
   TicketingContent,
   TicketingContent$inboundSchema,
   TicketingContent$Outbound,
   TicketingContent$outboundSchema,
 } from "./ticketingcontent.js";
+import {
+  TicketingProject,
+  TicketingProject$inboundSchema,
+  TicketingProject$Outbound,
+  TicketingProject$outboundSchema,
+} from "./ticketingproject.js";
 
 /**
  * Organization associated with the ticket
@@ -188,9 +194,9 @@ export type TicketingTicketResultType = {
    */
   name?: string | null | undefined;
   /**
-   * The collection the ticket type belongs to.
+   * The project the ticket type belongs to.
    */
-  parentCollectionId?: string | null | undefined;
+  projectId?: string | null | undefined;
 };
 
 export type TicketingTicketResultData = {
@@ -203,9 +209,9 @@ export type TicketingTicketResultData = {
    */
   closedAt?: Date | null | undefined;
   /**
-   * Collections the ticket belongs to
+   * Components associated with the ticket
    */
-  collections?: Array<TicketingCollection> | null | undefined;
+  components?: Array<TicketingComponent> | null | undefined;
   /**
    * Array of content associated with the ticket
    */
@@ -234,6 +240,10 @@ export type TicketingTicketResultData = {
    * Priority of the ticket
    */
   priority?: TicketingTicketResultPriority | null | undefined;
+  /**
+   * Projects the ticket belongs to
+   */
+  projects?: Array<TicketingProject> | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -918,10 +928,10 @@ export const TicketingTicketResultType$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  parent_collection_id: z.nullable(z.string()).optional(),
+  project_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "parent_collection_id": "parentCollectionId",
+    "project_id": "projectId",
   });
 });
 
@@ -929,7 +939,7 @@ export const TicketingTicketResultType$inboundSchema: z.ZodType<
 export type TicketingTicketResultType$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
-  parent_collection_id?: string | null | undefined;
+  project_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -940,10 +950,10 @@ export const TicketingTicketResultType$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  parentCollectionId: z.nullable(z.string()).optional(),
+  projectId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    parentCollectionId: "parent_collection_id",
+    projectId: "project_id",
   });
 });
 
@@ -988,8 +998,7 @@ export const TicketingTicketResultData$inboundSchema: z.ZodType<
   closed_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  collections: z.nullable(z.array(TicketingCollection$inboundSchema))
-    .optional(),
+  components: z.nullable(z.array(TicketingComponent$inboundSchema)).optional(),
   content: z.nullable(z.array(TicketingContent$inboundSchema)).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -1003,6 +1012,7 @@ export const TicketingTicketResultData$inboundSchema: z.ZodType<
   priority: z.nullable(
     z.lazy(() => TicketingTicketResultPriority$inboundSchema),
   ).optional(),
+  projects: z.nullable(z.array(TicketingProject$inboundSchema)).optional(),
   remote_id: z.nullable(z.string()).optional(),
   reporters: z.nullable(z.array(z.string())).optional(),
   status: z.nullable(z.lazy(() => TicketingTicketResultStatus$inboundSchema))
@@ -1035,7 +1045,7 @@ export const TicketingTicketResultData$inboundSchema: z.ZodType<
 export type TicketingTicketResultData$Outbound = {
   assignees?: Array<string> | null | undefined;
   closed_at?: string | null | undefined;
-  collections?: Array<TicketingCollection$Outbound> | null | undefined;
+  components?: Array<TicketingComponent$Outbound> | null | undefined;
   content?: Array<TicketingContent$Outbound> | null | undefined;
   created_at?: string | null | undefined;
   creator_id?: string | null | undefined;
@@ -1043,6 +1053,7 @@ export type TicketingTicketResultData$Outbound = {
   organization?: TicketingTicketResultOrganization$Outbound | null | undefined;
   parent_id?: string | null | undefined;
   priority?: TicketingTicketResultPriority$Outbound | null | undefined;
+  projects?: Array<TicketingProject$Outbound> | null | undefined;
   remote_id?: string | null | undefined;
   reporters?: Array<string> | null | undefined;
   status?: TicketingTicketResultStatus$Outbound | null | undefined;
@@ -1063,8 +1074,7 @@ export const TicketingTicketResultData$outboundSchema: z.ZodType<
 > = z.object({
   assignees: z.nullable(z.array(z.string())).optional(),
   closedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  collections: z.nullable(z.array(TicketingCollection$outboundSchema))
-    .optional(),
+  components: z.nullable(z.array(TicketingComponent$outboundSchema)).optional(),
   content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   creatorId: z.nullable(z.string()).optional(),
@@ -1076,6 +1086,7 @@ export const TicketingTicketResultData$outboundSchema: z.ZodType<
   priority: z.nullable(
     z.lazy(() => TicketingTicketResultPriority$outboundSchema),
   ).optional(),
+  projects: z.nullable(z.array(TicketingProject$outboundSchema)).optional(),
   remoteId: z.nullable(z.string()).optional(),
   reporters: z.nullable(z.array(z.string())).optional(),
   status: z.nullable(z.lazy(() => TicketingTicketResultStatus$outboundSchema))

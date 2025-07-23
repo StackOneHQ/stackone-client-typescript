@@ -15,10 +15,7 @@ let value: TicketingUpdateTicketRequest = {
       "user-001",
       "user-002",
     ],
-    collectionIds: [
-      "collection-001",
-      "collection-002",
-    ],
+    componentIds: "[\"component-001\",\"component-002\"]",
     content: null,
     parentId: "ticket-002",
     priority: {
@@ -26,6 +23,7 @@ let value: TicketingUpdateTicketRequest = {
       sourceValue: "Normal",
       value: TicketingTicketUpdateRequestDtoValue.Medium,
     },
+    projectId: "project-001",
     reporters: [
       "user-001",
       "user-002",

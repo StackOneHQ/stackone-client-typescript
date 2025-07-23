@@ -3,7 +3,6 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
 import {
   encodeDeepObjectQuery,
   encodeFormQuery,
@@ -30,27 +29,57 @@ import { StackOneError } from "../sdk/models/errors/stackoneerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
-import {
-  createPageIterator,
-  haltIterator,
-  PageIterator,
-  Paginator,
-} from "../sdk/types/operations.js";
 
 /**
- * List Collection Ticket Types
+ * Get Project
  *
  * @remarks
- * Retrieve a paginated list of ticket types for a collection.
+ * Retrieve a single project by its identifier.
  */
-export function ticketingListCollectionTicketTypes(
+export function ticketingGetProject(
   client: StackOneCore,
-  request: operations.TicketingListCollectionTicketTypesRequest,
+  request: operations.TicketingGetProjectRequest,
   options?: RequestOptions,
 ): APIPromise<
-  PageIterator<
+  Result<
+    operations.TicketingGetProjectResponse,
+    | errors.BadRequestResponse
+    | errors.UnauthorizedResponse
+    | errors.ForbiddenResponse
+    | errors.NotFoundResponse
+    | errors.RequestTimedOutResponse
+    | errors.ConflictResponse
+    | errors.PreconditionFailedResponse
+    | errors.UnprocessableEntityResponse
+    | errors.TooManyRequestsResponse
+    | errors.InternalServerErrorResponse
+    | errors.NotImplementedResponse
+    | errors.BadGatewayResponse
+    | StackOneError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.TicketingGetProjectRequest,
+  options?: RequestOptions,
+): Promise<
+  [
     Result<
-      operations.TicketingListCollectionTicketTypesResponse,
+      operations.TicketingGetProjectResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -72,61 +101,17 @@ export function ticketingListCollectionTicketTypes(
       | UnexpectedClientError
       | SDKValidationError
     >,
-    { cursor: string }
-  >
-> {
-  return new APIPromise($do(
-    client,
-    request,
-    options,
-  ));
-}
-
-async function $do(
-  client: StackOneCore,
-  request: operations.TicketingListCollectionTicketTypesRequest,
-  options?: RequestOptions,
-): Promise<
-  [
-    PageIterator<
-      Result<
-        operations.TicketingListCollectionTicketTypesResponse,
-        | errors.BadRequestResponse
-        | errors.UnauthorizedResponse
-        | errors.ForbiddenResponse
-        | errors.NotFoundResponse
-        | errors.RequestTimedOutResponse
-        | errors.ConflictResponse
-        | errors.PreconditionFailedResponse
-        | errors.UnprocessableEntityResponse
-        | errors.TooManyRequestsResponse
-        | errors.InternalServerErrorResponse
-        | errors.NotImplementedResponse
-        | errors.BadGatewayResponse
-        | StackOneError
-        | ResponseValidationError
-        | ConnectionError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | InvalidRequestError
-        | UnexpectedClientError
-        | SDKValidationError
-      >,
-      { cursor: string }
-    >,
     APICall,
   ]
 > {
   const parsed = safeParse(
     request,
     (value) =>
-      operations.TicketingListCollectionTicketTypesRequest$outboundSchema.parse(
-        value,
-      ),
+      operations.TicketingGetProjectRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [haltIterator(parsed), { status: "invalid" }];
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -138,22 +123,15 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/unified/ticketing/collections/{id}/ticket_types")(
-    pathParams,
-  );
+  const path = pathToFunc("/unified/ticketing/projects/{id}")(pathParams);
 
   const query = queryJoin(
     encodeDeepObjectQuery({
-      "filter": payload.filter,
       "proxy": payload.proxy,
     }),
     encodeFormQuery({
       "fields": payload.fields,
-      "next": payload.next,
-      "page": payload.page,
-      "page_size": payload.page_size,
       "raw": payload.raw,
-      "updated_after": payload.updated_after,
     }),
   );
 
@@ -171,7 +149,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "ticketing_list_collection_ticket_types",
+    operationID: "ticketing_get_project",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -205,7 +183,7 @@ async function $do(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [haltIterator(requestRes), { status: "invalid" }];
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -231,7 +209,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [haltIterator(doResult), { status: "request-error", request: req }];
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -243,8 +221,8 @@ async function $do(
     Headers: {},
   };
 
-  const [result, raw] = await M.match<
-    operations.TicketingListCollectionTicketTypesResponse,
+  const [result] = await M.match<
+    operations.TicketingGetProjectResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -266,11 +244,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(
-      200,
-      operations.TicketingListCollectionTicketTypesResponse$inboundSchema,
-      { key: "TicketingTicketTypePaginated" },
-    ),
+    M.json(200, operations.TicketingGetProjectResponse$inboundSchema, {
+      key: "TicketingProjectResult",
+    }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),
@@ -289,65 +265,8 @@ async function $do(
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return [haltIterator(result), {
-      status: "complete",
-      request: req,
-      response,
-    }];
+    return [result, { status: "complete", request: req, response }];
   }
 
-  const nextFunc = (
-    responseData: unknown,
-  ): {
-    next: Paginator<
-      Result<
-        operations.TicketingListCollectionTicketTypesResponse,
-        | errors.BadRequestResponse
-        | errors.UnauthorizedResponse
-        | errors.ForbiddenResponse
-        | errors.NotFoundResponse
-        | errors.RequestTimedOutResponse
-        | errors.ConflictResponse
-        | errors.PreconditionFailedResponse
-        | errors.UnprocessableEntityResponse
-        | errors.TooManyRequestsResponse
-        | errors.InternalServerErrorResponse
-        | errors.NotImplementedResponse
-        | errors.BadGatewayResponse
-        | StackOneError
-        | ResponseValidationError
-        | ConnectionError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | InvalidRequestError
-        | UnexpectedClientError
-        | SDKValidationError
-      >
-    >;
-    "~next"?: { cursor: string };
-  } => {
-    const nextCursor = dlv(responseData, "next");
-    if (typeof nextCursor !== "string") {
-      return { next: () => null };
-    }
-
-    const nextVal = () =>
-      ticketingListCollectionTicketTypes(
-        client,
-        {
-          ...request,
-          next: nextCursor,
-        },
-        options,
-      );
-
-    return { next: nextVal, "~next": { cursor: nextCursor } };
-  };
-
-  const page = { ...result, ...nextFunc(raw) };
-  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
-    status: "complete",
-    request: req,
-    response,
-  }];
+  return [result, { status: "complete", request: req, response }];
 }

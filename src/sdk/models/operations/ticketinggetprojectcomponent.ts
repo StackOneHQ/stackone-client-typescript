@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
-export type TicketingGetCollectionRequest = {
+export type TicketingGetProjectComponentRequest = {
   /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
@@ -23,13 +23,14 @@ export type TicketingGetCollectionRequest = {
    * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
    */
   raw?: boolean | null | undefined;
+  subResourceId: string;
   /**
    * The account identifier
    */
   xAccountId: string;
 };
 
-export type TicketingGetCollectionResponse = {
+export type TicketingGetProjectComponentResponse = {
   /**
    * HTTP response content type for this operation
    */
@@ -44,14 +45,14 @@ export type TicketingGetCollectionResponse = {
    */
   rawResponse: Response;
   /**
-   * The collection with the given identifier was retrieved.
+   * The project component with the given identifier was retrieved.
    */
-  ticketingCollectionResult?: shared.TicketingCollectionResult | undefined;
+  ticketingComponentResult?: shared.TicketingComponentResult | undefined;
 };
 
 /** @internal */
-export const TicketingGetCollectionRequest$inboundSchema: z.ZodType<
-  TicketingGetCollectionRequest,
+export const TicketingGetProjectComponentRequest$inboundSchema: z.ZodType<
+  TicketingGetProjectComponentRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -59,6 +60,7 @@ export const TicketingGetCollectionRequest$inboundSchema: z.ZodType<
   id: z.string(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
+  subResourceId: z.string(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -67,24 +69,26 @@ export const TicketingGetCollectionRequest$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type TicketingGetCollectionRequest$Outbound = {
+export type TicketingGetProjectComponentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
   proxy?: { [k: string]: any } | null | undefined;
   raw?: boolean | null | undefined;
+  subResourceId: string;
   "x-account-id": string;
 };
 
 /** @internal */
-export const TicketingGetCollectionRequest$outboundSchema: z.ZodType<
-  TicketingGetCollectionRequest$Outbound,
+export const TicketingGetProjectComponentRequest$outboundSchema: z.ZodType<
+  TicketingGetProjectComponentRequest$Outbound,
   z.ZodTypeDef,
-  TicketingGetCollectionRequest
+  TicketingGetProjectComponentRequest
 > = z.object({
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
+  subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -96,38 +100,41 @@ export const TicketingGetCollectionRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TicketingGetCollectionRequest$ {
-  /** @deprecated use `TicketingGetCollectionRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingGetCollectionRequest$inboundSchema;
-  /** @deprecated use `TicketingGetCollectionRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingGetCollectionRequest$outboundSchema;
-  /** @deprecated use `TicketingGetCollectionRequest$Outbound` instead. */
-  export type Outbound = TicketingGetCollectionRequest$Outbound;
+export namespace TicketingGetProjectComponentRequest$ {
+  /** @deprecated use `TicketingGetProjectComponentRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    TicketingGetProjectComponentRequest$inboundSchema;
+  /** @deprecated use `TicketingGetProjectComponentRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    TicketingGetProjectComponentRequest$outboundSchema;
+  /** @deprecated use `TicketingGetProjectComponentRequest$Outbound` instead. */
+  export type Outbound = TicketingGetProjectComponentRequest$Outbound;
 }
 
-export function ticketingGetCollectionRequestToJSON(
-  ticketingGetCollectionRequest: TicketingGetCollectionRequest,
+export function ticketingGetProjectComponentRequestToJSON(
+  ticketingGetProjectComponentRequest: TicketingGetProjectComponentRequest,
 ): string {
   return JSON.stringify(
-    TicketingGetCollectionRequest$outboundSchema.parse(
-      ticketingGetCollectionRequest,
+    TicketingGetProjectComponentRequest$outboundSchema.parse(
+      ticketingGetProjectComponentRequest,
     ),
   );
 }
 
-export function ticketingGetCollectionRequestFromJSON(
+export function ticketingGetProjectComponentRequestFromJSON(
   jsonString: string,
-): SafeParseResult<TicketingGetCollectionRequest, SDKValidationError> {
+): SafeParseResult<TicketingGetProjectComponentRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TicketingGetCollectionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingGetCollectionRequest' from JSON`,
+    (x) =>
+      TicketingGetProjectComponentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingGetProjectComponentRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const TicketingGetCollectionResponse$inboundSchema: z.ZodType<
-  TicketingGetCollectionResponse,
+export const TicketingGetProjectComponentResponse$inboundSchema: z.ZodType<
+  TicketingGetProjectComponentResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -135,7 +142,7 @@ export const TicketingGetCollectionResponse$inboundSchema: z.ZodType<
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TicketingCollectionResult: shared.TicketingCollectionResult$inboundSchema
+  TicketingComponentResult: shared.TicketingComponentResult$inboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -143,26 +150,26 @@ export const TicketingGetCollectionResponse$inboundSchema: z.ZodType<
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TicketingCollectionResult": "ticketingCollectionResult",
+    "TicketingComponentResult": "ticketingComponentResult",
   });
 });
 
 /** @internal */
-export type TicketingGetCollectionResponse$Outbound = {
+export type TicketingGetProjectComponentResponse$Outbound = {
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
-  TicketingCollectionResult?:
-    | shared.TicketingCollectionResult$Outbound
+  TicketingComponentResult?:
+    | shared.TicketingComponentResult$Outbound
     | undefined;
 };
 
 /** @internal */
-export const TicketingGetCollectionResponse$outboundSchema: z.ZodType<
-  TicketingGetCollectionResponse$Outbound,
+export const TicketingGetProjectComponentResponse$outboundSchema: z.ZodType<
+  TicketingGetProjectComponentResponse$Outbound,
   z.ZodTypeDef,
-  TicketingGetCollectionResponse
+  TicketingGetProjectComponentResponse
 > = z.object({
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
@@ -170,7 +177,7 @@ export const TicketingGetCollectionResponse$outboundSchema: z.ZodType<
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  ticketingCollectionResult: shared.TicketingCollectionResult$outboundSchema
+  ticketingComponentResult: shared.TicketingComponentResult$outboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -178,7 +185,7 @@ export const TicketingGetCollectionResponse$outboundSchema: z.ZodType<
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    ticketingCollectionResult: "TicketingCollectionResult",
+    ticketingComponentResult: "TicketingComponentResult",
   });
 });
 
@@ -186,31 +193,34 @@ export const TicketingGetCollectionResponse$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TicketingGetCollectionResponse$ {
-  /** @deprecated use `TicketingGetCollectionResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingGetCollectionResponse$inboundSchema;
-  /** @deprecated use `TicketingGetCollectionResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingGetCollectionResponse$outboundSchema;
-  /** @deprecated use `TicketingGetCollectionResponse$Outbound` instead. */
-  export type Outbound = TicketingGetCollectionResponse$Outbound;
+export namespace TicketingGetProjectComponentResponse$ {
+  /** @deprecated use `TicketingGetProjectComponentResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    TicketingGetProjectComponentResponse$inboundSchema;
+  /** @deprecated use `TicketingGetProjectComponentResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    TicketingGetProjectComponentResponse$outboundSchema;
+  /** @deprecated use `TicketingGetProjectComponentResponse$Outbound` instead. */
+  export type Outbound = TicketingGetProjectComponentResponse$Outbound;
 }
 
-export function ticketingGetCollectionResponseToJSON(
-  ticketingGetCollectionResponse: TicketingGetCollectionResponse,
+export function ticketingGetProjectComponentResponseToJSON(
+  ticketingGetProjectComponentResponse: TicketingGetProjectComponentResponse,
 ): string {
   return JSON.stringify(
-    TicketingGetCollectionResponse$outboundSchema.parse(
-      ticketingGetCollectionResponse,
+    TicketingGetProjectComponentResponse$outboundSchema.parse(
+      ticketingGetProjectComponentResponse,
     ),
   );
 }
 
-export function ticketingGetCollectionResponseFromJSON(
+export function ticketingGetProjectComponentResponseFromJSON(
   jsonString: string,
-): SafeParseResult<TicketingGetCollectionResponse, SDKValidationError> {
+): SafeParseResult<TicketingGetProjectComponentResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TicketingGetCollectionResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingGetCollectionResponse' from JSON`,
+    (x) =>
+      TicketingGetProjectComponentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingGetProjectComponentResponse' from JSON`,
   );
 }

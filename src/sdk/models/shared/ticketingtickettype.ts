@@ -18,9 +18,9 @@ export type TicketingTicketType = {
    */
   name?: string | null | undefined;
   /**
-   * The collection the ticket type belongs to.
+   * The project the ticket type belongs to.
    */
-  parentCollectionId?: string | null | undefined;
+  projectId?: string | null | undefined;
 };
 
 /** @internal */
@@ -31,10 +31,10 @@ export const TicketingTicketType$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  parent_collection_id: z.nullable(z.string()).optional(),
+  project_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "parent_collection_id": "parentCollectionId",
+    "project_id": "projectId",
   });
 });
 
@@ -42,7 +42,7 @@ export const TicketingTicketType$inboundSchema: z.ZodType<
 export type TicketingTicketType$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
-  parent_collection_id?: string | null | undefined;
+  project_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -53,10 +53,10 @@ export const TicketingTicketType$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  parentCollectionId: z.nullable(z.string()).optional(),
+  projectId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    parentCollectionId: "parent_collection_id",
+    projectId: "project_id",
   });
 });
 

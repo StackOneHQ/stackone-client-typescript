@@ -38,19 +38,19 @@ import {
 } from "../sdk/types/operations.js";
 
 /**
- * List Collections
+ * List Project Components
  *
  * @remarks
- * Retrieve a paginated list of collections.
+ * Retrieve a paginated list of project components.
  */
-export function ticketingListCollections(
+export function ticketingListProjectComponents(
   client: StackOneCore,
-  request: operations.TicketingListCollectionsRequest,
+  request: operations.TicketingListProjectComponentsRequest,
   options?: RequestOptions,
 ): APIPromise<
   PageIterator<
     Result<
-      operations.TicketingListCollectionsResponse,
+      operations.TicketingListProjectComponentsResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -84,13 +84,13 @@ export function ticketingListCollections(
 
 async function $do(
   client: StackOneCore,
-  request: operations.TicketingListCollectionsRequest,
+  request: operations.TicketingListProjectComponentsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     PageIterator<
       Result<
-        operations.TicketingListCollectionsResponse,
+        operations.TicketingListProjectComponentsResponse,
         | errors.BadRequestResponse
         | errors.UnauthorizedResponse
         | errors.ForbiddenResponse
@@ -120,7 +120,9 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.TicketingListCollectionsRequest$outboundSchema.parse(value),
+      operations.TicketingListProjectComponentsRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -129,7 +131,16 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/unified/ticketing/collections")();
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/unified/ticketing/projects/{id}/components")(
+    pathParams,
+  );
 
   const query = queryJoin(
     encodeDeepObjectQuery({
@@ -160,7 +171,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "ticketing_list_collections",
+    operationID: "ticketing_list_project_components",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -233,7 +244,7 @@ async function $do(
   };
 
   const [result, raw] = await M.match<
-    operations.TicketingListCollectionsResponse,
+    operations.TicketingListProjectComponentsResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -255,9 +266,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.TicketingListCollectionsResponse$inboundSchema, {
-      key: "TicketingCollectionsPaginated",
-    }),
+    M.json(
+      200,
+      operations.TicketingListProjectComponentsResponse$inboundSchema,
+      { key: "TicketingComponentsPaginated" },
+    ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),
@@ -288,7 +301,7 @@ async function $do(
   ): {
     next: Paginator<
       Result<
-        operations.TicketingListCollectionsResponse,
+        operations.TicketingListProjectComponentsResponse,
         | errors.BadRequestResponse
         | errors.UnauthorizedResponse
         | errors.ForbiddenResponse
@@ -319,7 +332,7 @@ async function $do(
     }
 
     const nextVal = () =>
-      ticketingListCollections(
+      ticketingListProjectComponents(
         client,
         {
           ...request,
