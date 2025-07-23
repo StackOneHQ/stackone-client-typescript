@@ -6,6 +6,9 @@
 import { Folders } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Folders = {
+  allParentFolderIds: [
+    "0123456789",
+  ],
   createdAt: new Date("2023-02-23T00:00:00.000Z"),
   description: "This is the description associated to the folder.",
   driveId: "c28xyrc55866bvuv",
@@ -31,6 +34,7 @@ let value: Folders = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `allParentFolderIds`                                                                          | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | List of containing parent Folder IDs in descending order                                      | [<br/>"0123456789"<br/>]                                                                      |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The created date of the folder                                                                | 2023-02-23T00:00:00.000Z                                                                      |
 | `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The description of the folder                                                                 | This is the description associated to the folder.                                             |
 | `driveId`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The parent drive ID associated with this folder                                               | c28xyrc55866bvuv                                                                              |
