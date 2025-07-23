@@ -1278,6 +1278,10 @@ export type HasContent = boolean | FilesSchemas2;
 
 export type Files = {
   /**
+   * List of containing parent Folder IDs in descending order
+   */
+  allParentFolderIds?: Array<string> | null | undefined;
+  /**
    * The created date of the file
    */
   createdAt?: Date | null | undefined;
@@ -1714,6 +1718,7 @@ export function hasContentFromJSON(
 /** @internal */
 export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
   .object({
+    all_parent_folder_ids: z.nullable(z.array(z.string())).optional(),
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -1743,6 +1748,7 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
     url: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
+      "all_parent_folder_ids": "allParentFolderIds",
       "created_at": "createdAt",
       "default_download_format": "defaultDownloadFormat",
       "drive_id": "driveId",
@@ -1762,6 +1768,7 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Files$Outbound = {
+  all_parent_folder_ids?: Array<string> | null | undefined;
   created_at?: string | null | undefined;
   default_download_format?: string | null | undefined;
   description?: string | null | undefined;
@@ -1790,6 +1797,7 @@ export const Files$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Files
 > = z.object({
+  allParentFolderIds: z.nullable(z.array(z.string())).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   defaultDownloadFormat: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
@@ -1815,6 +1823,7 @@ export const Files$outboundSchema: z.ZodType<
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    allParentFolderIds: "all_parent_folder_ids",
     createdAt: "created_at",
     defaultDownloadFormat: "default_download_format",
     driveId: "drive_id",

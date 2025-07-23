@@ -8,6 +8,9 @@ import { FoldersPaginated } from "@stackone/stackone-client-ts/sdk/models/shared
 let value: FoldersPaginated = {
   data: [
     {
+      allParentFolderIds: [
+        "0123456789",
+      ],
       createdAt: new Date("2023-02-23T00:00:00.000Z"),
       description: "This is the description associated to the folder.",
       driveId: "c28xyrc55866bvuv",

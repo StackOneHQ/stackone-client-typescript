@@ -6,6 +6,9 @@
 import { Files, FilesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Files = {
+  allParentFolderIds: [
+    "0123456789",
+  ],
   createdAt: new Date("2023-02-23T00:00:00.000Z"),
   defaultDownloadFormat: "application/pdf",
   description: "This is the description associated to the file.",
@@ -38,6 +41,7 @@ let value: Files = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `allParentFolderIds`                                                                          | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | List of containing parent Folder IDs in descending order                                      | [<br/>"0123456789"<br/>]                                                                      |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The created date of the file                                                                  | 2023-02-23T00:00:00.000Z                                                                      |
 | `defaultDownloadFormat`                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | Default download format                                                                       | application/pdf                                                                               |
 | `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The description of the file                                                                   | This is the description associated to the file.                                               |

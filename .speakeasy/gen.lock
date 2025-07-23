@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 41e3aee6927fb0cee5e41091a0fabc58
+  docChecksum: 71bdb2e3861767557873f2ded96bb057
   docVersion: 1.0.0
-  speakeasyVersion: 1.586.0
-  generationVersion: 2.661.4
-  releaseVersion: 4.23.3
-  configChecksum: 3ce01ad45d44027e4891367589c9756b
+  speakeasyVersion: 1.587.0
+  generationVersion: 2.662.0
+  releaseVersion: 4.23.4
+  configChecksum: 7ce542775bdfd4e6c16928c874ad6671
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.14
+    core: 3.21.15
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -3681,6 +3681,8 @@ examples:
           application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
   ats_delete_background_check_package:
     speakeasy-default-ats-delete-background-check-package:
       parameters:
@@ -6500,7 +6502,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2023-02-23T00:00:00.000Z", "default_download_format": "application/pdf", "description": "This is the description associated to the file.", "drive_id": "c28xyrc55866bvuv", "export_formats": ["application/pdf"], "file_format": {"source_value": "application/pdf", "value": "pdf"}, "folder_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "path": "/path/to/file", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/file/d/nd8932h9d/view"}}
+          application/json: {"data": {"all_parent_folder_ids": ["0123456789"], "created_at": "2023-02-23T00:00:00.000Z", "default_download_format": "application/pdf", "description": "This is the description associated to the file.", "drive_id": "c28xyrc55866bvuv", "export_formats": ["application/pdf"], "file_format": {"source_value": "application/pdf", "value": "pdf"}, "folder_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "path": "/path/to/file", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/file/d/nd8932h9d/view"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6537,7 +6539,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2023-02-23T00:00:00.000Z", "description": "This is the description associated to the folder.", "drive_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "is_root": true, "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "parent_folder_id": "c28xyrc55866bvuv", "path": "/path/to/folder", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_parent_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/folder/d/nd8932h9d/view"}}
+          application/json: {"data": {"all_parent_folder_ids": ["0123456789"], "created_at": "2023-02-23T00:00:00.000Z", "description": "This is the description associated to the folder.", "drive_id": "c28xyrc55866bvuv", "has_children": true, "has_content": true, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "is_root": true, "name": "Information-Technology", "owner_id": "c28xyrc55866bvuv", "parent_folder_id": "c28xyrc55866bvuv", "path": "/path/to/folder", "remote_drive_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_owner_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_parent_folder_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "size": 1024, "updated_at": "2024-02-23T00:00:00.000Z", "url": "https://drive.google.com/folder/d/nd8932h9d/view"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":

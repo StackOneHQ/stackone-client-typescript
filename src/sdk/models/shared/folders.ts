@@ -40,6 +40,10 @@ export type IsRoot = boolean | FoldersSchemasIsRoot2;
 
 export type Folders = {
   /**
+   * List of containing parent Folder IDs in descending order
+   */
+  allParentFolderIds?: Array<string> | null | undefined;
+  /**
    * The created date of the folder
    */
   createdAt?: Date | null | undefined;
@@ -314,6 +318,7 @@ export function isRootFromJSON(
 /** @internal */
 export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
   z.object({
+    all_parent_folder_ids: z.nullable(z.array(z.string())).optional(),
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -343,6 +348,7 @@ export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
     url: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
+      "all_parent_folder_ids": "allParentFolderIds",
       "created_at": "createdAt",
       "drive_id": "driveId",
       "has_children": "hasChildren",
@@ -360,6 +366,7 @@ export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Folders$Outbound = {
+  all_parent_folder_ids?: Array<string> | null | undefined;
   created_at?: string | null | undefined;
   description?: string | null | undefined;
   drive_id?: string | null | undefined;
@@ -386,6 +393,7 @@ export const Folders$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Folders
 > = z.object({
+  allParentFolderIds: z.nullable(z.array(z.string())).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
   driveId: z.nullable(z.string()).optional(),
@@ -410,6 +418,7 @@ export const Folders$outboundSchema: z.ZodType<
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    allParentFolderIds: "all_parent_folder_ids",
     createdAt: "created_at",
     driveId: "drive_id",
     hasChildren: "has_children",
