@@ -373,6 +373,7 @@ run();
 
 * [getLog](docs/sdks/requestlogs/README.md#getlog) - Get a Log
 * [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+* [listPlatformLogs](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 * [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 
 
@@ -948,6 +949,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 - [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get a Log
 - [`requestLogsListLogs`](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+- [`requestLogsListPlatformLogs`](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 - [`requestLogsListStepLogs`](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 - [`ticketingCreateTicket`](docs/sdks/ticketing/README.md#createticket) - Create Ticket
 - [`ticketingDownloadTicketingAttachment`](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment

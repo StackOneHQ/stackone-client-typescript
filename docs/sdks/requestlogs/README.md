@@ -9,6 +9,7 @@ API requests and response logs.
 
 * [getLog](#getlog) - Get a Log
 * [listLogs](#listlogs) - List Logs
+* [listPlatformLogs](#listplatformlogs) - List Platform Logs
 * [listStepLogs](#liststeplogs) - List Step Logs
 
 ## getLog
@@ -229,6 +230,139 @@ run();
 ### Response
 
 **Promise\<[operations.StackoneListLogsResponse](../../sdk/models/operations/stackonelistlogsresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## listPlatformLogs
+
+List Platform Logs
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import {
+  StackoneListPlatformLogsQueryParamOrderBy,
+  StackoneListPlatformLogsQueryParamOrderDirection,
+  StackoneListPlatformLogsQueryParamRequestLogsOrderBy,
+  StackoneListPlatformLogsQueryParamRequestLogsOrderDirection,
+} from "@stackone/stackone-client-ts/sdk/models/operations";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.requestLogs.listPlatformLogs({
+    filter: {
+      accountIds: "45355976281015164504,45355976281015164505",
+      actions: "download,upload",
+      categories: "hris,ats",
+      endDate: "2020-01-01T00:00:00.000Z",
+      httpMethods: "GET,POST",
+      orderBy: StackoneListPlatformLogsQueryParamRequestLogsOrderBy.EventDatetime,
+      orderDirection: StackoneListPlatformLogsQueryParamRequestLogsOrderDirection.Asc,
+      requestIds: "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
+      resources: "employees,users",
+      sourceTypes: "DASHBOARD,SYNTHETIC_WEBHOOK",
+      startDate: "2020-01-01T00:00:00.000Z",
+      statusCodes: "200,400",
+      success: true,
+    },
+    orderBy: StackoneListPlatformLogsQueryParamOrderBy.Duration,
+    orderDirection: StackoneListPlatformLogsQueryParamOrderDirection.Asc,
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { requestLogsListPlatformLogs } from "@stackone/stackone-client-ts/funcs/requestLogsListPlatformLogs.js";
+import {
+  StackoneListPlatformLogsQueryParamOrderBy,
+  StackoneListPlatformLogsQueryParamOrderDirection,
+  StackoneListPlatformLogsQueryParamRequestLogsOrderBy,
+  StackoneListPlatformLogsQueryParamRequestLogsOrderDirection,
+} from "@stackone/stackone-client-ts/sdk/models/operations";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await requestLogsListPlatformLogs(stackOne, {
+    filter: {
+      accountIds: "45355976281015164504,45355976281015164505",
+      actions: "download,upload",
+      categories: "hris,ats",
+      endDate: "2020-01-01T00:00:00.000Z",
+      httpMethods: "GET,POST",
+      orderBy: StackoneListPlatformLogsQueryParamRequestLogsOrderBy.EventDatetime,
+      orderDirection: StackoneListPlatformLogsQueryParamRequestLogsOrderDirection.Asc,
+      requestIds: "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
+      resources: "employees,users",
+      sourceTypes: "DASHBOARD,SYNTHETIC_WEBHOOK",
+      startDate: "2020-01-01T00:00:00.000Z",
+      statusCodes: "200,400",
+      success: true,
+    },
+    orderBy: StackoneListPlatformLogsQueryParamOrderBy.Duration,
+    orderDirection: StackoneListPlatformLogsQueryParamOrderDirection.Asc,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("requestLogsListPlatformLogs failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.StackoneListPlatformLogsRequest](../../sdk/models/operations/stackonelistplatformlogsrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.StackoneListPlatformLogsResponse](../../sdk/models/operations/stackonelistplatformlogsresponse.md)\>**
 
 ### Errors
 

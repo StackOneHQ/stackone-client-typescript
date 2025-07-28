@@ -7,14 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  StepLogPartial,
-  StepLogPartial$inboundSchema,
-  StepLogPartial$Outbound,
-  StepLogPartial$outboundSchema,
-} from "./steplogpartial.js";
 
-export type UnifiedLogsPartial = {
+export type PlatformLog = {
   /**
    * The account ID of the request
    */
@@ -23,6 +17,10 @@ export type UnifiedLogsPartial = {
    * The requested action
    */
   action?: string | null | undefined;
+  /**
+   * The requested category
+   */
+  category?: string | null | undefined;
   /**
    * The requested child resource
    */
@@ -44,10 +42,6 @@ export type UnifiedLogsPartial = {
    */
   httpMethod?: string | null | undefined;
   /**
-   * The asynchronous worker flag
-   */
-  isWorker?: boolean | null | undefined;
-  /**
    * The requested path
    */
   path?: string | null | undefined;
@@ -56,10 +50,6 @@ export type UnifiedLogsPartial = {
    */
   projectId?: string | null | undefined;
   /**
-   * The requested provider
-   */
-  provider?: string | null | undefined;
-  /**
    * The request ID
    */
   requestId?: string | null | undefined;
@@ -67,10 +57,6 @@ export type UnifiedLogsPartial = {
    * The requested resource
    */
   resource?: string | null | undefined;
-  /**
-   * The requested service
-   */
-  service?: string | null | undefined;
   /**
    * The requests source ID
    */
@@ -96,10 +82,6 @@ export type UnifiedLogsPartial = {
    */
   status?: number | null | undefined;
   /**
-   * The list of provider requests
-   */
-  stepRequests?: Array<StepLogPartial> | null | undefined;
-  /**
    * The requested sub resource
    */
   subResource?: string | null | undefined;
@@ -114,13 +96,14 @@ export type UnifiedLogsPartial = {
 };
 
 /** @internal */
-export const UnifiedLogsPartial$inboundSchema: z.ZodType<
-  UnifiedLogsPartial,
+export const PlatformLog$inboundSchema: z.ZodType<
+  PlatformLog,
   z.ZodTypeDef,
   unknown
 > = z.object({
   account_id: z.nullable(z.string()).optional(),
   action: z.nullable(z.string()).optional(),
+  category: z.nullable(z.string()).optional(),
   child_resource: z.nullable(z.string()).optional(),
   duration: z.nullable(z.number()).optional(),
   end_time: z.nullable(
@@ -130,13 +113,10 @@ export const UnifiedLogsPartial$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   http_method: z.nullable(z.string()).optional(),
-  is_worker: z.nullable(z.boolean()).optional(),
   path: z.nullable(z.string()).optional(),
   project_id: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
   request_id: z.nullable(z.string()).optional(),
   resource: z.nullable(z.string()).optional(),
-  service: z.nullable(z.string()).optional(),
   source_id: z.nullable(z.string()).optional(),
   source_ip: z.nullable(z.string()).optional(),
   source_type: z.nullable(z.string()).optional(),
@@ -145,7 +125,6 @@ export const UnifiedLogsPartial$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   status: z.nullable(z.number()).optional(),
-  step_requests: z.nullable(z.array(StepLogPartial$inboundSchema)).optional(),
   sub_resource: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
   url: z.nullable(z.string()).optional(),
@@ -156,7 +135,6 @@ export const UnifiedLogsPartial$inboundSchema: z.ZodType<
     "end_time": "endTime",
     "event_datetime": "eventDatetime",
     "http_method": "httpMethod",
-    "is_worker": "isWorker",
     "project_id": "projectId",
     "request_id": "requestId",
     "source_id": "sourceId",
@@ -164,67 +142,60 @@ export const UnifiedLogsPartial$inboundSchema: z.ZodType<
     "source_type": "sourceType",
     "source_value": "sourceValue",
     "start_time": "startTime",
-    "step_requests": "stepRequests",
     "sub_resource": "subResource",
   });
 });
 
 /** @internal */
-export type UnifiedLogsPartial$Outbound = {
+export type PlatformLog$Outbound = {
   account_id?: string | null | undefined;
   action?: string | null | undefined;
+  category?: string | null | undefined;
   child_resource?: string | null | undefined;
   duration?: number | null | undefined;
   end_time?: string | null | undefined;
   event_datetime?: string | null | undefined;
   http_method?: string | null | undefined;
-  is_worker?: boolean | null | undefined;
   path?: string | null | undefined;
   project_id?: string | null | undefined;
-  provider?: string | null | undefined;
   request_id?: string | null | undefined;
   resource?: string | null | undefined;
-  service?: string | null | undefined;
   source_id?: string | null | undefined;
   source_ip?: string | null | undefined;
   source_type?: string | null | undefined;
   source_value?: string | null | undefined;
   start_time?: string | null | undefined;
   status?: number | null | undefined;
-  step_requests?: Array<StepLogPartial$Outbound> | null | undefined;
   sub_resource?: string | null | undefined;
   success?: boolean | null | undefined;
   url?: string | null | undefined;
 };
 
 /** @internal */
-export const UnifiedLogsPartial$outboundSchema: z.ZodType<
-  UnifiedLogsPartial$Outbound,
+export const PlatformLog$outboundSchema: z.ZodType<
+  PlatformLog$Outbound,
   z.ZodTypeDef,
-  UnifiedLogsPartial
+  PlatformLog
 > = z.object({
   accountId: z.nullable(z.string()).optional(),
   action: z.nullable(z.string()).optional(),
+  category: z.nullable(z.string()).optional(),
   childResource: z.nullable(z.string()).optional(),
   duration: z.nullable(z.number()).optional(),
   endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   eventDatetime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   httpMethod: z.nullable(z.string()).optional(),
-  isWorker: z.nullable(z.boolean()).optional(),
   path: z.nullable(z.string()).optional(),
   projectId: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
   requestId: z.nullable(z.string()).optional(),
   resource: z.nullable(z.string()).optional(),
-  service: z.nullable(z.string()).optional(),
   sourceId: z.nullable(z.string()).optional(),
   sourceIp: z.nullable(z.string()).optional(),
   sourceType: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(z.string()).optional(),
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(z.number()).optional(),
-  stepRequests: z.nullable(z.array(StepLogPartial$outboundSchema)).optional(),
   subResource: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
   url: z.nullable(z.string()).optional(),
@@ -235,7 +206,6 @@ export const UnifiedLogsPartial$outboundSchema: z.ZodType<
     endTime: "end_time",
     eventDatetime: "event_datetime",
     httpMethod: "http_method",
-    isWorker: "is_worker",
     projectId: "project_id",
     requestId: "request_id",
     sourceId: "source_id",
@@ -243,7 +213,6 @@ export const UnifiedLogsPartial$outboundSchema: z.ZodType<
     sourceType: "source_type",
     sourceValue: "source_value",
     startTime: "start_time",
-    stepRequests: "step_requests",
     subResource: "sub_resource",
   });
 });
@@ -252,29 +221,25 @@ export const UnifiedLogsPartial$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedLogsPartial$ {
-  /** @deprecated use `UnifiedLogsPartial$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogsPartial$inboundSchema;
-  /** @deprecated use `UnifiedLogsPartial$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogsPartial$outboundSchema;
-  /** @deprecated use `UnifiedLogsPartial$Outbound` instead. */
-  export type Outbound = UnifiedLogsPartial$Outbound;
+export namespace PlatformLog$ {
+  /** @deprecated use `PlatformLog$inboundSchema` instead. */
+  export const inboundSchema = PlatformLog$inboundSchema;
+  /** @deprecated use `PlatformLog$outboundSchema` instead. */
+  export const outboundSchema = PlatformLog$outboundSchema;
+  /** @deprecated use `PlatformLog$Outbound` instead. */
+  export type Outbound = PlatformLog$Outbound;
 }
 
-export function unifiedLogsPartialToJSON(
-  unifiedLogsPartial: UnifiedLogsPartial,
-): string {
-  return JSON.stringify(
-    UnifiedLogsPartial$outboundSchema.parse(unifiedLogsPartial),
-  );
+export function platformLogToJSON(platformLog: PlatformLog): string {
+  return JSON.stringify(PlatformLog$outboundSchema.parse(platformLog));
 }
 
-export function unifiedLogsPartialFromJSON(
+export function platformLogFromJSON(
   jsonString: string,
-): SafeParseResult<UnifiedLogsPartial, SDKValidationError> {
+): SafeParseResult<PlatformLog, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UnifiedLogsPartial$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedLogsPartial' from JSON`,
+    (x) => PlatformLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PlatformLog' from JSON`,
   );
 }
