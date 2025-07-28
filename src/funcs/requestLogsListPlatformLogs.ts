@@ -3,13 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
-import {
-  encodeDeepObjectQuery,
-  encodeFormQuery,
-  encodeSimple,
-  queryJoin,
-} from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -30,31 +24,59 @@ import { StackOneError } from "../sdk/models/errors/stackoneerror.js";
 import * as operations from "../sdk/models/operations/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
-import {
-  createPageIterator,
-  haltIterator,
-  PageIterator,
-  Paginator,
-} from "../sdk/types/operations.js";
 
 /**
- * List Files
+ * List Platform Logs
  */
-export function documentsListFiles(
+export function requestLogsListPlatformLogs(
   client: StackOneCore,
-  request: operations.DocumentsListFilesRequest,
+  request: operations.StackoneListPlatformLogsRequest,
   options?: RequestOptions,
 ): APIPromise<
-  PageIterator<
+  Result<
+    operations.StackoneListPlatformLogsResponse,
+    | errors.BadRequestResponse
+    | errors.UnauthorizedResponse
+    | errors.ForbiddenResponse
+    | errors.NotFoundResponse
+    | errors.RequestTimedOutResponse
+    | errors.ConflictResponse
+    | errors.UnprocessableEntityResponse
+    | errors.TooManyRequestsResponse
+    | errors.InternalServerErrorResponse
+    | errors.NotImplementedResponse
+    | errors.BadGatewayResponse
+    | StackOneError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: operations.StackoneListPlatformLogsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
     Result<
-      operations.DocumentsListFilesResponse,
+      operations.StackoneListPlatformLogsResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
       | errors.NotFoundResponse
       | errors.RequestTimedOutResponse
       | errors.ConflictResponse
-      | errors.PreconditionFailedResponse
       | errors.UnprocessableEntityResponse
       | errors.TooManyRequestsResponse
       | errors.InternalServerErrorResponse
@@ -69,93 +91,33 @@ export function documentsListFiles(
       | UnexpectedClientError
       | SDKValidationError
     >,
-    { cursor: string }
-  >
-> {
-  return new APIPromise($do(
-    client,
-    request,
-    options,
-  ));
-}
-
-async function $do(
-  client: StackOneCore,
-  request: operations.DocumentsListFilesRequest,
-  options?: RequestOptions,
-): Promise<
-  [
-    PageIterator<
-      Result<
-        operations.DocumentsListFilesResponse,
-        | errors.BadRequestResponse
-        | errors.UnauthorizedResponse
-        | errors.ForbiddenResponse
-        | errors.NotFoundResponse
-        | errors.RequestTimedOutResponse
-        | errors.ConflictResponse
-        | errors.PreconditionFailedResponse
-        | errors.UnprocessableEntityResponse
-        | errors.TooManyRequestsResponse
-        | errors.InternalServerErrorResponse
-        | errors.NotImplementedResponse
-        | errors.BadGatewayResponse
-        | StackOneError
-        | ResponseValidationError
-        | ConnectionError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | InvalidRequestError
-        | UnexpectedClientError
-        | SDKValidationError
-      >,
-      { cursor: string }
-    >,
     APICall,
   ]
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.DocumentsListFilesRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.StackoneListPlatformLogsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [haltIterator(parsed), { status: "invalid" }];
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/unified/documents/files")();
+  const path = pathToFunc("/requests/platform-logs")();
 
-  const query = queryJoin(
-    encodeDeepObjectQuery({
-      "filter": payload.filter,
-    }),
-    encodeFormQuery({
-      "fields": payload.fields,
-      "folder_id": payload.folder_id,
-      "include": payload.include,
-      "nested_items": payload.nested_items,
-      "next": payload.next,
-      "page": payload.page,
-      "page_size": payload.page_size,
-      "proxy": payload.proxy,
-      "raw": payload.raw,
-      "updated_after": payload.updated_after,
-    }),
-  );
+  const query = encodeFormQuery({
+    "filter": payload.filter,
+    "next": payload.next,
+    "order_by": payload.order_by,
+    "order_direction": payload.order_direction,
+    "page_size": payload.page_size,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
-      explode: false,
-      charEncoding: "none",
-    }),
-    "x-stackone-api-session-token": encodeSimple(
-      "x-stackone-api-session-token",
-      payload["x-stackone-api-session-token"],
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
@@ -164,7 +126,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "documents_list_files",
+    operationID: "stackone_list_platform_logs",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -198,7 +160,7 @@ async function $do(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [haltIterator(requestRes), { status: "invalid" }];
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -211,7 +173,6 @@ async function $do(
       "404",
       "408",
       "409",
-      "412",
       "422",
       "429",
       "4XX",
@@ -224,7 +185,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [haltIterator(doResult), { status: "request-error", request: req }];
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -236,15 +197,14 @@ async function $do(
     Headers: {},
   };
 
-  const [result, raw] = await M.match<
-    operations.DocumentsListFilesResponse,
+  const [result] = await M.match<
+    operations.StackoneListPlatformLogsResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
     | errors.NotFoundResponse
     | errors.RequestTimedOutResponse
     | errors.ConflictResponse
-    | errors.PreconditionFailedResponse
     | errors.UnprocessableEntityResponse
     | errors.TooManyRequestsResponse
     | errors.InternalServerErrorResponse
@@ -259,8 +219,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.DocumentsListFilesResponse$inboundSchema, {
-      key: "FilesPaginated",
+    M.json(200, operations.StackoneListPlatformLogsResponse$inboundSchema, {
+      key: "PlatformLogsPaginated",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
@@ -270,7 +230,6 @@ async function $do(
       hdrs: true,
     }),
     M.jsonErr(409, errors.ConflictResponse$inboundSchema),
-    M.jsonErr(412, errors.PreconditionFailedResponse$inboundSchema),
     M.jsonErr(422, errors.UnprocessableEntityResponse$inboundSchema),
     M.jsonErr(429, errors.TooManyRequestsResponse$inboundSchema),
     M.jsonErr(500, errors.InternalServerErrorResponse$inboundSchema),
@@ -280,65 +239,8 @@ async function $do(
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return [haltIterator(result), {
-      status: "complete",
-      request: req,
-      response,
-    }];
+    return [result, { status: "complete", request: req, response }];
   }
 
-  const nextFunc = (
-    responseData: unknown,
-  ): {
-    next: Paginator<
-      Result<
-        operations.DocumentsListFilesResponse,
-        | errors.BadRequestResponse
-        | errors.UnauthorizedResponse
-        | errors.ForbiddenResponse
-        | errors.NotFoundResponse
-        | errors.RequestTimedOutResponse
-        | errors.ConflictResponse
-        | errors.PreconditionFailedResponse
-        | errors.UnprocessableEntityResponse
-        | errors.TooManyRequestsResponse
-        | errors.InternalServerErrorResponse
-        | errors.NotImplementedResponse
-        | errors.BadGatewayResponse
-        | StackOneError
-        | ResponseValidationError
-        | ConnectionError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | InvalidRequestError
-        | UnexpectedClientError
-        | SDKValidationError
-      >
-    >;
-    "~next"?: { cursor: string };
-  } => {
-    const nextCursor = dlv(responseData, "next");
-    if (typeof nextCursor !== "string") {
-      return { next: () => null };
-    }
-
-    const nextVal = () =>
-      documentsListFiles(
-        client,
-        {
-          ...request,
-          next: nextCursor,
-        },
-        options,
-      );
-
-    return { next: nextVal, "~next": { cursor: nextCursor } };
-  };
-
-  const page = { ...result, ...nextFunc(raw) };
-  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
-    status: "complete",
-    request: req,
-    response,
-  }];
+  return [result, { status: "complete", request: req, response }];
 }

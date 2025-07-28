@@ -49,6 +49,10 @@ export type DocumentsListFilesRequest = {
    */
   filter?: DocumentsListFilesQueryParamFilter | null | undefined;
   /**
+   * Use to only include Files within the specified Folder. Required when requesting nested items
+   */
+  folderId?: string | null | undefined;
+  /**
    * The comma separated list of fields that will be included in the response
    */
   include?: string | null | undefined;
@@ -211,6 +215,7 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
   filter: z.nullable(
     z.lazy(() => DocumentsListFilesQueryParamFilter$inboundSchema),
   ).optional(),
+  folder_id: z.nullable(z.string()).optional(),
   include: z.nullable(z.string()).optional(),
   nested_items: z.nullable(z.string().default("false")),
   next: z.nullable(z.string()).optional(),
@@ -223,6 +228,7 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
   "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "folder_id": "folderId",
     "nested_items": "nestedItems",
     "page_size": "pageSize",
     "updated_after": "updatedAfter",
@@ -235,6 +241,7 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
 export type DocumentsListFilesRequest$Outbound = {
   fields?: string | null | undefined;
   filter?: DocumentsListFilesQueryParamFilter$Outbound | null | undefined;
+  folder_id?: string | null | undefined;
   include?: string | null | undefined;
   nested_items: string | null;
   next?: string | null | undefined;
@@ -257,6 +264,7 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   filter: z.nullable(
     z.lazy(() => DocumentsListFilesQueryParamFilter$outboundSchema),
   ).optional(),
+  folderId: z.nullable(z.string()).optional(),
   include: z.nullable(z.string()).optional(),
   nestedItems: z.nullable(z.string().default("false")),
   next: z.nullable(z.string()).optional(),
@@ -269,6 +277,7 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    folderId: "folder_id",
     nestedItems: "nested_items",
     pageSize: "page_size",
     updatedAfter: "updated_after",

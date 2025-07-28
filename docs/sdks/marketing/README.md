@@ -38,6 +38,7 @@ Create Content Block
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_create_content_block" method="post" path="/unified/marketing/content_blocks" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -148,6 +149,7 @@ Create Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_create_email_template" method="post" path="/unified/marketing/templates/email" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -302,6 +304,7 @@ Create In-App Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_create_in_app_template" method="post" path="/unified/marketing/templates/in_app" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -458,6 +461,7 @@ Create Omni-Channel Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_create_omni_channel_template" method="post" path="/unified/marketing/templates/omni_channel" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -592,6 +596,7 @@ Create Push Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_create_push_template" method="post" path="/unified/marketing/templates/push" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -730,6 +735,7 @@ Create SMS Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_create_sms_template" method="post" path="/unified/marketing/templates/sms" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -884,6 +890,7 @@ Get campaign
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_campaign" method="get" path="/unified/marketing/campaigns/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -978,6 +985,7 @@ Get Content Blocks
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_content_block" method="get" path="/unified/marketing/content_blocks/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1072,6 +1080,7 @@ Get Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_email_template" method="get" path="/unified/marketing/templates/email/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1166,6 +1175,7 @@ Get In-App Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_in_app_template" method="get" path="/unified/marketing/templates/in_app/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1262,6 +1272,7 @@ Get Omni-Channel Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_omni_channel_template" method="get" path="/unified/marketing/templates/omni_channel/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1356,6 +1367,7 @@ Get Push Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_push_template" method="get" path="/unified/marketing/templates/push/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1450,6 +1462,7 @@ Get SMS Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_get_sms_template" method="get" path="/unified/marketing/templates/sms/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1544,6 +1557,7 @@ List campaigns
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_campaigns" method="get" path="/unified/marketing/campaigns" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1648,6 +1662,7 @@ List Content Blocks
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_content_blocks" method="get" path="/unified/marketing/content_blocks" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1752,6 +1767,7 @@ List Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_email_templates" method="get" path="/unified/marketing/templates/email" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1856,6 +1872,7 @@ List In-App Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_in_app_templates" method="get" path="/unified/marketing/templates/in_app" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1962,6 +1979,7 @@ List Omni-Channel Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_omni_channel_templates" method="get" path="/unified/marketing/templates/omni_channel" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2066,6 +2084,7 @@ List Push Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_push_templates" method="get" path="/unified/marketing/templates/push" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2170,6 +2189,7 @@ List SMS Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_list_sms_templates" method="get" path="/unified/marketing/templates/sms" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2274,6 +2294,7 @@ Update Content Block
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_update_content_block" method="patch" path="/unified/marketing/content_blocks/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -2386,6 +2407,7 @@ Update Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_update_email_template" method="patch" path="/unified/marketing/templates/email/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { EmailMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -2510,6 +2532,7 @@ Update In-App Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_update_in_app_template" method="patch" path="/unified/marketing/templates/in_app/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -2636,6 +2659,7 @@ Update Omni-Channel Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_update_omni_channel_template" method="patch" path="/unified/marketing/templates/omni_channel/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { CreateMessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -2758,6 +2782,7 @@ Update Push Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_update_push_template" method="patch" path="/unified/marketing/templates/push/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -2898,6 +2923,7 @@ Update SMS Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="marketing_update_sms_template" method="patch" path="/unified/marketing/templates/sms/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";

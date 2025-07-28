@@ -233,6 +233,7 @@ export * from "./stackonegetlog.js";
 export * from "./stackonelistconnectorsmeta.js";
 export * from "./stackonelistlinkedaccounts.js";
 export * from "./stackonelistlogs.js";
+export * from "./stackonelistplatformlogs.js";
 export * from "./stackoneliststeplogs.js";
 export * from "./stackoneproxyrequest.js";
 export * from "./stackoneupdateaccount.js";

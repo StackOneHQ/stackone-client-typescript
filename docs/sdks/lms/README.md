@@ -36,6 +36,7 @@ Batch Upsert Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_batch_upsert_content" method="post" path="/unified/lms/content/batch" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -486,6 +487,7 @@ Create User Assignment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_create_user_assignment" method="post" path="/unified/lms/users/{id}/assignments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -606,6 +608,7 @@ Create User Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_create_user_completion" method="post" path="/unified/lms/users/{id}/completions" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -716,6 +719,7 @@ Delete User Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_delete_user_completion" method="delete" path="/unified/lms/users/{id}/completions/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -810,6 +814,7 @@ Get Assignment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_assignment" method="get" path="/unified/lms/assignments/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -902,6 +907,7 @@ Get Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_category" method="get" path="/unified/lms/categories/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -996,6 +1002,7 @@ Get Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_completion" method="get" path="/unified/lms/completions/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1088,6 +1095,7 @@ Get Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_content" method="get" path="/unified/lms/content/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1182,6 +1190,7 @@ Get Course
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_course" method="get" path="/unified/lms/courses/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1276,6 +1285,7 @@ Get Skill
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_skill" method="get" path="/unified/lms/skills/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1370,6 +1380,7 @@ Get User
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_user" method="get" path="/unified/lms/users/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1464,6 +1475,7 @@ Get User Assignment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_user_assignment" method="get" path="/unified/lms/users/{id}/assignments/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1558,6 +1570,7 @@ Get User Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_get_user_completion" method="get" path="/unified/lms/users/{id}/completions/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1652,6 +1665,7 @@ List Assignments
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_assignments" method="get" path="/unified/lms/assignments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1760,6 +1774,7 @@ List Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_categories" method="get" path="/unified/lms/categories" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1864,6 +1879,7 @@ List Completions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_completions" method="get" path="/unified/lms/completions" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1968,6 +1984,7 @@ List Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_content" method="get" path="/unified/lms/content" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2072,6 +2089,7 @@ List Courses
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_courses" method="get" path="/unified/lms/courses" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2176,6 +2194,7 @@ List Skills
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_skills" method="get" path="/unified/lms/skills" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2280,6 +2299,7 @@ List User Assignments
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_user_assignments" method="get" path="/unified/lms/users/{id}/assignments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2390,6 +2410,7 @@ List User Completions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_user_completions" method="get" path="/unified/lms/users/{id}/completions" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2496,6 +2517,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_list_users" method="get" path="/unified/lms/users" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2600,6 +2622,7 @@ Update Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_update_content" method="patch" path="/unified/lms/content/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -2814,6 +2837,7 @@ Upsert Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="lms_upsert_content" method="put" path="/unified/lms/content" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { CreateCategoriesApiModelSchemasValue, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";

@@ -83,6 +83,7 @@ Batch Upload Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_batch_upload_employee_document" method="post" path="/unified/hris/employees/{id}/documents/upload/batch" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -265,6 +266,7 @@ Cancel Employee Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_cancel_employee_time_off_request" method="delete" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -359,6 +361,7 @@ Creates an employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_create_employee" method="post" path="/unified/hris/employees" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -843,6 +846,7 @@ Create Employee Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_create_employee_employment" method="post" path="/unified/hris/employees/{id}/employments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -1017,6 +1021,7 @@ Create Employee Skill
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_create_employee_skill" method="post" path="/unified/hris/employees/{id}/skills" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1137,6 +1142,7 @@ Create Employee Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_create_employee_time_off_request" method="post" path="/unified/hris/employees/{id}/time_off" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1261,6 +1267,7 @@ Create Employee Work Eligibility Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_create_employee_work_eligibility_request" method="post" path="/unified/hris/employees/{id}/work_eligibility" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -1417,6 +1424,7 @@ Download Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_download_employee_document" method="get" path="/unified/hris/employees/{id}/documents/{subResourceId}/download" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1515,6 +1523,7 @@ Get Benefit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_benefit" method="get" path="/unified/hris/benefits/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1609,6 +1618,7 @@ Get Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_company" method="get" path="/unified/hris/companies/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1703,6 +1713,7 @@ Get Company Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_company_group" method="get" path="/unified/hris/groups/companies/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1797,6 +1808,7 @@ Get Cost Center Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_cost_center_group" method="get" path="/unified/hris/groups/cost_centers/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1891,6 +1903,7 @@ Get Department Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_department_group" method="get" path="/unified/hris/groups/departments/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1985,6 +1998,7 @@ Get Division Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_division_group" method="get" path="/unified/hris/groups/divisions/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2079,6 +2093,7 @@ Get Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee" method="get" path="/unified/hris/employees/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2177,6 +2192,7 @@ Get employee Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_custom_field_definition" method="get" path="/unified/hris/custom_field_definitions/employees/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2279,6 +2295,7 @@ Get Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_document" method="get" path="/unified/hris/employees/{id}/documents/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2375,6 +2392,7 @@ Get Employee Document Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_document_category" method="get" path="/unified/hris/documents/employee_categories/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2469,6 +2487,7 @@ Get Employee Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_employment" method="get" path="/unified/hris/employees/{id}/employments/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2567,6 +2586,7 @@ Get Employee Skill
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_skill" method="get" path="/unified/hris/employees/{id}/skills/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2663,6 +2683,7 @@ Get Employee Task
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_task" method="get" path="/unified/hris/employees/{id}/tasks/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2761,6 +2782,7 @@ Get Employee Time Off Balance
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employee_time_off_balance" method="get" path="/unified/hris/employees/{id}/time_off_balances/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2859,6 +2881,7 @@ Get Employees Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employees_time_off_request" method="get" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2957,6 +2980,7 @@ Get Employees Work Eligibility
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employees_work_eligibility" method="get" path="/unified/hris/employees/{id}/work_eligibility/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3053,6 +3077,7 @@ Get Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_employment" method="get" path="/unified/hris/employments/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3149,6 +3174,7 @@ Get Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_group" method="get" path="/unified/hris/groups/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3243,6 +3269,7 @@ Get Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_job" method="get" path="/unified/hris/jobs/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3337,6 +3364,7 @@ Get Work Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_location" method="get" path="/unified/hris/locations/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3431,6 +3459,7 @@ Get Position
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_position" method="get" path="/unified/hris/positions/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3523,6 +3552,7 @@ Get Shift
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_shift" method="get" path="/unified/hris/shifts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3615,6 +3645,7 @@ Get Task
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_task" method="get" path="/unified/hris/tasks/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3711,6 +3742,7 @@ Get Team Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_team_group" method="get" path="/unified/hris/groups/teams/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3805,6 +3837,7 @@ Get Time Entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_time_entries" method="get" path="/unified/hris/time_entries/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3899,6 +3932,7 @@ Get Time Off Policy
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_time_off_policy" method="get" path="/unified/hris/time_off_policies/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3993,6 +4027,7 @@ Get time off request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_time_off_request" method="get" path="/unified/hris/time_off/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4091,6 +4126,7 @@ Get time off type
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_get_time_off_type" method="get" path="/unified/hris/time_off_types/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4185,6 +4221,7 @@ Invite Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_invite_employee" method="post" path="/unified/hris/employees/{id}/invite" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4287,6 +4324,7 @@ List benefits
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_benefits" method="get" path="/unified/hris/benefits" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4391,6 +4429,7 @@ List Companies
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_companies" method="get" path="/unified/hris/companies" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4495,6 +4534,7 @@ List Companies Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_companies_groups" method="get" path="/unified/hris/groups/companies" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4597,6 +4637,7 @@ List Cost Center Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_cost_center_groups" method="get" path="/unified/hris/groups/cost_centers" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4701,6 +4742,7 @@ List Department Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_department_groups" method="get" path="/unified/hris/groups/departments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4805,6 +4847,7 @@ List Division Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_division_groups" method="get" path="/unified/hris/groups/divisions" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4907,6 +4950,7 @@ List Employee Document Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_categories" method="get" path="/unified/hris/documents/employee_categories" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5011,6 +5055,7 @@ List employee Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_custom_field_definitions" method="get" path="/unified/hris/custom_field_definitions/employees" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5115,6 +5160,7 @@ List Employee Documents
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_documents" method="get" path="/unified/hris/employees/{id}/documents" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5221,6 +5267,7 @@ List Employee Employments
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_employments" method="get" path="/unified/hris/employees/{id}/employments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5329,6 +5376,7 @@ List Employee Skills
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_skills" method="get" path="/unified/hris/employees/{id}/skills" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5435,6 +5483,7 @@ List Employee Tasks
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_tasks" method="get" path="/unified/hris/employees/{id}/tasks" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5543,6 +5592,7 @@ List Employee Time Off Balances
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_time_off_balances" method="get" path="/unified/hris/employees/{id}/time_off_balances" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5651,6 +5701,7 @@ List Assigned Time Off Policies
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_time_off_policies" method="get" path="/unified/hris/employees/{id}/time_off_policies" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5757,6 +5808,7 @@ List Employee Time Off Requests
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_time_off_requests" method="get" path="/unified/hris/employees/{id}/time_off" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5865,6 +5917,7 @@ List Employee Work Eligibility
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employee_work_eligibility" method="get" path="/unified/hris/employees/{id}/work_eligibility" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5971,6 +6024,7 @@ List Employees
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employees" method="get" path="/unified/hris/employees" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6079,6 +6133,7 @@ List Employments
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_employments" method="get" path="/unified/hris/employments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6185,6 +6240,7 @@ List Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_groups" method="get" path="/unified/hris/groups" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6289,6 +6345,7 @@ List Jobs
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_jobs" method="get" path="/unified/hris/jobs" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6393,6 +6450,7 @@ List Work Locations
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_locations" method="get" path="/unified/hris/locations" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6497,6 +6555,7 @@ List Positions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_positions" method="get" path="/unified/hris/positions" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { QueryParamStatus } from "@stackone/stackone-client-ts/sdk/models/operations";
@@ -6601,6 +6660,7 @@ List Shifts
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_shifts" method="get" path="/unified/hris/shifts" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6701,6 +6761,7 @@ List Tasks
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_tasks" method="get" path="/unified/hris/tasks" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6805,6 +6866,7 @@ List Team Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_team_groups" method="get" path="/unified/hris/groups/teams" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6909,6 +6971,7 @@ List Time Entries
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_time_entries" method="get" path="/unified/hris/time_entries" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -7017,6 +7080,7 @@ List Time Off Policies
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_time_off_policies" method="get" path="/unified/hris/time_off_policies" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -7121,6 +7185,7 @@ List time off requests
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_time_off_requests" method="get" path="/unified/hris/time_off" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -7229,6 +7294,7 @@ List time off types
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_list_time_off_types" method="get" path="/unified/hris/time_off_types" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -7333,6 +7399,7 @@ Updates an employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_update_employee" method="patch" path="/unified/hris/employees/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -7751,6 +7818,7 @@ Update Employee Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_update_employee_employment" method="patch" path="/unified/hris/employees/{id}/employments/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -7925,6 +7993,7 @@ Update Employee Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_update_employee_time_off_request" method="patch" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -8051,6 +8120,7 @@ Update Employee Work Eligibility Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_update_employee_work_eligibility_request" method="patch" path="/unified/hris/employees/{id}/work_eligibility/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
@@ -8209,6 +8279,7 @@ Upload Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="hris_upload_employee_document" method="post" path="/unified/hris/employees/{id}/documents/upload" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {

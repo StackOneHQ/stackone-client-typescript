@@ -16,6 +16,7 @@ Get Connector Meta information for the given provider key
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_get_connector_meta" method="get" path="/connectors/meta/{provider}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -107,6 +108,7 @@ List Connectors Meta Information for all providers
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_list_connectors_meta" method="get" path="/connectors/meta" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 

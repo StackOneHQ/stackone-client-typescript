@@ -12,7 +12,7 @@ import * as shared from "../shared/index.js";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type QueryParamFilter = {
+export type StackoneListStepLogsQueryParamFilter = {
   /**
    * A comma-separated list of account IDs to filter the results by.
    */
@@ -90,7 +90,7 @@ export type StackoneListStepLogsRequest = {
   /**
    * Filter parameters that allow greater customisation of the list response
    */
-  filter?: QueryParamFilter | null | undefined;
+  filter?: StackoneListStepLogsQueryParamFilter | null | undefined;
   /**
    * The unified cursor
    */
@@ -133,8 +133,8 @@ export type StackoneListStepLogsResponse = {
 };
 
 /** @internal */
-export const QueryParamFilter$inboundSchema: z.ZodType<
-  QueryParamFilter,
+export const StackoneListStepLogsQueryParamFilter$inboundSchema: z.ZodType<
+  StackoneListStepLogsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -165,7 +165,7 @@ export const QueryParamFilter$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type QueryParamFilter$Outbound = {
+export type StackoneListStepLogsQueryParamFilter$Outbound = {
   account_ids?: string | null | undefined;
   actions?: string | null | undefined;
   child_resources?: string | null | undefined;
@@ -182,10 +182,10 @@ export type QueryParamFilter$Outbound = {
 };
 
 /** @internal */
-export const QueryParamFilter$outboundSchema: z.ZodType<
-  QueryParamFilter$Outbound,
+export const StackoneListStepLogsQueryParamFilter$outboundSchema: z.ZodType<
+  StackoneListStepLogsQueryParamFilter$Outbound,
   z.ZodTypeDef,
-  QueryParamFilter
+  StackoneListStepLogsQueryParamFilter
 > = z.object({
   accountIds: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
@@ -217,30 +217,35 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamFilter$ {
-  /** @deprecated use `QueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = QueryParamFilter$inboundSchema;
-  /** @deprecated use `QueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = QueryParamFilter$outboundSchema;
-  /** @deprecated use `QueryParamFilter$Outbound` instead. */
-  export type Outbound = QueryParamFilter$Outbound;
+export namespace StackoneListStepLogsQueryParamFilter$ {
+  /** @deprecated use `StackoneListStepLogsQueryParamFilter$inboundSchema` instead. */
+  export const inboundSchema =
+    StackoneListStepLogsQueryParamFilter$inboundSchema;
+  /** @deprecated use `StackoneListStepLogsQueryParamFilter$outboundSchema` instead. */
+  export const outboundSchema =
+    StackoneListStepLogsQueryParamFilter$outboundSchema;
+  /** @deprecated use `StackoneListStepLogsQueryParamFilter$Outbound` instead. */
+  export type Outbound = StackoneListStepLogsQueryParamFilter$Outbound;
 }
 
-export function queryParamFilterToJSON(
-  queryParamFilter: QueryParamFilter,
+export function stackoneListStepLogsQueryParamFilterToJSON(
+  stackoneListStepLogsQueryParamFilter: StackoneListStepLogsQueryParamFilter,
 ): string {
   return JSON.stringify(
-    QueryParamFilter$outboundSchema.parse(queryParamFilter),
+    StackoneListStepLogsQueryParamFilter$outboundSchema.parse(
+      stackoneListStepLogsQueryParamFilter,
+    ),
   );
 }
 
-export function queryParamFilterFromJSON(
+export function stackoneListStepLogsQueryParamFilterFromJSON(
   jsonString: string,
-): SafeParseResult<QueryParamFilter, SDKValidationError> {
+): SafeParseResult<StackoneListStepLogsQueryParamFilter, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => QueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamFilter' from JSON`,
+    (x) =>
+      StackoneListStepLogsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneListStepLogsQueryParamFilter' from JSON`,
   );
 }
 
@@ -297,7 +302,9 @@ export const StackoneListStepLogsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
+  filter: z.nullable(
+    z.lazy(() => StackoneListStepLogsQueryParamFilter$inboundSchema),
+  ).optional(),
   next: z.nullable(z.string()).optional(),
   order_by: z.nullable(StackoneListStepLogsQueryParamOrderBy$inboundSchema)
     .optional(),
@@ -315,7 +322,7 @@ export const StackoneListStepLogsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type StackoneListStepLogsRequest$Outbound = {
-  filter?: QueryParamFilter$Outbound | null | undefined;
+  filter?: StackoneListStepLogsQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
   order_by?: string | null | undefined;
   order_direction?: string | null | undefined;
@@ -328,7 +335,9 @@ export const StackoneListStepLogsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneListStepLogsRequest
 > = z.object({
-  filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
+  filter: z.nullable(
+    z.lazy(() => StackoneListStepLogsQueryParamFilter$outboundSchema),
+  ).optional(),
   next: z.nullable(z.string()).optional(),
   orderBy: z.nullable(StackoneListStepLogsQueryParamOrderBy$outboundSchema)
     .optional(),

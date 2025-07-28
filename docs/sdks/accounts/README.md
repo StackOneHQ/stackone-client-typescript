@@ -19,6 +19,7 @@ Delete Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_delete_account" method="delete" path="/accounts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -108,6 +109,7 @@ Get Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_get_account" method="get" path="/accounts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -197,6 +199,7 @@ Get meta information of the account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_get_account_meta_info" method="get" path="/accounts/{id}/meta" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -286,6 +289,7 @@ List Accounts
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_list_linked_accounts" method="get" path="/accounts" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -371,6 +375,7 @@ Update Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_update_account" method="patch" path="/accounts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { PatchAccountExternalDtoType } from "@stackone/stackone-client-ts/sdk/models/shared";

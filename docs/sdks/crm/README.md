@@ -22,6 +22,7 @@ Creates a new Contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_create_contact" method="post" path="/unified/crm/contacts" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -192,6 +193,7 @@ Get Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_get_account" method="get" path="/unified/crm/accounts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -286,6 +288,7 @@ Get Contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_get_contact" method="get" path="/unified/crm/contacts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -382,6 +385,7 @@ Get Contact Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_get_contact_custom_field_definition" method="get" path="/unified/crm/custom_field_definitions/contacts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -484,6 +488,7 @@ Get List
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_get_list" method="get" path="/unified/crm/lists/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -578,6 +583,7 @@ List Accounts
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_list_accounts" method="get" path="/unified/crm/accounts" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -682,6 +688,7 @@ List Contact Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_list_contact_custom_field_definitions" method="get" path="/unified/crm/custom_field_definitions/contacts" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -786,6 +793,7 @@ List Contacts
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_list_contacts" method="get" path="/unified/crm/contacts" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -892,6 +900,7 @@ Get all Lists
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_list_lists" method="get" path="/unified/crm/lists" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -996,6 +1005,7 @@ Update Contact (early access)
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="crm_update_contact" method="patch" path="/unified/crm/contacts/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 

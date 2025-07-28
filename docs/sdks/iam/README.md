@@ -22,6 +22,7 @@ Delete User
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_delete_user" method="delete" path="/unified/iam/users/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -114,6 +115,7 @@ Get Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_get_group" method="get" path="/unified/iam/groups/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -210,6 +212,7 @@ Get Policy
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_get_policy" method="get" path="/unified/iam/policies/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -306,6 +309,7 @@ Get Role
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_get_role" method="get" path="/unified/iam/roles/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -402,6 +406,7 @@ Get User
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_get_user" method="get" path="/unified/iam/users/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -498,6 +503,7 @@ List Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_list_groups" method="get" path="/unified/iam/groups" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -604,6 +610,7 @@ List Policies
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_list_policies" method="get" path="/unified/iam/policies" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -710,6 +717,7 @@ List Roles
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_list_roles" method="get" path="/unified/iam/roles" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -816,6 +824,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_list_users" method="get" path="/unified/iam/users" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -922,6 +931,7 @@ Update User
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="iam_update_user" method="patch" path="/unified/iam/users/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { IamUpdateUserRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
