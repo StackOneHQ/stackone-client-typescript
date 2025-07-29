@@ -249,6 +249,8 @@ export * from "./offersresult.js";
 export * from "./package.js";
 export * from "./patchaccountexternaldto.js";
 export * from "./phonenumber.js";
+export * from "./platformlog.js";
+export * from "./platformlogspaginated.js";
 export * from "./position.js";
 export * from "./positionresult.js";
 export * from "./positionspaginated.js";

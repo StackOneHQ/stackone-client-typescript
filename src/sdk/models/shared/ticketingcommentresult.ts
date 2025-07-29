@@ -20,6 +20,16 @@ import {
   TicketingContent$outboundSchema,
 } from "./ticketingcontent.js";
 
+export enum TicketingCommentResult2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the comment is internal
+ */
+export type TicketingCommentResultInternal = boolean | TicketingCommentResult2;
+
 export type TicketingCommentResultData = {
   /**
    * Array of content associated with the comment
@@ -36,7 +46,7 @@ export type TicketingCommentResultData = {
   /**
    * Whether the comment is internal
    */
-  internal?: boolean | null | undefined;
+  internal?: boolean | TicketingCommentResult2 | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -61,6 +71,77 @@ export type TicketingCommentResult = {
 };
 
 /** @internal */
+export const TicketingCommentResult2$inboundSchema: z.ZodNativeEnum<
+  typeof TicketingCommentResult2
+> = z.nativeEnum(TicketingCommentResult2);
+
+/** @internal */
+export const TicketingCommentResult2$outboundSchema: z.ZodNativeEnum<
+  typeof TicketingCommentResult2
+> = TicketingCommentResult2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingCommentResult2$ {
+  /** @deprecated use `TicketingCommentResult2$inboundSchema` instead. */
+  export const inboundSchema = TicketingCommentResult2$inboundSchema;
+  /** @deprecated use `TicketingCommentResult2$outboundSchema` instead. */
+  export const outboundSchema = TicketingCommentResult2$outboundSchema;
+}
+
+/** @internal */
+export const TicketingCommentResultInternal$inboundSchema: z.ZodType<
+  TicketingCommentResultInternal,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), TicketingCommentResult2$inboundSchema]);
+
+/** @internal */
+export type TicketingCommentResultInternal$Outbound = boolean | string;
+
+/** @internal */
+export const TicketingCommentResultInternal$outboundSchema: z.ZodType<
+  TicketingCommentResultInternal$Outbound,
+  z.ZodTypeDef,
+  TicketingCommentResultInternal
+> = z.union([z.boolean(), TicketingCommentResult2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingCommentResultInternal$ {
+  /** @deprecated use `TicketingCommentResultInternal$inboundSchema` instead. */
+  export const inboundSchema = TicketingCommentResultInternal$inboundSchema;
+  /** @deprecated use `TicketingCommentResultInternal$outboundSchema` instead. */
+  export const outboundSchema = TicketingCommentResultInternal$outboundSchema;
+  /** @deprecated use `TicketingCommentResultInternal$Outbound` instead. */
+  export type Outbound = TicketingCommentResultInternal$Outbound;
+}
+
+export function ticketingCommentResultInternalToJSON(
+  ticketingCommentResultInternal: TicketingCommentResultInternal,
+): string {
+  return JSON.stringify(
+    TicketingCommentResultInternal$outboundSchema.parse(
+      ticketingCommentResultInternal,
+    ),
+  );
+}
+
+export function ticketingCommentResultInternalFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingCommentResultInternal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingCommentResultInternal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingCommentResultInternal' from JSON`,
+  );
+}
+
+/** @internal */
 export const TicketingCommentResultData$inboundSchema: z.ZodType<
   TicketingCommentResultData,
   z.ZodTypeDef,
@@ -71,7 +152,9 @@ export const TicketingCommentResultData$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   id: z.nullable(z.string()).optional(),
-  internal: z.nullable(z.boolean()).optional(),
+  internal: z.nullable(
+    z.union([z.boolean(), TicketingCommentResult2$inboundSchema]),
+  ).optional(),
   remote_id: z.nullable(z.string()).optional(),
   ticket_id: z.string(),
   updated_at: z.nullable(
@@ -93,7 +176,7 @@ export type TicketingCommentResultData$Outbound = {
   content?: Array<TicketingContent$Outbound> | null | undefined;
   created_at?: string | null | undefined;
   id?: string | null | undefined;
-  internal?: boolean | null | undefined;
+  internal?: boolean | string | null | undefined;
   remote_id?: string | null | undefined;
   ticket_id: string;
   updated_at?: string | null | undefined;
@@ -109,7 +192,9 @@ export const TicketingCommentResultData$outboundSchema: z.ZodType<
   content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   id: z.nullable(z.string()).optional(),
-  internal: z.nullable(z.boolean()).optional(),
+  internal: z.nullable(
+    z.union([z.boolean(), TicketingCommentResult2$outboundSchema]),
+  ).optional(),
   remoteId: z.nullable(z.string()).optional(),
   ticketId: z.string(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),

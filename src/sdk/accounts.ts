@@ -41,7 +41,7 @@ export class Accounts extends ClientSDK {
   }
 
   /**
-   * Get meta information of the account
+   * Get Account Meta Information
    */
   async getAccountMetaInfo(
     request: operations.StackoneGetAccountMetaInfoRequest,

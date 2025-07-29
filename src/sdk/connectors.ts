@@ -10,7 +10,7 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Connectors extends ClientSDK {
   /**
-   * Get Connector Meta information for the given provider key
+   * Get Connector Meta Information
    */
   async getConnectorMeta(
     request: operations.StackoneGetConnectorMetaRequest,
@@ -24,7 +24,7 @@ export class Connectors extends ClientSDK {
   }
 
   /**
-   * List Connectors Meta Information for all providers
+   * List Connector Meta Information
    */
   async listConnectorsMeta(
     request: operations.StackoneListConnectorsMetaRequest,

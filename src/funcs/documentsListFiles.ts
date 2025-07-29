@@ -4,7 +4,12 @@
 
 import { StackOneCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import {
+  encodeDeepObjectQuery,
+  encodeFormQuery,
+  encodeSimple,
+  queryJoin,
+} from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -122,18 +127,23 @@ async function $do(
 
   const path = pathToFunc("/unified/documents/files")();
 
-  const query = encodeFormQuery({
-    "fields": payload.fields,
-    "filter": payload.filter,
-    "include": payload.include,
-    "nested_items": payload.nested_items,
-    "next": payload.next,
-    "page": payload.page,
-    "page_size": payload.page_size,
-    "proxy": payload.proxy,
-    "raw": payload.raw,
-    "updated_after": payload.updated_after,
-  });
+  const query = queryJoin(
+    encodeDeepObjectQuery({
+      "filter": payload.filter,
+    }),
+    encodeFormQuery({
+      "fields": payload.fields,
+      "folder_id": payload.folder_id,
+      "include": payload.include,
+      "nested_items": payload.nested_items,
+      "next": payload.next,
+      "page": payload.page,
+      "page_size": payload.page_size,
+      "proxy": payload.proxy,
+      "raw": payload.raw,
+      "updated_after": payload.updated_after,
+    }),
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",

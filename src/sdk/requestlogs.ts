@@ -4,6 +4,7 @@
 
 import { requestLogsGetLog } from "../funcs/requestLogsGetLog.js";
 import { requestLogsListLogs } from "../funcs/requestLogsListLogs.js";
+import { requestLogsListPlatformLogs } from "../funcs/requestLogsListPlatformLogs.js";
 import { requestLogsListStepLogs } from "../funcs/requestLogsListStepLogs.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
@@ -11,7 +12,7 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class RequestLogs extends ClientSDK {
   /**
-   * Get a Log
+   * Get Log
    */
   async getLog(
     request: operations.StackoneGetLogRequest,
@@ -32,6 +33,20 @@ export class RequestLogs extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.StackoneListLogsResponse> {
     return unwrapAsync(requestLogsListLogs(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Platform Logs
+   */
+  async listPlatformLogs(
+    request: operations.StackoneListPlatformLogsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneListPlatformLogsResponse> {
+    return unwrapAsync(requestLogsListPlatformLogs(
       this,
       request,
       options,

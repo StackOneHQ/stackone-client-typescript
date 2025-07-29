@@ -15,6 +15,7 @@ Proxy Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_proxy_request" method="post" path="/unified/proxy" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 

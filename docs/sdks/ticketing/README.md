@@ -31,6 +31,7 @@ Create a new ticket record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_create_ticket" method="post" path="/unified/ticketing/tickets" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { TicketingTicketCreateRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -211,6 +212,7 @@ Download the attachment file from a ticket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_download_ticketing_attachment" method="get" path="/unified/ticketing/tickets/{id}/attachments/{subResourceId}/download" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -309,6 +311,7 @@ Retrieve the details of a single attachment for a ticket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_attachment" method="get" path="/unified/ticketing/tickets/{id}/attachments/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -405,6 +408,7 @@ Retrieve a single comment by its identifier for a ticket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_comment" method="get" path="/unified/ticketing/tickets/{id}/comments/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -501,6 +505,7 @@ Retrieve a single project by its identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_project" method="get" path="/unified/ticketing/projects/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -595,6 +600,7 @@ Retrieve a single project component by its identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_project_component" method="get" path="/unified/ticketing/projects/{id}/components/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -691,6 +697,7 @@ Retrieve a single ticket by its identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_ticket" method="get" path="/unified/ticketing/tickets/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -785,6 +792,7 @@ Retrieve a single ticket type by its identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_ticket_type" method="get" path="/unified/ticketing/ticket_types/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -879,6 +887,7 @@ Retrieve a single user by their identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_get_user" method="get" path="/unified/ticketing/users/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -973,6 +982,7 @@ Retrieve a paginated list of attachment details for a ticket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_attachments" method="get" path="/unified/ticketing/tickets/{id}/attachments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1079,6 +1089,7 @@ Retrieve a paginated list of comments for a ticket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_comments" method="get" path="/unified/ticketing/tickets/{id}/comments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1185,6 +1196,7 @@ Retrieve a paginated list of project components.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_project_components" method="get" path="/unified/ticketing/projects/{id}/components" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1285,6 +1297,7 @@ Retrieve a paginated list of ticket types for a project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_project_ticket_types" method="get" path="/unified/ticketing/projects/{id}/ticket_types" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1389,6 +1402,7 @@ Retrieve a paginated list of projects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_projects" method="get" path="/unified/ticketing/projects" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1491,6 +1505,7 @@ Retrieve a paginated list of statuses for a ticket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_ticket_statuses" method="get" path="/unified/ticketing/tickets/{id}/statuses" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1595,6 +1610,7 @@ Retrieve a paginated list of all ticket types.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_ticket_types" method="get" path="/unified/ticketing/ticket_types" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1699,6 +1715,7 @@ Retrieve a paginated list of tickets.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_tickets" method="get" path="/unified/ticketing/tickets" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1803,6 +1820,7 @@ Retrieve a paginated list of users.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_list_users" method="get" path="/unified/ticketing/users" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1907,6 +1925,7 @@ Update an existing ticket record by its identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ticketing_update_ticket" method="patch" path="/unified/ticketing/tickets/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {

@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Get Connector Meta information for the given provider key
+ * Get Connector Meta Information
  */
 export function connectorsGetConnectorMeta(
   client: StackOneCore,

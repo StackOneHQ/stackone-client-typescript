@@ -13,6 +13,16 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export enum EntitySkills2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the skill is active and therefore available for use
+ */
+export type EntitySkillsActive = boolean | EntitySkills2;
+
 export type EntitySkills4 = {};
 
 export type EntitySkillsSourceValue =
@@ -561,7 +571,7 @@ export type EntitySkills = {
   /**
    * Whether the skill is active and therefore available for use
    */
-  active?: boolean | null | undefined;
+  active?: boolean | EntitySkills2 | null | undefined;
   /**
    * The ID associated with this skill
    */
@@ -587,6 +597,75 @@ export type EntitySkills = {
    */
   remoteId?: string | null | undefined;
 };
+
+/** @internal */
+export const EntitySkills2$inboundSchema: z.ZodNativeEnum<
+  typeof EntitySkills2
+> = z.nativeEnum(EntitySkills2);
+
+/** @internal */
+export const EntitySkills2$outboundSchema: z.ZodNativeEnum<
+  typeof EntitySkills2
+> = EntitySkills2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EntitySkills2$ {
+  /** @deprecated use `EntitySkills2$inboundSchema` instead. */
+  export const inboundSchema = EntitySkills2$inboundSchema;
+  /** @deprecated use `EntitySkills2$outboundSchema` instead. */
+  export const outboundSchema = EntitySkills2$outboundSchema;
+}
+
+/** @internal */
+export const EntitySkillsActive$inboundSchema: z.ZodType<
+  EntitySkillsActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), EntitySkills2$inboundSchema]);
+
+/** @internal */
+export type EntitySkillsActive$Outbound = boolean | string;
+
+/** @internal */
+export const EntitySkillsActive$outboundSchema: z.ZodType<
+  EntitySkillsActive$Outbound,
+  z.ZodTypeDef,
+  EntitySkillsActive
+> = z.union([z.boolean(), EntitySkills2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EntitySkillsActive$ {
+  /** @deprecated use `EntitySkillsActive$inboundSchema` instead. */
+  export const inboundSchema = EntitySkillsActive$inboundSchema;
+  /** @deprecated use `EntitySkillsActive$outboundSchema` instead. */
+  export const outboundSchema = EntitySkillsActive$outboundSchema;
+  /** @deprecated use `EntitySkillsActive$Outbound` instead. */
+  export type Outbound = EntitySkillsActive$Outbound;
+}
+
+export function entitySkillsActiveToJSON(
+  entitySkillsActive: EntitySkillsActive,
+): string {
+  return JSON.stringify(
+    EntitySkillsActive$outboundSchema.parse(entitySkillsActive),
+  );
+}
+
+export function entitySkillsActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<EntitySkillsActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntitySkillsActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntitySkillsActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const EntitySkills4$inboundSchema: z.ZodType<
@@ -1339,7 +1418,8 @@ export const EntitySkills$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), EntitySkills2$inboundSchema]))
+    .optional(),
   id: z.nullable(z.string()).optional(),
   language: z.nullable(z.lazy(() => EntitySkillsLanguage$inboundSchema))
     .optional(),
@@ -1361,7 +1441,7 @@ export const EntitySkills$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EntitySkills$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   id?: string | null | undefined;
   language?: EntitySkillsLanguage$Outbound | null | undefined;
   maximum_proficiency?: MaximumProficiency$Outbound | null | undefined;
@@ -1376,7 +1456,8 @@ export const EntitySkills$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EntitySkills
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), EntitySkills2$outboundSchema]))
+    .optional(),
   id: z.nullable(z.string()).optional(),
   language: z.nullable(z.lazy(() => EntitySkillsLanguage$outboundSchema))
     .optional(),

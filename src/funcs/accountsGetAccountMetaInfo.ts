@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Get meta information of the account
+ * Get Account Meta Information
  */
 export function accountsGetAccountMetaInfo(
   client: StackOneCore,

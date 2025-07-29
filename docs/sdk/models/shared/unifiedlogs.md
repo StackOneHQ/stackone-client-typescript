@@ -60,6 +60,7 @@ let value: UnifiedLogs = {
   },
   service: "hris",
   sourceId: "1234567890",
+  sourceIp: "192.168.1.1",
   sourceType: "DASHBOARD",
   sourceValue: "ACCOUNT_TESTER",
   startTime: new Date("2021-01-01T00:00:00Z"),
@@ -119,6 +120,7 @@ let value: UnifiedLogs = {
         statusCode: 200,
       },
       service: "hris",
+      sourceIp: "192.168.1.1",
       startTime: new Date("2021-01-01T00:00:00Z"),
       status: 200,
       subResource: "documents",
@@ -153,6 +155,7 @@ let value: UnifiedLogs = {
 | `response`                                                                                    | [shared.UnifiedLogsResponse](../../../sdk/models/shared/unifiedlogsresponse.md)               | :heavy_minus_sign:                                                                            | The advanced log response data                                                                |                                                                                               |
 | `service`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requested service                                                                         | hris                                                                                          |
 | `sourceId`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requests source ID                                                                        | 1234567890                                                                                    |
+| `sourceIp`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requests source IPV4 ip address                                                           | 192.168.1.1                                                                                   |
 | `sourceType`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requests source type                                                                      | DASHBOARD                                                                                     |
 | `sourceValue`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The requests source value                                                                     | ACCOUNT_TESTER                                                                                |
 | `startTime`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The request start time ISO8601 date string                                                    | 2021-01-01T00:00:00Z                                                                          |

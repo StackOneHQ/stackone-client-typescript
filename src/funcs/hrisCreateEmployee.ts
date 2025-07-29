@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Creates an employee
+ * Create Employee
  */
 export function hrisCreateEmployee(
   client: StackOneCore,

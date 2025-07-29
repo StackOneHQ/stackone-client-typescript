@@ -76,6 +76,10 @@ export type UnifiedLogsPartial = {
    */
   sourceId?: string | null | undefined;
   /**
+   * The requests source IPV4 ip address
+   */
+  sourceIp?: string | null | undefined;
+  /**
    * The requests source type
    */
   sourceType?: string | null | undefined;
@@ -134,6 +138,7 @@ export const UnifiedLogsPartial$inboundSchema: z.ZodType<
   resource: z.nullable(z.string()).optional(),
   service: z.nullable(z.string()).optional(),
   source_id: z.nullable(z.string()).optional(),
+  source_ip: z.nullable(z.string()).optional(),
   source_type: z.nullable(z.string()).optional(),
   source_value: z.nullable(z.string()).optional(),
   start_time: z.nullable(
@@ -155,6 +160,7 @@ export const UnifiedLogsPartial$inboundSchema: z.ZodType<
     "project_id": "projectId",
     "request_id": "requestId",
     "source_id": "sourceId",
+    "source_ip": "sourceIp",
     "source_type": "sourceType",
     "source_value": "sourceValue",
     "start_time": "startTime",
@@ -180,6 +186,7 @@ export type UnifiedLogsPartial$Outbound = {
   resource?: string | null | undefined;
   service?: string | null | undefined;
   source_id?: string | null | undefined;
+  source_ip?: string | null | undefined;
   source_type?: string | null | undefined;
   source_value?: string | null | undefined;
   start_time?: string | null | undefined;
@@ -212,6 +219,7 @@ export const UnifiedLogsPartial$outboundSchema: z.ZodType<
   resource: z.nullable(z.string()).optional(),
   service: z.nullable(z.string()).optional(),
   sourceId: z.nullable(z.string()).optional(),
+  sourceIp: z.nullable(z.string()).optional(),
   sourceType: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(z.string()).optional(),
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -231,6 +239,7 @@ export const UnifiedLogsPartial$outboundSchema: z.ZodType<
     projectId: "project_id",
     requestId: "request_id",
     sourceId: "source_id",
+    sourceIp: "source_ip",
     sourceType: "source_type",
     sourceValue: "source_value",
     startTime: "start_time",

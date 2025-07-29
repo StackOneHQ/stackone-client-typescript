@@ -20,6 +20,7 @@ Download File
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_download_file" method="get" path="/unified/documents/files/{id}/download" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -116,6 +117,7 @@ Get Drive
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_get_drive" method="get" path="/unified/documents/drives/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -210,6 +212,7 @@ Get File
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_get_file" method="get" path="/unified/documents/files/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -306,6 +309,7 @@ Get Folder
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_get_folder" method="get" path="/unified/documents/folders/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -402,6 +406,7 @@ List Drives
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_list_drives" method="get" path="/unified/documents/drives" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -506,6 +511,7 @@ List Files
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_list_files" method="get" path="/unified/documents/files" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -527,6 +533,7 @@ async function run() {
       name: "john_doe_resume.pdf",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -569,6 +576,7 @@ async function run() {
       name: "john_doe_resume.pdf",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -624,6 +632,7 @@ List Folders
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_list_folders" method="get" path="/unified/documents/folders" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -642,6 +651,7 @@ async function run() {
       folderId: "1234567890",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -681,6 +691,7 @@ async function run() {
       folderId: "1234567890",
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -736,6 +747,7 @@ Upload File
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="documents_upload_file" method="post" path="/unified/documents/files/upload" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";

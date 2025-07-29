@@ -8,6 +8,16 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export enum ShiftBreak2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether the break is paid
+ */
+export type IsPaid = boolean | ShiftBreak2;
+
 export type ShiftBreak = {
   /**
    * The date and time the break was created
@@ -28,7 +38,7 @@ export type ShiftBreak = {
   /**
    * Whether the break is paid
    */
-  isPaid?: boolean | null | undefined;
+  isPaid?: boolean | ShiftBreak2 | null | undefined;
   /**
    * The start time of the break
    */
@@ -38,6 +48,66 @@ export type ShiftBreak = {
    */
   updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const ShiftBreak2$inboundSchema: z.ZodNativeEnum<typeof ShiftBreak2> = z
+  .nativeEnum(ShiftBreak2);
+
+/** @internal */
+export const ShiftBreak2$outboundSchema: z.ZodNativeEnum<typeof ShiftBreak2> =
+  ShiftBreak2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ShiftBreak2$ {
+  /** @deprecated use `ShiftBreak2$inboundSchema` instead. */
+  export const inboundSchema = ShiftBreak2$inboundSchema;
+  /** @deprecated use `ShiftBreak2$outboundSchema` instead. */
+  export const outboundSchema = ShiftBreak2$outboundSchema;
+}
+
+/** @internal */
+export const IsPaid$inboundSchema: z.ZodType<IsPaid, z.ZodTypeDef, unknown> = z
+  .union([z.boolean(), ShiftBreak2$inboundSchema]);
+
+/** @internal */
+export type IsPaid$Outbound = boolean | string;
+
+/** @internal */
+export const IsPaid$outboundSchema: z.ZodType<
+  IsPaid$Outbound,
+  z.ZodTypeDef,
+  IsPaid
+> = z.union([z.boolean(), ShiftBreak2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IsPaid$ {
+  /** @deprecated use `IsPaid$inboundSchema` instead. */
+  export const inboundSchema = IsPaid$inboundSchema;
+  /** @deprecated use `IsPaid$outboundSchema` instead. */
+  export const outboundSchema = IsPaid$outboundSchema;
+  /** @deprecated use `IsPaid$Outbound` instead. */
+  export type Outbound = IsPaid$Outbound;
+}
+
+export function isPaidToJSON(isPaid: IsPaid): string {
+  return JSON.stringify(IsPaid$outboundSchema.parse(isPaid));
+}
+
+export function isPaidFromJSON(
+  jsonString: string,
+): SafeParseResult<IsPaid, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IsPaid$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IsPaid' from JSON`,
+  );
+}
 
 /** @internal */
 export const ShiftBreak$inboundSchema: z.ZodType<
@@ -53,7 +123,8 @@ export const ShiftBreak$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   id: z.nullable(z.string()).optional(),
-  is_paid: z.nullable(z.boolean()).optional(),
+  is_paid: z.nullable(z.union([z.boolean(), ShiftBreak2$inboundSchema]))
+    .optional(),
   start_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -76,7 +147,7 @@ export type ShiftBreak$Outbound = {
   duration?: string | null | undefined;
   end_time?: string | null | undefined;
   id?: string | null | undefined;
-  is_paid?: boolean | null | undefined;
+  is_paid?: boolean | string | null | undefined;
   start_time?: string | null | undefined;
   updated_at?: string | null | undefined;
 };
@@ -91,7 +162,8 @@ export const ShiftBreak$outboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   id: z.nullable(z.string()).optional(),
-  isPaid: z.nullable(z.boolean()).optional(),
+  isPaid: z.nullable(z.union([z.boolean(), ShiftBreak2$outboundSchema]))
+    .optional(),
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {

@@ -19,6 +19,16 @@ import {
   RawResponse$outboundSchema,
 } from "./rawresponse.js";
 
+export enum TicketingUserResult2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * If the user is active
+ */
+export type TicketingUserResultActive = boolean | TicketingUserResult2;
+
 export type TicketingUserResult4 = {};
 
 /**
@@ -69,7 +79,7 @@ export type TicketingUserResultData = {
   /**
    * If the user is active
    */
-  active?: boolean | null | undefined;
+  active?: boolean | TicketingUserResult2 | null | undefined;
   /**
    * The timestamp when the record was created
    */
@@ -121,6 +131,75 @@ export type TicketingUserResult = {
   data?: TicketingUserResultData | null | undefined;
   raw?: Array<RawResponse> | null | undefined;
 };
+
+/** @internal */
+export const TicketingUserResult2$inboundSchema: z.ZodNativeEnum<
+  typeof TicketingUserResult2
+> = z.nativeEnum(TicketingUserResult2);
+
+/** @internal */
+export const TicketingUserResult2$outboundSchema: z.ZodNativeEnum<
+  typeof TicketingUserResult2
+> = TicketingUserResult2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResult2$ {
+  /** @deprecated use `TicketingUserResult2$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserResult2$inboundSchema;
+  /** @deprecated use `TicketingUserResult2$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserResult2$outboundSchema;
+}
+
+/** @internal */
+export const TicketingUserResultActive$inboundSchema: z.ZodType<
+  TicketingUserResultActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), TicketingUserResult2$inboundSchema]);
+
+/** @internal */
+export type TicketingUserResultActive$Outbound = boolean | string;
+
+/** @internal */
+export const TicketingUserResultActive$outboundSchema: z.ZodType<
+  TicketingUserResultActive$Outbound,
+  z.ZodTypeDef,
+  TicketingUserResultActive
+> = z.union([z.boolean(), TicketingUserResult2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TicketingUserResultActive$ {
+  /** @deprecated use `TicketingUserResultActive$inboundSchema` instead. */
+  export const inboundSchema = TicketingUserResultActive$inboundSchema;
+  /** @deprecated use `TicketingUserResultActive$outboundSchema` instead. */
+  export const outboundSchema = TicketingUserResultActive$outboundSchema;
+  /** @deprecated use `TicketingUserResultActive$Outbound` instead. */
+  export type Outbound = TicketingUserResultActive$Outbound;
+}
+
+export function ticketingUserResultActiveToJSON(
+  ticketingUserResultActive: TicketingUserResultActive,
+): string {
+  return JSON.stringify(
+    TicketingUserResultActive$outboundSchema.parse(ticketingUserResultActive),
+  );
+}
+
+export function ticketingUserResultActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<TicketingUserResultActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TicketingUserResultActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TicketingUserResultActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const TicketingUserResult4$inboundSchema: z.ZodType<
@@ -363,7 +442,8 @@ export const TicketingUserResultData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), TicketingUserResult2$inboundSchema]))
+    .optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -396,7 +476,7 @@ export const TicketingUserResultData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type TicketingUserResultData$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   created_at?: string | null | undefined;
   customer_account_reference?: string | null | undefined;
   first_name?: string | null | undefined;
@@ -417,7 +497,9 @@ export const TicketingUserResultData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingUserResultData
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(
+    z.union([z.boolean(), TicketingUserResult2$outboundSchema]),
+  ).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   customerAccountReference: z.nullable(z.string()).optional(),
   firstName: z.nullable(z.string()).optional(),

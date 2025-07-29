@@ -165,7 +165,7 @@ export class Ats extends ClientSDK {
   }
 
   /**
-   * Creates an offer
+   * Create Offer
    */
   async createOffer(
     request: operations.AtsCreateOfferRequest,
@@ -1058,7 +1058,7 @@ export class Ats extends ClientSDK {
   }
 
   /**
-   * Update an Application
+   * Update Application
    */
   async updateApplication(
     request: operations.AtsUpdateApplicationRequest,
@@ -1072,7 +1072,7 @@ export class Ats extends ClientSDK {
   }
 
   /**
-   * Update an Application Note
+   * Update Application Note
    */
   async updateApplicationNote(
     request: operations.AtsUpdateApplicationNoteRequest,

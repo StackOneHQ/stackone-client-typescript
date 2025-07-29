@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 71bdb2e3861767557873f2ded96bb057
+  docChecksum: 50da4a0b9e5eedc5bb88e23d614e1353
   docVersion: 1.0.0
-  speakeasyVersion: 1.587.0
-  generationVersion: 2.662.0
-  releaseVersion: 4.23.4
-  configChecksum: 7ce542775bdfd4e6c16928c874ad6671
+  speakeasyVersion: 1.592.1
+  generationVersion: 2.667.0
+  releaseVersion: 4.23.5
+  configChecksum: b39465de4c550fe3400dc74abb43fc7e
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.15
+    core: 3.21.16
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -616,6 +616,13 @@ generatedFiles:
   - docs/sdk/models/operations/stackonelistlinkedaccountsresponse.md
   - docs/sdk/models/operations/stackonelistlogsrequest.md
   - docs/sdk/models/operations/stackonelistlogsresponse.md
+  - docs/sdk/models/operations/stackonelistplatformlogsqueryparamorderby.md
+  - docs/sdk/models/operations/stackonelistplatformlogsqueryparamorderdirection.md
+  - docs/sdk/models/operations/stackonelistplatformlogsqueryparamrequestlogsorderby.md
+  - docs/sdk/models/operations/stackonelistplatformlogsqueryparamrequestlogsorderdirection.md
+  - docs/sdk/models/operations/stackonelistplatformlogsrequest.md
+  - docs/sdk/models/operations/stackonelistplatformlogsresponse.md
+  - docs/sdk/models/operations/stackoneliststeplogsqueryparamfilter.md
   - docs/sdk/models/operations/stackoneliststeplogsqueryparamorderby.md
   - docs/sdk/models/operations/stackoneliststeplogsqueryparamorderdirection.md
   - docs/sdk/models/operations/stackoneliststeplogsrequest.md
@@ -1095,7 +1102,9 @@ generatedFiles:
   - docs/sdk/models/shared/employeetype.md
   - docs/sdk/models/shared/employeevalue.md
   - docs/sdk/models/shared/employment.md
+  - docs/sdk/models/shared/employment2.md
   - docs/sdk/models/shared/employment4.md
+  - docs/sdk/models/shared/employmentactive.md
   - docs/sdk/models/shared/employmentcontracttype.md
   - docs/sdk/models/shared/employmentdepartment.md
   - docs/sdk/models/shared/employmentdurationunit.md
@@ -1152,7 +1161,9 @@ generatedFiles:
   - docs/sdk/models/shared/endhalfday.md
   - docs/sdk/models/shared/entityskillresult.md
   - docs/sdk/models/shared/entityskills.md
+  - docs/sdk/models/shared/entityskills2.md
   - docs/sdk/models/shared/entityskills4.md
+  - docs/sdk/models/shared/entityskillsactive.md
   - docs/sdk/models/shared/entityskillscreaterequestdto.md
   - docs/sdk/models/shared/entityskillscreaterequestdto4.md
   - docs/sdk/models/shared/entityskillscreaterequestdtomaximumproficiency.md
@@ -1621,6 +1632,7 @@ generatedFiles:
   - docs/sdk/models/shared/interviewvalue.md
   - docs/sdk/models/shared/inviteemployeeresult.md
   - docs/sdk/models/shared/isbotuser.md
+  - docs/sdk/models/shared/ispaid.md
   - docs/sdk/models/shared/isroot.md
   - docs/sdk/models/shared/issuedby.md
   - docs/sdk/models/shared/job.md
@@ -1793,6 +1805,8 @@ generatedFiles:
   - docs/sdk/models/shared/payperiod.md
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/phonenumbertype.md
+  - docs/sdk/models/shared/platformlog.md
+  - docs/sdk/models/shared/platformlogspaginated.md
   - docs/sdk/models/shared/policy.md
   - docs/sdk/models/shared/position.md
   - docs/sdk/models/shared/position4.md
@@ -1874,6 +1888,7 @@ generatedFiles:
   - docs/sdk/models/shared/security.md
   - docs/sdk/models/shared/setupinformation.md
   - docs/sdk/models/shared/shiftbreak.md
+  - docs/sdk/models/shared/shiftbreak2.md
   - docs/sdk/models/shared/skillresult.md
   - docs/sdk/models/shared/skills.md
   - docs/sdk/models/shared/skills2.md
@@ -1940,8 +1955,12 @@ generatedFiles:
   - docs/sdk/models/shared/ticketingattachmentspaginated.md
   - docs/sdk/models/shared/ticketingattachmentvalue.md
   - docs/sdk/models/shared/ticketingcomment.md
+  - docs/sdk/models/shared/ticketingcomment2.md
+  - docs/sdk/models/shared/ticketingcommentinternal.md
   - docs/sdk/models/shared/ticketingcommentresult.md
+  - docs/sdk/models/shared/ticketingcommentresult2.md
   - docs/sdk/models/shared/ticketingcommentresultdata.md
+  - docs/sdk/models/shared/ticketingcommentresultinternal.md
   - docs/sdk/models/shared/ticketingcommentspaginated.md
   - docs/sdk/models/shared/ticketingcomponent.md
   - docs/sdk/models/shared/ticketingcomponentresult.md
@@ -2002,9 +2021,13 @@ generatedFiles:
   - docs/sdk/models/shared/ticketingticketupdaterequestdtotype.md
   - docs/sdk/models/shared/ticketingticketupdaterequestdtovalue.md
   - docs/sdk/models/shared/ticketinguser.md
+  - docs/sdk/models/shared/ticketinguser2.md
   - docs/sdk/models/shared/ticketinguser4.md
+  - docs/sdk/models/shared/ticketinguseractive.md
   - docs/sdk/models/shared/ticketinguserresult.md
+  - docs/sdk/models/shared/ticketinguserresult2.md
   - docs/sdk/models/shared/ticketinguserresult4.md
+  - docs/sdk/models/shared/ticketinguserresultactive.md
   - docs/sdk/models/shared/ticketinguserresultdata.md
   - docs/sdk/models/shared/ticketinguserresultsourcevalue.md
   - docs/sdk/models/shared/ticketinguserresulttype.md
@@ -2377,6 +2400,7 @@ generatedFiles:
   - src/funcs/proxyProxyRequest.ts
   - src/funcs/requestLogsGetLog.ts
   - src/funcs/requestLogsListLogs.ts
+  - src/funcs/requestLogsListPlatformLogs.ts
   - src/funcs/requestLogsListStepLogs.ts
   - src/funcs/ticketingCreateTicket.ts
   - src/funcs/ticketingDownloadTicketingAttachment.ts
@@ -2677,6 +2701,7 @@ generatedFiles:
   - src/sdk/models/operations/stackonelistconnectorsmeta.ts
   - src/sdk/models/operations/stackonelistlinkedaccounts.ts
   - src/sdk/models/operations/stackonelistlogs.ts
+  - src/sdk/models/operations/stackonelistplatformlogs.ts
   - src/sdk/models/operations/stackoneliststeplogs.ts
   - src/sdk/models/operations/stackoneproxyrequest.ts
   - src/sdk/models/operations/stackoneupdateaccount.ts
@@ -2947,6 +2972,8 @@ generatedFiles:
   - src/sdk/models/shared/package.ts
   - src/sdk/models/shared/patchaccountexternaldto.ts
   - src/sdk/models/shared/phonenumber.ts
+  - src/sdk/models/shared/platformlog.ts
+  - src/sdk/models/shared/platformlogspaginated.ts
   - src/sdk/models/shared/position.ts
   - src/sdk/models/shared/positionresult.ts
   - src/sdk/models/shared/positionspaginated.ts
@@ -3348,7 +3375,7 @@ examples:
           include: "step_logs"
       responses:
         "200":
-          application/json: {"data": {"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "event_datetime": "2021-01-01T00:00:00Z", "http_method": "get", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request": {"headers": {"content-type": "application/json", "authorization": "Bearer token"}, "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "method": "get", "url": {"hostname": "example.com", "path": "/api/v1/resource", "query_params": {"page": 1, "limit": 10}, "url": "https://example.com/api/v1/resource"}}, "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "response": {"custom_mapping_errors": [{"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}], "headers": {"content-type": "application/json", "authorization": "Bearer token"}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "status_code": 200}, "service": "hris", "source_id": "1234567890", "source_type": "DASHBOARD", "source_value": "ACCOUNT_TESTER", "start_time": "2021-01-01T00:00:00Z", "status": 200, "step_requests": [{"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "http_method": "get", "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request": {"headers": {"content-type": "application/json", "authorization": "Bearer token"}, "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "method": "get", "url": {"hostname": "example.com", "path": "/api/v1/resource", "query_params": {"page": 1, "limit": 10}, "url": "https://example.com/api/v1/resource"}}, "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "response": {"custom_mapping_errors": [{"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}, {"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}, {"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}], "headers": {"content-type": "application/json", "authorization": "Bearer token"}, "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}, {"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}, {"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "status_code": 200}, "service": "hris", "start_time": "2021-01-01T00:00:00Z", "status": 200, "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}], "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}}
+          application/json: {"data": {"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "event_datetime": "2021-01-01T00:00:00Z", "http_method": "get", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request": {"headers": {"content-type": "application/json", "authorization": "Bearer token"}, "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "method": "get", "url": {"hostname": "example.com", "path": "/api/v1/resource", "query_params": {"page": 1, "limit": 10}, "url": "https://example.com/api/v1/resource"}}, "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "response": {"custom_mapping_errors": [{"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}], "headers": {"content-type": "application/json", "authorization": "Bearer token"}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "status_code": 200}, "service": "hris", "source_id": "1234567890", "source_ip": "192.168.1.1", "source_type": "DASHBOARD", "source_value": "ACCOUNT_TESTER", "start_time": "2021-01-01T00:00:00Z", "status": 200, "step_requests": [{"account_id": "45355976281015164504", "action": "download", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "http_method": "get", "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "is_worker": false, "path": "/unified/hris/employees", "project_id": "dev-project-68574", "provider": "planday", "request": {"headers": {"content-type": "application/json", "authorization": "Bearer token"}, "id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "method": "get", "url": {"hostname": "example.com", "path": "/api/v1/resource", "query_params": {"page": 1, "limit": 10}, "url": "https://example.com/api/v1/resource"}}, "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "response": {"custom_mapping_errors": [{"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}, {"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}, {"id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "message": "Invalid value", "targetField": "first_name"}], "headers": {"content-type": "application/json", "authorization": "Bearer token"}, "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}, {"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}, {"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "status_code": 200}, "service": "hris", "start_time": "2021-01-01T00:00:00Z", "status": 200, "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}], "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -6609,6 +6636,7 @@ examples:
           updated_after: "2020-01-01T00:00:00.000Z"
           nested_items: "true"
           include: "all_parent_folder_ids"
+          folder_id: "1234567890"
         header:
           x-account-id: "<id>"
       responses:
@@ -6647,6 +6675,7 @@ examples:
           updated_after: "2020-01-01T00:00:00.000Z"
           nested_items: "true"
           include: "all_parent_folder_ids"
+          folder_id: "1234567890"
         header:
           x-account-id: "<id>"
       responses:
@@ -12628,6 +12657,38 @@ examples:
           application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
         "412":
           application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  stackone_list_platform_logs:
+    speakeasy-default-stackone-list-platform-logs:
+      parameters:
+        query:
+          order_by: "duration"
+          order_direction: "asc"
+          filter: {"account_ids": "45355976281015164504,45355976281015164505", "actions": "download,upload", "categories": "hris,ats", "end_date": "2020-01-01T00:00:00.000Z", "http_methods": "GET,POST", "order_by": "eventDatetime", "order_direction": "asc", "request_ids": "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c", "resources": "employees,users", "source_types": "DASHBOARD,SYNTHETIC_WEBHOOK", "start_date": "2020-01-01T00:00:00.000Z", "status_codes": "200,400", "success": true}
+      responses:
+        "200":
+          application/json: {"data": [{"account_id": "45355976281015164504", "action": "download", "category": "hris", "child_resource": "time-off", "duration": 356, "end_time": "2021-01-01T00:00:00Z", "event_datetime": "2021-01-01T00:00:00Z", "http_method": "get", "path": "/unified/hris/employees", "project_id": "dev-project-68574", "request_id": "adbf752f-6457-4ddd-89b3-98ae2252b83b", "resource": "employees", "source_id": "1234567890", "source_ip": "192.168.1.1", "source_type": "DASHBOARD", "source_value": "ACCOUNT_TESTER", "start_time": "2021-01-01T00:00:00Z", "status": 200, "sub_resource": "documents", "success": true, "url": "https://api.stackone.com/unified/hris/employees?raw=false"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
         "422":
           application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
         "429":
