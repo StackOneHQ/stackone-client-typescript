@@ -11,7 +11,7 @@
 * [createCandidate](#createcandidate) - Create Candidate
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
 * [createJob](#createjob) - Create Job
-* [createOffer](#createoffer) - Creates an offer
+* [createOffer](#createoffer) - Create Offer
 * [deleteBackgroundCheckPackage](#deletebackgroundcheckpackage) - Delete Background Check Package
 * [downloadApplicationDocument](#downloadapplicationdocument) - Download Application Document
 * [getApplication](#getapplication) - Get Application
@@ -69,8 +69,8 @@
 * [orderAssessmentsRequest](#orderassessmentsrequest) - Order Assessments Request
 * [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
 * [rejectApplication](#rejectapplication) - Reject Application
-* [updateApplication](#updateapplication) - Update an Application
-* [updateApplicationNote](#updateapplicationnote) - Update an Application Note
+* [updateApplication](#updateapplication) - Update Application
+* [updateApplicationNote](#updateapplicationnote) - Update Application Note
 * [updateAssessmentsResult](#updateassessmentsresult) - Update Assessments Result
 * [updateBackgroundCheckPackage](#updatebackgroundcheckpackage) - Update Background Check Package
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
@@ -84,6 +84,7 @@ Create Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_application" method="post" path="/unified/ats/applications" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -344,6 +345,7 @@ Create Application Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_application_note" method="post" path="/unified/ats/applications/{id}/notes" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -480,6 +482,7 @@ Create Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_background_check_package" method="post" path="/unified/ats/background_checks/packages" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -612,6 +615,7 @@ Create Candidate
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_candidate" method="post" path="/unified/ats/candidates" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -792,6 +796,7 @@ Create Candidate Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_candidate_note" method="post" path="/unified/ats/candidates/{id}/notes" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -922,6 +927,7 @@ Create Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_job" method="post" path="/unified/ats/jobs" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateJobRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -1214,10 +1220,11 @@ run();
 
 ## createOffer
 
-Creates an offer
+Create Offer
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_create_offer" method="post" path="/unified/ats/offers" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -1344,6 +1351,7 @@ Delete Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_delete_background_check_package" method="delete" path="/unified/ats/background_checks/packages/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1436,6 +1444,7 @@ Download Application Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_download_application_document" method="get" path="/unified/ats/applications/{id}/documents/{subResourceId}/download" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1534,6 +1543,7 @@ Get Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application" method="get" path="/unified/ats/applications/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1632,6 +1642,7 @@ Get Application Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_custom_field_definition" method="get" path="/unified/ats/custom_field_definitions/applications/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1734,6 +1745,7 @@ Get Application Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_document" method="get" path="/unified/ats/applications/{id}/documents/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1830,6 +1842,7 @@ Get Application Document Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_document_category" method="get" path="/unified/ats/documents/application_categories/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1924,6 +1937,7 @@ Get Application Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_note" method="get" path="/unified/ats/applications/{id}/notes/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2020,6 +2034,7 @@ Get Application Offer
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_offer" method="get" path="/unified/ats/applications/{id}/offers/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2116,6 +2131,7 @@ Get Applications scheduled interview
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_scheduled_interview" method="get" path="/unified/ats/applications/{id}/scheduled_interviews/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2212,6 +2228,7 @@ Get Application Scorecard
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_application_scorecard" method="get" path="/unified/ats/applications/{id}/scorecards/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2308,6 +2325,7 @@ Get Assessments Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_assessments_package" method="get" path="/unified/ats/assessments/packages/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2400,6 +2418,7 @@ Get Assessments Results
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_assessments_result" method="get" path="/unified/ats/assessments/orders/{id}/results" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2494,6 +2513,7 @@ Get Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_background_check_package" method="get" path="/unified/ats/background_checks/packages/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2588,6 +2608,7 @@ Get Background Check Results
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_background_check_result" method="get" path="/unified/ats/background_checks/orders/{id}/results" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2682,6 +2703,7 @@ Get Candidate
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_candidate" method="get" path="/unified/ats/candidates/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2778,6 +2800,7 @@ Get Candidate Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_candidate_custom_field_definition" method="get" path="/unified/ats/custom_field_definitions/candidates/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2880,6 +2903,7 @@ Get Candidate Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_candidate_note" method="get" path="/unified/ats/candidates/{id}/notes/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2976,6 +3000,7 @@ Get Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_department" method="get" path="/unified/ats/departments/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3070,6 +3095,7 @@ Get Interview
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_interview" method="get" path="/unified/ats/interviews/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3164,6 +3190,7 @@ Get Interview Stage
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_interview_stage" method="get" path="/unified/ats/interview_stages/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3258,6 +3285,7 @@ Get Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_job" method="get" path="/unified/ats/jobs/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3356,6 +3384,7 @@ Get Job Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_job_custom_field_definition" method="get" path="/unified/ats/custom_field_definitions/jobs/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3458,6 +3487,7 @@ Get Job Posting
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_job_posting" method="get" path="/unified/ats/job_postings/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3554,6 +3584,7 @@ Get List
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_list" method="get" path="/unified/ats/lists/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3648,6 +3679,7 @@ Get Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_location" method="get" path="/unified/ats/locations/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3742,6 +3774,7 @@ Get Offer
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_offer" method="get" path="/unified/ats/offers/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3836,6 +3869,7 @@ Get Rejected Reason
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_rejected_reason" method="get" path="/unified/ats/rejected_reasons/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -3930,6 +3964,7 @@ Get User
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_get_user" method="get" path="/unified/ats/users/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4024,6 +4059,7 @@ List Application Changes
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_application_changes" method="get" path="/unified/ats/applications/{id}/changes" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4128,6 +4164,7 @@ List Application Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_application_custom_field_definitions" method="get" path="/unified/ats/custom_field_definitions/applications" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4232,6 +4269,7 @@ List Application Document Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_application_document_categories" method="get" path="/unified/ats/documents/application_categories" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4334,6 +4372,7 @@ List Application Documents
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_application_documents" method="get" path="/unified/ats/applications/{id}/documents" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4440,6 +4479,7 @@ List Application Notes
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_application_notes" method="get" path="/unified/ats/applications/{id}/notes" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4546,6 +4586,7 @@ List Application Scorecards
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_application_scorecards" method="get" path="/unified/ats/applications/{id}/scorecards" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4652,6 +4693,7 @@ List Applications
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_applications" method="get" path="/unified/ats/applications" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4764,6 +4806,7 @@ List Application Offers
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_applications_offers" method="get" path="/unified/ats/applications/{id}/offers" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4870,6 +4913,7 @@ List Applications scheduled interviews
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_applications_scheduled_interviews" method="get" path="/unified/ats/applications/{id}/scheduled_interviews" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -4976,6 +5020,7 @@ List Assessments Packages
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_assessments_packages" method="get" path="/unified/ats/assessments/packages" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5078,6 +5123,7 @@ List Background Check Packages
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_background_check_packages" method="get" path="/unified/ats/background_checks/packages" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5182,6 +5228,7 @@ List Candidate Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_candidate_custom_field_definitions" method="get" path="/unified/ats/custom_field_definitions/candidates" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5286,6 +5333,7 @@ List Candidate Notes
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_candidate_notes" method="get" path="/unified/ats/candidates/{id}/notes" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5392,6 +5440,7 @@ List Candidates
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_candidates" method="get" path="/unified/ats/candidates" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5500,6 +5549,7 @@ List Departments
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_departments" method="get" path="/unified/ats/departments" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5604,6 +5654,7 @@ List Interview Stages
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_interview_stages" method="get" path="/unified/ats/interview_stages" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5708,6 +5759,7 @@ List Interviews
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_interviews" method="get" path="/unified/ats/interviews" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5814,6 +5866,7 @@ List Job Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_job_custom_field_definitions" method="get" path="/unified/ats/custom_field_definitions/jobs" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -5918,6 +5971,7 @@ List Job Postings
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_job_postings" method="get" path="/unified/ats/job_postings" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6026,6 +6080,7 @@ List Jobs
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_jobs" method="get" path="/unified/ats/jobs" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6136,6 +6191,7 @@ Get all Lists
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_lists" method="get" path="/unified/ats/lists" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6240,6 +6296,7 @@ List locations
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_locations" method="get" path="/unified/ats/locations" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6344,6 +6401,7 @@ List Offers
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_offers" method="get" path="/unified/ats/offers" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6448,6 +6506,7 @@ List Rejected Reasons
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_rejected_reasons" method="get" path="/unified/ats/rejected_reasons" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6552,6 +6611,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_list_users" method="get" path="/unified/ats/users" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6656,6 +6716,7 @@ Move Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_move_application" method="post" path="/unified/ats/applications/{id}/move" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -6760,6 +6821,7 @@ Order Assessments Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_order_assessments_request" method="post" path="/unified/ats/assessments/orders" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateCandidatesAssessmentsRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -6984,6 +7046,7 @@ Order Background Check Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_order_background_check_request" method="post" path="/unified/ats/background_checks/orders" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateBackgroundCheckOrderRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -7258,6 +7321,7 @@ Reject Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_reject_application" method="post" path="/unified/ats/applications/{id}/reject" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -7358,10 +7422,11 @@ run();
 
 ## updateApplication
 
-Update an Application
+Update Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_application" method="patch" path="/unified/ats/applications/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -7530,10 +7595,11 @@ run();
 
 ## updateApplicationNote
 
-Update an Application Note
+Update Application Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_application_note" method="patch" path="/unified/ats/applications/{id}/notes/{subResourceId}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsUpdateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -7660,6 +7726,7 @@ Update Assessments Result
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_assessments_result" method="patch" path="/unified/ats/assessments/orders/{id}/result" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsUpdateCandidatesAssessmentsResultsRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -7820,6 +7887,7 @@ Update Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_background_check_package" method="patch" path="/unified/ats/background_checks/packages/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -7950,6 +8018,7 @@ Update Background Check Result
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_background_check_result" method="patch" path="/unified/ats/background_checks/orders/{id}/result" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsUpdateBackgroundCheckResultRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -8110,6 +8179,7 @@ Update Candidate
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_candidate" method="patch" path="/unified/ats/candidates/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -8326,6 +8396,7 @@ Update Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_update_job" method="patch" path="/unified/ats/jobs/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsUpdateJobRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -8568,6 +8639,7 @@ Upload Application Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="ats_upload_application_document" method="post" path="/unified/ats/applications/{id}/documents/upload" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";

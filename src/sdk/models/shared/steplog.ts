@@ -148,6 +148,10 @@ export type StepLog = {
    */
   service?: string | null | undefined;
   /**
+   * The requests source IPV4 ip address
+   */
+  sourceIp?: string | null | undefined;
+  /**
    * The request start time ISO8601 date string
    */
   startTime?: Date | null | undefined;
@@ -392,6 +396,7 @@ export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
     response: z.nullable(z.lazy(() => StepLogResponse$inboundSchema))
       .optional(),
     service: z.nullable(z.string()).optional(),
+    source_ip: z.nullable(z.string()).optional(),
     start_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -408,6 +413,7 @@ export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
       "is_worker": "isWorker",
       "project_id": "projectId",
       "request_id": "requestId",
+      "source_ip": "sourceIp",
       "start_time": "startTime",
       "sub_resource": "subResource",
     });
@@ -431,6 +437,7 @@ export type StepLog$Outbound = {
   resource?: string | null | undefined;
   response?: StepLogResponse$Outbound | null | undefined;
   service?: string | null | undefined;
+  source_ip?: string | null | undefined;
   start_time?: string | null | undefined;
   status?: number | null | undefined;
   sub_resource?: string | null | undefined;
@@ -460,6 +467,7 @@ export const StepLog$outboundSchema: z.ZodType<
   resource: z.nullable(z.string()).optional(),
   response: z.nullable(z.lazy(() => StepLogResponse$outboundSchema)).optional(),
   service: z.nullable(z.string()).optional(),
+  sourceIp: z.nullable(z.string()).optional(),
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(z.number()).optional(),
   subResource: z.nullable(z.string()).optional(),
@@ -474,6 +482,7 @@ export const StepLog$outboundSchema: z.ZodType<
     isWorker: "is_worker",
     projectId: "project_id",
     requestId: "request_id",
+    sourceIp: "source_ip",
     startTime: "start_time",
     subResource: "sub_resource",
   });

@@ -19,7 +19,7 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Crm extends ClientSDK {
   /**
-   * Creates a new Contact
+   * Create Contact
    */
   async createContact(
     request: operations.CrmCreateContactRequest,

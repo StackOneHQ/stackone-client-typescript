@@ -16,6 +16,7 @@ Authenticate Connect Session
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_authenticate_connect_session" method="post" path="/connect_sessions/authenticate" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -105,6 +106,7 @@ Create Connect Session
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="stackone_create_connect_session" method="post" path="/connect_sessions" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import { ConnectSessionCreateCategories, ConnectSessionCreateType } from "@stackone/stackone-client-ts/sdk/models/shared";

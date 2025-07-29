@@ -109,7 +109,7 @@ run();
 
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
-* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
+* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
 
@@ -121,7 +121,7 @@ run();
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createJob](docs/sdks/ats/README.md#createjob) - Create Job
-* [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
+* [createOffer](docs/sdks/ats/README.md#createoffer) - Create Offer
 * [deleteBackgroundCheckPackage](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
 * [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
@@ -179,8 +179,8 @@ run();
 * [orderAssessmentsRequest](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
 * [orderBackgroundCheckRequest](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
 * [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
-* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
-* [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
+* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application
+* [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update Application Note
 * [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
 * [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 * [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
@@ -190,8 +190,8 @@ run();
 
 ### [connectors](docs/sdks/connectors/README.md)
 
-* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
-* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
+* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
+* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
 
 ### [connectSessions](docs/sdks/connectsessions/README.md)
 
@@ -200,7 +200,7 @@ run();
 
 ### [crm](docs/sdks/crm/README.md)
 
-* [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
+* [createContact](docs/sdks/crm/README.md#createcontact) - Create Contact
 * [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
 * [getContact](docs/sdks/crm/README.md#getcontact) - Get Contact
 * [getContactCustomFieldDefinition](docs/sdks/crm/README.md#getcontactcustomfielddefinition) - Get Contact Custom Field Definition
@@ -226,7 +226,7 @@ run();
 
 * [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 * [cancelEmployeeTimeOffRequest](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
-* [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
+* [createEmployee](docs/sdks/hris/README.md#createemployee) - Create Employee
 * [createEmployeeEmployment](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 * [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
@@ -290,7 +290,7 @@ run();
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
-* [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+* [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Update Employee
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 * [updateEmployeeTimeOffRequest](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
@@ -371,8 +371,9 @@ run();
 
 ### [requestLogs](docs/sdks/requestlogs/README.md)
 
-* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get a Log
+* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get Log
 * [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+* [listPlatformLogs](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 * [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 
 
@@ -723,7 +724,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`accountsDeleteAccount`](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 - [`accountsGetAccount`](docs/sdks/accounts/README.md#getaccount) - Get Account
-- [`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
+- [`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
@@ -732,7 +733,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsCreateCandidate`](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 - [`atsCreateCandidateNote`](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 - [`atsCreateJob`](docs/sdks/ats/README.md#createjob) - Create Job
-- [`atsCreateOffer`](docs/sdks/ats/README.md#createoffer) - Creates an offer
+- [`atsCreateOffer`](docs/sdks/ats/README.md#createoffer) - Create Offer
 - [`atsDeleteBackgroundCheckPackage`](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
 - [`atsDownloadApplicationDocument`](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 - [`atsGetApplication`](docs/sdks/ats/README.md#getapplication) - Get Application
@@ -790,19 +791,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsOrderAssessmentsRequest`](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
 - [`atsOrderBackgroundCheckRequest`](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
 - [`atsRejectApplication`](docs/sdks/ats/README.md#rejectapplication) - Reject Application
-- [`atsUpdateApplication`](docs/sdks/ats/README.md#updateapplication) - Update an Application
-- [`atsUpdateApplicationNote`](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
+- [`atsUpdateApplication`](docs/sdks/ats/README.md#updateapplication) - Update Application
+- [`atsUpdateApplicationNote`](docs/sdks/ats/README.md#updateapplicationnote) - Update Application Note
 - [`atsUpdateAssessmentsResult`](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
 - [`atsUpdateBackgroundCheckPackage`](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 - [`atsUpdateBackgroundCheckResult`](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 - [`atsUpdateCandidate`](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 - [`atsUpdateJob`](docs/sdks/ats/README.md#updatejob) - Update Job
 - [`atsUploadApplicationDocument`](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
-- [`connectorsGetConnectorMeta`](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
-- [`connectorsListConnectorsMeta`](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
+- [`connectorsGetConnectorMeta`](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
+- [`connectorsListConnectorsMeta`](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
 - [`connectSessionsAuthenticateConnectSession`](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 - [`connectSessionsCreateConnectSession`](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
-- [`crmCreateContact`](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
+- [`crmCreateContact`](docs/sdks/crm/README.md#createcontact) - Create Contact
 - [`crmGetAccount`](docs/sdks/crm/README.md#getaccount) - Get Account
 - [`crmGetContact`](docs/sdks/crm/README.md#getcontact) - Get Contact
 - [`crmGetContactCustomFieldDefinition`](docs/sdks/crm/README.md#getcontactcustomfielddefinition) - Get Contact Custom Field Definition
@@ -822,7 +823,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`documentsUploadFile`](docs/sdks/documents/README.md#uploadfile) - Upload File
 - [`hrisBatchUploadEmployeeDocument`](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 - [`hrisCancelEmployeeTimeOffRequest`](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
-- [`hrisCreateEmployee`](docs/sdks/hris/README.md#createemployee) - Creates an employee
+- [`hrisCreateEmployee`](docs/sdks/hris/README.md#createemployee) - Create Employee
 - [`hrisCreateEmployeeEmployment`](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 - [`hrisCreateEmployeeSkill`](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
 - [`hrisCreateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
@@ -884,7 +885,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListTimeEntries`](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
 - [`hrisListTimeOffPolicies`](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
-- [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+- [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Update Employee
 - [`hrisUpdateEmployeeEmployment`](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 - [`hrisUpdateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 - [`hrisUpdateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
@@ -946,8 +947,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
-- [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get a Log
+- [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get Log
 - [`requestLogsListLogs`](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+- [`requestLogsListPlatformLogs`](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 - [`requestLogsListStepLogs`](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 - [`ticketingCreateTicket`](docs/sdks/ticketing/README.md#createticket) - Create Ticket
 - [`ticketingDownloadTicketingAttachment`](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment

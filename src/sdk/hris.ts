@@ -108,7 +108,7 @@ export class Hris extends ClientSDK {
   }
 
   /**
-   * Creates an employee
+   * Create Employee
    */
   async createEmployee(
     request: operations.HrisCreateEmployeeRequest,
@@ -1096,7 +1096,7 @@ export class Hris extends ClientSDK {
   }
 
   /**
-   * Updates an employee
+   * Update Employee
    */
   async updateEmployee(
     request: operations.HrisUpdateEmployeeRequest,

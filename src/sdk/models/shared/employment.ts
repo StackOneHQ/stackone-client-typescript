@@ -25,6 +25,16 @@ import {
   HRISCostCenter$outboundSchema,
 } from "./hriscostcenter.js";
 
+export enum Employment2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * The employment active status
+ */
+export type EmploymentActive = boolean | Employment2;
+
 export type EmploymentSchemasContractType4 = {};
 
 export type EmploymentSchemasContractTypeSourceValue =
@@ -747,7 +757,7 @@ export type Employment = {
   /**
    * The employment active status
    */
-  active?: boolean | null | undefined;
+  active?: boolean | Employment2 | null | undefined;
   /**
    * The employment work schedule type
    */
@@ -870,6 +880,73 @@ export type Employment = {
   updatedAt?: Date | null | undefined;
   workTime?: EmploymentWorkTime | null | undefined;
 };
+
+/** @internal */
+export const Employment2$inboundSchema: z.ZodNativeEnum<typeof Employment2> = z
+  .nativeEnum(Employment2);
+
+/** @internal */
+export const Employment2$outboundSchema: z.ZodNativeEnum<typeof Employment2> =
+  Employment2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Employment2$ {
+  /** @deprecated use `Employment2$inboundSchema` instead. */
+  export const inboundSchema = Employment2$inboundSchema;
+  /** @deprecated use `Employment2$outboundSchema` instead. */
+  export const outboundSchema = Employment2$outboundSchema;
+}
+
+/** @internal */
+export const EmploymentActive$inboundSchema: z.ZodType<
+  EmploymentActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), Employment2$inboundSchema]);
+
+/** @internal */
+export type EmploymentActive$Outbound = boolean | string;
+
+/** @internal */
+export const EmploymentActive$outboundSchema: z.ZodType<
+  EmploymentActive$Outbound,
+  z.ZodTypeDef,
+  EmploymentActive
+> = z.union([z.boolean(), Employment2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmploymentActive$ {
+  /** @deprecated use `EmploymentActive$inboundSchema` instead. */
+  export const inboundSchema = EmploymentActive$inboundSchema;
+  /** @deprecated use `EmploymentActive$outboundSchema` instead. */
+  export const outboundSchema = EmploymentActive$outboundSchema;
+  /** @deprecated use `EmploymentActive$Outbound` instead. */
+  export type Outbound = EmploymentActive$Outbound;
+}
+
+export function employmentActiveToJSON(
+  employmentActive: EmploymentActive,
+): string {
+  return JSON.stringify(
+    EmploymentActive$outboundSchema.parse(employmentActive),
+  );
+}
+
+export function employmentActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentActive' from JSON`,
+  );
+}
 
 /** @internal */
 export const EmploymentSchemasContractType4$inboundSchema: z.ZodType<
@@ -4007,7 +4084,8 @@ export const Employment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Employment2$inboundSchema]))
+    .optional(),
   contract_type: z.nullable(z.lazy(() => ContractType$inboundSchema))
     .optional(),
   cost_center: z.nullable(z.lazy(() => CostCenter$inboundSchema)).optional(),
@@ -4086,7 +4164,7 @@ export const Employment$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Employment$Outbound = {
-  active?: boolean | null | undefined;
+  active?: boolean | string | null | undefined;
   contract_type?: ContractType$Outbound | null | undefined;
   cost_center?: CostCenter$Outbound | null | undefined;
   cost_centers?: Array<HRISCostCenter$Outbound> | null | undefined;
@@ -4127,7 +4205,8 @@ export const Employment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Employment
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
+  active: z.nullable(z.union([z.boolean(), Employment2$outboundSchema]))
+    .optional(),
   contractType: z.nullable(z.lazy(() => ContractType$outboundSchema))
     .optional(),
   costCenter: z.nullable(z.lazy(() => CostCenter$outboundSchema)).optional(),

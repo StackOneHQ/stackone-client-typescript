@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Creates an offer
+ * Create Offer
  */
 export function atsCreateOffer(
   client: StackOneCore,

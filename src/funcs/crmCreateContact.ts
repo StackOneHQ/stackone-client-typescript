@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Creates a new Contact
+ * Create Contact
  */
 export function crmCreateContact(
   client: StackOneCore,

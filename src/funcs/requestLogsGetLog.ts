@@ -26,7 +26,7 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Get a Log
+ * Get Log
  */
 export function requestLogsGetLog(
   client: StackOneCore,
