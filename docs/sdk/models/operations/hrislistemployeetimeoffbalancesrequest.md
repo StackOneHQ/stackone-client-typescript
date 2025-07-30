@@ -10,7 +10,7 @@ let value: HrisListEmployeeTimeOffBalancesRequest = {
   fields:
     "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   xAccountId: "<id>",

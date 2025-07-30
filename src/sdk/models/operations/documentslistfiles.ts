@@ -20,7 +20,7 @@ export type DocumentsListFilesQueryParamFilter = {
   /**
    * Use a string with a date to only select results created after that given date
    */
-  createdAfter?: string | null | undefined;
+  createdAfter?: Date | null | undefined;
   /**
    * Use to only include Files within the specified Drive
    */
@@ -36,7 +36,7 @@ export type DocumentsListFilesQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type DocumentsListFilesRequest = {
@@ -125,11 +125,15 @@ export const DocumentsListFilesQueryParamFilter$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   content: z.nullable(z.string()).optional(),
-  created_after: z.nullable(z.string()).optional(),
+  created_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   drive_id: z.nullable(z.string()).optional(),
   folder_id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "created_after": "createdAfter",
@@ -156,11 +160,11 @@ export const DocumentsListFilesQueryParamFilter$outboundSchema: z.ZodType<
   DocumentsListFilesQueryParamFilter
 > = z.object({
   content: z.nullable(z.string()).optional(),
-  createdAfter: z.nullable(z.string()).optional(),
+  createdAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   driveId: z.nullable(z.string()).optional(),
   folderId: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     createdAfter: "created_after",

@@ -9,7 +9,7 @@ let value: LmsListContentRequest = {
   fields:
     "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

@@ -9,7 +9,7 @@ let value: AtsListApplicationChangesRequest = {
   fields:
     "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values",
   filter: {
-    createdAfter: "2020-01-01T00:00:00.000Z",
+    createdAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   xAccountId: "<id>",

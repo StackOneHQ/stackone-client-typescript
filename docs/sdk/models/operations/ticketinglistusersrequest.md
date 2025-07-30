@@ -9,7 +9,7 @@ let value: TicketingListUsersRequest = {
   fields:
     "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

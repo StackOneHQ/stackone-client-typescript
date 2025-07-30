@@ -7,8 +7,8 @@ import { AssignmentResult, AssignmentSchemasValue } from "@stackone/stackone-cli
 
 let value: AssignmentResult = {
   data: {
-    createdAt: "2021-07-21T14:00:00.000Z",
-    dueDate: "2021-07-21T14:00:00.000Z",
+    createdAt: new Date("2021-07-21T14:00:00.000Z"),
+    dueDate: new Date("2021-07-21T14:00:00.000Z"),
     id: "123456",
     learningObjectExternalReference: "learning-content-123",
     learningObjectId: "e3gd34-23tr21-er234-345er56",
@@ -23,7 +23,7 @@ let value: AssignmentResult = {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",
     },
-    updatedAt: "2021-07-21T14:00:00.000Z",
+    updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     userId: "c28xyrc55866bvuv",
   },
 };

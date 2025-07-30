@@ -421,7 +421,7 @@ async function run() {
   const result = await stackOne.documents.listDrives({
     fields: "id,remote_id,name,description,url,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -456,7 +456,7 @@ async function run() {
   const res = await documentsListDrives(stackOne, {
     fields: "id,remote_id,name,description,url,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -527,11 +527,11 @@ async function run() {
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
       content: "FAQ of the project",
-      createdAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       driveId: "1234567890",
       folderId: "1234567890",
       name: "john_doe_resume.pdf",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     folderId: "1234567890",
     include: "all_parent_folder_ids",
@@ -570,11 +570,11 @@ async function run() {
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
     filter: {
       content: "FAQ of the project",
-      createdAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       driveId: "1234567890",
       folderId: "1234567890",
       name: "john_doe_resume.pdf",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     folderId: "1234567890",
     include: "all_parent_folder_ids",
@@ -649,7 +649,7 @@ async function run() {
     filter: {
       driveId: "1234567890",
       folderId: "1234567890",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     folderId: "1234567890",
     include: "all_parent_folder_ids",
@@ -689,7 +689,7 @@ async function run() {
     filter: {
       driveId: "1234567890",
       folderId: "1234567890",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     folderId: "1234567890",
     include: "all_parent_folder_ids",

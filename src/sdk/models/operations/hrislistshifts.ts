@@ -43,7 +43,7 @@ export type HrisListShiftsQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type HrisListShiftsRequest = {
@@ -144,7 +144,9 @@ export const HrisListShiftsQueryParamFilter$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   status: z.nullable(HrisListShiftsQueryParamStatus$inboundSchema).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "employee_id": "employeeId",
@@ -173,7 +175,7 @@ export const HrisListShiftsQueryParamFilter$outboundSchema: z.ZodType<
   endsBefore: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   startsAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(HrisListShiftsQueryParamStatus$outboundSchema).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     employeeId: "employee_id",

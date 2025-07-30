@@ -7,7 +7,7 @@ import { HrisListPositionsRequest, QueryParamStatus } from "@stackone/stackone-c
 
 let value: HrisListPositionsRequest = {
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   status: QueryParamStatus.Open,
   xAccountId: "<id>",

@@ -9,8 +9,8 @@ let value: AtsListJobPostingsRequest = {
   fields:
     "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
   filter: {
-    createdAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   include: "questionnaires",
   xAccountId: "<id>",

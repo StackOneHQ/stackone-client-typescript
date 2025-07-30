@@ -47,7 +47,7 @@ export type QueryParamFilter = {
   /**
    * A ISO8601 date string to filter the results by end_date.
    */
-  endDate?: string | null | undefined;
+  endDate?: Date | null | undefined;
   /**
    * A comma-separated list of HTTP methods to filter the results by.
    */
@@ -89,7 +89,7 @@ export type QueryParamFilter = {
   /**
    * A ISO8601 date string to filter the results by start_date.
    */
-  startDate?: string | null | undefined;
+  startDate?: Date | null | undefined;
   /**
    * A comma-separated list of status codes to filter the results by.
    */
@@ -222,7 +222,9 @@ export const QueryParamFilter$inboundSchema: z.ZodType<
   account_ids: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
   categories: z.nullable(z.string()).optional(),
-  end_date: z.nullable(z.string()).optional(),
+  end_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   http_methods: z.nullable(z.string()).optional(),
   order_by: z.nullable(
     StackoneListPlatformLogsQueryParamRequestLogsOrderBy$inboundSchema,
@@ -235,7 +237,9 @@ export const QueryParamFilter$inboundSchema: z.ZodType<
   source_ids: z.nullable(z.string()).optional(),
   source_types: z.nullable(z.string()).optional(),
   source_values: z.nullable(z.string()).optional(),
-  start_date: z.nullable(z.string()).optional(),
+  start_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   status_codes: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
@@ -282,7 +286,7 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
   accountIds: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
   categories: z.nullable(z.string()).optional(),
-  endDate: z.nullable(z.string()).optional(),
+  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   httpMethods: z.nullable(z.string()).optional(),
   orderBy: z.nullable(
     StackoneListPlatformLogsQueryParamRequestLogsOrderBy$outboundSchema,
@@ -295,7 +299,7 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
   sourceIds: z.nullable(z.string()).optional(),
   sourceTypes: z.nullable(z.string()).optional(),
   sourceValues: z.nullable(z.string()).optional(),
-  startDate: z.nullable(z.string()).optional(),
+  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   statusCodes: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
 }).transform((v) => {

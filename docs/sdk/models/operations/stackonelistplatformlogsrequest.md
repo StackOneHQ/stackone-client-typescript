@@ -16,7 +16,7 @@ let value: StackoneListPlatformLogsRequest = {
     accountIds: "45355976281015164504,45355976281015164505",
     actions: "download,upload",
     categories: "hris,ats",
-    endDate: "2020-01-01T00:00:00.000Z",
+    endDate: new Date("2020-01-01T00:00:00.000Z"),
     httpMethods: "GET,POST",
     orderBy: StackoneListPlatformLogsQueryParamRequestLogsOrderBy.Duration,
     orderDirection:
@@ -25,7 +25,7 @@ let value: StackoneListPlatformLogsRequest = {
       "adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c",
     resources: "employees,users",
     sourceTypes: "DASHBOARD,SYNTHETIC_WEBHOOK",
-    startDate: "2020-01-01T00:00:00.000Z",
+    startDate: new Date("2020-01-01T00:00:00.000Z"),
     statusCodes: "200,400",
     success: true,
   },

@@ -502,8 +502,8 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.createUserAssignment({
     lmsCreateAssignmentRequestDto: {
-      createdAt: "2021-07-21T14:00:00.000Z",
-      dueDate: "2021-07-21T14:00:00.000Z",
+      createdAt: new Date("2021-07-21T14:00:00.000Z"),
+      dueDate: new Date("2021-07-21T14:00:00.000Z"),
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -545,8 +545,8 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsCreateUserAssignment(stackOne, {
     lmsCreateAssignmentRequestDto: {
-      createdAt: "2021-07-21T14:00:00.000Z",
-      dueDate: "2021-07-21T14:00:00.000Z",
+      createdAt: new Date("2021-07-21T14:00:00.000Z"),
+      dueDate: new Date("2021-07-21T14:00:00.000Z"),
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -622,7 +622,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.lms.createUserCompletion({
     lmsCreateCompletionRequestDto: {
-      completedAt: "2021-07-21T14:00:00.000Z",
+      completedAt: new Date("2021-07-21T14:00:00.000Z"),
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -660,7 +660,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await lmsCreateUserCompletion(stackOne, {
     lmsCreateCompletionRequestDto: {
-      completedAt: "2021-07-21T14:00:00.000Z",
+      completedAt: new Date("2021-07-21T14:00:00.000Z"),
       learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
@@ -1680,7 +1680,7 @@ async function run() {
   const result = await stackOne.lms.listAssignments({
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -1717,7 +1717,7 @@ async function run() {
   const res = await lmsListAssignments(stackOne, {
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -1789,7 +1789,7 @@ async function run() {
   const result = await stackOne.lms.listCategories({
     fields: "id,remote_id,name,active,hierarchy,level,language",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -1824,7 +1824,7 @@ async function run() {
   const res = await lmsListCategories(stackOne, {
     fields: "id,remote_id,name,active,hierarchy,level,language",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -1894,7 +1894,7 @@ async function run() {
   const result = await stackOne.lms.listCompletions({
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -1929,7 +1929,7 @@ async function run() {
   const res = await lmsListCompletions(stackOne, {
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -1999,7 +1999,7 @@ async function run() {
   const result = await stackOne.lms.listContent({
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2034,7 +2034,7 @@ async function run() {
   const res = await lmsListContent(stackOne, {
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2104,7 +2104,7 @@ async function run() {
   const result = await stackOne.lms.listCourses({
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2139,7 +2139,7 @@ async function run() {
   const res = await lmsListCourses(stackOne, {
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2209,7 +2209,7 @@ async function run() {
   const result = await stackOne.lms.listSkills({
     fields: "id,remote_id,name,active,hierarchy,language",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2244,7 +2244,7 @@ async function run() {
   const res = await lmsListSkills(stackOne, {
     fields: "id,remote_id,name,active,hierarchy,language",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2314,7 +2314,7 @@ async function run() {
   const result = await stackOne.lms.listUserAssignments({
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -2352,7 +2352,7 @@ async function run() {
   const res = await lmsListUserAssignments(stackOne, {
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -2425,7 +2425,7 @@ async function run() {
   const result = await stackOne.lms.listUserCompletions({
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -2461,7 +2461,7 @@ async function run() {
   const res = await lmsListUserCompletions(stackOne, {
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -2532,7 +2532,7 @@ async function run() {
   const result = await stackOne.lms.listUsers({
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -2567,7 +2567,7 @@ async function run() {
   const res = await lmsListUsers(stackOne, {
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",

@@ -11,7 +11,7 @@ let value: HrisListTimeEntriesRequest = {
   filter: {
     endTime: "2020-01-01T00:00:00.000Z",
     startTime: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

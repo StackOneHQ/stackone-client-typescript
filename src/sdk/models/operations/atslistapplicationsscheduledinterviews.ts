@@ -16,7 +16,7 @@ export type AtsListApplicationsScheduledInterviewsQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type AtsListApplicationsScheduledInterviewsRequest = {
@@ -101,7 +101,9 @@ export const AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.object({
-    updated_after: z.nullable(z.string()).optional(),
+    updated_after: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "updated_after": "updatedAfter",
@@ -120,7 +122,8 @@ export const AtsListApplicationsScheduledInterviewsQueryParamFilter$outboundSche
     z.ZodTypeDef,
     AtsListApplicationsScheduledInterviewsQueryParamFilter
   > = z.object({
-    updatedAfter: z.nullable(z.string()).optional(),
+    updatedAfter: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
   }).transform((v) => {
     return remap$(v, {
       updatedAfter: "updated_after",

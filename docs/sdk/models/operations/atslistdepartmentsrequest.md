@@ -8,7 +8,7 @@ import { AtsListDepartmentsRequest } from "@stackone/stackone-client-ts/sdk/mode
 let value: AtsListDepartmentsRequest = {
   fields: "id,remote_id,name",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

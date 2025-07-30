@@ -16,11 +16,11 @@ export type AtsListInterviewsQueryParamFilter = {
   /**
    * Use a string with a date to only select results created after that given date
    */
-  createdAfter?: string | null | undefined;
+  createdAfter?: Date | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type AtsListInterviewsRequest = {
@@ -98,8 +98,12 @@ export const AtsListInterviewsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created_after: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  created_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "created_after": "createdAfter",
@@ -119,8 +123,8 @@ export const AtsListInterviewsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListInterviewsQueryParamFilter
 > = z.object({
-  createdAfter: z.nullable(z.string()).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  createdAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     createdAfter: "created_after",

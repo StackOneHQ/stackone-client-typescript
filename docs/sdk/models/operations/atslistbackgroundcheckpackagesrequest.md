@@ -8,7 +8,7 @@ import { AtsListBackgroundCheckPackagesRequest } from "@stackone/stackone-client
 let value: AtsListBackgroundCheckPackagesRequest = {
   fields: "id,remote_id,name,description,tests",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

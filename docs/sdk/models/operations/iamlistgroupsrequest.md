@@ -10,7 +10,7 @@ let value: IamListGroupsRequest = {
   fields:
     "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

@@ -8,7 +8,7 @@ import { LmsListSkillsRequest } from "@stackone/stackone-client-ts/sdk/models/op
 let value: LmsListSkillsRequest = {
   fields: "id,remote_id,name,active,hierarchy,language",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

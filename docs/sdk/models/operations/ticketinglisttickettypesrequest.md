@@ -8,7 +8,7 @@ import { TicketingListTicketTypesRequest } from "@stackone/stackone-client-ts/sd
 let value: TicketingListTicketTypesRequest = {
   fields: "id,remote_id,name,project_id,remote_project_id",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

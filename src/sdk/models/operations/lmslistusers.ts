@@ -24,7 +24,7 @@ export type LmsListUsersQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type LmsListUsersRequest = {
@@ -98,7 +98,9 @@ export const LmsListUsersQueryParamFilter$inboundSchema: z.ZodType<
 > = z.object({
   email: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "external_reference": "externalReference",
@@ -121,7 +123,7 @@ export const LmsListUsersQueryParamFilter$outboundSchema: z.ZodType<
 > = z.object({
   email: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     externalReference: "external_reference",

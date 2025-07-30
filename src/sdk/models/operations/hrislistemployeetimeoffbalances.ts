@@ -20,7 +20,7 @@ export type HrisListEmployeeTimeOffBalancesQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type HrisListEmployeeTimeOffBalancesRequest = {
@@ -99,7 +99,9 @@ export const HrisListEmployeeTimeOffBalancesQueryParamFilter$inboundSchema:
     unknown
   > = z.object({
     policy_ids: z.nullable(z.array(z.string())).optional(),
-    updated_after: z.nullable(z.string()).optional(),
+    updated_after: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "policy_ids": "policyIds",
@@ -121,7 +123,8 @@ export const HrisListEmployeeTimeOffBalancesQueryParamFilter$outboundSchema:
     HrisListEmployeeTimeOffBalancesQueryParamFilter
   > = z.object({
     policyIds: z.nullable(z.array(z.string())).optional(),
-    updatedAfter: z.nullable(z.string()).optional(),
+    updatedAfter: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
   }).transform((v) => {
     return remap$(v, {
       policyIds: "policy_ids",

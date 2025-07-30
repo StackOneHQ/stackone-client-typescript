@@ -8,7 +8,7 @@ import { CrmListContactCustomFieldDefinitionsRequest } from "@stackone/stackone-
 let value: CrmListContactCustomFieldDefinitionsRequest = {
   fields: "id,remote_id,name,description,type,options",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

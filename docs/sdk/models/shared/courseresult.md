@@ -25,7 +25,7 @@ let value: CourseResult = {
       "16874-SOFTWARE-ENG-COURSE",
     ],
     coverUrl: "https://www.googledrive.com/?v=16873",
-    createdAt: "2021-07-21T14:00:00.000Z",
+    createdAt: new Date("2021-07-21T14:00:00.000Z"),
     description: "This course acts as learning content for software engineers.",
     duration: "P3Y6M4DT12H30M5S",
     externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -52,7 +52,7 @@ let value: CourseResult = {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",
     },
-    updatedAt: "2021-07-21T14:00:00.000Z",
+    updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     url: "https://www.linkedinlearning.com/?v=16873",
   },
 };

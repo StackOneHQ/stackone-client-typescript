@@ -50,7 +50,7 @@ export type LmsCreateCompletionRequestDto = {
   /**
    * The date the content was completed
    */
-  completedAt?: string | null | undefined;
+  completedAt?: Date | null | undefined;
   /**
    * The external reference associated with this content
    *
@@ -345,7 +345,9 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  completed_at: z.nullable(z.string()).optional(),
+  completed_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
@@ -384,7 +386,7 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateCompletionRequestDto
 > = z.object({
-  completedAt: z.nullable(z.string()).optional(),
+  completedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),

@@ -66,7 +66,7 @@ export type Course = {
   /**
    * The date on which the course was created.
    */
-  createdAt?: string | null | undefined;
+  createdAt?: Date | null | undefined;
   /**
    * The description of the course
    */
@@ -114,7 +114,7 @@ export type Course = {
   /**
    * The date on which the course was last updated.
    */
-  updatedAt?: string | null | undefined;
+  updatedAt?: Date | null | undefined;
   /**
    * The redirect URL of the course.
    */
@@ -193,7 +193,9 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_ids: z.nullable(z.array(z.string())).optional(),
     cover_url: z.nullable(z.string()).optional(),
-    created_at: z.nullable(z.string()).optional(),
+    created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
     description: z.nullable(z.string()).optional(),
     duration: z.nullable(z.string()).optional(),
     external_reference: z.nullable(z.string()).optional(),
@@ -205,7 +207,9 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
     skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
     title: z.nullable(z.string()).optional(),
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-    updated_at: z.nullable(z.string()).optional(),
+    updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
     url: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -254,7 +258,7 @@ export const Course$outboundSchema: z.ZodType<
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
@@ -266,7 +270,7 @@ export const Course$outboundSchema: z.ZodType<
   skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.string()).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

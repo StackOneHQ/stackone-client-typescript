@@ -7,7 +7,7 @@ import { HrisListShiftsRequest } from "@stackone/stackone-client-ts/sdk/models/o
 
 let value: HrisListShiftsRequest = {
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };
