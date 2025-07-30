@@ -9,7 +9,7 @@ let value: AtsListApplicationScorecardsRequest = {
   fields:
     "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   xAccountId: "<id>",

@@ -82,7 +82,7 @@ export type Completion = {
   /**
    * The date the content was completed
    */
-  completedAt?: string | null | undefined;
+  completedAt?: Date | null | undefined;
   /**
    * The external reference associated with this content
    *
@@ -104,7 +104,7 @@ export type Completion = {
   /**
    * The created date of the completion
    */
-  createdAt?: string | null | undefined;
+  createdAt?: Date | null | undefined;
   /**
    * The external ID associated with this completion
    *
@@ -178,7 +178,7 @@ export type Completion = {
   /**
    * The updated date of the completion
    */
-  updatedAt?: string | null | undefined;
+  updatedAt?: Date | null | undefined;
   /**
    * The user ID associated with this completion
    */
@@ -657,11 +657,15 @@ export const Completion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  completed_at: z.nullable(z.string()).optional(),
+  completed_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
   course_id: z.nullable(z.string()).optional(),
-  created_at: z.nullable(z.string()).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   external_id: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
@@ -680,7 +684,9 @@ export const Completion$inboundSchema: z.ZodType<
     .optional(),
   time_spent: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  updated_at: z.nullable(z.string()).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -742,11 +748,11 @@ export const Completion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Completion
 > = z.object({
-  completedAt: z.nullable(z.string()).optional(),
+  completedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
   courseId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   externalId: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
@@ -765,7 +771,7 @@ export const Completion$outboundSchema: z.ZodType<
     .optional(),
   timeSpent: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.string()).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   userId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

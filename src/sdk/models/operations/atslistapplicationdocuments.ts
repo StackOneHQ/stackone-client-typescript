@@ -20,7 +20,7 @@ export type AtsListApplicationDocumentsQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type AtsListApplicationDocumentsRequest = {
@@ -101,7 +101,9 @@ export const AtsListApplicationDocumentsQueryParamFilter$inboundSchema:
     unknown
   > = z.object({
     type: z.nullable(z.string()).optional(),
-    updated_after: z.nullable(z.string()).optional(),
+    updated_after: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "updated_after": "updatedAfter",
@@ -122,7 +124,8 @@ export const AtsListApplicationDocumentsQueryParamFilter$outboundSchema:
     AtsListApplicationDocumentsQueryParamFilter
   > = z.object({
     type: z.nullable(z.string()).optional(),
-    updatedAfter: z.nullable(z.string()).optional(),
+    updatedAfter: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
   }).transform((v) => {
     return remap$(v, {
       updatedAfter: "updated_after",

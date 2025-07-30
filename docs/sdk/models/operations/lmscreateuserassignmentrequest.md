@@ -8,8 +8,8 @@ import { LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts
 
 let value: LmsCreateUserAssignmentRequest = {
   lmsCreateAssignmentRequestDto: {
-    createdAt: "2021-07-21T14:00:00.000Z",
-    dueDate: "2021-07-21T14:00:00.000Z",
+    createdAt: new Date("2021-07-21T14:00:00.000Z"),
+    dueDate: new Date("2021-07-21T14:00:00.000Z"),
     learningObjectExternalReference: "learning-content-123",
     learningObjectId: "e3gd34-23tr21-er234-345er56",
     passthrough: {

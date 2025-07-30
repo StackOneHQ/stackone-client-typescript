@@ -30,7 +30,7 @@ export type AtsListApplicationChangesQueryParamFilter = {
   /**
    * Use a string with a date to only select results created after that given date
    */
-  createdAfter?: string | null | undefined;
+  createdAfter?: Date | null | undefined;
 };
 
 export type AtsListApplicationChangesRequest = {
@@ -111,7 +111,9 @@ export const AtsListApplicationChangesQueryParamFilter$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   change_type: z.nullable(ChangeType$inboundSchema).optional(),
-  created_after: z.nullable(z.string()).optional(),
+  created_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "change_type": "changeType",
@@ -133,7 +135,8 @@ export const AtsListApplicationChangesQueryParamFilter$outboundSchema:
     AtsListApplicationChangesQueryParamFilter
   > = z.object({
     changeType: z.nullable(ChangeType$outboundSchema).optional(),
-    createdAfter: z.nullable(z.string()).optional(),
+    createdAfter: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
   }).transform((v) => {
     return remap$(v, {
       changeType: "change_type",

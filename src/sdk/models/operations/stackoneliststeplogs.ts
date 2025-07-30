@@ -28,7 +28,7 @@ export type StackoneListStepLogsQueryParamFilter = {
   /**
    * A ISO8601 date string to filter the results by end_date.
    */
-  endDate?: string | null | undefined;
+  endDate?: Date | null | undefined;
   /**
    * A comma-separated list of HTTP methods to filter the results by.
    */
@@ -52,7 +52,7 @@ export type StackoneListStepLogsQueryParamFilter = {
   /**
    * A ISO8601 date string to filter the results by start_date.
    */
-  startDate?: string | null | undefined;
+  startDate?: Date | null | undefined;
   /**
    * A comma-separated list of status codes to filter the results by.
    */
@@ -141,13 +141,17 @@ export const StackoneListStepLogsQueryParamFilter$inboundSchema: z.ZodType<
   account_ids: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
   child_resources: z.nullable(z.string()).optional(),
-  end_date: z.nullable(z.string()).optional(),
+  end_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   http_methods: z.nullable(z.string()).optional(),
   providers: z.nullable(z.string()).optional(),
   request_ids: z.nullable(z.string()).optional(),
   resources: z.nullable(z.string()).optional(),
   services: z.nullable(z.string()).optional(),
-  start_date: z.nullable(z.string()).optional(),
+  start_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   status_codes: z.nullable(z.string()).optional(),
   sub_resources: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
@@ -190,13 +194,13 @@ export const StackoneListStepLogsQueryParamFilter$outboundSchema: z.ZodType<
   accountIds: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
   childResources: z.nullable(z.string()).optional(),
-  endDate: z.nullable(z.string()).optional(),
+  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   httpMethods: z.nullable(z.string()).optional(),
   providers: z.nullable(z.string()).optional(),
   requestIds: z.nullable(z.string()).optional(),
   resources: z.nullable(z.string()).optional(),
   services: z.nullable(z.string()).optional(),
-  startDate: z.nullable(z.string()).optional(),
+  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   statusCodes: z.nullable(z.string()).optional(),
   subResources: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),

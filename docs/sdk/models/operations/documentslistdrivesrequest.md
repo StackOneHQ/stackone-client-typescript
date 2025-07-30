@@ -8,7 +8,7 @@ import { DocumentsListDrivesRequest } from "@stackone/stackone-client-ts/sdk/mod
 let value: DocumentsListDrivesRequest = {
   fields: "id,remote_id,name,description,url,created_at,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

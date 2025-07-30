@@ -1657,7 +1657,7 @@ async function run() {
   const result = await stackOne.ats.getApplicationCustomFieldDefinition({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -1691,7 +1691,7 @@ async function run() {
   const res = await atsGetApplicationCustomFieldDefinition(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -2815,7 +2815,7 @@ async function run() {
   const result = await stackOne.ats.getCandidateCustomFieldDefinition({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -2849,7 +2849,7 @@ async function run() {
   const res = await atsGetCandidateCustomFieldDefinition(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -3399,7 +3399,7 @@ async function run() {
   const result = await stackOne.ats.getJobCustomFieldDefinition({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -3433,7 +3433,7 @@ async function run() {
   const res = await atsGetJobCustomFieldDefinition(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4074,7 +4074,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationChanges({
     fields: "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -4109,7 +4109,7 @@ async function run() {
   const res = await atsListApplicationChanges(stackOne, {
     fields: "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     xAccountId: "<id>",
@@ -4179,7 +4179,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationCustomFieldDefinitions({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -4214,7 +4214,7 @@ async function run() {
   const res = await atsListApplicationCustomFieldDefinitions(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -4284,7 +4284,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationDocumentCategories({
     fields: "id,remote_id,name,active",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     xAccountId: "<id>",
   });
@@ -4318,7 +4318,7 @@ async function run() {
   const res = await atsListApplicationDocumentCategories(stackOne, {
     fields: "id,remote_id,name,active",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     xAccountId: "<id>",
   });
@@ -4387,7 +4387,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4423,7 +4423,7 @@ async function run() {
   const res = await atsListApplicationDocuments(stackOne, {
     fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4494,7 +4494,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationNotes({
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4530,7 +4530,7 @@ async function run() {
   const res = await atsListApplicationNotes(stackOne, {
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4601,7 +4601,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationScorecards({
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4637,7 +4637,7 @@ async function run() {
   const res = await atsListApplicationScorecards(stackOne, {
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4709,8 +4709,8 @@ async function run() {
     expand: "documents",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "attachments,custom_fields",
     jobId: "cxQiyiuasdFKfdsYfer",
@@ -4748,8 +4748,8 @@ async function run() {
     expand: "documents",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "attachments,custom_fields",
     jobId: "cxQiyiuasdFKfdsYfer",
@@ -4821,7 +4821,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationsOffers({
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4857,7 +4857,7 @@ async function run() {
   const res = await atsListApplicationsOffers(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4928,7 +4928,7 @@ async function run() {
   const result = await stackOne.ats.listApplicationsScheduledInterviews({
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -4964,7 +4964,7 @@ async function run() {
   const res = await atsListApplicationsScheduledInterviews(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -5034,7 +5034,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listAssessmentsPackages({
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5068,7 +5068,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsListAssessmentsPackages(stackOne, {
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5138,7 +5138,7 @@ async function run() {
   const result = await stackOne.ats.listBackgroundCheckPackages({
     fields: "id,remote_id,name,description,tests",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5173,7 +5173,7 @@ async function run() {
   const res = await atsListBackgroundCheckPackages(stackOne, {
     fields: "id,remote_id,name,description,tests",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5243,7 +5243,7 @@ async function run() {
   const result = await stackOne.ats.listCandidateCustomFieldDefinitions({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5278,7 +5278,7 @@ async function run() {
   const res = await atsListCandidateCustomFieldDefinitions(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5348,7 +5348,7 @@ async function run() {
   const result = await stackOne.ats.listCandidateNotes({
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -5384,7 +5384,7 @@ async function run() {
   const res = await atsListCandidateNotes(stackOne, {
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -5455,8 +5455,8 @@ async function run() {
   const result = await stackOne.ats.listCandidates({
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -5492,8 +5492,8 @@ async function run() {
   const res = await atsListCandidates(stackOne, {
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -5564,7 +5564,7 @@ async function run() {
   const result = await stackOne.ats.listDepartments({
     fields: "id,remote_id,name",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5599,7 +5599,7 @@ async function run() {
   const res = await atsListDepartments(stackOne, {
     fields: "id,remote_id,name",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5669,7 +5669,7 @@ async function run() {
   const result = await stackOne.ats.listInterviewStages({
     fields: "id,remote_id,name,order,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5704,7 +5704,7 @@ async function run() {
   const res = await atsListInterviewStages(stackOne, {
     fields: "id,remote_id,name,order,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5774,8 +5774,8 @@ async function run() {
   const result = await stackOne.ats.listInterviews({
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5810,8 +5810,8 @@ async function run() {
   const res = await atsListInterviews(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5881,7 +5881,7 @@ async function run() {
   const result = await stackOne.ats.listJobCustomFieldDefinitions({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5916,7 +5916,7 @@ async function run() {
   const res = await atsListJobCustomFieldDefinitions(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -5986,8 +5986,8 @@ async function run() {
   const result = await stackOne.ats.listJobPostings({
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "questionnaires",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -6023,8 +6023,8 @@ async function run() {
   const res = await atsListJobPostings(stackOne, {
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "questionnaires",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -6096,8 +6096,8 @@ async function run() {
     expand: "job_postings,interview_stages",
     fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -6134,8 +6134,8 @@ async function run() {
     expand: "job_postings,interview_stages",
     fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     filter: {
-      createdAfter: "2020-01-01T00:00:00.000Z",
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -6206,7 +6206,7 @@ async function run() {
   const result = await stackOne.ats.listLists({
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6241,7 +6241,7 @@ async function run() {
   const res = await atsListLists(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6311,7 +6311,7 @@ async function run() {
   const result = await stackOne.ats.listLocations({
     fields: "id,remote_id,name",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6346,7 +6346,7 @@ async function run() {
   const res = await atsListLocations(stackOne, {
     fields: "id,remote_id,name",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6416,7 +6416,7 @@ async function run() {
   const result = await stackOne.ats.listOffers({
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6451,7 +6451,7 @@ async function run() {
   const res = await atsListOffers(stackOne, {
     fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6521,7 +6521,7 @@ async function run() {
   const result = await stackOne.ats.listRejectedReasons({
     fields: "id,remote_id,label,type,rejected_reason_type",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6556,7 +6556,7 @@ async function run() {
   const res = await atsListRejectedReasons(stackOne, {
     fields: "id,remote_id,label,type,rejected_reason_type",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6626,7 +6626,7 @@ async function run() {
   const result = await stackOne.ats.listUsers({
     fields: "id,remote_id,first_name,last_name,name,email,phone",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -6661,7 +6661,7 @@ async function run() {
   const res = await atsListUsers(stackOne, {
     fields: "id,remote_id,first_name,last_name,name,email,phone",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",

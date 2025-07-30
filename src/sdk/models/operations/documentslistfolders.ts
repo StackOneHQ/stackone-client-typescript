@@ -24,7 +24,7 @@ export type DocumentsListFoldersQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type DocumentsListFoldersRequest = {
@@ -110,7 +110,9 @@ export const DocumentsListFoldersQueryParamFilter$inboundSchema: z.ZodType<
 > = z.object({
   drive_id: z.nullable(z.string()).optional(),
   folder_id: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "drive_id": "driveId",
@@ -134,7 +136,7 @@ export const DocumentsListFoldersQueryParamFilter$outboundSchema: z.ZodType<
 > = z.object({
   driveId: z.nullable(z.string()).optional(),
   folderId: z.nullable(z.string()).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     driveId: "drive_id",

@@ -9,7 +9,7 @@ let value: TicketingListCommentsRequest = {
   fields:
     "id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   xAccountId: "<id>",

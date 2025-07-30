@@ -2083,7 +2083,7 @@ export type HrisUpdateEmployeeRequestDto = {
    */
   benefits?: Array<CreateHRISBenefit> | null | undefined;
   /**
-   * The employee birthday
+   * The next birthday of the employee (upcoming birthday)
    */
   birthday?: Date | null | undefined;
   /**
@@ -2105,7 +2105,7 @@ export type HrisUpdateEmployeeRequestDto = {
    */
   customFields?: Array<CustomFields> | null | undefined;
   /**
-   * The employee date_of_birth
+   * The date when the employee was born
    */
   dateOfBirth?: Date | null | undefined;
   /**

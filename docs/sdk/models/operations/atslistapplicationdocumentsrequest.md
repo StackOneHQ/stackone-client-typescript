@@ -9,7 +9,7 @@ let value: AtsListApplicationDocumentsRequest = {
   fields:
     "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   xAccountId: "<id>",

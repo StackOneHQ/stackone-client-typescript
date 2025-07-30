@@ -51,11 +51,11 @@ export type LmsCreateAssignmentRequestDto = {
   /**
    * The date the assignment was created
    */
-  createdAt?: string | null | undefined;
+  createdAt?: Date | null | undefined;
   /**
    * The date the assignment is due to be completed
    */
-  dueDate?: string | null | undefined;
+  dueDate?: Date | null | undefined;
   /**
    * The external reference associated with this assignment
    *
@@ -344,8 +344,12 @@ export const LmsCreateAssignmentRequestDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created_at: z.nullable(z.string()).optional(),
-  due_date: z.nullable(z.string()).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  due_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   external_reference: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
@@ -382,8 +386,8 @@ export const LmsCreateAssignmentRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateAssignmentRequestDto
 > = z.object({
-  createdAt: z.nullable(z.string()).optional(),
-  dueDate: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   externalReference: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),

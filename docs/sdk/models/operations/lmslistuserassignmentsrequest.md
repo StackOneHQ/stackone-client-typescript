@@ -9,7 +9,7 @@ let value: LmsListUserAssignmentsRequest = {
   fields:
     "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",

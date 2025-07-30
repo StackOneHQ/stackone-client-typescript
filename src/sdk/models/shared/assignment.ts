@@ -89,11 +89,11 @@ export type Assignment = {
   /**
    * The date the assignment was created
    */
-  createdAt?: string | null | undefined;
+  createdAt?: Date | null | undefined;
   /**
    * The date the assignment is due to be completed
    */
-  dueDate?: string | null | undefined;
+  dueDate?: Date | null | undefined;
   /**
    * The external reference associated with this assignment
    *
@@ -149,7 +149,7 @@ export type Assignment = {
   /**
    * The date the assignment was last updated
    */
-  updatedAt?: string | null | undefined;
+  updatedAt?: Date | null | undefined;
   /**
    * The user ID associated with this assignment
    */
@@ -620,8 +620,12 @@ export const Assignment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   course_id: z.nullable(z.string()).optional(),
-  created_at: z.nullable(z.string()).optional(),
-  due_date: z.nullable(z.string()).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  due_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   external_reference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   learning_object_external_reference: z.nullable(z.string()).optional(),
@@ -636,7 +640,9 @@ export const Assignment$inboundSchema: z.ZodType<
   remote_user_id: z.nullable(z.string()).optional(),
   status: z.nullable(z.lazy(() => Status$inboundSchema)).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  updated_at: z.nullable(z.string()).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -685,8 +691,8 @@ export const Assignment$outboundSchema: z.ZodType<
   Assignment
 > = z.object({
   courseId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.string()).optional(),
-  dueDate: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
@@ -701,7 +707,7 @@ export const Assignment$outboundSchema: z.ZodType<
   remoteUserId: z.nullable(z.string()).optional(),
   status: z.nullable(z.lazy(() => Status$outboundSchema)).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.string()).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   userId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

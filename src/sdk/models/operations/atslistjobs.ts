@@ -34,7 +34,7 @@ export type AtsListJobsQueryParamFilter = {
   /**
    * Use a string with a date to only select results created after that given date
    */
-  createdAfter?: string | null | undefined;
+  createdAfter?: Date | null | undefined;
   /**
    * The job_status of the job
    */
@@ -48,7 +48,7 @@ export type AtsListJobsQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type AtsListJobsRequest = {
@@ -172,10 +172,14 @@ export const AtsListJobsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created_after: z.nullable(z.string()).optional(),
+  created_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   job_status: z.nullable(JobStatus$inboundSchema).optional(),
   status: z.nullable(Status$inboundSchema).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "created_after": "createdAfter",
@@ -198,10 +202,10 @@ export const AtsListJobsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListJobsQueryParamFilter
 > = z.object({
-  createdAfter: z.nullable(z.string()).optional(),
+  createdAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   jobStatus: z.nullable(JobStatus$outboundSchema).optional(),
   status: z.nullable(Status$outboundSchema).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     createdAfter: "created_after",

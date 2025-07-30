@@ -8,7 +8,7 @@ import { AtsListApplicationDocumentCategoriesRequest } from "@stackone/stackone-
 let value: AtsListApplicationDocumentCategoriesRequest = {
   fields: "id,remote_id,name,active",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

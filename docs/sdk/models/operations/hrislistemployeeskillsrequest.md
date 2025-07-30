@@ -9,7 +9,7 @@ let value: HrisListEmployeeSkillsRequest = {
   fields:
     "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",
   xAccountId: "<id>",

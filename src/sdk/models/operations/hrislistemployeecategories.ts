@@ -16,7 +16,7 @@ export type HrisListEmployeeCategoriesQueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
 };
 
 export type HrisListEmployeeCategoriesRequest = {
@@ -86,7 +86,9 @@ export type HrisListEmployeeCategoriesResponse = {
 export const HrisListEmployeeCategoriesQueryParamFilter$inboundSchema:
   z.ZodType<HrisListEmployeeCategoriesQueryParamFilter, z.ZodTypeDef, unknown> =
     z.object({
-      updated_after: z.nullable(z.string()).optional(),
+      updated_after: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ).optional(),
     }).transform((v) => {
       return remap$(v, {
         "updated_after": "updatedAfter",
@@ -105,7 +107,8 @@ export const HrisListEmployeeCategoriesQueryParamFilter$outboundSchema:
     z.ZodTypeDef,
     HrisListEmployeeCategoriesQueryParamFilter
   > = z.object({
-    updatedAfter: z.nullable(z.string()).optional(),
+    updatedAfter: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
   }).transform((v) => {
     return remap$(v, {
       updatedAfter: "updated_after",

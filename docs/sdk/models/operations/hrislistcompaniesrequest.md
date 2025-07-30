@@ -8,7 +8,7 @@ import { HrisListCompaniesRequest } from "@stackone/stackone-client-ts/sdk/model
 let value: HrisListCompaniesRequest = {
   fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
   filter: {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   xAccountId: "<id>",
 };

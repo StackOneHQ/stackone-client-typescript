@@ -400,7 +400,7 @@ async function run() {
   const result = await stackOne.crm.getContactCustomFieldDefinition({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -434,7 +434,7 @@ async function run() {
   const res = await crmGetContactCustomFieldDefinition(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -598,7 +598,7 @@ async function run() {
   const result = await stackOne.crm.listAccounts({
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -633,7 +633,7 @@ async function run() {
   const res = await crmListAccounts(stackOne, {
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -703,7 +703,7 @@ async function run() {
   const result = await stackOne.crm.listContactCustomFieldDefinitions({
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -738,7 +738,7 @@ async function run() {
   const res = await crmListContactCustomFieldDefinitions(stackOne, {
     fields: "id,remote_id,name,description,type,options",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -808,7 +808,7 @@ async function run() {
   const result = await stackOne.crm.listContacts({
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -844,7 +844,7 @@ async function run() {
   const res = await crmListContacts(stackOne, {
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
@@ -915,7 +915,7 @@ async function run() {
   const result = await stackOne.crm.listLists({
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
@@ -950,7 +950,7 @@ async function run() {
   const res = await crmListLists(stackOne, {
     fields: "id,remote_id,name,created_at,updated_at,items,type",
     filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<id>",
