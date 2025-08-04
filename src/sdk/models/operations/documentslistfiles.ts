@@ -87,7 +87,7 @@ export type DocumentsListFilesRequest = {
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
   /**
    * The account identifier
    */
@@ -227,7 +227,9 @@ export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
   page_size: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   "x-account-id": z.string(),
   "x-stackone-api-session-token": z.string().optional(),
 }).transform((v) => {
@@ -276,7 +278,7 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   pageSize: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   xAccountId: z.string(),
   xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {

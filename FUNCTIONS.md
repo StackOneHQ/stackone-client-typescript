@@ -39,7 +39,7 @@ async function run() {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
