@@ -1683,7 +1683,7 @@ async function run() {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     userId: "c28xyrc55866bvuv",
     xAccountId: "<id>",
   });
@@ -1720,7 +1720,7 @@ async function run() {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     userId: "c28xyrc55866bvuv",
     xAccountId: "<id>",
   });
@@ -1791,7 +1791,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -1826,7 +1826,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -1896,7 +1896,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -1931,7 +1931,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -2001,7 +2001,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -2036,7 +2036,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -2106,7 +2106,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -2141,7 +2141,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -2211,7 +2211,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -2246,7 +2246,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -2318,7 +2318,7 @@ async function run() {
     },
     id: "<id>",
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     userId: "c28xyrc55866bvuv",
     xAccountId: "<id>",
   });
@@ -2356,7 +2356,7 @@ async function run() {
     },
     id: "<id>",
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     userId: "c28xyrc55866bvuv",
     xAccountId: "<id>",
   });
@@ -2428,7 +2428,7 @@ async function run() {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -2464,7 +2464,7 @@ async function run() {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -2534,7 +2534,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -2569,7 +2569,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {

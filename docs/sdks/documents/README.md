@@ -423,7 +423,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -458,7 +458,7 @@ async function run() {
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -536,7 +536,7 @@ async function run() {
     folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -579,7 +579,7 @@ async function run() {
     folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -654,7 +654,7 @@ async function run() {
     folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
 
@@ -694,7 +694,7 @@ async function run() {
     folderId: "1234567890",
     include: "all_parent_folder_ids",
     nestedItems: "true",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     xAccountId: "<id>",
   });
   if (res.ok) {

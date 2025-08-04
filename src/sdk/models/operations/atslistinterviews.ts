@@ -65,7 +65,7 @@ export type AtsListInterviewsRequest = {
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  updatedAfter?: string | null | undefined;
+  updatedAfter?: Date | null | undefined;
   /**
    * The account identifier
    */
@@ -182,7 +182,9 @@ export const AtsListInterviewsRequest$inboundSchema: z.ZodType<
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
   sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(z.string()).optional(),
+  updated_after: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -223,7 +225,7 @@ export const AtsListInterviewsRequest$outboundSchema: z.ZodType<
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
   syncToken: z.nullable(z.string()).optional(),
-  updatedAfter: z.nullable(z.string()).optional(),
+  updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
