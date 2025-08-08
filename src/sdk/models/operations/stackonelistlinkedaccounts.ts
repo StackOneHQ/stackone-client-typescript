@@ -19,6 +19,10 @@ export type StackoneListLinkedAccountsRequest = {
    */
   originOwnerId?: string | null | undefined;
   /**
+   * The origin owner identifiers of the results to fetch (supports multiple IDs)
+   */
+  originOwnerIds?: Array<string> | undefined;
+  /**
    * The page number of the results to fetch
    */
   page?: number | null | undefined;
@@ -70,6 +74,7 @@ export const StackoneListLinkedAccountsRequest$inboundSchema: z.ZodType<
 > = z.object({
   account_ids: z.array(z.string()).optional(),
   origin_owner_id: z.nullable(z.string()).optional(),
+  origin_owner_ids: z.array(z.string()).optional(),
   page: z.nullable(z.number()).optional(),
   page_size: z.nullable(z.number().default(25)),
   provider: z.nullable(z.string()).optional(),
@@ -79,6 +84,7 @@ export const StackoneListLinkedAccountsRequest$inboundSchema: z.ZodType<
   return remap$(v, {
     "account_ids": "accountIds",
     "origin_owner_id": "originOwnerId",
+    "origin_owner_ids": "originOwnerIds",
     "page_size": "pageSize",
   });
 });
@@ -87,6 +93,7 @@ export const StackoneListLinkedAccountsRequest$inboundSchema: z.ZodType<
 export type StackoneListLinkedAccountsRequest$Outbound = {
   account_ids?: Array<string> | undefined;
   origin_owner_id?: string | null | undefined;
+  origin_owner_ids?: Array<string> | undefined;
   page?: number | null | undefined;
   page_size: number | null;
   provider?: string | null | undefined;
@@ -102,6 +109,7 @@ export const StackoneListLinkedAccountsRequest$outboundSchema: z.ZodType<
 > = z.object({
   accountIds: z.array(z.string()).optional(),
   originOwnerId: z.nullable(z.string()).optional(),
+  originOwnerIds: z.array(z.string()).optional(),
   page: z.nullable(z.number()).optional(),
   pageSize: z.nullable(z.number().default(25)),
   provider: z.nullable(z.string()).optional(),
@@ -111,6 +119,7 @@ export const StackoneListLinkedAccountsRequest$outboundSchema: z.ZodType<
   return remap$(v, {
     accountIds: "account_ids",
     originOwnerId: "origin_owner_id",
+    originOwnerIds: "origin_owner_ids",
     pageSize: "page_size",
   });
 });

@@ -10,9 +10,18 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * Filter to allow filtering of only active content
+ */
+export type Active = boolean | string;
+
+/**
+ * LMS Courses Filter
  */
 export type LmsListContentQueryParamFilter = {
+  /**
+   * Filter to allow filtering of only active content
+   */
+  active?: boolean | string | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -25,7 +34,7 @@ export type LmsListContentRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * LMS Courses Filter
    */
   filter?: LmsListContentQueryParamFilter | null | undefined;
   /**
@@ -83,11 +92,53 @@ export type LmsListContentResponse = {
 };
 
 /** @internal */
+export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
+  .union([z.boolean(), z.string()]);
+
+/** @internal */
+export type Active$Outbound = boolean | string;
+
+/** @internal */
+export const Active$outboundSchema: z.ZodType<
+  Active$Outbound,
+  z.ZodTypeDef,
+  Active
+> = z.union([z.boolean(), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Active$ {
+  /** @deprecated use `Active$inboundSchema` instead. */
+  export const inboundSchema = Active$inboundSchema;
+  /** @deprecated use `Active$outboundSchema` instead. */
+  export const outboundSchema = Active$outboundSchema;
+  /** @deprecated use `Active$Outbound` instead. */
+  export type Outbound = Active$Outbound;
+}
+
+export function activeToJSON(active: Active): string {
+  return JSON.stringify(Active$outboundSchema.parse(active));
+}
+
+export function activeFromJSON(
+  jsonString: string,
+): SafeParseResult<Active, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Active$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Active' from JSON`,
+  );
+}
+
+/** @internal */
 export const LmsListContentQueryParamFilter$inboundSchema: z.ZodType<
   LmsListContentQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  active: z.nullable(z.union([z.boolean(), z.string()])).optional(),
   updated_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -99,6 +150,7 @@ export const LmsListContentQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LmsListContentQueryParamFilter$Outbound = {
+  active?: boolean | string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -108,6 +160,7 @@ export const LmsListContentQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListContentQueryParamFilter
 > = z.object({
+  active: z.nullable(z.union([z.boolean(), z.string()])).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {

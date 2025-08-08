@@ -28,6 +28,7 @@ export type ContentPaginated = {
    */
   nextPage?: string | null | undefined;
   raw?: Array<RawResponse> | null | undefined;
+  total?: number | null | undefined;
 };
 
 /** @internal */
@@ -40,6 +41,7 @@ export const ContentPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   next_page: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+  total: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "next_page": "nextPage",
@@ -52,6 +54,7 @@ export type ContentPaginated$Outbound = {
   next?: string | null | undefined;
   next_page?: string | null | undefined;
   raw?: Array<RawResponse$Outbound> | null | undefined;
+  total?: number | null | undefined;
 };
 
 /** @internal */
@@ -64,6 +67,7 @@ export const ContentPaginated$outboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   nextPage: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+  total: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     nextPage: "next_page",
