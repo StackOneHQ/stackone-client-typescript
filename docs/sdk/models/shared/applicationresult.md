@@ -107,7 +107,6 @@ let value: ApplicationResult = {
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteInterviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
     remoteJobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
-    remoteLocationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
     remoteLocationIds: [
       "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
     ],

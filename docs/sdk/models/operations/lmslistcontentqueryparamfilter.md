@@ -1,6 +1,6 @@
 # LmsListContentQueryParamFilter
 
-Filter parameters that allow greater customisation of the list response
+LMS Courses Filter
 
 ## Example Usage
 
@@ -16,4 +16,5 @@ let value: LmsListContentQueryParamFilter = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `active`                                                                                      | *operations.Active*                                                                           | :heavy_minus_sign:                                                                            | Filter to allow filtering of only active content                                              |                                                                                               |
 | `updatedAfter`                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Use a string with a date to only select results updated after that given date                 | 2020-01-01T00:00:00.000Z                                                                      |

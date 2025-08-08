@@ -219,7 +219,10 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(200, operations.StackoneProxyRequestResponse$inboundSchema),
+    M.nil(
+      [200, 201, 202, 204],
+      operations.StackoneProxyRequestResponse$inboundSchema,
+    ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),

@@ -111,6 +111,7 @@ async function $do(
   const query = encodeFormQuery({
     "account_ids": payload.account_ids,
     "origin_owner_id": payload.origin_owner_id,
+    "origin_owner_ids": payload.origin_owner_ids,
     "page": payload.page,
     "page_size": payload.page_size,
     "provider": payload.provider,

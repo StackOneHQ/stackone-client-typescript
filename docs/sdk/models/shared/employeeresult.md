@@ -282,7 +282,6 @@ let value: EmployeeResult = {
       value: EmployeeSchemasPreferredLanguageValue.Eng,
     },
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    remoteManagerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     skills: [
       {
         active: true,

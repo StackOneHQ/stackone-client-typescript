@@ -10,9 +10,18 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
+ * Filter to allow filtering of only active courses
+ */
+export type QueryParamActive = boolean | string;
+
+/**
  * LMS Courses Filter
  */
 export type LmsListCoursesQueryParamFilter = {
+  /**
+   * Filter to allow filtering of only active courses
+   */
+  active?: boolean | string | null | undefined;
   /**
    * Filter to select courses by external_reference
    */
@@ -87,11 +96,60 @@ export type LmsListCoursesResponse = {
 };
 
 /** @internal */
+export const QueryParamActive$inboundSchema: z.ZodType<
+  QueryParamActive,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), z.string()]);
+
+/** @internal */
+export type QueryParamActive$Outbound = boolean | string;
+
+/** @internal */
+export const QueryParamActive$outboundSchema: z.ZodType<
+  QueryParamActive$Outbound,
+  z.ZodTypeDef,
+  QueryParamActive
+> = z.union([z.boolean(), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamActive$ {
+  /** @deprecated use `QueryParamActive$inboundSchema` instead. */
+  export const inboundSchema = QueryParamActive$inboundSchema;
+  /** @deprecated use `QueryParamActive$outboundSchema` instead. */
+  export const outboundSchema = QueryParamActive$outboundSchema;
+  /** @deprecated use `QueryParamActive$Outbound` instead. */
+  export type Outbound = QueryParamActive$Outbound;
+}
+
+export function queryParamActiveToJSON(
+  queryParamActive: QueryParamActive,
+): string {
+  return JSON.stringify(
+    QueryParamActive$outboundSchema.parse(queryParamActive),
+  );
+}
+
+export function queryParamActiveFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryParamActive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryParamActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryParamActive' from JSON`,
+  );
+}
+
+/** @internal */
 export const LmsListCoursesQueryParamFilter$inboundSchema: z.ZodType<
   LmsListCoursesQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  active: z.nullable(z.union([z.boolean(), z.string()])).optional(),
   external_reference: z.nullable(z.string()).optional(),
   updated_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -105,6 +163,7 @@ export const LmsListCoursesQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LmsListCoursesQueryParamFilter$Outbound = {
+  active?: boolean | string | null | undefined;
   external_reference?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
@@ -115,6 +174,7 @@ export const LmsListCoursesQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListCoursesQueryParamFilter
 > = z.object({
+  active: z.nullable(z.union([z.boolean(), z.string()])).optional(),
   externalReference: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
