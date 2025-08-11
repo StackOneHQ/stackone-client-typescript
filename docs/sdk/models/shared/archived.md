@@ -9,9 +9,9 @@
 const value: boolean = true;
 ```
 
-### `shared.Two`
+### `shared.Campaign2`
 
 ```typescript
-const value: shared.Two = Two.False;
+const value: shared.Campaign2 = Campaign2.True;
 ```
 

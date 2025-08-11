@@ -7,7 +7,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Documents: The documentation for the StackOne Unified API - DOCUMENTS
+Accounting: The documentation for the StackOne Unified API - ACCOUNTING
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -104,6 +104,18 @@ run();
 
 <details open>
 <summary>Available methods</summary>
+
+### [accounting](docs/sdks/accounting/README.md)
+
+* [batchCreateCompanyJournals](docs/sdks/accounting/README.md#batchcreatecompanyjournals) - Batch Create Journals
+* [getCompany](docs/sdks/accounting/README.md#getcompany) - Get Company
+* [getCompanyAccount](docs/sdks/accounting/README.md#getcompanyaccount) - Get Account
+* [getCompanyJournal](docs/sdks/accounting/README.md#getcompanyjournal) - Get Journal
+* [getCompanyTaxRate](docs/sdks/accounting/README.md#getcompanytaxrate) - Get Tax Rate
+* [listCompanies](docs/sdks/accounting/README.md#listcompanies) - List Companies
+* [listCompanyAccounts](docs/sdks/accounting/README.md#listcompanyaccounts) - List Accounts
+* [listCompanyJournals](docs/sdks/accounting/README.md#listcompanyjournals) - List Journals
+* [listCompanyTaxRates](docs/sdks/accounting/README.md#listcompanytaxrates) - List Tax Rates
 
 ### [accounts](docs/sdks/accounts/README.md)
 
@@ -365,6 +377,20 @@ run();
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 * [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 
+### [messaging](docs/sdks/messaging/README.md)
+
+* [createConversation](docs/sdks/messaging/README.md#createconversation) - Create Conversation
+* [downloadMessagingAttachment](docs/sdks/messaging/README.md#downloadmessagingattachment) - Download Attachment
+* [getAttachment](docs/sdks/messaging/README.md#getattachment) - Get Attachment
+* [getConversation](docs/sdks/messaging/README.md#getconversation) - Get Conversation
+* [getMessage](docs/sdks/messaging/README.md#getmessage) - Get Message
+* [getUser](docs/sdks/messaging/README.md#getuser) - Get User
+* [listAttachments](docs/sdks/messaging/README.md#listattachments) - List Attachments
+* [listConversationMessages](docs/sdks/messaging/README.md#listconversationmessages) - List Conversation Messages
+* [listConversations](docs/sdks/messaging/README.md#listconversations) - List Conversations
+* [listUsers](docs/sdks/messaging/README.md#listusers) - List Users
+* [sendMessage](docs/sdks/messaging/README.md#sendmessage) - Send Message
+
 ### [proxy](docs/sdks/proxy/README.md)
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
@@ -375,6 +401,13 @@ run();
 * [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
 * [listPlatformLogs](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 * [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
+
+### [screening](docs/sdks/screening/README.md)
+
+* [createScreeningOrder](docs/sdks/screening/README.md#createscreeningorder) - Create Screening Order
+* [getScreeningPackage](docs/sdks/screening/README.md#getscreeningpackage) - Get Screening Package
+* [listScreeningPackages](docs/sdks/screening/README.md#listscreeningpackages) - List Screening Packages
+* [webhookScreeningResult](docs/sdks/screening/README.md#webhookscreeningresult) - Webhook Screening Result
 
 
 ### [ticketing](docs/sdks/ticketing/README.md)
@@ -425,13 +458,12 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.ats.listApplicationChanges({
+  const result = await stackOne.accounting.listCompanies({
     fields:
-      "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values",
+      "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day",
     filter: {
-      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
-    id: "<id>",
     xAccountId: "<id>",
   });
 
@@ -722,6 +754,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`accountingBatchCreateCompanyJournals`](docs/sdks/accounting/README.md#batchcreatecompanyjournals) - Batch Create Journals
+- [`accountingGetCompany`](docs/sdks/accounting/README.md#getcompany) - Get Company
+- [`accountingGetCompanyAccount`](docs/sdks/accounting/README.md#getcompanyaccount) - Get Account
+- [`accountingGetCompanyJournal`](docs/sdks/accounting/README.md#getcompanyjournal) - Get Journal
+- [`accountingGetCompanyTaxRate`](docs/sdks/accounting/README.md#getcompanytaxrate) - Get Tax Rate
+- [`accountingListCompanies`](docs/sdks/accounting/README.md#listcompanies) - List Companies
+- [`accountingListCompanyAccounts`](docs/sdks/accounting/README.md#listcompanyaccounts) - List Accounts
+- [`accountingListCompanyJournals`](docs/sdks/accounting/README.md#listcompanyjournals) - List Journals
+- [`accountingListCompanyTaxRates`](docs/sdks/accounting/README.md#listcompanytaxrates) - List Tax Rates
 - [`accountsDeleteAccount`](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 - [`accountsGetAccount`](docs/sdks/accounts/README.md#getaccount) - Get Account
 - [`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
@@ -946,11 +987,26 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdateInAppTemplate`](docs/sdks/marketing/README.md#updateinapptemplate) - Update In-App Template
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
+- [`messagingCreateConversation`](docs/sdks/messaging/README.md#createconversation) - Create Conversation
+- [`messagingDownloadMessagingAttachment`](docs/sdks/messaging/README.md#downloadmessagingattachment) - Download Attachment
+- [`messagingGetAttachment`](docs/sdks/messaging/README.md#getattachment) - Get Attachment
+- [`messagingGetConversation`](docs/sdks/messaging/README.md#getconversation) - Get Conversation
+- [`messagingGetMessage`](docs/sdks/messaging/README.md#getmessage) - Get Message
+- [`messagingGetUser`](docs/sdks/messaging/README.md#getuser) - Get User
+- [`messagingListAttachments`](docs/sdks/messaging/README.md#listattachments) - List Attachments
+- [`messagingListConversationMessages`](docs/sdks/messaging/README.md#listconversationmessages) - List Conversation Messages
+- [`messagingListConversations`](docs/sdks/messaging/README.md#listconversations) - List Conversations
+- [`messagingListUsers`](docs/sdks/messaging/README.md#listusers) - List Users
+- [`messagingSendMessage`](docs/sdks/messaging/README.md#sendmessage) - Send Message
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 - [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get Log
 - [`requestLogsListLogs`](docs/sdks/requestlogs/README.md#listlogs) - List Logs
 - [`requestLogsListPlatformLogs`](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 - [`requestLogsListStepLogs`](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
+- [`screeningCreateScreeningOrder`](docs/sdks/screening/README.md#createscreeningorder) - Create Screening Order
+- [`screeningGetScreeningPackage`](docs/sdks/screening/README.md#getscreeningpackage) - Get Screening Package
+- [`screeningListScreeningPackages`](docs/sdks/screening/README.md#listscreeningpackages) - List Screening Packages
+- [`screeningWebhookScreeningResult`](docs/sdks/screening/README.md#webhookscreeningresult) - Webhook Screening Result
 - [`ticketingCreateTicket`](docs/sdks/ticketing/README.md#createticket) - Create Ticket
 - [`ticketingDownloadTicketingAttachment`](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment
 - [`ticketingGetAttachment`](docs/sdks/ticketing/README.md#getattachment) - Get Attachment

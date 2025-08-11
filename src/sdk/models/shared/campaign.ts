@@ -25,19 +25,19 @@ import {
   Message$outboundSchema,
 } from "./createmessage.js";
 
-export enum Two {
-  True = "true",
-  False = "false",
-}
-
-export type Archived = boolean | Two;
-
 export enum Campaign2 {
   True = "true",
   False = "false",
 }
 
-export type Draft = boolean | Campaign2;
+export type Archived = boolean | Campaign2;
+
+export enum CampaignSchemas2 {
+  True = "true",
+  False = "false",
+}
+
+export type Draft = boolean | CampaignSchemas2;
 
 export type Campaign4 = {};
 
@@ -136,7 +136,7 @@ export type CampaignStatus = {
 };
 
 export type Campaign = {
-  archived?: boolean | Two | null | undefined;
+  archived?: boolean | Campaign2 | null | undefined;
   /**
    * channels of the Campaign
    */
@@ -146,7 +146,7 @@ export type Campaign = {
    */
   createdAt?: Date | null | undefined;
   description?: string | null | undefined;
-  draft?: boolean | Campaign2 | null | undefined;
+  draft?: boolean | CampaignSchemas2 | null | undefined;
   /**
    * The first_sent_at date
    */
@@ -181,21 +181,22 @@ export type Campaign = {
 };
 
 /** @internal */
-export const Two$inboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
+export const Campaign2$inboundSchema: z.ZodNativeEnum<typeof Campaign2> = z
+  .nativeEnum(Campaign2);
 
 /** @internal */
-export const Two$outboundSchema: z.ZodNativeEnum<typeof Two> =
-  Two$inboundSchema;
+export const Campaign2$outboundSchema: z.ZodNativeEnum<typeof Campaign2> =
+  Campaign2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
+export namespace Campaign2$ {
+  /** @deprecated use `Campaign2$inboundSchema` instead. */
+  export const inboundSchema = Campaign2$inboundSchema;
+  /** @deprecated use `Campaign2$outboundSchema` instead. */
+  export const outboundSchema = Campaign2$outboundSchema;
 }
 
 /** @internal */
@@ -203,7 +204,7 @@ export const Archived$inboundSchema: z.ZodType<
   Archived,
   z.ZodTypeDef,
   unknown
-> = z.union([z.boolean(), Two$inboundSchema]);
+> = z.union([z.boolean(), Campaign2$inboundSchema]);
 
 /** @internal */
 export type Archived$Outbound = boolean | string;
@@ -213,7 +214,7 @@ export const Archived$outboundSchema: z.ZodType<
   Archived$Outbound,
   z.ZodTypeDef,
   Archived
-> = z.union([z.boolean(), Two$outboundSchema]);
+> = z.union([z.boolean(), Campaign2$outboundSchema]);
 
 /**
  * @internal
@@ -243,27 +244,29 @@ export function archivedFromJSON(
 }
 
 /** @internal */
-export const Campaign2$inboundSchema: z.ZodNativeEnum<typeof Campaign2> = z
-  .nativeEnum(Campaign2);
+export const CampaignSchemas2$inboundSchema: z.ZodNativeEnum<
+  typeof CampaignSchemas2
+> = z.nativeEnum(CampaignSchemas2);
 
 /** @internal */
-export const Campaign2$outboundSchema: z.ZodNativeEnum<typeof Campaign2> =
-  Campaign2$inboundSchema;
+export const CampaignSchemas2$outboundSchema: z.ZodNativeEnum<
+  typeof CampaignSchemas2
+> = CampaignSchemas2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Campaign2$ {
-  /** @deprecated use `Campaign2$inboundSchema` instead. */
-  export const inboundSchema = Campaign2$inboundSchema;
-  /** @deprecated use `Campaign2$outboundSchema` instead. */
-  export const outboundSchema = Campaign2$outboundSchema;
+export namespace CampaignSchemas2$ {
+  /** @deprecated use `CampaignSchemas2$inboundSchema` instead. */
+  export const inboundSchema = CampaignSchemas2$inboundSchema;
+  /** @deprecated use `CampaignSchemas2$outboundSchema` instead. */
+  export const outboundSchema = CampaignSchemas2$outboundSchema;
 }
 
 /** @internal */
 export const Draft$inboundSchema: z.ZodType<Draft, z.ZodTypeDef, unknown> = z
-  .union([z.boolean(), Campaign2$inboundSchema]);
+  .union([z.boolean(), CampaignSchemas2$inboundSchema]);
 
 /** @internal */
 export type Draft$Outbound = boolean | string;
@@ -273,7 +276,7 @@ export const Draft$outboundSchema: z.ZodType<
   Draft$Outbound,
   z.ZodTypeDef,
   Draft
-> = z.union([z.boolean(), Campaign2$outboundSchema]);
+> = z.union([z.boolean(), CampaignSchemas2$outboundSchema]);
 
 /**
  * @internal
@@ -762,13 +765,15 @@ export const Campaign$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  archived: z.nullable(z.union([z.boolean(), Two$inboundSchema])).optional(),
+  archived: z.nullable(z.union([z.boolean(), Campaign2$inboundSchema]))
+    .optional(),
   channels: z.nullable(z.array(ChannelsEnum$inboundSchema)).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   description: z.nullable(z.string()).optional(),
-  draft: z.nullable(z.union([z.boolean(), Campaign2$inboundSchema])).optional(),
+  draft: z.nullable(z.union([z.boolean(), CampaignSchemas2$inboundSchema]))
+    .optional(),
   first_sent_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -822,11 +827,12 @@ export const Campaign$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Campaign
 > = z.object({
-  archived: z.nullable(z.union([z.boolean(), Two$outboundSchema])).optional(),
+  archived: z.nullable(z.union([z.boolean(), Campaign2$outboundSchema]))
+    .optional(),
   channels: z.nullable(z.array(ChannelsEnum$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
-  draft: z.nullable(z.union([z.boolean(), Campaign2$outboundSchema]))
+  draft: z.nullable(z.union([z.boolean(), CampaignSchemas2$outboundSchema]))
     .optional(),
   firstSentAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   id: z.nullable(z.string()).optional(),

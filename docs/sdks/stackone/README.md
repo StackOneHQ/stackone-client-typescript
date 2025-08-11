@@ -2,6 +2,6 @@
 
 ## Overview
 
-Documents: The documentation for the StackOne Unified API - DOCUMENTS
+Accounting: The documentation for the StackOne Unified API - ACCOUNTING
 
 ### Available Operations

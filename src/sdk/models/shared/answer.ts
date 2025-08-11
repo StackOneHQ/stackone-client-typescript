@@ -50,7 +50,7 @@ export type AnswerValueOpen = OpenEnum<typeof AnswerValue>;
 /**
  * Type of the answer
  */
-export type Type = {
+export type AnswerType = {
   /**
    * The source value of the answer type.
    */
@@ -80,7 +80,7 @@ export type Answer = {
   /**
    * Type of the answer
    */
-  type?: Type | null | undefined;
+  type?: AnswerType | null | undefined;
   /**
    * Values of the answer
    */
@@ -226,26 +226,29 @@ export namespace AnswerValue$ {
 }
 
 /** @internal */
-export const Type$inboundSchema: z.ZodType<Type, z.ZodTypeDef, unknown> = z
-  .object({
-    source_value: z.nullable(
-      z.union([
-        z.lazy(() => Answer4$inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(AnswerValue$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
+export const AnswerType$inboundSchema: z.ZodType<
+  AnswerType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => Answer4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(AnswerValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
   });
+});
 
 /** @internal */
-export type Type$Outbound = {
+export type AnswerType$Outbound = {
   source_value?:
     | Answer4$Outbound
     | string
@@ -258,48 +261,51 @@ export type Type$Outbound = {
 };
 
 /** @internal */
-export const Type$outboundSchema: z.ZodType<Type$Outbound, z.ZodTypeDef, Type> =
-  z.object({
-    sourceValue: z.nullable(
-      z.union([
-        z.lazy(() => Answer4$outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(AnswerValue$outboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      sourceValue: "source_value",
-    });
+export const AnswerType$outboundSchema: z.ZodType<
+  AnswerType$Outbound,
+  z.ZodTypeDef,
+  AnswerType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => Answer4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(AnswerValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
-  /** @deprecated use `Type$Outbound` instead. */
-  export type Outbound = Type$Outbound;
+export namespace AnswerType$ {
+  /** @deprecated use `AnswerType$inboundSchema` instead. */
+  export const inboundSchema = AnswerType$inboundSchema;
+  /** @deprecated use `AnswerType$outboundSchema` instead. */
+  export const outboundSchema = AnswerType$outboundSchema;
+  /** @deprecated use `AnswerType$Outbound` instead. */
+  export type Outbound = AnswerType$Outbound;
 }
 
-export function typeToJSON(type: Type): string {
-  return JSON.stringify(Type$outboundSchema.parse(type));
+export function answerTypeToJSON(answerType: AnswerType): string {
+  return JSON.stringify(AnswerType$outboundSchema.parse(answerType));
 }
 
-export function typeFromJSON(
+export function answerTypeFromJSON(
   jsonString: string,
-): SafeParseResult<Type, SDKValidationError> {
+): SafeParseResult<AnswerType, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Type$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Type' from JSON`,
+    (x) => AnswerType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnswerType' from JSON`,
   );
 }
 
@@ -308,7 +314,7 @@ export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
   .object({
     id: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
-    type: z.nullable(z.lazy(() => Type$inboundSchema)).optional(),
+    type: z.nullable(z.lazy(() => AnswerType$inboundSchema)).optional(),
     values: z.nullable(z.array(z.string())).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -320,7 +326,7 @@ export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
 export type Answer$Outbound = {
   id?: string | null | undefined;
   remote_id?: string | null | undefined;
-  type?: Type$Outbound | null | undefined;
+  type?: AnswerType$Outbound | null | undefined;
   values?: Array<string> | null | undefined;
 };
 
@@ -332,7 +338,7 @@ export const Answer$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => Type$outboundSchema)).optional(),
+  type: z.nullable(z.lazy(() => AnswerType$outboundSchema)).optional(),
   values: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {

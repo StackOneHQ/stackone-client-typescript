@@ -110,7 +110,7 @@ export type HrisShiftResultStatus = {
   value?: HrisShiftResultSchemasValueOpen | null | undefined;
 };
 
-export type Data = {
+export type HrisShiftResultData = {
   /**
    * The approval status of the shift
    */
@@ -166,7 +166,7 @@ export type Data = {
 };
 
 export type HrisShiftResult = {
-  data?: Data | null | undefined;
+  data?: HrisShiftResultData | null | undefined;
   raw?: Array<RawResponse> | null | undefined;
 };
 
@@ -642,49 +642,52 @@ export function hrisShiftResultStatusFromJSON(
 }
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    approval_status: z.nullable(
-      z.lazy(() => HrisShiftResultApprovalStatus$inboundSchema),
-    ).optional(),
-    break_duration: z.nullable(z.string()).optional(),
-    breaks: z.nullable(z.array(ShiftBreak$inboundSchema)).optional(),
-    company_id: z.nullable(z.string()).optional(),
-    created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    employee_id: z.nullable(z.string()).optional(),
-    end_time: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    id: z.nullable(z.string()).optional(),
-    location_id: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    start_time: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    status: z.nullable(z.lazy(() => HrisShiftResultStatus$inboundSchema))
-      .optional(),
-    updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "approval_status": "approvalStatus",
-      "break_duration": "breakDuration",
-      "company_id": "companyId",
-      "created_at": "createdAt",
-      "employee_id": "employeeId",
-      "end_time": "endTime",
-      "location_id": "locationId",
-      "remote_id": "remoteId",
-      "start_time": "startTime",
-      "updated_at": "updatedAt",
-    });
+export const HrisShiftResultData$inboundSchema: z.ZodType<
+  HrisShiftResultData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  approval_status: z.nullable(
+    z.lazy(() => HrisShiftResultApprovalStatus$inboundSchema),
+  ).optional(),
+  break_duration: z.nullable(z.string()).optional(),
+  breaks: z.nullable(z.array(ShiftBreak$inboundSchema)).optional(),
+  company_id: z.nullable(z.string()).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  employee_id: z.nullable(z.string()).optional(),
+  end_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  location_id: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  start_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  status: z.nullable(z.lazy(() => HrisShiftResultStatus$inboundSchema))
+    .optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "approval_status": "approvalStatus",
+    "break_duration": "breakDuration",
+    "company_id": "companyId",
+    "created_at": "createdAt",
+    "employee_id": "employeeId",
+    "end_time": "endTime",
+    "location_id": "locationId",
+    "remote_id": "remoteId",
+    "start_time": "startTime",
+    "updated_at": "updatedAt",
   });
+});
 
 /** @internal */
-export type Data$Outbound = {
+export type HrisShiftResultData$Outbound = {
   approval_status?: HrisShiftResultApprovalStatus$Outbound | null | undefined;
   break_duration?: string | null | undefined;
   breaks?: Array<ShiftBreak$Outbound> | null | undefined;
@@ -701,63 +704,70 @@ export type Data$Outbound = {
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    approvalStatus: z.nullable(
-      z.lazy(() => HrisShiftResultApprovalStatus$outboundSchema),
-    ).optional(),
-    breakDuration: z.nullable(z.string()).optional(),
-    breaks: z.nullable(z.array(ShiftBreak$outboundSchema)).optional(),
-    companyId: z.nullable(z.string()).optional(),
-    createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    employeeId: z.nullable(z.string()).optional(),
-    endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    id: z.nullable(z.string()).optional(),
-    locationId: z.nullable(z.string()).optional(),
-    remoteId: z.nullable(z.string()).optional(),
-    startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    status: z.nullable(z.lazy(() => HrisShiftResultStatus$outboundSchema))
-      .optional(),
-    updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      approvalStatus: "approval_status",
-      breakDuration: "break_duration",
-      companyId: "company_id",
-      createdAt: "created_at",
-      employeeId: "employee_id",
-      endTime: "end_time",
-      locationId: "location_id",
-      remoteId: "remote_id",
-      startTime: "start_time",
-      updatedAt: "updated_at",
-    });
+export const HrisShiftResultData$outboundSchema: z.ZodType<
+  HrisShiftResultData$Outbound,
+  z.ZodTypeDef,
+  HrisShiftResultData
+> = z.object({
+  approvalStatus: z.nullable(
+    z.lazy(() => HrisShiftResultApprovalStatus$outboundSchema),
+  ).optional(),
+  breakDuration: z.nullable(z.string()).optional(),
+  breaks: z.nullable(z.array(ShiftBreak$outboundSchema)).optional(),
+  companyId: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  employeeId: z.nullable(z.string()).optional(),
+  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  id: z.nullable(z.string()).optional(),
+  locationId: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  status: z.nullable(z.lazy(() => HrisShiftResultStatus$outboundSchema))
+    .optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    approvalStatus: "approval_status",
+    breakDuration: "break_duration",
+    companyId: "company_id",
+    createdAt: "created_at",
+    employeeId: "employee_id",
+    endTime: "end_time",
+    locationId: "location_id",
+    remoteId: "remote_id",
+    startTime: "start_time",
+    updatedAt: "updated_at",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
+export namespace HrisShiftResultData$ {
+  /** @deprecated use `HrisShiftResultData$inboundSchema` instead. */
+  export const inboundSchema = HrisShiftResultData$inboundSchema;
+  /** @deprecated use `HrisShiftResultData$outboundSchema` instead. */
+  export const outboundSchema = HrisShiftResultData$outboundSchema;
+  /** @deprecated use `HrisShiftResultData$Outbound` instead. */
+  export type Outbound = HrisShiftResultData$Outbound;
 }
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function hrisShiftResultDataToJSON(
+  hrisShiftResultData: HrisShiftResultData,
+): string {
+  return JSON.stringify(
+    HrisShiftResultData$outboundSchema.parse(hrisShiftResultData),
+  );
 }
 
-export function dataFromJSON(
+export function hrisShiftResultDataFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<HrisShiftResultData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => HrisShiftResultData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisShiftResultData' from JSON`,
   );
 }
 
@@ -767,13 +777,13 @@ export const HrisShiftResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.nullable(z.lazy(() => Data$inboundSchema)).optional(),
+  data: z.nullable(z.lazy(() => HrisShiftResultData$inboundSchema)).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type HrisShiftResult$Outbound = {
-  data?: Data$Outbound | null | undefined;
+  data?: HrisShiftResultData$Outbound | null | undefined;
   raw?: Array<RawResponse$Outbound> | null | undefined;
 };
 
@@ -783,7 +793,7 @@ export const HrisShiftResult$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisShiftResult
 > = z.object({
-  data: z.nullable(z.lazy(() => Data$outboundSchema)).optional(),
+  data: z.nullable(z.lazy(() => HrisShiftResultData$outboundSchema)).optional(),
   raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
 });
 

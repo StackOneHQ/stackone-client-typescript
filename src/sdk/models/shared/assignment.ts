@@ -67,7 +67,7 @@ export type AssignmentSchemasValueOpen = OpenEnum<
 /**
  * The status of the assignment
  */
-export type Status = {
+export type AssignmentStatus = {
   sourceValue?:
     | AssignmentSchemas4
     | string
@@ -141,7 +141,7 @@ export type Assignment = {
   /**
    * The status of the assignment
    */
-  status?: Status | null | undefined;
+  status?: AssignmentStatus | null | undefined;
   /**
    * Custom Unified Fields configured in your StackOne project
    */
@@ -533,26 +533,29 @@ export namespace AssignmentSchemasValue$ {
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
-  .object({
-    source_value: z.nullable(
-      z.union([
-        z.lazy(() => AssignmentSchemas4$inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(AssignmentSchemasValue$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
+export const AssignmentStatus$inboundSchema: z.ZodType<
+  AssignmentStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => AssignmentSchemas4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(AssignmentSchemasValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
   });
+});
 
 /** @internal */
-export type Status$Outbound = {
+export type AssignmentStatus$Outbound = {
   source_value?:
     | AssignmentSchemas4$Outbound
     | string
@@ -565,10 +568,10 @@ export type Status$Outbound = {
 };
 
 /** @internal */
-export const Status$outboundSchema: z.ZodType<
-  Status$Outbound,
+export const AssignmentStatus$outboundSchema: z.ZodType<
+  AssignmentStatus$Outbound,
   z.ZodTypeDef,
-  Status
+  AssignmentStatus
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -590,26 +593,30 @@ export const Status$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
-  /** @deprecated use `Status$Outbound` instead. */
-  export type Outbound = Status$Outbound;
+export namespace AssignmentStatus$ {
+  /** @deprecated use `AssignmentStatus$inboundSchema` instead. */
+  export const inboundSchema = AssignmentStatus$inboundSchema;
+  /** @deprecated use `AssignmentStatus$outboundSchema` instead. */
+  export const outboundSchema = AssignmentStatus$outboundSchema;
+  /** @deprecated use `AssignmentStatus$Outbound` instead. */
+  export type Outbound = AssignmentStatus$Outbound;
 }
 
-export function statusToJSON(status: Status): string {
-  return JSON.stringify(Status$outboundSchema.parse(status));
+export function assignmentStatusToJSON(
+  assignmentStatus: AssignmentStatus,
+): string {
+  return JSON.stringify(
+    AssignmentStatus$outboundSchema.parse(assignmentStatus),
+  );
 }
 
-export function statusFromJSON(
+export function assignmentStatusFromJSON(
   jsonString: string,
-): SafeParseResult<Status, SDKValidationError> {
+): SafeParseResult<AssignmentStatus, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Status' from JSON`,
+    (x) => AssignmentStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignmentStatus' from JSON`,
   );
 }
 
@@ -638,7 +645,7 @@ export const Assignment$inboundSchema: z.ZodType<
   remote_id: z.nullable(z.string()).optional(),
   remote_learning_object_id: z.nullable(z.string()).optional(),
   remote_user_id: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => Status$inboundSchema)).optional(),
+  status: z.nullable(z.lazy(() => AssignmentStatus$inboundSchema)).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -678,7 +685,7 @@ export type Assignment$Outbound = {
   remote_id?: string | null | undefined;
   remote_learning_object_id?: string | null | undefined;
   remote_user_id?: string | null | undefined;
-  status?: Status$Outbound | null | undefined;
+  status?: AssignmentStatus$Outbound | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   updated_at?: string | null | undefined;
   user_id?: string | null | undefined;
@@ -705,7 +712,7 @@ export const Assignment$outboundSchema: z.ZodType<
   remoteId: z.nullable(z.string()).optional(),
   remoteLearningObjectId: z.nullable(z.string()).optional(),
   remoteUserId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => Status$outboundSchema)).optional(),
+  status: z.nullable(z.lazy(() => AssignmentStatus$outboundSchema)).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   userId: z.nullable(z.string()).optional(),

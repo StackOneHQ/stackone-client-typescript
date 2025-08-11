@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: f0a532f00e64cadd25f8711ec94bb11b
+  docChecksum: e3c0c117694e155daa5a026b99767977
   docVersion: 1.0.0
-  speakeasyVersion: 1.599.0
-  generationVersion: 2.675.0
-  releaseVersion: 4.24.2
-  configChecksum: 799c5cc5a5ffd75f1023c0d747e2413f
+  speakeasyVersion: 1.600.2
+  generationVersion: 2.677.3
+  releaseVersion: 4.24.3
+  configChecksum: d849ac5708da648c9c0f1ae31089ddb5
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -21,7 +21,7 @@ features:
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    examples: 2.82.1
+    examples: 2.82.2
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
@@ -55,6 +55,28 @@ generatedFiles:
   - docs/sdk/models/errors/toomanyrequestsresponse.md
   - docs/sdk/models/errors/unauthorizedresponse.md
   - docs/sdk/models/errors/unprocessableentityresponse.md
+  - docs/sdk/models/operations/accountingbatchcreatecompanyjournalsrequest.md
+  - docs/sdk/models/operations/accountingbatchcreatecompanyjournalsresponse.md
+  - docs/sdk/models/operations/accountinggetcompanyaccountrequest.md
+  - docs/sdk/models/operations/accountinggetcompanyaccountresponse.md
+  - docs/sdk/models/operations/accountinggetcompanyjournalrequest.md
+  - docs/sdk/models/operations/accountinggetcompanyjournalresponse.md
+  - docs/sdk/models/operations/accountinggetcompanyrequest.md
+  - docs/sdk/models/operations/accountinggetcompanyresponse.md
+  - docs/sdk/models/operations/accountinggetcompanytaxraterequest.md
+  - docs/sdk/models/operations/accountinggetcompanytaxrateresponse.md
+  - docs/sdk/models/operations/accountinglistcompaniesqueryparamfilter.md
+  - docs/sdk/models/operations/accountinglistcompaniesrequest.md
+  - docs/sdk/models/operations/accountinglistcompaniesresponse.md
+  - docs/sdk/models/operations/accountinglistcompanyaccountsqueryparamfilter.md
+  - docs/sdk/models/operations/accountinglistcompanyaccountsrequest.md
+  - docs/sdk/models/operations/accountinglistcompanyaccountsresponse.md
+  - docs/sdk/models/operations/accountinglistcompanyjournalsqueryparamfilter.md
+  - docs/sdk/models/operations/accountinglistcompanyjournalsrequest.md
+  - docs/sdk/models/operations/accountinglistcompanyjournalsresponse.md
+  - docs/sdk/models/operations/accountinglistcompanytaxratesqueryparamfilter.md
+  - docs/sdk/models/operations/accountinglistcompanytaxratesrequest.md
+  - docs/sdk/models/operations/accountinglistcompanytaxratesresponse.md
   - docs/sdk/models/operations/active.md
   - docs/sdk/models/operations/atscreateapplicationnoterequest.md
   - docs/sdk/models/operations/atscreateapplicationnoteresponse.md
@@ -591,6 +613,33 @@ generatedFiles:
   - docs/sdk/models/operations/marketingupdatepushtemplateresponse.md
   - docs/sdk/models/operations/marketingupdatesmstemplaterequest.md
   - docs/sdk/models/operations/marketingupdatesmstemplateresponse.md
+  - docs/sdk/models/operations/messagingcreateconversationrequest.md
+  - docs/sdk/models/operations/messagingcreateconversationresponse.md
+  - docs/sdk/models/operations/messagingdownloadmessagingattachmentrequest.md
+  - docs/sdk/models/operations/messagingdownloadmessagingattachmentresponse.md
+  - docs/sdk/models/operations/messaginggetattachmentrequest.md
+  - docs/sdk/models/operations/messaginggetattachmentresponse.md
+  - docs/sdk/models/operations/messaginggetconversationrequest.md
+  - docs/sdk/models/operations/messaginggetconversationresponse.md
+  - docs/sdk/models/operations/messaginggetmessagequeryparamfilter.md
+  - docs/sdk/models/operations/messaginggetmessagerequest.md
+  - docs/sdk/models/operations/messaginggetmessageresponse.md
+  - docs/sdk/models/operations/messaginggetuserrequest.md
+  - docs/sdk/models/operations/messaginggetuserresponse.md
+  - docs/sdk/models/operations/messaginglistattachmentsqueryparamfilter.md
+  - docs/sdk/models/operations/messaginglistattachmentsrequest.md
+  - docs/sdk/models/operations/messaginglistattachmentsresponse.md
+  - docs/sdk/models/operations/messaginglistconversationmessagesqueryparamfilter.md
+  - docs/sdk/models/operations/messaginglistconversationmessagesrequest.md
+  - docs/sdk/models/operations/messaginglistconversationmessagesresponse.md
+  - docs/sdk/models/operations/messaginglistconversationsqueryparamfilter.md
+  - docs/sdk/models/operations/messaginglistconversationsrequest.md
+  - docs/sdk/models/operations/messaginglistconversationsresponse.md
+  - docs/sdk/models/operations/messaginglistusersqueryparamfilter.md
+  - docs/sdk/models/operations/messaginglistusersrequest.md
+  - docs/sdk/models/operations/messaginglistusersresponse.md
+  - docs/sdk/models/operations/messagingsendmessagerequest.md
+  - docs/sdk/models/operations/messagingsendmessageresponse.md
   - docs/sdk/models/operations/orderby.md
   - docs/sdk/models/operations/orderdirection.md
   - docs/sdk/models/operations/queryparamactive.md
@@ -600,6 +649,15 @@ generatedFiles:
   - docs/sdk/models/operations/queryparamorderdirection.md
   - docs/sdk/models/operations/queryparamstatus.md
   - docs/sdk/models/operations/queryparamtype.md
+  - docs/sdk/models/operations/screeningcreatescreeningorderrequest.md
+  - docs/sdk/models/operations/screeningcreatescreeningorderresponse.md
+  - docs/sdk/models/operations/screeninggetscreeningpackagerequest.md
+  - docs/sdk/models/operations/screeninggetscreeningpackageresponse.md
+  - docs/sdk/models/operations/screeninglistscreeningpackagesqueryparamfilter.md
+  - docs/sdk/models/operations/screeninglistscreeningpackagesrequest.md
+  - docs/sdk/models/operations/screeninglistscreeningpackagesresponse.md
+  - docs/sdk/models/operations/screeningwebhookscreeningresultrequest.md
+  - docs/sdk/models/operations/screeningwebhookscreeningresultresponse.md
   - docs/sdk/models/operations/stackoneauthenticateconnectsessionresponse.md
   - docs/sdk/models/operations/stackonecreateconnectsessionresponse.md
   - docs/sdk/models/operations/stackonedeleteaccountrequest.md
@@ -690,14 +748,63 @@ generatedFiles:
   - docs/sdk/models/shared/accountaddressschemasvalue.md
   - docs/sdk/models/shared/accountaddresssourcevalue.md
   - docs/sdk/models/shared/accountaddressvalue.md
+  - docs/sdk/models/shared/accountingaccount.md
+  - docs/sdk/models/shared/accountingaccount4.md
+  - docs/sdk/models/shared/accountingaccountresult.md
+  - docs/sdk/models/shared/accountingaccountresult2.md
+  - docs/sdk/models/shared/accountingaccountresult4.md
+  - docs/sdk/models/shared/accountingaccountresultactive.md
+  - docs/sdk/models/shared/accountingaccountresultsourcevalue.md
+  - docs/sdk/models/shared/accountingaccountresulttype.md
+  - docs/sdk/models/shared/accountingaccountresultvalue.md
+  - docs/sdk/models/shared/accountingaccountsourcevalue.md
+  - docs/sdk/models/shared/accountingaccountspaginated.md
+  - docs/sdk/models/shared/accountingaccountvalue.md
+  - docs/sdk/models/shared/accountingcompaniespaginated.md
+  - docs/sdk/models/shared/accountingcompany.md
+  - docs/sdk/models/shared/accountingcompany4.md
+  - docs/sdk/models/shared/accountingcompanyresult.md
+  - docs/sdk/models/shared/accountingcompanyresult4.md
+  - docs/sdk/models/shared/accountingcompanyresultbasecurrency.md
+  - docs/sdk/models/shared/accountingcompanyresultdata.md
+  - docs/sdk/models/shared/accountingcompanyresultsourcevalue.md
+  - docs/sdk/models/shared/accountingcompanyresultvalue.md
+  - docs/sdk/models/shared/accountingcompanysourcevalue.md
+  - docs/sdk/models/shared/accountingcompanyvalue.md
+  - docs/sdk/models/shared/accountingjournal.md
+  - docs/sdk/models/shared/accountingjournal4.md
+  - docs/sdk/models/shared/accountingjournalbatchcreaterequestdto.md
+  - docs/sdk/models/shared/accountingjournalcreaterequestdto.md
+  - docs/sdk/models/shared/accountingjournalcreaterequestdto4.md
+  - docs/sdk/models/shared/accountingjournalcreaterequestdtosourcevalue.md
+  - docs/sdk/models/shared/accountingjournalcreaterequestdtovalue.md
+  - docs/sdk/models/shared/accountingjournalresult.md
+  - docs/sdk/models/shared/accountingjournalresult4.md
+  - docs/sdk/models/shared/accountingjournalresultdata.md
+  - docs/sdk/models/shared/accountingjournalresultsourcevalue.md
+  - docs/sdk/models/shared/accountingjournalresultstatus.md
+  - docs/sdk/models/shared/accountingjournalresultvalue.md
+  - docs/sdk/models/shared/accountingjournalsourcevalue.md
+  - docs/sdk/models/shared/accountingjournalspaginated.md
+  - docs/sdk/models/shared/accountingjournalvalue.md
+  - docs/sdk/models/shared/accountingtaxrate.md
+  - docs/sdk/models/shared/accountingtaxrate2.md
+  - docs/sdk/models/shared/accountingtaxrateactive.md
+  - docs/sdk/models/shared/accountingtaxrateresult.md
+  - docs/sdk/models/shared/accountingtaxrateresult2.md
+  - docs/sdk/models/shared/accountingtaxrateresultactive.md
+  - docs/sdk/models/shared/accountingtaxrateresultdata.md
+  - docs/sdk/models/shared/accountingtaxratespaginated.md
   - docs/sdk/models/shared/accountresult.md
   - docs/sdk/models/shared/accountspaginated.md
+  - docs/sdk/models/shared/accounttype.md
   - docs/sdk/models/shared/active.md
   - docs/sdk/models/shared/actor.md
   - docs/sdk/models/shared/additionaldata.md
   - docs/sdk/models/shared/answer.md
   - docs/sdk/models/shared/answer4.md
   - docs/sdk/models/shared/answersourcevalue.md
+  - docs/sdk/models/shared/answertype.md
   - docs/sdk/models/shared/answervalue.md
   - docs/sdk/models/shared/application.md
   - docs/sdk/models/shared/application4.md
@@ -741,6 +848,7 @@ generatedFiles:
   - docs/sdk/models/shared/assignmentschemasvalue.md
   - docs/sdk/models/shared/assignmentsourcevalue.md
   - docs/sdk/models/shared/assignmentspaginated.md
+  - docs/sdk/models/shared/assignmentstatus.md
   - docs/sdk/models/shared/assignmentvalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto4.md
@@ -838,6 +946,7 @@ generatedFiles:
   - docs/sdk/models/shared/attachmentcontenttype.md
   - docs/sdk/models/shared/attachmentsourcevalue.md
   - docs/sdk/models/shared/attachmentvalue.md
+  - docs/sdk/models/shared/author.md
   - docs/sdk/models/shared/authormodel.md
   - docs/sdk/models/shared/avatar.md
   - docs/sdk/models/shared/backgroundcheckpackage.md
@@ -852,13 +961,16 @@ generatedFiles:
   - docs/sdk/models/shared/backgroundcheckresultsresult.md
   - docs/sdk/models/shared/backgroundcheckresultvalue.md
   - docs/sdk/models/shared/balanceunit.md
+  - docs/sdk/models/shared/basecurrency.md
   - docs/sdk/models/shared/batchresultapimodel.md
   - docs/sdk/models/shared/benefittype.md
   - docs/sdk/models/shared/body.md
+  - docs/sdk/models/shared/bot.md
   - docs/sdk/models/shared/campaign.md
   - docs/sdk/models/shared/campaign2.md
   - docs/sdk/models/shared/campaign4.md
   - docs/sdk/models/shared/campaignresult.md
+  - docs/sdk/models/shared/campaignschemas2.md
   - docs/sdk/models/shared/campaignschemas4.md
   - docs/sdk/models/shared/campaignschemassourcevalue.md
   - docs/sdk/models/shared/campaignschemasvalue.md
@@ -875,6 +987,7 @@ generatedFiles:
   - docs/sdk/models/shared/category.md
   - docs/sdk/models/shared/category2.md
   - docs/sdk/models/shared/category4.md
+  - docs/sdk/models/shared/categoryactive.md
   - docs/sdk/models/shared/categoryresult.md
   - docs/sdk/models/shared/categoryschemas4.md
   - docs/sdk/models/shared/categoryschemaslevel4.md
@@ -995,6 +1108,7 @@ generatedFiles:
   - docs/sdk/models/shared/createhrisbenefit4.md
   - docs/sdk/models/shared/createhrisbenefitsourcevalue.md
   - docs/sdk/models/shared/createhrisbenefitvalue.md
+  - docs/sdk/models/shared/createjournalline.md
   - docs/sdk/models/shared/createmessage.md
   - docs/sdk/models/shared/createmessage4.md
   - docs/sdk/models/shared/createmessagesourcevalue.md
@@ -1018,6 +1132,7 @@ generatedFiles:
   - docs/sdk/models/shared/createskillsapimodelvalue.md
   - docs/sdk/models/shared/credentials.md
   - docs/sdk/models/shared/crmcreatecontactrequestdto.md
+  - docs/sdk/models/shared/currencycode.md
   - docs/sdk/models/shared/customfielddefinition.md
   - docs/sdk/models/shared/customfielddefinition4.md
   - docs/sdk/models/shared/customfielddefinitionresultapimodel.md
@@ -1186,6 +1301,7 @@ generatedFiles:
   - docs/sdk/models/shared/entityskillssourcevalue.md
   - docs/sdk/models/shared/entityskillsvalue.md
   - docs/sdk/models/shared/ethnicity.md
+  - docs/sdk/models/shared/event.md
   - docs/sdk/models/shared/field.md
   - docs/sdk/models/shared/field2.md
   - docs/sdk/models/shared/fieldtype.md
@@ -1429,6 +1545,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrisshiftresult.md
   - docs/sdk/models/shared/hrisshiftresult4.md
   - docs/sdk/models/shared/hrisshiftresultapprovalstatus.md
+  - docs/sdk/models/shared/hrisshiftresultdata.md
   - docs/sdk/models/shared/hrisshiftresultschemas4.md
   - docs/sdk/models/shared/hrisshiftresultschemassourcevalue.md
   - docs/sdk/models/shared/hrisshiftresultschemasvalue.md
@@ -1686,6 +1803,14 @@ generatedFiles:
   - docs/sdk/models/shared/jobspaginated.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/jobvalue.md
+  - docs/sdk/models/shared/journalline.md
+  - docs/sdk/models/shared/journalline4.md
+  - docs/sdk/models/shared/journallinecurrencycode.md
+  - docs/sdk/models/shared/journallineschemas4.md
+  - docs/sdk/models/shared/journallineschemassourcevalue.md
+  - docs/sdk/models/shared/journallineschemasvalue.md
+  - docs/sdk/models/shared/journallinesourcevalue.md
+  - docs/sdk/models/shared/journallinevalue.md
   - docs/sdk/models/shared/label.md
   - docs/sdk/models/shared/labortype.md
   - docs/sdk/models/shared/language.md
@@ -1763,6 +1888,43 @@ generatedFiles:
   - docs/sdk/models/shared/messagesourcevalue.md
   - docs/sdk/models/shared/messagetype.md
   - docs/sdk/models/shared/messagevalue.md
+  - docs/sdk/models/shared/messagingattachment.md
+  - docs/sdk/models/shared/messagingattachmentresult.md
+  - docs/sdk/models/shared/messagingattachmentresultdata.md
+  - docs/sdk/models/shared/messagingattachmentspaginated.md
+  - docs/sdk/models/shared/messagingconversation.md
+  - docs/sdk/models/shared/messagingconversation2.md
+  - docs/sdk/models/shared/messagingconversationresult.md
+  - docs/sdk/models/shared/messagingconversationresult2.md
+  - docs/sdk/models/shared/messagingconversationresultdata.md
+  - docs/sdk/models/shared/messagingconversationresultprivate.md
+  - docs/sdk/models/shared/messagingconversationspaginated.md
+  - docs/sdk/models/shared/messagingcreateconversationrequestdto.md
+  - docs/sdk/models/shared/messagingcreateconversationrequestdto2.md
+  - docs/sdk/models/shared/messagingcreateconversationrequestdtoprivate.md
+  - docs/sdk/models/shared/messagingmessage.md
+  - docs/sdk/models/shared/messagingmessage2.md
+  - docs/sdk/models/shared/messagingmessageactive.md
+  - docs/sdk/models/shared/messagingmessagecontent.md
+  - docs/sdk/models/shared/messagingmessageresult.md
+  - docs/sdk/models/shared/messagingmessageresult2.md
+  - docs/sdk/models/shared/messagingmessageresultactive.md
+  - docs/sdk/models/shared/messagingmessageresultauthor.md
+  - docs/sdk/models/shared/messagingmessageresultcontent.md
+  - docs/sdk/models/shared/messagingmessageresultdata.md
+  - docs/sdk/models/shared/messagingmessagesendrequestdto.md
+  - docs/sdk/models/shared/messagingmessagespaginated.md
+  - docs/sdk/models/shared/messaginguser.md
+  - docs/sdk/models/shared/messaginguser2.md
+  - docs/sdk/models/shared/messaginguseractive.md
+  - docs/sdk/models/shared/messaginguserresult.md
+  - docs/sdk/models/shared/messaginguserresult2.md
+  - docs/sdk/models/shared/messaginguserresultactive.md
+  - docs/sdk/models/shared/messaginguserresultbot.md
+  - docs/sdk/models/shared/messaginguserresultdata.md
+  - docs/sdk/models/shared/messaginguserresultschemas2.md
+  - docs/sdk/models/shared/messaginguserschemas2.md
+  - docs/sdk/models/shared/messaginguserspaginated.md
   - docs/sdk/models/shared/metadata.md
   - docs/sdk/models/shared/method.md
   - docs/sdk/models/shared/minimumproficiency.md
@@ -1819,6 +1981,7 @@ generatedFiles:
   - docs/sdk/models/shared/positionvalue.md
   - docs/sdk/models/shared/preferredlanguage.md
   - docs/sdk/models/shared/priority.md
+  - docs/sdk/models/shared/private.md
   - docs/sdk/models/shared/providererror.md
   - docs/sdk/models/shared/providererrorapimodel.md
   - docs/sdk/models/shared/providererrorapimodelheaders.md
@@ -1886,6 +2049,15 @@ generatedFiles:
   - docs/sdk/models/shared/scorecardsection.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/scorecardsresult.md
+  - docs/sdk/models/shared/screeningcreateorderrequestdto.md
+  - docs/sdk/models/shared/screeningordercandidate.md
+  - docs/sdk/models/shared/screeningpackage.md
+  - docs/sdk/models/shared/screeningpackageresult.md
+  - docs/sdk/models/shared/screeningpackagespaginated.md
+  - docs/sdk/models/shared/screeningresult.md
+  - docs/sdk/models/shared/screeningresultscore.md
+  - docs/sdk/models/shared/screeningresultstatus.md
+  - docs/sdk/models/shared/screeningresultwebhook.md
   - docs/sdk/models/shared/secrets.md
   - docs/sdk/models/shared/security.md
   - docs/sdk/models/shared/setupinformation.md
@@ -2147,6 +2319,7 @@ generatedFiles:
   - docs/sdk/models/shared/worklocation.md
   - docs/sdk/models/shared/worktime.md
   - docs/sdk/models/shared/writeresultapimodel.md
+  - docs/sdks/accounting/README.md
   - docs/sdks/accounts/README.md
   - docs/sdks/ats/README.md
   - docs/sdks/connectors/README.md
@@ -2157,8 +2330,10 @@ generatedFiles:
   - docs/sdks/iam/README.md
   - docs/sdks/lms/README.md
   - docs/sdks/marketing/README.md
+  - docs/sdks/messaging/README.md
   - docs/sdks/proxy/README.md
   - docs/sdks/requestlogs/README.md
+  - docs/sdks/screening/README.md
   - docs/sdks/stackone/README.md
   - docs/sdks/ticketing/README.md
   - eslint.config.mjs
@@ -2169,6 +2344,15 @@ generatedFiles:
   - jsr.json
   - package.json
   - src/core.ts
+  - src/funcs/accountingBatchCreateCompanyJournals.ts
+  - src/funcs/accountingGetCompany.ts
+  - src/funcs/accountingGetCompanyAccount.ts
+  - src/funcs/accountingGetCompanyJournal.ts
+  - src/funcs/accountingGetCompanyTaxRate.ts
+  - src/funcs/accountingListCompanies.ts
+  - src/funcs/accountingListCompanyAccounts.ts
+  - src/funcs/accountingListCompanyJournals.ts
+  - src/funcs/accountingListCompanyTaxRates.ts
   - src/funcs/accountsDeleteAccount.ts
   - src/funcs/accountsGetAccount.ts
   - src/funcs/accountsGetAccountMetaInfo.ts
@@ -2399,11 +2583,26 @@ generatedFiles:
   - src/funcs/marketingUpdateOmniChannelTemplate.ts
   - src/funcs/marketingUpdatePushTemplate.ts
   - src/funcs/marketingUpdateSmsTemplate.ts
+  - src/funcs/messagingCreateConversation.ts
+  - src/funcs/messagingDownloadMessagingAttachment.ts
+  - src/funcs/messagingGetAttachment.ts
+  - src/funcs/messagingGetConversation.ts
+  - src/funcs/messagingGetMessage.ts
+  - src/funcs/messagingGetUser.ts
+  - src/funcs/messagingListAttachments.ts
+  - src/funcs/messagingListConversationMessages.ts
+  - src/funcs/messagingListConversations.ts
+  - src/funcs/messagingListUsers.ts
+  - src/funcs/messagingSendMessage.ts
   - src/funcs/proxyProxyRequest.ts
   - src/funcs/requestLogsGetLog.ts
   - src/funcs/requestLogsListLogs.ts
   - src/funcs/requestLogsListPlatformLogs.ts
   - src/funcs/requestLogsListStepLogs.ts
+  - src/funcs/screeningCreateScreeningOrder.ts
+  - src/funcs/screeningGetScreeningPackage.ts
+  - src/funcs/screeningListScreeningPackages.ts
+  - src/funcs/screeningWebhookScreeningResult.ts
   - src/funcs/ticketingCreateTicket.ts
   - src/funcs/ticketingDownloadTicketingAttachment.ts
   - src/funcs/ticketingGetAttachment.ts
@@ -2442,6 +2641,7 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/sdk/accounting.ts
   - src/sdk/accounts.ts
   - src/sdk/ats.ts
   - src/sdk/connectors.ts
@@ -2453,6 +2653,7 @@ generatedFiles:
   - src/sdk/index.ts
   - src/sdk/lms.ts
   - src/sdk/marketing.ts
+  - src/sdk/messaging.ts
   - src/sdk/models/errors/badgatewayresponse.ts
   - src/sdk/models/errors/badrequestresponse.ts
   - src/sdk/models/errors/conflictresponse.ts
@@ -2471,6 +2672,15 @@ generatedFiles:
   - src/sdk/models/errors/toomanyrequestsresponse.ts
   - src/sdk/models/errors/unauthorizedresponse.ts
   - src/sdk/models/errors/unprocessableentityresponse.ts
+  - src/sdk/models/operations/accountingbatchcreatecompanyjournals.ts
+  - src/sdk/models/operations/accountinggetcompany.ts
+  - src/sdk/models/operations/accountinggetcompanyaccount.ts
+  - src/sdk/models/operations/accountinggetcompanyjournal.ts
+  - src/sdk/models/operations/accountinggetcompanytaxrate.ts
+  - src/sdk/models/operations/accountinglistcompanies.ts
+  - src/sdk/models/operations/accountinglistcompanyaccounts.ts
+  - src/sdk/models/operations/accountinglistcompanyjournals.ts
+  - src/sdk/models/operations/accountinglistcompanytaxrates.ts
   - src/sdk/models/operations/atscreateapplication.ts
   - src/sdk/models/operations/atscreateapplicationnote.ts
   - src/sdk/models/operations/atscreatebackgroundcheckpackage.ts
@@ -2693,6 +2903,21 @@ generatedFiles:
   - src/sdk/models/operations/marketingupdateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingupdatepushtemplate.ts
   - src/sdk/models/operations/marketingupdatesmstemplate.ts
+  - src/sdk/models/operations/messagingcreateconversation.ts
+  - src/sdk/models/operations/messagingdownloadmessagingattachment.ts
+  - src/sdk/models/operations/messaginggetattachment.ts
+  - src/sdk/models/operations/messaginggetconversation.ts
+  - src/sdk/models/operations/messaginggetmessage.ts
+  - src/sdk/models/operations/messaginggetuser.ts
+  - src/sdk/models/operations/messaginglistattachments.ts
+  - src/sdk/models/operations/messaginglistconversationmessages.ts
+  - src/sdk/models/operations/messaginglistconversations.ts
+  - src/sdk/models/operations/messaginglistusers.ts
+  - src/sdk/models/operations/messagingsendmessage.ts
+  - src/sdk/models/operations/screeningcreatescreeningorder.ts
+  - src/sdk/models/operations/screeninggetscreeningpackage.ts
+  - src/sdk/models/operations/screeninglistscreeningpackages.ts
+  - src/sdk/models/operations/screeningwebhookscreeningresult.ts
   - src/sdk/models/operations/stackoneauthenticateconnectsession.ts
   - src/sdk/models/operations/stackonecreateconnectsession.ts
   - src/sdk/models/operations/stackonedeleteaccount.ts
@@ -2728,6 +2953,20 @@ generatedFiles:
   - src/sdk/models/operations/ticketingupdateticket.ts
   - src/sdk/models/shared/account.ts
   - src/sdk/models/shared/accountaddress.ts
+  - src/sdk/models/shared/accountingaccount.ts
+  - src/sdk/models/shared/accountingaccountresult.ts
+  - src/sdk/models/shared/accountingaccountspaginated.ts
+  - src/sdk/models/shared/accountingcompaniespaginated.ts
+  - src/sdk/models/shared/accountingcompany.ts
+  - src/sdk/models/shared/accountingcompanyresult.ts
+  - src/sdk/models/shared/accountingjournal.ts
+  - src/sdk/models/shared/accountingjournalbatchcreaterequestdto.ts
+  - src/sdk/models/shared/accountingjournalcreaterequestdto.ts
+  - src/sdk/models/shared/accountingjournalresult.ts
+  - src/sdk/models/shared/accountingjournalspaginated.ts
+  - src/sdk/models/shared/accountingtaxrate.ts
+  - src/sdk/models/shared/accountingtaxrateresult.ts
+  - src/sdk/models/shared/accountingtaxratespaginated.ts
   - src/sdk/models/shared/accountresult.ts
   - src/sdk/models/shared/accountspaginated.ts
   - src/sdk/models/shared/additionaldata.ts
@@ -2821,6 +3060,7 @@ generatedFiles:
   - src/sdk/models/shared/createcostcenterapimodel.ts
   - src/sdk/models/shared/createemploymentapimodel.ts
   - src/sdk/models/shared/createhrisbenefit.ts
+  - src/sdk/models/shared/createjournalline.ts
   - src/sdk/models/shared/createmessage.ts
   - src/sdk/models/shared/createpackage.ts
   - src/sdk/models/shared/createquestionnaire.ts
@@ -2941,6 +3181,7 @@ generatedFiles:
   - src/sdk/models/shared/jobpostingspaginated.ts
   - src/sdk/models/shared/jobresult.ts
   - src/sdk/models/shared/jobspaginated.ts
+  - src/sdk/models/shared/journalline.ts
   - src/sdk/models/shared/languageenum.ts
   - src/sdk/models/shared/linkedaccount.ts
   - src/sdk/models/shared/linkedaccountmeta.ts
@@ -2961,6 +3202,20 @@ generatedFiles:
   - src/sdk/models/shared/marketingcreatepushtemplaterequestdto.ts
   - src/sdk/models/shared/marketingcreatesmstemplaterequestdto.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
+  - src/sdk/models/shared/messagingattachment.ts
+  - src/sdk/models/shared/messagingattachmentresult.ts
+  - src/sdk/models/shared/messagingattachmentspaginated.ts
+  - src/sdk/models/shared/messagingconversation.ts
+  - src/sdk/models/shared/messagingconversationresult.ts
+  - src/sdk/models/shared/messagingconversationspaginated.ts
+  - src/sdk/models/shared/messagingcreateconversationrequestdto.ts
+  - src/sdk/models/shared/messagingmessage.ts
+  - src/sdk/models/shared/messagingmessageresult.ts
+  - src/sdk/models/shared/messagingmessagesendrequestdto.ts
+  - src/sdk/models/shared/messagingmessagespaginated.ts
+  - src/sdk/models/shared/messaginguser.ts
+  - src/sdk/models/shared/messaginguserresult.ts
+  - src/sdk/models/shared/messaginguserspaginated.ts
   - src/sdk/models/shared/moveapplicationresult.ts
   - src/sdk/models/shared/nationalidentitynumberapimodel.ts
   - src/sdk/models/shared/note.ts
@@ -3006,6 +3261,13 @@ generatedFiles:
   - src/sdk/models/shared/scorecardsection.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/scorecardsresult.ts
+  - src/sdk/models/shared/screeningcreateorderrequestdto.ts
+  - src/sdk/models/shared/screeningordercandidate.ts
+  - src/sdk/models/shared/screeningpackage.ts
+  - src/sdk/models/shared/screeningpackageresult.ts
+  - src/sdk/models/shared/screeningpackagespaginated.ts
+  - src/sdk/models/shared/screeningresult.ts
+  - src/sdk/models/shared/screeningresultwebhook.ts
   - src/sdk/models/shared/security.ts
   - src/sdk/models/shared/shiftbreak.ts
   - src/sdk/models/shared/skillresult.ts
@@ -3083,6 +3345,7 @@ generatedFiles:
   - src/sdk/models/shared/writeresultapimodel.ts
   - src/sdk/proxy.ts
   - src/sdk/requestlogs.ts
+  - src/sdk/screening.ts
   - src/sdk/sdk.ts
   - src/sdk/ticketing.ts
   - src/sdk/types/async.ts
@@ -12691,6 +12954,869 @@ examples:
           application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
         "409":
           application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_batch_create_company_journals:
+    speakeasy-default-accounting-batch-create-company-journals:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"items": []}
+      responses:
+        "202":
+          application/json: {"errors": [["Missing field: name"], [], []], "message": "Batch operation accepted", "statusCode": 202, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_get_company:
+    speakeasy-default-accounting-get-company:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": null}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_get_company_account:
+    speakeasy-default-accounting-get-company-account:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,company_id,remote_company_id,code,name,type,active"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": null}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_get_company_journal:
+    speakeasy-default-accounting-get-company-journal:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"company_id": "comp_123456789", "created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "lines": [{"account_id": "acc_123", "amount": 10010, "description": "Payment for office supplies", "id": "line_1", "tax_amount": 2002}], "memo": "Monthly closing entries", "posted_at": "2024-03-20T10:00:00Z", "reference": "JRN-2024-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"source_value": "draft", "value": "draft"}, "transaction_date": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_get_company_tax_rate:
+    speakeasy-default-accounting-get-company-tax-rate:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,company_id,remote_company_id,name,code,rate,active"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"active": true, "code": "TAX001", "company_id": "company_123", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "VAT 7.5%", "percentage": 7.5, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_list_companies:
+    speakeasy-default-accounting-list-companies:
+      parameters:
+        query:
+          fields: "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"base_currency": {"source_value": "USD", "value": "USD"}, "fiscal_year_start_day": 1, "fiscal_year_start_month": 1, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Acme Corp", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": null, "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_list_company_accounts:
+    speakeasy-default-accounting-list-company-accounts:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,company_id,remote_company_id,code,name,type,active"
+          filter: null
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"active": true, "code": "4000", "company_id": "company_123", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Cash", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "asset", "value": "asset"}}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_list_company_journals:
+    speakeasy-default-accounting-list-company-journals:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at"
+          filter: null
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"company_id": "comp_123456789", "created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "lines": [{"account_id": "acc_123", "amount": 10010, "description": "Payment for office supplies", "id": "line_1", "tax_amount": 2002}], "memo": "Monthly closing entries", "posted_at": "2024-03-20T10:00:00Z", "reference": "JRN-2024-001", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"source_value": "draft", "value": "draft"}, "transaction_date": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_list_company_tax_rates:
+    speakeasy-default-accounting-list-company-tax-rates:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,company_id,remote_company_id,name,code,rate,active"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"active": true, "code": "TAX001", "company_id": "company_123", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "VAT 7.5%", "percentage": 7.5, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_create_conversation:
+    speakeasy-default-messaging-create-conversation:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"name": "Project Discussion", "participants": ["c28xIQ1", "c28xIQ2"], "private": true}
+      responses:
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_download_messaging_attachment:
+    speakeasy-default-messaging-download-messaging-attachment:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          format: "base64"
+          export_format: "text/plain"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          '*/*': "x-file: example.file"
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_get_attachment:
+    speakeasy-default-messaging-get-attachment:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,file_name,file_size,file_type"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"file_name": "document.pdf", "file_size": 1024, "file_type": "application/pdf", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_get_conversation:
+    speakeasy-default-messaging-get-conversation:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,participants,name,private,created_at,last_message_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_message_at": "2024-03-20T11:30:00Z", "name": "Project Discussion", "participants": ["c28xIQ1", "c28xIQ2"], "private": true, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_get_message:
+    speakeasy-default-messaging-get-message:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"author": null, "content": {"html": "<p>Hello world</p>", "plain": "Hello world"}, "created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "parent_message_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2024-03-20T10:00:00Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_get_user:
+    speakeasy-default-messaging-get-user:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,email,username,name,first_name,last_name,bot,active"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"active": true, "bot": false, "email": "john.doe@example.com", "first_name": "John", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Doe", "name": "John Doe", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "username": "johndoe"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_list_attachments:
+    speakeasy-default-messaging-list-attachments:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,file_name,file_size,file_type"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"file_name": "document.pdf", "file_size": 1024, "file_type": "application/pdf", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": null, "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_list_conversation_messages:
+    speakeasy-default-messaging-list-conversation-messages:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"author": {"active": true, "created_at": "2021-01-01T01:01:01.000Z", "email": "john@dew.com", "external_reference": "al60043", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "John Dew", "phone_number": "+1234567890", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, "content": {"html": "<p>Hello world</p>", "plain": "Hello world"}, "created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "parent_message_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2024-03-20T10:00:00Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_list_conversations:
+    speakeasy-default-messaging-list-conversations:
+      parameters:
+        query:
+          fields: "id,remote_id,participants,name,private,created_at,last_message_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_message_at": "2024-03-20T11:30:00Z", "name": "Project Discussion", "participants": ["c28xIQ1", "c28xIQ2"], "private": true, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_list_users:
+    speakeasy-default-messaging-list-users:
+      parameters:
+        query:
+          fields: "id,remote_id,email,username,name,first_name,last_name,bot,active"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"active": true, "bot": false, "email": "john.doe@example.com", "first_name": "John", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Doe", "name": "John Doe", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "username": "johndoe"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  messaging_send_message:
+    speakeasy-default-messaging-send-message:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"content": "Hello, world!", "recipient": "c28xyrc55866bvuv", "sender": "+34820398402"}
+      responses:
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  screening_create_screening_order:
+    speakeasy-default-screening-create-screening-order:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"candidate": {"email": "john.doe@example.com", "first_name": "John", "last_name": "Doe"}, "package_id": "54321", "passthrough": {"other_known_names": "John Doe"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+      responses:
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  screening_get_screening_package:
+    speakeasy-default-screening-get-screening-package:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,description"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"description": "Basic background check including identity verification and criminal records", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Basic Background Check", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  screening_list_screening_packages:
+    speakeasy-default-screening-list-screening-packages:
+      parameters:
+        query:
+          fields: "id,remote_id,name,description"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"description": "Basic background check including identity verification and criminal records", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Basic Background Check", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  screening_webhook_screening_result:
+    speakeasy-default-screening-webhook-screening-result:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "order_id": "12345", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "result_url": "https://example.com/results/12345", "score": {"label": "Overall Risk", "max": "100", "min": "0", "value": "75"}, "start_date": "2023-01-01T00:00:00Z", "status": "completed", "submission_date": "2023-01-02T00:00:00Z", "summary": "Background check completed successfully", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "event": "screening.results.cancelled"}
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "order_id": "12345", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "result_url": "https://example.com/results/12345", "score": {"label": "Overall Risk", "max": "100", "min": "0", "value": "75"}, "start_date": "2023-01-01T00:00:00Z", "status": "completed", "submission_date": "2023-01-02T00:00:00Z", "summary": "Background check completed successfully", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "event": "screening.results.completed"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
         "422":
           application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
         "429":

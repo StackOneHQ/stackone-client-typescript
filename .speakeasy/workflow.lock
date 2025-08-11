@@ -1,21 +1,21 @@
-speakeasyVersion: 1.599.0
+speakeasyVersion: 1.600.2
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:b38835f94b360c1dd1c5dd7dfe97f5daf1c11aec2c786feca1132e5a2402df58
-        sourceBlobDigest: sha256:ce2db516776298fd133bf4378fe27ac92eb10313eeb0bc90b7f14f6171dd0910
+        sourceRevisionDigest: sha256:fc4de8a231df9453d778388ef93a7d3e8121019e4df315f6a48200d7120ceedb
+        sourceBlobDigest: sha256:1c08d33dcdae7a34b3f8703a9f4e26224195ab98f01dac83dba25026543c30ca
         tags:
             - latest
-            - speakeasy-sdk-regen-1754648495
+            - speakeasy-sdk-regen-1754903385
             - 1.0.0
 targets:
     StackOneTypeScriptClient:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:b38835f94b360c1dd1c5dd7dfe97f5daf1c11aec2c786feca1132e5a2402df58
-        sourceBlobDigest: sha256:ce2db516776298fd133bf4378fe27ac92eb10313eeb0bc90b7f14f6171dd0910
+        sourceRevisionDigest: sha256:fc4de8a231df9453d778388ef93a7d3e8121019e4df315f6a48200d7120ceedb
+        sourceBlobDigest: sha256:1c08d33dcdae7a34b3f8703a9f4e26224195ab98f01dac83dba25026543c30ca
         codeSamplesNamespace: code-samples-typescript-stackonetypescriptclient
-        codeSamplesRevisionDigest: sha256:ffe08a37aeb5b996e253b7b98d85776521345114fc345e4cfe31cf9869054680
+        codeSamplesRevisionDigest: sha256:ee361a34431724c0617eca6abea574a91e471b0a870cd4c49c9009e3a80eb021
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -31,6 +31,9 @@ workflow:
                 - location: https://api.eu1.stackone.com/oas/lms.json
                 - location: https://api.eu1.stackone.com/oas/ticketing.json
                 - location: https://api.eu1.stackone.com/oas/documents.json
+                - location: https://api.eu1.stackone.com/oas/screening.json
+                - location: https://api.eu1.stackone.com/oas/messaging.json
+                - location: https://api.eu1.stackone.com/oas/accounting.json
             registry:
                 location: registry.speakeasyapi.dev/stackone/stackone/my-source
     targets:
