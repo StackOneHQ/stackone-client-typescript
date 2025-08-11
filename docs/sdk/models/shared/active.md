@@ -1,6 +1,6 @@
 # Active
 
-Whether the category is active and therefore available for use
+Whether the account is active
 
 
 ## Supported Types
@@ -11,9 +11,9 @@ Whether the category is active and therefore available for use
 const value: boolean = true;
 ```
 
-### `shared.Category2`
+### `shared.Two`
 
 ```typescript
-const value: shared.Category2 = Category2.True;
+const value: shared.Two = Two.True;
 ```
 

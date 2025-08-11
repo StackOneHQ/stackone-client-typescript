@@ -3,7 +3,7 @@
 
 ## Overview
 
-Customer or business accounts.
+Chart of accounts.
 
 ### Available Operations
 

@@ -1,21 +1,21 @@
 # Type
 
-Type of the answer
+Type of account
 
 ## Example Usage
 
 ```typescript
-import { AnswerValue, Type } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AccountingAccountValue, Type } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Type = {
-  sourceValue: "Short Text",
-  value: AnswerValue.ShortText,
+  sourceValue: "asset",
+  value: AccountingAccountValue.Asset,
 };
 ```
 
 ## Fields
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `sourceValue`                                                   | *shared.AnswerSourceValue*                                      | :heavy_minus_sign:                                              | The source value of the answer type.                            | Short Text                                                      |
-| `value`                                                         | [shared.AnswerValue](../../../sdk/models/shared/answervalue.md) | :heavy_minus_sign:                                              | The type of the answer.                                         | short_text                                                      |
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                         | *shared.AccountingAccountSourceValue*                                                 | :heavy_minus_sign:                                                                    | N/A                                                                                   | asset                                                                                 |
+| `value`                                                                               | [shared.AccountingAccountValue](../../../sdk/models/shared/accountingaccountvalue.md) | :heavy_minus_sign:                                                                    | Type of account                                                                       | asset                                                                                 |

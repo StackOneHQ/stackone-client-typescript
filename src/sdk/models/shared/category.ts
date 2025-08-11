@@ -21,7 +21,7 @@ export enum Category2 {
 /**
  * Whether the category is active and therefore available for use
  */
-export type Active = boolean | Category2;
+export type CategoryActive = boolean | Category2;
 
 export type Category4 = {};
 
@@ -596,43 +596,46 @@ export namespace Category2$ {
 }
 
 /** @internal */
-export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
-  .union([z.boolean(), Category2$inboundSchema]);
-
-/** @internal */
-export type Active$Outbound = boolean | string;
-
-/** @internal */
-export const Active$outboundSchema: z.ZodType<
-  Active$Outbound,
+export const CategoryActive$inboundSchema: z.ZodType<
+  CategoryActive,
   z.ZodTypeDef,
-  Active
+  unknown
+> = z.union([z.boolean(), Category2$inboundSchema]);
+
+/** @internal */
+export type CategoryActive$Outbound = boolean | string;
+
+/** @internal */
+export const CategoryActive$outboundSchema: z.ZodType<
+  CategoryActive$Outbound,
+  z.ZodTypeDef,
+  CategoryActive
 > = z.union([z.boolean(), Category2$outboundSchema]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Active$ {
-  /** @deprecated use `Active$inboundSchema` instead. */
-  export const inboundSchema = Active$inboundSchema;
-  /** @deprecated use `Active$outboundSchema` instead. */
-  export const outboundSchema = Active$outboundSchema;
-  /** @deprecated use `Active$Outbound` instead. */
-  export type Outbound = Active$Outbound;
+export namespace CategoryActive$ {
+  /** @deprecated use `CategoryActive$inboundSchema` instead. */
+  export const inboundSchema = CategoryActive$inboundSchema;
+  /** @deprecated use `CategoryActive$outboundSchema` instead. */
+  export const outboundSchema = CategoryActive$outboundSchema;
+  /** @deprecated use `CategoryActive$Outbound` instead. */
+  export type Outbound = CategoryActive$Outbound;
 }
 
-export function activeToJSON(active: Active): string {
-  return JSON.stringify(Active$outboundSchema.parse(active));
+export function categoryActiveToJSON(categoryActive: CategoryActive): string {
+  return JSON.stringify(CategoryActive$outboundSchema.parse(categoryActive));
 }
 
-export function activeFromJSON(
+export function categoryActiveFromJSON(
   jsonString: string,
-): SafeParseResult<Active, SDKValidationError> {
+): SafeParseResult<CategoryActive, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Active$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Active' from JSON`,
+    (x) => CategoryActive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CategoryActive' from JSON`,
   );
 }
 

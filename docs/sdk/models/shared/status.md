@@ -1,14 +1,15 @@
 # Status
 
-The status of the assignment
+Status of the journal
 
 ## Example Usage
 
 ```typescript
-import { AssignmentSchemasValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AccountingJournalValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Status = {
-  value: AssignmentSchemasValue.InProgress,
+  sourceValue: "draft",
+  value: AccountingJournalValue.Draft,
 };
 ```
 
@@ -16,5 +17,5 @@ let value: Status = {
 
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                         | *shared.AssignmentSchemasSourceValue*                                                 | :heavy_minus_sign:                                                                    | N/A                                                                                   |                                                                                       |
-| `value`                                                                               | [shared.AssignmentSchemasValue](../../../sdk/models/shared/assignmentschemasvalue.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   | in_progress                                                                           |
+| `sourceValue`                                                                         | *shared.AccountingJournalSourceValue*                                                 | :heavy_minus_sign:                                                                    | N/A                                                                                   | draft                                                                                 |
+| `value`                                                                               | [shared.AccountingJournalValue](../../../sdk/models/shared/accountingjournalvalue.md) | :heavy_minus_sign:                                                                    | The journal status                                                                    | draft                                                                                 |

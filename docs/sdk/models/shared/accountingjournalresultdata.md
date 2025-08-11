@@ -1,0 +1,48 @@
+# AccountingJournalResultData
+
+## Example Usage
+
+```typescript
+import { AccountingJournalResultData, AccountingJournalResultValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AccountingJournalResultData = {
+  companyId: "comp_123456789",
+  createdAt: new Date("2024-03-20T10:00:00Z"),
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  lines: [
+    {
+      accountId: "acc_123",
+      amount: 10010,
+      description: "Payment for office supplies",
+      id: "line_1",
+      taxAmount: 2002,
+    },
+  ],
+  memo: "Monthly closing entries",
+  postedAt: new Date("2024-03-20T10:00:00Z"),
+  reference: "JRN-2024-001",
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  status: {
+    sourceValue: "draft",
+    value: AccountingJournalResultValue.Draft,
+  },
+  transactionDate: new Date("2024-03-20T10:00:00Z"),
+  updatedAt: new Date("2024-03-20T10:00:00Z"),
+};
+```
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        | Example                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `companyId`                                                                                                                        | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | ID of the company this journal belongs to                                                                                          | comp_123456789                                                                                                                     |
+| `createdAt`                                                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                      | :heavy_minus_sign:                                                                                                                 | Timestamp when the journal was created                                                                                             | 2024-03-20T10:00:00Z                                                                                                               |
+| `id`                                                                                                                               | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | Unique identifier                                                                                                                  | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                                               |
+| `lines`                                                                                                                            | [shared.JournalLine](../../../sdk/models/shared/journalline.md)[]                                                                  | :heavy_minus_sign:                                                                                                                 | List of journal lines                                                                                                              | [<br/>{<br/>"id": "line_1",<br/>"account_id": "acc_123",<br/>"description": "Payment for office supplies",<br/>"amount": 10010,<br/>"tax_amount": 2002<br/>}<br/>] |
+| `memo`                                                                                                                             | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | Memo or description for the journal                                                                                                | Monthly closing entries                                                                                                            |
+| `postedAt`                                                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                      | :heavy_minus_sign:                                                                                                                 | Timestamp when the journal was posted                                                                                              | 2024-03-20T10:00:00Z                                                                                                               |
+| `reference`                                                                                                                        | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | Reference number for the journal                                                                                                   | JRN-2024-001                                                                                                                       |
+| `remoteId`                                                                                                                         | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | Provider's unique identifier                                                                                                       | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                                               |
+| `status`                                                                                                                           | [shared.AccountingJournalResultStatus](../../../sdk/models/shared/accountingjournalresultstatus.md)                                | :heavy_minus_sign:                                                                                                                 | Status of the journal                                                                                                              |                                                                                                                                    |
+| `transactionDate`                                                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                      | :heavy_minus_sign:                                                                                                                 | Date of the journal transaction                                                                                                    | 2024-03-20T10:00:00Z                                                                                                               |
+| `updatedAt`                                                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                      | :heavy_minus_sign:                                                                                                                 | Timestamp when the journal was last updated                                                                                        | 2024-03-20T10:00:00Z                                                                                                               |

@@ -3,6 +3,7 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Accounting } from "./accounting.js";
 import { Accounts } from "./accounts.js";
 import { Ats } from "./ats.js";
 import { Connectors } from "./connectors.js";
@@ -13,8 +14,10 @@ import { Hris } from "./hris.js";
 import { Iam } from "./iam.js";
 import { Lms } from "./lms.js";
 import { Marketing } from "./marketing.js";
+import { Messaging } from "./messaging.js";
 import { Proxy } from "./proxy.js";
 import { RequestLogs } from "./requestlogs.js";
+import { Screening } from "./screening.js";
 import { Ticketing } from "./ticketing.js";
 
 export class StackOne extends ClientSDK {
@@ -36,6 +39,11 @@ export class StackOne extends ClientSDK {
   private _requestLogs?: RequestLogs;
   get requestLogs(): RequestLogs {
     return (this._requestLogs ??= new RequestLogs(this._options));
+  }
+
+  private _accounting?: Accounting;
+  get accounting(): Accounting {
+    return (this._accounting ??= new Accounting(this._options));
   }
 
   private _ats?: Ats;
@@ -73,9 +81,19 @@ export class StackOne extends ClientSDK {
     return (this._marketing ??= new Marketing(this._options));
   }
 
+  private _messaging?: Messaging;
+  get messaging(): Messaging {
+    return (this._messaging ??= new Messaging(this._options));
+  }
+
   private _proxy?: Proxy;
   get proxy(): Proxy {
     return (this._proxy ??= new Proxy(this._options));
+  }
+
+  private _screening?: Screening;
+  get screening(): Screening {
+    return (this._screening ??= new Screening(this._options));
   }
 
   private _ticketing?: Ticketing;
