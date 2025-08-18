@@ -3,10 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { AssignmentResult, AssignmentSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssignmentResult, AssignmentSchemasStatusValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AssignmentResult = {
   data: {
+    certificateUrl: "https://example.com/certificate/12345",
+    completedAt: new Date("2021-07-21T14:00:00.000Z"),
     createdAt: new Date("2021-07-21T14:00:00.000Z"),
     dueDate: new Date("2021-07-21T14:00:00.000Z"),
     id: "123456",
@@ -17,7 +19,7 @@ let value: AssignmentResult = {
     remoteLearningObjectId: "e3cb55bf-aa84-466e-a6c1-b8302b257a49",
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     status: {
-      value: AssignmentSchemasValue.InProgress,
+      value: AssignmentSchemasStatusValue.InProgress,
     },
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",

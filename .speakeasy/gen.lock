@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e3c0c117694e155daa5a026b99767977
+  docChecksum: 4c86a0f3cb79481f1c7cd9d8fb32620a
   docVersion: 1.0.0
-  speakeasyVersion: 1.600.2
-  generationVersion: 2.677.3
-  releaseVersion: 4.24.3
-  configChecksum: d849ac5708da648c9c0f1ae31089ddb5
+  speakeasyVersion: 1.605.1
+  generationVersion: 2.684.0
+  releaseVersion: 4.24.4
+  configChecksum: 6d730e52a535d1a3900d008e81665c5b
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -21,7 +21,7 @@ features:
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    examples: 2.82.2
+    examples: 2.82.3
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
@@ -844,7 +844,11 @@ generatedFiles:
   - docs/sdk/models/shared/assignment4.md
   - docs/sdk/models/shared/assignmentresult.md
   - docs/sdk/models/shared/assignmentschemas4.md
+  - docs/sdk/models/shared/assignmentschemasresult.md
   - docs/sdk/models/shared/assignmentschemassourcevalue.md
+  - docs/sdk/models/shared/assignmentschemasstatus4.md
+  - docs/sdk/models/shared/assignmentschemasstatussourcevalue.md
+  - docs/sdk/models/shared/assignmentschemasstatusvalue.md
   - docs/sdk/models/shared/assignmentschemasvalue.md
   - docs/sdk/models/shared/assignmentsourcevalue.md
   - docs/sdk/models/shared/assignmentspaginated.md
@@ -9930,7 +9934,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10001,7 +10005,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10181,7 +10185,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10217,7 +10221,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10246,7 +10250,7 @@ examples:
     speakeasy-default-lms-list-assignments:
       parameters:
         query:
-          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
+          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "c28xyrc55866bvuv"
@@ -10320,7 +10324,7 @@ examples:
     speakeasy-default-lms-list-completions:
       parameters:
         query:
-          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent"
+          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -10466,7 +10470,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
+          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "c28xyrc55866bvuv"
@@ -10506,7 +10510,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent"
+          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -13829,3 +13833,13 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `stackone.lms.getAssignment()`:  `response.data` **Changed**
+  * `stackone.lms.getCompletion()`:  `response.data.certificateUrl` **Added**
+  * `stackone.lms.getUserAssignment()`:  `response.data` **Changed**
+  * `stackone.lms.getUserCompletion()`:  `response.data.certificateUrl` **Added**
+  * `stackone.lms.listAssignments()`:  `response.data.[]` **Changed**
+  * `stackone.lms.listCompletions()`:  `response.data.[].certificateUrl` **Added**
+  * `stackone.lms.listUserAssignments()`:  `response.data.[]` **Changed**
+  * `stackone.lms.listUserCompletions()`:  `response.data.[].certificateUrl` **Added**

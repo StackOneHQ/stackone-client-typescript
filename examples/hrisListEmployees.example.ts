@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the @stackone/stackone-client-ts SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx hrisListEmployees.ts
+ * npm run build && npx tsx hrisListEmployees.example.ts
  */
 
 import { StackOne } from "@stackone/stackone-client-ts";
