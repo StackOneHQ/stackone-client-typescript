@@ -7,6 +7,7 @@ import { CompletionResult } from "@stackone/stackone-client-ts/sdk/models/shared
 
 let value: CompletionResult = {
   data: {
+    certificateUrl: "https://example.com/certificate/12345",
     completedAt: new Date("2021-07-21T14:00:00.000Z"),
     createdAt: new Date("2021-07-21T14:00:00.000Z"),
     id: "123456",

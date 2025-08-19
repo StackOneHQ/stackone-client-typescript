@@ -1,18 +1,19 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e3c0c117694e155daa5a026b99767977
+  docChecksum: 6e4c83cd1c7de3c8c66dd8339f461471
   docVersion: 1.0.0
-  speakeasyVersion: 1.600.2
-  generationVersion: 2.677.3
-  releaseVersion: 4.24.3
-  configChecksum: d849ac5708da648c9c0f1ae31089ddb5
+  speakeasyVersion: 1.606.0
+  generationVersion: 2.686.7
+  releaseVersion: 4.25.0
+  configChecksum: e965ccc8297c39e9fccf76c3b988d39e
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 features:
   typescript:
+    acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
     core: 3.21.20
@@ -21,7 +22,7 @@ features:
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    examples: 2.82.2
+    examples: 2.82.3
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
@@ -844,7 +845,11 @@ generatedFiles:
   - docs/sdk/models/shared/assignment4.md
   - docs/sdk/models/shared/assignmentresult.md
   - docs/sdk/models/shared/assignmentschemas4.md
+  - docs/sdk/models/shared/assignmentschemasresult.md
   - docs/sdk/models/shared/assignmentschemassourcevalue.md
+  - docs/sdk/models/shared/assignmentschemasstatus4.md
+  - docs/sdk/models/shared/assignmentschemasstatussourcevalue.md
+  - docs/sdk/models/shared/assignmentschemasstatusvalue.md
   - docs/sdk/models/shared/assignmentschemasvalue.md
   - docs/sdk/models/shared/assignmentsourcevalue.md
   - docs/sdk/models/shared/assignmentspaginated.md
@@ -2105,6 +2110,15 @@ generatedFiles:
   - docs/sdk/models/shared/task4.md
   - docs/sdk/models/shared/taskcommentapimodel.md
   - docs/sdk/models/shared/taskresult.md
+  - docs/sdk/models/shared/taskresult4.md
+  - docs/sdk/models/shared/taskresultdata.md
+  - docs/sdk/models/shared/taskresultschemas4.md
+  - docs/sdk/models/shared/taskresultschemassourcevalue.md
+  - docs/sdk/models/shared/taskresultschemasvalue.md
+  - docs/sdk/models/shared/taskresultsourcevalue.md
+  - docs/sdk/models/shared/taskresultstatus.md
+  - docs/sdk/models/shared/taskresulttype.md
+  - docs/sdk/models/shared/taskresultvalue.md
   - docs/sdk/models/shared/taskschemas4.md
   - docs/sdk/models/shared/taskschemassourcevalue.md
   - docs/sdk/models/shared/taskschemasvalue.md
@@ -7335,6 +7349,43 @@ examples:
       responses:
         "200":
           application/octet-stream: "x-file: example.file"
+          application/gzip: "x-file: example.file"
+          application/json: "x-file: example.file"
+          application/msword: "x-file: example.file"
+          application/pdf: "x-file: example.file"
+          application/rtf: "x-file: example.file"
+          application/vnd.ms-excel: "x-file: example.file"
+          application/vnd.ms-outlook: "x-file: example.file"
+          application/vnd.ms-powerpoint: "x-file: example.file"
+          application/vnd.oasis.opendocument.presentation: "x-file: example.file"
+          application/vnd.oasis.opendocument.spreadsheet: "x-file: example.file"
+          application/vnd.oasis.opendocument.text: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.presentationml.presentation: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.wordprocessingml.document: "x-file: example.file"
+          application/x-7z-compressed: "x-file: example.file"
+          application/x-rar-compressed: "x-file: example.file"
+          application/xml: "x-file: example.file"
+          application/zip: "x-file: example.file"
+          audio/mp4: "x-file: example.file"
+          audio/mpeg: "x-file: example.file"
+          audio/wav: "x-file: example.file"
+          image/bmp: "x-file: example.file"
+          image/gif: "x-file: example.file"
+          image/heic: "x-file: example.file"
+          image/jpeg: "x-file: example.file"
+          image/png: "x-file: example.file"
+          image/tiff: "x-file: example.file"
+          image/webp: "x-file: example.file"
+          message/rfc822: "x-file: example.file"
+          text/csv: "x-file: example.file"
+          text/html: "x-file: example.file"
+          text/plain: "x-file: example.file"
+          text/rtf: "x-file: example.file"
+          video/avi: "x-file: example.file"
+          video/mp4: "x-file: example.file"
+          video/quicktime: "x-file: example.file"
+          video/webm: "x-file: example.file"
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -7740,7 +7791,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "attachments": [{"category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "file_format": {"source_value": "abc", "value": "pdf"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_url": "https://example.com/file.pdf", "updated_at": "2021-01-02T01:01:01.000Z"}, {"category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "file_format": {"source_value": "abc", "value": "pdf"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_url": "https://example.com/file.pdf", "updated_at": "2021-01-02T01:01:01.000Z"}, {"category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "file_format": {"source_value": "abc", "value": "pdf"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_url": "https://example.com/file.pdf", "updated_at": "2021-01-02T01:01:01.000Z"}], "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}, {"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "completion_date": "2024-03-19T15:30:00.000Z", "created_at": "2024-03-15T10:00:00.000Z", "description": "Please complete all required onboarding documents in the employee portal", "due_date": "2024-03-20T23:59:59.000Z", "employee_id": "cx280928937", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "link_to_task": "https://provider.com/tasks/123", "name": "Complete onboarding documents", "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"value": "open"}, "type": {"value": "action"}, "updated_at": "2024-03-19T15:30:00.000Z"}]}
+          application/json: {"data": {"assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "attachments": null, "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "completion_date": "2024-03-19T15:30:00.000Z", "created_at": "2024-03-15T10:00:00.000Z", "description": "Please complete all required onboarding documents in the employee portal", "due_date": "2024-03-20T23:59:59.000Z", "employee_id": "cx280928937", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "link_to_task": "https://provider.com/tasks/123", "name": "Complete onboarding documents", "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"value": "open"}, "type": {"value": "action"}, "updated_at": "2024-03-19T15:30:00.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -9930,7 +9981,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10001,7 +10052,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10181,7 +10232,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "progress": 40, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "status": {"value": "in_progress"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10217,7 +10268,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "id": "123456", "learning_object_external_reference": "learning-content-123", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -10246,7 +10297,7 @@ examples:
     speakeasy-default-lms-list-assignments:
       parameters:
         query:
-          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
+          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "c28xyrc55866bvuv"
@@ -10320,7 +10371,7 @@ examples:
     speakeasy-default-lms-list-completions:
       parameters:
         query:
-          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent"
+          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -10466,7 +10517,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
+          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "c28xyrc55866bvuv"
@@ -10506,7 +10557,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent"
+          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -12408,7 +12459,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "attachments": [{"category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "file_format": {"source_value": "application/pdf", "value": "pdf"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_url": "https://example.com/file.pdf", "updated_at": "2021-01-02T01:01:01.000Z"}], "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "completion_date": "2024-03-19T15:30:00.000Z", "created_at": "2024-03-15T10:00:00.000Z", "description": "Please complete all required onboarding documents in the employee portal", "due_date": "2024-03-20T23:59:59.000Z", "employee_id": "cx280928937", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "link_to_task": "https://provider.com/tasks/123", "name": "Complete onboarding documents", "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"value": "open"}, "type": {"value": "action"}, "updated_at": "2024-03-19T15:30:00.000Z"}]}
+          application/json: {"data": {"assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "attachments": [{"category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "file_format": {"source_value": "application/pdf", "value": "pdf"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_url": "https://example.com/file.pdf", "updated_at": "2021-01-02T01:01:01.000Z"}], "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "completion_date": "2024-03-19T15:30:00.000Z", "created_at": "2024-03-15T10:00:00.000Z", "description": "Please complete all required onboarding documents in the employee portal", "due_date": "2024-03-20T23:59:59.000Z", "employee_id": "cx280928937", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "link_to_task": "https://provider.com/tasks/123", "name": "Complete onboarding documents", "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"value": "open"}, "type": {"value": "action"}, "updated_at": "2024-03-19T15:30:00.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -13829,3 +13880,16 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `stackone.hris.getEmployeeTask()`:  `response.data` **Changed** **Breaking** :warning:
+  * `stackone.hris.getTask()`:  `response.data` **Changed** **Breaking** :warning:
+  * `stackone.hris.downloadEmployeeDocument()`:  `response.status[200]` **Changed**
+  * `stackone.lms.getAssignment()`:  `response.data` **Changed**
+  * `stackone.lms.getCompletion()`:  `response.data.certificateUrl` **Added**
+  * `stackone.lms.getUserAssignment()`:  `response.data` **Changed**
+  * `stackone.lms.getUserCompletion()`:  `response.data.certificateUrl` **Added**
+  * `stackone.lms.listAssignments()`:  `response.data.[]` **Changed**
+  * `stackone.lms.listCompletions()`:  `response.data.[].certificateUrl` **Added**
+  * `stackone.lms.listUserAssignments()`:  `response.data.[]` **Changed**
+  * `stackone.lms.listUserCompletions()`:  `response.data.[].certificateUrl` **Added**

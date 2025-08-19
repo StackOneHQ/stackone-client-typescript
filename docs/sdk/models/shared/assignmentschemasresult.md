@@ -1,0 +1,18 @@
+# AssignmentSchemasResult
+
+The result of the assignment
+
+## Example Usage
+
+```typescript
+import { AssignmentSchemasResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AssignmentSchemasResult = {};
+```
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                         | *shared.AssignmentSchemasSourceValue*                                                 | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `value`                                                                               | [shared.AssignmentSchemasValue](../../../sdk/models/shared/assignmentschemasvalue.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   |

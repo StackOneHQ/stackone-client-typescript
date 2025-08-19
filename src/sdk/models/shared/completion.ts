@@ -80,6 +80,10 @@ export type CompletionSchemasResult = {
 
 export type Completion = {
   /**
+   * The certification URL associated with this completion
+   */
+  certificateUrl?: string | null | undefined;
+  /**
    * The date the content was completed
    */
   completedAt?: Date | null | undefined;
@@ -657,6 +661,7 @@ export const Completion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  certificate_url: z.nullable(z.string()).optional(),
   completed_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -690,6 +695,7 @@ export const Completion$inboundSchema: z.ZodType<
   user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "certificate_url": "certificateUrl",
     "completed_at": "completedAt",
     "content_external_reference": "contentExternalReference",
     "content_id": "contentId",
@@ -715,6 +721,7 @@ export const Completion$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Completion$Outbound = {
+  certificate_url?: string | null | undefined;
   completed_at?: string | null | undefined;
   content_external_reference?: string | null | undefined;
   content_id?: string | null | undefined;
@@ -748,6 +755,7 @@ export const Completion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Completion
 > = z.object({
+  certificateUrl: z.nullable(z.string()).optional(),
   completedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
@@ -775,6 +783,7 @@ export const Completion$outboundSchema: z.ZodType<
   userId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    certificateUrl: "certificate_url",
     completedAt: "completed_at",
     contentExternalReference: "content_external_reference",
     contentId: "content_id",

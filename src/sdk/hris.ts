@@ -9,7 +9,10 @@ import { hrisCreateEmployeeEmployment } from "../funcs/hrisCreateEmployeeEmploym
 import { hrisCreateEmployeeSkill } from "../funcs/hrisCreateEmployeeSkill.js";
 import { hrisCreateEmployeeTimeOffRequest } from "../funcs/hrisCreateEmployeeTimeOffRequest.js";
 import { hrisCreateEmployeeWorkEligibilityRequest } from "../funcs/hrisCreateEmployeeWorkEligibilityRequest.js";
-import { hrisDownloadEmployeeDocument } from "../funcs/hrisDownloadEmployeeDocument.js";
+import {
+  DownloadEmployeeDocumentAcceptEnum,
+  hrisDownloadEmployeeDocument,
+} from "../funcs/hrisDownloadEmployeeDocument.js";
 import { hrisGetBenefit } from "../funcs/hrisGetBenefit.js";
 import { hrisGetCompany } from "../funcs/hrisGetCompany.js";
 import { hrisGetCompanyGroup } from "../funcs/hrisGetCompanyGroup.js";
@@ -77,6 +80,8 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
+
+export { DownloadEmployeeDocumentAcceptEnum } from "../funcs/hrisDownloadEmployeeDocument.js";
 
 export class Hris extends ClientSDK {
   /**
@@ -182,7 +187,9 @@ export class Hris extends ClientSDK {
    */
   async downloadEmployeeDocument(
     request: operations.HrisDownloadEmployeeDocumentRequest,
-    options?: RequestOptions,
+    options?: RequestOptions & {
+      acceptHeaderOverride?: DownloadEmployeeDocumentAcceptEnum;
+    },
   ): Promise<operations.HrisDownloadEmployeeDocumentResponse> {
     return unwrapAsync(hrisDownloadEmployeeDocument(
       this,
