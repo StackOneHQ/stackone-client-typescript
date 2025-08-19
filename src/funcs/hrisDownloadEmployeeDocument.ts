@@ -25,13 +25,62 @@ import * as operations from "../sdk/models/operations/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
+export enum DownloadEmployeeDocumentAcceptEnum {
+  applicationJson = "application/json",
+  textCsv = "text/csv",
+  textPlain = "text/plain",
+  applicationGzip = "application/gzip",
+  applicationMsword = "application/msword",
+  applicationOctetStream = "application/octet-stream",
+  applicationPdf = "application/pdf",
+  applicationRtf = "application/rtf",
+  applicationVndMsExcel = "application/vnd.ms-excel",
+  applicationVndMsOutlook = "application/vnd.ms-outlook",
+  applicationVndMsPowerpoint = "application/vnd.ms-powerpoint",
+  applicationVndOasisOpendocumentPresentation =
+    "application/vnd.oasis.opendocument.presentation",
+  applicationVndOasisOpendocumentSpreadsheet =
+    "application/vnd.oasis.opendocument.spreadsheet",
+  applicationVndOasisOpendocumentText =
+    "application/vnd.oasis.opendocument.text",
+  applicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation =
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  applicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet =
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  applicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument =
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  applicationX7zCompressed = "application/x-7z-compressed",
+  applicationXRarCompressed = "application/x-rar-compressed",
+  applicationXml = "application/xml",
+  applicationZip = "application/zip",
+  audioMp4 = "audio/mp4",
+  audioMpeg = "audio/mpeg",
+  audioWav = "audio/wav",
+  imageBmp = "image/bmp",
+  imageGif = "image/gif",
+  imageHeic = "image/heic",
+  imageJpeg = "image/jpeg",
+  imagePng = "image/png",
+  imageTiff = "image/tiff",
+  imageWebp = "image/webp",
+  messageRfc822 = "message/rfc822",
+  textHtml = "text/html",
+  textRtf = "text/rtf",
+  videoAvi = "video/avi",
+  videoMp4 = "video/mp4",
+  videoQuicktime = "video/quicktime",
+  videoWebm = "video/webm",
+}
+
 /**
  * Download Employee Document
  */
 export function hrisDownloadEmployeeDocument(
   client: StackOneCore,
   request: operations.HrisDownloadEmployeeDocumentRequest,
-  options?: RequestOptions,
+  options?: RequestOptions & {
+    acceptHeaderOverride?: DownloadEmployeeDocumentAcceptEnum;
+  },
 ): APIPromise<
   Result<
     operations.HrisDownloadEmployeeDocumentResponse,
@@ -67,7 +116,9 @@ export function hrisDownloadEmployeeDocument(
 async function $do(
   client: StackOneCore,
   request: operations.HrisDownloadEmployeeDocumentRequest,
-  options?: RequestOptions,
+  options?: RequestOptions & {
+    acceptHeaderOverride?: DownloadEmployeeDocumentAcceptEnum;
+  },
 ): Promise<
   [
     Result<
@@ -131,7 +182,8 @@ async function $do(
   });
 
   const headers = new Headers(compactMap({
-    Accept: "application/octet-stream",
+    Accept: options?.acceptHeaderOverride
+      || "application/json;q=1, text/csv;q=0.97, text/plain;q=0.95, application/gzip;q=0.92, application/msword;q=0.89, application/octet-stream;q=0.87, application/pdf;q=0.84, application/rtf;q=0.82, application/vnd.ms-excel;q=0.79, application/vnd.ms-outlook;q=0.76, application/vnd.ms-powerpoint;q=0.74, application/vnd.oasis.opendocument.presentation;q=0.71, application/vnd.oasis.opendocument.spreadsheet;q=0.68, application/vnd.oasis.opendocument.text;q=0.66, application/vnd.openxmlformats-officedocument.presentationml.presentation;q=0.63, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;q=0.61, application/vnd.openxmlformats-officedocument.wordprocessingml.document;q=0.58, application/x-7z-compressed;q=0.55, application/x-rar-compressed;q=0.53, application/xml;q=0.50, application/zip;q=0.47, audio/mp4;q=0.45, audio/mpeg;q=0.42, audio/wav;q=0.39, image/bmp;q=0.37, image/gif;q=0.34, image/heic;q=0.32, image/jpeg;q=0.29, image/png;q=0.26, image/tiff;q=0.24, image/webp;q=0.21, message/rfc822;q=0.18, text/html;q=0.16, text/rtf;q=0.13, video/avi;q=0.11, video/mp4;q=0.08, video/quicktime;q=0.05, video/webm;q=0",
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
@@ -242,7 +294,242 @@ async function $do(
     M.stream(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { key: "response-stream" },
+      {
+        ctype: "application/gzip",
+        key: "200_application/gzip_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/json",
+        key: "200_application/json_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/msword",
+        key: "200_application/msword_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { key: "200_application/octet-stream_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "application/pdf", key: "200_application/pdf_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "application/rtf", key: "200_application/rtf_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/vnd.ms-excel",
+        key: "200_application/vnd.ms-excel_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/vnd.ms-outlook",
+        key: "200_application/vnd.ms-outlook_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/vnd.ms-powerpoint",
+        key: "200_application/vnd.ms-powerpoint_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/vnd.oasis.opendocument.presentation",
+        key:
+          "200_application/vnd.oasis.opendocument.presentation_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/vnd.oasis.opendocument.spreadsheet",
+        key:
+          "200_application/vnd.oasis.opendocument.spreadsheet_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/vnd.oasis.opendocument.text",
+        key: "200_application/vnd.oasis.opendocument.text_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype:
+          "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        key:
+          "200_application/vnd.openxmlformats-officedocument.presentationml.presentation_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype:
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        key:
+          "200_application/vnd.openxmlformats-officedocument.spreadsheetml.sheet_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype:
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        key:
+          "200_application/vnd.openxmlformats-officedocument.wordprocessingml.document_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/x-7z-compressed",
+        key: "200_application/x-7z-compressed_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      {
+        ctype: "application/x-rar-compressed",
+        key: "200_application/x-rar-compressed_response-stream",
+      },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "application/xml", key: "200_application/xml_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "application/zip", key: "200_application/zip_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "audio/mp4", key: "200_audio/mp4_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "audio/mpeg", key: "200_audio/mpeg_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "audio/wav", key: "200_audio/wav_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/bmp", key: "200_image/bmp_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/gif", key: "200_image/gif_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/heic", key: "200_image/heic_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/jpeg", key: "200_image/jpeg_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/png", key: "200_image/png_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/tiff", key: "200_image/tiff_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "image/webp", key: "200_image/webp_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "message/rfc822", key: "200_message/rfc822_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "text/csv", key: "200_text/csv_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "text/html", key: "200_text/html_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "text/plain", key: "200_text/plain_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "text/rtf", key: "200_text/rtf_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "video/avi", key: "200_video/avi_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "video/mp4", key: "200_video/mp4_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "video/quicktime", key: "200_video/quicktime_response-stream" },
+    ),
+    M.stream(
+      200,
+      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
+      { ctype: "video/webm", key: "200_video/webm_response-stream" },
     ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

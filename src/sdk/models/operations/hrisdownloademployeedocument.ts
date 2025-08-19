@@ -27,6 +27,200 @@ export type HrisDownloadEmployeeDocumentRequest = {
 
 export type HrisDownloadEmployeeDocumentResponse = {
   /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationGzipResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationJsonResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationMswordResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationOctetStreamResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationPdfResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationRtfResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndMsExcelResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndMsOutlookResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndMsPowerpointResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndOasisOpendocumentPresentationResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndOasisOpendocumentTextResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationX7zCompressedResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationXRarCompressedResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationXmlResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredApplicationZipResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredAudioMp4ResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredAudioMpegResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredAudioWavResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImageBmpResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImageGifResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImageHeicResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImageJpegResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImagePngResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImageTiffResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredImageWebpResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredMessageRfc822ResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredTextCsvResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredTextHtmlResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredTextPlainResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredTextRtfResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredVideoAviResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredVideoMp4ResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredVideoQuicktimeResponseStream?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  /**
+   * The document related to the employee with the given identifiers was retrieved.
+   */
+  twoHundredVideoWebmResponseStream?: ReadableStream<Uint8Array> | undefined;
+  /**
    * HTTP response content type for this operation
    */
   contentType: string;
@@ -39,10 +233,6 @@ export type HrisDownloadEmployeeDocumentResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The document related to the employee with the given identifiers was retrieved.
-   */
-  responseStream?: ReadableStream<Uint8Array> | undefined;
 };
 
 /** @internal */
@@ -132,28 +322,253 @@ export const HrisDownloadEmployeeDocumentResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  "200_application/gzip_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/json_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/msword_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/octet-stream_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/pdf_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/rtf_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/vnd.ms-excel_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/vnd.ms-outlook_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/vnd.ms-powerpoint_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/vnd.oasis.opendocument.presentation_response-stream": z
+    .instanceof(ReadableStream<Uint8Array>).optional(),
+  "200_application/vnd.oasis.opendocument.spreadsheet_response-stream": z
+    .instanceof(ReadableStream<Uint8Array>).optional(),
+  "200_application/vnd.oasis.opendocument.text_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/vnd.openxmlformats-officedocument.presentationml.presentation_response-stream":
+    z.instanceof(ReadableStream<Uint8Array>).optional(),
+  "200_application/vnd.openxmlformats-officedocument.spreadsheetml.sheet_response-stream":
+    z.instanceof(ReadableStream<Uint8Array>).optional(),
+  "200_application/vnd.openxmlformats-officedocument.wordprocessingml.document_response-stream":
+    z.instanceof(ReadableStream<Uint8Array>).optional(),
+  "200_application/x-7z-compressed_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/x-rar-compressed_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/xml_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_application/zip_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_audio/mp4_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_audio/mpeg_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_audio/wav_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/bmp_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/gif_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/heic_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/jpeg_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/png_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/tiff_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_image/webp_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_message/rfc822_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_text/csv_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_text/html_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_text/plain_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_text/rtf_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_video/avi_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_video/mp4_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  "200_video/quicktime_response-stream": z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  "200_video/webm_response-stream": z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "200_application/gzip_response-stream":
+      "twoHundredApplicationGzipResponseStream",
+    "200_application/json_response-stream":
+      "twoHundredApplicationJsonResponseStream",
+    "200_application/msword_response-stream":
+      "twoHundredApplicationMswordResponseStream",
+    "200_application/octet-stream_response-stream":
+      "twoHundredApplicationOctetStreamResponseStream",
+    "200_application/pdf_response-stream":
+      "twoHundredApplicationPdfResponseStream",
+    "200_application/rtf_response-stream":
+      "twoHundredApplicationRtfResponseStream",
+    "200_application/vnd.ms-excel_response-stream":
+      "twoHundredApplicationVndMsExcelResponseStream",
+    "200_application/vnd.ms-outlook_response-stream":
+      "twoHundredApplicationVndMsOutlookResponseStream",
+    "200_application/vnd.ms-powerpoint_response-stream":
+      "twoHundredApplicationVndMsPowerpointResponseStream",
+    "200_application/vnd.oasis.opendocument.presentation_response-stream":
+      "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream",
+    "200_application/vnd.oasis.opendocument.spreadsheet_response-stream":
+      "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream",
+    "200_application/vnd.oasis.opendocument.text_response-stream":
+      "twoHundredApplicationVndOasisOpendocumentTextResponseStream",
+    "200_application/vnd.openxmlformats-officedocument.presentationml.presentation_response-stream":
+      "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream",
+    "200_application/vnd.openxmlformats-officedocument.spreadsheetml.sheet_response-stream":
+      "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream",
+    "200_application/vnd.openxmlformats-officedocument.wordprocessingml.document_response-stream":
+      "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream",
+    "200_application/x-7z-compressed_response-stream":
+      "twoHundredApplicationX7zCompressedResponseStream",
+    "200_application/x-rar-compressed_response-stream":
+      "twoHundredApplicationXRarCompressedResponseStream",
+    "200_application/xml_response-stream":
+      "twoHundredApplicationXmlResponseStream",
+    "200_application/zip_response-stream":
+      "twoHundredApplicationZipResponseStream",
+    "200_audio/mp4_response-stream": "twoHundredAudioMp4ResponseStream",
+    "200_audio/mpeg_response-stream": "twoHundredAudioMpegResponseStream",
+    "200_audio/wav_response-stream": "twoHundredAudioWavResponseStream",
+    "200_image/bmp_response-stream": "twoHundredImageBmpResponseStream",
+    "200_image/gif_response-stream": "twoHundredImageGifResponseStream",
+    "200_image/heic_response-stream": "twoHundredImageHeicResponseStream",
+    "200_image/jpeg_response-stream": "twoHundredImageJpegResponseStream",
+    "200_image/png_response-stream": "twoHundredImagePngResponseStream",
+    "200_image/tiff_response-stream": "twoHundredImageTiffResponseStream",
+    "200_image/webp_response-stream": "twoHundredImageWebpResponseStream",
+    "200_message/rfc822_response-stream":
+      "twoHundredMessageRfc822ResponseStream",
+    "200_text/csv_response-stream": "twoHundredTextCsvResponseStream",
+    "200_text/html_response-stream": "twoHundredTextHtmlResponseStream",
+    "200_text/plain_response-stream": "twoHundredTextPlainResponseStream",
+    "200_text/rtf_response-stream": "twoHundredTextRtfResponseStream",
+    "200_video/avi_response-stream": "twoHundredVideoAviResponseStream",
+    "200_video/mp4_response-stream": "twoHundredVideoMp4ResponseStream",
+    "200_video/quicktime_response-stream":
+      "twoHundredVideoQuicktimeResponseStream",
+    "200_video/webm_response-stream": "twoHundredVideoWebmResponseStream",
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "response-stream": "responseStream",
   });
 });
 
 /** @internal */
 export type HrisDownloadEmployeeDocumentResponse$Outbound = {
+  "200_application/gzip_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/json_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/msword_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/octet-stream_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/pdf_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/rtf_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.ms-excel_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.ms-outlook_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.ms-powerpoint_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.oasis.opendocument.presentation_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.oasis.opendocument.spreadsheet_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.oasis.opendocument.text_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.openxmlformats-officedocument.presentationml.presentation_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.openxmlformats-officedocument.spreadsheetml.sheet_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/vnd.openxmlformats-officedocument.wordprocessingml.document_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/x-7z-compressed_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/x-rar-compressed_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/xml_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_application/zip_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_audio/mp4_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_audio/mpeg_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_audio/wav_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/bmp_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/gif_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/heic_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/jpeg_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/png_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/tiff_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_image/webp_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_message/rfc822_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_text/csv_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_text/html_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_text/plain_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_text/rtf_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_video/avi_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_video/mp4_response-stream"?: ReadableStream<Uint8Array> | undefined;
+  "200_video/quicktime_response-stream"?:
+    | ReadableStream<Uint8Array>
+    | undefined;
+  "200_video/webm_response-stream"?: ReadableStream<Uint8Array> | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
-  "response-stream"?: ReadableStream<Uint8Array> | undefined;
 };
 
 /** @internal */
@@ -162,20 +577,168 @@ export const HrisDownloadEmployeeDocumentResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisDownloadEmployeeDocumentResponse
 > = z.object({
+  twoHundredApplicationGzipResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationJsonResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationMswordResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationOctetStreamResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationPdfResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationRtfResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationVndMsExcelResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationVndMsOutlookResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationVndMsPowerpointResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationVndOasisOpendocumentPresentationResponseStream: z
+    .instanceof(ReadableStream<Uint8Array>).optional(),
+  twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream: z
+    .instanceof(ReadableStream<Uint8Array>).optional(),
+  twoHundredApplicationVndOasisOpendocumentTextResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream:
+    z.instanceof(ReadableStream<Uint8Array>).optional(),
+  twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream:
+    z.instanceof(ReadableStream<Uint8Array>).optional(),
+  twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream:
+    z.instanceof(ReadableStream<Uint8Array>).optional(),
+  twoHundredApplicationX7zCompressedResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationXRarCompressedResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationXmlResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredApplicationZipResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredAudioMp4ResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredAudioMpegResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredAudioWavResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImageBmpResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImageGifResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImageHeicResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImageJpegResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImagePngResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImageTiffResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredImageWebpResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredMessageRfc822ResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredTextCsvResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredTextHtmlResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredTextPlainResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredTextRtfResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredVideoAviResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredVideoMp4ResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
+  twoHundredVideoQuicktimeResponseStream: z.instanceof(
+    ReadableStream<Uint8Array>,
+  ).optional(),
+  twoHundredVideoWebmResponseStream: z.instanceof(ReadableStream<Uint8Array>)
+    .optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
 }).transform((v) => {
   return remap$(v, {
+    twoHundredApplicationGzipResponseStream:
+      "200_application/gzip_response-stream",
+    twoHundredApplicationJsonResponseStream:
+      "200_application/json_response-stream",
+    twoHundredApplicationMswordResponseStream:
+      "200_application/msword_response-stream",
+    twoHundredApplicationOctetStreamResponseStream:
+      "200_application/octet-stream_response-stream",
+    twoHundredApplicationPdfResponseStream:
+      "200_application/pdf_response-stream",
+    twoHundredApplicationRtfResponseStream:
+      "200_application/rtf_response-stream",
+    twoHundredApplicationVndMsExcelResponseStream:
+      "200_application/vnd.ms-excel_response-stream",
+    twoHundredApplicationVndMsOutlookResponseStream:
+      "200_application/vnd.ms-outlook_response-stream",
+    twoHundredApplicationVndMsPowerpointResponseStream:
+      "200_application/vnd.ms-powerpoint_response-stream",
+    twoHundredApplicationVndOasisOpendocumentPresentationResponseStream:
+      "200_application/vnd.oasis.opendocument.presentation_response-stream",
+    twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream:
+      "200_application/vnd.oasis.opendocument.spreadsheet_response-stream",
+    twoHundredApplicationVndOasisOpendocumentTextResponseStream:
+      "200_application/vnd.oasis.opendocument.text_response-stream",
+    twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream:
+      "200_application/vnd.openxmlformats-officedocument.presentationml.presentation_response-stream",
+    twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream:
+      "200_application/vnd.openxmlformats-officedocument.spreadsheetml.sheet_response-stream",
+    twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream:
+      "200_application/vnd.openxmlformats-officedocument.wordprocessingml.document_response-stream",
+    twoHundredApplicationX7zCompressedResponseStream:
+      "200_application/x-7z-compressed_response-stream",
+    twoHundredApplicationXRarCompressedResponseStream:
+      "200_application/x-rar-compressed_response-stream",
+    twoHundredApplicationXmlResponseStream:
+      "200_application/xml_response-stream",
+    twoHundredApplicationZipResponseStream:
+      "200_application/zip_response-stream",
+    twoHundredAudioMp4ResponseStream: "200_audio/mp4_response-stream",
+    twoHundredAudioMpegResponseStream: "200_audio/mpeg_response-stream",
+    twoHundredAudioWavResponseStream: "200_audio/wav_response-stream",
+    twoHundredImageBmpResponseStream: "200_image/bmp_response-stream",
+    twoHundredImageGifResponseStream: "200_image/gif_response-stream",
+    twoHundredImageHeicResponseStream: "200_image/heic_response-stream",
+    twoHundredImageJpegResponseStream: "200_image/jpeg_response-stream",
+    twoHundredImagePngResponseStream: "200_image/png_response-stream",
+    twoHundredImageTiffResponseStream: "200_image/tiff_response-stream",
+    twoHundredImageWebpResponseStream: "200_image/webp_response-stream",
+    twoHundredMessageRfc822ResponseStream: "200_message/rfc822_response-stream",
+    twoHundredTextCsvResponseStream: "200_text/csv_response-stream",
+    twoHundredTextHtmlResponseStream: "200_text/html_response-stream",
+    twoHundredTextPlainResponseStream: "200_text/plain_response-stream",
+    twoHundredTextRtfResponseStream: "200_text/rtf_response-stream",
+    twoHundredVideoAviResponseStream: "200_video/avi_response-stream",
+    twoHundredVideoMp4ResponseStream: "200_video/mp4_response-stream",
+    twoHundredVideoQuicktimeResponseStream:
+      "200_video/quicktime_response-stream",
+    twoHundredVideoWebmResponseStream: "200_video/webm_response-stream",
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    responseStream: "response-stream",
   });
 });
 

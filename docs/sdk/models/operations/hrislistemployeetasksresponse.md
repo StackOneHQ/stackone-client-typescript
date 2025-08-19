@@ -7,8 +7,13 @@ import { HrisListEmployeeTasksResponse } from "@stackone/stackone-client-ts/sdk/
 
 let value: HrisListEmployeeTasksResponse = {
   contentType: "<value>",
-  headers: {},
-  statusCode: 423521,
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 605391,
 };
 ```
 
