@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 6e4c83cd1c7de3c8c66dd8339f461471
+  docChecksum: 1572e33c1dd2058921b2a31fe7673ab7
   docVersion: 1.0.0
   speakeasyVersion: 1.606.0
   generationVersion: 2.686.7
-  releaseVersion: 4.25.0
-  configChecksum: e965ccc8297c39e9fccf76c3b988d39e
+  releaseVersion: 4.25.1
+  configChecksum: 27e9495df4da7ee1010ea8e7199552ca
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -13880,16 +13880,3 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `stackone.hris.getEmployeeTask()`:  `response.data` **Changed** **Breaking** :warning:
-  * `stackone.hris.getTask()`:  `response.data` **Changed** **Breaking** :warning:
-  * `stackone.hris.downloadEmployeeDocument()`:  `response.status[200]` **Changed**
-  * `stackone.lms.getAssignment()`:  `response.data` **Changed**
-  * `stackone.lms.getCompletion()`:  `response.data.certificateUrl` **Added**
-  * `stackone.lms.getUserAssignment()`:  `response.data` **Changed**
-  * `stackone.lms.getUserCompletion()`:  `response.data.certificateUrl` **Added**
-  * `stackone.lms.listAssignments()`:  `response.data.[]` **Changed**
-  * `stackone.lms.listCompletions()`:  `response.data.[].certificateUrl` **Added**
-  * `stackone.lms.listUserAssignments()`:  `response.data.[]` **Changed**
-  * `stackone.lms.listUserCompletions()`:  `response.data.[].certificateUrl` **Added**
