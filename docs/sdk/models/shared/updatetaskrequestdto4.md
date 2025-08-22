@@ -1,11 +1,11 @@
-# Job4
+# UpdateTaskRequestDto4
 
 ## Example Usage
 
 ```typescript
-import { Job4 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { UpdateTaskRequestDto4 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Job4 = {};
+let value: UpdateTaskRequestDto4 = {};
 ```
 
 ## Fields

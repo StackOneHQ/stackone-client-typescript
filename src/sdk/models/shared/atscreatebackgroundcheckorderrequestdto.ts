@@ -13,17 +13,17 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AtsJobHiringTeam,
+  AtsJobHiringTeam$inboundSchema,
+  AtsJobHiringTeam$Outbound,
+  AtsJobHiringTeam$outboundSchema,
+} from "./atsjobhiringteam.js";
+import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
-import {
-  JobHiringTeam,
-  JobHiringTeam$inboundSchema,
-  JobHiringTeam$Outbound,
-  JobHiringTeam$outboundSchema,
-} from "./jobhiringteam.js";
 import {
   Package,
   Package$inboundSchema,
@@ -143,11 +143,11 @@ export type AtsCreateBackgroundCheckOrderRequestDtoCandidate = {
   remoteId?: string | null | undefined;
 };
 
-export type AtsCreateBackgroundCheckOrderRequestDtoJob = {
+export type Job = {
   /**
    * Hiring team for the job.
    */
-  hiringTeam?: Array<JobHiringTeam> | null | undefined;
+  hiringTeam?: Array<AtsJobHiringTeam> | null | undefined;
   /**
    * Unique identifier
    */
@@ -229,7 +229,7 @@ export type AtsCreateBackgroundCheckOrderRequestDto = {
    * Unique identifier
    */
   id?: string | null | undefined;
-  job?: AtsCreateBackgroundCheckOrderRequestDtoJob | null | undefined;
+  job?: Job | null | undefined;
   package?: AtsCreateBackgroundCheckOrderRequestDtoPackage | null | undefined;
   /**
    * Value to pass through to the provider
@@ -724,24 +724,23 @@ export function atsCreateBackgroundCheckOrderRequestDtoCandidateFromJSON(
 }
 
 /** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoJob$inboundSchema:
-  z.ZodType<AtsCreateBackgroundCheckOrderRequestDtoJob, z.ZodTypeDef, unknown> =
-    z.object({
-      hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
-      id: z.nullable(z.string()).optional(),
-      passthrough: z.nullable(z.record(z.any())).optional(),
-      remote_id: z.nullable(z.string()).optional(),
-      title: z.nullable(z.string()).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "hiring_team": "hiringTeam",
-        "remote_id": "remoteId",
-      });
+export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
+  .object({
+    hiring_team: z.nullable(z.array(AtsJobHiringTeam$inboundSchema)).optional(),
+    id: z.nullable(z.string()).optional(),
+    passthrough: z.nullable(z.record(z.any())).optional(),
+    remote_id: z.nullable(z.string()).optional(),
+    title: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "hiring_team": "hiringTeam",
+      "remote_id": "remoteId",
     });
+  });
 
 /** @internal */
-export type AtsCreateBackgroundCheckOrderRequestDtoJob$Outbound = {
-  hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
+export type Job$Outbound = {
+  hiring_team?: Array<AtsJobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   remote_id?: string | null | undefined;
@@ -749,13 +748,9 @@ export type AtsCreateBackgroundCheckOrderRequestDtoJob$Outbound = {
 };
 
 /** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoJob$outboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoJob$Outbound,
-    z.ZodTypeDef,
-    AtsCreateBackgroundCheckOrderRequestDtoJob
-  > = z.object({
-    hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
+export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
+  .object({
+    hiringTeam: z.nullable(z.array(AtsJobHiringTeam$outboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
     passthrough: z.nullable(z.record(z.any())).optional(),
     remoteId: z.nullable(z.string()).optional(),
@@ -771,41 +766,26 @@ export const AtsCreateBackgroundCheckOrderRequestDtoJob$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoJob$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoJob$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoJob$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoJob$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoJob$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoJob$Outbound` instead. */
-  export type Outbound = AtsCreateBackgroundCheckOrderRequestDtoJob$Outbound;
+export namespace Job$ {
+  /** @deprecated use `Job$inboundSchema` instead. */
+  export const inboundSchema = Job$inboundSchema;
+  /** @deprecated use `Job$outboundSchema` instead. */
+  export const outboundSchema = Job$outboundSchema;
+  /** @deprecated use `Job$Outbound` instead. */
+  export type Outbound = Job$Outbound;
 }
 
-export function atsCreateBackgroundCheckOrderRequestDtoJobToJSON(
-  atsCreateBackgroundCheckOrderRequestDtoJob:
-    AtsCreateBackgroundCheckOrderRequestDtoJob,
-): string {
-  return JSON.stringify(
-    AtsCreateBackgroundCheckOrderRequestDtoJob$outboundSchema.parse(
-      atsCreateBackgroundCheckOrderRequestDtoJob,
-    ),
-  );
+export function jobToJSON(job: Job): string {
+  return JSON.stringify(Job$outboundSchema.parse(job));
 }
 
-export function atsCreateBackgroundCheckOrderRequestDtoJobFromJSON(
+export function jobFromJSON(
   jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoJob,
-  SDKValidationError
-> {
+): SafeParseResult<Job, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoJob$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoJob' from JSON`,
+    (x) => Job$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Job' from JSON`,
   );
 }
 
@@ -993,9 +973,7 @@ export const AtsCreateBackgroundCheckOrderRequestDto$inboundSchema: z.ZodType<
     ),
   ).optional(),
   id: z.nullable(z.string()).optional(),
-  job: z.nullable(
-    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDtoJob$inboundSchema),
-  ).optional(),
+  job: z.nullable(z.lazy(() => Job$inboundSchema)).optional(),
   package: z.nullable(
     z.lazy(() => AtsCreateBackgroundCheckOrderRequestDtoPackage$inboundSchema),
   ).optional(),
@@ -1021,7 +999,7 @@ export type AtsCreateBackgroundCheckOrderRequestDto$Outbound = {
     | null
     | undefined;
   id?: string | null | undefined;
-  job?: AtsCreateBackgroundCheckOrderRequestDtoJob$Outbound | null | undefined;
+  job?: Job$Outbound | null | undefined;
   package?:
     | AtsCreateBackgroundCheckOrderRequestDtoPackage$Outbound
     | null
@@ -1049,9 +1027,7 @@ export const AtsCreateBackgroundCheckOrderRequestDto$outboundSchema: z.ZodType<
     ),
   ).optional(),
   id: z.nullable(z.string()).optional(),
-  job: z.nullable(
-    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDtoJob$outboundSchema),
-  ).optional(),
+  job: z.nullable(z.lazy(() => Job$outboundSchema)).optional(),
   package: z.nullable(
     z.lazy(() => AtsCreateBackgroundCheckOrderRequestDtoPackage$outboundSchema),
   ).optional(),

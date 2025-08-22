@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AtsJobHiringTeam,
+  AtsJobHiringTeam$inboundSchema,
+  AtsJobHiringTeam$Outbound,
+  AtsJobHiringTeam$outboundSchema,
+} from "./atsjobhiringteam.js";
+import {
   CustomFields,
   CustomFields$inboundSchema,
   CustomFields$Outbound,
@@ -24,12 +30,6 @@ import {
   InterviewStage$Outbound,
   InterviewStage$outboundSchema,
 } from "./interviewstage.js";
-import {
-  JobHiringTeam,
-  JobHiringTeam$inboundSchema,
-  JobHiringTeam$Outbound,
-  JobHiringTeam$outboundSchema,
-} from "./jobhiringteam.js";
 
 /**
  * Confidential status of the job
@@ -123,7 +123,7 @@ export type AtsCreateJobRequestDto = {
   /**
    * Hiring team for the job.
    */
-  hiringTeam?: Array<JobHiringTeam> | null | undefined;
+  hiringTeam?: Array<AtsJobHiringTeam> | null | undefined;
   /**
    * Interview stages for the job.
    */
@@ -431,7 +431,7 @@ export const AtsCreateJobRequestDto$inboundSchema: z.ZodType<
   custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   department_ids: z.nullable(z.array(z.string())).optional(),
   description: z.nullable(z.string()).optional(),
-  hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
+  hiring_team: z.nullable(z.array(AtsJobHiringTeam$inboundSchema)).optional(),
   interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
     .optional(),
   job_status: z.nullable(z.lazy(() => JobStatus$inboundSchema)).optional(),
@@ -459,7 +459,7 @@ export type AtsCreateJobRequestDto$Outbound = {
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   department_ids?: Array<string> | null | undefined;
   description?: string | null | undefined;
-  hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
+  hiring_team?: Array<AtsJobHiringTeam$Outbound> | null | undefined;
   interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
   job_status?: JobStatus$Outbound | null | undefined;
   location_ids?: Array<string> | null | undefined;
@@ -480,7 +480,7 @@ export const AtsCreateJobRequestDto$outboundSchema: z.ZodType<
   customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   departmentIds: z.nullable(z.array(z.string())).optional(),
   description: z.nullable(z.string()).optional(),
-  hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
+  hiringTeam: z.nullable(z.array(AtsJobHiringTeam$outboundSchema)).optional(),
   interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))
     .optional(),
   jobStatus: z.nullable(z.lazy(() => JobStatus$outboundSchema)).optional(),

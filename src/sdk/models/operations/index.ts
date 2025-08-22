@@ -3,6 +3,7 @@
  */
 
 export * from "./accountingbatchcreatecompanyjournals.js";
+export * from "./accountingcreatecompanyjournal.js";
 export * from "./accountinggetcompany.js";
 export * from "./accountinggetcompanyaccount.js";
 export * from "./accountinggetcompanyjournal.js";
@@ -39,6 +40,7 @@ export * from "./atsgetdepartment.js";
 export * from "./atsgetinterview.js";
 export * from "./atsgetinterviewstage.js";
 export * from "./atsgetjob.js";
+export * from "./atsgetjobapplicationstage.js";
 export * from "./atsgetjobcustomfielddefinition.js";
 export * from "./atsgetjobposting.js";
 export * from "./atsgetlist.js";
@@ -63,6 +65,7 @@ export * from "./atslistcandidates.js";
 export * from "./atslistdepartments.js";
 export * from "./atslistinterviews.js";
 export * from "./atslistinterviewstages.js";
+export * from "./atslistjobapplicationstages.js";
 export * from "./atslistjobcustomfielddefinitions.js";
 export * from "./atslistjobpostings.js";
 export * from "./atslistjobs.js";
@@ -169,6 +172,7 @@ export * from "./hrislisttimeoffrequests.js";
 export * from "./hrislisttimeofftypes.js";
 export * from "./hrisupdateemployee.js";
 export * from "./hrisupdateemployeeemployment.js";
+export * from "./hrisupdateemployeetask.js";
 export * from "./hrisupdateemployeetimeoffrequest.js";
 export * from "./hrisupdateemployeeworkeligibilityrequest.js";
 export * from "./hrisuploademployeedocument.js";

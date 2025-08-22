@@ -38,7 +38,7 @@ export type HrisGetJobResponse = {
   /**
    * The job with the given identifier was retrieved.
    */
-  jobResult?: shared.JobResult | undefined;
+  hrisJobResult?: shared.HrisJobResult | undefined;
   /**
    * HTTP response status code for this operation
    */
@@ -131,14 +131,14 @@ export const HrisGetJobResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
-  JobResult: shared.JobResult$inboundSchema.optional(),
+  HrisJobResult: shared.HrisJobResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "Headers": "headers",
-    "JobResult": "jobResult",
+    "HrisJobResult": "hrisJobResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -148,7 +148,7 @@ export const HrisGetJobResponse$inboundSchema: z.ZodType<
 export type HrisGetJobResponse$Outbound = {
   ContentType: string;
   Headers: { [k: string]: Array<string> };
-  JobResult?: shared.JobResult$Outbound | undefined;
+  HrisJobResult?: shared.HrisJobResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
 };
@@ -161,7 +161,7 @@ export const HrisGetJobResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
-  jobResult: shared.JobResult$outboundSchema.optional(),
+  hrisJobResult: shared.HrisJobResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -170,7 +170,7 @@ export const HrisGetJobResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     headers: "Headers",
-    jobResult: "JobResult",
+    hrisJobResult: "HrisJobResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

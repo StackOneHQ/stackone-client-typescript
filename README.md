@@ -7,7 +7,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-The documentation for the [StackOne](https://docs.stackone.com/hris/introduction) Unified APIs
+Accounting: The documentation for the StackOne Unified API - ACCOUNTING
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -108,6 +108,7 @@ run();
 ### [accounting](docs/sdks/accounting/README.md)
 
 * [batchCreateCompanyJournals](docs/sdks/accounting/README.md#batchcreatecompanyjournals) - Batch Create Journals
+* [createCompanyJournal](docs/sdks/accounting/README.md#createcompanyjournal) - Create Journal
 * [getCompany](docs/sdks/accounting/README.md#getcompany) - Get Company
 * [getCompanyAccount](docs/sdks/accounting/README.md#getcompanyaccount) - Get Account
 * [getCompanyJournal](docs/sdks/accounting/README.md#getcompanyjournal) - Get Journal
@@ -155,6 +156,7 @@ run();
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
 * [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
 * [getJob](docs/sdks/ats/README.md#getjob) - Get Job
+* [getJobApplicationStage](docs/sdks/ats/README.md#getjobapplicationstage) - Get Job Application Stage
 * [getJobCustomFieldDefinition](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
 * [getJobPosting](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
 * [getList](docs/sdks/ats/README.md#getlist) - Get List
@@ -179,6 +181,7 @@ run();
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
 * [listInterviewStages](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
 * [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
+* [listJobApplicationStages](docs/sdks/ats/README.md#listjobapplicationstages) - List Job Application Stages
 * [listJobCustomFieldDefinitions](docs/sdks/ats/README.md#listjobcustomfielddefinitions) - List Job Custom Field Definitions
 * [listJobPostings](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
 * [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
@@ -304,6 +307,7 @@ run();
 * [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Update Employee
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
+* [updateEmployeeTask](docs/sdks/hris/README.md#updateemployeetask) - Update Employee Task
 * [updateEmployeeTimeOffRequest](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
@@ -755,6 +759,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`accountingBatchCreateCompanyJournals`](docs/sdks/accounting/README.md#batchcreatecompanyjournals) - Batch Create Journals
+- [`accountingCreateCompanyJournal`](docs/sdks/accounting/README.md#createcompanyjournal) - Create Journal
 - [`accountingGetCompany`](docs/sdks/accounting/README.md#getcompany) - Get Company
 - [`accountingGetCompanyAccount`](docs/sdks/accounting/README.md#getcompanyaccount) - Get Account
 - [`accountingGetCompanyJournal`](docs/sdks/accounting/README.md#getcompanyjournal) - Get Journal
@@ -796,6 +801,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetInterview`](docs/sdks/ats/README.md#getinterview) - Get Interview
 - [`atsGetInterviewStage`](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
 - [`atsGetJob`](docs/sdks/ats/README.md#getjob) - Get Job
+- [`atsGetJobApplicationStage`](docs/sdks/ats/README.md#getjobapplicationstage) - Get Job Application Stage
 - [`atsGetJobCustomFieldDefinition`](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
 - [`atsGetJobPosting`](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
 - [`atsGetList`](docs/sdks/ats/README.md#getlist) - Get List
@@ -820,6 +826,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsListDepartments`](docs/sdks/ats/README.md#listdepartments) - List Departments
 - [`atsListInterviews`](docs/sdks/ats/README.md#listinterviews) - List Interviews
 - [`atsListInterviewStages`](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
+- [`atsListJobApplicationStages`](docs/sdks/ats/README.md#listjobapplicationstages) - List Job Application Stages
 - [`atsListJobCustomFieldDefinitions`](docs/sdks/ats/README.md#listjobcustomfielddefinitions) - List Job Custom Field Definitions
 - [`atsListJobPostings`](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
 - [`atsListJobs`](docs/sdks/ats/README.md#listjobs) - List Jobs
@@ -928,6 +935,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 - [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Update Employee
 - [`hrisUpdateEmployeeEmployment`](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
+- [`hrisUpdateEmployeeTask`](docs/sdks/hris/README.md#updateemployeetask) - Update Employee Task
 - [`hrisUpdateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 - [`hrisUpdateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 - [`hrisUploadEmployeeDocument`](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document

@@ -1,11 +1,11 @@
-# JobResult
+# AtsJobResult
 
 ## Example Usage
 
 ```typescript
-import { JobResult, JobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsJobResult, AtsJobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobResult = {
+let value: AtsJobResult = {
   data: {
     code: "184919",
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -50,7 +50,7 @@ let value: JobResult = {
     ],
     jobStatus: {
       sourceValue: "Published",
-      value: JobValue.Published,
+      value: AtsJobValue.Published,
     },
     locationIds: [
       "668570",
@@ -80,5 +80,5 @@ let value: JobResult = {
 
 | Field                                                             | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `data`                                                            | [shared.Job](../../../sdk/models/shared/job.md)                   | :heavy_check_mark:                                                | N/A                                                               |
+| `data`                                                            | [shared.AtsJob](../../../sdk/models/shared/atsjob.md)             | :heavy_check_mark:                                                | N/A                                                               |
 | `raw`                                                             | [shared.RawResponse](../../../sdk/models/shared/rawresponse.md)[] | :heavy_minus_sign:                                                | N/A                                                               |

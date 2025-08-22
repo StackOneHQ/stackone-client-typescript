@@ -71,7 +71,7 @@ export type HrisListJobsResponse = {
   /**
    * The list of jobs was retrieved.
    */
-  jobsPaginated?: shared.JobsPaginated | undefined;
+  hrisJobsPaginated?: shared.HrisJobsPaginated | undefined;
   /**
    * HTTP response status code for this operation
    */
@@ -250,14 +250,14 @@ export const HrisListJobsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
-  JobsPaginated: shared.JobsPaginated$inboundSchema.optional(),
+  HrisJobsPaginated: shared.HrisJobsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "Headers": "headers",
-    "JobsPaginated": "jobsPaginated",
+    "HrisJobsPaginated": "hrisJobsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -267,7 +267,7 @@ export const HrisListJobsResponse$inboundSchema: z.ZodType<
 export type HrisListJobsResponse$Outbound = {
   ContentType: string;
   Headers: { [k: string]: Array<string> };
-  JobsPaginated?: shared.JobsPaginated$Outbound | undefined;
+  HrisJobsPaginated?: shared.HrisJobsPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
 };
@@ -280,7 +280,7 @@ export const HrisListJobsResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
-  jobsPaginated: shared.JobsPaginated$outboundSchema.optional(),
+  hrisJobsPaginated: shared.HrisJobsPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -289,7 +289,7 @@ export const HrisListJobsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     headers: "Headers",
-    jobsPaginated: "JobsPaginated",
+    hrisJobsPaginated: "HrisJobsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

@@ -252,7 +252,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, operations.HrisListJobsResponse$inboundSchema, {
-      key: "JobsPaginated",
+      key: "HrisJobsPaginated",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

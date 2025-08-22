@@ -39,14 +39,14 @@ export type AtsGetJobRequest = {
 
 export type AtsGetJobResponse = {
   /**
+   * The job with the given identifier was retrieved.
+   */
+  atsJobResult?: shared.AtsJobResult | undefined;
+  /**
    * HTTP response content type for this operation
    */
   contentType: string;
   headers: { [k: string]: Array<string> };
-  /**
-   * The job with the given identifier was retrieved.
-   */
-  jobResult?: shared.JobResult | undefined;
   /**
    * HTTP response status code for this operation
    */
@@ -143,16 +143,16 @@ export const AtsGetJobResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  AtsJobResult: shared.AtsJobResult$inboundSchema.optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
-  JobResult: shared.JobResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
+    "AtsJobResult": "atsJobResult",
     "ContentType": "contentType",
     "Headers": "headers",
-    "JobResult": "jobResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -160,9 +160,9 @@ export const AtsGetJobResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsGetJobResponse$Outbound = {
+  AtsJobResult?: shared.AtsJobResult$Outbound | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
-  JobResult?: shared.JobResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
 };
@@ -173,18 +173,18 @@ export const AtsGetJobResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsGetJobResponse
 > = z.object({
+  atsJobResult: shared.AtsJobResult$outboundSchema.optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
-  jobResult: shared.JobResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
 }).transform((v) => {
   return remap$(v, {
+    atsJobResult: "AtsJobResult",
     contentType: "ContentType",
     headers: "Headers",
-    jobResult: "JobResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

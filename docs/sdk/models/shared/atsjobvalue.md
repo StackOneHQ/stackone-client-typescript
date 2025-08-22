@@ -1,13 +1,13 @@
-# JobValue
+# AtsJobValue
 
 The status of the job.
 
 ## Example Usage
 
 ```typescript
-import { JobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsJobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobValue = JobValue.Published;
+let value: AtsJobValue = AtsJobValue.Published;
 ```
 
 ## Values

@@ -8,11 +8,11 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Job,
-  Job$inboundSchema,
-  Job$Outbound,
-  Job$outboundSchema,
-} from "./job.js";
+  ApplicationStage,
+  ApplicationStage$inboundSchema,
+  ApplicationStage$Outbound,
+  ApplicationStage$outboundSchema,
+} from "./applicationstage.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -20,8 +20,8 @@ import {
   RawResponse$outboundSchema,
 } from "./rawresponse.js";
 
-export type JobsPaginated = {
-  data: Array<Job>;
+export type ApplicationStagesPaginated = {
+  data: Array<ApplicationStage>;
   next?: string | null | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -31,12 +31,12 @@ export type JobsPaginated = {
 };
 
 /** @internal */
-export const JobsPaginated$inboundSchema: z.ZodType<
-  JobsPaginated,
+export const ApplicationStagesPaginated$inboundSchema: z.ZodType<
+  ApplicationStagesPaginated,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(Job$inboundSchema),
+  data: z.array(ApplicationStage$inboundSchema),
   next: z.nullable(z.string()).optional(),
   next_page: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
@@ -47,20 +47,20 @@ export const JobsPaginated$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type JobsPaginated$Outbound = {
-  data: Array<Job$Outbound>;
+export type ApplicationStagesPaginated$Outbound = {
+  data: Array<ApplicationStage$Outbound>;
   next?: string | null | undefined;
   next_page?: string | null | undefined;
   raw?: Array<RawResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
-export const JobsPaginated$outboundSchema: z.ZodType<
-  JobsPaginated$Outbound,
+export const ApplicationStagesPaginated$outboundSchema: z.ZodType<
+  ApplicationStagesPaginated$Outbound,
   z.ZodTypeDef,
-  JobsPaginated
+  ApplicationStagesPaginated
 > = z.object({
-  data: z.array(Job$outboundSchema),
+  data: z.array(ApplicationStage$outboundSchema),
   next: z.nullable(z.string()).optional(),
   nextPage: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
@@ -74,25 +74,29 @@ export const JobsPaginated$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobsPaginated$ {
-  /** @deprecated use `JobsPaginated$inboundSchema` instead. */
-  export const inboundSchema = JobsPaginated$inboundSchema;
-  /** @deprecated use `JobsPaginated$outboundSchema` instead. */
-  export const outboundSchema = JobsPaginated$outboundSchema;
-  /** @deprecated use `JobsPaginated$Outbound` instead. */
-  export type Outbound = JobsPaginated$Outbound;
+export namespace ApplicationStagesPaginated$ {
+  /** @deprecated use `ApplicationStagesPaginated$inboundSchema` instead. */
+  export const inboundSchema = ApplicationStagesPaginated$inboundSchema;
+  /** @deprecated use `ApplicationStagesPaginated$outboundSchema` instead. */
+  export const outboundSchema = ApplicationStagesPaginated$outboundSchema;
+  /** @deprecated use `ApplicationStagesPaginated$Outbound` instead. */
+  export type Outbound = ApplicationStagesPaginated$Outbound;
 }
 
-export function jobsPaginatedToJSON(jobsPaginated: JobsPaginated): string {
-  return JSON.stringify(JobsPaginated$outboundSchema.parse(jobsPaginated));
+export function applicationStagesPaginatedToJSON(
+  applicationStagesPaginated: ApplicationStagesPaginated,
+): string {
+  return JSON.stringify(
+    ApplicationStagesPaginated$outboundSchema.parse(applicationStagesPaginated),
+  );
 }
 
-export function jobsPaginatedFromJSON(
+export function applicationStagesPaginatedFromJSON(
   jsonString: string,
-): SafeParseResult<JobsPaginated, SDKValidationError> {
+): SafeParseResult<ApplicationStagesPaginated, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => JobsPaginated$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JobsPaginated' from JSON`,
+    (x) => ApplicationStagesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationStagesPaginated' from JSON`,
   );
 }

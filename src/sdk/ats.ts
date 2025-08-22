@@ -30,6 +30,7 @@ import { atsGetDepartment } from "../funcs/atsGetDepartment.js";
 import { atsGetInterview } from "../funcs/atsGetInterview.js";
 import { atsGetInterviewStage } from "../funcs/atsGetInterviewStage.js";
 import { atsGetJob } from "../funcs/atsGetJob.js";
+import { atsGetJobApplicationStage } from "../funcs/atsGetJobApplicationStage.js";
 import { atsGetJobCustomFieldDefinition } from "../funcs/atsGetJobCustomFieldDefinition.js";
 import { atsGetJobPosting } from "../funcs/atsGetJobPosting.js";
 import { atsGetList } from "../funcs/atsGetList.js";
@@ -54,6 +55,7 @@ import { atsListCandidates } from "../funcs/atsListCandidates.js";
 import { atsListDepartments } from "../funcs/atsListDepartments.js";
 import { atsListInterviews } from "../funcs/atsListInterviews.js";
 import { atsListInterviewStages } from "../funcs/atsListInterviewStages.js";
+import { atsListJobApplicationStages } from "../funcs/atsListJobApplicationStages.js";
 import { atsListJobCustomFieldDefinitions } from "../funcs/atsListJobCustomFieldDefinitions.js";
 import { atsListJobPostings } from "../funcs/atsListJobPostings.js";
 import { atsListJobs } from "../funcs/atsListJobs.js";
@@ -473,6 +475,20 @@ export class Ats extends ClientSDK {
   }
 
   /**
+   * Get Job Application Stage
+   */
+  async getJobApplicationStage(
+    request: operations.AtsGetJobApplicationStageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetJobApplicationStageResponse> {
+    return unwrapAsync(atsGetJobApplicationStage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Job Custom Field Definition
    */
   async getJobCustomFieldDefinition(
@@ -866,6 +882,25 @@ export class Ats extends ClientSDK {
     PageIterator<operations.AtsListInterviewsResponse, { cursor: string }>
   > {
     return unwrapResultIterator(atsListInterviews(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Job Application Stages
+   */
+  async listJobApplicationStages(
+    request: operations.AtsListJobApplicationStagesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.AtsListJobApplicationStagesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListJobApplicationStages(
       this,
       request,
       options,

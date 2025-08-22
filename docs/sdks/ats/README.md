@@ -33,6 +33,7 @@
 * [getInterview](#getinterview) - Get Interview
 * [getInterviewStage](#getinterviewstage) - Get Interview Stage
 * [getJob](#getjob) - Get Job
+* [getJobApplicationStage](#getjobapplicationstage) - Get Job Application Stage
 * [getJobCustomFieldDefinition](#getjobcustomfielddefinition) - Get Job Custom Field Definition
 * [getJobPosting](#getjobposting) - Get Job Posting
 * [getList](#getlist) - Get List
@@ -57,6 +58,7 @@
 * [listDepartments](#listdepartments) - List Departments
 * [listInterviewStages](#listinterviewstages) - List Interview Stages
 * [listInterviews](#listinterviews) - List Interviews
+* [listJobApplicationStages](#listjobapplicationstages) - List Job Application Stages
 * [listJobCustomFieldDefinitions](#listjobcustomfielddefinitions) - List Job Custom Field Definitions
 * [listJobPostings](#listjobpostings) - List Job Postings
 * [listJobs](#listjobs) - List Jobs
@@ -3378,6 +3380,103 @@ run();
 | errors.BadGatewayResponse          | 502                                | application/json                   |
 | errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
+## getJobApplicationStage
+
+Get Job Application Stage
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="ats_get_job_application_stage" method="get" path="/unified/ats/jobs/{id}/application_stages/{subResourceId}" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getJobApplicationStage({
+    fields: "id,remote_id,name,order,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsGetJobApplicationStage } from "@stackone/stackone-client-ts/funcs/atsGetJobApplicationStage.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsGetJobApplicationStage(stackOne, {
+    fields: "id,remote_id,name,order,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsGetJobApplicationStage failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetJobApplicationStageRequest](../../sdk/models/operations/atsgetjobapplicationstagerequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsGetJobApplicationStageResponse](../../sdk/models/operations/atsgetjobapplicationstageresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
 ## getJobCustomFieldDefinition
 
 Get Job Custom Field Definition
@@ -5841,6 +5940,111 @@ run();
 ### Response
 
 **Promise\<[operations.AtsListInterviewsResponse](../../sdk/models/operations/atslistinterviewsresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## listJobApplicationStages
+
+List Job Application Stages
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="ats_list_job_application_stages" method="get" path="/unified/ats/jobs/{id}/application_stages" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listJobApplicationStages({
+    fields: "id,remote_id,name,order,created_at,updated_at",
+    filter: {
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  for await (const page of result) {
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsListJobApplicationStages } from "@stackone/stackone-client-ts/funcs/atsListJobApplicationStages.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsListJobApplicationStages(stackOne, {
+    fields: "id,remote_id,name,order,created_at,updated_at",
+    filter: {
+      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
+    console.log(page);
+  }
+  } else {
+    console.log("atsListJobApplicationStages failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListJobApplicationStagesRequest](../../sdk/models/operations/atslistjobapplicationstagesrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsListJobApplicationStagesResponse](../../sdk/models/operations/atslistjobapplicationstagesresponse.md)\>**
 
 ### Errors
 
@@ -8642,7 +8846,10 @@ Upload Application Document
 <!-- UsageSnippet language="typescript" operationID="ats_upload_application_document" method="post" path="/unified/ats/applications/{id}/documents/upload" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  AtsDocumentsUploadRequestDtoSchemasFileFormatValue,
+  AtsDocumentsUploadRequestDtoSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -8653,20 +8860,17 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.uploadApplicationDocument({
-    unifiedUploadRequestDto: {
-      category: {
-        sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
-        value: "reports, resumes",
-      },
+    atsDocumentsUploadRequestDto: {
+      category: {},
       categoryId: "6530",
       confidential: {
         sourceValue: "public",
-        value: UnifiedUploadRequestDtoValue.True,
+        value: AtsDocumentsUploadRequestDtoSchemasValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
         sourceValue: "application/pdf",
-        value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+        value: AtsDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
       },
       name: "weather-forecast",
       path: "/path/to/file",
@@ -8688,7 +8892,10 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsUploadApplicationDocument } from "@stackone/stackone-client-ts/funcs/atsUploadApplicationDocument.js";
-import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  AtsDocumentsUploadRequestDtoSchemasFileFormatValue,
+  AtsDocumentsUploadRequestDtoSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -8701,20 +8908,17 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsUploadApplicationDocument(stackOne, {
-    unifiedUploadRequestDto: {
-      category: {
-        sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
-        value: "reports, resumes",
-      },
+    atsDocumentsUploadRequestDto: {
+      category: {},
       categoryId: "6530",
       confidential: {
         sourceValue: "public",
-        value: UnifiedUploadRequestDtoValue.True,
+        value: AtsDocumentsUploadRequestDtoSchemasValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
         sourceValue: "application/pdf",
-        value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+        value: AtsDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
       },
       name: "weather-forecast",
       path: "/path/to/file",

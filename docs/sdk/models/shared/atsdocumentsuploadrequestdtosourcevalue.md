@@ -1,6 +1,4 @@
-# JobSourceValue
-
-The source value of the job status.
+# AtsDocumentsUploadRequestDtoSourceValue
 
 
 ## Supported Types
@@ -8,7 +6,7 @@ The source value of the job status.
 ### `string`
 
 ```typescript
-const value: string = "Published";
+const value: string = "public";
 ```
 
 ### `number`
@@ -23,17 +21,17 @@ const value: number = NaN;
 const value: boolean = true;
 ```
 
-### `shared.Job4`
+### `shared.AtsDocumentsUploadRequestDto4`
 
 ```typescript
-const value: shared.Job4 = {};
+const value: shared.AtsDocumentsUploadRequestDto4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
 const value: any[] = [
-  "Published",
+  "public",
 ];
 ```
 

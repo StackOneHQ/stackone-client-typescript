@@ -50,6 +50,8 @@ export type BackgroundCheckResultSourceValue =
  * The result of the test.
  */
 export enum BackgroundCheckResultValue {
+  Initiated = "initiated",
+  InProgress = "in_progress",
   Cancelled = "cancelled",
   Completed = "completed",
   Expired = "expired",

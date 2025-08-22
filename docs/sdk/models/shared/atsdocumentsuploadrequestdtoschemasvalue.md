@@ -1,13 +1,14 @@
-# JobConfidential
+# AtsDocumentsUploadRequestDtoSchemasValue
 
-Confidential status of the job
+Whether the file is confidential or not
 
 ## Example Usage
 
 ```typescript
-import { JobConfidential } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsDocumentsUploadRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobConfidential = JobConfidential.True;
+let value: AtsDocumentsUploadRequestDtoSchemasValue =
+  AtsDocumentsUploadRequestDtoSchemasValue.True;
 ```
 
 ## Values

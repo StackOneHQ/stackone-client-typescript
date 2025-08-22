@@ -243,7 +243,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, operations.AtsGetJobResponse$inboundSchema, {
-      key: "JobResult",
+      key: "AtsJobResult",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
