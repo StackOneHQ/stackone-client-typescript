@@ -46,6 +46,8 @@ export type AtsUpdateBackgroundCheckResultRequestDtoSourceValue =
  * The result of the test.
  */
 export enum AtsUpdateBackgroundCheckResultRequestDtoValue {
+  Initiated = "initiated",
+  InProgress = "in_progress",
   Cancelled = "cancelled",
   Completed = "completed",
   Expired = "expired",

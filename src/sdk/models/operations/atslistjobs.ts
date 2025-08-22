@@ -110,14 +110,14 @@ export type AtsListJobsRequest = {
 
 export type AtsListJobsResponse = {
   /**
+   * The list of jobs was retrieved.
+   */
+  atsJobsPaginated?: shared.AtsJobsPaginated | undefined;
+  /**
    * HTTP response content type for this operation
    */
   contentType: string;
   headers: { [k: string]: Array<string> };
-  /**
-   * The list of jobs was retrieved.
-   */
-  jobsPaginated?: shared.JobsPaginated | undefined;
   /**
    * HTTP response status code for this operation
    */
@@ -358,16 +358,16 @@ export const AtsListJobsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  AtsJobsPaginated: shared.AtsJobsPaginated$inboundSchema.optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
-  JobsPaginated: shared.JobsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
+    "AtsJobsPaginated": "atsJobsPaginated",
     "ContentType": "contentType",
     "Headers": "headers",
-    "JobsPaginated": "jobsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -375,9 +375,9 @@ export const AtsListJobsResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsListJobsResponse$Outbound = {
+  AtsJobsPaginated?: shared.AtsJobsPaginated$Outbound | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
-  JobsPaginated?: shared.JobsPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
 };
@@ -388,18 +388,18 @@ export const AtsListJobsResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListJobsResponse
 > = z.object({
+  atsJobsPaginated: shared.AtsJobsPaginated$outboundSchema.optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
-  jobsPaginated: shared.JobsPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
 }).transform((v) => {
   return remap$(v, {
+    atsJobsPaginated: "AtsJobsPaginated",
     contentType: "ContentType",
     headers: "Headers",
-    jobsPaginated: "JobsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

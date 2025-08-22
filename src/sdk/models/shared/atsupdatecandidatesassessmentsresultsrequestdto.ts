@@ -46,6 +46,8 @@ export type AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue =
  * The result of the test.
  */
 export enum AtsUpdateCandidatesAssessmentsResultsRequestDtoValue {
+  Initiated = "initiated",
+  InProgress = "in_progress",
   Cancelled = "cancelled",
   Completed = "completed",
   Expired = "expired",

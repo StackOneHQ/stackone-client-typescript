@@ -50,6 +50,8 @@ export type AssessmentResultSourceValue =
  * The result of the test.
  */
 export enum AssessmentResultValue {
+  Initiated = "initiated",
+  InProgress = "in_progress",
   Cancelled = "cancelled",
   Completed = "completed",
   Expired = "expired",

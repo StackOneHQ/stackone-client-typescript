@@ -1,11 +1,11 @@
-# JobHiringTeam
+# AtsJobHiringTeam
 
 ## Example Usage
 
 ```typescript
-import { JobHiringTeam } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsJobHiringTeam } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobHiringTeam = {
+let value: AtsJobHiringTeam = {
   email: "john.doe@gmail.com",
   firstName: "John",
   lastName: "Doe",

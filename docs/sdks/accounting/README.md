@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [batchCreateCompanyJournals](#batchcreatecompanyjournals) - Batch Create Journals
+* [createCompanyJournal](#createcompanyjournal) - Create Journal
 * [getCompany](#getcompany) - Get Company
 * [getCompanyAccount](#getcompanyaccount) - Get Account
 * [getCompanyJournal](#getcompanyjournal) - Get Journal
@@ -95,6 +96,139 @@ run();
 ### Response
 
 **Promise\<[operations.AccountingBatchCreateCompanyJournalsResponse](../../sdk/models/operations/accountingbatchcreatecompanyjournalsresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## createCompanyJournal
+
+Create Journal
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="accounting_create_company_journal" method="post" path="/unified/accounting/companies/{id}/journals" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AccountingJournalCreateRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.accounting.createCompanyJournal({
+    accountingJournalCreateRequestDto: {
+      currencyCode: {
+        sourceValue: "USD",
+        value: AccountingJournalCreateRequestDtoValue.Usd,
+      },
+      exchangeRate: 1,
+      lines: [
+        {
+          accountId: "acc_123456789",
+          amount: 10010,
+          description: "Payment for office supplies",
+          taxAmount: 10010,
+          taxRateId: "tax_123456789",
+        },
+      ],
+      memo: "Monthly closing entries",
+      reference: "JRN-2024-001",
+      transactionDate: new Date("2024-03-20T10:00:00Z"),
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { accountingCreateCompanyJournal } from "@stackone/stackone-client-ts/funcs/accountingCreateCompanyJournal.js";
+import { AccountingJournalCreateRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await accountingCreateCompanyJournal(stackOne, {
+    accountingJournalCreateRequestDto: {
+      currencyCode: {
+        sourceValue: "USD",
+        value: AccountingJournalCreateRequestDtoValue.Usd,
+      },
+      exchangeRate: 1,
+      lines: [
+        {
+          accountId: "acc_123456789",
+          amount: 10010,
+          description: "Payment for office supplies",
+          taxAmount: 10010,
+          taxRateId: "tax_123456789",
+        },
+      ],
+      memo: "Monthly closing entries",
+      reference: "JRN-2024-001",
+      transactionDate: new Date("2024-03-20T10:00:00Z"),
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountingCreateCompanyJournal failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AccountingCreateCompanyJournalRequest](../../sdk/models/operations/accountingcreatecompanyjournalrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AccountingCreateCompanyJournalResponse](../../sdk/models/operations/accountingcreatecompanyjournalresponse.md)\>**
 
 ### Errors
 

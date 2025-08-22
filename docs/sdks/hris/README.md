@@ -73,6 +73,7 @@
 * [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [updateEmployee](#updateemployee) - Update Employee
 * [updateEmployeeEmployment](#updateemployeeemployment) - Update Employee Employment
+* [updateEmployeeTask](#updateemployeetask) - Update Employee Task
 * [updateEmployeeTimeOffRequest](#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [updateEmployeeWorkEligibilityRequest](#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
@@ -3282,7 +3283,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getJob({
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
+    fields: "id,remote_id,code,title,description,status,created_at,updated_at",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3312,7 +3313,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetJob(stackOne, {
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
+    fields: "id,remote_id,code,title,description,status,created_at,updated_at",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -6358,7 +6359,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listJobs({
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
+    fields: "id,remote_id,code,title,description,status,created_at,updated_at",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -6393,7 +6394,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListJobs(stackOne, {
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id",
+    fields: "id,remote_id,code,title,description,status,created_at,updated_at",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -7968,6 +7969,115 @@ run();
 ### Response
 
 **Promise\<[operations.HrisUpdateEmployeeEmploymentResponse](../../sdk/models/operations/hrisupdateemployeeemploymentresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## updateEmployeeTask
+
+Update Employee Task
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="hris_update_employee_task" method="patch" path="/unified/hris/employees/{id}/tasks/{subResourceId}" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { UpdateTaskRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.updateEmployeeTask({
+    updateTaskRequestDto: {
+      comment: "All required documents have been submitted",
+      status: {
+        value: UpdateTaskRequestDtoValue.Open,
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUpdateEmployeeTask } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployeeTask.js";
+import { UpdateTaskRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUpdateEmployeeTask(stackOne, {
+    updateTaskRequestDto: {
+      comment: "All required documents have been submitted",
+      status: {
+        value: UpdateTaskRequestDtoValue.Open,
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisUpdateEmployeeTask failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisUpdateEmployeeTaskRequest](../../sdk/models/operations/hrisupdateemployeetaskrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisUpdateEmployeeTaskResponse](../../sdk/models/operations/hrisupdateemployeetaskresponse.md)\>**
 
 ### Errors
 

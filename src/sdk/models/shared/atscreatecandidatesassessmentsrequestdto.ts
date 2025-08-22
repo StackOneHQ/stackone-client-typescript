@@ -13,17 +13,17 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AtsJobHiringTeam,
+  AtsJobHiringTeam$inboundSchema,
+  AtsJobHiringTeam$Outbound,
+  AtsJobHiringTeam$outboundSchema,
+} from "./atsjobhiringteam.js";
+import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
-import {
-  JobHiringTeam,
-  JobHiringTeam$inboundSchema,
-  JobHiringTeam$Outbound,
-  JobHiringTeam$outboundSchema,
-} from "./jobhiringteam.js";
 
 export type AtsCreateCandidatesAssessmentsRequestDto4 = {};
 
@@ -141,7 +141,7 @@ export type AtsCreateCandidatesAssessmentsRequestDtoJob = {
   /**
    * Hiring team for the job.
    */
-  hiringTeam?: Array<JobHiringTeam> | null | undefined;
+  hiringTeam?: Array<AtsJobHiringTeam> | null | undefined;
   /**
    * Unique identifier
    */
@@ -720,7 +720,7 @@ export const AtsCreateCandidatesAssessmentsRequestDtoJob$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
+    hiring_team: z.nullable(z.array(AtsJobHiringTeam$inboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
     passthrough: z.nullable(z.record(z.any())).optional(),
     remote_id: z.nullable(z.string()).optional(),
@@ -734,7 +734,7 @@ export const AtsCreateCandidatesAssessmentsRequestDtoJob$inboundSchema:
 
 /** @internal */
 export type AtsCreateCandidatesAssessmentsRequestDtoJob$Outbound = {
-  hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
+  hiring_team?: Array<AtsJobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   remote_id?: string | null | undefined;
@@ -748,7 +748,7 @@ export const AtsCreateCandidatesAssessmentsRequestDtoJob$outboundSchema:
     z.ZodTypeDef,
     AtsCreateCandidatesAssessmentsRequestDtoJob
   > = z.object({
-    hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
+    hiringTeam: z.nullable(z.array(AtsJobHiringTeam$outboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
     passthrough: z.nullable(z.record(z.any())).optional(),
     remoteId: z.nullable(z.string()).optional(),

@@ -10,7 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsUploadApplicationDocumentRequest = {
-  unifiedUploadRequestDto: shared.UnifiedUploadRequestDto;
+  atsDocumentsUploadRequestDto: shared.AtsDocumentsUploadRequestDto;
   id: string;
   /**
    * The account identifier
@@ -44,19 +44,20 @@ export const AtsUploadApplicationDocumentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$inboundSchema,
+  AtsDocumentsUploadRequestDto:
+    shared.AtsDocumentsUploadRequestDto$inboundSchema,
   id: z.string(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "UnifiedUploadRequestDto": "unifiedUploadRequestDto",
+    "AtsDocumentsUploadRequestDto": "atsDocumentsUploadRequestDto",
     "x-account-id": "xAccountId",
   });
 });
 
 /** @internal */
 export type AtsUploadApplicationDocumentRequest$Outbound = {
-  UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$Outbound;
+  AtsDocumentsUploadRequestDto: shared.AtsDocumentsUploadRequestDto$Outbound;
   id: string;
   "x-account-id": string;
 };
@@ -67,12 +68,13 @@ export const AtsUploadApplicationDocumentRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsUploadApplicationDocumentRequest
 > = z.object({
-  unifiedUploadRequestDto: shared.UnifiedUploadRequestDto$outboundSchema,
+  atsDocumentsUploadRequestDto:
+    shared.AtsDocumentsUploadRequestDto$outboundSchema,
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    unifiedUploadRequestDto: "UnifiedUploadRequestDto",
+    atsDocumentsUploadRequestDto: "AtsDocumentsUploadRequestDto",
     xAccountId: "x-account-id",
   });
 });

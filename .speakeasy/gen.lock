@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 1572e33c1dd2058921b2a31fe7673ab7
+  docChecksum: 56fed632a79b515beee7cac32302bf28
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.0
-  generationVersion: 2.686.7
-  releaseVersion: 4.25.1
-  configChecksum: 27e9495df4da7ee1010ea8e7199552ca
+  speakeasyVersion: 1.606.2
+  generationVersion: 2.687.1
+  releaseVersion: 4.25.2
+  configChecksum: da121fea17e6fe53af217acdf0370960
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -58,6 +58,8 @@ generatedFiles:
   - docs/sdk/models/errors/unprocessableentityresponse.md
   - docs/sdk/models/operations/accountingbatchcreatecompanyjournalsrequest.md
   - docs/sdk/models/operations/accountingbatchcreatecompanyjournalsresponse.md
+  - docs/sdk/models/operations/accountingcreatecompanyjournalrequest.md
+  - docs/sdk/models/operations/accountingcreatecompanyjournalresponse.md
   - docs/sdk/models/operations/accountinggetcompanyaccountrequest.md
   - docs/sdk/models/operations/accountinggetcompanyaccountresponse.md
   - docs/sdk/models/operations/accountinggetcompanyjournalrequest.md
@@ -135,6 +137,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetinterviewresponse.md
   - docs/sdk/models/operations/atsgetinterviewstagerequest.md
   - docs/sdk/models/operations/atsgetinterviewstageresponse.md
+  - docs/sdk/models/operations/atsgetjobapplicationstagerequest.md
+  - docs/sdk/models/operations/atsgetjobapplicationstageresponse.md
   - docs/sdk/models/operations/atsgetjobcustomfielddefinitionqueryparamfilter.md
   - docs/sdk/models/operations/atsgetjobcustomfielddefinitionrequest.md
   - docs/sdk/models/operations/atsgetjobcustomfielddefinitionresponse.md
@@ -203,6 +207,9 @@ generatedFiles:
   - docs/sdk/models/operations/atslistinterviewstagesqueryparamfilter.md
   - docs/sdk/models/operations/atslistinterviewstagesrequest.md
   - docs/sdk/models/operations/atslistinterviewstagesresponse.md
+  - docs/sdk/models/operations/atslistjobapplicationstagesqueryparamfilter.md
+  - docs/sdk/models/operations/atslistjobapplicationstagesrequest.md
+  - docs/sdk/models/operations/atslistjobapplicationstagesresponse.md
   - docs/sdk/models/operations/atslistjobcustomfielddefinitionsqueryparamfilter.md
   - docs/sdk/models/operations/atslistjobcustomfielddefinitionsrequest.md
   - docs/sdk/models/operations/atslistjobcustomfielddefinitionsresponse.md
@@ -464,6 +471,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisupdateemployeeemploymentresponse.md
   - docs/sdk/models/operations/hrisupdateemployeerequest.md
   - docs/sdk/models/operations/hrisupdateemployeeresponse.md
+  - docs/sdk/models/operations/hrisupdateemployeetaskrequest.md
+  - docs/sdk/models/operations/hrisupdateemployeetaskresponse.md
   - docs/sdk/models/operations/hrisupdateemployeetimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisupdateemployeetimeoffrequestresponse.md
   - docs/sdk/models/operations/hrisupdateemployeeworkeligibilityrequestrequest.md
@@ -828,6 +837,9 @@ generatedFiles:
   - docs/sdk/models/shared/applicationresult.md
   - docs/sdk/models/shared/applicationsourcevalue.md
   - docs/sdk/models/shared/applicationspaginated.md
+  - docs/sdk/models/shared/applicationstage.md
+  - docs/sdk/models/shared/applicationstageresult.md
+  - docs/sdk/models/shared/applicationstagespaginated.md
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationvalue.md
   - docs/sdk/models/shared/approvalstatus.md
@@ -867,7 +879,6 @@ generatedFiles:
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtoapplication.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtoapplicationstatus.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtocandidate.md
-  - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtojob.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtopackage.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreatebackgroundcheckorderrequestdtovalue.md
@@ -908,6 +919,26 @@ generatedFiles:
   - docs/sdk/models/shared/atsdocumentapimodelvalue.md
   - docs/sdk/models/shared/atsdocumentresult.md
   - docs/sdk/models/shared/atsdocumentspaginated.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdto.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdto4.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtocategory.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtoconfidential.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtofileformat.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtoschemas4.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtoschemasfileformatvalue.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtoschemasvalue.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtosourcevalue.md
+  - docs/sdk/models/shared/atsdocumentsuploadrequestdtovalue.md
+  - docs/sdk/models/shared/atsjob.md
+  - docs/sdk/models/shared/atsjob4.md
+  - docs/sdk/models/shared/atsjobconfidential.md
+  - docs/sdk/models/shared/atsjobhiringteam.md
+  - docs/sdk/models/shared/atsjobjobstatus.md
+  - docs/sdk/models/shared/atsjobresult.md
+  - docs/sdk/models/shared/atsjobsourcevalue.md
+  - docs/sdk/models/shared/atsjobspaginated.md
+  - docs/sdk/models/shared/atsjobvalue.md
   - docs/sdk/models/shared/atslocation.md
   - docs/sdk/models/shared/atslocationresult.md
   - docs/sdk/models/shared/atslocationspaginated.md
@@ -1534,6 +1565,13 @@ generatedFiles:
   - docs/sdk/models/shared/hrisgrouptype.md
   - docs/sdk/models/shared/hrisgroupvalue.md
   - docs/sdk/models/shared/hrisinviteemployeerequestdto.md
+  - docs/sdk/models/shared/hrisjob.md
+  - docs/sdk/models/shared/hrisjob4.md
+  - docs/sdk/models/shared/hrisjobresult.md
+  - docs/sdk/models/shared/hrisjobsourcevalue.md
+  - docs/sdk/models/shared/hrisjobspaginated.md
+  - docs/sdk/models/shared/hrisjobstatus.md
+  - docs/sdk/models/shared/hrisjobvalue.md
   - docs/sdk/models/shared/hrislocation.md
   - docs/sdk/models/shared/hrislocation4.md
   - docs/sdk/models/shared/hrislocationcountry.md
@@ -1760,11 +1798,7 @@ generatedFiles:
   - docs/sdk/models/shared/isroot.md
   - docs/sdk/models/shared/issuedby.md
   - docs/sdk/models/shared/job.md
-  - docs/sdk/models/shared/job4.md
-  - docs/sdk/models/shared/jobconfidential.md
   - docs/sdk/models/shared/jobdescription.md
-  - docs/sdk/models/shared/jobhiringteam.md
-  - docs/sdk/models/shared/jobjobstatus.md
   - docs/sdk/models/shared/jobposting.md
   - docs/sdk/models/shared/jobposting4.md
   - docs/sdk/models/shared/jobpostingcompensation.md
@@ -1803,11 +1837,7 @@ generatedFiles:
   - docs/sdk/models/shared/jobpostingspaginated.md
   - docs/sdk/models/shared/jobpostingstatus.md
   - docs/sdk/models/shared/jobpostingvalue.md
-  - docs/sdk/models/shared/jobresult.md
-  - docs/sdk/models/shared/jobsourcevalue.md
-  - docs/sdk/models/shared/jobspaginated.md
   - docs/sdk/models/shared/jobstatus.md
-  - docs/sdk/models/shared/jobvalue.md
   - docs/sdk/models/shared/journalline.md
   - docs/sdk/models/shared/journalline4.md
   - docs/sdk/models/shared/journallinecurrencycode.md
@@ -2304,6 +2334,11 @@ generatedFiles:
   - docs/sdk/models/shared/unifiedwarningapimodel.md
   - docs/sdk/models/shared/updatepackage.md
   - docs/sdk/models/shared/updateresult.md
+  - docs/sdk/models/shared/updatetaskrequestdto.md
+  - docs/sdk/models/shared/updatetaskrequestdto4.md
+  - docs/sdk/models/shared/updatetaskrequestdtosourcevalue.md
+  - docs/sdk/models/shared/updatetaskrequestdtostatus.md
+  - docs/sdk/models/shared/updatetaskrequestdtovalue.md
   - docs/sdk/models/shared/upsertresult.md
   - docs/sdk/models/shared/upsertresultdataexternalreferencemodel.md
   - docs/sdk/models/shared/url.md
@@ -2359,6 +2394,7 @@ generatedFiles:
   - package.json
   - src/core.ts
   - src/funcs/accountingBatchCreateCompanyJournals.ts
+  - src/funcs/accountingCreateCompanyJournal.ts
   - src/funcs/accountingGetCompany.ts
   - src/funcs/accountingGetCompanyAccount.ts
   - src/funcs/accountingGetCompanyJournal.ts
@@ -2400,6 +2436,7 @@ generatedFiles:
   - src/funcs/atsGetInterview.ts
   - src/funcs/atsGetInterviewStage.ts
   - src/funcs/atsGetJob.ts
+  - src/funcs/atsGetJobApplicationStage.ts
   - src/funcs/atsGetJobCustomFieldDefinition.ts
   - src/funcs/atsGetJobPosting.ts
   - src/funcs/atsGetList.ts
@@ -2424,6 +2461,7 @@ generatedFiles:
   - src/funcs/atsListDepartments.ts
   - src/funcs/atsListInterviewStages.ts
   - src/funcs/atsListInterviews.ts
+  - src/funcs/atsListJobApplicationStages.ts
   - src/funcs/atsListJobCustomFieldDefinitions.ts
   - src/funcs/atsListJobPostings.ts
   - src/funcs/atsListJobs.ts
@@ -2534,6 +2572,7 @@ generatedFiles:
   - src/funcs/hrisListTimeOffTypes.ts
   - src/funcs/hrisUpdateEmployee.ts
   - src/funcs/hrisUpdateEmployeeEmployment.ts
+  - src/funcs/hrisUpdateEmployeeTask.ts
   - src/funcs/hrisUpdateEmployeeTimeOffRequest.ts
   - src/funcs/hrisUpdateEmployeeWorkEligibilityRequest.ts
   - src/funcs/hrisUploadEmployeeDocument.ts
@@ -2687,6 +2726,7 @@ generatedFiles:
   - src/sdk/models/errors/unauthorizedresponse.ts
   - src/sdk/models/errors/unprocessableentityresponse.ts
   - src/sdk/models/operations/accountingbatchcreatecompanyjournals.ts
+  - src/sdk/models/operations/accountingcreatecompanyjournal.ts
   - src/sdk/models/operations/accountinggetcompany.ts
   - src/sdk/models/operations/accountinggetcompanyaccount.ts
   - src/sdk/models/operations/accountinggetcompanyjournal.ts
@@ -2723,6 +2763,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetinterview.ts
   - src/sdk/models/operations/atsgetinterviewstage.ts
   - src/sdk/models/operations/atsgetjob.ts
+  - src/sdk/models/operations/atsgetjobapplicationstage.ts
   - src/sdk/models/operations/atsgetjobcustomfielddefinition.ts
   - src/sdk/models/operations/atsgetjobposting.ts
   - src/sdk/models/operations/atsgetlist.ts
@@ -2747,6 +2788,7 @@ generatedFiles:
   - src/sdk/models/operations/atslistdepartments.ts
   - src/sdk/models/operations/atslistinterviews.ts
   - src/sdk/models/operations/atslistinterviewstages.ts
+  - src/sdk/models/operations/atslistjobapplicationstages.ts
   - src/sdk/models/operations/atslistjobcustomfielddefinitions.ts
   - src/sdk/models/operations/atslistjobpostings.ts
   - src/sdk/models/operations/atslistjobs.ts
@@ -2853,6 +2895,7 @@ generatedFiles:
   - src/sdk/models/operations/hrislisttimeofftypes.ts
   - src/sdk/models/operations/hrisupdateemployee.ts
   - src/sdk/models/operations/hrisupdateemployeeemployment.ts
+  - src/sdk/models/operations/hrisupdateemployeetask.ts
   - src/sdk/models/operations/hrisupdateemployeetimeoffrequest.ts
   - src/sdk/models/operations/hrisupdateemployeeworkeligibilityrequest.ts
   - src/sdk/models/operations/hrisuploademployeedocument.ts
@@ -2992,6 +3035,9 @@ generatedFiles:
   - src/sdk/models/shared/applicationchangespaginated.ts
   - src/sdk/models/shared/applicationresult.ts
   - src/sdk/models/shared/applicationspaginated.ts
+  - src/sdk/models/shared/applicationstage.ts
+  - src/sdk/models/shared/applicationstageresult.ts
+  - src/sdk/models/shared/applicationstagespaginated.ts
   - src/sdk/models/shared/assessmentpackage.ts
   - src/sdk/models/shared/assessmentpackagepaginated.ts
   - src/sdk/models/shared/assessmentpackageresult.ts
@@ -3011,6 +3057,11 @@ generatedFiles:
   - src/sdk/models/shared/atsdocumentapimodel.ts
   - src/sdk/models/shared/atsdocumentresult.ts
   - src/sdk/models/shared/atsdocumentspaginated.ts
+  - src/sdk/models/shared/atsdocumentsuploadrequestdto.ts
+  - src/sdk/models/shared/atsjob.ts
+  - src/sdk/models/shared/atsjobhiringteam.ts
+  - src/sdk/models/shared/atsjobresult.ts
+  - src/sdk/models/shared/atsjobspaginated.ts
   - src/sdk/models/shared/atslocation.ts
   - src/sdk/models/shared/atslocationresult.ts
   - src/sdk/models/shared/atslocationspaginated.ts
@@ -3143,6 +3194,9 @@ generatedFiles:
   - src/sdk/models/shared/hrisgroupspaginated.ts
   - src/sdk/models/shared/hrisgroupsresult.ts
   - src/sdk/models/shared/hrisinviteemployeerequestdto.ts
+  - src/sdk/models/shared/hrisjob.ts
+  - src/sdk/models/shared/hrisjobresult.ts
+  - src/sdk/models/shared/hrisjobspaginated.ts
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
@@ -3184,8 +3238,6 @@ generatedFiles:
   - src/sdk/models/shared/interviewstageresult.ts
   - src/sdk/models/shared/interviewstagespaginated.ts
   - src/sdk/models/shared/inviteemployeeresult.ts
-  - src/sdk/models/shared/job.ts
-  - src/sdk/models/shared/jobhiringteam.ts
   - src/sdk/models/shared/jobposting.ts
   - src/sdk/models/shared/jobpostingcompensation.ts
   - src/sdk/models/shared/jobpostingcontentsection.ts
@@ -3193,8 +3245,6 @@ generatedFiles:
   - src/sdk/models/shared/jobpostingquestionnaire.ts
   - src/sdk/models/shared/jobpostingresult.ts
   - src/sdk/models/shared/jobpostingspaginated.ts
-  - src/sdk/models/shared/jobresult.ts
-  - src/sdk/models/shared/jobspaginated.ts
   - src/sdk/models/shared/journalline.ts
   - src/sdk/models/shared/languageenum.ts
   - src/sdk/models/shared/linkedaccount.ts
@@ -3349,6 +3399,7 @@ generatedFiles:
   - src/sdk/models/shared/unifiedwarningapimodel.ts
   - src/sdk/models/shared/updatepackage.ts
   - src/sdk/models/shared/updateresult.ts
+  - src/sdk/models/shared/updatetaskrequestdto.ts
   - src/sdk/models/shared/upsertresult.ts
   - src/sdk/models/shared/upsertresultdataexternalreferencemodel.ts
   - src/sdk/models/shared/userresult.ts
@@ -6333,7 +6384,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"category": {"source_value": "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME", "value": "reports, resumes"}, "category_id": "6530", "confidential": {"source_value": "public", "value": "true"}, "content": "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE", "file_format": {"source_value": "application/pdf", "value": "pdf"}, "name": "weather-forecast", "path": "/path/to/file"}
+        application/json: {"category": {}, "category_id": "6530", "confidential": {"source_value": "public", "value": "true"}, "content": "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE", "file_format": {"source_value": "application/pdf", "value": "pdf"}, "name": "weather-forecast", "path": "/path/to/file"}
       responses:
         "201":
           application/json: {"message": "Employee created successfully", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.someprovider.com/v1/endpoint"}], "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z", "unified_warnings": [{"message": "The provided field type is not supported in the current model."}]}
@@ -8008,12 +8059,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+          fields: "id,remote_id,code,title,description,status,created_at,updated_at"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"code": "184919", "created_at": "2021-01-01T01:01:01.000Z", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "department_ids": ["308570", "308571", "308572"], "description": "Responsible for identifying business requirements", "hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "interview_stages": [{"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}], "job_status": {"source_value": "Published", "value": "published"}, "location_ids": ["668570", "678571", "688572"], "remote_department_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_location_ids": ["668570", "678571", "688572"], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"code": "184919", "created_at": "2021-01-01T01:01:01.000Z", "description": "Responsible for identifying business requirements", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "status": {"value": "open"}, "title": "Software Engineer", "updated_at": "2021-01-01T01:01:01.000Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -8930,14 +8981,14 @@ examples:
     speakeasy-default-hris-list-jobs:
       parameters:
         query:
-          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+          fields: "id,remote_id,code,title,description,status,created_at,updated_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"code": "184919", "created_at": "2021-01-01T01:01:01.000Z", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "department_ids": ["308570", "308571", "308572"], "description": "Responsible for identifying business requirements", "hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "interview_stages": [{"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}], "job_status": {"source_value": "Published", "value": "published"}, "location_ids": ["668570", "678571", "688572"], "remote_department_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_location_ids": ["668570", "678571", "688572"], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"code": "184919", "created_at": "2021-01-01T01:01:01.000Z", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "department_ids": ["308570", "308571", "308572"], "description": "Responsible for identifying business requirements", "hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "interview_stages": [{"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}, {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}], "job_status": {"source_value": "Published", "value": "published"}, "location_ids": ["668570", "678571", "688572"], "remote_department_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_location_ids": ["668570", "678571", "688572"], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}]}
+          application/json: {"data": [{"code": "184919", "created_at": "2021-01-01T01:01:01.000Z", "description": "Responsible for identifying business requirements", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "title": "Software Engineer", "updated_at": "2021-01-01T01:01:01.000Z"}, {"code": "184919", "created_at": "2021-01-01T01:01:01.000Z", "description": "Responsible for identifying business requirements", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "title": "Software Engineer", "updated_at": "2021-01-01T01:01:01.000Z"}]}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}, {"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -13878,5 +13929,163 @@ examples:
           application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_create_company_journal:
+    speakeasy-default-accounting-create-company-journal:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"currency_code": {"source_value": "USD", "value": "USD"}, "exchange_rate": 1, "lines": [{"account_id": "acc_123456789", "amount": 10010, "description": "Payment for office supplies", "tax_amount": 10010, "tax_rate_id": "tax_123456789"}], "memo": "Monthly closing entries", "reference": "JRN-2024-001", "transaction_date": "2024-03-20T10:00:00Z"}
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_get_job_application_stage:
+    speakeasy-default-ats-get-job-application-stage:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,name,order,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Review", "order": 1, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_list_job_application_stages:
+    speakeasy-default-ats-list-job-application-stages:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,order,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Review", "order": 1, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}]}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_update_employee_task:
+    speakeasy-default-hris-update-employee-task:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"comment": "All required documents have been submitted", "status": {"value": "open"}}
+      responses:
+        "200":
+          application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"message": "Precondition failed", "statusCode": 412, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `stackone.ats.uploadApplicationDocument()`:  `request` **Changed** **Breaking** :warning:
+  * `stackone.hris.getJob()`:  `response.data` **Changed** **Breaking** :warning:
+  * `stackone.hris.listJobs()`:  `response.data.[]` **Changed** **Breaking** :warning:
+  * `stackone.accounting.createCompanyJournal()`: **Added**
+  * `stackone.ats.getJobApplicationStage()`: **Added**
+  * `stackone.ats.listJobApplicationStages()`: **Added**
+  * `stackone.hris.updateEmployeeTask()`: **Added**
+  * `stackone.ats.getJob()`:  `response.data.jobStatus.sourceValue.[4]` **Changed**
+  * `stackone.ats.listJobs()`:  `response.data.[].jobStatus.sourceValue.[4]` **Changed**

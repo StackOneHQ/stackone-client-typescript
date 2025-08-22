@@ -8,7 +8,7 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type JobHiringTeam = {
+export type AtsJobHiringTeam = {
   /**
    * Email of the hiring team member.
    */
@@ -36,8 +36,8 @@ export type JobHiringTeam = {
 };
 
 /** @internal */
-export const JobHiringTeam$inboundSchema: z.ZodType<
-  JobHiringTeam,
+export const AtsJobHiringTeam$inboundSchema: z.ZodType<
+  AtsJobHiringTeam,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -57,7 +57,7 @@ export const JobHiringTeam$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type JobHiringTeam$Outbound = {
+export type AtsJobHiringTeam$Outbound = {
   email?: string | null | undefined;
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
@@ -67,10 +67,10 @@ export type JobHiringTeam$Outbound = {
 };
 
 /** @internal */
-export const JobHiringTeam$outboundSchema: z.ZodType<
-  JobHiringTeam$Outbound,
+export const AtsJobHiringTeam$outboundSchema: z.ZodType<
+  AtsJobHiringTeam$Outbound,
   z.ZodTypeDef,
-  JobHiringTeam
+  AtsJobHiringTeam
 > = z.object({
   email: z.nullable(z.string()).optional(),
   firstName: z.nullable(z.string()).optional(),
@@ -91,25 +91,29 @@ export const JobHiringTeam$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobHiringTeam$ {
-  /** @deprecated use `JobHiringTeam$inboundSchema` instead. */
-  export const inboundSchema = JobHiringTeam$inboundSchema;
-  /** @deprecated use `JobHiringTeam$outboundSchema` instead. */
-  export const outboundSchema = JobHiringTeam$outboundSchema;
-  /** @deprecated use `JobHiringTeam$Outbound` instead. */
-  export type Outbound = JobHiringTeam$Outbound;
+export namespace AtsJobHiringTeam$ {
+  /** @deprecated use `AtsJobHiringTeam$inboundSchema` instead. */
+  export const inboundSchema = AtsJobHiringTeam$inboundSchema;
+  /** @deprecated use `AtsJobHiringTeam$outboundSchema` instead. */
+  export const outboundSchema = AtsJobHiringTeam$outboundSchema;
+  /** @deprecated use `AtsJobHiringTeam$Outbound` instead. */
+  export type Outbound = AtsJobHiringTeam$Outbound;
 }
 
-export function jobHiringTeamToJSON(jobHiringTeam: JobHiringTeam): string {
-  return JSON.stringify(JobHiringTeam$outboundSchema.parse(jobHiringTeam));
+export function atsJobHiringTeamToJSON(
+  atsJobHiringTeam: AtsJobHiringTeam,
+): string {
+  return JSON.stringify(
+    AtsJobHiringTeam$outboundSchema.parse(atsJobHiringTeam),
+  );
 }
 
-export function jobHiringTeamFromJSON(
+export function atsJobHiringTeamFromJSON(
   jsonString: string,
-): SafeParseResult<JobHiringTeam, SDKValidationError> {
+): SafeParseResult<AtsJobHiringTeam, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => JobHiringTeam$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JobHiringTeam' from JSON`,
+    (x) => AtsJobHiringTeam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsJobHiringTeam' from JSON`,
   );
 }

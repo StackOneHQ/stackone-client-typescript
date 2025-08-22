@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AtsJobHiringTeam,
+  AtsJobHiringTeam$inboundSchema,
+  AtsJobHiringTeam$Outbound,
+  AtsJobHiringTeam$outboundSchema,
+} from "./atsjobhiringteam.js";
+import {
   CustomFields,
   CustomFields$inboundSchema,
   CustomFields$Outbound,
@@ -24,17 +30,11 @@ import {
   InterviewStage$Outbound,
   InterviewStage$outboundSchema,
 } from "./interviewstage.js";
-import {
-  JobHiringTeam,
-  JobHiringTeam$inboundSchema,
-  JobHiringTeam$Outbound,
-  JobHiringTeam$outboundSchema,
-} from "./jobhiringteam.js";
 
 /**
  * Confidential status of the job
  */
-export enum JobConfidential {
+export enum AtsJobConfidential {
   True = "true",
   False = "false",
   UnmappedValue = "unmapped_value",
@@ -42,19 +42,24 @@ export enum JobConfidential {
 /**
  * Confidential status of the job
  */
-export type JobConfidentialOpen = OpenEnum<typeof JobConfidential>;
+export type AtsJobConfidentialOpen = OpenEnum<typeof AtsJobConfidential>;
 
-export type Job4 = {};
+export type AtsJob4 = {};
 
 /**
  * The source value of the job status.
  */
-export type JobSourceValue = Job4 | string | number | boolean | Array<any>;
+export type AtsJobSourceValue =
+  | AtsJob4
+  | string
+  | number
+  | boolean
+  | Array<any>;
 
 /**
  * The status of the job.
  */
-export enum JobValue {
+export enum AtsJobValue {
   Published = "published",
   Draft = "draft",
   Pending = "pending",
@@ -69,17 +74,17 @@ export enum JobValue {
 /**
  * The status of the job.
  */
-export type JobValueOpen = OpenEnum<typeof JobValue>;
+export type AtsJobValueOpen = OpenEnum<typeof AtsJobValue>;
 
 /**
  * Status of the job
  */
-export type JobJobStatus = {
+export type AtsJobJobStatus = {
   /**
    * The source value of the job status.
    */
   sourceValue?:
-    | Job4
+    | AtsJob4
     | string
     | number
     | boolean
@@ -89,10 +94,10 @@ export type JobJobStatus = {
   /**
    * The status of the job.
    */
-  value?: JobValueOpen | null | undefined;
+  value?: AtsJobValueOpen | null | undefined;
 };
 
-export type Job = {
+export type AtsJob = {
   /**
    * Code of the job
    */
@@ -100,7 +105,7 @@ export type Job = {
   /**
    * Confidential status of the job
    */
-  confidential?: JobConfidentialOpen | null | undefined;
+  confidential?: AtsJobConfidentialOpen | null | undefined;
   /**
    * Date of creation
    */
@@ -120,7 +125,7 @@ export type Job = {
   /**
    * Hiring team for the job.
    */
-  hiringTeam?: Array<JobHiringTeam> | null | undefined;
+  hiringTeam?: Array<AtsJobHiringTeam> | null | undefined;
   /**
    * Unique identifier
    */
@@ -132,7 +137,7 @@ export type Job = {
   /**
    * Status of the job
    */
-  jobStatus?: JobJobStatus | null | undefined;
+  jobStatus?: AtsJobJobStatus | null | undefined;
   /**
    * Location ids of the job
    */
@@ -170,23 +175,23 @@ export type Job = {
 };
 
 /** @internal */
-export const JobConfidential$inboundSchema: z.ZodType<
-  JobConfidentialOpen,
+export const AtsJobConfidential$inboundSchema: z.ZodType<
+  AtsJobConfidentialOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(JobConfidential),
+    z.nativeEnum(AtsJobConfidential),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const JobConfidential$outboundSchema: z.ZodType<
-  JobConfidentialOpen,
+export const AtsJobConfidential$outboundSchema: z.ZodType<
+  AtsJobConfidentialOpen,
   z.ZodTypeDef,
-  JobConfidentialOpen
+  AtsJobConfidentialOpen
 > = z.union([
-  z.nativeEnum(JobConfidential),
+  z.nativeEnum(AtsJobConfidential),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -194,58 +199,61 @@ export const JobConfidential$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobConfidential$ {
-  /** @deprecated use `JobConfidential$inboundSchema` instead. */
-  export const inboundSchema = JobConfidential$inboundSchema;
-  /** @deprecated use `JobConfidential$outboundSchema` instead. */
-  export const outboundSchema = JobConfidential$outboundSchema;
+export namespace AtsJobConfidential$ {
+  /** @deprecated use `AtsJobConfidential$inboundSchema` instead. */
+  export const inboundSchema = AtsJobConfidential$inboundSchema;
+  /** @deprecated use `AtsJobConfidential$outboundSchema` instead. */
+  export const outboundSchema = AtsJobConfidential$outboundSchema;
 }
 
 /** @internal */
-export const Job4$inboundSchema: z.ZodType<Job4, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type Job4$Outbound = {};
-
-/** @internal */
-export const Job4$outboundSchema: z.ZodType<Job4$Outbound, z.ZodTypeDef, Job4> =
+export const AtsJob4$inboundSchema: z.ZodType<AtsJob4, z.ZodTypeDef, unknown> =
   z.object({});
+
+/** @internal */
+export type AtsJob4$Outbound = {};
+
+/** @internal */
+export const AtsJob4$outboundSchema: z.ZodType<
+  AtsJob4$Outbound,
+  z.ZodTypeDef,
+  AtsJob4
+> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Job4$ {
-  /** @deprecated use `Job4$inboundSchema` instead. */
-  export const inboundSchema = Job4$inboundSchema;
-  /** @deprecated use `Job4$outboundSchema` instead. */
-  export const outboundSchema = Job4$outboundSchema;
-  /** @deprecated use `Job4$Outbound` instead. */
-  export type Outbound = Job4$Outbound;
+export namespace AtsJob4$ {
+  /** @deprecated use `AtsJob4$inboundSchema` instead. */
+  export const inboundSchema = AtsJob4$inboundSchema;
+  /** @deprecated use `AtsJob4$outboundSchema` instead. */
+  export const outboundSchema = AtsJob4$outboundSchema;
+  /** @deprecated use `AtsJob4$Outbound` instead. */
+  export type Outbound = AtsJob4$Outbound;
 }
 
-export function job4ToJSON(job4: Job4): string {
-  return JSON.stringify(Job4$outboundSchema.parse(job4));
+export function atsJob4ToJSON(atsJob4: AtsJob4): string {
+  return JSON.stringify(AtsJob4$outboundSchema.parse(atsJob4));
 }
 
-export function job4FromJSON(
+export function atsJob4FromJSON(
   jsonString: string,
-): SafeParseResult<Job4, SDKValidationError> {
+): SafeParseResult<AtsJob4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Job4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Job4' from JSON`,
+    (x) => AtsJob4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsJob4' from JSON`,
   );
 }
 
 /** @internal */
-export const JobSourceValue$inboundSchema: z.ZodType<
-  JobSourceValue,
+export const AtsJobSourceValue$inboundSchema: z.ZodType<
+  AtsJobSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Job4$inboundSchema),
+  z.lazy(() => AtsJob4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -253,20 +261,20 @@ export const JobSourceValue$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type JobSourceValue$Outbound =
-  | Job4$Outbound
+export type AtsJobSourceValue$Outbound =
+  | AtsJob4$Outbound
   | string
   | number
   | boolean
   | Array<any>;
 
 /** @internal */
-export const JobSourceValue$outboundSchema: z.ZodType<
-  JobSourceValue$Outbound,
+export const AtsJobSourceValue$outboundSchema: z.ZodType<
+  AtsJobSourceValue$Outbound,
   z.ZodTypeDef,
-  JobSourceValue
+  AtsJobSourceValue
 > = z.union([
-  z.lazy(() => Job4$outboundSchema),
+  z.lazy(() => AtsJob4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -277,47 +285,51 @@ export const JobSourceValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobSourceValue$ {
-  /** @deprecated use `JobSourceValue$inboundSchema` instead. */
-  export const inboundSchema = JobSourceValue$inboundSchema;
-  /** @deprecated use `JobSourceValue$outboundSchema` instead. */
-  export const outboundSchema = JobSourceValue$outboundSchema;
-  /** @deprecated use `JobSourceValue$Outbound` instead. */
-  export type Outbound = JobSourceValue$Outbound;
+export namespace AtsJobSourceValue$ {
+  /** @deprecated use `AtsJobSourceValue$inboundSchema` instead. */
+  export const inboundSchema = AtsJobSourceValue$inboundSchema;
+  /** @deprecated use `AtsJobSourceValue$outboundSchema` instead. */
+  export const outboundSchema = AtsJobSourceValue$outboundSchema;
+  /** @deprecated use `AtsJobSourceValue$Outbound` instead. */
+  export type Outbound = AtsJobSourceValue$Outbound;
 }
 
-export function jobSourceValueToJSON(jobSourceValue: JobSourceValue): string {
-  return JSON.stringify(JobSourceValue$outboundSchema.parse(jobSourceValue));
+export function atsJobSourceValueToJSON(
+  atsJobSourceValue: AtsJobSourceValue,
+): string {
+  return JSON.stringify(
+    AtsJobSourceValue$outboundSchema.parse(atsJobSourceValue),
+  );
 }
 
-export function jobSourceValueFromJSON(
+export function atsJobSourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<JobSourceValue, SDKValidationError> {
+): SafeParseResult<AtsJobSourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => JobSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JobSourceValue' from JSON`,
+    (x) => AtsJobSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsJobSourceValue' from JSON`,
   );
 }
 
 /** @internal */
-export const JobValue$inboundSchema: z.ZodType<
-  JobValueOpen,
+export const AtsJobValue$inboundSchema: z.ZodType<
+  AtsJobValueOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(JobValue),
+    z.nativeEnum(AtsJobValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const JobValue$outboundSchema: z.ZodType<
-  JobValueOpen,
+export const AtsJobValue$outboundSchema: z.ZodType<
+  AtsJobValueOpen,
   z.ZodTypeDef,
-  JobValueOpen
+  AtsJobValueOpen
 > = z.union([
-  z.nativeEnum(JobValue),
+  z.nativeEnum(AtsJobValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -325,29 +337,29 @@ export const JobValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobValue$ {
-  /** @deprecated use `JobValue$inboundSchema` instead. */
-  export const inboundSchema = JobValue$inboundSchema;
-  /** @deprecated use `JobValue$outboundSchema` instead. */
-  export const outboundSchema = JobValue$outboundSchema;
+export namespace AtsJobValue$ {
+  /** @deprecated use `AtsJobValue$inboundSchema` instead. */
+  export const inboundSchema = AtsJobValue$inboundSchema;
+  /** @deprecated use `AtsJobValue$outboundSchema` instead. */
+  export const outboundSchema = AtsJobValue$outboundSchema;
 }
 
 /** @internal */
-export const JobJobStatus$inboundSchema: z.ZodType<
-  JobJobStatus,
+export const AtsJobJobStatus$inboundSchema: z.ZodType<
+  AtsJobJobStatus,
   z.ZodTypeDef,
   unknown
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Job4$inboundSchema),
+      z.lazy(() => AtsJob4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(JobValue$inboundSchema).optional(),
+  value: z.nullable(AtsJobValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -355,9 +367,9 @@ export const JobJobStatus$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type JobJobStatus$Outbound = {
+export type AtsJobJobStatus$Outbound = {
   source_value?:
-    | Job4$Outbound
+    | AtsJob4$Outbound
     | string
     | number
     | boolean
@@ -368,21 +380,21 @@ export type JobJobStatus$Outbound = {
 };
 
 /** @internal */
-export const JobJobStatus$outboundSchema: z.ZodType<
-  JobJobStatus$Outbound,
+export const AtsJobJobStatus$outboundSchema: z.ZodType<
+  AtsJobJobStatus$Outbound,
   z.ZodTypeDef,
-  JobJobStatus
+  AtsJobJobStatus
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Job4$outboundSchema),
+      z.lazy(() => AtsJob4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(JobValue$outboundSchema).optional(),
+  value: z.nullable(AtsJobValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -393,45 +405,48 @@ export const JobJobStatus$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobJobStatus$ {
-  /** @deprecated use `JobJobStatus$inboundSchema` instead. */
-  export const inboundSchema = JobJobStatus$inboundSchema;
-  /** @deprecated use `JobJobStatus$outboundSchema` instead. */
-  export const outboundSchema = JobJobStatus$outboundSchema;
-  /** @deprecated use `JobJobStatus$Outbound` instead. */
-  export type Outbound = JobJobStatus$Outbound;
+export namespace AtsJobJobStatus$ {
+  /** @deprecated use `AtsJobJobStatus$inboundSchema` instead. */
+  export const inboundSchema = AtsJobJobStatus$inboundSchema;
+  /** @deprecated use `AtsJobJobStatus$outboundSchema` instead. */
+  export const outboundSchema = AtsJobJobStatus$outboundSchema;
+  /** @deprecated use `AtsJobJobStatus$Outbound` instead. */
+  export type Outbound = AtsJobJobStatus$Outbound;
 }
 
-export function jobJobStatusToJSON(jobJobStatus: JobJobStatus): string {
-  return JSON.stringify(JobJobStatus$outboundSchema.parse(jobJobStatus));
+export function atsJobJobStatusToJSON(
+  atsJobJobStatus: AtsJobJobStatus,
+): string {
+  return JSON.stringify(AtsJobJobStatus$outboundSchema.parse(atsJobJobStatus));
 }
 
-export function jobJobStatusFromJSON(
+export function atsJobJobStatusFromJSON(
   jsonString: string,
-): SafeParseResult<JobJobStatus, SDKValidationError> {
+): SafeParseResult<AtsJobJobStatus, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => JobJobStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JobJobStatus' from JSON`,
+    (x) => AtsJobJobStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsJobJobStatus' from JSON`,
   );
 }
 
 /** @internal */
-export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
+export const AtsJob$inboundSchema: z.ZodType<AtsJob, z.ZodTypeDef, unknown> = z
   .object({
     code: z.nullable(z.string()).optional(),
-    confidential: z.nullable(JobConfidential$inboundSchema).optional(),
+    confidential: z.nullable(AtsJobConfidential$inboundSchema).optional(),
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
     custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
     department_ids: z.nullable(z.array(z.string())).optional(),
     description: z.nullable(z.string()).optional(),
-    hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
+    hiring_team: z.nullable(z.array(AtsJobHiringTeam$inboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
     interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
       .optional(),
-    job_status: z.nullable(z.lazy(() => JobJobStatus$inboundSchema)).optional(),
+    job_status: z.nullable(z.lazy(() => AtsJobJobStatus$inboundSchema))
+      .optional(),
     location_ids: z.nullable(z.array(z.string())).optional(),
     remote_department_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
@@ -460,17 +475,17 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
   });
 
 /** @internal */
-export type Job$Outbound = {
+export type AtsJob$Outbound = {
   code?: string | null | undefined;
   confidential?: string | null | undefined;
   created_at?: string | null | undefined;
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   department_ids?: Array<string> | null | undefined;
   description?: string | null | undefined;
-  hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
+  hiring_team?: Array<AtsJobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
   interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
-  job_status?: JobJobStatus$Outbound | null | undefined;
+  job_status?: AtsJobJobStatus$Outbound | null | undefined;
   location_ids?: Array<string> | null | undefined;
   remote_department_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
@@ -482,67 +497,71 @@ export type Job$Outbound = {
 };
 
 /** @internal */
-export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
-  .object({
-    code: z.nullable(z.string()).optional(),
-    confidential: z.nullable(JobConfidential$outboundSchema).optional(),
-    createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
-    departmentIds: z.nullable(z.array(z.string())).optional(),
-    description: z.nullable(z.string()).optional(),
-    hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
-    id: z.nullable(z.string()).optional(),
-    interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))
-      .optional(),
-    jobStatus: z.nullable(z.lazy(() => JobJobStatus$outboundSchema)).optional(),
-    locationIds: z.nullable(z.array(z.string())).optional(),
-    remoteDepartmentIds: z.nullable(z.array(z.string())).optional(),
-    remoteId: z.nullable(z.string()).optional(),
-    remoteLocationIds: z.nullable(z.array(z.string())).optional(),
-    status: z.nullable(z.string()).optional(),
-    title: z.nullable(z.string()).optional(),
-    unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-    updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      createdAt: "created_at",
-      customFields: "custom_fields",
-      departmentIds: "department_ids",
-      hiringTeam: "hiring_team",
-      interviewStages: "interview_stages",
-      jobStatus: "job_status",
-      locationIds: "location_ids",
-      remoteDepartmentIds: "remote_department_ids",
-      remoteId: "remote_id",
-      remoteLocationIds: "remote_location_ids",
-      unifiedCustomFields: "unified_custom_fields",
-      updatedAt: "updated_at",
-    });
+export const AtsJob$outboundSchema: z.ZodType<
+  AtsJob$Outbound,
+  z.ZodTypeDef,
+  AtsJob
+> = z.object({
+  code: z.nullable(z.string()).optional(),
+  confidential: z.nullable(AtsJobConfidential$outboundSchema).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
+  departmentIds: z.nullable(z.array(z.string())).optional(),
+  description: z.nullable(z.string()).optional(),
+  hiringTeam: z.nullable(z.array(AtsJobHiringTeam$outboundSchema)).optional(),
+  id: z.nullable(z.string()).optional(),
+  interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))
+    .optional(),
+  jobStatus: z.nullable(z.lazy(() => AtsJobJobStatus$outboundSchema))
+    .optional(),
+  locationIds: z.nullable(z.array(z.string())).optional(),
+  remoteDepartmentIds: z.nullable(z.array(z.string())).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  remoteLocationIds: z.nullable(z.array(z.string())).optional(),
+  status: z.nullable(z.string()).optional(),
+  title: z.nullable(z.string()).optional(),
+  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    createdAt: "created_at",
+    customFields: "custom_fields",
+    departmentIds: "department_ids",
+    hiringTeam: "hiring_team",
+    interviewStages: "interview_stages",
+    jobStatus: "job_status",
+    locationIds: "location_ids",
+    remoteDepartmentIds: "remote_department_ids",
+    remoteId: "remote_id",
+    remoteLocationIds: "remote_location_ids",
+    unifiedCustomFields: "unified_custom_fields",
+    updatedAt: "updated_at",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Job$ {
-  /** @deprecated use `Job$inboundSchema` instead. */
-  export const inboundSchema = Job$inboundSchema;
-  /** @deprecated use `Job$outboundSchema` instead. */
-  export const outboundSchema = Job$outboundSchema;
-  /** @deprecated use `Job$Outbound` instead. */
-  export type Outbound = Job$Outbound;
+export namespace AtsJob$ {
+  /** @deprecated use `AtsJob$inboundSchema` instead. */
+  export const inboundSchema = AtsJob$inboundSchema;
+  /** @deprecated use `AtsJob$outboundSchema` instead. */
+  export const outboundSchema = AtsJob$outboundSchema;
+  /** @deprecated use `AtsJob$Outbound` instead. */
+  export type Outbound = AtsJob$Outbound;
 }
 
-export function jobToJSON(job: Job): string {
-  return JSON.stringify(Job$outboundSchema.parse(job));
+export function atsJobToJSON(atsJob: AtsJob): string {
+  return JSON.stringify(AtsJob$outboundSchema.parse(atsJob));
 }
 
-export function jobFromJSON(
+export function atsJobFromJSON(
   jsonString: string,
-): SafeParseResult<Job, SDKValidationError> {
+): SafeParseResult<AtsJob, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Job$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Job' from JSON`,
+    (x) => AtsJob$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsJob' from JSON`,
   );
 }

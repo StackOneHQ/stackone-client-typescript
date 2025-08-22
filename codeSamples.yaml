@@ -111,6 +111,12 @@ actions:
         - "lang": "typescript"
           "label": "accounting_list_company_journals"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.accounting.listCompanyJournals({\n    id: \"<id>\",\n    fields: \"id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at\",\n    filter: null,\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/accounting/companies/{id}/journals"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "accounting_create_company_journal"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { AccountingJournalCreateRequestDtoValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.accounting.createCompanyJournal({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    accountingJournalCreateRequestDto: {\n      reference: \"JRN-2024-001\",\n      memo: \"Monthly closing entries\",\n      currencyCode: {\n        value: AccountingJournalCreateRequestDtoValue.Usd,\n        sourceValue: \"USD\",\n      },\n      exchangeRate: 1,\n      transactionDate: new Date(\"2024-03-20T10:00:00Z\"),\n      lines: [\n        {\n          accountId: \"acc_123456789\",\n          description: \"Payment for office supplies\",\n          amount: 10010,\n          taxRateId: \"tax_123456789\",\n          taxAmount: 10010,\n        },\n      ],\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/accounting/companies/{id}/journals/batch"]["post"]
     update:
       "x-codeSamples":
@@ -176,7 +182,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "ats_upload_application_document"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { UnifiedUploadRequestDtoSchemasValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.uploadApplicationDocument({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    unifiedUploadRequestDto: {\n      name: \"weather-forecast\",\n      fileFormat: null,\n      content: \"VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE\",\n      categoryId: \"6530\",\n      path: \"/path/to/file\",\n      category: {\n        value: \"reports, resumes\",\n        sourceValue: \"550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME\",\n      },\n      confidential: {\n        value: UnifiedUploadRequestDtoSchemasValue.True,\n        sourceValue: \"public\",\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { AtsDocumentsUploadRequestDtoSchemasValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.uploadApplicationDocument({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    atsDocumentsUploadRequestDto: {\n      name: \"weather-forecast\",\n      fileFormat: null,\n      content: \"VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE\",\n      categoryId: \"6530\",\n      path: \"/path/to/file\",\n      confidential: {\n        value: AtsDocumentsUploadRequestDtoSchemasValue.True,\n        sourceValue: \"public\",\n      },\n      category: {},\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/ats/applications/{id}/documents/{subResourceId}"]["get"]
     update:
       "x-codeSamples":
@@ -501,6 +507,18 @@ actions:
         - "lang": "typescript"
           "label": "ats_update_job"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { AtsUpdateJobRequestDtoValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.updateJob({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    atsUpdateJobRequestDto: {\n      unifiedCustomFields: {\n        \"my_project_custom_field_1\": \"REF-1236\",\n        \"my_project_custom_field_2\": \"some other value\",\n      },\n      code: \"184919\",\n      title: \"Software Engineer\",\n      description: \"Responsible for identifying business requirements\",\n      jobStatus: {\n        value: AtsUpdateJobRequestDtoValue.Published,\n        sourceValue: \"Published\",\n      },\n      departmentIds: [\n        \"308570\",\n        \"308571\",\n        \"308572\",\n      ],\n      locationIds: [\n        \"668570\",\n        \"678571\",\n        \"688572\",\n      ],\n      hiringTeam: [\n        {\n          userId: \"123456\",\n          remoteUserId: \"e3cb75bf-aa84-466e-a6c1-b8322b257a48\",\n          firstName: \"John\",\n          lastName: \"Doe\",\n          email: \"john.doe@gmail.com\",\n          role: \"Software Engineer\",\n        },\n      ],\n      interviewStages: null,\n      customFields: null,\n      passthrough: {\n        \"other_known_names\": \"John Doe\",\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/ats/jobs/{id}/application_stages"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ats_list_job_application_stages"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.listJobApplicationStages({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,order,created_at,updated_at\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/ats/jobs/{id}/application_stages/{subResourceId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "ats_get_job_application_stage"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.getJobApplicationStage({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,name,order,created_at,updated_at\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/ats/lists"]["get"]
     update:
       "x-codeSamples":
@@ -837,6 +855,12 @@ actions:
         - "lang": "typescript"
           "label": "hris_get_employee_task"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeeTask({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at\",\n    expand: \"attachments\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/employees/{id}/tasks/{subResourceId}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_update_employee_task"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { UpdateTaskRequestDtoValue } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.updateEmployeeTask({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    xAccountId: \"<id>\",\n    updateTaskRequestDto: {\n      comment: \"All required documents have been submitted\",\n      status: {\n        value: UpdateTaskRequestDtoValue.Open,\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["get"]
     update:
       "x-codeSamples":
@@ -998,13 +1022,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_jobs"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listJobs({\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listJobs({\n    fields: \"id,remote_id,code,title,description,status,created_at,updated_at\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/jobs/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_get_job"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getJob({\n    id: \"<id>\",\n    fields: \"id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getJob({\n    id: \"<id>\",\n    fields: \"id,remote_id,code,title,description,status,created_at,updated_at\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/locations"]["get"]
     update:
       "x-codeSamples":

@@ -73,6 +73,7 @@ import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
 import { hrisListTimeOffTypes } from "../funcs/hrisListTimeOffTypes.js";
 import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
 import { hrisUpdateEmployeeEmployment } from "../funcs/hrisUpdateEmployeeEmployment.js";
+import { hrisUpdateEmployeeTask } from "../funcs/hrisUpdateEmployeeTask.js";
 import { hrisUpdateEmployeeTimeOffRequest } from "../funcs/hrisUpdateEmployeeTimeOffRequest.js";
 import { hrisUpdateEmployeeWorkEligibilityRequest } from "../funcs/hrisUpdateEmployeeWorkEligibilityRequest.js";
 import { hrisUploadEmployeeDocument } from "../funcs/hrisUploadEmployeeDocument.js";
@@ -1124,6 +1125,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisUpdateEmployeeEmploymentResponse> {
     return unwrapAsync(hrisUpdateEmployeeEmployment(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Employee Task
+   */
+  async updateEmployeeTask(
+    request: operations.HrisUpdateEmployeeTaskRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisUpdateEmployeeTaskResponse> {
+    return unwrapAsync(hrisUpdateEmployeeTask(
       this,
       request,
       options,

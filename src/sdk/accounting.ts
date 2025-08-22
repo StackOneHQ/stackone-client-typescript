@@ -3,6 +3,7 @@
  */
 
 import { accountingBatchCreateCompanyJournals } from "../funcs/accountingBatchCreateCompanyJournals.js";
+import { accountingCreateCompanyJournal } from "../funcs/accountingCreateCompanyJournal.js";
 import { accountingGetCompany } from "../funcs/accountingGetCompany.js";
 import { accountingGetCompanyAccount } from "../funcs/accountingGetCompanyAccount.js";
 import { accountingGetCompanyJournal } from "../funcs/accountingGetCompanyJournal.js";
@@ -25,6 +26,20 @@ export class Accounting extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AccountingBatchCreateCompanyJournalsResponse> {
     return unwrapAsync(accountingBatchCreateCompanyJournals(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Journal
+   */
+  async createCompanyJournal(
+    request: operations.AccountingCreateCompanyJournalRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AccountingCreateCompanyJournalResponse> {
+    return unwrapAsync(accountingCreateCompanyJournal(
       this,
       request,
       options,

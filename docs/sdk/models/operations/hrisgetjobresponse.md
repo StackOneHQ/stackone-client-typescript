@@ -8,10 +8,7 @@ import { HrisGetJobResponse } from "@stackone/stackone-client-ts/sdk/models/oper
 let value: HrisGetJobResponse = {
   contentType: "<value>",
   headers: {
-    "key": [
-      "<value 1>",
-    ],
-    "key1": [],
+    "key": [],
   },
   statusCode: 449523,
 };
@@ -23,6 +20,6 @@ let value: HrisGetJobResponse = {
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `contentType`                                                         | *string*                                                              | :heavy_check_mark:                                                    | HTTP response content type for this operation                         |
 | `headers`                                                             | Record<string, *string*[]>                                            | :heavy_check_mark:                                                    | N/A                                                                   |
-| `jobResult`                                                           | [shared.JobResult](../../../sdk/models/shared/jobresult.md)           | :heavy_minus_sign:                                                    | The job with the given identifier was retrieved.                      |
+| `hrisJobResult`                                                       | [shared.HrisJobResult](../../../sdk/models/shared/hrisjobresult.md)   | :heavy_minus_sign:                                                    | The job with the given identifier was retrieved.                      |
 | `statusCode`                                                          | *number*                                                              | :heavy_check_mark:                                                    | HTTP response status code for this operation                          |
 | `rawResponse`                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) | :heavy_check_mark:                                                    | Raw HTTP response; suitable for custom response parsing               |
