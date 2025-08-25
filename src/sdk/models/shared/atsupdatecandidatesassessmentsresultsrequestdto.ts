@@ -109,10 +109,6 @@ export type AtsUpdateCandidatesAssessmentsResultsRequestDto = {
     | null
     | undefined;
   /**
-   * Unique identifier
-   */
-  id?: string | null | undefined;
-  /**
    * Value to pass through to the provider
    */
   passthrough?: { [k: string]: any } | null | undefined;
@@ -599,7 +595,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDto$inboundSchema:
         AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$inboundSchema
       ),
     ).optional(),
-    id: z.nullable(z.string()).optional(),
     passthrough: z.nullable(z.record(z.any())).optional(),
     result: z.nullable(
       z.lazy(() =>
@@ -634,7 +629,6 @@ export type AtsUpdateCandidatesAssessmentsResultsRequestDto$Outbound = {
     | AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$Outbound
     | null
     | undefined;
-  id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   result?:
     | AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$Outbound
@@ -663,7 +657,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDto$outboundSchema:
         AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$outboundSchema
       ),
     ).optional(),
-    id: z.nullable(z.string()).optional(),
     passthrough: z.nullable(z.record(z.any())).optional(),
     result: z.nullable(
       z.lazy(() =>

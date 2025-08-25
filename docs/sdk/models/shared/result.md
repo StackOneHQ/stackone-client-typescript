@@ -1,19 +1,18 @@
 # Result
 
+The result of the assignment
+
 ## Example Usage
 
 ```typescript
-import { AssessmentResultValue, Result } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Result } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Result = {
-  sourceValue: "Passed",
-  value: AssessmentResultValue.Passed,
-};
+let value: Result = {};
 ```
 
 ## Fields
 
-| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `sourceValue`                                                                       | *shared.AssessmentResultSourceValue*                                                | :heavy_minus_sign:                                                                  | The source value of the test result.                                                | Passed                                                                              |
-| `value`                                                                             | [shared.AssessmentResultValue](../../../sdk/models/shared/assessmentresultvalue.md) | :heavy_minus_sign:                                                                  | The result of the test.                                                             | passed                                                                              |
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                         | *shared.AssignmentSchemasSourceValue*                                                 | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `value`                                                                               | [shared.AssignmentSchemasValue](../../../sdk/models/shared/assignmentschemasvalue.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   |

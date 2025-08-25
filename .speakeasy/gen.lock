@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 56fed632a79b515beee7cac32302bf28
+  docChecksum: f58f6b99414ca66d6b4e8f94f7ccf7ae
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.2
+  speakeasyVersion: 1.606.3
   generationVersion: 2.687.1
-  releaseVersion: 4.25.2
-  configChecksum: da121fea17e6fe53af217acdf0370960
+  releaseVersion: 4.25.3
+  configChecksum: 2c53a7d741de051d533ccf763b7d3afe
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -118,12 +118,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationscorecardresponse.md
   - docs/sdk/models/operations/atsgetassessmentspackagerequest.md
   - docs/sdk/models/operations/atsgetassessmentspackageresponse.md
-  - docs/sdk/models/operations/atsgetassessmentsresultrequest.md
-  - docs/sdk/models/operations/atsgetassessmentsresultresponse.md
   - docs/sdk/models/operations/atsgetbackgroundcheckpackagerequest.md
   - docs/sdk/models/operations/atsgetbackgroundcheckpackageresponse.md
-  - docs/sdk/models/operations/atsgetbackgroundcheckresultrequest.md
-  - docs/sdk/models/operations/atsgetbackgroundcheckresultresponse.md
   - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionqueryparamfilter.md
   - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionrequest.md
   - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionresponse.md
@@ -847,17 +843,10 @@ generatedFiles:
   - docs/sdk/models/shared/assessmentpackage.md
   - docs/sdk/models/shared/assessmentpackagepaginated.md
   - docs/sdk/models/shared/assessmentpackageresult.md
-  - docs/sdk/models/shared/assessmentresult.md
-  - docs/sdk/models/shared/assessmentresult4.md
-  - docs/sdk/models/shared/assessmentresultcandidate.md
-  - docs/sdk/models/shared/assessmentresultsourcevalue.md
-  - docs/sdk/models/shared/assessmentresultsresult.md
-  - docs/sdk/models/shared/assessmentresultvalue.md
   - docs/sdk/models/shared/assignment.md
   - docs/sdk/models/shared/assignment4.md
   - docs/sdk/models/shared/assignmentresult.md
   - docs/sdk/models/shared/assignmentschemas4.md
-  - docs/sdk/models/shared/assignmentschemasresult.md
   - docs/sdk/models/shared/assignmentschemassourcevalue.md
   - docs/sdk/models/shared/assignmentschemasstatus4.md
   - docs/sdk/models/shared/assignmentschemasstatussourcevalue.md
@@ -955,7 +944,6 @@ generatedFiles:
   - docs/sdk/models/shared/atsupdatebackgroundcheckresultrequestdto4.md
   - docs/sdk/models/shared/atsupdatebackgroundcheckresultrequestdtocandidate.md
   - docs/sdk/models/shared/atsupdatebackgroundcheckresultrequestdtoresult.md
-  - docs/sdk/models/shared/atsupdatebackgroundcheckresultrequestdtoscore.md
   - docs/sdk/models/shared/atsupdatebackgroundcheckresultrequestdtosourcevalue.md
   - docs/sdk/models/shared/atsupdatebackgroundcheckresultrequestdtovalue.md
   - docs/sdk/models/shared/atsupdatecandidaterequestdto.md
@@ -988,14 +976,6 @@ generatedFiles:
   - docs/sdk/models/shared/backgroundcheckpackage.md
   - docs/sdk/models/shared/backgroundcheckpackagepaginated.md
   - docs/sdk/models/shared/backgroundcheckpackageresult.md
-  - docs/sdk/models/shared/backgroundcheckresult.md
-  - docs/sdk/models/shared/backgroundcheckresult4.md
-  - docs/sdk/models/shared/backgroundcheckresultcandidate.md
-  - docs/sdk/models/shared/backgroundcheckresultresult.md
-  - docs/sdk/models/shared/backgroundcheckresultscore.md
-  - docs/sdk/models/shared/backgroundcheckresultsourcevalue.md
-  - docs/sdk/models/shared/backgroundcheckresultsresult.md
-  - docs/sdk/models/shared/backgroundcheckresultvalue.md
   - docs/sdk/models/shared/balanceunit.md
   - docs/sdk/models/shared/basecurrency.md
   - docs/sdk/models/shared/batchresultapimodel.md
@@ -2426,9 +2406,7 @@ generatedFiles:
   - src/funcs/atsGetApplicationScheduledInterview.ts
   - src/funcs/atsGetApplicationScorecard.ts
   - src/funcs/atsGetAssessmentsPackage.ts
-  - src/funcs/atsGetAssessmentsResult.ts
   - src/funcs/atsGetBackgroundCheckPackage.ts
-  - src/funcs/atsGetBackgroundCheckResult.ts
   - src/funcs/atsGetCandidate.ts
   - src/funcs/atsGetCandidateCustomFieldDefinition.ts
   - src/funcs/atsGetCandidateNote.ts
@@ -2753,9 +2731,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetapplicationscheduledinterview.ts
   - src/sdk/models/operations/atsgetapplicationscorecard.ts
   - src/sdk/models/operations/atsgetassessmentspackage.ts
-  - src/sdk/models/operations/atsgetassessmentsresult.ts
   - src/sdk/models/operations/atsgetbackgroundcheckpackage.ts
-  - src/sdk/models/operations/atsgetbackgroundcheckresult.ts
   - src/sdk/models/operations/atsgetcandidate.ts
   - src/sdk/models/operations/atsgetcandidatecustomfielddefinition.ts
   - src/sdk/models/operations/atsgetcandidatenote.ts
@@ -3041,8 +3017,6 @@ generatedFiles:
   - src/sdk/models/shared/assessmentpackage.ts
   - src/sdk/models/shared/assessmentpackagepaginated.ts
   - src/sdk/models/shared/assessmentpackageresult.ts
-  - src/sdk/models/shared/assessmentresult.ts
-  - src/sdk/models/shared/assessmentresultsresult.ts
   - src/sdk/models/shared/assignment.ts
   - src/sdk/models/shared/assignmentresult.ts
   - src/sdk/models/shared/assignmentspaginated.ts
@@ -3079,8 +3053,6 @@ generatedFiles:
   - src/sdk/models/shared/backgroundcheckpackage.ts
   - src/sdk/models/shared/backgroundcheckpackagepaginated.ts
   - src/sdk/models/shared/backgroundcheckpackageresult.ts
-  - src/sdk/models/shared/backgroundcheckresult.ts
-  - src/sdk/models/shared/backgroundcheckresultsresult.ts
   - src/sdk/models/shared/batchresultapimodel.ts
   - src/sdk/models/shared/campaign.ts
   - src/sdk/models/shared/campaignresult.ts
@@ -6204,7 +6176,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"attachments": [{"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed"}
+        application/json: {"attachments": [{"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "passthrough": {"other_known_names": "John Doe"}, "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed"}
       responses:
         "200":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -6276,7 +6248,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"attachments": [{"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed"}
+        application/json: {"attachments": [{"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "passthrough": {"other_known_names": "John Doe"}, "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed"}
       responses:
         "200":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -14078,14 +14050,4 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `stackone.ats.uploadApplicationDocument()`:  `request` **Changed** **Breaking** :warning:
-  * `stackone.hris.getJob()`:  `response.data` **Changed** **Breaking** :warning:
-  * `stackone.hris.listJobs()`:  `response.data.[]` **Changed** **Breaking** :warning:
-  * `stackone.accounting.createCompanyJournal()`: **Added**
-  * `stackone.ats.getJobApplicationStage()`: **Added**
-  * `stackone.ats.listJobApplicationStages()`: **Added**
-  * `stackone.hris.updateEmployeeTask()`: **Added**
-  * `stackone.ats.getJob()`:  `response.data.jobStatus.sourceValue.[4]` **Changed**
-  * `stackone.ats.listJobs()`:  `response.data.[].jobStatus.sourceValue.[4]` **Changed**
+releaseNotes: "## SDK Changes Detected:\n* `stackone.ats.createApplication()`: \n  *  `request.atsCreateApplicationRequestDto.documents.[]` **Changed** **Breaking** :warning:\n* `stackone.ats.updateAssessmentsResult()`: \n  *  `request.atsUpdateCandidatesAssessmentsResultsRequestDto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.updateBackgroundCheckResult()`: \n  *  `request.atsUpdateBackgroundCheckResultRequestDto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.getAssessmentsResult()`: **Deleted** **Breaking** :warning:\n* `stackone.ats.getBackgroundCheckResult()`: **Deleted** **Breaking** :warning:\n"
