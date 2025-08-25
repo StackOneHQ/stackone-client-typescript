@@ -80,7 +80,7 @@ export type AtsUpdateBackgroundCheckResultRequestDtoResult = {
   value?: AtsUpdateBackgroundCheckResultRequestDtoValueOpen | null | undefined;
 };
 
-export type AtsUpdateBackgroundCheckResultRequestDtoScore = {
+export type Score = {
   /**
    * The label of the score
    */
@@ -106,10 +106,6 @@ export type AtsUpdateBackgroundCheckResultRequestDto = {
     | null
     | undefined;
   /**
-   * Unique identifier
-   */
-  id?: string | null | undefined;
-  /**
    * Value to pass through to the provider
    */
   passthrough?: { [k: string]: any } | null | undefined;
@@ -118,7 +114,7 @@ export type AtsUpdateBackgroundCheckResultRequestDto = {
    * The test`s result url
    */
   resultUrl?: string | null | undefined;
-  score?: AtsUpdateBackgroundCheckResultRequestDtoScore | null | undefined;
+  score?: Score | null | undefined;
   /**
    * The start date of the candidate test
    */
@@ -494,12 +490,8 @@ export function atsUpdateBackgroundCheckResultRequestDtoResultFromJSON(
 }
 
 /** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDtoScore$inboundSchema:
-  z.ZodType<
-    AtsUpdateBackgroundCheckResultRequestDtoScore,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
+export const Score$inboundSchema: z.ZodType<Score, z.ZodTypeDef, unknown> = z
+  .object({
     label: z.nullable(z.string()).optional(),
     max: z.nullable(z.string()).optional(),
     min: z.nullable(z.string()).optional(),
@@ -507,7 +499,7 @@ export const AtsUpdateBackgroundCheckResultRequestDtoScore$inboundSchema:
   });
 
 /** @internal */
-export type AtsUpdateBackgroundCheckResultRequestDtoScore$Outbound = {
+export type Score$Outbound = {
   label?: string | null | undefined;
   max?: string | null | undefined;
   min?: string | null | undefined;
@@ -515,57 +507,41 @@ export type AtsUpdateBackgroundCheckResultRequestDtoScore$Outbound = {
 };
 
 /** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDtoScore$outboundSchema:
-  z.ZodType<
-    AtsUpdateBackgroundCheckResultRequestDtoScore$Outbound,
-    z.ZodTypeDef,
-    AtsUpdateBackgroundCheckResultRequestDtoScore
-  > = z.object({
-    label: z.nullable(z.string()).optional(),
-    max: z.nullable(z.string()).optional(),
-    min: z.nullable(z.string()).optional(),
-    value: z.nullable(z.string()).optional(),
-  });
+export const Score$outboundSchema: z.ZodType<
+  Score$Outbound,
+  z.ZodTypeDef,
+  Score
+> = z.object({
+  label: z.nullable(z.string()).optional(),
+  max: z.nullable(z.string()).optional(),
+  min: z.nullable(z.string()).optional(),
+  value: z.nullable(z.string()).optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AtsUpdateBackgroundCheckResultRequestDtoScore$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoScore$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoScore$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoScore$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoScore$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoScore$Outbound` instead. */
-  export type Outbound = AtsUpdateBackgroundCheckResultRequestDtoScore$Outbound;
+export namespace Score$ {
+  /** @deprecated use `Score$inboundSchema` instead. */
+  export const inboundSchema = Score$inboundSchema;
+  /** @deprecated use `Score$outboundSchema` instead. */
+  export const outboundSchema = Score$outboundSchema;
+  /** @deprecated use `Score$Outbound` instead. */
+  export type Outbound = Score$Outbound;
 }
 
-export function atsUpdateBackgroundCheckResultRequestDtoScoreToJSON(
-  atsUpdateBackgroundCheckResultRequestDtoScore:
-    AtsUpdateBackgroundCheckResultRequestDtoScore,
-): string {
-  return JSON.stringify(
-    AtsUpdateBackgroundCheckResultRequestDtoScore$outboundSchema.parse(
-      atsUpdateBackgroundCheckResultRequestDtoScore,
-    ),
-  );
+export function scoreToJSON(score: Score): string {
+  return JSON.stringify(Score$outboundSchema.parse(score));
 }
 
-export function atsUpdateBackgroundCheckResultRequestDtoScoreFromJSON(
+export function scoreFromJSON(
   jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckResultRequestDtoScore,
-  SDKValidationError
-> {
+): SafeParseResult<Score, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequestDtoScore$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequestDtoScore' from JSON`,
+    (x) => Score$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Score' from JSON`,
   );
 }
 
@@ -581,15 +557,12 @@ export const AtsUpdateBackgroundCheckResultRequestDto$inboundSchema: z.ZodType<
       AtsUpdateBackgroundCheckResultRequestDtoCandidate$inboundSchema
     ),
   ).optional(),
-  id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   result: z.nullable(
     z.lazy(() => AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema),
   ).optional(),
   result_url: z.nullable(z.string()).optional(),
-  score: z.nullable(
-    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDtoScore$inboundSchema),
-  ).optional(),
+  score: z.nullable(z.lazy(() => Score$inboundSchema)).optional(),
   start_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -612,17 +585,13 @@ export type AtsUpdateBackgroundCheckResultRequestDto$Outbound = {
     | AtsUpdateBackgroundCheckResultRequestDtoCandidate$Outbound
     | null
     | undefined;
-  id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   result?:
     | AtsUpdateBackgroundCheckResultRequestDtoResult$Outbound
     | null
     | undefined;
   result_url?: string | null | undefined;
-  score?:
-    | AtsUpdateBackgroundCheckResultRequestDtoScore$Outbound
-    | null
-    | undefined;
+  score?: Score$Outbound | null | undefined;
   start_date?: string | null | undefined;
   submission_date?: string | null | undefined;
   summary?: string | null | undefined;
@@ -640,15 +609,12 @@ export const AtsUpdateBackgroundCheckResultRequestDto$outboundSchema: z.ZodType<
       AtsUpdateBackgroundCheckResultRequestDtoCandidate$outboundSchema
     ),
   ).optional(),
-  id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   result: z.nullable(
     z.lazy(() => AtsUpdateBackgroundCheckResultRequestDtoResult$outboundSchema),
   ).optional(),
   resultUrl: z.nullable(z.string()).optional(),
-  score: z.nullable(
-    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDtoScore$outboundSchema),
-  ).optional(),
+  score: z.nullable(z.lazy(() => Score$outboundSchema)).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   submissionDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),

@@ -4,21 +4,17 @@
 
 ```typescript
 import { AtsUpdateBackgroundCheckResultRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AtsUpdateBackgroundCheckResultRequestDtoValue, AttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsUpdateBackgroundCheckResultRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsUpdateBackgroundCheckResultRequest = {
   atsUpdateBackgroundCheckResultRequestDto: {
     attachments: [
       {
-        contentType: {
-          sourceValue: "Text",
-          value: AttachmentValue.Text,
-        },
+        contentType: null,
         url: "http://example.com/resume.pdf",
       },
     ],
     candidate: null,
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     passthrough: {
       "other_known_names": "John Doe",
     },

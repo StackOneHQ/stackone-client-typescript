@@ -6,16 +6,12 @@
 import {
   AtsUpdateCandidatesAssessmentsResultsRequestDto,
   AtsUpdateCandidatesAssessmentsResultsRequestDtoValue,
-  AttachmentValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsUpdateCandidatesAssessmentsResultsRequestDto = {
   attachments: [
     {
-      contentType: {
-        sourceValue: "Text",
-        value: AttachmentValue.Text,
-      },
+      contentType: null,
       url: "http://example.com/resume.pdf",
     },
   ],
@@ -23,7 +19,6 @@ let value: AtsUpdateCandidatesAssessmentsResultsRequestDto = {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     profileUrl: "https://exmaple.com/candidate?id=xyz",
   },
-  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   passthrough: {
     "other_known_names": "John Doe",
   },
@@ -50,7 +45,6 @@ let value: AtsUpdateCandidatesAssessmentsResultsRequestDto = {
 | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `attachments`                                                                                                                                             | [shared.Attachment](../../../sdk/models/shared/attachment.md)[]                                                                                           | :heavy_minus_sign:                                                                                                                                        | N/A                                                                                                                                                       |                                                                                                                                                           |
 | `candidate`                                                                                                                                               | [shared.AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate](../../../sdk/models/shared/atsupdatecandidatesassessmentsresultsrequestdtocandidate.md) | :heavy_minus_sign:                                                                                                                                        | N/A                                                                                                                                                       |                                                                                                                                                           |
-| `id`                                                                                                                                                      | *string*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                        | Unique identifier                                                                                                                                         | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                                                                      |
 | `passthrough`                                                                                                                                             | Record<string, *any*>                                                                                                                                     | :heavy_minus_sign:                                                                                                                                        | Value to pass through to the provider                                                                                                                     | {<br/>"other_known_names": "John Doe"<br/>}                                                                                                               |
 | `result`                                                                                                                                                  | [shared.AtsUpdateCandidatesAssessmentsResultsRequestDtoResult](../../../sdk/models/shared/atsupdatecandidatesassessmentsresultsrequestdtoresult.md)       | :heavy_minus_sign:                                                                                                                                        | N/A                                                                                                                                                       |                                                                                                                                                           |
 | `resultUrl`                                                                                                                                               | *string*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                        | The test`s result url                                                                                                                                     | https://exmaple.com/result?id=xyz                                                                                                                         |
