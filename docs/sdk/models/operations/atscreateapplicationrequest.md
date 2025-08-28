@@ -5,9 +5,9 @@
 ```typescript
 import { AtsCreateApplicationRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
+  AtsDocumentsUploadRequestDtoSchemasFileFormatValue,
+  AtsDocumentsUploadRequestDtoSchemasValue,
   CreateAnswerValue,
-  UnifiedUploadRequestDtoSchemasValue,
-  UnifiedUploadRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateApplicationRequest = {
@@ -54,21 +54,17 @@ let value: AtsCreateApplicationRequest = {
     candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     documents: [
       {
-        category: {
-          sourceValue:
-            "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
-          value: "reports, resumes",
-        },
+        category: {},
         categoryId: "6530",
         confidential: {
           sourceValue: "public",
-          value: UnifiedUploadRequestDtoValue.True,
+          value: AtsDocumentsUploadRequestDtoSchemasValue.True,
         },
         content:
           "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
         fileFormat: {
           sourceValue: "application/pdf",
-          value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+          value: AtsDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
         },
         name: "weather-forecast",
         path: "/path/to/file",
@@ -97,7 +93,10 @@ let value: AtsCreateApplicationRequest = {
         id: "right_to_work",
       },
     ],
-    source: null,
+    source: {
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      name: "LinkedIn",
+    },
   },
   xAccountId: "<id>",
 };
