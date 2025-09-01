@@ -241,10 +241,10 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.stream(
+    M.bytes(
       200,
       operations.TicketingDownloadTicketingAttachmentResponse$inboundSchema,
-      { ctype: "*/*", key: "response-stream" },
+      { ctype: "*/*", key: "Body" },
     ),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

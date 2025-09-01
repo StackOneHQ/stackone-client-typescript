@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: f58f6b99414ca66d6b4e8f94f7ccf7ae
+  docChecksum: 1d1ba8d67210928dd7dae6d13dace15a
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.3
-  generationVersion: 2.687.1
-  releaseVersion: 4.25.3
-  configChecksum: 2c53a7d741de051d533ccf763b7d3afe
+  speakeasyVersion: 1.606.9
+  generationVersion: 2.687.13
+  releaseVersion: 4.26.0
+  configChecksum: 1cb463f78a9917126485867e9d837581
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -19,7 +19,6 @@ features:
     core: 3.21.20
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
-    downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     examples: 2.82.3
@@ -1157,6 +1156,8 @@ generatedFiles:
   - docs/sdk/models/shared/customfielddefinitiontype.md
   - docs/sdk/models/shared/customfielddefinitionvalue.md
   - docs/sdk/models/shared/customfieldoption.md
+  - docs/sdk/models/shared/customfieldoption4.md
+  - docs/sdk/models/shared/customfieldoptionvalue.md
   - docs/sdk/models/shared/customfields.md
   - docs/sdk/models/shared/customfields4.md
   - docs/sdk/models/shared/customfieldsvalue.md
@@ -1169,6 +1170,8 @@ generatedFiles:
   - docs/sdk/models/shared/description.md
   - docs/sdk/models/shared/division.md
   - docs/sdk/models/shared/document.md
+  - docs/sdk/models/shared/downloadapimodel.md
+  - docs/sdk/models/shared/downloadheadersapimodel.md
   - docs/sdk/models/shared/draft.md
   - docs/sdk/models/shared/driveresult.md
   - docs/sdk/models/shared/drives.md
@@ -3115,6 +3118,8 @@ generatedFiles:
   - src/sdk/models/shared/department.ts
   - src/sdk/models/shared/departmentresult.ts
   - src/sdk/models/shared/departmentspaginated.ts
+  - src/sdk/models/shared/downloadapimodel.ts
+  - src/sdk/models/shared/downloadheadersapimodel.ts
   - src/sdk/models/shared/driveresult.ts
   - src/sdk/models/shared/drives.ts
   - src/sdk/models/shared/drivespaginated.ts
@@ -4060,6 +4065,43 @@ examples:
       responses:
         "200":
           application/octet-stream: "x-file: example.file"
+          application/gzip: "0x22c19257bb"
+          application/msword: "0xbCa44FeEb1"
+          application/pdf: "0xaa1eeCfc4A"
+          application/rtf: "0x01EFDC3bd1"
+          application/vnd.ms-excel: "0x2207DFEAf3"
+          application/vnd.ms-outlook: "0xD6FE8CEb2C"
+          application/vnd.ms-powerpoint: "0xc452638C15"
+          application/vnd.oasis.opendocument.presentation: "0x9d2ffFAe87"
+          application/vnd.oasis.opendocument.spreadsheet: "0x66f6d3F200"
+          application/vnd.oasis.opendocument.text: "0x2Dad9f0caf"
+          application/vnd.openxmlformats-officedocument.presentationml.presentation: "0x4D1E2fcecc"
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: "0xa4dEaaC0Ea"
+          application/vnd.openxmlformats-officedocument.wordprocessingml.document: "0xed80bd88a3"
+          application/x-7z-compressed: "0x075F4b8773"
+          application/x-rar-compressed: "0xFbD277306C"
+          application/xml: "0x9cb30a1dee"
+          application/zip: "0x2C3EBDaf72"
+          audio/mp4: "0x85daC912dC"
+          audio/mpeg: "0xFfACa8e6b5"
+          audio/wav: "0x0c128B556D"
+          image/bmp: "0x63FdfEBeFE"
+          image/gif: "0x45f3688c63"
+          image/heic: "0x06E3eecF75"
+          image/jpeg: "0xADBaeF0eCA"
+          image/png: "0xbEF42fcc7c"
+          image/tiff: "0xE3fcf3Ef8B"
+          image/webp: "0xe27B8aa32f"
+          message/rfc822: "0xDAfDdF1e3d"
+          text/csv: "0xcdfbAb46FF"
+          text/html: "0x34fe613ca0"
+          text/rtf: "0x2405B72430"
+          video/avi: "0x4Db048Dcae"
+          video/mp4: "0xAeE9A02210"
+          video/quicktime: "0x8bb83A9B0e"
+          video/webm: "0x14b0d37bff"
+          application/json: {"data": "0xeaccaAAeBE", "headers": {"content-disposition": "attachment; filename=\"example.pdf\"", "content-encoding": "gzip", "content-length": 1024, "content-range": "bytes 0-1023/2048", "content-type": "application/pdf", "transfer-encoding": "chunked"}}
+          text/plain: "<value>"
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -7373,7 +7415,7 @@ examples:
         "200":
           application/octet-stream: "x-file: example.file"
           application/gzip: "x-file: example.file"
-          application/json: "x-file: example.file"
+          application/json: {"data": "0xD8a7d4EC38", "headers": {"content-disposition": "attachment; filename=\"example.pdf\"", "content-encoding": "gzip", "content-length": 1024, "content-range": "bytes 0-1023/2048", "content-type": "application/pdf", "transfer-encoding": "chunked"}}
           application/msword: "x-file: example.file"
           application/pdf: "x-file: example.file"
           application/rtf: "x-file: example.file"
@@ -14050,4 +14092,4 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `stackone.ats.createApplication()`: \n  *  `request.atsCreateApplicationRequestDto.documents.[]` **Changed** **Breaking** :warning:\n* `stackone.ats.updateAssessmentsResult()`: \n  *  `request.atsUpdateCandidatesAssessmentsResultsRequestDto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.updateBackgroundCheckResult()`: \n  *  `request.atsUpdateBackgroundCheckResultRequestDto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.getAssessmentsResult()`: **Deleted** **Breaking** :warning:\n* `stackone.ats.getBackgroundCheckResult()`: **Deleted** **Breaking** :warning:\n"
+releaseNotes: "## SDK Changes Detected:\n* `stackone.crm.getContactCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ticketing.downloadTicketingAttachment()`:  `response` **Changed** **Breaking** :warning:\n* `stackone.messaging.downloadMessagingAttachment()`:  `response` **Changed** **Breaking** :warning:\n* `stackone.ats.downloadApplicationDocument()`:  `response` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployeeCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.getApplicationCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeeCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.getCandidateCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.downloadEmployeeDocument()`:  `response` **Changed** **Breaking** :warning:\n* `stackone.ats.getJobCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listApplicationCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.documents.downloadFile()`:  `response` **Changed** **Breaking** :warning:\n* `stackone.ats.listCandidateCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.crm.listContactCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listJobCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.updateApplication()`: \n  *  `request.atsUpdateApplicationRequestDto.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.updateContact()`: \n  *  `request.crmCreateContactRequestDto.customFields.[].value.[date-time]` **Added**\n  *  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.updateCandidate()`: \n  *  `request.atsUpdateCandidateRequestDto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.updateJob()`: \n  *  `request.atsUpdateJobRequestDto.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.createContact()`: \n  *  `request.crmCreateContactRequestDto.customFields.[].value.[date-time]` **Added**\n  *  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.getContact()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.listJobs()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.listCandidates()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.crm.listContacts()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.createApplication()`: \n  *  `request.atsCreateApplicationRequestDto.candidate.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.listApplications()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.hris.createEmployee()`: \n  *  `request.hrisCreateEmployeeRequestDto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getJob()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.getEmployee()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getCandidate()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getApplication()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.listEmployees()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.hris.updateEmployee()`: \n  *  `request.hrisUpdateEmployeeRequestDto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.createJob()`: \n  *  `request.atsCreateJobRequestDto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.createCandidate()`: \n  *  `request.atsCreateCandidateRequestDto.customFields.[].value.[date-time]` **Added**\n"

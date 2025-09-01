@@ -133,6 +133,8 @@ export * from "./deleteresult.js";
 export * from "./department.js";
 export * from "./departmentresult.js";
 export * from "./departmentspaginated.js";
+export * from "./downloadapimodel.js";
+export * from "./downloadheadersapimodel.js";
 export * from "./driveresult.js";
 export * from "./drives.js";
 export * from "./drivespaginated.js";
