@@ -291,246 +291,204 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/gzip",
-        key: "200_application/gzip_response-stream",
-      },
+      { ctype: "application/gzip", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/json",
-        key: "200_application/json_response-stream",
-      },
+      { ctype: "application/msword", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/msword",
-        key: "200_application/msword_response-stream",
-      },
+      { key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { key: "200_application/octet-stream_response-stream" },
+      { ctype: "application/pdf", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "application/pdf", key: "200_application/pdf_response-stream" },
+      { ctype: "application/rtf", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "application/rtf", key: "200_application/rtf_response-stream" },
+      { ctype: "application/vnd.ms-excel", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/vnd.ms-excel",
-        key: "200_application/vnd.ms-excel_response-stream",
-      },
+      { ctype: "application/vnd.ms-outlook", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/vnd.ms-outlook",
-        key: "200_application/vnd.ms-outlook_response-stream",
-      },
+      { ctype: "application/vnd.ms-powerpoint", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/vnd.ms-powerpoint",
-        key: "200_application/vnd.ms-powerpoint_response-stream",
-      },
+      { ctype: "application/vnd.oasis.opendocument.presentation", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/vnd.oasis.opendocument.presentation",
-        key:
-          "200_application/vnd.oasis.opendocument.presentation_response-stream",
-      },
+      { ctype: "application/vnd.oasis.opendocument.spreadsheet", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/vnd.oasis.opendocument.spreadsheet",
-        key:
-          "200_application/vnd.oasis.opendocument.spreadsheet_response-stream",
-      },
+      { ctype: "application/vnd.oasis.opendocument.text", key: "Body" },
     ),
-    M.stream(
-      200,
-      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/vnd.oasis.opendocument.text",
-        key: "200_application/vnd.oasis.opendocument.text_response-stream",
-      },
-    ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
       {
         ctype:
           "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-        key:
-          "200_application/vnd.openxmlformats-officedocument.presentationml.presentation_response-stream",
+        key: "Body",
       },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
       {
         ctype:
           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        key:
-          "200_application/vnd.openxmlformats-officedocument.spreadsheetml.sheet_response-stream",
+        key: "Body",
       },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
       {
         ctype:
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        key:
-          "200_application/vnd.openxmlformats-officedocument.wordprocessingml.document_response-stream",
+        key: "Body",
       },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/x-7z-compressed",
-        key: "200_application/x-7z-compressed_response-stream",
-      },
+      { ctype: "application/x-7z-compressed", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      {
-        ctype: "application/x-rar-compressed",
-        key: "200_application/x-rar-compressed_response-stream",
-      },
+      { ctype: "application/x-rar-compressed", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "application/xml", key: "200_application/xml_response-stream" },
+      { ctype: "application/xml", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "application/zip", key: "200_application/zip_response-stream" },
+      { ctype: "application/zip", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "audio/mp4", key: "200_audio/mp4_response-stream" },
+      { ctype: "audio/mp4", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "audio/mpeg", key: "200_audio/mpeg_response-stream" },
+      { ctype: "audio/mpeg", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "audio/wav", key: "200_audio/wav_response-stream" },
+      { ctype: "audio/wav", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/bmp", key: "200_image/bmp_response-stream" },
+      { ctype: "image/bmp", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/gif", key: "200_image/gif_response-stream" },
+      { ctype: "image/gif", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/heic", key: "200_image/heic_response-stream" },
+      { ctype: "image/heic", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/jpeg", key: "200_image/jpeg_response-stream" },
+      { ctype: "image/jpeg", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/png", key: "200_image/png_response-stream" },
+      { ctype: "image/png", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/tiff", key: "200_image/tiff_response-stream" },
+      { ctype: "image/tiff", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "image/webp", key: "200_image/webp_response-stream" },
+      { ctype: "image/webp", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "message/rfc822", key: "200_message/rfc822_response-stream" },
+      { ctype: "message/rfc822", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "text/csv", key: "200_text/csv_response-stream" },
+      { ctype: "text/csv", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "text/html", key: "200_text/html_response-stream" },
+      { ctype: "text/html", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "text/plain", key: "200_text/plain_response-stream" },
+      { ctype: "text/rtf", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "text/rtf", key: "200_text/rtf_response-stream" },
+      { ctype: "video/avi", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "video/avi", key: "200_video/avi_response-stream" },
+      { ctype: "video/mp4", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "video/mp4", key: "200_video/mp4_response-stream" },
+      { ctype: "video/quicktime", key: "Body" },
     ),
-    M.stream(
+    M.bytes(
       200,
       operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "video/quicktime", key: "200_video/quicktime_response-stream" },
+      { ctype: "video/webm", key: "Body" },
     ),
-    M.stream(
-      200,
-      operations.HrisDownloadEmployeeDocumentResponse$inboundSchema,
-      { ctype: "video/webm", key: "200_video/webm_response-stream" },
-    ),
+    M.json(200, operations.HrisDownloadEmployeeDocumentResponse$inboundSchema, {
+      key: "DownloadApiModel",
+    }),
+    M.text(200, operations.HrisDownloadEmployeeDocumentResponse$inboundSchema, {
+      key: "DownloadApiModel1",
+    }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),

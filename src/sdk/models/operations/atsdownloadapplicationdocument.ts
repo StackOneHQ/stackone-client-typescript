@@ -3,10 +3,12 @@
  */
 
 import * as z from "zod";
+import * as b64$ from "../../../lib/base64.js";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as shared from "../shared/index.js";
 
 export type AtsDownloadApplicationDocumentRequest = {
   /**
@@ -26,10 +28,19 @@ export type AtsDownloadApplicationDocumentRequest = {
 };
 
 export type AtsDownloadApplicationDocumentResponse = {
+  body?: Uint8Array | string | undefined;
   /**
    * HTTP response content type for this operation
    */
   contentType: string;
+  /**
+   * The document related to the application with the given identifiers was retrieved.
+   */
+  downloadApiModel?: shared.DownloadApiModel | undefined;
+  /**
+   * The document related to the application with the given identifiers was retrieved.
+   */
+  downloadApiModel1?: string | undefined;
   headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
@@ -39,10 +50,6 @@ export type AtsDownloadApplicationDocumentResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The document related to the application with the given identifiers was retrieved.
-   */
-  responseStream?: ReadableStream<Uint8Array> | undefined;
 };
 
 /** @internal */
@@ -132,28 +139,34 @@ export const AtsDownloadApplicationDocumentResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  Body: b64$.zodInbound.optional(),
   ContentType: z.string(),
+  DownloadApiModel: shared.DownloadApiModel$inboundSchema.optional(),
+  DownloadApiModel1: z.string().optional(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "Body": "body",
     "ContentType": "contentType",
+    "DownloadApiModel": "downloadApiModel",
+    "DownloadApiModel1": "downloadApiModel1",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "response-stream": "responseStream",
   });
 });
 
 /** @internal */
 export type AtsDownloadApplicationDocumentResponse$Outbound = {
+  Body?: Uint8Array | undefined;
   ContentType: string;
+  DownloadApiModel?: shared.DownloadApiModel$Outbound | undefined;
+  DownloadApiModel1?: string | undefined;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
-  "response-stream"?: ReadableStream<Uint8Array> | undefined;
 };
 
 /** @internal */
@@ -162,20 +175,24 @@ export const AtsDownloadApplicationDocumentResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsDownloadApplicationDocumentResponse
 > = z.object({
+  body: b64$.zodOutbound.optional(),
   contentType: z.string(),
+  downloadApiModel: shared.DownloadApiModel$outboundSchema.optional(),
+  downloadApiModel1: z.string().optional(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
 }).transform((v) => {
   return remap$(v, {
+    body: "Body",
     contentType: "ContentType",
+    downloadApiModel: "DownloadApiModel",
+    downloadApiModel1: "DownloadApiModel1",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    responseStream: "response-stream",
   });
 });
 

@@ -18,7 +18,8 @@ export type CustomFieldsValue =
   | string
   | number
   | boolean
-  | Array<any>;
+  | Array<any>
+  | Date;
 
 export type CustomFields = {
   /**
@@ -46,6 +47,7 @@ export type CustomFields = {
     | number
     | boolean
     | Array<any>
+    | Date
     | null
     | undefined;
   /**
@@ -109,6 +111,7 @@ export const CustomFieldsValue$inboundSchema: z.ZodType<
   z.number(),
   z.boolean(),
   z.array(z.any()),
+  z.string().datetime({ offset: true }).transform(v => new Date(v)),
 ]);
 
 /** @internal */
@@ -117,7 +120,8 @@ export type CustomFieldsValue$Outbound =
   | string
   | number
   | boolean
-  | Array<any>;
+  | Array<any>
+  | string;
 
 /** @internal */
 export const CustomFieldsValue$outboundSchema: z.ZodType<
@@ -130,6 +134,7 @@ export const CustomFieldsValue$outboundSchema: z.ZodType<
   z.number(),
   z.boolean(),
   z.array(z.any()),
+  z.date().transform(v => v.toISOString()),
 ]);
 
 /**
@@ -180,6 +185,7 @@ export const CustomFields$inboundSchema: z.ZodType<
       z.number(),
       z.boolean(),
       z.array(z.any()),
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ]),
   ).optional(),
   value_id: z.nullable(z.string()).optional(),
@@ -203,6 +209,7 @@ export type CustomFields$Outbound = {
     | number
     | boolean
     | Array<any>
+    | string
     | null
     | undefined;
   value_id?: string | null | undefined;
@@ -225,6 +232,7 @@ export const CustomFields$outboundSchema: z.ZodType<
       z.number(),
       z.boolean(),
       z.array(z.any()),
+      z.date().transform(v => v.toISOString()),
     ]),
   ).optional(),
   valueId: z.nullable(z.string()).optional(),

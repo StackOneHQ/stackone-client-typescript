@@ -1,6 +1,6 @@
-# CustomFieldsValue
+# CustomFieldOptionValue
 
-The value associated with the custom field.
+The human readable value of the option
 
 
 ## Supported Types
@@ -8,7 +8,7 @@ The value associated with the custom field.
 ### `string`
 
 ```typescript
-const value: string = "Completed";
+const value: string = "Not Started";
 ```
 
 ### `number`
@@ -23,23 +23,17 @@ const value: number = NaN;
 const value: boolean = true;
 ```
 
-### `shared.CustomFields4`
+### `shared.CustomFieldOption4`
 
 ```typescript
-const value: shared.CustomFields4 = {};
+const value: shared.CustomFieldOption4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
 const value: any[] = [
-  "Completed",
+  "Not Started",
 ];
-```
-
-### `Date`
-
-```typescript
-const value: Date = new Date("Completed");
 ```
 

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import * as b64$ from "../../../lib/base64.js";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -26,6 +27,7 @@ export type TicketingDownloadTicketingAttachmentRequest = {
 };
 
 export type TicketingDownloadTicketingAttachmentResponse = {
+  body?: Uint8Array | string | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -39,10 +41,6 @@ export type TicketingDownloadTicketingAttachmentResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The document related to the application with the given identifiers was retrieved.
-   */
-  responseStream?: ReadableStream<Uint8Array> | undefined;
 };
 
 /** @internal */
@@ -141,28 +139,28 @@ export const TicketingDownloadTicketingAttachmentResponse$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    Body: b64$.zodInbound.optional(),
     ContentType: z.string(),
     Headers: z.record(z.array(z.string())),
     StatusCode: z.number().int(),
     RawResponse: z.instanceof(Response),
-    "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
   }).transform((v) => {
     return remap$(v, {
+      "Body": "body",
       "ContentType": "contentType",
       "Headers": "headers",
       "StatusCode": "statusCode",
       "RawResponse": "rawResponse",
-      "response-stream": "responseStream",
     });
   });
 
 /** @internal */
 export type TicketingDownloadTicketingAttachmentResponse$Outbound = {
+  Body?: Uint8Array | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
-  "response-stream"?: ReadableStream<Uint8Array> | undefined;
 };
 
 /** @internal */
@@ -172,20 +170,20 @@ export const TicketingDownloadTicketingAttachmentResponse$outboundSchema:
     z.ZodTypeDef,
     TicketingDownloadTicketingAttachmentResponse
   > = z.object({
+    body: b64$.zodOutbound.optional(),
     contentType: z.string(),
     headers: z.record(z.array(z.string())),
     statusCode: z.number().int(),
     rawResponse: z.instanceof(Response).transform(() => {
       throw new Error("Response cannot be serialized");
     }),
-    responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
   }).transform((v) => {
     return remap$(v, {
+      body: "Body",
       contentType: "ContentType",
       headers: "Headers",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",
-      responseStream: "response-stream",
     });
   });
 

@@ -10,7 +10,10 @@ import { atsCreateCandidateNote } from "../funcs/atsCreateCandidateNote.js";
 import { atsCreateJob } from "../funcs/atsCreateJob.js";
 import { atsCreateOffer } from "../funcs/atsCreateOffer.js";
 import { atsDeleteBackgroundCheckPackage } from "../funcs/atsDeleteBackgroundCheckPackage.js";
-import { atsDownloadApplicationDocument } from "../funcs/atsDownloadApplicationDocument.js";
+import {
+  atsDownloadApplicationDocument,
+  DownloadApplicationDocumentAcceptEnum,
+} from "../funcs/atsDownloadApplicationDocument.js";
 import { atsGetApplication } from "../funcs/atsGetApplication.js";
 import { atsGetApplicationCustomFieldDefinition } from "../funcs/atsGetApplicationCustomFieldDefinition.js";
 import { atsGetApplicationDocument } from "../funcs/atsGetApplicationDocument.js";
@@ -78,6 +81,8 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
+
+export { DownloadApplicationDocumentAcceptEnum } from "../funcs/atsDownloadApplicationDocument.js";
 
 export class Ats extends ClientSDK {
   /**
@@ -197,7 +202,9 @@ export class Ats extends ClientSDK {
    */
   async downloadApplicationDocument(
     request: operations.AtsDownloadApplicationDocumentRequest,
-    options?: RequestOptions,
+    options?: RequestOptions & {
+      acceptHeaderOverride?: DownloadApplicationDocumentAcceptEnum;
+    },
   ): Promise<operations.AtsDownloadApplicationDocumentResponse> {
     return unwrapAsync(atsDownloadApplicationDocument(
       this,
