@@ -31,7 +31,7 @@ export enum StackoneListPlatformLogsQueryParamRequestLogsOrderDirection {
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type QueryParamFilter = {
+export type StackoneListPlatformLogsQueryParamFilter = {
   /**
    * A comma-separated list of account IDs to filter the results by.
    */
@@ -123,7 +123,7 @@ export type StackoneListPlatformLogsRequest = {
   /**
    * Filter parameters that allow greater customisation of the list response
    */
-  filter?: QueryParamFilter | null | undefined;
+  filter?: StackoneListPlatformLogsQueryParamFilter | null | undefined;
   /**
    * The unified cursor
    */
@@ -214,8 +214,8 @@ export namespace StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$ {
 }
 
 /** @internal */
-export const QueryParamFilter$inboundSchema: z.ZodType<
-  QueryParamFilter,
+export const StackoneListPlatformLogsQueryParamFilter$inboundSchema: z.ZodType<
+  StackoneListPlatformLogsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -259,7 +259,7 @@ export const QueryParamFilter$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type QueryParamFilter$Outbound = {
+export type StackoneListPlatformLogsQueryParamFilter$Outbound = {
   account_ids?: string | null | undefined;
   actions?: string | null | undefined;
   categories?: string | null | undefined;
@@ -278,10 +278,10 @@ export type QueryParamFilter$Outbound = {
 };
 
 /** @internal */
-export const QueryParamFilter$outboundSchema: z.ZodType<
-  QueryParamFilter$Outbound,
+export const StackoneListPlatformLogsQueryParamFilter$outboundSchema: z.ZodType<
+  StackoneListPlatformLogsQueryParamFilter$Outbound,
   z.ZodTypeDef,
-  QueryParamFilter
+  StackoneListPlatformLogsQueryParamFilter
 > = z.object({
   accountIds: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
@@ -322,30 +322,41 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamFilter$ {
-  /** @deprecated use `QueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = QueryParamFilter$inboundSchema;
-  /** @deprecated use `QueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = QueryParamFilter$outboundSchema;
-  /** @deprecated use `QueryParamFilter$Outbound` instead. */
-  export type Outbound = QueryParamFilter$Outbound;
+export namespace StackoneListPlatformLogsQueryParamFilter$ {
+  /** @deprecated use `StackoneListPlatformLogsQueryParamFilter$inboundSchema` instead. */
+  export const inboundSchema =
+    StackoneListPlatformLogsQueryParamFilter$inboundSchema;
+  /** @deprecated use `StackoneListPlatformLogsQueryParamFilter$outboundSchema` instead. */
+  export const outboundSchema =
+    StackoneListPlatformLogsQueryParamFilter$outboundSchema;
+  /** @deprecated use `StackoneListPlatformLogsQueryParamFilter$Outbound` instead. */
+  export type Outbound = StackoneListPlatformLogsQueryParamFilter$Outbound;
 }
 
-export function queryParamFilterToJSON(
-  queryParamFilter: QueryParamFilter,
+export function stackoneListPlatformLogsQueryParamFilterToJSON(
+  stackoneListPlatformLogsQueryParamFilter:
+    StackoneListPlatformLogsQueryParamFilter,
 ): string {
   return JSON.stringify(
-    QueryParamFilter$outboundSchema.parse(queryParamFilter),
+    StackoneListPlatformLogsQueryParamFilter$outboundSchema.parse(
+      stackoneListPlatformLogsQueryParamFilter,
+    ),
   );
 }
 
-export function queryParamFilterFromJSON(
+export function stackoneListPlatformLogsQueryParamFilterFromJSON(
   jsonString: string,
-): SafeParseResult<QueryParamFilter, SDKValidationError> {
+): SafeParseResult<
+  StackoneListPlatformLogsQueryParamFilter,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => QueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamFilter' from JSON`,
+    (x) =>
+      StackoneListPlatformLogsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'StackoneListPlatformLogsQueryParamFilter' from JSON`,
   );
 }
 
@@ -401,7 +412,9 @@ export const StackoneListPlatformLogsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
+  filter: z.nullable(
+    z.lazy(() => StackoneListPlatformLogsQueryParamFilter$inboundSchema),
+  ).optional(),
   next: z.nullable(z.string()).optional(),
   order_by: z.nullable(StackoneListPlatformLogsQueryParamOrderBy$inboundSchema)
     .optional(),
@@ -419,7 +432,7 @@ export const StackoneListPlatformLogsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type StackoneListPlatformLogsRequest$Outbound = {
-  filter?: QueryParamFilter$Outbound | null | undefined;
+  filter?: StackoneListPlatformLogsQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
   order_by?: string | null | undefined;
   order_direction?: string | null | undefined;
@@ -432,7 +445,9 @@ export const StackoneListPlatformLogsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneListPlatformLogsRequest
 > = z.object({
-  filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
+  filter: z.nullable(
+    z.lazy(() => StackoneListPlatformLogsQueryParamFilter$outboundSchema),
+  ).optional(),
   next: z.nullable(z.string()).optional(),
   orderBy: z.nullable(StackoneListPlatformLogsQueryParamOrderBy$outboundSchema)
     .optional(),

@@ -1431,10 +1431,6 @@ export type HrisDocumentApiModel = {
    */
   name?: string | null | undefined;
   /**
-   * The path where the file is stored
-   */
-  path?: string | null | undefined;
-  /**
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
@@ -2205,7 +2201,6 @@ export const HrisDocumentApiModel$inboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_url: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => HrisDocumentApiModelType$inboundSchema))
@@ -2235,7 +2230,6 @@ export type HrisDocumentApiModel$Outbound = {
   file_format?: HrisDocumentApiModelFileFormat$Outbound | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
-  path?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_url?: string | null | undefined;
   type?: HrisDocumentApiModelType$Outbound | null | undefined;
@@ -2260,7 +2254,6 @@ export const HrisDocumentApiModel$outboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteUrl: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => HrisDocumentApiModelType$outboundSchema))

@@ -59,8 +59,14 @@ let value: HrisCreateEmployeeRequestDto = {
   displayName: "Sir Isaac Newton",
   employeeNumber: "125",
   employment: {
+    contractType: null,
     endDate: new Date("2021-01-01T01:01:01.000Z"),
-    grade: null,
+    grade: {
+      description: "Mid-level employee demonstrating proficiency and autonomy.",
+      id: "1687-3",
+      name: "1687-4",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    },
     jobTitle: "Software Engineer",
     passthrough: {
       "other_known_names": "John Doe",
@@ -76,6 +82,12 @@ let value: HrisCreateEmployeeRequestDto = {
     },
     payRate: "40.00",
     payrollCode: "PC1",
+    type: {
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      label: "Permanent",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      type: {},
+    },
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",
       "my_project_custom_field_2": "some other value",

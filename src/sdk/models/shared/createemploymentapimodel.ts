@@ -13,6 +13,65 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type CreateEmploymentApiModelSchemasContractType4 = {};
+
+export type CreateEmploymentApiModelSchemasContractTypeSourceValue =
+  | CreateEmploymentApiModelSchemasContractType4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum CreateEmploymentApiModelSchemasContractTypeValue {
+  FullTime = "full_time",
+  Shifts = "shifts",
+  PartTime = "part_time",
+  UnmappedValue = "unmapped_value",
+}
+export type CreateEmploymentApiModelSchemasContractTypeValueOpen = OpenEnum<
+  typeof CreateEmploymentApiModelSchemasContractTypeValue
+>;
+
+/**
+ * The employment work schedule type (e.g., full-time, part-time)
+ */
+export type CreateEmploymentApiModelContractType = {
+  sourceValue?:
+    | CreateEmploymentApiModelSchemasContractType4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?:
+    | CreateEmploymentApiModelSchemasContractTypeValueOpen
+    | null
+    | undefined;
+};
+
+/**
+ * The employment work schedule type
+ */
+export type ContractType = {
+  /**
+   * The employment work schedule type (e.g., full-time, part-time)
+   */
+  contractType?: CreateEmploymentApiModelContractType | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * The label of the employment type
+   */
+  label?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+};
+
 export type CreateEmploymentApiModel4 = {};
 
 export type CreateEmploymentApiModelSourceValue =
@@ -256,6 +315,75 @@ export type PayPeriod = {
   value?: CreateEmploymentApiModelSchemasPayPeriodValueOpen | null | undefined;
 };
 
+export type CreateEmploymentApiModelSchemasType4 = {};
+
+export type CreateEmploymentApiModelSchemasTypeSourceValue =
+  | CreateEmploymentApiModelSchemasType4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum CreateEmploymentApiModelSchemasTypeValue {
+  Contractor = "contractor",
+  Intern = "intern",
+  Permanent = "permanent",
+  Apprentice = "apprentice",
+  Freelance = "freelance",
+  Terminated = "terminated",
+  Temporary = "temporary",
+  Seasonal = "seasonal",
+  Volunteer = "volunteer",
+  Probation = "probation",
+  Internal = "internal",
+  External = "external",
+  Expatriate = "expatriate",
+  EmployerOfRecord = "employer_of_record",
+  Casual = "casual",
+  Programme = "Programme",
+  UnmappedValue = "unmapped_value",
+}
+export type CreateEmploymentApiModelSchemasTypeValueOpen = OpenEnum<
+  typeof CreateEmploymentApiModelSchemasTypeValue
+>;
+
+/**
+ * The type of employment (e.g., contractor, permanent)
+ */
+export type CreateEmploymentApiModelSchemasType = {
+  sourceValue?:
+    | CreateEmploymentApiModelSchemasType4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: CreateEmploymentApiModelSchemasTypeValueOpen | null | undefined;
+};
+
+/**
+ * The type of employment
+ */
+export type CreateEmploymentApiModelType = {
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * The label of the employment type
+   */
+  label?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+  /**
+   * The type of employment (e.g., contractor, permanent)
+   */
+  type?: CreateEmploymentApiModelSchemasType | null | undefined;
+};
+
 export type CreateEmploymentApiModelSchemasWorkTime4 = {};
 
 export type CreateEmploymentApiModelSchemasWorkTimeSourceValue =
@@ -313,6 +441,10 @@ export type WorkTime = {
 
 export type CreateEmploymentApiModel = {
   /**
+   * The employment work schedule type
+   */
+  contractType?: ContractType | null | undefined;
+  /**
    * The effective date of the employment contract
    */
   effectiveDate?: Date | null | undefined;
@@ -365,11 +497,363 @@ export type CreateEmploymentApiModel = {
    */
   payrollCode?: string | null | undefined;
   /**
+   * The type of employment
+   */
+  type?: CreateEmploymentApiModelType | null | undefined;
+  /**
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
   workTime?: WorkTime | null | undefined;
 };
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasContractType4$inboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasContractType4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({});
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasContractType4$Outbound = {};
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasContractType4$outboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasContractType4$Outbound,
+    z.ZodTypeDef,
+    CreateEmploymentApiModelSchemasContractType4
+  > = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasContractType4$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractType4$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasContractType4$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractType4$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasContractType4$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractType4$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelSchemasContractType4$Outbound;
+}
+
+export function createEmploymentApiModelSchemasContractType4ToJSON(
+  createEmploymentApiModelSchemasContractType4:
+    CreateEmploymentApiModelSchemasContractType4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasContractType4$outboundSchema.parse(
+      createEmploymentApiModelSchemasContractType4,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasContractType4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasContractType4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasContractType4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasContractType4' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasContractTypeSourceValue$inboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasContractTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => CreateEmploymentApiModelSchemasContractType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasContractTypeSourceValue$Outbound =
+  | CreateEmploymentApiModelSchemasContractType4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasContractTypeSourceValue$outboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasContractTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    CreateEmploymentApiModelSchemasContractTypeSourceValue
+  > = z.union([
+    z.lazy(() => CreateEmploymentApiModelSchemasContractType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasContractTypeSourceValue$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractTypeSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasContractTypeSourceValue$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractTypeSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasContractTypeSourceValue$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractTypeSourceValue$Outbound` instead. */
+  export type Outbound =
+    CreateEmploymentApiModelSchemasContractTypeSourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSchemasContractTypeSourceValueToJSON(
+  createEmploymentApiModelSchemasContractTypeSourceValue:
+    CreateEmploymentApiModelSchemasContractTypeSourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasContractTypeSourceValue$outboundSchema.parse(
+      createEmploymentApiModelSchemasContractTypeSourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasContractTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasContractTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasContractTypeSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelSchemasContractTypeSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasContractTypeValue$inboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasContractTypeValueOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(CreateEmploymentApiModelSchemasContractTypeValue),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasContractTypeValue$outboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasContractTypeValueOpen,
+    z.ZodTypeDef,
+    CreateEmploymentApiModelSchemasContractTypeValueOpen
+  > = z.union([
+    z.nativeEnum(CreateEmploymentApiModelSchemasContractTypeValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasContractTypeValue$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractTypeValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasContractTypeValue$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasContractTypeValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasContractTypeValue$outboundSchema;
+}
+
+/** @internal */
+export const CreateEmploymentApiModelContractType$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelContractType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CreateEmploymentApiModelSchemasContractType4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(
+    CreateEmploymentApiModelSchemasContractTypeValue$inboundSchema,
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type CreateEmploymentApiModelContractType$Outbound = {
+  source_value?:
+    | CreateEmploymentApiModelSchemasContractType4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateEmploymentApiModelContractType$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelContractType$Outbound,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelContractType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => CreateEmploymentApiModelSchemasContractType4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(
+    CreateEmploymentApiModelSchemasContractTypeValue$outboundSchema,
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelContractType$ {
+  /** @deprecated use `CreateEmploymentApiModelContractType$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelContractType$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelContractType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelContractType$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelContractType$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelContractType$Outbound;
+}
+
+export function createEmploymentApiModelContractTypeToJSON(
+  createEmploymentApiModelContractType: CreateEmploymentApiModelContractType,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelContractType$outboundSchema.parse(
+      createEmploymentApiModelContractType,
+    ),
+  );
+}
+
+export function createEmploymentApiModelContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelContractType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelContractType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelContractType' from JSON`,
+  );
+}
+
+/** @internal */
+export const ContractType$inboundSchema: z.ZodType<
+  ContractType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  contract_type: z.nullable(
+    z.lazy(() => CreateEmploymentApiModelContractType$inboundSchema),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "contract_type": "contractType",
+    "remote_id": "remoteId",
+  });
+});
+
+/** @internal */
+export type ContractType$Outbound = {
+  contract_type?:
+    | CreateEmploymentApiModelContractType$Outbound
+    | null
+    | undefined;
+  id?: string | null | undefined;
+  label?: string | null | undefined;
+  remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const ContractType$outboundSchema: z.ZodType<
+  ContractType$Outbound,
+  z.ZodTypeDef,
+  ContractType
+> = z.object({
+  contractType: z.nullable(
+    z.lazy(() => CreateEmploymentApiModelContractType$outboundSchema),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    contractType: "contract_type",
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContractType$ {
+  /** @deprecated use `ContractType$inboundSchema` instead. */
+  export const inboundSchema = ContractType$inboundSchema;
+  /** @deprecated use `ContractType$outboundSchema` instead. */
+  export const outboundSchema = ContractType$outboundSchema;
+  /** @deprecated use `ContractType$Outbound` instead. */
+  export type Outbound = ContractType$Outbound;
+}
+
+export function contractTypeToJSON(contractType: ContractType): string {
+  return JSON.stringify(ContractType$outboundSchema.parse(contractType));
+}
+
+export function contractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<ContractType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContractType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContractType' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateEmploymentApiModel4$inboundSchema: z.ZodType<
@@ -1444,6 +1928,344 @@ export function payPeriodFromJSON(
 }
 
 /** @internal */
+export const CreateEmploymentApiModelSchemasType4$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasType4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasType4$Outbound = {};
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasType4$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasType4$Outbound,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelSchemasType4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasType4$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasType4$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasType4$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasType4$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasType4$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasType4$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelSchemasType4$Outbound;
+}
+
+export function createEmploymentApiModelSchemasType4ToJSON(
+  createEmploymentApiModelSchemasType4: CreateEmploymentApiModelSchemasType4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasType4$outboundSchema.parse(
+      createEmploymentApiModelSchemasType4,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasType4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelSchemasType4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasType4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelSchemasType4' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasTypeSourceValue$inboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => CreateEmploymentApiModelSchemasType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasTypeSourceValue$Outbound =
+  | CreateEmploymentApiModelSchemasType4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasTypeSourceValue$outboundSchema:
+  z.ZodType<
+    CreateEmploymentApiModelSchemasTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    CreateEmploymentApiModelSchemasTypeSourceValue
+  > = z.union([
+    z.lazy(() => CreateEmploymentApiModelSchemasType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasTypeSourceValue$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasTypeSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasTypeSourceValue$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasTypeSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasTypeSourceValue$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasTypeSourceValue$Outbound` instead. */
+  export type Outbound =
+    CreateEmploymentApiModelSchemasTypeSourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSchemasTypeSourceValueToJSON(
+  createEmploymentApiModelSchemasTypeSourceValue:
+    CreateEmploymentApiModelSchemasTypeSourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasTypeSourceValue$outboundSchema.parse(
+      createEmploymentApiModelSchemasTypeSourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasTypeSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasTypeValue$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasTypeValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CreateEmploymentApiModelSchemasTypeValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasTypeValue$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasTypeValueOpen,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelSchemasTypeValueOpen
+> = z.union([
+  z.nativeEnum(CreateEmploymentApiModelSchemasTypeValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasTypeValue$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasTypeValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasTypeValue$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasTypeValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasTypeValue$outboundSchema;
+}
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasType$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CreateEmploymentApiModelSchemasType4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateEmploymentApiModelSchemasTypeValue$inboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type CreateEmploymentApiModelSchemasType$Outbound = {
+  source_value?:
+    | CreateEmploymentApiModelSchemasType4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateEmploymentApiModelSchemasType$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelSchemasType$Outbound,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelSchemasType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => CreateEmploymentApiModelSchemasType4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CreateEmploymentApiModelSchemasTypeValue$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelSchemasType$ {
+  /** @deprecated use `CreateEmploymentApiModelSchemasType$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateEmploymentApiModelSchemasType$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateEmploymentApiModelSchemasType$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelSchemasType$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelSchemasType$Outbound;
+}
+
+export function createEmploymentApiModelSchemasTypeToJSON(
+  createEmploymentApiModelSchemasType: CreateEmploymentApiModelSchemasType,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasType$outboundSchema.parse(
+      createEmploymentApiModelSchemasType,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelSchemasType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelSchemasType' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateEmploymentApiModelType$inboundSchema: z.ZodType<
+  CreateEmploymentApiModelType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  type: z.nullable(
+    z.lazy(() => CreateEmploymentApiModelSchemasType$inboundSchema),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
+});
+
+/** @internal */
+export type CreateEmploymentApiModelType$Outbound = {
+  id?: string | null | undefined;
+  label?: string | null | undefined;
+  remote_id?: string | null | undefined;
+  type?: CreateEmploymentApiModelSchemasType$Outbound | null | undefined;
+};
+
+/** @internal */
+export const CreateEmploymentApiModelType$outboundSchema: z.ZodType<
+  CreateEmploymentApiModelType$Outbound,
+  z.ZodTypeDef,
+  CreateEmploymentApiModelType
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  type: z.nullable(
+    z.lazy(() => CreateEmploymentApiModelSchemasType$outboundSchema),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateEmploymentApiModelType$ {
+  /** @deprecated use `CreateEmploymentApiModelType$inboundSchema` instead. */
+  export const inboundSchema = CreateEmploymentApiModelType$inboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelType$outboundSchema` instead. */
+  export const outboundSchema = CreateEmploymentApiModelType$outboundSchema;
+  /** @deprecated use `CreateEmploymentApiModelType$Outbound` instead. */
+  export type Outbound = CreateEmploymentApiModelType$Outbound;
+}
+
+export function createEmploymentApiModelTypeToJSON(
+  createEmploymentApiModelType: CreateEmploymentApiModelType,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelType$outboundSchema.parse(
+      createEmploymentApiModelType,
+    ),
+  );
+}
+
+export function createEmploymentApiModelTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEmploymentApiModelType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelType' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateEmploymentApiModelSchemasWorkTime4$inboundSchema: z.ZodType<
   CreateEmploymentApiModelSchemasWorkTime4,
   z.ZodTypeDef,
@@ -1786,6 +2608,8 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  contract_type: z.nullable(z.lazy(() => ContractType$inboundSchema))
+    .optional(),
   effective_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -1806,10 +2630,13 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   pay_period: z.nullable(z.lazy(() => PayPeriod$inboundSchema)).optional(),
   pay_rate: z.nullable(z.string()).optional(),
   payroll_code: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => CreateEmploymentApiModelType$inboundSchema))
+    .optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   work_time: z.nullable(z.lazy(() => WorkTime$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "contract_type": "contractType",
     "effective_date": "effectiveDate",
     "employment_contract_type": "employmentContractType",
     "employment_type": "employmentType",
@@ -1828,6 +2655,7 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateEmploymentApiModel$Outbound = {
+  contract_type?: ContractType$Outbound | null | undefined;
   effective_date?: string | null | undefined;
   employment_contract_type?: EmploymentContractType$Outbound | null | undefined;
   employment_type?: EmploymentType$Outbound | null | undefined;
@@ -1840,6 +2668,7 @@ export type CreateEmploymentApiModel$Outbound = {
   pay_period?: PayPeriod$Outbound | null | undefined;
   pay_rate?: string | null | undefined;
   payroll_code?: string | null | undefined;
+  type?: CreateEmploymentApiModelType$Outbound | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   work_time?: WorkTime$Outbound | null | undefined;
 };
@@ -1850,6 +2679,8 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEmploymentApiModel
 > = z.object({
+  contractType: z.nullable(z.lazy(() => ContractType$outboundSchema))
+    .optional(),
   effectiveDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   employmentContractType: z.nullable(
@@ -1867,10 +2698,13 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
   payPeriod: z.nullable(z.lazy(() => PayPeriod$outboundSchema)).optional(),
   payRate: z.nullable(z.string()).optional(),
   payrollCode: z.nullable(z.string()).optional(),
+  type: z.nullable(z.lazy(() => CreateEmploymentApiModelType$outboundSchema))
+    .optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   workTime: z.nullable(z.lazy(() => WorkTime$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
+    contractType: "contract_type",
     effectiveDate: "effective_date",
     employmentContractType: "employment_contract_type",
     employmentType: "employment_type",

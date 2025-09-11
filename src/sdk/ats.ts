@@ -22,6 +22,7 @@ import { atsGetApplicationNote } from "../funcs/atsGetApplicationNote.js";
 import { atsGetApplicationOffer } from "../funcs/atsGetApplicationOffer.js";
 import { atsGetApplicationScheduledInterview } from "../funcs/atsGetApplicationScheduledInterview.js";
 import { atsGetApplicationScorecard } from "../funcs/atsGetApplicationScorecard.js";
+import { atsGetApplicationStage } from "../funcs/atsGetApplicationStage.js";
 import { atsGetAssessmentsPackage } from "../funcs/atsGetAssessmentsPackage.js";
 import { atsGetBackgroundCheckPackage } from "../funcs/atsGetBackgroundCheckPackage.js";
 import { atsGetCandidate } from "../funcs/atsGetCandidate.js";
@@ -48,6 +49,7 @@ import { atsListApplications } from "../funcs/atsListApplications.js";
 import { atsListApplicationScorecards } from "../funcs/atsListApplicationScorecards.js";
 import { atsListApplicationsOffers } from "../funcs/atsListApplicationsOffers.js";
 import { atsListApplicationsScheduledInterviews } from "../funcs/atsListApplicationsScheduledInterviews.js";
+import { atsListApplicationStages } from "../funcs/atsListApplicationStages.js";
 import { atsListAssessmentsPackages } from "../funcs/atsListAssessmentsPackages.js";
 import { atsListBackgroundCheckPackages } from "../funcs/atsListBackgroundCheckPackages.js";
 import { atsListCandidateCustomFieldDefinitions } from "../funcs/atsListCandidateCustomFieldDefinitions.js";
@@ -326,6 +328,20 @@ export class Ats extends ClientSDK {
   }
 
   /**
+   * Get Application Stage
+   */
+  async getApplicationStage(
+    request: operations.AtsGetApplicationStageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationStageResponse> {
+    return unwrapAsync(atsGetApplicationStage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Assessments Package
    */
   async getAssessmentsPackage(
@@ -425,6 +441,8 @@ export class Ats extends ClientSDK {
 
   /**
    * Get Interview Stage
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getInterviewStage(
     request: operations.AtsGetInterviewStageRequest,
@@ -675,6 +693,25 @@ export class Ats extends ClientSDK {
   }
 
   /**
+   * List Application Stages
+   */
+  async listApplicationStages(
+    request: operations.AtsListApplicationStagesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<
+      operations.AtsListApplicationStagesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(atsListApplicationStages(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Applications
    */
   async listApplications(
@@ -835,6 +872,8 @@ export class Ats extends ClientSDK {
 
   /**
    * List Interview Stages
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listInterviewStages(
     request: operations.AtsListInterviewStagesRequest,

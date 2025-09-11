@@ -295,9 +295,9 @@ export type TimeOff = {
    */
   comment?: string | null | undefined;
   /**
-   * The created date of the time off request
+   * Timestamp when the time off request was created
    */
-  createdDate?: Date | null | undefined;
+  createdAt?: Date | null | undefined;
   /**
    * The duration of the time off request
    */
@@ -362,9 +362,9 @@ export type TimeOff = {
    */
   type?: TimeOffType | null | undefined;
   /**
-   * The updated date of the time off request
+   * Timestamp when the time off request was last updated
    */
-  updatedDate?: Date | null | undefined;
+  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -1588,7 +1588,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
   z.object({
     approver_id: z.nullable(z.string()).optional(),
     comment: z.nullable(z.string()).optional(),
-    created_date: z.nullable(
+    created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
     duration: z.nullable(z.string()).optional(),
@@ -1610,13 +1610,13 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
     status: z.nullable(z.lazy(() => TimeOffStatus$inboundSchema)).optional(),
     time_off_policy_id: z.nullable(z.string()).optional(),
     type: z.nullable(z.lazy(() => TimeOffType$inboundSchema)).optional(),
-    updated_date: z.nullable(
+    updated_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "approver_id": "approverId",
-      "created_date": "createdDate",
+      "created_at": "createdAt",
       "employee_id": "employeeId",
       "end_date": "endDate",
       "end_half_day": "endHalfDay",
@@ -1627,7 +1627,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
       "start_date": "startDate",
       "start_half_day": "startHalfDay",
       "time_off_policy_id": "timeOffPolicyId",
-      "updated_date": "updatedDate",
+      "updated_at": "updatedAt",
     });
   });
 
@@ -1635,7 +1635,7 @@ export const TimeOff$inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> =
 export type TimeOff$Outbound = {
   approver_id?: string | null | undefined;
   comment?: string | null | undefined;
-  created_date?: string | null | undefined;
+  created_at?: string | null | undefined;
   duration?: string | null | undefined;
   employee_id?: string | null | undefined;
   end_date?: string | null | undefined;
@@ -1652,7 +1652,7 @@ export type TimeOff$Outbound = {
   status?: TimeOffStatus$Outbound | null | undefined;
   time_off_policy_id?: string | null | undefined;
   type?: TimeOffType$Outbound | null | undefined;
-  updated_date?: string | null | undefined;
+  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -1663,7 +1663,7 @@ export const TimeOff$outboundSchema: z.ZodType<
 > = z.object({
   approverId: z.nullable(z.string()).optional(),
   comment: z.nullable(z.string()).optional(),
-  createdDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   duration: z.nullable(z.string()).optional(),
   employeeId: z.nullable(z.string()).optional(),
   endDate: z.nullable(z.string()).optional(),
@@ -1683,11 +1683,11 @@ export const TimeOff$outboundSchema: z.ZodType<
   status: z.nullable(z.lazy(() => TimeOffStatus$outboundSchema)).optional(),
   timeOffPolicyId: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => TimeOffType$outboundSchema)).optional(),
-  updatedDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     approverId: "approver_id",
-    createdDate: "created_date",
+    createdAt: "created_at",
     employeeId: "employee_id",
     endDate: "end_date",
     endHalfDay: "end_half_day",
@@ -1698,7 +1698,7 @@ export const TimeOff$outboundSchema: z.ZodType<
     startDate: "start_date",
     startHalfDay: "start_half_day",
     timeOffPolicyId: "time_off_policy_id",
-    updatedDate: "updated_date",
+    updatedAt: "updated_at",
   });
 });
 

@@ -41,7 +41,7 @@ export type ProxyRequestBody = {
    */
   method?: MethodOpen | null | undefined;
   /**
-   * The path of the request including any query paramters
+   * The path of the request including any query parameters
    */
   path?: string | null | undefined;
   /**

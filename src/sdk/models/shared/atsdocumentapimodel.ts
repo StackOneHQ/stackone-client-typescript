@@ -1384,10 +1384,6 @@ export type AtsDocumentApiModel = {
    */
   name?: string | null | undefined;
   /**
-   * The path where the file is stored
-   */
-  path?: string | null | undefined;
-  /**
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
@@ -2115,7 +2111,6 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
   file_format: z.nullable(z.lazy(() => FileFormat$inboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_url: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => AtsDocumentApiModelType$inboundSchema))
@@ -2145,7 +2140,6 @@ export type AtsDocumentApiModel$Outbound = {
   file_format?: FileFormat$Outbound | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
-  path?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_url?: string | null | undefined;
   type?: AtsDocumentApiModelType$Outbound | null | undefined;
@@ -2167,7 +2161,6 @@ export const AtsDocumentApiModel$outboundSchema: z.ZodType<
   fileFormat: z.nullable(z.lazy(() => FileFormat$outboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteUrl: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => AtsDocumentApiModelType$outboundSchema))

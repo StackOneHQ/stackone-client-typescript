@@ -22,7 +22,7 @@ export type AtsListApplicationsQueryParamFilter = {
    */
   jobId?: string | null | undefined;
   /**
-   * Filter to select applications by stage and sub-stage
+   * Filter to select applications by application_stage id
    */
   stage?: string | null | undefined;
   /**

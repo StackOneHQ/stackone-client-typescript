@@ -14,9 +14,9 @@ import * as shared from "../shared/index.js";
  */
 export type HrisListTimeOffRequestsQueryParamFilter = {
   /**
-   * List of time off type ids to filter by.
+   * List of time off policy ids to filter by.
    */
-  typeIds?: Array<string> | null | undefined;
+  policyIds?: Array<string> | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -96,20 +96,20 @@ export const HrisListTimeOffRequestsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type_ids: z.nullable(z.array(z.string())).optional(),
+  policy_ids: z.nullable(z.array(z.string())).optional(),
   updated_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "type_ids": "typeIds",
+    "policy_ids": "policyIds",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type HrisListTimeOffRequestsQueryParamFilter$Outbound = {
-  type_ids?: Array<string> | null | undefined;
+  policy_ids?: Array<string> | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -119,11 +119,11 @@ export const HrisListTimeOffRequestsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListTimeOffRequestsQueryParamFilter
 > = z.object({
-  typeIds: z.nullable(z.array(z.string())).optional(),
+  policyIds: z.nullable(z.array(z.string())).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    typeIds: "type_ids",
+    policyIds: "policy_ids",
     updatedAfter: "updated_after",
   });
 });

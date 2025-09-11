@@ -176,11 +176,11 @@ export type JobPostingCompensationType = {
 
 export type JobPostingCompensation = {
   currency?: string | null | undefined;
-  maxValue?: string | null | undefined;
-  minValue?: string | null | undefined;
-  name?: string | null | undefined;
+  maxValueRange?: string | null | undefined;
+  minValueRange?: string | null | undefined;
   payFrequency?: JobPostingCompensationPayFrequency | null | undefined;
   payPeriod?: JobPostingCompensationPayPeriod | null | undefined;
+  title?: string | null | undefined;
   type?: JobPostingCompensationType | null | undefined;
   value?: string | null | undefined;
 };
@@ -937,22 +937,22 @@ export const JobPostingCompensation$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   currency: z.nullable(z.string()).optional(),
-  max_value: z.nullable(z.string()).optional(),
-  min_value: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
+  max_value_range: z.nullable(z.string()).optional(),
+  min_value_range: z.nullable(z.string()).optional(),
   pay_frequency: z.nullable(
     z.lazy(() => JobPostingCompensationPayFrequency$inboundSchema),
   ).optional(),
   pay_period: z.nullable(
     z.lazy(() => JobPostingCompensationPayPeriod$inboundSchema),
   ).optional(),
+  title: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => JobPostingCompensationType$inboundSchema))
     .optional(),
   value: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "max_value": "maxValue",
-    "min_value": "minValue",
+    "max_value_range": "maxValueRange",
+    "min_value_range": "minValueRange",
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
   });
@@ -961,14 +961,14 @@ export const JobPostingCompensation$inboundSchema: z.ZodType<
 /** @internal */
 export type JobPostingCompensation$Outbound = {
   currency?: string | null | undefined;
-  max_value?: string | null | undefined;
-  min_value?: string | null | undefined;
-  name?: string | null | undefined;
+  max_value_range?: string | null | undefined;
+  min_value_range?: string | null | undefined;
   pay_frequency?:
     | JobPostingCompensationPayFrequency$Outbound
     | null
     | undefined;
   pay_period?: JobPostingCompensationPayPeriod$Outbound | null | undefined;
+  title?: string | null | undefined;
   type?: JobPostingCompensationType$Outbound | null | undefined;
   value?: string | null | undefined;
 };
@@ -980,22 +980,22 @@ export const JobPostingCompensation$outboundSchema: z.ZodType<
   JobPostingCompensation
 > = z.object({
   currency: z.nullable(z.string()).optional(),
-  maxValue: z.nullable(z.string()).optional(),
-  minValue: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
+  maxValueRange: z.nullable(z.string()).optional(),
+  minValueRange: z.nullable(z.string()).optional(),
   payFrequency: z.nullable(
     z.lazy(() => JobPostingCompensationPayFrequency$outboundSchema),
   ).optional(),
   payPeriod: z.nullable(
     z.lazy(() => JobPostingCompensationPayPeriod$outboundSchema),
   ).optional(),
+  title: z.nullable(z.string()).optional(),
   type: z.nullable(z.lazy(() => JobPostingCompensationType$outboundSchema))
     .optional(),
   value: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    maxValue: "max_value",
-    minValue: "min_value",
+    maxValueRange: "max_value_range",
+    minValueRange: "min_value_range",
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
   });
