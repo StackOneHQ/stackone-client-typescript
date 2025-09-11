@@ -126,6 +126,10 @@ run();
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
 
+### [actions](docs/sdks/actions/README.md)
+
+* [listActionsMeta](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
+
 ### [ats](docs/sdks/ats/README.md)
 
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
@@ -145,6 +149,7 @@ run();
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
+* [getApplicationStage](docs/sdks/ats/README.md#getapplicationstage) - Get Application Stage
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 * [getBackgroundCheckPackage](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
@@ -152,7 +157,7 @@ run();
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
 * [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
-* [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
+* [~~getInterviewStage~~](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage :warning: **Deprecated**
 * [getJob](docs/sdks/ats/README.md#getjob) - Get Job
 * [getJobApplicationStage](docs/sdks/ats/README.md#getjobapplicationstage) - Get Job Application Stage
 * [getJobCustomFieldDefinition](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
@@ -168,6 +173,7 @@ run();
 * [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 * [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
+* [listApplicationStages](docs/sdks/ats/README.md#listapplicationstages) - List Application Stages
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 * [listApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
@@ -177,7 +183,7 @@ run();
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
 * [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
-* [listInterviewStages](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
+* [~~listInterviewStages~~](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages :warning: **Deprecated**
 * [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
 * [listJobApplicationStages](docs/sdks/ats/README.md#listjobapplicationstages) - List Job Application Stages
 * [listJobCustomFieldDefinitions](docs/sdks/ats/README.md#listjobcustomfielddefinitions) - List Job Custom Field Definitions
@@ -379,6 +385,12 @@ run();
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 * [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 
+### [mcp](docs/sdks/mcp/README.md)
+
+* [mcpDelete](docs/sdks/mcp/README.md#mcpdelete) - Delete MCP session
+* [mcpGet](docs/sdks/mcp/README.md#mcpget) - Open MCP SSE stream
+* [mcpPost](docs/sdks/mcp/README.md#mcppost) - Send MCP JSON-RPC message
+
 ### [messaging](docs/sdks/messaging/README.md)
 
 * [createConversation](docs/sdks/messaging/README.md#createconversation) - Create Conversation
@@ -460,13 +472,13 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.accounting.listCompanies({
-    fields:
-      "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day",
+  const result = await stackOne.actions.listActionsMeta({
     filter: {
-      updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
+      accountIds: "account1,account2",
+      actionKey: "action1",
+      connectors: "connector1,connector2",
     },
-    xAccountId: "<id>",
+    groupBy: "[\"connector\"]",
   });
 
   for await (const page of result) {
@@ -660,6 +672,27 @@ async function run() {
 run();
 
 ```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne();
+
+async function run() {
+  const result = await stackOne.mcp.mcpDelete({}, {
+    mcpSessionId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
 <!-- End Authentication [security] -->
 
 <!-- Start Requirements [requirements] -->
@@ -771,6 +804,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
+- [`actionsListActionsMeta`](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
 - [`atsCreateApplicationNote`](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 - [`atsCreateBackgroundCheckPackage`](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
@@ -788,6 +822,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetApplicationOffer`](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 - [`atsGetApplicationScheduledInterview`](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
 - [`atsGetApplicationScorecard`](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
+- [`atsGetApplicationStage`](docs/sdks/ats/README.md#getapplicationstage) - Get Application Stage
 - [`atsGetAssessmentsPackage`](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 - [`atsGetBackgroundCheckPackage`](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
 - [`atsGetCandidate`](docs/sdks/ats/README.md#getcandidate) - Get Candidate
@@ -795,7 +830,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetCandidateNote`](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
 - [`atsGetDepartment`](docs/sdks/ats/README.md#getdepartment) - Get Department
 - [`atsGetInterview`](docs/sdks/ats/README.md#getinterview) - Get Interview
-- [`atsGetInterviewStage`](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
 - [`atsGetJob`](docs/sdks/ats/README.md#getjob) - Get Job
 - [`atsGetJobApplicationStage`](docs/sdks/ats/README.md#getjobapplicationstage) - Get Job Application Stage
 - [`atsGetJobCustomFieldDefinition`](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
@@ -814,6 +848,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsListApplicationScorecards`](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 - [`atsListApplicationsOffers`](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 - [`atsListApplicationsScheduledInterviews`](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
+- [`atsListApplicationStages`](docs/sdks/ats/README.md#listapplicationstages) - List Application Stages
 - [`atsListAssessmentsPackages`](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
 - [`atsListBackgroundCheckPackages`](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
 - [`atsListCandidateCustomFieldDefinitions`](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List Candidate Custom Field Definitions
@@ -821,7 +856,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsListCandidates`](docs/sdks/ats/README.md#listcandidates) - List Candidates
 - [`atsListDepartments`](docs/sdks/ats/README.md#listdepartments) - List Departments
 - [`atsListInterviews`](docs/sdks/ats/README.md#listinterviews) - List Interviews
-- [`atsListInterviewStages`](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
 - [`atsListJobApplicationStages`](docs/sdks/ats/README.md#listjobapplicationstages) - List Job Application Stages
 - [`atsListJobCustomFieldDefinitions`](docs/sdks/ats/README.md#listjobcustomfielddefinitions) - List Job Custom Field Definitions
 - [`atsListJobPostings`](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
@@ -991,6 +1025,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdateInAppTemplate`](docs/sdks/marketing/README.md#updateinapptemplate) - Update In-App Template
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
+- [`mcpMCPDelete`](docs/sdks/mcp/README.md#mcpdelete) - Delete MCP session
+- [`mcpMCPGet`](docs/sdks/mcp/README.md#mcpget) - Open MCP SSE stream
+- [`mcpMCPPost`](docs/sdks/mcp/README.md#mcppost) - Send MCP JSON-RPC message
 - [`messagingCreateConversation`](docs/sdks/messaging/README.md#createconversation) - Create Conversation
 - [`messagingDownloadMessagingAttachment`](docs/sdks/messaging/README.md#downloadmessagingattachment) - Download Attachment
 - [`messagingGetAttachment`](docs/sdks/messaging/README.md#getattachment) - Get Attachment
@@ -1030,6 +1067,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 - [`ticketingListUsers`](docs/sdks/ticketing/README.md#listusers) - List Users
 - [`ticketingUpdateTicket`](docs/sdks/ticketing/README.md#updateticket) - Update Ticket
+- ~~[`atsGetInterviewStage`](docs/sdks/ats/README.md#getinterviewstage)~~ - Get Interview Stage :warning: **Deprecated**
+- ~~[`atsListInterviewStages`](docs/sdks/ats/README.md#listinterviewstages)~~ - List Interview Stages :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**
 - ~~[`marketingCreateOmniChannelTemplate`](docs/sdks/marketing/README.md#createomnichanneltemplate)~~ - Create Omni-Channel Template :warning: **Deprecated**

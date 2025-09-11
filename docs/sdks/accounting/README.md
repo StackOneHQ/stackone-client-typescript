@@ -556,7 +556,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.getCompanyTaxRate({
-    fields: "id,remote_id,company_id,remote_company_id,name,code,rate,active",
+    fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -587,7 +587,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingGetCompanyTaxRate(stackOne, {
-    fields: "id,remote_id,company_id,remote_company_id,name,code,rate,active",
+    fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -958,7 +958,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.listCompanyTaxRates({
-    fields: "id,remote_id,company_id,remote_company_id,name,code,rate,active",
+    fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -993,7 +993,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingListCompanyTaxRates(stackOne, {
-    fields: "id,remote_id,company_id,remote_company_id,name,code,rate,active",
+    fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },

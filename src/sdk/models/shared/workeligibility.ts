@@ -1328,10 +1328,6 @@ export type WorkEligibilityDocument = {
    */
   name?: string | null | undefined;
   /**
-   * The path where the file is stored
-   */
-  path?: string | null | undefined;
-  /**
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
@@ -2180,7 +2176,6 @@ export const WorkEligibilityDocument$inboundSchema: z.ZodType<
     .optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_url: z.nullable(z.string()).optional(),
   updated_at: z.nullable(
@@ -2206,7 +2201,6 @@ export type WorkEligibilityDocument$Outbound = {
   file_format?: WorkEligibilityFileFormat$Outbound | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
-  path?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_url?: string | null | undefined;
   updated_at?: string | null | undefined;
@@ -2227,7 +2221,6 @@ export const WorkEligibilityDocument$outboundSchema: z.ZodType<
     .optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteUrl: z.nullable(z.string()).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),

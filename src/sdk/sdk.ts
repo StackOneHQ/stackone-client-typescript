@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Accounting } from "./accounting.js";
 import { Accounts } from "./accounts.js";
+import { Actions } from "./actions.js";
 import { Ats } from "./ats.js";
 import { Connectors } from "./connectors.js";
 import { ConnectSessions } from "./connectsessions.js";
@@ -14,6 +15,7 @@ import { Hris } from "./hris.js";
 import { Iam } from "./iam.js";
 import { Lms } from "./lms.js";
 import { Marketing } from "./marketing.js";
+import { Mcp } from "./mcp.js";
 import { Messaging } from "./messaging.js";
 import { Proxy } from "./proxy.js";
 import { RequestLogs } from "./requestlogs.js";
@@ -26,6 +28,11 @@ export class StackOne extends ClientSDK {
     return (this._accounts ??= new Accounts(this._options));
   }
 
+  private _actions?: Actions;
+  get actions(): Actions {
+    return (this._actions ??= new Actions(this._options));
+  }
+
   private _connectSessions?: ConnectSessions;
   get connectSessions(): ConnectSessions {
     return (this._connectSessions ??= new ConnectSessions(this._options));
@@ -34,6 +41,11 @@ export class StackOne extends ClientSDK {
   private _connectors?: Connectors;
   get connectors(): Connectors {
     return (this._connectors ??= new Connectors(this._options));
+  }
+
+  private _mcp?: Mcp;
+  get mcp(): Mcp {
+    return (this._mcp ??= new Mcp(this._options));
   }
 
   private _requestLogs?: RequestLogs;

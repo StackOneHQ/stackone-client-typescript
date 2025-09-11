@@ -21,9 +21,8 @@ let value: JobPostingResult = {
     compensation: [
       {
         currency: "USD",
-        maxValue: "55000",
-        minValue: "45000",
-        name: "Base Salary",
+        maxValueRange: "55000",
+        minValueRange: "45000",
         payFrequency: {
           sourceValue: "Hourly",
           value: JobPostingCompensationValue.Hourly,
@@ -32,6 +31,7 @@ let value: JobPostingResult = {
           sourceValue: "Hour",
           value: JobPostingCompensationSchemasValue.Hour,
         },
+        title: "Base Salary",
         type: {
           sourceValue: "Salary",
           value: JobPostingCompensationSchemasTypeValue.Salary,
@@ -40,11 +40,11 @@ let value: JobPostingResult = {
       },
       {
         currency: "USD",
-        name: "Bonus",
         payFrequency: {
           sourceValue: "Hourly",
           value: JobPostingCompensationValue.Hourly,
         },
+        title: "Bonus",
         type: {
           sourceValue: "Salary",
           value: JobPostingCompensationSchemasTypeValue.Salary,

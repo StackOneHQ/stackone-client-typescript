@@ -31,7 +31,7 @@ export enum QueryParamOrderDirection {
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type Filter = {
+export type QueryParamFilter = {
   /**
    * A comma-separated list of account IDs to filter the results by.
    */
@@ -136,7 +136,7 @@ export type StackoneListLogsRequest = {
   /**
    * Filter parameters that allow greater customisation of the list response
    */
-  filter?: Filter | null | undefined;
+  filter?: QueryParamFilter | null | undefined;
   /**
    * The include parameter allows you to include additional data in the response.
    */
@@ -222,51 +222,54 @@ export namespace QueryParamOrderDirection$ {
 }
 
 /** @internal */
-export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
-  .object({
-    account_ids: z.nullable(z.string()).optional(),
-    actions: z.nullable(z.string()).optional(),
-    child_resources: z.nullable(z.string()).optional(),
-    end_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    http_methods: z.nullable(z.string()).optional(),
-    order_by: z.nullable(QueryParamOrderBy$inboundSchema).optional(),
-    order_direction: z.nullable(QueryParamOrderDirection$inboundSchema)
-      .optional(),
-    providers: z.nullable(z.string()).optional(),
-    request_ids: z.nullable(z.string()).optional(),
-    resources: z.nullable(z.string()).optional(),
-    services: z.nullable(z.string()).optional(),
-    source_ids: z.nullable(z.string()).optional(),
-    source_types: z.nullable(z.string()).optional(),
-    source_values: z.nullable(z.string()).optional(),
-    start_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    status_codes: z.nullable(z.string()).optional(),
-    sub_resources: z.nullable(z.string()).optional(),
-    success: z.nullable(z.boolean()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "account_ids": "accountIds",
-      "child_resources": "childResources",
-      "end_date": "endDate",
-      "http_methods": "httpMethods",
-      "order_by": "orderBy",
-      "order_direction": "orderDirection",
-      "request_ids": "requestIds",
-      "source_ids": "sourceIds",
-      "source_types": "sourceTypes",
-      "source_values": "sourceValues",
-      "start_date": "startDate",
-      "status_codes": "statusCodes",
-      "sub_resources": "subResources",
-    });
+export const QueryParamFilter$inboundSchema: z.ZodType<
+  QueryParamFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  account_ids: z.nullable(z.string()).optional(),
+  actions: z.nullable(z.string()).optional(),
+  child_resources: z.nullable(z.string()).optional(),
+  end_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  http_methods: z.nullable(z.string()).optional(),
+  order_by: z.nullable(QueryParamOrderBy$inboundSchema).optional(),
+  order_direction: z.nullable(QueryParamOrderDirection$inboundSchema)
+    .optional(),
+  providers: z.nullable(z.string()).optional(),
+  request_ids: z.nullable(z.string()).optional(),
+  resources: z.nullable(z.string()).optional(),
+  services: z.nullable(z.string()).optional(),
+  source_ids: z.nullable(z.string()).optional(),
+  source_types: z.nullable(z.string()).optional(),
+  source_values: z.nullable(z.string()).optional(),
+  start_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  status_codes: z.nullable(z.string()).optional(),
+  sub_resources: z.nullable(z.string()).optional(),
+  success: z.nullable(z.boolean()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "account_ids": "accountIds",
+    "child_resources": "childResources",
+    "end_date": "endDate",
+    "http_methods": "httpMethods",
+    "order_by": "orderBy",
+    "order_direction": "orderDirection",
+    "request_ids": "requestIds",
+    "source_ids": "sourceIds",
+    "source_types": "sourceTypes",
+    "source_values": "sourceValues",
+    "start_date": "startDate",
+    "status_codes": "statusCodes",
+    "sub_resources": "subResources",
   });
+});
 
 /** @internal */
-export type Filter$Outbound = {
+export type QueryParamFilter$Outbound = {
   account_ids?: string | null | undefined;
   actions?: string | null | undefined;
   child_resources?: string | null | undefined;
@@ -288,10 +291,10 @@ export type Filter$Outbound = {
 };
 
 /** @internal */
-export const Filter$outboundSchema: z.ZodType<
-  Filter$Outbound,
+export const QueryParamFilter$outboundSchema: z.ZodType<
+  QueryParamFilter$Outbound,
   z.ZodTypeDef,
-  Filter
+  QueryParamFilter
 > = z.object({
   accountIds: z.nullable(z.string()).optional(),
   actions: z.nullable(z.string()).optional(),
@@ -334,26 +337,30 @@ export const Filter$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Filter$ {
-  /** @deprecated use `Filter$inboundSchema` instead. */
-  export const inboundSchema = Filter$inboundSchema;
-  /** @deprecated use `Filter$outboundSchema` instead. */
-  export const outboundSchema = Filter$outboundSchema;
-  /** @deprecated use `Filter$Outbound` instead. */
-  export type Outbound = Filter$Outbound;
+export namespace QueryParamFilter$ {
+  /** @deprecated use `QueryParamFilter$inboundSchema` instead. */
+  export const inboundSchema = QueryParamFilter$inboundSchema;
+  /** @deprecated use `QueryParamFilter$outboundSchema` instead. */
+  export const outboundSchema = QueryParamFilter$outboundSchema;
+  /** @deprecated use `QueryParamFilter$Outbound` instead. */
+  export type Outbound = QueryParamFilter$Outbound;
 }
 
-export function filterToJSON(filter: Filter): string {
-  return JSON.stringify(Filter$outboundSchema.parse(filter));
+export function queryParamFilterToJSON(
+  queryParamFilter: QueryParamFilter,
+): string {
+  return JSON.stringify(
+    QueryParamFilter$outboundSchema.parse(queryParamFilter),
+  );
 }
 
-export function filterFromJSON(
+export function queryParamFilterFromJSON(
   jsonString: string,
-): SafeParseResult<Filter, SDKValidationError> {
+): SafeParseResult<QueryParamFilter, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Filter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Filter' from JSON`,
+    (x) => QueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryParamFilter' from JSON`,
   );
 }
 
@@ -424,7 +431,7 @@ export const StackoneListLogsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  filter: z.nullable(z.lazy(() => Filter$inboundSchema)).optional(),
+  filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
   include: z.nullable(QueryParamInclude$inboundSchema).optional(),
   next: z.nullable(z.string()).optional(),
   order_by: z.nullable(OrderBy$inboundSchema).optional(),
@@ -440,7 +447,7 @@ export const StackoneListLogsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type StackoneListLogsRequest$Outbound = {
-  filter?: Filter$Outbound | null | undefined;
+  filter?: QueryParamFilter$Outbound | null | undefined;
   include?: string | null | undefined;
   next?: string | null | undefined;
   order_by?: string | null | undefined;
@@ -454,7 +461,7 @@ export const StackoneListLogsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneListLogsRequest
 > = z.object({
-  filter: z.nullable(z.lazy(() => Filter$outboundSchema)).optional(),
+  filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
   include: z.nullable(QueryParamInclude$outboundSchema).optional(),
   next: z.nullable(z.string()).optional(),
   orderBy: z.nullable(OrderBy$outboundSchema).optional(),

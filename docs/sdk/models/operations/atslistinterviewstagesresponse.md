@@ -8,7 +8,7 @@ import { AtsListInterviewStagesResponse } from "@stackone/stackone-client-ts/sdk
 let value: AtsListInterviewStagesResponse = {
   contentType: "<value>",
   headers: {},
-  statusCode: 211834,
+  statusCode: 75270,
 };
 ```
 

@@ -64,7 +64,6 @@ let value: Application = {
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "My Document",
-      path: "/path/to/file",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteUrl: "https://example.com/file.pdf",
       unifiedCustomFields: {
