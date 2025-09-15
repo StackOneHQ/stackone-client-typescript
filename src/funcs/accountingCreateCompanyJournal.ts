@@ -233,7 +233,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(
-      200,
+      201,
       operations.AccountingCreateCompanyJournalResponse$inboundSchema,
       { key: "CreateResult" },
     ),
