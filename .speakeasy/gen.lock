@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: cc771f8a80ffcfe19392ad312beb75b7
+  docChecksum: 04ea86fd791e3c3dca8bd4c0fb874731
   docVersion: 1.0.0
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 4.27.0
-  configChecksum: a440d1fb3ed14181eaa08b7fd6c037a3
+  releaseVersion: 4.27.1
+  configChecksum: fc455f47749eb485c5e001d8110709bd
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -687,6 +687,7 @@ generatedFiles:
   - docs/sdk/models/operations/stackonelistconnectorsmetaresponse.md
   - docs/sdk/models/operations/stackonelistlinkedaccountsrequest.md
   - docs/sdk/models/operations/stackonelistlinkedaccountsresponse.md
+  - docs/sdk/models/operations/stackonelistlogsqueryparaminclude.md
   - docs/sdk/models/operations/stackonelistlogsrequest.md
   - docs/sdk/models/operations/stackonelistlogsresponse.md
   - docs/sdk/models/operations/stackonelistplatformlogsqueryparamfilter.md
@@ -712,6 +713,7 @@ generatedFiles:
   - docs/sdk/models/operations/stackonemcppostsecurity.md
   - docs/sdk/models/operations/stackoneproxyrequestrequest.md
   - docs/sdk/models/operations/stackoneproxyrequestresponse.md
+  - docs/sdk/models/operations/stackonerpcactionresponse.md
   - docs/sdk/models/operations/stackoneupdateaccountrequest.md
   - docs/sdk/models/operations/stackoneupdateaccountresponse.md
   - docs/sdk/models/operations/status.md
@@ -821,7 +823,13 @@ generatedFiles:
   - docs/sdk/models/shared/accountresult.md
   - docs/sdk/models/shared/accountspaginated.md
   - docs/sdk/models/shared/accounttype.md
-  - docs/sdk/models/shared/actionsmetapaginatedapimodel.md
+  - docs/sdk/models/shared/actionmetaitem.md
+  - docs/sdk/models/shared/actionsmeta.md
+  - docs/sdk/models/shared/actionsmetapaginated.md
+  - docs/sdk/models/shared/actionsrpcrequestdto.md
+  - docs/sdk/models/shared/actionsrpcresponse.md
+  - docs/sdk/models/shared/actionsrpcresponse2.md
+  - docs/sdk/models/shared/actionsrpcresponsedata.md
   - docs/sdk/models/shared/active.md
   - docs/sdk/models/shared/actor.md
   - docs/sdk/models/shared/additionaldata.md
@@ -988,6 +996,7 @@ generatedFiles:
   - docs/sdk/models/shared/attachmentcontenttype.md
   - docs/sdk/models/shared/attachmentsourcevalue.md
   - docs/sdk/models/shared/attachmentvalue.md
+  - docs/sdk/models/shared/authenticationmetaitem.md
   - docs/sdk/models/shared/author.md
   - docs/sdk/models/shared/authormodel.md
   - docs/sdk/models/shared/avatar.md
@@ -1827,6 +1836,7 @@ generatedFiles:
   - docs/sdk/models/shared/inapptemplate.md
   - docs/sdk/models/shared/inapptemplateresult.md
   - docs/sdk/models/shared/inapptemplatespaginated.md
+  - docs/sdk/models/shared/input.md
   - docs/sdk/models/shared/internal.md
   - docs/sdk/models/shared/interview.md
   - docs/sdk/models/shared/interview4.md
@@ -2045,6 +2055,7 @@ generatedFiles:
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offerstatus.md
   - docs/sdk/models/shared/offervalue.md
+  - docs/sdk/models/shared/one.md
   - docs/sdk/models/shared/organization.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/package.md
@@ -2467,6 +2478,7 @@ generatedFiles:
   - src/funcs/accountsListLinkedAccounts.ts
   - src/funcs/accountsUpdateAccount.ts
   - src/funcs/actionsListActionsMeta.ts
+  - src/funcs/actionsRpcAction.ts
   - src/funcs/atsCreateApplication.ts
   - src/funcs/atsCreateApplicationNote.ts
   - src/funcs/atsCreateBackgroundCheckPackage.ts
@@ -3056,6 +3068,7 @@ generatedFiles:
   - src/sdk/models/operations/stackonemcpget.ts
   - src/sdk/models/operations/stackonemcppost.ts
   - src/sdk/models/operations/stackoneproxyrequest.ts
+  - src/sdk/models/operations/stackonerpcaction.ts
   - src/sdk/models/operations/stackoneupdateaccount.ts
   - src/sdk/models/operations/ticketingcreateticket.ts
   - src/sdk/models/operations/ticketingdownloadticketingattachment.ts
@@ -3094,7 +3107,11 @@ generatedFiles:
   - src/sdk/models/shared/accountingtaxratespaginated.ts
   - src/sdk/models/shared/accountresult.ts
   - src/sdk/models/shared/accountspaginated.ts
-  - src/sdk/models/shared/actionsmetapaginatedapimodel.ts
+  - src/sdk/models/shared/actionmetaitem.ts
+  - src/sdk/models/shared/actionsmeta.ts
+  - src/sdk/models/shared/actionsmetapaginated.ts
+  - src/sdk/models/shared/actionsrpcrequestdto.ts
+  - src/sdk/models/shared/actionsrpcresponse.ts
   - src/sdk/models/shared/additionaldata.ts
   - src/sdk/models/shared/answer.ts
   - src/sdk/models/shared/application.ts
@@ -3142,6 +3159,7 @@ generatedFiles:
   - src/sdk/models/shared/atsupdatejobrequestdto.ts
   - src/sdk/models/shared/atsupdatenotesrequestdto.ts
   - src/sdk/models/shared/attachment.ts
+  - src/sdk/models/shared/authenticationmetaitem.ts
   - src/sdk/models/shared/authormodel.ts
   - src/sdk/models/shared/backgroundcheckpackage.ts
   - src/sdk/models/shared/backgroundcheckpackagepaginated.ts
@@ -14188,6 +14206,7 @@ examples:
         query:
           group_by: "[\"connector\"]"
           filter: {"account_ids": "account1,account2", "action_key": "action1", "connectors": "connector1,connector2"}
+          include: ["operation_details"]
       responses:
         "200":
           application/json: {}
@@ -14430,6 +14449,35 @@ examples:
           application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+  stackone_rpc_action:
+    speakeasy-default-stackone-rpc-action:
+      requestBody:
+        application/json: {"action": "create_employee", "input": {"body": {"data": "example"}, "headers": {"Content-Type": "application/json"}, "query": {"param1": "value1", "param2": "value2"}}}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "401":
+          application/json: {"message": "Unauthorized", "statusCode": 401, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"message": "Forbidden resource", "statusCode": 403, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"message": "Not Found", "statusCode": 404, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"message": "Request timed out", "statusCode": 408, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"message": "Conflict", "statusCode": 409, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"message": "Unprocessable Entity", "statusCode": 422, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"message": "Too many requests", "statusCode": 429, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"message": "Internal server error", "statusCode": 500, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.hris.getEmployeeTask()`:  `response.data.attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.listEmployeeTimeOffRequests()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n  *  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.iam.listUsers()`:  `response.data.[].avatar.path` **Removed** **Breaking** :warning:\n* `stackone.iam.getUser()`:  `response.data.avatar.path` **Removed** **Breaking** :warning:\n* `stackone.hris.updateEmployeeWorkEligibilityRequest()`: \n  *  `request.hrisCreateWorkEligibilityRequestDto.document.path` **Removed** **Breaking** :warning:\n* `stackone.hris.listTasks()`:  `response.data.[].attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.ats.getApplication()`:  `response.data.documents.[].path` **Removed** **Breaking** :warning:\n* `stackone.ats.getApplicationDocument()`:  `response.data.path` **Removed** **Breaking** :warning:\n* `stackone.hris.listEmployeeWorkEligibility()`:  `response.data.[].document.path` **Removed** **Breaking** :warning:\n* `stackone.ats.getJobPosting()`:  `response.data.compensation.[]` **Changed** **Breaking** :warning:\n* `stackone.ats.listApplicationDocuments()`:  `response.data.[].path` **Removed** **Breaking** :warning:\n* `stackone.ats.listApplications()`:  `response.data.[].documents.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.createEmployeeWorkEligibilityRequest()`: \n  *  `request.hrisCreateWorkEligibilityRequestDto.document.path` **Removed** **Breaking** :warning:\n* `stackone.ats.listJobPostings()`:  `response.data.[].compensation.[]` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployeeTasks()`:  `response.data.[].attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.listEmployeeDocuments()`:  `response.data.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.getEmployeeDocument()`:  `response.data.path` **Removed** **Breaking** :warning:\n* `stackone.hris.getTimeOffRequest()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.listTimeOffRequests()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n  *  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeesTimeOffRequest()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeesWorkEligibility()`:  `response.data.document.path` **Removed** **Breaking** :warning:\n* `stackone.hris.getTask()`:  `response.data.attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.ats.getApplicationStage()`: **Added**\n* `stackone.lms.listAssignments()`: \n  *  `request.filter` **Changed**\n* `stackone.hris.createEmployee()`: \n  *  `request.hrisCreateEmployeeRequestDto` **Changed**\n* `stackone.ats.listInterviewStages()`: **Deprecated**\n* `stackone.ats.getInterviewStage()`: **Deprecated**\n* `stackone.mcp.mcpDelete()`: **Added**\n* `stackone.hris.updateEmployeeEmployment()`: \n  *  `request.hrisUpdateEmploymentRequestDto` **Changed**\n* `stackone.hris.updateEmployee()`: \n  *  `request.hrisUpdateEmployeeRequestDto.employment` **Changed**\n* `stackone.hris.createEmployeeEmployment()`: \n  *  `request.hrisCreateEmploymentRequestDto` **Changed**\n* `stackone.actions.listActionsMeta()`: **Added**\n* `stackone.mcp.mcpPost()`: **Added**\n* `stackone.mcp.mcpGet()`: **Added**\n* `stackone.ats.listApplicationStages()`: **Added**\n* `stackone.lms.listUserAssignments()`: \n  *  `request.filter` **Changed**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.actions.rpcAction()`: **Added**\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Added**\n  *  `response` **Changed**\n"

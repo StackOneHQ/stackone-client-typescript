@@ -268,6 +268,7 @@ export * from "./stackonemcpdelete.js";
 export * from "./stackonemcpget.js";
 export * from "./stackonemcppost.js";
 export * from "./stackoneproxyrequest.js";
+export * from "./stackonerpcaction.js";
 export * from "./stackoneupdateaccount.js";
 export * from "./ticketingcreateticket.js";
 export * from "./ticketingdownloadticketingattachment.js";

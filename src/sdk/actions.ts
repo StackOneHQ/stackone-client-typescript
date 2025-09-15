@@ -3,9 +3,12 @@
  */
 
 import { actionsListActionsMeta } from "../funcs/actionsListActionsMeta.js";
+import { actionsRpcAction } from "../funcs/actionsRpcAction.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
 import * as operations from "./models/operations/index.js";
+import * as shared from "./models/shared/index.js";
+import { unwrapAsync } from "./types/fp.js";
 
 export class Actions extends ClientSDK {
   /**
@@ -21,6 +24,23 @@ export class Actions extends ClientSDK {
     PageIterator<operations.StackoneListActionsMetaResponse, { cursor: string }>
   > {
     return unwrapResultIterator(actionsListActionsMeta(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Make an RPC call to an action
+   *
+   * @remarks
+   * Makes a remote procedure call to the specified action
+   */
+  async rpcAction(
+    request: shared.ActionsRpcRequestDto,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneRpcActionResponse> {
+    return unwrapAsync(actionsRpcAction(
       this,
       request,
       options,
