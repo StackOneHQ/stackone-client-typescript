@@ -12,7 +12,7 @@ import * as shared from "../shared/index.js";
 /**
  * The include parameter allows you to include additional data in the response.
  */
-export enum Include {
+export enum QueryParamInclude {
   StepLogs = "step_logs",
   AdvancedLogs = "advanced_logs",
 }
@@ -22,7 +22,7 @@ export type StackoneGetLogRequest = {
   /**
    * The include parameter allows you to include additional data in the response.
    */
-  include?: Include | null | undefined;
+  include?: QueryParamInclude | null | undefined;
 };
 
 export type StackoneGetLogResponse = {
@@ -46,22 +46,24 @@ export type StackoneGetLogResponse = {
 };
 
 /** @internal */
-export const Include$inboundSchema: z.ZodNativeEnum<typeof Include> = z
-  .nativeEnum(Include);
+export const QueryParamInclude$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamInclude
+> = z.nativeEnum(QueryParamInclude);
 
 /** @internal */
-export const Include$outboundSchema: z.ZodNativeEnum<typeof Include> =
-  Include$inboundSchema;
+export const QueryParamInclude$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamInclude
+> = QueryParamInclude$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Include$ {
-  /** @deprecated use `Include$inboundSchema` instead. */
-  export const inboundSchema = Include$inboundSchema;
-  /** @deprecated use `Include$outboundSchema` instead. */
-  export const outboundSchema = Include$outboundSchema;
+export namespace QueryParamInclude$ {
+  /** @deprecated use `QueryParamInclude$inboundSchema` instead. */
+  export const inboundSchema = QueryParamInclude$inboundSchema;
+  /** @deprecated use `QueryParamInclude$outboundSchema` instead. */
+  export const outboundSchema = QueryParamInclude$outboundSchema;
 }
 
 /** @internal */
@@ -71,7 +73,7 @@ export const StackoneGetLogRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  include: z.nullable(Include$inboundSchema).optional(),
+  include: z.nullable(QueryParamInclude$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -87,7 +89,7 @@ export const StackoneGetLogRequest$outboundSchema: z.ZodType<
   StackoneGetLogRequest
 > = z.object({
   id: z.string(),
-  include: z.nullable(Include$outboundSchema).optional(),
+  include: z.nullable(QueryParamInclude$outboundSchema).optional(),
 });
 
 /**

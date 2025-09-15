@@ -38,7 +38,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_list_actions_meta"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.listActionsMeta({\n    groupBy: \"[\\\"connector\\\"]\",\n    filter: {\n      connectors: \"connector1,connector2\",\n      accountIds: \"account1,account2\",\n      actionKey: \"action1\",\n    },\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { StackoneListActionsMetaQueryParamInclude } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.listActionsMeta({\n    groupBy: \"[\\\"connector\\\"]\",\n    filter: {\n      connectors: \"connector1,connector2\",\n      accountIds: \"account1,account2\",\n      actionKey: \"action1\",\n    },\n    include: [\n      StackoneListActionsMetaQueryParamInclude.OperationDetails,\n    ],\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/actions/rpc"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_rpc_action"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.rpcAction({\n    action: \"create_employee\",\n    input: {\n      query: {\n        \"param1\": \"value1\",\n        \"param2\": \"value2\",\n      },\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      body: {\n        \"data\": \"example\",\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/connect_sessions"]["post"]
     update:
       "x-codeSamples":

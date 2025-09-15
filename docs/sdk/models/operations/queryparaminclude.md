@@ -12,6 +12,7 @@ let value: QueryParamInclude = QueryParamInclude.StepLogs;
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `StepLogs` | step_logs  |
+| Name           | Value          |
+| -------------- | -------------- |
+| `StepLogs`     | step_logs      |
+| `AdvancedLogs` | advanced_logs  |

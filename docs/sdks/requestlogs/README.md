@@ -21,7 +21,7 @@ Get Log
 <!-- UsageSnippet language="typescript" operationID="stackone_get_log" method="get" path="/requests/logs/{id}" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { Include } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { QueryParamInclude } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 const stackOne = new StackOne({
   security: {
@@ -33,7 +33,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.requestLogs.getLog({
     id: "<id>",
-    include: Include.StepLogs,
+    include: QueryParamInclude.StepLogs,
   });
 
   console.log(result);
@@ -49,7 +49,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { requestLogsGetLog } from "@stackone/stackone-client-ts/funcs/requestLogsGetLog.js";
-import { Include } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { QueryParamInclude } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -63,7 +63,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await requestLogsGetLog(stackOne, {
     id: "<id>",
-    include: Include.StepLogs,
+    include: QueryParamInclude.StepLogs,
   });
   if (res.ok) {
     const { value: result } = res;
@@ -118,9 +118,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
 import {
   OrderBy,
   OrderDirection,
-  QueryParamInclude,
   QueryParamOrderBy,
   QueryParamOrderDirection,
+  StackoneListLogsQueryParamInclude,
 } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 const stackOne = new StackOne({
@@ -150,7 +150,7 @@ async function run() {
       subResources: "documents,employees",
       success: true,
     },
-    include: QueryParamInclude.StepLogs,
+    include: StackoneListLogsQueryParamInclude.StepLogs,
     orderBy: OrderBy.Duration,
     orderDirection: OrderDirection.Asc,
   });
@@ -171,9 +171,9 @@ import { requestLogsListLogs } from "@stackone/stackone-client-ts/funcs/requestL
 import {
   OrderBy,
   OrderDirection,
-  QueryParamInclude,
   QueryParamOrderBy,
   QueryParamOrderDirection,
+  StackoneListLogsQueryParamInclude,
 } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -205,7 +205,7 @@ async function run() {
       subResources: "documents,employees",
       success: true,
     },
-    include: QueryParamInclude.StepLogs,
+    include: StackoneListLogsQueryParamInclude.StepLogs,
     orderBy: OrderBy.Duration,
     orderDirection: OrderDirection.Asc,
   });

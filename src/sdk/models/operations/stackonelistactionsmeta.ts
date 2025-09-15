@@ -27,6 +27,10 @@ export type Filter = {
   connectors?: string | null | undefined;
 };
 
+export enum Include {
+  OperationDetails = "operation_details",
+}
+
 export type StackoneListActionsMetaRequest = {
   /**
    * Actions Metadata filters
@@ -36,6 +40,10 @@ export type StackoneListActionsMetaRequest = {
    * The relation to group the results by
    */
   groupBy?: string | null | undefined;
+  /**
+   * Additional data to include in the response
+   */
+  include?: Array<Include> | null | undefined;
   /**
    * The unified cursor
    */
@@ -56,9 +64,7 @@ export type StackoneListActionsMetaResponse = {
   /**
    * List of actions metadata
    */
-  actionsMetaPaginatedApiModel?:
-    | shared.ActionsMetaPaginatedApiModel
-    | undefined;
+  actionsMetaPaginated?: shared.ActionsMetaPaginated | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -138,6 +144,25 @@ export function filterFromJSON(
 }
 
 /** @internal */
+export const Include$inboundSchema: z.ZodNativeEnum<typeof Include> = z
+  .nativeEnum(Include);
+
+/** @internal */
+export const Include$outboundSchema: z.ZodNativeEnum<typeof Include> =
+  Include$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Include$ {
+  /** @deprecated use `Include$inboundSchema` instead. */
+  export const inboundSchema = Include$inboundSchema;
+  /** @deprecated use `Include$outboundSchema` instead. */
+  export const outboundSchema = Include$outboundSchema;
+}
+
+/** @internal */
 export const StackoneListActionsMetaRequest$inboundSchema: z.ZodType<
   StackoneListActionsMetaRequest,
   z.ZodTypeDef,
@@ -145,6 +170,7 @@ export const StackoneListActionsMetaRequest$inboundSchema: z.ZodType<
 > = z.object({
   filter: z.nullable(z.lazy(() => Filter$inboundSchema)).optional(),
   group_by: z.nullable(z.string().default("connector")),
+  include: z.nullable(z.array(Include$inboundSchema)).optional(),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   page_size: z.nullable(z.string()).optional(),
@@ -159,6 +185,7 @@ export const StackoneListActionsMetaRequest$inboundSchema: z.ZodType<
 export type StackoneListActionsMetaRequest$Outbound = {
   filter?: Filter$Outbound | null | undefined;
   group_by: string | null;
+  include?: Array<string> | null | undefined;
   next?: string | null | undefined;
   page?: string | null | undefined;
   page_size?: string | null | undefined;
@@ -172,6 +199,7 @@ export const StackoneListActionsMetaRequest$outboundSchema: z.ZodType<
 > = z.object({
   filter: z.nullable(z.lazy(() => Filter$outboundSchema)).optional(),
   groupBy: z.nullable(z.string().default("connector")),
+  include: z.nullable(z.array(Include$outboundSchema)).optional(),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   pageSize: z.nullable(z.string()).optional(),
@@ -221,15 +249,14 @@ export const StackoneListActionsMetaResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ActionsMetaPaginatedApiModel: shared
-    .ActionsMetaPaginatedApiModel$inboundSchema.optional(),
+  ActionsMetaPaginated: shared.ActionsMetaPaginated$inboundSchema.optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "ActionsMetaPaginatedApiModel": "actionsMetaPaginatedApiModel",
+    "ActionsMetaPaginated": "actionsMetaPaginated",
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
@@ -239,9 +266,7 @@ export const StackoneListActionsMetaResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type StackoneListActionsMetaResponse$Outbound = {
-  ActionsMetaPaginatedApiModel?:
-    | shared.ActionsMetaPaginatedApiModel$Outbound
-    | undefined;
+  ActionsMetaPaginated?: shared.ActionsMetaPaginated$Outbound | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
@@ -254,8 +279,7 @@ export const StackoneListActionsMetaResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneListActionsMetaResponse
 > = z.object({
-  actionsMetaPaginatedApiModel: shared
-    .ActionsMetaPaginatedApiModel$outboundSchema.optional(),
+  actionsMetaPaginated: shared.ActionsMetaPaginated$outboundSchema.optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
@@ -264,7 +288,7 @@ export const StackoneListActionsMetaResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    actionsMetaPaginatedApiModel: "ActionsMetaPaginatedApiModel",
+    actionsMetaPaginated: "ActionsMetaPaginated",
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",

@@ -3,12 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
-import {
-  encodeDeepObjectQuery,
-  encodeFormQuery,
-  queryJoin,
-} from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,29 +22,59 @@ import { ResponseValidationError } from "../sdk/models/errors/responsevalidation
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import { StackOneError } from "../sdk/models/errors/stackoneerror.js";
 import * as operations from "../sdk/models/operations/index.js";
+import * as shared from "../sdk/models/shared/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
-import {
-  createPageIterator,
-  haltIterator,
-  PageIterator,
-  Paginator,
-} from "../sdk/types/operations.js";
 
 /**
- * List all actions metadata
+ * Make an RPC call to an action
  *
  * @remarks
- * Retrieves a list of all actions metadata
+ * Makes a remote procedure call to the specified action
  */
-export function actionsListActionsMeta(
+export function actionsRpcAction(
   client: StackOneCore,
-  request: operations.StackoneListActionsMetaRequest,
+  request: shared.ActionsRpcRequestDto,
   options?: RequestOptions,
 ): APIPromise<
-  PageIterator<
+  Result<
+    operations.StackoneRpcActionResponse,
+    | errors.BadRequestResponse
+    | errors.UnauthorizedResponse
+    | errors.ForbiddenResponse
+    | errors.NotFoundResponse
+    | errors.RequestTimedOutResponse
+    | errors.ConflictResponse
+    | errors.UnprocessableEntityResponse
+    | errors.TooManyRequestsResponse
+    | errors.InternalServerErrorResponse
+    | errors.NotImplementedResponse
+    | errors.BadGatewayResponse
+    | StackOneError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: StackOneCore,
+  request: shared.ActionsRpcRequestDto,
+  options?: RequestOptions,
+): Promise<
+  [
     Result<
-      operations.StackoneListActionsMetaResponse,
+      operations.StackoneRpcActionResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -70,78 +95,24 @@ export function actionsListActionsMeta(
       | UnexpectedClientError
       | SDKValidationError
     >,
-    { cursor: string }
-  >
-> {
-  return new APIPromise($do(
-    client,
-    request,
-    options,
-  ));
-}
-
-async function $do(
-  client: StackOneCore,
-  request: operations.StackoneListActionsMetaRequest,
-  options?: RequestOptions,
-): Promise<
-  [
-    PageIterator<
-      Result<
-        operations.StackoneListActionsMetaResponse,
-        | errors.BadRequestResponse
-        | errors.UnauthorizedResponse
-        | errors.ForbiddenResponse
-        | errors.NotFoundResponse
-        | errors.RequestTimedOutResponse
-        | errors.ConflictResponse
-        | errors.UnprocessableEntityResponse
-        | errors.TooManyRequestsResponse
-        | errors.InternalServerErrorResponse
-        | errors.NotImplementedResponse
-        | errors.BadGatewayResponse
-        | StackOneError
-        | ResponseValidationError
-        | ConnectionError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | InvalidRequestError
-        | UnexpectedClientError
-        | SDKValidationError
-      >,
-      { cursor: string }
-    >,
     APICall,
   ]
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.StackoneListActionsMetaRequest$outboundSchema.parse(value),
+    (value) => shared.ActionsRpcRequestDto$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [haltIterator(parsed), { status: "invalid" }];
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/actions")();
-
-  const query = queryJoin(
-    encodeDeepObjectQuery({
-      "filter": payload.filter,
-    }),
-    encodeFormQuery({
-      "group_by": payload.group_by,
-      "include": payload.include,
-      "next": payload.next,
-      "page": payload.page,
-      "page_size": payload.page_size,
-    }),
-  );
+  const path = pathToFunc("/actions/rpc")();
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -151,7 +122,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "stackone_list_actions_meta",
+    operationID: "stackone_rpc_action",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -175,17 +146,16 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [haltIterator(requestRes), { status: "invalid" }];
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -210,7 +180,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [haltIterator(doResult), { status: "request-error", request: req }];
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -222,8 +192,8 @@ async function $do(
     Headers: {},
   };
 
-  const [result, raw] = await M.match<
-    operations.StackoneListActionsMetaResponse,
+  const [result] = await M.match<
+    operations.StackoneRpcActionResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -244,8 +214,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.StackoneListActionsMetaResponse$inboundSchema, {
-      key: "ActionsMetaPaginated",
+    M.json(200, operations.StackoneRpcActionResponse$inboundSchema, {
+      key: "ActionsRpcResponse",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
@@ -264,67 +234,8 @@ async function $do(
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return [haltIterator(result), {
-      status: "complete",
-      request: req,
-      response,
-    }];
+    return [result, { status: "complete", request: req, response }];
   }
 
-  const nextFunc = (
-    responseData: unknown,
-  ): {
-    next: Paginator<
-      Result<
-        operations.StackoneListActionsMetaResponse,
-        | errors.BadRequestResponse
-        | errors.UnauthorizedResponse
-        | errors.ForbiddenResponse
-        | errors.NotFoundResponse
-        | errors.RequestTimedOutResponse
-        | errors.ConflictResponse
-        | errors.UnprocessableEntityResponse
-        | errors.TooManyRequestsResponse
-        | errors.InternalServerErrorResponse
-        | errors.NotImplementedResponse
-        | errors.BadGatewayResponse
-        | StackOneError
-        | ResponseValidationError
-        | ConnectionError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | InvalidRequestError
-        | UnexpectedClientError
-        | SDKValidationError
-      >
-    >;
-    "~next"?: { cursor: string };
-  } => {
-    const nextCursor = dlv(responseData, "next");
-    if (typeof nextCursor !== "string") {
-      return { next: () => null };
-    }
-    if (nextCursor.trim() === "") {
-      return { next: () => null };
-    }
-
-    const nextVal = () =>
-      actionsListActionsMeta(
-        client,
-        {
-          ...request,
-          next: nextCursor,
-        },
-        options,
-      );
-
-    return { next: nextVal, "~next": { cursor: nextCursor } };
-  };
-
-  const page = { ...result, ...nextFunc(raw) };
-  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
-    status: "complete",
-    request: req,
-    response,
-  }];
+  return [result, { status: "complete", request: req, response }];
 }

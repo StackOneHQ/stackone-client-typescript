@@ -129,6 +129,7 @@ run();
 ### [actions](docs/sdks/actions/README.md)
 
 * [listActionsMeta](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
+* [rpcAction](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
 
 ### [ats](docs/sdks/ats/README.md)
 
@@ -463,6 +464,7 @@ Here's an example of one such pagination call:
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { Include } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 const stackOne = new StackOne({
   security: {
@@ -479,6 +481,9 @@ async function run() {
       connectors: "connector1,connector2",
     },
     groupBy: "[\"connector\"]",
+    include: [
+      Include.OperationDetails,
+    ],
   });
 
   for await (const page of result) {
@@ -805,6 +810,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
 - [`actionsListActionsMeta`](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
+- [`actionsRpcAction`](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
 - [`atsCreateApplicationNote`](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 - [`atsCreateBackgroundCheckPackage`](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package

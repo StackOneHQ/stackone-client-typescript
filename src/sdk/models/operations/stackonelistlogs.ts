@@ -109,7 +109,7 @@ export type QueryParamFilter = {
 /**
  * The include parameter allows you to include additional data in the response.
  */
-export enum QueryParamInclude {
+export enum StackoneListLogsQueryParamInclude {
   StepLogs = "step_logs",
 }
 
@@ -140,7 +140,7 @@ export type StackoneListLogsRequest = {
   /**
    * The include parameter allows you to include additional data in the response.
    */
-  include?: QueryParamInclude | null | undefined;
+  include?: StackoneListLogsQueryParamInclude | null | undefined;
   /**
    * The unified cursor
    */
@@ -365,24 +365,25 @@ export function queryParamFilterFromJSON(
 }
 
 /** @internal */
-export const QueryParamInclude$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamInclude
-> = z.nativeEnum(QueryParamInclude);
+export const StackoneListLogsQueryParamInclude$inboundSchema: z.ZodNativeEnum<
+  typeof StackoneListLogsQueryParamInclude
+> = z.nativeEnum(StackoneListLogsQueryParamInclude);
 
 /** @internal */
-export const QueryParamInclude$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamInclude
-> = QueryParamInclude$inboundSchema;
+export const StackoneListLogsQueryParamInclude$outboundSchema: z.ZodNativeEnum<
+  typeof StackoneListLogsQueryParamInclude
+> = StackoneListLogsQueryParamInclude$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamInclude$ {
-  /** @deprecated use `QueryParamInclude$inboundSchema` instead. */
-  export const inboundSchema = QueryParamInclude$inboundSchema;
-  /** @deprecated use `QueryParamInclude$outboundSchema` instead. */
-  export const outboundSchema = QueryParamInclude$outboundSchema;
+export namespace StackoneListLogsQueryParamInclude$ {
+  /** @deprecated use `StackoneListLogsQueryParamInclude$inboundSchema` instead. */
+  export const inboundSchema = StackoneListLogsQueryParamInclude$inboundSchema;
+  /** @deprecated use `StackoneListLogsQueryParamInclude$outboundSchema` instead. */
+  export const outboundSchema =
+    StackoneListLogsQueryParamInclude$outboundSchema;
 }
 
 /** @internal */
@@ -432,7 +433,8 @@ export const StackoneListLogsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
-  include: z.nullable(QueryParamInclude$inboundSchema).optional(),
+  include: z.nullable(StackoneListLogsQueryParamInclude$inboundSchema)
+    .optional(),
   next: z.nullable(z.string()).optional(),
   order_by: z.nullable(OrderBy$inboundSchema).optional(),
   order_direction: z.nullable(OrderDirection$inboundSchema).optional(),
@@ -462,7 +464,8 @@ export const StackoneListLogsRequest$outboundSchema: z.ZodType<
   StackoneListLogsRequest
 > = z.object({
   filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
-  include: z.nullable(QueryParamInclude$outboundSchema).optional(),
+  include: z.nullable(StackoneListLogsQueryParamInclude$outboundSchema)
+    .optional(),
   next: z.nullable(z.string()).optional(),
   orderBy: z.nullable(OrderBy$outboundSchema).optional(),
   orderDirection: z.nullable(OrderDirection$outboundSchema).optional(),
