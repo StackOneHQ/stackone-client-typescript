@@ -8,6 +8,12 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  MessagingAttachment,
+  MessagingAttachment$inboundSchema,
+  MessagingAttachment$Outbound,
+  MessagingAttachment$outboundSchema,
+} from "./messagingattachment.js";
+import {
   RawResponse,
   RawResponse$inboundSchema,
   RawResponse$Outbound,
@@ -88,7 +94,7 @@ export type MessagingMessageResultData = {
   /**
    * List of attachments in the message
    */
-  attachments?: Array<string> | null | undefined;
+  attachments?: Array<MessagingAttachment> | null | undefined;
   /**
    * Author of the message
    */
@@ -369,7 +375,8 @@ export const MessagingMessageResultData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  attachments: z.nullable(z.array(z.string())).optional(),
+  attachments: z.nullable(z.array(MessagingAttachment$inboundSchema))
+    .optional(),
   author: z.nullable(z.lazy(() => MessagingMessageResultAuthor$inboundSchema))
     .optional(),
   content: z.nullable(z.lazy(() => MessagingMessageResultContent$inboundSchema))
@@ -394,7 +401,7 @@ export const MessagingMessageResultData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type MessagingMessageResultData$Outbound = {
-  attachments?: Array<string> | null | undefined;
+  attachments?: Array<MessagingAttachment$Outbound> | null | undefined;
   author?: MessagingMessageResultAuthor$Outbound | null | undefined;
   content?: MessagingMessageResultContent$Outbound | null | undefined;
   created_at?: string | null | undefined;
@@ -410,7 +417,8 @@ export const MessagingMessageResultData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MessagingMessageResultData
 > = z.object({
-  attachments: z.nullable(z.array(z.string())).optional(),
+  attachments: z.nullable(z.array(MessagingAttachment$outboundSchema))
+    .optional(),
   author: z.nullable(z.lazy(() => MessagingMessageResultAuthor$outboundSchema))
     .optional(),
   content: z.nullable(
