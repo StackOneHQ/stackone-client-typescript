@@ -11,14 +11,13 @@ let value: MessagingListConversationMessagesResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
     "key1": [
       "<value 1>",
-      "<value 2>",
-      "<value 3>",
     ],
   },
-  statusCode: 499661,
+  statusCode: 102170,
 };
 ```
 

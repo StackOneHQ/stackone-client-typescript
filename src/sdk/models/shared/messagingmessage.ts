@@ -7,6 +7,12 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  MessagingAttachment,
+  MessagingAttachment$inboundSchema,
+  MessagingAttachment$Outbound,
+  MessagingAttachment$outboundSchema,
+} from "./messagingattachment.js";
 
 export enum MessagingMessage2 {
   True = "true",
@@ -82,7 +88,7 @@ export type MessagingMessage = {
   /**
    * List of attachments in the message
    */
-  attachments?: Array<string> | null | undefined;
+  attachments?: Array<MessagingAttachment> | null | undefined;
   /**
    * Author of the message
    */
@@ -343,7 +349,8 @@ export const MessagingMessage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  attachments: z.nullable(z.array(z.string())).optional(),
+  attachments: z.nullable(z.array(MessagingAttachment$inboundSchema))
+    .optional(),
   author: z.nullable(z.lazy(() => Author$inboundSchema)).optional(),
   content: z.nullable(z.lazy(() => MessagingMessageContent$inboundSchema))
     .optional(),
@@ -367,7 +374,7 @@ export const MessagingMessage$inboundSchema: z.ZodType<
 
 /** @internal */
 export type MessagingMessage$Outbound = {
-  attachments?: Array<string> | null | undefined;
+  attachments?: Array<MessagingAttachment$Outbound> | null | undefined;
   author?: Author$Outbound | null | undefined;
   content?: MessagingMessageContent$Outbound | null | undefined;
   created_at?: string | null | undefined;
@@ -383,7 +390,8 @@ export const MessagingMessage$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MessagingMessage
 > = z.object({
-  attachments: z.nullable(z.array(z.string())).optional(),
+  attachments: z.nullable(z.array(MessagingAttachment$outboundSchema))
+    .optional(),
   author: z.nullable(z.lazy(() => Author$outboundSchema)).optional(),
   content: z.nullable(z.lazy(() => MessagingMessageContent$outboundSchema))
     .optional(),

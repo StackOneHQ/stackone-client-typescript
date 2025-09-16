@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 79340aa5acac7bac49fe0ab26153b1eb
+  docChecksum: 754ca6eedd5564433b1b775d5d3d0cd8
   docVersion: 1.0.0
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 4.27.2
-  configChecksum: c4ea81fff4c3c353206b73a55a7d5ac1
+  speakeasyVersion: 1.617.1
+  generationVersion: 2.701.8
+  releaseVersion: 4.27.3
+  configChecksum: 44ba8f4c97c4bbb03f5fd7b63606be71
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -13675,7 +13675,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"author": null, "content": {"html": "<p>Hello world</p>", "plain": "Hello world"}, "created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "parent_message_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2024-03-20T10:00:00Z"}}
+          application/json: {"data": {"attachments": [{"file_name": "document.pdf", "file_size": 1024, "file_type": "application/pdf", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "author": null, "content": {"html": "<p>Hello world</p>", "plain": "Hello world"}, "created_at": "2024-03-20T10:00:00Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "parent_message_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2024-03-20T10:00:00Z"}}
         "400":
           application/json: {"data": {"headers": {}, "message": "Bad Request", "statusCode": 400}, "message": "Bad Request", "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.provider.com/v1/resource"}], "statusCode": 400, "timestamp": "2023-05-30T00:00:00.000Z"}
         "401":
@@ -14484,4 +14484,5 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `stackone.accounting.createCompanyJournal()`:  `response` **Changed** **Breaking** :warning:
+  * `stackone.messaging.getMessage()`:  `response.data.attachments.[]` **Changed** **Breaking** :warning:
+  * `stackone.messaging.listConversationMessages()`:  `response.data.[].attachments.[]` **Changed** **Breaking** :warning:

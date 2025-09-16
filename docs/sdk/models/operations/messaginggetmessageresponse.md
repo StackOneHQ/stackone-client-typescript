@@ -13,8 +13,14 @@ let value: MessagingGetMessageResponse = {
       "<value 2>",
       "<value 3>",
     ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key2": [],
   },
-  statusCode: 853538,
+  statusCode: 919910,
 };
 ```
 

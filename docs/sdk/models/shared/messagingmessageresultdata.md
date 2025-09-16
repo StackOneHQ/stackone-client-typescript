@@ -6,6 +6,15 @@
 import { MessagingMessageResultData } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MessagingMessageResultData = {
+  attachments: [
+    {
+      fileName: "document.pdf",
+      fileSize: 1024,
+      fileType: "application/pdf",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    },
+  ],
   author: {
     active: true,
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -37,7 +46,7 @@ let value: MessagingMessageResultData = {
 
 | Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `attachments`                                                                                       | *string*[]                                                                                          | :heavy_minus_sign:                                                                                  | List of attachments in the message                                                                  |                                                                                                     |
+| `attachments`                                                                                       | [shared.MessagingAttachment](../../../sdk/models/shared/messagingattachment.md)[]                   | :heavy_minus_sign:                                                                                  | List of attachments in the message                                                                  |                                                                                                     |
 | `author`                                                                                            | [shared.MessagingMessageResultAuthor](../../../sdk/models/shared/messagingmessageresultauthor.md)   | :heavy_minus_sign:                                                                                  | Author of the message                                                                               |                                                                                                     |
 | `content`                                                                                           | [shared.MessagingMessageResultContent](../../../sdk/models/shared/messagingmessageresultcontent.md) | :heavy_minus_sign:                                                                                  | Content of the message                                                                              | {<br/>"html": "\u003cp\u003eHello world\u003c/p\u003e",<br/>"plain": "Hello world"<br/>}            |
 | `createdAt`                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)       | :heavy_minus_sign:                                                                                  | Timestamp when the message was created                                                              | 2024-03-20T10:00:00Z                                                                                |
