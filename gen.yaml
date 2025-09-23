@@ -19,7 +19,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 4.27.3
+  version: 4.27.4
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -49,6 +49,7 @@ typescript:
   jsonpath: legacy
   maxMethodParams: 0
   methodArguments: require-security-and-request
+  modelPropertyCasing: camel
   moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
