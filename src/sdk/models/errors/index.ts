@@ -15,6 +15,7 @@ export * from "./requesttimedoutresponse.js";
 export * from "./responsevalidationerror.js";
 export * from "./sdkerror.js";
 export * from "./sdkvalidationerror.js";
+export * from "./stackoneerror.js";
 export * from "./toomanyrequestsresponse.js";
 export * from "./unauthorizedresponse.js";
 export * from "./unprocessableentityresponse.js";

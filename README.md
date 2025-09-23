@@ -636,7 +636,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new StackOne({ httpClient });
+const sdk = new StackOne({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
