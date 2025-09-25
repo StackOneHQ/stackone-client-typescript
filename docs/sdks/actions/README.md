@@ -142,17 +142,18 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.actions.rpcAction({
     action: "create_employee",
-    input: {
-      body: {
-        "data": "example",
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-      query: {
-        "param1": "value1",
-        "param2": "value2",
-      },
+    body: {
+      "data": "example",
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+    path: {
+      "id": "123",
+    },
+    query: {
+      "param1": "value1",
+      "param2": "value2",
     },
   });
 
@@ -182,17 +183,18 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await actionsRpcAction(stackOne, {
     action: "create_employee",
-    input: {
-      body: {
-        "data": "example",
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-      query: {
-        "param1": "value1",
-        "param2": "value2",
-      },
+    body: {
+      "data": "example",
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+    path: {
+      "id": "123",
+    },
+    query: {
+      "param1": "value1",
+      "param2": "value2",
     },
   });
   if (res.ok) {

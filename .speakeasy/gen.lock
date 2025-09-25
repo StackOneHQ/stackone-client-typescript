@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 61405cf4a5066cddae996c4e637435b8
+  docChecksum: 03b008664d5150917832f2a13725e284
   docVersion: 1.0.0
-  speakeasyVersion: 1.622.1
-  generationVersion: 2.709.0
-  releaseVersion: 4.27.4
-  configChecksum: b148ddf78b4ef60b2d162dba1583b369
+  speakeasyVersion: 1.628.3
+  generationVersion: 2.716.4
+  releaseVersion: 4.27.5
+  configChecksum: 041c812fabac9c2697dc6f1c36fe6314
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -16,7 +16,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.23
+    core: 3.21.25
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -34,7 +34,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.11
+    unions: 2.85.12
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -1836,7 +1836,6 @@ generatedFiles:
   - docs/sdk/models/shared/inapptemplate.md
   - docs/sdk/models/shared/inapptemplateresult.md
   - docs/sdk/models/shared/inapptemplatespaginated.md
-  - docs/sdk/models/shared/input.md
   - docs/sdk/models/shared/internal.md
   - docs/sdk/models/shared/interview.md
   - docs/sdk/models/shared/interview4.md
@@ -14454,7 +14453,7 @@ examples:
   stackone_rpc_action:
     speakeasy-default-stackone-rpc-action:
       requestBody:
-        application/json: {"action": "create_employee", "input": {"body": {"data": "example"}, "headers": {"Content-Type": "application/json"}, "query": {"param1": "value1", "param2": "value2"}}}
+        application/json: {"action": "create_employee", "body": {"data": "example"}, "headers": {"Content-Type": "application/json"}, "path": {"id": "123"}, "query": {"param1": "value1", "param2": "value2"}}
       responses:
         "200":
           application/json: {}
@@ -14484,4 +14483,4 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `stackone.actions.listActionsMeta()`:  `response.data.[].actions.[]` **Changed** **Breaking** :warning:
+  * `stackone.actions.rpcAction()`:  `request` **Changed** **Breaking** :warning:

@@ -54,10 +54,7 @@ bun add @stackone/stackone-client-ts
 ### Yarn
 
 ```bash
-yarn add @stackone/stackone-client-ts zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add @stackone/stackone-client-ts
 ```
 <!-- End SDK Installation [installation] -->
 
