@@ -7,10 +7,11 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Input parameters for the action
- */
-export type Input = {
+export type ActionsRpcRequestDto = {
+  /**
+   * The action to execute
+   */
+  action: string;
   /**
    * Request body for the action
    */
@@ -20,74 +21,14 @@ export type Input = {
    */
   headers?: { [k: string]: any } | null | undefined;
   /**
+   * Path parameters for the action
+   */
+  path?: { [k: string]: any } | null | undefined;
+  /**
    * Query parameters for the action
    */
   query?: { [k: string]: any } | null | undefined;
 };
-
-export type ActionsRpcRequestDto = {
-  /**
-   * The action to execute
-   */
-  action: string;
-  /**
-   * Input parameters for the action
-   */
-  input?: Input | null | undefined;
-};
-
-/** @internal */
-export const Input$inboundSchema: z.ZodType<Input, z.ZodTypeDef, unknown> = z
-  .object({
-    body: z.nullable(z.record(z.any())).optional(),
-    headers: z.nullable(z.record(z.any())).optional(),
-    query: z.nullable(z.record(z.any())).optional(),
-  });
-
-/** @internal */
-export type Input$Outbound = {
-  body?: { [k: string]: any } | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  query?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const Input$outboundSchema: z.ZodType<
-  Input$Outbound,
-  z.ZodTypeDef,
-  Input
-> = z.object({
-  body: z.nullable(z.record(z.any())).optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  query: z.nullable(z.record(z.any())).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Input$ {
-  /** @deprecated use `Input$inboundSchema` instead. */
-  export const inboundSchema = Input$inboundSchema;
-  /** @deprecated use `Input$outboundSchema` instead. */
-  export const outboundSchema = Input$outboundSchema;
-  /** @deprecated use `Input$Outbound` instead. */
-  export type Outbound = Input$Outbound;
-}
-
-export function inputToJSON(input: Input): string {
-  return JSON.stringify(Input$outboundSchema.parse(input));
-}
-
-export function inputFromJSON(
-  jsonString: string,
-): SafeParseResult<Input, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Input$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Input' from JSON`,
-  );
-}
 
 /** @internal */
 export const ActionsRpcRequestDto$inboundSchema: z.ZodType<
@@ -96,13 +37,19 @@ export const ActionsRpcRequestDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: z.string(),
-  input: z.nullable(z.lazy(() => Input$inboundSchema)).optional(),
+  body: z.nullable(z.record(z.any())).optional(),
+  headers: z.nullable(z.record(z.any())).optional(),
+  path: z.nullable(z.record(z.any())).optional(),
+  query: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
 export type ActionsRpcRequestDto$Outbound = {
   action: string;
-  input?: Input$Outbound | null | undefined;
+  body?: { [k: string]: any } | null | undefined;
+  headers?: { [k: string]: any } | null | undefined;
+  path?: { [k: string]: any } | null | undefined;
+  query?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -112,7 +59,10 @@ export const ActionsRpcRequestDto$outboundSchema: z.ZodType<
   ActionsRpcRequestDto
 > = z.object({
   action: z.string(),
-  input: z.nullable(z.lazy(() => Input$outboundSchema)).optional(),
+  body: z.nullable(z.record(z.any())).optional(),
+  headers: z.nullable(z.record(z.any())).optional(),
+  path: z.nullable(z.record(z.any())).optional(),
+  query: z.nullable(z.record(z.any())).optional(),
 });
 
 /**
