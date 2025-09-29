@@ -19,10 +19,10 @@ export type InterviewPart4 = {};
  * The source value of the interview type.
  */
 export type InterviewPartSourceValue =
-  | InterviewPart4
   | string
   | number
   | boolean
+  | InterviewPart4
   | Array<any>;
 
 /**
@@ -51,10 +51,10 @@ export type InterviewPartType = {
    * The source value of the interview type.
    */
   sourceValue?:
-    | InterviewPart4
     | string
     | number
     | boolean
+    | InterviewPart4
     | Array<any>
     | null
     | undefined;
@@ -162,19 +162,19 @@ export const InterviewPartSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => InterviewPart4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => InterviewPart4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type InterviewPartSourceValue$Outbound =
-  | InterviewPart4$Outbound
   | string
   | number
   | boolean
+  | InterviewPart4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -183,10 +183,10 @@ export const InterviewPartSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InterviewPartSourceValue
 > = z.union([
-  z.lazy(() => InterviewPart4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => InterviewPart4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -261,10 +261,10 @@ export const InterviewPartType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => InterviewPart4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => InterviewPart4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -278,10 +278,10 @@ export const InterviewPartType$inboundSchema: z.ZodType<
 /** @internal */
 export type InterviewPartType$Outbound = {
   source_value?:
-    | InterviewPart4$Outbound
     | string
     | number
     | boolean
+    | InterviewPart4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -296,10 +296,10 @@ export const InterviewPartType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => InterviewPart4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => InterviewPart4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

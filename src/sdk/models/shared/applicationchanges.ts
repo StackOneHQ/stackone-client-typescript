@@ -39,10 +39,10 @@ export type ApplicationChanges4 = {};
  * The source value of the change type
  */
 export type ApplicationChangesSourceValue =
-  | ApplicationChanges4
   | string
   | number
   | boolean
+  | ApplicationChanges4
   | Array<any>;
 
 /**
@@ -69,10 +69,10 @@ export type ChangeType = {
    * The source value of the change type
    */
   sourceValue?:
-    | ApplicationChanges4
     | string
     | number
     | boolean
+    | ApplicationChanges4
     | Array<any>
     | null
     | undefined;
@@ -225,19 +225,19 @@ export const ApplicationChangesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ApplicationChanges4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ApplicationChanges4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ApplicationChangesSourceValue$Outbound =
-  | ApplicationChanges4$Outbound
   | string
   | number
   | boolean
+  | ApplicationChanges4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -246,10 +246,10 @@ export const ApplicationChangesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ApplicationChangesSourceValue
 > = z.union([
-  z.lazy(() => ApplicationChanges4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ApplicationChanges4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -326,10 +326,10 @@ export const ChangeType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => ApplicationChanges4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ApplicationChanges4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -343,10 +343,10 @@ export const ChangeType$inboundSchema: z.ZodType<
 /** @internal */
 export type ChangeType$Outbound = {
   source_value?:
-    | ApplicationChanges4$Outbound
     | string
     | number
     | boolean
+    | ApplicationChanges4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -361,10 +361,10 @@ export const ChangeType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => ApplicationChanges4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ApplicationChanges4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

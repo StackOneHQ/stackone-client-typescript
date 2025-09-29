@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CreateCategoriesApiModel4 = {};
 
 export type CreateCategoriesApiModelSourceValue =
-  | CreateCategoriesApiModel4
   | string
   | number
   | boolean
+  | CreateCategoriesApiModel4
   | Array<any>;
 
 export enum CreateCategoriesApiModelValue {
@@ -37,10 +37,10 @@ export type CreateCategoriesApiModelValueOpen = OpenEnum<
  */
 export type CreateCategoriesApiModelHierarchy = {
   sourceValue?:
-    | CreateCategoriesApiModel4
     | string
     | number
     | boolean
+    | CreateCategoriesApiModel4
     | Array<any>
     | null
     | undefined;
@@ -50,10 +50,10 @@ export type CreateCategoriesApiModelHierarchy = {
 export type CreateCategoriesApiModelSchemas4 = {};
 
 export type CreateCategoriesApiModelSchemasSourceValue =
-  | CreateCategoriesApiModelSchemas4
   | string
   | number
   | boolean
+  | CreateCategoriesApiModelSchemas4
   | Array<any>;
 
 /**
@@ -484,10 +484,10 @@ export type CreateCategoriesApiModelSchemasValueOpen = OpenEnum<
  */
 export type CreateCategoriesApiModelLanguage = {
   sourceValue?:
-    | CreateCategoriesApiModelSchemas4
     | string
     | number
     | boolean
+    | CreateCategoriesApiModelSchemas4
     | Array<any>
     | null
     | undefined;
@@ -500,10 +500,10 @@ export type CreateCategoriesApiModelLanguage = {
 export type CreateCategoriesApiModelSchemasLevel4 = {};
 
 export type CreateCategoriesApiModelSchemasLevelSourceValue =
-  | CreateCategoriesApiModelSchemasLevel4
   | string
   | number
   | boolean
+  | CreateCategoriesApiModelSchemasLevel4
   | Array<any>;
 
 export enum CreateCategoriesApiModelSchemasLevelValue {
@@ -523,10 +523,10 @@ export type CreateCategoriesApiModelSchemasLevelValueOpen = OpenEnum<
  */
 export type CreateCategoriesApiModelLevel = {
   sourceValue?:
-    | CreateCategoriesApiModelSchemasLevel4
     | string
     | number
     | boolean
+    | CreateCategoriesApiModelSchemasLevel4
     | Array<any>
     | null
     | undefined;
@@ -616,19 +616,19 @@ export const CreateCategoriesApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateCategoriesApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateCategoriesApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CreateCategoriesApiModelSourceValue$Outbound =
-  | CreateCategoriesApiModel4$Outbound
   | string
   | number
   | boolean
+  | CreateCategoriesApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -637,10 +637,10 @@ export const CreateCategoriesApiModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateCategoriesApiModelSourceValue
 > = z.union([
-  z.lazy(() => CreateCategoriesApiModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateCategoriesApiModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -720,10 +720,10 @@ export const CreateCategoriesApiModelHierarchy$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -737,10 +737,10 @@ export const CreateCategoriesApiModelHierarchy$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateCategoriesApiModelHierarchy$Outbound = {
   source_value?:
-    | CreateCategoriesApiModel4$Outbound
     | string
     | number
     | boolean
+    | CreateCategoriesApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -755,10 +755,10 @@ export const CreateCategoriesApiModelHierarchy$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -857,19 +857,19 @@ export function createCategoriesApiModelSchemas4FromJSON(
 export const CreateCategoriesApiModelSchemasSourceValue$inboundSchema:
   z.ZodType<CreateCategoriesApiModelSchemasSourceValue, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => CreateCategoriesApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]);
 
 /** @internal */
 export type CreateCategoriesApiModelSchemasSourceValue$Outbound =
-  | CreateCategoriesApiModelSchemas4$Outbound
   | string
   | number
   | boolean
+  | CreateCategoriesApiModelSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -879,10 +879,10 @@ export const CreateCategoriesApiModelSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateCategoriesApiModelSchemasSourceValue
   > = z.union([
-    z.lazy(() => CreateCategoriesApiModelSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateCategoriesApiModelSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -970,10 +970,10 @@ export const CreateCategoriesApiModelLanguage$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -988,10 +988,10 @@ export const CreateCategoriesApiModelLanguage$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateCategoriesApiModelLanguage$Outbound = {
   source_value?:
-    | CreateCategoriesApiModelSchemas4$Outbound
     | string
     | number
     | boolean
+    | CreateCategoriesApiModelSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1006,10 +1006,10 @@ export const CreateCategoriesApiModelLanguage$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModelSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModelSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1114,19 +1114,19 @@ export const CreateCategoriesApiModelSchemasLevelSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateCategoriesApiModelSchemasLevel4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateCategoriesApiModelSchemasLevel4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateCategoriesApiModelSchemasLevelSourceValue$Outbound =
-  | CreateCategoriesApiModelSchemasLevel4$Outbound
   | string
   | number
   | boolean
+  | CreateCategoriesApiModelSchemasLevel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1136,10 +1136,10 @@ export const CreateCategoriesApiModelSchemasLevelSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateCategoriesApiModelSchemasLevelSourceValue
   > = z.union([
-    z.lazy(() => CreateCategoriesApiModelSchemasLevel4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateCategoriesApiModelSchemasLevel4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1229,10 +1229,10 @@ export const CreateCategoriesApiModelLevel$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModelSchemasLevel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModelSchemasLevel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1247,10 +1247,10 @@ export const CreateCategoriesApiModelLevel$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateCategoriesApiModelLevel$Outbound = {
   source_value?:
-    | CreateCategoriesApiModelSchemasLevel4$Outbound
     | string
     | number
     | boolean
+    | CreateCategoriesApiModelSchemasLevel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1265,10 +1265,10 @@ export const CreateCategoriesApiModelLevel$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateCategoriesApiModelSchemasLevel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateCategoriesApiModelSchemasLevel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

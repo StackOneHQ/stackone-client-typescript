@@ -49,10 +49,10 @@ export type AtsCreateApplicationRequestDto4 = {};
  * The source value of the application status.
  */
 export type AtsCreateApplicationRequestDtoSourceValue =
-  | AtsCreateApplicationRequestDto4
   | string
   | number
   | boolean
+  | AtsCreateApplicationRequestDto4
   | Array<any>;
 
 /**
@@ -92,10 +92,10 @@ export type AtsCreateApplicationRequestDtoApplicationStatus = {
    * The source value of the application status.
    */
   sourceValue?:
-    | AtsCreateApplicationRequestDto4
     | string
     | number
     | boolean
+    | AtsCreateApplicationRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -276,19 +276,19 @@ export const AtsCreateApplicationRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsCreateApplicationRequestDtoSourceValue$Outbound =
-  | AtsCreateApplicationRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsCreateApplicationRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -298,10 +298,10 @@ export const AtsCreateApplicationRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     AtsCreateApplicationRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => AtsCreateApplicationRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsCreateApplicationRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -390,10 +390,10 @@ export const AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -408,10 +408,10 @@ export const AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema:
 /** @internal */
 export type AtsCreateApplicationRequestDtoApplicationStatus$Outbound = {
   source_value?:
-    | AtsCreateApplicationRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsCreateApplicationRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -427,10 +427,10 @@ export const AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => AtsCreateApplicationRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsCreateApplicationRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

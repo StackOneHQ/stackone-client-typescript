@@ -36,10 +36,10 @@ export type AtsUpdateCandidatesAssessmentsResultsRequestDto4 = {};
  * The source value of the test result.
  */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue =
-  | AtsUpdateCandidatesAssessmentsResultsRequestDto4
   | string
   | number
   | boolean
+  | AtsUpdateCandidatesAssessmentsResultsRequestDto4
   | Array<any>;
 
 /**
@@ -67,10 +67,10 @@ export type AtsUpdateCandidatesAssessmentsResultsRequestDtoResult = {
    * The source value of the test result.
    */
   sourceValue?:
-    | AtsUpdateCandidatesAssessmentsResultsRequestDto4
     | string
     | number
     | boolean
+    | AtsUpdateCandidatesAssessmentsResultsRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -285,21 +285,21 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$inboundS
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema
+    ),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$Outbound =
-  | AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -309,12 +309,12 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$outbound
     z.ZodTypeDef,
     AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue
   > = z.union([
-    z.lazy(() =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema
+    ),
     z.array(z.any()),
   ]);
 
@@ -404,12 +404,12 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() =>
-          AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -425,10 +425,10 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$Outbound = {
   source_value?:
-    | AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -444,12 +444,12 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$outboundSchem
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() =>
-          AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),

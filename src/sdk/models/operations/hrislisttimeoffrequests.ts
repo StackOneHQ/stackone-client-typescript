@@ -14,9 +14,17 @@ import * as shared from "../shared/index.js";
  */
 export type HrisListTimeOffRequestsQueryParamFilter = {
   /**
+   * Filter to include time off requests that end on or before this date.
+   */
+  endDate?: Date | null | undefined;
+  /**
    * List of time off policy ids to filter by.
    */
   policyIds?: Array<string> | null | undefined;
+  /**
+   * Filter to include time off requests that start on or after this date.
+   */
+  startDate?: Date | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -96,20 +104,30 @@ export const HrisListTimeOffRequestsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  end_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   policy_ids: z.nullable(z.array(z.string())).optional(),
+  start_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   updated_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "end_date": "endDate",
     "policy_ids": "policyIds",
+    "start_date": "startDate",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type HrisListTimeOffRequestsQueryParamFilter$Outbound = {
+  end_date?: string | null | undefined;
   policy_ids?: Array<string> | null | undefined;
+  start_date?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -119,11 +137,15 @@ export const HrisListTimeOffRequestsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListTimeOffRequestsQueryParamFilter
 > = z.object({
+  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   policyIds: z.nullable(z.array(z.string())).optional(),
+  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    endDate: "end_date",
     policyIds: "policy_ids",
+    startDate: "start_date",
     updatedAfter: "updated_after",
   });
 });

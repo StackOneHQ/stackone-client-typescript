@@ -73,10 +73,10 @@ export type Application4 = {};
  * The source value of the application status.
  */
 export type ApplicationSourceValue =
-  | Application4
   | string
   | number
   | boolean
+  | Application4
   | Array<any>;
 
 /**
@@ -114,10 +114,10 @@ export type ApplicationStatus = {
    * The source value of the application status.
    */
   sourceValue?:
-    | Application4
     | string
     | number
     | boolean
+    | Application4
     | Array<any>
     | null
     | undefined;
@@ -359,19 +359,19 @@ export const ApplicationSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Application4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Application4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ApplicationSourceValue$Outbound =
-  | Application4$Outbound
   | string
   | number
   | boolean
+  | Application4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -380,10 +380,10 @@ export const ApplicationSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ApplicationSourceValue
 > = z.union([
-  z.lazy(() => Application4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Application4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -458,10 +458,10 @@ export const ApplicationStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Application4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Application4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -475,10 +475,10 @@ export const ApplicationStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type ApplicationStatus$Outbound = {
   source_value?:
-    | Application4$Outbound
     | string
     | number
     | boolean
+    | Application4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -493,10 +493,10 @@ export const ApplicationStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Application4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Application4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

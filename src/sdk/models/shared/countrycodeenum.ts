@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CountryCodeEnum4 = {};
 
 export type CountryCodeEnumSourceValue =
-  | CountryCodeEnum4
   | string
   | number
   | boolean
+  | CountryCodeEnum4
   | Array<any>;
 
 /**
@@ -283,10 +283,10 @@ export type CountryCodeEnumValueOpen = OpenEnum<typeof CountryCodeEnumValue>;
 
 export type CountryCodeEnum = {
   sourceValue?:
-    | CountryCodeEnum4
     | string
     | number
     | boolean
+    | CountryCodeEnum4
     | Array<any>
     | null
     | undefined;
@@ -350,19 +350,19 @@ export const CountryCodeEnumSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CountryCodeEnum4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CountryCodeEnum4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CountryCodeEnumSourceValue$Outbound =
-  | CountryCodeEnum4$Outbound
   | string
   | number
   | boolean
+  | CountryCodeEnum4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -371,10 +371,10 @@ export const CountryCodeEnumSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CountryCodeEnumSourceValue
 > = z.union([
-  z.lazy(() => CountryCodeEnum4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CountryCodeEnum4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -449,10 +449,10 @@ export const CountryCodeEnum$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CountryCodeEnum4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CountryCodeEnum4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -466,10 +466,10 @@ export const CountryCodeEnum$inboundSchema: z.ZodType<
 /** @internal */
 export type CountryCodeEnum$Outbound = {
   source_value?:
-    | CountryCodeEnum4$Outbound
     | string
     | number
     | boolean
+    | CountryCodeEnum4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -484,10 +484,10 @@ export const CountryCodeEnum$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CountryCodeEnum4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CountryCodeEnum4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

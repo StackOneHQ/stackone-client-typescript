@@ -27,10 +27,10 @@ export type EmailMessages4 = {};
  * The original value from the provider used to derive the unified message type.
  */
 export type EmailMessagesSourceValue =
-  | EmailMessages4
   | string
   | number
   | boolean
+  | EmailMessages4
   | Array<any>;
 
 /**
@@ -60,10 +60,10 @@ export type EmailMessagesMessageType = {
    * The original value from the provider used to derive the unified message type.
    */
   sourceValue?:
-    | EmailMessages4
     | string
     | number
     | boolean
+    | EmailMessages4
     | Array<any>
     | null
     | undefined;
@@ -213,19 +213,19 @@ export const EmailMessagesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EmailMessages4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EmailMessages4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type EmailMessagesSourceValue$Outbound =
-  | EmailMessages4$Outbound
   | string
   | number
   | boolean
+  | EmailMessages4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -234,10 +234,10 @@ export const EmailMessagesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EmailMessagesSourceValue
 > = z.union([
-  z.lazy(() => EmailMessages4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EmailMessages4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -312,10 +312,10 @@ export const EmailMessagesMessageType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => EmailMessages4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EmailMessages4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -329,10 +329,10 @@ export const EmailMessagesMessageType$inboundSchema: z.ZodType<
 /** @internal */
 export type EmailMessagesMessageType$Outbound = {
   source_value?:
-    | EmailMessages4$Outbound
     | string
     | number
     | boolean
+    | EmailMessages4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -347,10 +347,10 @@ export const EmailMessagesMessageType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => EmailMessages4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EmailMessages4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

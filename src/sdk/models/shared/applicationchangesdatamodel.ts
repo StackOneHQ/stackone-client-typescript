@@ -19,10 +19,10 @@ export type ApplicationChangesDataModel4 = {};
  * The source value of the application status.
  */
 export type ApplicationChangesDataModelSourceValue =
-  | ApplicationChangesDataModel4
   | string
   | number
   | boolean
+  | ApplicationChangesDataModel4
   | Array<any>;
 
 /**
@@ -62,10 +62,10 @@ export type ApplicationChangesDataModelApplicationStatus = {
    * The source value of the application status.
    */
   sourceValue?:
-    | ApplicationChangesDataModel4
     | string
     | number
     | boolean
+    | ApplicationChangesDataModel4
     | Array<any>
     | null
     | undefined;
@@ -146,19 +146,19 @@ export const ApplicationChangesDataModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ApplicationChangesDataModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ApplicationChangesDataModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ApplicationChangesDataModelSourceValue$Outbound =
-  | ApplicationChangesDataModel4$Outbound
   | string
   | number
   | boolean
+  | ApplicationChangesDataModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -167,10 +167,10 @@ export const ApplicationChangesDataModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ApplicationChangesDataModelSourceValue
 > = z.union([
-  z.lazy(() => ApplicationChangesDataModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ApplicationChangesDataModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -252,10 +252,10 @@ export const ApplicationChangesDataModelApplicationStatus$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => ApplicationChangesDataModel4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => ApplicationChangesDataModel4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -270,10 +270,10 @@ export const ApplicationChangesDataModelApplicationStatus$inboundSchema:
 /** @internal */
 export type ApplicationChangesDataModelApplicationStatus$Outbound = {
   source_value?:
-    | ApplicationChangesDataModel4$Outbound
     | string
     | number
     | boolean
+    | ApplicationChangesDataModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -289,10 +289,10 @@ export const ApplicationChangesDataModelApplicationStatus$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => ApplicationChangesDataModel4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => ApplicationChangesDataModel4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

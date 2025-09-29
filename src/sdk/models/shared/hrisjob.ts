@@ -19,10 +19,10 @@ export type HrisJob4 = {};
  * The source value of the job status.
  */
 export type HrisJobSourceValue =
-  | HrisJob4
   | string
   | number
   | boolean
+  | HrisJob4
   | Array<any>;
 
 /**
@@ -50,10 +50,10 @@ export type HrisJobStatus = {
    * The source value of the job status.
    */
   sourceValue?:
-    | HrisJob4
     | string
     | number
     | boolean
+    | HrisJob4
     | Array<any>
     | null
     | undefined;
@@ -148,19 +148,19 @@ export const HrisJobSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisJob4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisJob4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisJobSourceValue$Outbound =
-  | HrisJob4$Outbound
   | string
   | number
   | boolean
+  | HrisJob4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -169,10 +169,10 @@ export const HrisJobSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisJobSourceValue
 > = z.union([
-  z.lazy(() => HrisJob4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisJob4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -247,10 +247,10 @@ export const HrisJobStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisJob4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisJob4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -264,10 +264,10 @@ export const HrisJobStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisJobStatus$Outbound = {
   source_value?:
-    | HrisJob4$Outbound
     | string
     | number
     | boolean
+    | HrisJob4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -282,10 +282,10 @@ export const HrisJobStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisJob4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisJob4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

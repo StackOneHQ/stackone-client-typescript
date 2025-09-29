@@ -23,10 +23,10 @@ export type InAppMessages4 = {};
  * The original value from the provider used to derive the unified message type.
  */
 export type InAppMessagesSourceValue =
-  | InAppMessages4
   | string
   | number
   | boolean
+  | InAppMessages4
   | Array<any>;
 
 /**
@@ -56,10 +56,10 @@ export type InAppMessagesMessageType = {
    * The original value from the provider used to derive the unified message type.
    */
   sourceValue?:
-    | InAppMessages4
     | string
     | number
     | boolean
+    | InAppMessages4
     | Array<any>
     | null
     | undefined;
@@ -189,19 +189,19 @@ export const InAppMessagesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => InAppMessages4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => InAppMessages4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type InAppMessagesSourceValue$Outbound =
-  | InAppMessages4$Outbound
   | string
   | number
   | boolean
+  | InAppMessages4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -210,10 +210,10 @@ export const InAppMessagesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InAppMessagesSourceValue
 > = z.union([
-  z.lazy(() => InAppMessages4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => InAppMessages4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -288,10 +288,10 @@ export const InAppMessagesMessageType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => InAppMessages4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => InAppMessages4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -305,10 +305,10 @@ export const InAppMessagesMessageType$inboundSchema: z.ZodType<
 /** @internal */
 export type InAppMessagesMessageType$Outbound = {
   source_value?:
-    | InAppMessages4$Outbound
     | string
     | number
     | boolean
+    | InAppMessages4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -323,10 +323,10 @@ export const InAppMessagesMessageType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => InAppMessages4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => InAppMessages4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

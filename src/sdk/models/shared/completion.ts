@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type Completion4 = {};
 
 export type CompletionSourceValue =
-  | Completion4
   | string
   | number
   | boolean
+  | Completion4
   | Array<any>;
 
 export enum CompletionValue {
@@ -35,10 +35,10 @@ export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
  */
 export type CompletionLearningObjectType = {
   sourceValue?:
-    | Completion4
     | string
     | number
     | boolean
+    | Completion4
     | Array<any>
     | null
     | undefined;
@@ -48,10 +48,10 @@ export type CompletionLearningObjectType = {
 export type CompletionSchemas4 = {};
 
 export type CompletionSchemasSourceValue =
-  | CompletionSchemas4
   | string
   | number
   | boolean
+  | CompletionSchemas4
   | Array<any>;
 
 export enum CompletionSchemasValue {
@@ -68,10 +68,10 @@ export type CompletionSchemasValueOpen = OpenEnum<
  */
 export type CompletionSchemasResult = {
   sourceValue?:
-    | CompletionSchemas4
     | string
     | number
     | boolean
+    | CompletionSchemas4
     | Array<any>
     | null
     | undefined;
@@ -239,19 +239,19 @@ export const CompletionSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Completion4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Completion4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CompletionSourceValue$Outbound =
-  | Completion4$Outbound
   | string
   | number
   | boolean
+  | Completion4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -260,10 +260,10 @@ export const CompletionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CompletionSourceValue
 > = z.union([
-  z.lazy(() => Completion4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Completion4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -338,10 +338,10 @@ export const CompletionLearningObjectType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Completion4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Completion4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -355,10 +355,10 @@ export const CompletionLearningObjectType$inboundSchema: z.ZodType<
 /** @internal */
 export type CompletionLearningObjectType$Outbound = {
   source_value?:
-    | Completion4$Outbound
     | string
     | number
     | boolean
+    | Completion4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -373,10 +373,10 @@ export const CompletionLearningObjectType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Completion4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Completion4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -474,19 +474,19 @@ export const CompletionSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CompletionSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CompletionSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CompletionSchemasSourceValue$Outbound =
-  | CompletionSchemas4$Outbound
   | string
   | number
   | boolean
+  | CompletionSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -495,10 +495,10 @@ export const CompletionSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CompletionSchemasSourceValue
 > = z.union([
-  z.lazy(() => CompletionSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CompletionSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -575,10 +575,10 @@ export const CompletionSchemasResult$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CompletionSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CompletionSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -592,10 +592,10 @@ export const CompletionSchemasResult$inboundSchema: z.ZodType<
 /** @internal */
 export type CompletionSchemasResult$Outbound = {
   source_value?:
-    | CompletionSchemas4$Outbound
     | string
     | number
     | boolean
+    | CompletionSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -610,10 +610,10 @@ export const CompletionSchemasResult$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CompletionSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CompletionSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

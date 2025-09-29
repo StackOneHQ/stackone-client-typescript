@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountingCompany4 = {};
 
 export type AccountingCompanySourceValue =
-  | AccountingCompany4
   | string
   | number
   | boolean
+  | AccountingCompany4
   | Array<any>;
 
 /**
@@ -197,10 +197,10 @@ export type AccountingCompanyValueOpen = OpenEnum<
  */
 export type BaseCurrency = {
   sourceValue?:
-    | AccountingCompany4
     | string
     | number
     | boolean
+    | AccountingCompany4
     | Array<any>
     | null
     | undefined;
@@ -291,19 +291,19 @@ export const AccountingCompanySourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AccountingCompany4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingCompany4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AccountingCompanySourceValue$Outbound =
-  | AccountingCompany4$Outbound
   | string
   | number
   | boolean
+  | AccountingCompany4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -312,10 +312,10 @@ export const AccountingCompanySourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountingCompanySourceValue
 > = z.union([
-  z.lazy(() => AccountingCompany4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingCompany4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -392,10 +392,10 @@ export const BaseCurrency$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AccountingCompany4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingCompany4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -409,10 +409,10 @@ export const BaseCurrency$inboundSchema: z.ZodType<
 /** @internal */
 export type BaseCurrency$Outbound = {
   source_value?:
-    | AccountingCompany4$Outbound
     | string
     | number
     | boolean
+    | AccountingCompany4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -427,10 +427,10 @@ export const BaseCurrency$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountingCompany4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingCompany4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

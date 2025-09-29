@@ -22,10 +22,10 @@ import {
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocument4 = {};
 
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue =
-  | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
   | Array<any>;
 
 /**
@@ -33,10 +33,10 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue =
  */
 export type HrisCreateWorkEligibilityRequestDtoCategory = {
   sourceValue?:
-    | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
     | Array<any>
     | null
     | undefined;
@@ -49,10 +49,10 @@ export type HrisCreateWorkEligibilityRequestDtoCategory = {
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4 = {};
 
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue =
-  | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
   | Array<any>;
 
 /**
@@ -1282,10 +1282,10 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen =
  */
 export type HrisCreateWorkEligibilityRequestDtoFileFormat = {
   sourceValue?:
-    | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
     | Array<any>
     | null
     | undefined;
@@ -1346,10 +1346,10 @@ export type Document = {
 export type HrisCreateWorkEligibilityRequestDto4 = {};
 
 export type HrisCreateWorkEligibilityRequestDtoSourceValue =
-  | HrisCreateWorkEligibilityRequestDto4
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDto4
   | Array<any>;
 
 /**
@@ -1618,10 +1618,10 @@ export type HrisCreateWorkEligibilityRequestDtoValueOpen = OpenEnum<
  */
 export type IssuedBy = {
   sourceValue?:
-    | HrisCreateWorkEligibilityRequestDto4
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -1634,10 +1634,10 @@ export type IssuedBy = {
 export type HrisCreateWorkEligibilityRequestDtoSchemas4 = {};
 
 export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue =
-  | HrisCreateWorkEligibilityRequestDtoSchemas4
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDtoSchemas4
   | Array<any>;
 
 export enum HrisCreateWorkEligibilityRequestDtoSchemasValue {
@@ -1654,10 +1654,10 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasValueOpen = OpenEnum<
 
 export type HrisCreateWorkEligibilityRequestDtoType = {
   sourceValue?:
-    | HrisCreateWorkEligibilityRequestDtoSchemas4
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1753,21 +1753,21 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inbou
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() =>
-      HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema
+    ),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound =
-  | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1777,12 +1777,12 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outbo
     z.ZodTypeDef,
     HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue
   > = z.union([
-    z.lazy(() =>
-      HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema
+    ),
     z.array(z.any()),
   ]);
 
@@ -1836,12 +1836,12 @@ export const HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1855,10 +1855,10 @@ export const HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema:
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoCategory$Outbound = {
   source_value?:
-    | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1874,12 +1874,12 @@ export const HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -2000,21 +2000,21 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceV
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() =>
-      HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema
+    ),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$Outbound =
-  | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2024,12 +2024,12 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceV
     z.ZodTypeDef,
     HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue
   > = z.union([
-    z.lazy(() =>
-      HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
+    ),
     z.array(z.any()),
   ]);
 
@@ -2121,12 +2121,12 @@ export const HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -2142,10 +2142,10 @@ export const HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema:
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound = {
   source_value?:
-    | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2161,12 +2161,12 @@ export const HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -2394,19 +2394,19 @@ export const HrisCreateWorkEligibilityRequestDtoSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound =
-  | HrisCreateWorkEligibilityRequestDto4$Outbound
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2416,10 +2416,10 @@ export const HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     HrisCreateWorkEligibilityRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2508,10 +2508,10 @@ export const IssuedBy$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateWorkEligibilityRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateWorkEligibilityRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2526,10 +2526,10 @@ export const IssuedBy$inboundSchema: z.ZodType<
 /** @internal */
 export type IssuedBy$Outbound = {
   source_value?:
-    | HrisCreateWorkEligibilityRequestDto4$Outbound
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2544,10 +2544,10 @@ export const IssuedBy$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateWorkEligibilityRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateWorkEligibilityRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2654,19 +2654,19 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound =
-  | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2676,10 +2676,10 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchem
     z.ZodTypeDef,
     HrisCreateWorkEligibilityRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2770,10 +2770,10 @@ export const HrisCreateWorkEligibilityRequestDtoType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2789,10 +2789,10 @@ export const HrisCreateWorkEligibilityRequestDtoType$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoType$Outbound = {
   source_value?:
-    | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2807,10 +2807,10 @@ export const HrisCreateWorkEligibilityRequestDtoType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

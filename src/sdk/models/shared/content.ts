@@ -56,10 +56,10 @@ export type ContentActive = boolean | Content2;
 export type Content4 = {};
 
 export type ContentSourceValue =
-  | Content4
   | string
   | number
   | boolean
+  | Content4
   | Array<any>;
 
 export enum ContentValue {
@@ -77,10 +77,10 @@ export type ContentValueOpen = OpenEnum<typeof ContentValue>;
  */
 export type ContentContentType = {
   sourceValue?:
-    | Content4
     | string
     | number
     | boolean
+    | Content4
     | Array<any>
     | null
     | undefined;
@@ -305,19 +305,19 @@ export const ContentSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Content4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Content4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ContentSourceValue$Outbound =
-  | Content4$Outbound
   | string
   | number
   | boolean
+  | Content4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -326,10 +326,10 @@ export const ContentSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentSourceValue
 > = z.union([
-  z.lazy(() => Content4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Content4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -404,10 +404,10 @@ export const ContentContentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Content4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Content4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -421,10 +421,10 @@ export const ContentContentType$inboundSchema: z.ZodType<
 /** @internal */
 export type ContentContentType$Outbound = {
   source_value?:
-    | Content4$Outbound
     | string
     | number
     | boolean
+    | Content4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -439,10 +439,10 @@ export const ContentContentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Content4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Content4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

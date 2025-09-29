@@ -19,10 +19,10 @@ export type TicketingTicketStatus4 = {};
  * The source value of this status type
  */
 export type TicketingTicketStatusSourceValue =
-  | TicketingTicketStatus4
   | string
   | number
   | boolean
+  | TicketingTicketStatus4
   | Array<any>;
 
 /**
@@ -49,10 +49,10 @@ export type TicketingTicketStatusType = {
    * The source value of this status type
    */
   sourceValue?:
-    | TicketingTicketStatus4
     | string
     | number
     | boolean
+    | TicketingTicketStatus4
     | Array<any>
     | null
     | undefined;
@@ -131,19 +131,19 @@ export const TicketingTicketStatusSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingTicketStatus4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingTicketStatus4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingTicketStatusSourceValue$Outbound =
-  | TicketingTicketStatus4$Outbound
   | string
   | number
   | boolean
+  | TicketingTicketStatus4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -152,10 +152,10 @@ export const TicketingTicketStatusSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingTicketStatusSourceValue
 > = z.union([
-  z.lazy(() => TicketingTicketStatus4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingTicketStatus4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -232,10 +232,10 @@ export const TicketingTicketStatusType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketStatus4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketStatus4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -249,10 +249,10 @@ export const TicketingTicketStatusType$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingTicketStatusType$Outbound = {
   source_value?:
-    | TicketingTicketStatus4$Outbound
     | string
     | number
     | boolean
+    | TicketingTicketStatus4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -267,10 +267,10 @@ export const TicketingTicketStatusType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketStatus4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketStatus4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HrisUpdateEmploymentRequestDtoSchemasContractType4 = {};
 
 export type HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue =
-  | HrisUpdateEmploymentRequestDtoSchemasContractType4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasContractType4
   | Array<any>;
 
 export enum HrisUpdateEmploymentRequestDtoSchemasContractTypeValue {
@@ -36,10 +36,10 @@ export type HrisUpdateEmploymentRequestDtoSchemasContractTypeValueOpen =
  */
 export type HrisUpdateEmploymentRequestDtoSchemasContractType = {
   sourceValue?:
-    | HrisUpdateEmploymentRequestDtoSchemasContractType4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasContractType4
     | Array<any>
     | null
     | undefined;
@@ -77,10 +77,10 @@ export type HrisUpdateEmploymentRequestDtoContractType = {
 export type HrisUpdateEmploymentRequestDto4 = {};
 
 export type HrisUpdateEmploymentRequestDtoSourceValue =
-  | HrisUpdateEmploymentRequestDto4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDto4
   | Array<any>;
 
 export enum HrisUpdateEmploymentRequestDtoValue {
@@ -100,10 +100,10 @@ export type HrisUpdateEmploymentRequestDtoValueOpen = OpenEnum<
  */
 export type HrisUpdateEmploymentRequestDtoEmploymentContractType = {
   sourceValue?:
-    | HrisUpdateEmploymentRequestDto4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -116,10 +116,10 @@ export type HrisUpdateEmploymentRequestDtoSchemas4 = {};
  * The source value of the employment type.
  */
 export type HrisUpdateEmploymentRequestDtoSchemasSourceValue =
-  | HrisUpdateEmploymentRequestDtoSchemas4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemas4
   | Array<any>;
 
 /**
@@ -161,10 +161,10 @@ export type HrisUpdateEmploymentRequestDtoEmploymentType = {
    * The source value of the employment type.
    */
   sourceValue?:
-    | HrisUpdateEmploymentRequestDtoSchemas4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -202,10 +202,10 @@ export type HrisUpdateEmploymentRequestDtoSchemasPayFrequency4 = {};
  * The source value of the pay frequency.
  */
 export type HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue =
-  | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4
   | Array<any>;
 
 /**
@@ -242,10 +242,10 @@ export type HrisUpdateEmploymentRequestDtoPayFrequency = {
    * The source value of the pay frequency.
    */
   sourceValue?:
-    | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4
     | Array<any>
     | null
     | undefined;
@@ -264,10 +264,10 @@ export type HrisUpdateEmploymentRequestDtoSchemasPayPeriod4 = {};
  * The source value of the pay period.
  */
 export type HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue =
-  | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4
   | Array<any>;
 
 /**
@@ -303,10 +303,10 @@ export type HrisUpdateEmploymentRequestDtoPayPeriod = {
    * The source value of the pay period.
    */
   sourceValue?:
-    | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4
     | Array<any>
     | null
     | undefined;
@@ -322,10 +322,10 @@ export type HrisUpdateEmploymentRequestDtoPayPeriod = {
 export type HrisUpdateEmploymentRequestDtoSchemasType4 = {};
 
 export type HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue =
-  | HrisUpdateEmploymentRequestDtoSchemasType4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasType4
   | Array<any>;
 
 export enum HrisUpdateEmploymentRequestDtoSchemasTypeValue {
@@ -356,10 +356,10 @@ export type HrisUpdateEmploymentRequestDtoSchemasTypeValueOpen = OpenEnum<
  */
 export type HrisUpdateEmploymentRequestDtoSchemasType = {
   sourceValue?:
-    | HrisUpdateEmploymentRequestDtoSchemasType4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasType4
     | Array<any>
     | null
     | undefined;
@@ -391,10 +391,10 @@ export type HrisUpdateEmploymentRequestDtoType = {
 export type HrisUpdateEmploymentRequestDtoSchemasWorkTime4 = {};
 
 export type HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue =
-  | HrisUpdateEmploymentRequestDtoSchemasWorkTime4
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasWorkTime4
   | Array<any>;
 
 /**
@@ -419,10 +419,10 @@ export type HrisUpdateEmploymentRequestDtoSchemasWorkTimeValueOpen = OpenEnum<
  */
 export type HrisUpdateEmploymentRequestDtoDurationUnit = {
   sourceValue?:
-    | HrisUpdateEmploymentRequestDtoSchemasWorkTime4
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasWorkTime4
     | Array<any>
     | null
     | undefined;
@@ -589,21 +589,21 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$inboun
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema
+    ),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -613,12 +613,12 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$outbou
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue
   > = z.union([
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema
+    ),
     z.array(z.any()),
   ]);
 
@@ -708,12 +708,12 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -729,10 +729,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema:
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasContractType$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -748,12 +748,12 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractType$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -959,19 +959,19 @@ export const HrisUpdateEmploymentRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisUpdateEmploymentRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisUpdateEmploymentRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDto4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -981,10 +981,10 @@ export const HrisUpdateEmploymentRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1073,10 +1073,10 @@ export const HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => HrisUpdateEmploymentRequestDto4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => HrisUpdateEmploymentRequestDto4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1091,10 +1091,10 @@ export const HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema:
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoEmploymentContractType$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDto4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1110,10 +1110,10 @@ export const HrisUpdateEmploymentRequestDtoEmploymentContractType$outboundSchema
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => HrisUpdateEmploymentRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => HrisUpdateEmploymentRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1229,19 +1229,19 @@ export const HrisUpdateEmploymentRequestDtoSchemasSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasSourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1251,10 +1251,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1346,10 +1346,10 @@ export const HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1364,10 +1364,10 @@ export const HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema:
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoEmploymentType$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1383,10 +1383,10 @@ export const HrisUpdateEmploymentRequestDtoEmploymentType$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1585,21 +1585,21 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$inboun
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema
+    ),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1609,12 +1609,12 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$outbou
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue
   > = z.union([
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema
+    ),
     z.array(z.any()),
   ]);
 
@@ -1701,12 +1701,12 @@ export const HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema:
     z.object({
       source_value: z.nullable(
         z.union([
-          z.lazy(() =>
-            HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema
-          ),
           z.string(),
           z.number(),
           z.boolean(),
+          z.lazy(() =>
+            HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema
+          ),
           z.array(z.any()),
         ]),
       ).optional(),
@@ -1722,10 +1722,10 @@ export const HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema:
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPayFrequency$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1741,12 +1741,12 @@ export const HrisUpdateEmploymentRequestDtoPayFrequency$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1870,19 +1870,19 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$inboundSc
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1892,12 +1892,12 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$outboundS
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue
   > = z.union([
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema
-    ),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() =>
+      HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema
+    ),
     z.array(z.any()),
   ]);
 
@@ -1986,12 +1986,12 @@ export const HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() =>
-        HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema
-      ),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() =>
+        HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema
+      ),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2007,10 +2007,10 @@ export const HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPayPeriod$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2025,12 +2025,12 @@ export const HrisUpdateEmploymentRequestDtoPayPeriod$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() =>
-        HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema
-      ),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() =>
+        HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema
+      ),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2150,19 +2150,19 @@ export const HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDtoSchemasType4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2172,10 +2172,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$outboundSchema
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2266,10 +2266,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2285,10 +2285,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasType$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDtoSchemasType4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2304,10 +2304,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasType$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -2510,19 +2510,19 @@ export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$inboundSch
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$Outbound =
-  | HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound
   | string
   | number
   | boolean
+  | HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2532,10 +2532,10 @@ export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$outboundSc
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue
   > = z.union([
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2622,12 +2622,12 @@ export const HrisUpdateEmploymentRequestDtoDurationUnit$inboundSchema:
     z.object({
       source_value: z.nullable(
         z.union([
-          z.lazy(() =>
-            HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema
-          ),
           z.string(),
           z.number(),
           z.boolean(),
+          z.lazy(() =>
+            HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema
+          ),
           z.array(z.any()),
         ]),
       ).optional(),
@@ -2643,10 +2643,10 @@ export const HrisUpdateEmploymentRequestDtoDurationUnit$inboundSchema:
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoDurationUnit$Outbound = {
   source_value?:
-    | HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound
     | string
     | number
     | boolean
+    | HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2662,12 +2662,12 @@ export const HrisUpdateEmploymentRequestDtoDurationUnit$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() =>
-          HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema
-        ),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() =>
+          HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema
+        ),
         z.array(z.any()),
       ]),
     ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type Assignment4 = {};
 
 export type AssignmentSourceValue =
-  | Assignment4
   | string
   | number
   | boolean
+  | Assignment4
   | Array<any>;
 
 export enum AssignmentValue {
@@ -35,10 +35,10 @@ export type AssignmentValueOpen = OpenEnum<typeof AssignmentValue>;
  */
 export type LearningObjectType = {
   sourceValue?:
-    | Assignment4
     | string
     | number
     | boolean
+    | Assignment4
     | Array<any>
     | null
     | undefined;
@@ -48,10 +48,10 @@ export type LearningObjectType = {
 export type AssignmentSchemas4 = {};
 
 export type AssignmentSchemasSourceValue =
-  | AssignmentSchemas4
   | string
   | number
   | boolean
+  | AssignmentSchemas4
   | Array<any>;
 
 export enum AssignmentSchemasValue {
@@ -68,10 +68,10 @@ export type AssignmentSchemasValueOpen = OpenEnum<
  */
 export type Result = {
   sourceValue?:
-    | AssignmentSchemas4
     | string
     | number
     | boolean
+    | AssignmentSchemas4
     | Array<any>
     | null
     | undefined;
@@ -81,10 +81,10 @@ export type Result = {
 export type AssignmentSchemasStatus4 = {};
 
 export type AssignmentSchemasStatusSourceValue =
-  | AssignmentSchemasStatus4
   | string
   | number
   | boolean
+  | AssignmentSchemasStatus4
   | Array<any>;
 
 export enum AssignmentSchemasStatusValue {
@@ -102,10 +102,10 @@ export type AssignmentSchemasStatusValueOpen = OpenEnum<
  */
 export type AssignmentStatus = {
   sourceValue?:
-    | AssignmentSchemasStatus4
     | string
     | number
     | boolean
+    | AssignmentSchemasStatus4
     | Array<any>
     | null
     | undefined;
@@ -251,19 +251,19 @@ export const AssignmentSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Assignment4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Assignment4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AssignmentSourceValue$Outbound =
-  | Assignment4$Outbound
   | string
   | number
   | boolean
+  | Assignment4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -272,10 +272,10 @@ export const AssignmentSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AssignmentSourceValue
 > = z.union([
-  z.lazy(() => Assignment4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Assignment4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -350,10 +350,10 @@ export const LearningObjectType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Assignment4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Assignment4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -367,10 +367,10 @@ export const LearningObjectType$inboundSchema: z.ZodType<
 /** @internal */
 export type LearningObjectType$Outbound = {
   source_value?:
-    | Assignment4$Outbound
     | string
     | number
     | boolean
+    | Assignment4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -385,10 +385,10 @@ export const LearningObjectType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Assignment4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Assignment4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -484,19 +484,19 @@ export const AssignmentSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AssignmentSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AssignmentSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AssignmentSchemasSourceValue$Outbound =
-  | AssignmentSchemas4$Outbound
   | string
   | number
   | boolean
+  | AssignmentSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -505,10 +505,10 @@ export const AssignmentSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AssignmentSchemasSourceValue
 > = z.union([
-  z.lazy(() => AssignmentSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AssignmentSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -582,10 +582,10 @@ export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
   .object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => AssignmentSchemas4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AssignmentSchemas4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -599,10 +599,10 @@ export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Result$Outbound = {
   source_value?:
-    | AssignmentSchemas4$Outbound
     | string
     | number
     | boolean
+    | AssignmentSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -617,10 +617,10 @@ export const Result$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AssignmentSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AssignmentSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -712,19 +712,19 @@ export const AssignmentSchemasStatusSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AssignmentSchemasStatus4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AssignmentSchemasStatus4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AssignmentSchemasStatusSourceValue$Outbound =
-  | AssignmentSchemasStatus4$Outbound
   | string
   | number
   | boolean
+  | AssignmentSchemasStatus4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -733,10 +733,10 @@ export const AssignmentSchemasStatusSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AssignmentSchemasStatusSourceValue
 > = z.union([
-  z.lazy(() => AssignmentSchemasStatus4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AssignmentSchemasStatus4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -815,10 +815,10 @@ export const AssignmentStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AssignmentSchemasStatus4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AssignmentSchemasStatus4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -832,10 +832,10 @@ export const AssignmentStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type AssignmentStatus$Outbound = {
   source_value?:
-    | AssignmentSchemasStatus4$Outbound
     | string
     | number
     | boolean
+    | AssignmentSchemasStatus4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -850,10 +850,10 @@ export const AssignmentStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AssignmentSchemasStatus4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AssignmentSchemasStatus4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

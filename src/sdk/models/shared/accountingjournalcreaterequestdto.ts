@@ -22,10 +22,10 @@ import {
 export type AccountingJournalCreateRequestDto4 = {};
 
 export type AccountingJournalCreateRequestDtoSourceValue =
-  | AccountingJournalCreateRequestDto4
   | string
   | number
   | boolean
+  | AccountingJournalCreateRequestDto4
   | Array<any>;
 
 /**
@@ -203,10 +203,10 @@ export type AccountingJournalCreateRequestDtoValueOpen = OpenEnum<
  */
 export type CurrencyCode = {
   sourceValue?:
-    | AccountingJournalCreateRequestDto4
     | string
     | number
     | boolean
+    | AccountingJournalCreateRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -302,19 +302,19 @@ export const AccountingJournalCreateRequestDtoSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => AccountingJournalCreateRequestDto4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AccountingJournalCreateRequestDto4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type AccountingJournalCreateRequestDtoSourceValue$Outbound =
-  | AccountingJournalCreateRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AccountingJournalCreateRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -324,10 +324,10 @@ export const AccountingJournalCreateRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     AccountingJournalCreateRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => AccountingJournalCreateRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AccountingJournalCreateRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -415,10 +415,10 @@ export const CurrencyCode$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AccountingJournalCreateRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingJournalCreateRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -433,10 +433,10 @@ export const CurrencyCode$inboundSchema: z.ZodType<
 /** @internal */
 export type CurrencyCode$Outbound = {
   source_value?:
-    | AccountingJournalCreateRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AccountingJournalCreateRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -451,10 +451,10 @@ export const CurrencyCode$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountingJournalCreateRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingJournalCreateRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

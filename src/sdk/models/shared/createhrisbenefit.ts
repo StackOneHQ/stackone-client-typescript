@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CreateHRISBenefit4 = {};
 
 export type CreateHRISBenefitSourceValue =
-  | CreateHRISBenefit4
   | string
   | number
   | boolean
+  | CreateHRISBenefit4
   | Array<any>;
 
 /**
@@ -45,10 +45,10 @@ export type CreateHRISBenefitValueOpen = OpenEnum<
  */
 export type BenefitType = {
   sourceValue?:
-    | CreateHRISBenefit4
     | string
     | number
     | boolean
+    | CreateHRISBenefit4
     | Array<any>
     | null
     | undefined;
@@ -143,19 +143,19 @@ export const CreateHRISBenefitSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateHRISBenefit4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateHRISBenefit4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CreateHRISBenefitSourceValue$Outbound =
-  | CreateHRISBenefit4$Outbound
   | string
   | number
   | boolean
+  | CreateHRISBenefit4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -164,10 +164,10 @@ export const CreateHRISBenefitSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateHRISBenefitSourceValue
 > = z.union([
-  z.lazy(() => CreateHRISBenefit4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateHRISBenefit4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -244,10 +244,10 @@ export const BenefitType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateHRISBenefit4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateHRISBenefit4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -261,10 +261,10 @@ export const BenefitType$inboundSchema: z.ZodType<
 /** @internal */
 export type BenefitType$Outbound = {
   source_value?:
-    | CreateHRISBenefit4$Outbound
     | string
     | number
     | boolean
+    | CreateHRISBenefit4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -279,10 +279,10 @@ export const BenefitType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateHRISBenefit4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateHRISBenefit4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

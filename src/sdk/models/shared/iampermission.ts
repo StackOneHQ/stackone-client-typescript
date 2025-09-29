@@ -22,10 +22,10 @@ import {
 export type IamPermission4 = {};
 
 export type IamPermissionSourceValue =
-  | IamPermission4
   | string
   | number
   | boolean
+  | IamPermission4
   | Array<any>;
 
 /**
@@ -47,10 +47,10 @@ export type IamPermissionValueOpen = OpenEnum<typeof IamPermissionValue>;
 
 export type IamPermissionType = {
   sourceValue?:
-    | IamPermission4
     | string
     | number
     | boolean
+    | IamPermission4
     | Array<any>
     | null
     | undefined;
@@ -133,19 +133,19 @@ export const IamPermissionSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamPermission4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamPermission4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamPermissionSourceValue$Outbound =
-  | IamPermission4$Outbound
   | string
   | number
   | boolean
+  | IamPermission4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -154,10 +154,10 @@ export const IamPermissionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamPermissionSourceValue
 > = z.union([
-  z.lazy(() => IamPermission4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamPermission4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -232,10 +232,10 @@ export const IamPermissionType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamPermission4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamPermission4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -249,10 +249,10 @@ export const IamPermissionType$inboundSchema: z.ZodType<
 /** @internal */
 export type IamPermissionType$Outbound = {
   source_value?:
-    | IamPermission4$Outbound
     | string
     | number
     | boolean
+    | IamPermission4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -267,10 +267,10 @@ export const IamPermissionType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamPermission4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamPermission4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type EmploymentManagerApiModel4 = {};
 
 export type EmploymentManagerApiModelSourceValue =
-  | EmploymentManagerApiModel4
   | string
   | number
   | boolean
+  | EmploymentManagerApiModel4
   | Array<any>;
 
 export enum EmploymentManagerApiModelValue {
@@ -41,10 +41,10 @@ export type EmploymentManagerApiModelValueOpen = OpenEnum<
  */
 export type RoleType = {
   sourceValue?:
-    | EmploymentManagerApiModel4
     | string
     | number
     | boolean
+    | EmploymentManagerApiModel4
     | Array<any>
     | null
     | undefined;
@@ -142,19 +142,19 @@ export const EmploymentManagerApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EmploymentManagerApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EmploymentManagerApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type EmploymentManagerApiModelSourceValue$Outbound =
-  | EmploymentManagerApiModel4$Outbound
   | string
   | number
   | boolean
+  | EmploymentManagerApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -163,10 +163,10 @@ export const EmploymentManagerApiModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EmploymentManagerApiModelSourceValue
 > = z.union([
-  z.lazy(() => EmploymentManagerApiModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EmploymentManagerApiModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -246,10 +246,10 @@ export const RoleType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => EmploymentManagerApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EmploymentManagerApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -263,10 +263,10 @@ export const RoleType$inboundSchema: z.ZodType<
 /** @internal */
 export type RoleType$Outbound = {
   source_value?:
-    | EmploymentManagerApiModel4$Outbound
     | string
     | number
     | boolean
+    | EmploymentManagerApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -281,10 +281,10 @@ export const RoleType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => EmploymentManagerApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EmploymentManagerApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

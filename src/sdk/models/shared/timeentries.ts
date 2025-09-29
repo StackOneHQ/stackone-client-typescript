@@ -55,10 +55,10 @@ export type Location = {
 export type TimeEntries4 = {};
 
 export type TimeEntriesSourceValue =
-  | TimeEntries4
   | string
   | number
   | boolean
+  | TimeEntries4
   | Array<any>;
 
 export enum TimeEntriesValue {
@@ -72,10 +72,10 @@ export type TimeEntriesValueOpen = OpenEnum<typeof TimeEntriesValue>;
  */
 export type TimeEntriesStatus = {
   sourceValue?:
-    | TimeEntries4
     | string
     | number
     | boolean
+    | TimeEntries4
     | Array<any>
     | null
     | undefined;
@@ -377,19 +377,19 @@ export const TimeEntriesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TimeEntries4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeEntries4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TimeEntriesSourceValue$Outbound =
-  | TimeEntries4$Outbound
   | string
   | number
   | boolean
+  | TimeEntries4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -398,10 +398,10 @@ export const TimeEntriesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TimeEntriesSourceValue
 > = z.union([
-  z.lazy(() => TimeEntries4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeEntries4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -476,10 +476,10 @@ export const TimeEntriesStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TimeEntries4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeEntries4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -493,10 +493,10 @@ export const TimeEntriesStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type TimeEntriesStatus$Outbound = {
   source_value?:
-    | TimeEntries4$Outbound
     | string
     | number
     | boolean
+    | TimeEntries4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -511,10 +511,10 @@ export const TimeEntriesStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TimeEntries4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeEntries4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

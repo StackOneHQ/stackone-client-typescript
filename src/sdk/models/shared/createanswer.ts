@@ -19,10 +19,10 @@ export type CreateAnswer4 = {};
  * The source value of the answer type.
  */
 export type CreateAnswerSourceValue =
-  | CreateAnswer4
   | string
   | number
   | boolean
+  | CreateAnswer4
   | Array<any>;
 
 /**
@@ -55,10 +55,10 @@ export type CreateAnswerType = {
    * The source value of the answer type.
    */
   sourceValue?:
-    | CreateAnswer4
     | string
     | number
     | boolean
+    | CreateAnswer4
     | Array<any>
     | null
     | undefined;
@@ -133,19 +133,19 @@ export const CreateAnswerSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateAnswer4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateAnswer4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CreateAnswerSourceValue$Outbound =
-  | CreateAnswer4$Outbound
   | string
   | number
   | boolean
+  | CreateAnswer4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -154,10 +154,10 @@ export const CreateAnswerSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateAnswerSourceValue
 > = z.union([
-  z.lazy(() => CreateAnswer4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateAnswer4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -232,10 +232,10 @@ export const CreateAnswerType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateAnswer4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateAnswer4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -249,10 +249,10 @@ export const CreateAnswerType$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateAnswerType$Outbound = {
   source_value?:
-    | CreateAnswer4$Outbound
     | string
     | number
     | boolean
+    | CreateAnswer4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -267,10 +267,10 @@ export const CreateAnswerType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateAnswer4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateAnswer4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

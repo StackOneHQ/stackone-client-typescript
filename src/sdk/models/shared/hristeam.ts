@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HRISTeam4 = {};
 
 export type HRISTeamSourceValue =
-  | HRISTeam4
   | string
   | number
   | boolean
+  | HRISTeam4
   | Array<any>;
 
 export enum HRISTeamValue {
@@ -33,10 +33,10 @@ export type HRISTeamValueOpen = OpenEnum<typeof HRISTeamValue>;
  */
 export type HRISTeamType = {
   sourceValue?:
-    | HRISTeam4
     | string
     | number
     | boolean
+    | HRISTeam4
     | Array<any>
     | null
     | undefined;
@@ -140,19 +140,19 @@ export const HRISTeamSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISTeam4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISTeam4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISTeamSourceValue$Outbound =
-  | HRISTeam4$Outbound
   | string
   | number
   | boolean
+  | HRISTeam4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -161,10 +161,10 @@ export const HRISTeamSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISTeamSourceValue
 > = z.union([
-  z.lazy(() => HRISTeam4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISTeam4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -239,10 +239,10 @@ export const HRISTeamType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISTeam4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISTeam4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -256,10 +256,10 @@ export const HRISTeamType$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISTeamType$Outbound = {
   source_value?:
-    | HRISTeam4$Outbound
     | string
     | number
     | boolean
+    | HRISTeam4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -274,10 +274,10 @@ export const HRISTeamType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISTeam4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISTeam4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HRISLocation4 = {};
 
 export type HRISLocationSourceValue =
-  | HRISLocation4
   | string
   | number
   | boolean
+  | HRISLocation4
   | Array<any>;
 
 /**
@@ -286,10 +286,10 @@ export type HRISLocationValueOpen = OpenEnum<typeof HRISLocationValue>;
  */
 export type HRISLocationCountry = {
   sourceValue?:
-    | HRISLocation4
     | string
     | number
     | boolean
+    | HRISLocation4
     | Array<any>
     | null
     | undefined;
@@ -305,10 +305,10 @@ export type HRISLocationSchemas4 = {};
  * The source value of the location type.
  */
 export type HRISLocationSchemasSourceValue =
-  | HRISLocationSchemas4
   | string
   | number
   | boolean
+  | HRISLocationSchemas4
   | Array<any>;
 
 /**
@@ -334,10 +334,10 @@ export type HRISLocationLocationType = {
    * The source value of the location type.
    */
   sourceValue?:
-    | HRISLocationSchemas4
     | string
     | number
     | boolean
+    | HRISLocationSchemas4
     | Array<any>
     | null
     | undefined;
@@ -464,19 +464,19 @@ export const HRISLocationSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISLocation4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISLocation4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISLocationSourceValue$Outbound =
-  | HRISLocation4$Outbound
   | string
   | number
   | boolean
+  | HRISLocation4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -485,10 +485,10 @@ export const HRISLocationSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISLocationSourceValue
 > = z.union([
-  z.lazy(() => HRISLocation4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISLocation4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -563,10 +563,10 @@ export const HRISLocationCountry$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISLocation4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISLocation4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -580,10 +580,10 @@ export const HRISLocationCountry$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISLocationCountry$Outbound = {
   source_value?:
-    | HRISLocation4$Outbound
     | string
     | number
     | boolean
+    | HRISLocation4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -598,10 +598,10 @@ export const HRISLocationCountry$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISLocation4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISLocation4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -697,19 +697,19 @@ export const HRISLocationSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISLocationSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISLocationSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISLocationSchemasSourceValue$Outbound =
-  | HRISLocationSchemas4$Outbound
   | string
   | number
   | boolean
+  | HRISLocationSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -718,10 +718,10 @@ export const HRISLocationSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISLocationSchemasSourceValue
 > = z.union([
-  z.lazy(() => HRISLocationSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISLocationSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -798,10 +798,10 @@ export const HRISLocationLocationType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISLocationSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISLocationSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -815,10 +815,10 @@ export const HRISLocationLocationType$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISLocationLocationType$Outbound = {
   source_value?:
-    | HRISLocationSchemas4$Outbound
     | string
     | number
     | boolean
+    | HRISLocationSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -833,10 +833,10 @@ export const HRISLocationLocationType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISLocationSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISLocationSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CreateEmploymentApiModelSchemasContractType4 = {};
 
 export type CreateEmploymentApiModelSchemasContractTypeSourceValue =
-  | CreateEmploymentApiModelSchemasContractType4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasContractType4
   | Array<any>;
 
 export enum CreateEmploymentApiModelSchemasContractTypeValue {
@@ -37,10 +37,10 @@ export type CreateEmploymentApiModelSchemasContractTypeValueOpen = OpenEnum<
  */
 export type CreateEmploymentApiModelContractType = {
   sourceValue?:
-    | CreateEmploymentApiModelSchemasContractType4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasContractType4
     | Array<any>
     | null
     | undefined;
@@ -75,10 +75,10 @@ export type ContractType = {
 export type CreateEmploymentApiModel4 = {};
 
 export type CreateEmploymentApiModelSourceValue =
-  | CreateEmploymentApiModel4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModel4
   | Array<any>;
 
 export enum CreateEmploymentApiModelValue {
@@ -98,10 +98,10 @@ export type CreateEmploymentApiModelValueOpen = OpenEnum<
  */
 export type EmploymentContractType = {
   sourceValue?:
-    | CreateEmploymentApiModel4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModel4
     | Array<any>
     | null
     | undefined;
@@ -114,10 +114,10 @@ export type CreateEmploymentApiModelSchemas4 = {};
  * The source value of the employment type.
  */
 export type CreateEmploymentApiModelSchemasSourceValue =
-  | CreateEmploymentApiModelSchemas4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemas4
   | Array<any>;
 
 /**
@@ -159,10 +159,10 @@ export type EmploymentType = {
    * The source value of the employment type.
    */
   sourceValue?:
-    | CreateEmploymentApiModelSchemas4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemas4
     | Array<any>
     | null
     | undefined;
@@ -200,10 +200,10 @@ export type CreateEmploymentApiModelSchemasPayFrequency4 = {};
  * The source value of the pay frequency.
  */
 export type CreateEmploymentApiModelSchemasPayFrequencySourceValue =
-  | CreateEmploymentApiModelSchemasPayFrequency4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasPayFrequency4
   | Array<any>;
 
 /**
@@ -241,10 +241,10 @@ export type PayFrequency = {
    * The source value of the pay frequency.
    */
   sourceValue?:
-    | CreateEmploymentApiModelSchemasPayFrequency4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasPayFrequency4
     | Array<any>
     | null
     | undefined;
@@ -263,10 +263,10 @@ export type CreateEmploymentApiModelSchemasPayPeriod4 = {};
  * The source value of the pay period.
  */
 export type CreateEmploymentApiModelSchemasPayPeriodSourceValue =
-  | CreateEmploymentApiModelSchemasPayPeriod4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasPayPeriod4
   | Array<any>;
 
 /**
@@ -302,10 +302,10 @@ export type PayPeriod = {
    * The source value of the pay period.
    */
   sourceValue?:
-    | CreateEmploymentApiModelSchemasPayPeriod4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasPayPeriod4
     | Array<any>
     | null
     | undefined;
@@ -318,10 +318,10 @@ export type PayPeriod = {
 export type CreateEmploymentApiModelSchemasType4 = {};
 
 export type CreateEmploymentApiModelSchemasTypeSourceValue =
-  | CreateEmploymentApiModelSchemasType4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasType4
   | Array<any>;
 
 export enum CreateEmploymentApiModelSchemasTypeValue {
@@ -352,10 +352,10 @@ export type CreateEmploymentApiModelSchemasTypeValueOpen = OpenEnum<
  */
 export type CreateEmploymentApiModelSchemasType = {
   sourceValue?:
-    | CreateEmploymentApiModelSchemasType4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasType4
     | Array<any>
     | null
     | undefined;
@@ -387,10 +387,10 @@ export type CreateEmploymentApiModelType = {
 export type CreateEmploymentApiModelSchemasWorkTime4 = {};
 
 export type CreateEmploymentApiModelSchemasWorkTimeSourceValue =
-  | CreateEmploymentApiModelSchemasWorkTime4
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasWorkTime4
   | Array<any>;
 
 /**
@@ -415,10 +415,10 @@ export type CreateEmploymentApiModelSchemasWorkTimeValueOpen = OpenEnum<
  */
 export type CreateEmploymentApiModelDurationUnit = {
   sourceValue?:
-    | CreateEmploymentApiModelSchemasWorkTime4
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasWorkTime4
     | Array<any>
     | null
     | undefined;
@@ -575,19 +575,19 @@ export const CreateEmploymentApiModelSchemasContractTypeSourceValue$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasContractType4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasContractType4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasContractTypeSourceValue$Outbound =
-  | CreateEmploymentApiModelSchemasContractType4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasContractType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -597,10 +597,10 @@ export const CreateEmploymentApiModelSchemasContractTypeSourceValue$outboundSche
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasContractTypeSourceValue
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasContractType4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasContractType4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -690,10 +690,10 @@ export const CreateEmploymentApiModelContractType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasContractType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasContractType4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -709,10 +709,10 @@ export const CreateEmploymentApiModelContractType$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateEmploymentApiModelContractType$Outbound = {
   source_value?:
-    | CreateEmploymentApiModelSchemasContractType4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasContractType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -727,10 +727,10 @@ export const CreateEmploymentApiModelContractType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasContractType4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasContractType4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -909,19 +909,19 @@ export const CreateEmploymentApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateEmploymentApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateEmploymentApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSourceValue$Outbound =
-  | CreateEmploymentApiModel4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -930,10 +930,10 @@ export const CreateEmploymentApiModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEmploymentApiModelSourceValue
 > = z.union([
-  z.lazy(() => CreateEmploymentApiModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateEmploymentApiModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1013,10 +1013,10 @@ export const EmploymentContractType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1030,10 +1030,10 @@ export const EmploymentContractType$inboundSchema: z.ZodType<
 /** @internal */
 export type EmploymentContractType$Outbound = {
   source_value?:
-    | CreateEmploymentApiModel4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1048,10 +1048,10 @@ export const EmploymentContractType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1147,19 +1147,19 @@ export function createEmploymentApiModelSchemas4FromJSON(
 export const CreateEmploymentApiModelSchemasSourceValue$inboundSchema:
   z.ZodType<CreateEmploymentApiModelSchemasSourceValue, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasSourceValue$Outbound =
-  | CreateEmploymentApiModelSchemas4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1169,10 +1169,10 @@ export const CreateEmploymentApiModelSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasSourceValue
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1260,10 +1260,10 @@ export const EmploymentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1278,10 +1278,10 @@ export const EmploymentType$inboundSchema: z.ZodType<
 /** @internal */
 export type EmploymentType$Outbound = {
   source_value?:
-    | CreateEmploymentApiModelSchemas4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1296,10 +1296,10 @@ export const EmploymentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1470,19 +1470,19 @@ export const CreateEmploymentApiModelSchemasPayFrequencySourceValue$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasPayFrequencySourceValue$Outbound =
-  | CreateEmploymentApiModelSchemasPayFrequency4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasPayFrequency4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1492,10 +1492,10 @@ export const CreateEmploymentApiModelSchemasPayFrequencySourceValue$outboundSche
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasPayFrequencySourceValue
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1585,10 +1585,10 @@ export const PayFrequency$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1604,10 +1604,10 @@ export const PayFrequency$inboundSchema: z.ZodType<
 /** @internal */
 export type PayFrequency$Outbound = {
   source_value?:
-    | CreateEmploymentApiModelSchemasPayFrequency4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasPayFrequency4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1622,10 +1622,10 @@ export const PayFrequency$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasPayFrequency4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1732,19 +1732,19 @@ export const CreateEmploymentApiModelSchemasPayPeriodSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasPayPeriodSourceValue$Outbound =
-  | CreateEmploymentApiModelSchemasPayPeriod4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasPayPeriod4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1754,10 +1754,10 @@ export const CreateEmploymentApiModelSchemasPayPeriodSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasPayPeriodSourceValue
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1848,10 +1848,10 @@ export const PayPeriod$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1866,10 +1866,10 @@ export const PayPeriod$inboundSchema: z.ZodType<
 /** @internal */
 export type PayPeriod$Outbound = {
   source_value?:
-    | CreateEmploymentApiModelSchemasPayPeriod4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasPayPeriod4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1884,10 +1884,10 @@ export const PayPeriod$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasPayPeriod4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1987,19 +1987,19 @@ export const CreateEmploymentApiModelSchemasTypeSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasType4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasType4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasTypeSourceValue$Outbound =
-  | CreateEmploymentApiModelSchemasType4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2009,10 +2009,10 @@ export const CreateEmploymentApiModelSchemasTypeSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasTypeSourceValue
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasType4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasType4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2101,10 +2101,10 @@ export const CreateEmploymentApiModelSchemasType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasType4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2119,10 +2119,10 @@ export const CreateEmploymentApiModelSchemasType$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateEmploymentApiModelSchemasType$Outbound = {
   source_value?:
-    | CreateEmploymentApiModelSchemasType4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2137,10 +2137,10 @@ export const CreateEmploymentApiModelSchemasType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasType4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasType4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2331,19 +2331,19 @@ export const CreateEmploymentApiModelSchemasWorkTimeSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasWorkTimeSourceValue$Outbound =
-  | CreateEmploymentApiModelSchemasWorkTime4$Outbound
   | string
   | number
   | boolean
+  | CreateEmploymentApiModelSchemasWorkTime4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2353,10 +2353,10 @@ export const CreateEmploymentApiModelSchemasWorkTimeSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasWorkTimeSourceValue
   > = z.union([
-    z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2447,10 +2447,10 @@ export const CreateEmploymentApiModelDurationUnit$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2465,10 +2465,10 @@ export const CreateEmploymentApiModelDurationUnit$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateEmploymentApiModelDurationUnit$Outbound = {
   source_value?:
-    | CreateEmploymentApiModelSchemasWorkTime4$Outbound
     | string
     | number
     | boolean
+    | CreateEmploymentApiModelSchemasWorkTime4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2483,10 +2483,10 @@ export const CreateEmploymentApiModelDurationUnit$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

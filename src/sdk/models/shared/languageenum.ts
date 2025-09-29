@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type LanguageEnum4 = {};
 
 export type LanguageEnumSourceValue =
-  | LanguageEnum4
   | string
   | number
   | boolean
+  | LanguageEnum4
   | Array<any>;
 
 /**
@@ -445,10 +445,10 @@ export type LanguageEnumValueOpen = OpenEnum<typeof LanguageEnumValue>;
 
 export type LanguageEnum = {
   sourceValue?:
-    | LanguageEnum4
     | string
     | number
     | boolean
+    | LanguageEnum4
     | Array<any>
     | null
     | undefined;
@@ -508,19 +508,19 @@ export const LanguageEnumSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LanguageEnum4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LanguageEnum4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type LanguageEnumSourceValue$Outbound =
-  | LanguageEnum4$Outbound
   | string
   | number
   | boolean
+  | LanguageEnum4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -529,10 +529,10 @@ export const LanguageEnumSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LanguageEnumSourceValue
 > = z.union([
-  z.lazy(() => LanguageEnum4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LanguageEnum4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -607,10 +607,10 @@ export const LanguageEnum$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LanguageEnum4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LanguageEnum4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -624,10 +624,10 @@ export const LanguageEnum$inboundSchema: z.ZodType<
 /** @internal */
 export type LanguageEnum$Outbound = {
   source_value?:
-    | LanguageEnum4$Outbound
     | string
     | number
     | boolean
+    | LanguageEnum4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -642,10 +642,10 @@ export const LanguageEnum$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LanguageEnum4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LanguageEnum4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -19,10 +19,10 @@ export type MarketingCreateContentBlocksRequestDto4 = {};
  * The source value of the type.
  */
 export type MarketingCreateContentBlocksRequestDtoSourceValue =
-  | MarketingCreateContentBlocksRequestDto4
   | string
   | number
   | boolean
+  | MarketingCreateContentBlocksRequestDto4
   | Array<any>;
 
 /**
@@ -50,10 +50,10 @@ export type MarketingCreateContentBlocksRequestDtoType = {
    * The source value of the type.
    */
   sourceValue?:
-    | MarketingCreateContentBlocksRequestDto4
     | string
     | number
     | boolean
+    | MarketingCreateContentBlocksRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -143,19 +143,19 @@ export const MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => MarketingCreateContentBlocksRequestDto4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => MarketingCreateContentBlocksRequestDto4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type MarketingCreateContentBlocksRequestDtoSourceValue$Outbound =
-  | MarketingCreateContentBlocksRequestDto4$Outbound
   | string
   | number
   | boolean
+  | MarketingCreateContentBlocksRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -165,10 +165,10 @@ export const MarketingCreateContentBlocksRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     MarketingCreateContentBlocksRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => MarketingCreateContentBlocksRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => MarketingCreateContentBlocksRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -257,10 +257,10 @@ export const MarketingCreateContentBlocksRequestDtoType$inboundSchema:
     z.object({
       source_value: z.nullable(
         z.union([
-          z.lazy(() => MarketingCreateContentBlocksRequestDto4$inboundSchema),
           z.string(),
           z.number(),
           z.boolean(),
+          z.lazy(() => MarketingCreateContentBlocksRequestDto4$inboundSchema),
           z.array(z.any()),
         ]),
       ).optional(),
@@ -276,10 +276,10 @@ export const MarketingCreateContentBlocksRequestDtoType$inboundSchema:
 /** @internal */
 export type MarketingCreateContentBlocksRequestDtoType$Outbound = {
   source_value?:
-    | MarketingCreateContentBlocksRequestDto4$Outbound
     | string
     | number
     | boolean
+    | MarketingCreateContentBlocksRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -295,10 +295,10 @@ export const MarketingCreateContentBlocksRequestDtoType$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => MarketingCreateContentBlocksRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => MarketingCreateContentBlocksRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

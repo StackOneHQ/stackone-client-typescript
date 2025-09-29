@@ -25,10 +25,10 @@ export type AtsCreateOfferRequestDto4 = {};
  * The source value of the offer status.
  */
 export type AtsCreateOfferRequestDtoSourceValue =
-  | AtsCreateOfferRequestDto4
   | string
   | number
   | boolean
+  | AtsCreateOfferRequestDto4
   | Array<any>;
 
 /**
@@ -56,10 +56,10 @@ export type OfferStatus = {
    * The source value of the offer status.
    */
   sourceValue?:
-    | AtsCreateOfferRequestDto4
     | string
     | number
     | boolean
+    | AtsCreateOfferRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -139,19 +139,19 @@ export const AtsCreateOfferRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsCreateOfferRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsCreateOfferRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsCreateOfferRequestDtoSourceValue$Outbound =
-  | AtsCreateOfferRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsCreateOfferRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -160,10 +160,10 @@ export const AtsCreateOfferRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsCreateOfferRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => AtsCreateOfferRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsCreateOfferRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -243,10 +243,10 @@ export const OfferStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsCreateOfferRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsCreateOfferRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -260,10 +260,10 @@ export const OfferStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type OfferStatus$Outbound = {
   source_value?:
-    | AtsCreateOfferRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsCreateOfferRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -278,10 +278,10 @@ export const OfferStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsCreateOfferRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsCreateOfferRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

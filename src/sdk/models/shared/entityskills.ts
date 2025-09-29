@@ -26,10 +26,10 @@ export type EntitySkillsActive = boolean | EntitySkills2;
 export type EntitySkills4 = {};
 
 export type EntitySkillsSourceValue =
-  | EntitySkills4
   | string
   | number
   | boolean
+  | EntitySkills4
   | Array<any>;
 
 /**
@@ -458,10 +458,10 @@ export type EntitySkillsValueOpen = OpenEnum<typeof EntitySkillsValue>;
  */
 export type EntitySkillsLanguage = {
   sourceValue?:
-    | EntitySkills4
     | string
     | number
     | boolean
+    | EntitySkills4
     | Array<any>
     | null
     | undefined;
@@ -474,10 +474,10 @@ export type EntitySkillsLanguage = {
 export type EntitySkillsSchemas4 = {};
 
 export type EntitySkillsSchemasSourceValue =
-  | EntitySkillsSchemas4
   | string
   | number
   | boolean
+  | EntitySkillsSchemas4
   | Array<any>;
 
 export enum EntitySkillsSchemasValue {
@@ -509,10 +509,10 @@ export type MaximumProficiency = {
    */
   remoteId?: string | null | undefined;
   sourceValue?:
-    | EntitySkillsSchemas4
     | string
     | number
     | boolean
+    | EntitySkillsSchemas4
     | Array<any>
     | null
     | undefined;
@@ -522,10 +522,10 @@ export type MaximumProficiency = {
 export type EntitySkillsSchemasMinimumProficiency4 = {};
 
 export type EntitySkillsSchemasMinimumProficiencySourceValue =
-  | EntitySkillsSchemasMinimumProficiency4
   | string
   | number
   | boolean
+  | EntitySkillsSchemasMinimumProficiency4
   | Array<any>;
 
 export enum EntitySkillsSchemasMinimumProficiencyValue {
@@ -557,10 +557,10 @@ export type MinimumProficiency = {
    */
   remoteId?: string | null | undefined;
   sourceValue?:
-    | EntitySkillsSchemasMinimumProficiency4
     | string
     | number
     | boolean
+    | EntitySkillsSchemasMinimumProficiency4
     | Array<any>
     | null
     | undefined;
@@ -717,19 +717,19 @@ export const EntitySkillsSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EntitySkills4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EntitySkills4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type EntitySkillsSourceValue$Outbound =
-  | EntitySkills4$Outbound
   | string
   | number
   | boolean
+  | EntitySkills4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -738,10 +738,10 @@ export const EntitySkillsSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EntitySkillsSourceValue
 > = z.union([
-  z.lazy(() => EntitySkills4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EntitySkills4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -816,10 +816,10 @@ export const EntitySkillsLanguage$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => EntitySkills4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EntitySkills4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -833,10 +833,10 @@ export const EntitySkillsLanguage$inboundSchema: z.ZodType<
 /** @internal */
 export type EntitySkillsLanguage$Outbound = {
   source_value?:
-    | EntitySkills4$Outbound
     | string
     | number
     | boolean
+    | EntitySkills4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -851,10 +851,10 @@ export const EntitySkillsLanguage$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => EntitySkills4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EntitySkills4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -950,19 +950,19 @@ export const EntitySkillsSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EntitySkillsSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EntitySkillsSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type EntitySkillsSchemasSourceValue$Outbound =
-  | EntitySkillsSchemas4$Outbound
   | string
   | number
   | boolean
+  | EntitySkillsSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -971,10 +971,10 @@ export const EntitySkillsSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EntitySkillsSchemasSourceValue
 > = z.union([
-  z.lazy(() => EntitySkillsSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EntitySkillsSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1054,10 +1054,10 @@ export const MaximumProficiency$inboundSchema: z.ZodType<
   remote_id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
-      z.lazy(() => EntitySkillsSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EntitySkillsSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1075,10 +1075,10 @@ export type MaximumProficiency$Outbound = {
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
   source_value?:
-    | EntitySkillsSchemas4$Outbound
     | string
     | number
     | boolean
+    | EntitySkillsSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1096,10 +1096,10 @@ export const MaximumProficiency$outboundSchema: z.ZodType<
   remoteId: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => EntitySkillsSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EntitySkillsSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1203,19 +1203,19 @@ export const EntitySkillsSchemasMinimumProficiencySourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => EntitySkillsSchemasMinimumProficiency4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => EntitySkillsSchemasMinimumProficiency4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type EntitySkillsSchemasMinimumProficiencySourceValue$Outbound =
-  | EntitySkillsSchemasMinimumProficiency4$Outbound
   | string
   | number
   | boolean
+  | EntitySkillsSchemasMinimumProficiency4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1225,10 +1225,10 @@ export const EntitySkillsSchemasMinimumProficiencySourceValue$outboundSchema:
     z.ZodTypeDef,
     EntitySkillsSchemasMinimumProficiencySourceValue
   > = z.union([
-    z.lazy(() => EntitySkillsSchemasMinimumProficiency4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => EntitySkillsSchemasMinimumProficiency4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1322,10 +1322,10 @@ export const MinimumProficiency$inboundSchema: z.ZodType<
   remote_id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
-      z.lazy(() => EntitySkillsSchemasMinimumProficiency4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EntitySkillsSchemasMinimumProficiency4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1344,10 +1344,10 @@ export type MinimumProficiency$Outbound = {
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
   source_value?:
-    | EntitySkillsSchemasMinimumProficiency4$Outbound
     | string
     | number
     | boolean
+    | EntitySkillsSchemasMinimumProficiency4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1365,10 +1365,10 @@ export const MinimumProficiency$outboundSchema: z.ZodType<
   remoteId: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => EntitySkillsSchemasMinimumProficiency4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => EntitySkillsSchemasMinimumProficiency4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

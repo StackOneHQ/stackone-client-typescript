@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type IamResource4 = {};
 
 export type IamResourceSourceValue =
-  | IamResource4
   | string
   | number
   | boolean
+  | IamResource4
   | Array<any>;
 
 /**
@@ -41,10 +41,10 @@ export type IamResourceValueOpen = OpenEnum<typeof IamResourceValue>;
 
 export type IamResourceType = {
   sourceValue?:
-    | IamResource4
     | string
     | number
     | boolean
+    | IamResource4
     | Array<any>
     | null
     | undefined;
@@ -127,19 +127,19 @@ export const IamResourceSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamResource4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamResource4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamResourceSourceValue$Outbound =
-  | IamResource4$Outbound
   | string
   | number
   | boolean
+  | IamResource4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -148,10 +148,10 @@ export const IamResourceSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamResourceSourceValue
 > = z.union([
-  z.lazy(() => IamResource4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamResource4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -226,10 +226,10 @@ export const IamResourceType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamResource4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamResource4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -243,10 +243,10 @@ export const IamResourceType$inboundSchema: z.ZodType<
 /** @internal */
 export type IamResourceType$Outbound = {
   source_value?:
-    | IamResource4$Outbound
     | string
     | number
     | boolean
+    | IamResource4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -261,10 +261,10 @@ export const IamResourceType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamResource4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamResource4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

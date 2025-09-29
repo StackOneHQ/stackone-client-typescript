@@ -10,6 +10,8 @@ let value: HrisListEmployeeTimeOffRequestsRequest = {
   fields:
     "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy",
   filter: {
+    endDate: new Date("2020-01-01T00:00:00.000Z"),
+    startDate: new Date("2020-01-01T00:00:00.000Z"),
     updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   id: "<id>",

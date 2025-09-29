@@ -26,10 +26,10 @@ export type CategoryActive = boolean | Category2;
 export type Category4 = {};
 
 export type CategorySourceValue =
-  | Category4
   | string
   | number
   | boolean
+  | Category4
   | Array<any>;
 
 export enum CategoryValue {
@@ -45,10 +45,10 @@ export type CategoryValueOpen = OpenEnum<typeof CategoryValue>;
  */
 export type Hierarchy = {
   sourceValue?:
-    | Category4
     | string
     | number
     | boolean
+    | Category4
     | Array<any>
     | null
     | undefined;
@@ -58,10 +58,10 @@ export type Hierarchy = {
 export type CategorySchemas4 = {};
 
 export type CategorySchemasSourceValue =
-  | CategorySchemas4
   | string
   | number
   | boolean
+  | CategorySchemas4
   | Array<any>;
 
 /**
@@ -490,10 +490,10 @@ export type CategorySchemasValueOpen = OpenEnum<typeof CategorySchemasValue>;
  */
 export type Language = {
   sourceValue?:
-    | CategorySchemas4
     | string
     | number
     | boolean
+    | CategorySchemas4
     | Array<any>
     | null
     | undefined;
@@ -506,10 +506,10 @@ export type Language = {
 export type CategorySchemasLevel4 = {};
 
 export type CategorySchemasLevelSourceValue =
-  | CategorySchemasLevel4
   | string
   | number
   | boolean
+  | CategorySchemasLevel4
   | Array<any>;
 
 export enum CategorySchemasLevelValue {
@@ -529,10 +529,10 @@ export type CategorySchemasLevelValueOpen = OpenEnum<
  */
 export type Level = {
   sourceValue?:
-    | CategorySchemasLevel4
     | string
     | number
     | boolean
+    | CategorySchemasLevel4
     | Array<any>
     | null
     | undefined;
@@ -689,19 +689,19 @@ export const CategorySourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Category4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Category4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CategorySourceValue$Outbound =
-  | Category4$Outbound
   | string
   | number
   | boolean
+  | Category4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -710,10 +710,10 @@ export const CategorySourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CategorySourceValue
 > = z.union([
-  z.lazy(() => Category4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Category4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -788,10 +788,10 @@ export const Hierarchy$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Category4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Category4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -805,10 +805,10 @@ export const Hierarchy$inboundSchema: z.ZodType<
 /** @internal */
 export type Hierarchy$Outbound = {
   source_value?:
-    | Category4$Outbound
     | string
     | number
     | boolean
+    | Category4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -823,10 +823,10 @@ export const Hierarchy$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Category4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Category4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -918,19 +918,19 @@ export const CategorySchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CategorySchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CategorySchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CategorySchemasSourceValue$Outbound =
-  | CategorySchemas4$Outbound
   | string
   | number
   | boolean
+  | CategorySchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -939,10 +939,10 @@ export const CategorySchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CategorySchemasSourceValue
 > = z.union([
-  z.lazy(() => CategorySchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CategorySchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1017,10 +1017,10 @@ export const Language$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CategorySchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CategorySchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1034,10 +1034,10 @@ export const Language$inboundSchema: z.ZodType<
 /** @internal */
 export type Language$Outbound = {
   source_value?:
-    | CategorySchemas4$Outbound
     | string
     | number
     | boolean
+    | CategorySchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1052,10 +1052,10 @@ export const Language$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CategorySchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CategorySchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1147,19 +1147,19 @@ export const CategorySchemasLevelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CategorySchemasLevel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CategorySchemasLevel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CategorySchemasLevelSourceValue$Outbound =
-  | CategorySchemasLevel4$Outbound
   | string
   | number
   | boolean
+  | CategorySchemasLevel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1168,10 +1168,10 @@ export const CategorySchemasLevelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CategorySchemasLevelSourceValue
 > = z.union([
-  z.lazy(() => CategorySchemasLevel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CategorySchemasLevel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1245,10 +1245,10 @@ export const Level$inboundSchema: z.ZodType<Level, z.ZodTypeDef, unknown> = z
   .object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => CategorySchemasLevel4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => CategorySchemasLevel4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -1262,10 +1262,10 @@ export const Level$inboundSchema: z.ZodType<Level, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Level$Outbound = {
   source_value?:
-    | CategorySchemasLevel4$Outbound
     | string
     | number
     | boolean
+    | CategorySchemasLevel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1280,10 +1280,10 @@ export const Level$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CategorySchemasLevel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CategorySchemasLevel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

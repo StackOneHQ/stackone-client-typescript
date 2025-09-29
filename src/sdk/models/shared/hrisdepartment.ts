@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HRISDepartment4 = {};
 
 export type HRISDepartmentSourceValue =
-  | HRISDepartment4
   | string
   | number
   | boolean
+  | HRISDepartment4
   | Array<any>;
 
 export enum HRISDepartmentValue {
@@ -38,10 +38,10 @@ export type HRISDepartmentValueOpen = OpenEnum<typeof HRISDepartmentValue>;
  */
 export type HRISDepartmentType = {
   sourceValue?:
-    | HRISDepartment4
     | string
     | number
     | boolean
+    | HRISDepartment4
     | Array<any>
     | null
     | undefined;
@@ -147,19 +147,19 @@ export const HRISDepartmentSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISDepartment4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISDepartment4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISDepartmentSourceValue$Outbound =
-  | HRISDepartment4$Outbound
   | string
   | number
   | boolean
+  | HRISDepartment4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -168,10 +168,10 @@ export const HRISDepartmentSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISDepartmentSourceValue
 > = z.union([
-  z.lazy(() => HRISDepartment4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISDepartment4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -246,10 +246,10 @@ export const HRISDepartmentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISDepartment4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISDepartment4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -263,10 +263,10 @@ export const HRISDepartmentType$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISDepartmentType$Outbound = {
   source_value?:
-    | HRISDepartment4$Outbound
     | string
     | number
     | boolean
+    | HRISDepartment4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -281,10 +281,10 @@ export const HRISDepartmentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISDepartment4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISDepartment4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

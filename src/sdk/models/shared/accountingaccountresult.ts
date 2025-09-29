@@ -32,10 +32,10 @@ export type AccountingAccountResultActive = boolean | AccountingAccountResult2;
 export type AccountingAccountResult4 = {};
 
 export type AccountingAccountResultSourceValue =
-  | AccountingAccountResult4
   | string
   | number
   | boolean
+  | AccountingAccountResult4
   | Array<any>;
 
 /**
@@ -61,10 +61,10 @@ export type AccountingAccountResultValueOpen = OpenEnum<
  */
 export type AccountingAccountResultType = {
   sourceValue?:
-    | AccountingAccountResult4
     | string
     | number
     | boolean
+    | AccountingAccountResult4
     | Array<any>
     | null
     | undefined;
@@ -235,19 +235,19 @@ export const AccountingAccountResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AccountingAccountResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingAccountResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AccountingAccountResultSourceValue$Outbound =
-  | AccountingAccountResult4$Outbound
   | string
   | number
   | boolean
+  | AccountingAccountResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -256,10 +256,10 @@ export const AccountingAccountResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountingAccountResultSourceValue
 > = z.union([
-  z.lazy(() => AccountingAccountResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingAccountResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -338,10 +338,10 @@ export const AccountingAccountResultType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AccountingAccountResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingAccountResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -355,10 +355,10 @@ export const AccountingAccountResultType$inboundSchema: z.ZodType<
 /** @internal */
 export type AccountingAccountResultType$Outbound = {
   source_value?:
-    | AccountingAccountResult4$Outbound
     | string
     | number
     | boolean
+    | AccountingAccountResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -373,10 +373,10 @@ export const AccountingAccountResultType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountingAccountResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingAccountResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

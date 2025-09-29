@@ -36,10 +36,10 @@ export type AtsUpdateBackgroundCheckResultRequestDto4 = {};
  * The source value of the test result.
  */
 export type AtsUpdateBackgroundCheckResultRequestDtoSourceValue =
-  | AtsUpdateBackgroundCheckResultRequestDto4
   | string
   | number
   | boolean
+  | AtsUpdateBackgroundCheckResultRequestDto4
   | Array<any>;
 
 /**
@@ -67,10 +67,10 @@ export type AtsUpdateBackgroundCheckResultRequestDtoResult = {
    * The source value of the test result.
    */
   sourceValue?:
-    | AtsUpdateBackgroundCheckResultRequestDto4
     | string
     | number
     | boolean
+    | AtsUpdateBackgroundCheckResultRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -275,19 +275,19 @@ export const AtsUpdateBackgroundCheckResultRequestDtoSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDtoSourceValue$Outbound =
-  | AtsUpdateBackgroundCheckResultRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsUpdateBackgroundCheckResultRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -297,10 +297,10 @@ export const AtsUpdateBackgroundCheckResultRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     AtsUpdateBackgroundCheckResultRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -392,10 +392,10 @@ export const AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema:
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -411,10 +411,10 @@ export const AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema:
 /** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDtoResult$Outbound = {
   source_value?:
-    | AtsUpdateBackgroundCheckResultRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsUpdateBackgroundCheckResultRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -430,10 +430,10 @@ export const AtsUpdateBackgroundCheckResultRequestDtoResult$outboundSchema:
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

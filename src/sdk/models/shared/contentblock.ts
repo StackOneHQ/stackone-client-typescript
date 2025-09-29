@@ -19,10 +19,10 @@ export type ContentBlock4 = {};
  * The source value of the status.
  */
 export type ContentBlockSourceValue =
-  | ContentBlock4
   | string
   | number
   | boolean
+  | ContentBlock4
   | Array<any>;
 
 /**
@@ -47,10 +47,10 @@ export type ContentBlockStatus = {
    * The source value of the status.
    */
   sourceValue?:
-    | ContentBlock4
     | string
     | number
     | boolean
+    | ContentBlock4
     | Array<any>
     | null
     | undefined;
@@ -66,10 +66,10 @@ export type ContentBlockSchemas4 = {};
  * The source value of the type.
  */
 export type ContentBlockSchemasSourceValue =
-  | ContentBlockSchemas4
   | string
   | number
   | boolean
+  | ContentBlockSchemas4
   | Array<any>;
 
 /**
@@ -97,10 +97,10 @@ export type ContentBlockType = {
    * The source value of the type.
    */
   sourceValue?:
-    | ContentBlockSchemas4
     | string
     | number
     | boolean
+    | ContentBlockSchemas4
     | Array<any>
     | null
     | undefined;
@@ -190,19 +190,19 @@ export const ContentBlockSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ContentBlock4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ContentBlock4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ContentBlockSourceValue$Outbound =
-  | ContentBlock4$Outbound
   | string
   | number
   | boolean
+  | ContentBlock4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -211,10 +211,10 @@ export const ContentBlockSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentBlockSourceValue
 > = z.union([
-  z.lazy(() => ContentBlock4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ContentBlock4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -289,10 +289,10 @@ export const ContentBlockStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => ContentBlock4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ContentBlock4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -306,10 +306,10 @@ export const ContentBlockStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type ContentBlockStatus$Outbound = {
   source_value?:
-    | ContentBlock4$Outbound
     | string
     | number
     | boolean
+    | ContentBlock4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -324,10 +324,10 @@ export const ContentBlockStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => ContentBlock4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ContentBlock4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -423,19 +423,19 @@ export const ContentBlockSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ContentBlockSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ContentBlockSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ContentBlockSchemasSourceValue$Outbound =
-  | ContentBlockSchemas4$Outbound
   | string
   | number
   | boolean
+  | ContentBlockSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -444,10 +444,10 @@ export const ContentBlockSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ContentBlockSchemasSourceValue
 > = z.union([
-  z.lazy(() => ContentBlockSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ContentBlockSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -524,10 +524,10 @@ export const ContentBlockType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => ContentBlockSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ContentBlockSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -541,10 +541,10 @@ export const ContentBlockType$inboundSchema: z.ZodType<
 /** @internal */
 export type ContentBlockType$Outbound = {
   source_value?:
-    | ContentBlockSchemas4$Outbound
     | string
     | number
     | boolean
+    | ContentBlockSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -559,10 +559,10 @@ export const ContentBlockType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => ContentBlockSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ContentBlockSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

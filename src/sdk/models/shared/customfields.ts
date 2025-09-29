@@ -14,10 +14,10 @@ export type CustomFields4 = {};
  * The value associated with the custom field.
  */
 export type CustomFieldsValue =
-  | CustomFields4
   | string
   | number
   | boolean
+  | CustomFields4
   | Array<any>
   | Date;
 
@@ -42,10 +42,10 @@ export type CustomFields = {
    * The value associated with the custom field.
    */
   value?:
-    | CustomFields4
     | string
     | number
     | boolean
+    | CustomFields4
     | Array<any>
     | Date
     | null
@@ -106,20 +106,20 @@ export const CustomFieldsValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CustomFields4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CustomFields4$inboundSchema),
   z.array(z.any()),
   z.string().datetime({ offset: true }).transform(v => new Date(v)),
 ]);
 
 /** @internal */
 export type CustomFieldsValue$Outbound =
-  | CustomFields4$Outbound
   | string
   | number
   | boolean
+  | CustomFields4$Outbound
   | Array<any>
   | string;
 
@@ -129,10 +129,10 @@ export const CustomFieldsValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomFieldsValue
 > = z.union([
-  z.lazy(() => CustomFields4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CustomFields4$outboundSchema),
   z.array(z.any()),
   z.date().transform(v => v.toISOString()),
 ]);
@@ -180,10 +180,10 @@ export const CustomFields$inboundSchema: z.ZodType<
   remote_value_id: z.nullable(z.string()).optional(),
   value: z.nullable(
     z.union([
-      z.lazy(() => CustomFields4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CustomFields4$inboundSchema),
       z.array(z.any()),
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ]),
@@ -204,10 +204,10 @@ export type CustomFields$Outbound = {
   remote_id?: string | null | undefined;
   remote_value_id?: string | null | undefined;
   value?:
-    | CustomFields4$Outbound
     | string
     | number
     | boolean
+    | CustomFields4$Outbound
     | Array<any>
     | string
     | null
@@ -227,10 +227,10 @@ export const CustomFields$outboundSchema: z.ZodType<
   remoteValueId: z.nullable(z.string()).optional(),
   value: z.nullable(
     z.union([
-      z.lazy(() => CustomFields4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CustomFields4$outboundSchema),
       z.array(z.any()),
       z.date().transform(v => v.toISOString()),
     ]),

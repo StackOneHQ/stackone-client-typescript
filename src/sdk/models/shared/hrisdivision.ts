@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HRISDivision4 = {};
 
 export type HRISDivisionSourceValue =
-  | HRISDivision4
   | string
   | number
   | boolean
+  | HRISDivision4
   | Array<any>;
 
 export enum HRISDivisionValue {
@@ -39,10 +39,10 @@ export type HRISDivisionValueOpen = OpenEnum<typeof HRISDivisionValue>;
  */
 export type HRISDivisionType = {
   sourceValue?:
-    | HRISDivision4
     | string
     | number
     | boolean
+    | HRISDivision4
     | Array<any>
     | null
     | undefined;
@@ -146,19 +146,19 @@ export const HRISDivisionSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISDivision4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISDivision4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISDivisionSourceValue$Outbound =
-  | HRISDivision4$Outbound
   | string
   | number
   | boolean
+  | HRISDivision4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -167,10 +167,10 @@ export const HRISDivisionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISDivisionSourceValue
 > = z.union([
-  z.lazy(() => HRISDivision4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISDivision4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -245,10 +245,10 @@ export const HRISDivisionType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISDivision4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISDivision4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -262,10 +262,10 @@ export const HRISDivisionType$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISDivisionType$Outbound = {
   source_value?:
-    | HRISDivision4$Outbound
     | string
     | number
     | boolean
+    | HRISDivision4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -280,10 +280,10 @@ export const HRISDivisionType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISDivision4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISDivision4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -21,17 +21,17 @@ import {
 
 export type File4 = {};
 
-export type FileSourceValue = File4 | string | number | boolean | Array<any>;
+export type FileSourceValue = string | number | boolean | File4 | Array<any>;
 
 /**
  * The category of the file
  */
 export type FileCategory = {
   sourceValue?:
-    | File4
     | string
     | number
     | boolean
+    | File4
     | Array<any>
     | null
     | undefined;
@@ -44,10 +44,10 @@ export type FileCategory = {
 export type FileSchemas4 = {};
 
 export type FileSchemasSourceValue =
-  | FileSchemas4
   | string
   | number
   | boolean
+  | FileSchemas4
   | Array<any>;
 
 /**
@@ -1276,10 +1276,10 @@ export type FileValueOpen = OpenEnum<typeof FileValue>;
  */
 export type FileFileFormat = {
   sourceValue?:
-    | FileSchemas4
     | string
     | number
     | boolean
+    | FileSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1381,19 +1381,19 @@ export const FileSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => File4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => File4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type FileSourceValue$Outbound =
-  | File4$Outbound
   | string
   | number
   | boolean
+  | File4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1402,10 +1402,10 @@ export const FileSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FileSourceValue
 > = z.union([
-  z.lazy(() => File4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => File4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1446,10 +1446,10 @@ export const FileCategory$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => File4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => File4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1463,10 +1463,10 @@ export const FileCategory$inboundSchema: z.ZodType<
 /** @internal */
 export type FileCategory$Outbound = {
   source_value?:
-    | File4$Outbound
     | string
     | number
     | boolean
+    | File4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1481,10 +1481,10 @@ export const FileCategory$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => File4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => File4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1572,19 +1572,19 @@ export const FileSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => FileSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => FileSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type FileSchemasSourceValue$Outbound =
-  | FileSchemas4$Outbound
   | string
   | number
   | boolean
+  | FileSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1593,10 +1593,10 @@ export const FileSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FileSchemasSourceValue
 > = z.union([
-  z.lazy(() => FileSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => FileSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1671,10 +1671,10 @@ export const FileFileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => FileSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => FileSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1688,10 +1688,10 @@ export const FileFileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type FileFileFormat$Outbound = {
   source_value?:
-    | FileSchemas4$Outbound
     | string
     | number
     | boolean
+    | FileSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1706,10 +1706,10 @@ export const FileFileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => FileSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => FileSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

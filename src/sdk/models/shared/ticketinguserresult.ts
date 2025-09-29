@@ -35,10 +35,10 @@ export type TicketingUserResult4 = {};
  * The source value of the user type.
  */
 export type TicketingUserResultSourceValue =
-  | TicketingUserResult4
   | string
   | number
   | boolean
+  | TicketingUserResult4
   | Array<any>;
 
 /**
@@ -62,10 +62,10 @@ export type TicketingUserResultType = {
    * The source value of the user type.
    */
   sourceValue?:
-    | TicketingUserResult4
     | string
     | number
     | boolean
+    | TicketingUserResult4
     | Array<any>
     | null
     | undefined;
@@ -255,19 +255,19 @@ export const TicketingUserResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingUserResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingUserResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingUserResultSourceValue$Outbound =
-  | TicketingUserResult4$Outbound
   | string
   | number
   | boolean
+  | TicketingUserResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -276,10 +276,10 @@ export const TicketingUserResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingUserResultSourceValue
 > = z.union([
-  z.lazy(() => TicketingUserResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingUserResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -356,10 +356,10 @@ export const TicketingUserResultType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingUserResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingUserResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -373,10 +373,10 @@ export const TicketingUserResultType$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingUserResultType$Outbound = {
   source_value?:
-    | TicketingUserResult4$Outbound
     | string
     | number
     | boolean
+    | TicketingUserResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -391,10 +391,10 @@ export const TicketingUserResultType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingUserResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingUserResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

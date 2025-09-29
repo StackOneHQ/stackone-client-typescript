@@ -26,10 +26,10 @@ export type IsBotUser = boolean | IamUpdateUserRequestDto2;
 export type IamUpdateUserRequestDto4 = {};
 
 export type IamUpdateUserRequestDtoSourceValue =
-  | IamUpdateUserRequestDto4
   | string
   | number
   | boolean
+  | IamUpdateUserRequestDto4
   | Array<any>;
 
 /**
@@ -50,10 +50,10 @@ export type IamUpdateUserRequestDtoValueOpen = OpenEnum<
 
 export type IamUpdateUserRequestDtoStatus = {
   sourceValue?:
-    | IamUpdateUserRequestDto4
     | string
     | number
     | boolean
+    | IamUpdateUserRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -205,19 +205,19 @@ export const IamUpdateUserRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamUpdateUserRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUpdateUserRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamUpdateUserRequestDtoSourceValue$Outbound =
-  | IamUpdateUserRequestDto4$Outbound
   | string
   | number
   | boolean
+  | IamUpdateUserRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -226,10 +226,10 @@ export const IamUpdateUserRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamUpdateUserRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => IamUpdateUserRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUpdateUserRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -308,10 +308,10 @@ export const IamUpdateUserRequestDtoStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamUpdateUserRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUpdateUserRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -325,10 +325,10 @@ export const IamUpdateUserRequestDtoStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type IamUpdateUserRequestDtoStatus$Outbound = {
   source_value?:
-    | IamUpdateUserRequestDto4$Outbound
     | string
     | number
     | boolean
+    | IamUpdateUserRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -343,10 +343,10 @@ export const IamUpdateUserRequestDtoStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamUpdateUserRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUpdateUserRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

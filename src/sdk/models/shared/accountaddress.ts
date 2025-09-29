@@ -19,10 +19,10 @@ export type AccountAddressSchemas4 = {};
  * The source value of the ISO 3166-1 alpha-2 code of the country.
  */
 export type AccountAddressSchemasSourceValue =
-  | AccountAddressSchemas4
   | string
   | number
   | boolean
+  | AccountAddressSchemas4
   | Array<any>;
 
 /**
@@ -294,10 +294,10 @@ export type Country = {
    * The source value of the ISO 3166-1 alpha-2 code of the country.
    */
   sourceValue?:
-    | AccountAddressSchemas4
     | string
     | number
     | boolean
+    | AccountAddressSchemas4
     | Array<any>
     | null
     | undefined;
@@ -313,10 +313,10 @@ export type AccountAddress4 = {};
  * The source value of the location type.
  */
 export type AccountAddressSourceValue =
-  | AccountAddress4
   | string
   | number
   | boolean
+  | AccountAddress4
   | Array<any>;
 
 /**
@@ -340,10 +340,10 @@ export type LocationType = {
    * The source value of the location type.
    */
   sourceValue?:
-    | AccountAddress4
     | string
     | number
     | boolean
+    | AccountAddress4
     | Array<any>
     | null
     | undefined;
@@ -423,19 +423,19 @@ export const AccountAddressSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AccountAddressSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountAddressSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AccountAddressSchemasSourceValue$Outbound =
-  | AccountAddressSchemas4$Outbound
   | string
   | number
   | boolean
+  | AccountAddressSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -444,10 +444,10 @@ export const AccountAddressSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountAddressSchemasSourceValue
 > = z.union([
-  z.lazy(() => AccountAddressSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountAddressSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -521,10 +521,10 @@ export const Country$inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> =
   z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => AccountAddressSchemas4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AccountAddressSchemas4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -538,10 +538,10 @@ export const Country$inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> =
 /** @internal */
 export type Country$Outbound = {
   source_value?:
-    | AccountAddressSchemas4$Outbound
     | string
     | number
     | boolean
+    | AccountAddressSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -556,10 +556,10 @@ export const Country$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountAddressSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountAddressSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -649,19 +649,19 @@ export const AccountAddressSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AccountAddress4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountAddress4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AccountAddressSourceValue$Outbound =
-  | AccountAddress4$Outbound
   | string
   | number
   | boolean
+  | AccountAddress4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -670,10 +670,10 @@ export const AccountAddressSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountAddressSourceValue
 > = z.union([
-  z.lazy(() => AccountAddress4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountAddress4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -748,10 +748,10 @@ export const LocationType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AccountAddress4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountAddress4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -765,10 +765,10 @@ export const LocationType$inboundSchema: z.ZodType<
 /** @internal */
 export type LocationType$Outbound = {
   source_value?:
-    | AccountAddress4$Outbound
     | string
     | number
     | boolean
+    | AccountAddress4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -783,10 +783,10 @@ export const LocationType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountAddress4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountAddress4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

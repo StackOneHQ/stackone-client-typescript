@@ -19,10 +19,10 @@ export type Answer4 = {};
  * The source value of the answer type.
  */
 export type AnswerSourceValue =
-  | Answer4
   | string
   | number
   | boolean
+  | Answer4
   | Array<any>;
 
 /**
@@ -55,10 +55,10 @@ export type AnswerType = {
    * The source value of the answer type.
    */
   sourceValue?:
-    | Answer4
     | string
     | number
     | boolean
+    | Answer4
     | Array<any>
     | null
     | undefined;
@@ -134,19 +134,19 @@ export const AnswerSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Answer4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Answer4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AnswerSourceValue$Outbound =
-  | Answer4$Outbound
   | string
   | number
   | boolean
+  | Answer4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -155,10 +155,10 @@ export const AnswerSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AnswerSourceValue
 > = z.union([
-  z.lazy(() => Answer4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Answer4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -233,10 +233,10 @@ export const AnswerType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Answer4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Answer4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -250,10 +250,10 @@ export const AnswerType$inboundSchema: z.ZodType<
 /** @internal */
 export type AnswerType$Outbound = {
   source_value?:
-    | Answer4$Outbound
     | string
     | number
     | boolean
+    | Answer4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -268,10 +268,10 @@ export const AnswerType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Answer4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Answer4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -29,10 +29,10 @@ export type TicketingUser4 = {};
  * The source value of the user type.
  */
 export type TicketingUserSourceValue =
-  | TicketingUser4
   | string
   | number
   | boolean
+  | TicketingUser4
   | Array<any>;
 
 /**
@@ -54,10 +54,10 @@ export type TicketingUserType = {
    * The source value of the user type.
    */
   sourceValue?:
-    | TicketingUser4
     | string
     | number
     | boolean
+    | TicketingUser4
     | Array<any>
     | null
     | undefined;
@@ -238,19 +238,19 @@ export const TicketingUserSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingUser4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingUser4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingUserSourceValue$Outbound =
-  | TicketingUser4$Outbound
   | string
   | number
   | boolean
+  | TicketingUser4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -259,10 +259,10 @@ export const TicketingUserSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingUserSourceValue
 > = z.union([
-  z.lazy(() => TicketingUser4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingUser4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -337,10 +337,10 @@ export const TicketingUserType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingUser4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingUser4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -354,10 +354,10 @@ export const TicketingUserType$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingUserType$Outbound = {
   source_value?:
-    | TicketingUser4$Outbound
     | string
     | number
     | boolean
+    | TicketingUser4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -372,10 +372,10 @@ export const TicketingUserType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingUser4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingUser4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

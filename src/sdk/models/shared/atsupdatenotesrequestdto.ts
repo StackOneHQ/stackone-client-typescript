@@ -25,10 +25,10 @@ export type AtsUpdateNotesRequestDto4 = {};
  * The source value of the notes visibility.
  */
 export type AtsUpdateNotesRequestDtoSourceValue =
-  | AtsUpdateNotesRequestDto4
   | string
   | number
   | boolean
+  | AtsUpdateNotesRequestDto4
   | Array<any>;
 
 /**
@@ -54,10 +54,10 @@ export type AtsUpdateNotesRequestDtoVisibility = {
    * The source value of the notes visibility.
    */
   sourceValue?:
-    | AtsUpdateNotesRequestDto4
     | string
     | number
     | boolean
+    | AtsUpdateNotesRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -137,19 +137,19 @@ export const AtsUpdateNotesRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsUpdateNotesRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsUpdateNotesRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsUpdateNotesRequestDtoSourceValue$Outbound =
-  | AtsUpdateNotesRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsUpdateNotesRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -158,10 +158,10 @@ export const AtsUpdateNotesRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsUpdateNotesRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => AtsUpdateNotesRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsUpdateNotesRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -241,10 +241,10 @@ export const AtsUpdateNotesRequestDtoVisibility$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsUpdateNotesRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsUpdateNotesRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -258,10 +258,10 @@ export const AtsUpdateNotesRequestDtoVisibility$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsUpdateNotesRequestDtoVisibility$Outbound = {
   source_value?:
-    | AtsUpdateNotesRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsUpdateNotesRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -276,10 +276,10 @@ export const AtsUpdateNotesRequestDtoVisibility$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsUpdateNotesRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsUpdateNotesRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

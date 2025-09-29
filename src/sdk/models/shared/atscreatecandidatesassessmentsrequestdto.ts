@@ -31,10 +31,10 @@ export type AtsCreateCandidatesAssessmentsRequestDto4 = {};
  * The source value of the application status.
  */
 export type AtsCreateCandidatesAssessmentsRequestDtoSourceValue =
-  | AtsCreateCandidatesAssessmentsRequestDto4
   | string
   | number
   | boolean
+  | AtsCreateCandidatesAssessmentsRequestDto4
   | Array<any>;
 
 /**
@@ -74,10 +74,10 @@ export type AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus = {
    * The source value of the application status.
    */
   sourceValue?:
-    | AtsCreateCandidatesAssessmentsRequestDto4
     | string
     | number
     | boolean
+    | AtsCreateCandidatesAssessmentsRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -302,19 +302,19 @@ export const AtsCreateCandidatesAssessmentsRequestDtoSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type AtsCreateCandidatesAssessmentsRequestDtoSourceValue$Outbound =
-  | AtsCreateCandidatesAssessmentsRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsCreateCandidatesAssessmentsRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -324,10 +324,10 @@ export const AtsCreateCandidatesAssessmentsRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     AtsCreateCandidatesAssessmentsRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -419,10 +419,10 @@ export const AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus$inboundSc
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -439,10 +439,10 @@ export const AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus$inboundSc
 export type AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus$Outbound =
   {
     source_value?:
-      | AtsCreateCandidatesAssessmentsRequestDto4$Outbound
       | string
       | number
       | boolean
+      | AtsCreateCandidatesAssessmentsRequestDto4$Outbound
       | Array<any>
       | null
       | undefined;
@@ -458,10 +458,10 @@ export const AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus$outboundS
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsCreateCandidatesAssessmentsRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

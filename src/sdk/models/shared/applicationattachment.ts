@@ -19,10 +19,10 @@ export type ApplicationAttachment4 = {};
  * The source value of the content type.
  */
 export type ApplicationAttachmentSourceValue =
-  | ApplicationAttachment4
   | string
   | number
   | boolean
+  | ApplicationAttachment4
   | Array<any>;
 
 /**
@@ -44,10 +44,10 @@ export type ContentType = {
    * The source value of the content type.
    */
   sourceValue?:
-    | ApplicationAttachment4
     | string
     | number
     | boolean
+    | ApplicationAttachment4
     | Array<any>
     | null
     | undefined;
@@ -127,19 +127,19 @@ export const ApplicationAttachmentSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ApplicationAttachment4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ApplicationAttachment4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ApplicationAttachmentSourceValue$Outbound =
-  | ApplicationAttachment4$Outbound
   | string
   | number
   | boolean
+  | ApplicationAttachment4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -148,10 +148,10 @@ export const ApplicationAttachmentSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ApplicationAttachmentSourceValue
 > = z.union([
-  z.lazy(() => ApplicationAttachment4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ApplicationAttachment4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -228,10 +228,10 @@ export const ContentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => ApplicationAttachment4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ApplicationAttachment4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -245,10 +245,10 @@ export const ContentType$inboundSchema: z.ZodType<
 /** @internal */
 export type ContentType$Outbound = {
   source_value?:
-    | ApplicationAttachment4$Outbound
     | string
     | number
     | boolean
+    | ApplicationAttachment4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -263,10 +263,10 @@ export const ContentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => ApplicationAttachment4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ApplicationAttachment4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

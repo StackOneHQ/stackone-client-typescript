@@ -25,10 +25,10 @@ export type PushMessages4 = {};
  * The original value from the provider used to derive the unified message type.
  */
 export type PushMessagesSourceValue =
-  | PushMessages4
   | string
   | number
   | boolean
+  | PushMessages4
   | Array<any>;
 
 /**
@@ -58,10 +58,10 @@ export type PushMessagesMessageType = {
    * The original value from the provider used to derive the unified message type.
    */
   sourceValue?:
-    | PushMessages4
     | string
     | number
     | boolean
+    | PushMessages4
     | Array<any>
     | null
     | undefined;
@@ -195,19 +195,19 @@ export const PushMessagesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PushMessages4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => PushMessages4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type PushMessagesSourceValue$Outbound =
-  | PushMessages4$Outbound
   | string
   | number
   | boolean
+  | PushMessages4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -216,10 +216,10 @@ export const PushMessagesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PushMessagesSourceValue
 > = z.union([
-  z.lazy(() => PushMessages4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => PushMessages4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -294,10 +294,10 @@ export const PushMessagesMessageType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => PushMessages4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => PushMessages4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -311,10 +311,10 @@ export const PushMessagesMessageType$inboundSchema: z.ZodType<
 /** @internal */
 export type PushMessagesMessageType$Outbound = {
   source_value?:
-    | PushMessages4$Outbound
     | string
     | number
     | boolean
+    | PushMessages4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -329,10 +329,10 @@ export const PushMessagesMessageType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => PushMessages4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => PushMessages4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

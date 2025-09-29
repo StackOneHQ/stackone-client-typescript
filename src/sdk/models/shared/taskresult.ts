@@ -34,10 +34,10 @@ import {
 export type TaskResult4 = {};
 
 export type TaskResultSourceValue =
-  | TaskResult4
   | string
   | number
   | boolean
+  | TaskResult4
   | Array<any>;
 
 /**
@@ -61,10 +61,10 @@ export type TaskResultValueOpen = OpenEnum<typeof TaskResultValue>;
  */
 export type TaskResultStatus = {
   sourceValue?:
-    | TaskResult4
     | string
     | number
     | boolean
+    | TaskResult4
     | Array<any>
     | null
     | undefined;
@@ -77,10 +77,10 @@ export type TaskResultStatus = {
 export type TaskResultSchemas4 = {};
 
 export type TaskResultSchemasSourceValue =
-  | TaskResultSchemas4
   | string
   | number
   | boolean
+  | TaskResultSchemas4
   | Array<any>;
 
 /**
@@ -106,10 +106,10 @@ export type TaskResultSchemasValueOpen = OpenEnum<
  */
 export type TaskResultType = {
   sourceValue?:
-    | TaskResultSchemas4
     | string
     | number
     | boolean
+    | TaskResultSchemas4
     | Array<any>
     | null
     | undefined;
@@ -253,19 +253,19 @@ export const TaskResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TaskResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TaskResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TaskResultSourceValue$Outbound =
-  | TaskResult4$Outbound
   | string
   | number
   | boolean
+  | TaskResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -274,10 +274,10 @@ export const TaskResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TaskResultSourceValue
 > = z.union([
-  z.lazy(() => TaskResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TaskResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -352,10 +352,10 @@ export const TaskResultStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TaskResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TaskResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -369,10 +369,10 @@ export const TaskResultStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type TaskResultStatus$Outbound = {
   source_value?:
-    | TaskResult4$Outbound
     | string
     | number
     | boolean
+    | TaskResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -387,10 +387,10 @@ export const TaskResultStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TaskResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TaskResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -486,19 +486,19 @@ export const TaskResultSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TaskResultSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TaskResultSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TaskResultSchemasSourceValue$Outbound =
-  | TaskResultSchemas4$Outbound
   | string
   | number
   | boolean
+  | TaskResultSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -507,10 +507,10 @@ export const TaskResultSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TaskResultSchemasSourceValue
 > = z.union([
-  z.lazy(() => TaskResultSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TaskResultSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -587,10 +587,10 @@ export const TaskResultType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TaskResultSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TaskResultSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -604,10 +604,10 @@ export const TaskResultType$inboundSchema: z.ZodType<
 /** @internal */
 export type TaskResultType$Outbound = {
   source_value?:
-    | TaskResultSchemas4$Outbound
     | string
     | number
     | boolean
+    | TaskResultSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -622,10 +622,10 @@ export const TaskResultType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TaskResultSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TaskResultSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

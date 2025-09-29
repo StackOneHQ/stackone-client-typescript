@@ -26,10 +26,10 @@ export type SkillsActive = boolean | Skills2;
 export type Skills4 = {};
 
 export type SkillsSourceValue =
-  | Skills4
   | string
   | number
   | boolean
+  | Skills4
   | Array<any>;
 
 export enum SkillsValue {
@@ -45,10 +45,10 @@ export type SkillsValueOpen = OpenEnum<typeof SkillsValue>;
  */
 export type SkillsHierarchy = {
   sourceValue?:
-    | Skills4
     | string
     | number
     | boolean
+    | Skills4
     | Array<any>
     | null
     | undefined;
@@ -58,10 +58,10 @@ export type SkillsHierarchy = {
 export type SkillsSchemas4 = {};
 
 export type SkillsSchemasSourceValue =
-  | SkillsSchemas4
   | string
   | number
   | boolean
+  | SkillsSchemas4
   | Array<any>;
 
 /**
@@ -490,10 +490,10 @@ export type SkillsSchemasValueOpen = OpenEnum<typeof SkillsSchemasValue>;
  */
 export type SkillsLanguage = {
   sourceValue?:
-    | SkillsSchemas4
     | string
     | number
     | boolean
+    | SkillsSchemas4
     | Array<any>
     | null
     | undefined;
@@ -506,10 +506,10 @@ export type SkillsLanguage = {
 export type SkillsSchemasLevel4 = {};
 
 export type SkillsSchemasLevelSourceValue =
-  | SkillsSchemasLevel4
   | string
   | number
   | boolean
+  | SkillsSchemasLevel4
   | Array<any>;
 
 export enum SkillsSchemasLevelValue {
@@ -529,10 +529,10 @@ export type SkillsSchemasLevelValueOpen = OpenEnum<
  */
 export type SkillsLevel = {
   sourceValue?:
-    | SkillsSchemasLevel4
     | string
     | number
     | boolean
+    | SkillsSchemasLevel4
     | Array<any>
     | null
     | undefined;
@@ -682,19 +682,19 @@ export const SkillsSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Skills4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Skills4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type SkillsSourceValue$Outbound =
-  | Skills4$Outbound
   | string
   | number
   | boolean
+  | Skills4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -703,10 +703,10 @@ export const SkillsSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SkillsSourceValue
 > = z.union([
-  z.lazy(() => Skills4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Skills4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -781,10 +781,10 @@ export const SkillsHierarchy$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Skills4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Skills4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -798,10 +798,10 @@ export const SkillsHierarchy$inboundSchema: z.ZodType<
 /** @internal */
 export type SkillsHierarchy$Outbound = {
   source_value?:
-    | Skills4$Outbound
     | string
     | number
     | boolean
+    | Skills4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -816,10 +816,10 @@ export const SkillsHierarchy$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Skills4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Skills4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -909,19 +909,19 @@ export const SkillsSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => SkillsSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => SkillsSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type SkillsSchemasSourceValue$Outbound =
-  | SkillsSchemas4$Outbound
   | string
   | number
   | boolean
+  | SkillsSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -930,10 +930,10 @@ export const SkillsSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SkillsSchemasSourceValue
 > = z.union([
-  z.lazy(() => SkillsSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => SkillsSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1008,10 +1008,10 @@ export const SkillsLanguage$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => SkillsSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => SkillsSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1025,10 +1025,10 @@ export const SkillsLanguage$inboundSchema: z.ZodType<
 /** @internal */
 export type SkillsLanguage$Outbound = {
   source_value?:
-    | SkillsSchemas4$Outbound
     | string
     | number
     | boolean
+    | SkillsSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1043,10 +1043,10 @@ export const SkillsLanguage$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => SkillsSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => SkillsSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1138,19 +1138,19 @@ export const SkillsSchemasLevelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => SkillsSchemasLevel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => SkillsSchemasLevel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type SkillsSchemasLevelSourceValue$Outbound =
-  | SkillsSchemasLevel4$Outbound
   | string
   | number
   | boolean
+  | SkillsSchemasLevel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1159,10 +1159,10 @@ export const SkillsSchemasLevelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SkillsSchemasLevelSourceValue
 > = z.union([
-  z.lazy(() => SkillsSchemasLevel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => SkillsSchemasLevel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1239,10 +1239,10 @@ export const SkillsLevel$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => SkillsSchemasLevel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => SkillsSchemasLevel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1256,10 +1256,10 @@ export const SkillsLevel$inboundSchema: z.ZodType<
 /** @internal */
 export type SkillsLevel$Outbound = {
   source_value?:
-    | SkillsSchemasLevel4$Outbound
     | string
     | number
     | boolean
+    | SkillsSchemasLevel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1274,10 +1274,10 @@ export const SkillsLevel$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => SkillsSchemasLevel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => SkillsSchemasLevel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type IamMfaTypeEnum4 = {};
 
 export type IamMfaTypeEnumSourceValue =
-  | IamMfaTypeEnum4
   | string
   | number
   | boolean
+  | IamMfaTypeEnum4
   | Array<any>;
 
 /**
@@ -45,10 +45,10 @@ export type IamMfaTypeEnumValueOpen = OpenEnum<typeof IamMfaTypeEnumValue>;
 
 export type IamMfaTypeEnum = {
   sourceValue?:
-    | IamMfaTypeEnum4
     | string
     | number
     | boolean
+    | IamMfaTypeEnum4
     | Array<any>
     | null
     | undefined;
@@ -110,19 +110,19 @@ export const IamMfaTypeEnumSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamMfaTypeEnum4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamMfaTypeEnum4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamMfaTypeEnumSourceValue$Outbound =
-  | IamMfaTypeEnum4$Outbound
   | string
   | number
   | boolean
+  | IamMfaTypeEnum4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -131,10 +131,10 @@ export const IamMfaTypeEnumSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamMfaTypeEnumSourceValue
 > = z.union([
-  z.lazy(() => IamMfaTypeEnum4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamMfaTypeEnum4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -209,10 +209,10 @@ export const IamMfaTypeEnum$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamMfaTypeEnum4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamMfaTypeEnum4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -226,10 +226,10 @@ export const IamMfaTypeEnum$inboundSchema: z.ZodType<
 /** @internal */
 export type IamMfaTypeEnum$Outbound = {
   source_value?:
-    | IamMfaTypeEnum4$Outbound
     | string
     | number
     | boolean
+    | IamMfaTypeEnum4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -244,10 +244,10 @@ export const IamMfaTypeEnum$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamMfaTypeEnum4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamMfaTypeEnum4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
