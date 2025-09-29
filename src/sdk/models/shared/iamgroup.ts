@@ -22,10 +22,10 @@ import {
 export type IamGroup4 = {};
 
 export type IamGroupSourceValue =
-  | IamGroup4
   | string
   | number
   | boolean
+  | IamGroup4
   | Array<any>;
 
 export enum IamGroupValue {
@@ -41,10 +41,10 @@ export type IamGroupValueOpen = OpenEnum<typeof IamGroupValue>;
 
 export type IamGroupType = {
   sourceValue?:
-    | IamGroup4
     | string
     | number
     | boolean
+    | IamGroup4
     | Array<any>
     | null
     | undefined;
@@ -126,19 +126,19 @@ export const IamGroupSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamGroup4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamGroup4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamGroupSourceValue$Outbound =
-  | IamGroup4$Outbound
   | string
   | number
   | boolean
+  | IamGroup4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -147,10 +147,10 @@ export const IamGroupSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamGroupSourceValue
 > = z.union([
-  z.lazy(() => IamGroup4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamGroup4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -225,10 +225,10 @@ export const IamGroupType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamGroup4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamGroup4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -242,10 +242,10 @@ export const IamGroupType$inboundSchema: z.ZodType<
 /** @internal */
 export type IamGroupType$Outbound = {
   source_value?:
-    | IamGroup4$Outbound
     | string
     | number
     | boolean
+    | IamGroup4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -260,10 +260,10 @@ export const IamGroupType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamGroup4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamGroup4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -59,10 +59,10 @@ export type TicketingReadTicket4 = {};
  * The source value of the ticket priority.
  */
 export type TicketingReadTicketSourceValue =
-  | TicketingReadTicket4
   | string
   | number
   | boolean
+  | TicketingReadTicket4
   | Array<any>;
 
 /**
@@ -95,10 +95,10 @@ export type Priority = {
    * The source value of the ticket priority.
    */
   sourceValue?:
-    | TicketingReadTicket4
     | string
     | number
     | boolean
+    | TicketingReadTicket4
     | Array<any>
     | null
     | undefined;
@@ -114,10 +114,10 @@ export type TicketingReadTicketSchemas4 = {};
  * The source value of this status type
  */
 export type TicketingReadTicketSchemasSourceValue =
-  | TicketingReadTicketSchemas4
   | string
   | number
   | boolean
+  | TicketingReadTicketSchemas4
   | Array<any>;
 
 /**
@@ -144,10 +144,10 @@ export type TicketingReadTicketSchemasType = {
    * The source value of this status type
    */
   sourceValue?:
-    | TicketingReadTicketSchemas4
     | string
     | number
     | boolean
+    | TicketingReadTicketSchemas4
     | Array<any>
     | null
     | undefined;
@@ -401,19 +401,19 @@ export const TicketingReadTicketSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingReadTicket4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingReadTicket4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingReadTicketSourceValue$Outbound =
-  | TicketingReadTicket4$Outbound
   | string
   | number
   | boolean
+  | TicketingReadTicket4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -422,10 +422,10 @@ export const TicketingReadTicketSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingReadTicketSourceValue
 > = z.union([
-  z.lazy(() => TicketingReadTicket4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingReadTicket4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -503,10 +503,10 @@ export const Priority$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingReadTicket4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingReadTicket4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -521,10 +521,10 @@ export const Priority$inboundSchema: z.ZodType<
 export type Priority$Outbound = {
   id?: string | null | undefined;
   source_value?:
-    | TicketingReadTicket4$Outbound
     | string
     | number
     | boolean
+    | TicketingReadTicket4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -540,10 +540,10 @@ export const Priority$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingReadTicket4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingReadTicket4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -637,19 +637,19 @@ export const TicketingReadTicketSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingReadTicketSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingReadTicketSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingReadTicketSchemasSourceValue$Outbound =
-  | TicketingReadTicketSchemas4$Outbound
   | string
   | number
   | boolean
+  | TicketingReadTicketSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -658,10 +658,10 @@ export const TicketingReadTicketSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingReadTicketSchemasSourceValue
 > = z.union([
-  z.lazy(() => TicketingReadTicketSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingReadTicketSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -741,10 +741,10 @@ export const TicketingReadTicketSchemasType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingReadTicketSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingReadTicketSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -758,10 +758,10 @@ export const TicketingReadTicketSchemasType$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingReadTicketSchemasType$Outbound = {
   source_value?:
-    | TicketingReadTicketSchemas4$Outbound
     | string
     | number
     | boolean
+    | TicketingReadTicketSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -776,10 +776,10 @@ export const TicketingReadTicketSchemasType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingReadTicketSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingReadTicketSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

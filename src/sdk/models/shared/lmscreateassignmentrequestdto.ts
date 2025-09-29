@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type LmsCreateAssignmentRequestDto4 = {};
 
 export type LmsCreateAssignmentRequestDtoSourceValue =
-  | LmsCreateAssignmentRequestDto4
   | string
   | number
   | boolean
+  | LmsCreateAssignmentRequestDto4
   | Array<any>;
 
 export enum LmsCreateAssignmentRequestDtoValue {
@@ -37,10 +37,10 @@ export type LmsCreateAssignmentRequestDtoValueOpen = OpenEnum<
  */
 export type LmsCreateAssignmentRequestDtoStatus = {
   sourceValue?:
-    | LmsCreateAssignmentRequestDto4
     | string
     | number
     | boolean
+    | LmsCreateAssignmentRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -140,19 +140,19 @@ export const LmsCreateAssignmentRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LmsCreateAssignmentRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LmsCreateAssignmentRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type LmsCreateAssignmentRequestDtoSourceValue$Outbound =
-  | LmsCreateAssignmentRequestDto4$Outbound
   | string
   | number
   | boolean
+  | LmsCreateAssignmentRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -161,10 +161,10 @@ export const LmsCreateAssignmentRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateAssignmentRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => LmsCreateAssignmentRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LmsCreateAssignmentRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -251,10 +251,10 @@ export const LmsCreateAssignmentRequestDtoStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateAssignmentRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LmsCreateAssignmentRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -269,10 +269,10 @@ export const LmsCreateAssignmentRequestDtoStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsCreateAssignmentRequestDtoStatus$Outbound = {
   source_value?:
-    | LmsCreateAssignmentRequestDto4$Outbound
     | string
     | number
     | boolean
+    | LmsCreateAssignmentRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -287,10 +287,10 @@ export const LmsCreateAssignmentRequestDtoStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateAssignmentRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LmsCreateAssignmentRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

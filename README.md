@@ -260,6 +260,7 @@ run();
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
+* [getEmployeeShift](docs/sdks/hris/README.md#getemployeeshift) - Get Employee Shift
 * [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 * [getEmployeeTask](docs/sdks/hris/README.md#getemployeetask) - Get Employee Task
 * [getEmployeeTimeOffBalance](docs/sdks/hris/README.md#getemployeetimeoffbalance) - Get Employee Time Off Balance
@@ -288,6 +289,7 @@ run();
 * [listEmployeeCustomFieldDefinitions](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
+* [listEmployeeShifts](docs/sdks/hris/README.md#listemployeeshifts) - List Employee Shifts
 * [listEmployeeSkills](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
 * [listEmployeeTasks](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
 * [listEmployeeTimeOffBalances](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances
@@ -921,6 +923,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetEmployeeDocument`](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 - [`hrisGetEmployeeDocumentCategory`](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 - [`hrisGetEmployeeEmployment`](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
+- [`hrisGetEmployeeShift`](docs/sdks/hris/README.md#getemployeeshift) - Get Employee Shift
 - [`hrisGetEmployeeSkill`](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 - [`hrisGetEmployeesTimeOffRequest`](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 - [`hrisGetEmployeesWorkEligibility`](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
@@ -949,6 +952,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListEmployeeDocuments`](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 - [`hrisListEmployeeEmployments`](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 - [`hrisListEmployees`](docs/sdks/hris/README.md#listemployees) - List Employees
+- [`hrisListEmployeeShifts`](docs/sdks/hris/README.md#listemployeeshifts) - List Employee Shifts
 - [`hrisListEmployeeSkills`](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
 - [`hrisListEmployeeTasks`](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
 - [`hrisListEmployeeTimeOffBalances`](docs/sdks/hris/README.md#listemployeetimeoffbalances) - List Employee Time Off Balances

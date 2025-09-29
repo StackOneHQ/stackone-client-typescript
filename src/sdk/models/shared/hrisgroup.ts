@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HRISGroup4 = {};
 
 export type HRISGroupSourceValue =
-  | HRISGroup4
   | string
   | number
   | boolean
+  | HRISGroup4
   | Array<any>;
 
 export enum HRISGroupValue {
@@ -38,10 +38,10 @@ export type HRISGroupValueOpen = OpenEnum<typeof HRISGroupValue>;
  */
 export type HRISGroupType = {
   sourceValue?:
-    | HRISGroup4
     | string
     | number
     | boolean
+    | HRISGroup4
     | Array<any>
     | null
     | undefined;
@@ -145,19 +145,19 @@ export const HRISGroupSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISGroup4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISGroup4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISGroupSourceValue$Outbound =
-  | HRISGroup4$Outbound
   | string
   | number
   | boolean
+  | HRISGroup4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -166,10 +166,10 @@ export const HRISGroupSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISGroupSourceValue
 > = z.union([
-  z.lazy(() => HRISGroup4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISGroup4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -244,10 +244,10 @@ export const HRISGroupType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISGroup4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISGroup4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -261,10 +261,10 @@ export const HRISGroupType$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISGroupType$Outbound = {
   source_value?:
-    | HRISGroup4$Outbound
     | string
     | number
     | boolean
+    | HRISGroup4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -279,10 +279,10 @@ export const HRISGroupType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISGroup4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISGroup4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

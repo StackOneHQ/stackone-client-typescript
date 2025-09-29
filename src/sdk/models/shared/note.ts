@@ -24,7 +24,7 @@ export type Note4 = {};
 /**
  * The source value of the notes visibility.
  */
-export type NoteSourceValue = Note4 | string | number | boolean | Array<any>;
+export type NoteSourceValue = string | number | boolean | Note4 | Array<any>;
 
 /**
  * The visibility of the notes.
@@ -47,10 +47,10 @@ export type NoteVisibility = {
    * The source value of the notes visibility.
    */
   sourceValue?:
-    | Note4
     | string
     | number
     | boolean
+    | Note4
     | Array<any>
     | null
     | undefined;
@@ -147,19 +147,19 @@ export const NoteSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Note4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Note4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type NoteSourceValue$Outbound =
-  | Note4$Outbound
   | string
   | number
   | boolean
+  | Note4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -168,10 +168,10 @@ export const NoteSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NoteSourceValue
 > = z.union([
-  z.lazy(() => Note4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Note4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -244,10 +244,10 @@ export const NoteVisibility$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Note4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Note4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -261,10 +261,10 @@ export const NoteVisibility$inboundSchema: z.ZodType<
 /** @internal */
 export type NoteVisibility$Outbound = {
   source_value?:
-    | Note4$Outbound
     | string
     | number
     | boolean
+    | Note4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -279,10 +279,10 @@ export const NoteVisibility$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Note4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Note4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

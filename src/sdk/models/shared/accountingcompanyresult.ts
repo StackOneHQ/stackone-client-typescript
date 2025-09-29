@@ -22,10 +22,10 @@ import {
 export type AccountingCompanyResult4 = {};
 
 export type AccountingCompanyResultSourceValue =
-  | AccountingCompanyResult4
   | string
   | number
   | boolean
+  | AccountingCompanyResult4
   | Array<any>;
 
 /**
@@ -203,10 +203,10 @@ export type AccountingCompanyResultValueOpen = OpenEnum<
  */
 export type AccountingCompanyResultBaseCurrency = {
   sourceValue?:
-    | AccountingCompanyResult4
     | string
     | number
     | boolean
+    | AccountingCompanyResult4
     | Array<any>
     | null
     | undefined;
@@ -302,19 +302,19 @@ export const AccountingCompanyResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AccountingCompanyResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingCompanyResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AccountingCompanyResultSourceValue$Outbound =
-  | AccountingCompanyResult4$Outbound
   | string
   | number
   | boolean
+  | AccountingCompanyResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -323,10 +323,10 @@ export const AccountingCompanyResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountingCompanyResultSourceValue
 > = z.union([
-  z.lazy(() => AccountingCompanyResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingCompanyResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -405,10 +405,10 @@ export const AccountingCompanyResultBaseCurrency$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AccountingCompanyResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingCompanyResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -422,10 +422,10 @@ export const AccountingCompanyResultBaseCurrency$inboundSchema: z.ZodType<
 /** @internal */
 export type AccountingCompanyResultBaseCurrency$Outbound = {
   source_value?:
-    | AccountingCompanyResult4$Outbound
     | string
     | number
     | boolean
+    | AccountingCompanyResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -440,10 +440,10 @@ export const AccountingCompanyResultBaseCurrency$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountingCompanyResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingCompanyResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

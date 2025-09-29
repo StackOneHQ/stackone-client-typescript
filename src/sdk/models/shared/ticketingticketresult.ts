@@ -65,10 +65,10 @@ export type TicketingTicketResult4 = {};
  * The source value of the ticket priority.
  */
 export type TicketingTicketResultSourceValue =
-  | TicketingTicketResult4
   | string
   | number
   | boolean
+  | TicketingTicketResult4
   | Array<any>;
 
 /**
@@ -101,10 +101,10 @@ export type TicketingTicketResultPriority = {
    * The source value of the ticket priority.
    */
   sourceValue?:
-    | TicketingTicketResult4
     | string
     | number
     | boolean
+    | TicketingTicketResult4
     | Array<any>
     | null
     | undefined;
@@ -120,10 +120,10 @@ export type TicketingTicketResultSchemas4 = {};
  * The source value of this status type
  */
 export type TicketingTicketResultSchemasSourceValue =
-  | TicketingTicketResultSchemas4
   | string
   | number
   | boolean
+  | TicketingTicketResultSchemas4
   | Array<any>;
 
 /**
@@ -150,10 +150,10 @@ export type TicketingTicketResultSchemasType = {
    * The source value of this status type
    */
   sourceValue?:
-    | TicketingTicketResultSchemas4
     | string
     | number
     | boolean
+    | TicketingTicketResultSchemas4
     | Array<any>
     | null
     | undefined;
@@ -419,19 +419,19 @@ export const TicketingTicketResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingTicketResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingTicketResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingTicketResultSourceValue$Outbound =
-  | TicketingTicketResult4$Outbound
   | string
   | number
   | boolean
+  | TicketingTicketResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -440,10 +440,10 @@ export const TicketingTicketResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingTicketResultSourceValue
 > = z.union([
-  z.lazy(() => TicketingTicketResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingTicketResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -521,10 +521,10 @@ export const TicketingTicketResultPriority$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -539,10 +539,10 @@ export const TicketingTicketResultPriority$inboundSchema: z.ZodType<
 export type TicketingTicketResultPriority$Outbound = {
   id?: string | null | undefined;
   source_value?:
-    | TicketingTicketResult4$Outbound
     | string
     | number
     | boolean
+    | TicketingTicketResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -558,10 +558,10 @@ export const TicketingTicketResultPriority$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -661,19 +661,19 @@ export const TicketingTicketResultSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingTicketResultSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingTicketResultSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingTicketResultSchemasSourceValue$Outbound =
-  | TicketingTicketResultSchemas4$Outbound
   | string
   | number
   | boolean
+  | TicketingTicketResultSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -682,10 +682,10 @@ export const TicketingTicketResultSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingTicketResultSchemasSourceValue
 > = z.union([
-  z.lazy(() => TicketingTicketResultSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingTicketResultSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -772,10 +772,10 @@ export const TicketingTicketResultSchemasType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketResultSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketResultSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -789,10 +789,10 @@ export const TicketingTicketResultSchemasType$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingTicketResultSchemasType$Outbound = {
   source_value?:
-    | TicketingTicketResultSchemas4$Outbound
     | string
     | number
     | boolean
+    | TicketingTicketResultSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -807,10 +807,10 @@ export const TicketingTicketResultSchemasType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketResultSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketResultSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

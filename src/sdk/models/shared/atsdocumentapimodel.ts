@@ -22,10 +22,10 @@ import {
 export type AtsDocumentApiModel4 = {};
 
 export type AtsDocumentApiModelSourceValue =
-  | AtsDocumentApiModel4
   | string
   | number
   | boolean
+  | AtsDocumentApiModel4
   | Array<any>;
 
 /**
@@ -33,10 +33,10 @@ export type AtsDocumentApiModelSourceValue =
  */
 export type AtsDocumentApiModelCategory = {
   sourceValue?:
-    | AtsDocumentApiModel4
     | string
     | number
     | boolean
+    | AtsDocumentApiModel4
     | Array<any>
     | null
     | undefined;
@@ -49,10 +49,10 @@ export type AtsDocumentApiModelCategory = {
 export type AtsDocumentApiModelSchemas4 = {};
 
 export type AtsDocumentApiModelSchemasSourceValue =
-  | AtsDocumentApiModelSchemas4
   | string
   | number
   | boolean
+  | AtsDocumentApiModelSchemas4
   | Array<any>;
 
 /**
@@ -1283,10 +1283,10 @@ export type AtsDocumentApiModelValueOpen = OpenEnum<
  */
 export type FileFormat = {
   sourceValue?:
-    | AtsDocumentApiModelSchemas4
     | string
     | number
     | boolean
+    | AtsDocumentApiModelSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1299,10 +1299,10 @@ export type FileFormat = {
 export type AtsDocumentApiModelSchemasType4 = {};
 
 export type AtsDocumentApiModelSchemasTypeSourceValue =
-  | AtsDocumentApiModelSchemasType4
   | string
   | number
   | boolean
+  | AtsDocumentApiModelSchemasType4
   | Array<any>;
 
 /**
@@ -1339,10 +1339,10 @@ export type AtsDocumentApiModelSchemasValueOpen = OpenEnum<
  */
 export type AtsDocumentApiModelType = {
   sourceValue?:
-    | AtsDocumentApiModelSchemasType4
     | string
     | number
     | boolean
+    | AtsDocumentApiModelSchemasType4
     | Array<any>
     | null
     | undefined;
@@ -1461,19 +1461,19 @@ export const AtsDocumentApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsDocumentApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsDocumentApiModelSourceValue$Outbound =
-  | AtsDocumentApiModel4$Outbound
   | string
   | number
   | boolean
+  | AtsDocumentApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1482,10 +1482,10 @@ export const AtsDocumentApiModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsDocumentApiModelSourceValue
 > = z.union([
-  z.lazy(() => AtsDocumentApiModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentApiModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1530,10 +1530,10 @@ export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1547,10 +1547,10 @@ export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsDocumentApiModelCategory$Outbound = {
   source_value?:
-    | AtsDocumentApiModel4$Outbound
     | string
     | number
     | boolean
+    | AtsDocumentApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1565,10 +1565,10 @@ export const AtsDocumentApiModelCategory$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1668,19 +1668,19 @@ export const AtsDocumentApiModelSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsDocumentApiModelSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentApiModelSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsDocumentApiModelSchemasSourceValue$Outbound =
-  | AtsDocumentApiModelSchemas4$Outbound
   | string
   | number
   | boolean
+  | AtsDocumentApiModelSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1689,10 +1689,10 @@ export const AtsDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsDocumentApiModelSchemasSourceValue
 > = z.union([
-  z.lazy(() => AtsDocumentApiModelSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentApiModelSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1772,10 +1772,10 @@ export const FileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1789,10 +1789,10 @@ export const FileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type FileFormat$Outbound = {
   source_value?:
-    | AtsDocumentApiModelSchemas4$Outbound
     | string
     | number
     | boolean
+    | AtsDocumentApiModelSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1807,10 +1807,10 @@ export const FileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentApiModelSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentApiModelSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1904,19 +1904,19 @@ export const AtsDocumentApiModelSchemasTypeSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsDocumentApiModelSchemasType4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentApiModelSchemasType4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsDocumentApiModelSchemasTypeSourceValue$Outbound =
-  | AtsDocumentApiModelSchemasType4$Outbound
   | string
   | number
   | boolean
+  | AtsDocumentApiModelSchemasType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1926,10 +1926,10 @@ export const AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema:
     z.ZodTypeDef,
     AtsDocumentApiModelSchemasTypeSourceValue
   > = z.union([
-    z.lazy(() => AtsDocumentApiModelSchemasType4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsDocumentApiModelSchemasType4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2015,10 +2015,10 @@ export const AtsDocumentApiModelType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentApiModelSchemasType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentApiModelSchemasType4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2032,10 +2032,10 @@ export const AtsDocumentApiModelType$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsDocumentApiModelType$Outbound = {
   source_value?:
-    | AtsDocumentApiModelSchemasType4$Outbound
     | string
     | number
     | boolean
+    | AtsDocumentApiModelSchemasType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2050,10 +2050,10 @@ export const AtsDocumentApiModelType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentApiModelSchemasType4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentApiModelSchemasType4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -25,10 +25,6 @@ export enum HrisListShiftsQueryParamStatus {
  */
 export type HrisListShiftsQueryParamFilter = {
   /**
-   * Filter to select shifts by employee ID
-   */
-  employeeId?: string | null | undefined;
-  /**
    * Filter shifts that end before this date
    */
   endsBefore?: Date | null | undefined;
@@ -136,7 +132,6 @@ export const HrisListShiftsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  employee_id: z.nullable(z.string()).optional(),
   ends_before: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -149,7 +144,6 @@ export const HrisListShiftsQueryParamFilter$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "employee_id": "employeeId",
     "ends_before": "endsBefore",
     "starts_after": "startsAfter",
     "updated_after": "updatedAfter",
@@ -158,7 +152,6 @@ export const HrisListShiftsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisListShiftsQueryParamFilter$Outbound = {
-  employee_id?: string | null | undefined;
   ends_before?: string | null | undefined;
   starts_after?: string | null | undefined;
   status?: string | null | undefined;
@@ -171,14 +164,12 @@ export const HrisListShiftsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListShiftsQueryParamFilter
 > = z.object({
-  employeeId: z.nullable(z.string()).optional(),
   endsBefore: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   startsAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: z.nullable(HrisListShiftsQueryParamStatus$outboundSchema).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    employeeId: "employee_id",
     endsBefore: "ends_before",
     startsAfter: "starts_after",
     updatedAfter: "updated_after",

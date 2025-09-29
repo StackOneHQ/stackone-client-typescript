@@ -19,10 +19,10 @@ export type Attachment4 = {};
  * The source value of the content type.
  */
 export type AttachmentSourceValue =
-  | Attachment4
   | string
   | number
   | boolean
+  | Attachment4
   | Array<any>;
 
 /**
@@ -42,10 +42,10 @@ export type AttachmentContentType = {
    * The source value of the content type.
    */
   sourceValue?:
-    | Attachment4
     | string
     | number
     | boolean
+    | Attachment4
     | Array<any>
     | null
     | undefined;
@@ -113,19 +113,19 @@ export const AttachmentSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Attachment4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Attachment4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AttachmentSourceValue$Outbound =
-  | Attachment4$Outbound
   | string
   | number
   | boolean
+  | Attachment4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -134,10 +134,10 @@ export const AttachmentSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AttachmentSourceValue
 > = z.union([
-  z.lazy(() => Attachment4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Attachment4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -212,10 +212,10 @@ export const AttachmentContentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Attachment4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Attachment4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -229,10 +229,10 @@ export const AttachmentContentType$inboundSchema: z.ZodType<
 /** @internal */
 export type AttachmentContentType$Outbound = {
   source_value?:
-    | Attachment4$Outbound
     | string
     | number
     | boolean
+    | Attachment4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -247,10 +247,10 @@ export const AttachmentContentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Attachment4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Attachment4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

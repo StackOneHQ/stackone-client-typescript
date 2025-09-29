@@ -64,10 +64,10 @@ export type LmsCreateContentRequestDtoActive =
 export type LmsCreateContentRequestDto4 = {};
 
 export type LmsCreateContentRequestDtoSourceValue =
-  | LmsCreateContentRequestDto4
   | string
   | number
   | boolean
+  | LmsCreateContentRequestDto4
   | Array<any>;
 
 export enum LmsCreateContentRequestDtoValue {
@@ -87,10 +87,10 @@ export type LmsCreateContentRequestDtoValueOpen = OpenEnum<
  */
 export type LmsCreateContentRequestDtoContentType = {
   sourceValue?:
-    | LmsCreateContentRequestDto4
     | string
     | number
     | boolean
+    | LmsCreateContentRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -313,19 +313,19 @@ export const LmsCreateContentRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type LmsCreateContentRequestDtoSourceValue$Outbound =
-  | LmsCreateContentRequestDto4$Outbound
   | string
   | number
   | boolean
+  | LmsCreateContentRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -334,10 +334,10 @@ export const LmsCreateContentRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateContentRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -417,10 +417,10 @@ export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -434,10 +434,10 @@ export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsCreateContentRequestDtoContentType$Outbound = {
   source_value?:
-    | LmsCreateContentRequestDto4$Outbound
     | string
     | number
     | boolean
+    | LmsCreateContentRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -452,10 +452,10 @@ export const LmsCreateContentRequestDtoContentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

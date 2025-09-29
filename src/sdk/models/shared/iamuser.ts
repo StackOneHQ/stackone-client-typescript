@@ -40,10 +40,10 @@ import {
 export type IamUserSchemasAvatar4 = {};
 
 export type IamUserSchemasAvatarSourceValue =
-  | IamUserSchemasAvatar4
   | string
   | number
   | boolean
+  | IamUserSchemasAvatar4
   | Array<any>;
 
 /**
@@ -51,10 +51,10 @@ export type IamUserSchemasAvatarSourceValue =
  */
 export type IamUserCategory = {
   sourceValue?:
-    | IamUserSchemasAvatar4
     | string
     | number
     | boolean
+    | IamUserSchemasAvatar4
     | Array<any>
     | null
     | undefined;
@@ -67,10 +67,10 @@ export type IamUserCategory = {
 export type IamUserSchemas4 = {};
 
 export type IamUserSchemasSourceValue =
-  | IamUserSchemas4
   | string
   | number
   | boolean
+  | IamUserSchemas4
   | Array<any>;
 
 /**
@@ -1299,10 +1299,10 @@ export type IamUserSchemasValueOpen = OpenEnum<typeof IamUserSchemasValue>;
  */
 export type IamUserFileFormat = {
   sourceValue?:
-    | IamUserSchemas4
     | string
     | number
     | boolean
+    | IamUserSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1373,10 +1373,10 @@ export type IamUserIsBotUser = boolean | IamUser2;
 export type IamUser4 = {};
 
 export type IamUserSourceValue =
-  | IamUser4
   | string
   | number
   | boolean
+  | IamUser4
   | Array<any>;
 
 /**
@@ -1395,10 +1395,10 @@ export type IamUserValueOpen = OpenEnum<typeof IamUserValue>;
 
 export type IamUserStatus = {
   sourceValue?:
-    | IamUser4
     | string
     | number
     | boolean
+    | IamUser4
     | Array<any>
     | null
     | undefined;
@@ -1525,19 +1525,19 @@ export const IamUserSchemasAvatarSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamUserSchemasAvatarSourceValue$Outbound =
-  | IamUserSchemasAvatar4$Outbound
   | string
   | number
   | boolean
+  | IamUserSchemasAvatar4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1546,10 +1546,10 @@ export const IamUserSchemasAvatarSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamUserSchemasAvatarSourceValue
 > = z.union([
-  z.lazy(() => IamUserSchemasAvatar4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUserSchemasAvatar4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1594,10 +1594,10 @@ export const IamUserCategory$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1611,10 +1611,10 @@ export const IamUserCategory$inboundSchema: z.ZodType<
 /** @internal */
 export type IamUserCategory$Outbound = {
   source_value?:
-    | IamUserSchemasAvatar4$Outbound
     | string
     | number
     | boolean
+    | IamUserSchemasAvatar4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1629,10 +1629,10 @@ export const IamUserCategory$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamUserSchemasAvatar4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUserSchemasAvatar4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1724,19 +1724,19 @@ export const IamUserSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamUserSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUserSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamUserSchemasSourceValue$Outbound =
-  | IamUserSchemas4$Outbound
   | string
   | number
   | boolean
+  | IamUserSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1745,10 +1745,10 @@ export const IamUserSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamUserSchemasSourceValue
 > = z.union([
-  z.lazy(() => IamUserSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUserSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1823,10 +1823,10 @@ export const IamUserFileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamUserSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUserSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1840,10 +1840,10 @@ export const IamUserFileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type IamUserFileFormat$Outbound = {
   source_value?:
-    | IamUserSchemas4$Outbound
     | string
     | number
     | boolean
+    | IamUserSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1858,10 +1858,10 @@ export const IamUserFileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamUserSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUserSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2121,19 +2121,19 @@ export const IamUserSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamUser4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUser4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamUserSourceValue$Outbound =
-  | IamUser4$Outbound
   | string
   | number
   | boolean
+  | IamUser4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2142,10 +2142,10 @@ export const IamUserSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamUserSourceValue
 > = z.union([
-  z.lazy(() => IamUser4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamUser4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -2220,10 +2220,10 @@ export const IamUserStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamUser4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUser4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2237,10 +2237,10 @@ export const IamUserStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type IamUserStatus$Outbound = {
   source_value?:
-    | IamUser4$Outbound
     | string
     | number
     | boolean
+    | IamUser4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2255,10 +2255,10 @@ export const IamUserStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamUser4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamUser4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

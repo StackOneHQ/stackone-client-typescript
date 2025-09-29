@@ -22,10 +22,10 @@ import {
 export type TimeOffBalances4 = {};
 
 export type TimeOffBalancesSourceValue =
-  | TimeOffBalances4
   | string
   | number
   | boolean
+  | TimeOffBalances4
   | Array<any>;
 
 /**
@@ -51,10 +51,10 @@ export type TimeOffBalancesValueOpen = OpenEnum<typeof TimeOffBalancesValue>;
  */
 export type BalanceUnit = {
   sourceValue?:
-    | TimeOffBalances4
     | string
     | number
     | boolean
+    | TimeOffBalances4
     | Array<any>
     | null
     | undefined;
@@ -67,10 +67,10 @@ export type BalanceUnit = {
 export type TimeOffBalancesSchemas4 = {};
 
 export type TimeOffBalancesSchemasSourceValue =
-  | TimeOffBalancesSchemas4
   | string
   | number
   | boolean
+  | TimeOffBalancesSchemas4
   | Array<any>;
 
 /**
@@ -98,10 +98,10 @@ export type TimeOffBalancesSchemasValueOpen = OpenEnum<
  */
 export type TimeOffBalancesDurationUnit = {
   sourceValue?:
-    | TimeOffBalancesSchemas4
     | string
     | number
     | boolean
+    | TimeOffBalancesSchemas4
     | Array<any>
     | null
     | undefined;
@@ -114,10 +114,10 @@ export type TimeOffBalancesDurationUnit = {
 export type TimeOffBalancesSchemasPolicy4 = {};
 
 export type TimeOffBalancesSchemasPolicySourceValue =
-  | TimeOffBalancesSchemasPolicy4
   | string
   | number
   | boolean
+  | TimeOffBalancesSchemasPolicy4
   | Array<any>;
 
 /**
@@ -159,10 +159,10 @@ export type TimeOffBalancesSchemasPolicyValueOpen = OpenEnum<
  */
 export type TimeOffBalancesType = {
   sourceValue?:
-    | TimeOffBalancesSchemasPolicy4
     | string
     | number
     | boolean
+    | TimeOffBalancesSchemasPolicy4
     | Array<any>
     | null
     | undefined;
@@ -320,19 +320,19 @@ export const TimeOffBalancesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TimeOffBalances4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeOffBalances4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TimeOffBalancesSourceValue$Outbound =
-  | TimeOffBalances4$Outbound
   | string
   | number
   | boolean
+  | TimeOffBalances4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -341,10 +341,10 @@ export const TimeOffBalancesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TimeOffBalancesSourceValue
 > = z.union([
-  z.lazy(() => TimeOffBalances4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeOffBalances4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -419,10 +419,10 @@ export const BalanceUnit$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalances4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeOffBalances4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -436,10 +436,10 @@ export const BalanceUnit$inboundSchema: z.ZodType<
 /** @internal */
 export type BalanceUnit$Outbound = {
   source_value?:
-    | TimeOffBalances4$Outbound
     | string
     | number
     | boolean
+    | TimeOffBalances4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -454,10 +454,10 @@ export const BalanceUnit$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalances4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeOffBalances4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -549,19 +549,19 @@ export const TimeOffBalancesSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TimeOffBalancesSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeOffBalancesSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TimeOffBalancesSchemasSourceValue$Outbound =
-  | TimeOffBalancesSchemas4$Outbound
   | string
   | number
   | boolean
+  | TimeOffBalancesSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -570,10 +570,10 @@ export const TimeOffBalancesSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TimeOffBalancesSchemasSourceValue
 > = z.union([
-  z.lazy(() => TimeOffBalancesSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeOffBalancesSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -651,10 +651,10 @@ export const TimeOffBalancesDurationUnit$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalancesSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeOffBalancesSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -668,10 +668,10 @@ export const TimeOffBalancesDurationUnit$inboundSchema: z.ZodType<
 /** @internal */
 export type TimeOffBalancesDurationUnit$Outbound = {
   source_value?:
-    | TimeOffBalancesSchemas4$Outbound
     | string
     | number
     | boolean
+    | TimeOffBalancesSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -686,10 +686,10 @@ export const TimeOffBalancesDurationUnit$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalancesSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeOffBalancesSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -789,19 +789,19 @@ export const TimeOffBalancesSchemasPolicySourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TimeOffBalancesSchemasPolicy4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeOffBalancesSchemasPolicy4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TimeOffBalancesSchemasPolicySourceValue$Outbound =
-  | TimeOffBalancesSchemasPolicy4$Outbound
   | string
   | number
   | boolean
+  | TimeOffBalancesSchemasPolicy4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -810,10 +810,10 @@ export const TimeOffBalancesSchemasPolicySourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TimeOffBalancesSchemasPolicySourceValue
 > = z.union([
-  z.lazy(() => TimeOffBalancesSchemasPolicy4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TimeOffBalancesSchemasPolicy4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -900,10 +900,10 @@ export const TimeOffBalancesType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalancesSchemasPolicy4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeOffBalancesSchemasPolicy4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -917,10 +917,10 @@ export const TimeOffBalancesType$inboundSchema: z.ZodType<
 /** @internal */
 export type TimeOffBalancesType$Outbound = {
   source_value?:
-    | TimeOffBalancesSchemasPolicy4$Outbound
     | string
     | number
     | boolean
+    | TimeOffBalancesSchemasPolicy4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -935,10 +935,10 @@ export const TimeOffBalancesType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TimeOffBalancesSchemasPolicy4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TimeOffBalancesSchemasPolicy4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

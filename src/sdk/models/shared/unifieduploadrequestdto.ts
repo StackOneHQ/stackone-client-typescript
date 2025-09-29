@@ -30,10 +30,10 @@ export type UnifiedUploadRequestDtoCategory = {
 export type UnifiedUploadRequestDto4 = {};
 
 export type UnifiedUploadRequestDtoSourceValue =
-  | UnifiedUploadRequestDto4
   | string
   | number
   | boolean
+  | UnifiedUploadRequestDto4
   | Array<any>;
 
 /**
@@ -56,10 +56,10 @@ export type UnifiedUploadRequestDtoValueOpen = OpenEnum<
  */
 export type UnifiedUploadRequestDtoConfidential = {
   sourceValue?:
-    | UnifiedUploadRequestDto4
     | string
     | number
     | boolean
+    | UnifiedUploadRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -72,10 +72,10 @@ export type UnifiedUploadRequestDtoConfidential = {
 export type UnifiedUploadRequestDtoSchemas4 = {};
 
 export type UnifiedUploadRequestDtoSchemasSourceValue =
-  | UnifiedUploadRequestDtoSchemas4
   | string
   | number
   | boolean
+  | UnifiedUploadRequestDtoSchemas4
   | Array<any>;
 
 /**
@@ -1306,10 +1306,10 @@ export type UnifiedUploadRequestDtoSchemasValueOpen = OpenEnum<
  */
 export type UnifiedUploadRequestDtoFileFormat = {
   sourceValue?:
-    | UnifiedUploadRequestDtoSchemas4
     | string
     | number
     | boolean
+    | UnifiedUploadRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1471,19 +1471,19 @@ export const UnifiedUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type UnifiedUploadRequestDtoSourceValue$Outbound =
-  | UnifiedUploadRequestDto4$Outbound
   | string
   | number
   | boolean
+  | UnifiedUploadRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1492,10 +1492,10 @@ export const UnifiedUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UnifiedUploadRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => UnifiedUploadRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => UnifiedUploadRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1574,10 +1574,10 @@ export const UnifiedUploadRequestDtoConfidential$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1591,10 +1591,10 @@ export const UnifiedUploadRequestDtoConfidential$inboundSchema: z.ZodType<
 /** @internal */
 export type UnifiedUploadRequestDtoConfidential$Outbound = {
   source_value?:
-    | UnifiedUploadRequestDto4$Outbound
     | string
     | number
     | boolean
+    | UnifiedUploadRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1609,10 +1609,10 @@ export const UnifiedUploadRequestDtoConfidential$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => UnifiedUploadRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => UnifiedUploadRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1715,19 +1715,19 @@ export const UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type UnifiedUploadRequestDtoSchemasSourceValue$Outbound =
-  | UnifiedUploadRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | UnifiedUploadRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1737,10 +1737,10 @@ export const UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     UnifiedUploadRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => UnifiedUploadRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => UnifiedUploadRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1828,10 +1828,10 @@ export const UnifiedUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1846,10 +1846,10 @@ export const UnifiedUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type UnifiedUploadRequestDtoFileFormat$Outbound = {
   source_value?:
-    | UnifiedUploadRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | UnifiedUploadRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1864,10 +1864,10 @@ export const UnifiedUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => UnifiedUploadRequestDtoSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => UnifiedUploadRequestDtoSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

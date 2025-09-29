@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CreateSkillsApiModel4 = {};
 
 export type CreateSkillsApiModelSourceValue =
-  | CreateSkillsApiModel4
   | string
   | number
   | boolean
+  | CreateSkillsApiModel4
   | Array<any>;
 
 export enum CreateSkillsApiModelValue {
@@ -37,10 +37,10 @@ export type CreateSkillsApiModelValueOpen = OpenEnum<
  */
 export type CreateSkillsApiModelHierarchy = {
   sourceValue?:
-    | CreateSkillsApiModel4
     | string
     | number
     | boolean
+    | CreateSkillsApiModel4
     | Array<any>
     | null
     | undefined;
@@ -50,10 +50,10 @@ export type CreateSkillsApiModelHierarchy = {
 export type CreateSkillsApiModelSchemas4 = {};
 
 export type CreateSkillsApiModelSchemasSourceValue =
-  | CreateSkillsApiModelSchemas4
   | string
   | number
   | boolean
+  | CreateSkillsApiModelSchemas4
   | Array<any>;
 
 /**
@@ -484,10 +484,10 @@ export type CreateSkillsApiModelSchemasValueOpen = OpenEnum<
  */
 export type CreateSkillsApiModelLanguage = {
   sourceValue?:
-    | CreateSkillsApiModelSchemas4
     | string
     | number
     | boolean
+    | CreateSkillsApiModelSchemas4
     | Array<any>
     | null
     | undefined;
@@ -500,10 +500,10 @@ export type CreateSkillsApiModelLanguage = {
 export type CreateSkillsApiModelSchemasLevel4 = {};
 
 export type CreateSkillsApiModelSchemasLevelSourceValue =
-  | CreateSkillsApiModelSchemasLevel4
   | string
   | number
   | boolean
+  | CreateSkillsApiModelSchemasLevel4
   | Array<any>;
 
 export enum CreateSkillsApiModelSchemasLevelValue {
@@ -523,10 +523,10 @@ export type CreateSkillsApiModelSchemasLevelValueOpen = OpenEnum<
  */
 export type CreateSkillsApiModelLevel = {
   sourceValue?:
-    | CreateSkillsApiModelSchemasLevel4
     | string
     | number
     | boolean
+    | CreateSkillsApiModelSchemasLevel4
     | Array<any>
     | null
     | undefined;
@@ -612,19 +612,19 @@ export const CreateSkillsApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateSkillsApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateSkillsApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CreateSkillsApiModelSourceValue$Outbound =
-  | CreateSkillsApiModel4$Outbound
   | string
   | number
   | boolean
+  | CreateSkillsApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -633,10 +633,10 @@ export const CreateSkillsApiModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSkillsApiModelSourceValue
 > = z.union([
-  z.lazy(() => CreateSkillsApiModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateSkillsApiModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -713,10 +713,10 @@ export const CreateSkillsApiModelHierarchy$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateSkillsApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateSkillsApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -730,10 +730,10 @@ export const CreateSkillsApiModelHierarchy$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateSkillsApiModelHierarchy$Outbound = {
   source_value?:
-    | CreateSkillsApiModel4$Outbound
     | string
     | number
     | boolean
+    | CreateSkillsApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -748,10 +748,10 @@ export const CreateSkillsApiModelHierarchy$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateSkillsApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateSkillsApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -851,19 +851,19 @@ export const CreateSkillsApiModelSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateSkillsApiModelSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateSkillsApiModelSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CreateSkillsApiModelSchemasSourceValue$Outbound =
-  | CreateSkillsApiModelSchemas4$Outbound
   | string
   | number
   | boolean
+  | CreateSkillsApiModelSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -872,10 +872,10 @@ export const CreateSkillsApiModelSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSkillsApiModelSchemasSourceValue
 > = z.union([
-  z.lazy(() => CreateSkillsApiModelSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CreateSkillsApiModelSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -956,10 +956,10 @@ export const CreateSkillsApiModelLanguage$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateSkillsApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateSkillsApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -973,10 +973,10 @@ export const CreateSkillsApiModelLanguage$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateSkillsApiModelLanguage$Outbound = {
   source_value?:
-    | CreateSkillsApiModelSchemas4$Outbound
     | string
     | number
     | boolean
+    | CreateSkillsApiModelSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -991,10 +991,10 @@ export const CreateSkillsApiModelLanguage$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateSkillsApiModelSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateSkillsApiModelSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1096,19 +1096,19 @@ export const CreateSkillsApiModelSchemasLevelSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => CreateSkillsApiModelSchemasLevel4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateSkillsApiModelSchemasLevel4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type CreateSkillsApiModelSchemasLevelSourceValue$Outbound =
-  | CreateSkillsApiModelSchemasLevel4$Outbound
   | string
   | number
   | boolean
+  | CreateSkillsApiModelSchemasLevel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1118,10 +1118,10 @@ export const CreateSkillsApiModelSchemasLevelSourceValue$outboundSchema:
     z.ZodTypeDef,
     CreateSkillsApiModelSchemasLevelSourceValue
   > = z.union([
-    z.lazy(() => CreateSkillsApiModelSchemasLevel4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CreateSkillsApiModelSchemasLevel4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1209,10 +1209,10 @@ export const CreateSkillsApiModelLevel$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CreateSkillsApiModelSchemasLevel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateSkillsApiModelSchemasLevel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1227,10 +1227,10 @@ export const CreateSkillsApiModelLevel$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateSkillsApiModelLevel$Outbound = {
   source_value?:
-    | CreateSkillsApiModelSchemasLevel4$Outbound
     | string
     | number
     | boolean
+    | CreateSkillsApiModelSchemasLevel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1245,10 +1245,10 @@ export const CreateSkillsApiModelLevel$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CreateSkillsApiModelSchemasLevel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CreateSkillsApiModelSchemasLevel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

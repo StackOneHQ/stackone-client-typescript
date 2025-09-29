@@ -48,10 +48,10 @@ export type StartHalfDay = boolean | HrisCreateTimeOffRequestDtoSchemas2;
 export type HrisCreateTimeOffRequestDto4 = {};
 
 export type HrisCreateTimeOffRequestDtoSourceValue =
-  | HrisCreateTimeOffRequestDto4
   | string
   | number
   | boolean
+  | HrisCreateTimeOffRequestDto4
   | Array<any>;
 
 export enum HrisCreateTimeOffRequestDtoValue {
@@ -72,10 +72,10 @@ export type HrisCreateTimeOffRequestDtoValueOpen = OpenEnum<
  */
 export type HrisCreateTimeOffRequestDtoStatus = {
   sourceValue?:
-    | HrisCreateTimeOffRequestDto4
     | string
     | number
     | boolean
+    | HrisCreateTimeOffRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -85,10 +85,10 @@ export type HrisCreateTimeOffRequestDtoStatus = {
 export type HrisCreateTimeOffRequestDtoSchemas4 = {};
 
 export type HrisCreateTimeOffRequestDtoSchemasSourceValue =
-  | HrisCreateTimeOffRequestDtoSchemas4
   | string
   | number
   | boolean
+  | HrisCreateTimeOffRequestDtoSchemas4
   | Array<any>;
 
 export enum HrisCreateTimeOffRequestDtoSchemasValue {
@@ -126,10 +126,10 @@ export type HrisCreateTimeOffRequestDtoSchemasValueOpen = OpenEnum<
  */
 export type HrisCreateTimeOffRequestDtoType = {
   sourceValue?:
-    | HrisCreateTimeOffRequestDtoSchemas4
     | string
     | number
     | boolean
+    | HrisCreateTimeOffRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -445,19 +445,19 @@ export const HrisCreateTimeOffRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisCreateTimeOffRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisCreateTimeOffRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoSourceValue$Outbound =
-  | HrisCreateTimeOffRequestDto4$Outbound
   | string
   | number
   | boolean
+  | HrisCreateTimeOffRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -466,10 +466,10 @@ export const HrisCreateTimeOffRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisCreateTimeOffRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => HrisCreateTimeOffRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisCreateTimeOffRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -550,10 +550,10 @@ export const HrisCreateTimeOffRequestDtoStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateTimeOffRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateTimeOffRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -567,10 +567,10 @@ export const HrisCreateTimeOffRequestDtoStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateTimeOffRequestDtoStatus$Outbound = {
   source_value?:
-    | HrisCreateTimeOffRequestDto4$Outbound
     | string
     | number
     | boolean
+    | HrisCreateTimeOffRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -585,10 +585,10 @@ export const HrisCreateTimeOffRequestDtoStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateTimeOffRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateTimeOffRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -693,19 +693,19 @@ export const HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound =
-  | HrisCreateTimeOffRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | HrisCreateTimeOffRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -715,10 +715,10 @@ export const HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     HrisCreateTimeOffRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -806,10 +806,10 @@ export const HrisCreateTimeOffRequestDtoType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -824,10 +824,10 @@ export const HrisCreateTimeOffRequestDtoType$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateTimeOffRequestDtoType$Outbound = {
   source_value?:
-    | HrisCreateTimeOffRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | HrisCreateTimeOffRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -842,10 +842,10 @@ export const HrisCreateTimeOffRequestDtoType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

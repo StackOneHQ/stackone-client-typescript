@@ -57,10 +57,10 @@ export type AtsDocumentsUploadRequestDtoCategory = {
 export type AtsDocumentsUploadRequestDto4 = {};
 
 export type AtsDocumentsUploadRequestDtoSourceValue =
-  | AtsDocumentsUploadRequestDto4
   | string
   | number
   | boolean
+  | AtsDocumentsUploadRequestDto4
   | Array<any>;
 
 /**
@@ -83,10 +83,10 @@ export type AtsDocumentsUploadRequestDtoSchemasValueOpen = OpenEnum<
  */
 export type AtsDocumentsUploadRequestDtoConfidential = {
   sourceValue?:
-    | AtsDocumentsUploadRequestDto4
     | string
     | number
     | boolean
+    | AtsDocumentsUploadRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -99,10 +99,10 @@ export type AtsDocumentsUploadRequestDtoConfidential = {
 export type AtsDocumentsUploadRequestDtoSchemas4 = {};
 
 export type AtsDocumentsUploadRequestDtoSchemasSourceValue =
-  | AtsDocumentsUploadRequestDtoSchemas4
   | string
   | number
   | boolean
+  | AtsDocumentsUploadRequestDtoSchemas4
   | Array<any>;
 
 /**
@@ -1333,10 +1333,10 @@ export type AtsDocumentsUploadRequestDtoSchemasFileFormatValueOpen = OpenEnum<
  */
 export type AtsDocumentsUploadRequestDtoFileFormat = {
   sourceValue?:
-    | AtsDocumentsUploadRequestDtoSchemas4
     | string
     | number
     | boolean
+    | AtsDocumentsUploadRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1540,19 +1540,19 @@ export const AtsDocumentsUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsDocumentsUploadRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentsUploadRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoSourceValue$Outbound =
-  | AtsDocumentsUploadRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsDocumentsUploadRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1561,10 +1561,10 @@ export const AtsDocumentsUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsDocumentsUploadRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => AtsDocumentsUploadRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsDocumentsUploadRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1652,10 +1652,10 @@ export const AtsDocumentsUploadRequestDtoConfidential$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentsUploadRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentsUploadRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1670,10 +1670,10 @@ export const AtsDocumentsUploadRequestDtoConfidential$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsDocumentsUploadRequestDtoConfidential$Outbound = {
   source_value?:
-    | AtsDocumentsUploadRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsDocumentsUploadRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1688,10 +1688,10 @@ export const AtsDocumentsUploadRequestDtoConfidential$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentsUploadRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentsUploadRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1805,19 +1805,19 @@ export const AtsDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoSchemasSourceValue$Outbound =
-  | AtsDocumentsUploadRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | AtsDocumentsUploadRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1827,10 +1827,10 @@ export const AtsDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     AtsDocumentsUploadRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -1921,10 +1921,10 @@ export const AtsDocumentsUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1940,10 +1940,10 @@ export const AtsDocumentsUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsDocumentsUploadRequestDtoFileFormat$Outbound = {
   source_value?:
-    | AtsDocumentsUploadRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | AtsDocumentsUploadRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1958,10 +1958,10 @@ export const AtsDocumentsUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

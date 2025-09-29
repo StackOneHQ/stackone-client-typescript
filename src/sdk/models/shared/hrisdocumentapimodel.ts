@@ -22,10 +22,10 @@ import {
 export type HrisDocumentApiModel4 = {};
 
 export type HrisDocumentApiModelSourceValue =
-  | HrisDocumentApiModel4
   | string
   | number
   | boolean
+  | HrisDocumentApiModel4
   | Array<any>;
 
 /**
@@ -70,10 +70,10 @@ export type HrisDocumentApiModelValueOpen = OpenEnum<
  */
 export type HrisDocumentApiModelCategory = {
   sourceValue?:
-    | HrisDocumentApiModel4
     | string
     | number
     | boolean
+    | HrisDocumentApiModel4
     | Array<any>
     | null
     | undefined;
@@ -86,10 +86,10 @@ export type HrisDocumentApiModelCategory = {
 export type HrisDocumentApiModelSchemas4 = {};
 
 export type HrisDocumentApiModelSchemasSourceValue =
-  | HrisDocumentApiModelSchemas4
   | string
   | number
   | boolean
+  | HrisDocumentApiModelSchemas4
   | Array<any>;
 
 /**
@@ -1320,10 +1320,10 @@ export type HrisDocumentApiModelSchemasValueOpen = OpenEnum<
  */
 export type HrisDocumentApiModelFileFormat = {
   sourceValue?:
-    | HrisDocumentApiModelSchemas4
     | string
     | number
     | boolean
+    | HrisDocumentApiModelSchemas4
     | Array<any>
     | null
     | undefined;
@@ -1336,10 +1336,10 @@ export type HrisDocumentApiModelFileFormat = {
 export type HrisDocumentApiModelSchemasType4 = {};
 
 export type HrisDocumentApiModelSchemasTypeSourceValue =
-  | HrisDocumentApiModelSchemasType4
   | string
   | number
   | boolean
+  | HrisDocumentApiModelSchemasType4
   | Array<any>;
 
 /**
@@ -1386,10 +1386,10 @@ export type HrisDocumentApiModelSchemasTypeValueOpen = OpenEnum<
  */
 export type HrisDocumentApiModelType = {
   sourceValue?:
-    | HrisDocumentApiModelSchemasType4
     | string
     | number
     | boolean
+    | HrisDocumentApiModelSchemasType4
     | Array<any>
     | null
     | undefined;
@@ -1508,19 +1508,19 @@ export const HrisDocumentApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisDocumentApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisDocumentApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisDocumentApiModelSourceValue$Outbound =
-  | HrisDocumentApiModel4$Outbound
   | string
   | number
   | boolean
+  | HrisDocumentApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1529,10 +1529,10 @@ export const HrisDocumentApiModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisDocumentApiModelSourceValue
 > = z.union([
-  z.lazy(() => HrisDocumentApiModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisDocumentApiModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1609,10 +1609,10 @@ export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisDocumentApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1626,10 +1626,10 @@ export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisDocumentApiModelCategory$Outbound = {
   source_value?:
-    | HrisDocumentApiModel4$Outbound
     | string
     | number
     | boolean
+    | HrisDocumentApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1644,10 +1644,10 @@ export const HrisDocumentApiModelCategory$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisDocumentApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1747,19 +1747,19 @@ export const HrisDocumentApiModelSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisDocumentApiModelSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisDocumentApiModelSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisDocumentApiModelSchemasSourceValue$Outbound =
-  | HrisDocumentApiModelSchemas4$Outbound
   | string
   | number
   | boolean
+  | HrisDocumentApiModelSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1768,10 +1768,10 @@ export const HrisDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisDocumentApiModelSchemasSourceValue
 > = z.union([
-  z.lazy(() => HrisDocumentApiModelSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisDocumentApiModelSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1852,10 +1852,10 @@ export const HrisDocumentApiModelFileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisDocumentApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1869,10 +1869,10 @@ export const HrisDocumentApiModelFileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisDocumentApiModelFileFormat$Outbound = {
   source_value?:
-    | HrisDocumentApiModelSchemas4$Outbound
     | string
     | number
     | boolean
+    | HrisDocumentApiModelSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1887,10 +1887,10 @@ export const HrisDocumentApiModelFileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisDocumentApiModelSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModelSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1988,19 +1988,19 @@ export function hrisDocumentApiModelSchemasType4FromJSON(
 export const HrisDocumentApiModelSchemasTypeSourceValue$inboundSchema:
   z.ZodType<HrisDocumentApiModelSchemasTypeSourceValue, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => HrisDocumentApiModelSchemasType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModelSchemasType4$inboundSchema),
       z.array(z.any()),
     ]);
 
 /** @internal */
 export type HrisDocumentApiModelSchemasTypeSourceValue$Outbound =
-  | HrisDocumentApiModelSchemasType4$Outbound
   | string
   | number
   | boolean
+  | HrisDocumentApiModelSchemasType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -2010,10 +2010,10 @@ export const HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema:
     z.ZodTypeDef,
     HrisDocumentApiModelSchemasTypeSourceValue
   > = z.union([
-    z.lazy(() => HrisDocumentApiModelSchemasType4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => HrisDocumentApiModelSchemasType4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -2101,10 +2101,10 @@ export const HrisDocumentApiModelType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisDocumentApiModelSchemasType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModelSchemasType4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -2119,10 +2119,10 @@ export const HrisDocumentApiModelType$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisDocumentApiModelType$Outbound = {
   source_value?:
-    | HrisDocumentApiModelSchemasType4$Outbound
     | string
     | number
     | boolean
+    | HrisDocumentApiModelSchemasType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -2137,10 +2137,10 @@ export const HrisDocumentApiModelType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisDocumentApiModelSchemasType4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisDocumentApiModelSchemasType4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

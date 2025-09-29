@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type LmsCreateCompletionRequestDto4 = {};
 
 export type LmsCreateCompletionRequestDtoSourceValue =
-  | LmsCreateCompletionRequestDto4
   | string
   | number
   | boolean
+  | LmsCreateCompletionRequestDto4
   | Array<any>;
 
 export enum LmsCreateCompletionRequestDtoValue {
@@ -36,10 +36,10 @@ export type LmsCreateCompletionRequestDtoValueOpen = OpenEnum<
  */
 export type LmsCreateCompletionRequestDtoResult = {
   sourceValue?:
-    | LmsCreateCompletionRequestDto4
     | string
     | number
     | boolean
+    | LmsCreateCompletionRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -141,19 +141,19 @@ export const LmsCreateCompletionRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LmsCreateCompletionRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LmsCreateCompletionRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type LmsCreateCompletionRequestDtoSourceValue$Outbound =
-  | LmsCreateCompletionRequestDto4$Outbound
   | string
   | number
   | boolean
+  | LmsCreateCompletionRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -162,10 +162,10 @@ export const LmsCreateCompletionRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateCompletionRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => LmsCreateCompletionRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LmsCreateCompletionRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -252,10 +252,10 @@ export const LmsCreateCompletionRequestDtoResult$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateCompletionRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LmsCreateCompletionRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -270,10 +270,10 @@ export const LmsCreateCompletionRequestDtoResult$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsCreateCompletionRequestDtoResult$Outbound = {
   source_value?:
-    | LmsCreateCompletionRequestDto4$Outbound
     | string
     | number
     | boolean
+    | LmsCreateCompletionRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -288,10 +288,10 @@ export const LmsCreateCompletionRequestDtoResult$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateCompletionRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LmsCreateCompletionRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

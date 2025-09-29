@@ -56,10 +56,10 @@ export type ScheduledInterview4 = {};
  * The source value of the interview status.
  */
 export type ScheduledInterviewSourceValue =
-  | ScheduledInterview4
   | string
   | number
   | boolean
+  | ScheduledInterview4
   | Array<any>;
 
 /**
@@ -85,10 +85,10 @@ export type ScheduledInterviewInterviewStatus = {
    * The source value of the interview status.
    */
   sourceValue?:
-    | ScheduledInterview4
     | string
     | number
     | boolean
+    | ScheduledInterview4
     | Array<any>
     | null
     | undefined;
@@ -291,19 +291,19 @@ export const ScheduledInterviewSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ScheduledInterview4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ScheduledInterview4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type ScheduledInterviewSourceValue$Outbound =
-  | ScheduledInterview4$Outbound
   | string
   | number
   | boolean
+  | ScheduledInterview4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -312,10 +312,10 @@ export const ScheduledInterviewSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ScheduledInterviewSourceValue
 > = z.union([
-  z.lazy(() => ScheduledInterview4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => ScheduledInterview4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -392,10 +392,10 @@ export const ScheduledInterviewInterviewStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => ScheduledInterview4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ScheduledInterview4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -409,10 +409,10 @@ export const ScheduledInterviewInterviewStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type ScheduledInterviewInterviewStatus$Outbound = {
   source_value?:
-    | ScheduledInterview4$Outbound
     | string
     | number
     | boolean
+    | ScheduledInterview4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -427,10 +427,10 @@ export const ScheduledInterviewInterviewStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => ScheduledInterview4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => ScheduledInterview4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

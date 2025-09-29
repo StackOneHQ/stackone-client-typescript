@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type NationalIdentityNumberApiModel4 = {};
 
 export type NationalIdentityNumberApiModelSourceValue =
-  | NationalIdentityNumberApiModel4
   | string
   | number
   | boolean
+  | NationalIdentityNumberApiModel4
   | Array<any>;
 
 /**
@@ -288,10 +288,10 @@ export type NationalIdentityNumberApiModelValueOpen = OpenEnum<
  */
 export type NationalIdentityNumberApiModelCountry = {
   sourceValue?:
-    | NationalIdentityNumberApiModel4
     | string
     | number
     | boolean
+    | NationalIdentityNumberApiModel4
     | Array<any>
     | null
     | undefined;
@@ -304,10 +304,10 @@ export type NationalIdentityNumberApiModelCountry = {
 export type NationalIdentityNumberApiModelSchemas4 = {};
 
 export type NationalIdentityNumberApiModelSchemasSourceValue =
-  | NationalIdentityNumberApiModelSchemas4
   | string
   | number
   | boolean
+  | NationalIdentityNumberApiModelSchemas4
   | Array<any>;
 
 /**
@@ -468,10 +468,10 @@ export type NationalIdentityNumberApiModelSchemasValueOpen = OpenEnum<
 
 export type NationalIdentityNumberApiModelType = {
   sourceValue?:
-    | NationalIdentityNumberApiModelSchemas4
     | string
     | number
     | boolean
+    | NationalIdentityNumberApiModelSchemas4
     | Array<any>
     | null
     | undefined;
@@ -546,19 +546,19 @@ export const NationalIdentityNumberApiModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => NationalIdentityNumberApiModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => NationalIdentityNumberApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type NationalIdentityNumberApiModelSourceValue$Outbound =
-  | NationalIdentityNumberApiModel4$Outbound
   | string
   | number
   | boolean
+  | NationalIdentityNumberApiModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -568,10 +568,10 @@ export const NationalIdentityNumberApiModelSourceValue$outboundSchema:
     z.ZodTypeDef,
     NationalIdentityNumberApiModelSourceValue
   > = z.union([
-    z.lazy(() => NationalIdentityNumberApiModel4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => NationalIdentityNumberApiModel4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -659,10 +659,10 @@ export const NationalIdentityNumberApiModelCountry$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => NationalIdentityNumberApiModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => NationalIdentityNumberApiModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -677,10 +677,10 @@ export const NationalIdentityNumberApiModelCountry$inboundSchema: z.ZodType<
 /** @internal */
 export type NationalIdentityNumberApiModelCountry$Outbound = {
   source_value?:
-    | NationalIdentityNumberApiModel4$Outbound
     | string
     | number
     | boolean
+    | NationalIdentityNumberApiModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -695,10 +695,10 @@ export const NationalIdentityNumberApiModelCountry$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => NationalIdentityNumberApiModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => NationalIdentityNumberApiModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -807,19 +807,19 @@ export const NationalIdentityNumberApiModelSchemasSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => NationalIdentityNumberApiModelSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => NationalIdentityNumberApiModelSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type NationalIdentityNumberApiModelSchemasSourceValue$Outbound =
-  | NationalIdentityNumberApiModelSchemas4$Outbound
   | string
   | number
   | boolean
+  | NationalIdentityNumberApiModelSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -829,10 +829,10 @@ export const NationalIdentityNumberApiModelSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     NationalIdentityNumberApiModelSchemasSourceValue
   > = z.union([
-    z.lazy(() => NationalIdentityNumberApiModelSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => NationalIdentityNumberApiModelSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -923,10 +923,10 @@ export const NationalIdentityNumberApiModelType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => NationalIdentityNumberApiModelSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => NationalIdentityNumberApiModelSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -941,10 +941,10 @@ export const NationalIdentityNumberApiModelType$inboundSchema: z.ZodType<
 /** @internal */
 export type NationalIdentityNumberApiModelType$Outbound = {
   source_value?:
-    | NationalIdentityNumberApiModelSchemas4$Outbound
     | string
     | number
     | boolean
+    | NationalIdentityNumberApiModelSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -959,10 +959,10 @@ export const NationalIdentityNumberApiModelType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => NationalIdentityNumberApiModelSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => NationalIdentityNumberApiModelSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -19,10 +19,10 @@ export type JobPostingCompensation4 = {};
  * The source value of the pay frequency.
  */
 export type JobPostingCompensationSourceValue =
-  | JobPostingCompensation4
   | string
   | number
   | boolean
+  | JobPostingCompensation4
   | Array<any>;
 
 /**
@@ -57,10 +57,10 @@ export type JobPostingCompensationPayFrequency = {
    * The source value of the pay frequency.
    */
   sourceValue?:
-    | JobPostingCompensation4
     | string
     | number
     | boolean
+    | JobPostingCompensation4
     | Array<any>
     | null
     | undefined;
@@ -76,10 +76,10 @@ export type JobPostingCompensationSchemas4 = {};
  * The source value of the pay period.
  */
 export type JobPostingCompensationSchemasSourceValue =
-  | JobPostingCompensationSchemas4
   | string
   | number
   | boolean
+  | JobPostingCompensationSchemas4
   | Array<any>;
 
 /**
@@ -112,10 +112,10 @@ export type JobPostingCompensationPayPeriod = {
    * The source value of the pay period.
    */
   sourceValue?:
-    | JobPostingCompensationSchemas4
     | string
     | number
     | boolean
+    | JobPostingCompensationSchemas4
     | Array<any>
     | null
     | undefined;
@@ -131,10 +131,10 @@ export type JobPostingCompensationSchemasType4 = {};
  * The source value of the compensation type.
  */
 export type JobPostingCompensationSchemasTypeSourceValue =
-  | JobPostingCompensationSchemasType4
   | string
   | number
   | boolean
+  | JobPostingCompensationSchemasType4
   | Array<any>;
 
 /**
@@ -161,10 +161,10 @@ export type JobPostingCompensationType = {
    * The source value of the compensation type.
    */
   sourceValue?:
-    | JobPostingCompensationSchemasType4
     | string
     | number
     | boolean
+    | JobPostingCompensationSchemasType4
     | Array<any>
     | null
     | undefined;
@@ -239,19 +239,19 @@ export const JobPostingCompensationSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => JobPostingCompensation4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JobPostingCompensation4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type JobPostingCompensationSourceValue$Outbound =
-  | JobPostingCompensation4$Outbound
   | string
   | number
   | boolean
+  | JobPostingCompensation4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -260,10 +260,10 @@ export const JobPostingCompensationSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JobPostingCompensationSourceValue
 > = z.union([
-  z.lazy(() => JobPostingCompensation4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JobPostingCompensation4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -341,10 +341,10 @@ export const JobPostingCompensationPayFrequency$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => JobPostingCompensation4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingCompensation4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -358,10 +358,10 @@ export const JobPostingCompensationPayFrequency$inboundSchema: z.ZodType<
 /** @internal */
 export type JobPostingCompensationPayFrequency$Outbound = {
   source_value?:
-    | JobPostingCompensation4$Outbound
     | string
     | number
     | boolean
+    | JobPostingCompensation4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -376,10 +376,10 @@ export const JobPostingCompensationPayFrequency$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => JobPostingCompensation4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingCompensation4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -481,19 +481,19 @@ export const JobPostingCompensationSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => JobPostingCompensationSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JobPostingCompensationSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type JobPostingCompensationSchemasSourceValue$Outbound =
-  | JobPostingCompensationSchemas4$Outbound
   | string
   | number
   | boolean
+  | JobPostingCompensationSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -502,10 +502,10 @@ export const JobPostingCompensationSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JobPostingCompensationSchemasSourceValue
 > = z.union([
-  z.lazy(() => JobPostingCompensationSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JobPostingCompensationSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -592,10 +592,10 @@ export const JobPostingCompensationPayPeriod$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => JobPostingCompensationSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingCompensationSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -610,10 +610,10 @@ export const JobPostingCompensationPayPeriod$inboundSchema: z.ZodType<
 /** @internal */
 export type JobPostingCompensationPayPeriod$Outbound = {
   source_value?:
-    | JobPostingCompensationSchemas4$Outbound
     | string
     | number
     | boolean
+    | JobPostingCompensationSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -628,10 +628,10 @@ export const JobPostingCompensationPayPeriod$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => JobPostingCompensationSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingCompensationSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -735,19 +735,19 @@ export const JobPostingCompensationSchemasTypeSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => JobPostingCompensationSchemasType4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => JobPostingCompensationSchemasType4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type JobPostingCompensationSchemasTypeSourceValue$Outbound =
-  | JobPostingCompensationSchemasType4$Outbound
   | string
   | number
   | boolean
+  | JobPostingCompensationSchemasType4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -757,10 +757,10 @@ export const JobPostingCompensationSchemasTypeSourceValue$outboundSchema:
     z.ZodTypeDef,
     JobPostingCompensationSchemasTypeSourceValue
   > = z.union([
-    z.lazy(() => JobPostingCompensationSchemasType4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => JobPostingCompensationSchemasType4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -848,10 +848,10 @@ export const JobPostingCompensationType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => JobPostingCompensationSchemasType4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingCompensationSchemasType4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -866,10 +866,10 @@ export const JobPostingCompensationType$inboundSchema: z.ZodType<
 /** @internal */
 export type JobPostingCompensationType$Outbound = {
   source_value?:
-    | JobPostingCompensationSchemasType4$Outbound
     | string
     | number
     | boolean
+    | JobPostingCompensationSchemasType4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -884,10 +884,10 @@ export const JobPostingCompensationType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => JobPostingCompensationSchemasType4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingCompensationSchemasType4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

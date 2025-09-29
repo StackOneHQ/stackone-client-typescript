@@ -22,7 +22,7 @@ export type HrisListPositionsQueryParamFilter = {
 /**
  * Filter positions by status
  */
-export enum QueryParamStatus {
+export enum HrisListPositionsQueryParamStatus {
   Open = "open",
   Closed = "closed",
   Paused = "paused",
@@ -63,7 +63,7 @@ export type HrisListPositionsRequest = {
   /**
    * Filter positions by status
    */
-  status?: QueryParamStatus | null | undefined;
+  status?: HrisListPositionsQueryParamStatus | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    *
@@ -164,24 +164,25 @@ export function hrisListPositionsQueryParamFilterFromJSON(
 }
 
 /** @internal */
-export const QueryParamStatus$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = z.nativeEnum(QueryParamStatus);
+export const HrisListPositionsQueryParamStatus$inboundSchema: z.ZodNativeEnum<
+  typeof HrisListPositionsQueryParamStatus
+> = z.nativeEnum(HrisListPositionsQueryParamStatus);
 
 /** @internal */
-export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamStatus
-> = QueryParamStatus$inboundSchema;
+export const HrisListPositionsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof HrisListPositionsQueryParamStatus
+> = HrisListPositionsQueryParamStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamStatus$ {
-  /** @deprecated use `QueryParamStatus$inboundSchema` instead. */
-  export const inboundSchema = QueryParamStatus$inboundSchema;
-  /** @deprecated use `QueryParamStatus$outboundSchema` instead. */
-  export const outboundSchema = QueryParamStatus$outboundSchema;
+export namespace HrisListPositionsQueryParamStatus$ {
+  /** @deprecated use `HrisListPositionsQueryParamStatus$inboundSchema` instead. */
+  export const inboundSchema = HrisListPositionsQueryParamStatus$inboundSchema;
+  /** @deprecated use `HrisListPositionsQueryParamStatus$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisListPositionsQueryParamStatus$outboundSchema;
 }
 
 /** @internal */
@@ -199,7 +200,8 @@ export const HrisListPositionsRequest$inboundSchema: z.ZodType<
   page_size: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
-  status: z.nullable(QueryParamStatus$inboundSchema).optional(),
+  status: z.nullable(HrisListPositionsQueryParamStatus$inboundSchema)
+    .optional(),
   updated_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -241,7 +243,8 @@ export const HrisListPositionsRequest$outboundSchema: z.ZodType<
   pageSize: z.nullable(z.string()).optional(),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean()).optional(),
-  status: z.nullable(QueryParamStatus$outboundSchema).optional(),
+  status: z.nullable(HrisListPositionsQueryParamStatus$outboundSchema)
+    .optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   xAccountId: z.string(),
 }).transform((v) => {

@@ -37,10 +37,10 @@ export type AtsCreateBackgroundCheckOrderRequestDto4 = {};
  * The source value of the application status.
  */
 export type AtsCreateBackgroundCheckOrderRequestDtoSourceValue =
-  | AtsCreateBackgroundCheckOrderRequestDto4
   | string
   | number
   | boolean
+  | AtsCreateBackgroundCheckOrderRequestDto4
   | Array<any>;
 
 /**
@@ -80,10 +80,10 @@ export type AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus = {
    * The source value of the application status.
    */
   sourceValue?:
-    | AtsCreateBackgroundCheckOrderRequestDto4
     | string
     | number
     | boolean
+    | AtsCreateBackgroundCheckOrderRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -312,19 +312,19 @@ export const AtsCreateBackgroundCheckOrderRequestDtoSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDtoSourceValue$Outbound =
-  | AtsCreateBackgroundCheckOrderRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsCreateBackgroundCheckOrderRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -334,10 +334,10 @@ export const AtsCreateBackgroundCheckOrderRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     AtsCreateBackgroundCheckOrderRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -429,10 +429,10 @@ export const AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSch
   > = z.object({
     source_value: z.nullable(
       z.union([
-        z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -449,10 +449,10 @@ export const AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSch
 export type AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$Outbound =
   {
     source_value?:
-      | AtsCreateBackgroundCheckOrderRequestDto4$Outbound
       | string
       | number
       | boolean
+      | AtsCreateBackgroundCheckOrderRequestDto4$Outbound
       | Array<any>
       | null
       | undefined;
@@ -468,10 +468,10 @@ export const AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$outboundSc
   > = z.object({
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

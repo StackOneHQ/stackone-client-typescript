@@ -22,10 +22,10 @@ import {
 export type TicketingAttachmentResult4 = {};
 
 export type TicketingAttachmentResultSourceValue =
-  | TicketingAttachmentResult4
   | string
   | number
   | boolean
+  | TicketingAttachmentResult4
   | Array<any>;
 
 /**
@@ -1256,10 +1256,10 @@ export type TicketingAttachmentResultValueOpen = OpenEnum<
  */
 export type TicketingAttachmentResultFileFormat = {
   sourceValue?:
-    | TicketingAttachmentResult4
     | string
     | number
     | boolean
+    | TicketingAttachmentResult4
     | Array<any>
     | null
     | undefined;
@@ -1371,19 +1371,19 @@ export const TicketingAttachmentResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => TicketingAttachmentResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingAttachmentResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type TicketingAttachmentResultSourceValue$Outbound =
-  | TicketingAttachmentResult4$Outbound
   | string
   | number
   | boolean
+  | TicketingAttachmentResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -1392,10 +1392,10 @@ export const TicketingAttachmentResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingAttachmentResultSourceValue
 > = z.union([
-  z.lazy(() => TicketingAttachmentResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => TicketingAttachmentResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -1475,10 +1475,10 @@ export const TicketingAttachmentResultFileFormat$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingAttachmentResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingAttachmentResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1492,10 +1492,10 @@ export const TicketingAttachmentResultFileFormat$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingAttachmentResultFileFormat$Outbound = {
   source_value?:
-    | TicketingAttachmentResult4$Outbound
     | string
     | number
     | boolean
+    | TicketingAttachmentResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -1510,10 +1510,10 @@ export const TicketingAttachmentResultFileFormat$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingAttachmentResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingAttachmentResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

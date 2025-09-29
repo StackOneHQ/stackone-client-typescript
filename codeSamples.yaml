@@ -818,7 +818,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_employee_employments"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeEmployments({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeEmployments({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/employments"]["post"]
     update:
       "x-codeSamples":
@@ -830,7 +830,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_get_employee_employment"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeeEmployment({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager\",\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeeEmployment({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups\",\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/employments/{subResourceId}"]["patch"]
     update:
       "x-codeSamples":
@@ -843,6 +843,18 @@ actions:
         - "lang": "typescript"
           "label": "hris_invite_employee"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.inviteEmployee({\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n    hrisInviteEmployeeRequestDto: {\n      passthrough: {\n        \"other_known_names\": \"John Doe\",\n      },\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/employees/{id}/shifts"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_list_employee_shifts"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeShifts({\n    id: \"<id>\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/hris/employees/{id}/shifts/{subResourceId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "hris_get_employee_shift"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployeeShift({\n    id: \"<id>\",\n    subResourceId: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/skills"]["get"]
     update:
       "x-codeSamples":
@@ -884,7 +896,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_employee_time_off_requests"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeTimeOffRequests({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployeeTimeOffRequests({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n      startDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      endDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    expand: \"policy\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["post"]
     update:
       "x-codeSamples":
@@ -956,13 +968,13 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_employments"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployments({\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listEmployments({\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/employments/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_get_employment"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployment({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager\",\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.getEmployment({\n    id: \"<id>\",\n    fields: \"id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups\",\n    expand: \"groups\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/groups"]["get"]
     update:
       "x-codeSamples":
@@ -1064,7 +1076,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "hris_list_positions"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { Status } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listPositions({\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    status: Status.Open,\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { QueryParamStatus } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.hris.listPositions({\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    status: QueryParamStatus.Open,\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/hris/positions/{id}"]["get"]
     update:
       "x-codeSamples":

@@ -22,10 +22,10 @@ import {
 export type IamRole4 = {};
 
 export type IamRoleSourceValue =
-  | IamRole4
   | string
   | number
   | boolean
+  | IamRole4
   | Array<any>;
 
 export enum IamRoleValue {
@@ -42,10 +42,10 @@ export type IamRoleValueOpen = OpenEnum<typeof IamRoleValue>;
 
 export type IamRoleType = {
   sourceValue?:
-    | IamRole4
     | string
     | number
     | boolean
+    | IamRole4
     | Array<any>
     | null
     | undefined;
@@ -122,19 +122,19 @@ export const IamRoleSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => IamRole4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamRole4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type IamRoleSourceValue$Outbound =
-  | IamRole4$Outbound
   | string
   | number
   | boolean
+  | IamRole4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -143,10 +143,10 @@ export const IamRoleSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamRoleSourceValue
 > = z.union([
-  z.lazy(() => IamRole4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => IamRole4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -221,10 +221,10 @@ export const IamRoleType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => IamRole4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamRole4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -238,10 +238,10 @@ export const IamRoleType$inboundSchema: z.ZodType<
 /** @internal */
 export type IamRoleType$Outbound = {
   source_value?:
-    | IamRole4$Outbound
     | string
     | number
     | boolean
+    | IamRole4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -256,10 +256,10 @@ export const IamRoleType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => IamRole4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => IamRole4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

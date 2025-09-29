@@ -19,10 +19,10 @@ export type RejectedReason4 = {};
  * The source value of the rejected reason type.
  */
 export type RejectedReasonSourceValue =
-  | RejectedReason4
   | string
   | number
   | boolean
+  | RejectedReason4
   | Array<any>;
 
 /**
@@ -45,10 +45,10 @@ export type RejectedReasonType = {
    * The source value of the rejected reason type.
    */
   sourceValue?:
-    | RejectedReason4
     | string
     | number
     | boolean
+    | RejectedReason4
     | Array<any>
     | null
     | undefined;
@@ -136,19 +136,19 @@ export const RejectedReasonSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => RejectedReason4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => RejectedReason4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type RejectedReasonSourceValue$Outbound =
-  | RejectedReason4$Outbound
   | string
   | number
   | boolean
+  | RejectedReason4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -157,10 +157,10 @@ export const RejectedReasonSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RejectedReasonSourceValue
 > = z.union([
-  z.lazy(() => RejectedReason4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => RejectedReason4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -235,10 +235,10 @@ export const RejectedReasonType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => RejectedReason4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => RejectedReason4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -252,10 +252,10 @@ export const RejectedReasonType$inboundSchema: z.ZodType<
 /** @internal */
 export type RejectedReasonType$Outbound = {
   source_value?:
-    | RejectedReason4$Outbound
     | string
     | number
     | boolean
+    | RejectedReason4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -270,10 +270,10 @@ export const RejectedReasonType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => RejectedReason4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => RejectedReason4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type UpdateTaskRequestDto4 = {};
 
 export type UpdateTaskRequestDtoSourceValue =
-  | UpdateTaskRequestDto4
   | string
   | number
   | boolean
+  | UpdateTaskRequestDto4
   | Array<any>;
 
 /**
@@ -45,10 +45,10 @@ export type UpdateTaskRequestDtoValueOpen = OpenEnum<
  */
 export type UpdateTaskRequestDtoStatus = {
   sourceValue?:
-    | UpdateTaskRequestDto4
     | string
     | number
     | boolean
+    | UpdateTaskRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -123,19 +123,19 @@ export const UpdateTaskRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateTaskRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => UpdateTaskRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type UpdateTaskRequestDtoSourceValue$Outbound =
-  | UpdateTaskRequestDto4$Outbound
   | string
   | number
   | boolean
+  | UpdateTaskRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -144,10 +144,10 @@ export const UpdateTaskRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateTaskRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => UpdateTaskRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => UpdateTaskRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -224,10 +224,10 @@ export const UpdateTaskRequestDtoStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => UpdateTaskRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => UpdateTaskRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -241,10 +241,10 @@ export const UpdateTaskRequestDtoStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateTaskRequestDtoStatus$Outbound = {
   source_value?:
-    | UpdateTaskRequestDto4$Outbound
     | string
     | number
     | boolean
+    | UpdateTaskRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -259,10 +259,10 @@ export const UpdateTaskRequestDtoStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => UpdateTaskRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => UpdateTaskRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

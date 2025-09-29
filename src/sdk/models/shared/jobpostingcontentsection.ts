@@ -19,10 +19,10 @@ export type JobPostingContentSection4 = {};
  * The source value of the description type.
  */
 export type JobPostingContentSectionSourceValue =
-  | JobPostingContentSection4
   | string
   | number
   | boolean
+  | JobPostingContentSection4
   | Array<any>;
 
 /**
@@ -49,10 +49,10 @@ export type JobPostingContentSectionType = {
    * The source value of the description type.
    */
   sourceValue?:
-    | JobPostingContentSection4
     | string
     | number
     | boolean
+    | JobPostingContentSection4
     | Array<any>
     | null
     | undefined;
@@ -130,19 +130,19 @@ export const JobPostingContentSectionSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => JobPostingContentSection4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JobPostingContentSection4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type JobPostingContentSectionSourceValue$Outbound =
-  | JobPostingContentSection4$Outbound
   | string
   | number
   | boolean
+  | JobPostingContentSection4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -151,10 +151,10 @@ export const JobPostingContentSectionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JobPostingContentSectionSourceValue
 > = z.union([
-  z.lazy(() => JobPostingContentSection4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JobPostingContentSection4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -234,10 +234,10 @@ export const JobPostingContentSectionType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => JobPostingContentSection4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingContentSection4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -251,10 +251,10 @@ export const JobPostingContentSectionType$inboundSchema: z.ZodType<
 /** @internal */
 export type JobPostingContentSectionType$Outbound = {
   source_value?:
-    | JobPostingContentSection4$Outbound
     | string
     | number
     | boolean
+    | JobPostingContentSection4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -269,10 +269,10 @@ export const JobPostingContentSectionType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => JobPostingContentSection4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JobPostingContentSection4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

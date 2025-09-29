@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HRISCostCenter4 = {};
 
 export type HRISCostCenterSourceValue =
-  | HRISCostCenter4
   | string
   | number
   | boolean
+  | HRISCostCenter4
   | Array<any>;
 
 export enum HRISCostCenterValue {
@@ -38,10 +38,10 @@ export type HRISCostCenterValueOpen = OpenEnum<typeof HRISCostCenterValue>;
  */
 export type HRISCostCenterType = {
   sourceValue?:
-    | HRISCostCenter4
     | string
     | number
     | boolean
+    | HRISCostCenter4
     | Array<any>
     | null
     | undefined;
@@ -151,19 +151,19 @@ export const HRISCostCenterSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HRISCostCenter4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISCostCenter4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HRISCostCenterSourceValue$Outbound =
-  | HRISCostCenter4$Outbound
   | string
   | number
   | boolean
+  | HRISCostCenter4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -172,10 +172,10 @@ export const HRISCostCenterSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISCostCenterSourceValue
 > = z.union([
-  z.lazy(() => HRISCostCenter4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HRISCostCenter4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -250,10 +250,10 @@ export const HRISCostCenterType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HRISCostCenter4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISCostCenter4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -267,10 +267,10 @@ export const HRISCostCenterType$inboundSchema: z.ZodType<
 /** @internal */
 export type HRISCostCenterType$Outbound = {
   source_value?:
-    | HRISCostCenter4$Outbound
     | string
     | number
     | boolean
+    | HRISCostCenter4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -285,10 +285,10 @@ export const HRISCostCenterType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HRISCostCenter4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HRISCostCenter4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

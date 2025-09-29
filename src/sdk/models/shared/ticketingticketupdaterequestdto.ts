@@ -25,10 +25,10 @@ export type TicketingTicketUpdateRequestDto4 = {};
  * The source value of the ticket priority.
  */
 export type TicketingTicketUpdateRequestDtoSourceValue =
-  | TicketingTicketUpdateRequestDto4
   | string
   | number
   | boolean
+  | TicketingTicketUpdateRequestDto4
   | Array<any>;
 
 /**
@@ -61,10 +61,10 @@ export type TicketingTicketUpdateRequestDtoPriority = {
    * The source value of the ticket priority.
    */
   sourceValue?:
-    | TicketingTicketUpdateRequestDto4
     | string
     | number
     | boolean
+    | TicketingTicketUpdateRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -80,10 +80,10 @@ export type TicketingTicketUpdateRequestDtoSchemas4 = {};
  * The source value of this status type
  */
 export type TicketingTicketUpdateRequestDtoSchemasSourceValue =
-  | TicketingTicketUpdateRequestDtoSchemas4
   | string
   | number
   | boolean
+  | TicketingTicketUpdateRequestDtoSchemas4
   | Array<any>;
 
 /**
@@ -110,10 +110,10 @@ export type TicketingTicketUpdateRequestDtoType = {
    * The source value of this status type
    */
   sourceValue?:
-    | TicketingTicketUpdateRequestDtoSchemas4
     | string
     | number
     | boolean
+    | TicketingTicketUpdateRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -242,19 +242,19 @@ export function ticketingTicketUpdateRequestDto4FromJSON(
 export const TicketingTicketUpdateRequestDtoSourceValue$inboundSchema:
   z.ZodType<TicketingTicketUpdateRequestDtoSourceValue, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => TicketingTicketUpdateRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketUpdateRequestDto4$inboundSchema),
       z.array(z.any()),
     ]);
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoSourceValue$Outbound =
-  | TicketingTicketUpdateRequestDto4$Outbound
   | string
   | number
   | boolean
+  | TicketingTicketUpdateRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -264,10 +264,10 @@ export const TicketingTicketUpdateRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     TicketingTicketUpdateRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => TicketingTicketUpdateRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => TicketingTicketUpdateRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -356,10 +356,10 @@ export const TicketingTicketUpdateRequestDtoPriority$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketUpdateRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketUpdateRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -375,10 +375,10 @@ export const TicketingTicketUpdateRequestDtoPriority$inboundSchema: z.ZodType<
 export type TicketingTicketUpdateRequestDtoPriority$Outbound = {
   id?: string | null | undefined;
   source_value?:
-    | TicketingTicketUpdateRequestDto4$Outbound
     | string
     | number
     | boolean
+    | TicketingTicketUpdateRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -394,10 +394,10 @@ export const TicketingTicketUpdateRequestDtoPriority$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketUpdateRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketUpdateRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -517,19 +517,19 @@ export const TicketingTicketUpdateRequestDtoSchemasSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoSchemasSourceValue$Outbound =
-  | TicketingTicketUpdateRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | TicketingTicketUpdateRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -539,10 +539,10 @@ export const TicketingTicketUpdateRequestDtoSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     TicketingTicketUpdateRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -633,10 +633,10 @@ export const TicketingTicketUpdateRequestDtoType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -651,10 +651,10 @@ export const TicketingTicketUpdateRequestDtoType$inboundSchema: z.ZodType<
 /** @internal */
 export type TicketingTicketUpdateRequestDtoType$Outbound = {
   source_value?:
-    | TicketingTicketUpdateRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | TicketingTicketUpdateRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -669,10 +669,10 @@ export const TicketingTicketUpdateRequestDtoType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

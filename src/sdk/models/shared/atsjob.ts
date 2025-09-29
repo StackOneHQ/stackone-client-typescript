@@ -50,10 +50,10 @@ export type AtsJob4 = {};
  * The source value of the job status.
  */
 export type AtsJobSourceValue =
-  | AtsJob4
   | string
   | number
   | boolean
+  | AtsJob4
   | Array<any>;
 
 /**
@@ -84,10 +84,10 @@ export type AtsJobJobStatus = {
    * The source value of the job status.
    */
   sourceValue?:
-    | AtsJob4
     | string
     | number
     | boolean
+    | AtsJob4
     | Array<any>
     | null
     | undefined;
@@ -253,19 +253,19 @@ export const AtsJobSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsJob4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsJob4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsJobSourceValue$Outbound =
-  | AtsJob4$Outbound
   | string
   | number
   | boolean
+  | AtsJob4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -274,10 +274,10 @@ export const AtsJobSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsJobSourceValue
 > = z.union([
-  z.lazy(() => AtsJob4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsJob4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -352,10 +352,10 @@ export const AtsJobJobStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsJob4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsJob4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -369,10 +369,10 @@ export const AtsJobJobStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsJobJobStatus$Outbound = {
   source_value?:
-    | AtsJob4$Outbound
     | string
     | number
     | boolean
+    | AtsJob4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -387,10 +387,10 @@ export const AtsJobJobStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsJob4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsJob4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

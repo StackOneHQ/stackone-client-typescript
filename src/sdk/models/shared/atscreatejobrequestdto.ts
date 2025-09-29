@@ -50,10 +50,10 @@ export type AtsCreateJobRequestDto4 = {};
  * The source value of the job status.
  */
 export type AtsCreateJobRequestDtoSourceValue =
-  | AtsCreateJobRequestDto4
   | string
   | number
   | boolean
+  | AtsCreateJobRequestDto4
   | Array<any>;
 
 /**
@@ -86,10 +86,10 @@ export type JobStatus = {
    * The source value of the job status.
    */
   sourceValue?:
-    | AtsCreateJobRequestDto4
     | string
     | number
     | boolean
+    | AtsCreateJobRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -242,19 +242,19 @@ export const AtsCreateJobRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AtsCreateJobRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsCreateJobRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AtsCreateJobRequestDtoSourceValue$Outbound =
-  | AtsCreateJobRequestDto4$Outbound
   | string
   | number
   | boolean
+  | AtsCreateJobRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -263,10 +263,10 @@ export const AtsCreateJobRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsCreateJobRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => AtsCreateJobRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AtsCreateJobRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -344,10 +344,10 @@ export const JobStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AtsCreateJobRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsCreateJobRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -361,10 +361,10 @@ export const JobStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type JobStatus$Outbound = {
   source_value?:
-    | AtsCreateJobRequestDto4$Outbound
     | string
     | number
     | boolean
+    | AtsCreateJobRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -379,10 +379,10 @@ export const JobStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AtsCreateJobRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AtsCreateJobRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

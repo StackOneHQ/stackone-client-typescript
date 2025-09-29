@@ -12,17 +12,7 @@ let value: HrisShiftResult = {
       value: HrisShiftResultValue.Approved,
     },
     breakDuration: "PT1H30M",
-    breaks: [
-      {
-        createdAt: new Date("2024-03-20T10:00:00Z"),
-        duration: "PT1H",
-        endTime: new Date("2024-03-20T13:00:00Z"),
-        id: "break_123456789",
-        isPaid: true,
-        startTime: new Date("2024-03-20T12:00:00Z"),
-        updatedAt: new Date("2024-03-20T10:00:00Z"),
-      },
-    ],
+    breaks: null,
     companyId: "comp_123456789",
     createdAt: new Date("2024-03-20T08:00:00Z"),
     employeeId: "emp_123456789",

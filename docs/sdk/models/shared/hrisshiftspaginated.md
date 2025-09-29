@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { HrisShiftSchemasValue, HrisShiftsPaginated, HrisShiftValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisShiftsPaginated, HrisShiftValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisShiftsPaginated = {
   data: [
@@ -32,10 +32,7 @@ let value: HrisShiftsPaginated = {
       locationId: "loc_123456789",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       startTime: new Date("2024-03-20T09:00:00Z"),
-      status: {
-        sourceValue: "Confirmed",
-        value: HrisShiftSchemasValue.Confirmed,
-      },
+      status: null,
       updatedAt: new Date("2024-03-20T08:00:00Z"),
     },
   ],

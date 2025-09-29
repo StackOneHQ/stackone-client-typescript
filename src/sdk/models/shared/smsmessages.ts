@@ -24,10 +24,10 @@ export type SmsMessages4 = {};
  * The original value from the provider used to derive the unified message type.
  */
 export type SmsMessagesSourceValue =
-  | SmsMessages4
   | string
   | number
   | boolean
+  | SmsMessages4
   | Array<any>;
 
 /**
@@ -57,10 +57,10 @@ export type SmsMessagesMessageType = {
    * The original value from the provider used to derive the unified message type.
    */
   sourceValue?:
-    | SmsMessages4
     | string
     | number
     | boolean
+    | SmsMessages4
     | Array<any>
     | null
     | undefined;
@@ -191,19 +191,19 @@ export const SmsMessagesSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => SmsMessages4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => SmsMessages4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type SmsMessagesSourceValue$Outbound =
-  | SmsMessages4$Outbound
   | string
   | number
   | boolean
+  | SmsMessages4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -212,10 +212,10 @@ export const SmsMessagesSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SmsMessagesSourceValue
 > = z.union([
-  z.lazy(() => SmsMessages4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => SmsMessages4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -290,10 +290,10 @@ export const SmsMessagesMessageType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => SmsMessages4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => SmsMessages4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -307,10 +307,10 @@ export const SmsMessagesMessageType$inboundSchema: z.ZodType<
 /** @internal */
 export type SmsMessagesMessageType$Outbound = {
   source_value?:
-    | SmsMessages4$Outbound
     | string
     | number
     | boolean
+    | SmsMessages4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -325,10 +325,10 @@ export const SmsMessagesMessageType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => SmsMessages4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => SmsMessages4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

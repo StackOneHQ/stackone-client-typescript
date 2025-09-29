@@ -7,8 +7,13 @@ import { HrisListShiftsResponse } from "@stackone/stackone-client-ts/sdk/models/
 
 let value: HrisListShiftsResponse = {
   contentType: "<value>",
-  headers: {},
-  statusCode: 230585,
+  headers: {
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  statusCode: 856558,
 };
 ```
 

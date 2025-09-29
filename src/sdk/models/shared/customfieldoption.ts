@@ -13,10 +13,10 @@ export type CustomFieldOption4 = {};
  * The human readable value of the option
  */
 export type CustomFieldOptionValue =
-  | CustomFieldOption4
   | string
   | number
   | boolean
+  | CustomFieldOption4
   | Array<any>;
 
 export type CustomFieldOption = {
@@ -27,7 +27,7 @@ export type CustomFieldOption = {
   /**
    * The human readable value of the option
    */
-  value: CustomFieldOption4 | string | number | boolean | Array<any>;
+  value: string | number | boolean | CustomFieldOption4 | Array<any>;
 };
 
 /** @internal */
@@ -84,19 +84,19 @@ export const CustomFieldOptionValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CustomFieldOption4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CustomFieldOption4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CustomFieldOptionValue$Outbound =
-  | CustomFieldOption4$Outbound
   | string
   | number
   | boolean
+  | CustomFieldOption4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -105,10 +105,10 @@ export const CustomFieldOptionValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomFieldOptionValue
 > = z.union([
-  z.lazy(() => CustomFieldOption4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CustomFieldOption4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -151,10 +151,10 @@ export const CustomFieldOption$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   value: z.union([
-    z.lazy(() => CustomFieldOption4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CustomFieldOption4$inboundSchema),
     z.array(z.any()),
   ]),
 });
@@ -162,7 +162,7 @@ export const CustomFieldOption$inboundSchema: z.ZodType<
 /** @internal */
 export type CustomFieldOption$Outbound = {
   id: string;
-  value: CustomFieldOption4$Outbound | string | number | boolean | Array<any>;
+  value: string | number | boolean | CustomFieldOption4$Outbound | Array<any>;
 };
 
 /** @internal */
@@ -173,10 +173,10 @@ export const CustomFieldOption$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   value: z.union([
-    z.lazy(() => CustomFieldOption4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => CustomFieldOption4$outboundSchema),
     z.array(z.any()),
   ]),
 });

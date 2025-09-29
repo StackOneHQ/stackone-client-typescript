@@ -22,10 +22,10 @@ import {
 export type CustomFieldDefinition4 = {};
 
 export type CustomFieldDefinitionSourceValue =
-  | CustomFieldDefinition4
   | string
   | number
   | boolean
+  | CustomFieldDefinition4
   | Array<any>;
 
 export enum CustomFieldDefinitionValue {
@@ -51,10 +51,10 @@ export type CustomFieldDefinitionValueOpen = OpenEnum<
  */
 export type CustomFieldDefinitionType = {
   sourceValue?:
-    | CustomFieldDefinition4
     | string
     | number
     | boolean
+    | CustomFieldDefinition4
     | Array<any>
     | null
     | undefined;
@@ -136,19 +136,19 @@ export const CustomFieldDefinitionSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CustomFieldDefinition4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CustomFieldDefinition4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type CustomFieldDefinitionSourceValue$Outbound =
-  | CustomFieldDefinition4$Outbound
   | string
   | number
   | boolean
+  | CustomFieldDefinition4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -157,10 +157,10 @@ export const CustomFieldDefinitionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomFieldDefinitionSourceValue
 > = z.union([
-  z.lazy(() => CustomFieldDefinition4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => CustomFieldDefinition4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -237,10 +237,10 @@ export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => CustomFieldDefinition4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CustomFieldDefinition4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -254,10 +254,10 @@ export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
 /** @internal */
 export type CustomFieldDefinitionType$Outbound = {
   source_value?:
-    | CustomFieldDefinition4$Outbound
     | string
     | number
     | boolean
+    | CustomFieldDefinition4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -272,10 +272,10 @@ export const CustomFieldDefinitionType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => CustomFieldDefinition4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => CustomFieldDefinition4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

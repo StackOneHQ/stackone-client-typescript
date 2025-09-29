@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type EntitySkillsCreateRequestDto4 = {};
 
 export type EntitySkillsCreateRequestDtoSourceValue =
-  | EntitySkillsCreateRequestDto4
   | string
   | number
   | boolean
+  | EntitySkillsCreateRequestDto4
   | Array<any>;
 
 export enum EntitySkillsCreateRequestDtoValue {
@@ -51,10 +51,10 @@ export type EntitySkillsCreateRequestDtoMaximumProficiency = {
    */
   remoteId?: string | null | undefined;
   sourceValue?:
-    | EntitySkillsCreateRequestDto4
     | string
     | number
     | boolean
+    | EntitySkillsCreateRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -64,10 +64,10 @@ export type EntitySkillsCreateRequestDtoMaximumProficiency = {
 export type EntitySkillsCreateRequestDtoSchemas4 = {};
 
 export type EntitySkillsCreateRequestDtoSchemasSourceValue =
-  | EntitySkillsCreateRequestDtoSchemas4
   | string
   | number
   | boolean
+  | EntitySkillsCreateRequestDtoSchemas4
   | Array<any>;
 
 export enum EntitySkillsCreateRequestDtoSchemasValue {
@@ -99,10 +99,10 @@ export type EntitySkillsCreateRequestDtoMinimumProficiency = {
    */
   remoteId?: string | null | undefined;
   sourceValue?:
-    | EntitySkillsCreateRequestDtoSchemas4
     | string
     | number
     | boolean
+    | EntitySkillsCreateRequestDtoSchemas4
     | Array<any>
     | null
     | undefined;
@@ -190,19 +190,19 @@ export const EntitySkillsCreateRequestDtoSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoSourceValue$Outbound =
-  | EntitySkillsCreateRequestDto4$Outbound
   | string
   | number
   | boolean
+  | EntitySkillsCreateRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -211,10 +211,10 @@ export const EntitySkillsCreateRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EntitySkillsCreateRequestDtoSourceValue
 > = z.union([
-  z.lazy(() => EntitySkillsCreateRequestDto4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => EntitySkillsCreateRequestDto4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -305,10 +305,10 @@ export const EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema:
     remote_id: z.nullable(z.string()).optional(),
     source_value: z.nullable(
       z.union([
-        z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -327,10 +327,10 @@ export type EntitySkillsCreateRequestDtoMaximumProficiency$Outbound = {
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
   source_value?:
-    | EntitySkillsCreateRequestDto4$Outbound
     | string
     | number
     | boolean
+    | EntitySkillsCreateRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -349,10 +349,10 @@ export const EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema:
     remoteId: z.nullable(z.string()).optional(),
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => EntitySkillsCreateRequestDto4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => EntitySkillsCreateRequestDto4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -468,19 +468,19 @@ export const EntitySkillsCreateRequestDtoSchemasSourceValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoSchemasSourceValue$Outbound =
-  | EntitySkillsCreateRequestDtoSchemas4$Outbound
   | string
   | number
   | boolean
+  | EntitySkillsCreateRequestDtoSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -490,10 +490,10 @@ export const EntitySkillsCreateRequestDtoSchemasSourceValue$outboundSchema:
     z.ZodTypeDef,
     EntitySkillsCreateRequestDtoSchemasSourceValue
   > = z.union([
-    z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -586,10 +586,10 @@ export const EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema:
     remote_id: z.nullable(z.string()).optional(),
     source_value: z.nullable(
       z.union([
-        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),
@@ -608,10 +608,10 @@ export type EntitySkillsCreateRequestDtoMinimumProficiency$Outbound = {
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
   source_value?:
-    | EntitySkillsCreateRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
+    | EntitySkillsCreateRequestDtoSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -630,10 +630,10 @@ export const EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema:
     remoteId: z.nullable(z.string()).optional(),
     sourceValue: z.nullable(
       z.union([
-        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
+        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$outboundSchema),
         z.array(z.any()),
       ]),
     ).optional(),

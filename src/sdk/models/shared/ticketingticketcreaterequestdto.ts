@@ -25,10 +25,10 @@ export type TicketingTicketCreateRequestDto4 = {};
  * The source value of the ticket priority.
  */
 export type TicketingTicketCreateRequestDtoSourceValue =
-  | TicketingTicketCreateRequestDto4
   | string
   | number
   | boolean
+  | TicketingTicketCreateRequestDto4
   | Array<any>;
 
 /**
@@ -61,10 +61,10 @@ export type TicketingTicketCreateRequestDtoPriority = {
    * The source value of the ticket priority.
    */
   sourceValue?:
-    | TicketingTicketCreateRequestDto4
     | string
     | number
     | boolean
+    | TicketingTicketCreateRequestDto4
     | Array<any>
     | null
     | undefined;
@@ -183,19 +183,19 @@ export function ticketingTicketCreateRequestDto4FromJSON(
 export const TicketingTicketCreateRequestDtoSourceValue$inboundSchema:
   z.ZodType<TicketingTicketCreateRequestDtoSourceValue, z.ZodTypeDef, unknown> =
     z.union([
-      z.lazy(() => TicketingTicketCreateRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketCreateRequestDto4$inboundSchema),
       z.array(z.any()),
     ]);
 
 /** @internal */
 export type TicketingTicketCreateRequestDtoSourceValue$Outbound =
-  | TicketingTicketCreateRequestDto4$Outbound
   | string
   | number
   | boolean
+  | TicketingTicketCreateRequestDto4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -205,10 +205,10 @@ export const TicketingTicketCreateRequestDtoSourceValue$outboundSchema:
     z.ZodTypeDef,
     TicketingTicketCreateRequestDtoSourceValue
   > = z.union([
-    z.lazy(() => TicketingTicketCreateRequestDto4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.lazy(() => TicketingTicketCreateRequestDto4$outboundSchema),
     z.array(z.any()),
   ]);
 
@@ -297,10 +297,10 @@ export const TicketingTicketCreateRequestDtoPriority$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   source_value: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketCreateRequestDto4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketCreateRequestDto4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -316,10 +316,10 @@ export const TicketingTicketCreateRequestDtoPriority$inboundSchema: z.ZodType<
 export type TicketingTicketCreateRequestDtoPriority$Outbound = {
   id?: string | null | undefined;
   source_value?:
-    | TicketingTicketCreateRequestDto4$Outbound
     | string
     | number
     | boolean
+    | TicketingTicketCreateRequestDto4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -335,10 +335,10 @@ export const TicketingTicketCreateRequestDtoPriority$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => TicketingTicketCreateRequestDto4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => TicketingTicketCreateRequestDto4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

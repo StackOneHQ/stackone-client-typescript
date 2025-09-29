@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type LocalizationModel4 = {};
 
 export type LocalizationModelSourceValue =
-  | LocalizationModel4
   | string
   | number
   | boolean
+  | LocalizationModel4
   | Array<any>;
 
 /**
@@ -450,10 +450,10 @@ export type LocalizationModelValueOpen = OpenEnum<
  */
 export type LocalizationModelLanguage = {
   sourceValue?:
-    | LocalizationModel4
     | string
     | number
     | boolean
+    | LocalizationModel4
     | Array<any>
     | null
     | undefined;
@@ -536,19 +536,19 @@ export const LocalizationModelSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LocalizationModel4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LocalizationModel4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type LocalizationModelSourceValue$Outbound =
-  | LocalizationModel4$Outbound
   | string
   | number
   | boolean
+  | LocalizationModel4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -557,10 +557,10 @@ export const LocalizationModelSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LocalizationModelSourceValue
 > = z.union([
-  z.lazy(() => LocalizationModel4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => LocalizationModel4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -637,10 +637,10 @@ export const LocalizationModelLanguage$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LocalizationModel4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LocalizationModel4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -654,10 +654,10 @@ export const LocalizationModelLanguage$inboundSchema: z.ZodType<
 /** @internal */
 export type LocalizationModelLanguage$Outbound = {
   source_value?:
-    | LocalizationModel4$Outbound
     | string
     | number
     | boolean
+    | LocalizationModel4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -672,10 +672,10 @@ export const LocalizationModelLanguage$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LocalizationModel4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => LocalizationModel4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

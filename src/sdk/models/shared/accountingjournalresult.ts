@@ -28,10 +28,10 @@ import {
 export type AccountingJournalResult4 = {};
 
 export type AccountingJournalResultSourceValue =
-  | AccountingJournalResult4
   | string
   | number
   | boolean
+  | AccountingJournalResult4
   | Array<any>;
 
 /**
@@ -55,10 +55,10 @@ export type AccountingJournalResultValueOpen = OpenEnum<
  */
 export type AccountingJournalResultStatus = {
   sourceValue?:
-    | AccountingJournalResult4
     | string
     | number
     | boolean
+    | AccountingJournalResult4
     | Array<any>
     | null
     | undefined;
@@ -174,19 +174,19 @@ export const AccountingJournalResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AccountingJournalResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingJournalResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type AccountingJournalResultSourceValue$Outbound =
-  | AccountingJournalResult4$Outbound
   | string
   | number
   | boolean
+  | AccountingJournalResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -195,10 +195,10 @@ export const AccountingJournalResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountingJournalResultSourceValue
 > = z.union([
-  z.lazy(() => AccountingJournalResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => AccountingJournalResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -277,10 +277,10 @@ export const AccountingJournalResultStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AccountingJournalResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingJournalResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -294,10 +294,10 @@ export const AccountingJournalResultStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type AccountingJournalResultStatus$Outbound = {
   source_value?:
-    | AccountingJournalResult4$Outbound
     | string
     | number
     | boolean
+    | AccountingJournalResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -312,10 +312,10 @@ export const AccountingJournalResultStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AccountingJournalResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => AccountingJournalResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

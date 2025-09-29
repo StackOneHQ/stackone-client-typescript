@@ -19,10 +19,10 @@ export type Position4 = {};
  * The source value of the position status.
  */
 export type PositionSourceValue =
-  | Position4
   | string
   | number
   | boolean
+  | Position4
   | Array<any>;
 
 /**
@@ -47,10 +47,10 @@ export type PositionStatus = {
    * The source value of the position status.
    */
   sourceValue?:
-    | Position4
     | string
     | number
     | boolean
+    | Position4
     | Array<any>
     | null
     | undefined;
@@ -153,19 +153,19 @@ export const PositionSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Position4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Position4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type PositionSourceValue$Outbound =
-  | Position4$Outbound
   | string
   | number
   | boolean
+  | Position4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -174,10 +174,10 @@ export const PositionSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PositionSourceValue
 > = z.union([
-  z.lazy(() => Position4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Position4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -252,10 +252,10 @@ export const PositionStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Position4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Position4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -269,10 +269,10 @@ export const PositionStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type PositionStatus$Outbound = {
   source_value?:
-    | Position4$Outbound
     | string
     | number
     | boolean
+    | Position4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -287,10 +287,10 @@ export const PositionStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Position4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Position4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

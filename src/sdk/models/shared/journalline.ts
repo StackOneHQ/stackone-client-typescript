@@ -16,10 +16,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type JournalLine4 = {};
 
 export type JournalLineSourceValue =
-  | JournalLine4
   | string
   | number
   | boolean
+  | JournalLine4
   | Array<any>;
 
 /**
@@ -43,10 +43,10 @@ export type JournalLineValueOpen = OpenEnum<typeof JournalLineValue>;
  */
 export type AccountType = {
   sourceValue?:
-    | JournalLine4
     | string
     | number
     | boolean
+    | JournalLine4
     | Array<any>
     | null
     | undefined;
@@ -59,10 +59,10 @@ export type AccountType = {
 export type JournalLineSchemas4 = {};
 
 export type JournalLineSchemasSourceValue =
-  | JournalLineSchemas4
   | string
   | number
   | boolean
+  | JournalLineSchemas4
   | Array<any>;
 
 /**
@@ -240,10 +240,10 @@ export type JournalLineSchemasValueOpen = OpenEnum<
  */
 export type JournalLineCurrencyCode = {
   sourceValue?:
-    | JournalLineSchemas4
     | string
     | number
     | boolean
+    | JournalLineSchemas4
     | Array<any>
     | null
     | undefined;
@@ -342,19 +342,19 @@ export const JournalLineSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => JournalLine4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JournalLine4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type JournalLineSourceValue$Outbound =
-  | JournalLine4$Outbound
   | string
   | number
   | boolean
+  | JournalLine4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -363,10 +363,10 @@ export const JournalLineSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JournalLineSourceValue
 > = z.union([
-  z.lazy(() => JournalLine4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JournalLine4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -441,10 +441,10 @@ export const AccountType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => JournalLine4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JournalLine4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -458,10 +458,10 @@ export const AccountType$inboundSchema: z.ZodType<
 /** @internal */
 export type AccountType$Outbound = {
   source_value?:
-    | JournalLine4$Outbound
     | string
     | number
     | boolean
+    | JournalLine4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -476,10 +476,10 @@ export const AccountType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => JournalLine4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JournalLine4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -571,19 +571,19 @@ export const JournalLineSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => JournalLineSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JournalLineSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type JournalLineSchemasSourceValue$Outbound =
-  | JournalLineSchemas4$Outbound
   | string
   | number
   | boolean
+  | JournalLineSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -592,10 +592,10 @@ export const JournalLineSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JournalLineSchemasSourceValue
 > = z.union([
-  z.lazy(() => JournalLineSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => JournalLineSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -672,10 +672,10 @@ export const JournalLineCurrencyCode$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => JournalLineSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JournalLineSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -689,10 +689,10 @@ export const JournalLineCurrencyCode$inboundSchema: z.ZodType<
 /** @internal */
 export type JournalLineCurrencyCode$Outbound = {
   source_value?:
-    | JournalLineSchemas4$Outbound
     | string
     | number
     | boolean
+    | JournalLineSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -707,10 +707,10 @@ export const JournalLineCurrencyCode$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => JournalLineSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => JournalLineSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

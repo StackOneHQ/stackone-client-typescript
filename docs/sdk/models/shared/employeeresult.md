@@ -303,6 +303,7 @@ let value: EmployeeResult = {
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     ],
+    startDate: new Date("2021-01-01T00:00:00.000Z"),
     tenure: 2,
     terminationDate: new Date("2021-01-01T00:00:00Z"),
     unifiedCustomFields: {

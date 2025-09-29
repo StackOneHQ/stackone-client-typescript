@@ -18,7 +18,7 @@ export type Four = {};
 /**
  * The source value of the Channels.
  */
-export type SourceValue = Four | string | number | boolean | Array<any>;
+export type SourceValue = string | number | boolean | Four | Array<any>;
 
 /**
  * The Channels of the campaign.
@@ -42,10 +42,10 @@ export type ChannelsEnum = {
    * The source value of the Channels.
    */
   sourceValue?:
-    | Four
     | string
     | number
     | boolean
+    | Four
     | Array<any>
     | null
     | undefined;
@@ -99,19 +99,19 @@ export const SourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Four$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Four$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type SourceValue$Outbound =
-  | Four$Outbound
   | string
   | number
   | boolean
+  | Four$Outbound
   | Array<any>;
 
 /** @internal */
@@ -120,10 +120,10 @@ export const SourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SourceValue
 > = z.union([
-  z.lazy(() => Four$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => Four$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -194,10 +194,10 @@ export const ChannelsEnum$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => Four$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Four$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -211,10 +211,10 @@ export const ChannelsEnum$inboundSchema: z.ZodType<
 /** @internal */
 export type ChannelsEnum$Outbound = {
   source_value?:
-    | Four$Outbound
     | string
     | number
     | boolean
+    | Four$Outbound
     | Array<any>
     | null
     | undefined;
@@ -229,10 +229,10 @@ export const ChannelsEnum$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Four$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => Four$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

@@ -28,10 +28,10 @@ import {
 export type HrisShiftResult4 = {};
 
 export type HrisShiftResultSourceValue =
-  | HrisShiftResult4
   | string
   | number
   | boolean
+  | HrisShiftResult4
   | Array<any>;
 
 /**
@@ -53,10 +53,10 @@ export type HrisShiftResultValueOpen = OpenEnum<typeof HrisShiftResultValue>;
  */
 export type HrisShiftResultApprovalStatus = {
   sourceValue?:
-    | HrisShiftResult4
     | string
     | number
     | boolean
+    | HrisShiftResult4
     | Array<any>
     | null
     | undefined;
@@ -69,10 +69,10 @@ export type HrisShiftResultApprovalStatus = {
 export type HrisShiftResultSchemas4 = {};
 
 export type HrisShiftResultSchemasSourceValue =
-  | HrisShiftResultSchemas4
   | string
   | number
   | boolean
+  | HrisShiftResultSchemas4
   | Array<any>;
 
 /**
@@ -97,10 +97,10 @@ export type HrisShiftResultSchemasValueOpen = OpenEnum<
  */
 export type HrisShiftResultStatus = {
   sourceValue?:
-    | HrisShiftResultSchemas4
     | string
     | number
     | boolean
+    | HrisShiftResultSchemas4
     | Array<any>
     | null
     | undefined;
@@ -224,19 +224,19 @@ export const HrisShiftResultSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisShiftResult4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisShiftResult4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisShiftResultSourceValue$Outbound =
-  | HrisShiftResult4$Outbound
   | string
   | number
   | boolean
+  | HrisShiftResult4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -245,10 +245,10 @@ export const HrisShiftResultSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisShiftResultSourceValue
 > = z.union([
-  z.lazy(() => HrisShiftResult4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisShiftResult4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -323,10 +323,10 @@ export const HrisShiftResultApprovalStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisShiftResult4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisShiftResult4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -340,10 +340,10 @@ export const HrisShiftResultApprovalStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisShiftResultApprovalStatus$Outbound = {
   source_value?:
-    | HrisShiftResult4$Outbound
     | string
     | number
     | boolean
+    | HrisShiftResult4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -358,10 +358,10 @@ export const HrisShiftResultApprovalStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisShiftResult4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisShiftResult4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -459,19 +459,19 @@ export const HrisShiftResultSchemasSourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => HrisShiftResultSchemas4$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisShiftResultSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
 /** @internal */
 export type HrisShiftResultSchemasSourceValue$Outbound =
-  | HrisShiftResultSchemas4$Outbound
   | string
   | number
   | boolean
+  | HrisShiftResultSchemas4$Outbound
   | Array<any>;
 
 /** @internal */
@@ -480,10 +480,10 @@ export const HrisShiftResultSchemasSourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisShiftResultSchemasSourceValue
 > = z.union([
-  z.lazy(() => HrisShiftResultSchemas4$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
+  z.lazy(() => HrisShiftResultSchemas4$outboundSchema),
   z.array(z.any()),
 ]);
 
@@ -561,10 +561,10 @@ export const HrisShiftResultStatus$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => HrisShiftResultSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisShiftResultSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -578,10 +578,10 @@ export const HrisShiftResultStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisShiftResultStatus$Outbound = {
   source_value?:
-    | HrisShiftResultSchemas4$Outbound
     | string
     | number
     | boolean
+    | HrisShiftResultSchemas4$Outbound
     | Array<any>
     | null
     | undefined;
@@ -596,10 +596,10 @@ export const HrisShiftResultStatus$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => HrisShiftResultSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
+      z.lazy(() => HrisShiftResultSchemas4$outboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
