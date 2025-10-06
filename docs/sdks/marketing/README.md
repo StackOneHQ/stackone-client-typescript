@@ -903,7 +903,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getCampaign({
-    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -933,7 +933,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetCampaign(stackOne, {
-    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -998,7 +998,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getContentBlock({
-    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1028,7 +1028,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetContentBlock(stackOne, {
-    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1093,7 +1093,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getEmailTemplate({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1123,7 +1123,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetEmailTemplate(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1188,7 +1188,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getInAppTemplate({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1218,7 +1218,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetInAppTemplate(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1285,7 +1285,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getOmniChannelTemplate({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1315,7 +1315,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetOmniChannelTemplate(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1380,7 +1380,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getPushTemplate({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1410,7 +1410,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetPushTemplate(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1475,7 +1475,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getSmsTemplate({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1505,7 +1505,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetSmsTemplate(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1570,7 +1570,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listCampaigns({
-    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1605,7 +1605,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListCampaigns(stackOne, {
-    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1675,7 +1675,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listContentBlocks({
-    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1710,7 +1710,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListContentBlocks(stackOne, {
-    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1780,7 +1780,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listEmailTemplates({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1815,7 +1815,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListEmailTemplates(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1885,7 +1885,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listInAppTemplates({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1920,7 +1920,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListInAppTemplates(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1992,7 +1992,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listOmniChannelTemplates({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -2027,7 +2027,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListOmniChannelTemplates(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -2097,7 +2097,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listPushTemplates({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -2132,7 +2132,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListPushTemplates(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -2202,7 +2202,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listSmsTemplates({
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -2237,7 +2237,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListSmsTemplates(stackOne, {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },

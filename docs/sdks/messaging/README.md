@@ -242,7 +242,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getAttachment({
-    fields: "id,remote_id,file_name,file_size,file_type",
+    fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -273,7 +273,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetAttachment(stackOne, {
-    fields: "id,remote_id,file_name,file_size,file_type",
+    fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -339,7 +339,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getConversation({
-    fields: "id,remote_id,participants,name,private,created_at,last_message_at",
+    fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -369,7 +369,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetConversation(stackOne, {
-    fields: "id,remote_id,participants,name,private,created_at,last_message_at",
+    fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -434,7 +434,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getMessage({
-    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at",
+    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -464,7 +464,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetMessage(stackOne, {
-    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at",
+    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -529,7 +529,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getUser({
-    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active",
+    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -559,7 +559,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetUser(stackOne, {
-    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active",
+    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -624,7 +624,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listAttachments({
-    fields: "id,remote_id,file_name,file_size,file_type",
+    fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -659,7 +659,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListAttachments(stackOne, {
-    fields: "id,remote_id,file_name,file_size,file_type",
+    fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -729,7 +729,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listConversationMessages({
-    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at",
+    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -764,7 +764,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListConversationMessages(stackOne, {
-    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at",
+    fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -834,7 +834,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listConversations({
-    fields: "id,remote_id,participants,name,private,created_at,last_message_at",
+    fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -868,7 +868,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListConversations(stackOne, {
-    fields: "id,remote_id,participants,name,private,created_at,last_message_at",
+    fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -937,7 +937,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listUsers({
-    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active",
+    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -971,7 +971,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListUsers(stackOne, {
-    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active",
+    fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },

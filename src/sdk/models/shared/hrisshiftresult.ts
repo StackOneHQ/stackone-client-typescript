@@ -136,9 +136,9 @@ export type HrisShiftResultData = {
    */
   employeeId?: string | null | undefined;
   /**
-   * The end time of the shift
+   * The end time of the shift (ISO8601 date-time without timezone)
    */
-  endTime?: Date | null | undefined;
+  endTime?: string | null | undefined;
   /**
    * Unique identifier
    */
@@ -152,9 +152,9 @@ export type HrisShiftResultData = {
    */
   remoteId?: string | null | undefined;
   /**
-   * The start time of the shift
+   * The start time of the shift (ISO8601 date-time without timezone)
    */
-  startTime?: Date | null | undefined;
+  startTime?: string | null | undefined;
   /**
    * The status of the shift
    */
@@ -657,15 +657,11 @@ export const HrisShiftResultData$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   employee_id: z.nullable(z.string()).optional(),
-  end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
+  end_time: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   location_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
+  start_time: z.nullable(z.string()).optional(),
   status: z.nullable(z.lazy(() => HrisShiftResultStatus$inboundSchema))
     .optional(),
   updated_at: z.nullable(
@@ -717,11 +713,11 @@ export const HrisShiftResultData$outboundSchema: z.ZodType<
   companyId: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   employeeId: z.nullable(z.string()).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  endTime: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   locationId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  startTime: z.nullable(z.string()).optional(),
   status: z.nullable(z.lazy(() => HrisShiftResultStatus$outboundSchema))
     .optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),

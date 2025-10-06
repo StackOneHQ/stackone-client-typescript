@@ -130,7 +130,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getDrive({
-    fields: "id,remote_id,name,description,url,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -160,7 +160,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetDrive(stackOne, {
-    fields: "id,remote_id,name,description,url,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -225,7 +225,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFile({
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
     xAccountId: "<id>",
@@ -256,7 +256,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFile(stackOne, {
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
     xAccountId: "<id>",
@@ -322,7 +322,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFolder({
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
     xAccountId: "<id>",
@@ -353,7 +353,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFolder(stackOne, {
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
     xAccountId: "<id>",
@@ -419,7 +419,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listDrives({
-    fields: "id,remote_id,name,description,url,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -454,7 +454,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListDrives(stackOne, {
-    fields: "id,remote_id,name,description,url,created_at,updated_at",
+    fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -524,7 +524,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFiles({
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       content: "FAQ of the project",
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -567,7 +567,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFiles(stackOne, {
-    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       content: "FAQ of the project",
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -645,7 +645,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFolders({
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       driveId: "1234567890",
       folderId: "1234567890",
@@ -685,7 +685,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFolders(stackOne, {
-    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids",
+    fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       driveId: "1234567890",
       folderId: "1234567890",

@@ -37,4 +37,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Personal`             | personal               |
 | `InLieu`               | in_lieu                |
 | `Bereavement`          | bereavement            |
+| `Other`                | other                  |
 | -                      | `Unrecognized<string>` |

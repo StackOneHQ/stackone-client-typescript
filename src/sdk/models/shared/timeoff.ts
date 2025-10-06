@@ -111,6 +111,7 @@ export enum TimeOffSchemasPolicyTypeValue {
   Personal = "personal",
   InLieu = "in_lieu",
   Bereavement = "bereavement",
+  Other = "other",
 }
 /**
  * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
@@ -265,6 +266,7 @@ export enum TimeOffSchemasValue {
   Personal = "personal",
   InLieu = "in_lieu",
   Bereavement = "bereavement",
+  Other = "other",
 }
 export type TimeOffSchemasValueOpen = OpenEnum<typeof TimeOffSchemasValue>;
 

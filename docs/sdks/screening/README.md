@@ -150,7 +150,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.screening.getScreeningPackage({
-    fields: "id,remote_id,name,description",
+    fields: "id,remote_id,name,description,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -180,7 +180,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await screeningGetScreeningPackage(stackOne, {
-    fields: "id,remote_id,name,description",
+    fields: "id,remote_id,name,description,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -245,7 +245,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.screening.listScreeningPackages({
-    fields: "id,remote_id,name,description",
+    fields: "id,remote_id,name,description,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -279,7 +279,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await screeningListScreeningPackages(stackOne, {
-    fields: "id,remote_id,name,description",
+    fields: "id,remote_id,name,description,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
