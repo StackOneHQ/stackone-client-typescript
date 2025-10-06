@@ -36,3 +36,4 @@ let value: QueryParamType = QueryParamType.AnnualLeave;
 | `Personal`            | personal              |
 | `InLieu`              | in_lieu               |
 | `Bereavement`         | bereavement           |
+| `Other`               | other                 |

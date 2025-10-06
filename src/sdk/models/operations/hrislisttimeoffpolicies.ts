@@ -35,6 +35,7 @@ export enum QueryParamType {
   Personal = "personal",
   InLieu = "in_lieu",
   Bereavement = "bereavement",
+  Other = "other",
 }
 
 /**

@@ -114,6 +114,7 @@ export enum HrisCreateTimeOffRequestDtoSchemasValue {
   Personal = "personal",
   InLieu = "in_lieu",
   Bereavement = "bereavement",
+  Other = "other",
 }
 export type HrisCreateTimeOffRequestDtoSchemasValueOpen = OpenEnum<
   typeof HrisCreateTimeOffRequestDtoSchemasValue

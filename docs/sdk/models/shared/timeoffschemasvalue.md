@@ -5,7 +5,7 @@
 ```typescript
 import { TimeOffSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffSchemasValue = TimeOffSchemasValue.Holiday;
+let value: TimeOffSchemasValue = TimeOffSchemasValue.Personal;
 ```
 
 ## Values
@@ -36,4 +36,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Personal`             | personal               |
 | `InLieu`               | in_lieu                |
 | `Bereavement`          | bereavement            |
+| `Other`                | other                  |
 | -                      | `Unrecognized<string>` |

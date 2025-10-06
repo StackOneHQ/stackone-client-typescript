@@ -27,11 +27,11 @@ export type HrisListEmployeeShiftsQueryParamFilter = {
   /**
    * Filter shifts that end before this date
    */
-  endsBefore?: Date | null | undefined;
+  endsBefore?: string | undefined;
   /**
    * Filter shifts that start after this date
    */
-  startsAfter?: Date | null | undefined;
+  startsAfter?: string | undefined;
   /**
    * Filter to select shifts by status
    */
@@ -133,12 +133,8 @@ export const HrisListEmployeeShiftsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ends_before: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  starts_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
+  ends_before: z.string().optional(),
+  starts_after: z.string().optional(),
   status: z.nullable(QueryParamStatus$inboundSchema).optional(),
   updated_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -153,8 +149,8 @@ export const HrisListEmployeeShiftsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisListEmployeeShiftsQueryParamFilter$Outbound = {
-  ends_before?: string | null | undefined;
-  starts_after?: string | null | undefined;
+  ends_before?: string | undefined;
+  starts_after?: string | undefined;
   status?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
@@ -165,8 +161,8 @@ export const HrisListEmployeeShiftsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListEmployeeShiftsQueryParamFilter
 > = z.object({
-  endsBefore: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  startsAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  endsBefore: z.string().optional(),
+  startsAfter: z.string().optional(),
   status: z.nullable(QueryParamStatus$outboundSchema).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {

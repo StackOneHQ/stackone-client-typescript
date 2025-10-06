@@ -36,3 +36,4 @@ let value: Type = Type.Vacation;
 | `Personal`            | personal              |
 | `InLieu`              | in_lieu               |
 | `Bereavement`         | bereavement           |
+| `Other`               | other                 |
