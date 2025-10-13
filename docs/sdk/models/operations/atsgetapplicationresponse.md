@@ -7,8 +7,12 @@ import { AtsGetApplicationResponse } from "@stackone/stackone-client-ts/sdk/mode
 
 let value: AtsGetApplicationResponse = {
   contentType: "<value>",
-  headers: {},
-  statusCode: 455043,
+  headers: {
+    "key": [
+      "<value 1>",
+    ],
+  },
+  statusCode: 15126,
 };
 ```
 

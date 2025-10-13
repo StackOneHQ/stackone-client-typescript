@@ -415,9 +415,9 @@ export type HrisCreateEmploymentRequestDtoSchemasWorkTimeValueOpen = OpenEnum<
 >;
 
 /**
- * The duration unit of the work time
+ * The period of the work time
  */
-export type HrisCreateEmploymentRequestDtoDurationUnit = {
+export type HrisCreateEmploymentRequestDtoPeriod = {
   sourceValue?:
     | string
     | number
@@ -441,9 +441,9 @@ export type HrisCreateEmploymentRequestDtoWorkTime = {
    */
   duration?: string | null | undefined;
   /**
-   * The duration unit of the work time
+   * The period of the work time
    */
-  durationUnit?: HrisCreateEmploymentRequestDtoDurationUnit | null | undefined;
+  period?: HrisCreateEmploymentRequestDtoPeriod | null | undefined;
 };
 
 export type HrisCreateEmploymentRequestDto = {
@@ -2621,31 +2621,33 @@ export namespace HrisCreateEmploymentRequestDtoSchemasWorkTimeValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmploymentRequestDtoDurationUnit$inboundSchema:
-  z.ZodType<HrisCreateEmploymentRequestDtoDurationUnit, z.ZodTypeDef, unknown> =
-    z.object({
-      source_value: z.nullable(
-        z.union([
-          z.string(),
-          z.number(),
-          z.boolean(),
-          z.lazy(() =>
-            HrisCreateEmploymentRequestDtoSchemasWorkTime4$inboundSchema
-          ),
-          z.array(z.any()),
-        ]),
-      ).optional(),
-      value: z.nullable(
-        HrisCreateEmploymentRequestDtoSchemasWorkTimeValue$inboundSchema,
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "source_value": "sourceValue",
-      });
-    });
+export const HrisCreateEmploymentRequestDtoPeriod$inboundSchema: z.ZodType<
+  HrisCreateEmploymentRequestDtoPeriod,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.lazy(() =>
+        HrisCreateEmploymentRequestDtoSchemasWorkTime4$inboundSchema
+      ),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(
+    HrisCreateEmploymentRequestDtoSchemasWorkTimeValue$inboundSchema,
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
 
 /** @internal */
-export type HrisCreateEmploymentRequestDtoDurationUnit$Outbound = {
+export type HrisCreateEmploymentRequestDtoPeriod$Outbound = {
   source_value?:
     | string
     | number
@@ -2658,71 +2660,64 @@ export type HrisCreateEmploymentRequestDtoDurationUnit$Outbound = {
 };
 
 /** @internal */
-export const HrisCreateEmploymentRequestDtoDurationUnit$outboundSchema:
-  z.ZodType<
-    HrisCreateEmploymentRequestDtoDurationUnit$Outbound,
-    z.ZodTypeDef,
-    HrisCreateEmploymentRequestDtoDurationUnit
-  > = z.object({
-    sourceValue: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() =>
-          HrisCreateEmploymentRequestDtoSchemasWorkTime4$outboundSchema
-        ),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(
-      HrisCreateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema,
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      sourceValue: "source_value",
-    });
+export const HrisCreateEmploymentRequestDtoPeriod$outboundSchema: z.ZodType<
+  HrisCreateEmploymentRequestDtoPeriod$Outbound,
+  z.ZodTypeDef,
+  HrisCreateEmploymentRequestDtoPeriod
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.lazy(() =>
+        HrisCreateEmploymentRequestDtoSchemasWorkTime4$outboundSchema
+      ),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(
+    HrisCreateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema,
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HrisCreateEmploymentRequestDtoDurationUnit$ {
-  /** @deprecated use `HrisCreateEmploymentRequestDtoDurationUnit$inboundSchema` instead. */
+export namespace HrisCreateEmploymentRequestDtoPeriod$ {
+  /** @deprecated use `HrisCreateEmploymentRequestDtoPeriod$inboundSchema` instead. */
   export const inboundSchema =
-    HrisCreateEmploymentRequestDtoDurationUnit$inboundSchema;
-  /** @deprecated use `HrisCreateEmploymentRequestDtoDurationUnit$outboundSchema` instead. */
+    HrisCreateEmploymentRequestDtoPeriod$inboundSchema;
+  /** @deprecated use `HrisCreateEmploymentRequestDtoPeriod$outboundSchema` instead. */
   export const outboundSchema =
-    HrisCreateEmploymentRequestDtoDurationUnit$outboundSchema;
-  /** @deprecated use `HrisCreateEmploymentRequestDtoDurationUnit$Outbound` instead. */
-  export type Outbound = HrisCreateEmploymentRequestDtoDurationUnit$Outbound;
+    HrisCreateEmploymentRequestDtoPeriod$outboundSchema;
+  /** @deprecated use `HrisCreateEmploymentRequestDtoPeriod$Outbound` instead. */
+  export type Outbound = HrisCreateEmploymentRequestDtoPeriod$Outbound;
 }
 
-export function hrisCreateEmploymentRequestDtoDurationUnitToJSON(
-  hrisCreateEmploymentRequestDtoDurationUnit:
-    HrisCreateEmploymentRequestDtoDurationUnit,
+export function hrisCreateEmploymentRequestDtoPeriodToJSON(
+  hrisCreateEmploymentRequestDtoPeriod: HrisCreateEmploymentRequestDtoPeriod,
 ): string {
   return JSON.stringify(
-    HrisCreateEmploymentRequestDtoDurationUnit$outboundSchema.parse(
-      hrisCreateEmploymentRequestDtoDurationUnit,
+    HrisCreateEmploymentRequestDtoPeriod$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoPeriod,
     ),
   );
 }
 
-export function hrisCreateEmploymentRequestDtoDurationUnitFromJSON(
+export function hrisCreateEmploymentRequestDtoPeriodFromJSON(
   jsonString: string,
-): SafeParseResult<
-  HrisCreateEmploymentRequestDtoDurationUnit,
-  SDKValidationError
-> {
+): SafeParseResult<HrisCreateEmploymentRequestDtoPeriod, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      HrisCreateEmploymentRequestDtoDurationUnit$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisCreateEmploymentRequestDtoDurationUnit' from JSON`,
+      HrisCreateEmploymentRequestDtoPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoPeriod' from JSON`,
   );
 }
 
@@ -2733,22 +2728,15 @@ export const HrisCreateEmploymentRequestDtoWorkTime$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  duration_unit: z.nullable(
-    z.lazy(() => HrisCreateEmploymentRequestDtoDurationUnit$inboundSchema),
+  period: z.nullable(
+    z.lazy(() => HrisCreateEmploymentRequestDtoPeriod$inboundSchema),
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "duration_unit": "durationUnit",
-  });
 });
 
 /** @internal */
 export type HrisCreateEmploymentRequestDtoWorkTime$Outbound = {
   duration?: string | null | undefined;
-  duration_unit?:
-    | HrisCreateEmploymentRequestDtoDurationUnit$Outbound
-    | null
-    | undefined;
+  period?: HrisCreateEmploymentRequestDtoPeriod$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -2758,13 +2746,9 @@ export const HrisCreateEmploymentRequestDtoWorkTime$outboundSchema: z.ZodType<
   HrisCreateEmploymentRequestDtoWorkTime
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  durationUnit: z.nullable(
-    z.lazy(() => HrisCreateEmploymentRequestDtoDurationUnit$outboundSchema),
+  period: z.nullable(
+    z.lazy(() => HrisCreateEmploymentRequestDtoPeriod$outboundSchema),
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    durationUnit: "duration_unit",
-  });
 });
 
 /**

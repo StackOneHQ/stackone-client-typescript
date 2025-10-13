@@ -1,5 +1,7 @@
 # LmsCreateAssignmentRequestDtoValue
 
+The StackOne unified assignment status.
+
 ## Example Usage
 
 ```typescript

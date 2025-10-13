@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LocalizationModel4 = {};
 
+/**
+ * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type LocalizationModelSourceValue =
   | string
   | number
@@ -23,7 +26,7 @@ export type LocalizationModelSourceValue =
   | Array<any>;
 
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export enum LocalizationModelValue {
   ARAR = "ar_AR",
@@ -439,7 +442,7 @@ export enum LocalizationModelValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export type LocalizationModelValueOpen = OpenEnum<
   typeof LocalizationModelValue
@@ -449,6 +452,9 @@ export type LocalizationModelValueOpen = OpenEnum<
  * The language associated with the localization details
  */
 export type LocalizationModelLanguage = {
+  /**
+   * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -458,7 +464,7 @@ export type LocalizationModelLanguage = {
     | null
     | undefined;
   /**
-   * The Locale Code of the language
+   * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
    */
   value?: LocalizationModelValueOpen | null | undefined;
 };

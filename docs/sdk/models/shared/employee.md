@@ -207,7 +207,7 @@ let value: Employee = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       workTime: {
         duration: "P0Y0M0DT8H0M0S",
-        durationUnit: {
+        period: {
           value: EmploymentSchemasWorkTimeValue.Month,
         },
       },

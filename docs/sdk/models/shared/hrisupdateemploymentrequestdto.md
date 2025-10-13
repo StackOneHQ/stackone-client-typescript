@@ -52,7 +52,7 @@ let value: HrisUpdateEmploymentRequestDto = {
   },
   workTime: {
     duration: "P0Y0M0DT8H0M0S",
-    durationUnit: {
+    period: {
       value: HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue.Month,
     },
   },

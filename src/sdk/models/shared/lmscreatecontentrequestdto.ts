@@ -63,6 +63,9 @@ export type LmsCreateContentRequestDtoActive =
 
 export type LmsCreateContentRequestDto4 = {};
 
+/**
+ * The original value from the provider before normalization.
+ */
 export type LmsCreateContentRequestDtoSourceValue =
   | string
   | number
@@ -70,6 +73,9 @@ export type LmsCreateContentRequestDtoSourceValue =
   | LmsCreateContentRequestDto4
   | Array<any>;
 
+/**
+ * The StackOne unified content type.
+ */
 export enum LmsCreateContentRequestDtoValue {
   Video = "video",
   Quiz = "quiz",
@@ -78,6 +84,9 @@ export enum LmsCreateContentRequestDtoValue {
   Article = "article",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified content type.
+ */
 export type LmsCreateContentRequestDtoValueOpen = OpenEnum<
   typeof LmsCreateContentRequestDtoValue
 >;
@@ -86,6 +95,9 @@ export type LmsCreateContentRequestDtoValueOpen = OpenEnum<
  * The type of content
  */
 export type LmsCreateContentRequestDtoContentType = {
+  /**
+   * The original value from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -94,6 +106,9 @@ export type LmsCreateContentRequestDtoContentType = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified content type.
+   */
   value?: LmsCreateContentRequestDtoValueOpen | null | undefined;
 };
 

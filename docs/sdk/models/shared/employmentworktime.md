@@ -7,7 +7,7 @@ import { EmploymentSchemasWorkTimeValue, EmploymentWorkTime } from "@stackone/st
 
 let value: EmploymentWorkTime = {
   duration: "P0Y0M0DT8H0M0S",
-  durationUnit: {
+  period: {
     value: EmploymentSchemasWorkTimeValue.Month,
   },
 };
@@ -15,7 +15,7 @@ let value: EmploymentWorkTime = {
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `duration`                                                                            | *string*                                                                              | :heavy_minus_sign:                                                                    | The work time duration in ISO 8601 duration format                                    | P0Y0M0DT8H0M0S                                                                        |
-| `durationUnit`                                                                        | [shared.EmploymentDurationUnit](../../../sdk/models/shared/employmentdurationunit.md) | :heavy_minus_sign:                                                                    | The duration unit of the work time                                                    | month                                                                                 |
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `duration`                                                                | *string*                                                                  | :heavy_minus_sign:                                                        | The work time duration in ISO 8601 duration format                        | P0Y0M0DT8H0M0S                                                            |
+| `period`                                                                  | [shared.EmploymentPeriod](../../../sdk/models/shared/employmentperiod.md) | :heavy_minus_sign:                                                        | The period of the work time                                               | month                                                                     |

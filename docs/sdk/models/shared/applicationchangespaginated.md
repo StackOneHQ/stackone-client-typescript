@@ -28,7 +28,6 @@ let value: ApplicationChangesPaginated = {
           sourceValue: "Hired",
           value: ApplicationChangesDataModelValue.Hired,
         },
-        interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
         rejectedReasonIds: [
           "f223d7f6-908b-48f0-9237-b201c307f609",
         ],

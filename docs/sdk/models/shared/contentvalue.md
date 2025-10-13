@@ -1,5 +1,7 @@
 # ContentValue
 
+The StackOne unified content type.
+
 ## Example Usage
 
 ```typescript

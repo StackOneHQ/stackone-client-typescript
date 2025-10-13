@@ -7,7 +7,7 @@ import { CreateEmploymentApiModelSchemasWorkTimeValue, WorkTime } from "@stackon
 
 let value: WorkTime = {
   duration: "P0Y0M0DT8H0M0S",
-  durationUnit: {
+  period: {
     value: CreateEmploymentApiModelSchemasWorkTimeValue.Month,
   },
 };
@@ -15,7 +15,7 @@ let value: WorkTime = {
 
 ## Fields
 
-| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       | Example                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `duration`                                                                                                        | *string*                                                                                                          | :heavy_minus_sign:                                                                                                | The work time duration in ISO 8601 duration format                                                                | P0Y0M0DT8H0M0S                                                                                                    |
-| `durationUnit`                                                                                                    | [shared.CreateEmploymentApiModelDurationUnit](../../../sdk/models/shared/createemploymentapimodeldurationunit.md) | :heavy_minus_sign:                                                                                                | The duration unit of the work time                                                                                | month                                                                                                             |
+| Field                                                 | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `duration`                                            | *string*                                              | :heavy_minus_sign:                                    | The work time duration in ISO 8601 duration format    | P0Y0M0DT8H0M0S                                        |
+| `period`                                              | [shared.Period](../../../sdk/models/shared/period.md) | :heavy_minus_sign:                                    | The period of the work time                           | month                                                 |

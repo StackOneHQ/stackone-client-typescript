@@ -725,9 +725,9 @@ export type EmploymentSchemasWorkTimeValueOpen = OpenEnum<
 >;
 
 /**
- * The duration unit of the work time
+ * The period of the work time
  */
-export type EmploymentDurationUnit = {
+export type EmploymentPeriod = {
   sourceValue?:
     | string
     | number
@@ -748,9 +748,9 @@ export type EmploymentWorkTime = {
    */
   duration?: string | null | undefined;
   /**
-   * The duration unit of the work time
+   * The period of the work time
    */
-  durationUnit?: EmploymentDurationUnit | null | undefined;
+  period?: EmploymentPeriod | null | undefined;
 };
 
 export type Employment = {
@@ -3943,8 +3943,8 @@ export namespace EmploymentSchemasWorkTimeValue$ {
 }
 
 /** @internal */
-export const EmploymentDurationUnit$inboundSchema: z.ZodType<
-  EmploymentDurationUnit,
+export const EmploymentPeriod$inboundSchema: z.ZodType<
+  EmploymentPeriod,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3965,7 +3965,7 @@ export const EmploymentDurationUnit$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EmploymentDurationUnit$Outbound = {
+export type EmploymentPeriod$Outbound = {
   source_value?:
     | string
     | number
@@ -3978,10 +3978,10 @@ export type EmploymentDurationUnit$Outbound = {
 };
 
 /** @internal */
-export const EmploymentDurationUnit$outboundSchema: z.ZodType<
-  EmploymentDurationUnit$Outbound,
+export const EmploymentPeriod$outboundSchema: z.ZodType<
+  EmploymentPeriod$Outbound,
   z.ZodTypeDef,
-  EmploymentDurationUnit
+  EmploymentPeriod
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -4003,30 +4003,30 @@ export const EmploymentDurationUnit$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EmploymentDurationUnit$ {
-  /** @deprecated use `EmploymentDurationUnit$inboundSchema` instead. */
-  export const inboundSchema = EmploymentDurationUnit$inboundSchema;
-  /** @deprecated use `EmploymentDurationUnit$outboundSchema` instead. */
-  export const outboundSchema = EmploymentDurationUnit$outboundSchema;
-  /** @deprecated use `EmploymentDurationUnit$Outbound` instead. */
-  export type Outbound = EmploymentDurationUnit$Outbound;
+export namespace EmploymentPeriod$ {
+  /** @deprecated use `EmploymentPeriod$inboundSchema` instead. */
+  export const inboundSchema = EmploymentPeriod$inboundSchema;
+  /** @deprecated use `EmploymentPeriod$outboundSchema` instead. */
+  export const outboundSchema = EmploymentPeriod$outboundSchema;
+  /** @deprecated use `EmploymentPeriod$Outbound` instead. */
+  export type Outbound = EmploymentPeriod$Outbound;
 }
 
-export function employmentDurationUnitToJSON(
-  employmentDurationUnit: EmploymentDurationUnit,
+export function employmentPeriodToJSON(
+  employmentPeriod: EmploymentPeriod,
 ): string {
   return JSON.stringify(
-    EmploymentDurationUnit$outboundSchema.parse(employmentDurationUnit),
+    EmploymentPeriod$outboundSchema.parse(employmentPeriod),
   );
 }
 
-export function employmentDurationUnitFromJSON(
+export function employmentPeriodFromJSON(
   jsonString: string,
-): SafeParseResult<EmploymentDurationUnit, SDKValidationError> {
+): SafeParseResult<EmploymentPeriod, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EmploymentDurationUnit$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EmploymentDurationUnit' from JSON`,
+    (x) => EmploymentPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentPeriod' from JSON`,
   );
 }
 
@@ -4037,18 +4037,13 @@ export const EmploymentWorkTime$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  duration_unit: z.nullable(z.lazy(() => EmploymentDurationUnit$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "duration_unit": "durationUnit",
-  });
+  period: z.nullable(z.lazy(() => EmploymentPeriod$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type EmploymentWorkTime$Outbound = {
   duration?: string | null | undefined;
-  duration_unit?: EmploymentDurationUnit$Outbound | null | undefined;
+  period?: EmploymentPeriod$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -4058,12 +4053,7 @@ export const EmploymentWorkTime$outboundSchema: z.ZodType<
   EmploymentWorkTime
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  durationUnit: z.nullable(z.lazy(() => EmploymentDurationUnit$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    durationUnit: "duration_unit",
-  });
+  period: z.nullable(z.lazy(() => EmploymentPeriod$outboundSchema)).optional(),
 });
 
 /**

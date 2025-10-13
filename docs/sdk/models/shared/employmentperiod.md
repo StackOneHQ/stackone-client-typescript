@@ -1,13 +1,13 @@
-# EmploymentDurationUnit
+# EmploymentPeriod
 
-The duration unit of the work time
+The period of the work time
 
 ## Example Usage
 
 ```typescript
-import { EmploymentDurationUnit, EmploymentSchemasWorkTimeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmploymentPeriod, EmploymentSchemasWorkTimeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentDurationUnit = {
+let value: EmploymentPeriod = {
   value: EmploymentSchemasWorkTimeValue.Month,
 };
 ```

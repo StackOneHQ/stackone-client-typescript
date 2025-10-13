@@ -67,6 +67,37 @@ import {
   SocialLink$outboundSchema,
 } from "./sociallink.js";
 
+export type ApplicationApplicationStage = {
+  /**
+   * Application Stage created date
+   */
+  createdAt?: Date | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * Application Stage name
+   */
+  name?: string | null | undefined;
+  /**
+   * Application Stage order
+   */
+  order?: number | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+  /**
+   * Custom Unified Fields configured in your StackOne project
+   */
+  unifiedCustomFields?: { [k: string]: any } | null | undefined;
+  /**
+   * Application Stage updated date
+   */
+  updatedAt?: Date | null | undefined;
+};
+
 export type Application4 = {};
 
 /**
@@ -166,6 +197,9 @@ export type ApplicationCandidate = {
   title?: string | null | undefined;
 };
 
+/**
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
 export type ApplicationInterviewStage = {
   /**
    * Interview Stage created date
@@ -207,6 +241,11 @@ export type Source = {
 };
 
 export type Application = {
+  applicationStage?: ApplicationApplicationStage | null | undefined;
+  /**
+   * Unique identifier of the application stage
+   */
+  applicationStageId?: string | null | undefined;
   applicationStatus?: ApplicationStatus | null | undefined;
   /**
    * Use `documents` expand instead
@@ -235,9 +274,14 @@ export type Application = {
    * Unique identifier
    */
   id?: string | null | undefined;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   interviewStage?: ApplicationInterviewStage | null | undefined;
   /**
    * Unique identifier of the interview stage
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   interviewStageId?: string | null | undefined;
   /**
@@ -268,6 +312,10 @@ export type Application = {
   rejectedReasonIds?: Array<string> | null | undefined;
   rejectedReasons?: Array<RejectedReason> | null | undefined;
   /**
+   * Unique identifier of the application stage
+   */
+  remoteApplicationStageId?: string | null | undefined;
+  /**
    * Provider's unique identifier of the candidate
    */
   remoteCandidateId?: string | null | undefined;
@@ -277,6 +325,8 @@ export type Application = {
   remoteId?: string | null | undefined;
   /**
    * Provider's unique identifier of the interview stage
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   remoteInterviewStageId?: string | null | undefined;
   /**
@@ -308,6 +358,98 @@ export type Application = {
    */
   updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const ApplicationApplicationStage$inboundSchema: z.ZodType<
+  ApplicationApplicationStage,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  order: z.nullable(z.number()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
+    "remote_id": "remoteId",
+    "unified_custom_fields": "unifiedCustomFields",
+    "updated_at": "updatedAt",
+  });
+});
+
+/** @internal */
+export type ApplicationApplicationStage$Outbound = {
+  created_at?: string | null | undefined;
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+  order?: number | null | undefined;
+  remote_id?: string | null | undefined;
+  unified_custom_fields?: { [k: string]: any } | null | undefined;
+  updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const ApplicationApplicationStage$outboundSchema: z.ZodType<
+  ApplicationApplicationStage$Outbound,
+  z.ZodTypeDef,
+  ApplicationApplicationStage
+> = z.object({
+  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
+  order: z.nullable(z.number()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    createdAt: "created_at",
+    remoteId: "remote_id",
+    unifiedCustomFields: "unified_custom_fields",
+    updatedAt: "updated_at",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ApplicationApplicationStage$ {
+  /** @deprecated use `ApplicationApplicationStage$inboundSchema` instead. */
+  export const inboundSchema = ApplicationApplicationStage$inboundSchema;
+  /** @deprecated use `ApplicationApplicationStage$outboundSchema` instead. */
+  export const outboundSchema = ApplicationApplicationStage$outboundSchema;
+  /** @deprecated use `ApplicationApplicationStage$Outbound` instead. */
+  export type Outbound = ApplicationApplicationStage$Outbound;
+}
+
+export function applicationApplicationStageToJSON(
+  applicationApplicationStage: ApplicationApplicationStage,
+): string {
+  return JSON.stringify(
+    ApplicationApplicationStage$outboundSchema.parse(
+      applicationApplicationStage,
+    ),
+  );
+}
+
+export function applicationApplicationStageFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationApplicationStage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationApplicationStage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationApplicationStage' from JSON`,
+  );
+}
 
 /** @internal */
 export const Application4$inboundSchema: z.ZodType<
@@ -787,6 +929,10 @@ export const Application$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  application_stage: z.nullable(
+    z.lazy(() => ApplicationApplicationStage$inboundSchema),
+  ).optional(),
+  application_stage_id: z.nullable(z.string()).optional(),
   application_status: z.nullable(z.lazy(() => ApplicationStatus$inboundSchema))
     .optional(),
   attachments: z.nullable(z.array(ApplicationAttachment$inboundSchema))
@@ -814,6 +960,7 @@ export const Application$inboundSchema: z.ZodType<
   rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
   rejected_reasons: z.nullable(z.array(RejectedReason$inboundSchema))
     .optional(),
+  remote_application_stage_id: z.nullable(z.string()).optional(),
   remote_candidate_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_interview_stage_id: z.nullable(z.string()).optional(),
@@ -829,6 +976,8 @@ export const Application$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "application_stage": "applicationStage",
+    "application_stage_id": "applicationStageId",
     "application_status": "applicationStatus",
     "candidate_id": "candidateId",
     "created_at": "createdAt",
@@ -841,6 +990,7 @@ export const Application$inboundSchema: z.ZodType<
     "rejected_at": "rejectedAt",
     "rejected_reason_ids": "rejectedReasonIds",
     "rejected_reasons": "rejectedReasons",
+    "remote_application_stage_id": "remoteApplicationStageId",
     "remote_candidate_id": "remoteCandidateId",
     "remote_id": "remoteId",
     "remote_interview_stage_id": "remoteInterviewStageId",
@@ -856,6 +1006,8 @@ export const Application$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Application$Outbound = {
+  application_stage?: ApplicationApplicationStage$Outbound | null | undefined;
+  application_stage_id?: string | null | undefined;
   application_status?: ApplicationStatus$Outbound | null | undefined;
   attachments?: Array<ApplicationAttachment$Outbound> | null | undefined;
   candidate?: ApplicationCandidate$Outbound | null | undefined;
@@ -873,6 +1025,7 @@ export type Application$Outbound = {
   rejected_at?: string | null | undefined;
   rejected_reason_ids?: Array<string> | null | undefined;
   rejected_reasons?: Array<RejectedReason$Outbound> | null | undefined;
+  remote_application_stage_id?: string | null | undefined;
   remote_candidate_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_interview_stage_id?: string | null | undefined;
@@ -892,6 +1045,10 @@ export const Application$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Application
 > = z.object({
+  applicationStage: z.nullable(
+    z.lazy(() => ApplicationApplicationStage$outboundSchema),
+  ).optional(),
+  applicationStageId: z.nullable(z.string()).optional(),
   applicationStatus: z.nullable(z.lazy(() => ApplicationStatus$outboundSchema))
     .optional(),
   attachments: z.nullable(z.array(ApplicationAttachment$outboundSchema))
@@ -915,6 +1072,7 @@ export const Application$outboundSchema: z.ZodType<
   rejectedReasonIds: z.nullable(z.array(z.string())).optional(),
   rejectedReasons: z.nullable(z.array(RejectedReason$outboundSchema))
     .optional(),
+  remoteApplicationStageId: z.nullable(z.string()).optional(),
   remoteCandidateId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteInterviewStageId: z.nullable(z.string()).optional(),
@@ -928,6 +1086,8 @@ export const Application$outboundSchema: z.ZodType<
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    applicationStage: "application_stage",
+    applicationStageId: "application_stage_id",
     applicationStatus: "application_status",
     candidateId: "candidate_id",
     createdAt: "created_at",
@@ -940,6 +1100,7 @@ export const Application$outboundSchema: z.ZodType<
     rejectedAt: "rejected_at",
     rejectedReasonIds: "rejected_reason_ids",
     rejectedReasons: "rejected_reasons",
+    remoteApplicationStageId: "remote_application_stage_id",
     remoteCandidateId: "remote_candidate_id",
     remoteId: "remote_id",
     remoteInterviewStageId: "remote_interview_stage_id",

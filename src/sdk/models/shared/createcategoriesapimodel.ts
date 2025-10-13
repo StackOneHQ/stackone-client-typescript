@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateCategoriesApiModel4 = {};
 
+/**
+ * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CreateCategoriesApiModelSourceValue =
   | string
   | number
@@ -22,12 +25,18 @@ export type CreateCategoriesApiModelSourceValue =
   | CreateCategoriesApiModel4
   | Array<any>;
 
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum CreateCategoriesApiModelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type CreateCategoriesApiModelValueOpen = OpenEnum<
   typeof CreateCategoriesApiModelValue
 >;
@@ -36,6 +45,9 @@ export type CreateCategoriesApiModelValueOpen = OpenEnum<
  * The hierarchal level of the category
  */
 export type CreateCategoriesApiModelHierarchy = {
+  /**
+   * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -44,11 +56,17 @@ export type CreateCategoriesApiModelHierarchy = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: CreateCategoriesApiModelValueOpen | null | undefined;
 };
 
 export type CreateCategoriesApiModelSchemas4 = {};
 
+/**
+ * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CreateCategoriesApiModelSchemasSourceValue =
   | string
   | number
@@ -57,7 +75,7 @@ export type CreateCategoriesApiModelSchemasSourceValue =
   | Array<any>;
 
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export enum CreateCategoriesApiModelSchemasValue {
   ARAR = "ar_AR",
@@ -473,7 +491,7 @@ export enum CreateCategoriesApiModelSchemasValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export type CreateCategoriesApiModelSchemasValueOpen = OpenEnum<
   typeof CreateCategoriesApiModelSchemasValue
@@ -483,6 +501,9 @@ export type CreateCategoriesApiModelSchemasValueOpen = OpenEnum<
  * The language associated with this category
  */
 export type CreateCategoriesApiModelLanguage = {
+  /**
+   * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -492,13 +513,16 @@ export type CreateCategoriesApiModelLanguage = {
     | null
     | undefined;
   /**
-   * The Locale Code of the language
+   * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
    */
   value?: CreateCategoriesApiModelSchemasValueOpen | null | undefined;
 };
 
 export type CreateCategoriesApiModelSchemasLevel4 = {};
 
+/**
+ * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CreateCategoriesApiModelSchemasLevelSourceValue =
   | string
   | number
@@ -506,12 +530,18 @@ export type CreateCategoriesApiModelSchemasLevelSourceValue =
   | CreateCategoriesApiModelSchemasLevel4
   | Array<any>;
 
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum CreateCategoriesApiModelSchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type CreateCategoriesApiModelSchemasLevelValueOpen = OpenEnum<
   typeof CreateCategoriesApiModelSchemasLevelValue
 >;
@@ -522,6 +552,9 @@ export type CreateCategoriesApiModelSchemasLevelValueOpen = OpenEnum<
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type CreateCategoriesApiModelLevel = {
+  /**
+   * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -530,6 +563,9 @@ export type CreateCategoriesApiModelLevel = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: CreateCategoriesApiModelSchemasLevelValueOpen | null | undefined;
 };
 

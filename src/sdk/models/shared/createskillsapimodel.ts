@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateSkillsApiModel4 = {};
 
+/**
+ * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CreateSkillsApiModelSourceValue =
   | string
   | number
@@ -22,12 +25,18 @@ export type CreateSkillsApiModelSourceValue =
   | CreateSkillsApiModel4
   | Array<any>;
 
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum CreateSkillsApiModelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type CreateSkillsApiModelValueOpen = OpenEnum<
   typeof CreateSkillsApiModelValue
 >;
@@ -36,6 +45,9 @@ export type CreateSkillsApiModelValueOpen = OpenEnum<
  * The hierarchal level of the skill
  */
 export type CreateSkillsApiModelHierarchy = {
+  /**
+   * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -44,11 +56,17 @@ export type CreateSkillsApiModelHierarchy = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: CreateSkillsApiModelValueOpen | null | undefined;
 };
 
 export type CreateSkillsApiModelSchemas4 = {};
 
+/**
+ * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CreateSkillsApiModelSchemasSourceValue =
   | string
   | number
@@ -57,7 +75,7 @@ export type CreateSkillsApiModelSchemasSourceValue =
   | Array<any>;
 
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export enum CreateSkillsApiModelSchemasValue {
   ARAR = "ar_AR",
@@ -473,7 +491,7 @@ export enum CreateSkillsApiModelSchemasValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export type CreateSkillsApiModelSchemasValueOpen = OpenEnum<
   typeof CreateSkillsApiModelSchemasValue
@@ -483,6 +501,9 @@ export type CreateSkillsApiModelSchemasValueOpen = OpenEnum<
  * The language associated with this skill
  */
 export type CreateSkillsApiModelLanguage = {
+  /**
+   * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -492,13 +513,16 @@ export type CreateSkillsApiModelLanguage = {
     | null
     | undefined;
   /**
-   * The Locale Code of the language
+   * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
    */
   value?: CreateSkillsApiModelSchemasValueOpen | null | undefined;
 };
 
 export type CreateSkillsApiModelSchemasLevel4 = {};
 
+/**
+ * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CreateSkillsApiModelSchemasLevelSourceValue =
   | string
   | number
@@ -506,12 +530,18 @@ export type CreateSkillsApiModelSchemasLevelSourceValue =
   | CreateSkillsApiModelSchemasLevel4
   | Array<any>;
 
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum CreateSkillsApiModelSchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type CreateSkillsApiModelSchemasLevelValueOpen = OpenEnum<
   typeof CreateSkillsApiModelSchemasLevelValue
 >;
@@ -522,6 +552,9 @@ export type CreateSkillsApiModelSchemasLevelValueOpen = OpenEnum<
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type CreateSkillsApiModelLevel = {
+  /**
+   * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -530,6 +563,9 @@ export type CreateSkillsApiModelLevel = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: CreateSkillsApiModelSchemasLevelValueOpen | null | undefined;
 };
 

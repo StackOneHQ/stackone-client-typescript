@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LmsCreateCompletionRequestDto4 = {};
 
+/**
+ * The original result status from the provider before normalization.
+ */
 export type LmsCreateCompletionRequestDtoSourceValue =
   | string
   | number
@@ -22,11 +25,17 @@ export type LmsCreateCompletionRequestDtoSourceValue =
   | LmsCreateCompletionRequestDto4
   | Array<any>;
 
+/**
+ * The StackOne unified result status.
+ */
 export enum LmsCreateCompletionRequestDtoValue {
   Pass = "Pass",
   Fail = "Fail",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified result status.
+ */
 export type LmsCreateCompletionRequestDtoValueOpen = OpenEnum<
   typeof LmsCreateCompletionRequestDtoValue
 >;
@@ -35,6 +44,9 @@ export type LmsCreateCompletionRequestDtoValueOpen = OpenEnum<
  * The result of the completion
  */
 export type LmsCreateCompletionRequestDtoResult = {
+  /**
+   * The original result status from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -43,6 +55,9 @@ export type LmsCreateCompletionRequestDtoResult = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified result status.
+   */
   value?: LmsCreateCompletionRequestDtoValueOpen | null | undefined;
 };
 

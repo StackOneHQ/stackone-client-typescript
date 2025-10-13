@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Assignment4 = {};
 
+/**
+ * The original learning object type from the provider before normalization.
+ */
 export type AssignmentSourceValue =
   | string
   | number
@@ -22,18 +25,27 @@ export type AssignmentSourceValue =
   | Assignment4
   | Array<any>;
 
+/**
+ * The StackOne unified learning object type.
+ */
 export enum AssignmentValue {
   Content = "content",
   Course = "course",
   Collection = "collection",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified learning object type.
+ */
 export type AssignmentValueOpen = OpenEnum<typeof AssignmentValue>;
 
 /**
  * The learning object type of the assignment
  */
 export type LearningObjectType = {
+  /**
+   * The original learning object type from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -42,11 +54,17 @@ export type LearningObjectType = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified learning object type.
+   */
   value?: AssignmentValueOpen | null | undefined;
 };
 
 export type AssignmentSchemas4 = {};
 
+/**
+ * The original result status from the provider before normalization.
+ */
 export type AssignmentSchemasSourceValue =
   | string
   | number
@@ -54,11 +72,17 @@ export type AssignmentSchemasSourceValue =
   | AssignmentSchemas4
   | Array<any>;
 
+/**
+ * The StackOne unified result status.
+ */
 export enum AssignmentSchemasValue {
   Pass = "Pass",
   Fail = "Fail",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified result status.
+ */
 export type AssignmentSchemasValueOpen = OpenEnum<
   typeof AssignmentSchemasValue
 >;
@@ -67,6 +91,9 @@ export type AssignmentSchemasValueOpen = OpenEnum<
  * The result of the assignment
  */
 export type Result = {
+  /**
+   * The original result status from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -75,11 +102,17 @@ export type Result = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified result status.
+   */
   value?: AssignmentSchemasValueOpen | null | undefined;
 };
 
 export type AssignmentSchemasStatus4 = {};
 
+/**
+ * The original status value from the provider before normalization.
+ */
 export type AssignmentSchemasStatusSourceValue =
   | string
   | number
@@ -87,12 +120,18 @@ export type AssignmentSchemasStatusSourceValue =
   | AssignmentSchemasStatus4
   | Array<any>;
 
+/**
+ * The StackOne unified assignment status.
+ */
 export enum AssignmentSchemasStatusValue {
   Pending = "pending",
   InProgress = "in_progress",
   Completed = "completed",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified assignment status.
+ */
 export type AssignmentSchemasStatusValueOpen = OpenEnum<
   typeof AssignmentSchemasStatusValue
 >;
@@ -101,6 +140,9 @@ export type AssignmentSchemasStatusValueOpen = OpenEnum<
  * The status of the assignment
  */
 export type AssignmentStatus = {
+  /**
+   * The original status value from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -109,6 +151,9 @@ export type AssignmentStatus = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified assignment status.
+   */
   value?: AssignmentSchemasStatusValueOpen | null | undefined;
 };
 

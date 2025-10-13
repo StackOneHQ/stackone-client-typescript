@@ -1,16 +1,16 @@
-# HrisCreateEmployeeRequestDtoDurationUnit
+# HrisCreateEmployeeRequestDtoPeriod
 
-The duration unit of the work time
+The period of the work time
 
 ## Example Usage
 
 ```typescript
 import {
-  HrisCreateEmployeeRequestDtoDurationUnit,
+  HrisCreateEmployeeRequestDtoPeriod,
   HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateEmployeeRequestDtoDurationUnit = {
+let value: HrisCreateEmployeeRequestDtoPeriod = {
   value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
 };
 ```

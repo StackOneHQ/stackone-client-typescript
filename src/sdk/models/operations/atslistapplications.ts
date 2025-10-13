@@ -14,6 +14,10 @@ import * as shared from "../shared/index.js";
  */
 export type AtsListApplicationsQueryParamFilter = {
   /**
+   * Filter to select applications by application_stage_id
+   */
+  applicationStageId?: string | null | undefined;
+  /**
    * Use a string with a date to only select results created after that given date
    */
   createdAfter?: Date | null | undefined;
@@ -120,6 +124,7 @@ export const AtsListApplicationsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  application_stage_id: z.nullable(z.string()).optional(),
   created_after: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -130,6 +135,7 @@ export const AtsListApplicationsQueryParamFilter$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "application_stage_id": "applicationStageId",
     "created_after": "createdAfter",
     "job_id": "jobId",
     "updated_after": "updatedAfter",
@@ -138,6 +144,7 @@ export const AtsListApplicationsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsListApplicationsQueryParamFilter$Outbound = {
+  application_stage_id?: string | null | undefined;
   created_after?: string | null | undefined;
   job_id?: string | null | undefined;
   stage?: string | null | undefined;
@@ -150,12 +157,14 @@ export const AtsListApplicationsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListApplicationsQueryParamFilter
 > = z.object({
+  applicationStageId: z.nullable(z.string()).optional(),
   createdAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   jobId: z.nullable(z.string()).optional(),
   stage: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    applicationStageId: "application_stage_id",
     createdAfter: "created_after",
     jobId: "job_id",
     updatedAfter: "updated_after",

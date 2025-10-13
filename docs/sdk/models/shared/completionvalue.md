@@ -1,5 +1,7 @@
 # CompletionValue
 
+The StackOne unified learning object type.
+
 ## Example Usage
 
 ```typescript

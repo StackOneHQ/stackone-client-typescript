@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Completion4 = {};
 
+/**
+ * The original learning object type from the provider before normalization.
+ */
 export type CompletionSourceValue =
   | string
   | number
@@ -22,18 +25,27 @@ export type CompletionSourceValue =
   | Completion4
   | Array<any>;
 
+/**
+ * The StackOne unified learning object type.
+ */
 export enum CompletionValue {
   Content = "content",
   Course = "course",
   Collection = "collection",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified learning object type.
+ */
 export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
 
 /**
  * The learning object type of the completion
  */
 export type CompletionLearningObjectType = {
+  /**
+   * The original learning object type from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -42,11 +54,17 @@ export type CompletionLearningObjectType = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified learning object type.
+   */
   value?: CompletionValueOpen | null | undefined;
 };
 
 export type CompletionSchemas4 = {};
 
+/**
+ * The original result status from the provider before normalization.
+ */
 export type CompletionSchemasSourceValue =
   | string
   | number
@@ -54,11 +72,17 @@ export type CompletionSchemasSourceValue =
   | CompletionSchemas4
   | Array<any>;
 
+/**
+ * The StackOne unified result status.
+ */
 export enum CompletionSchemasValue {
   Pass = "Pass",
   Fail = "Fail",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified result status.
+ */
 export type CompletionSchemasValueOpen = OpenEnum<
   typeof CompletionSchemasValue
 >;
@@ -67,6 +91,9 @@ export type CompletionSchemasValueOpen = OpenEnum<
  * The result of the completion
  */
 export type CompletionSchemasResult = {
+  /**
+   * The original result status from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -75,6 +102,9 @@ export type CompletionSchemasResult = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified result status.
+   */
   value?: CompletionSchemasValueOpen | null | undefined;
 };
 

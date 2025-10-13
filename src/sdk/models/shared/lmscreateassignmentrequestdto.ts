@@ -15,6 +15,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LmsCreateAssignmentRequestDto4 = {};
 
+/**
+ * The original status value from the provider before normalization.
+ */
 export type LmsCreateAssignmentRequestDtoSourceValue =
   | string
   | number
@@ -22,12 +25,18 @@ export type LmsCreateAssignmentRequestDtoSourceValue =
   | LmsCreateAssignmentRequestDto4
   | Array<any>;
 
+/**
+ * The StackOne unified assignment status.
+ */
 export enum LmsCreateAssignmentRequestDtoValue {
   Pending = "pending",
   InProgress = "in_progress",
   Completed = "completed",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified assignment status.
+ */
 export type LmsCreateAssignmentRequestDtoValueOpen = OpenEnum<
   typeof LmsCreateAssignmentRequestDtoValue
 >;
@@ -36,6 +45,9 @@ export type LmsCreateAssignmentRequestDtoValueOpen = OpenEnum<
  * The status of the assignment
  */
 export type LmsCreateAssignmentRequestDtoStatus = {
+  /**
+   * The original status value from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -44,6 +56,9 @@ export type LmsCreateAssignmentRequestDtoStatus = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified assignment status.
+   */
   value?: LmsCreateAssignmentRequestDtoValueOpen | null | undefined;
 };
 

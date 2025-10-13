@@ -500,7 +500,7 @@ async function run() {
         },
         workTime: {
           duration: "P0Y0M0DT8H0M0S",
-          durationUnit: {
+          period: {
             value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
           },
         },
@@ -732,7 +732,7 @@ async function run() {
         },
         workTime: {
           duration: "P0Y0M0DT8H0M0S",
-          durationUnit: {
+          period: {
             value: HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
           },
         },
@@ -924,7 +924,7 @@ async function run() {
       },
       workTime: {
         duration: "P0Y0M0DT8H0M0S",
-        durationUnit: {
+        period: {
           value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
         },
       },
@@ -1006,7 +1006,7 @@ async function run() {
       },
       workTime: {
         duration: "P0Y0M0DT8H0M0S",
-        durationUnit: {
+        period: {
           value: HrisCreateEmploymentRequestDtoSchemasWorkTimeValue.Month,
         },
       },
@@ -7763,7 +7763,7 @@ async function run() {
         },
         workTime: {
           duration: "P0Y0M0DT8H0M0S",
-          durationUnit: {
+          period: {
             value: HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
           },
         },
@@ -7962,7 +7962,7 @@ async function run() {
         },
         workTime: {
           duration: "P0Y0M0DT8H0M0S",
-          durationUnit: {
+          period: {
             value: HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue.Month,
           },
         },
@@ -8145,7 +8145,7 @@ async function run() {
       },
       workTime: {
         duration: "P0Y0M0DT8H0M0S",
-        durationUnit: {
+        period: {
           value: HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue.Month,
         },
       },
@@ -8227,7 +8227,7 @@ async function run() {
       },
       workTime: {
         duration: "P0Y0M0DT8H0M0S",
-        durationUnit: {
+        period: {
           value: HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue.Month,
         },
       },
