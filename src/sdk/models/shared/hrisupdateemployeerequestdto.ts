@@ -462,9 +462,9 @@ export type HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValueOpen =
   OpenEnum<typeof HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue>;
 
 /**
- * The duration unit of the work time
+ * The period of the work time
  */
-export type HrisUpdateEmployeeRequestDtoDurationUnit = {
+export type HrisUpdateEmployeeRequestDtoPeriod = {
   sourceValue?:
     | string
     | number
@@ -488,9 +488,9 @@ export type HrisUpdateEmployeeRequestDtoWorkTime = {
    */
   duration?: string | null | undefined;
   /**
-   * The duration unit of the work time
+   * The period of the work time
    */
-  durationUnit?: HrisUpdateEmployeeRequestDtoDurationUnit | null | undefined;
+  period?: HrisUpdateEmployeeRequestDtoPeriod | null | undefined;
 };
 
 /**
@@ -4630,8 +4630,8 @@ export namespace HrisUpdateEmployeeRequestDtoSchemasEmploymentWorkTimeValue$ {
 }
 
 /** @internal */
-export const HrisUpdateEmployeeRequestDtoDurationUnit$inboundSchema: z.ZodType<
-  HrisUpdateEmployeeRequestDtoDurationUnit,
+export const HrisUpdateEmployeeRequestDtoPeriod$inboundSchema: z.ZodType<
+  HrisUpdateEmployeeRequestDtoPeriod,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4656,7 +4656,7 @@ export const HrisUpdateEmployeeRequestDtoDurationUnit$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type HrisUpdateEmployeeRequestDtoDurationUnit$Outbound = {
+export type HrisUpdateEmployeeRequestDtoPeriod$Outbound = {
   source_value?:
     | string
     | number
@@ -4669,10 +4669,10 @@ export type HrisUpdateEmployeeRequestDtoDurationUnit$Outbound = {
 };
 
 /** @internal */
-export const HrisUpdateEmployeeRequestDtoDurationUnit$outboundSchema: z.ZodType<
-  HrisUpdateEmployeeRequestDtoDurationUnit$Outbound,
+export const HrisUpdateEmployeeRequestDtoPeriod$outboundSchema: z.ZodType<
+  HrisUpdateEmployeeRequestDtoPeriod$Outbound,
   z.ZodTypeDef,
-  HrisUpdateEmployeeRequestDtoDurationUnit
+  HrisUpdateEmployeeRequestDtoPeriod
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -4698,41 +4698,34 @@ export const HrisUpdateEmployeeRequestDtoDurationUnit$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HrisUpdateEmployeeRequestDtoDurationUnit$ {
-  /** @deprecated use `HrisUpdateEmployeeRequestDtoDurationUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmployeeRequestDtoDurationUnit$inboundSchema;
-  /** @deprecated use `HrisUpdateEmployeeRequestDtoDurationUnit$outboundSchema` instead. */
+export namespace HrisUpdateEmployeeRequestDtoPeriod$ {
+  /** @deprecated use `HrisUpdateEmployeeRequestDtoPeriod$inboundSchema` instead. */
+  export const inboundSchema = HrisUpdateEmployeeRequestDtoPeriod$inboundSchema;
+  /** @deprecated use `HrisUpdateEmployeeRequestDtoPeriod$outboundSchema` instead. */
   export const outboundSchema =
-    HrisUpdateEmployeeRequestDtoDurationUnit$outboundSchema;
-  /** @deprecated use `HrisUpdateEmployeeRequestDtoDurationUnit$Outbound` instead. */
-  export type Outbound = HrisUpdateEmployeeRequestDtoDurationUnit$Outbound;
+    HrisUpdateEmployeeRequestDtoPeriod$outboundSchema;
+  /** @deprecated use `HrisUpdateEmployeeRequestDtoPeriod$Outbound` instead. */
+  export type Outbound = HrisUpdateEmployeeRequestDtoPeriod$Outbound;
 }
 
-export function hrisUpdateEmployeeRequestDtoDurationUnitToJSON(
-  hrisUpdateEmployeeRequestDtoDurationUnit:
-    HrisUpdateEmployeeRequestDtoDurationUnit,
+export function hrisUpdateEmployeeRequestDtoPeriodToJSON(
+  hrisUpdateEmployeeRequestDtoPeriod: HrisUpdateEmployeeRequestDtoPeriod,
 ): string {
   return JSON.stringify(
-    HrisUpdateEmployeeRequestDtoDurationUnit$outboundSchema.parse(
-      hrisUpdateEmployeeRequestDtoDurationUnit,
+    HrisUpdateEmployeeRequestDtoPeriod$outboundSchema.parse(
+      hrisUpdateEmployeeRequestDtoPeriod,
     ),
   );
 }
 
-export function hrisUpdateEmployeeRequestDtoDurationUnitFromJSON(
+export function hrisUpdateEmployeeRequestDtoPeriodFromJSON(
   jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmployeeRequestDtoDurationUnit,
-  SDKValidationError
-> {
+): SafeParseResult<HrisUpdateEmployeeRequestDtoPeriod, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      HrisUpdateEmployeeRequestDtoDurationUnit$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmployeeRequestDtoDurationUnit' from JSON`,
+      HrisUpdateEmployeeRequestDtoPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisUpdateEmployeeRequestDtoPeriod' from JSON`,
   );
 }
 
@@ -4743,22 +4736,15 @@ export const HrisUpdateEmployeeRequestDtoWorkTime$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  duration_unit: z.nullable(
-    z.lazy(() => HrisUpdateEmployeeRequestDtoDurationUnit$inboundSchema),
+  period: z.nullable(
+    z.lazy(() => HrisUpdateEmployeeRequestDtoPeriod$inboundSchema),
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "duration_unit": "durationUnit",
-  });
 });
 
 /** @internal */
 export type HrisUpdateEmployeeRequestDtoWorkTime$Outbound = {
   duration?: string | null | undefined;
-  duration_unit?:
-    | HrisUpdateEmployeeRequestDtoDurationUnit$Outbound
-    | null
-    | undefined;
+  period?: HrisUpdateEmployeeRequestDtoPeriod$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -4768,13 +4754,9 @@ export const HrisUpdateEmployeeRequestDtoWorkTime$outboundSchema: z.ZodType<
   HrisUpdateEmployeeRequestDtoWorkTime
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  durationUnit: z.nullable(
-    z.lazy(() => HrisUpdateEmployeeRequestDtoDurationUnit$outboundSchema),
+  period: z.nullable(
+    z.lazy(() => HrisUpdateEmployeeRequestDtoPeriod$outboundSchema),
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    durationUnit: "duration_unit",
-  });
 });
 
 /**

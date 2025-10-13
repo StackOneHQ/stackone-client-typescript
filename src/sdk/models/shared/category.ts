@@ -25,6 +25,9 @@ export type CategoryActive = boolean | Category2;
 
 export type Category4 = {};
 
+/**
+ * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CategorySourceValue =
   | string
   | number
@@ -32,18 +35,27 @@ export type CategorySourceValue =
   | Category4
   | Array<any>;
 
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum CategoryValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type CategoryValueOpen = OpenEnum<typeof CategoryValue>;
 
 /**
  * The hierarchal level of the category
  */
 export type Hierarchy = {
+  /**
+   * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -52,11 +64,17 @@ export type Hierarchy = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: CategoryValueOpen | null | undefined;
 };
 
 export type CategorySchemas4 = {};
 
+/**
+ * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CategorySchemasSourceValue =
   | string
   | number
@@ -65,7 +83,7 @@ export type CategorySchemasSourceValue =
   | Array<any>;
 
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export enum CategorySchemasValue {
   ARAR = "ar_AR",
@@ -481,7 +499,7 @@ export enum CategorySchemasValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export type CategorySchemasValueOpen = OpenEnum<typeof CategorySchemasValue>;
 
@@ -489,6 +507,9 @@ export type CategorySchemasValueOpen = OpenEnum<typeof CategorySchemasValue>;
  * The language associated with this category
  */
 export type Language = {
+  /**
+   * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -498,13 +519,16 @@ export type Language = {
     | null
     | undefined;
   /**
-   * The Locale Code of the language
+   * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
    */
   value?: CategorySchemasValueOpen | null | undefined;
 };
 
 export type CategorySchemasLevel4 = {};
 
+/**
+ * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type CategorySchemasLevelSourceValue =
   | string
   | number
@@ -512,12 +536,18 @@ export type CategorySchemasLevelSourceValue =
   | CategorySchemasLevel4
   | Array<any>;
 
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum CategorySchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type CategorySchemasLevelValueOpen = OpenEnum<
   typeof CategorySchemasLevelValue
 >;
@@ -528,6 +558,9 @@ export type CategorySchemasLevelValueOpen = OpenEnum<
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type Level = {
+  /**
+   * For read operations: the original category level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -536,6 +569,9 @@ export type Level = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified category level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: CategorySchemasLevelValueOpen | null | undefined;
 };
 

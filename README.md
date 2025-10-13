@@ -423,7 +423,6 @@ run();
 * [listScreeningPackages](docs/sdks/screening/README.md#listscreeningpackages) - List Screening Packages
 * [webhookScreeningResult](docs/sdks/screening/README.md#webhookscreeningresult) - Webhook Screening Result
 
-
 ### [ticketing](docs/sdks/ticketing/README.md)
 
 * [createTicket](docs/sdks/ticketing/README.md#createticket) - Create Ticket
@@ -652,7 +651,7 @@ This SDK supports the following security scheme globally:
 
 | Name                      | Type | Scheme     |
 | ------------------------- | ---- | ---------- |
-| `username`<br/>`password` | http | HTTP Basic |
+| `password`<br/>`username` | http | HTTP Basic |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```typescript

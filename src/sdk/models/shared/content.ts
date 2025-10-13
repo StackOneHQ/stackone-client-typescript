@@ -55,6 +55,9 @@ export type ContentActive = boolean | Content2;
 
 export type Content4 = {};
 
+/**
+ * The original value from the provider before normalization.
+ */
 export type ContentSourceValue =
   | string
   | number
@@ -62,6 +65,9 @@ export type ContentSourceValue =
   | Content4
   | Array<any>;
 
+/**
+ * The StackOne unified content type.
+ */
 export enum ContentValue {
   Video = "video",
   Quiz = "quiz",
@@ -70,12 +76,18 @@ export enum ContentValue {
   Article = "article",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The StackOne unified content type.
+ */
 export type ContentValueOpen = OpenEnum<typeof ContentValue>;
 
 /**
  * The type of content
  */
 export type ContentContentType = {
+  /**
+   * The original value from the provider before normalization.
+   */
   sourceValue?:
     | string
     | number
@@ -84,6 +96,9 @@ export type ContentContentType = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The StackOne unified content type.
+   */
   value?: ContentValueOpen | null | undefined;
 };
 

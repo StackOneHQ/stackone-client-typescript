@@ -25,6 +25,9 @@ export type SkillsActive = boolean | Skills2;
 
 export type Skills4 = {};
 
+/**
+ * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type SkillsSourceValue =
   | string
   | number
@@ -32,18 +35,27 @@ export type SkillsSourceValue =
   | Skills4
   | Array<any>;
 
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum SkillsValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type SkillsValueOpen = OpenEnum<typeof SkillsValue>;
 
 /**
  * The hierarchal level of the skill
  */
 export type SkillsHierarchy = {
+  /**
+   * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -52,11 +64,17 @@ export type SkillsHierarchy = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: SkillsValueOpen | null | undefined;
 };
 
 export type SkillsSchemas4 = {};
 
+/**
+ * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type SkillsSchemasSourceValue =
   | string
   | number
@@ -65,7 +83,7 @@ export type SkillsSchemasSourceValue =
   | Array<any>;
 
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export enum SkillsSchemasValue {
   ARAR = "ar_AR",
@@ -481,7 +499,7 @@ export enum SkillsSchemasValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export type SkillsSchemasValueOpen = OpenEnum<typeof SkillsSchemasValue>;
 
@@ -489,6 +507,9 @@ export type SkillsSchemasValueOpen = OpenEnum<typeof SkillsSchemasValue>;
  * The language associated with this skill
  */
 export type SkillsLanguage = {
+  /**
+   * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -498,13 +519,16 @@ export type SkillsLanguage = {
     | null
     | undefined;
   /**
-   * The Locale Code of the language
+   * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
    */
   value?: SkillsSchemasValueOpen | null | undefined;
 };
 
 export type SkillsSchemasLevel4 = {};
 
+/**
+ * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type SkillsSchemasLevelSourceValue =
   | string
   | number
@@ -512,12 +536,18 @@ export type SkillsSchemasLevelSourceValue =
   | SkillsSchemasLevel4
   | Array<any>;
 
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export enum SkillsSchemasLevelValue {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+ */
 export type SkillsSchemasLevelValueOpen = OpenEnum<
   typeof SkillsSchemasLevelValue
 >;
@@ -528,6 +558,9 @@ export type SkillsSchemasLevelValueOpen = OpenEnum<
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type SkillsLevel = {
+  /**
+   * For read operations: the original skill level from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -536,6 +569,9 @@ export type SkillsLevel = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
+   */
   value?: SkillsSchemasLevelValueOpen | null | undefined;
 };
 

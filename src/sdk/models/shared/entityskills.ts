@@ -25,6 +25,9 @@ export type EntitySkillsActive = boolean | EntitySkills2;
 
 export type EntitySkills4 = {};
 
+/**
+ * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+ */
 export type EntitySkillsSourceValue =
   | string
   | number
@@ -33,7 +36,7 @@ export type EntitySkillsSourceValue =
   | Array<any>;
 
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export enum EntitySkillsValue {
   ARAR = "ar_AR",
@@ -449,7 +452,7 @@ export enum EntitySkillsValue {
   UnmappedValue = "unmapped_value",
 }
 /**
- * The Locale Code of the language
+ * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
  */
 export type EntitySkillsValueOpen = OpenEnum<typeof EntitySkillsValue>;
 
@@ -457,6 +460,9 @@ export type EntitySkillsValueOpen = OpenEnum<typeof EntitySkillsValue>;
  * The language associated with this skill
  */
 export type EntitySkillsLanguage = {
+  /**
+   * For read operations: the original language code from the provider. For write operations: fallback value used when value is omitted or "unmapped_value". You must ensure this matches the provider's format.
+   */
   sourceValue?:
     | string
     | number
@@ -466,7 +472,7 @@ export type EntitySkillsLanguage = {
     | null
     | undefined;
   /**
-   * The Locale Code of the language
+   * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to "unmapped_value" to use source_value instead.
    */
   value?: EntitySkillsValueOpen | null | undefined;
 };

@@ -3,12 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { AnswerValue, ApplicationsPaginated, RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AnswerValue, ApplicationsPaginated, ApplicationValue, AtsDocumentApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ApplicationsPaginated = {
   data: [
     {
-      applicationStatus: null,
+      applicationStage: null,
+      applicationStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
+      applicationStatus: {
+        sourceValue: "Hired",
+        value: ApplicationValue.Hired,
+      },
       candidate: {
         company: "Company Inc.",
         email: "john.doe@example.com",
@@ -46,19 +51,27 @@ let value: ApplicationsPaginated = {
           valueId: "value_456",
         },
       ],
-      documents: null,
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      interviewStage: {
-        createdAt: new Date("2021-01-01T01:01:01.000Z"),
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        unifiedCustomFields: {
-          "my_project_custom_field_1": "REF-1236",
-          "my_project_custom_field_2": "some other value",
+      documents: [
+        {
+          category: {},
+          categoryId: "6530",
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          fileFormat: {
+            sourceValue: "application/pdf",
+            value: AtsDocumentApiModelValue.Pdf,
+          },
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "My Document",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteUrl: "https://example.com/file.pdf",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-02T01:01:01.000Z"),
         },
-        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-      },
-      interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
+      ],
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
       locationIds: [
         "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
@@ -88,10 +101,7 @@ let value: ApplicationsPaginated = {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           label: "Failed Phone Screen",
-          rejectedReasonType: {
-            sourceValue: "RejectedByOrg",
-            value: RejectedReasonValue.RejectedByOrganization,
-          },
+          rejectedReasonType: null,
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -99,9 +109,9 @@ let value: ApplicationsPaginated = {
           },
         },
       ],
+      remoteApplicationStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       remoteCandidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      remoteInterviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       remoteJobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
       remoteLocationIds: [
         "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",

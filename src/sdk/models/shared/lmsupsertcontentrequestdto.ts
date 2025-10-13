@@ -63,6 +63,9 @@ export type LmsUpsertContentRequestDtoActive =
 
 export type LmsUpsertContentRequestDto4 = {};
 
+/**
+ * The provider-specific value to use when value is omitted or set to "unmapped_value". You are responsible for ensuring this matches the provider's expected format.
+ */
 export type LmsUpsertContentRequestDtoSourceValue =
   | string
   | number
@@ -70,6 +73,9 @@ export type LmsUpsertContentRequestDtoSourceValue =
   | LmsUpsertContentRequestDto4
   | Array<any>;
 
+/**
+ * The content type for write operations. Provide one of the listed enum values. If omitted or set to "unmapped_value", the source_value will be sent to the provider instead.
+ */
 export enum LmsUpsertContentRequestDtoValue {
   Video = "video",
   Quiz = "quiz",
@@ -83,6 +89,9 @@ export enum LmsUpsertContentRequestDtoValue {
   Interactive = "interactive",
   UnmappedValue = "unmapped_value",
 }
+/**
+ * The content type for write operations. Provide one of the listed enum values. If omitted or set to "unmapped_value", the source_value will be sent to the provider instead.
+ */
 export type LmsUpsertContentRequestDtoValueOpen = OpenEnum<
   typeof LmsUpsertContentRequestDtoValue
 >;
@@ -91,6 +100,9 @@ export type LmsUpsertContentRequestDtoValueOpen = OpenEnum<
  * The type of content
  */
 export type LmsUpsertContentRequestDtoContentType = {
+  /**
+   * The provider-specific value to use when value is omitted or set to "unmapped_value". You are responsible for ensuring this matches the provider's expected format.
+   */
   sourceValue?:
     | string
     | number
@@ -99,6 +111,9 @@ export type LmsUpsertContentRequestDtoContentType = {
     | Array<any>
     | null
     | undefined;
+  /**
+   * The content type for write operations. Provide one of the listed enum values. If omitted or set to "unmapped_value", the source_value will be sent to the provider instead.
+   */
   value?: LmsUpsertContentRequestDtoValueOpen | null | undefined;
 };
 

@@ -7,7 +7,9 @@ import { AtsListApplicationsResponse } from "@stackone/stackone-client-ts/sdk/mo
 
 let value: AtsListApplicationsResponse = {
   contentType: "<value>",
-  headers: {},
+  headers: {
+    "key": [],
+  },
   statusCode: 84920,
 };
 ```

@@ -411,9 +411,9 @@ export type CreateEmploymentApiModelSchemasWorkTimeValueOpen = OpenEnum<
 >;
 
 /**
- * The duration unit of the work time
+ * The period of the work time
  */
-export type CreateEmploymentApiModelDurationUnit = {
+export type Period = {
   sourceValue?:
     | string
     | number
@@ -434,9 +434,9 @@ export type WorkTime = {
    */
   duration?: string | null | undefined;
   /**
-   * The duration unit of the work time
+   * The period of the work time
    */
-  durationUnit?: CreateEmploymentApiModelDurationUnit | null | undefined;
+  period?: Period | null | undefined;
 };
 
 export type CreateEmploymentApiModel = {
@@ -2440,30 +2440,28 @@ export namespace CreateEmploymentApiModelSchemasWorkTimeValue$ {
 }
 
 /** @internal */
-export const CreateEmploymentApiModelDurationUnit$inboundSchema: z.ZodType<
-  CreateEmploymentApiModelDurationUnit,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateEmploymentApiModelSchemasWorkTimeValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
+export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> = z
+  .object({
+    source_value: z.nullable(
+      z.union([
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.lazy(() => CreateEmploymentApiModelSchemasWorkTime4$inboundSchema),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(
+      CreateEmploymentApiModelSchemasWorkTimeValue$inboundSchema,
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "source_value": "sourceValue",
+    });
   });
-});
 
 /** @internal */
-export type CreateEmploymentApiModelDurationUnit$Outbound = {
+export type Period$Outbound = {
   source_value?:
     | string
     | number
@@ -2476,10 +2474,10 @@ export type CreateEmploymentApiModelDurationUnit$Outbound = {
 };
 
 /** @internal */
-export const CreateEmploymentApiModelDurationUnit$outboundSchema: z.ZodType<
-  CreateEmploymentApiModelDurationUnit$Outbound,
+export const Period$outboundSchema: z.ZodType<
+  Period$Outbound,
   z.ZodTypeDef,
-  CreateEmploymentApiModelDurationUnit
+  Period
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -2502,35 +2500,26 @@ export const CreateEmploymentApiModelDurationUnit$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateEmploymentApiModelDurationUnit$ {
-  /** @deprecated use `CreateEmploymentApiModelDurationUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateEmploymentApiModelDurationUnit$inboundSchema;
-  /** @deprecated use `CreateEmploymentApiModelDurationUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateEmploymentApiModelDurationUnit$outboundSchema;
-  /** @deprecated use `CreateEmploymentApiModelDurationUnit$Outbound` instead. */
-  export type Outbound = CreateEmploymentApiModelDurationUnit$Outbound;
+export namespace Period$ {
+  /** @deprecated use `Period$inboundSchema` instead. */
+  export const inboundSchema = Period$inboundSchema;
+  /** @deprecated use `Period$outboundSchema` instead. */
+  export const outboundSchema = Period$outboundSchema;
+  /** @deprecated use `Period$Outbound` instead. */
+  export type Outbound = Period$Outbound;
 }
 
-export function createEmploymentApiModelDurationUnitToJSON(
-  createEmploymentApiModelDurationUnit: CreateEmploymentApiModelDurationUnit,
-): string {
-  return JSON.stringify(
-    CreateEmploymentApiModelDurationUnit$outboundSchema.parse(
-      createEmploymentApiModelDurationUnit,
-    ),
-  );
+export function periodToJSON(period: Period): string {
+  return JSON.stringify(Period$outboundSchema.parse(period));
 }
 
-export function createEmploymentApiModelDurationUnitFromJSON(
+export function periodFromJSON(
   jsonString: string,
-): SafeParseResult<CreateEmploymentApiModelDurationUnit, SDKValidationError> {
+): SafeParseResult<Period, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CreateEmploymentApiModelDurationUnit$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateEmploymentApiModelDurationUnit' from JSON`,
+    (x) => Period$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Period' from JSON`,
   );
 }
 
@@ -2541,22 +2530,13 @@ export const WorkTime$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  duration_unit: z.nullable(
-    z.lazy(() => CreateEmploymentApiModelDurationUnit$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "duration_unit": "durationUnit",
-  });
+  period: z.nullable(z.lazy(() => Period$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type WorkTime$Outbound = {
   duration?: string | null | undefined;
-  duration_unit?:
-    | CreateEmploymentApiModelDurationUnit$Outbound
-    | null
-    | undefined;
+  period?: Period$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -2566,13 +2546,7 @@ export const WorkTime$outboundSchema: z.ZodType<
   WorkTime
 > = z.object({
   duration: z.nullable(z.string()).optional(),
-  durationUnit: z.nullable(
-    z.lazy(() => CreateEmploymentApiModelDurationUnit$outboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    durationUnit: "duration_unit",
-  });
+  period: z.nullable(z.lazy(() => Period$outboundSchema)).optional(),
 });
 
 /**

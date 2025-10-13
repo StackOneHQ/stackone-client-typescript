@@ -4,9 +4,12 @@
 
 ```typescript
 import { StackoneUpdateAccountRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { PatchAccountExternalDtoType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: StackoneUpdateAccountRequest = {
-  patchAccountExternalDto: {},
+  patchAccountExternalDto: {
+    type: PatchAccountExternalDtoType.Production,
+  },
   id: "<id>",
 };
 ```

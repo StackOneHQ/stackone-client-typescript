@@ -353,11 +353,7 @@ export const PatchAccountExternalDto$inboundSchema: z.ZodType<
   setup_information: z.nullable(
     z.lazy(() => PatchAccountExternalDtoSetupInformation$inboundSchema),
   ).optional(),
-  type: z.nullable(
-    PatchAccountExternalDtoType$inboundSchema.default(
-      PatchAccountExternalDtoType.Production,
-    ),
-  ),
+  type: z.nullable(PatchAccountExternalDtoType$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "authentication_config_key": "authenticationConfigKey",
@@ -384,7 +380,7 @@ export type PatchAccountExternalDto$Outbound = {
     | PatchAccountExternalDtoSetupInformation$Outbound
     | null
     | undefined;
-  type: string | null;
+  type?: string | null | undefined;
 };
 
 /** @internal */
@@ -410,11 +406,7 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
   setupInformation: z.nullable(
     z.lazy(() => PatchAccountExternalDtoSetupInformation$outboundSchema),
   ).optional(),
-  type: z.nullable(
-    PatchAccountExternalDtoType$outboundSchema.default(
-      PatchAccountExternalDtoType.Production,
-    ),
-  ),
+  type: z.nullable(PatchAccountExternalDtoType$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     authenticationConfigKey: "authentication_config_key",

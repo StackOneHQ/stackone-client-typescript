@@ -1,5 +1,7 @@
 # LmsCreateCompletionRequestDtoValue
 
+The StackOne unified result status.
+
 ## Example Usage
 
 ```typescript
