@@ -64,6 +64,16 @@ export type BalanceUnit = {
   value?: TimeOffBalancesValueOpen | null | undefined;
 };
 
+export enum TimeOffBalances2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Indicates if this time off balance represents unlimited leave
+ */
+export type IsUnlimited = boolean | TimeOffBalances2;
+
 export type TimeOffBalancesSchemas4 = {};
 
 export type TimeOffBalancesSchemasSourceValue =
@@ -241,6 +251,10 @@ export type TimeOffBalances = {
    * The initial numeric balance for the associated employee and time off policy as of the balance start date
    */
   initialBalance?: number | null | undefined;
+  /**
+   * Indicates if this time off balance represents unlimited leave
+   */
+  isUnlimited?: boolean | TimeOffBalances2 | null | undefined;
   /**
    * The time off policy associated with this balance
    */
@@ -493,6 +507,71 @@ export function balanceUnitFromJSON(
     jsonString,
     (x) => BalanceUnit$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'BalanceUnit' from JSON`,
+  );
+}
+
+/** @internal */
+export const TimeOffBalances2$inboundSchema: z.ZodNativeEnum<
+  typeof TimeOffBalances2
+> = z.nativeEnum(TimeOffBalances2);
+
+/** @internal */
+export const TimeOffBalances2$outboundSchema: z.ZodNativeEnum<
+  typeof TimeOffBalances2
+> = TimeOffBalances2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TimeOffBalances2$ {
+  /** @deprecated use `TimeOffBalances2$inboundSchema` instead. */
+  export const inboundSchema = TimeOffBalances2$inboundSchema;
+  /** @deprecated use `TimeOffBalances2$outboundSchema` instead. */
+  export const outboundSchema = TimeOffBalances2$outboundSchema;
+}
+
+/** @internal */
+export const IsUnlimited$inboundSchema: z.ZodType<
+  IsUnlimited,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), TimeOffBalances2$inboundSchema]);
+
+/** @internal */
+export type IsUnlimited$Outbound = boolean | string;
+
+/** @internal */
+export const IsUnlimited$outboundSchema: z.ZodType<
+  IsUnlimited$Outbound,
+  z.ZodTypeDef,
+  IsUnlimited
+> = z.union([z.boolean(), TimeOffBalances2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IsUnlimited$ {
+  /** @deprecated use `IsUnlimited$inboundSchema` instead. */
+  export const inboundSchema = IsUnlimited$inboundSchema;
+  /** @deprecated use `IsUnlimited$outboundSchema` instead. */
+  export const outboundSchema = IsUnlimited$outboundSchema;
+  /** @deprecated use `IsUnlimited$Outbound` instead. */
+  export type Outbound = IsUnlimited$Outbound;
+}
+
+export function isUnlimitedToJSON(isUnlimited: IsUnlimited): string {
+  return JSON.stringify(IsUnlimited$outboundSchema.parse(isUnlimited));
+}
+
+export function isUnlimitedFromJSON(
+  jsonString: string,
+): SafeParseResult<IsUnlimited, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IsUnlimited$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IsUnlimited' from JSON`,
   );
 }
 
@@ -1099,6 +1178,9 @@ export const TimeOffBalances$inboundSchema: z.ZodType<
   employee_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   initial_balance: z.nullable(z.number()).optional(),
+  is_unlimited: z.nullable(
+    z.union([z.boolean(), TimeOffBalances2$inboundSchema]),
+  ).optional(),
   policy: z.nullable(z.lazy(() => TimeOffBalancesPolicy$inboundSchema))
     .optional(),
   policy_id: z.nullable(z.string()).optional(),
@@ -1116,6 +1198,7 @@ export const TimeOffBalances$inboundSchema: z.ZodType<
     "current_balance": "currentBalance",
     "employee_id": "employeeId",
     "initial_balance": "initialBalance",
+    "is_unlimited": "isUnlimited",
     "policy_id": "policyId",
     "remote_employee_id": "remoteEmployeeId",
     "remote_id": "remoteId",
@@ -1133,6 +1216,7 @@ export type TimeOffBalances$Outbound = {
   employee_id?: string | null | undefined;
   id?: string | null | undefined;
   initial_balance?: number | null | undefined;
+  is_unlimited?: boolean | string | null | undefined;
   policy?: TimeOffBalancesPolicy$Outbound | null | undefined;
   policy_id?: string | null | undefined;
   remote_employee_id?: string | null | undefined;
@@ -1156,6 +1240,9 @@ export const TimeOffBalances$outboundSchema: z.ZodType<
   employeeId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   initialBalance: z.nullable(z.number()).optional(),
+  isUnlimited: z.nullable(
+    z.union([z.boolean(), TimeOffBalances2$outboundSchema]),
+  ).optional(),
   policy: z.nullable(z.lazy(() => TimeOffBalancesPolicy$outboundSchema))
     .optional(),
   policyId: z.nullable(z.string()).optional(),
@@ -1171,6 +1258,7 @@ export const TimeOffBalances$outboundSchema: z.ZodType<
     currentBalance: "current_balance",
     employeeId: "employee_id",
     initialBalance: "initial_balance",
+    isUnlimited: "is_unlimited",
     policyId: "policy_id",
     remoteEmployeeId: "remote_employee_id",
     remoteId: "remote_id",

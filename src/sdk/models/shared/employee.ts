@@ -2025,6 +2025,10 @@ export type Employee = {
    */
   terminationDate?: Date | null | undefined;
   /**
+   * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+   */
+  title?: string | null | undefined;
+  /**
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
@@ -5853,6 +5857,7 @@ export const Employee$inboundSchema: z.ZodType<
   termination_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -5959,6 +5964,7 @@ export type Employee$Outbound = {
   start_date?: string | null | undefined;
   tenure?: number | null | undefined;
   termination_date?: string | null | undefined;
+  title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   updated_at?: string | null | undefined;
   work_anniversary?: string | null | undefined;
@@ -6032,6 +6038,7 @@ export const Employee$outboundSchema: z.ZodType<
   tenure: z.nullable(z.number()).optional(),
   terminationDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
+  title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   workAnniversary: z.nullable(z.date().transform(v => v.toISOString()))

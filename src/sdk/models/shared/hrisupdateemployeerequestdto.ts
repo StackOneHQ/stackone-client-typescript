@@ -2392,6 +2392,10 @@ export type HrisUpdateEmployeeRequestDto = {
    */
   terminationDate?: Date | null | undefined;
   /**
+   * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+   */
+  title?: string | null | undefined;
+  /**
    * The employee work email
    */
   workEmail?: string | null | undefined;
@@ -8959,6 +8963,7 @@ export const HrisUpdateEmployeeRequestDto$inboundSchema: z.ZodType<
   termination_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  title: z.nullable(z.string()).optional(),
   work_email: z.nullable(z.string()).optional(),
   work_location: z.nullable(
     z.lazy(() => HrisUpdateEmployeeRequestDtoWorkLocation$inboundSchema),
@@ -9065,6 +9070,7 @@ export type HrisUpdateEmployeeRequestDto$Outbound = {
   start_date?: string | null | undefined;
   team_id?: string | null | undefined;
   termination_date?: string | null | undefined;
+  title?: string | null | undefined;
   work_email?: string | null | undefined;
   work_location?:
     | HrisUpdateEmployeeRequestDtoWorkLocation$Outbound
@@ -9145,6 +9151,7 @@ export const HrisUpdateEmployeeRequestDto$outboundSchema: z.ZodType<
   teamId: z.nullable(z.string()).optional(),
   terminationDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
+  title: z.nullable(z.string()).optional(),
   workEmail: z.nullable(z.string()).optional(),
   workLocation: z.nullable(
     z.lazy(() => HrisUpdateEmployeeRequestDtoWorkLocation$outboundSchema),
