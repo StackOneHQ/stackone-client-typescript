@@ -1,21 +1,21 @@
 # AccountType
 
-Type of the account
+The type of bank account
 
 ## Example Usage
 
 ```typescript
-import { AccountType, JournalLineValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AccountType, HRISBankDetailsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AccountType = {
-  sourceValue: "asset",
-  value: JournalLineValue.Asset,
+  sourceValue: "checking",
+  value: HRISBankDetailsValue.Checking,
 };
 ```
 
 ## Fields
 
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `sourceValue`                                                             | *shared.JournalLineSourceValue*                                           | :heavy_minus_sign:                                                        | N/A                                                                       | asset                                                                     |
-| `value`                                                                   | [shared.JournalLineValue](../../../sdk/models/shared/journallinevalue.md) | :heavy_minus_sign:                                                        | Type of account                                                           | asset                                                                     |
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `sourceValue`                                                                     | *shared.HRISBankDetailsSourceValue*                                               | :heavy_minus_sign:                                                                | N/A                                                                               | checking                                                                          |
+| `value`                                                                           | [shared.HRISBankDetailsValue](../../../sdk/models/shared/hrisbankdetailsvalue.md) | :heavy_minus_sign:                                                                | The type of bank account                                                          | checking                                                                          |

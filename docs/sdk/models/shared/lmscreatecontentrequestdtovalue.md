@@ -1,6 +1,6 @@
 # LmsCreateContentRequestDtoValue
 
-The StackOne unified content type.
+The content type for write operations. Provide one of the listed enum values. If omitted or set to "unmapped_value", the source_value will be sent to the provider instead.
 
 ## Example Usage
 
@@ -8,7 +8,7 @@ The StackOne unified content type.
 import { LmsCreateContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateContentRequestDtoValue =
-  LmsCreateContentRequestDtoValue.Video;
+  LmsCreateContentRequestDtoValue.Quiz;
 ```
 
 ## Values
@@ -22,5 +22,10 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Document`             | document               |
 | `Audio`                | audio                  |
 | `Article`              | article                |
+| `Book`                 | book                   |
+| `Event`                | event                  |
+| `Course`               | course                 |
+| `Collection`           | collection             |
+| `Interactive`          | interactive            |
 | `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

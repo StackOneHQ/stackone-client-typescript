@@ -15,10 +15,12 @@ let value: AtsListCandidatesResponse = {
     "key1": [
       "<value 1>",
       "<value 2>",
-      "<value 3>",
+    ],
+    "key2": [
+      "<value 1>",
     ],
   },
-  statusCode: 577486,
+  statusCode: 107526,
 };
 ```
 

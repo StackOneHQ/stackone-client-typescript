@@ -5,7 +5,6 @@
 ```typescript
 import {
   Employment,
-  EmploymentManagerApiModelValue,
   EmploymentSchemasDepartmentValue,
   EmploymentSchemasDivisionValue,
   EmploymentSchemasPayFrequencyValue,
@@ -123,9 +122,7 @@ let value: Employment = {
   },
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   job: {
-    description: {
-      text: "Testing the laws of motion",
-    },
+    description: null,
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     ownerId: "5356",
     parentId: "7577",
@@ -137,14 +134,7 @@ let value: Employment = {
     {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      role: {
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        label: "Admin",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        roleType: {
-          value: EmploymentManagerApiModelValue.Admin,
-        },
-      },
+      role: null,
     },
   ],
   payCurrency: "USD",

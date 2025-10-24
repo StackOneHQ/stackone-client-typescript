@@ -2623,7 +2623,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidate({
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     include: "custom_fields",
     xAccountId: "<id>",
@@ -2654,7 +2654,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetCandidate(stackOne, {
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     include: "custom_fields",
     xAccountId: "<id>",
@@ -5562,7 +5562,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidates({
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5599,7 +5599,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListCandidates(stackOne, {
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
