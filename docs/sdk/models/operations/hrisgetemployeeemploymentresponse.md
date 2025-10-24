@@ -12,14 +12,10 @@ let value: HrisGetEmployeeEmploymentResponse = {
     "key1": [
       "<value 1>",
       "<value 2>",
-    ],
-    "key2": [
-      "<value 1>",
-      "<value 2>",
       "<value 3>",
     ],
   },
-  statusCode: 828357,
+  statusCode: 199252,
 };
 ```
 

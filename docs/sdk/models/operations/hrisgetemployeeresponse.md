@@ -10,12 +10,18 @@ let value: HrisGetEmployeeResponse = {
   headers: {
     "key": [
       "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
     "key1": [
       "<value 1>",
     ],
+    "key2": [
+      "<value 1>",
+      "<value 2>",
+    ],
   },
-  statusCode: 63545,
+  statusCode: 656011,
 };
 ```
 

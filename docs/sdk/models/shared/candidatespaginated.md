@@ -53,6 +53,12 @@ let value: CandidatesPaginated = {
           url: "https://www.linkedin.com/in/romainsestier/",
         },
       ],
+      tags: [
+        {
+          name: "Gold Medalist",
+          remoteId: "123e4567-e89b-12d3-a456-426614174000",
+        },
+      ],
       title: "Software Engineer",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
