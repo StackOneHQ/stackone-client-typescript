@@ -152,8 +152,7 @@ async function run() {
       "id": "123",
     },
     query: {
-      "param1": "value1",
-      "param2": "value2",
+      debug: false,
     },
   });
 
@@ -193,8 +192,7 @@ async function run() {
       "id": "123",
     },
     query: {
-      "param1": "value1",
-      "param2": "value2",
+      debug: false,
     },
   });
   if (res.ok) {

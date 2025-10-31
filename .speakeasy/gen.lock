@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 21c11f7c050af85acbab5f81ad6e7ce4
+  docChecksum: 43b75c4ea50f77d47aed029ccc0c9c5e
   docVersion: 1.0.0
-  speakeasyVersion: 1.639.2
-  generationVersion: 2.730.5
-  releaseVersion: 4.30.0
-  configChecksum: 5bcb81b4928797f361a70af503fb7546
+  speakeasyVersion: 1.644.0
+  generationVersion: 2.733.1
+  releaseVersion: 4.31.0
+  configChecksum: 7746b67f990c1c5004cf88cd9660d737
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,8 +15,9 @@ features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
+    additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.24.1
+    core: 3.24.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -24,7 +25,7 @@ features:
     examples: 2.82.3
     globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.82.5
+    globalServerURLs: 2.83.0
     groups: 2.81.3
     methodSecurity: 2.82.6
     nameOverrides: 2.81.2
@@ -834,7 +835,6 @@ generatedFiles:
   - docs/sdk/models/shared/actionsmetapaginated.md
   - docs/sdk/models/shared/actionsrpcrequestdto.md
   - docs/sdk/models/shared/actionsrpcresponse.md
-  - docs/sdk/models/shared/actionsrpcresponse2.md
   - docs/sdk/models/shared/actionsrpcresponsedata.md
   - docs/sdk/models/shared/active.md
   - docs/sdk/models/shared/actor.md
@@ -1409,6 +1409,7 @@ generatedFiles:
   - docs/sdk/models/shared/hierarchy.md
   - docs/sdk/models/shared/homelocation.md
   - docs/sdk/models/shared/hrisbankdetails.md
+  - docs/sdk/models/shared/hrisbankdetails2.md
   - docs/sdk/models/shared/hrisbankdetails4.md
   - docs/sdk/models/shared/hrisbankdetailscurrencycode.md
   - docs/sdk/models/shared/hrisbankdetailsschemas4.md
@@ -1880,6 +1881,7 @@ generatedFiles:
   - docs/sdk/models/shared/inviteemployeeresult.md
   - docs/sdk/models/shared/isbotuser.md
   - docs/sdk/models/shared/ispaid.md
+  - docs/sdk/models/shared/isprimary.md
   - docs/sdk/models/shared/isroot.md
   - docs/sdk/models/shared/issuedby.md
   - docs/sdk/models/shared/isunlimited.md
@@ -2079,7 +2081,6 @@ generatedFiles:
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offerstatus.md
   - docs/sdk/models/shared/offervalue.md
-  - docs/sdk/models/shared/one.md
   - docs/sdk/models/shared/organization.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/package.md
@@ -2122,6 +2123,7 @@ generatedFiles:
   - docs/sdk/models/shared/pushtemplate.md
   - docs/sdk/models/shared/pushtemplateresult.md
   - docs/sdk/models/shared/pushtemplatespaginated.md
+  - docs/sdk/models/shared/query.md
   - docs/sdk/models/shared/question.md
   - docs/sdk/models/shared/question2.md
   - docs/sdk/models/shared/question4.md
@@ -4425,7 +4427,7 @@ examples:
           id: "<id>"
           subResourceId: "<id>"
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
         header:
           x-account-id: "<id>"
       responses:
@@ -5155,7 +5157,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
         header:
           x-account-id: "<id>"
       responses:
@@ -5452,7 +5454,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -6035,7 +6037,7 @@ examples:
     speakeasy-default-ats-list-offers:
       parameters:
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -14486,7 +14488,7 @@ examples:
   stackone_rpc_action:
     speakeasy-default-stackone-rpc-action:
       requestBody:
-        application/json: {"action": "create_employee", "body": {"data": "example"}, "headers": {"Content-Type": "application/json"}, "path": {"id": "123"}, "query": {"param1": "value1", "param2": "value2"}}
+        application/json: {"action": "create_employee", "body": {"data": "example"}, "headers": {"Content-Type": "application/json"}, "path": {"id": "123"}, "query": {"debug": false}}
       responses:
         "200":
           application/json: {}
@@ -14585,4 +14587,4 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.lms.createUserAssignment()`: \n  *  `request.lmsCreateAssignmentRequestDto.learningObjectExternalReference` **Changed** **Breaking** :warning:\n* `stackone.accounts.getAccount()`:  `response.setup_information` **Changed** **Breaking** :warning:\n* `stackone.accounts.listLinkedAccounts()`:  `response.[].setupInformation` **Changed** **Breaking** :warning:\n* `stackone.accounts.updateAccount()`:  `response.setup_information` **Changed** **Breaking** :warning:\n* `stackone.lms.batchUpsertContent()`: \n  *  `request.lmsBatchUpsertContentRequestDto.items.[].externalReference` **Changed** **Breaking** :warning:\n* `stackone.accounts.deleteAccount()`:  `response.setup_information` **Changed** **Breaking** :warning:\n* `stackone.lms.createUserCompletion()`: \n  *  `request.lmsCreateCompletionRequestDto.learningObjectExternalReference` **Changed** **Breaking** :warning:\n* `stackone.lms.updateContent()`: \n  *  `request.lmsCreateContentRequestDto.externalReference` **Changed** **Breaking** :warning:\n* `stackone.lms.upsertContent()`: \n  *  `request.lmsUpsertContentRequestDto.externalReference` **Changed** **Breaking** :warning:\n* `stackone.ats.getCandidate()`:  `response.data.tags` **Added**\n* `stackone.ats.listCandidates()`:  `response.data.[].tags` **Added**\n* `stackone.hris.getEmployee()`:  `response.data.bankDetails` **Added**\n* `stackone.hris.listEmployees()`:  `response.data.[].bankDetails` **Added**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.actions.rpcAction()`: \n  *  `request.query` **Changed** **Breaking** :warning:\n  *  `response.data` **Changed**\n* `stackone.hris.getEmployee()`:  `response.data.bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployees()`:  `response.data.[].bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n"
