@@ -548,6 +548,16 @@ export type HRISBankDetailsCurrencyCode = {
   value?: HRISBankDetailsSchemasCurrencyCodeValueOpen | null | undefined;
 };
 
+export enum HRISBankDetails2 {
+  True = "true",
+  False = "false",
+}
+
+/**
+ * Whether this is the primary bank account
+ */
+export type IsPrimary = boolean | HRISBankDetails2;
+
 export type HRISBankDetails = {
   /**
    * The name of the bank account
@@ -584,7 +594,7 @@ export type HRISBankDetails = {
   /**
    * Whether this is the primary bank account
    */
-  isPrimary?: boolean | null | undefined;
+  isPrimary?: boolean | HRISBankDetails2 | null | undefined;
   /**
    * Local account number (used when IBAN is not available)
    */
@@ -1318,6 +1328,71 @@ export function hrisBankDetailsCurrencyCodeFromJSON(
 }
 
 /** @internal */
+export const HRISBankDetails2$inboundSchema: z.ZodNativeEnum<
+  typeof HRISBankDetails2
+> = z.nativeEnum(HRISBankDetails2);
+
+/** @internal */
+export const HRISBankDetails2$outboundSchema: z.ZodNativeEnum<
+  typeof HRISBankDetails2
+> = HRISBankDetails2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HRISBankDetails2$ {
+  /** @deprecated use `HRISBankDetails2$inboundSchema` instead. */
+  export const inboundSchema = HRISBankDetails2$inboundSchema;
+  /** @deprecated use `HRISBankDetails2$outboundSchema` instead. */
+  export const outboundSchema = HRISBankDetails2$outboundSchema;
+}
+
+/** @internal */
+export const IsPrimary$inboundSchema: z.ZodType<
+  IsPrimary,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.boolean(), HRISBankDetails2$inboundSchema]);
+
+/** @internal */
+export type IsPrimary$Outbound = boolean | string;
+
+/** @internal */
+export const IsPrimary$outboundSchema: z.ZodType<
+  IsPrimary$Outbound,
+  z.ZodTypeDef,
+  IsPrimary
+> = z.union([z.boolean(), HRISBankDetails2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IsPrimary$ {
+  /** @deprecated use `IsPrimary$inboundSchema` instead. */
+  export const inboundSchema = IsPrimary$inboundSchema;
+  /** @deprecated use `IsPrimary$outboundSchema` instead. */
+  export const outboundSchema = IsPrimary$outboundSchema;
+  /** @deprecated use `IsPrimary$Outbound` instead. */
+  export type Outbound = IsPrimary$Outbound;
+}
+
+export function isPrimaryToJSON(isPrimary: IsPrimary): string {
+  return JSON.stringify(IsPrimary$outboundSchema.parse(isPrimary));
+}
+
+export function isPrimaryFromJSON(
+  jsonString: string,
+): SafeParseResult<IsPrimary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IsPrimary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IsPrimary' from JSON`,
+  );
+}
+
+/** @internal */
 export const HRISBankDetails$inboundSchema: z.ZodType<
   HRISBankDetails,
   z.ZodTypeDef,
@@ -1333,7 +1408,8 @@ export const HRISBankDetails$inboundSchema: z.ZodType<
   ).optional(),
   iban: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
-  is_primary: z.nullable(z.boolean()).optional(),
+  is_primary: z.nullable(z.union([z.boolean(), HRISBankDetails2$inboundSchema]))
+    .optional(),
   local_account_number: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   swift_bic: z.nullable(z.string()).optional(),
@@ -1362,7 +1438,7 @@ export type HRISBankDetails$Outbound = {
   currency_code?: HRISBankDetailsCurrencyCode$Outbound | null | undefined;
   iban?: string | null | undefined;
   id?: string | null | undefined;
-  is_primary?: boolean | null | undefined;
+  is_primary?: boolean | string | null | undefined;
   local_account_number?: string | null | undefined;
   remote_id?: string | null | undefined;
   swift_bic?: string | null | undefined;
@@ -1384,7 +1460,8 @@ export const HRISBankDetails$outboundSchema: z.ZodType<
   ).optional(),
   iban: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
-  isPrimary: z.nullable(z.boolean()).optional(),
+  isPrimary: z.nullable(z.union([z.boolean(), HRISBankDetails2$outboundSchema]))
+    .optional(),
   localAccountNumber: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   swiftBic: z.nullable(z.string()).optional(),

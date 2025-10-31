@@ -30,6 +30,9 @@ export type AttachmentSourceValue =
  */
 export enum AttachmentValue {
   Text = "text",
+  Pdf = "pdf",
+  Video = "video",
+  Other = "other",
   UnmappedValue = "unmapped_value",
 }
 /**

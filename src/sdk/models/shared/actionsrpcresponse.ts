@@ -7,20 +7,18 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ActionsRpcResponse2 = {};
-
-export type One = {};
-
 /**
  * The response data from the action RPC call
  */
-export type ActionsRpcResponseData = One | Array<ActionsRpcResponse2>;
+export type ActionsRpcResponseData =
+  | { [k: string]: any }
+  | Array<{ [k: string]: any }>;
 
 export type ActionsRpcResponse = {
   /**
    * The response data from the action RPC call
    */
-  data?: One | Array<ActionsRpcResponse2> | null | undefined;
+  data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
   /**
    * Cursor for fetching the next page of results
    */
@@ -28,115 +26,23 @@ export type ActionsRpcResponse = {
 };
 
 /** @internal */
-export const ActionsRpcResponse2$inboundSchema: z.ZodType<
-  ActionsRpcResponse2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ActionsRpcResponse2$Outbound = {};
-
-/** @internal */
-export const ActionsRpcResponse2$outboundSchema: z.ZodType<
-  ActionsRpcResponse2$Outbound,
-  z.ZodTypeDef,
-  ActionsRpcResponse2
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionsRpcResponse2$ {
-  /** @deprecated use `ActionsRpcResponse2$inboundSchema` instead. */
-  export const inboundSchema = ActionsRpcResponse2$inboundSchema;
-  /** @deprecated use `ActionsRpcResponse2$outboundSchema` instead. */
-  export const outboundSchema = ActionsRpcResponse2$outboundSchema;
-  /** @deprecated use `ActionsRpcResponse2$Outbound` instead. */
-  export type Outbound = ActionsRpcResponse2$Outbound;
-}
-
-export function actionsRpcResponse2ToJSON(
-  actionsRpcResponse2: ActionsRpcResponse2,
-): string {
-  return JSON.stringify(
-    ActionsRpcResponse2$outboundSchema.parse(actionsRpcResponse2),
-  );
-}
-
-export function actionsRpcResponse2FromJSON(
-  jsonString: string,
-): SafeParseResult<ActionsRpcResponse2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ActionsRpcResponse2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ActionsRpcResponse2' from JSON`,
-  );
-}
-
-/** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type One$Outbound = {};
-
-/** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-  /** @deprecated use `One$Outbound` instead. */
-  export type Outbound = One$Outbound;
-}
-
-export function oneToJSON(one: One): string {
-  return JSON.stringify(One$outboundSchema.parse(one));
-}
-
-export function oneFromJSON(
-  jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
-  );
-}
-
-/** @internal */
 export const ActionsRpcResponseData$inboundSchema: z.ZodType<
   ActionsRpcResponseData,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => One$inboundSchema),
-  z.array(z.lazy(() => ActionsRpcResponse2$inboundSchema)),
-]);
+> = z.union([z.record(z.any()), z.array(z.record(z.any()))]);
 
 /** @internal */
 export type ActionsRpcResponseData$Outbound =
-  | One$Outbound
-  | Array<ActionsRpcResponse2$Outbound>;
+  | { [k: string]: any }
+  | Array<{ [k: string]: any }>;
 
 /** @internal */
 export const ActionsRpcResponseData$outboundSchema: z.ZodType<
   ActionsRpcResponseData$Outbound,
   z.ZodTypeDef,
   ActionsRpcResponseData
-> = z.union([
-  z.lazy(() => One$outboundSchema),
-  z.array(z.lazy(() => ActionsRpcResponse2$outboundSchema)),
-]);
+> = z.union([z.record(z.any()), z.array(z.record(z.any()))]);
 
 /**
  * @internal
@@ -175,18 +81,14 @@ export const ActionsRpcResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.nullable(
-    z.union([
-      z.lazy(() => One$inboundSchema),
-      z.array(z.lazy(() => ActionsRpcResponse2$inboundSchema)),
-    ]),
-  ).optional(),
+  data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))]))
+    .optional(),
   next: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type ActionsRpcResponse$Outbound = {
-  data?: One$Outbound | Array<ActionsRpcResponse2$Outbound> | null | undefined;
+  data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
   next?: string | null | undefined;
 };
 
@@ -196,12 +98,8 @@ export const ActionsRpcResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ActionsRpcResponse
 > = z.object({
-  data: z.nullable(
-    z.union([
-      z.lazy(() => One$outboundSchema),
-      z.array(z.lazy(() => ActionsRpcResponse2$outboundSchema)),
-    ]),
-  ).optional(),
+  data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))]))
+    .optional(),
   next: z.nullable(z.string()).optional(),
 });
 

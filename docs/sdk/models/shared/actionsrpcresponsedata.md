@@ -5,17 +5,19 @@ The response data from the action RPC call
 
 ## Supported Types
 
-### `shared.One`
+### `{ [k: string]: any }`
 
 ```typescript
-const value: shared.One = {};
+const value: { [k: string]: any } = {
+  "key": "<value>",
+  "key1": "<value>",
+  "key2": "<value>",
+};
 ```
 
-### `shared.ActionsRpcResponse2[]`
+### `{ [k: string]: any }[]`
 
 ```typescript
-const value: shared.ActionsRpcResponse2[] = [
-  {},
-];
+const value: { [k: string]: any }[] = [];
 ```
 

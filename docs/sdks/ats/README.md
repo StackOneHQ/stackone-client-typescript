@@ -2049,7 +2049,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationOffer({
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2080,7 +2080,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationOffer(stackOne, {
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -3793,7 +3793,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getOffer({
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3823,7 +3823,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetOffer(stackOne, {
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4928,7 +4928,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationsOffers({
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -4964,7 +4964,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationsOffers(stackOne, {
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -6630,7 +6630,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listOffers({
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -6665,7 +6665,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListOffers(stackOne, {
-    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
