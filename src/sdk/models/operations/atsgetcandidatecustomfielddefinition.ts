@@ -89,22 +89,6 @@ export type AtsGetCandidateCustomFieldDefinitionResponse = {
 };
 
 /** @internal */
-export const AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AtsGetCandidateCustomFieldDefinitionQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -124,22 +108,6 @@ export const AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetCandidateCustomFieldDefinitionQueryParamFilter$ {
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    AtsGetCandidateCustomFieldDefinitionQueryParamFilter$Outbound;
-}
-
 export function atsGetCandidateCustomFieldDefinitionQueryParamFilterToJSON(
   atsGetCandidateCustomFieldDefinitionQueryParamFilter:
     AtsGetCandidateCustomFieldDefinitionQueryParamFilter,
@@ -150,53 +118,6 @@ export function atsGetCandidateCustomFieldDefinitionQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsGetCandidateCustomFieldDefinitionQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsGetCandidateCustomFieldDefinitionQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsGetCandidateCustomFieldDefinitionQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema:
-  z.ZodType<
-    AtsGetCandidateCustomFieldDefinitionRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(
-      z.lazy(() =>
-        AtsGetCandidateCustomFieldDefinitionQueryParamFilter$inboundSchema
-      ),
-    ).optional(),
-    id: z.string(),
-    next: z.nullable(z.string()).optional(),
-    page: z.nullable(z.string()).optional(),
-    page_size: z.nullable(z.string()).optional(),
-    proxy: z.nullable(z.record(z.any())).optional(),
-    raw: z.nullable(z.boolean()).optional(),
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "page_size": "pageSize",
-      "updated_after": "updatedAfter",
-      "x-account-id": "xAccountId",
-    });
-  });
 
 /** @internal */
 export type AtsGetCandidateCustomFieldDefinitionRequest$Outbound = {
@@ -245,21 +166,6 @@ export const AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetCandidateCustomFieldDefinitionRequest$ {
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema;
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema;
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionRequest$Outbound` instead. */
-  export type Outbound = AtsGetCandidateCustomFieldDefinitionRequest$Outbound;
-}
-
 export function atsGetCandidateCustomFieldDefinitionRequestToJSON(
   atsGetCandidateCustomFieldDefinitionRequest:
     AtsGetCandidateCustomFieldDefinitionRequest,
@@ -268,22 +174,6 @@ export function atsGetCandidateCustomFieldDefinitionRequestToJSON(
     AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema.parse(
       atsGetCandidateCustomFieldDefinitionRequest,
     ),
-  );
-}
-
-export function atsGetCandidateCustomFieldDefinitionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsGetCandidateCustomFieldDefinitionRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsGetCandidateCustomFieldDefinitionRequest' from JSON`,
   );
 }
 
@@ -311,69 +201,6 @@ export const AtsGetCandidateCustomFieldDefinitionResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type AtsGetCandidateCustomFieldDefinitionResponse$Outbound = {
-  ContentType: string;
-  CustomFieldDefinitionResultApiModel?:
-    | shared.CustomFieldDefinitionResultApiModel$Outbound
-    | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetCandidateCustomFieldDefinitionResponse$outboundSchema:
-  z.ZodType<
-    AtsGetCandidateCustomFieldDefinitionResponse$Outbound,
-    z.ZodTypeDef,
-    AtsGetCandidateCustomFieldDefinitionResponse
-  > = z.object({
-    contentType: z.string(),
-    customFieldDefinitionResultApiModel: shared
-      .CustomFieldDefinitionResultApiModel$outboundSchema.optional(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      customFieldDefinitionResultApiModel:
-        "CustomFieldDefinitionResultApiModel",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetCandidateCustomFieldDefinitionResponse$ {
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetCandidateCustomFieldDefinitionResponse$inboundSchema;
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetCandidateCustomFieldDefinitionResponse$outboundSchema;
-  /** @deprecated use `AtsGetCandidateCustomFieldDefinitionResponse$Outbound` instead. */
-  export type Outbound = AtsGetCandidateCustomFieldDefinitionResponse$Outbound;
-}
-
-export function atsGetCandidateCustomFieldDefinitionResponseToJSON(
-  atsGetCandidateCustomFieldDefinitionResponse:
-    AtsGetCandidateCustomFieldDefinitionResponse,
-): string {
-  return JSON.stringify(
-    AtsGetCandidateCustomFieldDefinitionResponse$outboundSchema.parse(
-      atsGetCandidateCustomFieldDefinitionResponse,
-    ),
-  );
-}
 
 export function atsGetCandidateCustomFieldDefinitionResponseFromJSON(
   jsonString: string,

@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   ScheduledInterview,
   ScheduledInterview$inboundSchema,
-  ScheduledInterview$Outbound,
-  ScheduledInterview$outboundSchema,
 } from "./scheduledinterview.js";
 
 export type ScheduledInterviewsResult = {
@@ -33,43 +26,6 @@ export const ScheduledInterviewsResult$inboundSchema: z.ZodType<
   data: ScheduledInterview$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ScheduledInterviewsResult$Outbound = {
-  data: ScheduledInterview$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ScheduledInterviewsResult$outboundSchema: z.ZodType<
-  ScheduledInterviewsResult$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterviewsResult
-> = z.object({
-  data: ScheduledInterview$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterviewsResult$ {
-  /** @deprecated use `ScheduledInterviewsResult$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterviewsResult$inboundSchema;
-  /** @deprecated use `ScheduledInterviewsResult$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterviewsResult$outboundSchema;
-  /** @deprecated use `ScheduledInterviewsResult$Outbound` instead. */
-  export type Outbound = ScheduledInterviewsResult$Outbound;
-}
-
-export function scheduledInterviewsResultToJSON(
-  scheduledInterviewsResult: ScheduledInterviewsResult,
-): string {
-  return JSON.stringify(
-    ScheduledInterviewsResult$outboundSchema.parse(scheduledInterviewsResult),
-  );
-}
 
 export function scheduledInterviewsResultFromJSON(
   jsonString: string,

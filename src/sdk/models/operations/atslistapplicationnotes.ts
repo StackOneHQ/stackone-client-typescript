@@ -90,21 +90,6 @@ export type AtsListApplicationNotesResponse = {
 };
 
 /** @internal */
-export const AtsListApplicationNotesQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListApplicationNotesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AtsListApplicationNotesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -122,21 +107,6 @@ export const AtsListApplicationNotesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationNotesQueryParamFilter$ {
-  /** @deprecated use `AtsListApplicationNotesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationNotesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListApplicationNotesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationNotesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListApplicationNotesQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListApplicationNotesQueryParamFilter$Outbound;
-}
-
 export function atsListApplicationNotesQueryParamFilterToJSON(
   atsListApplicationNotesQueryParamFilter:
     AtsListApplicationNotesQueryParamFilter,
@@ -147,52 +117,6 @@ export function atsListApplicationNotesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListApplicationNotesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationNotesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationNotesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListApplicationNotesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListApplicationNotesRequest$inboundSchema: z.ZodType<
-  AtsListApplicationNotesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListApplicationNotesQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListApplicationNotesRequest$Outbound = {
@@ -237,19 +161,6 @@ export const AtsListApplicationNotesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationNotesRequest$ {
-  /** @deprecated use `AtsListApplicationNotesRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListApplicationNotesRequest$inboundSchema;
-  /** @deprecated use `AtsListApplicationNotesRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListApplicationNotesRequest$outboundSchema;
-  /** @deprecated use `AtsListApplicationNotesRequest$Outbound` instead. */
-  export type Outbound = AtsListApplicationNotesRequest$Outbound;
-}
-
 export function atsListApplicationNotesRequestToJSON(
   atsListApplicationNotesRequest: AtsListApplicationNotesRequest,
 ): string {
@@ -257,16 +168,6 @@ export function atsListApplicationNotesRequestToJSON(
     AtsListApplicationNotesRequest$outboundSchema.parse(
       atsListApplicationNotesRequest,
     ),
-  );
-}
-
-export function atsListApplicationNotesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListApplicationNotesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListApplicationNotesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListApplicationNotesRequest' from JSON`,
   );
 }
 
@@ -291,61 +192,6 @@ export const AtsListApplicationNotesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListApplicationNotesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  NotesPaginated?: shared.NotesPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListApplicationNotesResponse$outboundSchema: z.ZodType<
-  AtsListApplicationNotesResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListApplicationNotesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  notesPaginated: shared.NotesPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    notesPaginated: "NotesPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationNotesResponse$ {
-  /** @deprecated use `AtsListApplicationNotesResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListApplicationNotesResponse$inboundSchema;
-  /** @deprecated use `AtsListApplicationNotesResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListApplicationNotesResponse$outboundSchema;
-  /** @deprecated use `AtsListApplicationNotesResponse$Outbound` instead. */
-  export type Outbound = AtsListApplicationNotesResponse$Outbound;
-}
-
-export function atsListApplicationNotesResponseToJSON(
-  atsListApplicationNotesResponse: AtsListApplicationNotesResponse,
-): string {
-  return JSON.stringify(
-    AtsListApplicationNotesResponse$outboundSchema.parse(
-      atsListApplicationNotesResponse,
-    ),
-  );
-}
 
 export function atsListApplicationNotesResponseFromJSON(
   jsonString: string,

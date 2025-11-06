@@ -34,15 +34,6 @@ export type StackoneGetAccountResponse = {
 };
 
 /** @internal */
-export const StackoneGetAccountRequest$inboundSchema: z.ZodType<
-  StackoneGetAccountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-});
-
-/** @internal */
 export type StackoneGetAccountRequest$Outbound = {
   id: string;
 };
@@ -56,34 +47,11 @@ export const StackoneGetAccountRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneGetAccountRequest$ {
-  /** @deprecated use `StackoneGetAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneGetAccountRequest$inboundSchema;
-  /** @deprecated use `StackoneGetAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneGetAccountRequest$outboundSchema;
-  /** @deprecated use `StackoneGetAccountRequest$Outbound` instead. */
-  export type Outbound = StackoneGetAccountRequest$Outbound;
-}
-
 export function stackoneGetAccountRequestToJSON(
   stackoneGetAccountRequest: StackoneGetAccountRequest,
 ): string {
   return JSON.stringify(
     StackoneGetAccountRequest$outboundSchema.parse(stackoneGetAccountRequest),
-  );
-}
-
-export function stackoneGetAccountRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneGetAccountRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneGetAccountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneGetAccountRequest' from JSON`,
   );
 }
 
@@ -108,59 +76,6 @@ export const StackoneGetAccountResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneGetAccountResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  LinkedAccount?: shared.LinkedAccount$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneGetAccountResponse$outboundSchema: z.ZodType<
-  StackoneGetAccountResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneGetAccountResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  linkedAccount: shared.LinkedAccount$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    linkedAccount: "LinkedAccount",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneGetAccountResponse$ {
-  /** @deprecated use `StackoneGetAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneGetAccountResponse$inboundSchema;
-  /** @deprecated use `StackoneGetAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneGetAccountResponse$outboundSchema;
-  /** @deprecated use `StackoneGetAccountResponse$Outbound` instead. */
-  export type Outbound = StackoneGetAccountResponse$Outbound;
-}
-
-export function stackoneGetAccountResponseToJSON(
-  stackoneGetAccountResponse: StackoneGetAccountResponse,
-): string {
-  return JSON.stringify(
-    StackoneGetAccountResponse$outboundSchema.parse(stackoneGetAccountResponse),
-  );
-}
 
 export function stackoneGetAccountResponseFromJSON(
   jsonString: string,

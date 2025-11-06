@@ -105,7 +105,6 @@ export const ScreeningResultScore$inboundSchema: z.ZodType<
   min: z.nullable(z.string()).optional(),
   value: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type ScreeningResultScore$Outbound = {
   label?: string | null | undefined;
@@ -126,19 +125,6 @@ export const ScreeningResultScore$outboundSchema: z.ZodType<
   value: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningResultScore$ {
-  /** @deprecated use `ScreeningResultScore$inboundSchema` instead. */
-  export const inboundSchema = ScreeningResultScore$inboundSchema;
-  /** @deprecated use `ScreeningResultScore$outboundSchema` instead. */
-  export const outboundSchema = ScreeningResultScore$outboundSchema;
-  /** @deprecated use `ScreeningResultScore$Outbound` instead. */
-  export type Outbound = ScreeningResultScore$Outbound;
-}
-
 export function screeningResultScoreToJSON(
   screeningResultScore: ScreeningResultScore,
 ): string {
@@ -146,7 +132,6 @@ export function screeningResultScoreToJSON(
     ScreeningResultScore$outboundSchema.parse(screeningResultScore),
   );
 }
-
 export function screeningResultScoreFromJSON(
   jsonString: string,
 ): SafeParseResult<ScreeningResultScore, SDKValidationError> {
@@ -167,7 +152,6 @@ export const ScreeningResultStatus$inboundSchema: z.ZodType<
     z.nativeEnum(ScreeningResultStatus),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const ScreeningResultStatus$outboundSchema: z.ZodType<
   ScreeningResultStatusOpen,
@@ -177,17 +161,6 @@ export const ScreeningResultStatus$outboundSchema: z.ZodType<
   z.nativeEnum(ScreeningResultStatus),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningResultStatus$ {
-  /** @deprecated use `ScreeningResultStatus$inboundSchema` instead. */
-  export const inboundSchema = ScreeningResultStatus$inboundSchema;
-  /** @deprecated use `ScreeningResultStatus$outboundSchema` instead. */
-  export const outboundSchema = ScreeningResultStatus$outboundSchema;
-}
 
 /** @internal */
 export const ScreeningResult$inboundSchema: z.ZodType<
@@ -220,7 +193,6 @@ export const ScreeningResult$inboundSchema: z.ZodType<
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
-
 /** @internal */
 export type ScreeningResult$Outbound = {
   id?: string | null | undefined;
@@ -264,25 +236,11 @@ export const ScreeningResult$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningResult$ {
-  /** @deprecated use `ScreeningResult$inboundSchema` instead. */
-  export const inboundSchema = ScreeningResult$inboundSchema;
-  /** @deprecated use `ScreeningResult$outboundSchema` instead. */
-  export const outboundSchema = ScreeningResult$outboundSchema;
-  /** @deprecated use `ScreeningResult$Outbound` instead. */
-  export type Outbound = ScreeningResult$Outbound;
-}
-
 export function screeningResultToJSON(
   screeningResult: ScreeningResult,
 ): string {
   return JSON.stringify(ScreeningResult$outboundSchema.parse(screeningResult));
 }
-
 export function screeningResultFromJSON(
   jsonString: string,
 ): SafeParseResult<ScreeningResult, SDKValidationError> {

@@ -84,22 +84,6 @@ export type HrisListEmployeeWorkEligibilityResponse = {
 };
 
 /** @internal */
-export const HrisListEmployeeWorkEligibilityQueryParamFilter$inboundSchema:
-  z.ZodType<
-    HrisListEmployeeWorkEligibilityQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type HrisListEmployeeWorkEligibilityQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,22 +103,6 @@ export const HrisListEmployeeWorkEligibilityQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListEmployeeWorkEligibilityQueryParamFilter$ {
-  /** @deprecated use `HrisListEmployeeWorkEligibilityQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListEmployeeWorkEligibilityQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListEmployeeWorkEligibilityQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListEmployeeWorkEligibilityQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListEmployeeWorkEligibilityQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    HrisListEmployeeWorkEligibilityQueryParamFilter$Outbound;
-}
-
 export function hrisListEmployeeWorkEligibilityQueryParamFilterToJSON(
   hrisListEmployeeWorkEligibilityQueryParamFilter:
     HrisListEmployeeWorkEligibilityQueryParamFilter,
@@ -145,50 +113,6 @@ export function hrisListEmployeeWorkEligibilityQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListEmployeeWorkEligibilityQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisListEmployeeWorkEligibilityQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListEmployeeWorkEligibilityQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisListEmployeeWorkEligibilityQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListEmployeeWorkEligibilityRequest$inboundSchema: z.ZodType<
-  HrisListEmployeeWorkEligibilityRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListEmployeeWorkEligibilityQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListEmployeeWorkEligibilityRequest$Outbound = {
@@ -235,21 +159,6 @@ export const HrisListEmployeeWorkEligibilityRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListEmployeeWorkEligibilityRequest$ {
-  /** @deprecated use `HrisListEmployeeWorkEligibilityRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListEmployeeWorkEligibilityRequest$inboundSchema;
-  /** @deprecated use `HrisListEmployeeWorkEligibilityRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListEmployeeWorkEligibilityRequest$outboundSchema;
-  /** @deprecated use `HrisListEmployeeWorkEligibilityRequest$Outbound` instead. */
-  export type Outbound = HrisListEmployeeWorkEligibilityRequest$Outbound;
-}
-
 export function hrisListEmployeeWorkEligibilityRequestToJSON(
   hrisListEmployeeWorkEligibilityRequest:
     HrisListEmployeeWorkEligibilityRequest,
@@ -258,17 +167,6 @@ export function hrisListEmployeeWorkEligibilityRequestToJSON(
     HrisListEmployeeWorkEligibilityRequest$outboundSchema.parse(
       hrisListEmployeeWorkEligibilityRequest,
     ),
-  );
-}
-
-export function hrisListEmployeeWorkEligibilityRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListEmployeeWorkEligibilityRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListEmployeeWorkEligibilityRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListEmployeeWorkEligibilityRequest' from JSON`,
   );
 }
 
@@ -294,67 +192,6 @@ export const HrisListEmployeeWorkEligibilityResponse$inboundSchema: z.ZodType<
     "WorkEligibilityPaginated": "workEligibilityPaginated",
   });
 });
-
-/** @internal */
-export type HrisListEmployeeWorkEligibilityResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  WorkEligibilityPaginated?:
-    | shared.WorkEligibilityPaginated$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const HrisListEmployeeWorkEligibilityResponse$outboundSchema: z.ZodType<
-  HrisListEmployeeWorkEligibilityResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListEmployeeWorkEligibilityResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  workEligibilityPaginated: shared.WorkEligibilityPaginated$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    workEligibilityPaginated: "WorkEligibilityPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListEmployeeWorkEligibilityResponse$ {
-  /** @deprecated use `HrisListEmployeeWorkEligibilityResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListEmployeeWorkEligibilityResponse$inboundSchema;
-  /** @deprecated use `HrisListEmployeeWorkEligibilityResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListEmployeeWorkEligibilityResponse$outboundSchema;
-  /** @deprecated use `HrisListEmployeeWorkEligibilityResponse$Outbound` instead. */
-  export type Outbound = HrisListEmployeeWorkEligibilityResponse$Outbound;
-}
-
-export function hrisListEmployeeWorkEligibilityResponseToJSON(
-  hrisListEmployeeWorkEligibilityResponse:
-    HrisListEmployeeWorkEligibilityResponse,
-): string {
-  return JSON.stringify(
-    HrisListEmployeeWorkEligibilityResponse$outboundSchema.parse(
-      hrisListEmployeeWorkEligibilityResponse,
-    ),
-  );
-}
 
 export function hrisListEmployeeWorkEligibilityResponseFromJSON(
   jsonString: string,

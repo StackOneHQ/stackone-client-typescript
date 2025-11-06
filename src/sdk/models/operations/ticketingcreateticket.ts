@@ -38,22 +38,6 @@ export type TicketingCreateTicketResponse = {
 };
 
 /** @internal */
-export const TicketingCreateTicketRequest$inboundSchema: z.ZodType<
-  TicketingCreateTicketRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  TicketingTicketCreateRequestDto:
-    shared.TicketingTicketCreateRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "TicketingTicketCreateRequestDto": "ticketingTicketCreateRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type TicketingCreateTicketRequest$Outbound = {
   TicketingTicketCreateRequestDto:
     shared.TicketingTicketCreateRequestDto$Outbound;
@@ -76,19 +60,6 @@ export const TicketingCreateTicketRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingCreateTicketRequest$ {
-  /** @deprecated use `TicketingCreateTicketRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingCreateTicketRequest$inboundSchema;
-  /** @deprecated use `TicketingCreateTicketRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingCreateTicketRequest$outboundSchema;
-  /** @deprecated use `TicketingCreateTicketRequest$Outbound` instead. */
-  export type Outbound = TicketingCreateTicketRequest$Outbound;
-}
-
 export function ticketingCreateTicketRequestToJSON(
   ticketingCreateTicketRequest: TicketingCreateTicketRequest,
 ): string {
@@ -96,16 +67,6 @@ export function ticketingCreateTicketRequestToJSON(
     TicketingCreateTicketRequest$outboundSchema.parse(
       ticketingCreateTicketRequest,
     ),
-  );
-}
-
-export function ticketingCreateTicketRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingCreateTicketRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingCreateTicketRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingCreateTicketRequest' from JSON`,
   );
 }
 
@@ -130,61 +91,6 @@ export const TicketingCreateTicketResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type TicketingCreateTicketResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const TicketingCreateTicketResponse$outboundSchema: z.ZodType<
-  TicketingCreateTicketResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingCreateTicketResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingCreateTicketResponse$ {
-  /** @deprecated use `TicketingCreateTicketResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingCreateTicketResponse$inboundSchema;
-  /** @deprecated use `TicketingCreateTicketResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingCreateTicketResponse$outboundSchema;
-  /** @deprecated use `TicketingCreateTicketResponse$Outbound` instead. */
-  export type Outbound = TicketingCreateTicketResponse$Outbound;
-}
-
-export function ticketingCreateTicketResponseToJSON(
-  ticketingCreateTicketResponse: TicketingCreateTicketResponse,
-): string {
-  return JSON.stringify(
-    TicketingCreateTicketResponse$outboundSchema.parse(
-      ticketingCreateTicketResponse,
-    ),
-  );
-}
 
 export function ticketingCreateTicketResponseFromJSON(
   jsonString: string,

@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -1313,37 +1309,6 @@ export const TicketingAttachment4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type TicketingAttachment4$Outbound = {};
-
-/** @internal */
-export const TicketingAttachment4$outboundSchema: z.ZodType<
-  TicketingAttachment4$Outbound,
-  z.ZodTypeDef,
-  TicketingAttachment4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingAttachment4$ {
-  /** @deprecated use `TicketingAttachment4$inboundSchema` instead. */
-  export const inboundSchema = TicketingAttachment4$inboundSchema;
-  /** @deprecated use `TicketingAttachment4$outboundSchema` instead. */
-  export const outboundSchema = TicketingAttachment4$outboundSchema;
-  /** @deprecated use `TicketingAttachment4$Outbound` instead. */
-  export type Outbound = TicketingAttachment4$Outbound;
-}
-
-export function ticketingAttachment4ToJSON(
-  ticketingAttachment4: TicketingAttachment4,
-): string {
-  return JSON.stringify(
-    TicketingAttachment4$outboundSchema.parse(ticketingAttachment4),
-  );
-}
-
 export function ticketingAttachment4FromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingAttachment4, SDKValidationError> {
@@ -1367,50 +1332,6 @@ export const TicketingAttachmentSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TicketingAttachmentSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TicketingAttachment4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TicketingAttachmentSourceValue$outboundSchema: z.ZodType<
-  TicketingAttachmentSourceValue$Outbound,
-  z.ZodTypeDef,
-  TicketingAttachmentSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TicketingAttachment4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingAttachmentSourceValue$ {
-  /** @deprecated use `TicketingAttachmentSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TicketingAttachmentSourceValue$inboundSchema;
-  /** @deprecated use `TicketingAttachmentSourceValue$outboundSchema` instead. */
-  export const outboundSchema = TicketingAttachmentSourceValue$outboundSchema;
-  /** @deprecated use `TicketingAttachmentSourceValue$Outbound` instead. */
-  export type Outbound = TicketingAttachmentSourceValue$Outbound;
-}
-
-export function ticketingAttachmentSourceValueToJSON(
-  ticketingAttachmentSourceValue: TicketingAttachmentSourceValue,
-): string {
-  return JSON.stringify(
-    TicketingAttachmentSourceValue$outboundSchema.parse(
-      ticketingAttachmentSourceValue,
-    ),
-  );
-}
-
 export function ticketingAttachmentSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingAttachmentSourceValue, SDKValidationError> {
@@ -1433,27 +1354,6 @@ export const TicketingAttachmentValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const TicketingAttachmentValue$outboundSchema: z.ZodType<
-  TicketingAttachmentValueOpen,
-  z.ZodTypeDef,
-  TicketingAttachmentValueOpen
-> = z.union([
-  z.nativeEnum(TicketingAttachmentValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingAttachmentValue$ {
-  /** @deprecated use `TicketingAttachmentValue$inboundSchema` instead. */
-  export const inboundSchema = TicketingAttachmentValue$inboundSchema;
-  /** @deprecated use `TicketingAttachmentValue$outboundSchema` instead. */
-  export const outboundSchema = TicketingAttachmentValue$outboundSchema;
-}
-
-/** @internal */
 export const TicketingAttachmentFileFormat$inboundSchema: z.ZodType<
   TicketingAttachmentFileFormat,
   z.ZodTypeDef,
@@ -1474,64 +1374,6 @@ export const TicketingAttachmentFileFormat$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type TicketingAttachmentFileFormat$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TicketingAttachment4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingAttachmentFileFormat$outboundSchema: z.ZodType<
-  TicketingAttachmentFileFormat$Outbound,
-  z.ZodTypeDef,
-  TicketingAttachmentFileFormat
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TicketingAttachment4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TicketingAttachmentValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingAttachmentFileFormat$ {
-  /** @deprecated use `TicketingAttachmentFileFormat$inboundSchema` instead. */
-  export const inboundSchema = TicketingAttachmentFileFormat$inboundSchema;
-  /** @deprecated use `TicketingAttachmentFileFormat$outboundSchema` instead. */
-  export const outboundSchema = TicketingAttachmentFileFormat$outboundSchema;
-  /** @deprecated use `TicketingAttachmentFileFormat$Outbound` instead. */
-  export type Outbound = TicketingAttachmentFileFormat$Outbound;
-}
-
-export function ticketingAttachmentFileFormatToJSON(
-  ticketingAttachmentFileFormat: TicketingAttachmentFileFormat,
-): string {
-  return JSON.stringify(
-    TicketingAttachmentFileFormat$outboundSchema.parse(
-      ticketingAttachmentFileFormat,
-    ),
-  );
-}
 
 export function ticketingAttachmentFileFormatFromJSON(
   jsonString: string,
@@ -1577,72 +1419,6 @@ export const TicketingAttachment$inboundSchema: z.ZodType<
     "user_id": "userId",
   });
 });
-
-/** @internal */
-export type TicketingAttachment$Outbound = {
-  created_at?: string | null | undefined;
-  file_format?: TicketingAttachmentFileFormat$Outbound | null | undefined;
-  file_name?: string | null | undefined;
-  file_url?: string | null | undefined;
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  size?: number | null | undefined;
-  ticket_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-  user_id?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingAttachment$outboundSchema: z.ZodType<
-  TicketingAttachment$Outbound,
-  z.ZodTypeDef,
-  TicketingAttachment
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  fileFormat: z.nullable(
-    z.lazy(() => TicketingAttachmentFileFormat$outboundSchema),
-  ).optional(),
-  fileName: z.nullable(z.string()).optional(),
-  fileUrl: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  size: z.nullable(z.number()).optional(),
-  ticketId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  userId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    fileFormat: "file_format",
-    fileName: "file_name",
-    fileUrl: "file_url",
-    remoteId: "remote_id",
-    ticketId: "ticket_id",
-    updatedAt: "updated_at",
-    userId: "user_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingAttachment$ {
-  /** @deprecated use `TicketingAttachment$inboundSchema` instead. */
-  export const inboundSchema = TicketingAttachment$inboundSchema;
-  /** @deprecated use `TicketingAttachment$outboundSchema` instead. */
-  export const outboundSchema = TicketingAttachment$outboundSchema;
-  /** @deprecated use `TicketingAttachment$Outbound` instead. */
-  export type Outbound = TicketingAttachment$Outbound;
-}
-
-export function ticketingAttachmentToJSON(
-  ticketingAttachment: TicketingAttachment,
-): string {
-  return JSON.stringify(
-    TicketingAttachment$outboundSchema.parse(ticketingAttachment),
-  );
-}
 
 export function ticketingAttachmentFromJSON(
   jsonString: string,

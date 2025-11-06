@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type UpdateTaskRequestDto4 = {};
 
@@ -70,13 +63,6 @@ export type UpdateTaskRequestDto = {
 };
 
 /** @internal */
-export const UpdateTaskRequestDto4$inboundSchema: z.ZodType<
-  UpdateTaskRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type UpdateTaskRequestDto4$Outbound = {};
 
 /** @internal */
@@ -86,19 +72,6 @@ export const UpdateTaskRequestDto4$outboundSchema: z.ZodType<
   UpdateTaskRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTaskRequestDto4$ {
-  /** @deprecated use `UpdateTaskRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = UpdateTaskRequestDto4$inboundSchema;
-  /** @deprecated use `UpdateTaskRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = UpdateTaskRequestDto4$outboundSchema;
-  /** @deprecated use `UpdateTaskRequestDto4$Outbound` instead. */
-  export type Outbound = UpdateTaskRequestDto4$Outbound;
-}
-
 export function updateTaskRequestDto4ToJSON(
   updateTaskRequestDto4: UpdateTaskRequestDto4,
 ): string {
@@ -106,29 +79,6 @@ export function updateTaskRequestDto4ToJSON(
     UpdateTaskRequestDto4$outboundSchema.parse(updateTaskRequestDto4),
   );
 }
-
-export function updateTaskRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTaskRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTaskRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTaskRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateTaskRequestDtoSourceValue$inboundSchema: z.ZodType<
-  UpdateTaskRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => UpdateTaskRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type UpdateTaskRequestDtoSourceValue$Outbound =
@@ -151,19 +101,6 @@ export const UpdateTaskRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTaskRequestDtoSourceValue$ {
-  /** @deprecated use `UpdateTaskRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema = UpdateTaskRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `UpdateTaskRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema = UpdateTaskRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `UpdateTaskRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = UpdateTaskRequestDtoSourceValue$Outbound;
-}
-
 export function updateTaskRequestDtoSourceValueToJSON(
   updateTaskRequestDtoSourceValue: UpdateTaskRequestDtoSourceValue,
 ): string {
@@ -174,27 +111,6 @@ export function updateTaskRequestDtoSourceValueToJSON(
   );
 }
 
-export function updateTaskRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTaskRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTaskRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTaskRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateTaskRequestDtoValue$inboundSchema: z.ZodType<
-  UpdateTaskRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(UpdateTaskRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const UpdateTaskRequestDtoValue$outboundSchema: z.ZodType<
   UpdateTaskRequestDtoValueOpen,
@@ -204,39 +120,6 @@ export const UpdateTaskRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(UpdateTaskRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTaskRequestDtoValue$ {
-  /** @deprecated use `UpdateTaskRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = UpdateTaskRequestDtoValue$inboundSchema;
-  /** @deprecated use `UpdateTaskRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = UpdateTaskRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const UpdateTaskRequestDtoStatus$inboundSchema: z.ZodType<
-  UpdateTaskRequestDtoStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => UpdateTaskRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(UpdateTaskRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type UpdateTaskRequestDtoStatus$Outbound = {
@@ -273,19 +156,6 @@ export const UpdateTaskRequestDtoStatus$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTaskRequestDtoStatus$ {
-  /** @deprecated use `UpdateTaskRequestDtoStatus$inboundSchema` instead. */
-  export const inboundSchema = UpdateTaskRequestDtoStatus$inboundSchema;
-  /** @deprecated use `UpdateTaskRequestDtoStatus$outboundSchema` instead. */
-  export const outboundSchema = UpdateTaskRequestDtoStatus$outboundSchema;
-  /** @deprecated use `UpdateTaskRequestDtoStatus$Outbound` instead. */
-  export type Outbound = UpdateTaskRequestDtoStatus$Outbound;
-}
-
 export function updateTaskRequestDtoStatusToJSON(
   updateTaskRequestDtoStatus: UpdateTaskRequestDtoStatus,
 ): string {
@@ -293,27 +163,6 @@ export function updateTaskRequestDtoStatusToJSON(
     UpdateTaskRequestDtoStatus$outboundSchema.parse(updateTaskRequestDtoStatus),
   );
 }
-
-export function updateTaskRequestDtoStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTaskRequestDtoStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTaskRequestDtoStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTaskRequestDtoStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateTaskRequestDto$inboundSchema: z.ZodType<
-  UpdateTaskRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  comment: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => UpdateTaskRequestDtoStatus$inboundSchema))
-    .optional(),
-});
 
 /** @internal */
 export type UpdateTaskRequestDto$Outbound = {
@@ -332,33 +181,10 @@ export const UpdateTaskRequestDto$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateTaskRequestDto$ {
-  /** @deprecated use `UpdateTaskRequestDto$inboundSchema` instead. */
-  export const inboundSchema = UpdateTaskRequestDto$inboundSchema;
-  /** @deprecated use `UpdateTaskRequestDto$outboundSchema` instead. */
-  export const outboundSchema = UpdateTaskRequestDto$outboundSchema;
-  /** @deprecated use `UpdateTaskRequestDto$Outbound` instead. */
-  export type Outbound = UpdateTaskRequestDto$Outbound;
-}
-
 export function updateTaskRequestDtoToJSON(
   updateTaskRequestDto: UpdateTaskRequestDto,
 ): string {
   return JSON.stringify(
     UpdateTaskRequestDto$outboundSchema.parse(updateTaskRequestDto),
-  );
-}
-
-export function updateTaskRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateTaskRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateTaskRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateTaskRequestDto' from JSON`,
   );
 }

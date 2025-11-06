@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  OfferHistory,
-  OfferHistory$inboundSchema,
-  OfferHistory$Outbound,
-  OfferHistory$outboundSchema,
-} from "./offerhistory.js";
+import { OfferHistory, OfferHistory$inboundSchema } from "./offerhistory.js";
 
 export type Offer4 = {};
 
@@ -102,33 +93,6 @@ export type Offer = {
 export const Offer4$inboundSchema: z.ZodType<Offer4, z.ZodTypeDef, unknown> = z
   .object({});
 
-/** @internal */
-export type Offer4$Outbound = {};
-
-/** @internal */
-export const Offer4$outboundSchema: z.ZodType<
-  Offer4$Outbound,
-  z.ZodTypeDef,
-  Offer4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Offer4$ {
-  /** @deprecated use `Offer4$inboundSchema` instead. */
-  export const inboundSchema = Offer4$inboundSchema;
-  /** @deprecated use `Offer4$outboundSchema` instead. */
-  export const outboundSchema = Offer4$outboundSchema;
-  /** @deprecated use `Offer4$Outbound` instead. */
-  export type Outbound = Offer4$Outbound;
-}
-
-export function offer4ToJSON(offer4: Offer4): string {
-  return JSON.stringify(Offer4$outboundSchema.parse(offer4));
-}
-
 export function offer4FromJSON(
   jsonString: string,
 ): SafeParseResult<Offer4, SDKValidationError> {
@@ -152,48 +116,6 @@ export const OfferSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type OfferSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Offer4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const OfferSourceValue$outboundSchema: z.ZodType<
-  OfferSourceValue$Outbound,
-  z.ZodTypeDef,
-  OfferSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Offer4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OfferSourceValue$ {
-  /** @deprecated use `OfferSourceValue$inboundSchema` instead. */
-  export const inboundSchema = OfferSourceValue$inboundSchema;
-  /** @deprecated use `OfferSourceValue$outboundSchema` instead. */
-  export const outboundSchema = OfferSourceValue$outboundSchema;
-  /** @deprecated use `OfferSourceValue$Outbound` instead. */
-  export type Outbound = OfferSourceValue$Outbound;
-}
-
-export function offerSourceValueToJSON(
-  offerSourceValue: OfferSourceValue,
-): string {
-  return JSON.stringify(
-    OfferSourceValue$outboundSchema.parse(offerSourceValue),
-  );
-}
-
 export function offerSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<OfferSourceValue, SDKValidationError> {
@@ -216,27 +138,6 @@ export const OfferValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const OfferValue$outboundSchema: z.ZodType<
-  OfferValueOpen,
-  z.ZodTypeDef,
-  OfferValueOpen
-> = z.union([
-  z.nativeEnum(OfferValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OfferValue$ {
-  /** @deprecated use `OfferValue$inboundSchema` instead. */
-  export const inboundSchema = OfferValue$inboundSchema;
-  /** @deprecated use `OfferValue$outboundSchema` instead. */
-  export const outboundSchema = OfferValue$outboundSchema;
-}
-
-/** @internal */
 export const OfferOfferStatus$inboundSchema: z.ZodType<
   OfferOfferStatus,
   z.ZodTypeDef,
@@ -257,62 +158,6 @@ export const OfferOfferStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type OfferOfferStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Offer4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const OfferOfferStatus$outboundSchema: z.ZodType<
-  OfferOfferStatus$Outbound,
-  z.ZodTypeDef,
-  OfferOfferStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Offer4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(OfferValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OfferOfferStatus$ {
-  /** @deprecated use `OfferOfferStatus$inboundSchema` instead. */
-  export const inboundSchema = OfferOfferStatus$inboundSchema;
-  /** @deprecated use `OfferOfferStatus$outboundSchema` instead. */
-  export const outboundSchema = OfferOfferStatus$outboundSchema;
-  /** @deprecated use `OfferOfferStatus$Outbound` instead. */
-  export type Outbound = OfferOfferStatus$Outbound;
-}
-
-export function offerOfferStatusToJSON(
-  offerOfferStatus: OfferOfferStatus,
-): string {
-  return JSON.stringify(
-    OfferOfferStatus$outboundSchema.parse(offerOfferStatus),
-  );
-}
 
 export function offerOfferStatusFromJSON(
   jsonString: string,
@@ -359,72 +204,6 @@ export const Offer$inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type Offer$Outbound = {
-  application_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  currency?: string | null | undefined;
-  id?: string | null | undefined;
-  offer_history?: Array<OfferHistory$Outbound> | null | undefined;
-  offer_status?: OfferOfferStatus$Outbound | null | undefined;
-  remote_application_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  salary?: number | null | undefined;
-  start_date?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Offer$outboundSchema: z.ZodType<
-  Offer$Outbound,
-  z.ZodTypeDef,
-  Offer
-> = z.object({
-  applicationId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  currency: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  offerHistory: z.nullable(z.array(OfferHistory$outboundSchema)).optional(),
-  offerStatus: z.nullable(z.lazy(() => OfferOfferStatus$outboundSchema))
-    .optional(),
-  remoteApplicationId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  salary: z.nullable(z.number()).optional(),
-  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    applicationId: "application_id",
-    createdAt: "created_at",
-    offerHistory: "offer_history",
-    offerStatus: "offer_status",
-    remoteApplicationId: "remote_application_id",
-    remoteId: "remote_id",
-    startDate: "start_date",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Offer$ {
-  /** @deprecated use `Offer$inboundSchema` instead. */
-  export const inboundSchema = Offer$inboundSchema;
-  /** @deprecated use `Offer$outboundSchema` instead. */
-  export const outboundSchema = Offer$outboundSchema;
-  /** @deprecated use `Offer$Outbound` instead. */
-  export type Outbound = Offer$Outbound;
-}
-
-export function offerToJSON(offer: Offer): string {
-  return JSON.stringify(Offer$outboundSchema.parse(offer));
-}
 
 export function offerFromJSON(
   jsonString: string,

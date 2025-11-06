@@ -10,8 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthenticationMetaItem,
   AuthenticationMetaItem$inboundSchema,
-  AuthenticationMetaItem$Outbound,
-  AuthenticationMetaItem$outboundSchema,
 } from "./authenticationmetaitem.js";
 
 export type ActionMetaItem = {
@@ -65,55 +63,6 @@ export const ActionMetaItem$inboundSchema: z.ZodType<
     "schema_type": "schemaType",
   });
 });
-
-/** @internal */
-export type ActionMetaItem$Outbound = {
-  authentication?: Array<AuthenticationMetaItem$Outbound> | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  label?: string | null | undefined;
-  operation_details?: { [k: string]: any } | null | undefined;
-  schema_type?: string | null | undefined;
-  tags?: Array<string> | null | undefined;
-};
-
-/** @internal */
-export const ActionMetaItem$outboundSchema: z.ZodType<
-  ActionMetaItem$Outbound,
-  z.ZodTypeDef,
-  ActionMetaItem
-> = z.object({
-  authentication: z.nullable(z.array(AuthenticationMetaItem$outboundSchema))
-    .optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  operationDetails: z.nullable(z.record(z.any())).optional(),
-  schemaType: z.nullable(z.string()).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    operationDetails: "operation_details",
-    schemaType: "schema_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionMetaItem$ {
-  /** @deprecated use `ActionMetaItem$inboundSchema` instead. */
-  export const inboundSchema = ActionMetaItem$inboundSchema;
-  /** @deprecated use `ActionMetaItem$outboundSchema` instead. */
-  export const outboundSchema = ActionMetaItem$outboundSchema;
-  /** @deprecated use `ActionMetaItem$Outbound` instead. */
-  export type Outbound = ActionMetaItem$Outbound;
-}
-
-export function actionMetaItemToJSON(actionMetaItem: ActionMetaItem): string {
-  return JSON.stringify(ActionMetaItem$outboundSchema.parse(actionMetaItem));
-}
 
 export function actionMetaItemFromJSON(
   jsonString: string,

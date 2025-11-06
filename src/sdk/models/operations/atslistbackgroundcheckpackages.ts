@@ -85,22 +85,6 @@ export type AtsListBackgroundCheckPackagesResponse = {
 };
 
 /** @internal */
-export const AtsListBackgroundCheckPackagesQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AtsListBackgroundCheckPackagesQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AtsListBackgroundCheckPackagesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -120,22 +104,6 @@ export const AtsListBackgroundCheckPackagesQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListBackgroundCheckPackagesQueryParamFilter$ {
-  /** @deprecated use `AtsListBackgroundCheckPackagesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListBackgroundCheckPackagesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListBackgroundCheckPackagesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListBackgroundCheckPackagesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListBackgroundCheckPackagesQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    AtsListBackgroundCheckPackagesQueryParamFilter$Outbound;
-}
-
 export function atsListBackgroundCheckPackagesQueryParamFilterToJSON(
   atsListBackgroundCheckPackagesQueryParamFilter:
     AtsListBackgroundCheckPackagesQueryParamFilter,
@@ -146,49 +114,6 @@ export function atsListBackgroundCheckPackagesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListBackgroundCheckPackagesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListBackgroundCheckPackagesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListBackgroundCheckPackagesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListBackgroundCheckPackagesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListBackgroundCheckPackagesRequest$inboundSchema: z.ZodType<
-  AtsListBackgroundCheckPackagesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListBackgroundCheckPackagesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListBackgroundCheckPackagesRequest$Outbound = {
@@ -231,21 +156,6 @@ export const AtsListBackgroundCheckPackagesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListBackgroundCheckPackagesRequest$ {
-  /** @deprecated use `AtsListBackgroundCheckPackagesRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListBackgroundCheckPackagesRequest$inboundSchema;
-  /** @deprecated use `AtsListBackgroundCheckPackagesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListBackgroundCheckPackagesRequest$outboundSchema;
-  /** @deprecated use `AtsListBackgroundCheckPackagesRequest$Outbound` instead. */
-  export type Outbound = AtsListBackgroundCheckPackagesRequest$Outbound;
-}
-
 export function atsListBackgroundCheckPackagesRequestToJSON(
   atsListBackgroundCheckPackagesRequest: AtsListBackgroundCheckPackagesRequest,
 ): string {
@@ -253,17 +163,6 @@ export function atsListBackgroundCheckPackagesRequestToJSON(
     AtsListBackgroundCheckPackagesRequest$outboundSchema.parse(
       atsListBackgroundCheckPackagesRequest,
     ),
-  );
-}
-
-export function atsListBackgroundCheckPackagesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListBackgroundCheckPackagesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListBackgroundCheckPackagesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListBackgroundCheckPackagesRequest' from JSON`,
   );
 }
 
@@ -289,67 +188,6 @@ export const AtsListBackgroundCheckPackagesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListBackgroundCheckPackagesResponse$Outbound = {
-  BackgroundCheckPackagePaginated?:
-    | shared.BackgroundCheckPackagePaginated$Outbound
-    | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListBackgroundCheckPackagesResponse$outboundSchema: z.ZodType<
-  AtsListBackgroundCheckPackagesResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListBackgroundCheckPackagesResponse
-> = z.object({
-  backgroundCheckPackagePaginated: shared
-    .BackgroundCheckPackagePaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    backgroundCheckPackagePaginated: "BackgroundCheckPackagePaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListBackgroundCheckPackagesResponse$ {
-  /** @deprecated use `AtsListBackgroundCheckPackagesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListBackgroundCheckPackagesResponse$inboundSchema;
-  /** @deprecated use `AtsListBackgroundCheckPackagesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListBackgroundCheckPackagesResponse$outboundSchema;
-  /** @deprecated use `AtsListBackgroundCheckPackagesResponse$Outbound` instead. */
-  export type Outbound = AtsListBackgroundCheckPackagesResponse$Outbound;
-}
-
-export function atsListBackgroundCheckPackagesResponseToJSON(
-  atsListBackgroundCheckPackagesResponse:
-    AtsListBackgroundCheckPackagesResponse,
-): string {
-  return JSON.stringify(
-    AtsListBackgroundCheckPackagesResponse$outboundSchema.parse(
-      atsListBackgroundCheckPackagesResponse,
-    ),
-  );
-}
 
 export function atsListBackgroundCheckPackagesResponseFromJSON(
   jsonString: string,

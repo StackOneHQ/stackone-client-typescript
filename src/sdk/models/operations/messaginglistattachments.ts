@@ -86,21 +86,6 @@ export type MessagingListAttachmentsResponse = {
 };
 
 /** @internal */
-export const MessagingListAttachmentsQueryParamFilter$inboundSchema: z.ZodType<
-  MessagingListAttachmentsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type MessagingListAttachmentsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -118,21 +103,6 @@ export const MessagingListAttachmentsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListAttachmentsQueryParamFilter$ {
-  /** @deprecated use `MessagingListAttachmentsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingListAttachmentsQueryParamFilter$inboundSchema;
-  /** @deprecated use `MessagingListAttachmentsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingListAttachmentsQueryParamFilter$outboundSchema;
-  /** @deprecated use `MessagingListAttachmentsQueryParamFilter$Outbound` instead. */
-  export type Outbound = MessagingListAttachmentsQueryParamFilter$Outbound;
-}
-
 export function messagingListAttachmentsQueryParamFilterToJSON(
   messagingListAttachmentsQueryParamFilter:
     MessagingListAttachmentsQueryParamFilter,
@@ -143,50 +113,6 @@ export function messagingListAttachmentsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function messagingListAttachmentsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MessagingListAttachmentsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MessagingListAttachmentsQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MessagingListAttachmentsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const MessagingListAttachmentsRequest$inboundSchema: z.ZodType<
-  MessagingListAttachmentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => MessagingListAttachmentsQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type MessagingListAttachmentsRequest$Outbound = {
@@ -228,19 +154,6 @@ export const MessagingListAttachmentsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListAttachmentsRequest$ {
-  /** @deprecated use `MessagingListAttachmentsRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingListAttachmentsRequest$inboundSchema;
-  /** @deprecated use `MessagingListAttachmentsRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagingListAttachmentsRequest$outboundSchema;
-  /** @deprecated use `MessagingListAttachmentsRequest$Outbound` instead. */
-  export type Outbound = MessagingListAttachmentsRequest$Outbound;
-}
-
 export function messagingListAttachmentsRequestToJSON(
   messagingListAttachmentsRequest: MessagingListAttachmentsRequest,
 ): string {
@@ -248,16 +161,6 @@ export function messagingListAttachmentsRequestToJSON(
     MessagingListAttachmentsRequest$outboundSchema.parse(
       messagingListAttachmentsRequest,
     ),
-  );
-}
-
-export function messagingListAttachmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingListAttachmentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingListAttachmentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingListAttachmentsRequest' from JSON`,
   );
 }
 
@@ -283,64 +186,6 @@ export const MessagingListAttachmentsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingListAttachmentsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MessagingAttachmentsPaginated?:
-    | shared.MessagingAttachmentsPaginated$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingListAttachmentsResponse$outboundSchema: z.ZodType<
-  MessagingListAttachmentsResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingListAttachmentsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  messagingAttachmentsPaginated: shared
-    .MessagingAttachmentsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    messagingAttachmentsPaginated: "MessagingAttachmentsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListAttachmentsResponse$ {
-  /** @deprecated use `MessagingListAttachmentsResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingListAttachmentsResponse$inboundSchema;
-  /** @deprecated use `MessagingListAttachmentsResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagingListAttachmentsResponse$outboundSchema;
-  /** @deprecated use `MessagingListAttachmentsResponse$Outbound` instead. */
-  export type Outbound = MessagingListAttachmentsResponse$Outbound;
-}
-
-export function messagingListAttachmentsResponseToJSON(
-  messagingListAttachmentsResponse: MessagingListAttachmentsResponse,
-): string {
-  return JSON.stringify(
-    MessagingListAttachmentsResponse$outboundSchema.parse(
-      messagingListAttachmentsResponse,
-    ),
-  );
-}
 
 export function messagingListAttachmentsResponseFromJSON(
   jsonString: string,

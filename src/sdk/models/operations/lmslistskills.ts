@@ -83,21 +83,6 @@ export type LmsListSkillsResponse = {
 };
 
 /** @internal */
-export const LmsListSkillsQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListSkillsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type LmsListSkillsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,19 +100,6 @@ export const LmsListSkillsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListSkillsQueryParamFilter$ {
-  /** @deprecated use `LmsListSkillsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListSkillsQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListSkillsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = LmsListSkillsQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListSkillsQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListSkillsQueryParamFilter$Outbound;
-}
-
 export function lmsListSkillsQueryParamFilterToJSON(
   lmsListSkillsQueryParamFilter: LmsListSkillsQueryParamFilter,
 ): string {
@@ -137,42 +109,6 @@ export function lmsListSkillsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListSkillsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListSkillsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListSkillsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListSkillsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListSkillsRequest$inboundSchema: z.ZodType<
-  LmsListSkillsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => LmsListSkillsQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListSkillsRequest$Outbound = {
@@ -211,34 +147,11 @@ export const LmsListSkillsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListSkillsRequest$ {
-  /** @deprecated use `LmsListSkillsRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListSkillsRequest$inboundSchema;
-  /** @deprecated use `LmsListSkillsRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListSkillsRequest$outboundSchema;
-  /** @deprecated use `LmsListSkillsRequest$Outbound` instead. */
-  export type Outbound = LmsListSkillsRequest$Outbound;
-}
-
 export function lmsListSkillsRequestToJSON(
   lmsListSkillsRequest: LmsListSkillsRequest,
 ): string {
   return JSON.stringify(
     LmsListSkillsRequest$outboundSchema.parse(lmsListSkillsRequest),
-  );
-}
-
-export function lmsListSkillsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListSkillsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListSkillsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListSkillsRequest' from JSON`,
   );
 }
 
@@ -263,59 +176,6 @@ export const LmsListSkillsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsListSkillsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  SkillsPaginated?: shared.SkillsPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsListSkillsResponse$outboundSchema: z.ZodType<
-  LmsListSkillsResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListSkillsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  skillsPaginated: shared.SkillsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    skillsPaginated: "SkillsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListSkillsResponse$ {
-  /** @deprecated use `LmsListSkillsResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListSkillsResponse$inboundSchema;
-  /** @deprecated use `LmsListSkillsResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListSkillsResponse$outboundSchema;
-  /** @deprecated use `LmsListSkillsResponse$Outbound` instead. */
-  export type Outbound = LmsListSkillsResponse$Outbound;
-}
-
-export function lmsListSkillsResponseToJSON(
-  lmsListSkillsResponse: LmsListSkillsResponse,
-): string {
-  return JSON.stringify(
-    LmsListSkillsResponse$outboundSchema.parse(lmsListSkillsResponse),
-  );
-}
 
 export function lmsListSkillsResponseFromJSON(
   jsonString: string,

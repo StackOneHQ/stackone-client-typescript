@@ -55,7 +55,6 @@ export const AtsJobHiringTeam$inboundSchema: z.ZodType<
     "user_id": "userId",
   });
 });
-
 /** @internal */
 export type AtsJobHiringTeam$Outbound = {
   email?: string | null | undefined;
@@ -87,19 +86,6 @@ export const AtsJobHiringTeam$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsJobHiringTeam$ {
-  /** @deprecated use `AtsJobHiringTeam$inboundSchema` instead. */
-  export const inboundSchema = AtsJobHiringTeam$inboundSchema;
-  /** @deprecated use `AtsJobHiringTeam$outboundSchema` instead. */
-  export const outboundSchema = AtsJobHiringTeam$outboundSchema;
-  /** @deprecated use `AtsJobHiringTeam$Outbound` instead. */
-  export type Outbound = AtsJobHiringTeam$Outbound;
-}
-
 export function atsJobHiringTeamToJSON(
   atsJobHiringTeam: AtsJobHiringTeam,
 ): string {
@@ -107,7 +93,6 @@ export function atsJobHiringTeamToJSON(
     AtsJobHiringTeam$outboundSchema.parse(atsJobHiringTeam),
   );
 }
-
 export function atsJobHiringTeamFromJSON(
   jsonString: string,
 ): SafeParseResult<AtsJobHiringTeam, SDKValidationError> {

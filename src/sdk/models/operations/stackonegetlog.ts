@@ -46,35 +46,9 @@ export type StackoneGetLogResponse = {
 };
 
 /** @internal */
-export const QueryParamInclude$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamInclude
-> = z.nativeEnum(QueryParamInclude);
-
-/** @internal */
 export const QueryParamInclude$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamInclude
-> = QueryParamInclude$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamInclude$ {
-  /** @deprecated use `QueryParamInclude$inboundSchema` instead. */
-  export const inboundSchema = QueryParamInclude$inboundSchema;
-  /** @deprecated use `QueryParamInclude$outboundSchema` instead. */
-  export const outboundSchema = QueryParamInclude$outboundSchema;
-}
-
-/** @internal */
-export const StackoneGetLogRequest$inboundSchema: z.ZodType<
-  StackoneGetLogRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  include: z.nullable(QueryParamInclude$inboundSchema).optional(),
-});
+> = z.nativeEnum(QueryParamInclude);
 
 /** @internal */
 export type StackoneGetLogRequest$Outbound = {
@@ -92,34 +66,11 @@ export const StackoneGetLogRequest$outboundSchema: z.ZodType<
   include: z.nullable(QueryParamInclude$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneGetLogRequest$ {
-  /** @deprecated use `StackoneGetLogRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneGetLogRequest$inboundSchema;
-  /** @deprecated use `StackoneGetLogRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneGetLogRequest$outboundSchema;
-  /** @deprecated use `StackoneGetLogRequest$Outbound` instead. */
-  export type Outbound = StackoneGetLogRequest$Outbound;
-}
-
 export function stackoneGetLogRequestToJSON(
   stackoneGetLogRequest: StackoneGetLogRequest,
 ): string {
   return JSON.stringify(
     StackoneGetLogRequest$outboundSchema.parse(stackoneGetLogRequest),
-  );
-}
-
-export function stackoneGetLogRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneGetLogRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneGetLogRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneGetLogRequest' from JSON`,
   );
 }
 
@@ -144,59 +95,6 @@ export const StackoneGetLogResponse$inboundSchema: z.ZodType<
     "UnifiedLogResult": "unifiedLogResult",
   });
 });
-
-/** @internal */
-export type StackoneGetLogResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UnifiedLogResult?: shared.UnifiedLogResult$Outbound | undefined;
-};
-
-/** @internal */
-export const StackoneGetLogResponse$outboundSchema: z.ZodType<
-  StackoneGetLogResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneGetLogResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  unifiedLogResult: shared.UnifiedLogResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    unifiedLogResult: "UnifiedLogResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneGetLogResponse$ {
-  /** @deprecated use `StackoneGetLogResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneGetLogResponse$inboundSchema;
-  /** @deprecated use `StackoneGetLogResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneGetLogResponse$outboundSchema;
-  /** @deprecated use `StackoneGetLogResponse$Outbound` instead. */
-  export type Outbound = StackoneGetLogResponse$Outbound;
-}
-
-export function stackoneGetLogResponseToJSON(
-  stackoneGetLogResponse: StackoneGetLogResponse,
-): string {
-  return JSON.stringify(
-    StackoneGetLogResponse$outboundSchema.parse(stackoneGetLogResponse),
-  );
-}
 
 export function stackoneGetLogResponseFromJSON(
   jsonString: string,

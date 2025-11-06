@@ -95,22 +95,6 @@ export type AtsListApplicationsScheduledInterviewsResponse = {
 };
 
 /** @internal */
-export const AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AtsListApplicationsScheduledInterviewsQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AtsListApplicationsScheduledInterviewsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -130,22 +114,6 @@ export const AtsListApplicationsScheduledInterviewsQueryParamFilter$outboundSche
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationsScheduledInterviewsQueryParamFilter$ {
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationsScheduledInterviewsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    AtsListApplicationsScheduledInterviewsQueryParamFilter$Outbound;
-}
-
 export function atsListApplicationsScheduledInterviewsQueryParamFilterToJSON(
   atsListApplicationsScheduledInterviewsQueryParamFilter:
     AtsListApplicationsScheduledInterviewsQueryParamFilter,
@@ -156,54 +124,6 @@ export function atsListApplicationsScheduledInterviewsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListApplicationsScheduledInterviewsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationsScheduledInterviewsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'AtsListApplicationsScheduledInterviewsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListApplicationsScheduledInterviewsRequest$inboundSchema:
-  z.ZodType<
-    AtsListApplicationsScheduledInterviewsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(
-      z.lazy(() =>
-        AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchema
-      ),
-    ).optional(),
-    id: z.string(),
-    next: z.nullable(z.string()).optional(),
-    page: z.nullable(z.string()).optional(),
-    page_size: z.nullable(z.string()).optional(),
-    proxy: z.nullable(z.record(z.any())).optional(),
-    raw: z.nullable(z.boolean()).optional(),
-    sync_token: z.nullable(z.string()).optional(),
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "page_size": "pageSize",
-      "sync_token": "syncToken",
-      "updated_after": "updatedAfter",
-      "x-account-id": "xAccountId",
-    });
-  });
 
 /** @internal */
 export type AtsListApplicationsScheduledInterviewsRequest$Outbound = {
@@ -255,21 +175,6 @@ export const AtsListApplicationsScheduledInterviewsRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationsScheduledInterviewsRequest$ {
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationsScheduledInterviewsRequest$inboundSchema;
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationsScheduledInterviewsRequest$outboundSchema;
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsRequest$Outbound` instead. */
-  export type Outbound = AtsListApplicationsScheduledInterviewsRequest$Outbound;
-}
-
 export function atsListApplicationsScheduledInterviewsRequestToJSON(
   atsListApplicationsScheduledInterviewsRequest:
     AtsListApplicationsScheduledInterviewsRequest,
@@ -278,22 +183,6 @@ export function atsListApplicationsScheduledInterviewsRequestToJSON(
     AtsListApplicationsScheduledInterviewsRequest$outboundSchema.parse(
       atsListApplicationsScheduledInterviewsRequest,
     ),
-  );
-}
-
-export function atsListApplicationsScheduledInterviewsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationsScheduledInterviewsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationsScheduledInterviewsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListApplicationsScheduledInterviewsRequest' from JSON`,
   );
 }
 
@@ -320,69 +209,6 @@ export const AtsListApplicationsScheduledInterviewsResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type AtsListApplicationsScheduledInterviewsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScheduledInterviewsPaginated?:
-    | shared.ScheduledInterviewsPaginated$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListApplicationsScheduledInterviewsResponse$outboundSchema:
-  z.ZodType<
-    AtsListApplicationsScheduledInterviewsResponse$Outbound,
-    z.ZodTypeDef,
-    AtsListApplicationsScheduledInterviewsResponse
-  > = z.object({
-    contentType: z.string(),
-    headers: z.record(z.array(z.string())),
-    scheduledInterviewsPaginated: shared
-      .ScheduledInterviewsPaginated$outboundSchema.optional(),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      headers: "Headers",
-      scheduledInterviewsPaginated: "ScheduledInterviewsPaginated",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationsScheduledInterviewsResponse$ {
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationsScheduledInterviewsResponse$inboundSchema;
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationsScheduledInterviewsResponse$outboundSchema;
-  /** @deprecated use `AtsListApplicationsScheduledInterviewsResponse$Outbound` instead. */
-  export type Outbound =
-    AtsListApplicationsScheduledInterviewsResponse$Outbound;
-}
-
-export function atsListApplicationsScheduledInterviewsResponseToJSON(
-  atsListApplicationsScheduledInterviewsResponse:
-    AtsListApplicationsScheduledInterviewsResponse,
-): string {
-  return JSON.stringify(
-    AtsListApplicationsScheduledInterviewsResponse$outboundSchema.parse(
-      atsListApplicationsScheduledInterviewsResponse,
-    ),
-  );
-}
 
 export function atsListApplicationsScheduledInterviewsResponseFromJSON(
   jsonString: string,

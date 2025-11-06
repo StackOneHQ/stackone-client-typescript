@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  StatusReason,
-  StatusReason$inboundSchema,
-  StatusReason$Outbound,
-  StatusReason$outboundSchema,
-} from "./statusreason.js";
+import { StatusReason, StatusReason$inboundSchema } from "./statusreason.js";
 
 export type Credentials = {};
 
@@ -68,33 +59,6 @@ export const Credentials$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type Credentials$Outbound = {};
-
-/** @internal */
-export const Credentials$outboundSchema: z.ZodType<
-  Credentials$Outbound,
-  z.ZodTypeDef,
-  Credentials
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Credentials$ {
-  /** @deprecated use `Credentials$inboundSchema` instead. */
-  export const inboundSchema = Credentials$inboundSchema;
-  /** @deprecated use `Credentials$outboundSchema` instead. */
-  export const outboundSchema = Credentials$outboundSchema;
-  /** @deprecated use `Credentials$Outbound` instead. */
-  export type Outbound = Credentials$Outbound;
-}
-
-export function credentialsToJSON(credentials: Credentials): string {
-  return JSON.stringify(Credentials$outboundSchema.parse(credentials));
-}
-
 export function credentialsFromJSON(
   jsonString: string,
 ): SafeParseResult<Credentials, SDKValidationError> {
@@ -117,27 +81,6 @@ export const LinkedAccountStatus$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const LinkedAccountStatus$outboundSchema: z.ZodType<
-  LinkedAccountStatusOpen,
-  z.ZodTypeDef,
-  LinkedAccountStatusOpen
-> = z.union([
-  z.nativeEnum(LinkedAccountStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkedAccountStatus$ {
-  /** @deprecated use `LinkedAccountStatus$inboundSchema` instead. */
-  export const inboundSchema = LinkedAccountStatus$inboundSchema;
-  /** @deprecated use `LinkedAccountStatus$outboundSchema` instead. */
-  export const outboundSchema = LinkedAccountStatus$outboundSchema;
-}
-
-/** @internal */
 export const LinkedAccountType$inboundSchema: z.ZodType<
   LinkedAccountTypeOpen,
   z.ZodTypeDef,
@@ -147,27 +90,6 @@ export const LinkedAccountType$inboundSchema: z.ZodType<
     z.nativeEnum(LinkedAccountType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const LinkedAccountType$outboundSchema: z.ZodType<
-  LinkedAccountTypeOpen,
-  z.ZodTypeDef,
-  LinkedAccountTypeOpen
-> = z.union([
-  z.nativeEnum(LinkedAccountType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkedAccountType$ {
-  /** @deprecated use `LinkedAccountType$inboundSchema` instead. */
-  export const inboundSchema = LinkedAccountType$inboundSchema;
-  /** @deprecated use `LinkedAccountType$outboundSchema` instead. */
-  export const outboundSchema = LinkedAccountType$outboundSchema;
-}
 
 /** @internal */
 export const LinkedAccount$inboundSchema: z.ZodType<
@@ -201,74 +123,6 @@ export const LinkedAccount$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type LinkedAccount$Outbound = {
-  created_at: string;
-  credentials?: Credentials$Outbound | null | undefined;
-  id: string;
-  label?: string | null | undefined;
-  origin_owner_id: string;
-  origin_owner_name: string;
-  origin_username?: string | null | undefined;
-  provider: string;
-  provider_name?: string | null | undefined;
-  setup_information?: { [k: string]: any } | null | undefined;
-  status: string;
-  status_reasons?: Array<StatusReason$Outbound> | null | undefined;
-  type?: string | null | undefined;
-  updated_at: string;
-};
-
-/** @internal */
-export const LinkedAccount$outboundSchema: z.ZodType<
-  LinkedAccount$Outbound,
-  z.ZodTypeDef,
-  LinkedAccount
-> = z.object({
-  createdAt: z.date().transform(v => v.toISOString()),
-  credentials: z.nullable(z.lazy(() => Credentials$outboundSchema)).optional(),
-  id: z.string(),
-  label: z.nullable(z.string()).optional(),
-  originOwnerId: z.string(),
-  originOwnerName: z.string(),
-  originUsername: z.nullable(z.string()).optional(),
-  provider: z.string(),
-  providerName: z.nullable(z.string()).optional(),
-  setupInformation: z.nullable(z.record(z.any())).optional(),
-  status: LinkedAccountStatus$outboundSchema,
-  statusReasons: z.nullable(z.array(StatusReason$outboundSchema)).optional(),
-  type: z.nullable(LinkedAccountType$outboundSchema).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    originOwnerId: "origin_owner_id",
-    originOwnerName: "origin_owner_name",
-    originUsername: "origin_username",
-    providerName: "provider_name",
-    setupInformation: "setup_information",
-    statusReasons: "status_reasons",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkedAccount$ {
-  /** @deprecated use `LinkedAccount$inboundSchema` instead. */
-  export const inboundSchema = LinkedAccount$inboundSchema;
-  /** @deprecated use `LinkedAccount$outboundSchema` instead. */
-  export const outboundSchema = LinkedAccount$outboundSchema;
-  /** @deprecated use `LinkedAccount$Outbound` instead. */
-  export type Outbound = LinkedAccount$Outbound;
-}
-
-export function linkedAccountToJSON(linkedAccount: LinkedAccount): string {
-  return JSON.stringify(LinkedAccount$outboundSchema.parse(linkedAccount));
-}
 
 export function linkedAccountFromJSON(
   jsonString: string,

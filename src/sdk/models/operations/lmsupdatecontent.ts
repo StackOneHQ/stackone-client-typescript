@@ -39,22 +39,6 @@ export type LmsUpdateContentResponse = {
 };
 
 /** @internal */
-export const LmsUpdateContentRequest$inboundSchema: z.ZodType<
-  LmsUpdateContentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  LmsCreateContentRequestDto: shared.LmsCreateContentRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "LmsCreateContentRequestDto": "lmsCreateContentRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsUpdateContentRequest$Outbound = {
   LmsCreateContentRequestDto: shared.LmsCreateContentRequestDto$Outbound;
   id: string;
@@ -77,34 +61,11 @@ export const LmsUpdateContentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpdateContentRequest$ {
-  /** @deprecated use `LmsUpdateContentRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsUpdateContentRequest$inboundSchema;
-  /** @deprecated use `LmsUpdateContentRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsUpdateContentRequest$outboundSchema;
-  /** @deprecated use `LmsUpdateContentRequest$Outbound` instead. */
-  export type Outbound = LmsUpdateContentRequest$Outbound;
-}
-
 export function lmsUpdateContentRequestToJSON(
   lmsUpdateContentRequest: LmsUpdateContentRequest,
 ): string {
   return JSON.stringify(
     LmsUpdateContentRequest$outboundSchema.parse(lmsUpdateContentRequest),
-  );
-}
-
-export function lmsUpdateContentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsUpdateContentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsUpdateContentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpdateContentRequest' from JSON`,
   );
 }
 
@@ -129,59 +90,6 @@ export const LmsUpdateContentResponse$inboundSchema: z.ZodType<
     "UpdateResult": "updateResult",
   });
 });
-
-/** @internal */
-export type LmsUpdateContentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UpdateResult?: shared.UpdateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const LmsUpdateContentResponse$outboundSchema: z.ZodType<
-  LmsUpdateContentResponse$Outbound,
-  z.ZodTypeDef,
-  LmsUpdateContentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  updateResult: shared.UpdateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    updateResult: "UpdateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpdateContentResponse$ {
-  /** @deprecated use `LmsUpdateContentResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsUpdateContentResponse$inboundSchema;
-  /** @deprecated use `LmsUpdateContentResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsUpdateContentResponse$outboundSchema;
-  /** @deprecated use `LmsUpdateContentResponse$Outbound` instead. */
-  export type Outbound = LmsUpdateContentResponse$Outbound;
-}
-
-export function lmsUpdateContentResponseToJSON(
-  lmsUpdateContentResponse: LmsUpdateContentResponse,
-): string {
-  return JSON.stringify(
-    LmsUpdateContentResponse$outboundSchema.parse(lmsUpdateContentResponse),
-  );
-}
 
 export function lmsUpdateContentResponseFromJSON(
   jsonString: string,

@@ -27,7 +27,6 @@ export const TicketingContent$inboundSchema: z.ZodType<
   html: z.nullable(z.string()).optional(),
   plain: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type TicketingContent$Outbound = {
   html?: string | null | undefined;
@@ -44,19 +43,6 @@ export const TicketingContent$outboundSchema: z.ZodType<
   plain: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingContent$ {
-  /** @deprecated use `TicketingContent$inboundSchema` instead. */
-  export const inboundSchema = TicketingContent$inboundSchema;
-  /** @deprecated use `TicketingContent$outboundSchema` instead. */
-  export const outboundSchema = TicketingContent$outboundSchema;
-  /** @deprecated use `TicketingContent$Outbound` instead. */
-  export type Outbound = TicketingContent$Outbound;
-}
-
 export function ticketingContentToJSON(
   ticketingContent: TicketingContent,
 ): string {
@@ -64,7 +50,6 @@ export function ticketingContentToJSON(
     TicketingContent$outboundSchema.parse(ticketingContent),
   );
 }
-
 export function ticketingContentFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingContent, SDKValidationError> {

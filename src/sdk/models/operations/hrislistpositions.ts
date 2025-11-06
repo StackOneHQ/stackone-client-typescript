@@ -97,21 +97,6 @@ export type HrisListPositionsResponse = {
 };
 
 /** @internal */
-export const HrisListPositionsQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListPositionsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListPositionsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -129,20 +114,6 @@ export const HrisListPositionsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListPositionsQueryParamFilter$ {
-  /** @deprecated use `HrisListPositionsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = HrisListPositionsQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListPositionsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListPositionsQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListPositionsQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListPositionsQueryParamFilter$Outbound;
-}
-
 export function hrisListPositionsQueryParamFilterToJSON(
   hrisListPositionsQueryParamFilter: HrisListPositionsQueryParamFilter,
 ): string {
@@ -153,66 +124,10 @@ export function hrisListPositionsQueryParamFilterToJSON(
   );
 }
 
-export function hrisListPositionsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListPositionsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListPositionsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListPositionsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListPositionsQueryParamStatus$inboundSchema: z.ZodNativeEnum<
-  typeof HrisListPositionsQueryParamStatus
-> = z.nativeEnum(HrisListPositionsQueryParamStatus);
-
 /** @internal */
 export const HrisListPositionsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
   typeof HrisListPositionsQueryParamStatus
-> = HrisListPositionsQueryParamStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListPositionsQueryParamStatus$ {
-  /** @deprecated use `HrisListPositionsQueryParamStatus$inboundSchema` instead. */
-  export const inboundSchema = HrisListPositionsQueryParamStatus$inboundSchema;
-  /** @deprecated use `HrisListPositionsQueryParamStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListPositionsQueryParamStatus$outboundSchema;
-}
-
-/** @internal */
-export const HrisListPositionsRequest$inboundSchema: z.ZodType<
-  HrisListPositionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListPositionsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  status: z.nullable(HrisListPositionsQueryParamStatus$inboundSchema)
-    .optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
+> = z.nativeEnum(HrisListPositionsQueryParamStatus);
 
 /** @internal */
 export type HrisListPositionsRequest$Outbound = {
@@ -255,34 +170,11 @@ export const HrisListPositionsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListPositionsRequest$ {
-  /** @deprecated use `HrisListPositionsRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListPositionsRequest$inboundSchema;
-  /** @deprecated use `HrisListPositionsRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListPositionsRequest$outboundSchema;
-  /** @deprecated use `HrisListPositionsRequest$Outbound` instead. */
-  export type Outbound = HrisListPositionsRequest$Outbound;
-}
-
 export function hrisListPositionsRequestToJSON(
   hrisListPositionsRequest: HrisListPositionsRequest,
 ): string {
   return JSON.stringify(
     HrisListPositionsRequest$outboundSchema.parse(hrisListPositionsRequest),
-  );
-}
-
-export function hrisListPositionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListPositionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListPositionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListPositionsRequest' from JSON`,
   );
 }
 
@@ -307,59 +199,6 @@ export const HrisListPositionsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisListPositionsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  PositionsPaginated?: shared.PositionsPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisListPositionsResponse$outboundSchema: z.ZodType<
-  HrisListPositionsResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListPositionsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  positionsPaginated: shared.PositionsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    positionsPaginated: "PositionsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListPositionsResponse$ {
-  /** @deprecated use `HrisListPositionsResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListPositionsResponse$inboundSchema;
-  /** @deprecated use `HrisListPositionsResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListPositionsResponse$outboundSchema;
-  /** @deprecated use `HrisListPositionsResponse$Outbound` instead. */
-  export type Outbound = HrisListPositionsResponse$Outbound;
-}
-
-export function hrisListPositionsResponseToJSON(
-  hrisListPositionsResponse: HrisListPositionsResponse,
-): string {
-  return JSON.stringify(
-    HrisListPositionsResponse$outboundSchema.parse(hrisListPositionsResponse),
-  );
-}
 
 export function hrisListPositionsResponseFromJSON(
   jsonString: string,

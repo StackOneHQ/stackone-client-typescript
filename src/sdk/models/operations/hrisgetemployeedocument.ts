@@ -51,24 +51,6 @@ export type HrisGetEmployeeDocumentResponse = {
 };
 
 /** @internal */
-export const HrisGetEmployeeDocumentRequest$inboundSchema: z.ZodType<
-  HrisGetEmployeeDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetEmployeeDocumentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const HrisGetEmployeeDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeDocumentRequest$ {
-  /** @deprecated use `HrisGetEmployeeDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeDocumentRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeDocumentRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeDocumentRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeDocumentRequest$Outbound;
-}
-
 export function hrisGetEmployeeDocumentRequestToJSON(
   hrisGetEmployeeDocumentRequest: HrisGetEmployeeDocumentRequest,
 ): string {
@@ -116,16 +85,6 @@ export function hrisGetEmployeeDocumentRequestToJSON(
     HrisGetEmployeeDocumentRequest$outboundSchema.parse(
       hrisGetEmployeeDocumentRequest,
     ),
-  );
-}
-
-export function hrisGetEmployeeDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetEmployeeDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetEmployeeDocumentRequest' from JSON`,
   );
 }
 
@@ -150,61 +109,6 @@ export const HrisGetEmployeeDocumentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetEmployeeDocumentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  HrisDocumentResult?: shared.HrisDocumentResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetEmployeeDocumentResponse$outboundSchema: z.ZodType<
-  HrisGetEmployeeDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetEmployeeDocumentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  hrisDocumentResult: shared.HrisDocumentResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    hrisDocumentResult: "HrisDocumentResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeDocumentResponse$ {
-  /** @deprecated use `HrisGetEmployeeDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeDocumentResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeDocumentResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeDocumentResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeDocumentResponse$Outbound;
-}
-
-export function hrisGetEmployeeDocumentResponseToJSON(
-  hrisGetEmployeeDocumentResponse: HrisGetEmployeeDocumentResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmployeeDocumentResponse$outboundSchema.parse(
-      hrisGetEmployeeDocumentResponse,
-    ),
-  );
-}
 
 export function hrisGetEmployeeDocumentResponseFromJSON(
   jsonString: string,

@@ -4,17 +4,9 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   TicketingContent,
-  TicketingContent$inboundSchema,
   TicketingContent$Outbound,
   TicketingContent$outboundSchema,
 } from "./ticketingcontent.js";
@@ -189,13 +181,6 @@ export type TicketingTicketUpdateRequestDto = {
 };
 
 /** @internal */
-export const TicketingTicketUpdateRequestDto4$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type TicketingTicketUpdateRequestDto4$Outbound = {};
 
 /** @internal */
@@ -204,19 +189,6 @@ export const TicketingTicketUpdateRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingTicketUpdateRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDto4$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = TicketingTicketUpdateRequestDto4$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = TicketingTicketUpdateRequestDto4$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDto4$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDto4$Outbound;
-}
 
 export function ticketingTicketUpdateRequestDto4ToJSON(
   ticketingTicketUpdateRequestDto4: TicketingTicketUpdateRequestDto4,
@@ -227,27 +199,6 @@ export function ticketingTicketUpdateRequestDto4ToJSON(
     ),
   );
 }
-
-export function ticketingTicketUpdateRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingTicketUpdateRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingTicketUpdateRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingTicketUpdateRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoSourceValue$inboundSchema:
-  z.ZodType<TicketingTicketUpdateRequestDtoSourceValue, z.ZodTypeDef, unknown> =
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TicketingTicketUpdateRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]);
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoSourceValue$Outbound =
@@ -271,21 +222,6 @@ export const TicketingTicketUpdateRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoSourceValue$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDtoSourceValue$Outbound;
-}
-
 export function ticketingTicketUpdateRequestDtoSourceValueToJSON(
   ticketingTicketUpdateRequestDtoSourceValue:
     TicketingTicketUpdateRequestDtoSourceValue,
@@ -297,33 +233,6 @@ export function ticketingTicketUpdateRequestDtoSourceValueToJSON(
   );
 }
 
-export function ticketingTicketUpdateRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingTicketUpdateRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingTicketUpdateRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingTicketUpdateRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoValue$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(TicketingTicketUpdateRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const TicketingTicketUpdateRequestDtoValue$outboundSchema: z.ZodType<
   TicketingTicketUpdateRequestDtoValueOpen,
@@ -333,43 +242,6 @@ export const TicketingTicketUpdateRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(TicketingTicketUpdateRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoValue$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoValue$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoPriority$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDtoPriority,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TicketingTicketUpdateRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TicketingTicketUpdateRequestDtoValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoPriority$Outbound = {
@@ -409,21 +281,6 @@ export const TicketingTicketUpdateRequestDtoPriority$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoPriority$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoPriority$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoPriority$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoPriority$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoPriority$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoPriority$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDtoPriority$Outbound;
-}
-
 export function ticketingTicketUpdateRequestDtoPriorityToJSON(
   ticketingTicketUpdateRequestDtoPriority:
     TicketingTicketUpdateRequestDtoPriority,
@@ -435,29 +292,6 @@ export function ticketingTicketUpdateRequestDtoPriorityToJSON(
   );
 }
 
-export function ticketingTicketUpdateRequestDtoPriorityFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingTicketUpdateRequestDtoPriority,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingTicketUpdateRequestDtoPriority$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingTicketUpdateRequestDtoPriority' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoSchemas4$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDtoSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
 /** @internal */
 export type TicketingTicketUpdateRequestDtoSchemas4$Outbound = {};
 
@@ -467,21 +301,6 @@ export const TicketingTicketUpdateRequestDtoSchemas4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingTicketUpdateRequestDtoSchemas4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoSchemas4$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemas4$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoSchemas4$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemas4$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoSchemas4$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemas4$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDtoSchemas4$Outbound;
-}
 
 export function ticketingTicketUpdateRequestDtoSchemas4ToJSON(
   ticketingTicketUpdateRequestDtoSchemas4:
@@ -493,36 +312,6 @@ export function ticketingTicketUpdateRequestDtoSchemas4ToJSON(
     ),
   );
 }
-
-export function ticketingTicketUpdateRequestDtoSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingTicketUpdateRequestDtoSchemas4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingTicketUpdateRequestDtoSchemas4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingTicketUpdateRequestDtoSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoSchemasSourceValue$inboundSchema:
-  z.ZodType<
-    TicketingTicketUpdateRequestDtoSchemasSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoSchemasSourceValue$Outbound =
@@ -546,22 +335,6 @@ export const TicketingTicketUpdateRequestDtoSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemasSourceValue$Outbound` instead. */
-  export type Outbound =
-    TicketingTicketUpdateRequestDtoSchemasSourceValue$Outbound;
-}
-
 export function ticketingTicketUpdateRequestDtoSchemasSourceValueToJSON(
   ticketingTicketUpdateRequestDtoSchemasSourceValue:
     TicketingTicketUpdateRequestDtoSchemasSourceValue,
@@ -573,34 +346,6 @@ export function ticketingTicketUpdateRequestDtoSchemasSourceValueToJSON(
   );
 }
 
-export function ticketingTicketUpdateRequestDtoSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingTicketUpdateRequestDtoSchemasSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingTicketUpdateRequestDtoSchemasSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingTicketUpdateRequestDtoSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoSchemasValue$inboundSchema:
-  z.ZodType<
-    TicketingTicketUpdateRequestDtoSchemasValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(TicketingTicketUpdateRequestDtoSchemasValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const TicketingTicketUpdateRequestDtoSchemasValue$outboundSchema:
   z.ZodType<
@@ -611,42 +356,6 @@ export const TicketingTicketUpdateRequestDtoSchemasValue$outboundSchema:
     z.nativeEnum(TicketingTicketUpdateRequestDtoSchemasValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoSchemasValue$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoSchemasValue$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoType$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDtoType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TicketingTicketUpdateRequestDtoSchemas4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TicketingTicketUpdateRequestDtoSchemasValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoType$Outbound = {
@@ -684,21 +393,6 @@ export const TicketingTicketUpdateRequestDtoType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoType$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoType$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoType$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoType$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoType$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoType$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDtoType$Outbound;
-}
-
 export function ticketingTicketUpdateRequestDtoTypeToJSON(
   ticketingTicketUpdateRequestDtoType: TicketingTicketUpdateRequestDtoType,
 ): string {
@@ -708,30 +402,6 @@ export function ticketingTicketUpdateRequestDtoTypeToJSON(
     ),
   );
 }
-
-export function ticketingTicketUpdateRequestDtoTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingTicketUpdateRequestDtoType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingTicketUpdateRequestDtoType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingTicketUpdateRequestDtoType' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDtoStatus$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDtoStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    z.lazy(() => TicketingTicketUpdateRequestDtoType$inboundSchema),
-  ).optional(),
-});
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoStatus$Outbound = {
@@ -753,21 +423,6 @@ export const TicketingTicketUpdateRequestDtoStatus$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDtoStatus$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDtoStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingTicketUpdateRequestDtoStatus$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingTicketUpdateRequestDtoStatus$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDtoStatus$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDtoStatus$Outbound;
-}
-
 export function ticketingTicketUpdateRequestDtoStatusToJSON(
   ticketingTicketUpdateRequestDtoStatus: TicketingTicketUpdateRequestDtoStatus,
 ): string {
@@ -777,47 +432,6 @@ export function ticketingTicketUpdateRequestDtoStatusToJSON(
     ),
   );
 }
-
-export function ticketingTicketUpdateRequestDtoStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingTicketUpdateRequestDtoStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingTicketUpdateRequestDtoStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingTicketUpdateRequestDtoStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingTicketUpdateRequestDto$inboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  assignees: z.nullable(z.array(z.string())).optional(),
-  component_ids: z.nullable(z.string()).optional(),
-  content: z.nullable(z.array(TicketingContent$inboundSchema)).optional(),
-  parent_id: z.nullable(z.string()).optional(),
-  priority: z.nullable(
-    z.lazy(() => TicketingTicketUpdateRequestDtoPriority$inboundSchema),
-  ).optional(),
-  project_id: z.nullable(z.string()).optional(),
-  reporters: z.nullable(z.array(z.string())).optional(),
-  status: z.nullable(
-    z.lazy(() => TicketingTicketUpdateRequestDtoStatus$inboundSchema),
-  ).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  title: z.nullable(z.string()).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "component_ids": "componentIds",
-    "parent_id": "parentId",
-    "project_id": "projectId",
-    "unified_custom_fields": "unifiedCustomFields",
-  });
-});
 
 /** @internal */
 export type TicketingTicketUpdateRequestDto$Outbound = {
@@ -867,19 +481,6 @@ export const TicketingTicketUpdateRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketUpdateRequestDto$ {
-  /** @deprecated use `TicketingTicketUpdateRequestDto$inboundSchema` instead. */
-  export const inboundSchema = TicketingTicketUpdateRequestDto$inboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDto$outboundSchema` instead. */
-  export const outboundSchema = TicketingTicketUpdateRequestDto$outboundSchema;
-  /** @deprecated use `TicketingTicketUpdateRequestDto$Outbound` instead. */
-  export type Outbound = TicketingTicketUpdateRequestDto$Outbound;
-}
-
 export function ticketingTicketUpdateRequestDtoToJSON(
   ticketingTicketUpdateRequestDto: TicketingTicketUpdateRequestDto,
 ): string {
@@ -887,15 +488,5 @@ export function ticketingTicketUpdateRequestDtoToJSON(
     TicketingTicketUpdateRequestDto$outboundSchema.parse(
       ticketingTicketUpdateRequestDto,
     ),
-  );
-}
-
-export function ticketingTicketUpdateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingTicketUpdateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingTicketUpdateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingTicketUpdateRequestDto' from JSON`,
   );
 }

@@ -50,23 +50,6 @@ export type MessagingGetConversationResponse = {
 };
 
 /** @internal */
-export const MessagingGetConversationRequest$inboundSchema: z.ZodType<
-  MessagingGetConversationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MessagingGetConversationRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const MessagingGetConversationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingGetConversationRequest$ {
-  /** @deprecated use `MessagingGetConversationRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingGetConversationRequest$inboundSchema;
-  /** @deprecated use `MessagingGetConversationRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagingGetConversationRequest$outboundSchema;
-  /** @deprecated use `MessagingGetConversationRequest$Outbound` instead. */
-  export type Outbound = MessagingGetConversationRequest$Outbound;
-}
-
 export function messagingGetConversationRequestToJSON(
   messagingGetConversationRequest: MessagingGetConversationRequest,
 ): string {
@@ -112,16 +82,6 @@ export function messagingGetConversationRequestToJSON(
     MessagingGetConversationRequest$outboundSchema.parse(
       messagingGetConversationRequest,
     ),
-  );
-}
-
-export function messagingGetConversationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingGetConversationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingGetConversationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingGetConversationRequest' from JSON`,
   );
 }
 
@@ -147,64 +107,6 @@ export const MessagingGetConversationResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingGetConversationResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MessagingConversationResult?:
-    | shared.MessagingConversationResult$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingGetConversationResponse$outboundSchema: z.ZodType<
-  MessagingGetConversationResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingGetConversationResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  messagingConversationResult: shared.MessagingConversationResult$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    messagingConversationResult: "MessagingConversationResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingGetConversationResponse$ {
-  /** @deprecated use `MessagingGetConversationResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingGetConversationResponse$inboundSchema;
-  /** @deprecated use `MessagingGetConversationResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagingGetConversationResponse$outboundSchema;
-  /** @deprecated use `MessagingGetConversationResponse$Outbound` instead. */
-  export type Outbound = MessagingGetConversationResponse$Outbound;
-}
-
-export function messagingGetConversationResponseToJSON(
-  messagingGetConversationResponse: MessagingGetConversationResponse,
-): string {
-  return JSON.stringify(
-    MessagingGetConversationResponse$outboundSchema.parse(
-      messagingGetConversationResponse,
-    ),
-  );
-}
 
 export function messagingGetConversationResponseFromJSON(
   jsonString: string,

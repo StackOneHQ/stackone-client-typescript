@@ -10,15 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomMappingError,
   CustomMappingError$inboundSchema,
-  CustomMappingError$Outbound,
-  CustomMappingError$outboundSchema,
 } from "./custommappingerror.js";
-import {
-  ProviderError,
-  ProviderError$inboundSchema,
-  ProviderError$Outbound,
-  ProviderError$outboundSchema,
-} from "./providererror.js";
+import { ProviderError, ProviderError$inboundSchema } from "./providererror.js";
 
 /**
  * The request URL data
@@ -186,44 +179,6 @@ export const Url$inboundSchema: z.ZodType<Url, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Url$Outbound = {
-  hostname?: string | null | undefined;
-  path?: string | null | undefined;
-  query_params?: { [k: string]: any } | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const Url$outboundSchema: z.ZodType<Url$Outbound, z.ZodTypeDef, Url> = z
-  .object({
-    hostname: z.nullable(z.string()).optional(),
-    path: z.nullable(z.string()).optional(),
-    queryParams: z.nullable(z.record(z.any())).optional(),
-    url: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      queryParams: "query_params",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Url$ {
-  /** @deprecated use `Url$inboundSchema` instead. */
-  export const inboundSchema = Url$inboundSchema;
-  /** @deprecated use `Url$outboundSchema` instead. */
-  export const outboundSchema = Url$outboundSchema;
-  /** @deprecated use `Url$Outbound` instead. */
-  export type Outbound = Url$Outbound;
-}
-
-export function urlToJSON(url: Url): string {
-  return JSON.stringify(Url$outboundSchema.parse(url));
-}
-
 export function urlFromJSON(
   jsonString: string,
 ): SafeParseResult<Url, SDKValidationError> {
@@ -246,45 +201,6 @@ export const RequestT$inboundSchema: z.ZodType<
   method: z.nullable(z.string()).optional(),
   url: z.nullable(z.lazy(() => Url$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type RequestT$Outbound = {
-  body?: any | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  id?: string | null | undefined;
-  method?: string | null | undefined;
-  url?: Url$Outbound | null | undefined;
-};
-
-/** @internal */
-export const RequestT$outboundSchema: z.ZodType<
-  RequestT$Outbound,
-  z.ZodTypeDef,
-  RequestT
-> = z.object({
-  body: z.nullable(z.any()).optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  id: z.nullable(z.string()).optional(),
-  method: z.nullable(z.string()).optional(),
-  url: z.nullable(z.lazy(() => Url$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestT$ {
-  /** @deprecated use `RequestT$inboundSchema` instead. */
-  export const inboundSchema = RequestT$inboundSchema;
-  /** @deprecated use `RequestT$outboundSchema` instead. */
-  export const outboundSchema = RequestT$outboundSchema;
-  /** @deprecated use `RequestT$Outbound` instead. */
-  export type Outbound = RequestT$Outbound;
-}
-
-export function requestToJSON(requestT: RequestT): string {
-  return JSON.stringify(RequestT$outboundSchema.parse(requestT));
-}
 
 export function requestFromJSON(
   jsonString: string,
@@ -315,54 +231,6 @@ export const StepLogResponse$inboundSchema: z.ZodType<
     "status_code": "statusCode",
   });
 });
-
-/** @internal */
-export type StepLogResponse$Outbound = {
-  body?: any | null | undefined;
-  custom_mapping_errors?: Array<CustomMappingError$Outbound> | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  provider_errors?: Array<ProviderError$Outbound> | null | undefined;
-  status_code?: number | null | undefined;
-};
-
-/** @internal */
-export const StepLogResponse$outboundSchema: z.ZodType<
-  StepLogResponse$Outbound,
-  z.ZodTypeDef,
-  StepLogResponse
-> = z.object({
-  body: z.nullable(z.any()).optional(),
-  customMappingErrors: z.nullable(z.array(CustomMappingError$outboundSchema))
-    .optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  providerErrors: z.nullable(z.array(ProviderError$outboundSchema)).optional(),
-  statusCode: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    customMappingErrors: "custom_mapping_errors",
-    providerErrors: "provider_errors",
-    statusCode: "status_code",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StepLogResponse$ {
-  /** @deprecated use `StepLogResponse$inboundSchema` instead. */
-  export const inboundSchema = StepLogResponse$inboundSchema;
-  /** @deprecated use `StepLogResponse$outboundSchema` instead. */
-  export const outboundSchema = StepLogResponse$outboundSchema;
-  /** @deprecated use `StepLogResponse$Outbound` instead. */
-  export type Outbound = StepLogResponse$Outbound;
-}
-
-export function stepLogResponseToJSON(
-  stepLogResponse: StepLogResponse,
-): string {
-  return JSON.stringify(StepLogResponse$outboundSchema.parse(stepLogResponse));
-}
 
 export function stepLogResponseFromJSON(
   jsonString: string,
@@ -418,92 +286,6 @@ export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
       "sub_resource": "subResource",
     });
   });
-
-/** @internal */
-export type StepLog$Outbound = {
-  account_id?: string | null | undefined;
-  action?: string | null | undefined;
-  child_resource?: string | null | undefined;
-  duration?: number | null | undefined;
-  end_time?: string | null | undefined;
-  http_method?: string | null | undefined;
-  id?: string | null | undefined;
-  is_worker?: boolean | null | undefined;
-  path?: string | null | undefined;
-  project_id?: string | null | undefined;
-  provider?: string | null | undefined;
-  request?: RequestT$Outbound | null | undefined;
-  request_id?: string | null | undefined;
-  resource?: string | null | undefined;
-  response?: StepLogResponse$Outbound | null | undefined;
-  service?: string | null | undefined;
-  source_ip?: string | null | undefined;
-  start_time?: string | null | undefined;
-  status?: number | null | undefined;
-  sub_resource?: string | null | undefined;
-  success?: boolean | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const StepLog$outboundSchema: z.ZodType<
-  StepLog$Outbound,
-  z.ZodTypeDef,
-  StepLog
-> = z.object({
-  accountId: z.nullable(z.string()).optional(),
-  action: z.nullable(z.string()).optional(),
-  childResource: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  httpMethod: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  isWorker: z.nullable(z.boolean()).optional(),
-  path: z.nullable(z.string()).optional(),
-  projectId: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
-  request: z.nullable(z.lazy(() => RequestT$outboundSchema)).optional(),
-  requestId: z.nullable(z.string()).optional(),
-  resource: z.nullable(z.string()).optional(),
-  response: z.nullable(z.lazy(() => StepLogResponse$outboundSchema)).optional(),
-  service: z.nullable(z.string()).optional(),
-  sourceIp: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  status: z.nullable(z.number()).optional(),
-  subResource: z.nullable(z.string()).optional(),
-  success: z.nullable(z.boolean()).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountId: "account_id",
-    childResource: "child_resource",
-    endTime: "end_time",
-    httpMethod: "http_method",
-    isWorker: "is_worker",
-    projectId: "project_id",
-    requestId: "request_id",
-    sourceIp: "source_ip",
-    startTime: "start_time",
-    subResource: "sub_resource",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StepLog$ {
-  /** @deprecated use `StepLog$inboundSchema` instead. */
-  export const inboundSchema = StepLog$inboundSchema;
-  /** @deprecated use `StepLog$outboundSchema` instead. */
-  export const outboundSchema = StepLog$outboundSchema;
-  /** @deprecated use `StepLog$Outbound` instead. */
-  export type Outbound = StepLog$Outbound;
-}
-
-export function stepLogToJSON(stepLog: StepLog): string {
-  return JSON.stringify(StepLog$outboundSchema.parse(stepLog));
-}
 
 export function stepLogFromJSON(
   jsonString: string,

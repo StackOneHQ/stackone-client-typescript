@@ -39,22 +39,6 @@ export type AtsCreateCandidateNoteResponse = {
 };
 
 /** @internal */
-export const AtsCreateCandidateNoteRequest$inboundSchema: z.ZodType<
-  AtsCreateCandidateNoteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsCreateNotesRequestDto: shared.AtsCreateNotesRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsCreateNotesRequestDto": "atsCreateNotesRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsCreateCandidateNoteRequest$Outbound = {
   AtsCreateNotesRequestDto: shared.AtsCreateNotesRequestDto$Outbound;
   id: string;
@@ -77,19 +61,6 @@ export const AtsCreateCandidateNoteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateCandidateNoteRequest$ {
-  /** @deprecated use `AtsCreateCandidateNoteRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateCandidateNoteRequest$inboundSchema;
-  /** @deprecated use `AtsCreateCandidateNoteRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateCandidateNoteRequest$outboundSchema;
-  /** @deprecated use `AtsCreateCandidateNoteRequest$Outbound` instead. */
-  export type Outbound = AtsCreateCandidateNoteRequest$Outbound;
-}
-
 export function atsCreateCandidateNoteRequestToJSON(
   atsCreateCandidateNoteRequest: AtsCreateCandidateNoteRequest,
 ): string {
@@ -97,16 +68,6 @@ export function atsCreateCandidateNoteRequestToJSON(
     AtsCreateCandidateNoteRequest$outboundSchema.parse(
       atsCreateCandidateNoteRequest,
     ),
-  );
-}
-
-export function atsCreateCandidateNoteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateCandidateNoteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateCandidateNoteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateCandidateNoteRequest' from JSON`,
   );
 }
 
@@ -131,61 +92,6 @@ export const AtsCreateCandidateNoteResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsCreateCandidateNoteResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsCreateCandidateNoteResponse$outboundSchema: z.ZodType<
-  AtsCreateCandidateNoteResponse$Outbound,
-  z.ZodTypeDef,
-  AtsCreateCandidateNoteResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateCandidateNoteResponse$ {
-  /** @deprecated use `AtsCreateCandidateNoteResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateCandidateNoteResponse$inboundSchema;
-  /** @deprecated use `AtsCreateCandidateNoteResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateCandidateNoteResponse$outboundSchema;
-  /** @deprecated use `AtsCreateCandidateNoteResponse$Outbound` instead. */
-  export type Outbound = AtsCreateCandidateNoteResponse$Outbound;
-}
-
-export function atsCreateCandidateNoteResponseToJSON(
-  atsCreateCandidateNoteResponse: AtsCreateCandidateNoteResponse,
-): string {
-  return JSON.stringify(
-    AtsCreateCandidateNoteResponse$outboundSchema.parse(
-      atsCreateCandidateNoteResponse,
-    ),
-  );
-}
 
 export function atsCreateCandidateNoteResponseFromJSON(
   jsonString: string,

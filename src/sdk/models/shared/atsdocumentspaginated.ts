@@ -10,15 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AtsDocumentApiModel,
   AtsDocumentApiModel$inboundSchema,
-  AtsDocumentApiModel$Outbound,
-  AtsDocumentApiModel$outboundSchema,
 } from "./atsdocumentapimodel.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AtsDocumentsPaginated = {
   data: Array<AtsDocumentApiModel>;
@@ -45,51 +38,6 @@ export const AtsDocumentsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type AtsDocumentsPaginated$Outbound = {
-  data: Array<AtsDocumentApiModel$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AtsDocumentsPaginated$outboundSchema: z.ZodType<
-  AtsDocumentsPaginated$Outbound,
-  z.ZodTypeDef,
-  AtsDocumentsPaginated
-> = z.object({
-  data: z.array(AtsDocumentApiModel$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsPaginated$ {
-  /** @deprecated use `AtsDocumentsPaginated$inboundSchema` instead. */
-  export const inboundSchema = AtsDocumentsPaginated$inboundSchema;
-  /** @deprecated use `AtsDocumentsPaginated$outboundSchema` instead. */
-  export const outboundSchema = AtsDocumentsPaginated$outboundSchema;
-  /** @deprecated use `AtsDocumentsPaginated$Outbound` instead. */
-  export type Outbound = AtsDocumentsPaginated$Outbound;
-}
-
-export function atsDocumentsPaginatedToJSON(
-  atsDocumentsPaginated: AtsDocumentsPaginated,
-): string {
-  return JSON.stringify(
-    AtsDocumentsPaginated$outboundSchema.parse(atsDocumentsPaginated),
-  );
-}
 
 export function atsDocumentsPaginatedFromJSON(
   jsonString: string,

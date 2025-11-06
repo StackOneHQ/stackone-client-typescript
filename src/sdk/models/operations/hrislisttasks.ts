@@ -87,21 +87,6 @@ export type HrisListTasksResponse = {
 };
 
 /** @internal */
-export const HrisListTasksQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListTasksQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListTasksQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,19 +104,6 @@ export const HrisListTasksQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTasksQueryParamFilter$ {
-  /** @deprecated use `HrisListTasksQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = HrisListTasksQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListTasksQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = HrisListTasksQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListTasksQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListTasksQueryParamFilter$Outbound;
-}
-
 export function hrisListTasksQueryParamFilterToJSON(
   hrisListTasksQueryParamFilter: HrisListTasksQueryParamFilter,
 ): string {
@@ -141,43 +113,6 @@ export function hrisListTasksQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListTasksQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListTasksQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListTasksQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListTasksQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListTasksRequest$inboundSchema: z.ZodType<
-  HrisListTasksRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => HrisListTasksQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListTasksRequest$Outbound = {
@@ -218,34 +153,11 @@ export const HrisListTasksRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTasksRequest$ {
-  /** @deprecated use `HrisListTasksRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListTasksRequest$inboundSchema;
-  /** @deprecated use `HrisListTasksRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListTasksRequest$outboundSchema;
-  /** @deprecated use `HrisListTasksRequest$Outbound` instead. */
-  export type Outbound = HrisListTasksRequest$Outbound;
-}
-
 export function hrisListTasksRequestToJSON(
   hrisListTasksRequest: HrisListTasksRequest,
 ): string {
   return JSON.stringify(
     HrisListTasksRequest$outboundSchema.parse(hrisListTasksRequest),
-  );
-}
-
-export function hrisListTasksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListTasksRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListTasksRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListTasksRequest' from JSON`,
   );
 }
 
@@ -270,59 +182,6 @@ export const HrisListTasksResponse$inboundSchema: z.ZodType<
     "TasksPaginated": "tasksPaginated",
   });
 });
-
-/** @internal */
-export type HrisListTasksResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TasksPaginated?: shared.TasksPaginated$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisListTasksResponse$outboundSchema: z.ZodType<
-  HrisListTasksResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListTasksResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  tasksPaginated: shared.TasksPaginated$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    tasksPaginated: "TasksPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTasksResponse$ {
-  /** @deprecated use `HrisListTasksResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListTasksResponse$inboundSchema;
-  /** @deprecated use `HrisListTasksResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListTasksResponse$outboundSchema;
-  /** @deprecated use `HrisListTasksResponse$Outbound` instead. */
-  export type Outbound = HrisListTasksResponse$Outbound;
-}
-
-export function hrisListTasksResponseToJSON(
-  hrisListTasksResponse: HrisListTasksResponse,
-): string {
-  return JSON.stringify(
-    HrisListTasksResponse$outboundSchema.parse(hrisListTasksResponse),
-  );
-}
 
 export function hrisListTasksResponseFromJSON(
   jsonString: string,

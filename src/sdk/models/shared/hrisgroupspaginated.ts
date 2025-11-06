@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HRISGroup,
-  HRISGroup$inboundSchema,
-  HRISGroup$Outbound,
-  HRISGroup$outboundSchema,
-} from "./hrisgroup.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HRISGroup, HRISGroup$inboundSchema } from "./hrisgroup.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISGroupsPaginated = {
   data: Array<HRISGroup>;
@@ -45,51 +35,6 @@ export const HRISGroupsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type HRISGroupsPaginated$Outbound = {
-  data: Array<HRISGroup$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISGroupsPaginated$outboundSchema: z.ZodType<
-  HRISGroupsPaginated$Outbound,
-  z.ZodTypeDef,
-  HRISGroupsPaginated
-> = z.object({
-  data: z.array(HRISGroup$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISGroupsPaginated$ {
-  /** @deprecated use `HRISGroupsPaginated$inboundSchema` instead. */
-  export const inboundSchema = HRISGroupsPaginated$inboundSchema;
-  /** @deprecated use `HRISGroupsPaginated$outboundSchema` instead. */
-  export const outboundSchema = HRISGroupsPaginated$outboundSchema;
-  /** @deprecated use `HRISGroupsPaginated$Outbound` instead. */
-  export type Outbound = HRISGroupsPaginated$Outbound;
-}
-
-export function hrisGroupsPaginatedToJSON(
-  hrisGroupsPaginated: HRISGroupsPaginated,
-): string {
-  return JSON.stringify(
-    HRISGroupsPaginated$outboundSchema.parse(hrisGroupsPaginated),
-  );
-}
 
 export function hrisGroupsPaginatedFromJSON(
   jsonString: string,

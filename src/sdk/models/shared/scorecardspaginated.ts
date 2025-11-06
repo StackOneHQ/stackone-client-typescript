@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  Scorecard,
-  Scorecard$inboundSchema,
-  Scorecard$Outbound,
-  Scorecard$outboundSchema,
-} from "./scorecard.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { Scorecard, Scorecard$inboundSchema } from "./scorecard.js";
 
 export type ScorecardsPaginated = {
   data: Array<Scorecard>;
@@ -45,51 +35,6 @@ export const ScorecardsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type ScorecardsPaginated$Outbound = {
-  data: Array<Scorecard$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ScorecardsPaginated$outboundSchema: z.ZodType<
-  ScorecardsPaginated$Outbound,
-  z.ZodTypeDef,
-  ScorecardsPaginated
-> = z.object({
-  data: z.array(Scorecard$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScorecardsPaginated$ {
-  /** @deprecated use `ScorecardsPaginated$inboundSchema` instead. */
-  export const inboundSchema = ScorecardsPaginated$inboundSchema;
-  /** @deprecated use `ScorecardsPaginated$outboundSchema` instead. */
-  export const outboundSchema = ScorecardsPaginated$outboundSchema;
-  /** @deprecated use `ScorecardsPaginated$Outbound` instead. */
-  export type Outbound = ScorecardsPaginated$Outbound;
-}
-
-export function scorecardsPaginatedToJSON(
-  scorecardsPaginated: ScorecardsPaginated,
-): string {
-  return JSON.stringify(
-    ScorecardsPaginated$outboundSchema.parse(scorecardsPaginated),
-  );
-}
 
 export function scorecardsPaginatedFromJSON(
   jsonString: string,

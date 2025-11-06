@@ -54,24 +54,6 @@ export type DocumentsGetFolderResponse = {
 };
 
 /** @internal */
-export const DocumentsGetFolderRequest$inboundSchema: z.ZodType<
-  DocumentsGetFolderRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  include: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type DocumentsGetFolderRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -99,34 +81,11 @@ export const DocumentsGetFolderRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsGetFolderRequest$ {
-  /** @deprecated use `DocumentsGetFolderRequest$inboundSchema` instead. */
-  export const inboundSchema = DocumentsGetFolderRequest$inboundSchema;
-  /** @deprecated use `DocumentsGetFolderRequest$outboundSchema` instead. */
-  export const outboundSchema = DocumentsGetFolderRequest$outboundSchema;
-  /** @deprecated use `DocumentsGetFolderRequest$Outbound` instead. */
-  export type Outbound = DocumentsGetFolderRequest$Outbound;
-}
-
 export function documentsGetFolderRequestToJSON(
   documentsGetFolderRequest: DocumentsGetFolderRequest,
 ): string {
   return JSON.stringify(
     DocumentsGetFolderRequest$outboundSchema.parse(documentsGetFolderRequest),
-  );
-}
-
-export function documentsGetFolderRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsGetFolderRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsGetFolderRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsGetFolderRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const DocumentsGetFolderResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type DocumentsGetFolderResponse$Outbound = {
-  ContentType: string;
-  FolderResult?: shared.FolderResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const DocumentsGetFolderResponse$outboundSchema: z.ZodType<
-  DocumentsGetFolderResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentsGetFolderResponse
-> = z.object({
-  contentType: z.string(),
-  folderResult: shared.FolderResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    folderResult: "FolderResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsGetFolderResponse$ {
-  /** @deprecated use `DocumentsGetFolderResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentsGetFolderResponse$inboundSchema;
-  /** @deprecated use `DocumentsGetFolderResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentsGetFolderResponse$outboundSchema;
-  /** @deprecated use `DocumentsGetFolderResponse$Outbound` instead. */
-  export type Outbound = DocumentsGetFolderResponse$Outbound;
-}
-
-export function documentsGetFolderResponseToJSON(
-  documentsGetFolderResponse: DocumentsGetFolderResponse,
-): string {
-  return JSON.stringify(
-    DocumentsGetFolderResponse$outboundSchema.parse(documentsGetFolderResponse),
-  );
-}
 
 export function documentsGetFolderResponseFromJSON(
   jsonString: string,

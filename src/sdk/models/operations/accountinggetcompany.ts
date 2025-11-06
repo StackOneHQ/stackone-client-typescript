@@ -50,23 +50,6 @@ export type AccountingGetCompanyResponse = {
 };
 
 /** @internal */
-export const AccountingGetCompanyRequest$inboundSchema: z.ZodType<
-  AccountingGetCompanyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AccountingGetCompanyRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const AccountingGetCompanyRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingGetCompanyRequest$ {
-  /** @deprecated use `AccountingGetCompanyRequest$inboundSchema` instead. */
-  export const inboundSchema = AccountingGetCompanyRequest$inboundSchema;
-  /** @deprecated use `AccountingGetCompanyRequest$outboundSchema` instead. */
-  export const outboundSchema = AccountingGetCompanyRequest$outboundSchema;
-  /** @deprecated use `AccountingGetCompanyRequest$Outbound` instead. */
-  export type Outbound = AccountingGetCompanyRequest$Outbound;
-}
-
 export function accountingGetCompanyRequestToJSON(
   accountingGetCompanyRequest: AccountingGetCompanyRequest,
 ): string {
@@ -112,16 +82,6 @@ export function accountingGetCompanyRequestToJSON(
     AccountingGetCompanyRequest$outboundSchema.parse(
       accountingGetCompanyRequest,
     ),
-  );
-}
-
-export function accountingGetCompanyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingGetCompanyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AccountingGetCompanyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingGetCompanyRequest' from JSON`,
   );
 }
 
@@ -147,62 +107,6 @@ export const AccountingGetCompanyResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AccountingGetCompanyResponse$Outbound = {
-  AccountingCompanyResult?: shared.AccountingCompanyResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AccountingGetCompanyResponse$outboundSchema: z.ZodType<
-  AccountingGetCompanyResponse$Outbound,
-  z.ZodTypeDef,
-  AccountingGetCompanyResponse
-> = z.object({
-  accountingCompanyResult: shared.AccountingCompanyResult$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountingCompanyResult: "AccountingCompanyResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingGetCompanyResponse$ {
-  /** @deprecated use `AccountingGetCompanyResponse$inboundSchema` instead. */
-  export const inboundSchema = AccountingGetCompanyResponse$inboundSchema;
-  /** @deprecated use `AccountingGetCompanyResponse$outboundSchema` instead. */
-  export const outboundSchema = AccountingGetCompanyResponse$outboundSchema;
-  /** @deprecated use `AccountingGetCompanyResponse$Outbound` instead. */
-  export type Outbound = AccountingGetCompanyResponse$Outbound;
-}
-
-export function accountingGetCompanyResponseToJSON(
-  accountingGetCompanyResponse: AccountingGetCompanyResponse,
-): string {
-  return JSON.stringify(
-    AccountingGetCompanyResponse$outboundSchema.parse(
-      accountingGetCompanyResponse,
-    ),
-  );
-}
 
 export function accountingGetCompanyResponseFromJSON(
   jsonString: string,

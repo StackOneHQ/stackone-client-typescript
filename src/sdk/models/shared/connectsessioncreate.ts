@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export enum ConnectSessionCreateCategories {
   Ats = "ats",
@@ -100,32 +93,9 @@ export type ConnectSessionCreate = {
 };
 
 /** @internal */
-export const ConnectSessionCreateCategories$inboundSchema: z.ZodNativeEnum<
-  typeof ConnectSessionCreateCategories
-> = z.nativeEnum(ConnectSessionCreateCategories);
-
-/** @internal */
 export const ConnectSessionCreateCategories$outboundSchema: z.ZodNativeEnum<
   typeof ConnectSessionCreateCategories
-> = ConnectSessionCreateCategories$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectSessionCreateCategories$ {
-  /** @deprecated use `ConnectSessionCreateCategories$inboundSchema` instead. */
-  export const inboundSchema = ConnectSessionCreateCategories$inboundSchema;
-  /** @deprecated use `ConnectSessionCreateCategories$outboundSchema` instead. */
-  export const outboundSchema = ConnectSessionCreateCategories$outboundSchema;
-}
-
-/** @internal */
-export const ConnectSessionCreateMetadata$inboundSchema: z.ZodType<
-  ConnectSessionCreateMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
+> = z.nativeEnum(ConnectSessionCreateCategories);
 
 /** @internal */
 export type ConnectSessionCreateMetadata$Outbound = {};
@@ -137,19 +107,6 @@ export const ConnectSessionCreateMetadata$outboundSchema: z.ZodType<
   ConnectSessionCreateMetadata
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectSessionCreateMetadata$ {
-  /** @deprecated use `ConnectSessionCreateMetadata$inboundSchema` instead. */
-  export const inboundSchema = ConnectSessionCreateMetadata$inboundSchema;
-  /** @deprecated use `ConnectSessionCreateMetadata$outboundSchema` instead. */
-  export const outboundSchema = ConnectSessionCreateMetadata$outboundSchema;
-  /** @deprecated use `ConnectSessionCreateMetadata$Outbound` instead. */
-  export type Outbound = ConnectSessionCreateMetadata$Outbound;
-}
-
 export function connectSessionCreateMetadataToJSON(
   connectSessionCreateMetadata: ConnectSessionCreateMetadata,
 ): string {
@@ -160,27 +117,6 @@ export function connectSessionCreateMetadataToJSON(
   );
 }
 
-export function connectSessionCreateMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<ConnectSessionCreateMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ConnectSessionCreateMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConnectSessionCreateMetadata' from JSON`,
-  );
-}
-
-/** @internal */
-export const ConnectSessionCreateType$inboundSchema: z.ZodType<
-  ConnectSessionCreateTypeOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(ConnectSessionCreateType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const ConnectSessionCreateType$outboundSchema: z.ZodType<
   ConnectSessionCreateTypeOpen,
@@ -190,52 +126,6 @@ export const ConnectSessionCreateType$outboundSchema: z.ZodType<
   z.nativeEnum(ConnectSessionCreateType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectSessionCreateType$ {
-  /** @deprecated use `ConnectSessionCreateType$inboundSchema` instead. */
-  export const inboundSchema = ConnectSessionCreateType$inboundSchema;
-  /** @deprecated use `ConnectSessionCreateType$outboundSchema` instead. */
-  export const outboundSchema = ConnectSessionCreateType$outboundSchema;
-}
-
-/** @internal */
-export const ConnectSessionCreate$inboundSchema: z.ZodType<
-  ConnectSessionCreate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_id: z.nullable(z.string()).optional(),
-  categories: z.nullable(z.array(ConnectSessionCreateCategories$inboundSchema))
-    .optional(),
-  expires_in: z.nullable(z.number().default(1800)),
-  label: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.lazy(() => ConnectSessionCreateMetadata$inboundSchema))
-    .optional(),
-  multiple: z.nullable(z.boolean().default(false)),
-  origin_owner_id: z.string(),
-  origin_owner_name: z.string(),
-  origin_username: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
-  provider_version: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    ConnectSessionCreateType$inboundSchema.default(
-      ConnectSessionCreateType.Production,
-    ),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "account_id": "accountId",
-    "expires_in": "expiresIn",
-    "origin_owner_id": "originOwnerId",
-    "origin_owner_name": "originOwnerName",
-    "origin_username": "originUsername",
-    "provider_version": "providerVersion",
-  });
-});
 
 /** @internal */
 export type ConnectSessionCreate$Outbound = {
@@ -289,33 +179,10 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectSessionCreate$ {
-  /** @deprecated use `ConnectSessionCreate$inboundSchema` instead. */
-  export const inboundSchema = ConnectSessionCreate$inboundSchema;
-  /** @deprecated use `ConnectSessionCreate$outboundSchema` instead. */
-  export const outboundSchema = ConnectSessionCreate$outboundSchema;
-  /** @deprecated use `ConnectSessionCreate$Outbound` instead. */
-  export type Outbound = ConnectSessionCreate$Outbound;
-}
-
 export function connectSessionCreateToJSON(
   connectSessionCreate: ConnectSessionCreate,
 ): string {
   return JSON.stringify(
     ConnectSessionCreate$outboundSchema.parse(connectSessionCreate),
-  );
-}
-
-export function connectSessionCreateFromJSON(
-  jsonString: string,
-): SafeParseResult<ConnectSessionCreate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ConnectSessionCreate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConnectSessionCreate' from JSON`,
   );
 }

@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -78,53 +74,11 @@ export const Categories$inboundSchema: z.ZodNativeEnum<typeof Categories> = z
   .nativeEnum(Categories);
 
 /** @internal */
-export const Categories$outboundSchema: z.ZodNativeEnum<typeof Categories> =
-  Categories$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Categories$ {
-  /** @deprecated use `Categories$inboundSchema` instead. */
-  export const inboundSchema = Categories$inboundSchema;
-  /** @deprecated use `Categories$outboundSchema` instead. */
-  export const outboundSchema = Categories$outboundSchema;
-}
-
-/** @internal */
 export const Metadata$inboundSchema: z.ZodType<
   Metadata,
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type Metadata$Outbound = {};
-
-/** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
-  z.ZodTypeDef,
-  Metadata
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
-}
-
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
-}
 
 export function metadataFromJSON(
   jsonString: string,
@@ -146,27 +100,6 @@ export const ConnectSessionType$inboundSchema: z.ZodType<
     z.nativeEnum(ConnectSessionType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const ConnectSessionType$outboundSchema: z.ZodType<
-  ConnectSessionTypeOpen,
-  z.ZodTypeDef,
-  ConnectSessionTypeOpen
-> = z.union([
-  z.nativeEnum(ConnectSessionType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectSessionType$ {
-  /** @deprecated use `ConnectSessionType$inboundSchema` instead. */
-  export const inboundSchema = ConnectSessionType$inboundSchema;
-  /** @deprecated use `ConnectSessionType$outboundSchema` instead. */
-  export const outboundSchema = ConnectSessionType$outboundSchema;
-}
 
 /** @internal */
 export const ConnectSession$inboundSchema: z.ZodType<
@@ -200,74 +133,6 @@ export const ConnectSession$inboundSchema: z.ZodType<
     "project_id": "projectId",
   });
 });
-
-/** @internal */
-export type ConnectSession$Outbound = {
-  account_id?: string | null | undefined;
-  categories?: Array<string> | null | undefined;
-  created_at: string;
-  external_trigger_token?: string | null | undefined;
-  id: number;
-  label?: string | null | undefined;
-  metadata?: Metadata$Outbound | null | undefined;
-  organization_id: number;
-  origin_owner_id: string;
-  origin_owner_name: string;
-  origin_username?: string | null | undefined;
-  project_id: string;
-  provider?: string | null | undefined;
-  type?: string | null | undefined;
-};
-
-/** @internal */
-export const ConnectSession$outboundSchema: z.ZodType<
-  ConnectSession$Outbound,
-  z.ZodTypeDef,
-  ConnectSession
-> = z.object({
-  accountId: z.nullable(z.string()).optional(),
-  categories: z.nullable(z.array(Categories$outboundSchema)).optional(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  externalTriggerToken: z.nullable(z.string()).optional(),
-  id: z.number(),
-  label: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
-  organizationId: z.number(),
-  originOwnerId: z.string(),
-  originOwnerName: z.string(),
-  originUsername: z.nullable(z.string()).optional(),
-  projectId: z.string(),
-  provider: z.nullable(z.string()).optional(),
-  type: z.nullable(ConnectSessionType$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountId: "account_id",
-    createdAt: "created_at",
-    externalTriggerToken: "external_trigger_token",
-    organizationId: "organization_id",
-    originOwnerId: "origin_owner_id",
-    originOwnerName: "origin_owner_name",
-    originUsername: "origin_username",
-    projectId: "project_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectSession$ {
-  /** @deprecated use `ConnectSession$inboundSchema` instead. */
-  export const inboundSchema = ConnectSession$inboundSchema;
-  /** @deprecated use `ConnectSession$outboundSchema` instead. */
-  export const outboundSchema = ConnectSession$outboundSchema;
-  /** @deprecated use `ConnectSession$Outbound` instead. */
-  export type Outbound = ConnectSession$Outbound;
-}
-
-export function connectSessionToJSON(connectSession: ConnectSession): string {
-  return JSON.stringify(ConnectSession$outboundSchema.parse(connectSession));
-}
 
 export function connectSessionFromJSON(
   jsonString: string,

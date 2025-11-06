@@ -87,21 +87,6 @@ export type IamListPoliciesResponse = {
 };
 
 /** @internal */
-export const IamListPoliciesQueryParamFilter$inboundSchema: z.ZodType<
-  IamListPoliciesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type IamListPoliciesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,19 +104,6 @@ export const IamListPoliciesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListPoliciesQueryParamFilter$ {
-  /** @deprecated use `IamListPoliciesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = IamListPoliciesQueryParamFilter$inboundSchema;
-  /** @deprecated use `IamListPoliciesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = IamListPoliciesQueryParamFilter$outboundSchema;
-  /** @deprecated use `IamListPoliciesQueryParamFilter$Outbound` instead. */
-  export type Outbound = IamListPoliciesQueryParamFilter$Outbound;
-}
-
 export function iamListPoliciesQueryParamFilterToJSON(
   iamListPoliciesQueryParamFilter: IamListPoliciesQueryParamFilter,
 ): string {
@@ -141,44 +113,6 @@ export function iamListPoliciesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function iamListPoliciesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<IamListPoliciesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamListPoliciesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamListPoliciesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamListPoliciesRequest$inboundSchema: z.ZodType<
-  IamListPoliciesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => IamListPoliciesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type IamListPoliciesRequest$Outbound = {
@@ -220,34 +154,11 @@ export const IamListPoliciesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListPoliciesRequest$ {
-  /** @deprecated use `IamListPoliciesRequest$inboundSchema` instead. */
-  export const inboundSchema = IamListPoliciesRequest$inboundSchema;
-  /** @deprecated use `IamListPoliciesRequest$outboundSchema` instead. */
-  export const outboundSchema = IamListPoliciesRequest$outboundSchema;
-  /** @deprecated use `IamListPoliciesRequest$Outbound` instead. */
-  export type Outbound = IamListPoliciesRequest$Outbound;
-}
-
 export function iamListPoliciesRequestToJSON(
   iamListPoliciesRequest: IamListPoliciesRequest,
 ): string {
   return JSON.stringify(
     IamListPoliciesRequest$outboundSchema.parse(iamListPoliciesRequest),
-  );
-}
-
-export function iamListPoliciesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamListPoliciesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamListPoliciesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamListPoliciesRequest' from JSON`,
   );
 }
 
@@ -272,59 +183,6 @@ export const IamListPoliciesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamListPoliciesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  IamPoliciesPaginated?: shared.IamPoliciesPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamListPoliciesResponse$outboundSchema: z.ZodType<
-  IamListPoliciesResponse$Outbound,
-  z.ZodTypeDef,
-  IamListPoliciesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  iamPoliciesPaginated: shared.IamPoliciesPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    iamPoliciesPaginated: "IamPoliciesPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListPoliciesResponse$ {
-  /** @deprecated use `IamListPoliciesResponse$inboundSchema` instead. */
-  export const inboundSchema = IamListPoliciesResponse$inboundSchema;
-  /** @deprecated use `IamListPoliciesResponse$outboundSchema` instead. */
-  export const outboundSchema = IamListPoliciesResponse$outboundSchema;
-  /** @deprecated use `IamListPoliciesResponse$Outbound` instead. */
-  export type Outbound = IamListPoliciesResponse$Outbound;
-}
-
-export function iamListPoliciesResponseToJSON(
-  iamListPoliciesResponse: IamListPoliciesResponse,
-): string {
-  return JSON.stringify(
-    IamListPoliciesResponse$outboundSchema.parse(iamListPoliciesResponse),
-  );
-}
 
 export function iamListPoliciesResponseFromJSON(
   jsonString: string,

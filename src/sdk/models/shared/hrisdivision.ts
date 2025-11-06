@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -103,33 +99,6 @@ export const HRISDivision4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type HRISDivision4$Outbound = {};
-
-/** @internal */
-export const HRISDivision4$outboundSchema: z.ZodType<
-  HRISDivision4$Outbound,
-  z.ZodTypeDef,
-  HRISDivision4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDivision4$ {
-  /** @deprecated use `HRISDivision4$inboundSchema` instead. */
-  export const inboundSchema = HRISDivision4$inboundSchema;
-  /** @deprecated use `HRISDivision4$outboundSchema` instead. */
-  export const outboundSchema = HRISDivision4$outboundSchema;
-  /** @deprecated use `HRISDivision4$Outbound` instead. */
-  export type Outbound = HRISDivision4$Outbound;
-}
-
-export function hrisDivision4ToJSON(hrisDivision4: HRISDivision4): string {
-  return JSON.stringify(HRISDivision4$outboundSchema.parse(hrisDivision4));
-}
-
 export function hrisDivision4FromJSON(
   jsonString: string,
 ): SafeParseResult<HRISDivision4, SDKValidationError> {
@@ -153,48 +122,6 @@ export const HRISDivisionSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HRISDivisionSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HRISDivision4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HRISDivisionSourceValue$outboundSchema: z.ZodType<
-  HRISDivisionSourceValue$Outbound,
-  z.ZodTypeDef,
-  HRISDivisionSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HRISDivision4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDivisionSourceValue$ {
-  /** @deprecated use `HRISDivisionSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HRISDivisionSourceValue$inboundSchema;
-  /** @deprecated use `HRISDivisionSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HRISDivisionSourceValue$outboundSchema;
-  /** @deprecated use `HRISDivisionSourceValue$Outbound` instead. */
-  export type Outbound = HRISDivisionSourceValue$Outbound;
-}
-
-export function hrisDivisionSourceValueToJSON(
-  hrisDivisionSourceValue: HRISDivisionSourceValue,
-): string {
-  return JSON.stringify(
-    HRISDivisionSourceValue$outboundSchema.parse(hrisDivisionSourceValue),
-  );
-}
-
 export function hrisDivisionSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HRISDivisionSourceValue, SDKValidationError> {
@@ -217,27 +144,6 @@ export const HRISDivisionValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HRISDivisionValue$outboundSchema: z.ZodType<
-  HRISDivisionValueOpen,
-  z.ZodTypeDef,
-  HRISDivisionValueOpen
-> = z.union([
-  z.nativeEnum(HRISDivisionValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDivisionValue$ {
-  /** @deprecated use `HRISDivisionValue$inboundSchema` instead. */
-  export const inboundSchema = HRISDivisionValue$inboundSchema;
-  /** @deprecated use `HRISDivisionValue$outboundSchema` instead. */
-  export const outboundSchema = HRISDivisionValue$outboundSchema;
-}
-
-/** @internal */
 export const HRISDivisionType$inboundSchema: z.ZodType<
   HRISDivisionType,
   z.ZodTypeDef,
@@ -258,62 +164,6 @@ export const HRISDivisionType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type HRISDivisionType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HRISDivision4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HRISDivisionType$outboundSchema: z.ZodType<
-  HRISDivisionType$Outbound,
-  z.ZodTypeDef,
-  HRISDivisionType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HRISDivision4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HRISDivisionValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDivisionType$ {
-  /** @deprecated use `HRISDivisionType$inboundSchema` instead. */
-  export const inboundSchema = HRISDivisionType$inboundSchema;
-  /** @deprecated use `HRISDivisionType$outboundSchema` instead. */
-  export const outboundSchema = HRISDivisionType$outboundSchema;
-  /** @deprecated use `HRISDivisionType$Outbound` instead. */
-  export type Outbound = HRISDivisionType$Outbound;
-}
-
-export function hrisDivisionTypeToJSON(
-  hrisDivisionType: HRISDivisionType,
-): string {
-  return JSON.stringify(
-    HRISDivisionType$outboundSchema.parse(hrisDivisionType),
-  );
-}
 
 export function hrisDivisionTypeFromJSON(
   jsonString: string,
@@ -354,68 +204,6 @@ export const HRISDivision$inboundSchema: z.ZodType<
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
-
-/** @internal */
-export type HRISDivision$Outbound = {
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  owner_ids?: Array<string> | null | undefined;
-  parent_ids?: Array<string> | null | undefined;
-  remote_company_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_ids?: Array<string> | null | undefined;
-  remote_parent_ids?: Array<string> | null | undefined;
-  type?: HRISDivisionType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const HRISDivision$outboundSchema: z.ZodType<
-  HRISDivision$Outbound,
-  z.ZodTypeDef,
-  HRISDivision
-> = z.object({
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerIds: z.nullable(z.array(z.string())).optional(),
-  parentIds: z.nullable(z.array(z.string())).optional(),
-  remoteCompanyId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
-  remoteParentIds: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(z.lazy(() => HRISDivisionType$outboundSchema)).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    ownerIds: "owner_ids",
-    parentIds: "parent_ids",
-    remoteCompanyId: "remote_company_id",
-    remoteId: "remote_id",
-    remoteOwnerIds: "remote_owner_ids",
-    remoteParentIds: "remote_parent_ids",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDivision$ {
-  /** @deprecated use `HRISDivision$inboundSchema` instead. */
-  export const inboundSchema = HRISDivision$inboundSchema;
-  /** @deprecated use `HRISDivision$outboundSchema` instead. */
-  export const outboundSchema = HRISDivision$outboundSchema;
-  /** @deprecated use `HRISDivision$Outbound` instead. */
-  export type Outbound = HRISDivision$Outbound;
-}
-
-export function hrisDivisionToJSON(hrisDivision: HRISDivision): string {
-  return JSON.stringify(HRISDivision$outboundSchema.parse(hrisDivision));
-}
 
 export function hrisDivisionFromJSON(
   jsonString: string,

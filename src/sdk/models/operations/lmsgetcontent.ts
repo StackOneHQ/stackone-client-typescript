@@ -50,23 +50,6 @@ export type LmsGetContentResponse = {
 };
 
 /** @internal */
-export const LmsGetContentRequest$inboundSchema: z.ZodType<
-  LmsGetContentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsGetContentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const LmsGetContentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetContentRequest$ {
-  /** @deprecated use `LmsGetContentRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsGetContentRequest$inboundSchema;
-  /** @deprecated use `LmsGetContentRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsGetContentRequest$outboundSchema;
-  /** @deprecated use `LmsGetContentRequest$Outbound` instead. */
-  export type Outbound = LmsGetContentRequest$Outbound;
-}
-
 export function lmsGetContentRequestToJSON(
   lmsGetContentRequest: LmsGetContentRequest,
 ): string {
   return JSON.stringify(
     LmsGetContentRequest$outboundSchema.parse(lmsGetContentRequest),
-  );
-}
-
-export function lmsGetContentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsGetContentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsGetContentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsGetContentRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const LmsGetContentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsGetContentResponse$Outbound = {
-  ContentResult?: shared.ContentResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsGetContentResponse$outboundSchema: z.ZodType<
-  LmsGetContentResponse$Outbound,
-  z.ZodTypeDef,
-  LmsGetContentResponse
-> = z.object({
-  contentResult: shared.ContentResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentResult: "ContentResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetContentResponse$ {
-  /** @deprecated use `LmsGetContentResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsGetContentResponse$inboundSchema;
-  /** @deprecated use `LmsGetContentResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsGetContentResponse$outboundSchema;
-  /** @deprecated use `LmsGetContentResponse$Outbound` instead. */
-  export type Outbound = LmsGetContentResponse$Outbound;
-}
-
-export function lmsGetContentResponseToJSON(
-  lmsGetContentResponse: LmsGetContentResponse,
-): string {
-  return JSON.stringify(
-    LmsGetContentResponse$outboundSchema.parse(lmsGetContentResponse),
-  );
-}
 
 export function lmsGetContentResponseFromJSON(
   jsonString: string,

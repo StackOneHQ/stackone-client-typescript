@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   TimeOffBalances,
   TimeOffBalances$inboundSchema,
-  TimeOffBalances$Outbound,
-  TimeOffBalances$outboundSchema,
 } from "./timeoffbalances.js";
 
 export type TimeOffBalanceResult = {
@@ -33,43 +26,6 @@ export const TimeOffBalanceResult$inboundSchema: z.ZodType<
   data: TimeOffBalances$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TimeOffBalanceResult$Outbound = {
-  data: TimeOffBalances$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TimeOffBalanceResult$outboundSchema: z.ZodType<
-  TimeOffBalanceResult$Outbound,
-  z.ZodTypeDef,
-  TimeOffBalanceResult
-> = z.object({
-  data: TimeOffBalances$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffBalanceResult$ {
-  /** @deprecated use `TimeOffBalanceResult$inboundSchema` instead. */
-  export const inboundSchema = TimeOffBalanceResult$inboundSchema;
-  /** @deprecated use `TimeOffBalanceResult$outboundSchema` instead. */
-  export const outboundSchema = TimeOffBalanceResult$outboundSchema;
-  /** @deprecated use `TimeOffBalanceResult$Outbound` instead. */
-  export type Outbound = TimeOffBalanceResult$Outbound;
-}
-
-export function timeOffBalanceResultToJSON(
-  timeOffBalanceResult: TimeOffBalanceResult,
-): string {
-  return JSON.stringify(
-    TimeOffBalanceResult$outboundSchema.parse(timeOffBalanceResult),
-  );
-}
 
 export function timeOffBalanceResultFromJSON(
   jsonString: string,

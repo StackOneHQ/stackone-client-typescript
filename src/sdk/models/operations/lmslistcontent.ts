@@ -92,10 +92,6 @@ export type LmsListContentResponse = {
 };
 
 /** @internal */
-export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
-  .union([z.boolean(), z.string()]);
-
-/** @internal */
 export type Active$Outbound = boolean | string;
 
 /** @internal */
@@ -105,48 +101,9 @@ export const Active$outboundSchema: z.ZodType<
   Active
 > = z.union([z.boolean(), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Active$ {
-  /** @deprecated use `Active$inboundSchema` instead. */
-  export const inboundSchema = Active$inboundSchema;
-  /** @deprecated use `Active$outboundSchema` instead. */
-  export const outboundSchema = Active$outboundSchema;
-  /** @deprecated use `Active$Outbound` instead. */
-  export type Outbound = Active$Outbound;
-}
-
 export function activeToJSON(active: Active): string {
   return JSON.stringify(Active$outboundSchema.parse(active));
 }
-
-export function activeFromJSON(
-  jsonString: string,
-): SafeParseResult<Active, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Active$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Active' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListContentQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListContentQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), z.string()])).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
 
 /** @internal */
 export type LmsListContentQueryParamFilter$Outbound = {
@@ -168,19 +125,6 @@ export const LmsListContentQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListContentQueryParamFilter$ {
-  /** @deprecated use `LmsListContentQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListContentQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListContentQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = LmsListContentQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListContentQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListContentQueryParamFilter$Outbound;
-}
-
 export function lmsListContentQueryParamFilterToJSON(
   lmsListContentQueryParamFilter: LmsListContentQueryParamFilter,
 ): string {
@@ -190,42 +134,6 @@ export function lmsListContentQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListContentQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListContentQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListContentQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListContentQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListContentRequest$inboundSchema: z.ZodType<
-  LmsListContentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => LmsListContentQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListContentRequest$Outbound = {
@@ -265,34 +173,11 @@ export const LmsListContentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListContentRequest$ {
-  /** @deprecated use `LmsListContentRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListContentRequest$inboundSchema;
-  /** @deprecated use `LmsListContentRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListContentRequest$outboundSchema;
-  /** @deprecated use `LmsListContentRequest$Outbound` instead. */
-  export type Outbound = LmsListContentRequest$Outbound;
-}
-
 export function lmsListContentRequestToJSON(
   lmsListContentRequest: LmsListContentRequest,
 ): string {
   return JSON.stringify(
     LmsListContentRequest$outboundSchema.parse(lmsListContentRequest),
-  );
-}
-
-export function lmsListContentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListContentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListContentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListContentRequest' from JSON`,
   );
 }
 
@@ -317,59 +202,6 @@ export const LmsListContentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsListContentResponse$Outbound = {
-  ContentPaginated?: shared.ContentPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsListContentResponse$outboundSchema: z.ZodType<
-  LmsListContentResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListContentResponse
-> = z.object({
-  contentPaginated: shared.ContentPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentPaginated: "ContentPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListContentResponse$ {
-  /** @deprecated use `LmsListContentResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListContentResponse$inboundSchema;
-  /** @deprecated use `LmsListContentResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListContentResponse$outboundSchema;
-  /** @deprecated use `LmsListContentResponse$Outbound` instead. */
-  export type Outbound = LmsListContentResponse$Outbound;
-}
-
-export function lmsListContentResponseToJSON(
-  lmsListContentResponse: LmsListContentResponse,
-): string {
-  return JSON.stringify(
-    LmsListContentResponse$outboundSchema.parse(lmsListContentResponse),
-  );
-}
 
 export function lmsListContentResponseFromJSON(
   jsonString: string,

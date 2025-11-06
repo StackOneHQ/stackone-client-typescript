@@ -50,23 +50,6 @@ export type HrisGetDivisionGroupResponse = {
 };
 
 /** @internal */
-export const HrisGetDivisionGroupRequest$inboundSchema: z.ZodType<
-  HrisGetDivisionGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetDivisionGroupRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const HrisGetDivisionGroupRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetDivisionGroupRequest$ {
-  /** @deprecated use `HrisGetDivisionGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetDivisionGroupRequest$inboundSchema;
-  /** @deprecated use `HrisGetDivisionGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetDivisionGroupRequest$outboundSchema;
-  /** @deprecated use `HrisGetDivisionGroupRequest$Outbound` instead. */
-  export type Outbound = HrisGetDivisionGroupRequest$Outbound;
-}
-
 export function hrisGetDivisionGroupRequestToJSON(
   hrisGetDivisionGroupRequest: HrisGetDivisionGroupRequest,
 ): string {
@@ -112,16 +82,6 @@ export function hrisGetDivisionGroupRequestToJSON(
     HrisGetDivisionGroupRequest$outboundSchema.parse(
       hrisGetDivisionGroupRequest,
     ),
-  );
-}
-
-export function hrisGetDivisionGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetDivisionGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetDivisionGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetDivisionGroupRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const HrisGetDivisionGroupResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetDivisionGroupResponse$Outbound = {
-  ContentType: string;
-  HRISDivisionsResult?: shared.HRISDivisionsResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetDivisionGroupResponse$outboundSchema: z.ZodType<
-  HrisGetDivisionGroupResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetDivisionGroupResponse
-> = z.object({
-  contentType: z.string(),
-  hrisDivisionsResult: shared.HRISDivisionsResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisDivisionsResult: "HRISDivisionsResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetDivisionGroupResponse$ {
-  /** @deprecated use `HrisGetDivisionGroupResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetDivisionGroupResponse$inboundSchema;
-  /** @deprecated use `HrisGetDivisionGroupResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetDivisionGroupResponse$outboundSchema;
-  /** @deprecated use `HrisGetDivisionGroupResponse$Outbound` instead. */
-  export type Outbound = HrisGetDivisionGroupResponse$Outbound;
-}
-
-export function hrisGetDivisionGroupResponseToJSON(
-  hrisGetDivisionGroupResponse: HrisGetDivisionGroupResponse,
-): string {
-  return JSON.stringify(
-    HrisGetDivisionGroupResponse$outboundSchema.parse(
-      hrisGetDivisionGroupResponse,
-    ),
-  );
-}
 
 export function hrisGetDivisionGroupResponseFromJSON(
   jsonString: string,

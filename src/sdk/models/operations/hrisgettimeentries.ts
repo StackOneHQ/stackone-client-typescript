@@ -50,23 +50,6 @@ export type HrisGetTimeEntriesResponse = {
 };
 
 /** @internal */
-export const HrisGetTimeEntriesRequest$inboundSchema: z.ZodType<
-  HrisGetTimeEntriesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetTimeEntriesRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const HrisGetTimeEntriesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTimeEntriesRequest$ {
-  /** @deprecated use `HrisGetTimeEntriesRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTimeEntriesRequest$inboundSchema;
-  /** @deprecated use `HrisGetTimeEntriesRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTimeEntriesRequest$outboundSchema;
-  /** @deprecated use `HrisGetTimeEntriesRequest$Outbound` instead. */
-  export type Outbound = HrisGetTimeEntriesRequest$Outbound;
-}
-
 export function hrisGetTimeEntriesRequestToJSON(
   hrisGetTimeEntriesRequest: HrisGetTimeEntriesRequest,
 ): string {
   return JSON.stringify(
     HrisGetTimeEntriesRequest$outboundSchema.parse(hrisGetTimeEntriesRequest),
-  );
-}
-
-export function hrisGetTimeEntriesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetTimeEntriesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetTimeEntriesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetTimeEntriesRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const HrisGetTimeEntriesResponse$inboundSchema: z.ZodType<
     "TimeEntriesResult": "timeEntriesResult",
   });
 });
-
-/** @internal */
-export type HrisGetTimeEntriesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TimeEntriesResult?: shared.TimeEntriesResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisGetTimeEntriesResponse$outboundSchema: z.ZodType<
-  HrisGetTimeEntriesResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetTimeEntriesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  timeEntriesResult: shared.TimeEntriesResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    timeEntriesResult: "TimeEntriesResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTimeEntriesResponse$ {
-  /** @deprecated use `HrisGetTimeEntriesResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTimeEntriesResponse$inboundSchema;
-  /** @deprecated use `HrisGetTimeEntriesResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTimeEntriesResponse$outboundSchema;
-  /** @deprecated use `HrisGetTimeEntriesResponse$Outbound` instead. */
-  export type Outbound = HrisGetTimeEntriesResponse$Outbound;
-}
-
-export function hrisGetTimeEntriesResponseToJSON(
-  hrisGetTimeEntriesResponse: HrisGetTimeEntriesResponse,
-): string {
-  return JSON.stringify(
-    HrisGetTimeEntriesResponse$outboundSchema.parse(hrisGetTimeEntriesResponse),
-  );
-}
 
 export function hrisGetTimeEntriesResponseFromJSON(
   jsonString: string,

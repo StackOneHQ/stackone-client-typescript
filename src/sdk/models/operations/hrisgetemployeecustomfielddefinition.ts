@@ -89,22 +89,6 @@ export type HrisGetEmployeeCustomFieldDefinitionResponse = {
 };
 
 /** @internal */
-export const HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$inboundSchema:
-  z.ZodType<
-    HrisGetEmployeeCustomFieldDefinitionQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -124,22 +108,6 @@ export const HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$outboundSchema
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$ {
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$Outbound;
-}
-
 export function hrisGetEmployeeCustomFieldDefinitionQueryParamFilterToJSON(
   hrisGetEmployeeCustomFieldDefinitionQueryParamFilter:
     HrisGetEmployeeCustomFieldDefinitionQueryParamFilter,
@@ -150,53 +118,6 @@ export function hrisGetEmployeeCustomFieldDefinitionQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisGetEmployeeCustomFieldDefinitionQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisGetEmployeeCustomFieldDefinitionQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisGetEmployeeCustomFieldDefinitionQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisGetEmployeeCustomFieldDefinitionRequest$inboundSchema:
-  z.ZodType<
-    HrisGetEmployeeCustomFieldDefinitionRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(
-      z.lazy(() =>
-        HrisGetEmployeeCustomFieldDefinitionQueryParamFilter$inboundSchema
-      ),
-    ).optional(),
-    id: z.string(),
-    next: z.nullable(z.string()).optional(),
-    page: z.nullable(z.string()).optional(),
-    page_size: z.nullable(z.string()).optional(),
-    proxy: z.nullable(z.record(z.any())).optional(),
-    raw: z.nullable(z.boolean()).optional(),
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "page_size": "pageSize",
-      "updated_after": "updatedAfter",
-      "x-account-id": "xAccountId",
-    });
-  });
 
 /** @internal */
 export type HrisGetEmployeeCustomFieldDefinitionRequest$Outbound = {
@@ -245,21 +166,6 @@ export const HrisGetEmployeeCustomFieldDefinitionRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeCustomFieldDefinitionRequest$ {
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisGetEmployeeCustomFieldDefinitionRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisGetEmployeeCustomFieldDefinitionRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeCustomFieldDefinitionRequest$Outbound;
-}
-
 export function hrisGetEmployeeCustomFieldDefinitionRequestToJSON(
   hrisGetEmployeeCustomFieldDefinitionRequest:
     HrisGetEmployeeCustomFieldDefinitionRequest,
@@ -268,22 +174,6 @@ export function hrisGetEmployeeCustomFieldDefinitionRequestToJSON(
     HrisGetEmployeeCustomFieldDefinitionRequest$outboundSchema.parse(
       hrisGetEmployeeCustomFieldDefinitionRequest,
     ),
-  );
-}
-
-export function hrisGetEmployeeCustomFieldDefinitionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisGetEmployeeCustomFieldDefinitionRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisGetEmployeeCustomFieldDefinitionRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisGetEmployeeCustomFieldDefinitionRequest' from JSON`,
   );
 }
 
@@ -311,69 +201,6 @@ export const HrisGetEmployeeCustomFieldDefinitionResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type HrisGetEmployeeCustomFieldDefinitionResponse$Outbound = {
-  ContentType: string;
-  CustomFieldDefinitionResultApiModel?:
-    | shared.CustomFieldDefinitionResultApiModel$Outbound
-    | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetEmployeeCustomFieldDefinitionResponse$outboundSchema:
-  z.ZodType<
-    HrisGetEmployeeCustomFieldDefinitionResponse$Outbound,
-    z.ZodTypeDef,
-    HrisGetEmployeeCustomFieldDefinitionResponse
-  > = z.object({
-    contentType: z.string(),
-    customFieldDefinitionResultApiModel: shared
-      .CustomFieldDefinitionResultApiModel$outboundSchema.optional(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      customFieldDefinitionResultApiModel:
-        "CustomFieldDefinitionResultApiModel",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeCustomFieldDefinitionResponse$ {
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisGetEmployeeCustomFieldDefinitionResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisGetEmployeeCustomFieldDefinitionResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeCustomFieldDefinitionResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeCustomFieldDefinitionResponse$Outbound;
-}
-
-export function hrisGetEmployeeCustomFieldDefinitionResponseToJSON(
-  hrisGetEmployeeCustomFieldDefinitionResponse:
-    HrisGetEmployeeCustomFieldDefinitionResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmployeeCustomFieldDefinitionResponse$outboundSchema.parse(
-      hrisGetEmployeeCustomFieldDefinitionResponse,
-    ),
-  );
-}
 
 export function hrisGetEmployeeCustomFieldDefinitionResponseFromJSON(
   jsonString: string,

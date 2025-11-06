@@ -50,23 +50,6 @@ export type HrisGetGroupResponse = {
 };
 
 /** @internal */
-export const HrisGetGroupRequest$inboundSchema: z.ZodType<
-  HrisGetGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetGroupRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const HrisGetGroupRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetGroupRequest$ {
-  /** @deprecated use `HrisGetGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetGroupRequest$inboundSchema;
-  /** @deprecated use `HrisGetGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetGroupRequest$outboundSchema;
-  /** @deprecated use `HrisGetGroupRequest$Outbound` instead. */
-  export type Outbound = HrisGetGroupRequest$Outbound;
-}
-
 export function hrisGetGroupRequestToJSON(
   hrisGetGroupRequest: HrisGetGroupRequest,
 ): string {
   return JSON.stringify(
     HrisGetGroupRequest$outboundSchema.parse(hrisGetGroupRequest),
-  );
-}
-
-export function hrisGetGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetGroupRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const HrisGetGroupResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetGroupResponse$Outbound = {
-  ContentType: string;
-  HRISGroupsResult?: shared.HRISGroupsResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetGroupResponse$outboundSchema: z.ZodType<
-  HrisGetGroupResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetGroupResponse
-> = z.object({
-  contentType: z.string(),
-  hrisGroupsResult: shared.HRISGroupsResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisGroupsResult: "HRISGroupsResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetGroupResponse$ {
-  /** @deprecated use `HrisGetGroupResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetGroupResponse$inboundSchema;
-  /** @deprecated use `HrisGetGroupResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetGroupResponse$outboundSchema;
-  /** @deprecated use `HrisGetGroupResponse$Outbound` instead. */
-  export type Outbound = HrisGetGroupResponse$Outbound;
-}
-
-export function hrisGetGroupResponseToJSON(
-  hrisGetGroupResponse: HrisGetGroupResponse,
-): string {
-  return JSON.stringify(
-    HrisGetGroupResponse$outboundSchema.parse(hrisGetGroupResponse),
-  );
-}
 
 export function hrisGetGroupResponseFromJSON(
   jsonString: string,

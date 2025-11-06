@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -49,27 +45,6 @@ export const LinkedAccountMetaCategory$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const LinkedAccountMetaCategory$outboundSchema: z.ZodType<
-  LinkedAccountMetaCategoryOpen,
-  z.ZodTypeDef,
-  LinkedAccountMetaCategoryOpen
-> = z.union([
-  z.nativeEnum(LinkedAccountMetaCategory),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkedAccountMetaCategory$ {
-  /** @deprecated use `LinkedAccountMetaCategory$inboundSchema` instead. */
-  export const inboundSchema = LinkedAccountMetaCategory$inboundSchema;
-  /** @deprecated use `LinkedAccountMetaCategory$outboundSchema` instead. */
-  export const outboundSchema = LinkedAccountMetaCategory$outboundSchema;
-}
-
-/** @internal */
 export const LinkedAccountMeta$inboundSchema: z.ZodType<
   LinkedAccountMeta,
   z.ZodTypeDef,
@@ -79,45 +54,6 @@ export const LinkedAccountMeta$inboundSchema: z.ZodType<
   models: z.record(z.any()),
   provider: z.string(),
 });
-
-/** @internal */
-export type LinkedAccountMeta$Outbound = {
-  category: string;
-  models: { [k: string]: any };
-  provider: string;
-};
-
-/** @internal */
-export const LinkedAccountMeta$outboundSchema: z.ZodType<
-  LinkedAccountMeta$Outbound,
-  z.ZodTypeDef,
-  LinkedAccountMeta
-> = z.object({
-  category: LinkedAccountMetaCategory$outboundSchema,
-  models: z.record(z.any()),
-  provider: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LinkedAccountMeta$ {
-  /** @deprecated use `LinkedAccountMeta$inboundSchema` instead. */
-  export const inboundSchema = LinkedAccountMeta$inboundSchema;
-  /** @deprecated use `LinkedAccountMeta$outboundSchema` instead. */
-  export const outboundSchema = LinkedAccountMeta$outboundSchema;
-  /** @deprecated use `LinkedAccountMeta$Outbound` instead. */
-  export type Outbound = LinkedAccountMeta$Outbound;
-}
-
-export function linkedAccountMetaToJSON(
-  linkedAccountMeta: LinkedAccountMeta,
-): string {
-  return JSON.stringify(
-    LinkedAccountMeta$outboundSchema.parse(linkedAccountMeta),
-  );
-}
 
 export function linkedAccountMetaFromJSON(
   jsonString: string,

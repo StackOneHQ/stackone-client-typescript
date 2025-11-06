@@ -51,24 +51,6 @@ export type MessagingGetAttachmentResponse = {
 };
 
 /** @internal */
-export const MessagingGetAttachmentRequest$inboundSchema: z.ZodType<
-  MessagingGetAttachmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MessagingGetAttachmentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const MessagingGetAttachmentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingGetAttachmentRequest$ {
-  /** @deprecated use `MessagingGetAttachmentRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingGetAttachmentRequest$inboundSchema;
-  /** @deprecated use `MessagingGetAttachmentRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagingGetAttachmentRequest$outboundSchema;
-  /** @deprecated use `MessagingGetAttachmentRequest$Outbound` instead. */
-  export type Outbound = MessagingGetAttachmentRequest$Outbound;
-}
-
 export function messagingGetAttachmentRequestToJSON(
   messagingGetAttachmentRequest: MessagingGetAttachmentRequest,
 ): string {
@@ -116,16 +85,6 @@ export function messagingGetAttachmentRequestToJSON(
     MessagingGetAttachmentRequest$outboundSchema.parse(
       messagingGetAttachmentRequest,
     ),
-  );
-}
-
-export function messagingGetAttachmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingGetAttachmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingGetAttachmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingGetAttachmentRequest' from JSON`,
   );
 }
 
@@ -151,64 +110,6 @@ export const MessagingGetAttachmentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingGetAttachmentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MessagingAttachmentResult?:
-    | shared.MessagingAttachmentResult$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingGetAttachmentResponse$outboundSchema: z.ZodType<
-  MessagingGetAttachmentResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingGetAttachmentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  messagingAttachmentResult: shared.MessagingAttachmentResult$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    messagingAttachmentResult: "MessagingAttachmentResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingGetAttachmentResponse$ {
-  /** @deprecated use `MessagingGetAttachmentResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingGetAttachmentResponse$inboundSchema;
-  /** @deprecated use `MessagingGetAttachmentResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagingGetAttachmentResponse$outboundSchema;
-  /** @deprecated use `MessagingGetAttachmentResponse$Outbound` instead. */
-  export type Outbound = MessagingGetAttachmentResponse$Outbound;
-}
-
-export function messagingGetAttachmentResponseToJSON(
-  messagingGetAttachmentResponse: MessagingGetAttachmentResponse,
-): string {
-  return JSON.stringify(
-    MessagingGetAttachmentResponse$outboundSchema.parse(
-      messagingGetAttachmentResponse,
-    ),
-  );
-}
 
 export function messagingGetAttachmentResponseFromJSON(
   jsonString: string,

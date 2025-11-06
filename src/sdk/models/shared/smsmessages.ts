@@ -93,7 +93,6 @@ export const SmsMessagesMessageContent$inboundSchema: z.ZodType<
   body: z.nullable(z.string()).optional(),
   from: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type SmsMessagesMessageContent$Outbound = {
   body?: string | null | undefined;
@@ -110,19 +109,6 @@ export const SmsMessagesMessageContent$outboundSchema: z.ZodType<
   from: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsMessagesMessageContent$ {
-  /** @deprecated use `SmsMessagesMessageContent$inboundSchema` instead. */
-  export const inboundSchema = SmsMessagesMessageContent$inboundSchema;
-  /** @deprecated use `SmsMessagesMessageContent$outboundSchema` instead. */
-  export const outboundSchema = SmsMessagesMessageContent$outboundSchema;
-  /** @deprecated use `SmsMessagesMessageContent$Outbound` instead. */
-  export type Outbound = SmsMessagesMessageContent$Outbound;
-}
-
 export function smsMessagesMessageContentToJSON(
   smsMessagesMessageContent: SmsMessagesMessageContent,
 ): string {
@@ -130,7 +116,6 @@ export function smsMessagesMessageContentToJSON(
     SmsMessagesMessageContent$outboundSchema.parse(smsMessagesMessageContent),
   );
 }
-
 export function smsMessagesMessageContentFromJSON(
   jsonString: string,
 ): SafeParseResult<SmsMessagesMessageContent, SDKValidationError> {
@@ -147,7 +132,6 @@ export const SmsMessages4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type SmsMessages4$Outbound = {};
 
@@ -158,23 +142,9 @@ export const SmsMessages4$outboundSchema: z.ZodType<
   SmsMessages4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsMessages4$ {
-  /** @deprecated use `SmsMessages4$inboundSchema` instead. */
-  export const inboundSchema = SmsMessages4$inboundSchema;
-  /** @deprecated use `SmsMessages4$outboundSchema` instead. */
-  export const outboundSchema = SmsMessages4$outboundSchema;
-  /** @deprecated use `SmsMessages4$Outbound` instead. */
-  export type Outbound = SmsMessages4$Outbound;
-}
-
 export function smsMessages4ToJSON(smsMessages4: SmsMessages4): string {
   return JSON.stringify(SmsMessages4$outboundSchema.parse(smsMessages4));
 }
-
 export function smsMessages4FromJSON(
   jsonString: string,
 ): SafeParseResult<SmsMessages4, SDKValidationError> {
@@ -197,7 +167,6 @@ export const SmsMessagesSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => SmsMessages4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type SmsMessagesSourceValue$Outbound =
   | string
@@ -219,19 +188,6 @@ export const SmsMessagesSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsMessagesSourceValue$ {
-  /** @deprecated use `SmsMessagesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = SmsMessagesSourceValue$inboundSchema;
-  /** @deprecated use `SmsMessagesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = SmsMessagesSourceValue$outboundSchema;
-  /** @deprecated use `SmsMessagesSourceValue$Outbound` instead. */
-  export type Outbound = SmsMessagesSourceValue$Outbound;
-}
-
 export function smsMessagesSourceValueToJSON(
   smsMessagesSourceValue: SmsMessagesSourceValue,
 ): string {
@@ -239,7 +195,6 @@ export function smsMessagesSourceValueToJSON(
     SmsMessagesSourceValue$outboundSchema.parse(smsMessagesSourceValue),
   );
 }
-
 export function smsMessagesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<SmsMessagesSourceValue, SDKValidationError> {
@@ -260,7 +215,6 @@ export const SmsMessagesValue$inboundSchema: z.ZodType<
     z.nativeEnum(SmsMessagesValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const SmsMessagesValue$outboundSchema: z.ZodType<
   SmsMessagesValueOpen,
@@ -270,17 +224,6 @@ export const SmsMessagesValue$outboundSchema: z.ZodType<
   z.nativeEnum(SmsMessagesValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsMessagesValue$ {
-  /** @deprecated use `SmsMessagesValue$inboundSchema` instead. */
-  export const inboundSchema = SmsMessagesValue$inboundSchema;
-  /** @deprecated use `SmsMessagesValue$outboundSchema` instead. */
-  export const outboundSchema = SmsMessagesValue$outboundSchema;
-}
 
 /** @internal */
 export const SmsMessagesMessageType$inboundSchema: z.ZodType<
@@ -303,7 +246,6 @@ export const SmsMessagesMessageType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type SmsMessagesMessageType$Outbound = {
   source_value?:
@@ -339,19 +281,6 @@ export const SmsMessagesMessageType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsMessagesMessageType$ {
-  /** @deprecated use `SmsMessagesMessageType$inboundSchema` instead. */
-  export const inboundSchema = SmsMessagesMessageType$inboundSchema;
-  /** @deprecated use `SmsMessagesMessageType$outboundSchema` instead. */
-  export const outboundSchema = SmsMessagesMessageType$outboundSchema;
-  /** @deprecated use `SmsMessagesMessageType$Outbound` instead. */
-  export type Outbound = SmsMessagesMessageType$Outbound;
-}
-
 export function smsMessagesMessageTypeToJSON(
   smsMessagesMessageType: SmsMessagesMessageType,
 ): string {
@@ -359,7 +288,6 @@ export function smsMessagesMessageTypeToJSON(
     SmsMessagesMessageType$outboundSchema.parse(smsMessagesMessageType),
   );
 }
-
 export function smsMessagesMessageTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<SmsMessagesMessageType, SDKValidationError> {
@@ -391,7 +319,6 @@ export const SmsMessages$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
 /** @internal */
 export type SmsMessages$Outbound = {
   id?: string | null | undefined;
@@ -423,23 +350,9 @@ export const SmsMessages$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsMessages$ {
-  /** @deprecated use `SmsMessages$inboundSchema` instead. */
-  export const inboundSchema = SmsMessages$inboundSchema;
-  /** @deprecated use `SmsMessages$outboundSchema` instead. */
-  export const outboundSchema = SmsMessages$outboundSchema;
-  /** @deprecated use `SmsMessages$Outbound` instead. */
-  export type Outbound = SmsMessages$Outbound;
-}
-
 export function smsMessagesToJSON(smsMessages: SmsMessages): string {
   return JSON.stringify(SmsMessages$outboundSchema.parse(smsMessages));
 }
-
 export function smsMessagesFromJSON(
   jsonString: string,
 ): SafeParseResult<SmsMessages, SDKValidationError> {

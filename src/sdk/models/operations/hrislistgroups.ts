@@ -83,21 +83,6 @@ export type HrisListGroupsResponse = {
 };
 
 /** @internal */
-export const HrisListGroupsQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListGroupsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListGroupsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,19 +100,6 @@ export const HrisListGroupsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListGroupsQueryParamFilter$ {
-  /** @deprecated use `HrisListGroupsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = HrisListGroupsQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListGroupsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = HrisListGroupsQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListGroupsQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListGroupsQueryParamFilter$Outbound;
-}
-
 export function hrisListGroupsQueryParamFilterToJSON(
   hrisListGroupsQueryParamFilter: HrisListGroupsQueryParamFilter,
 ): string {
@@ -137,42 +109,6 @@ export function hrisListGroupsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListGroupsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListGroupsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListGroupsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListGroupsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListGroupsRequest$inboundSchema: z.ZodType<
-  HrisListGroupsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => HrisListGroupsQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListGroupsRequest$Outbound = {
@@ -212,34 +148,11 @@ export const HrisListGroupsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListGroupsRequest$ {
-  /** @deprecated use `HrisListGroupsRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListGroupsRequest$inboundSchema;
-  /** @deprecated use `HrisListGroupsRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListGroupsRequest$outboundSchema;
-  /** @deprecated use `HrisListGroupsRequest$Outbound` instead. */
-  export type Outbound = HrisListGroupsRequest$Outbound;
-}
-
 export function hrisListGroupsRequestToJSON(
   hrisListGroupsRequest: HrisListGroupsRequest,
 ): string {
   return JSON.stringify(
     HrisListGroupsRequest$outboundSchema.parse(hrisListGroupsRequest),
-  );
-}
-
-export function hrisListGroupsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListGroupsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListGroupsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListGroupsRequest' from JSON`,
   );
 }
 
@@ -264,59 +177,6 @@ export const HrisListGroupsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisListGroupsResponse$Outbound = {
-  ContentType: string;
-  HRISGroupsPaginated?: shared.HRISGroupsPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisListGroupsResponse$outboundSchema: z.ZodType<
-  HrisListGroupsResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListGroupsResponse
-> = z.object({
-  contentType: z.string(),
-  hrisGroupsPaginated: shared.HRISGroupsPaginated$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisGroupsPaginated: "HRISGroupsPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListGroupsResponse$ {
-  /** @deprecated use `HrisListGroupsResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListGroupsResponse$inboundSchema;
-  /** @deprecated use `HrisListGroupsResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListGroupsResponse$outboundSchema;
-  /** @deprecated use `HrisListGroupsResponse$Outbound` instead. */
-  export type Outbound = HrisListGroupsResponse$Outbound;
-}
-
-export function hrisListGroupsResponseToJSON(
-  hrisListGroupsResponse: HrisListGroupsResponse,
-): string {
-  return JSON.stringify(
-    HrisListGroupsResponse$outboundSchema.parse(hrisListGroupsResponse),
-  );
-}
 
 export function hrisListGroupsResponseFromJSON(
   jsonString: string,

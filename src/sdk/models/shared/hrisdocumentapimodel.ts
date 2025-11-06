@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Content,
-  Content$inboundSchema,
-  Content$Outbound,
-  Content$outboundSchema,
-} from "./content.js";
+import { Content, Content$inboundSchema } from "./content.js";
 
 export type HrisDocumentApiModel4 = {};
 
@@ -1461,37 +1452,6 @@ export const HrisDocumentApiModel4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type HrisDocumentApiModel4$Outbound = {};
-
-/** @internal */
-export const HrisDocumentApiModel4$outboundSchema: z.ZodType<
-  HrisDocumentApiModel4$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModel4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModel4$ {
-  /** @deprecated use `HrisDocumentApiModel4$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModel4$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModel4$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModel4$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModel4$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModel4$Outbound;
-}
-
-export function hrisDocumentApiModel4ToJSON(
-  hrisDocumentApiModel4: HrisDocumentApiModel4,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModel4$outboundSchema.parse(hrisDocumentApiModel4),
-  );
-}
-
 export function hrisDocumentApiModel4FromJSON(
   jsonString: string,
 ): SafeParseResult<HrisDocumentApiModel4, SDKValidationError> {
@@ -1515,50 +1475,6 @@ export const HrisDocumentApiModelSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HrisDocumentApiModelSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HrisDocumentApiModel4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HrisDocumentApiModelSourceValue$outboundSchema: z.ZodType<
-  HrisDocumentApiModelSourceValue$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisDocumentApiModel4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSourceValue$ {
-  /** @deprecated use `HrisDocumentApiModelSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelSourceValue$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelSourceValue$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSourceValue$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelSourceValue$Outbound;
-}
-
-export function hrisDocumentApiModelSourceValueToJSON(
-  hrisDocumentApiModelSourceValue: HrisDocumentApiModelSourceValue,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelSourceValue$outboundSchema.parse(
-      hrisDocumentApiModelSourceValue,
-    ),
-  );
-}
-
 export function hrisDocumentApiModelSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisDocumentApiModelSourceValue, SDKValidationError> {
@@ -1579,27 +1495,6 @@ export const HrisDocumentApiModelValue$inboundSchema: z.ZodType<
     z.nativeEnum(HrisDocumentApiModelValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const HrisDocumentApiModelValue$outboundSchema: z.ZodType<
-  HrisDocumentApiModelValueOpen,
-  z.ZodTypeDef,
-  HrisDocumentApiModelValueOpen
-> = z.union([
-  z.nativeEnum(HrisDocumentApiModelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelValue$ {
-  /** @deprecated use `HrisDocumentApiModelValue$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelValue$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelValue$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelValue$outboundSchema;
-}
 
 /** @internal */
 export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
@@ -1623,64 +1518,6 @@ export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type HrisDocumentApiModelCategory$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HrisDocumentApiModel4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisDocumentApiModelCategory$outboundSchema: z.ZodType<
-  HrisDocumentApiModelCategory$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelCategory
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisDocumentApiModel4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisDocumentApiModelValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelCategory$ {
-  /** @deprecated use `HrisDocumentApiModelCategory$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelCategory$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelCategory$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelCategory$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelCategory$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelCategory$Outbound;
-}
-
-export function hrisDocumentApiModelCategoryToJSON(
-  hrisDocumentApiModelCategory: HrisDocumentApiModelCategory,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelCategory$outboundSchema.parse(
-      hrisDocumentApiModelCategory,
-    ),
-  );
-}
-
 export function hrisDocumentApiModelCategoryFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisDocumentApiModelCategory, SDKValidationError> {
@@ -1697,39 +1534,6 @@ export const HrisDocumentApiModelSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type HrisDocumentApiModelSchemas4$Outbound = {};
-
-/** @internal */
-export const HrisDocumentApiModelSchemas4$outboundSchema: z.ZodType<
-  HrisDocumentApiModelSchemas4$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSchemas4$ {
-  /** @deprecated use `HrisDocumentApiModelSchemas4$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelSchemas4$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemas4$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelSchemas4$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemas4$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelSchemas4$Outbound;
-}
-
-export function hrisDocumentApiModelSchemas4ToJSON(
-  hrisDocumentApiModelSchemas4: HrisDocumentApiModelSchemas4,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelSchemas4$outboundSchema.parse(
-      hrisDocumentApiModelSchemas4,
-    ),
-  );
-}
 
 export function hrisDocumentApiModelSchemas4FromJSON(
   jsonString: string,
@@ -1754,53 +1558,6 @@ export const HrisDocumentApiModelSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HrisDocumentApiModelSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HrisDocumentApiModelSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HrisDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
-  HrisDocumentApiModelSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisDocumentApiModelSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSchemasSourceValue$ {
-  /** @deprecated use `HrisDocumentApiModelSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisDocumentApiModelSchemasSourceValue$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisDocumentApiModelSchemasSourceValue$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasSourceValue$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelSchemasSourceValue$Outbound;
-}
-
-export function hrisDocumentApiModelSchemasSourceValueToJSON(
-  hrisDocumentApiModelSchemasSourceValue:
-    HrisDocumentApiModelSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelSchemasSourceValue$outboundSchema.parse(
-      hrisDocumentApiModelSchemasSourceValue,
-    ),
-  );
-}
-
 export function hrisDocumentApiModelSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisDocumentApiModelSchemasSourceValue, SDKValidationError> {
@@ -1824,27 +1581,6 @@ export const HrisDocumentApiModelSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HrisDocumentApiModelSchemasValue$outboundSchema: z.ZodType<
-  HrisDocumentApiModelSchemasValueOpen,
-  z.ZodTypeDef,
-  HrisDocumentApiModelSchemasValueOpen
-> = z.union([
-  z.nativeEnum(HrisDocumentApiModelSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSchemasValue$ {
-  /** @deprecated use `HrisDocumentApiModelSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelSchemasValue$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const HrisDocumentApiModelFileFormat$inboundSchema: z.ZodType<
   HrisDocumentApiModelFileFormat,
   z.ZodTypeDef,
@@ -1866,64 +1602,6 @@ export const HrisDocumentApiModelFileFormat$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type HrisDocumentApiModelFileFormat$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HrisDocumentApiModelSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisDocumentApiModelFileFormat$outboundSchema: z.ZodType<
-  HrisDocumentApiModelFileFormat$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelFileFormat
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisDocumentApiModelSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisDocumentApiModelSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelFileFormat$ {
-  /** @deprecated use `HrisDocumentApiModelFileFormat$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelFileFormat$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelFileFormat$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelFileFormat$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelFileFormat$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelFileFormat$Outbound;
-}
-
-export function hrisDocumentApiModelFileFormatToJSON(
-  hrisDocumentApiModelFileFormat: HrisDocumentApiModelFileFormat,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelFileFormat$outboundSchema.parse(
-      hrisDocumentApiModelFileFormat,
-    ),
-  );
-}
-
 export function hrisDocumentApiModelFileFormatFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisDocumentApiModelFileFormat, SDKValidationError> {
@@ -1940,39 +1618,6 @@ export const HrisDocumentApiModelSchemasType4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type HrisDocumentApiModelSchemasType4$Outbound = {};
-
-/** @internal */
-export const HrisDocumentApiModelSchemasType4$outboundSchema: z.ZodType<
-  HrisDocumentApiModelSchemasType4$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelSchemasType4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSchemasType4$ {
-  /** @deprecated use `HrisDocumentApiModelSchemasType4$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelSchemasType4$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasType4$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelSchemasType4$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasType4$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelSchemasType4$Outbound;
-}
-
-export function hrisDocumentApiModelSchemasType4ToJSON(
-  hrisDocumentApiModelSchemasType4: HrisDocumentApiModelSchemasType4,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelSchemasType4$outboundSchema.parse(
-      hrisDocumentApiModelSchemasType4,
-    ),
-  );
-}
 
 export function hrisDocumentApiModelSchemasType4FromJSON(
   jsonString: string,
@@ -1994,54 +1639,6 @@ export const HrisDocumentApiModelSchemasTypeSourceValue$inboundSchema:
       z.lazy(() => HrisDocumentApiModelSchemasType4$inboundSchema),
       z.array(z.any()),
     ]);
-
-/** @internal */
-export type HrisDocumentApiModelSchemasTypeSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HrisDocumentApiModelSchemasType4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema:
-  z.ZodType<
-    HrisDocumentApiModelSchemasTypeSourceValue$Outbound,
-    z.ZodTypeDef,
-    HrisDocumentApiModelSchemasTypeSourceValue
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HrisDocumentApiModelSchemasType4$outboundSchema),
-    z.array(z.any()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSchemasTypeSourceValue$ {
-  /** @deprecated use `HrisDocumentApiModelSchemasTypeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisDocumentApiModelSchemasTypeSourceValue$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasTypeSourceValue$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelSchemasTypeSourceValue$Outbound;
-}
-
-export function hrisDocumentApiModelSchemasTypeSourceValueToJSON(
-  hrisDocumentApiModelSchemasTypeSourceValue:
-    HrisDocumentApiModelSchemasTypeSourceValue,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema.parse(
-      hrisDocumentApiModelSchemasTypeSourceValue,
-    ),
-  );
-}
 
 export function hrisDocumentApiModelSchemasTypeSourceValueFromJSON(
   jsonString: string,
@@ -2071,29 +1668,6 @@ export const HrisDocumentApiModelSchemasTypeValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HrisDocumentApiModelSchemasTypeValue$outboundSchema: z.ZodType<
-  HrisDocumentApiModelSchemasTypeValueOpen,
-  z.ZodTypeDef,
-  HrisDocumentApiModelSchemasTypeValueOpen
-> = z.union([
-  z.nativeEnum(HrisDocumentApiModelSchemasTypeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelSchemasTypeValue$ {
-  /** @deprecated use `HrisDocumentApiModelSchemasTypeValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisDocumentApiModelSchemasTypeValue$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelSchemasTypeValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisDocumentApiModelSchemasTypeValue$outboundSchema;
-}
-
-/** @internal */
 export const HrisDocumentApiModelType$inboundSchema: z.ZodType<
   HrisDocumentApiModelType,
   z.ZodTypeDef,
@@ -2115,63 +1689,6 @@ export const HrisDocumentApiModelType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type HrisDocumentApiModelType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HrisDocumentApiModelSchemasType4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisDocumentApiModelType$outboundSchema: z.ZodType<
-  HrisDocumentApiModelType$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModelType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisDocumentApiModelSchemasType4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisDocumentApiModelSchemasTypeValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModelType$ {
-  /** @deprecated use `HrisDocumentApiModelType$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModelType$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModelType$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModelType$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModelType$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModelType$Outbound;
-}
-
-export function hrisDocumentApiModelTypeToJSON(
-  hrisDocumentApiModelType: HrisDocumentApiModelType,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModelType$outboundSchema.parse(hrisDocumentApiModelType),
-  );
-}
 
 export function hrisDocumentApiModelTypeFromJSON(
   jsonString: string,
@@ -2220,78 +1737,6 @@ export const HrisDocumentApiModel$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type HrisDocumentApiModel$Outbound = {
-  category?: HrisDocumentApiModelCategory$Outbound | null | undefined;
-  category_id?: string | null | undefined;
-  contents?: Array<Content$Outbound> | null | undefined;
-  created_at?: string | null | undefined;
-  file_format?: HrisDocumentApiModelFileFormat$Outbound | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_url?: string | null | undefined;
-  type?: HrisDocumentApiModelType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisDocumentApiModel$outboundSchema: z.ZodType<
-  HrisDocumentApiModel$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentApiModel
-> = z.object({
-  category: z.nullable(
-    z.lazy(() => HrisDocumentApiModelCategory$outboundSchema),
-  ).optional(),
-  categoryId: z.nullable(z.string()).optional(),
-  contents: z.nullable(z.array(Content$outboundSchema)).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  fileFormat: z.nullable(
-    z.lazy(() => HrisDocumentApiModelFileFormat$outboundSchema),
-  ).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteUrl: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => HrisDocumentApiModelType$outboundSchema))
-    .optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    categoryId: "category_id",
-    createdAt: "created_at",
-    fileFormat: "file_format",
-    remoteId: "remote_id",
-    remoteUrl: "remote_url",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentApiModel$ {
-  /** @deprecated use `HrisDocumentApiModel$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentApiModel$inboundSchema;
-  /** @deprecated use `HrisDocumentApiModel$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentApiModel$outboundSchema;
-  /** @deprecated use `HrisDocumentApiModel$Outbound` instead. */
-  export type Outbound = HrisDocumentApiModel$Outbound;
-}
-
-export function hrisDocumentApiModelToJSON(
-  hrisDocumentApiModel: HrisDocumentApiModel,
-): string {
-  return JSON.stringify(
-    HrisDocumentApiModel$outboundSchema.parse(hrisDocumentApiModel),
-  );
-}
 
 export function hrisDocumentApiModelFromJSON(
   jsonString: string,

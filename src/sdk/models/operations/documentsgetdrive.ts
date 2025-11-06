@@ -50,23 +50,6 @@ export type DocumentsGetDriveResponse = {
 };
 
 /** @internal */
-export const DocumentsGetDriveRequest$inboundSchema: z.ZodType<
-  DocumentsGetDriveRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type DocumentsGetDriveRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const DocumentsGetDriveRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsGetDriveRequest$ {
-  /** @deprecated use `DocumentsGetDriveRequest$inboundSchema` instead. */
-  export const inboundSchema = DocumentsGetDriveRequest$inboundSchema;
-  /** @deprecated use `DocumentsGetDriveRequest$outboundSchema` instead. */
-  export const outboundSchema = DocumentsGetDriveRequest$outboundSchema;
-  /** @deprecated use `DocumentsGetDriveRequest$Outbound` instead. */
-  export type Outbound = DocumentsGetDriveRequest$Outbound;
-}
-
 export function documentsGetDriveRequestToJSON(
   documentsGetDriveRequest: DocumentsGetDriveRequest,
 ): string {
   return JSON.stringify(
     DocumentsGetDriveRequest$outboundSchema.parse(documentsGetDriveRequest),
-  );
-}
-
-export function documentsGetDriveRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsGetDriveRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsGetDriveRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsGetDriveRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const DocumentsGetDriveResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type DocumentsGetDriveResponse$Outbound = {
-  ContentType: string;
-  DriveResult?: shared.DriveResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const DocumentsGetDriveResponse$outboundSchema: z.ZodType<
-  DocumentsGetDriveResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentsGetDriveResponse
-> = z.object({
-  contentType: z.string(),
-  driveResult: shared.DriveResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    driveResult: "DriveResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsGetDriveResponse$ {
-  /** @deprecated use `DocumentsGetDriveResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentsGetDriveResponse$inboundSchema;
-  /** @deprecated use `DocumentsGetDriveResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentsGetDriveResponse$outboundSchema;
-  /** @deprecated use `DocumentsGetDriveResponse$Outbound` instead. */
-  export type Outbound = DocumentsGetDriveResponse$Outbound;
-}
-
-export function documentsGetDriveResponseToJSON(
-  documentsGetDriveResponse: DocumentsGetDriveResponse,
-): string {
-  return JSON.stringify(
-    DocumentsGetDriveResponse$outboundSchema.parse(documentsGetDriveResponse),
-  );
-}
 
 export function documentsGetDriveResponseFromJSON(
   jsonString: string,

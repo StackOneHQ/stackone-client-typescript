@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type MarketingCreateContentBlocksRequestDto4 = {};
 
@@ -78,13 +71,6 @@ export type MarketingCreateContentBlocksRequestDto = {
 };
 
 /** @internal */
-export const MarketingCreateContentBlocksRequestDto4$inboundSchema: z.ZodType<
-  MarketingCreateContentBlocksRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type MarketingCreateContentBlocksRequestDto4$Outbound = {};
 
 /** @internal */
@@ -93,21 +79,6 @@ export const MarketingCreateContentBlocksRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MarketingCreateContentBlocksRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateContentBlocksRequestDto4$ {
-  /** @deprecated use `MarketingCreateContentBlocksRequestDto4$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateContentBlocksRequestDto4$inboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDto4$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateContentBlocksRequestDto4$outboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDto4$Outbound` instead. */
-  export type Outbound = MarketingCreateContentBlocksRequestDto4$Outbound;
-}
 
 export function marketingCreateContentBlocksRequestDto4ToJSON(
   marketingCreateContentBlocksRequestDto4:
@@ -119,36 +90,6 @@ export function marketingCreateContentBlocksRequestDto4ToJSON(
     ),
   );
 }
-
-export function marketingCreateContentBlocksRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MarketingCreateContentBlocksRequestDto4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreateContentBlocksRequestDto4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MarketingCreateContentBlocksRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema:
-  z.ZodType<
-    MarketingCreateContentBlocksRequestDtoSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => MarketingCreateContentBlocksRequestDto4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type MarketingCreateContentBlocksRequestDtoSourceValue$Outbound =
@@ -172,22 +113,6 @@ export const MarketingCreateContentBlocksRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateContentBlocksRequestDtoSourceValue$ {
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateContentBlocksRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound =
-    MarketingCreateContentBlocksRequestDtoSourceValue$Outbound;
-}
-
 export function marketingCreateContentBlocksRequestDtoSourceValueToJSON(
   marketingCreateContentBlocksRequestDtoSourceValue:
     MarketingCreateContentBlocksRequestDtoSourceValue,
@@ -199,34 +124,6 @@ export function marketingCreateContentBlocksRequestDtoSourceValueToJSON(
   );
 }
 
-export function marketingCreateContentBlocksRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MarketingCreateContentBlocksRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MarketingCreateContentBlocksRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const MarketingCreateContentBlocksRequestDtoValue$inboundSchema:
-  z.ZodType<
-    MarketingCreateContentBlocksRequestDtoValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(MarketingCreateContentBlocksRequestDtoValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const MarketingCreateContentBlocksRequestDtoValue$outboundSchema:
   z.ZodType<
@@ -237,41 +134,6 @@ export const MarketingCreateContentBlocksRequestDtoValue$outboundSchema:
     z.nativeEnum(MarketingCreateContentBlocksRequestDtoValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateContentBlocksRequestDtoValue$ {
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateContentBlocksRequestDtoValue$inboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateContentBlocksRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const MarketingCreateContentBlocksRequestDtoType$inboundSchema:
-  z.ZodType<MarketingCreateContentBlocksRequestDtoType, z.ZodTypeDef, unknown> =
-    z.object({
-      source_value: z.nullable(
-        z.union([
-          z.string(),
-          z.number(),
-          z.boolean(),
-          z.lazy(() => MarketingCreateContentBlocksRequestDto4$inboundSchema),
-          z.array(z.any()),
-        ]),
-      ).optional(),
-      value: z.nullable(
-        MarketingCreateContentBlocksRequestDtoValue$inboundSchema,
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "source_value": "sourceValue",
-      });
-    });
 
 /** @internal */
 export type MarketingCreateContentBlocksRequestDtoType$Outbound = {
@@ -311,21 +173,6 @@ export const MarketingCreateContentBlocksRequestDtoType$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateContentBlocksRequestDtoType$ {
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoType$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateContentBlocksRequestDtoType$inboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoType$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateContentBlocksRequestDtoType$outboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDtoType$Outbound` instead. */
-  export type Outbound = MarketingCreateContentBlocksRequestDtoType$Outbound;
-}
-
 export function marketingCreateContentBlocksRequestDtoTypeToJSON(
   marketingCreateContentBlocksRequestDtoType:
     MarketingCreateContentBlocksRequestDtoType,
@@ -336,37 +183,6 @@ export function marketingCreateContentBlocksRequestDtoTypeToJSON(
     ),
   );
 }
-
-export function marketingCreateContentBlocksRequestDtoTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MarketingCreateContentBlocksRequestDtoType,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreateContentBlocksRequestDtoType$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MarketingCreateContentBlocksRequestDtoType' from JSON`,
-  );
-}
-
-/** @internal */
-export const MarketingCreateContentBlocksRequestDto$inboundSchema: z.ZodType<
-  MarketingCreateContentBlocksRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  content: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(
-    z.lazy(() => MarketingCreateContentBlocksRequestDtoType$inboundSchema),
-  ).optional(),
-});
 
 /** @internal */
 export type MarketingCreateContentBlocksRequestDto$Outbound = {
@@ -392,21 +208,6 @@ export const MarketingCreateContentBlocksRequestDto$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateContentBlocksRequestDto$ {
-  /** @deprecated use `MarketingCreateContentBlocksRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateContentBlocksRequestDto$inboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateContentBlocksRequestDto$outboundSchema;
-  /** @deprecated use `MarketingCreateContentBlocksRequestDto$Outbound` instead. */
-  export type Outbound = MarketingCreateContentBlocksRequestDto$Outbound;
-}
-
 export function marketingCreateContentBlocksRequestDtoToJSON(
   marketingCreateContentBlocksRequestDto:
     MarketingCreateContentBlocksRequestDto,
@@ -415,16 +216,5 @@ export function marketingCreateContentBlocksRequestDtoToJSON(
     MarketingCreateContentBlocksRequestDto$outboundSchema.parse(
       marketingCreateContentBlocksRequestDto,
     ),
-  );
-}
-
-export function marketingCreateContentBlocksRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingCreateContentBlocksRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreateContentBlocksRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingCreateContentBlocksRequestDto' from JSON`,
   );
 }

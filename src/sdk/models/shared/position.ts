@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -110,33 +106,6 @@ export const Position4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type Position4$Outbound = {};
-
-/** @internal */
-export const Position4$outboundSchema: z.ZodType<
-  Position4$Outbound,
-  z.ZodTypeDef,
-  Position4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Position4$ {
-  /** @deprecated use `Position4$inboundSchema` instead. */
-  export const inboundSchema = Position4$inboundSchema;
-  /** @deprecated use `Position4$outboundSchema` instead. */
-  export const outboundSchema = Position4$outboundSchema;
-  /** @deprecated use `Position4$Outbound` instead. */
-  export type Outbound = Position4$Outbound;
-}
-
-export function position4ToJSON(position4: Position4): string {
-  return JSON.stringify(Position4$outboundSchema.parse(position4));
-}
-
 export function position4FromJSON(
   jsonString: string,
 ): SafeParseResult<Position4, SDKValidationError> {
@@ -160,48 +129,6 @@ export const PositionSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type PositionSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Position4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const PositionSourceValue$outboundSchema: z.ZodType<
-  PositionSourceValue$Outbound,
-  z.ZodTypeDef,
-  PositionSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Position4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PositionSourceValue$ {
-  /** @deprecated use `PositionSourceValue$inboundSchema` instead. */
-  export const inboundSchema = PositionSourceValue$inboundSchema;
-  /** @deprecated use `PositionSourceValue$outboundSchema` instead. */
-  export const outboundSchema = PositionSourceValue$outboundSchema;
-  /** @deprecated use `PositionSourceValue$Outbound` instead. */
-  export type Outbound = PositionSourceValue$Outbound;
-}
-
-export function positionSourceValueToJSON(
-  positionSourceValue: PositionSourceValue,
-): string {
-  return JSON.stringify(
-    PositionSourceValue$outboundSchema.parse(positionSourceValue),
-  );
-}
-
 export function positionSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<PositionSourceValue, SDKValidationError> {
@@ -224,27 +151,6 @@ export const PositionValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const PositionValue$outboundSchema: z.ZodType<
-  PositionValueOpen,
-  z.ZodTypeDef,
-  PositionValueOpen
-> = z.union([
-  z.nativeEnum(PositionValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PositionValue$ {
-  /** @deprecated use `PositionValue$inboundSchema` instead. */
-  export const inboundSchema = PositionValue$inboundSchema;
-  /** @deprecated use `PositionValue$outboundSchema` instead. */
-  export const outboundSchema = PositionValue$outboundSchema;
-}
-
-/** @internal */
 export const PositionStatus$inboundSchema: z.ZodType<
   PositionStatus,
   z.ZodTypeDef,
@@ -265,58 +171,6 @@ export const PositionStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type PositionStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Position4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const PositionStatus$outboundSchema: z.ZodType<
-  PositionStatus$Outbound,
-  z.ZodTypeDef,
-  PositionStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Position4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(PositionValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PositionStatus$ {
-  /** @deprecated use `PositionStatus$inboundSchema` instead. */
-  export const inboundSchema = PositionStatus$inboundSchema;
-  /** @deprecated use `PositionStatus$outboundSchema` instead. */
-  export const outboundSchema = PositionStatus$outboundSchema;
-  /** @deprecated use `PositionStatus$Outbound` instead. */
-  export type Outbound = PositionStatus$Outbound;
-}
-
-export function positionStatusToJSON(positionStatus: PositionStatus): string {
-  return JSON.stringify(PositionStatus$outboundSchema.parse(positionStatus));
-}
 
 export function positionStatusFromJSON(
   jsonString: string,
@@ -356,64 +210,6 @@ export const Position$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type Position$Outbound = {
-  department_id?: string | null | undefined;
-  description?: string | null | undefined;
-  employment_type?: string | null | undefined;
-  id?: string | null | undefined;
-  job_id?: string | null | undefined;
-  location_id?: string | null | undefined;
-  posted_date?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  status?: PositionStatus$Outbound | null | undefined;
-  title?: string | null | undefined;
-};
-
-/** @internal */
-export const Position$outboundSchema: z.ZodType<
-  Position$Outbound,
-  z.ZodTypeDef,
-  Position
-> = z.object({
-  departmentId: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  employmentType: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  jobId: z.nullable(z.string()).optional(),
-  locationId: z.nullable(z.string()).optional(),
-  postedDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => PositionStatus$outboundSchema)).optional(),
-  title: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    departmentId: "department_id",
-    employmentType: "employment_type",
-    jobId: "job_id",
-    locationId: "location_id",
-    postedDate: "posted_date",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Position$ {
-  /** @deprecated use `Position$inboundSchema` instead. */
-  export const inboundSchema = Position$inboundSchema;
-  /** @deprecated use `Position$outboundSchema` instead. */
-  export const outboundSchema = Position$outboundSchema;
-  /** @deprecated use `Position$Outbound` instead. */
-  export type Outbound = Position$Outbound;
-}
-
-export function positionToJSON(position: Position): string {
-  return JSON.stringify(Position$outboundSchema.parse(position));
-}
 
 export function positionFromJSON(
   jsonString: string,

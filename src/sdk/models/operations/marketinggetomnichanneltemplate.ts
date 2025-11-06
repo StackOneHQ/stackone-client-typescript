@@ -50,23 +50,6 @@ export type MarketingGetOmniChannelTemplateResponse = {
 };
 
 /** @internal */
-export const MarketingGetOmniChannelTemplateRequest$inboundSchema: z.ZodType<
-  MarketingGetOmniChannelTemplateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingGetOmniChannelTemplateRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,21 +75,6 @@ export const MarketingGetOmniChannelTemplateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetOmniChannelTemplateRequest$ {
-  /** @deprecated use `MarketingGetOmniChannelTemplateRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingGetOmniChannelTemplateRequest$inboundSchema;
-  /** @deprecated use `MarketingGetOmniChannelTemplateRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingGetOmniChannelTemplateRequest$outboundSchema;
-  /** @deprecated use `MarketingGetOmniChannelTemplateRequest$Outbound` instead. */
-  export type Outbound = MarketingGetOmniChannelTemplateRequest$Outbound;
-}
-
 export function marketingGetOmniChannelTemplateRequestToJSON(
   marketingGetOmniChannelTemplateRequest:
     MarketingGetOmniChannelTemplateRequest,
@@ -115,17 +83,6 @@ export function marketingGetOmniChannelTemplateRequestToJSON(
     MarketingGetOmniChannelTemplateRequest$outboundSchema.parse(
       marketingGetOmniChannelTemplateRequest,
     ),
-  );
-}
-
-export function marketingGetOmniChannelTemplateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingGetOmniChannelTemplateRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingGetOmniChannelTemplateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingGetOmniChannelTemplateRequest' from JSON`,
   );
 }
 
@@ -150,64 +107,6 @@ export const MarketingGetOmniChannelTemplateResponse$inboundSchema: z.ZodType<
     "TemplateResult": "templateResult",
   });
 });
-
-/** @internal */
-export type MarketingGetOmniChannelTemplateResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TemplateResult?: shared.TemplateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const MarketingGetOmniChannelTemplateResponse$outboundSchema: z.ZodType<
-  MarketingGetOmniChannelTemplateResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingGetOmniChannelTemplateResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  templateResult: shared.TemplateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    templateResult: "TemplateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetOmniChannelTemplateResponse$ {
-  /** @deprecated use `MarketingGetOmniChannelTemplateResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingGetOmniChannelTemplateResponse$inboundSchema;
-  /** @deprecated use `MarketingGetOmniChannelTemplateResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingGetOmniChannelTemplateResponse$outboundSchema;
-  /** @deprecated use `MarketingGetOmniChannelTemplateResponse$Outbound` instead. */
-  export type Outbound = MarketingGetOmniChannelTemplateResponse$Outbound;
-}
-
-export function marketingGetOmniChannelTemplateResponseToJSON(
-  marketingGetOmniChannelTemplateResponse:
-    MarketingGetOmniChannelTemplateResponse,
-): string {
-  return JSON.stringify(
-    MarketingGetOmniChannelTemplateResponse$outboundSchema.parse(
-      marketingGetOmniChannelTemplateResponse,
-    ),
-  );
-}
 
 export function marketingGetOmniChannelTemplateResponseFromJSON(
   jsonString: string,

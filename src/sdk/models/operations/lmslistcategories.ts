@@ -83,21 +83,6 @@ export type LmsListCategoriesResponse = {
 };
 
 /** @internal */
-export const LmsListCategoriesQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListCategoriesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type LmsListCategoriesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,20 +100,6 @@ export const LmsListCategoriesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCategoriesQueryParamFilter$ {
-  /** @deprecated use `LmsListCategoriesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListCategoriesQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListCategoriesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsListCategoriesQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListCategoriesQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListCategoriesQueryParamFilter$Outbound;
-}
-
 export function lmsListCategoriesQueryParamFilterToJSON(
   lmsListCategoriesQueryParamFilter: LmsListCategoriesQueryParamFilter,
 ): string {
@@ -138,43 +109,6 @@ export function lmsListCategoriesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListCategoriesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListCategoriesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListCategoriesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListCategoriesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListCategoriesRequest$inboundSchema: z.ZodType<
-  LmsListCategoriesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => LmsListCategoriesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListCategoriesRequest$Outbound = {
@@ -214,34 +148,11 @@ export const LmsListCategoriesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCategoriesRequest$ {
-  /** @deprecated use `LmsListCategoriesRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListCategoriesRequest$inboundSchema;
-  /** @deprecated use `LmsListCategoriesRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListCategoriesRequest$outboundSchema;
-  /** @deprecated use `LmsListCategoriesRequest$Outbound` instead. */
-  export type Outbound = LmsListCategoriesRequest$Outbound;
-}
-
 export function lmsListCategoriesRequestToJSON(
   lmsListCategoriesRequest: LmsListCategoriesRequest,
 ): string {
   return JSON.stringify(
     LmsListCategoriesRequest$outboundSchema.parse(lmsListCategoriesRequest),
-  );
-}
-
-export function lmsListCategoriesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListCategoriesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListCategoriesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListCategoriesRequest' from JSON`,
   );
 }
 
@@ -266,59 +177,6 @@ export const LmsListCategoriesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsListCategoriesResponse$Outbound = {
-  CategoriesPaginated?: shared.CategoriesPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsListCategoriesResponse$outboundSchema: z.ZodType<
-  LmsListCategoriesResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListCategoriesResponse
-> = z.object({
-  categoriesPaginated: shared.CategoriesPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    categoriesPaginated: "CategoriesPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCategoriesResponse$ {
-  /** @deprecated use `LmsListCategoriesResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListCategoriesResponse$inboundSchema;
-  /** @deprecated use `LmsListCategoriesResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListCategoriesResponse$outboundSchema;
-  /** @deprecated use `LmsListCategoriesResponse$Outbound` instead. */
-  export type Outbound = LmsListCategoriesResponse$Outbound;
-}
-
-export function lmsListCategoriesResponseToJSON(
-  lmsListCategoriesResponse: LmsListCategoriesResponse,
-): string {
-  return JSON.stringify(
-    LmsListCategoriesResponse$outboundSchema.parse(lmsListCategoriesResponse),
-  );
-}
 
 export function lmsListCategoriesResponseFromJSON(
   jsonString: string,

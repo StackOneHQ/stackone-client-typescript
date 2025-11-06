@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  InAppMessages,
-  InAppMessages$inboundSchema,
-  InAppMessages$Outbound,
-  InAppMessages$outboundSchema,
-} from "./inappmessages.js";
+import { InAppMessages, InAppMessages$inboundSchema } from "./inappmessages.js";
 
 export type InAppTemplate = {
   /**
@@ -60,55 +55,6 @@ export const InAppTemplate$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type InAppTemplate$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  messages?: Array<InAppMessages$Outbound> | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  tags?: Array<string> | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const InAppTemplate$outboundSchema: z.ZodType<
-  InAppTemplate$Outbound,
-  z.ZodTypeDef,
-  InAppTemplate
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  messages: z.nullable(z.array(InAppMessages$outboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppTemplate$ {
-  /** @deprecated use `InAppTemplate$inboundSchema` instead. */
-  export const inboundSchema = InAppTemplate$inboundSchema;
-  /** @deprecated use `InAppTemplate$outboundSchema` instead. */
-  export const outboundSchema = InAppTemplate$outboundSchema;
-  /** @deprecated use `InAppTemplate$Outbound` instead. */
-  export type Outbound = InAppTemplate$Outbound;
-}
-
-export function inAppTemplateToJSON(inAppTemplate: InAppTemplate): string {
-  return JSON.stringify(InAppTemplate$outboundSchema.parse(inAppTemplate));
-}
 
 export function inAppTemplateFromJSON(
   jsonString: string,

@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type EntitySkillsCreateRequestDto4 = {};
 
@@ -135,13 +128,6 @@ export type EntitySkillsCreateRequestDto = {
 };
 
 /** @internal */
-export const EntitySkillsCreateRequestDto4$inboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type EntitySkillsCreateRequestDto4$Outbound = {};
 
 /** @internal */
@@ -150,19 +136,6 @@ export const EntitySkillsCreateRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EntitySkillsCreateRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDto4$ {
-  /** @deprecated use `EntitySkillsCreateRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsCreateRequestDto4$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsCreateRequestDto4$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDto4$Outbound` instead. */
-  export type Outbound = EntitySkillsCreateRequestDto4$Outbound;
-}
 
 export function entitySkillsCreateRequestDto4ToJSON(
   entitySkillsCreateRequestDto4: EntitySkillsCreateRequestDto4,
@@ -173,29 +146,6 @@ export function entitySkillsCreateRequestDto4ToJSON(
     ),
   );
 }
-
-export function entitySkillsCreateRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<EntitySkillsCreateRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EntitySkillsCreateRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EntitySkillsCreateRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoSourceValue$inboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoSourceValue$Outbound =
@@ -218,21 +168,6 @@ export const EntitySkillsCreateRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoSourceValue$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsCreateRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = EntitySkillsCreateRequestDtoSourceValue$Outbound;
-}
-
 export function entitySkillsCreateRequestDtoSourceValueToJSON(
   entitySkillsCreateRequestDtoSourceValue:
     EntitySkillsCreateRequestDtoSourceValue,
@@ -244,33 +179,6 @@ export function entitySkillsCreateRequestDtoSourceValueToJSON(
   );
 }
 
-export function entitySkillsCreateRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  EntitySkillsCreateRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      EntitySkillsCreateRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'EntitySkillsCreateRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoValue$inboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(EntitySkillsCreateRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const EntitySkillsCreateRequestDtoValue$outboundSchema: z.ZodType<
   EntitySkillsCreateRequestDtoValueOpen,
@@ -280,46 +188,6 @@ export const EntitySkillsCreateRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(EntitySkillsCreateRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoValue$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsCreateRequestDtoValue$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema:
-  z.ZodType<
-    EntitySkillsCreateRequestDtoMaximumProficiency,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => EntitySkillsCreateRequestDto4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(EntitySkillsCreateRequestDtoValue$inboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "remote_id": "remoteId",
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoMaximumProficiency$Outbound = {
@@ -365,22 +233,6 @@ export const EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoMaximumProficiency$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoMaximumProficiency$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoMaximumProficiency$Outbound` instead. */
-  export type Outbound =
-    EntitySkillsCreateRequestDtoMaximumProficiency$Outbound;
-}
-
 export function entitySkillsCreateRequestDtoMaximumProficiencyToJSON(
   entitySkillsCreateRequestDtoMaximumProficiency:
     EntitySkillsCreateRequestDtoMaximumProficiency,
@@ -392,29 +244,6 @@ export function entitySkillsCreateRequestDtoMaximumProficiencyToJSON(
   );
 }
 
-export function entitySkillsCreateRequestDtoMaximumProficiencyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  EntitySkillsCreateRequestDtoMaximumProficiency,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'EntitySkillsCreateRequestDtoMaximumProficiency' from JSON`,
-  );
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoSchemas4$inboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDtoSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
 /** @internal */
 export type EntitySkillsCreateRequestDtoSchemas4$Outbound = {};
 
@@ -425,21 +254,6 @@ export const EntitySkillsCreateRequestDtoSchemas4$outboundSchema: z.ZodType<
   EntitySkillsCreateRequestDtoSchemas4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoSchemas4$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemas4$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsCreateRequestDtoSchemas4$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemas4$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoSchemas4$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemas4$Outbound` instead. */
-  export type Outbound = EntitySkillsCreateRequestDtoSchemas4$Outbound;
-}
-
 export function entitySkillsCreateRequestDtoSchemas4ToJSON(
   entitySkillsCreateRequestDtoSchemas4: EntitySkillsCreateRequestDtoSchemas4,
 ): string {
@@ -449,31 +263,6 @@ export function entitySkillsCreateRequestDtoSchemas4ToJSON(
     ),
   );
 }
-
-export function entitySkillsCreateRequestDtoSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<EntitySkillsCreateRequestDtoSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      EntitySkillsCreateRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EntitySkillsCreateRequestDtoSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoSchemasSourceValue$inboundSchema:
-  z.ZodType<
-    EntitySkillsCreateRequestDtoSchemasSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoSchemasSourceValue$Outbound =
@@ -497,22 +286,6 @@ export const EntitySkillsCreateRequestDtoSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsCreateRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemasSourceValue$Outbound` instead. */
-  export type Outbound =
-    EntitySkillsCreateRequestDtoSchemasSourceValue$Outbound;
-}
-
 export function entitySkillsCreateRequestDtoSchemasSourceValueToJSON(
   entitySkillsCreateRequestDtoSchemasSourceValue:
     EntitySkillsCreateRequestDtoSchemasSourceValue,
@@ -524,33 +297,6 @@ export function entitySkillsCreateRequestDtoSchemasSourceValueToJSON(
   );
 }
 
-export function entitySkillsCreateRequestDtoSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  EntitySkillsCreateRequestDtoSchemasSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      EntitySkillsCreateRequestDtoSchemasSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'EntitySkillsCreateRequestDtoSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoSchemasValue$inboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDtoSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(EntitySkillsCreateRequestDtoSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const EntitySkillsCreateRequestDtoSchemasValue$outboundSchema: z.ZodType<
   EntitySkillsCreateRequestDtoSchemasValueOpen,
@@ -560,47 +306,6 @@ export const EntitySkillsCreateRequestDtoSchemasValue$outboundSchema: z.ZodType<
   z.nativeEnum(EntitySkillsCreateRequestDtoSchemasValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoSchemasValue$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsCreateRequestDtoSchemasValue$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema:
-  z.ZodType<
-    EntitySkillsCreateRequestDtoMinimumProficiency,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => EntitySkillsCreateRequestDtoSchemas4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(EntitySkillsCreateRequestDtoSchemasValue$inboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "remote_id": "remoteId",
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoMinimumProficiency$Outbound = {
@@ -646,22 +351,6 @@ export const EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDtoMinimumProficiency$ {
-  /** @deprecated use `EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsCreateRequestDtoMinimumProficiency$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDtoMinimumProficiency$Outbound` instead. */
-  export type Outbound =
-    EntitySkillsCreateRequestDtoMinimumProficiency$Outbound;
-}
-
 export function entitySkillsCreateRequestDtoMinimumProficiencyToJSON(
   entitySkillsCreateRequestDtoMinimumProficiency:
     EntitySkillsCreateRequestDtoMinimumProficiency,
@@ -672,43 +361,6 @@ export function entitySkillsCreateRequestDtoMinimumProficiencyToJSON(
     ),
   );
 }
-
-export function entitySkillsCreateRequestDtoMinimumProficiencyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  EntitySkillsCreateRequestDtoMinimumProficiency,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'EntitySkillsCreateRequestDtoMinimumProficiency' from JSON`,
-  );
-}
-
-/** @internal */
-export const EntitySkillsCreateRequestDto$inboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  maximum_proficiency: z.nullable(
-    z.lazy(() => EntitySkillsCreateRequestDtoMaximumProficiency$inboundSchema),
-  ).optional(),
-  minimum_proficiency: z.nullable(
-    z.lazy(() => EntitySkillsCreateRequestDtoMinimumProficiency$inboundSchema),
-  ).optional(),
-  name: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "maximum_proficiency": "maximumProficiency",
-    "minimum_proficiency": "minimumProficiency",
-  });
-});
 
 /** @internal */
 export type EntitySkillsCreateRequestDto$Outbound = {
@@ -745,19 +397,6 @@ export const EntitySkillsCreateRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsCreateRequestDto$ {
-  /** @deprecated use `EntitySkillsCreateRequestDto$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsCreateRequestDto$inboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDto$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsCreateRequestDto$outboundSchema;
-  /** @deprecated use `EntitySkillsCreateRequestDto$Outbound` instead. */
-  export type Outbound = EntitySkillsCreateRequestDto$Outbound;
-}
-
 export function entitySkillsCreateRequestDtoToJSON(
   entitySkillsCreateRequestDto: EntitySkillsCreateRequestDto,
 ): string {
@@ -765,15 +404,5 @@ export function entitySkillsCreateRequestDtoToJSON(
     EntitySkillsCreateRequestDto$outboundSchema.parse(
       entitySkillsCreateRequestDto,
     ),
-  );
-}
-
-export function entitySkillsCreateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<EntitySkillsCreateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EntitySkillsCreateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EntitySkillsCreateRequestDto' from JSON`,
   );
 }

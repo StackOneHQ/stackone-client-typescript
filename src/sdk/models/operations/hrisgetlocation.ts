@@ -50,23 +50,6 @@ export type HrisGetLocationResponse = {
 };
 
 /** @internal */
-export const HrisGetLocationRequest$inboundSchema: z.ZodType<
-  HrisGetLocationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetLocationRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const HrisGetLocationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetLocationRequest$ {
-  /** @deprecated use `HrisGetLocationRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetLocationRequest$inboundSchema;
-  /** @deprecated use `HrisGetLocationRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetLocationRequest$outboundSchema;
-  /** @deprecated use `HrisGetLocationRequest$Outbound` instead. */
-  export type Outbound = HrisGetLocationRequest$Outbound;
-}
-
 export function hrisGetLocationRequestToJSON(
   hrisGetLocationRequest: HrisGetLocationRequest,
 ): string {
   return JSON.stringify(
     HrisGetLocationRequest$outboundSchema.parse(hrisGetLocationRequest),
-  );
-}
-
-export function hrisGetLocationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetLocationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetLocationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetLocationRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const HrisGetLocationResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetLocationResponse$Outbound = {
-  ContentType: string;
-  HRISLocationResult?: shared.HRISLocationResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetLocationResponse$outboundSchema: z.ZodType<
-  HrisGetLocationResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetLocationResponse
-> = z.object({
-  contentType: z.string(),
-  hrisLocationResult: shared.HRISLocationResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisLocationResult: "HRISLocationResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetLocationResponse$ {
-  /** @deprecated use `HrisGetLocationResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetLocationResponse$inboundSchema;
-  /** @deprecated use `HrisGetLocationResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetLocationResponse$outboundSchema;
-  /** @deprecated use `HrisGetLocationResponse$Outbound` instead. */
-  export type Outbound = HrisGetLocationResponse$Outbound;
-}
-
-export function hrisGetLocationResponseToJSON(
-  hrisGetLocationResponse: HrisGetLocationResponse,
-): string {
-  return JSON.stringify(
-    HrisGetLocationResponse$outboundSchema.parse(hrisGetLocationResponse),
-  );
-}
 
 export function hrisGetLocationResponseFromJSON(
   jsonString: string,

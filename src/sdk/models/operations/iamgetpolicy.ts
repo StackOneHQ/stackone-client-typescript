@@ -54,24 +54,6 @@ export type IamGetPolicyResponse = {
 };
 
 /** @internal */
-export const IamGetPolicyRequest$inboundSchema: z.ZodType<
-  IamGetPolicyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type IamGetPolicyRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -99,34 +81,11 @@ export const IamGetPolicyRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamGetPolicyRequest$ {
-  /** @deprecated use `IamGetPolicyRequest$inboundSchema` instead. */
-  export const inboundSchema = IamGetPolicyRequest$inboundSchema;
-  /** @deprecated use `IamGetPolicyRequest$outboundSchema` instead. */
-  export const outboundSchema = IamGetPolicyRequest$outboundSchema;
-  /** @deprecated use `IamGetPolicyRequest$Outbound` instead. */
-  export type Outbound = IamGetPolicyRequest$Outbound;
-}
-
 export function iamGetPolicyRequestToJSON(
   iamGetPolicyRequest: IamGetPolicyRequest,
 ): string {
   return JSON.stringify(
     IamGetPolicyRequest$outboundSchema.parse(iamGetPolicyRequest),
-  );
-}
-
-export function iamGetPolicyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamGetPolicyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamGetPolicyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamGetPolicyRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const IamGetPolicyResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamGetPolicyResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  IamPolicyResult?: shared.IamPolicyResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamGetPolicyResponse$outboundSchema: z.ZodType<
-  IamGetPolicyResponse$Outbound,
-  z.ZodTypeDef,
-  IamGetPolicyResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  iamPolicyResult: shared.IamPolicyResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    iamPolicyResult: "IamPolicyResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamGetPolicyResponse$ {
-  /** @deprecated use `IamGetPolicyResponse$inboundSchema` instead. */
-  export const inboundSchema = IamGetPolicyResponse$inboundSchema;
-  /** @deprecated use `IamGetPolicyResponse$outboundSchema` instead. */
-  export const outboundSchema = IamGetPolicyResponse$outboundSchema;
-  /** @deprecated use `IamGetPolicyResponse$Outbound` instead. */
-  export type Outbound = IamGetPolicyResponse$Outbound;
-}
-
-export function iamGetPolicyResponseToJSON(
-  iamGetPolicyResponse: IamGetPolicyResponse,
-): string {
-  return JSON.stringify(
-    IamGetPolicyResponse$outboundSchema.parse(iamGetPolicyResponse),
-  );
-}
 
 export function iamGetPolicyResponseFromJSON(
   jsonString: string,

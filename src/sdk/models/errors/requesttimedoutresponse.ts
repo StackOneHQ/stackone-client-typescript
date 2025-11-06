@@ -62,36 +62,3 @@ export const RequestTimedOutResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type RequestTimedOutResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const RequestTimedOutResponse$outboundSchema: z.ZodType<
-  RequestTimedOutResponse$Outbound,
-  z.ZodTypeDef,
-  RequestTimedOutResponse
-> = z.instanceof(RequestTimedOutResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestTimedOutResponse$ {
-  /** @deprecated use `RequestTimedOutResponse$inboundSchema` instead. */
-  export const inboundSchema = RequestTimedOutResponse$inboundSchema;
-  /** @deprecated use `RequestTimedOutResponse$outboundSchema` instead. */
-  export const outboundSchema = RequestTimedOutResponse$outboundSchema;
-  /** @deprecated use `RequestTimedOutResponse$Outbound` instead. */
-  export type Outbound = RequestTimedOutResponse$Outbound;
-}

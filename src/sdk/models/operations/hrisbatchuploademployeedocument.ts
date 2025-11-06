@@ -39,23 +39,6 @@ export type HrisBatchUploadEmployeeDocumentResponse = {
 };
 
 /** @internal */
-export const HrisBatchUploadEmployeeDocumentRequest$inboundSchema: z.ZodType<
-  HrisBatchUploadEmployeeDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  HrisBatchDocumentUploadRequestDto:
-    shared.HrisBatchDocumentUploadRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "HrisBatchDocumentUploadRequestDto": "hrisBatchDocumentUploadRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisBatchUploadEmployeeDocumentRequest$Outbound = {
   HrisBatchDocumentUploadRequestDto:
     shared.HrisBatchDocumentUploadRequestDto$Outbound;
@@ -80,21 +63,6 @@ export const HrisBatchUploadEmployeeDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisBatchUploadEmployeeDocumentRequest$ {
-  /** @deprecated use `HrisBatchUploadEmployeeDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisBatchUploadEmployeeDocumentRequest$inboundSchema;
-  /** @deprecated use `HrisBatchUploadEmployeeDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisBatchUploadEmployeeDocumentRequest$outboundSchema;
-  /** @deprecated use `HrisBatchUploadEmployeeDocumentRequest$Outbound` instead. */
-  export type Outbound = HrisBatchUploadEmployeeDocumentRequest$Outbound;
-}
-
 export function hrisBatchUploadEmployeeDocumentRequestToJSON(
   hrisBatchUploadEmployeeDocumentRequest:
     HrisBatchUploadEmployeeDocumentRequest,
@@ -103,17 +71,6 @@ export function hrisBatchUploadEmployeeDocumentRequestToJSON(
     HrisBatchUploadEmployeeDocumentRequest$outboundSchema.parse(
       hrisBatchUploadEmployeeDocumentRequest,
     ),
-  );
-}
-
-export function hrisBatchUploadEmployeeDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisBatchUploadEmployeeDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisBatchUploadEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisBatchUploadEmployeeDocumentRequest' from JSON`,
   );
 }
 
@@ -138,64 +95,6 @@ export const HrisBatchUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisBatchUploadEmployeeDocumentResponse$Outbound = {
-  BatchResultApiModel?: shared.BatchResultApiModel$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisBatchUploadEmployeeDocumentResponse$outboundSchema: z.ZodType<
-  HrisBatchUploadEmployeeDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  HrisBatchUploadEmployeeDocumentResponse
-> = z.object({
-  batchResultApiModel: shared.BatchResultApiModel$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    batchResultApiModel: "BatchResultApiModel",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisBatchUploadEmployeeDocumentResponse$ {
-  /** @deprecated use `HrisBatchUploadEmployeeDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisBatchUploadEmployeeDocumentResponse$inboundSchema;
-  /** @deprecated use `HrisBatchUploadEmployeeDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisBatchUploadEmployeeDocumentResponse$outboundSchema;
-  /** @deprecated use `HrisBatchUploadEmployeeDocumentResponse$Outbound` instead. */
-  export type Outbound = HrisBatchUploadEmployeeDocumentResponse$Outbound;
-}
-
-export function hrisBatchUploadEmployeeDocumentResponseToJSON(
-  hrisBatchUploadEmployeeDocumentResponse:
-    HrisBatchUploadEmployeeDocumentResponse,
-): string {
-  return JSON.stringify(
-    HrisBatchUploadEmployeeDocumentResponse$outboundSchema.parse(
-      hrisBatchUploadEmployeeDocumentResponse,
-    ),
-  );
-}
 
 export function hrisBatchUploadEmployeeDocumentResponseFromJSON(
   jsonString: string,

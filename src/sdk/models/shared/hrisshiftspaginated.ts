@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HrisShift,
-  HrisShift$inboundSchema,
-  HrisShift$Outbound,
-  HrisShift$outboundSchema,
-} from "./hrisshift.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HrisShift, HrisShift$inboundSchema } from "./hrisshift.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HrisShiftsPaginated = {
   data?: Array<HrisShift> | null | undefined;
@@ -35,45 +25,6 @@ export const HrisShiftsPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HrisShiftsPaginated$Outbound = {
-  data?: Array<HrisShift$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HrisShiftsPaginated$outboundSchema: z.ZodType<
-  HrisShiftsPaginated$Outbound,
-  z.ZodTypeDef,
-  HrisShiftsPaginated
-> = z.object({
-  data: z.nullable(z.array(HrisShift$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftsPaginated$ {
-  /** @deprecated use `HrisShiftsPaginated$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftsPaginated$inboundSchema;
-  /** @deprecated use `HrisShiftsPaginated$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftsPaginated$outboundSchema;
-  /** @deprecated use `HrisShiftsPaginated$Outbound` instead. */
-  export type Outbound = HrisShiftsPaginated$Outbound;
-}
-
-export function hrisShiftsPaginatedToJSON(
-  hrisShiftsPaginated: HrisShiftsPaginated,
-): string {
-  return JSON.stringify(
-    HrisShiftsPaginated$outboundSchema.parse(hrisShiftsPaginated),
-  );
-}
 
 export function hrisShiftsPaginatedFromJSON(
   jsonString: string,

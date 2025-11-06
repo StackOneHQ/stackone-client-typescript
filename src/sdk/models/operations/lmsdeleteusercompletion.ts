@@ -39,21 +39,6 @@ export type LmsDeleteUserCompletionResponse = {
 };
 
 /** @internal */
-export const LmsDeleteUserCompletionRequest$inboundSchema: z.ZodType<
-  LmsDeleteUserCompletionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsDeleteUserCompletionRequest$Outbound = {
   id: string;
   subResourceId: string;
@@ -75,19 +60,6 @@ export const LmsDeleteUserCompletionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsDeleteUserCompletionRequest$ {
-  /** @deprecated use `LmsDeleteUserCompletionRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsDeleteUserCompletionRequest$inboundSchema;
-  /** @deprecated use `LmsDeleteUserCompletionRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsDeleteUserCompletionRequest$outboundSchema;
-  /** @deprecated use `LmsDeleteUserCompletionRequest$Outbound` instead. */
-  export type Outbound = LmsDeleteUserCompletionRequest$Outbound;
-}
-
 export function lmsDeleteUserCompletionRequestToJSON(
   lmsDeleteUserCompletionRequest: LmsDeleteUserCompletionRequest,
 ): string {
@@ -95,16 +67,6 @@ export function lmsDeleteUserCompletionRequestToJSON(
     LmsDeleteUserCompletionRequest$outboundSchema.parse(
       lmsDeleteUserCompletionRequest,
     ),
-  );
-}
-
-export function lmsDeleteUserCompletionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsDeleteUserCompletionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsDeleteUserCompletionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsDeleteUserCompletionRequest' from JSON`,
   );
 }
 
@@ -129,61 +91,6 @@ export const LmsDeleteUserCompletionResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsDeleteUserCompletionResponse$Outbound = {
-  ContentType: string;
-  DeleteResult?: shared.DeleteResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsDeleteUserCompletionResponse$outboundSchema: z.ZodType<
-  LmsDeleteUserCompletionResponse$Outbound,
-  z.ZodTypeDef,
-  LmsDeleteUserCompletionResponse
-> = z.object({
-  contentType: z.string(),
-  deleteResult: shared.DeleteResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    deleteResult: "DeleteResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsDeleteUserCompletionResponse$ {
-  /** @deprecated use `LmsDeleteUserCompletionResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsDeleteUserCompletionResponse$inboundSchema;
-  /** @deprecated use `LmsDeleteUserCompletionResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsDeleteUserCompletionResponse$outboundSchema;
-  /** @deprecated use `LmsDeleteUserCompletionResponse$Outbound` instead. */
-  export type Outbound = LmsDeleteUserCompletionResponse$Outbound;
-}
-
-export function lmsDeleteUserCompletionResponseToJSON(
-  lmsDeleteUserCompletionResponse: LmsDeleteUserCompletionResponse,
-): string {
-  return JSON.stringify(
-    LmsDeleteUserCompletionResponse$outboundSchema.parse(
-      lmsDeleteUserCompletionResponse,
-    ),
-  );
-}
 
 export function lmsDeleteUserCompletionResponseFromJSON(
   jsonString: string,

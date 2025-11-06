@@ -50,23 +50,6 @@ export type CrmGetAccountResponse = {
 };
 
 /** @internal */
-export const CrmGetAccountRequest$inboundSchema: z.ZodType<
-  CrmGetAccountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type CrmGetAccountRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const CrmGetAccountRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetAccountRequest$ {
-  /** @deprecated use `CrmGetAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = CrmGetAccountRequest$inboundSchema;
-  /** @deprecated use `CrmGetAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = CrmGetAccountRequest$outboundSchema;
-  /** @deprecated use `CrmGetAccountRequest$Outbound` instead. */
-  export type Outbound = CrmGetAccountRequest$Outbound;
-}
-
 export function crmGetAccountRequestToJSON(
   crmGetAccountRequest: CrmGetAccountRequest,
 ): string {
   return JSON.stringify(
     CrmGetAccountRequest$outboundSchema.parse(crmGetAccountRequest),
-  );
-}
-
-export function crmGetAccountRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmGetAccountRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmGetAccountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmGetAccountRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const CrmGetAccountResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type CrmGetAccountResponse$Outbound = {
-  AccountResult?: shared.AccountResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmGetAccountResponse$outboundSchema: z.ZodType<
-  CrmGetAccountResponse$Outbound,
-  z.ZodTypeDef,
-  CrmGetAccountResponse
-> = z.object({
-  accountResult: shared.AccountResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountResult: "AccountResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetAccountResponse$ {
-  /** @deprecated use `CrmGetAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = CrmGetAccountResponse$inboundSchema;
-  /** @deprecated use `CrmGetAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = CrmGetAccountResponse$outboundSchema;
-  /** @deprecated use `CrmGetAccountResponse$Outbound` instead. */
-  export type Outbound = CrmGetAccountResponse$Outbound;
-}
-
-export function crmGetAccountResponseToJSON(
-  crmGetAccountResponse: CrmGetAccountResponse,
-): string {
-  return JSON.stringify(
-    CrmGetAccountResponse$outboundSchema.parse(crmGetAccountResponse),
-  );
-}
 
 export function crmGetAccountResponseFromJSON(
   jsonString: string,

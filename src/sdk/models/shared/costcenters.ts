@@ -38,48 +38,6 @@ export const CostCenters$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type CostCenters$Outbound = {
-  distribution_percentage?: number | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const CostCenters$outboundSchema: z.ZodType<
-  CostCenters$Outbound,
-  z.ZodTypeDef,
-  CostCenters
-> = z.object({
-  distributionPercentage: z.nullable(z.number()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    distributionPercentage: "distribution_percentage",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CostCenters$ {
-  /** @deprecated use `CostCenters$inboundSchema` instead. */
-  export const inboundSchema = CostCenters$inboundSchema;
-  /** @deprecated use `CostCenters$outboundSchema` instead. */
-  export const outboundSchema = CostCenters$outboundSchema;
-  /** @deprecated use `CostCenters$Outbound` instead. */
-  export type Outbound = CostCenters$Outbound;
-}
-
-export function costCentersToJSON(costCenters: CostCenters): string {
-  return JSON.stringify(CostCenters$outboundSchema.parse(costCenters));
-}
-
 export function costCentersFromJSON(
   jsonString: string,
 ): SafeParseResult<CostCenters, SDKValidationError> {

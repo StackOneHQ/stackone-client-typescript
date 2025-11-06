@@ -85,21 +85,6 @@ export type AccountingListCompaniesResponse = {
 };
 
 /** @internal */
-export const AccountingListCompaniesQueryParamFilter$inboundSchema: z.ZodType<
-  AccountingListCompaniesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AccountingListCompaniesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -117,21 +102,6 @@ export const AccountingListCompaniesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingListCompaniesQueryParamFilter$ {
-  /** @deprecated use `AccountingListCompaniesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingListCompaniesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AccountingListCompaniesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingListCompaniesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AccountingListCompaniesQueryParamFilter$Outbound` instead. */
-  export type Outbound = AccountingListCompaniesQueryParamFilter$Outbound;
-}
-
 export function accountingListCompaniesQueryParamFilterToJSON(
   accountingListCompaniesQueryParamFilter:
     AccountingListCompaniesQueryParamFilter,
@@ -142,49 +112,6 @@ export function accountingListCompaniesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function accountingListCompaniesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AccountingListCompaniesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingListCompaniesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AccountingListCompaniesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountingListCompaniesRequest$inboundSchema: z.ZodType<
-  AccountingListCompaniesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AccountingListCompaniesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AccountingListCompaniesRequest$Outbound = {
@@ -224,19 +151,6 @@ export const AccountingListCompaniesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingListCompaniesRequest$ {
-  /** @deprecated use `AccountingListCompaniesRequest$inboundSchema` instead. */
-  export const inboundSchema = AccountingListCompaniesRequest$inboundSchema;
-  /** @deprecated use `AccountingListCompaniesRequest$outboundSchema` instead. */
-  export const outboundSchema = AccountingListCompaniesRequest$outboundSchema;
-  /** @deprecated use `AccountingListCompaniesRequest$Outbound` instead. */
-  export type Outbound = AccountingListCompaniesRequest$Outbound;
-}
-
 export function accountingListCompaniesRequestToJSON(
   accountingListCompaniesRequest: AccountingListCompaniesRequest,
 ): string {
@@ -244,16 +158,6 @@ export function accountingListCompaniesRequestToJSON(
     AccountingListCompaniesRequest$outboundSchema.parse(
       accountingListCompaniesRequest,
     ),
-  );
-}
-
-export function accountingListCompaniesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingListCompaniesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AccountingListCompaniesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingListCompaniesRequest' from JSON`,
   );
 }
 
@@ -279,64 +183,6 @@ export const AccountingListCompaniesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AccountingListCompaniesResponse$Outbound = {
-  AccountingCompaniesPaginated?:
-    | shared.AccountingCompaniesPaginated$Outbound
-    | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AccountingListCompaniesResponse$outboundSchema: z.ZodType<
-  AccountingListCompaniesResponse$Outbound,
-  z.ZodTypeDef,
-  AccountingListCompaniesResponse
-> = z.object({
-  accountingCompaniesPaginated: shared
-    .AccountingCompaniesPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountingCompaniesPaginated: "AccountingCompaniesPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingListCompaniesResponse$ {
-  /** @deprecated use `AccountingListCompaniesResponse$inboundSchema` instead. */
-  export const inboundSchema = AccountingListCompaniesResponse$inboundSchema;
-  /** @deprecated use `AccountingListCompaniesResponse$outboundSchema` instead. */
-  export const outboundSchema = AccountingListCompaniesResponse$outboundSchema;
-  /** @deprecated use `AccountingListCompaniesResponse$Outbound` instead. */
-  export type Outbound = AccountingListCompaniesResponse$Outbound;
-}
-
-export function accountingListCompaniesResponseToJSON(
-  accountingListCompaniesResponse: AccountingListCompaniesResponse,
-): string {
-  return JSON.stringify(
-    AccountingListCompaniesResponse$outboundSchema.parse(
-      accountingListCompaniesResponse,
-    ),
-  );
-}
 
 export function accountingListCompaniesResponseFromJSON(
   jsonString: string,

@@ -62,36 +62,3 @@ export const BadGatewayResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type BadGatewayResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const BadGatewayResponse$outboundSchema: z.ZodType<
-  BadGatewayResponse$Outbound,
-  z.ZodTypeDef,
-  BadGatewayResponse
-> = z.instanceof(BadGatewayResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BadGatewayResponse$ {
-  /** @deprecated use `BadGatewayResponse$inboundSchema` instead. */
-  export const inboundSchema = BadGatewayResponse$inboundSchema;
-  /** @deprecated use `BadGatewayResponse$outboundSchema` instead. */
-  export const outboundSchema = BadGatewayResponse$outboundSchema;
-  /** @deprecated use `BadGatewayResponse$Outbound` instead. */
-  export type Outbound = BadGatewayResponse$Outbound;
-}

@@ -5,25 +5,11 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  JournalLine,
-  JournalLine$inboundSchema,
-  JournalLine$Outbound,
-  JournalLine$outboundSchema,
-} from "./journalline.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { JournalLine, JournalLine$inboundSchema } from "./journalline.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AccountingJournalResult4 = {};
 
@@ -127,37 +113,6 @@ export const AccountingJournalResult4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type AccountingJournalResult4$Outbound = {};
-
-/** @internal */
-export const AccountingJournalResult4$outboundSchema: z.ZodType<
-  AccountingJournalResult4$Outbound,
-  z.ZodTypeDef,
-  AccountingJournalResult4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalResult4$ {
-  /** @deprecated use `AccountingJournalResult4$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalResult4$inboundSchema;
-  /** @deprecated use `AccountingJournalResult4$outboundSchema` instead. */
-  export const outboundSchema = AccountingJournalResult4$outboundSchema;
-  /** @deprecated use `AccountingJournalResult4$Outbound` instead. */
-  export type Outbound = AccountingJournalResult4$Outbound;
-}
-
-export function accountingJournalResult4ToJSON(
-  accountingJournalResult4: AccountingJournalResult4,
-): string {
-  return JSON.stringify(
-    AccountingJournalResult4$outboundSchema.parse(accountingJournalResult4),
-  );
-}
-
 export function accountingJournalResult4FromJSON(
   jsonString: string,
 ): SafeParseResult<AccountingJournalResult4, SDKValidationError> {
@@ -180,51 +135,6 @@ export const AccountingJournalResultSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => AccountingJournalResult4$inboundSchema),
   z.array(z.any()),
 ]);
-
-/** @internal */
-export type AccountingJournalResultSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | AccountingJournalResult4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const AccountingJournalResultSourceValue$outboundSchema: z.ZodType<
-  AccountingJournalResultSourceValue$Outbound,
-  z.ZodTypeDef,
-  AccountingJournalResultSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AccountingJournalResult4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalResultSourceValue$ {
-  /** @deprecated use `AccountingJournalResultSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalResultSourceValue$inboundSchema;
-  /** @deprecated use `AccountingJournalResultSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingJournalResultSourceValue$outboundSchema;
-  /** @deprecated use `AccountingJournalResultSourceValue$Outbound` instead. */
-  export type Outbound = AccountingJournalResultSourceValue$Outbound;
-}
-
-export function accountingJournalResultSourceValueToJSON(
-  accountingJournalResultSourceValue: AccountingJournalResultSourceValue,
-): string {
-  return JSON.stringify(
-    AccountingJournalResultSourceValue$outboundSchema.parse(
-      accountingJournalResultSourceValue,
-    ),
-  );
-}
 
 export function accountingJournalResultSourceValueFromJSON(
   jsonString: string,
@@ -249,27 +159,6 @@ export const AccountingJournalResultValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const AccountingJournalResultValue$outboundSchema: z.ZodType<
-  AccountingJournalResultValueOpen,
-  z.ZodTypeDef,
-  AccountingJournalResultValueOpen
-> = z.union([
-  z.nativeEnum(AccountingJournalResultValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalResultValue$ {
-  /** @deprecated use `AccountingJournalResultValue$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalResultValue$inboundSchema;
-  /** @deprecated use `AccountingJournalResultValue$outboundSchema` instead. */
-  export const outboundSchema = AccountingJournalResultValue$outboundSchema;
-}
-
-/** @internal */
 export const AccountingJournalResultStatus$inboundSchema: z.ZodType<
   AccountingJournalResultStatus,
   z.ZodTypeDef,
@@ -290,64 +179,6 @@ export const AccountingJournalResultStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type AccountingJournalResultStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | AccountingJournalResult4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const AccountingJournalResultStatus$outboundSchema: z.ZodType<
-  AccountingJournalResultStatus$Outbound,
-  z.ZodTypeDef,
-  AccountingJournalResultStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AccountingJournalResult4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AccountingJournalResultValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalResultStatus$ {
-  /** @deprecated use `AccountingJournalResultStatus$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalResultStatus$inboundSchema;
-  /** @deprecated use `AccountingJournalResultStatus$outboundSchema` instead. */
-  export const outboundSchema = AccountingJournalResultStatus$outboundSchema;
-  /** @deprecated use `AccountingJournalResultStatus$Outbound` instead. */
-  export type Outbound = AccountingJournalResultStatus$Outbound;
-}
-
-export function accountingJournalResultStatusToJSON(
-  accountingJournalResultStatus: AccountingJournalResultStatus,
-): string {
-  return JSON.stringify(
-    AccountingJournalResultStatus$outboundSchema.parse(
-      accountingJournalResultStatus,
-    ),
-  );
-}
 
 export function accountingJournalResultStatusFromJSON(
   jsonString: string,
@@ -396,74 +227,6 @@ export const AccountingJournalResultData$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type AccountingJournalResultData$Outbound = {
-  company_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  lines?: Array<JournalLine$Outbound> | null | undefined;
-  memo?: string | null | undefined;
-  posted_at?: string | null | undefined;
-  reference?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  status?: AccountingJournalResultStatus$Outbound | null | undefined;
-  transaction_date?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const AccountingJournalResultData$outboundSchema: z.ZodType<
-  AccountingJournalResultData$Outbound,
-  z.ZodTypeDef,
-  AccountingJournalResultData
-> = z.object({
-  companyId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  lines: z.nullable(z.array(JournalLine$outboundSchema)).optional(),
-  memo: z.nullable(z.string()).optional(),
-  postedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  reference: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => AccountingJournalResultStatus$outboundSchema))
-    .optional(),
-  transactionDate: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    createdAt: "created_at",
-    postedAt: "posted_at",
-    remoteId: "remote_id",
-    transactionDate: "transaction_date",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalResultData$ {
-  /** @deprecated use `AccountingJournalResultData$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalResultData$inboundSchema;
-  /** @deprecated use `AccountingJournalResultData$outboundSchema` instead. */
-  export const outboundSchema = AccountingJournalResultData$outboundSchema;
-  /** @deprecated use `AccountingJournalResultData$Outbound` instead. */
-  export type Outbound = AccountingJournalResultData$Outbound;
-}
-
-export function accountingJournalResultDataToJSON(
-  accountingJournalResultData: AccountingJournalResultData,
-): string {
-  return JSON.stringify(
-    AccountingJournalResultData$outboundSchema.parse(
-      accountingJournalResultData,
-    ),
-  );
-}
-
 export function accountingJournalResultDataFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountingJournalResultData, SDKValidationError> {
@@ -484,44 +247,6 @@ export const AccountingJournalResult$inboundSchema: z.ZodType<
     .optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AccountingJournalResult$Outbound = {
-  data?: AccountingJournalResultData$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AccountingJournalResult$outboundSchema: z.ZodType<
-  AccountingJournalResult$Outbound,
-  z.ZodTypeDef,
-  AccountingJournalResult
-> = z.object({
-  data: z.nullable(z.lazy(() => AccountingJournalResultData$outboundSchema))
-    .optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalResult$ {
-  /** @deprecated use `AccountingJournalResult$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalResult$inboundSchema;
-  /** @deprecated use `AccountingJournalResult$outboundSchema` instead. */
-  export const outboundSchema = AccountingJournalResult$outboundSchema;
-  /** @deprecated use `AccountingJournalResult$Outbound` instead. */
-  export type Outbound = AccountingJournalResult$Outbound;
-}
-
-export function accountingJournalResultToJSON(
-  accountingJournalResult: AccountingJournalResult,
-): string {
-  return JSON.stringify(
-    AccountingJournalResult$outboundSchema.parse(accountingJournalResult),
-  );
-}
 
 export function accountingJournalResultFromJSON(
   jsonString: string,

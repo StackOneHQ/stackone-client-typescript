@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 43b75c4ea50f77d47aed029ccc0c9c5e
+  docChecksum: 4e61b7ebb6f7537f0f63788428d9f306
   docVersion: 1.0.0
-  speakeasyVersion: 1.644.0
-  generationVersion: 2.733.1
-  releaseVersion: 4.31.0
-  configChecksum: 7746b67f990c1c5004cf88cd9660d737
+  speakeasyVersion: 1.650.0
+  generationVersion: 2.743.2
+  releaseVersion: 4.32.0
+  configChecksum: 6016e041041e188b1c1d72fa10fa1954
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -17,7 +17,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.24.2
+    core: 3.26.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -2113,6 +2113,8 @@ generatedFiles:
   - docs/sdk/models/shared/providererrorapimodelheaders.md
   - docs/sdk/models/shared/providererrorapimodelraw.md
   - docs/sdk/models/shared/proxyrequestbody.md
+  - docs/sdk/models/shared/proxyresponseapimodel.md
+  - docs/sdk/models/shared/proxyresponseapimodeldata.md
   - docs/sdk/models/shared/pushmessagecontentsschemas.md
   - docs/sdk/models/shared/pushmessages.md
   - docs/sdk/models/shared/pushmessages4.md
@@ -3420,6 +3422,7 @@ generatedFiles:
   - src/sdk/models/shared/providererror.ts
   - src/sdk/models/shared/providererrorapimodel.ts
   - src/sdk/models/shared/proxyrequestbody.ts
+  - src/sdk/models/shared/proxyresponseapimodel.ts
   - src/sdk/models/shared/pushmessages.ts
   - src/sdk/models/shared/pushtemplate.ts
   - src/sdk/models/shared/pushtemplateresult.ts
@@ -3543,6 +3546,7 @@ generatedFiles:
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
   - src/sdk/types/streams.ts
+  - temp/example.ts
   - tsconfig.json
 examples:
   stackone_delete_account:
@@ -11894,6 +11898,8 @@ examples:
           application/json: {"message": "Not Implemented", "statusCode": 501, "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
+        "200":
+          application/json: {"data": {"id": "123", "name": "John Doe", "email": "john.doe@example.com"}, "headers": {"content-type": "application/json", "x-request-id": "123e4567-e89b-12d3-a456-426614174000"}, "provider_errors": [{"headers": {}, "raw": {}, "status": 400, "url": "https://api.someprovider.com/v1/endpoint"}], "status": 200}
   ticketing_create_ticket:
     speakeasy-default-ticketing-create-ticket:
       parameters:
@@ -14242,7 +14248,7 @@ examples:
         query:
           group_by: "[\"connector\"]"
           filter: {"account_ids": "account1,account2", "action_key": "action1", "connectors": "connector1,connector2"}
-          include: ["operation_details"]
+          include: ["action_details"]
       responses:
         "200":
           application/json: {}
@@ -14587,4 +14593,4 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.actions.rpcAction()`: \n  *  `request.query` **Changed** **Breaking** :warning:\n  *  `response.data` **Changed**\n* `stackone.hris.getEmployee()`:  `response.data.bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployees()`:  `response.data.[].bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Changed**\n* `stackone.mcp.mcpDelete()`:  `request` **Changed**\n* `stackone.mcp.mcpGet()`:  `request` **Changed**\n* `stackone.mcp.mcpPost()`:  `request` **Changed**\n* `stackone.proxy.proxyRequest()`:  `response` **Changed**\n"

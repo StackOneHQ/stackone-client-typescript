@@ -39,23 +39,6 @@ export type LmsCreateUserCompletionResponse = {
 };
 
 /** @internal */
-export const LmsCreateUserCompletionRequest$inboundSchema: z.ZodType<
-  LmsCreateUserCompletionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  LmsCreateCompletionRequestDto:
-    shared.LmsCreateCompletionRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "LmsCreateCompletionRequestDto": "lmsCreateCompletionRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsCreateUserCompletionRequest$Outbound = {
   LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$Outbound;
   id: string;
@@ -79,19 +62,6 @@ export const LmsCreateUserCompletionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateUserCompletionRequest$ {
-  /** @deprecated use `LmsCreateUserCompletionRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateUserCompletionRequest$inboundSchema;
-  /** @deprecated use `LmsCreateUserCompletionRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateUserCompletionRequest$outboundSchema;
-  /** @deprecated use `LmsCreateUserCompletionRequest$Outbound` instead. */
-  export type Outbound = LmsCreateUserCompletionRequest$Outbound;
-}
-
 export function lmsCreateUserCompletionRequestToJSON(
   lmsCreateUserCompletionRequest: LmsCreateUserCompletionRequest,
 ): string {
@@ -99,16 +69,6 @@ export function lmsCreateUserCompletionRequestToJSON(
     LmsCreateUserCompletionRequest$outboundSchema.parse(
       lmsCreateUserCompletionRequest,
     ),
-  );
-}
-
-export function lmsCreateUserCompletionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateUserCompletionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsCreateUserCompletionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateUserCompletionRequest' from JSON`,
   );
 }
 
@@ -133,61 +93,6 @@ export const LmsCreateUserCompletionResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsCreateUserCompletionResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsCreateUserCompletionResponse$outboundSchema: z.ZodType<
-  LmsCreateUserCompletionResponse$Outbound,
-  z.ZodTypeDef,
-  LmsCreateUserCompletionResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateUserCompletionResponse$ {
-  /** @deprecated use `LmsCreateUserCompletionResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateUserCompletionResponse$inboundSchema;
-  /** @deprecated use `LmsCreateUserCompletionResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateUserCompletionResponse$outboundSchema;
-  /** @deprecated use `LmsCreateUserCompletionResponse$Outbound` instead. */
-  export type Outbound = LmsCreateUserCompletionResponse$Outbound;
-}
-
-export function lmsCreateUserCompletionResponseToJSON(
-  lmsCreateUserCompletionResponse: LmsCreateUserCompletionResponse,
-): string {
-  return JSON.stringify(
-    LmsCreateUserCompletionResponse$outboundSchema.parse(
-      lmsCreateUserCompletionResponse,
-    ),
-  );
-}
 
 export function lmsCreateUserCompletionResponseFromJSON(
   jsonString: string,

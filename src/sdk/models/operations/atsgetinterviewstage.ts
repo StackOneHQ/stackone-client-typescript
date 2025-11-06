@@ -50,23 +50,6 @@ export type AtsGetInterviewStageResponse = {
 };
 
 /** @internal */
-export const AtsGetInterviewStageRequest$inboundSchema: z.ZodType<
-  AtsGetInterviewStageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetInterviewStageRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const AtsGetInterviewStageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetInterviewStageRequest$ {
-  /** @deprecated use `AtsGetInterviewStageRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetInterviewStageRequest$inboundSchema;
-  /** @deprecated use `AtsGetInterviewStageRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetInterviewStageRequest$outboundSchema;
-  /** @deprecated use `AtsGetInterviewStageRequest$Outbound` instead. */
-  export type Outbound = AtsGetInterviewStageRequest$Outbound;
-}
-
 export function atsGetInterviewStageRequestToJSON(
   atsGetInterviewStageRequest: AtsGetInterviewStageRequest,
 ): string {
@@ -112,16 +82,6 @@ export function atsGetInterviewStageRequestToJSON(
     AtsGetInterviewStageRequest$outboundSchema.parse(
       atsGetInterviewStageRequest,
     ),
-  );
-}
-
-export function atsGetInterviewStageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetInterviewStageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetInterviewStageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetInterviewStageRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const AtsGetInterviewStageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetInterviewStageResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  InterviewStageResult?: shared.InterviewStageResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetInterviewStageResponse$outboundSchema: z.ZodType<
-  AtsGetInterviewStageResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetInterviewStageResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  interviewStageResult: shared.InterviewStageResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    interviewStageResult: "InterviewStageResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetInterviewStageResponse$ {
-  /** @deprecated use `AtsGetInterviewStageResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetInterviewStageResponse$inboundSchema;
-  /** @deprecated use `AtsGetInterviewStageResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetInterviewStageResponse$outboundSchema;
-  /** @deprecated use `AtsGetInterviewStageResponse$Outbound` instead. */
-  export type Outbound = AtsGetInterviewStageResponse$Outbound;
-}
-
-export function atsGetInterviewStageResponseToJSON(
-  atsGetInterviewStageResponse: AtsGetInterviewStageResponse,
-): string {
-  return JSON.stringify(
-    AtsGetInterviewStageResponse$outboundSchema.parse(
-      atsGetInterviewStageResponse,
-    ),
-  );
-}
 
 export function atsGetInterviewStageResponseFromJSON(
   jsonString: string,

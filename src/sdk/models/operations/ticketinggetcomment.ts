@@ -51,24 +51,6 @@ export type TicketingGetCommentResponse = {
 };
 
 /** @internal */
-export const TicketingGetCommentRequest$inboundSchema: z.ZodType<
-  TicketingGetCommentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type TicketingGetCommentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,34 +78,11 @@ export const TicketingGetCommentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingGetCommentRequest$ {
-  /** @deprecated use `TicketingGetCommentRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingGetCommentRequest$inboundSchema;
-  /** @deprecated use `TicketingGetCommentRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingGetCommentRequest$outboundSchema;
-  /** @deprecated use `TicketingGetCommentRequest$Outbound` instead. */
-  export type Outbound = TicketingGetCommentRequest$Outbound;
-}
-
 export function ticketingGetCommentRequestToJSON(
   ticketingGetCommentRequest: TicketingGetCommentRequest,
 ): string {
   return JSON.stringify(
     TicketingGetCommentRequest$outboundSchema.parse(ticketingGetCommentRequest),
-  );
-}
-
-export function ticketingGetCommentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingGetCommentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingGetCommentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingGetCommentRequest' from JSON`,
   );
 }
 
@@ -149,62 +108,6 @@ export const TicketingGetCommentResponse$inboundSchema: z.ZodType<
     "TicketingCommentResult": "ticketingCommentResult",
   });
 });
-
-/** @internal */
-export type TicketingGetCommentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TicketingCommentResult?: shared.TicketingCommentResult$Outbound | undefined;
-};
-
-/** @internal */
-export const TicketingGetCommentResponse$outboundSchema: z.ZodType<
-  TicketingGetCommentResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingGetCommentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  ticketingCommentResult: shared.TicketingCommentResult$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    ticketingCommentResult: "TicketingCommentResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingGetCommentResponse$ {
-  /** @deprecated use `TicketingGetCommentResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingGetCommentResponse$inboundSchema;
-  /** @deprecated use `TicketingGetCommentResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingGetCommentResponse$outboundSchema;
-  /** @deprecated use `TicketingGetCommentResponse$Outbound` instead. */
-  export type Outbound = TicketingGetCommentResponse$Outbound;
-}
-
-export function ticketingGetCommentResponseToJSON(
-  ticketingGetCommentResponse: TicketingGetCommentResponse,
-): string {
-  return JSON.stringify(
-    TicketingGetCommentResponse$outboundSchema.parse(
-      ticketingGetCommentResponse,
-    ),
-  );
-}
 
 export function ticketingGetCommentResponseFromJSON(
   jsonString: string,

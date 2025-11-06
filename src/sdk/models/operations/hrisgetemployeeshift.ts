@@ -51,24 +51,6 @@ export type HrisGetEmployeeShiftResponse = {
 };
 
 /** @internal */
-export const HrisGetEmployeeShiftRequest$inboundSchema: z.ZodType<
-  HrisGetEmployeeShiftRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetEmployeeShiftRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const HrisGetEmployeeShiftRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeShiftRequest$ {
-  /** @deprecated use `HrisGetEmployeeShiftRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeShiftRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeShiftRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeShiftRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeShiftRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeShiftRequest$Outbound;
-}
-
 export function hrisGetEmployeeShiftRequestToJSON(
   hrisGetEmployeeShiftRequest: HrisGetEmployeeShiftRequest,
 ): string {
@@ -116,16 +85,6 @@ export function hrisGetEmployeeShiftRequestToJSON(
     HrisGetEmployeeShiftRequest$outboundSchema.parse(
       hrisGetEmployeeShiftRequest,
     ),
-  );
-}
-
-export function hrisGetEmployeeShiftRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetEmployeeShiftRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetEmployeeShiftRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetEmployeeShiftRequest' from JSON`,
   );
 }
 
@@ -150,61 +109,6 @@ export const HrisGetEmployeeShiftResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetEmployeeShiftResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  HrisShiftResult?: shared.HrisShiftResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetEmployeeShiftResponse$outboundSchema: z.ZodType<
-  HrisGetEmployeeShiftResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetEmployeeShiftResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  hrisShiftResult: shared.HrisShiftResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    hrisShiftResult: "HrisShiftResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeShiftResponse$ {
-  /** @deprecated use `HrisGetEmployeeShiftResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeShiftResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeShiftResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeShiftResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeShiftResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeShiftResponse$Outbound;
-}
-
-export function hrisGetEmployeeShiftResponseToJSON(
-  hrisGetEmployeeShiftResponse: HrisGetEmployeeShiftResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmployeeShiftResponse$outboundSchema.parse(
-      hrisGetEmployeeShiftResponse,
-    ),
-  );
-}
 
 export function hrisGetEmployeeShiftResponseFromJSON(
   jsonString: string,

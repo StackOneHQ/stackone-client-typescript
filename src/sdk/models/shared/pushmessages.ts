@@ -95,7 +95,6 @@ export const PushMessagesMessageContent$inboundSchema: z.ZodType<
   subtitle: z.nullable(z.string()).optional(),
   title: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type PushMessagesMessageContent$Outbound = {
   body?: string | null | undefined;
@@ -114,19 +113,6 @@ export const PushMessagesMessageContent$outboundSchema: z.ZodType<
   title: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushMessagesMessageContent$ {
-  /** @deprecated use `PushMessagesMessageContent$inboundSchema` instead. */
-  export const inboundSchema = PushMessagesMessageContent$inboundSchema;
-  /** @deprecated use `PushMessagesMessageContent$outboundSchema` instead. */
-  export const outboundSchema = PushMessagesMessageContent$outboundSchema;
-  /** @deprecated use `PushMessagesMessageContent$Outbound` instead. */
-  export type Outbound = PushMessagesMessageContent$Outbound;
-}
-
 export function pushMessagesMessageContentToJSON(
   pushMessagesMessageContent: PushMessagesMessageContent,
 ): string {
@@ -134,7 +120,6 @@ export function pushMessagesMessageContentToJSON(
     PushMessagesMessageContent$outboundSchema.parse(pushMessagesMessageContent),
   );
 }
-
 export function pushMessagesMessageContentFromJSON(
   jsonString: string,
 ): SafeParseResult<PushMessagesMessageContent, SDKValidationError> {
@@ -151,7 +136,6 @@ export const PushMessages4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type PushMessages4$Outbound = {};
 
@@ -162,23 +146,9 @@ export const PushMessages4$outboundSchema: z.ZodType<
   PushMessages4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushMessages4$ {
-  /** @deprecated use `PushMessages4$inboundSchema` instead. */
-  export const inboundSchema = PushMessages4$inboundSchema;
-  /** @deprecated use `PushMessages4$outboundSchema` instead. */
-  export const outboundSchema = PushMessages4$outboundSchema;
-  /** @deprecated use `PushMessages4$Outbound` instead. */
-  export type Outbound = PushMessages4$Outbound;
-}
-
 export function pushMessages4ToJSON(pushMessages4: PushMessages4): string {
   return JSON.stringify(PushMessages4$outboundSchema.parse(pushMessages4));
 }
-
 export function pushMessages4FromJSON(
   jsonString: string,
 ): SafeParseResult<PushMessages4, SDKValidationError> {
@@ -201,7 +171,6 @@ export const PushMessagesSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => PushMessages4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type PushMessagesSourceValue$Outbound =
   | string
@@ -223,19 +192,6 @@ export const PushMessagesSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushMessagesSourceValue$ {
-  /** @deprecated use `PushMessagesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = PushMessagesSourceValue$inboundSchema;
-  /** @deprecated use `PushMessagesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = PushMessagesSourceValue$outboundSchema;
-  /** @deprecated use `PushMessagesSourceValue$Outbound` instead. */
-  export type Outbound = PushMessagesSourceValue$Outbound;
-}
-
 export function pushMessagesSourceValueToJSON(
   pushMessagesSourceValue: PushMessagesSourceValue,
 ): string {
@@ -243,7 +199,6 @@ export function pushMessagesSourceValueToJSON(
     PushMessagesSourceValue$outboundSchema.parse(pushMessagesSourceValue),
   );
 }
-
 export function pushMessagesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<PushMessagesSourceValue, SDKValidationError> {
@@ -264,7 +219,6 @@ export const PushMessagesValue$inboundSchema: z.ZodType<
     z.nativeEnum(PushMessagesValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const PushMessagesValue$outboundSchema: z.ZodType<
   PushMessagesValueOpen,
@@ -274,17 +228,6 @@ export const PushMessagesValue$outboundSchema: z.ZodType<
   z.nativeEnum(PushMessagesValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushMessagesValue$ {
-  /** @deprecated use `PushMessagesValue$inboundSchema` instead. */
-  export const inboundSchema = PushMessagesValue$inboundSchema;
-  /** @deprecated use `PushMessagesValue$outboundSchema` instead. */
-  export const outboundSchema = PushMessagesValue$outboundSchema;
-}
 
 /** @internal */
 export const PushMessagesMessageType$inboundSchema: z.ZodType<
@@ -307,7 +250,6 @@ export const PushMessagesMessageType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type PushMessagesMessageType$Outbound = {
   source_value?:
@@ -343,19 +285,6 @@ export const PushMessagesMessageType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushMessagesMessageType$ {
-  /** @deprecated use `PushMessagesMessageType$inboundSchema` instead. */
-  export const inboundSchema = PushMessagesMessageType$inboundSchema;
-  /** @deprecated use `PushMessagesMessageType$outboundSchema` instead. */
-  export const outboundSchema = PushMessagesMessageType$outboundSchema;
-  /** @deprecated use `PushMessagesMessageType$Outbound` instead. */
-  export type Outbound = PushMessagesMessageType$Outbound;
-}
-
 export function pushMessagesMessageTypeToJSON(
   pushMessagesMessageType: PushMessagesMessageType,
 ): string {
@@ -363,7 +292,6 @@ export function pushMessagesMessageTypeToJSON(
     PushMessagesMessageType$outboundSchema.parse(pushMessagesMessageType),
   );
 }
-
 export function pushMessagesMessageTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<PushMessagesMessageType, SDKValidationError> {
@@ -395,7 +323,6 @@ export const PushMessages$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
 /** @internal */
 export type PushMessages$Outbound = {
   id?: string | null | undefined;
@@ -427,23 +354,9 @@ export const PushMessages$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushMessages$ {
-  /** @deprecated use `PushMessages$inboundSchema` instead. */
-  export const inboundSchema = PushMessages$inboundSchema;
-  /** @deprecated use `PushMessages$outboundSchema` instead. */
-  export const outboundSchema = PushMessages$outboundSchema;
-  /** @deprecated use `PushMessages$Outbound` instead. */
-  export type Outbound = PushMessages$Outbound;
-}
-
 export function pushMessagesToJSON(pushMessages: PushMessages): string {
   return JSON.stringify(PushMessages$outboundSchema.parse(pushMessages));
 }
-
 export function pushMessagesFromJSON(
   jsonString: string,
 ): SafeParseResult<PushMessages, SDKValidationError> {

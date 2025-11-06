@@ -39,23 +39,6 @@ export type TicketingUpdateTicketResponse = {
 };
 
 /** @internal */
-export const TicketingUpdateTicketRequest$inboundSchema: z.ZodType<
-  TicketingUpdateTicketRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  TicketingTicketUpdateRequestDto:
-    shared.TicketingTicketUpdateRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "TicketingTicketUpdateRequestDto": "ticketingTicketUpdateRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type TicketingUpdateTicketRequest$Outbound = {
   TicketingTicketUpdateRequestDto:
     shared.TicketingTicketUpdateRequestDto$Outbound;
@@ -80,19 +63,6 @@ export const TicketingUpdateTicketRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUpdateTicketRequest$ {
-  /** @deprecated use `TicketingUpdateTicketRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingUpdateTicketRequest$inboundSchema;
-  /** @deprecated use `TicketingUpdateTicketRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingUpdateTicketRequest$outboundSchema;
-  /** @deprecated use `TicketingUpdateTicketRequest$Outbound` instead. */
-  export type Outbound = TicketingUpdateTicketRequest$Outbound;
-}
-
 export function ticketingUpdateTicketRequestToJSON(
   ticketingUpdateTicketRequest: TicketingUpdateTicketRequest,
 ): string {
@@ -100,16 +70,6 @@ export function ticketingUpdateTicketRequestToJSON(
     TicketingUpdateTicketRequest$outboundSchema.parse(
       ticketingUpdateTicketRequest,
     ),
-  );
-}
-
-export function ticketingUpdateTicketRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingUpdateTicketRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingUpdateTicketRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingUpdateTicketRequest' from JSON`,
   );
 }
 
@@ -134,61 +94,6 @@ export const TicketingUpdateTicketResponse$inboundSchema: z.ZodType<
     "UpdateResult": "updateResult",
   });
 });
-
-/** @internal */
-export type TicketingUpdateTicketResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UpdateResult?: shared.UpdateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const TicketingUpdateTicketResponse$outboundSchema: z.ZodType<
-  TicketingUpdateTicketResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingUpdateTicketResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  updateResult: shared.UpdateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    updateResult: "UpdateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUpdateTicketResponse$ {
-  /** @deprecated use `TicketingUpdateTicketResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingUpdateTicketResponse$inboundSchema;
-  /** @deprecated use `TicketingUpdateTicketResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingUpdateTicketResponse$outboundSchema;
-  /** @deprecated use `TicketingUpdateTicketResponse$Outbound` instead. */
-  export type Outbound = TicketingUpdateTicketResponse$Outbound;
-}
-
-export function ticketingUpdateTicketResponseToJSON(
-  ticketingUpdateTicketResponse: TicketingUpdateTicketResponse,
-): string {
-  return JSON.stringify(
-    TicketingUpdateTicketResponse$outboundSchema.parse(
-      ticketingUpdateTicketResponse,
-    ),
-  );
-}
 
 export function ticketingUpdateTicketResponseFromJSON(
   jsonString: string,

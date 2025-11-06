@@ -41,50 +41,6 @@ export const TaskCommentApiModel$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type TaskCommentApiModel$Outbound = {
-  author_employee_id?: string | null | undefined;
-  comment?: string | null | undefined;
-  created_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TaskCommentApiModel$outboundSchema: z.ZodType<
-  TaskCommentApiModel$Outbound,
-  z.ZodTypeDef,
-  TaskCommentApiModel
-> = z.object({
-  authorEmployeeId: z.nullable(z.string()).optional(),
-  comment: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    authorEmployeeId: "author_employee_id",
-    createdAt: "created_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskCommentApiModel$ {
-  /** @deprecated use `TaskCommentApiModel$inboundSchema` instead. */
-  export const inboundSchema = TaskCommentApiModel$inboundSchema;
-  /** @deprecated use `TaskCommentApiModel$outboundSchema` instead. */
-  export const outboundSchema = TaskCommentApiModel$outboundSchema;
-  /** @deprecated use `TaskCommentApiModel$Outbound` instead. */
-  export type Outbound = TaskCommentApiModel$Outbound;
-}
-
-export function taskCommentApiModelToJSON(
-  taskCommentApiModel: TaskCommentApiModel,
-): string {
-  return JSON.stringify(
-    TaskCommentApiModel$outboundSchema.parse(taskCommentApiModel),
-  );
-}
-
 export function taskCommentApiModelFromJSON(
   jsonString: string,
 ): SafeParseResult<TaskCommentApiModel, SDKValidationError> {

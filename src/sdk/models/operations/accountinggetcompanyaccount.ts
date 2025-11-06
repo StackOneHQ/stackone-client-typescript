@@ -51,24 +51,6 @@ export type AccountingGetCompanyAccountResponse = {
 };
 
 /** @internal */
-export const AccountingGetCompanyAccountRequest$inboundSchema: z.ZodType<
-  AccountingGetCompanyAccountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AccountingGetCompanyAccountRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,20 +78,6 @@ export const AccountingGetCompanyAccountRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingGetCompanyAccountRequest$ {
-  /** @deprecated use `AccountingGetCompanyAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = AccountingGetCompanyAccountRequest$inboundSchema;
-  /** @deprecated use `AccountingGetCompanyAccountRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingGetCompanyAccountRequest$outboundSchema;
-  /** @deprecated use `AccountingGetCompanyAccountRequest$Outbound` instead. */
-  export type Outbound = AccountingGetCompanyAccountRequest$Outbound;
-}
-
 export function accountingGetCompanyAccountRequestToJSON(
   accountingGetCompanyAccountRequest: AccountingGetCompanyAccountRequest,
 ): string {
@@ -117,17 +85,6 @@ export function accountingGetCompanyAccountRequestToJSON(
     AccountingGetCompanyAccountRequest$outboundSchema.parse(
       accountingGetCompanyAccountRequest,
     ),
-  );
-}
-
-export function accountingGetCompanyAccountRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingGetCompanyAccountRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingGetCompanyAccountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingGetCompanyAccountRequest' from JSON`,
   );
 }
 
@@ -153,64 +110,6 @@ export const AccountingGetCompanyAccountResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AccountingGetCompanyAccountResponse$Outbound = {
-  AccountingAccountResult?: shared.AccountingAccountResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AccountingGetCompanyAccountResponse$outboundSchema: z.ZodType<
-  AccountingGetCompanyAccountResponse$Outbound,
-  z.ZodTypeDef,
-  AccountingGetCompanyAccountResponse
-> = z.object({
-  accountingAccountResult: shared.AccountingAccountResult$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountingAccountResult: "AccountingAccountResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingGetCompanyAccountResponse$ {
-  /** @deprecated use `AccountingGetCompanyAccountResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingGetCompanyAccountResponse$inboundSchema;
-  /** @deprecated use `AccountingGetCompanyAccountResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingGetCompanyAccountResponse$outboundSchema;
-  /** @deprecated use `AccountingGetCompanyAccountResponse$Outbound` instead. */
-  export type Outbound = AccountingGetCompanyAccountResponse$Outbound;
-}
-
-export function accountingGetCompanyAccountResponseToJSON(
-  accountingGetCompanyAccountResponse: AccountingGetCompanyAccountResponse,
-): string {
-  return JSON.stringify(
-    AccountingGetCompanyAccountResponse$outboundSchema.parse(
-      accountingGetCompanyAccountResponse,
-    ),
-  );
-}
 
 export function accountingGetCompanyAccountResponseFromJSON(
   jsonString: string,

@@ -49,7 +49,6 @@ export const OfferHistory$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
 /** @internal */
 export type OfferHistory$Outbound = {
   created_at?: string | null | undefined;
@@ -78,23 +77,9 @@ export const OfferHistory$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OfferHistory$ {
-  /** @deprecated use `OfferHistory$inboundSchema` instead. */
-  export const inboundSchema = OfferHistory$inboundSchema;
-  /** @deprecated use `OfferHistory$outboundSchema` instead. */
-  export const outboundSchema = OfferHistory$outboundSchema;
-  /** @deprecated use `OfferHistory$Outbound` instead. */
-  export type Outbound = OfferHistory$Outbound;
-}
-
 export function offerHistoryToJSON(offerHistory: OfferHistory): string {
   return JSON.stringify(OfferHistory$outboundSchema.parse(offerHistory));
 }
-
 export function offerHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<OfferHistory, SDKValidationError> {

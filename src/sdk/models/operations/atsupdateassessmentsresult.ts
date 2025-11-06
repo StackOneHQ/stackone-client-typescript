@@ -40,24 +40,6 @@ export type AtsUpdateAssessmentsResultResponse = {
 };
 
 /** @internal */
-export const AtsUpdateAssessmentsResultRequest$inboundSchema: z.ZodType<
-  AtsUpdateAssessmentsResultRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsUpdateCandidatesAssessmentsResultsRequestDto:
-    shared.AtsUpdateCandidatesAssessmentsResultsRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsUpdateCandidatesAssessmentsResultsRequestDto":
-      "atsUpdateCandidatesAssessmentsResultsRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsUpdateAssessmentsResultRequest$Outbound = {
   AtsUpdateCandidatesAssessmentsResultsRequestDto:
     shared.AtsUpdateCandidatesAssessmentsResultsRequestDto$Outbound;
@@ -83,20 +65,6 @@ export const AtsUpdateAssessmentsResultRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateAssessmentsResultRequest$ {
-  /** @deprecated use `AtsUpdateAssessmentsResultRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateAssessmentsResultRequest$inboundSchema;
-  /** @deprecated use `AtsUpdateAssessmentsResultRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateAssessmentsResultRequest$outboundSchema;
-  /** @deprecated use `AtsUpdateAssessmentsResultRequest$Outbound` instead. */
-  export type Outbound = AtsUpdateAssessmentsResultRequest$Outbound;
-}
-
 export function atsUpdateAssessmentsResultRequestToJSON(
   atsUpdateAssessmentsResultRequest: AtsUpdateAssessmentsResultRequest,
 ): string {
@@ -104,16 +72,6 @@ export function atsUpdateAssessmentsResultRequestToJSON(
     AtsUpdateAssessmentsResultRequest$outboundSchema.parse(
       atsUpdateAssessmentsResultRequest,
     ),
-  );
-}
-
-export function atsUpdateAssessmentsResultRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateAssessmentsResultRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateAssessmentsResultRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateAssessmentsResultRequest' from JSON`,
   );
 }
 
@@ -138,62 +96,6 @@ export const AtsUpdateAssessmentsResultResponse$inboundSchema: z.ZodType<
     "UpdateResult": "updateResult",
   });
 });
-
-/** @internal */
-export type AtsUpdateAssessmentsResultResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UpdateResult?: shared.UpdateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const AtsUpdateAssessmentsResultResponse$outboundSchema: z.ZodType<
-  AtsUpdateAssessmentsResultResponse$Outbound,
-  z.ZodTypeDef,
-  AtsUpdateAssessmentsResultResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  updateResult: shared.UpdateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    updateResult: "UpdateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateAssessmentsResultResponse$ {
-  /** @deprecated use `AtsUpdateAssessmentsResultResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateAssessmentsResultResponse$inboundSchema;
-  /** @deprecated use `AtsUpdateAssessmentsResultResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateAssessmentsResultResponse$outboundSchema;
-  /** @deprecated use `AtsUpdateAssessmentsResultResponse$Outbound` instead. */
-  export type Outbound = AtsUpdateAssessmentsResultResponse$Outbound;
-}
-
-export function atsUpdateAssessmentsResultResponseToJSON(
-  atsUpdateAssessmentsResultResponse: AtsUpdateAssessmentsResultResponse,
-): string {
-  return JSON.stringify(
-    AtsUpdateAssessmentsResultResponse$outboundSchema.parse(
-      atsUpdateAssessmentsResultResponse,
-    ),
-  );
-}
 
 export function atsUpdateAssessmentsResultResponseFromJSON(
   jsonString: string,

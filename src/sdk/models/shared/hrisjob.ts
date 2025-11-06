@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -105,33 +101,6 @@ export const HrisJob4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type HrisJob4$Outbound = {};
-
-/** @internal */
-export const HrisJob4$outboundSchema: z.ZodType<
-  HrisJob4$Outbound,
-  z.ZodTypeDef,
-  HrisJob4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisJob4$ {
-  /** @deprecated use `HrisJob4$inboundSchema` instead. */
-  export const inboundSchema = HrisJob4$inboundSchema;
-  /** @deprecated use `HrisJob4$outboundSchema` instead. */
-  export const outboundSchema = HrisJob4$outboundSchema;
-  /** @deprecated use `HrisJob4$Outbound` instead. */
-  export type Outbound = HrisJob4$Outbound;
-}
-
-export function hrisJob4ToJSON(hrisJob4: HrisJob4): string {
-  return JSON.stringify(HrisJob4$outboundSchema.parse(hrisJob4));
-}
-
 export function hrisJob4FromJSON(
   jsonString: string,
 ): SafeParseResult<HrisJob4, SDKValidationError> {
@@ -155,48 +124,6 @@ export const HrisJobSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HrisJobSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HrisJob4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HrisJobSourceValue$outboundSchema: z.ZodType<
-  HrisJobSourceValue$Outbound,
-  z.ZodTypeDef,
-  HrisJobSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisJob4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisJobSourceValue$ {
-  /** @deprecated use `HrisJobSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HrisJobSourceValue$inboundSchema;
-  /** @deprecated use `HrisJobSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HrisJobSourceValue$outboundSchema;
-  /** @deprecated use `HrisJobSourceValue$Outbound` instead. */
-  export type Outbound = HrisJobSourceValue$Outbound;
-}
-
-export function hrisJobSourceValueToJSON(
-  hrisJobSourceValue: HrisJobSourceValue,
-): string {
-  return JSON.stringify(
-    HrisJobSourceValue$outboundSchema.parse(hrisJobSourceValue),
-  );
-}
-
 export function hrisJobSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisJobSourceValue, SDKValidationError> {
@@ -219,27 +146,6 @@ export const HrisJobValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HrisJobValue$outboundSchema: z.ZodType<
-  HrisJobValueOpen,
-  z.ZodTypeDef,
-  HrisJobValueOpen
-> = z.union([
-  z.nativeEnum(HrisJobValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisJobValue$ {
-  /** @deprecated use `HrisJobValue$inboundSchema` instead. */
-  export const inboundSchema = HrisJobValue$inboundSchema;
-  /** @deprecated use `HrisJobValue$outboundSchema` instead. */
-  export const outboundSchema = HrisJobValue$outboundSchema;
-}
-
-/** @internal */
 export const HrisJobStatus$inboundSchema: z.ZodType<
   HrisJobStatus,
   z.ZodTypeDef,
@@ -260,58 +166,6 @@ export const HrisJobStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type HrisJobStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HrisJob4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisJobStatus$outboundSchema: z.ZodType<
-  HrisJobStatus$Outbound,
-  z.ZodTypeDef,
-  HrisJobStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisJob4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisJobValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisJobStatus$ {
-  /** @deprecated use `HrisJobStatus$inboundSchema` instead. */
-  export const inboundSchema = HrisJobStatus$inboundSchema;
-  /** @deprecated use `HrisJobStatus$outboundSchema` instead. */
-  export const outboundSchema = HrisJobStatus$outboundSchema;
-  /** @deprecated use `HrisJobStatus$Outbound` instead. */
-  export type Outbound = HrisJobStatus$Outbound;
-}
-
-export function hrisJobStatusToJSON(hrisJobStatus: HrisJobStatus): string {
-  return JSON.stringify(HrisJobStatus$outboundSchema.parse(hrisJobStatus));
-}
 
 export function hrisJobStatusFromJSON(
   jsonString: string,
@@ -345,57 +199,6 @@ export const HrisJob$inboundSchema: z.ZodType<HrisJob, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type HrisJob$Outbound = {
-  code?: string | null | undefined;
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  status?: HrisJobStatus$Outbound | null | undefined;
-  title?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisJob$outboundSchema: z.ZodType<
-  HrisJob$Outbound,
-  z.ZodTypeDef,
-  HrisJob
-> = z.object({
-  code: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => HrisJobStatus$outboundSchema)).optional(),
-  title: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisJob$ {
-  /** @deprecated use `HrisJob$inboundSchema` instead. */
-  export const inboundSchema = HrisJob$inboundSchema;
-  /** @deprecated use `HrisJob$outboundSchema` instead. */
-  export const outboundSchema = HrisJob$outboundSchema;
-  /** @deprecated use `HrisJob$Outbound` instead. */
-  export type Outbound = HrisJob$Outbound;
-}
-
-export function hrisJobToJSON(hrisJob: HrisJob): string {
-  return JSON.stringify(HrisJob$outboundSchema.parse(hrisJob));
-}
 
 export function hrisJobFromJSON(
   jsonString: string,

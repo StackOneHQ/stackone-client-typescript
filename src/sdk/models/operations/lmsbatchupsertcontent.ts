@@ -38,22 +38,6 @@ export type LmsBatchUpsertContentResponse = {
 };
 
 /** @internal */
-export const LmsBatchUpsertContentRequest$inboundSchema: z.ZodType<
-  LmsBatchUpsertContentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  LmsBatchUpsertContentRequestDto:
-    shared.LmsBatchUpsertContentRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "LmsBatchUpsertContentRequestDto": "lmsBatchUpsertContentRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsBatchUpsertContentRequest$Outbound = {
   LmsBatchUpsertContentRequestDto:
     shared.LmsBatchUpsertContentRequestDto$Outbound;
@@ -76,19 +60,6 @@ export const LmsBatchUpsertContentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsBatchUpsertContentRequest$ {
-  /** @deprecated use `LmsBatchUpsertContentRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsBatchUpsertContentRequest$inboundSchema;
-  /** @deprecated use `LmsBatchUpsertContentRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsBatchUpsertContentRequest$outboundSchema;
-  /** @deprecated use `LmsBatchUpsertContentRequest$Outbound` instead. */
-  export type Outbound = LmsBatchUpsertContentRequest$Outbound;
-}
-
 export function lmsBatchUpsertContentRequestToJSON(
   lmsBatchUpsertContentRequest: LmsBatchUpsertContentRequest,
 ): string {
@@ -96,16 +67,6 @@ export function lmsBatchUpsertContentRequestToJSON(
     LmsBatchUpsertContentRequest$outboundSchema.parse(
       lmsBatchUpsertContentRequest,
     ),
-  );
-}
-
-export function lmsBatchUpsertContentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsBatchUpsertContentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsBatchUpsertContentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsBatchUpsertContentRequest' from JSON`,
   );
 }
 
@@ -130,61 +91,6 @@ export const LmsBatchUpsertContentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsBatchUpsertContentResponse$Outbound = {
-  BatchResultApiModel?: shared.BatchResultApiModel$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsBatchUpsertContentResponse$outboundSchema: z.ZodType<
-  LmsBatchUpsertContentResponse$Outbound,
-  z.ZodTypeDef,
-  LmsBatchUpsertContentResponse
-> = z.object({
-  batchResultApiModel: shared.BatchResultApiModel$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    batchResultApiModel: "BatchResultApiModel",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsBatchUpsertContentResponse$ {
-  /** @deprecated use `LmsBatchUpsertContentResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsBatchUpsertContentResponse$inboundSchema;
-  /** @deprecated use `LmsBatchUpsertContentResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsBatchUpsertContentResponse$outboundSchema;
-  /** @deprecated use `LmsBatchUpsertContentResponse$Outbound` instead. */
-  export type Outbound = LmsBatchUpsertContentResponse$Outbound;
-}
-
-export function lmsBatchUpsertContentResponseToJSON(
-  lmsBatchUpsertContentResponse: LmsBatchUpsertContentResponse,
-): string {
-  return JSON.stringify(
-    LmsBatchUpsertContentResponse$outboundSchema.parse(
-      lmsBatchUpsertContentResponse,
-    ),
-  );
-}
 
 export function lmsBatchUpsertContentResponseFromJSON(
   jsonString: string,

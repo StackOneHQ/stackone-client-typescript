@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationChanges,
   ApplicationChanges$inboundSchema,
-  ApplicationChanges$Outbound,
-  ApplicationChanges$outboundSchema,
 } from "./applicationchanges.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ApplicationChangesPaginated = {
   data?: Array<ApplicationChanges> | null | undefined;
@@ -35,47 +28,6 @@ export const ApplicationChangesPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ApplicationChangesPaginated$Outbound = {
-  data?: Array<ApplicationChanges$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ApplicationChangesPaginated$outboundSchema: z.ZodType<
-  ApplicationChangesPaginated$Outbound,
-  z.ZodTypeDef,
-  ApplicationChangesPaginated
-> = z.object({
-  data: z.nullable(z.array(ApplicationChanges$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationChangesPaginated$ {
-  /** @deprecated use `ApplicationChangesPaginated$inboundSchema` instead. */
-  export const inboundSchema = ApplicationChangesPaginated$inboundSchema;
-  /** @deprecated use `ApplicationChangesPaginated$outboundSchema` instead. */
-  export const outboundSchema = ApplicationChangesPaginated$outboundSchema;
-  /** @deprecated use `ApplicationChangesPaginated$Outbound` instead. */
-  export type Outbound = ApplicationChangesPaginated$Outbound;
-}
-
-export function applicationChangesPaginatedToJSON(
-  applicationChangesPaginated: ApplicationChangesPaginated,
-): string {
-  return JSON.stringify(
-    ApplicationChangesPaginated$outboundSchema.parse(
-      applicationChangesPaginated,
-    ),
-  );
-}
 
 export function applicationChangesPaginatedFromJSON(
   jsonString: string,

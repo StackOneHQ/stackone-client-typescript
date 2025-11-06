@@ -50,23 +50,6 @@ export type MarketingGetContentBlockResponse = {
 };
 
 /** @internal */
-export const MarketingGetContentBlockRequest$inboundSchema: z.ZodType<
-  MarketingGetContentBlockRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingGetContentBlockRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const MarketingGetContentBlockRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetContentBlockRequest$ {
-  /** @deprecated use `MarketingGetContentBlockRequest$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetContentBlockRequest$inboundSchema;
-  /** @deprecated use `MarketingGetContentBlockRequest$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetContentBlockRequest$outboundSchema;
-  /** @deprecated use `MarketingGetContentBlockRequest$Outbound` instead. */
-  export type Outbound = MarketingGetContentBlockRequest$Outbound;
-}
-
 export function marketingGetContentBlockRequestToJSON(
   marketingGetContentBlockRequest: MarketingGetContentBlockRequest,
 ): string {
@@ -112,16 +82,6 @@ export function marketingGetContentBlockRequestToJSON(
     MarketingGetContentBlockRequest$outboundSchema.parse(
       marketingGetContentBlockRequest,
     ),
-  );
-}
-
-export function marketingGetContentBlockRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingGetContentBlockRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MarketingGetContentBlockRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingGetContentBlockRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const MarketingGetContentBlockResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingGetContentBlockResponse$Outbound = {
-  ContentBlockResult?: shared.ContentBlockResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingGetContentBlockResponse$outboundSchema: z.ZodType<
-  MarketingGetContentBlockResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingGetContentBlockResponse
-> = z.object({
-  contentBlockResult: shared.ContentBlockResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentBlockResult: "ContentBlockResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetContentBlockResponse$ {
-  /** @deprecated use `MarketingGetContentBlockResponse$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetContentBlockResponse$inboundSchema;
-  /** @deprecated use `MarketingGetContentBlockResponse$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetContentBlockResponse$outboundSchema;
-  /** @deprecated use `MarketingGetContentBlockResponse$Outbound` instead. */
-  export type Outbound = MarketingGetContentBlockResponse$Outbound;
-}
-
-export function marketingGetContentBlockResponseToJSON(
-  marketingGetContentBlockResponse: MarketingGetContentBlockResponse,
-): string {
-  return JSON.stringify(
-    MarketingGetContentBlockResponse$outboundSchema.parse(
-      marketingGetContentBlockResponse,
-    ),
-  );
-}
 
 export function marketingGetContentBlockResponseFromJSON(
   jsonString: string,

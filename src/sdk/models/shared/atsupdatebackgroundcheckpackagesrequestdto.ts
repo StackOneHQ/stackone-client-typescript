@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UpdatePackage,
-  UpdatePackage$inboundSchema,
   UpdatePackage$Outbound,
   UpdatePackage$outboundSchema,
 } from "./updatepackage.js";
@@ -33,16 +29,6 @@ export type AtsUpdateBackgroundCheckPackagesRequestDto = {
 };
 
 /** @internal */
-export const AtsUpdateBackgroundCheckPackagesRequestDto$inboundSchema:
-  z.ZodType<AtsUpdateBackgroundCheckPackagesRequestDto, z.ZodTypeDef, unknown> =
-    z.object({
-      description: z.nullable(z.string()).optional(),
-      name: z.nullable(z.string()).optional(),
-      passthrough: z.nullable(z.record(z.any())).optional(),
-      tests: z.nullable(z.array(UpdatePackage$inboundSchema)).optional(),
-    });
-
-/** @internal */
 export type AtsUpdateBackgroundCheckPackagesRequestDto$Outbound = {
   description?: string | null | undefined;
   name?: string | null | undefined;
@@ -63,21 +49,6 @@ export const AtsUpdateBackgroundCheckPackagesRequestDto$outboundSchema:
     tests: z.nullable(z.array(UpdatePackage$outboundSchema)).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckPackagesRequestDto$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckPackagesRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckPackagesRequestDto$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckPackagesRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckPackagesRequestDto$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckPackagesRequestDto$Outbound` instead. */
-  export type Outbound = AtsUpdateBackgroundCheckPackagesRequestDto$Outbound;
-}
-
 export function atsUpdateBackgroundCheckPackagesRequestDtoToJSON(
   atsUpdateBackgroundCheckPackagesRequestDto:
     AtsUpdateBackgroundCheckPackagesRequestDto,
@@ -86,21 +57,5 @@ export function atsUpdateBackgroundCheckPackagesRequestDtoToJSON(
     AtsUpdateBackgroundCheckPackagesRequestDto$outboundSchema.parse(
       atsUpdateBackgroundCheckPackagesRequestDto,
     ),
-  );
-}
-
-export function atsUpdateBackgroundCheckPackagesRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckPackagesRequestDto,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckPackagesRequestDto$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckPackagesRequestDto' from JSON`,
   );
 }

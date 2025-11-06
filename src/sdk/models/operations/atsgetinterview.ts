@@ -50,23 +50,6 @@ export type AtsGetInterviewResponse = {
 };
 
 /** @internal */
-export const AtsGetInterviewRequest$inboundSchema: z.ZodType<
-  AtsGetInterviewRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetInterviewRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const AtsGetInterviewRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetInterviewRequest$ {
-  /** @deprecated use `AtsGetInterviewRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetInterviewRequest$inboundSchema;
-  /** @deprecated use `AtsGetInterviewRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetInterviewRequest$outboundSchema;
-  /** @deprecated use `AtsGetInterviewRequest$Outbound` instead. */
-  export type Outbound = AtsGetInterviewRequest$Outbound;
-}
-
 export function atsGetInterviewRequestToJSON(
   atsGetInterviewRequest: AtsGetInterviewRequest,
 ): string {
   return JSON.stringify(
     AtsGetInterviewRequest$outboundSchema.parse(atsGetInterviewRequest),
-  );
-}
-
-export function atsGetInterviewRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetInterviewRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetInterviewRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetInterviewRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const AtsGetInterviewResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetInterviewResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  InterviewsResult?: shared.InterviewsResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetInterviewResponse$outboundSchema: z.ZodType<
-  AtsGetInterviewResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetInterviewResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  interviewsResult: shared.InterviewsResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    interviewsResult: "InterviewsResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetInterviewResponse$ {
-  /** @deprecated use `AtsGetInterviewResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetInterviewResponse$inboundSchema;
-  /** @deprecated use `AtsGetInterviewResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetInterviewResponse$outboundSchema;
-  /** @deprecated use `AtsGetInterviewResponse$Outbound` instead. */
-  export type Outbound = AtsGetInterviewResponse$Outbound;
-}
-
-export function atsGetInterviewResponseToJSON(
-  atsGetInterviewResponse: AtsGetInterviewResponse,
-): string {
-  return JSON.stringify(
-    AtsGetInterviewResponse$outboundSchema.parse(atsGetInterviewResponse),
-  );
-}
 
 export function atsGetInterviewResponseFromJSON(
   jsonString: string,

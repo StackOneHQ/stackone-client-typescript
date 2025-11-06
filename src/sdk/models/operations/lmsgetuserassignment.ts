@@ -51,24 +51,6 @@ export type LmsGetUserAssignmentResponse = {
 };
 
 /** @internal */
-export const LmsGetUserAssignmentRequest$inboundSchema: z.ZodType<
-  LmsGetUserAssignmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsGetUserAssignmentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const LmsGetUserAssignmentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetUserAssignmentRequest$ {
-  /** @deprecated use `LmsGetUserAssignmentRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsGetUserAssignmentRequest$inboundSchema;
-  /** @deprecated use `LmsGetUserAssignmentRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsGetUserAssignmentRequest$outboundSchema;
-  /** @deprecated use `LmsGetUserAssignmentRequest$Outbound` instead. */
-  export type Outbound = LmsGetUserAssignmentRequest$Outbound;
-}
-
 export function lmsGetUserAssignmentRequestToJSON(
   lmsGetUserAssignmentRequest: LmsGetUserAssignmentRequest,
 ): string {
@@ -116,16 +85,6 @@ export function lmsGetUserAssignmentRequestToJSON(
     LmsGetUserAssignmentRequest$outboundSchema.parse(
       lmsGetUserAssignmentRequest,
     ),
-  );
-}
-
-export function lmsGetUserAssignmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsGetUserAssignmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsGetUserAssignmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsGetUserAssignmentRequest' from JSON`,
   );
 }
 
@@ -150,61 +109,6 @@ export const LmsGetUserAssignmentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsGetUserAssignmentResponse$Outbound = {
-  AssignmentResult?: shared.AssignmentResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsGetUserAssignmentResponse$outboundSchema: z.ZodType<
-  LmsGetUserAssignmentResponse$Outbound,
-  z.ZodTypeDef,
-  LmsGetUserAssignmentResponse
-> = z.object({
-  assignmentResult: shared.AssignmentResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    assignmentResult: "AssignmentResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetUserAssignmentResponse$ {
-  /** @deprecated use `LmsGetUserAssignmentResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsGetUserAssignmentResponse$inboundSchema;
-  /** @deprecated use `LmsGetUserAssignmentResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsGetUserAssignmentResponse$outboundSchema;
-  /** @deprecated use `LmsGetUserAssignmentResponse$Outbound` instead. */
-  export type Outbound = LmsGetUserAssignmentResponse$Outbound;
-}
-
-export function lmsGetUserAssignmentResponseToJSON(
-  lmsGetUserAssignmentResponse: LmsGetUserAssignmentResponse,
-): string {
-  return JSON.stringify(
-    LmsGetUserAssignmentResponse$outboundSchema.parse(
-      lmsGetUserAssignmentResponse,
-    ),
-  );
-}
 
 export function lmsGetUserAssignmentResponseFromJSON(
   jsonString: string,

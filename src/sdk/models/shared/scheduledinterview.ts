@@ -5,25 +5,11 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Interviewer,
-  Interviewer$inboundSchema,
-  Interviewer$Outbound,
-  Interviewer$outboundSchema,
-} from "./interviewer.js";
-import {
-  InterviewPart,
-  InterviewPart$inboundSchema,
-  InterviewPart$Outbound,
-  InterviewPart$outboundSchema,
-} from "./interviewpart.js";
+import { Interviewer, Interviewer$inboundSchema } from "./interviewer.js";
+import { InterviewPart, InterviewPart$inboundSchema } from "./interviewpart.js";
 
 export type ScheduledInterviewInterviewStage = {
   /**
@@ -171,62 +157,6 @@ export const ScheduledInterviewInterviewStage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ScheduledInterviewInterviewStage$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  order?: number | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ScheduledInterviewInterviewStage$outboundSchema: z.ZodType<
-  ScheduledInterviewInterviewStage$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterviewInterviewStage
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  order: z.nullable(z.number()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterviewInterviewStage$ {
-  /** @deprecated use `ScheduledInterviewInterviewStage$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterviewInterviewStage$inboundSchema;
-  /** @deprecated use `ScheduledInterviewInterviewStage$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterviewInterviewStage$outboundSchema;
-  /** @deprecated use `ScheduledInterviewInterviewStage$Outbound` instead. */
-  export type Outbound = ScheduledInterviewInterviewStage$Outbound;
-}
-
-export function scheduledInterviewInterviewStageToJSON(
-  scheduledInterviewInterviewStage: ScheduledInterviewInterviewStage,
-): string {
-  return JSON.stringify(
-    ScheduledInterviewInterviewStage$outboundSchema.parse(
-      scheduledInterviewInterviewStage,
-    ),
-  );
-}
-
 export function scheduledInterviewInterviewStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ScheduledInterviewInterviewStage, SDKValidationError> {
@@ -243,37 +173,6 @@ export const ScheduledInterview4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type ScheduledInterview4$Outbound = {};
-
-/** @internal */
-export const ScheduledInterview4$outboundSchema: z.ZodType<
-  ScheduledInterview4$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterview4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterview4$ {
-  /** @deprecated use `ScheduledInterview4$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterview4$inboundSchema;
-  /** @deprecated use `ScheduledInterview4$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterview4$outboundSchema;
-  /** @deprecated use `ScheduledInterview4$Outbound` instead. */
-  export type Outbound = ScheduledInterview4$Outbound;
-}
-
-export function scheduledInterview4ToJSON(
-  scheduledInterview4: ScheduledInterview4,
-): string {
-  return JSON.stringify(
-    ScheduledInterview4$outboundSchema.parse(scheduledInterview4),
-  );
-}
 
 export function scheduledInterview4FromJSON(
   jsonString: string,
@@ -298,50 +197,6 @@ export const ScheduledInterviewSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type ScheduledInterviewSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | ScheduledInterview4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const ScheduledInterviewSourceValue$outboundSchema: z.ZodType<
-  ScheduledInterviewSourceValue$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterviewSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => ScheduledInterview4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterviewSourceValue$ {
-  /** @deprecated use `ScheduledInterviewSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterviewSourceValue$inboundSchema;
-  /** @deprecated use `ScheduledInterviewSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterviewSourceValue$outboundSchema;
-  /** @deprecated use `ScheduledInterviewSourceValue$Outbound` instead. */
-  export type Outbound = ScheduledInterviewSourceValue$Outbound;
-}
-
-export function scheduledInterviewSourceValueToJSON(
-  scheduledInterviewSourceValue: ScheduledInterviewSourceValue,
-): string {
-  return JSON.stringify(
-    ScheduledInterviewSourceValue$outboundSchema.parse(
-      scheduledInterviewSourceValue,
-    ),
-  );
-}
-
 export function scheduledInterviewSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ScheduledInterviewSourceValue, SDKValidationError> {
@@ -364,27 +219,6 @@ export const ScheduledInterviewValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const ScheduledInterviewValue$outboundSchema: z.ZodType<
-  ScheduledInterviewValueOpen,
-  z.ZodTypeDef,
-  ScheduledInterviewValueOpen
-> = z.union([
-  z.nativeEnum(ScheduledInterviewValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterviewValue$ {
-  /** @deprecated use `ScheduledInterviewValue$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterviewValue$inboundSchema;
-  /** @deprecated use `ScheduledInterviewValue$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterviewValue$outboundSchema;
-}
-
-/** @internal */
 export const ScheduledInterviewInterviewStatus$inboundSchema: z.ZodType<
   ScheduledInterviewInterviewStatus,
   z.ZodTypeDef,
@@ -405,65 +239,6 @@ export const ScheduledInterviewInterviewStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type ScheduledInterviewInterviewStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | ScheduledInterview4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ScheduledInterviewInterviewStatus$outboundSchema: z.ZodType<
-  ScheduledInterviewInterviewStatus$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterviewInterviewStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => ScheduledInterview4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ScheduledInterviewValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterviewInterviewStatus$ {
-  /** @deprecated use `ScheduledInterviewInterviewStatus$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterviewInterviewStatus$inboundSchema;
-  /** @deprecated use `ScheduledInterviewInterviewStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    ScheduledInterviewInterviewStatus$outboundSchema;
-  /** @deprecated use `ScheduledInterviewInterviewStatus$Outbound` instead. */
-  export type Outbound = ScheduledInterviewInterviewStatus$Outbound;
-}
-
-export function scheduledInterviewInterviewStatusToJSON(
-  scheduledInterviewInterviewStatus: ScheduledInterviewInterviewStatus,
-): string {
-  return JSON.stringify(
-    ScheduledInterviewInterviewStatus$outboundSchema.parse(
-      scheduledInterviewInterviewStatus,
-    ),
-  );
-}
 
 export function scheduledInterviewInterviewStatusFromJSON(
   jsonString: string,
@@ -529,101 +304,6 @@ export const ScheduledInterview$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type ScheduledInterview$Outbound = {
-  application_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  end_at?: string | null | undefined;
-  id?: string | null | undefined;
-  interview_parts?: Array<InterviewPart$Outbound> | null | undefined;
-  interview_stage?:
-    | ScheduledInterviewInterviewStage$Outbound
-    | null
-    | undefined;
-  interview_stage_id?: string | null | undefined;
-  interview_status?:
-    | ScheduledInterviewInterviewStatus$Outbound
-    | null
-    | undefined;
-  interviewer_ids?: Array<string> | null | undefined;
-  interviewers?: Array<Interviewer$Outbound> | null | undefined;
-  meeting_url?: string | null | undefined;
-  remote_application_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_interview_stage_id?: string | null | undefined;
-  remote_interviewer_ids?: Array<string> | null | undefined;
-  start_at?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ScheduledInterview$outboundSchema: z.ZodType<
-  ScheduledInterview$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterview
-> = z.object({
-  applicationId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  endAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  interviewParts: z.nullable(z.array(InterviewPart$outboundSchema)).optional(),
-  interviewStage: z.nullable(
-    z.lazy(() => ScheduledInterviewInterviewStage$outboundSchema),
-  ).optional(),
-  interviewStageId: z.nullable(z.string()).optional(),
-  interviewStatus: z.nullable(
-    z.lazy(() => ScheduledInterviewInterviewStatus$outboundSchema),
-  ).optional(),
-  interviewerIds: z.nullable(z.array(z.string())).optional(),
-  interviewers: z.nullable(z.array(Interviewer$outboundSchema)).optional(),
-  meetingUrl: z.nullable(z.string()).optional(),
-  remoteApplicationId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteInterviewStageId: z.nullable(z.string()).optional(),
-  remoteInterviewerIds: z.nullable(z.array(z.string())).optional(),
-  startAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    applicationId: "application_id",
-    createdAt: "created_at",
-    endAt: "end_at",
-    interviewParts: "interview_parts",
-    interviewStage: "interview_stage",
-    interviewStageId: "interview_stage_id",
-    interviewStatus: "interview_status",
-    interviewerIds: "interviewer_ids",
-    meetingUrl: "meeting_url",
-    remoteApplicationId: "remote_application_id",
-    remoteId: "remote_id",
-    remoteInterviewStageId: "remote_interview_stage_id",
-    remoteInterviewerIds: "remote_interviewer_ids",
-    startAt: "start_at",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterview$ {
-  /** @deprecated use `ScheduledInterview$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterview$inboundSchema;
-  /** @deprecated use `ScheduledInterview$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterview$outboundSchema;
-  /** @deprecated use `ScheduledInterview$Outbound` instead. */
-  export type Outbound = ScheduledInterview$Outbound;
-}
-
-export function scheduledInterviewToJSON(
-  scheduledInterview: ScheduledInterview,
-): string {
-  return JSON.stringify(
-    ScheduledInterview$outboundSchema.parse(scheduledInterview),
-  );
-}
 
 export function scheduledInterviewFromJSON(
   jsonString: string,

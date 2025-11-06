@@ -210,21 +210,9 @@ export type Content = {
 /** @internal */
 export const Content2$inboundSchema: z.ZodNativeEnum<typeof Content2> = z
   .nativeEnum(Content2);
-
 /** @internal */
 export const Content2$outboundSchema: z.ZodNativeEnum<typeof Content2> =
   Content2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Content2$ {
-  /** @deprecated use `Content2$inboundSchema` instead. */
-  export const inboundSchema = Content2$inboundSchema;
-  /** @deprecated use `Content2$outboundSchema` instead. */
-  export const outboundSchema = Content2$outboundSchema;
-}
 
 /** @internal */
 export const ContentActive$inboundSchema: z.ZodType<
@@ -232,7 +220,6 @@ export const ContentActive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Content2$inboundSchema]);
-
 /** @internal */
 export type ContentActive$Outbound = boolean | string;
 
@@ -243,23 +230,9 @@ export const ContentActive$outboundSchema: z.ZodType<
   ContentActive
 > = z.union([z.boolean(), Content2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentActive$ {
-  /** @deprecated use `ContentActive$inboundSchema` instead. */
-  export const inboundSchema = ContentActive$inboundSchema;
-  /** @deprecated use `ContentActive$outboundSchema` instead. */
-  export const outboundSchema = ContentActive$outboundSchema;
-  /** @deprecated use `ContentActive$Outbound` instead. */
-  export type Outbound = ContentActive$Outbound;
-}
-
 export function contentActiveToJSON(contentActive: ContentActive): string {
   return JSON.stringify(ContentActive$outboundSchema.parse(contentActive));
 }
-
 export function contentActiveFromJSON(
   jsonString: string,
 ): SafeParseResult<ContentActive, SDKValidationError> {
@@ -276,7 +249,6 @@ export const Content4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type Content4$Outbound = {};
 
@@ -287,23 +259,9 @@ export const Content4$outboundSchema: z.ZodType<
   Content4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Content4$ {
-  /** @deprecated use `Content4$inboundSchema` instead. */
-  export const inboundSchema = Content4$inboundSchema;
-  /** @deprecated use `Content4$outboundSchema` instead. */
-  export const outboundSchema = Content4$outboundSchema;
-  /** @deprecated use `Content4$Outbound` instead. */
-  export type Outbound = Content4$Outbound;
-}
-
 export function content4ToJSON(content4: Content4): string {
   return JSON.stringify(Content4$outboundSchema.parse(content4));
 }
-
 export function content4FromJSON(
   jsonString: string,
 ): SafeParseResult<Content4, SDKValidationError> {
@@ -326,7 +284,6 @@ export const ContentSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => Content4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type ContentSourceValue$Outbound =
   | string
@@ -348,19 +305,6 @@ export const ContentSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentSourceValue$ {
-  /** @deprecated use `ContentSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ContentSourceValue$inboundSchema;
-  /** @deprecated use `ContentSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ContentSourceValue$outboundSchema;
-  /** @deprecated use `ContentSourceValue$Outbound` instead. */
-  export type Outbound = ContentSourceValue$Outbound;
-}
-
 export function contentSourceValueToJSON(
   contentSourceValue: ContentSourceValue,
 ): string {
@@ -368,7 +312,6 @@ export function contentSourceValueToJSON(
     ContentSourceValue$outboundSchema.parse(contentSourceValue),
   );
 }
-
 export function contentSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ContentSourceValue, SDKValidationError> {
@@ -389,7 +332,6 @@ export const ContentValue$inboundSchema: z.ZodType<
     z.nativeEnum(ContentValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const ContentValue$outboundSchema: z.ZodType<
   ContentValueOpen,
@@ -399,17 +341,6 @@ export const ContentValue$outboundSchema: z.ZodType<
   z.nativeEnum(ContentValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentValue$ {
-  /** @deprecated use `ContentValue$inboundSchema` instead. */
-  export const inboundSchema = ContentValue$inboundSchema;
-  /** @deprecated use `ContentValue$outboundSchema` instead. */
-  export const outboundSchema = ContentValue$outboundSchema;
-}
 
 /** @internal */
 export const ContentContentType$inboundSchema: z.ZodType<
@@ -432,7 +363,6 @@ export const ContentContentType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type ContentContentType$Outbound = {
   source_value?:
@@ -468,19 +398,6 @@ export const ContentContentType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentContentType$ {
-  /** @deprecated use `ContentContentType$inboundSchema` instead. */
-  export const inboundSchema = ContentContentType$inboundSchema;
-  /** @deprecated use `ContentContentType$outboundSchema` instead. */
-  export const outboundSchema = ContentContentType$outboundSchema;
-  /** @deprecated use `ContentContentType$Outbound` instead. */
-  export type Outbound = ContentContentType$Outbound;
-}
-
 export function contentContentTypeToJSON(
   contentContentType: ContentContentType,
 ): string {
@@ -488,7 +405,6 @@ export function contentContentTypeToJSON(
     ContentContentType$outboundSchema.parse(contentContentType),
   );
 }
-
 export function contentContentTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<ContentContentType, SDKValidationError> {
@@ -550,7 +466,6 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
 /** @internal */
 export type Content$Outbound = {
   active?: boolean | string | null | undefined;
@@ -631,23 +546,9 @@ export const Content$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Content$ {
-  /** @deprecated use `Content$inboundSchema` instead. */
-  export const inboundSchema = Content$inboundSchema;
-  /** @deprecated use `Content$outboundSchema` instead. */
-  export const outboundSchema = Content$outboundSchema;
-  /** @deprecated use `Content$Outbound` instead. */
-  export type Outbound = Content$Outbound;
-}
-
 export function contentToJSON(content: Content): string {
   return JSON.stringify(Content$outboundSchema.parse(content));
 }
-
 export function contentFromJSON(
   jsonString: string,
 ): SafeParseResult<Content, SDKValidationError> {

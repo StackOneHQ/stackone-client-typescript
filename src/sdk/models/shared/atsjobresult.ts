@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  AtsJob,
-  AtsJob$inboundSchema,
-  AtsJob$Outbound,
-  AtsJob$outboundSchema,
-} from "./atsjob.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { AtsJob, AtsJob$inboundSchema } from "./atsjob.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AtsJobResult = {
   data: AtsJob;
@@ -33,39 +23,6 @@ export const AtsJobResult$inboundSchema: z.ZodType<
   data: AtsJob$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AtsJobResult$Outbound = {
-  data: AtsJob$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AtsJobResult$outboundSchema: z.ZodType<
-  AtsJobResult$Outbound,
-  z.ZodTypeDef,
-  AtsJobResult
-> = z.object({
-  data: AtsJob$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsJobResult$ {
-  /** @deprecated use `AtsJobResult$inboundSchema` instead. */
-  export const inboundSchema = AtsJobResult$inboundSchema;
-  /** @deprecated use `AtsJobResult$outboundSchema` instead. */
-  export const outboundSchema = AtsJobResult$outboundSchema;
-  /** @deprecated use `AtsJobResult$Outbound` instead. */
-  export type Outbound = AtsJobResult$Outbound;
-}
-
-export function atsJobResultToJSON(atsJobResult: AtsJobResult): string {
-  return JSON.stringify(AtsJobResult$outboundSchema.parse(atsJobResult));
-}
 
 export function atsJobResultFromJSON(
   jsonString: string,

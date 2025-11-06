@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type LmsCreateAssignmentRequestDto4 = {};
 
@@ -100,13 +93,6 @@ export type LmsCreateAssignmentRequestDto = {
 };
 
 /** @internal */
-export const LmsCreateAssignmentRequestDto4$inboundSchema: z.ZodType<
-  LmsCreateAssignmentRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type LmsCreateAssignmentRequestDto4$Outbound = {};
 
 /** @internal */
@@ -115,19 +101,6 @@ export const LmsCreateAssignmentRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateAssignmentRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateAssignmentRequestDto4$ {
-  /** @deprecated use `LmsCreateAssignmentRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateAssignmentRequestDto4$inboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateAssignmentRequestDto4$outboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDto4$Outbound` instead. */
-  export type Outbound = LmsCreateAssignmentRequestDto4$Outbound;
-}
 
 export function lmsCreateAssignmentRequestDto4ToJSON(
   lmsCreateAssignmentRequestDto4: LmsCreateAssignmentRequestDto4,
@@ -138,29 +111,6 @@ export function lmsCreateAssignmentRequestDto4ToJSON(
     ),
   );
 }
-
-export function lmsCreateAssignmentRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateAssignmentRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsCreateAssignmentRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateAssignmentRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateAssignmentRequestDtoSourceValue$inboundSchema: z.ZodType<
-  LmsCreateAssignmentRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => LmsCreateAssignmentRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type LmsCreateAssignmentRequestDtoSourceValue$Outbound =
@@ -183,21 +133,6 @@ export const LmsCreateAssignmentRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateAssignmentRequestDtoSourceValue$ {
-  /** @deprecated use `LmsCreateAssignmentRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsCreateAssignmentRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsCreateAssignmentRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = LmsCreateAssignmentRequestDtoSourceValue$Outbound;
-}
-
 export function lmsCreateAssignmentRequestDtoSourceValueToJSON(
   lmsCreateAssignmentRequestDtoSourceValue:
     LmsCreateAssignmentRequestDtoSourceValue,
@@ -209,33 +144,6 @@ export function lmsCreateAssignmentRequestDtoSourceValueToJSON(
   );
 }
 
-export function lmsCreateAssignmentRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  LmsCreateAssignmentRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsCreateAssignmentRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'LmsCreateAssignmentRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateAssignmentRequestDtoValue$inboundSchema: z.ZodType<
-  LmsCreateAssignmentRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(LmsCreateAssignmentRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const LmsCreateAssignmentRequestDtoValue$outboundSchema: z.ZodType<
   LmsCreateAssignmentRequestDtoValueOpen,
@@ -245,41 +153,6 @@ export const LmsCreateAssignmentRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(LmsCreateAssignmentRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateAssignmentRequestDtoValue$ {
-  /** @deprecated use `LmsCreateAssignmentRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateAssignmentRequestDtoValue$inboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsCreateAssignmentRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const LmsCreateAssignmentRequestDtoStatus$inboundSchema: z.ZodType<
-  LmsCreateAssignmentRequestDtoStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => LmsCreateAssignmentRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(LmsCreateAssignmentRequestDtoValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type LmsCreateAssignmentRequestDtoStatus$Outbound = {
@@ -317,21 +190,6 @@ export const LmsCreateAssignmentRequestDtoStatus$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateAssignmentRequestDtoStatus$ {
-  /** @deprecated use `LmsCreateAssignmentRequestDtoStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsCreateAssignmentRequestDtoStatus$inboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDtoStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsCreateAssignmentRequestDtoStatus$outboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDtoStatus$Outbound` instead. */
-  export type Outbound = LmsCreateAssignmentRequestDtoStatus$Outbound;
-}
-
 export function lmsCreateAssignmentRequestDtoStatusToJSON(
   lmsCreateAssignmentRequestDtoStatus: LmsCreateAssignmentRequestDtoStatus,
 ): string {
@@ -341,47 +199,6 @@ export function lmsCreateAssignmentRequestDtoStatusToJSON(
     ),
   );
 }
-
-export function lmsCreateAssignmentRequestDtoStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateAssignmentRequestDtoStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsCreateAssignmentRequestDtoStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateAssignmentRequestDtoStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateAssignmentRequestDto$inboundSchema: z.ZodType<
-  LmsCreateAssignmentRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  due_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  external_reference: z.nullable(z.string()).optional(),
-  learning_object_external_reference: z.string(),
-  learning_object_id: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  progress: z.nullable(z.number()).optional(),
-  status: z.nullable(
-    z.lazy(() => LmsCreateAssignmentRequestDtoStatus$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "created_at": "createdAt",
-    "due_date": "dueDate",
-    "external_reference": "externalReference",
-    "learning_object_external_reference": "learningObjectExternalReference",
-    "learning_object_id": "learningObjectId",
-  });
-});
 
 /** @internal */
 export type LmsCreateAssignmentRequestDto$Outbound = {
@@ -421,19 +238,6 @@ export const LmsCreateAssignmentRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateAssignmentRequestDto$ {
-  /** @deprecated use `LmsCreateAssignmentRequestDto$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateAssignmentRequestDto$inboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDto$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateAssignmentRequestDto$outboundSchema;
-  /** @deprecated use `LmsCreateAssignmentRequestDto$Outbound` instead. */
-  export type Outbound = LmsCreateAssignmentRequestDto$Outbound;
-}
-
 export function lmsCreateAssignmentRequestDtoToJSON(
   lmsCreateAssignmentRequestDto: LmsCreateAssignmentRequestDto,
 ): string {
@@ -441,15 +245,5 @@ export function lmsCreateAssignmentRequestDtoToJSON(
     LmsCreateAssignmentRequestDto$outboundSchema.parse(
       lmsCreateAssignmentRequestDto,
     ),
-  );
-}
-
-export function lmsCreateAssignmentRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateAssignmentRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsCreateAssignmentRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateAssignmentRequestDto' from JSON`,
   );
 }

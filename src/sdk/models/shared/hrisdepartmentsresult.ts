@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISDepartment,
   HRISDepartment$inboundSchema,
-  HRISDepartment$Outbound,
-  HRISDepartment$outboundSchema,
 } from "./hrisdepartment.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISDepartmentsResult = {
   data: HRISDepartment;
@@ -33,43 +26,6 @@ export const HRISDepartmentsResult$inboundSchema: z.ZodType<
   data: HRISDepartment$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISDepartmentsResult$Outbound = {
-  data: HRISDepartment$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISDepartmentsResult$outboundSchema: z.ZodType<
-  HRISDepartmentsResult$Outbound,
-  z.ZodTypeDef,
-  HRISDepartmentsResult
-> = z.object({
-  data: HRISDepartment$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDepartmentsResult$ {
-  /** @deprecated use `HRISDepartmentsResult$inboundSchema` instead. */
-  export const inboundSchema = HRISDepartmentsResult$inboundSchema;
-  /** @deprecated use `HRISDepartmentsResult$outboundSchema` instead. */
-  export const outboundSchema = HRISDepartmentsResult$outboundSchema;
-  /** @deprecated use `HRISDepartmentsResult$Outbound` instead. */
-  export type Outbound = HRISDepartmentsResult$Outbound;
-}
-
-export function hrisDepartmentsResultToJSON(
-  hrisDepartmentsResult: HRISDepartmentsResult,
-): string {
-  return JSON.stringify(
-    HRISDepartmentsResult$outboundSchema.parse(hrisDepartmentsResult),
-  );
-}
 
 export function hrisDepartmentsResultFromJSON(
   jsonString: string,

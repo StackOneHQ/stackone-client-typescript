@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 /**
  * The category name to associate with the file
@@ -1381,17 +1374,6 @@ export type AtsDocumentsUploadRequestDto = {
 };
 
 /** @internal */
-export const AtsDocumentsUploadRequestDtoValue$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsDocumentsUploadRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
 export const AtsDocumentsUploadRequestDtoValue$outboundSchema: z.ZodType<
   AtsDocumentsUploadRequestDtoValueOpen,
   z.ZodTypeDef,
@@ -1400,32 +1382,6 @@ export const AtsDocumentsUploadRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(AtsDocumentsUploadRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoValue$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = AtsDocumentsUploadRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoCategory$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoCategory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(z.string()).optional(),
-  value: z.nullable(AtsDocumentsUploadRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoCategory$Outbound = {
@@ -1448,21 +1404,6 @@ export const AtsDocumentsUploadRequestDtoCategory$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoCategory$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoCategory$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoCategory$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoCategory$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDtoCategory$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoCategoryToJSON(
   atsDocumentsUploadRequestDtoCategory: AtsDocumentsUploadRequestDtoCategory,
 ): string {
@@ -1472,24 +1413,6 @@ export function atsDocumentsUploadRequestDtoCategoryToJSON(
     ),
   );
 }
-
-export function atsDocumentsUploadRequestDtoCategoryFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDocumentsUploadRequestDtoCategory, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDocumentsUploadRequestDtoCategory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDocumentsUploadRequestDtoCategory' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDto4$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type AtsDocumentsUploadRequestDto4$Outbound = {};
@@ -1501,19 +1424,6 @@ export const AtsDocumentsUploadRequestDto4$outboundSchema: z.ZodType<
   AtsDocumentsUploadRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDto4$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = AtsDocumentsUploadRequestDto4$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = AtsDocumentsUploadRequestDto4$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDto4$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDto4$Outbound;
-}
-
 export function atsDocumentsUploadRequestDto4ToJSON(
   atsDocumentsUploadRequestDto4: AtsDocumentsUploadRequestDto4,
 ): string {
@@ -1523,29 +1433,6 @@ export function atsDocumentsUploadRequestDto4ToJSON(
     ),
   );
 }
-
-export function atsDocumentsUploadRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDocumentsUploadRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsDocumentsUploadRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDocumentsUploadRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AtsDocumentsUploadRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoSourceValue$Outbound =
@@ -1568,21 +1455,6 @@ export const AtsDocumentsUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoSourceValue$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDtoSourceValue$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoSourceValueToJSON(
   atsDocumentsUploadRequestDtoSourceValue:
     AtsDocumentsUploadRequestDtoSourceValue,
@@ -1594,33 +1466,6 @@ export function atsDocumentsUploadRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsDocumentsUploadRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsDocumentsUploadRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDocumentsUploadRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsDocumentsUploadRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoSchemasValue$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsDocumentsUploadRequestDtoSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const AtsDocumentsUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
   AtsDocumentsUploadRequestDtoSchemasValueOpen,
@@ -1630,42 +1475,6 @@ export const AtsDocumentsUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
   z.nativeEnum(AtsDocumentsUploadRequestDtoSchemasValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoSchemasValue$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoSchemasValue$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoConfidential$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoConfidential,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AtsDocumentsUploadRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AtsDocumentsUploadRequestDtoSchemasValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoConfidential$Outbound = {
@@ -1703,21 +1512,6 @@ export const AtsDocumentsUploadRequestDtoConfidential$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoConfidential$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoConfidential$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoConfidential$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoConfidential$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoConfidential$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoConfidential$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDtoConfidential$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoConfidentialToJSON(
   atsDocumentsUploadRequestDtoConfidential:
     AtsDocumentsUploadRequestDtoConfidential,
@@ -1729,29 +1523,6 @@ export function atsDocumentsUploadRequestDtoConfidentialToJSON(
   );
 }
 
-export function atsDocumentsUploadRequestDtoConfidentialFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsDocumentsUploadRequestDtoConfidential,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDocumentsUploadRequestDtoConfidential$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsDocumentsUploadRequestDtoConfidential' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoSchemas4$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
 /** @internal */
 export type AtsDocumentsUploadRequestDtoSchemas4$Outbound = {};
 
@@ -1762,21 +1533,6 @@ export const AtsDocumentsUploadRequestDtoSchemas4$outboundSchema: z.ZodType<
   AtsDocumentsUploadRequestDtoSchemas4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoSchemas4$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemas4$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoSchemas4$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemas4$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoSchemas4$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemas4$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDtoSchemas4$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoSchemas4ToJSON(
   atsDocumentsUploadRequestDtoSchemas4: AtsDocumentsUploadRequestDtoSchemas4,
 ): string {
@@ -1786,31 +1542,6 @@ export function atsDocumentsUploadRequestDtoSchemas4ToJSON(
     ),
   );
 }
-
-export function atsDocumentsUploadRequestDtoSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDocumentsUploadRequestDtoSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDocumentsUploadRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDocumentsUploadRequestDtoSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema:
-  z.ZodType<
-    AtsDocumentsUploadRequestDtoSchemasSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoSchemasSourceValue$Outbound =
@@ -1834,22 +1565,6 @@ export const AtsDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasSourceValue$Outbound` instead. */
-  export type Outbound =
-    AtsDocumentsUploadRequestDtoSchemasSourceValue$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoSchemasSourceValueToJSON(
   atsDocumentsUploadRequestDtoSchemasSourceValue:
     AtsDocumentsUploadRequestDtoSchemasSourceValue,
@@ -1861,34 +1576,6 @@ export function atsDocumentsUploadRequestDtoSchemasSourceValueToJSON(
   );
 }
 
-export function atsDocumentsUploadRequestDtoSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsDocumentsUploadRequestDtoSchemasSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsDocumentsUploadRequestDtoSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema:
-  z.ZodType<
-    AtsDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(AtsDocumentsUploadRequestDtoSchemasFileFormatValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const AtsDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema:
   z.ZodType<
@@ -1899,43 +1586,6 @@ export const AtsDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema:
     z.nativeEnum(AtsDocumentsUploadRequestDtoSchemasFileFormatValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoSchemasFileFormatValue$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoFileFormat,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AtsDocumentsUploadRequestDtoSchemas4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(
-    AtsDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema,
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoFileFormat$Outbound = {
@@ -1974,21 +1624,6 @@ export const AtsDocumentsUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDtoFileFormat$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDtoFileFormat$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDocumentsUploadRequestDtoFileFormat$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoFileFormat$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDocumentsUploadRequestDtoFileFormat$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDtoFileFormat$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDtoFileFormat$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoFileFormatToJSON(
   atsDocumentsUploadRequestDtoFileFormat:
     AtsDocumentsUploadRequestDtoFileFormat,
@@ -1999,43 +1634,6 @@ export function atsDocumentsUploadRequestDtoFileFormatToJSON(
     ),
   );
 }
-
-export function atsDocumentsUploadRequestDtoFileFormatFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDocumentsUploadRequestDtoFileFormat, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDocumentsUploadRequestDtoFileFormat$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDocumentsUploadRequestDtoFileFormat' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsDocumentsUploadRequestDto$inboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  category: z.nullable(
-    z.lazy(() => AtsDocumentsUploadRequestDtoCategory$inboundSchema),
-  ).optional(),
-  category_id: z.nullable(z.string()).optional(),
-  confidential: z.nullable(
-    z.lazy(() => AtsDocumentsUploadRequestDtoConfidential$inboundSchema),
-  ).optional(),
-  content: z.nullable(z.string()).optional(),
-  file_format: z.nullable(
-    z.lazy(() => AtsDocumentsUploadRequestDtoFileFormat$inboundSchema),
-  ).optional(),
-  name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "category_id": "categoryId",
-    "file_format": "fileFormat",
-  });
-});
 
 /** @internal */
 export type AtsDocumentsUploadRequestDto$Outbound = {
@@ -2080,19 +1678,6 @@ export const AtsDocumentsUploadRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentsUploadRequestDto$ {
-  /** @deprecated use `AtsDocumentsUploadRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsDocumentsUploadRequestDto$inboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsDocumentsUploadRequestDto$outboundSchema;
-  /** @deprecated use `AtsDocumentsUploadRequestDto$Outbound` instead. */
-  export type Outbound = AtsDocumentsUploadRequestDto$Outbound;
-}
-
 export function atsDocumentsUploadRequestDtoToJSON(
   atsDocumentsUploadRequestDto: AtsDocumentsUploadRequestDto,
 ): string {
@@ -2100,15 +1685,5 @@ export function atsDocumentsUploadRequestDtoToJSON(
     AtsDocumentsUploadRequestDto$outboundSchema.parse(
       atsDocumentsUploadRequestDto,
     ),
-  );
-}
-
-export function atsDocumentsUploadRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDocumentsUploadRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsDocumentsUploadRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDocumentsUploadRequestDto' from JSON`,
   );
 }

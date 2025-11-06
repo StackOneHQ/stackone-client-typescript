@@ -62,36 +62,3 @@ export const PreconditionFailedResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type PreconditionFailedResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const PreconditionFailedResponse$outboundSchema: z.ZodType<
-  PreconditionFailedResponse$Outbound,
-  z.ZodTypeDef,
-  PreconditionFailedResponse
-> = z.instanceof(PreconditionFailedResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PreconditionFailedResponse$ {
-  /** @deprecated use `PreconditionFailedResponse$inboundSchema` instead. */
-  export const inboundSchema = PreconditionFailedResponse$inboundSchema;
-  /** @deprecated use `PreconditionFailedResponse$outboundSchema` instead. */
-  export const outboundSchema = PreconditionFailedResponse$outboundSchema;
-  /** @deprecated use `PreconditionFailedResponse$Outbound` instead. */
-  export type Outbound = PreconditionFailedResponse$Outbound;
-}

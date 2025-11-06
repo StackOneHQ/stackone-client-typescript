@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SmsMessages,
-  SmsMessages$inboundSchema,
   SmsMessages$Outbound,
   SmsMessages$outboundSchema,
 } from "./smsmessages.js";
@@ -22,18 +18,6 @@ export type MarketingCreateSmsTemplateRequestDto = {
   passthrough?: { [k: string]: any } | null | undefined;
   tags?: Array<string> | null | undefined;
 };
-
-/** @internal */
-export const MarketingCreateSmsTemplateRequestDto$inboundSchema: z.ZodType<
-  MarketingCreateSmsTemplateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  messages: z.nullable(z.array(SmsMessages$inboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-});
 
 /** @internal */
 export type MarketingCreateSmsTemplateRequestDto$Outbound = {
@@ -55,21 +39,6 @@ export const MarketingCreateSmsTemplateRequestDto$outboundSchema: z.ZodType<
   tags: z.nullable(z.array(z.string())).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateSmsTemplateRequestDto$ {
-  /** @deprecated use `MarketingCreateSmsTemplateRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateSmsTemplateRequestDto$inboundSchema;
-  /** @deprecated use `MarketingCreateSmsTemplateRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateSmsTemplateRequestDto$outboundSchema;
-  /** @deprecated use `MarketingCreateSmsTemplateRequestDto$Outbound` instead. */
-  export type Outbound = MarketingCreateSmsTemplateRequestDto$Outbound;
-}
-
 export function marketingCreateSmsTemplateRequestDtoToJSON(
   marketingCreateSmsTemplateRequestDto: MarketingCreateSmsTemplateRequestDto,
 ): string {
@@ -77,16 +46,5 @@ export function marketingCreateSmsTemplateRequestDtoToJSON(
     MarketingCreateSmsTemplateRequestDto$outboundSchema.parse(
       marketingCreateSmsTemplateRequestDto,
     ),
-  );
-}
-
-export function marketingCreateSmsTemplateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingCreateSmsTemplateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreateSmsTemplateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingCreateSmsTemplateRequestDto' from JSON`,
   );
 }

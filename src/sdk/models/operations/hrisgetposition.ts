@@ -50,23 +50,6 @@ export type HrisGetPositionResponse = {
 };
 
 /** @internal */
-export const HrisGetPositionRequest$inboundSchema: z.ZodType<
-  HrisGetPositionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetPositionRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const HrisGetPositionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetPositionRequest$ {
-  /** @deprecated use `HrisGetPositionRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetPositionRequest$inboundSchema;
-  /** @deprecated use `HrisGetPositionRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetPositionRequest$outboundSchema;
-  /** @deprecated use `HrisGetPositionRequest$Outbound` instead. */
-  export type Outbound = HrisGetPositionRequest$Outbound;
-}
-
 export function hrisGetPositionRequestToJSON(
   hrisGetPositionRequest: HrisGetPositionRequest,
 ): string {
   return JSON.stringify(
     HrisGetPositionRequest$outboundSchema.parse(hrisGetPositionRequest),
-  );
-}
-
-export function hrisGetPositionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetPositionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetPositionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetPositionRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const HrisGetPositionResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetPositionResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  PositionResult?: shared.PositionResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetPositionResponse$outboundSchema: z.ZodType<
-  HrisGetPositionResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetPositionResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  positionResult: shared.PositionResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    positionResult: "PositionResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetPositionResponse$ {
-  /** @deprecated use `HrisGetPositionResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetPositionResponse$inboundSchema;
-  /** @deprecated use `HrisGetPositionResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetPositionResponse$outboundSchema;
-  /** @deprecated use `HrisGetPositionResponse$Outbound` instead. */
-  export type Outbound = HrisGetPositionResponse$Outbound;
-}
-
-export function hrisGetPositionResponseToJSON(
-  hrisGetPositionResponse: HrisGetPositionResponse,
-): string {
-  return JSON.stringify(
-    HrisGetPositionResponse$outboundSchema.parse(hrisGetPositionResponse),
-  );
-}
 
 export function hrisGetPositionResponseFromJSON(
   jsonString: string,

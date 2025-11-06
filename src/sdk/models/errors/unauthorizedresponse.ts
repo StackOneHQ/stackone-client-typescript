@@ -62,36 +62,3 @@ export const UnauthorizedResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type UnauthorizedResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const UnauthorizedResponse$outboundSchema: z.ZodType<
-  UnauthorizedResponse$Outbound,
-  z.ZodTypeDef,
-  UnauthorizedResponse
-> = z.instanceof(UnauthorizedResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnauthorizedResponse$ {
-  /** @deprecated use `UnauthorizedResponse$inboundSchema` instead. */
-  export const inboundSchema = UnauthorizedResponse$inboundSchema;
-  /** @deprecated use `UnauthorizedResponse$outboundSchema` instead. */
-  export const outboundSchema = UnauthorizedResponse$outboundSchema;
-  /** @deprecated use `UnauthorizedResponse$Outbound` instead. */
-  export type Outbound = UnauthorizedResponse$Outbound;
-}

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request id (arbitrary JSON scalar)
@@ -37,47 +34,15 @@ export type JsonRpcMessageDto = {
 };
 
 /** @internal */
-export const Id$inboundSchema: z.ZodType<Id, z.ZodTypeDef, unknown> = z.object(
-  {},
-);
-
-/** @internal */
 export type Id$Outbound = {};
 
 /** @internal */
 export const Id$outboundSchema: z.ZodType<Id$Outbound, z.ZodTypeDef, Id> = z
   .object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Id$ {
-  /** @deprecated use `Id$inboundSchema` instead. */
-  export const inboundSchema = Id$inboundSchema;
-  /** @deprecated use `Id$outboundSchema` instead. */
-  export const outboundSchema = Id$outboundSchema;
-  /** @deprecated use `Id$Outbound` instead. */
-  export type Outbound = Id$Outbound;
-}
-
 export function idToJSON(id: Id): string {
   return JSON.stringify(Id$outboundSchema.parse(id));
 }
-
-export function idFromJSON(
-  jsonString: string,
-): SafeParseResult<Id, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Id$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Id' from JSON`,
-  );
-}
-
-/** @internal */
-export const Params$inboundSchema: z.ZodType<Params, z.ZodTypeDef, unknown> = z
-  .object({});
 
 /** @internal */
 export type Params$Outbound = {};
@@ -89,44 +54,9 @@ export const Params$outboundSchema: z.ZodType<
   Params
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Params$ {
-  /** @deprecated use `Params$inboundSchema` instead. */
-  export const inboundSchema = Params$inboundSchema;
-  /** @deprecated use `Params$outboundSchema` instead. */
-  export const outboundSchema = Params$outboundSchema;
-  /** @deprecated use `Params$Outbound` instead. */
-  export type Outbound = Params$Outbound;
-}
-
 export function paramsToJSON(params: Params): string {
   return JSON.stringify(Params$outboundSchema.parse(params));
 }
-
-export function paramsFromJSON(
-  jsonString: string,
-): SafeParseResult<Params, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Params$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Params' from JSON`,
-  );
-}
-
-/** @internal */
-export const JsonRpcMessageDto$inboundSchema: z.ZodType<
-  JsonRpcMessageDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.lazy(() => Id$inboundSchema).optional(),
-  jsonrpc: z.string(),
-  method: z.string(),
-  params: z.lazy(() => Params$inboundSchema).optional(),
-});
 
 /** @internal */
 export type JsonRpcMessageDto$Outbound = {
@@ -148,33 +78,10 @@ export const JsonRpcMessageDto$outboundSchema: z.ZodType<
   params: z.lazy(() => Params$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JsonRpcMessageDto$ {
-  /** @deprecated use `JsonRpcMessageDto$inboundSchema` instead. */
-  export const inboundSchema = JsonRpcMessageDto$inboundSchema;
-  /** @deprecated use `JsonRpcMessageDto$outboundSchema` instead. */
-  export const outboundSchema = JsonRpcMessageDto$outboundSchema;
-  /** @deprecated use `JsonRpcMessageDto$Outbound` instead. */
-  export type Outbound = JsonRpcMessageDto$Outbound;
-}
-
 export function jsonRpcMessageDtoToJSON(
   jsonRpcMessageDto: JsonRpcMessageDto,
 ): string {
   return JSON.stringify(
     JsonRpcMessageDto$outboundSchema.parse(jsonRpcMessageDto),
-  );
-}
-
-export function jsonRpcMessageDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<JsonRpcMessageDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => JsonRpcMessageDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'JsonRpcMessageDto' from JSON`,
   );
 }

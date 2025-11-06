@@ -91,7 +91,6 @@ export const InAppMessagesMessageContent$inboundSchema: z.ZodType<
 > = z.object({
   body: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type InAppMessagesMessageContent$Outbound = {
   body?: string | null | undefined;
@@ -106,19 +105,6 @@ export const InAppMessagesMessageContent$outboundSchema: z.ZodType<
   body: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppMessagesMessageContent$ {
-  /** @deprecated use `InAppMessagesMessageContent$inboundSchema` instead. */
-  export const inboundSchema = InAppMessagesMessageContent$inboundSchema;
-  /** @deprecated use `InAppMessagesMessageContent$outboundSchema` instead. */
-  export const outboundSchema = InAppMessagesMessageContent$outboundSchema;
-  /** @deprecated use `InAppMessagesMessageContent$Outbound` instead. */
-  export type Outbound = InAppMessagesMessageContent$Outbound;
-}
-
 export function inAppMessagesMessageContentToJSON(
   inAppMessagesMessageContent: InAppMessagesMessageContent,
 ): string {
@@ -128,7 +114,6 @@ export function inAppMessagesMessageContentToJSON(
     ),
   );
 }
-
 export function inAppMessagesMessageContentFromJSON(
   jsonString: string,
 ): SafeParseResult<InAppMessagesMessageContent, SDKValidationError> {
@@ -145,7 +130,6 @@ export const InAppMessages4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type InAppMessages4$Outbound = {};
 
@@ -156,23 +140,9 @@ export const InAppMessages4$outboundSchema: z.ZodType<
   InAppMessages4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppMessages4$ {
-  /** @deprecated use `InAppMessages4$inboundSchema` instead. */
-  export const inboundSchema = InAppMessages4$inboundSchema;
-  /** @deprecated use `InAppMessages4$outboundSchema` instead. */
-  export const outboundSchema = InAppMessages4$outboundSchema;
-  /** @deprecated use `InAppMessages4$Outbound` instead. */
-  export type Outbound = InAppMessages4$Outbound;
-}
-
 export function inAppMessages4ToJSON(inAppMessages4: InAppMessages4): string {
   return JSON.stringify(InAppMessages4$outboundSchema.parse(inAppMessages4));
 }
-
 export function inAppMessages4FromJSON(
   jsonString: string,
 ): SafeParseResult<InAppMessages4, SDKValidationError> {
@@ -195,7 +165,6 @@ export const InAppMessagesSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => InAppMessages4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type InAppMessagesSourceValue$Outbound =
   | string
@@ -217,19 +186,6 @@ export const InAppMessagesSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppMessagesSourceValue$ {
-  /** @deprecated use `InAppMessagesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = InAppMessagesSourceValue$inboundSchema;
-  /** @deprecated use `InAppMessagesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = InAppMessagesSourceValue$outboundSchema;
-  /** @deprecated use `InAppMessagesSourceValue$Outbound` instead. */
-  export type Outbound = InAppMessagesSourceValue$Outbound;
-}
-
 export function inAppMessagesSourceValueToJSON(
   inAppMessagesSourceValue: InAppMessagesSourceValue,
 ): string {
@@ -237,7 +193,6 @@ export function inAppMessagesSourceValueToJSON(
     InAppMessagesSourceValue$outboundSchema.parse(inAppMessagesSourceValue),
   );
 }
-
 export function inAppMessagesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<InAppMessagesSourceValue, SDKValidationError> {
@@ -258,7 +213,6 @@ export const InAppMessagesValue$inboundSchema: z.ZodType<
     z.nativeEnum(InAppMessagesValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const InAppMessagesValue$outboundSchema: z.ZodType<
   InAppMessagesValueOpen,
@@ -268,17 +222,6 @@ export const InAppMessagesValue$outboundSchema: z.ZodType<
   z.nativeEnum(InAppMessagesValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppMessagesValue$ {
-  /** @deprecated use `InAppMessagesValue$inboundSchema` instead. */
-  export const inboundSchema = InAppMessagesValue$inboundSchema;
-  /** @deprecated use `InAppMessagesValue$outboundSchema` instead. */
-  export const outboundSchema = InAppMessagesValue$outboundSchema;
-}
 
 /** @internal */
 export const InAppMessagesMessageType$inboundSchema: z.ZodType<
@@ -301,7 +244,6 @@ export const InAppMessagesMessageType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type InAppMessagesMessageType$Outbound = {
   source_value?:
@@ -337,19 +279,6 @@ export const InAppMessagesMessageType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppMessagesMessageType$ {
-  /** @deprecated use `InAppMessagesMessageType$inboundSchema` instead. */
-  export const inboundSchema = InAppMessagesMessageType$inboundSchema;
-  /** @deprecated use `InAppMessagesMessageType$outboundSchema` instead. */
-  export const outboundSchema = InAppMessagesMessageType$outboundSchema;
-  /** @deprecated use `InAppMessagesMessageType$Outbound` instead. */
-  export type Outbound = InAppMessagesMessageType$Outbound;
-}
-
 export function inAppMessagesMessageTypeToJSON(
   inAppMessagesMessageType: InAppMessagesMessageType,
 ): string {
@@ -357,7 +286,6 @@ export function inAppMessagesMessageTypeToJSON(
     InAppMessagesMessageType$outboundSchema.parse(inAppMessagesMessageType),
   );
 }
-
 export function inAppMessagesMessageTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<InAppMessagesMessageType, SDKValidationError> {
@@ -389,7 +317,6 @@ export const InAppMessages$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
 /** @internal */
 export type InAppMessages$Outbound = {
   id?: string | null | undefined;
@@ -421,23 +348,9 @@ export const InAppMessages$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppMessages$ {
-  /** @deprecated use `InAppMessages$inboundSchema` instead. */
-  export const inboundSchema = InAppMessages$inboundSchema;
-  /** @deprecated use `InAppMessages$outboundSchema` instead. */
-  export const outboundSchema = InAppMessages$outboundSchema;
-  /** @deprecated use `InAppMessages$Outbound` instead. */
-  export type Outbound = InAppMessages$Outbound;
-}
-
 export function inAppMessagesToJSON(inAppMessages: InAppMessages): string {
   return JSON.stringify(InAppMessages$outboundSchema.parse(inAppMessages));
 }
-
 export function inAppMessagesFromJSON(
   jsonString: string,
 ): SafeParseResult<InAppMessages, SDKValidationError> {

@@ -4,17 +4,9 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   Attachment,
-  Attachment$inboundSchema,
   Attachment$Outbound,
   Attachment$outboundSchema,
 } from "./attachment.js";
@@ -139,21 +131,6 @@ export type AtsUpdateCandidatesAssessmentsResultsRequestDto = {
 };
 
 /** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    profile_url: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "profile_url": "profileUrl",
-    });
-  });
-
-/** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$Outbound =
   {
     id?: string | null | undefined;
@@ -175,22 +152,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$outboundSc
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$Outbound;
-}
-
 export function atsUpdateCandidatesAssessmentsResultsRequestDtoCandidateToJSON(
   atsUpdateCandidatesAssessmentsResultsRequestDtoCandidate:
     AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate,
@@ -200,29 +161,6 @@ export function atsUpdateCandidatesAssessmentsResultsRequestDtoCandidateToJSON(
       .parse(atsUpdateCandidatesAssessmentsResultsRequestDtoCandidate),
   );
 }
-
-export function atsUpdateCandidatesAssessmentsResultsRequestDtoCandidateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDto4,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
 
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound = {};
@@ -235,22 +173,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema:
     AtsUpdateCandidatesAssessmentsResultsRequestDto4
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDto4$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDto4$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateCandidatesAssessmentsResultsRequestDto4$Outbound;
-}
-
 export function atsUpdateCandidatesAssessmentsResultsRequestDto4ToJSON(
   atsUpdateCandidatesAssessmentsResultsRequestDto4:
     AtsUpdateCandidatesAssessmentsResultsRequestDto4,
@@ -261,38 +183,6 @@ export function atsUpdateCandidatesAssessmentsResultsRequestDto4ToJSON(
     ),
   );
 }
-
-export function atsUpdateCandidatesAssessmentsResultsRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateCandidatesAssessmentsResultsRequestDto4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateCandidatesAssessmentsResultsRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema
-    ),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$Outbound =
@@ -318,22 +208,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$outbound
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$Outbound;
-}
-
 export function atsUpdateCandidatesAssessmentsResultsRequestDtoSourceValueToJSON(
   atsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue:
     AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue,
@@ -343,33 +217,6 @@ export function atsUpdateCandidatesAssessmentsResultsRequestDtoSourceValueToJSON
       .parse(atsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue),
   );
 }
-
-export function atsUpdateCandidatesAssessmentsResultsRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(AtsUpdateCandidatesAssessmentsResultsRequestDtoValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
 
 /** @internal */
 export const AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$outboundSchema:
@@ -381,46 +228,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$outboundSchema
     z.nativeEnum(AtsUpdateCandidatesAssessmentsResultsRequestDtoValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoResult,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() =>
-          AtsUpdateCandidatesAssessmentsResultsRequestDto4$inboundSchema
-        ),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(
-      AtsUpdateCandidatesAssessmentsResultsRequestDtoValue$inboundSchema,
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$Outbound = {
@@ -462,22 +269,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$outboundSchem
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$Outbound;
-}
-
 export function atsUpdateCandidatesAssessmentsResultsRequestDtoResultToJSON(
   atsUpdateCandidatesAssessmentsResultsRequestDtoResult:
     AtsUpdateCandidatesAssessmentsResultsRequestDtoResult,
@@ -488,35 +279,6 @@ export function atsUpdateCandidatesAssessmentsResultsRequestDtoResultToJSON(
     ),
   );
 }
-
-export function atsUpdateCandidatesAssessmentsResultsRequestDtoResultFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateCandidatesAssessmentsResultsRequestDtoResult,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateCandidatesAssessmentsResultsRequestDtoResult' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoScore,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    label: z.nullable(z.string()).optional(),
-    max: z.nullable(z.string()).optional(),
-    min: z.nullable(z.string()).optional(),
-    value: z.nullable(z.string()).optional(),
-  });
 
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$Outbound = {
@@ -539,22 +301,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$outboundSchema
     value: z.nullable(z.string()).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$Outbound;
-}
-
 export function atsUpdateCandidatesAssessmentsResultsRequestDtoScoreToJSON(
   atsUpdateCandidatesAssessmentsResultsRequestDtoScore:
     AtsUpdateCandidatesAssessmentsResultsRequestDtoScore,
@@ -565,62 +311,6 @@ export function atsUpdateCandidatesAssessmentsResultsRequestDtoScoreToJSON(
     ),
   );
 }
-
-export function atsUpdateCandidatesAssessmentsResultsRequestDtoScoreFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateCandidatesAssessmentsResultsRequestDtoScore,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateCandidatesAssessmentsResultsRequestDtoScore' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateCandidatesAssessmentsResultsRequestDto$inboundSchema:
-  z.ZodType<
-    AtsUpdateCandidatesAssessmentsResultsRequestDto,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    attachments: z.nullable(z.array(Attachment$inboundSchema)).optional(),
-    candidate: z.nullable(
-      z.lazy(() =>
-        AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate$inboundSchema
-      ),
-    ).optional(),
-    passthrough: z.nullable(z.record(z.any())).optional(),
-    result: z.nullable(
-      z.lazy(() =>
-        AtsUpdateCandidatesAssessmentsResultsRequestDtoResult$inboundSchema
-      ),
-    ).optional(),
-    result_url: z.nullable(z.string()).optional(),
-    score: z.nullable(
-      z.lazy(() =>
-        AtsUpdateCandidatesAssessmentsResultsRequestDtoScore$inboundSchema
-      ),
-    ).optional(),
-    start_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    submission_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    summary: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "result_url": "resultUrl",
-      "start_date": "startDate",
-      "submission_date": "submissionDate",
-    });
-  });
 
 /** @internal */
 export type AtsUpdateCandidatesAssessmentsResultsRequestDto$Outbound = {
@@ -681,22 +371,6 @@ export const AtsUpdateCandidatesAssessmentsResultsRequestDto$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidatesAssessmentsResultsRequestDto$ {
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDto$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateCandidatesAssessmentsResultsRequestDto$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidatesAssessmentsResultsRequestDto$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateCandidatesAssessmentsResultsRequestDto$Outbound;
-}
-
 export function atsUpdateCandidatesAssessmentsResultsRequestDtoToJSON(
   atsUpdateCandidatesAssessmentsResultsRequestDto:
     AtsUpdateCandidatesAssessmentsResultsRequestDto,
@@ -705,21 +379,5 @@ export function atsUpdateCandidatesAssessmentsResultsRequestDtoToJSON(
     AtsUpdateCandidatesAssessmentsResultsRequestDto$outboundSchema.parse(
       atsUpdateCandidatesAssessmentsResultsRequestDto,
     ),
-  );
-}
-
-export function atsUpdateCandidatesAssessmentsResultsRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateCandidatesAssessmentsResultsRequestDto,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateCandidatesAssessmentsResultsRequestDto$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateCandidatesAssessmentsResultsRequestDto' from JSON`,
   );
 }

@@ -20,9 +20,13 @@ export type StackoneMcpDeleteRequest = {
    */
   mcpSessionId: string;
   /**
-   * Account secure id for the target provider account
+   * Account secure id for the target provider account (optional if x-account-id query parameter is provided)
    */
-  xAccountId: string;
+  xAccountId?: string | undefined;
+  /**
+   * Account secure id (alternative to x-account-id header)
+   */
+  xAccountIdQueryParameter?: any | undefined;
 };
 
 export type StackoneMcpDeleteResponse = {
@@ -40,20 +44,6 @@ export type StackoneMcpDeleteResponse = {
    */
   rawResponse: Response;
 };
-
-/** @internal */
-export const StackoneMcpDeleteSecurity$inboundSchema: z.ZodType<
-  StackoneMcpDeleteSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ApiKey: z.string().optional(),
-  basic: shared.SchemeBasic$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ApiKey": "apiKey",
-  });
-});
 
 /** @internal */
 export type StackoneMcpDeleteSecurity$Outbound = {
@@ -75,19 +65,6 @@ export const StackoneMcpDeleteSecurity$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpDeleteSecurity$ {
-  /** @deprecated use `StackoneMcpDeleteSecurity$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpDeleteSecurity$inboundSchema;
-  /** @deprecated use `StackoneMcpDeleteSecurity$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpDeleteSecurity$outboundSchema;
-  /** @deprecated use `StackoneMcpDeleteSecurity$Outbound` instead. */
-  export type Outbound = StackoneMcpDeleteSecurity$Outbound;
-}
-
 export function stackoneMcpDeleteSecurityToJSON(
   stackoneMcpDeleteSecurity: StackoneMcpDeleteSecurity,
 ): string {
@@ -96,35 +73,11 @@ export function stackoneMcpDeleteSecurityToJSON(
   );
 }
 
-export function stackoneMcpDeleteSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneMcpDeleteSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneMcpDeleteSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneMcpDeleteSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const StackoneMcpDeleteRequest$inboundSchema: z.ZodType<
-  StackoneMcpDeleteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "mcp-session-id": z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "mcp-session-id": "mcpSessionId",
-    "x-account-id": "xAccountId",
-  });
-});
-
 /** @internal */
 export type StackoneMcpDeleteRequest$Outbound = {
   "mcp-session-id": string;
-  "x-account-id": string;
+  "x-account-id"?: string | undefined;
+  "x-account-idQueryParameter"?: any | undefined;
 };
 
 /** @internal */
@@ -134,42 +87,21 @@ export const StackoneMcpDeleteRequest$outboundSchema: z.ZodType<
   StackoneMcpDeleteRequest
 > = z.object({
   mcpSessionId: z.string(),
-  xAccountId: z.string(),
+  xAccountId: z.string().optional(),
+  xAccountIdQueryParameter: z.any().optional(),
 }).transform((v) => {
   return remap$(v, {
     mcpSessionId: "mcp-session-id",
     xAccountId: "x-account-id",
+    xAccountIdQueryParameter: "x-account-idQueryParameter",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpDeleteRequest$ {
-  /** @deprecated use `StackoneMcpDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpDeleteRequest$inboundSchema;
-  /** @deprecated use `StackoneMcpDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpDeleteRequest$outboundSchema;
-  /** @deprecated use `StackoneMcpDeleteRequest$Outbound` instead. */
-  export type Outbound = StackoneMcpDeleteRequest$Outbound;
-}
 
 export function stackoneMcpDeleteRequestToJSON(
   stackoneMcpDeleteRequest: StackoneMcpDeleteRequest,
 ): string {
   return JSON.stringify(
     StackoneMcpDeleteRequest$outboundSchema.parse(stackoneMcpDeleteRequest),
-  );
-}
-
-export function stackoneMcpDeleteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneMcpDeleteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneMcpDeleteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneMcpDeleteRequest' from JSON`,
   );
 }
 
@@ -192,56 +124,6 @@ export const StackoneMcpDeleteResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneMcpDeleteResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneMcpDeleteResponse$outboundSchema: z.ZodType<
-  StackoneMcpDeleteResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneMcpDeleteResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpDeleteResponse$ {
-  /** @deprecated use `StackoneMcpDeleteResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpDeleteResponse$inboundSchema;
-  /** @deprecated use `StackoneMcpDeleteResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpDeleteResponse$outboundSchema;
-  /** @deprecated use `StackoneMcpDeleteResponse$Outbound` instead. */
-  export type Outbound = StackoneMcpDeleteResponse$Outbound;
-}
-
-export function stackoneMcpDeleteResponseToJSON(
-  stackoneMcpDeleteResponse: StackoneMcpDeleteResponse,
-): string {
-  return JSON.stringify(
-    StackoneMcpDeleteResponse$outboundSchema.parse(stackoneMcpDeleteResponse),
-  );
-}
 
 export function stackoneMcpDeleteResponseFromJSON(
   jsonString: string,

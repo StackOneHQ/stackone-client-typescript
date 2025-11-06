@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AtsMoveApplicationRequestDto = {
   /**
@@ -18,20 +15,6 @@ export type AtsMoveApplicationRequestDto = {
    */
   passthrough?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const AtsMoveApplicationRequestDto$inboundSchema: z.ZodType<
-  AtsMoveApplicationRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  interview_stage_id: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "interview_stage_id": "interviewStageId",
-  });
-});
 
 /** @internal */
 export type AtsMoveApplicationRequestDto$Outbound = {
@@ -53,19 +36,6 @@ export const AtsMoveApplicationRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsMoveApplicationRequestDto$ {
-  /** @deprecated use `AtsMoveApplicationRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsMoveApplicationRequestDto$inboundSchema;
-  /** @deprecated use `AtsMoveApplicationRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsMoveApplicationRequestDto$outboundSchema;
-  /** @deprecated use `AtsMoveApplicationRequestDto$Outbound` instead. */
-  export type Outbound = AtsMoveApplicationRequestDto$Outbound;
-}
-
 export function atsMoveApplicationRequestDtoToJSON(
   atsMoveApplicationRequestDto: AtsMoveApplicationRequestDto,
 ): string {
@@ -73,15 +43,5 @@ export function atsMoveApplicationRequestDtoToJSON(
     AtsMoveApplicationRequestDto$outboundSchema.parse(
       atsMoveApplicationRequestDto,
     ),
-  );
-}
-
-export function atsMoveApplicationRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsMoveApplicationRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsMoveApplicationRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsMoveApplicationRequestDto' from JSON`,
   );
 }

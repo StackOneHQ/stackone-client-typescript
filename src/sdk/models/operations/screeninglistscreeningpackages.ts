@@ -83,22 +83,6 @@ export type ScreeningListScreeningPackagesResponse = {
 };
 
 /** @internal */
-export const ScreeningListScreeningPackagesQueryParamFilter$inboundSchema:
-  z.ZodType<
-    ScreeningListScreeningPackagesQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type ScreeningListScreeningPackagesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -118,22 +102,6 @@ export const ScreeningListScreeningPackagesQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningListScreeningPackagesQueryParamFilter$ {
-  /** @deprecated use `ScreeningListScreeningPackagesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningListScreeningPackagesQueryParamFilter$inboundSchema;
-  /** @deprecated use `ScreeningListScreeningPackagesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningListScreeningPackagesQueryParamFilter$outboundSchema;
-  /** @deprecated use `ScreeningListScreeningPackagesQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    ScreeningListScreeningPackagesQueryParamFilter$Outbound;
-}
-
 export function screeningListScreeningPackagesQueryParamFilterToJSON(
   screeningListScreeningPackagesQueryParamFilter:
     ScreeningListScreeningPackagesQueryParamFilter,
@@ -144,49 +112,6 @@ export function screeningListScreeningPackagesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function screeningListScreeningPackagesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  ScreeningListScreeningPackagesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ScreeningListScreeningPackagesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'ScreeningListScreeningPackagesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const ScreeningListScreeningPackagesRequest$inboundSchema: z.ZodType<
-  ScreeningListScreeningPackagesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => ScreeningListScreeningPackagesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type ScreeningListScreeningPackagesRequest$Outbound = {
@@ -229,21 +154,6 @@ export const ScreeningListScreeningPackagesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningListScreeningPackagesRequest$ {
-  /** @deprecated use `ScreeningListScreeningPackagesRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningListScreeningPackagesRequest$inboundSchema;
-  /** @deprecated use `ScreeningListScreeningPackagesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningListScreeningPackagesRequest$outboundSchema;
-  /** @deprecated use `ScreeningListScreeningPackagesRequest$Outbound` instead. */
-  export type Outbound = ScreeningListScreeningPackagesRequest$Outbound;
-}
-
 export function screeningListScreeningPackagesRequestToJSON(
   screeningListScreeningPackagesRequest: ScreeningListScreeningPackagesRequest,
 ): string {
@@ -251,17 +161,6 @@ export function screeningListScreeningPackagesRequestToJSON(
     ScreeningListScreeningPackagesRequest$outboundSchema.parse(
       screeningListScreeningPackagesRequest,
     ),
-  );
-}
-
-export function screeningListScreeningPackagesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ScreeningListScreeningPackagesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ScreeningListScreeningPackagesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScreeningListScreeningPackagesRequest' from JSON`,
   );
 }
 
@@ -287,67 +186,6 @@ export const ScreeningListScreeningPackagesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type ScreeningListScreeningPackagesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScreeningPackagesPaginated?:
-    | shared.ScreeningPackagesPaginated$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const ScreeningListScreeningPackagesResponse$outboundSchema: z.ZodType<
-  ScreeningListScreeningPackagesResponse$Outbound,
-  z.ZodTypeDef,
-  ScreeningListScreeningPackagesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  screeningPackagesPaginated: shared.ScreeningPackagesPaginated$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    screeningPackagesPaginated: "ScreeningPackagesPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningListScreeningPackagesResponse$ {
-  /** @deprecated use `ScreeningListScreeningPackagesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningListScreeningPackagesResponse$inboundSchema;
-  /** @deprecated use `ScreeningListScreeningPackagesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningListScreeningPackagesResponse$outboundSchema;
-  /** @deprecated use `ScreeningListScreeningPackagesResponse$Outbound` instead. */
-  export type Outbound = ScreeningListScreeningPackagesResponse$Outbound;
-}
-
-export function screeningListScreeningPackagesResponseToJSON(
-  screeningListScreeningPackagesResponse:
-    ScreeningListScreeningPackagesResponse,
-): string {
-  return JSON.stringify(
-    ScreeningListScreeningPackagesResponse$outboundSchema.parse(
-      screeningListScreeningPackagesResponse,
-    ),
-  );
-}
 
 export function screeningListScreeningPackagesResponseFromJSON(
   jsonString: string,

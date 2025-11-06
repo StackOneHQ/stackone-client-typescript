@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 /**
  * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
@@ -1351,20 +1344,6 @@ export type UnifiedUploadRequestDto = {
 };
 
 /** @internal */
-export const UnifiedUploadRequestDtoCategory$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoCategory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
 export type UnifiedUploadRequestDtoCategory$Outbound = {
   source_value?: string | null | undefined;
   value?: string | null | undefined;
@@ -1384,19 +1363,6 @@ export const UnifiedUploadRequestDtoCategory$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoCategory$ {
-  /** @deprecated use `UnifiedUploadRequestDtoCategory$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDtoCategory$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoCategory$outboundSchema` instead. */
-  export const outboundSchema = UnifiedUploadRequestDtoCategory$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoCategory$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDtoCategory$Outbound;
-}
-
 export function unifiedUploadRequestDtoCategoryToJSON(
   unifiedUploadRequestDtoCategory: UnifiedUploadRequestDtoCategory,
 ): string {
@@ -1406,23 +1372,6 @@ export function unifiedUploadRequestDtoCategoryToJSON(
     ),
   );
 }
-
-export function unifiedUploadRequestDtoCategoryFromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDtoCategory, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnifiedUploadRequestDtoCategory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDtoCategory' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDto4$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type UnifiedUploadRequestDto4$Outbound = {};
@@ -1434,19 +1383,6 @@ export const UnifiedUploadRequestDto4$outboundSchema: z.ZodType<
   UnifiedUploadRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDto4$ {
-  /** @deprecated use `UnifiedUploadRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDto4$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = UnifiedUploadRequestDto4$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDto4$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDto4$Outbound;
-}
-
 export function unifiedUploadRequestDto4ToJSON(
   unifiedUploadRequestDto4: UnifiedUploadRequestDto4,
 ): string {
@@ -1454,29 +1390,6 @@ export function unifiedUploadRequestDto4ToJSON(
     UnifiedUploadRequestDto4$outboundSchema.parse(unifiedUploadRequestDto4),
   );
 }
-
-export function unifiedUploadRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnifiedUploadRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type UnifiedUploadRequestDtoSourceValue$Outbound =
@@ -1499,20 +1412,6 @@ export const UnifiedUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoSourceValue$ {
-  /** @deprecated use `UnifiedUploadRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedUploadRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDtoSourceValue$Outbound;
-}
-
 export function unifiedUploadRequestDtoSourceValueToJSON(
   unifiedUploadRequestDtoSourceValue: UnifiedUploadRequestDtoSourceValue,
 ): string {
@@ -1523,28 +1422,6 @@ export function unifiedUploadRequestDtoSourceValueToJSON(
   );
 }
 
-export function unifiedUploadRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UnifiedUploadRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoValue$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(UnifiedUploadRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const UnifiedUploadRequestDtoValue$outboundSchema: z.ZodType<
   UnifiedUploadRequestDtoValueOpen,
@@ -1554,39 +1431,6 @@ export const UnifiedUploadRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(UnifiedUploadRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoValue$ {
-  /** @deprecated use `UnifiedUploadRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDtoValue$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = UnifiedUploadRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoConfidential$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoConfidential,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(UnifiedUploadRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type UnifiedUploadRequestDtoConfidential$Outbound = {
@@ -1623,21 +1467,6 @@ export const UnifiedUploadRequestDtoConfidential$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoConfidential$ {
-  /** @deprecated use `UnifiedUploadRequestDtoConfidential$inboundSchema` instead. */
-  export const inboundSchema =
-    UnifiedUploadRequestDtoConfidential$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoConfidential$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedUploadRequestDtoConfidential$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoConfidential$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDtoConfidential$Outbound;
-}
-
 export function unifiedUploadRequestDtoConfidentialToJSON(
   unifiedUploadRequestDtoConfidential: UnifiedUploadRequestDtoConfidential,
 ): string {
@@ -1647,24 +1476,6 @@ export function unifiedUploadRequestDtoConfidentialToJSON(
     ),
   );
 }
-
-export function unifiedUploadRequestDtoConfidentialFromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDtoConfidential, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UnifiedUploadRequestDtoConfidential$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDtoConfidential' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoSchemas4$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type UnifiedUploadRequestDtoSchemas4$Outbound = {};
@@ -1676,19 +1487,6 @@ export const UnifiedUploadRequestDtoSchemas4$outboundSchema: z.ZodType<
   UnifiedUploadRequestDtoSchemas4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoSchemas4$ {
-  /** @deprecated use `UnifiedUploadRequestDtoSchemas4$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDtoSchemas4$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSchemas4$outboundSchema` instead. */
-  export const outboundSchema = UnifiedUploadRequestDtoSchemas4$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSchemas4$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDtoSchemas4$Outbound;
-}
-
 export function unifiedUploadRequestDtoSchemas4ToJSON(
   unifiedUploadRequestDtoSchemas4: UnifiedUploadRequestDtoSchemas4,
 ): string {
@@ -1698,29 +1496,6 @@ export function unifiedUploadRequestDtoSchemas4ToJSON(
     ),
   );
 }
-
-export function unifiedUploadRequestDtoSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDtoSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnifiedUploadRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDtoSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoSchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type UnifiedUploadRequestDtoSchemasSourceValue$Outbound =
@@ -1744,21 +1519,6 @@ export const UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDtoSchemasSourceValue$Outbound;
-}
-
 export function unifiedUploadRequestDtoSchemasSourceValueToJSON(
   unifiedUploadRequestDtoSchemasSourceValue:
     UnifiedUploadRequestDtoSchemasSourceValue,
@@ -1770,33 +1530,6 @@ export function unifiedUploadRequestDtoSchemasSourceValueToJSON(
   );
 }
 
-export function unifiedUploadRequestDtoSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UnifiedUploadRequestDtoSchemasSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UnifiedUploadRequestDtoSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoSchemasValue$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const UnifiedUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
   UnifiedUploadRequestDtoSchemasValueOpen,
@@ -1806,42 +1539,6 @@ export const UnifiedUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
   z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoSchemasValue$ {
-  /** @deprecated use `UnifiedUploadRequestDtoSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    UnifiedUploadRequestDtoSchemasValue$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedUploadRequestDtoSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoFileFormat,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(UnifiedUploadRequestDtoSchemasValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type UnifiedUploadRequestDtoFileFormat$Outbound = {
@@ -1879,20 +1576,6 @@ export const UnifiedUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDtoFileFormat$ {
-  /** @deprecated use `UnifiedUploadRequestDtoFileFormat$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDtoFileFormat$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoFileFormat$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedUploadRequestDtoFileFormat$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDtoFileFormat$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDtoFileFormat$Outbound;
-}
-
 export function unifiedUploadRequestDtoFileFormatToJSON(
   unifiedUploadRequestDtoFileFormat: UnifiedUploadRequestDtoFileFormat,
 ): string {
@@ -1902,42 +1585,6 @@ export function unifiedUploadRequestDtoFileFormatToJSON(
     ),
   );
 }
-
-export function unifiedUploadRequestDtoFileFormatFromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDtoFileFormat, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnifiedUploadRequestDtoFileFormat$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDtoFileFormat' from JSON`,
-  );
-}
-
-/** @internal */
-export const UnifiedUploadRequestDto$inboundSchema: z.ZodType<
-  UnifiedUploadRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  category: z.nullable(
-    z.lazy(() => UnifiedUploadRequestDtoCategory$inboundSchema),
-  ).optional(),
-  category_id: z.nullable(z.string()).optional(),
-  confidential: z.nullable(
-    z.lazy(() => UnifiedUploadRequestDtoConfidential$inboundSchema),
-  ).optional(),
-  content: z.nullable(z.string()).optional(),
-  file_format: z.nullable(
-    z.lazy(() => UnifiedUploadRequestDtoFileFormat$inboundSchema),
-  ).optional(),
-  name: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "category_id": "categoryId",
-    "file_format": "fileFormat",
-  });
-});
 
 /** @internal */
 export type UnifiedUploadRequestDto$Outbound = {
@@ -1979,33 +1626,10 @@ export const UnifiedUploadRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedUploadRequestDto$ {
-  /** @deprecated use `UnifiedUploadRequestDto$inboundSchema` instead. */
-  export const inboundSchema = UnifiedUploadRequestDto$inboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDto$outboundSchema` instead. */
-  export const outboundSchema = UnifiedUploadRequestDto$outboundSchema;
-  /** @deprecated use `UnifiedUploadRequestDto$Outbound` instead. */
-  export type Outbound = UnifiedUploadRequestDto$Outbound;
-}
-
 export function unifiedUploadRequestDtoToJSON(
   unifiedUploadRequestDto: UnifiedUploadRequestDto,
 ): string {
   return JSON.stringify(
     UnifiedUploadRequestDto$outboundSchema.parse(unifiedUploadRequestDto),
-  );
-}
-
-export function unifiedUploadRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<UnifiedUploadRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UnifiedUploadRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UnifiedUploadRequestDto' from JSON`,
   );
 }

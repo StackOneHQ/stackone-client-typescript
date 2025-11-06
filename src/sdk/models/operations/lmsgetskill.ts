@@ -50,23 +50,6 @@ export type LmsGetSkillResponse = {
 };
 
 /** @internal */
-export const LmsGetSkillRequest$inboundSchema: z.ZodType<
-  LmsGetSkillRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsGetSkillRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const LmsGetSkillRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetSkillRequest$ {
-  /** @deprecated use `LmsGetSkillRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsGetSkillRequest$inboundSchema;
-  /** @deprecated use `LmsGetSkillRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsGetSkillRequest$outboundSchema;
-  /** @deprecated use `LmsGetSkillRequest$Outbound` instead. */
-  export type Outbound = LmsGetSkillRequest$Outbound;
-}
-
 export function lmsGetSkillRequestToJSON(
   lmsGetSkillRequest: LmsGetSkillRequest,
 ): string {
   return JSON.stringify(
     LmsGetSkillRequest$outboundSchema.parse(lmsGetSkillRequest),
-  );
-}
-
-export function lmsGetSkillRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsGetSkillRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsGetSkillRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsGetSkillRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const LmsGetSkillResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsGetSkillResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  SkillResult?: shared.SkillResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsGetSkillResponse$outboundSchema: z.ZodType<
-  LmsGetSkillResponse$Outbound,
-  z.ZodTypeDef,
-  LmsGetSkillResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  skillResult: shared.SkillResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    skillResult: "SkillResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetSkillResponse$ {
-  /** @deprecated use `LmsGetSkillResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsGetSkillResponse$inboundSchema;
-  /** @deprecated use `LmsGetSkillResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsGetSkillResponse$outboundSchema;
-  /** @deprecated use `LmsGetSkillResponse$Outbound` instead. */
-  export type Outbound = LmsGetSkillResponse$Outbound;
-}
-
-export function lmsGetSkillResponseToJSON(
-  lmsGetSkillResponse: LmsGetSkillResponse,
-): string {
-  return JSON.stringify(
-    LmsGetSkillResponse$outboundSchema.parse(lmsGetSkillResponse),
-  );
-}
 
 export function lmsGetSkillResponseFromJSON(
   jsonString: string,

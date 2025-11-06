@@ -5,18 +5,12 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFieldOption,
   CustomFieldOption$inboundSchema,
-  CustomFieldOption$Outbound,
-  CustomFieldOption$outboundSchema,
 } from "./customfieldoption.js";
 
 export type CustomFieldDefinition4 = {};
@@ -89,37 +83,6 @@ export const CustomFieldDefinition4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type CustomFieldDefinition4$Outbound = {};
-
-/** @internal */
-export const CustomFieldDefinition4$outboundSchema: z.ZodType<
-  CustomFieldDefinition4$Outbound,
-  z.ZodTypeDef,
-  CustomFieldDefinition4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinition4$ {
-  /** @deprecated use `CustomFieldDefinition4$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldDefinition4$inboundSchema;
-  /** @deprecated use `CustomFieldDefinition4$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldDefinition4$outboundSchema;
-  /** @deprecated use `CustomFieldDefinition4$Outbound` instead. */
-  export type Outbound = CustomFieldDefinition4$Outbound;
-}
-
-export function customFieldDefinition4ToJSON(
-  customFieldDefinition4: CustomFieldDefinition4,
-): string {
-  return JSON.stringify(
-    CustomFieldDefinition4$outboundSchema.parse(customFieldDefinition4),
-  );
-}
-
 export function customFieldDefinition4FromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldDefinition4, SDKValidationError> {
@@ -143,50 +106,6 @@ export const CustomFieldDefinitionSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type CustomFieldDefinitionSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | CustomFieldDefinition4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const CustomFieldDefinitionSourceValue$outboundSchema: z.ZodType<
-  CustomFieldDefinitionSourceValue$Outbound,
-  z.ZodTypeDef,
-  CustomFieldDefinitionSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => CustomFieldDefinition4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinitionSourceValue$ {
-  /** @deprecated use `CustomFieldDefinitionSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldDefinitionSourceValue$inboundSchema;
-  /** @deprecated use `CustomFieldDefinitionSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldDefinitionSourceValue$outboundSchema;
-  /** @deprecated use `CustomFieldDefinitionSourceValue$Outbound` instead. */
-  export type Outbound = CustomFieldDefinitionSourceValue$Outbound;
-}
-
-export function customFieldDefinitionSourceValueToJSON(
-  customFieldDefinitionSourceValue: CustomFieldDefinitionSourceValue,
-): string {
-  return JSON.stringify(
-    CustomFieldDefinitionSourceValue$outboundSchema.parse(
-      customFieldDefinitionSourceValue,
-    ),
-  );
-}
-
 export function customFieldDefinitionSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldDefinitionSourceValue, SDKValidationError> {
@@ -209,27 +128,6 @@ export const CustomFieldDefinitionValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const CustomFieldDefinitionValue$outboundSchema: z.ZodType<
-  CustomFieldDefinitionValueOpen,
-  z.ZodTypeDef,
-  CustomFieldDefinitionValueOpen
-> = z.union([
-  z.nativeEnum(CustomFieldDefinitionValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinitionValue$ {
-  /** @deprecated use `CustomFieldDefinitionValue$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldDefinitionValue$inboundSchema;
-  /** @deprecated use `CustomFieldDefinitionValue$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldDefinitionValue$outboundSchema;
-}
-
-/** @internal */
 export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
   CustomFieldDefinitionType,
   z.ZodTypeDef,
@@ -250,62 +148,6 @@ export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type CustomFieldDefinitionType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | CustomFieldDefinition4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const CustomFieldDefinitionType$outboundSchema: z.ZodType<
-  CustomFieldDefinitionType$Outbound,
-  z.ZodTypeDef,
-  CustomFieldDefinitionType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => CustomFieldDefinition4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CustomFieldDefinitionValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinitionType$ {
-  /** @deprecated use `CustomFieldDefinitionType$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldDefinitionType$inboundSchema;
-  /** @deprecated use `CustomFieldDefinitionType$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldDefinitionType$outboundSchema;
-  /** @deprecated use `CustomFieldDefinitionType$Outbound` instead. */
-  export type Outbound = CustomFieldDefinitionType$Outbound;
-}
-
-export function customFieldDefinitionTypeToJSON(
-  customFieldDefinitionType: CustomFieldDefinitionType,
-): string {
-  return JSON.stringify(
-    CustomFieldDefinitionType$outboundSchema.parse(customFieldDefinitionType),
-  );
-}
 
 export function customFieldDefinitionTypeFromJSON(
   jsonString: string,
@@ -335,56 +177,6 @@ export const CustomFieldDefinition$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type CustomFieldDefinition$Outbound = {
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  options?: Array<CustomFieldOption$Outbound> | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: CustomFieldDefinitionType$Outbound | null | undefined;
-};
-
-/** @internal */
-export const CustomFieldDefinition$outboundSchema: z.ZodType<
-  CustomFieldDefinition$Outbound,
-  z.ZodTypeDef,
-  CustomFieldDefinition
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  options: z.nullable(z.array(CustomFieldOption$outboundSchema)).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => CustomFieldDefinitionType$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinition$ {
-  /** @deprecated use `CustomFieldDefinition$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldDefinition$inboundSchema;
-  /** @deprecated use `CustomFieldDefinition$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldDefinition$outboundSchema;
-  /** @deprecated use `CustomFieldDefinition$Outbound` instead. */
-  export type Outbound = CustomFieldDefinition$Outbound;
-}
-
-export function customFieldDefinitionToJSON(
-  customFieldDefinition: CustomFieldDefinition,
-): string {
-  return JSON.stringify(
-    CustomFieldDefinition$outboundSchema.parse(customFieldDefinition),
-  );
-}
 
 export function customFieldDefinitionFromJSON(
   jsonString: string,

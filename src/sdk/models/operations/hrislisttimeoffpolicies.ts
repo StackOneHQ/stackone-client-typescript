@@ -116,41 +116,9 @@ export type HrisListTimeOffPoliciesResponse = {
 };
 
 /** @internal */
-export const QueryParamType$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamType
-> = z.nativeEnum(QueryParamType);
-
-/** @internal */
 export const QueryParamType$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamType
-> = QueryParamType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamType$ {
-  /** @deprecated use `QueryParamType$inboundSchema` instead. */
-  export const inboundSchema = QueryParamType$inboundSchema;
-  /** @deprecated use `QueryParamType$outboundSchema` instead. */
-  export const outboundSchema = QueryParamType$outboundSchema;
-}
-
-/** @internal */
-export const HrisListTimeOffPoliciesQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListTimeOffPoliciesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.nullable(QueryParamType$inboundSchema).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
+> = z.nativeEnum(QueryParamType);
 
 /** @internal */
 export type HrisListTimeOffPoliciesQueryParamFilter$Outbound = {
@@ -172,21 +140,6 @@ export const HrisListTimeOffPoliciesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTimeOffPoliciesQueryParamFilter$ {
-  /** @deprecated use `HrisListTimeOffPoliciesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListTimeOffPoliciesQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListTimeOffPoliciesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListTimeOffPoliciesQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListTimeOffPoliciesQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListTimeOffPoliciesQueryParamFilter$Outbound;
-}
-
 export function hrisListTimeOffPoliciesQueryParamFilterToJSON(
   hrisListTimeOffPoliciesQueryParamFilter:
     HrisListTimeOffPoliciesQueryParamFilter,
@@ -197,49 +150,6 @@ export function hrisListTimeOffPoliciesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListTimeOffPoliciesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisListTimeOffPoliciesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListTimeOffPoliciesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisListTimeOffPoliciesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListTimeOffPoliciesRequest$inboundSchema: z.ZodType<
-  HrisListTimeOffPoliciesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListTimeOffPoliciesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListTimeOffPoliciesRequest$Outbound = {
@@ -279,19 +189,6 @@ export const HrisListTimeOffPoliciesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTimeOffPoliciesRequest$ {
-  /** @deprecated use `HrisListTimeOffPoliciesRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListTimeOffPoliciesRequest$inboundSchema;
-  /** @deprecated use `HrisListTimeOffPoliciesRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListTimeOffPoliciesRequest$outboundSchema;
-  /** @deprecated use `HrisListTimeOffPoliciesRequest$Outbound` instead. */
-  export type Outbound = HrisListTimeOffPoliciesRequest$Outbound;
-}
-
 export function hrisListTimeOffPoliciesRequestToJSON(
   hrisListTimeOffPoliciesRequest: HrisListTimeOffPoliciesRequest,
 ): string {
@@ -299,16 +196,6 @@ export function hrisListTimeOffPoliciesRequestToJSON(
     HrisListTimeOffPoliciesRequest$outboundSchema.parse(
       hrisListTimeOffPoliciesRequest,
     ),
-  );
-}
-
-export function hrisListTimeOffPoliciesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListTimeOffPoliciesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListTimeOffPoliciesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListTimeOffPoliciesRequest' from JSON`,
   );
 }
 
@@ -334,64 +221,6 @@ export const HrisListTimeOffPoliciesResponse$inboundSchema: z.ZodType<
     "TimeOffPoliciesPaginated": "timeOffPoliciesPaginated",
   });
 });
-
-/** @internal */
-export type HrisListTimeOffPoliciesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TimeOffPoliciesPaginated?:
-    | shared.TimeOffPoliciesPaginated$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const HrisListTimeOffPoliciesResponse$outboundSchema: z.ZodType<
-  HrisListTimeOffPoliciesResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListTimeOffPoliciesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  timeOffPoliciesPaginated: shared.TimeOffPoliciesPaginated$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    timeOffPoliciesPaginated: "TimeOffPoliciesPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTimeOffPoliciesResponse$ {
-  /** @deprecated use `HrisListTimeOffPoliciesResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListTimeOffPoliciesResponse$inboundSchema;
-  /** @deprecated use `HrisListTimeOffPoliciesResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListTimeOffPoliciesResponse$outboundSchema;
-  /** @deprecated use `HrisListTimeOffPoliciesResponse$Outbound` instead. */
-  export type Outbound = HrisListTimeOffPoliciesResponse$Outbound;
-}
-
-export function hrisListTimeOffPoliciesResponseToJSON(
-  hrisListTimeOffPoliciesResponse: HrisListTimeOffPoliciesResponse,
-): string {
-  return JSON.stringify(
-    HrisListTimeOffPoliciesResponse$outboundSchema.parse(
-      hrisListTimeOffPoliciesResponse,
-    ),
-  );
-}
 
 export function hrisListTimeOffPoliciesResponseFromJSON(
   jsonString: string,

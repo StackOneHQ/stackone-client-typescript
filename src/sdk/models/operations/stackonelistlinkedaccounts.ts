@@ -67,29 +67,6 @@ export type StackoneListLinkedAccountsResponse = {
 };
 
 /** @internal */
-export const StackoneListLinkedAccountsRequest$inboundSchema: z.ZodType<
-  StackoneListLinkedAccountsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_ids: z.array(z.string()).optional(),
-  origin_owner_id: z.nullable(z.string()).optional(),
-  origin_owner_ids: z.array(z.string()).optional(),
-  page: z.nullable(z.number()).optional(),
-  page_size: z.nullable(z.number().default(25)),
-  provider: z.nullable(z.string()).optional(),
-  providers: z.array(z.string()).optional(),
-  status: z.array(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_ids": "accountIds",
-    "origin_owner_id": "originOwnerId",
-    "origin_owner_ids": "originOwnerIds",
-    "page_size": "pageSize",
-  });
-});
-
-/** @internal */
 export type StackoneListLinkedAccountsRequest$Outbound = {
   account_ids?: Array<string> | undefined;
   origin_owner_id?: string | null | undefined;
@@ -124,20 +101,6 @@ export const StackoneListLinkedAccountsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListLinkedAccountsRequest$ {
-  /** @deprecated use `StackoneListLinkedAccountsRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneListLinkedAccountsRequest$inboundSchema;
-  /** @deprecated use `StackoneListLinkedAccountsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListLinkedAccountsRequest$outboundSchema;
-  /** @deprecated use `StackoneListLinkedAccountsRequest$Outbound` instead. */
-  export type Outbound = StackoneListLinkedAccountsRequest$Outbound;
-}
-
 export function stackoneListLinkedAccountsRequestToJSON(
   stackoneListLinkedAccountsRequest: StackoneListLinkedAccountsRequest,
 ): string {
@@ -145,16 +108,6 @@ export function stackoneListLinkedAccountsRequestToJSON(
     StackoneListLinkedAccountsRequest$outboundSchema.parse(
       stackoneListLinkedAccountsRequest,
     ),
-  );
-}
-
-export function stackoneListLinkedAccountsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneListLinkedAccountsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneListLinkedAccountsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneListLinkedAccountsRequest' from JSON`,
   );
 }
 
@@ -178,61 +131,6 @@ export const StackoneListLinkedAccountsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneListLinkedAccountsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  classes?: Array<shared.LinkedAccount$Outbound> | undefined;
-};
-
-/** @internal */
-export const StackoneListLinkedAccountsResponse$outboundSchema: z.ZodType<
-  StackoneListLinkedAccountsResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneListLinkedAccountsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  classes: z.array(shared.LinkedAccount$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListLinkedAccountsResponse$ {
-  /** @deprecated use `StackoneListLinkedAccountsResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneListLinkedAccountsResponse$inboundSchema;
-  /** @deprecated use `StackoneListLinkedAccountsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListLinkedAccountsResponse$outboundSchema;
-  /** @deprecated use `StackoneListLinkedAccountsResponse$Outbound` instead. */
-  export type Outbound = StackoneListLinkedAccountsResponse$Outbound;
-}
-
-export function stackoneListLinkedAccountsResponseToJSON(
-  stackoneListLinkedAccountsResponse: StackoneListLinkedAccountsResponse,
-): string {
-  return JSON.stringify(
-    StackoneListLinkedAccountsResponse$outboundSchema.parse(
-      stackoneListLinkedAccountsResponse,
-    ),
-  );
-}
 
 export function stackoneListLinkedAccountsResponseFromJSON(
   jsonString: string,

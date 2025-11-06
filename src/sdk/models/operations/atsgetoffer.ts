@@ -50,23 +50,6 @@ export type AtsGetOfferResponse = {
 };
 
 /** @internal */
-export const AtsGetOfferRequest$inboundSchema: z.ZodType<
-  AtsGetOfferRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetOfferRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const AtsGetOfferRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetOfferRequest$ {
-  /** @deprecated use `AtsGetOfferRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetOfferRequest$inboundSchema;
-  /** @deprecated use `AtsGetOfferRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetOfferRequest$outboundSchema;
-  /** @deprecated use `AtsGetOfferRequest$Outbound` instead. */
-  export type Outbound = AtsGetOfferRequest$Outbound;
-}
-
 export function atsGetOfferRequestToJSON(
   atsGetOfferRequest: AtsGetOfferRequest,
 ): string {
   return JSON.stringify(
     AtsGetOfferRequest$outboundSchema.parse(atsGetOfferRequest),
-  );
-}
-
-export function atsGetOfferRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetOfferRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetOfferRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetOfferRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const AtsGetOfferResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetOfferResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  OffersResult?: shared.OffersResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetOfferResponse$outboundSchema: z.ZodType<
-  AtsGetOfferResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetOfferResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  offersResult: shared.OffersResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    offersResult: "OffersResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetOfferResponse$ {
-  /** @deprecated use `AtsGetOfferResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetOfferResponse$inboundSchema;
-  /** @deprecated use `AtsGetOfferResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetOfferResponse$outboundSchema;
-  /** @deprecated use `AtsGetOfferResponse$Outbound` instead. */
-  export type Outbound = AtsGetOfferResponse$Outbound;
-}
-
-export function atsGetOfferResponseToJSON(
-  atsGetOfferResponse: AtsGetOfferResponse,
-): string {
-  return JSON.stringify(
-    AtsGetOfferResponse$outboundSchema.parse(atsGetOfferResponse),
-  );
-}
 
 export function atsGetOfferResponseFromJSON(
   jsonString: string,

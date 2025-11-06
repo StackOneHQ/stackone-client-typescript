@@ -93,25 +93,6 @@ export type AtsListInterviewsResponse = {
 };
 
 /** @internal */
-export const AtsListInterviewsQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListInterviewsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  created_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "created_after": "createdAfter",
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AtsListInterviewsQueryParamFilter$Outbound = {
   created_after?: string | null | undefined;
   updated_after?: string | null | undefined;
@@ -132,20 +113,6 @@ export const AtsListInterviewsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListInterviewsQueryParamFilter$ {
-  /** @deprecated use `AtsListInterviewsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = AtsListInterviewsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListInterviewsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListInterviewsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListInterviewsQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListInterviewsQueryParamFilter$Outbound;
-}
-
 export function atsListInterviewsQueryParamFilterToJSON(
   atsListInterviewsQueryParamFilter: AtsListInterviewsQueryParamFilter,
 ): string {
@@ -155,45 +122,6 @@ export function atsListInterviewsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListInterviewsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListInterviewsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListInterviewsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListInterviewsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListInterviewsRequest$inboundSchema: z.ZodType<
-  AtsListInterviewsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListInterviewsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListInterviewsRequest$Outbound = {
@@ -236,34 +164,11 @@ export const AtsListInterviewsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListInterviewsRequest$ {
-  /** @deprecated use `AtsListInterviewsRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListInterviewsRequest$inboundSchema;
-  /** @deprecated use `AtsListInterviewsRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListInterviewsRequest$outboundSchema;
-  /** @deprecated use `AtsListInterviewsRequest$Outbound` instead. */
-  export type Outbound = AtsListInterviewsRequest$Outbound;
-}
-
 export function atsListInterviewsRequestToJSON(
   atsListInterviewsRequest: AtsListInterviewsRequest,
 ): string {
   return JSON.stringify(
     AtsListInterviewsRequest$outboundSchema.parse(atsListInterviewsRequest),
-  );
-}
-
-export function atsListInterviewsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListInterviewsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListInterviewsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListInterviewsRequest' from JSON`,
   );
 }
 
@@ -288,59 +193,6 @@ export const AtsListInterviewsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListInterviewsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  InterviewsPaginated?: shared.InterviewsPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListInterviewsResponse$outboundSchema: z.ZodType<
-  AtsListInterviewsResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListInterviewsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  interviewsPaginated: shared.InterviewsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    interviewsPaginated: "InterviewsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListInterviewsResponse$ {
-  /** @deprecated use `AtsListInterviewsResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListInterviewsResponse$inboundSchema;
-  /** @deprecated use `AtsListInterviewsResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListInterviewsResponse$outboundSchema;
-  /** @deprecated use `AtsListInterviewsResponse$Outbound` instead. */
-  export type Outbound = AtsListInterviewsResponse$Outbound;
-}
-
-export function atsListInterviewsResponseToJSON(
-  atsListInterviewsResponse: AtsListInterviewsResponse,
-): string {
-  return JSON.stringify(
-    AtsListInterviewsResponse$outboundSchema.parse(atsListInterviewsResponse),
-  );
-}
 
 export function atsListInterviewsResponseFromJSON(
   jsonString: string,

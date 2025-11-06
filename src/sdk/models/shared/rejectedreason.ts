@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -91,35 +87,6 @@ export const RejectedReason4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type RejectedReason4$Outbound = {};
-
-/** @internal */
-export const RejectedReason4$outboundSchema: z.ZodType<
-  RejectedReason4$Outbound,
-  z.ZodTypeDef,
-  RejectedReason4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectedReason4$ {
-  /** @deprecated use `RejectedReason4$inboundSchema` instead. */
-  export const inboundSchema = RejectedReason4$inboundSchema;
-  /** @deprecated use `RejectedReason4$outboundSchema` instead. */
-  export const outboundSchema = RejectedReason4$outboundSchema;
-  /** @deprecated use `RejectedReason4$Outbound` instead. */
-  export type Outbound = RejectedReason4$Outbound;
-}
-
-export function rejectedReason4ToJSON(
-  rejectedReason4: RejectedReason4,
-): string {
-  return JSON.stringify(RejectedReason4$outboundSchema.parse(rejectedReason4));
-}
-
 export function rejectedReason4FromJSON(
   jsonString: string,
 ): SafeParseResult<RejectedReason4, SDKValidationError> {
@@ -143,48 +110,6 @@ export const RejectedReasonSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type RejectedReasonSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | RejectedReason4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const RejectedReasonSourceValue$outboundSchema: z.ZodType<
-  RejectedReasonSourceValue$Outbound,
-  z.ZodTypeDef,
-  RejectedReasonSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => RejectedReason4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectedReasonSourceValue$ {
-  /** @deprecated use `RejectedReasonSourceValue$inboundSchema` instead. */
-  export const inboundSchema = RejectedReasonSourceValue$inboundSchema;
-  /** @deprecated use `RejectedReasonSourceValue$outboundSchema` instead. */
-  export const outboundSchema = RejectedReasonSourceValue$outboundSchema;
-  /** @deprecated use `RejectedReasonSourceValue$Outbound` instead. */
-  export type Outbound = RejectedReasonSourceValue$Outbound;
-}
-
-export function rejectedReasonSourceValueToJSON(
-  rejectedReasonSourceValue: RejectedReasonSourceValue,
-): string {
-  return JSON.stringify(
-    RejectedReasonSourceValue$outboundSchema.parse(rejectedReasonSourceValue),
-  );
-}
-
 export function rejectedReasonSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<RejectedReasonSourceValue, SDKValidationError> {
@@ -207,27 +132,6 @@ export const RejectedReasonValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const RejectedReasonValue$outboundSchema: z.ZodType<
-  RejectedReasonValueOpen,
-  z.ZodTypeDef,
-  RejectedReasonValueOpen
-> = z.union([
-  z.nativeEnum(RejectedReasonValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectedReasonValue$ {
-  /** @deprecated use `RejectedReasonValue$inboundSchema` instead. */
-  export const inboundSchema = RejectedReasonValue$inboundSchema;
-  /** @deprecated use `RejectedReasonValue$outboundSchema` instead. */
-  export const outboundSchema = RejectedReasonValue$outboundSchema;
-}
-
-/** @internal */
 export const RejectedReasonType$inboundSchema: z.ZodType<
   RejectedReasonType,
   z.ZodTypeDef,
@@ -248,62 +152,6 @@ export const RejectedReasonType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type RejectedReasonType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | RejectedReason4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const RejectedReasonType$outboundSchema: z.ZodType<
-  RejectedReasonType$Outbound,
-  z.ZodTypeDef,
-  RejectedReasonType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => RejectedReason4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(RejectedReasonValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectedReasonType$ {
-  /** @deprecated use `RejectedReasonType$inboundSchema` instead. */
-  export const inboundSchema = RejectedReasonType$inboundSchema;
-  /** @deprecated use `RejectedReasonType$outboundSchema` instead. */
-  export const outboundSchema = RejectedReasonType$outboundSchema;
-  /** @deprecated use `RejectedReasonType$Outbound` instead. */
-  export type Outbound = RejectedReasonType$Outbound;
-}
-
-export function rejectedReasonTypeToJSON(
-  rejectedReasonType: RejectedReasonType,
-): string {
-  return JSON.stringify(
-    RejectedReasonType$outboundSchema.parse(rejectedReasonType),
-  );
-}
 
 export function rejectedReasonTypeFromJSON(
   jsonString: string,
@@ -336,55 +184,6 @@ export const RejectedReason$inboundSchema: z.ZodType<
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
-
-/** @internal */
-export type RejectedReason$Outbound = {
-  id?: string | null | undefined;
-  label?: string | null | undefined;
-  rejected_reason_type?: RejectedReasonType$Outbound | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const RejectedReason$outboundSchema: z.ZodType<
-  RejectedReason$Outbound,
-  z.ZodTypeDef,
-  RejectedReason
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  rejectedReasonType: z.nullable(
-    z.lazy(() => RejectedReasonType$outboundSchema),
-  ).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    rejectedReasonType: "rejected_reason_type",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectedReason$ {
-  /** @deprecated use `RejectedReason$inboundSchema` instead. */
-  export const inboundSchema = RejectedReason$inboundSchema;
-  /** @deprecated use `RejectedReason$outboundSchema` instead. */
-  export const outboundSchema = RejectedReason$outboundSchema;
-  /** @deprecated use `RejectedReason$Outbound` instead. */
-  export type Outbound = RejectedReason$Outbound;
-}
-
-export function rejectedReasonToJSON(rejectedReason: RejectedReason): string {
-  return JSON.stringify(RejectedReason$outboundSchema.parse(rejectedReason));
-}
 
 export function rejectedReasonFromJSON(
   jsonString: string,

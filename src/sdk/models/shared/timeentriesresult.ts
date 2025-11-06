@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  TimeEntries,
-  TimeEntries$inboundSchema,
-  TimeEntries$Outbound,
-  TimeEntries$outboundSchema,
-} from "./timeentries.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { TimeEntries, TimeEntries$inboundSchema } from "./timeentries.js";
 
 export type TimeEntriesResult = {
   data: TimeEntries;
@@ -33,43 +23,6 @@ export const TimeEntriesResult$inboundSchema: z.ZodType<
   data: TimeEntries$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TimeEntriesResult$Outbound = {
-  data: TimeEntries$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TimeEntriesResult$outboundSchema: z.ZodType<
-  TimeEntriesResult$Outbound,
-  z.ZodTypeDef,
-  TimeEntriesResult
-> = z.object({
-  data: TimeEntries$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntriesResult$ {
-  /** @deprecated use `TimeEntriesResult$inboundSchema` instead. */
-  export const inboundSchema = TimeEntriesResult$inboundSchema;
-  /** @deprecated use `TimeEntriesResult$outboundSchema` instead. */
-  export const outboundSchema = TimeEntriesResult$outboundSchema;
-  /** @deprecated use `TimeEntriesResult$Outbound` instead. */
-  export type Outbound = TimeEntriesResult$Outbound;
-}
-
-export function timeEntriesResultToJSON(
-  timeEntriesResult: TimeEntriesResult,
-): string {
-  return JSON.stringify(
-    TimeEntriesResult$outboundSchema.parse(timeEntriesResult),
-  );
-}
 
 export function timeEntriesResultFromJSON(
   jsonString: string,

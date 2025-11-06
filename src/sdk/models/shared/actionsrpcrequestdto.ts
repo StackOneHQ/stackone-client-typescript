@@ -4,12 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  collectExtraKeys as collectExtraKeys$,
-  safeParse,
-} from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Query parameters for the action
@@ -46,16 +40,6 @@ export type ActionsRpcRequestDto = {
 };
 
 /** @internal */
-export const Query$inboundSchema: z.ZodType<Query, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      debug: z.nullable(z.boolean()).optional(),
-    }).catchall(z.any()),
-    "additionalProperties",
-    true,
-  );
-
-/** @internal */
 export type Query$Outbound = {
   debug?: boolean | null | undefined;
   [additionalProperties: string]: unknown;
@@ -79,45 +63,9 @@ export const Query$outboundSchema: z.ZodType<
   };
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Query$ {
-  /** @deprecated use `Query$inboundSchema` instead. */
-  export const inboundSchema = Query$inboundSchema;
-  /** @deprecated use `Query$outboundSchema` instead. */
-  export const outboundSchema = Query$outboundSchema;
-  /** @deprecated use `Query$Outbound` instead. */
-  export type Outbound = Query$Outbound;
-}
-
 export function queryToJSON(query: Query): string {
   return JSON.stringify(Query$outboundSchema.parse(query));
 }
-
-export function queryFromJSON(
-  jsonString: string,
-): SafeParseResult<Query, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Query$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Query' from JSON`,
-  );
-}
-
-/** @internal */
-export const ActionsRpcRequestDto$inboundSchema: z.ZodType<
-  ActionsRpcRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: z.string(),
-  body: z.nullable(z.record(z.any())).optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  path: z.nullable(z.record(z.any())).optional(),
-  query: z.nullable(z.lazy(() => Query$inboundSchema)).optional(),
-});
 
 /** @internal */
 export type ActionsRpcRequestDto$Outbound = {
@@ -141,33 +89,10 @@ export const ActionsRpcRequestDto$outboundSchema: z.ZodType<
   query: z.nullable(z.lazy(() => Query$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionsRpcRequestDto$ {
-  /** @deprecated use `ActionsRpcRequestDto$inboundSchema` instead. */
-  export const inboundSchema = ActionsRpcRequestDto$inboundSchema;
-  /** @deprecated use `ActionsRpcRequestDto$outboundSchema` instead. */
-  export const outboundSchema = ActionsRpcRequestDto$outboundSchema;
-  /** @deprecated use `ActionsRpcRequestDto$Outbound` instead. */
-  export type Outbound = ActionsRpcRequestDto$Outbound;
-}
-
 export function actionsRpcRequestDtoToJSON(
   actionsRpcRequestDto: ActionsRpcRequestDto,
 ): string {
   return JSON.stringify(
     ActionsRpcRequestDto$outboundSchema.parse(actionsRpcRequestDto),
-  );
-}
-
-export function actionsRpcRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<ActionsRpcRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ActionsRpcRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ActionsRpcRequestDto' from JSON`,
   );
 }

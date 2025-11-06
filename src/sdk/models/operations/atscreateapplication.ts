@@ -38,22 +38,6 @@ export type AtsCreateApplicationResponse = {
 };
 
 /** @internal */
-export const AtsCreateApplicationRequest$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsCreateApplicationRequestDto:
-    shared.AtsCreateApplicationRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsCreateApplicationRequestDto": "atsCreateApplicationRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsCreateApplicationRequest$Outbound = {
   AtsCreateApplicationRequestDto:
     shared.AtsCreateApplicationRequestDto$Outbound;
@@ -76,19 +60,6 @@ export const AtsCreateApplicationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequest$ {
-  /** @deprecated use `AtsCreateApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateApplicationRequest$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateApplicationRequest$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequest$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationRequest$Outbound;
-}
-
 export function atsCreateApplicationRequestToJSON(
   atsCreateApplicationRequest: AtsCreateApplicationRequest,
 ): string {
@@ -96,16 +67,6 @@ export function atsCreateApplicationRequestToJSON(
     AtsCreateApplicationRequest$outboundSchema.parse(
       atsCreateApplicationRequest,
     ),
-  );
-}
-
-export function atsCreateApplicationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateApplicationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateApplicationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateApplicationRequest' from JSON`,
   );
 }
 
@@ -130,61 +91,6 @@ export const AtsCreateApplicationResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsCreateApplicationResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsCreateApplicationResponse$outboundSchema: z.ZodType<
-  AtsCreateApplicationResponse$Outbound,
-  z.ZodTypeDef,
-  AtsCreateApplicationResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationResponse$ {
-  /** @deprecated use `AtsCreateApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateApplicationResponse$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateApplicationResponse$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationResponse$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationResponse$Outbound;
-}
-
-export function atsCreateApplicationResponseToJSON(
-  atsCreateApplicationResponse: AtsCreateApplicationResponse,
-): string {
-  return JSON.stringify(
-    AtsCreateApplicationResponse$outboundSchema.parse(
-      atsCreateApplicationResponse,
-    ),
-  );
-}
 
 export function atsCreateApplicationResponseFromJSON(
   jsonString: string,

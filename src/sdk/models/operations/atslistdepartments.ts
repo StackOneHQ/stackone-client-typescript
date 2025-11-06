@@ -89,21 +89,6 @@ export type AtsListDepartmentsResponse = {
 };
 
 /** @internal */
-export const AtsListDepartmentsQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListDepartmentsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AtsListDepartmentsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -121,20 +106,6 @@ export const AtsListDepartmentsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListDepartmentsQueryParamFilter$ {
-  /** @deprecated use `AtsListDepartmentsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = AtsListDepartmentsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListDepartmentsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListDepartmentsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListDepartmentsQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListDepartmentsQueryParamFilter$Outbound;
-}
-
 export function atsListDepartmentsQueryParamFilterToJSON(
   atsListDepartmentsQueryParamFilter: AtsListDepartmentsQueryParamFilter,
 ): string {
@@ -144,46 +115,6 @@ export function atsListDepartmentsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListDepartmentsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListDepartmentsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListDepartmentsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListDepartmentsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListDepartmentsRequest$inboundSchema: z.ZodType<
-  AtsListDepartmentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListDepartmentsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListDepartmentsRequest$Outbound = {
@@ -226,34 +157,11 @@ export const AtsListDepartmentsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListDepartmentsRequest$ {
-  /** @deprecated use `AtsListDepartmentsRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListDepartmentsRequest$inboundSchema;
-  /** @deprecated use `AtsListDepartmentsRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListDepartmentsRequest$outboundSchema;
-  /** @deprecated use `AtsListDepartmentsRequest$Outbound` instead. */
-  export type Outbound = AtsListDepartmentsRequest$Outbound;
-}
-
 export function atsListDepartmentsRequestToJSON(
   atsListDepartmentsRequest: AtsListDepartmentsRequest,
 ): string {
   return JSON.stringify(
     AtsListDepartmentsRequest$outboundSchema.parse(atsListDepartmentsRequest),
-  );
-}
-
-export function atsListDepartmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListDepartmentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListDepartmentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListDepartmentsRequest' from JSON`,
   );
 }
 
@@ -278,59 +186,6 @@ export const AtsListDepartmentsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListDepartmentsResponse$Outbound = {
-  ContentType: string;
-  DepartmentsPaginated?: shared.DepartmentsPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListDepartmentsResponse$outboundSchema: z.ZodType<
-  AtsListDepartmentsResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListDepartmentsResponse
-> = z.object({
-  contentType: z.string(),
-  departmentsPaginated: shared.DepartmentsPaginated$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    departmentsPaginated: "DepartmentsPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListDepartmentsResponse$ {
-  /** @deprecated use `AtsListDepartmentsResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListDepartmentsResponse$inboundSchema;
-  /** @deprecated use `AtsListDepartmentsResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListDepartmentsResponse$outboundSchema;
-  /** @deprecated use `AtsListDepartmentsResponse$Outbound` instead. */
-  export type Outbound = AtsListDepartmentsResponse$Outbound;
-}
-
-export function atsListDepartmentsResponseToJSON(
-  atsListDepartmentsResponse: AtsListDepartmentsResponse,
-): string {
-  return JSON.stringify(
-    AtsListDepartmentsResponse$outboundSchema.parse(atsListDepartmentsResponse),
-  );
-}
 
 export function atsListDepartmentsResponseFromJSON(
   jsonString: string,

@@ -301,6 +301,7 @@ export * from "./positionspaginated.js";
 export * from "./providererror.js";
 export * from "./providererrorapimodel.js";
 export * from "./proxyrequestbody.js";
+export * from "./proxyresponseapimodel.js";
 export * from "./pushmessages.js";
 export * from "./pushtemplate.js";
 export * from "./pushtemplateresult.js";

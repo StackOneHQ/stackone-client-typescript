@@ -62,36 +62,3 @@ export const NotImplementedResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type NotImplementedResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const NotImplementedResponse$outboundSchema: z.ZodType<
-  NotImplementedResponse$Outbound,
-  z.ZodTypeDef,
-  NotImplementedResponse
-> = z.instanceof(NotImplementedResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotImplementedResponse$ {
-  /** @deprecated use `NotImplementedResponse$inboundSchema` instead. */
-  export const inboundSchema = NotImplementedResponse$inboundSchema;
-  /** @deprecated use `NotImplementedResponse$outboundSchema` instead. */
-  export const outboundSchema = NotImplementedResponse$outboundSchema;
-  /** @deprecated use `NotImplementedResponse$Outbound` instead. */
-  export type Outbound = NotImplementedResponse$Outbound;
-}

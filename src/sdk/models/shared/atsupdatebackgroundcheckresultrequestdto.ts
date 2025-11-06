@@ -4,17 +4,9 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   Attachment,
-  Attachment$inboundSchema,
   Attachment$Outbound,
   Attachment$outboundSchema,
 } from "./attachment.js";
@@ -130,21 +122,6 @@ export type AtsUpdateBackgroundCheckResultRequestDto = {
 };
 
 /** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDtoCandidate$inboundSchema:
-  z.ZodType<
-    AtsUpdateBackgroundCheckResultRequestDtoCandidate,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    profile_url: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "profile_url": "profileUrl",
-    });
-  });
-
-/** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDtoCandidate$Outbound = {
   id?: string | null | undefined;
   profile_url?: string | null | undefined;
@@ -165,22 +142,6 @@ export const AtsUpdateBackgroundCheckResultRequestDtoCandidate$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequestDtoCandidate$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoCandidate$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoCandidate$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoCandidate$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateBackgroundCheckResultRequestDtoCandidate$Outbound;
-}
-
 export function atsUpdateBackgroundCheckResultRequestDtoCandidateToJSON(
   atsUpdateBackgroundCheckResultRequestDtoCandidate:
     AtsUpdateBackgroundCheckResultRequestDtoCandidate,
@@ -191,29 +152,6 @@ export function atsUpdateBackgroundCheckResultRequestDtoCandidateToJSON(
     ),
   );
 }
-
-export function atsUpdateBackgroundCheckResultRequestDtoCandidateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckResultRequestDtoCandidate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequestDtoCandidate$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequestDtoCandidate' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema: z.ZodType<
-  AtsUpdateBackgroundCheckResultRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDto4$Outbound = {};
@@ -226,21 +164,6 @@ export const AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema:
     AtsUpdateBackgroundCheckResultRequestDto4
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequestDto4$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDto4$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDto4$Outbound` instead. */
-  export type Outbound = AtsUpdateBackgroundCheckResultRequestDto4$Outbound;
-}
-
 export function atsUpdateBackgroundCheckResultRequestDto4ToJSON(
   atsUpdateBackgroundCheckResultRequestDto4:
     AtsUpdateBackgroundCheckResultRequestDto4,
@@ -251,36 +174,6 @@ export function atsUpdateBackgroundCheckResultRequestDto4ToJSON(
     ),
   );
 }
-
-export function atsUpdateBackgroundCheckResultRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckResultRequestDto4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDtoSourceValue$inboundSchema:
-  z.ZodType<
-    AtsUpdateBackgroundCheckResultRequestDtoSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDtoSourceValue$Outbound =
@@ -304,22 +197,6 @@ export const AtsUpdateBackgroundCheckResultRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequestDtoSourceValue$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateBackgroundCheckResultRequestDtoSourceValue$Outbound;
-}
-
 export function atsUpdateBackgroundCheckResultRequestDtoSourceValueToJSON(
   atsUpdateBackgroundCheckResultRequestDtoSourceValue:
     AtsUpdateBackgroundCheckResultRequestDtoSourceValue,
@@ -331,34 +208,6 @@ export function atsUpdateBackgroundCheckResultRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsUpdateBackgroundCheckResultRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckResultRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDtoValue$inboundSchema:
-  z.ZodType<
-    AtsUpdateBackgroundCheckResultRequestDtoValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(AtsUpdateBackgroundCheckResultRequestDtoValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const AtsUpdateBackgroundCheckResultRequestDtoValue$outboundSchema:
   z.ZodType<
@@ -369,44 +218,6 @@ export const AtsUpdateBackgroundCheckResultRequestDtoValue$outboundSchema:
     z.nativeEnum(AtsUpdateBackgroundCheckResultRequestDtoValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequestDtoValue$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema:
-  z.ZodType<
-    AtsUpdateBackgroundCheckResultRequestDtoResult,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => AtsUpdateBackgroundCheckResultRequestDto4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(
-      AtsUpdateBackgroundCheckResultRequestDtoValue$inboundSchema,
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDtoResult$Outbound = {
@@ -446,22 +257,6 @@ export const AtsUpdateBackgroundCheckResultRequestDtoResult$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequestDtoResult$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoResult$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDtoResult$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDtoResult$Outbound` instead. */
-  export type Outbound =
-    AtsUpdateBackgroundCheckResultRequestDtoResult$Outbound;
-}
-
 export function atsUpdateBackgroundCheckResultRequestDtoResultToJSON(
   atsUpdateBackgroundCheckResultRequestDtoResult:
     AtsUpdateBackgroundCheckResultRequestDtoResult,
@@ -472,31 +267,6 @@ export function atsUpdateBackgroundCheckResultRequestDtoResultToJSON(
     ),
   );
 }
-
-export function atsUpdateBackgroundCheckResultRequestDtoResultFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckResultRequestDtoResult,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequestDtoResult' from JSON`,
-  );
-}
-
-/** @internal */
-export const Score$inboundSchema: z.ZodType<Score, z.ZodTypeDef, unknown> = z
-  .object({
-    label: z.nullable(z.string()).optional(),
-    max: z.nullable(z.string()).optional(),
-    min: z.nullable(z.string()).optional(),
-    value: z.nullable(z.string()).optional(),
-  });
 
 /** @internal */
 export type Score$Outbound = {
@@ -518,65 +288,9 @@ export const Score$outboundSchema: z.ZodType<
   value: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Score$ {
-  /** @deprecated use `Score$inboundSchema` instead. */
-  export const inboundSchema = Score$inboundSchema;
-  /** @deprecated use `Score$outboundSchema` instead. */
-  export const outboundSchema = Score$outboundSchema;
-  /** @deprecated use `Score$Outbound` instead. */
-  export type Outbound = Score$Outbound;
-}
-
 export function scoreToJSON(score: Score): string {
   return JSON.stringify(Score$outboundSchema.parse(score));
 }
-
-export function scoreFromJSON(
-  jsonString: string,
-): SafeParseResult<Score, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Score$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Score' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateBackgroundCheckResultRequestDto$inboundSchema: z.ZodType<
-  AtsUpdateBackgroundCheckResultRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  attachments: z.nullable(z.array(Attachment$inboundSchema)).optional(),
-  candidate: z.nullable(
-    z.lazy(() =>
-      AtsUpdateBackgroundCheckResultRequestDtoCandidate$inboundSchema
-    ),
-  ).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  result: z.nullable(
-    z.lazy(() => AtsUpdateBackgroundCheckResultRequestDtoResult$inboundSchema),
-  ).optional(),
-  result_url: z.nullable(z.string()).optional(),
-  score: z.nullable(z.lazy(() => Score$inboundSchema)).optional(),
-  start_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  submission_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  summary: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "result_url": "resultUrl",
-    "start_date": "startDate",
-    "submission_date": "submissionDate",
-  });
-});
 
 /** @internal */
 export type AtsUpdateBackgroundCheckResultRequestDto$Outbound = {
@@ -627,21 +341,6 @@ export const AtsUpdateBackgroundCheckResultRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequestDto$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDto$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequestDto$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequestDto$Outbound` instead. */
-  export type Outbound = AtsUpdateBackgroundCheckResultRequestDto$Outbound;
-}
-
 export function atsUpdateBackgroundCheckResultRequestDtoToJSON(
   atsUpdateBackgroundCheckResultRequestDto:
     AtsUpdateBackgroundCheckResultRequestDto,
@@ -650,21 +349,5 @@ export function atsUpdateBackgroundCheckResultRequestDtoToJSON(
     AtsUpdateBackgroundCheckResultRequestDto$outboundSchema.parse(
       atsUpdateBackgroundCheckResultRequestDto,
     ),
-  );
-}
-
-export function atsUpdateBackgroundCheckResultRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsUpdateBackgroundCheckResultRequestDto,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequestDto$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequestDto' from JSON`,
   );
 }

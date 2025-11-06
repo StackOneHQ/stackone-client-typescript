@@ -20,41 +20,6 @@ export const UnifiedWarningApiModel$inboundSchema: z.ZodType<
   message: z.nullable(z.string()).optional(),
 });
 
-/** @internal */
-export type UnifiedWarningApiModel$Outbound = {
-  message?: string | null | undefined;
-};
-
-/** @internal */
-export const UnifiedWarningApiModel$outboundSchema: z.ZodType<
-  UnifiedWarningApiModel$Outbound,
-  z.ZodTypeDef,
-  UnifiedWarningApiModel
-> = z.object({
-  message: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedWarningApiModel$ {
-  /** @deprecated use `UnifiedWarningApiModel$inboundSchema` instead. */
-  export const inboundSchema = UnifiedWarningApiModel$inboundSchema;
-  /** @deprecated use `UnifiedWarningApiModel$outboundSchema` instead. */
-  export const outboundSchema = UnifiedWarningApiModel$outboundSchema;
-  /** @deprecated use `UnifiedWarningApiModel$Outbound` instead. */
-  export type Outbound = UnifiedWarningApiModel$Outbound;
-}
-
-export function unifiedWarningApiModelToJSON(
-  unifiedWarningApiModel: UnifiedWarningApiModel,
-): string {
-  return JSON.stringify(
-    UnifiedWarningApiModel$outboundSchema.parse(unifiedWarningApiModel),
-  );
-}
-
 export function unifiedWarningApiModelFromJSON(
   jsonString: string,
 ): SafeParseResult<UnifiedWarningApiModel, SDKValidationError> {

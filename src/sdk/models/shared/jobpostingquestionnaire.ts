@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Question,
-  Question$inboundSchema,
-  Question$Outbound,
-  Question$outboundSchema,
-} from "./question.js";
+import { Question, Question$inboundSchema } from "./question.js";
 
 export enum JobPostingQuestionnaire2 {
   True = "true",
@@ -43,60 +38,11 @@ export const JobPostingQuestionnaire2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(JobPostingQuestionnaire2);
 
 /** @internal */
-export const JobPostingQuestionnaire2$outboundSchema: z.ZodNativeEnum<
-  typeof JobPostingQuestionnaire2
-> = JobPostingQuestionnaire2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingQuestionnaire2$ {
-  /** @deprecated use `JobPostingQuestionnaire2$inboundSchema` instead. */
-  export const inboundSchema = JobPostingQuestionnaire2$inboundSchema;
-  /** @deprecated use `JobPostingQuestionnaire2$outboundSchema` instead. */
-  export const outboundSchema = JobPostingQuestionnaire2$outboundSchema;
-}
-
-/** @internal */
 export const JobPostingQuestionnaireInternal$inboundSchema: z.ZodType<
   JobPostingQuestionnaireInternal,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), JobPostingQuestionnaire2$inboundSchema]);
-
-/** @internal */
-export type JobPostingQuestionnaireInternal$Outbound = boolean | string;
-
-/** @internal */
-export const JobPostingQuestionnaireInternal$outboundSchema: z.ZodType<
-  JobPostingQuestionnaireInternal$Outbound,
-  z.ZodTypeDef,
-  JobPostingQuestionnaireInternal
-> = z.union([z.boolean(), JobPostingQuestionnaire2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingQuestionnaireInternal$ {
-  /** @deprecated use `JobPostingQuestionnaireInternal$inboundSchema` instead. */
-  export const inboundSchema = JobPostingQuestionnaireInternal$inboundSchema;
-  /** @deprecated use `JobPostingQuestionnaireInternal$outboundSchema` instead. */
-  export const outboundSchema = JobPostingQuestionnaireInternal$outboundSchema;
-  /** @deprecated use `JobPostingQuestionnaireInternal$Outbound` instead. */
-  export type Outbound = JobPostingQuestionnaireInternal$Outbound;
-}
-
-export function jobPostingQuestionnaireInternalToJSON(
-  jobPostingQuestionnaireInternal: JobPostingQuestionnaireInternal,
-): string {
-  return JSON.stringify(
-    JobPostingQuestionnaireInternal$outboundSchema.parse(
-      jobPostingQuestionnaireInternal,
-    ),
-  );
-}
 
 export function jobPostingQuestionnaireInternalFromJSON(
   jsonString: string,
@@ -126,55 +72,6 @@ export const JobPostingQuestionnaire$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type JobPostingQuestionnaire$Outbound = {
-  id?: string | null | undefined;
-  internal?: boolean | string | null | undefined;
-  name?: string | null | undefined;
-  questions?: Array<Question$Outbound> | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const JobPostingQuestionnaire$outboundSchema: z.ZodType<
-  JobPostingQuestionnaire$Outbound,
-  z.ZodTypeDef,
-  JobPostingQuestionnaire
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  internal: z.nullable(
-    z.union([z.boolean(), JobPostingQuestionnaire2$outboundSchema]),
-  ).optional(),
-  name: z.nullable(z.string()).optional(),
-  questions: z.nullable(z.array(Question$outboundSchema)).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingQuestionnaire$ {
-  /** @deprecated use `JobPostingQuestionnaire$inboundSchema` instead. */
-  export const inboundSchema = JobPostingQuestionnaire$inboundSchema;
-  /** @deprecated use `JobPostingQuestionnaire$outboundSchema` instead. */
-  export const outboundSchema = JobPostingQuestionnaire$outboundSchema;
-  /** @deprecated use `JobPostingQuestionnaire$Outbound` instead. */
-  export type Outbound = JobPostingQuestionnaire$Outbound;
-}
-
-export function jobPostingQuestionnaireToJSON(
-  jobPostingQuestionnaire: JobPostingQuestionnaire,
-): string {
-  return JSON.stringify(
-    JobPostingQuestionnaire$outboundSchema.parse(jobPostingQuestionnaire),
-  );
-}
 
 export function jobPostingQuestionnaireFromJSON(
   jsonString: string,

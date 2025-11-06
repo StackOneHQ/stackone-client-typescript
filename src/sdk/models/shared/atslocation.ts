@@ -41,48 +41,6 @@ export const ATSLocation$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ATSLocation$Outbound = {
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const ATSLocation$outboundSchema: z.ZodType<
-  ATSLocation$Outbound,
-  z.ZodTypeDef,
-  ATSLocation
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ATSLocation$ {
-  /** @deprecated use `ATSLocation$inboundSchema` instead. */
-  export const inboundSchema = ATSLocation$inboundSchema;
-  /** @deprecated use `ATSLocation$outboundSchema` instead. */
-  export const outboundSchema = ATSLocation$outboundSchema;
-  /** @deprecated use `ATSLocation$Outbound` instead. */
-  export type Outbound = ATSLocation$Outbound;
-}
-
-export function atsLocationToJSON(atsLocation: ATSLocation): string {
-  return JSON.stringify(ATSLocation$outboundSchema.parse(atsLocation));
-}
-
 export function atsLocationFromJSON(
   jsonString: string,
 ): SafeParseResult<ATSLocation, SDKValidationError> {

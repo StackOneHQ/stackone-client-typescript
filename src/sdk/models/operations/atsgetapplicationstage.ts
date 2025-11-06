@@ -50,23 +50,6 @@ export type AtsGetApplicationStageResponse = {
 };
 
 /** @internal */
-export const AtsGetApplicationStageRequest$inboundSchema: z.ZodType<
-  AtsGetApplicationStageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetApplicationStageRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const AtsGetApplicationStageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationStageRequest$ {
-  /** @deprecated use `AtsGetApplicationStageRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationStageRequest$inboundSchema;
-  /** @deprecated use `AtsGetApplicationStageRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationStageRequest$outboundSchema;
-  /** @deprecated use `AtsGetApplicationStageRequest$Outbound` instead. */
-  export type Outbound = AtsGetApplicationStageRequest$Outbound;
-}
-
 export function atsGetApplicationStageRequestToJSON(
   atsGetApplicationStageRequest: AtsGetApplicationStageRequest,
 ): string {
@@ -112,16 +82,6 @@ export function atsGetApplicationStageRequestToJSON(
     AtsGetApplicationStageRequest$outboundSchema.parse(
       atsGetApplicationStageRequest,
     ),
-  );
-}
-
-export function atsGetApplicationStageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetApplicationStageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetApplicationStageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetApplicationStageRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const AtsGetApplicationStageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetApplicationStageResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  InterviewStageResult?: shared.InterviewStageResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetApplicationStageResponse$outboundSchema: z.ZodType<
-  AtsGetApplicationStageResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetApplicationStageResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  interviewStageResult: shared.InterviewStageResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    interviewStageResult: "InterviewStageResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationStageResponse$ {
-  /** @deprecated use `AtsGetApplicationStageResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationStageResponse$inboundSchema;
-  /** @deprecated use `AtsGetApplicationStageResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationStageResponse$outboundSchema;
-  /** @deprecated use `AtsGetApplicationStageResponse$Outbound` instead. */
-  export type Outbound = AtsGetApplicationStageResponse$Outbound;
-}
-
-export function atsGetApplicationStageResponseToJSON(
-  atsGetApplicationStageResponse: AtsGetApplicationStageResponse,
-): string {
-  return JSON.stringify(
-    AtsGetApplicationStageResponse$outboundSchema.parse(
-      atsGetApplicationStageResponse,
-    ),
-  );
-}
 
 export function atsGetApplicationStageResponseFromJSON(
   jsonString: string,

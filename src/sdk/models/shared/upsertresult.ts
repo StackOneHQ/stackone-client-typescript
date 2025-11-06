@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UpsertResultDataExternalReferenceModel,
   UpsertResultDataExternalReferenceModel$inboundSchema,
-  UpsertResultDataExternalReferenceModel$Outbound,
-  UpsertResultDataExternalReferenceModel$outboundSchema,
 } from "./upsertresultdataexternalreferencemodel.js";
 
 export type UpsertResult = {
@@ -31,43 +29,6 @@ export const UpsertResult$inboundSchema: z.ZodType<
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
-/** @internal */
-export type UpsertResult$Outbound = {
-  data: UpsertResultDataExternalReferenceModel$Outbound;
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const UpsertResult$outboundSchema: z.ZodType<
-  UpsertResult$Outbound,
-  z.ZodTypeDef,
-  UpsertResult
-> = z.object({
-  data: UpsertResultDataExternalReferenceModel$outboundSchema,
-  message: z.string(),
-  statusCode: z.number(),
-  timestamp: z.date().transform(v => v.toISOString()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertResult$ {
-  /** @deprecated use `UpsertResult$inboundSchema` instead. */
-  export const inboundSchema = UpsertResult$inboundSchema;
-  /** @deprecated use `UpsertResult$outboundSchema` instead. */
-  export const outboundSchema = UpsertResult$outboundSchema;
-  /** @deprecated use `UpsertResult$Outbound` instead. */
-  export type Outbound = UpsertResult$Outbound;
-}
-
-export function upsertResultToJSON(upsertResult: UpsertResult): string {
-  return JSON.stringify(UpsertResult$outboundSchema.parse(upsertResult));
-}
 
 export function upsertResultFromJSON(
   jsonString: string,

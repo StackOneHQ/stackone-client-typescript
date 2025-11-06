@@ -54,50 +54,8 @@ export const ShiftBreak2$inboundSchema: z.ZodNativeEnum<typeof ShiftBreak2> = z
   .nativeEnum(ShiftBreak2);
 
 /** @internal */
-export const ShiftBreak2$outboundSchema: z.ZodNativeEnum<typeof ShiftBreak2> =
-  ShiftBreak2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ShiftBreak2$ {
-  /** @deprecated use `ShiftBreak2$inboundSchema` instead. */
-  export const inboundSchema = ShiftBreak2$inboundSchema;
-  /** @deprecated use `ShiftBreak2$outboundSchema` instead. */
-  export const outboundSchema = ShiftBreak2$outboundSchema;
-}
-
-/** @internal */
 export const IsPaid$inboundSchema: z.ZodType<IsPaid, z.ZodTypeDef, unknown> = z
   .union([z.boolean(), ShiftBreak2$inboundSchema]);
-
-/** @internal */
-export type IsPaid$Outbound = boolean | string;
-
-/** @internal */
-export const IsPaid$outboundSchema: z.ZodType<
-  IsPaid$Outbound,
-  z.ZodTypeDef,
-  IsPaid
-> = z.union([z.boolean(), ShiftBreak2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IsPaid$ {
-  /** @deprecated use `IsPaid$inboundSchema` instead. */
-  export const inboundSchema = IsPaid$inboundSchema;
-  /** @deprecated use `IsPaid$outboundSchema` instead. */
-  export const outboundSchema = IsPaid$outboundSchema;
-  /** @deprecated use `IsPaid$Outbound` instead. */
-  export type Outbound = IsPaid$Outbound;
-}
-
-export function isPaidToJSON(isPaid: IsPaid): string {
-  return JSON.stringify(IsPaid$outboundSchema.parse(isPaid));
-}
 
 export function isPaidFromJSON(
   jsonString: string,
@@ -140,58 +98,6 @@ export const ShiftBreak$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type ShiftBreak$Outbound = {
-  created_at?: string | null | undefined;
-  duration?: string | null | undefined;
-  end_time?: string | null | undefined;
-  id?: string | null | undefined;
-  is_paid?: boolean | string | null | undefined;
-  start_time?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ShiftBreak$outboundSchema: z.ZodType<
-  ShiftBreak$Outbound,
-  z.ZodTypeDef,
-  ShiftBreak
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  duration: z.nullable(z.string()).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  isPaid: z.nullable(z.union([z.boolean(), ShiftBreak2$outboundSchema]))
-    .optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    endTime: "end_time",
-    isPaid: "is_paid",
-    startTime: "start_time",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ShiftBreak$ {
-  /** @deprecated use `ShiftBreak$inboundSchema` instead. */
-  export const inboundSchema = ShiftBreak$inboundSchema;
-  /** @deprecated use `ShiftBreak$outboundSchema` instead. */
-  export const outboundSchema = ShiftBreak$outboundSchema;
-  /** @deprecated use `ShiftBreak$Outbound` instead. */
-  export type Outbound = ShiftBreak$Outbound;
-}
-
-export function shiftBreakToJSON(shiftBreak: ShiftBreak): string {
-  return JSON.stringify(ShiftBreak$outboundSchema.parse(shiftBreak));
-}
 
 export function shiftBreakFromJSON(
   jsonString: string,

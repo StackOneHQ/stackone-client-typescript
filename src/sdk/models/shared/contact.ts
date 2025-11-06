@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CustomFields,
-  CustomFields$inboundSchema,
-  CustomFields$Outbound,
-  CustomFields$outboundSchema,
-} from "./customfields.js";
+import { CustomFields, CustomFields$inboundSchema } from "./customfields.js";
 
 export type Contact = {
   /**
@@ -116,81 +111,6 @@ export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type Contact$Outbound = {
-  account_ids?: Array<string> | null | undefined;
-  company_name?: string | null | undefined;
-  created_at?: string | null | undefined;
-  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
-  deal_ids?: Array<string> | null | undefined;
-  emails?: Array<string> | null | undefined;
-  first_name?: string | null | undefined;
-  id?: string | null | undefined;
-  last_name?: string | null | undefined;
-  phone_numbers?: Array<string> | null | undefined;
-  remote_account_ids?: Array<string> | null | undefined;
-  remote_deal_ids?: Array<string> | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Contact$outboundSchema: z.ZodType<
-  Contact$Outbound,
-  z.ZodTypeDef,
-  Contact
-> = z.object({
-  accountIds: z.nullable(z.array(z.string())).optional(),
-  companyName: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
-  dealIds: z.nullable(z.array(z.string())).optional(),
-  emails: z.nullable(z.array(z.string())).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  phoneNumbers: z.nullable(z.array(z.string())).optional(),
-  remoteAccountIds: z.nullable(z.array(z.string())).optional(),
-  remoteDealIds: z.nullable(z.array(z.string())).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountIds: "account_ids",
-    companyName: "company_name",
-    createdAt: "created_at",
-    customFields: "custom_fields",
-    dealIds: "deal_ids",
-    firstName: "first_name",
-    lastName: "last_name",
-    phoneNumbers: "phone_numbers",
-    remoteAccountIds: "remote_account_ids",
-    remoteDealIds: "remote_deal_ids",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Contact$ {
-  /** @deprecated use `Contact$inboundSchema` instead. */
-  export const inboundSchema = Contact$inboundSchema;
-  /** @deprecated use `Contact$outboundSchema` instead. */
-  export const outboundSchema = Contact$outboundSchema;
-  /** @deprecated use `Contact$Outbound` instead. */
-  export type Outbound = Contact$Outbound;
-}
-
-export function contactToJSON(contact: Contact): string {
-  return JSON.stringify(Contact$outboundSchema.parse(contact));
-}
 
 export function contactFromJSON(
   jsonString: string,

@@ -65,60 +65,6 @@ export const ApplicationStage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ApplicationStage$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  order?: number | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationStage$outboundSchema: z.ZodType<
-  ApplicationStage$Outbound,
-  z.ZodTypeDef,
-  ApplicationStage
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  order: z.nullable(z.number()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationStage$ {
-  /** @deprecated use `ApplicationStage$inboundSchema` instead. */
-  export const inboundSchema = ApplicationStage$inboundSchema;
-  /** @deprecated use `ApplicationStage$outboundSchema` instead. */
-  export const outboundSchema = ApplicationStage$outboundSchema;
-  /** @deprecated use `ApplicationStage$Outbound` instead. */
-  export type Outbound = ApplicationStage$Outbound;
-}
-
-export function applicationStageToJSON(
-  applicationStage: ApplicationStage,
-): string {
-  return JSON.stringify(
-    ApplicationStage$outboundSchema.parse(applicationStage),
-  );
-}
-
 export function applicationStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationStage, SDKValidationError> {

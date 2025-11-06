@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HrisDocumentApiModel,
   HrisDocumentApiModel$inboundSchema,
-  HrisDocumentApiModel$Outbound,
-  HrisDocumentApiModel$outboundSchema,
 } from "./hrisdocumentapimodel.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HrisDocumentResult = {
   data: HrisDocumentApiModel;
@@ -33,43 +26,6 @@ export const HrisDocumentResult$inboundSchema: z.ZodType<
   data: HrisDocumentApiModel$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HrisDocumentResult$Outbound = {
-  data: HrisDocumentApiModel$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HrisDocumentResult$outboundSchema: z.ZodType<
-  HrisDocumentResult$Outbound,
-  z.ZodTypeDef,
-  HrisDocumentResult
-> = z.object({
-  data: HrisDocumentApiModel$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDocumentResult$ {
-  /** @deprecated use `HrisDocumentResult$inboundSchema` instead. */
-  export const inboundSchema = HrisDocumentResult$inboundSchema;
-  /** @deprecated use `HrisDocumentResult$outboundSchema` instead. */
-  export const outboundSchema = HrisDocumentResult$outboundSchema;
-  /** @deprecated use `HrisDocumentResult$Outbound` instead. */
-  export type Outbound = HrisDocumentResult$Outbound;
-}
-
-export function hrisDocumentResultToJSON(
-  hrisDocumentResult: HrisDocumentResult,
-): string {
-  return JSON.stringify(
-    HrisDocumentResult$outboundSchema.parse(hrisDocumentResult),
-  );
-}
 
 export function hrisDocumentResultFromJSON(
   jsonString: string,

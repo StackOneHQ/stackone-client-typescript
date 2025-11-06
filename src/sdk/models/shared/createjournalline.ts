@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateJournalLine = {
   /**
@@ -30,25 +27,6 @@ export type CreateJournalLine = {
    */
   taxRateId?: string | null | undefined;
 };
-
-/** @internal */
-export const CreateJournalLine$inboundSchema: z.ZodType<
-  CreateJournalLine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_id: z.nullable(z.string()).optional(),
-  amount: z.nullable(z.number()).optional(),
-  description: z.nullable(z.string()).optional(),
-  tax_amount: z.nullable(z.number()).optional(),
-  tax_rate_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_id": "accountId",
-    "tax_amount": "taxAmount",
-    "tax_rate_id": "taxRateId",
-  });
-});
 
 /** @internal */
 export type CreateJournalLine$Outbound = {
@@ -78,33 +56,10 @@ export const CreateJournalLine$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateJournalLine$ {
-  /** @deprecated use `CreateJournalLine$inboundSchema` instead. */
-  export const inboundSchema = CreateJournalLine$inboundSchema;
-  /** @deprecated use `CreateJournalLine$outboundSchema` instead. */
-  export const outboundSchema = CreateJournalLine$outboundSchema;
-  /** @deprecated use `CreateJournalLine$Outbound` instead. */
-  export type Outbound = CreateJournalLine$Outbound;
-}
-
 export function createJournalLineToJSON(
   createJournalLine: CreateJournalLine,
 ): string {
   return JSON.stringify(
     CreateJournalLine$outboundSchema.parse(createJournalLine),
-  );
-}
-
-export function createJournalLineFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateJournalLine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateJournalLine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateJournalLine' from JSON`,
   );
 }

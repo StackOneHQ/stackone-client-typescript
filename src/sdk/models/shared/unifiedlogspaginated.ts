@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UnifiedLogsPartial,
   UnifiedLogsPartial$inboundSchema,
-  UnifiedLogsPartial$Outbound,
-  UnifiedLogsPartial$outboundSchema,
 } from "./unifiedlogspartial.js";
 
 export type UnifiedLogsPaginated = {
@@ -27,43 +25,6 @@ export const UnifiedLogsPaginated$inboundSchema: z.ZodType<
   data: z.array(UnifiedLogsPartial$inboundSchema),
   next: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type UnifiedLogsPaginated$Outbound = {
-  data: Array<UnifiedLogsPartial$Outbound>;
-  next?: string | null | undefined;
-};
-
-/** @internal */
-export const UnifiedLogsPaginated$outboundSchema: z.ZodType<
-  UnifiedLogsPaginated$Outbound,
-  z.ZodTypeDef,
-  UnifiedLogsPaginated
-> = z.object({
-  data: z.array(UnifiedLogsPartial$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedLogsPaginated$ {
-  /** @deprecated use `UnifiedLogsPaginated$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogsPaginated$inboundSchema;
-  /** @deprecated use `UnifiedLogsPaginated$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogsPaginated$outboundSchema;
-  /** @deprecated use `UnifiedLogsPaginated$Outbound` instead. */
-  export type Outbound = UnifiedLogsPaginated$Outbound;
-}
-
-export function unifiedLogsPaginatedToJSON(
-  unifiedLogsPaginated: UnifiedLogsPaginated,
-): string {
-  return JSON.stringify(
-    UnifiedLogsPaginated$outboundSchema.parse(unifiedLogsPaginated),
-  );
-}
 
 export function unifiedLogsPaginatedFromJSON(
   jsonString: string,

@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  EmailTemplate,
-  EmailTemplate$inboundSchema,
-  EmailTemplate$Outbound,
-  EmailTemplate$outboundSchema,
-} from "./emailtemplate.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { EmailTemplate, EmailTemplate$inboundSchema } from "./emailtemplate.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type EmailTemplateResult = {
   data: EmailTemplate;
@@ -33,43 +23,6 @@ export const EmailTemplateResult$inboundSchema: z.ZodType<
   data: EmailTemplate$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type EmailTemplateResult$Outbound = {
-  data: EmailTemplate$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const EmailTemplateResult$outboundSchema: z.ZodType<
-  EmailTemplateResult$Outbound,
-  z.ZodTypeDef,
-  EmailTemplateResult
-> = z.object({
-  data: EmailTemplate$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailTemplateResult$ {
-  /** @deprecated use `EmailTemplateResult$inboundSchema` instead. */
-  export const inboundSchema = EmailTemplateResult$inboundSchema;
-  /** @deprecated use `EmailTemplateResult$outboundSchema` instead. */
-  export const outboundSchema = EmailTemplateResult$outboundSchema;
-  /** @deprecated use `EmailTemplateResult$Outbound` instead. */
-  export type Outbound = EmailTemplateResult$Outbound;
-}
-
-export function emailTemplateResultToJSON(
-  emailTemplateResult: EmailTemplateResult,
-): string {
-  return JSON.stringify(
-    EmailTemplateResult$outboundSchema.parse(emailTemplateResult),
-  );
-}
 
 export function emailTemplateResultFromJSON(
   jsonString: string,

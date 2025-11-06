@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFieldDefinition,
   CustomFieldDefinition$inboundSchema,
-  CustomFieldDefinition$Outbound,
-  CustomFieldDefinition$outboundSchema,
 } from "./customfielddefinition.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type CustomFieldDefinitionResultApiModel = {
   data: CustomFieldDefinition;
@@ -33,47 +26,6 @@ export const CustomFieldDefinitionResultApiModel$inboundSchema: z.ZodType<
   data: CustomFieldDefinition$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type CustomFieldDefinitionResultApiModel$Outbound = {
-  data: CustomFieldDefinition$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const CustomFieldDefinitionResultApiModel$outboundSchema: z.ZodType<
-  CustomFieldDefinitionResultApiModel$Outbound,
-  z.ZodTypeDef,
-  CustomFieldDefinitionResultApiModel
-> = z.object({
-  data: CustomFieldDefinition$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldDefinitionResultApiModel$ {
-  /** @deprecated use `CustomFieldDefinitionResultApiModel$inboundSchema` instead. */
-  export const inboundSchema =
-    CustomFieldDefinitionResultApiModel$inboundSchema;
-  /** @deprecated use `CustomFieldDefinitionResultApiModel$outboundSchema` instead. */
-  export const outboundSchema =
-    CustomFieldDefinitionResultApiModel$outboundSchema;
-  /** @deprecated use `CustomFieldDefinitionResultApiModel$Outbound` instead. */
-  export type Outbound = CustomFieldDefinitionResultApiModel$Outbound;
-}
-
-export function customFieldDefinitionResultApiModelToJSON(
-  customFieldDefinitionResultApiModel: CustomFieldDefinitionResultApiModel,
-): string {
-  return JSON.stringify(
-    CustomFieldDefinitionResultApiModel$outboundSchema.parse(
-      customFieldDefinitionResultApiModel,
-    ),
-  );
-}
 
 export function customFieldDefinitionResultApiModelFromJSON(
   jsonString: string,

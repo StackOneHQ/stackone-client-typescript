@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type CreateHRISBenefit4 = {};
 
@@ -90,13 +83,6 @@ export type CreateHRISBenefit = {
 };
 
 /** @internal */
-export const CreateHRISBenefit4$inboundSchema: z.ZodType<
-  CreateHRISBenefit4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type CreateHRISBenefit4$Outbound = {};
 
 /** @internal */
@@ -106,19 +92,6 @@ export const CreateHRISBenefit4$outboundSchema: z.ZodType<
   CreateHRISBenefit4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateHRISBenefit4$ {
-  /** @deprecated use `CreateHRISBenefit4$inboundSchema` instead. */
-  export const inboundSchema = CreateHRISBenefit4$inboundSchema;
-  /** @deprecated use `CreateHRISBenefit4$outboundSchema` instead. */
-  export const outboundSchema = CreateHRISBenefit4$outboundSchema;
-  /** @deprecated use `CreateHRISBenefit4$Outbound` instead. */
-  export type Outbound = CreateHRISBenefit4$Outbound;
-}
-
 export function createHRISBenefit4ToJSON(
   createHRISBenefit4: CreateHRISBenefit4,
 ): string {
@@ -126,29 +99,6 @@ export function createHRISBenefit4ToJSON(
     CreateHRISBenefit4$outboundSchema.parse(createHRISBenefit4),
   );
 }
-
-export function createHRISBenefit4FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateHRISBenefit4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateHRISBenefit4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateHRISBenefit4' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateHRISBenefitSourceValue$inboundSchema: z.ZodType<
-  CreateHRISBenefitSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => CreateHRISBenefit4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type CreateHRISBenefitSourceValue$Outbound =
@@ -171,19 +121,6 @@ export const CreateHRISBenefitSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateHRISBenefitSourceValue$ {
-  /** @deprecated use `CreateHRISBenefitSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CreateHRISBenefitSourceValue$inboundSchema;
-  /** @deprecated use `CreateHRISBenefitSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CreateHRISBenefitSourceValue$outboundSchema;
-  /** @deprecated use `CreateHRISBenefitSourceValue$Outbound` instead. */
-  export type Outbound = CreateHRISBenefitSourceValue$Outbound;
-}
-
 export function createHRISBenefitSourceValueToJSON(
   createHRISBenefitSourceValue: CreateHRISBenefitSourceValue,
 ): string {
@@ -194,27 +131,6 @@ export function createHRISBenefitSourceValueToJSON(
   );
 }
 
-export function createHRISBenefitSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateHRISBenefitSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateHRISBenefitSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateHRISBenefitSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateHRISBenefitValue$inboundSchema: z.ZodType<
-  CreateHRISBenefitValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(CreateHRISBenefitValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const CreateHRISBenefitValue$outboundSchema: z.ZodType<
   CreateHRISBenefitValueOpen,
@@ -224,39 +140,6 @@ export const CreateHRISBenefitValue$outboundSchema: z.ZodType<
   z.nativeEnum(CreateHRISBenefitValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateHRISBenefitValue$ {
-  /** @deprecated use `CreateHRISBenefitValue$inboundSchema` instead. */
-  export const inboundSchema = CreateHRISBenefitValue$inboundSchema;
-  /** @deprecated use `CreateHRISBenefitValue$outboundSchema` instead. */
-  export const outboundSchema = CreateHRISBenefitValue$outboundSchema;
-}
-
-/** @internal */
-export const BenefitType$inboundSchema: z.ZodType<
-  BenefitType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => CreateHRISBenefit4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateHRISBenefitValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type BenefitType$Outbound = {
@@ -293,57 +176,9 @@ export const BenefitType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BenefitType$ {
-  /** @deprecated use `BenefitType$inboundSchema` instead. */
-  export const inboundSchema = BenefitType$inboundSchema;
-  /** @deprecated use `BenefitType$outboundSchema` instead. */
-  export const outboundSchema = BenefitType$outboundSchema;
-  /** @deprecated use `BenefitType$Outbound` instead. */
-  export type Outbound = BenefitType$Outbound;
-}
-
 export function benefitTypeToJSON(benefitType: BenefitType): string {
   return JSON.stringify(BenefitType$outboundSchema.parse(benefitType));
 }
-
-export function benefitTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<BenefitType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BenefitType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BenefitType' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateHRISBenefit$inboundSchema: z.ZodType<
-  CreateHRISBenefit,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  benefit_type: z.nullable(z.lazy(() => BenefitType$inboundSchema)).optional(),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "benefit_type": "benefitType",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-  });
-});
 
 /** @internal */
 export type CreateHRISBenefit$Outbound = {
@@ -377,33 +212,10 @@ export const CreateHRISBenefit$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateHRISBenefit$ {
-  /** @deprecated use `CreateHRISBenefit$inboundSchema` instead. */
-  export const inboundSchema = CreateHRISBenefit$inboundSchema;
-  /** @deprecated use `CreateHRISBenefit$outboundSchema` instead. */
-  export const outboundSchema = CreateHRISBenefit$outboundSchema;
-  /** @deprecated use `CreateHRISBenefit$Outbound` instead. */
-  export type Outbound = CreateHRISBenefit$Outbound;
-}
-
 export function createHRISBenefitToJSON(
   createHRISBenefit: CreateHRISBenefit,
 ): string {
   return JSON.stringify(
     CreateHRISBenefit$outboundSchema.parse(createHRISBenefit),
-  );
-}
-
-export function createHRISBenefitFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateHRISBenefit, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateHRISBenefit$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateHRISBenefit' from JSON`,
   );
 }

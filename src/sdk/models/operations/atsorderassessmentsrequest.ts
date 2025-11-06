@@ -39,23 +39,6 @@ export type AtsOrderAssessmentsRequestResponse = {
 };
 
 /** @internal */
-export const AtsOrderAssessmentsRequestRequest$inboundSchema: z.ZodType<
-  AtsOrderAssessmentsRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsCreateCandidatesAssessmentsRequestDto:
-    shared.AtsCreateCandidatesAssessmentsRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsCreateCandidatesAssessmentsRequestDto":
-      "atsCreateCandidatesAssessmentsRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsOrderAssessmentsRequestRequest$Outbound = {
   AtsCreateCandidatesAssessmentsRequestDto:
     shared.AtsCreateCandidatesAssessmentsRequestDto$Outbound;
@@ -79,20 +62,6 @@ export const AtsOrderAssessmentsRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsOrderAssessmentsRequestRequest$ {
-  /** @deprecated use `AtsOrderAssessmentsRequestRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsOrderAssessmentsRequestRequest$inboundSchema;
-  /** @deprecated use `AtsOrderAssessmentsRequestRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsOrderAssessmentsRequestRequest$outboundSchema;
-  /** @deprecated use `AtsOrderAssessmentsRequestRequest$Outbound` instead. */
-  export type Outbound = AtsOrderAssessmentsRequestRequest$Outbound;
-}
-
 export function atsOrderAssessmentsRequestRequestToJSON(
   atsOrderAssessmentsRequestRequest: AtsOrderAssessmentsRequestRequest,
 ): string {
@@ -100,16 +69,6 @@ export function atsOrderAssessmentsRequestRequestToJSON(
     AtsOrderAssessmentsRequestRequest$outboundSchema.parse(
       atsOrderAssessmentsRequestRequest,
     ),
-  );
-}
-
-export function atsOrderAssessmentsRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsOrderAssessmentsRequestRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsOrderAssessmentsRequestRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsOrderAssessmentsRequestRequest' from JSON`,
   );
 }
 
@@ -135,65 +94,6 @@ export const AtsOrderAssessmentsRequestResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsOrderAssessmentsRequestResponse$Outbound = {
-  ContentType: string;
-  CreateAssessmentOrderResult?:
-    | shared.CreateAssessmentOrderResult$Outbound
-    | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsOrderAssessmentsRequestResponse$outboundSchema: z.ZodType<
-  AtsOrderAssessmentsRequestResponse$Outbound,
-  z.ZodTypeDef,
-  AtsOrderAssessmentsRequestResponse
-> = z.object({
-  contentType: z.string(),
-  createAssessmentOrderResult: shared.CreateAssessmentOrderResult$outboundSchema
-    .optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createAssessmentOrderResult: "CreateAssessmentOrderResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsOrderAssessmentsRequestResponse$ {
-  /** @deprecated use `AtsOrderAssessmentsRequestResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsOrderAssessmentsRequestResponse$inboundSchema;
-  /** @deprecated use `AtsOrderAssessmentsRequestResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsOrderAssessmentsRequestResponse$outboundSchema;
-  /** @deprecated use `AtsOrderAssessmentsRequestResponse$Outbound` instead. */
-  export type Outbound = AtsOrderAssessmentsRequestResponse$Outbound;
-}
-
-export function atsOrderAssessmentsRequestResponseToJSON(
-  atsOrderAssessmentsRequestResponse: AtsOrderAssessmentsRequestResponse,
-): string {
-  return JSON.stringify(
-    AtsOrderAssessmentsRequestResponse$outboundSchema.parse(
-      atsOrderAssessmentsRequestResponse,
-    ),
-  );
-}
 
 export function atsOrderAssessmentsRequestResponseFromJSON(
   jsonString: string,

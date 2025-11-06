@@ -55,25 +55,6 @@ export type HrisGetEmployeeTaskResponse = {
 };
 
 /** @internal */
-export const HrisGetEmployeeTaskRequest$inboundSchema: z.ZodType<
-  HrisGetEmployeeTaskRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetEmployeeTaskRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -103,34 +84,11 @@ export const HrisGetEmployeeTaskRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeTaskRequest$ {
-  /** @deprecated use `HrisGetEmployeeTaskRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeTaskRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeTaskRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeTaskRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeTaskRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeTaskRequest$Outbound;
-}
-
 export function hrisGetEmployeeTaskRequestToJSON(
   hrisGetEmployeeTaskRequest: HrisGetEmployeeTaskRequest,
 ): string {
   return JSON.stringify(
     HrisGetEmployeeTaskRequest$outboundSchema.parse(hrisGetEmployeeTaskRequest),
-  );
-}
-
-export function hrisGetEmployeeTaskRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetEmployeeTaskRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetEmployeeTaskRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetEmployeeTaskRequest' from JSON`,
   );
 }
 
@@ -155,61 +113,6 @@ export const HrisGetEmployeeTaskResponse$inboundSchema: z.ZodType<
     "TaskResult": "taskResult",
   });
 });
-
-/** @internal */
-export type HrisGetEmployeeTaskResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TaskResult?: shared.TaskResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisGetEmployeeTaskResponse$outboundSchema: z.ZodType<
-  HrisGetEmployeeTaskResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetEmployeeTaskResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  taskResult: shared.TaskResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    taskResult: "TaskResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeTaskResponse$ {
-  /** @deprecated use `HrisGetEmployeeTaskResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeTaskResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeTaskResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeTaskResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeTaskResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeTaskResponse$Outbound;
-}
-
-export function hrisGetEmployeeTaskResponseToJSON(
-  hrisGetEmployeeTaskResponse: HrisGetEmployeeTaskResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmployeeTaskResponse$outboundSchema.parse(
-      hrisGetEmployeeTaskResponse,
-    ),
-  );
-}
 
 export function hrisGetEmployeeTaskResponseFromJSON(
   jsonString: string,

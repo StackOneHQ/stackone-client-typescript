@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HrisDocumentsUploadRequestDto,
-  HrisDocumentsUploadRequestDto$inboundSchema,
   HrisDocumentsUploadRequestDto$Outbound,
   HrisDocumentsUploadRequestDto$outboundSchema,
 } from "./hrisdocumentsuploadrequestdto.js";
@@ -19,15 +15,6 @@ export type HrisBatchDocumentUploadRequestDto = {
    */
   items: Array<HrisDocumentsUploadRequestDto>;
 };
-
-/** @internal */
-export const HrisBatchDocumentUploadRequestDto$inboundSchema: z.ZodType<
-  HrisBatchDocumentUploadRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  items: z.array(HrisDocumentsUploadRequestDto$inboundSchema),
-});
 
 /** @internal */
 export type HrisBatchDocumentUploadRequestDto$Outbound = {
@@ -43,20 +30,6 @@ export const HrisBatchDocumentUploadRequestDto$outboundSchema: z.ZodType<
   items: z.array(HrisDocumentsUploadRequestDto$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisBatchDocumentUploadRequestDto$ {
-  /** @deprecated use `HrisBatchDocumentUploadRequestDto$inboundSchema` instead. */
-  export const inboundSchema = HrisBatchDocumentUploadRequestDto$inboundSchema;
-  /** @deprecated use `HrisBatchDocumentUploadRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisBatchDocumentUploadRequestDto$outboundSchema;
-  /** @deprecated use `HrisBatchDocumentUploadRequestDto$Outbound` instead. */
-  export type Outbound = HrisBatchDocumentUploadRequestDto$Outbound;
-}
-
 export function hrisBatchDocumentUploadRequestDtoToJSON(
   hrisBatchDocumentUploadRequestDto: HrisBatchDocumentUploadRequestDto,
 ): string {
@@ -64,15 +37,5 @@ export function hrisBatchDocumentUploadRequestDtoToJSON(
     HrisBatchDocumentUploadRequestDto$outboundSchema.parse(
       hrisBatchDocumentUploadRequestDto,
     ),
-  );
-}
-
-export function hrisBatchDocumentUploadRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisBatchDocumentUploadRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisBatchDocumentUploadRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisBatchDocumentUploadRequestDto' from JSON`,
   );
 }

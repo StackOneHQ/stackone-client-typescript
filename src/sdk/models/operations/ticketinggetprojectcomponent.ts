@@ -51,24 +51,6 @@ export type TicketingGetProjectComponentResponse = {
 };
 
 /** @internal */
-export const TicketingGetProjectComponentRequest$inboundSchema: z.ZodType<
-  TicketingGetProjectComponentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type TicketingGetProjectComponentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,21 +78,6 @@ export const TicketingGetProjectComponentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingGetProjectComponentRequest$ {
-  /** @deprecated use `TicketingGetProjectComponentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingGetProjectComponentRequest$inboundSchema;
-  /** @deprecated use `TicketingGetProjectComponentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingGetProjectComponentRequest$outboundSchema;
-  /** @deprecated use `TicketingGetProjectComponentRequest$Outbound` instead. */
-  export type Outbound = TicketingGetProjectComponentRequest$Outbound;
-}
-
 export function ticketingGetProjectComponentRequestToJSON(
   ticketingGetProjectComponentRequest: TicketingGetProjectComponentRequest,
 ): string {
@@ -118,17 +85,6 @@ export function ticketingGetProjectComponentRequestToJSON(
     TicketingGetProjectComponentRequest$outboundSchema.parse(
       ticketingGetProjectComponentRequest,
     ),
-  );
-}
-
-export function ticketingGetProjectComponentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingGetProjectComponentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingGetProjectComponentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingGetProjectComponentRequest' from JSON`,
   );
 }
 
@@ -154,66 +110,6 @@ export const TicketingGetProjectComponentResponse$inboundSchema: z.ZodType<
     "TicketingComponentResult": "ticketingComponentResult",
   });
 });
-
-/** @internal */
-export type TicketingGetProjectComponentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TicketingComponentResult?:
-    | shared.TicketingComponentResult$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const TicketingGetProjectComponentResponse$outboundSchema: z.ZodType<
-  TicketingGetProjectComponentResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingGetProjectComponentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  ticketingComponentResult: shared.TicketingComponentResult$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    ticketingComponentResult: "TicketingComponentResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingGetProjectComponentResponse$ {
-  /** @deprecated use `TicketingGetProjectComponentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingGetProjectComponentResponse$inboundSchema;
-  /** @deprecated use `TicketingGetProjectComponentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingGetProjectComponentResponse$outboundSchema;
-  /** @deprecated use `TicketingGetProjectComponentResponse$Outbound` instead. */
-  export type Outbound = TicketingGetProjectComponentResponse$Outbound;
-}
-
-export function ticketingGetProjectComponentResponseToJSON(
-  ticketingGetProjectComponentResponse: TicketingGetProjectComponentResponse,
-): string {
-  return JSON.stringify(
-    TicketingGetProjectComponentResponse$outboundSchema.parse(
-      ticketingGetProjectComponentResponse,
-    ),
-  );
-}
 
 export function ticketingGetProjectComponentResponseFromJSON(
   jsonString: string,

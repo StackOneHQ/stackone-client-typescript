@@ -4,17 +4,9 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   OfferHistory,
-  OfferHistory$inboundSchema,
   OfferHistory$Outbound,
   OfferHistory$outboundSchema,
 } from "./offerhistory.js";
@@ -86,13 +78,6 @@ export type AtsCreateOfferRequestDto = {
 };
 
 /** @internal */
-export const AtsCreateOfferRequestDto4$inboundSchema: z.ZodType<
-  AtsCreateOfferRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type AtsCreateOfferRequestDto4$Outbound = {};
 
 /** @internal */
@@ -102,19 +87,6 @@ export const AtsCreateOfferRequestDto4$outboundSchema: z.ZodType<
   AtsCreateOfferRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateOfferRequestDto4$ {
-  /** @deprecated use `AtsCreateOfferRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateOfferRequestDto4$inboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateOfferRequestDto4$outboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDto4$Outbound` instead. */
-  export type Outbound = AtsCreateOfferRequestDto4$Outbound;
-}
-
 export function atsCreateOfferRequestDto4ToJSON(
   atsCreateOfferRequestDto4: AtsCreateOfferRequestDto4,
 ): string {
@@ -122,29 +94,6 @@ export function atsCreateOfferRequestDto4ToJSON(
     AtsCreateOfferRequestDto4$outboundSchema.parse(atsCreateOfferRequestDto4),
   );
 }
-
-export function atsCreateOfferRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateOfferRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateOfferRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateOfferRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateOfferRequestDtoSourceValue$inboundSchema: z.ZodType<
-  AtsCreateOfferRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AtsCreateOfferRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type AtsCreateOfferRequestDtoSourceValue$Outbound =
@@ -167,21 +116,6 @@ export const AtsCreateOfferRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateOfferRequestDtoSourceValue$ {
-  /** @deprecated use `AtsCreateOfferRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateOfferRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateOfferRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = AtsCreateOfferRequestDtoSourceValue$Outbound;
-}
-
 export function atsCreateOfferRequestDtoSourceValueToJSON(
   atsCreateOfferRequestDtoSourceValue: AtsCreateOfferRequestDtoSourceValue,
 ): string {
@@ -192,28 +126,6 @@ export function atsCreateOfferRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsCreateOfferRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateOfferRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateOfferRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateOfferRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateOfferRequestDtoValue$inboundSchema: z.ZodType<
-  AtsCreateOfferRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsCreateOfferRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const AtsCreateOfferRequestDtoValue$outboundSchema: z.ZodType<
   AtsCreateOfferRequestDtoValueOpen,
@@ -223,39 +135,6 @@ export const AtsCreateOfferRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(AtsCreateOfferRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateOfferRequestDtoValue$ {
-  /** @deprecated use `AtsCreateOfferRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateOfferRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateOfferRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const OfferStatus$inboundSchema: z.ZodType<
-  OfferStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AtsCreateOfferRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AtsCreateOfferRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type OfferStatus$Outbound = {
@@ -292,56 +171,9 @@ export const OfferStatus$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OfferStatus$ {
-  /** @deprecated use `OfferStatus$inboundSchema` instead. */
-  export const inboundSchema = OfferStatus$inboundSchema;
-  /** @deprecated use `OfferStatus$outboundSchema` instead. */
-  export const outboundSchema = OfferStatus$outboundSchema;
-  /** @deprecated use `OfferStatus$Outbound` instead. */
-  export type Outbound = OfferStatus$Outbound;
-}
-
 export function offerStatusToJSON(offerStatus: OfferStatus): string {
   return JSON.stringify(OfferStatus$outboundSchema.parse(offerStatus));
 }
-
-export function offerStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<OfferStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OfferStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OfferStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateOfferRequestDto$inboundSchema: z.ZodType<
-  AtsCreateOfferRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  application_id: z.nullable(z.string()).optional(),
-  currency: z.nullable(z.string()).optional(),
-  offer_history: z.nullable(z.array(OfferHistory$inboundSchema)).optional(),
-  offer_status: z.nullable(z.lazy(() => OfferStatus$inboundSchema)).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  salary: z.nullable(z.number()).optional(),
-  start_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "application_id": "applicationId",
-    "offer_history": "offerHistory",
-    "offer_status": "offerStatus",
-    "start_date": "startDate",
-  });
-});
 
 /** @internal */
 export type AtsCreateOfferRequestDto$Outbound = {
@@ -376,33 +208,10 @@ export const AtsCreateOfferRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateOfferRequestDto$ {
-  /** @deprecated use `AtsCreateOfferRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateOfferRequestDto$inboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateOfferRequestDto$outboundSchema;
-  /** @deprecated use `AtsCreateOfferRequestDto$Outbound` instead. */
-  export type Outbound = AtsCreateOfferRequestDto$Outbound;
-}
-
 export function atsCreateOfferRequestDtoToJSON(
   atsCreateOfferRequestDto: AtsCreateOfferRequestDto,
 ): string {
   return JSON.stringify(
     AtsCreateOfferRequestDto$outboundSchema.parse(atsCreateOfferRequestDto),
-  );
-}
-
-export function atsCreateOfferRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateOfferRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateOfferRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateOfferRequestDto' from JSON`,
   );
 }

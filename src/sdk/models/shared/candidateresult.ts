@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Candidate,
-  Candidate$inboundSchema,
-  Candidate$Outbound,
-  Candidate$outboundSchema,
-} from "./candidate.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Candidate, Candidate$inboundSchema } from "./candidate.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type CandidateResult = {
   data: Candidate;
@@ -33,41 +23,6 @@ export const CandidateResult$inboundSchema: z.ZodType<
   data: Candidate$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type CandidateResult$Outbound = {
-  data: Candidate$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const CandidateResult$outboundSchema: z.ZodType<
-  CandidateResult$Outbound,
-  z.ZodTypeDef,
-  CandidateResult
-> = z.object({
-  data: Candidate$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CandidateResult$ {
-  /** @deprecated use `CandidateResult$inboundSchema` instead. */
-  export const inboundSchema = CandidateResult$inboundSchema;
-  /** @deprecated use `CandidateResult$outboundSchema` instead. */
-  export const outboundSchema = CandidateResult$outboundSchema;
-  /** @deprecated use `CandidateResult$Outbound` instead. */
-  export type Outbound = CandidateResult$Outbound;
-}
-
-export function candidateResultToJSON(
-  candidateResult: CandidateResult,
-): string {
-  return JSON.stringify(CandidateResult$outboundSchema.parse(candidateResult));
-}
 
 export function candidateResultFromJSON(
   jsonString: string,

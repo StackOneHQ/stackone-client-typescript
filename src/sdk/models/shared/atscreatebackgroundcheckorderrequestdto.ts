@@ -4,29 +4,19 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   AtsJobHiringTeam,
-  AtsJobHiringTeam$inboundSchema,
   AtsJobHiringTeam$Outbound,
   AtsJobHiringTeam$outboundSchema,
 } from "./atsjobhiringteam.js";
 import {
   CandidateEmail,
-  CandidateEmail$inboundSchema,
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
 import {
   Package,
-  Package$inboundSchema,
   Package$Outbound,
   Package$outboundSchema,
 } from "./package.js";
@@ -247,13 +237,6 @@ export type AtsCreateBackgroundCheckOrderRequestDto = {
 };
 
 /** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema: z.ZodType<
-  AtsCreateBackgroundCheckOrderRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDto4$Outbound = {};
 
 /** @internal */
@@ -262,21 +245,6 @@ export const AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsCreateBackgroundCheckOrderRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDto4$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDto4$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDto4$Outbound` instead. */
-  export type Outbound = AtsCreateBackgroundCheckOrderRequestDto4$Outbound;
-}
 
 export function atsCreateBackgroundCheckOrderRequestDto4ToJSON(
   atsCreateBackgroundCheckOrderRequestDto4:
@@ -288,36 +256,6 @@ export function atsCreateBackgroundCheckOrderRequestDto4ToJSON(
     ),
   );
 }
-
-export function atsCreateBackgroundCheckOrderRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDto4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoSourceValue$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDtoSourceValue$Outbound =
@@ -341,22 +279,6 @@ export const AtsCreateBackgroundCheckOrderRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoSourceValue$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound =
-    AtsCreateBackgroundCheckOrderRequestDtoSourceValue$Outbound;
-}
-
 export function atsCreateBackgroundCheckOrderRequestDtoSourceValueToJSON(
   atsCreateBackgroundCheckOrderRequestDtoSourceValue:
     AtsCreateBackgroundCheckOrderRequestDtoSourceValue,
@@ -368,34 +290,6 @@ export function atsCreateBackgroundCheckOrderRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsCreateBackgroundCheckOrderRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoValue$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(AtsCreateBackgroundCheckOrderRequestDtoValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const AtsCreateBackgroundCheckOrderRequestDtoValue$outboundSchema:
   z.ZodType<
@@ -406,44 +300,6 @@ export const AtsCreateBackgroundCheckOrderRequestDtoValue$outboundSchema:
     z.nativeEnum(AtsCreateBackgroundCheckOrderRequestDtoValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoValue$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => AtsCreateBackgroundCheckOrderRequestDto4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(
-      AtsCreateBackgroundCheckOrderRequestDtoValue$inboundSchema,
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$Outbound =
@@ -484,22 +340,6 @@ export const AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$outboundSc
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$Outbound` instead. */
-  export type Outbound =
-    AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$Outbound;
-}
-
 export function atsCreateBackgroundCheckOrderRequestDtoApplicationStatusToJSON(
   atsCreateBackgroundCheckOrderRequestDtoApplicationStatus:
     AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus,
@@ -509,43 +349,6 @@ export function atsCreateBackgroundCheckOrderRequestDtoApplicationStatusToJSON(
       .parse(atsCreateBackgroundCheckOrderRequestDtoApplicationStatus),
   );
 }
-
-export function atsCreateBackgroundCheckOrderRequestDtoApplicationStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoApplication$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoApplication,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    application_status: z.nullable(
-      z.lazy(() =>
-        AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus$inboundSchema
-      ),
-    ).optional(),
-    id: z.nullable(z.string()).optional(),
-    passthrough: z.nullable(z.record(z.any())).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "application_status": "applicationStatus",
-      "remote_id": "remoteId",
-    });
-  });
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDtoApplication$Outbound = {
@@ -580,22 +383,6 @@ export const AtsCreateBackgroundCheckOrderRequestDtoApplication$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoApplication$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoApplication$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoApplication$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoApplication$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoApplication$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoApplication$Outbound` instead. */
-  export type Outbound =
-    AtsCreateBackgroundCheckOrderRequestDtoApplication$Outbound;
-}
-
 export function atsCreateBackgroundCheckOrderRequestDtoApplicationToJSON(
   atsCreateBackgroundCheckOrderRequestDtoApplication:
     AtsCreateBackgroundCheckOrderRequestDtoApplication,
@@ -606,45 +393,6 @@ export function atsCreateBackgroundCheckOrderRequestDtoApplicationToJSON(
     ),
   );
 }
-
-export function atsCreateBackgroundCheckOrderRequestDtoApplicationFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoApplication,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoApplication$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoApplication' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoCandidate$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoCandidate,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
-    first_name: z.nullable(z.string()).optional(),
-    id: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    passthrough: z.nullable(z.record(z.any())).optional(),
-    profile_url: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "first_name": "firstName",
-      "last_name": "lastName",
-      "profile_url": "profileUrl",
-      "remote_id": "remoteId",
-    });
-  });
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDtoCandidate$Outbound = {
@@ -680,22 +428,6 @@ export const AtsCreateBackgroundCheckOrderRequestDtoCandidate$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoCandidate$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoCandidate$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoCandidate$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoCandidate$Outbound` instead. */
-  export type Outbound =
-    AtsCreateBackgroundCheckOrderRequestDtoCandidate$Outbound;
-}
-
 export function atsCreateBackgroundCheckOrderRequestDtoCandidateToJSON(
   atsCreateBackgroundCheckOrderRequestDtoCandidate:
     AtsCreateBackgroundCheckOrderRequestDtoCandidate,
@@ -706,37 +438,6 @@ export function atsCreateBackgroundCheckOrderRequestDtoCandidateToJSON(
     ),
   );
 }
-
-export function atsCreateBackgroundCheckOrderRequestDtoCandidateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoCandidate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoCandidate$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoCandidate' from JSON`,
-  );
-}
-
-/** @internal */
-export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
-  .object({
-    hiring_team: z.nullable(z.array(AtsJobHiringTeam$inboundSchema)).optional(),
-    id: z.nullable(z.string()).optional(),
-    passthrough: z.nullable(z.record(z.any())).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    title: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "hiring_team": "hiringTeam",
-      "remote_id": "remoteId",
-    });
-  });
 
 /** @internal */
 export type Job$Outbound = {
@@ -762,50 +463,9 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Job$ {
-  /** @deprecated use `Job$inboundSchema` instead. */
-  export const inboundSchema = Job$inboundSchema;
-  /** @deprecated use `Job$outboundSchema` instead. */
-  export const outboundSchema = Job$outboundSchema;
-  /** @deprecated use `Job$Outbound` instead. */
-  export type Outbound = Job$Outbound;
-}
-
 export function jobToJSON(job: Job): string {
   return JSON.stringify(Job$outboundSchema.parse(job));
 }
-
-export function jobFromJSON(
-  jsonString: string,
-): SafeParseResult<Job, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Job$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Job' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDtoPackage$inboundSchema:
-  z.ZodType<
-    AtsCreateBackgroundCheckOrderRequestDtoPackage,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    description: z.nullable(z.string()).optional(),
-    id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-    tests: z.nullable(z.array(Package$inboundSchema)).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "remote_id": "remoteId",
-    });
-  });
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDtoPackage$Outbound = {
@@ -834,22 +494,6 @@ export const AtsCreateBackgroundCheckOrderRequestDtoPackage$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDtoPackage$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoPackage$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoPackage$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoPackage$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDtoPackage$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDtoPackage$Outbound` instead. */
-  export type Outbound =
-    AtsCreateBackgroundCheckOrderRequestDtoPackage$Outbound;
-}
-
 export function atsCreateBackgroundCheckOrderRequestDtoPackageToJSON(
   atsCreateBackgroundCheckOrderRequestDtoPackage:
     AtsCreateBackgroundCheckOrderRequestDtoPackage,
@@ -860,43 +504,6 @@ export function atsCreateBackgroundCheckOrderRequestDtoPackageToJSON(
     ),
   );
 }
-
-export function atsCreateBackgroundCheckOrderRequestDtoPackageFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDtoPackage,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDtoPackage$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDtoPackage' from JSON`,
-  );
-}
-
-/** @internal */
-export const Requester$inboundSchema: z.ZodType<
-  Requester,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  first_name: z.nullable(z.string()).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  remote_user_id: z.nullable(z.string()).optional(),
-  role: z.nullable(z.string()).optional(),
-  user_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "remote_user_id": "remoteUserId",
-    "user_id": "userId",
-  });
-});
 
 /** @internal */
 export type Requester$Outbound = {
@@ -929,64 +536,9 @@ export const Requester$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Requester$ {
-  /** @deprecated use `Requester$inboundSchema` instead. */
-  export const inboundSchema = Requester$inboundSchema;
-  /** @deprecated use `Requester$outboundSchema` instead. */
-  export const outboundSchema = Requester$outboundSchema;
-  /** @deprecated use `Requester$Outbound` instead. */
-  export type Outbound = Requester$Outbound;
-}
-
 export function requesterToJSON(requester: Requester): string {
   return JSON.stringify(Requester$outboundSchema.parse(requester));
 }
-
-export function requesterFromJSON(
-  jsonString: string,
-): SafeParseResult<Requester, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Requester$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Requester' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateBackgroundCheckOrderRequestDto$inboundSchema: z.ZodType<
-  AtsCreateBackgroundCheckOrderRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  application: z.nullable(
-    z.lazy(() =>
-      AtsCreateBackgroundCheckOrderRequestDtoApplication$inboundSchema
-    ),
-  ).optional(),
-  candidate: z.nullable(
-    z.lazy(() =>
-      AtsCreateBackgroundCheckOrderRequestDtoCandidate$inboundSchema
-    ),
-  ).optional(),
-  id: z.nullable(z.string()).optional(),
-  job: z.nullable(z.lazy(() => Job$inboundSchema)).optional(),
-  package: z.nullable(
-    z.lazy(() => AtsCreateBackgroundCheckOrderRequestDtoPackage$inboundSchema),
-  ).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-  requester: z.nullable(z.lazy(() => Requester$inboundSchema)).optional(),
-  results_update_url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-    "results_update_url": "resultsUpdateUrl",
-  });
-});
 
 /** @internal */
 export type AtsCreateBackgroundCheckOrderRequestDto$Outbound = {
@@ -1042,21 +594,6 @@ export const AtsCreateBackgroundCheckOrderRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateBackgroundCheckOrderRequestDto$ {
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDto$inboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateBackgroundCheckOrderRequestDto$outboundSchema;
-  /** @deprecated use `AtsCreateBackgroundCheckOrderRequestDto$Outbound` instead. */
-  export type Outbound = AtsCreateBackgroundCheckOrderRequestDto$Outbound;
-}
-
 export function atsCreateBackgroundCheckOrderRequestDtoToJSON(
   atsCreateBackgroundCheckOrderRequestDto:
     AtsCreateBackgroundCheckOrderRequestDto,
@@ -1065,21 +602,5 @@ export function atsCreateBackgroundCheckOrderRequestDtoToJSON(
     AtsCreateBackgroundCheckOrderRequestDto$outboundSchema.parse(
       atsCreateBackgroundCheckOrderRequestDto,
     ),
-  );
-}
-
-export function atsCreateBackgroundCheckOrderRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateBackgroundCheckOrderRequestDto,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateBackgroundCheckOrderRequestDto$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateBackgroundCheckOrderRequestDto' from JSON`,
   );
 }

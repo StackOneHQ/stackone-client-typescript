@@ -470,7 +470,6 @@ export const LanguageEnum4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type LanguageEnum4$Outbound = {};
 
@@ -481,23 +480,9 @@ export const LanguageEnum4$outboundSchema: z.ZodType<
   LanguageEnum4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageEnum4$ {
-  /** @deprecated use `LanguageEnum4$inboundSchema` instead. */
-  export const inboundSchema = LanguageEnum4$inboundSchema;
-  /** @deprecated use `LanguageEnum4$outboundSchema` instead. */
-  export const outboundSchema = LanguageEnum4$outboundSchema;
-  /** @deprecated use `LanguageEnum4$Outbound` instead. */
-  export type Outbound = LanguageEnum4$Outbound;
-}
-
 export function languageEnum4ToJSON(languageEnum4: LanguageEnum4): string {
   return JSON.stringify(LanguageEnum4$outboundSchema.parse(languageEnum4));
 }
-
 export function languageEnum4FromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageEnum4, SDKValidationError> {
@@ -520,7 +505,6 @@ export const LanguageEnumSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => LanguageEnum4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type LanguageEnumSourceValue$Outbound =
   | string
@@ -542,19 +526,6 @@ export const LanguageEnumSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageEnumSourceValue$ {
-  /** @deprecated use `LanguageEnumSourceValue$inboundSchema` instead. */
-  export const inboundSchema = LanguageEnumSourceValue$inboundSchema;
-  /** @deprecated use `LanguageEnumSourceValue$outboundSchema` instead. */
-  export const outboundSchema = LanguageEnumSourceValue$outboundSchema;
-  /** @deprecated use `LanguageEnumSourceValue$Outbound` instead. */
-  export type Outbound = LanguageEnumSourceValue$Outbound;
-}
-
 export function languageEnumSourceValueToJSON(
   languageEnumSourceValue: LanguageEnumSourceValue,
 ): string {
@@ -562,7 +533,6 @@ export function languageEnumSourceValueToJSON(
     LanguageEnumSourceValue$outboundSchema.parse(languageEnumSourceValue),
   );
 }
-
 export function languageEnumSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageEnumSourceValue, SDKValidationError> {
@@ -583,7 +553,6 @@ export const LanguageEnumValue$inboundSchema: z.ZodType<
     z.nativeEnum(LanguageEnumValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const LanguageEnumValue$outboundSchema: z.ZodType<
   LanguageEnumValueOpen,
@@ -593,17 +562,6 @@ export const LanguageEnumValue$outboundSchema: z.ZodType<
   z.nativeEnum(LanguageEnumValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageEnumValue$ {
-  /** @deprecated use `LanguageEnumValue$inboundSchema` instead. */
-  export const inboundSchema = LanguageEnumValue$inboundSchema;
-  /** @deprecated use `LanguageEnumValue$outboundSchema` instead. */
-  export const outboundSchema = LanguageEnumValue$outboundSchema;
-}
 
 /** @internal */
 export const LanguageEnum$inboundSchema: z.ZodType<
@@ -626,7 +584,6 @@ export const LanguageEnum$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type LanguageEnum$Outbound = {
   source_value?:
@@ -662,23 +619,9 @@ export const LanguageEnum$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageEnum$ {
-  /** @deprecated use `LanguageEnum$inboundSchema` instead. */
-  export const inboundSchema = LanguageEnum$inboundSchema;
-  /** @deprecated use `LanguageEnum$outboundSchema` instead. */
-  export const outboundSchema = LanguageEnum$outboundSchema;
-  /** @deprecated use `LanguageEnum$Outbound` instead. */
-  export type Outbound = LanguageEnum$Outbound;
-}
-
 export function languageEnumToJSON(languageEnum: LanguageEnum): string {
   return JSON.stringify(LanguageEnum$outboundSchema.parse(languageEnum));
 }
-
 export function languageEnumFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageEnum, SDKValidationError> {

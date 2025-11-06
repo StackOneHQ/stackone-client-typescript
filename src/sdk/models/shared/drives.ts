@@ -61,55 +61,6 @@ export const Drives$inboundSchema: z.ZodType<Drives, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Drives$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const Drives$outboundSchema: z.ZodType<
-  Drives$Outbound,
-  z.ZodTypeDef,
-  Drives
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Drives$ {
-  /** @deprecated use `Drives$inboundSchema` instead. */
-  export const inboundSchema = Drives$inboundSchema;
-  /** @deprecated use `Drives$outboundSchema` instead. */
-  export const outboundSchema = Drives$outboundSchema;
-  /** @deprecated use `Drives$Outbound` instead. */
-  export type Outbound = Drives$Outbound;
-}
-
-export function drivesToJSON(drives: Drives): string {
-  return JSON.stringify(Drives$outboundSchema.parse(drives));
-}
-
 export function drivesFromJSON(
   jsonString: string,
 ): SafeParseResult<Drives, SDKValidationError> {

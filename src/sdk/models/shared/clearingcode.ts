@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -89,33 +85,6 @@ export const ClearingCode4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type ClearingCode4$Outbound = {};
-
-/** @internal */
-export const ClearingCode4$outboundSchema: z.ZodType<
-  ClearingCode4$Outbound,
-  z.ZodTypeDef,
-  ClearingCode4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClearingCode4$ {
-  /** @deprecated use `ClearingCode4$inboundSchema` instead. */
-  export const inboundSchema = ClearingCode4$inboundSchema;
-  /** @deprecated use `ClearingCode4$outboundSchema` instead. */
-  export const outboundSchema = ClearingCode4$outboundSchema;
-  /** @deprecated use `ClearingCode4$Outbound` instead. */
-  export type Outbound = ClearingCode4$Outbound;
-}
-
-export function clearingCode4ToJSON(clearingCode4: ClearingCode4): string {
-  return JSON.stringify(ClearingCode4$outboundSchema.parse(clearingCode4));
-}
-
 export function clearingCode4FromJSON(
   jsonString: string,
 ): SafeParseResult<ClearingCode4, SDKValidationError> {
@@ -139,48 +108,6 @@ export const ClearingCodeSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type ClearingCodeSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | ClearingCode4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const ClearingCodeSourceValue$outboundSchema: z.ZodType<
-  ClearingCodeSourceValue$Outbound,
-  z.ZodTypeDef,
-  ClearingCodeSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => ClearingCode4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClearingCodeSourceValue$ {
-  /** @deprecated use `ClearingCodeSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ClearingCodeSourceValue$inboundSchema;
-  /** @deprecated use `ClearingCodeSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ClearingCodeSourceValue$outboundSchema;
-  /** @deprecated use `ClearingCodeSourceValue$Outbound` instead. */
-  export type Outbound = ClearingCodeSourceValue$Outbound;
-}
-
-export function clearingCodeSourceValueToJSON(
-  clearingCodeSourceValue: ClearingCodeSourceValue,
-): string {
-  return JSON.stringify(
-    ClearingCodeSourceValue$outboundSchema.parse(clearingCodeSourceValue),
-  );
-}
-
 export function clearingCodeSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ClearingCodeSourceValue, SDKValidationError> {
@@ -201,27 +128,6 @@ export const ClearingCodeValue$inboundSchema: z.ZodType<
     z.nativeEnum(ClearingCodeValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const ClearingCodeValue$outboundSchema: z.ZodType<
-  ClearingCodeValueOpen,
-  z.ZodTypeDef,
-  ClearingCodeValueOpen
-> = z.union([
-  z.nativeEnum(ClearingCodeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClearingCodeValue$ {
-  /** @deprecated use `ClearingCodeValue$inboundSchema` instead. */
-  export const inboundSchema = ClearingCodeValue$inboundSchema;
-  /** @deprecated use `ClearingCodeValue$outboundSchema` instead. */
-  export const outboundSchema = ClearingCodeValue$outboundSchema;
-}
 
 /** @internal */
 export const ClearingCodeType$inboundSchema: z.ZodType<
@@ -245,62 +151,6 @@ export const ClearingCodeType$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ClearingCodeType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | ClearingCode4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ClearingCodeType$outboundSchema: z.ZodType<
-  ClearingCodeType$Outbound,
-  z.ZodTypeDef,
-  ClearingCodeType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => ClearingCode4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ClearingCodeValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClearingCodeType$ {
-  /** @deprecated use `ClearingCodeType$inboundSchema` instead. */
-  export const inboundSchema = ClearingCodeType$inboundSchema;
-  /** @deprecated use `ClearingCodeType$outboundSchema` instead. */
-  export const outboundSchema = ClearingCodeType$outboundSchema;
-  /** @deprecated use `ClearingCodeType$Outbound` instead. */
-  export type Outbound = ClearingCodeType$Outbound;
-}
-
-export function clearingCodeTypeToJSON(
-  clearingCodeType: ClearingCodeType,
-): string {
-  return JSON.stringify(
-    ClearingCodeType$outboundSchema.parse(clearingCodeType),
-  );
-}
-
 export function clearingCodeTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<ClearingCodeType, SDKValidationError> {
@@ -320,39 +170,6 @@ export const ClearingCode$inboundSchema: z.ZodType<
   type: z.nullable(z.lazy(() => ClearingCodeType$inboundSchema)).optional(),
   value: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ClearingCode$Outbound = {
-  type?: ClearingCodeType$Outbound | null | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ClearingCode$outboundSchema: z.ZodType<
-  ClearingCode$Outbound,
-  z.ZodTypeDef,
-  ClearingCode
-> = z.object({
-  type: z.nullable(z.lazy(() => ClearingCodeType$outboundSchema)).optional(),
-  value: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClearingCode$ {
-  /** @deprecated use `ClearingCode$inboundSchema` instead. */
-  export const inboundSchema = ClearingCode$inboundSchema;
-  /** @deprecated use `ClearingCode$outboundSchema` instead. */
-  export const outboundSchema = ClearingCode$outboundSchema;
-  /** @deprecated use `ClearingCode$Outbound` instead. */
-  export type Outbound = ClearingCode$Outbound;
-}
-
-export function clearingCodeToJSON(clearingCode: ClearingCode): string {
-  return JSON.stringify(ClearingCode$outboundSchema.parse(clearingCode));
-}
 
 export function clearingCodeFromJSON(
   jsonString: string,

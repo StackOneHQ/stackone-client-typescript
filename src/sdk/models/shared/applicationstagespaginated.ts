@@ -10,15 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationStage,
   ApplicationStage$inboundSchema,
-  ApplicationStage$Outbound,
-  ApplicationStage$outboundSchema,
 } from "./applicationstage.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ApplicationStagesPaginated = {
   data: Array<ApplicationStage>;
@@ -45,51 +38,6 @@ export const ApplicationStagesPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type ApplicationStagesPaginated$Outbound = {
-  data: Array<ApplicationStage$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ApplicationStagesPaginated$outboundSchema: z.ZodType<
-  ApplicationStagesPaginated$Outbound,
-  z.ZodTypeDef,
-  ApplicationStagesPaginated
-> = z.object({
-  data: z.array(ApplicationStage$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationStagesPaginated$ {
-  /** @deprecated use `ApplicationStagesPaginated$inboundSchema` instead. */
-  export const inboundSchema = ApplicationStagesPaginated$inboundSchema;
-  /** @deprecated use `ApplicationStagesPaginated$outboundSchema` instead. */
-  export const outboundSchema = ApplicationStagesPaginated$outboundSchema;
-  /** @deprecated use `ApplicationStagesPaginated$Outbound` instead. */
-  export type Outbound = ApplicationStagesPaginated$Outbound;
-}
-
-export function applicationStagesPaginatedToJSON(
-  applicationStagesPaginated: ApplicationStagesPaginated,
-): string {
-  return JSON.stringify(
-    ApplicationStagesPaginated$outboundSchema.parse(applicationStagesPaginated),
-  );
-}
 
 export function applicationStagesPaginatedFromJSON(
   jsonString: string,

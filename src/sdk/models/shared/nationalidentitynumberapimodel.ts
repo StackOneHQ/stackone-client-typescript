@@ -496,7 +496,6 @@ export const NationalIdentityNumberApiModel4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type NationalIdentityNumberApiModel4$Outbound = {};
 
@@ -507,19 +506,6 @@ export const NationalIdentityNumberApiModel4$outboundSchema: z.ZodType<
   NationalIdentityNumberApiModel4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModel4$ {
-  /** @deprecated use `NationalIdentityNumberApiModel4$inboundSchema` instead. */
-  export const inboundSchema = NationalIdentityNumberApiModel4$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModel4$outboundSchema` instead. */
-  export const outboundSchema = NationalIdentityNumberApiModel4$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModel4$Outbound` instead. */
-  export type Outbound = NationalIdentityNumberApiModel4$Outbound;
-}
-
 export function nationalIdentityNumberApiModel4ToJSON(
   nationalIdentityNumberApiModel4: NationalIdentityNumberApiModel4,
 ): string {
@@ -529,7 +515,6 @@ export function nationalIdentityNumberApiModel4ToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModel4FromJSON(
   jsonString: string,
 ): SafeParseResult<NationalIdentityNumberApiModel4, SDKValidationError> {
@@ -552,7 +537,6 @@ export const NationalIdentityNumberApiModelSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => NationalIdentityNumberApiModel4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type NationalIdentityNumberApiModelSourceValue$Outbound =
   | string
@@ -575,21 +559,6 @@ export const NationalIdentityNumberApiModelSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelSourceValue$ {
-  /** @deprecated use `NationalIdentityNumberApiModelSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    NationalIdentityNumberApiModelSourceValue$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelSourceValue$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSourceValue$Outbound` instead. */
-  export type Outbound = NationalIdentityNumberApiModelSourceValue$Outbound;
-}
-
 export function nationalIdentityNumberApiModelSourceValueToJSON(
   nationalIdentityNumberApiModelSourceValue:
     NationalIdentityNumberApiModelSourceValue,
@@ -600,7 +569,6 @@ export function nationalIdentityNumberApiModelSourceValueToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModelSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -627,7 +595,6 @@ export const NationalIdentityNumberApiModelValue$inboundSchema: z.ZodType<
     z.nativeEnum(NationalIdentityNumberApiModelValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const NationalIdentityNumberApiModelValue$outboundSchema: z.ZodType<
   NationalIdentityNumberApiModelValueOpen,
@@ -637,19 +604,6 @@ export const NationalIdentityNumberApiModelValue$outboundSchema: z.ZodType<
   z.nativeEnum(NationalIdentityNumberApiModelValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelValue$ {
-  /** @deprecated use `NationalIdentityNumberApiModelValue$inboundSchema` instead. */
-  export const inboundSchema =
-    NationalIdentityNumberApiModelValue$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelValue$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelValue$outboundSchema;
-}
 
 /** @internal */
 export const NationalIdentityNumberApiModelCountry$inboundSchema: z.ZodType<
@@ -673,7 +627,6 @@ export const NationalIdentityNumberApiModelCountry$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type NationalIdentityNumberApiModelCountry$Outbound = {
   source_value?:
@@ -710,21 +663,6 @@ export const NationalIdentityNumberApiModelCountry$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelCountry$ {
-  /** @deprecated use `NationalIdentityNumberApiModelCountry$inboundSchema` instead. */
-  export const inboundSchema =
-    NationalIdentityNumberApiModelCountry$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelCountry$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelCountry$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelCountry$Outbound` instead. */
-  export type Outbound = NationalIdentityNumberApiModelCountry$Outbound;
-}
-
 export function nationalIdentityNumberApiModelCountryToJSON(
   nationalIdentityNumberApiModelCountry: NationalIdentityNumberApiModelCountry,
 ): string {
@@ -734,7 +672,6 @@ export function nationalIdentityNumberApiModelCountryToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModelCountryFromJSON(
   jsonString: string,
 ): SafeParseResult<NationalIdentityNumberApiModelCountry, SDKValidationError> {
@@ -752,7 +689,6 @@ export const NationalIdentityNumberApiModelSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type NationalIdentityNumberApiModelSchemas4$Outbound = {};
 
@@ -762,21 +698,6 @@ export const NationalIdentityNumberApiModelSchemas4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NationalIdentityNumberApiModelSchemas4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelSchemas4$ {
-  /** @deprecated use `NationalIdentityNumberApiModelSchemas4$inboundSchema` instead. */
-  export const inboundSchema =
-    NationalIdentityNumberApiModelSchemas4$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSchemas4$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelSchemas4$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSchemas4$Outbound` instead. */
-  export type Outbound = NationalIdentityNumberApiModelSchemas4$Outbound;
-}
 
 export function nationalIdentityNumberApiModelSchemas4ToJSON(
   nationalIdentityNumberApiModelSchemas4:
@@ -788,7 +709,6 @@ export function nationalIdentityNumberApiModelSchemas4ToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModelSchemas4FromJSON(
   jsonString: string,
 ): SafeParseResult<NationalIdentityNumberApiModelSchemas4, SDKValidationError> {
@@ -813,7 +733,6 @@ export const NationalIdentityNumberApiModelSchemasSourceValue$inboundSchema:
     z.lazy(() => NationalIdentityNumberApiModelSchemas4$inboundSchema),
     z.array(z.any()),
   ]);
-
 /** @internal */
 export type NationalIdentityNumberApiModelSchemasSourceValue$Outbound =
   | string
@@ -836,22 +755,6 @@ export const NationalIdentityNumberApiModelSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelSchemasSourceValue$ {
-  /** @deprecated use `NationalIdentityNumberApiModelSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    NationalIdentityNumberApiModelSchemasSourceValue$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelSchemasSourceValue$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSchemasSourceValue$Outbound` instead. */
-  export type Outbound =
-    NationalIdentityNumberApiModelSchemasSourceValue$Outbound;
-}
-
 export function nationalIdentityNumberApiModelSchemasSourceValueToJSON(
   nationalIdentityNumberApiModelSchemasSourceValue:
     NationalIdentityNumberApiModelSchemasSourceValue,
@@ -862,7 +765,6 @@ export function nationalIdentityNumberApiModelSchemasSourceValueToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModelSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -890,7 +792,6 @@ export const NationalIdentityNumberApiModelSchemasValue$inboundSchema:
       z.nativeEnum(NationalIdentityNumberApiModelSchemasValue),
       z.string().transform(catchUnrecognizedEnum),
     ]);
-
 /** @internal */
 export const NationalIdentityNumberApiModelSchemasValue$outboundSchema:
   z.ZodType<
@@ -901,19 +802,6 @@ export const NationalIdentityNumberApiModelSchemasValue$outboundSchema:
     z.nativeEnum(NationalIdentityNumberApiModelSchemasValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelSchemasValue$ {
-  /** @deprecated use `NationalIdentityNumberApiModelSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    NationalIdentityNumberApiModelSchemasValue$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelSchemasValue$outboundSchema;
-}
 
 /** @internal */
 export const NationalIdentityNumberApiModelType$inboundSchema: z.ZodType<
@@ -937,7 +825,6 @@ export const NationalIdentityNumberApiModelType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type NationalIdentityNumberApiModelType$Outbound = {
   source_value?:
@@ -974,20 +861,6 @@ export const NationalIdentityNumberApiModelType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModelType$ {
-  /** @deprecated use `NationalIdentityNumberApiModelType$inboundSchema` instead. */
-  export const inboundSchema = NationalIdentityNumberApiModelType$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelType$outboundSchema` instead. */
-  export const outboundSchema =
-    NationalIdentityNumberApiModelType$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModelType$Outbound` instead. */
-  export type Outbound = NationalIdentityNumberApiModelType$Outbound;
-}
-
 export function nationalIdentityNumberApiModelTypeToJSON(
   nationalIdentityNumberApiModelType: NationalIdentityNumberApiModelType,
 ): string {
@@ -997,7 +870,6 @@ export function nationalIdentityNumberApiModelTypeToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModelTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<NationalIdentityNumberApiModelType, SDKValidationError> {
@@ -1023,7 +895,6 @@ export const NationalIdentityNumberApiModel$inboundSchema: z.ZodType<
   ).optional(),
   value: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type NationalIdentityNumberApiModel$Outbound = {
   country?: NationalIdentityNumberApiModelCountry$Outbound | null | undefined;
@@ -1046,19 +917,6 @@ export const NationalIdentityNumberApiModel$outboundSchema: z.ZodType<
   value: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NationalIdentityNumberApiModel$ {
-  /** @deprecated use `NationalIdentityNumberApiModel$inboundSchema` instead. */
-  export const inboundSchema = NationalIdentityNumberApiModel$inboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModel$outboundSchema` instead. */
-  export const outboundSchema = NationalIdentityNumberApiModel$outboundSchema;
-  /** @deprecated use `NationalIdentityNumberApiModel$Outbound` instead. */
-  export type Outbound = NationalIdentityNumberApiModel$Outbound;
-}
-
 export function nationalIdentityNumberApiModelToJSON(
   nationalIdentityNumberApiModel: NationalIdentityNumberApiModel,
 ): string {
@@ -1068,7 +926,6 @@ export function nationalIdentityNumberApiModelToJSON(
     ),
   );
 }
-
 export function nationalIdentityNumberApiModelFromJSON(
   jsonString: string,
 ): SafeParseResult<NationalIdentityNumberApiModel, SDKValidationError> {

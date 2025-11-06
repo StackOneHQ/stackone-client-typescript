@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InAppMessages,
-  InAppMessages$inboundSchema,
   InAppMessages$Outbound,
   InAppMessages$outboundSchema,
 } from "./inappmessages.js";
@@ -22,18 +18,6 @@ export type MarketingCreateInAppTemplateRequestDto = {
   passthrough?: { [k: string]: any } | null | undefined;
   tags?: Array<string> | null | undefined;
 };
-
-/** @internal */
-export const MarketingCreateInAppTemplateRequestDto$inboundSchema: z.ZodType<
-  MarketingCreateInAppTemplateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  messages: z.nullable(z.array(InAppMessages$inboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-});
 
 /** @internal */
 export type MarketingCreateInAppTemplateRequestDto$Outbound = {
@@ -55,21 +39,6 @@ export const MarketingCreateInAppTemplateRequestDto$outboundSchema: z.ZodType<
   tags: z.nullable(z.array(z.string())).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreateInAppTemplateRequestDto$ {
-  /** @deprecated use `MarketingCreateInAppTemplateRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreateInAppTemplateRequestDto$inboundSchema;
-  /** @deprecated use `MarketingCreateInAppTemplateRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreateInAppTemplateRequestDto$outboundSchema;
-  /** @deprecated use `MarketingCreateInAppTemplateRequestDto$Outbound` instead. */
-  export type Outbound = MarketingCreateInAppTemplateRequestDto$Outbound;
-}
-
 export function marketingCreateInAppTemplateRequestDtoToJSON(
   marketingCreateInAppTemplateRequestDto:
     MarketingCreateInAppTemplateRequestDto,
@@ -78,16 +47,5 @@ export function marketingCreateInAppTemplateRequestDtoToJSON(
     MarketingCreateInAppTemplateRequestDto$outboundSchema.parse(
       marketingCreateInAppTemplateRequestDto,
     ),
-  );
-}
-
-export function marketingCreateInAppTemplateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingCreateInAppTemplateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreateInAppTemplateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingCreateInAppTemplateRequestDto' from JSON`,
   );
 }

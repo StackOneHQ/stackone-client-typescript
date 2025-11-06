@@ -38,21 +38,6 @@ export type AtsCreateOfferResponse = {
 };
 
 /** @internal */
-export const AtsCreateOfferRequest$inboundSchema: z.ZodType<
-  AtsCreateOfferRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsCreateOfferRequestDto": "atsCreateOfferRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsCreateOfferRequest$Outbound = {
   AtsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$Outbound;
   "x-account-id": string;
@@ -73,34 +58,11 @@ export const AtsCreateOfferRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateOfferRequest$ {
-  /** @deprecated use `AtsCreateOfferRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateOfferRequest$inboundSchema;
-  /** @deprecated use `AtsCreateOfferRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateOfferRequest$outboundSchema;
-  /** @deprecated use `AtsCreateOfferRequest$Outbound` instead. */
-  export type Outbound = AtsCreateOfferRequest$Outbound;
-}
-
 export function atsCreateOfferRequestToJSON(
   atsCreateOfferRequest: AtsCreateOfferRequest,
 ): string {
   return JSON.stringify(
     AtsCreateOfferRequest$outboundSchema.parse(atsCreateOfferRequest),
-  );
-}
-
-export function atsCreateOfferRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateOfferRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateOfferRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateOfferRequest' from JSON`,
   );
 }
 
@@ -125,59 +87,6 @@ export const AtsCreateOfferResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsCreateOfferResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsCreateOfferResponse$outboundSchema: z.ZodType<
-  AtsCreateOfferResponse$Outbound,
-  z.ZodTypeDef,
-  AtsCreateOfferResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateOfferResponse$ {
-  /** @deprecated use `AtsCreateOfferResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateOfferResponse$inboundSchema;
-  /** @deprecated use `AtsCreateOfferResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateOfferResponse$outboundSchema;
-  /** @deprecated use `AtsCreateOfferResponse$Outbound` instead. */
-  export type Outbound = AtsCreateOfferResponse$Outbound;
-}
-
-export function atsCreateOfferResponseToJSON(
-  atsCreateOfferResponse: AtsCreateOfferResponse,
-): string {
-  return JSON.stringify(
-    AtsCreateOfferResponse$outboundSchema.parse(atsCreateOfferResponse),
-  );
-}
 
 export function atsCreateOfferResponseFromJSON(
   jsonString: string,

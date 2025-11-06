@@ -50,23 +50,6 @@ export type LmsGetCategoryResponse = {
 };
 
 /** @internal */
-export const LmsGetCategoryRequest$inboundSchema: z.ZodType<
-  LmsGetCategoryRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsGetCategoryRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const LmsGetCategoryRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetCategoryRequest$ {
-  /** @deprecated use `LmsGetCategoryRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsGetCategoryRequest$inboundSchema;
-  /** @deprecated use `LmsGetCategoryRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsGetCategoryRequest$outboundSchema;
-  /** @deprecated use `LmsGetCategoryRequest$Outbound` instead. */
-  export type Outbound = LmsGetCategoryRequest$Outbound;
-}
-
 export function lmsGetCategoryRequestToJSON(
   lmsGetCategoryRequest: LmsGetCategoryRequest,
 ): string {
   return JSON.stringify(
     LmsGetCategoryRequest$outboundSchema.parse(lmsGetCategoryRequest),
-  );
-}
-
-export function lmsGetCategoryRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsGetCategoryRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsGetCategoryRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsGetCategoryRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const LmsGetCategoryResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsGetCategoryResponse$Outbound = {
-  CategoryResult?: shared.CategoryResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsGetCategoryResponse$outboundSchema: z.ZodType<
-  LmsGetCategoryResponse$Outbound,
-  z.ZodTypeDef,
-  LmsGetCategoryResponse
-> = z.object({
-  categoryResult: shared.CategoryResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    categoryResult: "CategoryResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetCategoryResponse$ {
-  /** @deprecated use `LmsGetCategoryResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsGetCategoryResponse$inboundSchema;
-  /** @deprecated use `LmsGetCategoryResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsGetCategoryResponse$outboundSchema;
-  /** @deprecated use `LmsGetCategoryResponse$Outbound` instead. */
-  export type Outbound = LmsGetCategoryResponse$Outbound;
-}
-
-export function lmsGetCategoryResponseToJSON(
-  lmsGetCategoryResponse: LmsGetCategoryResponse,
-): string {
-  return JSON.stringify(
-    LmsGetCategoryResponse$outboundSchema.parse(lmsGetCategoryResponse),
-  );
-}
 
 export function lmsGetCategoryResponseFromJSON(
   jsonString: string,

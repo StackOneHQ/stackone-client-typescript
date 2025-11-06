@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HrisJob,
-  HrisJob$inboundSchema,
-  HrisJob$Outbound,
-  HrisJob$outboundSchema,
-} from "./hrisjob.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HrisJob, HrisJob$inboundSchema } from "./hrisjob.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HrisJobResult = {
   data: HrisJob;
@@ -33,39 +23,6 @@ export const HrisJobResult$inboundSchema: z.ZodType<
   data: HrisJob$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HrisJobResult$Outbound = {
-  data: HrisJob$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HrisJobResult$outboundSchema: z.ZodType<
-  HrisJobResult$Outbound,
-  z.ZodTypeDef,
-  HrisJobResult
-> = z.object({
-  data: HrisJob$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisJobResult$ {
-  /** @deprecated use `HrisJobResult$inboundSchema` instead. */
-  export const inboundSchema = HrisJobResult$inboundSchema;
-  /** @deprecated use `HrisJobResult$outboundSchema` instead. */
-  export const outboundSchema = HrisJobResult$outboundSchema;
-  /** @deprecated use `HrisJobResult$Outbound` instead. */
-  export type Outbound = HrisJobResult$Outbound;
-}
-
-export function hrisJobResultToJSON(hrisJobResult: HrisJobResult): string {
-  return JSON.stringify(HrisJobResult$outboundSchema.parse(hrisJobResult));
-}
 
 export function hrisJobResultFromJSON(
   jsonString: string,

@@ -3,14 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 /**
  * The method of the request
@@ -51,17 +44,6 @@ export type ProxyRequestBody = {
 };
 
 /** @internal */
-export const Method$inboundSchema: z.ZodType<
-  MethodOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(Method),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
 export const Method$outboundSchema: z.ZodType<
   MethodOpen,
   z.ZodTypeDef,
@@ -70,30 +52,6 @@ export const Method$outboundSchema: z.ZodType<
   z.nativeEnum(Method),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Method$ {
-  /** @deprecated use `Method$inboundSchema` instead. */
-  export const inboundSchema = Method$inboundSchema;
-  /** @deprecated use `Method$outboundSchema` instead. */
-  export const outboundSchema = Method$outboundSchema;
-}
-
-/** @internal */
-export const ProxyRequestBody$inboundSchema: z.ZodType<
-  ProxyRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  body: z.nullable(z.record(z.any())).optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  method: z.nullable(Method$inboundSchema.default(Method.Get)),
-  path: z.nullable(z.string()).optional(),
-  url: z.nullable(z.string()).optional(),
-});
 
 /** @internal */
 export type ProxyRequestBody$Outbound = {
@@ -117,33 +75,10 @@ export const ProxyRequestBody$outboundSchema: z.ZodType<
   url: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProxyRequestBody$ {
-  /** @deprecated use `ProxyRequestBody$inboundSchema` instead. */
-  export const inboundSchema = ProxyRequestBody$inboundSchema;
-  /** @deprecated use `ProxyRequestBody$outboundSchema` instead. */
-  export const outboundSchema = ProxyRequestBody$outboundSchema;
-  /** @deprecated use `ProxyRequestBody$Outbound` instead. */
-  export type Outbound = ProxyRequestBody$Outbound;
-}
-
 export function proxyRequestBodyToJSON(
   proxyRequestBody: ProxyRequestBody,
 ): string {
   return JSON.stringify(
     ProxyRequestBody$outboundSchema.parse(proxyRequestBody),
-  );
-}
-
-export function proxyRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ProxyRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ProxyRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProxyRequestBody' from JSON`,
   );
 }

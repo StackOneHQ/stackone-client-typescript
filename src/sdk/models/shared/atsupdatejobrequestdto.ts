@@ -4,29 +4,19 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   AtsJobHiringTeam,
-  AtsJobHiringTeam$inboundSchema,
   AtsJobHiringTeam$Outbound,
   AtsJobHiringTeam$outboundSchema,
 } from "./atsjobhiringteam.js";
 import {
   CustomFields,
-  CustomFields$inboundSchema,
   CustomFields$Outbound,
   CustomFields$outboundSchema,
 } from "./customfields.js";
 import {
   InterviewStage,
-  InterviewStage$inboundSchema,
   InterviewStage$Outbound,
   InterviewStage$outboundSchema,
 } from "./interviewstage.js";
@@ -159,17 +149,6 @@ export type AtsUpdateJobRequestDto = {
 };
 
 /** @internal */
-export const AtsUpdateJobRequestDtoConfidential$inboundSchema: z.ZodType<
-  AtsUpdateJobRequestDtoConfidentialOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsUpdateJobRequestDtoConfidential),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
 export const AtsUpdateJobRequestDtoConfidential$outboundSchema: z.ZodType<
   AtsUpdateJobRequestDtoConfidentialOpen,
   z.ZodTypeDef,
@@ -178,25 +157,6 @@ export const AtsUpdateJobRequestDtoConfidential$outboundSchema: z.ZodType<
   z.nativeEnum(AtsUpdateJobRequestDtoConfidential),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateJobRequestDtoConfidential$ {
-  /** @deprecated use `AtsUpdateJobRequestDtoConfidential$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateJobRequestDtoConfidential$inboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDtoConfidential$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateJobRequestDtoConfidential$outboundSchema;
-}
-
-/** @internal */
-export const AtsUpdateJobRequestDto4$inboundSchema: z.ZodType<
-  AtsUpdateJobRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type AtsUpdateJobRequestDto4$Outbound = {};
@@ -208,19 +168,6 @@ export const AtsUpdateJobRequestDto4$outboundSchema: z.ZodType<
   AtsUpdateJobRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateJobRequestDto4$ {
-  /** @deprecated use `AtsUpdateJobRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateJobRequestDto4$inboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateJobRequestDto4$outboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDto4$Outbound` instead. */
-  export type Outbound = AtsUpdateJobRequestDto4$Outbound;
-}
-
 export function atsUpdateJobRequestDto4ToJSON(
   atsUpdateJobRequestDto4: AtsUpdateJobRequestDto4,
 ): string {
@@ -228,29 +175,6 @@ export function atsUpdateJobRequestDto4ToJSON(
     AtsUpdateJobRequestDto4$outboundSchema.parse(atsUpdateJobRequestDto4),
   );
 }
-
-export function atsUpdateJobRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateJobRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateJobRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateJobRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateJobRequestDtoSourceValue$inboundSchema: z.ZodType<
-  AtsUpdateJobRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AtsUpdateJobRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type AtsUpdateJobRequestDtoSourceValue$Outbound =
@@ -273,20 +197,6 @@ export const AtsUpdateJobRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateJobRequestDtoSourceValue$ {
-  /** @deprecated use `AtsUpdateJobRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateJobRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateJobRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = AtsUpdateJobRequestDtoSourceValue$Outbound;
-}
-
 export function atsUpdateJobRequestDtoSourceValueToJSON(
   atsUpdateJobRequestDtoSourceValue: AtsUpdateJobRequestDtoSourceValue,
 ): string {
@@ -297,27 +207,6 @@ export function atsUpdateJobRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsUpdateJobRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateJobRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateJobRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateJobRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateJobRequestDtoValue$inboundSchema: z.ZodType<
-  AtsUpdateJobRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsUpdateJobRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const AtsUpdateJobRequestDtoValue$outboundSchema: z.ZodType<
   AtsUpdateJobRequestDtoValueOpen,
@@ -327,39 +216,6 @@ export const AtsUpdateJobRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(AtsUpdateJobRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateJobRequestDtoValue$ {
-  /** @deprecated use `AtsUpdateJobRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateJobRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateJobRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsUpdateJobRequestDtoJobStatus$inboundSchema: z.ZodType<
-  AtsUpdateJobRequestDtoJobStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AtsUpdateJobRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AtsUpdateJobRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type AtsUpdateJobRequestDtoJobStatus$Outbound = {
@@ -396,19 +252,6 @@ export const AtsUpdateJobRequestDtoJobStatus$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateJobRequestDtoJobStatus$ {
-  /** @deprecated use `AtsUpdateJobRequestDtoJobStatus$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateJobRequestDtoJobStatus$inboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDtoJobStatus$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateJobRequestDtoJobStatus$outboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDtoJobStatus$Outbound` instead. */
-  export type Outbound = AtsUpdateJobRequestDtoJobStatus$Outbound;
-}
-
 export function atsUpdateJobRequestDtoJobStatusToJSON(
   atsUpdateJobRequestDtoJobStatus: AtsUpdateJobRequestDtoJobStatus,
 ): string {
@@ -418,51 +261,6 @@ export function atsUpdateJobRequestDtoJobStatusToJSON(
     ),
   );
 }
-
-export function atsUpdateJobRequestDtoJobStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateJobRequestDtoJobStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateJobRequestDtoJobStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateJobRequestDtoJobStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateJobRequestDto$inboundSchema: z.ZodType<
-  AtsUpdateJobRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  code: z.nullable(z.string()).optional(),
-  confidential: z.nullable(AtsUpdateJobRequestDtoConfidential$inboundSchema)
-    .optional(),
-  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
-  department_ids: z.nullable(z.array(z.string())).optional(),
-  description: z.nullable(z.string()).optional(),
-  hiring_team: z.nullable(z.array(AtsJobHiringTeam$inboundSchema)).optional(),
-  interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
-    .optional(),
-  job_status: z.nullable(
-    z.lazy(() => AtsUpdateJobRequestDtoJobStatus$inboundSchema),
-  ).optional(),
-  location_ids: z.nullable(z.array(z.string())).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  status: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_fields": "customFields",
-    "department_ids": "departmentIds",
-    "hiring_team": "hiringTeam",
-    "interview_stages": "interviewStages",
-    "job_status": "jobStatus",
-    "location_ids": "locationIds",
-    "unified_custom_fields": "unifiedCustomFields",
-  });
-});
 
 /** @internal */
 export type AtsUpdateJobRequestDto$Outbound = {
@@ -516,33 +314,10 @@ export const AtsUpdateJobRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateJobRequestDto$ {
-  /** @deprecated use `AtsUpdateJobRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateJobRequestDto$inboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateJobRequestDto$outboundSchema;
-  /** @deprecated use `AtsUpdateJobRequestDto$Outbound` instead. */
-  export type Outbound = AtsUpdateJobRequestDto$Outbound;
-}
-
 export function atsUpdateJobRequestDtoToJSON(
   atsUpdateJobRequestDto: AtsUpdateJobRequestDto,
 ): string {
   return JSON.stringify(
     AtsUpdateJobRequestDto$outboundSchema.parse(atsUpdateJobRequestDto),
-  );
-}
-
-export function atsUpdateJobRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateJobRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateJobRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateJobRequestDto' from JSON`,
   );
 }

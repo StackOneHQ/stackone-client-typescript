@@ -83,21 +83,6 @@ export type LmsListCompletionsResponse = {
 };
 
 /** @internal */
-export const LmsListCompletionsQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListCompletionsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type LmsListCompletionsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,20 +100,6 @@ export const LmsListCompletionsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCompletionsQueryParamFilter$ {
-  /** @deprecated use `LmsListCompletionsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListCompletionsQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListCompletionsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsListCompletionsQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListCompletionsQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListCompletionsQueryParamFilter$Outbound;
-}
-
 export function lmsListCompletionsQueryParamFilterToJSON(
   lmsListCompletionsQueryParamFilter: LmsListCompletionsQueryParamFilter,
 ): string {
@@ -138,44 +109,6 @@ export function lmsListCompletionsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListCompletionsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListCompletionsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsListCompletionsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListCompletionsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListCompletionsRequest$inboundSchema: z.ZodType<
-  LmsListCompletionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => LmsListCompletionsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListCompletionsRequest$Outbound = {
@@ -215,34 +148,11 @@ export const LmsListCompletionsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCompletionsRequest$ {
-  /** @deprecated use `LmsListCompletionsRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListCompletionsRequest$inboundSchema;
-  /** @deprecated use `LmsListCompletionsRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListCompletionsRequest$outboundSchema;
-  /** @deprecated use `LmsListCompletionsRequest$Outbound` instead. */
-  export type Outbound = LmsListCompletionsRequest$Outbound;
-}
-
 export function lmsListCompletionsRequestToJSON(
   lmsListCompletionsRequest: LmsListCompletionsRequest,
 ): string {
   return JSON.stringify(
     LmsListCompletionsRequest$outboundSchema.parse(lmsListCompletionsRequest),
-  );
-}
-
-export function lmsListCompletionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListCompletionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListCompletionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListCompletionsRequest' from JSON`,
   );
 }
 
@@ -267,59 +177,6 @@ export const LmsListCompletionsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsListCompletionsResponse$Outbound = {
-  CompletionsPaginated?: shared.CompletionsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsListCompletionsResponse$outboundSchema: z.ZodType<
-  LmsListCompletionsResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListCompletionsResponse
-> = z.object({
-  completionsPaginated: shared.CompletionsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    completionsPaginated: "CompletionsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCompletionsResponse$ {
-  /** @deprecated use `LmsListCompletionsResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListCompletionsResponse$inboundSchema;
-  /** @deprecated use `LmsListCompletionsResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListCompletionsResponse$outboundSchema;
-  /** @deprecated use `LmsListCompletionsResponse$Outbound` instead. */
-  export type Outbound = LmsListCompletionsResponse$Outbound;
-}
-
-export function lmsListCompletionsResponseToJSON(
-  lmsListCompletionsResponse: LmsListCompletionsResponse,
-): string {
-  return JSON.stringify(
-    LmsListCompletionsResponse$outboundSchema.parse(lmsListCompletionsResponse),
-  );
-}
 
 export function lmsListCompletionsResponseFromJSON(
   jsonString: string,

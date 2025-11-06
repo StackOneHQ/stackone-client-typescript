@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ClearingCode,
-  ClearingCode$inboundSchema,
-  ClearingCode$Outbound,
-  ClearingCode$outboundSchema,
-} from "./clearingcode.js";
+import { ClearingCode, ClearingCode$inboundSchema } from "./clearingcode.js";
 
 export type HRISBankDetails4 = {};
 
@@ -616,37 +607,6 @@ export const HRISBankDetails4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type HRISBankDetails4$Outbound = {};
-
-/** @internal */
-export const HRISBankDetails4$outboundSchema: z.ZodType<
-  HRISBankDetails4$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetails4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetails4$ {
-  /** @deprecated use `HRISBankDetails4$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetails4$inboundSchema;
-  /** @deprecated use `HRISBankDetails4$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetails4$outboundSchema;
-  /** @deprecated use `HRISBankDetails4$Outbound` instead. */
-  export type Outbound = HRISBankDetails4$Outbound;
-}
-
-export function hrisBankDetails4ToJSON(
-  hrisBankDetails4: HRISBankDetails4,
-): string {
-  return JSON.stringify(
-    HRISBankDetails4$outboundSchema.parse(hrisBankDetails4),
-  );
-}
-
 export function hrisBankDetails4FromJSON(
   jsonString: string,
 ): SafeParseResult<HRISBankDetails4, SDKValidationError> {
@@ -670,48 +630,6 @@ export const HRISBankDetailsSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HRISBankDetailsSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HRISBankDetails4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HRISBankDetailsSourceValue$outboundSchema: z.ZodType<
-  HRISBankDetailsSourceValue$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetailsSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HRISBankDetails4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSourceValue$ {
-  /** @deprecated use `HRISBankDetailsSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetailsSourceValue$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetailsSourceValue$outboundSchema;
-  /** @deprecated use `HRISBankDetailsSourceValue$Outbound` instead. */
-  export type Outbound = HRISBankDetailsSourceValue$Outbound;
-}
-
-export function hrisBankDetailsSourceValueToJSON(
-  hrisBankDetailsSourceValue: HRISBankDetailsSourceValue,
-): string {
-  return JSON.stringify(
-    HRISBankDetailsSourceValue$outboundSchema.parse(hrisBankDetailsSourceValue),
-  );
-}
-
 export function hrisBankDetailsSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HRISBankDetailsSourceValue, SDKValidationError> {
@@ -732,27 +650,6 @@ export const HRISBankDetailsValue$inboundSchema: z.ZodType<
     z.nativeEnum(HRISBankDetailsValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const HRISBankDetailsValue$outboundSchema: z.ZodType<
-  HRISBankDetailsValueOpen,
-  z.ZodTypeDef,
-  HRISBankDetailsValueOpen
-> = z.union([
-  z.nativeEnum(HRISBankDetailsValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsValue$ {
-  /** @deprecated use `HRISBankDetailsValue$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetailsValue$inboundSchema;
-  /** @deprecated use `HRISBankDetailsValue$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetailsValue$outboundSchema;
-}
 
 /** @internal */
 export const AccountType$inboundSchema: z.ZodType<
@@ -776,58 +673,6 @@ export const AccountType$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type AccountType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HRISBankDetails4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const AccountType$outboundSchema: z.ZodType<
-  AccountType$Outbound,
-  z.ZodTypeDef,
-  AccountType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HRISBankDetails4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HRISBankDetailsValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountType$ {
-  /** @deprecated use `AccountType$inboundSchema` instead. */
-  export const inboundSchema = AccountType$inboundSchema;
-  /** @deprecated use `AccountType$outboundSchema` instead. */
-  export const outboundSchema = AccountType$outboundSchema;
-  /** @deprecated use `AccountType$Outbound` instead. */
-  export type Outbound = AccountType$Outbound;
-}
-
-export function accountTypeToJSON(accountType: AccountType): string {
-  return JSON.stringify(AccountType$outboundSchema.parse(accountType));
-}
-
 export function accountTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountType, SDKValidationError> {
@@ -844,37 +689,6 @@ export const HRISBankDetailsSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type HRISBankDetailsSchemas4$Outbound = {};
-
-/** @internal */
-export const HRISBankDetailsSchemas4$outboundSchema: z.ZodType<
-  HRISBankDetailsSchemas4$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetailsSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSchemas4$ {
-  /** @deprecated use `HRISBankDetailsSchemas4$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetailsSchemas4$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemas4$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetailsSchemas4$outboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemas4$Outbound` instead. */
-  export type Outbound = HRISBankDetailsSchemas4$Outbound;
-}
-
-export function hrisBankDetailsSchemas4ToJSON(
-  hrisBankDetailsSchemas4: HRISBankDetailsSchemas4,
-): string {
-  return JSON.stringify(
-    HRISBankDetailsSchemas4$outboundSchema.parse(hrisBankDetailsSchemas4),
-  );
-}
 
 export function hrisBankDetailsSchemas4FromJSON(
   jsonString: string,
@@ -899,51 +713,6 @@ export const HRISBankDetailsSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HRISBankDetailsSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HRISBankDetailsSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HRISBankDetailsSchemasSourceValue$outboundSchema: z.ZodType<
-  HRISBankDetailsSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetailsSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HRISBankDetailsSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSchemasSourceValue$ {
-  /** @deprecated use `HRISBankDetailsSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetailsSchemasSourceValue$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HRISBankDetailsSchemasSourceValue$outboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasSourceValue$Outbound` instead. */
-  export type Outbound = HRISBankDetailsSchemasSourceValue$Outbound;
-}
-
-export function hrisBankDetailsSchemasSourceValueToJSON(
-  hrisBankDetailsSchemasSourceValue: HRISBankDetailsSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    HRISBankDetailsSchemasSourceValue$outboundSchema.parse(
-      hrisBankDetailsSchemasSourceValue,
-    ),
-  );
-}
-
 export function hrisBankDetailsSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HRISBankDetailsSchemasSourceValue, SDKValidationError> {
@@ -964,27 +733,6 @@ export const HRISBankDetailsSchemasValue$inboundSchema: z.ZodType<
     z.nativeEnum(HRISBankDetailsSchemasValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const HRISBankDetailsSchemasValue$outboundSchema: z.ZodType<
-  HRISBankDetailsSchemasValueOpen,
-  z.ZodTypeDef,
-  HRISBankDetailsSchemasValueOpen
-> = z.union([
-  z.nativeEnum(HRISBankDetailsSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSchemasValue$ {
-  /** @deprecated use `HRISBankDetailsSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetailsSchemasValue$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetailsSchemasValue$outboundSchema;
-}
 
 /** @internal */
 export const CountryCode$inboundSchema: z.ZodType<
@@ -1008,58 +756,6 @@ export const CountryCode$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type CountryCode$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HRISBankDetailsSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const CountryCode$outboundSchema: z.ZodType<
-  CountryCode$Outbound,
-  z.ZodTypeDef,
-  CountryCode
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HRISBankDetailsSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HRISBankDetailsSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CountryCode$ {
-  /** @deprecated use `CountryCode$inboundSchema` instead. */
-  export const inboundSchema = CountryCode$inboundSchema;
-  /** @deprecated use `CountryCode$outboundSchema` instead. */
-  export const outboundSchema = CountryCode$outboundSchema;
-  /** @deprecated use `CountryCode$Outbound` instead. */
-  export type Outbound = CountryCode$Outbound;
-}
-
-export function countryCodeToJSON(countryCode: CountryCode): string {
-  return JSON.stringify(CountryCode$outboundSchema.parse(countryCode));
-}
-
 export function countryCodeFromJSON(
   jsonString: string,
 ): SafeParseResult<CountryCode, SDKValidationError> {
@@ -1076,41 +772,6 @@ export const HRISBankDetailsSchemasCurrencyCode4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type HRISBankDetailsSchemasCurrencyCode4$Outbound = {};
-
-/** @internal */
-export const HRISBankDetailsSchemasCurrencyCode4$outboundSchema: z.ZodType<
-  HRISBankDetailsSchemasCurrencyCode4$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetailsSchemasCurrencyCode4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSchemasCurrencyCode4$ {
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCode4$inboundSchema` instead. */
-  export const inboundSchema =
-    HRISBankDetailsSchemasCurrencyCode4$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCode4$outboundSchema` instead. */
-  export const outboundSchema =
-    HRISBankDetailsSchemasCurrencyCode4$outboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCode4$Outbound` instead. */
-  export type Outbound = HRISBankDetailsSchemasCurrencyCode4$Outbound;
-}
-
-export function hrisBankDetailsSchemasCurrencyCode4ToJSON(
-  hrisBankDetailsSchemasCurrencyCode4: HRISBankDetailsSchemasCurrencyCode4,
-): string {
-  return JSON.stringify(
-    HRISBankDetailsSchemasCurrencyCode4$outboundSchema.parse(
-      hrisBankDetailsSchemasCurrencyCode4,
-    ),
-  );
-}
 
 export function hrisBankDetailsSchemasCurrencyCode4FromJSON(
   jsonString: string,
@@ -1136,54 +797,6 @@ export const HRISBankDetailsSchemasCurrencyCodeSourceValue$inboundSchema:
     z.lazy(() => HRISBankDetailsSchemasCurrencyCode4$inboundSchema),
     z.array(z.any()),
   ]);
-
-/** @internal */
-export type HRISBankDetailsSchemasCurrencyCodeSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HRISBankDetailsSchemasCurrencyCode4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HRISBankDetailsSchemasCurrencyCodeSourceValue$outboundSchema:
-  z.ZodType<
-    HRISBankDetailsSchemasCurrencyCodeSourceValue$Outbound,
-    z.ZodTypeDef,
-    HRISBankDetailsSchemasCurrencyCodeSourceValue
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HRISBankDetailsSchemasCurrencyCode4$outboundSchema),
-    z.array(z.any()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSchemasCurrencyCodeSourceValue$ {
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCodeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HRISBankDetailsSchemasCurrencyCodeSourceValue$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCodeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HRISBankDetailsSchemasCurrencyCodeSourceValue$outboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCodeSourceValue$Outbound` instead. */
-  export type Outbound = HRISBankDetailsSchemasCurrencyCodeSourceValue$Outbound;
-}
-
-export function hrisBankDetailsSchemasCurrencyCodeSourceValueToJSON(
-  hrisBankDetailsSchemasCurrencyCodeSourceValue:
-    HRISBankDetailsSchemasCurrencyCodeSourceValue,
-): string {
-  return JSON.stringify(
-    HRISBankDetailsSchemasCurrencyCodeSourceValue$outboundSchema.parse(
-      hrisBankDetailsSchemasCurrencyCodeSourceValue,
-    ),
-  );
-}
 
 export function hrisBankDetailsSchemasCurrencyCodeSourceValueFromJSON(
   jsonString: string,
@@ -1213,29 +826,6 @@ export const HRISBankDetailsSchemasCurrencyCodeValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HRISBankDetailsSchemasCurrencyCodeValue$outboundSchema: z.ZodType<
-  HRISBankDetailsSchemasCurrencyCodeValueOpen,
-  z.ZodTypeDef,
-  HRISBankDetailsSchemasCurrencyCodeValueOpen
-> = z.union([
-  z.nativeEnum(HRISBankDetailsSchemasCurrencyCodeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsSchemasCurrencyCodeValue$ {
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCodeValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HRISBankDetailsSchemasCurrencyCodeValue$inboundSchema;
-  /** @deprecated use `HRISBankDetailsSchemasCurrencyCodeValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HRISBankDetailsSchemasCurrencyCodeValue$outboundSchema;
-}
-
-/** @internal */
 export const HRISBankDetailsCurrencyCode$inboundSchema: z.ZodType<
   HRISBankDetailsCurrencyCode,
   z.ZodTypeDef,
@@ -1258,65 +848,6 @@ export const HRISBankDetailsCurrencyCode$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type HRISBankDetailsCurrencyCode$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HRISBankDetailsSchemasCurrencyCode4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HRISBankDetailsCurrencyCode$outboundSchema: z.ZodType<
-  HRISBankDetailsCurrencyCode$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetailsCurrencyCode
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HRISBankDetailsSchemasCurrencyCode4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HRISBankDetailsSchemasCurrencyCodeValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetailsCurrencyCode$ {
-  /** @deprecated use `HRISBankDetailsCurrencyCode$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetailsCurrencyCode$inboundSchema;
-  /** @deprecated use `HRISBankDetailsCurrencyCode$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetailsCurrencyCode$outboundSchema;
-  /** @deprecated use `HRISBankDetailsCurrencyCode$Outbound` instead. */
-  export type Outbound = HRISBankDetailsCurrencyCode$Outbound;
-}
-
-export function hrisBankDetailsCurrencyCodeToJSON(
-  hrisBankDetailsCurrencyCode: HRISBankDetailsCurrencyCode,
-): string {
-  return JSON.stringify(
-    HRISBankDetailsCurrencyCode$outboundSchema.parse(
-      hrisBankDetailsCurrencyCode,
-    ),
-  );
-}
-
 export function hrisBankDetailsCurrencyCodeFromJSON(
   jsonString: string,
 ): SafeParseResult<HRISBankDetailsCurrencyCode, SDKValidationError> {
@@ -1333,54 +864,11 @@ export const HRISBankDetails2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(HRISBankDetails2);
 
 /** @internal */
-export const HRISBankDetails2$outboundSchema: z.ZodNativeEnum<
-  typeof HRISBankDetails2
-> = HRISBankDetails2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetails2$ {
-  /** @deprecated use `HRISBankDetails2$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetails2$inboundSchema;
-  /** @deprecated use `HRISBankDetails2$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetails2$outboundSchema;
-}
-
-/** @internal */
 export const IsPrimary$inboundSchema: z.ZodType<
   IsPrimary,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), HRISBankDetails2$inboundSchema]);
-
-/** @internal */
-export type IsPrimary$Outbound = boolean | string;
-
-/** @internal */
-export const IsPrimary$outboundSchema: z.ZodType<
-  IsPrimary$Outbound,
-  z.ZodTypeDef,
-  IsPrimary
-> = z.union([z.boolean(), HRISBankDetails2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IsPrimary$ {
-  /** @deprecated use `IsPrimary$inboundSchema` instead. */
-  export const inboundSchema = IsPrimary$inboundSchema;
-  /** @deprecated use `IsPrimary$outboundSchema` instead. */
-  export const outboundSchema = IsPrimary$outboundSchema;
-  /** @deprecated use `IsPrimary$Outbound` instead. */
-  export type Outbound = IsPrimary$Outbound;
-}
-
-export function isPrimaryToJSON(isPrimary: IsPrimary): string {
-  return JSON.stringify(IsPrimary$outboundSchema.parse(isPrimary));
-}
 
 export function isPrimaryFromJSON(
   jsonString: string,
@@ -1427,77 +915,6 @@ export const HRISBankDetails$inboundSchema: z.ZodType<
     "swift_bic": "swiftBic",
   });
 });
-
-/** @internal */
-export type HRISBankDetails$Outbound = {
-  account_name?: string | null | undefined;
-  account_type?: AccountType$Outbound | null | undefined;
-  bank_name?: string | null | undefined;
-  clearing_codes?: Array<ClearingCode$Outbound> | null | undefined;
-  country_code?: CountryCode$Outbound | null | undefined;
-  currency_code?: HRISBankDetailsCurrencyCode$Outbound | null | undefined;
-  iban?: string | null | undefined;
-  id?: string | null | undefined;
-  is_primary?: boolean | string | null | undefined;
-  local_account_number?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  swift_bic?: string | null | undefined;
-};
-
-/** @internal */
-export const HRISBankDetails$outboundSchema: z.ZodType<
-  HRISBankDetails$Outbound,
-  z.ZodTypeDef,
-  HRISBankDetails
-> = z.object({
-  accountName: z.nullable(z.string()).optional(),
-  accountType: z.nullable(z.lazy(() => AccountType$outboundSchema)).optional(),
-  bankName: z.nullable(z.string()).optional(),
-  clearingCodes: z.nullable(z.array(ClearingCode$outboundSchema)).optional(),
-  countryCode: z.nullable(z.lazy(() => CountryCode$outboundSchema)).optional(),
-  currencyCode: z.nullable(
-    z.lazy(() => HRISBankDetailsCurrencyCode$outboundSchema),
-  ).optional(),
-  iban: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  isPrimary: z.nullable(z.union([z.boolean(), HRISBankDetails2$outboundSchema]))
-    .optional(),
-  localAccountNumber: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  swiftBic: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountName: "account_name",
-    accountType: "account_type",
-    bankName: "bank_name",
-    clearingCodes: "clearing_codes",
-    countryCode: "country_code",
-    currencyCode: "currency_code",
-    isPrimary: "is_primary",
-    localAccountNumber: "local_account_number",
-    remoteId: "remote_id",
-    swiftBic: "swift_bic",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBankDetails$ {
-  /** @deprecated use `HRISBankDetails$inboundSchema` instead. */
-  export const inboundSchema = HRISBankDetails$inboundSchema;
-  /** @deprecated use `HRISBankDetails$outboundSchema` instead. */
-  export const outboundSchema = HRISBankDetails$outboundSchema;
-  /** @deprecated use `HRISBankDetails$Outbound` instead. */
-  export type Outbound = HRISBankDetails$Outbound;
-}
-
-export function hrisBankDetailsToJSON(
-  hrisBankDetails: HRISBankDetails,
-): string {
-  return JSON.stringify(HRISBankDetails$outboundSchema.parse(hrisBankDetails));
-}
 
 export function hrisBankDetailsFromJSON(
   jsonString: string,

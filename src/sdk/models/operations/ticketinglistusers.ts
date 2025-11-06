@@ -83,21 +83,6 @@ export type TicketingListUsersResponse = {
 };
 
 /** @internal */
-export const TicketingListUsersQueryParamFilter$inboundSchema: z.ZodType<
-  TicketingListUsersQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type TicketingListUsersQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,20 +100,6 @@ export const TicketingListUsersQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListUsersQueryParamFilter$ {
-  /** @deprecated use `TicketingListUsersQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = TicketingListUsersQueryParamFilter$inboundSchema;
-  /** @deprecated use `TicketingListUsersQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingListUsersQueryParamFilter$outboundSchema;
-  /** @deprecated use `TicketingListUsersQueryParamFilter$Outbound` instead. */
-  export type Outbound = TicketingListUsersQueryParamFilter$Outbound;
-}
-
 export function ticketingListUsersQueryParamFilterToJSON(
   ticketingListUsersQueryParamFilter: TicketingListUsersQueryParamFilter,
 ): string {
@@ -138,44 +109,6 @@ export function ticketingListUsersQueryParamFilterToJSON(
     ),
   );
 }
-
-export function ticketingListUsersQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingListUsersQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingListUsersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingListUsersQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingListUsersRequest$inboundSchema: z.ZodType<
-  TicketingListUsersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => TicketingListUsersQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type TicketingListUsersRequest$Outbound = {
@@ -215,34 +148,11 @@ export const TicketingListUsersRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListUsersRequest$ {
-  /** @deprecated use `TicketingListUsersRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingListUsersRequest$inboundSchema;
-  /** @deprecated use `TicketingListUsersRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingListUsersRequest$outboundSchema;
-  /** @deprecated use `TicketingListUsersRequest$Outbound` instead. */
-  export type Outbound = TicketingListUsersRequest$Outbound;
-}
-
 export function ticketingListUsersRequestToJSON(
   ticketingListUsersRequest: TicketingListUsersRequest,
 ): string {
   return JSON.stringify(
     TicketingListUsersRequest$outboundSchema.parse(ticketingListUsersRequest),
-  );
-}
-
-export function ticketingListUsersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingListUsersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingListUsersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingListUsersRequest' from JSON`,
   );
 }
 
@@ -268,60 +178,6 @@ export const TicketingListUsersResponse$inboundSchema: z.ZodType<
     "TicketingUsersPaginated": "ticketingUsersPaginated",
   });
 });
-
-/** @internal */
-export type TicketingListUsersResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TicketingUsersPaginated?: shared.TicketingUsersPaginated$Outbound | undefined;
-};
-
-/** @internal */
-export const TicketingListUsersResponse$outboundSchema: z.ZodType<
-  TicketingListUsersResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingListUsersResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  ticketingUsersPaginated: shared.TicketingUsersPaginated$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    ticketingUsersPaginated: "TicketingUsersPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListUsersResponse$ {
-  /** @deprecated use `TicketingListUsersResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingListUsersResponse$inboundSchema;
-  /** @deprecated use `TicketingListUsersResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingListUsersResponse$outboundSchema;
-  /** @deprecated use `TicketingListUsersResponse$Outbound` instead. */
-  export type Outbound = TicketingListUsersResponse$Outbound;
-}
-
-export function ticketingListUsersResponseToJSON(
-  ticketingListUsersResponse: TicketingListUsersResponse,
-): string {
-  return JSON.stringify(
-    TicketingListUsersResponse$outboundSchema.parse(ticketingListUsersResponse),
-  );
-}
 
 export function ticketingListUsersResponseFromJSON(
   jsonString: string,

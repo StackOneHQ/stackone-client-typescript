@@ -5,18 +5,12 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ScorecardSection,
   ScorecardSection$inboundSchema,
-  ScorecardSection$Outbound,
-  ScorecardSection$outboundSchema,
 } from "./scorecardsection.js";
 
 /**
@@ -110,27 +104,6 @@ export const OverallRecommendation$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const OverallRecommendation$outboundSchema: z.ZodType<
-  OverallRecommendationOpen,
-  z.ZodTypeDef,
-  OverallRecommendationOpen
-> = z.union([
-  z.nativeEnum(OverallRecommendation),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OverallRecommendation$ {
-  /** @deprecated use `OverallRecommendation$inboundSchema` instead. */
-  export const inboundSchema = OverallRecommendation$inboundSchema;
-  /** @deprecated use `OverallRecommendation$outboundSchema` instead. */
-  export const outboundSchema = OverallRecommendation$outboundSchema;
-}
-
-/** @internal */
 export const Scorecard$inboundSchema: z.ZodType<
   Scorecard,
   z.ZodTypeDef,
@@ -172,81 +145,6 @@ export const Scorecard$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type Scorecard$Outbound = {
-  application_id?: string | null | undefined;
-  author_id?: string | null | undefined;
-  candidate_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  interview_id?: string | null | undefined;
-  label?: string | null | undefined;
-  overall_recommendation?: string | null | undefined;
-  remote_application_id?: string | null | undefined;
-  remote_author_id?: string | null | undefined;
-  remote_candidate_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_interview_id?: string | null | undefined;
-  sections?: Array<ScorecardSection$Outbound> | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Scorecard$outboundSchema: z.ZodType<
-  Scorecard$Outbound,
-  z.ZodTypeDef,
-  Scorecard
-> = z.object({
-  applicationId: z.nullable(z.string()).optional(),
-  authorId: z.nullable(z.string()).optional(),
-  candidateId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  interviewId: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  overallRecommendation: z.nullable(OverallRecommendation$outboundSchema)
-    .optional(),
-  remoteApplicationId: z.nullable(z.string()).optional(),
-  remoteAuthorId: z.nullable(z.string()).optional(),
-  remoteCandidateId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteInterviewId: z.nullable(z.string()).optional(),
-  sections: z.nullable(z.array(ScorecardSection$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    applicationId: "application_id",
-    authorId: "author_id",
-    candidateId: "candidate_id",
-    createdAt: "created_at",
-    interviewId: "interview_id",
-    overallRecommendation: "overall_recommendation",
-    remoteApplicationId: "remote_application_id",
-    remoteAuthorId: "remote_author_id",
-    remoteCandidateId: "remote_candidate_id",
-    remoteId: "remote_id",
-    remoteInterviewId: "remote_interview_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scorecard$ {
-  /** @deprecated use `Scorecard$inboundSchema` instead. */
-  export const inboundSchema = Scorecard$inboundSchema;
-  /** @deprecated use `Scorecard$outboundSchema` instead. */
-  export const outboundSchema = Scorecard$outboundSchema;
-  /** @deprecated use `Scorecard$Outbound` instead. */
-  export type Outbound = Scorecard$Outbound;
-}
-
-export function scorecardToJSON(scorecard: Scorecard): string {
-  return JSON.stringify(Scorecard$outboundSchema.parse(scorecard));
-}
 
 export function scorecardFromJSON(
   jsonString: string,

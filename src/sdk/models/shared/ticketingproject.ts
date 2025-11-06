@@ -65,60 +65,6 @@ export const TicketingProject$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type TicketingProject$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  organization_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingProject$outboundSchema: z.ZodType<
-  TicketingProject$Outbound,
-  z.ZodTypeDef,
-  TicketingProject
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  organizationId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    organizationId: "organization_id",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingProject$ {
-  /** @deprecated use `TicketingProject$inboundSchema` instead. */
-  export const inboundSchema = TicketingProject$inboundSchema;
-  /** @deprecated use `TicketingProject$outboundSchema` instead. */
-  export const outboundSchema = TicketingProject$outboundSchema;
-  /** @deprecated use `TicketingProject$Outbound` instead. */
-  export type Outbound = TicketingProject$Outbound;
-}
-
-export function ticketingProjectToJSON(
-  ticketingProject: TicketingProject,
-): string {
-  return JSON.stringify(
-    TicketingProject$outboundSchema.parse(ticketingProject),
-  );
-}
-
 export function ticketingProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingProject, SDKValidationError> {

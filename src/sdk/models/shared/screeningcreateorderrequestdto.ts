@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ScreeningOrderCandidate,
-  ScreeningOrderCandidate$inboundSchema,
   ScreeningOrderCandidate$Outbound,
   ScreeningOrderCandidate$outboundSchema,
 } from "./screeningordercandidate.js";
@@ -32,23 +28,6 @@ export type ScreeningCreateOrderRequestDto = {
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const ScreeningCreateOrderRequestDto$inboundSchema: z.ZodType<
-  ScreeningCreateOrderRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  candidate: ScreeningOrderCandidate$inboundSchema,
-  package_id: z.string(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "package_id": "packageId",
-    "unified_custom_fields": "unifiedCustomFields",
-  });
-});
 
 /** @internal */
 export type ScreeningCreateOrderRequestDto$Outbound = {
@@ -75,19 +54,6 @@ export const ScreeningCreateOrderRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningCreateOrderRequestDto$ {
-  /** @deprecated use `ScreeningCreateOrderRequestDto$inboundSchema` instead. */
-  export const inboundSchema = ScreeningCreateOrderRequestDto$inboundSchema;
-  /** @deprecated use `ScreeningCreateOrderRequestDto$outboundSchema` instead. */
-  export const outboundSchema = ScreeningCreateOrderRequestDto$outboundSchema;
-  /** @deprecated use `ScreeningCreateOrderRequestDto$Outbound` instead. */
-  export type Outbound = ScreeningCreateOrderRequestDto$Outbound;
-}
-
 export function screeningCreateOrderRequestDtoToJSON(
   screeningCreateOrderRequestDto: ScreeningCreateOrderRequestDto,
 ): string {
@@ -95,15 +61,5 @@ export function screeningCreateOrderRequestDtoToJSON(
     ScreeningCreateOrderRequestDto$outboundSchema.parse(
       screeningCreateOrderRequestDto,
     ),
-  );
-}
-
-export function screeningCreateOrderRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<ScreeningCreateOrderRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ScreeningCreateOrderRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScreeningCreateOrderRequestDto' from JSON`,
   );
 }

@@ -39,55 +39,6 @@ export const UpsertResultDataExternalReferenceModel$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type UpsertResultDataExternalReferenceModel$Outbound = {
-  external_reference?: string | null | undefined;
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const UpsertResultDataExternalReferenceModel$outboundSchema: z.ZodType<
-  UpsertResultDataExternalReferenceModel$Outbound,
-  z.ZodTypeDef,
-  UpsertResultDataExternalReferenceModel
-> = z.object({
-  externalReference: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    externalReference: "external_reference",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpsertResultDataExternalReferenceModel$ {
-  /** @deprecated use `UpsertResultDataExternalReferenceModel$inboundSchema` instead. */
-  export const inboundSchema =
-    UpsertResultDataExternalReferenceModel$inboundSchema;
-  /** @deprecated use `UpsertResultDataExternalReferenceModel$outboundSchema` instead. */
-  export const outboundSchema =
-    UpsertResultDataExternalReferenceModel$outboundSchema;
-  /** @deprecated use `UpsertResultDataExternalReferenceModel$Outbound` instead. */
-  export type Outbound = UpsertResultDataExternalReferenceModel$Outbound;
-}
-
-export function upsertResultDataExternalReferenceModelToJSON(
-  upsertResultDataExternalReferenceModel:
-    UpsertResultDataExternalReferenceModel,
-): string {
-  return JSON.stringify(
-    UpsertResultDataExternalReferenceModel$outboundSchema.parse(
-      upsertResultDataExternalReferenceModel,
-    ),
-  );
-}
-
 export function upsertResultDataExternalReferenceModelFromJSON(
   jsonString: string,
 ): SafeParseResult<UpsertResultDataExternalReferenceModel, SDKValidationError> {

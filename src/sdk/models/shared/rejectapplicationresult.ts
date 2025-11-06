@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateResultDataApiModel,
   CreateResultDataApiModel$inboundSchema,
-  CreateResultDataApiModel$Outbound,
-  CreateResultDataApiModel$outboundSchema,
 } from "./createresultdataapimodel.js";
 
 export type RejectApplicationResult = {
@@ -31,47 +29,6 @@ export const RejectApplicationResult$inboundSchema: z.ZodType<
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
-/** @internal */
-export type RejectApplicationResult$Outbound = {
-  data: CreateResultDataApiModel$Outbound;
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const RejectApplicationResult$outboundSchema: z.ZodType<
-  RejectApplicationResult$Outbound,
-  z.ZodTypeDef,
-  RejectApplicationResult
-> = z.object({
-  data: CreateResultDataApiModel$outboundSchema,
-  message: z.string(),
-  statusCode: z.number(),
-  timestamp: z.date().transform(v => v.toISOString()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectApplicationResult$ {
-  /** @deprecated use `RejectApplicationResult$inboundSchema` instead. */
-  export const inboundSchema = RejectApplicationResult$inboundSchema;
-  /** @deprecated use `RejectApplicationResult$outboundSchema` instead. */
-  export const outboundSchema = RejectApplicationResult$outboundSchema;
-  /** @deprecated use `RejectApplicationResult$Outbound` instead. */
-  export type Outbound = RejectApplicationResult$Outbound;
-}
-
-export function rejectApplicationResultToJSON(
-  rejectApplicationResult: RejectApplicationResult,
-): string {
-  return JSON.stringify(
-    RejectApplicationResult$outboundSchema.parse(rejectApplicationResult),
-  );
-}
 
 export function rejectApplicationResultFromJSON(
   jsonString: string,

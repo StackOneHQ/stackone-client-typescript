@@ -51,22 +51,6 @@ export type AtsGetApplicationScheduledInterviewResponse = {
 };
 
 /** @internal */
-export const AtsGetApplicationScheduledInterviewRequest$inboundSchema:
-  z.ZodType<AtsGetApplicationScheduledInterviewRequest, z.ZodTypeDef, unknown> =
-    z.object({
-      fields: z.nullable(z.string()).optional(),
-      id: z.string(),
-      proxy: z.nullable(z.record(z.any())).optional(),
-      raw: z.nullable(z.boolean()).optional(),
-      subResourceId: z.string(),
-      "x-account-id": z.string(),
-    }).transform((v) => {
-      return remap$(v, {
-        "x-account-id": "xAccountId",
-      });
-    });
-
-/** @internal */
 export type AtsGetApplicationScheduledInterviewRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -95,21 +79,6 @@ export const AtsGetApplicationScheduledInterviewRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationScheduledInterviewRequest$ {
-  /** @deprecated use `AtsGetApplicationScheduledInterviewRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetApplicationScheduledInterviewRequest$inboundSchema;
-  /** @deprecated use `AtsGetApplicationScheduledInterviewRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetApplicationScheduledInterviewRequest$outboundSchema;
-  /** @deprecated use `AtsGetApplicationScheduledInterviewRequest$Outbound` instead. */
-  export type Outbound = AtsGetApplicationScheduledInterviewRequest$Outbound;
-}
-
 export function atsGetApplicationScheduledInterviewRequestToJSON(
   atsGetApplicationScheduledInterviewRequest:
     AtsGetApplicationScheduledInterviewRequest,
@@ -118,22 +87,6 @@ export function atsGetApplicationScheduledInterviewRequestToJSON(
     AtsGetApplicationScheduledInterviewRequest$outboundSchema.parse(
       atsGetApplicationScheduledInterviewRequest,
     ),
-  );
-}
-
-export function atsGetApplicationScheduledInterviewRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsGetApplicationScheduledInterviewRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsGetApplicationScheduledInterviewRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsGetApplicationScheduledInterviewRequest' from JSON`,
   );
 }
 
@@ -160,68 +113,6 @@ export const AtsGetApplicationScheduledInterviewResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type AtsGetApplicationScheduledInterviewResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScheduledInterviewsResult?:
-    | shared.ScheduledInterviewsResult$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetApplicationScheduledInterviewResponse$outboundSchema:
-  z.ZodType<
-    AtsGetApplicationScheduledInterviewResponse$Outbound,
-    z.ZodTypeDef,
-    AtsGetApplicationScheduledInterviewResponse
-  > = z.object({
-    contentType: z.string(),
-    headers: z.record(z.array(z.string())),
-    scheduledInterviewsResult: shared.ScheduledInterviewsResult$outboundSchema
-      .optional(),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      headers: "Headers",
-      scheduledInterviewsResult: "ScheduledInterviewsResult",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationScheduledInterviewResponse$ {
-  /** @deprecated use `AtsGetApplicationScheduledInterviewResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetApplicationScheduledInterviewResponse$inboundSchema;
-  /** @deprecated use `AtsGetApplicationScheduledInterviewResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetApplicationScheduledInterviewResponse$outboundSchema;
-  /** @deprecated use `AtsGetApplicationScheduledInterviewResponse$Outbound` instead. */
-  export type Outbound = AtsGetApplicationScheduledInterviewResponse$Outbound;
-}
-
-export function atsGetApplicationScheduledInterviewResponseToJSON(
-  atsGetApplicationScheduledInterviewResponse:
-    AtsGetApplicationScheduledInterviewResponse,
-): string {
-  return JSON.stringify(
-    AtsGetApplicationScheduledInterviewResponse$outboundSchema.parse(
-      atsGetApplicationScheduledInterviewResponse,
-    ),
-  );
-}
 
 export function atsGetApplicationScheduledInterviewResponseFromJSON(
   jsonString: string,

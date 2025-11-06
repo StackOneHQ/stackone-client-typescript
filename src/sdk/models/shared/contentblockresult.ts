@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ContentBlock,
-  ContentBlock$inboundSchema,
-  ContentBlock$Outbound,
-  ContentBlock$outboundSchema,
-} from "./contentblock.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { ContentBlock, ContentBlock$inboundSchema } from "./contentblock.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ContentBlockResult = {
   data: ContentBlock;
@@ -33,43 +23,6 @@ export const ContentBlockResult$inboundSchema: z.ZodType<
   data: ContentBlock$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ContentBlockResult$Outbound = {
-  data: ContentBlock$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ContentBlockResult$outboundSchema: z.ZodType<
-  ContentBlockResult$Outbound,
-  z.ZodTypeDef,
-  ContentBlockResult
-> = z.object({
-  data: ContentBlock$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockResult$ {
-  /** @deprecated use `ContentBlockResult$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockResult$inboundSchema;
-  /** @deprecated use `ContentBlockResult$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockResult$outboundSchema;
-  /** @deprecated use `ContentBlockResult$Outbound` instead. */
-  export type Outbound = ContentBlockResult$Outbound;
-}
-
-export function contentBlockResultToJSON(
-  contentBlockResult: ContentBlockResult,
-): string {
-  return JSON.stringify(
-    ContentBlockResult$outboundSchema.parse(contentBlockResult),
-  );
-}
 
 export function contentBlockResultFromJSON(
   jsonString: string,

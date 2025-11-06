@@ -51,56 +51,6 @@ export const MessagingAttachment$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type MessagingAttachment$Outbound = {
-  file_name?: string | null | undefined;
-  file_size?: number | null | undefined;
-  file_type?: string | null | undefined;
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingAttachment$outboundSchema: z.ZodType<
-  MessagingAttachment$Outbound,
-  z.ZodTypeDef,
-  MessagingAttachment
-> = z.object({
-  fileName: z.nullable(z.string()).optional(),
-  fileSize: z.nullable(z.number()).optional(),
-  fileType: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    fileName: "file_name",
-    fileSize: "file_size",
-    fileType: "file_type",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingAttachment$ {
-  /** @deprecated use `MessagingAttachment$inboundSchema` instead. */
-  export const inboundSchema = MessagingAttachment$inboundSchema;
-  /** @deprecated use `MessagingAttachment$outboundSchema` instead. */
-  export const outboundSchema = MessagingAttachment$outboundSchema;
-  /** @deprecated use `MessagingAttachment$Outbound` instead. */
-  export type Outbound = MessagingAttachment$Outbound;
-}
-
-export function messagingAttachmentToJSON(
-  messagingAttachment: MessagingAttachment,
-): string {
-  return JSON.stringify(
-    MessagingAttachment$outboundSchema.parse(messagingAttachment),
-  );
-}
-
 export function messagingAttachmentFromJSON(
   jsonString: string,
 ): SafeParseResult<MessagingAttachment, SDKValidationError> {

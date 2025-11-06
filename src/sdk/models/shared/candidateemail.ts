@@ -27,7 +27,6 @@ export const CandidateEmail$inboundSchema: z.ZodType<
   type: z.nullable(z.string()).optional(),
   value: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type CandidateEmail$Outbound = {
   type?: string | null | undefined;
@@ -44,23 +43,9 @@ export const CandidateEmail$outboundSchema: z.ZodType<
   value: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CandidateEmail$ {
-  /** @deprecated use `CandidateEmail$inboundSchema` instead. */
-  export const inboundSchema = CandidateEmail$inboundSchema;
-  /** @deprecated use `CandidateEmail$outboundSchema` instead. */
-  export const outboundSchema = CandidateEmail$outboundSchema;
-  /** @deprecated use `CandidateEmail$Outbound` instead. */
-  export type Outbound = CandidateEmail$Outbound;
-}
-
 export function candidateEmailToJSON(candidateEmail: CandidateEmail): string {
   return JSON.stringify(CandidateEmail$outboundSchema.parse(candidateEmail));
 }
-
 export function candidateEmailFromJSON(
   jsonString: string,
 ): SafeParseResult<CandidateEmail, SDKValidationError> {

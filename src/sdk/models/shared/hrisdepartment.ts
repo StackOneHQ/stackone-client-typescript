@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -102,35 +98,6 @@ export const HRISDepartment4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type HRISDepartment4$Outbound = {};
-
-/** @internal */
-export const HRISDepartment4$outboundSchema: z.ZodType<
-  HRISDepartment4$Outbound,
-  z.ZodTypeDef,
-  HRISDepartment4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDepartment4$ {
-  /** @deprecated use `HRISDepartment4$inboundSchema` instead. */
-  export const inboundSchema = HRISDepartment4$inboundSchema;
-  /** @deprecated use `HRISDepartment4$outboundSchema` instead. */
-  export const outboundSchema = HRISDepartment4$outboundSchema;
-  /** @deprecated use `HRISDepartment4$Outbound` instead. */
-  export type Outbound = HRISDepartment4$Outbound;
-}
-
-export function hrisDepartment4ToJSON(
-  hrisDepartment4: HRISDepartment4,
-): string {
-  return JSON.stringify(HRISDepartment4$outboundSchema.parse(hrisDepartment4));
-}
-
 export function hrisDepartment4FromJSON(
   jsonString: string,
 ): SafeParseResult<HRISDepartment4, SDKValidationError> {
@@ -154,48 +121,6 @@ export const HRISDepartmentSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HRISDepartmentSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HRISDepartment4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HRISDepartmentSourceValue$outboundSchema: z.ZodType<
-  HRISDepartmentSourceValue$Outbound,
-  z.ZodTypeDef,
-  HRISDepartmentSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HRISDepartment4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDepartmentSourceValue$ {
-  /** @deprecated use `HRISDepartmentSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HRISDepartmentSourceValue$inboundSchema;
-  /** @deprecated use `HRISDepartmentSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HRISDepartmentSourceValue$outboundSchema;
-  /** @deprecated use `HRISDepartmentSourceValue$Outbound` instead. */
-  export type Outbound = HRISDepartmentSourceValue$Outbound;
-}
-
-export function hrisDepartmentSourceValueToJSON(
-  hrisDepartmentSourceValue: HRISDepartmentSourceValue,
-): string {
-  return JSON.stringify(
-    HRISDepartmentSourceValue$outboundSchema.parse(hrisDepartmentSourceValue),
-  );
-}
-
 export function hrisDepartmentSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HRISDepartmentSourceValue, SDKValidationError> {
@@ -218,27 +143,6 @@ export const HRISDepartmentValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HRISDepartmentValue$outboundSchema: z.ZodType<
-  HRISDepartmentValueOpen,
-  z.ZodTypeDef,
-  HRISDepartmentValueOpen
-> = z.union([
-  z.nativeEnum(HRISDepartmentValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDepartmentValue$ {
-  /** @deprecated use `HRISDepartmentValue$inboundSchema` instead. */
-  export const inboundSchema = HRISDepartmentValue$inboundSchema;
-  /** @deprecated use `HRISDepartmentValue$outboundSchema` instead. */
-  export const outboundSchema = HRISDepartmentValue$outboundSchema;
-}
-
-/** @internal */
 export const HRISDepartmentType$inboundSchema: z.ZodType<
   HRISDepartmentType,
   z.ZodTypeDef,
@@ -259,62 +163,6 @@ export const HRISDepartmentType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type HRISDepartmentType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HRISDepartment4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HRISDepartmentType$outboundSchema: z.ZodType<
-  HRISDepartmentType$Outbound,
-  z.ZodTypeDef,
-  HRISDepartmentType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HRISDepartment4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HRISDepartmentValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDepartmentType$ {
-  /** @deprecated use `HRISDepartmentType$inboundSchema` instead. */
-  export const inboundSchema = HRISDepartmentType$inboundSchema;
-  /** @deprecated use `HRISDepartmentType$outboundSchema` instead. */
-  export const outboundSchema = HRISDepartmentType$outboundSchema;
-  /** @deprecated use `HRISDepartmentType$Outbound` instead. */
-  export type Outbound = HRISDepartmentType$Outbound;
-}
-
-export function hrisDepartmentTypeToJSON(
-  hrisDepartmentType: HRISDepartmentType,
-): string {
-  return JSON.stringify(
-    HRISDepartmentType$outboundSchema.parse(hrisDepartmentType),
-  );
-}
 
 export function hrisDepartmentTypeFromJSON(
   jsonString: string,
@@ -355,68 +203,6 @@ export const HRISDepartment$inboundSchema: z.ZodType<
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
-
-/** @internal */
-export type HRISDepartment$Outbound = {
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  owner_ids?: Array<string> | null | undefined;
-  parent_ids?: Array<string> | null | undefined;
-  remote_company_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_ids?: Array<string> | null | undefined;
-  remote_parent_ids?: Array<string> | null | undefined;
-  type?: HRISDepartmentType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const HRISDepartment$outboundSchema: z.ZodType<
-  HRISDepartment$Outbound,
-  z.ZodTypeDef,
-  HRISDepartment
-> = z.object({
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerIds: z.nullable(z.array(z.string())).optional(),
-  parentIds: z.nullable(z.array(z.string())).optional(),
-  remoteCompanyId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
-  remoteParentIds: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(z.lazy(() => HRISDepartmentType$outboundSchema)).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    ownerIds: "owner_ids",
-    parentIds: "parent_ids",
-    remoteCompanyId: "remote_company_id",
-    remoteId: "remote_id",
-    remoteOwnerIds: "remote_owner_ids",
-    remoteParentIds: "remote_parent_ids",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDepartment$ {
-  /** @deprecated use `HRISDepartment$inboundSchema` instead. */
-  export const inboundSchema = HRISDepartment$inboundSchema;
-  /** @deprecated use `HRISDepartment$outboundSchema` instead. */
-  export const outboundSchema = HRISDepartment$outboundSchema;
-  /** @deprecated use `HRISDepartment$Outbound` instead. */
-  export type Outbound = HRISDepartment$Outbound;
-}
-
-export function hrisDepartmentToJSON(hrisDepartment: HRISDepartment): string {
-  return JSON.stringify(HRISDepartment$outboundSchema.parse(hrisDepartment));
-}
 
 export function hrisDepartmentFromJSON(
   jsonString: string,

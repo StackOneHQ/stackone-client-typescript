@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type CreateAnswer4 = {};
 
@@ -84,13 +77,6 @@ export type CreateAnswer = {
 };
 
 /** @internal */
-export const CreateAnswer4$inboundSchema: z.ZodType<
-  CreateAnswer4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type CreateAnswer4$Outbound = {};
 
 /** @internal */
@@ -100,45 +86,9 @@ export const CreateAnswer4$outboundSchema: z.ZodType<
   CreateAnswer4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnswer4$ {
-  /** @deprecated use `CreateAnswer4$inboundSchema` instead. */
-  export const inboundSchema = CreateAnswer4$inboundSchema;
-  /** @deprecated use `CreateAnswer4$outboundSchema` instead. */
-  export const outboundSchema = CreateAnswer4$outboundSchema;
-  /** @deprecated use `CreateAnswer4$Outbound` instead. */
-  export type Outbound = CreateAnswer4$Outbound;
-}
-
 export function createAnswer4ToJSON(createAnswer4: CreateAnswer4): string {
   return JSON.stringify(CreateAnswer4$outboundSchema.parse(createAnswer4));
 }
-
-export function createAnswer4FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAnswer4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAnswer4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAnswer4' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateAnswerSourceValue$inboundSchema: z.ZodType<
-  CreateAnswerSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => CreateAnswer4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type CreateAnswerSourceValue$Outbound =
@@ -161,19 +111,6 @@ export const CreateAnswerSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnswerSourceValue$ {
-  /** @deprecated use `CreateAnswerSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CreateAnswerSourceValue$inboundSchema;
-  /** @deprecated use `CreateAnswerSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CreateAnswerSourceValue$outboundSchema;
-  /** @deprecated use `CreateAnswerSourceValue$Outbound` instead. */
-  export type Outbound = CreateAnswerSourceValue$Outbound;
-}
-
 export function createAnswerSourceValueToJSON(
   createAnswerSourceValue: CreateAnswerSourceValue,
 ): string {
@@ -181,27 +118,6 @@ export function createAnswerSourceValueToJSON(
     CreateAnswerSourceValue$outboundSchema.parse(createAnswerSourceValue),
   );
 }
-
-export function createAnswerSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAnswerSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAnswerSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAnswerSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateAnswerValue$inboundSchema: z.ZodType<
-  CreateAnswerValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(CreateAnswerValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
 
 /** @internal */
 export const CreateAnswerValue$outboundSchema: z.ZodType<
@@ -212,39 +128,6 @@ export const CreateAnswerValue$outboundSchema: z.ZodType<
   z.nativeEnum(CreateAnswerValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnswerValue$ {
-  /** @deprecated use `CreateAnswerValue$inboundSchema` instead. */
-  export const inboundSchema = CreateAnswerValue$inboundSchema;
-  /** @deprecated use `CreateAnswerValue$outboundSchema` instead. */
-  export const outboundSchema = CreateAnswerValue$outboundSchema;
-}
-
-/** @internal */
-export const CreateAnswerType$inboundSchema: z.ZodType<
-  CreateAnswerType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => CreateAnswer4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateAnswerValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type CreateAnswerType$Outbound = {
@@ -281,19 +164,6 @@ export const CreateAnswerType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnswerType$ {
-  /** @deprecated use `CreateAnswerType$inboundSchema` instead. */
-  export const inboundSchema = CreateAnswerType$inboundSchema;
-  /** @deprecated use `CreateAnswerType$outboundSchema` instead. */
-  export const outboundSchema = CreateAnswerType$outboundSchema;
-  /** @deprecated use `CreateAnswerType$Outbound` instead. */
-  export type Outbound = CreateAnswerType$Outbound;
-}
-
 export function createAnswerTypeToJSON(
   createAnswerType: CreateAnswerType,
 ): string {
@@ -301,27 +171,6 @@ export function createAnswerTypeToJSON(
     CreateAnswerType$outboundSchema.parse(createAnswerType),
   );
 }
-
-export function createAnswerTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAnswerType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAnswerType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAnswerType' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateAnswer$inboundSchema: z.ZodType<
-  CreateAnswer,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => CreateAnswerType$inboundSchema)).optional(),
-  values: z.nullable(z.array(z.string())).optional(),
-});
 
 /** @internal */
 export type CreateAnswer$Outbound = {
@@ -341,29 +190,6 @@ export const CreateAnswer$outboundSchema: z.ZodType<
   values: z.nullable(z.array(z.string())).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnswer$ {
-  /** @deprecated use `CreateAnswer$inboundSchema` instead. */
-  export const inboundSchema = CreateAnswer$inboundSchema;
-  /** @deprecated use `CreateAnswer$outboundSchema` instead. */
-  export const outboundSchema = CreateAnswer$outboundSchema;
-  /** @deprecated use `CreateAnswer$Outbound` instead. */
-  export type Outbound = CreateAnswer$Outbound;
-}
-
 export function createAnswerToJSON(createAnswer: CreateAnswer): string {
   return JSON.stringify(CreateAnswer$outboundSchema.parse(createAnswer));
-}
-
-export function createAnswerFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAnswer, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAnswer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAnswer' from JSON`,
-  );
 }

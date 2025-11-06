@@ -54,24 +54,6 @@ export type IamGetRoleResponse = {
 };
 
 /** @internal */
-export const IamGetRoleRequest$inboundSchema: z.ZodType<
-  IamGetRoleRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type IamGetRoleRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -99,34 +81,11 @@ export const IamGetRoleRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamGetRoleRequest$ {
-  /** @deprecated use `IamGetRoleRequest$inboundSchema` instead. */
-  export const inboundSchema = IamGetRoleRequest$inboundSchema;
-  /** @deprecated use `IamGetRoleRequest$outboundSchema` instead. */
-  export const outboundSchema = IamGetRoleRequest$outboundSchema;
-  /** @deprecated use `IamGetRoleRequest$Outbound` instead. */
-  export type Outbound = IamGetRoleRequest$Outbound;
-}
-
 export function iamGetRoleRequestToJSON(
   iamGetRoleRequest: IamGetRoleRequest,
 ): string {
   return JSON.stringify(
     IamGetRoleRequest$outboundSchema.parse(iamGetRoleRequest),
-  );
-}
-
-export function iamGetRoleRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamGetRoleRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamGetRoleRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamGetRoleRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const IamGetRoleResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamGetRoleResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  IamRoleResult?: shared.IamRoleResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamGetRoleResponse$outboundSchema: z.ZodType<
-  IamGetRoleResponse$Outbound,
-  z.ZodTypeDef,
-  IamGetRoleResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  iamRoleResult: shared.IamRoleResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    iamRoleResult: "IamRoleResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamGetRoleResponse$ {
-  /** @deprecated use `IamGetRoleResponse$inboundSchema` instead. */
-  export const inboundSchema = IamGetRoleResponse$inboundSchema;
-  /** @deprecated use `IamGetRoleResponse$outboundSchema` instead. */
-  export const outboundSchema = IamGetRoleResponse$outboundSchema;
-  /** @deprecated use `IamGetRoleResponse$Outbound` instead. */
-  export type Outbound = IamGetRoleResponse$Outbound;
-}
-
-export function iamGetRoleResponseToJSON(
-  iamGetRoleResponse: IamGetRoleResponse,
-): string {
-  return JSON.stringify(
-    IamGetRoleResponse$outboundSchema.parse(iamGetRoleResponse),
-  );
-}
 
 export function iamGetRoleResponseFromJSON(
   jsonString: string,

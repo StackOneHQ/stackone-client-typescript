@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -253,33 +249,6 @@ export const Assignment4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type Assignment4$Outbound = {};
-
-/** @internal */
-export const Assignment4$outboundSchema: z.ZodType<
-  Assignment4$Outbound,
-  z.ZodTypeDef,
-  Assignment4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Assignment4$ {
-  /** @deprecated use `Assignment4$inboundSchema` instead. */
-  export const inboundSchema = Assignment4$inboundSchema;
-  /** @deprecated use `Assignment4$outboundSchema` instead. */
-  export const outboundSchema = Assignment4$outboundSchema;
-  /** @deprecated use `Assignment4$Outbound` instead. */
-  export type Outbound = Assignment4$Outbound;
-}
-
-export function assignment4ToJSON(assignment4: Assignment4): string {
-  return JSON.stringify(Assignment4$outboundSchema.parse(assignment4));
-}
-
 export function assignment4FromJSON(
   jsonString: string,
 ): SafeParseResult<Assignment4, SDKValidationError> {
@@ -303,48 +272,6 @@ export const AssignmentSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type AssignmentSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Assignment4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const AssignmentSourceValue$outboundSchema: z.ZodType<
-  AssignmentSourceValue$Outbound,
-  z.ZodTypeDef,
-  AssignmentSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Assignment4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSourceValue$ {
-  /** @deprecated use `AssignmentSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSourceValue$inboundSchema;
-  /** @deprecated use `AssignmentSourceValue$outboundSchema` instead. */
-  export const outboundSchema = AssignmentSourceValue$outboundSchema;
-  /** @deprecated use `AssignmentSourceValue$Outbound` instead. */
-  export type Outbound = AssignmentSourceValue$Outbound;
-}
-
-export function assignmentSourceValueToJSON(
-  assignmentSourceValue: AssignmentSourceValue,
-): string {
-  return JSON.stringify(
-    AssignmentSourceValue$outboundSchema.parse(assignmentSourceValue),
-  );
-}
-
 export function assignmentSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignmentSourceValue, SDKValidationError> {
@@ -365,27 +292,6 @@ export const AssignmentValue$inboundSchema: z.ZodType<
     z.nativeEnum(AssignmentValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const AssignmentValue$outboundSchema: z.ZodType<
-  AssignmentValueOpen,
-  z.ZodTypeDef,
-  AssignmentValueOpen
-> = z.union([
-  z.nativeEnum(AssignmentValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentValue$ {
-  /** @deprecated use `AssignmentValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentValue$inboundSchema;
-  /** @deprecated use `AssignmentValue$outboundSchema` instead. */
-  export const outboundSchema = AssignmentValue$outboundSchema;
-}
 
 /** @internal */
 export const LearningObjectType$inboundSchema: z.ZodType<
@@ -409,62 +315,6 @@ export const LearningObjectType$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type LearningObjectType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Assignment4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const LearningObjectType$outboundSchema: z.ZodType<
-  LearningObjectType$Outbound,
-  z.ZodTypeDef,
-  LearningObjectType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Assignment4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssignmentValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LearningObjectType$ {
-  /** @deprecated use `LearningObjectType$inboundSchema` instead. */
-  export const inboundSchema = LearningObjectType$inboundSchema;
-  /** @deprecated use `LearningObjectType$outboundSchema` instead. */
-  export const outboundSchema = LearningObjectType$outboundSchema;
-  /** @deprecated use `LearningObjectType$Outbound` instead. */
-  export type Outbound = LearningObjectType$Outbound;
-}
-
-export function learningObjectTypeToJSON(
-  learningObjectType: LearningObjectType,
-): string {
-  return JSON.stringify(
-    LearningObjectType$outboundSchema.parse(learningObjectType),
-  );
-}
-
 export function learningObjectTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<LearningObjectType, SDKValidationError> {
@@ -481,37 +331,6 @@ export const AssignmentSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type AssignmentSchemas4$Outbound = {};
-
-/** @internal */
-export const AssignmentSchemas4$outboundSchema: z.ZodType<
-  AssignmentSchemas4$Outbound,
-  z.ZodTypeDef,
-  AssignmentSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSchemas4$ {
-  /** @deprecated use `AssignmentSchemas4$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSchemas4$inboundSchema;
-  /** @deprecated use `AssignmentSchemas4$outboundSchema` instead. */
-  export const outboundSchema = AssignmentSchemas4$outboundSchema;
-  /** @deprecated use `AssignmentSchemas4$Outbound` instead. */
-  export type Outbound = AssignmentSchemas4$Outbound;
-}
-
-export function assignmentSchemas4ToJSON(
-  assignmentSchemas4: AssignmentSchemas4,
-): string {
-  return JSON.stringify(
-    AssignmentSchemas4$outboundSchema.parse(assignmentSchemas4),
-  );
-}
 
 export function assignmentSchemas4FromJSON(
   jsonString: string,
@@ -536,50 +355,6 @@ export const AssignmentSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type AssignmentSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | AssignmentSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const AssignmentSchemasSourceValue$outboundSchema: z.ZodType<
-  AssignmentSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  AssignmentSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AssignmentSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSchemasSourceValue$ {
-  /** @deprecated use `AssignmentSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSchemasSourceValue$inboundSchema;
-  /** @deprecated use `AssignmentSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = AssignmentSchemasSourceValue$outboundSchema;
-  /** @deprecated use `AssignmentSchemasSourceValue$Outbound` instead. */
-  export type Outbound = AssignmentSchemasSourceValue$Outbound;
-}
-
-export function assignmentSchemasSourceValueToJSON(
-  assignmentSchemasSourceValue: AssignmentSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    AssignmentSchemasSourceValue$outboundSchema.parse(
-      assignmentSchemasSourceValue,
-    ),
-  );
-}
-
 export function assignmentSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignmentSchemasSourceValue, SDKValidationError> {
@@ -602,27 +377,6 @@ export const AssignmentSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const AssignmentSchemasValue$outboundSchema: z.ZodType<
-  AssignmentSchemasValueOpen,
-  z.ZodTypeDef,
-  AssignmentSchemasValueOpen
-> = z.union([
-  z.nativeEnum(AssignmentSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSchemasValue$ {
-  /** @deprecated use `AssignmentSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSchemasValue$inboundSchema;
-  /** @deprecated use `AssignmentSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = AssignmentSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
   .object({
     source_value: z.nullable(
@@ -641,58 +395,6 @@ export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Result$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | AssignmentSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const Result$outboundSchema: z.ZodType<
-  Result$Outbound,
-  z.ZodTypeDef,
-  Result
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AssignmentSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssignmentSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Result$ {
-  /** @deprecated use `Result$inboundSchema` instead. */
-  export const inboundSchema = Result$inboundSchema;
-  /** @deprecated use `Result$outboundSchema` instead. */
-  export const outboundSchema = Result$outboundSchema;
-  /** @deprecated use `Result$Outbound` instead. */
-  export type Outbound = Result$Outbound;
-}
-
-export function resultToJSON(result: Result): string {
-  return JSON.stringify(Result$outboundSchema.parse(result));
-}
-
 export function resultFromJSON(
   jsonString: string,
 ): SafeParseResult<Result, SDKValidationError> {
@@ -709,37 +411,6 @@ export const AssignmentSchemasStatus4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type AssignmentSchemasStatus4$Outbound = {};
-
-/** @internal */
-export const AssignmentSchemasStatus4$outboundSchema: z.ZodType<
-  AssignmentSchemasStatus4$Outbound,
-  z.ZodTypeDef,
-  AssignmentSchemasStatus4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSchemasStatus4$ {
-  /** @deprecated use `AssignmentSchemasStatus4$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSchemasStatus4$inboundSchema;
-  /** @deprecated use `AssignmentSchemasStatus4$outboundSchema` instead. */
-  export const outboundSchema = AssignmentSchemasStatus4$outboundSchema;
-  /** @deprecated use `AssignmentSchemasStatus4$Outbound` instead. */
-  export type Outbound = AssignmentSchemasStatus4$Outbound;
-}
-
-export function assignmentSchemasStatus4ToJSON(
-  assignmentSchemasStatus4: AssignmentSchemasStatus4,
-): string {
-  return JSON.stringify(
-    AssignmentSchemasStatus4$outboundSchema.parse(assignmentSchemasStatus4),
-  );
-}
 
 export function assignmentSchemasStatus4FromJSON(
   jsonString: string,
@@ -764,51 +435,6 @@ export const AssignmentSchemasStatusSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type AssignmentSchemasStatusSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | AssignmentSchemasStatus4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const AssignmentSchemasStatusSourceValue$outboundSchema: z.ZodType<
-  AssignmentSchemasStatusSourceValue$Outbound,
-  z.ZodTypeDef,
-  AssignmentSchemasStatusSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AssignmentSchemasStatus4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSchemasStatusSourceValue$ {
-  /** @deprecated use `AssignmentSchemasStatusSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSchemasStatusSourceValue$inboundSchema;
-  /** @deprecated use `AssignmentSchemasStatusSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AssignmentSchemasStatusSourceValue$outboundSchema;
-  /** @deprecated use `AssignmentSchemasStatusSourceValue$Outbound` instead. */
-  export type Outbound = AssignmentSchemasStatusSourceValue$Outbound;
-}
-
-export function assignmentSchemasStatusSourceValueToJSON(
-  assignmentSchemasStatusSourceValue: AssignmentSchemasStatusSourceValue,
-): string {
-  return JSON.stringify(
-    AssignmentSchemasStatusSourceValue$outboundSchema.parse(
-      assignmentSchemasStatusSourceValue,
-    ),
-  );
-}
-
 export function assignmentSchemasStatusSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignmentSchemasStatusSourceValue, SDKValidationError> {
@@ -832,27 +458,6 @@ export const AssignmentSchemasStatusValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const AssignmentSchemasStatusValue$outboundSchema: z.ZodType<
-  AssignmentSchemasStatusValueOpen,
-  z.ZodTypeDef,
-  AssignmentSchemasStatusValueOpen
-> = z.union([
-  z.nativeEnum(AssignmentSchemasStatusValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentSchemasStatusValue$ {
-  /** @deprecated use `AssignmentSchemasStatusValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentSchemasStatusValue$inboundSchema;
-  /** @deprecated use `AssignmentSchemasStatusValue$outboundSchema` instead. */
-  export const outboundSchema = AssignmentSchemasStatusValue$outboundSchema;
-}
-
-/** @internal */
 export const AssignmentStatus$inboundSchema: z.ZodType<
   AssignmentStatus,
   z.ZodTypeDef,
@@ -873,62 +478,6 @@ export const AssignmentStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type AssignmentStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | AssignmentSchemasStatus4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const AssignmentStatus$outboundSchema: z.ZodType<
-  AssignmentStatus$Outbound,
-  z.ZodTypeDef,
-  AssignmentStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AssignmentSchemasStatus4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssignmentSchemasStatusValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentStatus$ {
-  /** @deprecated use `AssignmentStatus$inboundSchema` instead. */
-  export const inboundSchema = AssignmentStatus$inboundSchema;
-  /** @deprecated use `AssignmentStatus$outboundSchema` instead. */
-  export const outboundSchema = AssignmentStatus$outboundSchema;
-  /** @deprecated use `AssignmentStatus$Outbound` instead. */
-  export type Outbound = AssignmentStatus$Outbound;
-}
-
-export function assignmentStatusToJSON(
-  assignmentStatus: AssignmentStatus,
-): string {
-  return JSON.stringify(
-    AssignmentStatus$outboundSchema.parse(assignmentStatus),
-  );
-}
 
 export function assignmentStatusFromJSON(
   jsonString: string,
@@ -996,96 +545,6 @@ export const Assignment$inboundSchema: z.ZodType<
     "user_id": "userId",
   });
 });
-
-/** @internal */
-export type Assignment$Outbound = {
-  certificate_url?: string | null | undefined;
-  completed_at?: string | null | undefined;
-  course_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  due_date?: string | null | undefined;
-  external_reference?: string | null | undefined;
-  id?: string | null | undefined;
-  learning_object_external_reference?: string | null | undefined;
-  learning_object_id?: string | null | undefined;
-  learning_object_type?: LearningObjectType$Outbound | null | undefined;
-  progress?: number | null | undefined;
-  remote_course_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_learning_object_id?: string | null | undefined;
-  remote_user_id?: string | null | undefined;
-  result?: Result$Outbound | null | undefined;
-  status?: AssignmentStatus$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-  user_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Assignment$outboundSchema: z.ZodType<
-  Assignment$Outbound,
-  z.ZodTypeDef,
-  Assignment
-> = z.object({
-  certificateUrl: z.nullable(z.string()).optional(),
-  completedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  courseId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  externalReference: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  learningObjectExternalReference: z.nullable(z.string()).optional(),
-  learningObjectId: z.nullable(z.string()).optional(),
-  learningObjectType: z.nullable(
-    z.lazy(() => LearningObjectType$outboundSchema),
-  ).optional(),
-  progress: z.nullable(z.number()).optional(),
-  remoteCourseId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteLearningObjectId: z.nullable(z.string()).optional(),
-  remoteUserId: z.nullable(z.string()).optional(),
-  result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
-  status: z.nullable(z.lazy(() => AssignmentStatus$outboundSchema)).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  userId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    certificateUrl: "certificate_url",
-    completedAt: "completed_at",
-    courseId: "course_id",
-    createdAt: "created_at",
-    dueDate: "due_date",
-    externalReference: "external_reference",
-    learningObjectExternalReference: "learning_object_external_reference",
-    learningObjectId: "learning_object_id",
-    learningObjectType: "learning_object_type",
-    remoteCourseId: "remote_course_id",
-    remoteId: "remote_id",
-    remoteLearningObjectId: "remote_learning_object_id",
-    remoteUserId: "remote_user_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-    userId: "user_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Assignment$ {
-  /** @deprecated use `Assignment$inboundSchema` instead. */
-  export const inboundSchema = Assignment$inboundSchema;
-  /** @deprecated use `Assignment$outboundSchema` instead. */
-  export const outboundSchema = Assignment$outboundSchema;
-  /** @deprecated use `Assignment$Outbound` instead. */
-  export type Outbound = Assignment$Outbound;
-}
-
-export function assignmentToJSON(assignment: Assignment): string {
-  return JSON.stringify(Assignment$outboundSchema.parse(assignment));
-}
 
 export function assignmentFromJSON(
   jsonString: string,

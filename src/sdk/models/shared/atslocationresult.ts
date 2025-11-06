@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ATSLocation,
-  ATSLocation$inboundSchema,
-  ATSLocation$Outbound,
-  ATSLocation$outboundSchema,
-} from "./atslocation.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { ATSLocation, ATSLocation$inboundSchema } from "./atslocation.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ATSLocationResult = {
   data: ATSLocation;
@@ -33,43 +23,6 @@ export const ATSLocationResult$inboundSchema: z.ZodType<
   data: ATSLocation$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ATSLocationResult$Outbound = {
-  data: ATSLocation$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ATSLocationResult$outboundSchema: z.ZodType<
-  ATSLocationResult$Outbound,
-  z.ZodTypeDef,
-  ATSLocationResult
-> = z.object({
-  data: ATSLocation$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ATSLocationResult$ {
-  /** @deprecated use `ATSLocationResult$inboundSchema` instead. */
-  export const inboundSchema = ATSLocationResult$inboundSchema;
-  /** @deprecated use `ATSLocationResult$outboundSchema` instead. */
-  export const outboundSchema = ATSLocationResult$outboundSchema;
-  /** @deprecated use `ATSLocationResult$Outbound` instead. */
-  export type Outbound = ATSLocationResult$Outbound;
-}
-
-export function atsLocationResultToJSON(
-  atsLocationResult: ATSLocationResult,
-): string {
-  return JSON.stringify(
-    ATSLocationResult$outboundSchema.parse(atsLocationResult),
-  );
-}
 
 export function atsLocationResultFromJSON(
   jsonString: string,

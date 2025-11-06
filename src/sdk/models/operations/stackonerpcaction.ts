@@ -51,59 +51,6 @@ export const StackoneRpcActionResponse$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type StackoneRpcActionResponse$Outbound = {
-  ActionsRpcResponse?: shared.ActionsRpcResponse$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneRpcActionResponse$outboundSchema: z.ZodType<
-  StackoneRpcActionResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneRpcActionResponse
-> = z.object({
-  actionsRpcResponse: shared.ActionsRpcResponse$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    actionsRpcResponse: "ActionsRpcResponse",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneRpcActionResponse$ {
-  /** @deprecated use `StackoneRpcActionResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneRpcActionResponse$inboundSchema;
-  /** @deprecated use `StackoneRpcActionResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneRpcActionResponse$outboundSchema;
-  /** @deprecated use `StackoneRpcActionResponse$Outbound` instead. */
-  export type Outbound = StackoneRpcActionResponse$Outbound;
-}
-
-export function stackoneRpcActionResponseToJSON(
-  stackoneRpcActionResponse: StackoneRpcActionResponse,
-): string {
-  return JSON.stringify(
-    StackoneRpcActionResponse$outboundSchema.parse(stackoneRpcActionResponse),
-  );
-}
-
 export function stackoneRpcActionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<StackoneRpcActionResponse, SDKValidationError> {

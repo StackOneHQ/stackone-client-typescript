@@ -22,7 +22,6 @@ export const NoteContentApiModel$inboundSchema: z.ZodType<
 > = z.object({
   body: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type NoteContentApiModel$Outbound = {
   body?: string | null | undefined;
@@ -37,19 +36,6 @@ export const NoteContentApiModel$outboundSchema: z.ZodType<
   body: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NoteContentApiModel$ {
-  /** @deprecated use `NoteContentApiModel$inboundSchema` instead. */
-  export const inboundSchema = NoteContentApiModel$inboundSchema;
-  /** @deprecated use `NoteContentApiModel$outboundSchema` instead. */
-  export const outboundSchema = NoteContentApiModel$outboundSchema;
-  /** @deprecated use `NoteContentApiModel$Outbound` instead. */
-  export type Outbound = NoteContentApiModel$Outbound;
-}
-
 export function noteContentApiModelToJSON(
   noteContentApiModel: NoteContentApiModel,
 ): string {
@@ -57,7 +43,6 @@ export function noteContentApiModelToJSON(
     NoteContentApiModel$outboundSchema.parse(noteContentApiModel),
   );
 }
-
 export function noteContentApiModelFromJSON(
   jsonString: string,
 ): SafeParseResult<NoteContentApiModel, SDKValidationError> {

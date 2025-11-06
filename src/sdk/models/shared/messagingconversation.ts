@@ -55,51 +55,8 @@ export const MessagingConversation2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MessagingConversation2);
 
 /** @internal */
-export const MessagingConversation2$outboundSchema: z.ZodNativeEnum<
-  typeof MessagingConversation2
-> = MessagingConversation2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingConversation2$ {
-  /** @deprecated use `MessagingConversation2$inboundSchema` instead. */
-  export const inboundSchema = MessagingConversation2$inboundSchema;
-  /** @deprecated use `MessagingConversation2$outboundSchema` instead. */
-  export const outboundSchema = MessagingConversation2$outboundSchema;
-}
-
-/** @internal */
 export const Private$inboundSchema: z.ZodType<Private, z.ZodTypeDef, unknown> =
   z.union([z.boolean(), MessagingConversation2$inboundSchema]);
-
-/** @internal */
-export type Private$Outbound = boolean | string;
-
-/** @internal */
-export const Private$outboundSchema: z.ZodType<
-  Private$Outbound,
-  z.ZodTypeDef,
-  Private
-> = z.union([z.boolean(), MessagingConversation2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Private$ {
-  /** @deprecated use `Private$inboundSchema` instead. */
-  export const inboundSchema = Private$inboundSchema;
-  /** @deprecated use `Private$outboundSchema` instead. */
-  export const outboundSchema = Private$outboundSchema;
-  /** @deprecated use `Private$Outbound` instead. */
-  export type Outbound = Private$Outbound;
-}
-
-export function privateToJSON(value: Private): string {
-  return JSON.stringify(Private$outboundSchema.parse(value));
-}
 
 export function privateFromJSON(
   jsonString: string,
@@ -137,62 +94,6 @@ export const MessagingConversation$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type MessagingConversation$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  last_message_at?: string | null | undefined;
-  name?: string | null | undefined;
-  participants?: Array<string> | null | undefined;
-  private?: boolean | string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingConversation$outboundSchema: z.ZodType<
-  MessagingConversation$Outbound,
-  z.ZodTypeDef,
-  MessagingConversation
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  lastMessageAt: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  name: z.nullable(z.string()).optional(),
-  participants: z.nullable(z.array(z.string())).optional(),
-  private: z.nullable(
-    z.union([z.boolean(), MessagingConversation2$outboundSchema]),
-  ).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    lastMessageAt: "last_message_at",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingConversation$ {
-  /** @deprecated use `MessagingConversation$inboundSchema` instead. */
-  export const inboundSchema = MessagingConversation$inboundSchema;
-  /** @deprecated use `MessagingConversation$outboundSchema` instead. */
-  export const outboundSchema = MessagingConversation$outboundSchema;
-  /** @deprecated use `MessagingConversation$Outbound` instead. */
-  export type Outbound = MessagingConversation$Outbound;
-}
-
-export function messagingConversationToJSON(
-  messagingConversation: MessagingConversation,
-): string {
-  return JSON.stringify(
-    MessagingConversation$outboundSchema.parse(messagingConversation),
-  );
-}
 
 export function messagingConversationFromJSON(
   jsonString: string,

@@ -50,23 +50,6 @@ export type TicketingGetProjectResponse = {
 };
 
 /** @internal */
-export const TicketingGetProjectRequest$inboundSchema: z.ZodType<
-  TicketingGetProjectRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type TicketingGetProjectRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const TicketingGetProjectRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingGetProjectRequest$ {
-  /** @deprecated use `TicketingGetProjectRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingGetProjectRequest$inboundSchema;
-  /** @deprecated use `TicketingGetProjectRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingGetProjectRequest$outboundSchema;
-  /** @deprecated use `TicketingGetProjectRequest$Outbound` instead. */
-  export type Outbound = TicketingGetProjectRequest$Outbound;
-}
-
 export function ticketingGetProjectRequestToJSON(
   ticketingGetProjectRequest: TicketingGetProjectRequest,
 ): string {
   return JSON.stringify(
     TicketingGetProjectRequest$outboundSchema.parse(ticketingGetProjectRequest),
-  );
-}
-
-export function ticketingGetProjectRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingGetProjectRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingGetProjectRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingGetProjectRequest' from JSON`,
   );
 }
 
@@ -145,62 +105,6 @@ export const TicketingGetProjectResponse$inboundSchema: z.ZodType<
     "TicketingProjectResult": "ticketingProjectResult",
   });
 });
-
-/** @internal */
-export type TicketingGetProjectResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TicketingProjectResult?: shared.TicketingProjectResult$Outbound | undefined;
-};
-
-/** @internal */
-export const TicketingGetProjectResponse$outboundSchema: z.ZodType<
-  TicketingGetProjectResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingGetProjectResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  ticketingProjectResult: shared.TicketingProjectResult$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    ticketingProjectResult: "TicketingProjectResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingGetProjectResponse$ {
-  /** @deprecated use `TicketingGetProjectResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingGetProjectResponse$inboundSchema;
-  /** @deprecated use `TicketingGetProjectResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingGetProjectResponse$outboundSchema;
-  /** @deprecated use `TicketingGetProjectResponse$Outbound` instead. */
-  export type Outbound = TicketingGetProjectResponse$Outbound;
-}
-
-export function ticketingGetProjectResponseToJSON(
-  ticketingGetProjectResponse: TicketingGetProjectResponse,
-): string {
-  return JSON.stringify(
-    TicketingGetProjectResponse$outboundSchema.parse(
-      ticketingGetProjectResponse,
-    ),
-  );
-}
 
 export function ticketingGetProjectResponseFromJSON(
   jsonString: string,

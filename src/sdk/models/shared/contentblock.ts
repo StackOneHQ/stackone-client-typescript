@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -147,33 +143,6 @@ export const ContentBlock4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type ContentBlock4$Outbound = {};
-
-/** @internal */
-export const ContentBlock4$outboundSchema: z.ZodType<
-  ContentBlock4$Outbound,
-  z.ZodTypeDef,
-  ContentBlock4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlock4$ {
-  /** @deprecated use `ContentBlock4$inboundSchema` instead. */
-  export const inboundSchema = ContentBlock4$inboundSchema;
-  /** @deprecated use `ContentBlock4$outboundSchema` instead. */
-  export const outboundSchema = ContentBlock4$outboundSchema;
-  /** @deprecated use `ContentBlock4$Outbound` instead. */
-  export type Outbound = ContentBlock4$Outbound;
-}
-
-export function contentBlock4ToJSON(contentBlock4: ContentBlock4): string {
-  return JSON.stringify(ContentBlock4$outboundSchema.parse(contentBlock4));
-}
-
 export function contentBlock4FromJSON(
   jsonString: string,
 ): SafeParseResult<ContentBlock4, SDKValidationError> {
@@ -197,48 +166,6 @@ export const ContentBlockSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type ContentBlockSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | ContentBlock4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const ContentBlockSourceValue$outboundSchema: z.ZodType<
-  ContentBlockSourceValue$Outbound,
-  z.ZodTypeDef,
-  ContentBlockSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => ContentBlock4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockSourceValue$ {
-  /** @deprecated use `ContentBlockSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockSourceValue$inboundSchema;
-  /** @deprecated use `ContentBlockSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockSourceValue$outboundSchema;
-  /** @deprecated use `ContentBlockSourceValue$Outbound` instead. */
-  export type Outbound = ContentBlockSourceValue$Outbound;
-}
-
-export function contentBlockSourceValueToJSON(
-  contentBlockSourceValue: ContentBlockSourceValue,
-): string {
-  return JSON.stringify(
-    ContentBlockSourceValue$outboundSchema.parse(contentBlockSourceValue),
-  );
-}
-
 export function contentBlockSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ContentBlockSourceValue, SDKValidationError> {
@@ -259,27 +186,6 @@ export const ContentBlockValue$inboundSchema: z.ZodType<
     z.nativeEnum(ContentBlockValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const ContentBlockValue$outboundSchema: z.ZodType<
-  ContentBlockValueOpen,
-  z.ZodTypeDef,
-  ContentBlockValueOpen
-> = z.union([
-  z.nativeEnum(ContentBlockValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockValue$ {
-  /** @deprecated use `ContentBlockValue$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockValue$inboundSchema;
-  /** @deprecated use `ContentBlockValue$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockValue$outboundSchema;
-}
 
 /** @internal */
 export const ContentBlockStatus$inboundSchema: z.ZodType<
@@ -303,62 +209,6 @@ export const ContentBlockStatus$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ContentBlockStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | ContentBlock4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ContentBlockStatus$outboundSchema: z.ZodType<
-  ContentBlockStatus$Outbound,
-  z.ZodTypeDef,
-  ContentBlockStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => ContentBlock4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ContentBlockValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockStatus$ {
-  /** @deprecated use `ContentBlockStatus$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockStatus$inboundSchema;
-  /** @deprecated use `ContentBlockStatus$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockStatus$outboundSchema;
-  /** @deprecated use `ContentBlockStatus$Outbound` instead. */
-  export type Outbound = ContentBlockStatus$Outbound;
-}
-
-export function contentBlockStatusToJSON(
-  contentBlockStatus: ContentBlockStatus,
-): string {
-  return JSON.stringify(
-    ContentBlockStatus$outboundSchema.parse(contentBlockStatus),
-  );
-}
-
 export function contentBlockStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<ContentBlockStatus, SDKValidationError> {
@@ -375,37 +225,6 @@ export const ContentBlockSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type ContentBlockSchemas4$Outbound = {};
-
-/** @internal */
-export const ContentBlockSchemas4$outboundSchema: z.ZodType<
-  ContentBlockSchemas4$Outbound,
-  z.ZodTypeDef,
-  ContentBlockSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockSchemas4$ {
-  /** @deprecated use `ContentBlockSchemas4$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockSchemas4$inboundSchema;
-  /** @deprecated use `ContentBlockSchemas4$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockSchemas4$outboundSchema;
-  /** @deprecated use `ContentBlockSchemas4$Outbound` instead. */
-  export type Outbound = ContentBlockSchemas4$Outbound;
-}
-
-export function contentBlockSchemas4ToJSON(
-  contentBlockSchemas4: ContentBlockSchemas4,
-): string {
-  return JSON.stringify(
-    ContentBlockSchemas4$outboundSchema.parse(contentBlockSchemas4),
-  );
-}
 
 export function contentBlockSchemas4FromJSON(
   jsonString: string,
@@ -430,50 +249,6 @@ export const ContentBlockSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type ContentBlockSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | ContentBlockSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const ContentBlockSchemasSourceValue$outboundSchema: z.ZodType<
-  ContentBlockSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  ContentBlockSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => ContentBlockSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockSchemasSourceValue$ {
-  /** @deprecated use `ContentBlockSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockSchemasSourceValue$inboundSchema;
-  /** @deprecated use `ContentBlockSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockSchemasSourceValue$outboundSchema;
-  /** @deprecated use `ContentBlockSchemasSourceValue$Outbound` instead. */
-  export type Outbound = ContentBlockSchemasSourceValue$Outbound;
-}
-
-export function contentBlockSchemasSourceValueToJSON(
-  contentBlockSchemasSourceValue: ContentBlockSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    ContentBlockSchemasSourceValue$outboundSchema.parse(
-      contentBlockSchemasSourceValue,
-    ),
-  );
-}
-
 export function contentBlockSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ContentBlockSchemasSourceValue, SDKValidationError> {
@@ -496,27 +271,6 @@ export const ContentBlockSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const ContentBlockSchemasValue$outboundSchema: z.ZodType<
-  ContentBlockSchemasValueOpen,
-  z.ZodTypeDef,
-  ContentBlockSchemasValueOpen
-> = z.union([
-  z.nativeEnum(ContentBlockSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockSchemasValue$ {
-  /** @deprecated use `ContentBlockSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockSchemasValue$inboundSchema;
-  /** @deprecated use `ContentBlockSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const ContentBlockType$inboundSchema: z.ZodType<
   ContentBlockType,
   z.ZodTypeDef,
@@ -537,62 +291,6 @@ export const ContentBlockType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type ContentBlockType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | ContentBlockSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ContentBlockType$outboundSchema: z.ZodType<
-  ContentBlockType$Outbound,
-  z.ZodTypeDef,
-  ContentBlockType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => ContentBlockSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ContentBlockSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlockType$ {
-  /** @deprecated use `ContentBlockType$inboundSchema` instead. */
-  export const inboundSchema = ContentBlockType$inboundSchema;
-  /** @deprecated use `ContentBlockType$outboundSchema` instead. */
-  export const outboundSchema = ContentBlockType$outboundSchema;
-  /** @deprecated use `ContentBlockType$Outbound` instead. */
-  export type Outbound = ContentBlockType$Outbound;
-}
-
-export function contentBlockTypeToJSON(
-  contentBlockType: ContentBlockType,
-): string {
-  return JSON.stringify(
-    ContentBlockType$outboundSchema.parse(contentBlockType),
-  );
-}
 
 export function contentBlockTypeFromJSON(
   jsonString: string,
@@ -630,60 +328,6 @@ export const ContentBlock$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type ContentBlock$Outbound = {
-  content?: string | null | undefined;
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  status?: ContentBlockStatus$Outbound | null | undefined;
-  tags?: Array<string> | null | undefined;
-  type?: ContentBlockType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ContentBlock$outboundSchema: z.ZodType<
-  ContentBlock$Outbound,
-  z.ZodTypeDef,
-  ContentBlock
-> = z.object({
-  content: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => ContentBlockStatus$outboundSchema))
-    .optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(z.lazy(() => ContentBlockType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentBlock$ {
-  /** @deprecated use `ContentBlock$inboundSchema` instead. */
-  export const inboundSchema = ContentBlock$inboundSchema;
-  /** @deprecated use `ContentBlock$outboundSchema` instead. */
-  export const outboundSchema = ContentBlock$outboundSchema;
-  /** @deprecated use `ContentBlock$Outbound` instead. */
-  export type Outbound = ContentBlock$Outbound;
-}
-
-export function contentBlockToJSON(contentBlock: ContentBlock): string {
-  return JSON.stringify(ContentBlock$outboundSchema.parse(contentBlock));
-}
 
 export function contentBlockFromJSON(
   jsonString: string,

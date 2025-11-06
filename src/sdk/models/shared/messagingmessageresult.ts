@@ -10,15 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MessagingAttachment,
   MessagingAttachment$inboundSchema,
-  MessagingAttachment$Outbound,
-  MessagingAttachment$outboundSchema,
 } from "./messagingattachment.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export enum MessagingMessageResult2 {
   True = "true",
@@ -136,60 +129,11 @@ export const MessagingMessageResult2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MessagingMessageResult2);
 
 /** @internal */
-export const MessagingMessageResult2$outboundSchema: z.ZodNativeEnum<
-  typeof MessagingMessageResult2
-> = MessagingMessageResult2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageResult2$ {
-  /** @deprecated use `MessagingMessageResult2$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageResult2$inboundSchema;
-  /** @deprecated use `MessagingMessageResult2$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageResult2$outboundSchema;
-}
-
-/** @internal */
 export const MessagingMessageResultActive$inboundSchema: z.ZodType<
   MessagingMessageResultActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), MessagingMessageResult2$inboundSchema]);
-
-/** @internal */
-export type MessagingMessageResultActive$Outbound = boolean | string;
-
-/** @internal */
-export const MessagingMessageResultActive$outboundSchema: z.ZodType<
-  MessagingMessageResultActive$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageResultActive
-> = z.union([z.boolean(), MessagingMessageResult2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageResultActive$ {
-  /** @deprecated use `MessagingMessageResultActive$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageResultActive$inboundSchema;
-  /** @deprecated use `MessagingMessageResultActive$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageResultActive$outboundSchema;
-  /** @deprecated use `MessagingMessageResultActive$Outbound` instead. */
-  export type Outbound = MessagingMessageResultActive$Outbound;
-}
-
-export function messagingMessageResultActiveToJSON(
-  messagingMessageResultActive: MessagingMessageResultActive,
-): string {
-  return JSON.stringify(
-    MessagingMessageResultActive$outboundSchema.parse(
-      messagingMessageResultActive,
-    ),
-  );
-}
 
 export function messagingMessageResultActiveFromJSON(
   jsonString: string,
@@ -234,72 +178,6 @@ export const MessagingMessageResultAuthor$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type MessagingMessageResultAuthor$Outbound = {
-  active?: boolean | string | null | undefined;
-  created_at?: string | null | undefined;
-  email?: string | null | undefined;
-  external_reference?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  phone_number?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingMessageResultAuthor$outboundSchema: z.ZodType<
-  MessagingMessageResultAuthor$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageResultAuthor
-> = z.object({
-  active: z.nullable(
-    z.union([z.boolean(), MessagingMessageResult2$outboundSchema]),
-  ).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  email: z.nullable(z.string()).optional(),
-  externalReference: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  phoneNumber: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    externalReference: "external_reference",
-    phoneNumber: "phone_number",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageResultAuthor$ {
-  /** @deprecated use `MessagingMessageResultAuthor$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageResultAuthor$inboundSchema;
-  /** @deprecated use `MessagingMessageResultAuthor$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageResultAuthor$outboundSchema;
-  /** @deprecated use `MessagingMessageResultAuthor$Outbound` instead. */
-  export type Outbound = MessagingMessageResultAuthor$Outbound;
-}
-
-export function messagingMessageResultAuthorToJSON(
-  messagingMessageResultAuthor: MessagingMessageResultAuthor,
-): string {
-  return JSON.stringify(
-    MessagingMessageResultAuthor$outboundSchema.parse(
-      messagingMessageResultAuthor,
-    ),
-  );
-}
-
 export function messagingMessageResultAuthorFromJSON(
   jsonString: string,
 ): SafeParseResult<MessagingMessageResultAuthor, SDKValidationError> {
@@ -319,45 +197,6 @@ export const MessagingMessageResultContent$inboundSchema: z.ZodType<
   html: z.nullable(z.string()).optional(),
   plain: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type MessagingMessageResultContent$Outbound = {
-  html?: string | null | undefined;
-  plain?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingMessageResultContent$outboundSchema: z.ZodType<
-  MessagingMessageResultContent$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageResultContent
-> = z.object({
-  html: z.nullable(z.string()).optional(),
-  plain: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageResultContent$ {
-  /** @deprecated use `MessagingMessageResultContent$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageResultContent$inboundSchema;
-  /** @deprecated use `MessagingMessageResultContent$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageResultContent$outboundSchema;
-  /** @deprecated use `MessagingMessageResultContent$Outbound` instead. */
-  export type Outbound = MessagingMessageResultContent$Outbound;
-}
-
-export function messagingMessageResultContentToJSON(
-  messagingMessageResultContent: MessagingMessageResultContent,
-): string {
-  return JSON.stringify(
-    MessagingMessageResultContent$outboundSchema.parse(
-      messagingMessageResultContent,
-    ),
-  );
-}
 
 export function messagingMessageResultContentFromJSON(
   jsonString: string,
@@ -399,66 +238,6 @@ export const MessagingMessageResultData$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type MessagingMessageResultData$Outbound = {
-  attachments?: Array<MessagingAttachment$Outbound> | null | undefined;
-  author?: MessagingMessageResultAuthor$Outbound | null | undefined;
-  content?: MessagingMessageResultContent$Outbound | null | undefined;
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  parent_message_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingMessageResultData$outboundSchema: z.ZodType<
-  MessagingMessageResultData$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageResultData
-> = z.object({
-  attachments: z.nullable(z.array(MessagingAttachment$outboundSchema))
-    .optional(),
-  author: z.nullable(z.lazy(() => MessagingMessageResultAuthor$outboundSchema))
-    .optional(),
-  content: z.nullable(
-    z.lazy(() => MessagingMessageResultContent$outboundSchema),
-  ).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  parentMessageId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    parentMessageId: "parent_message_id",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageResultData$ {
-  /** @deprecated use `MessagingMessageResultData$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageResultData$inboundSchema;
-  /** @deprecated use `MessagingMessageResultData$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageResultData$outboundSchema;
-  /** @deprecated use `MessagingMessageResultData$Outbound` instead. */
-  export type Outbound = MessagingMessageResultData$Outbound;
-}
-
-export function messagingMessageResultDataToJSON(
-  messagingMessageResultData: MessagingMessageResultData,
-): string {
-  return JSON.stringify(
-    MessagingMessageResultData$outboundSchema.parse(messagingMessageResultData),
-  );
-}
-
 export function messagingMessageResultDataFromJSON(
   jsonString: string,
 ): SafeParseResult<MessagingMessageResultData, SDKValidationError> {
@@ -479,44 +258,6 @@ export const MessagingMessageResult$inboundSchema: z.ZodType<
     .optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type MessagingMessageResult$Outbound = {
-  data?: MessagingMessageResultData$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const MessagingMessageResult$outboundSchema: z.ZodType<
-  MessagingMessageResult$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageResult
-> = z.object({
-  data: z.nullable(z.lazy(() => MessagingMessageResultData$outboundSchema))
-    .optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageResult$ {
-  /** @deprecated use `MessagingMessageResult$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageResult$inboundSchema;
-  /** @deprecated use `MessagingMessageResult$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageResult$outboundSchema;
-  /** @deprecated use `MessagingMessageResult$Outbound` instead. */
-  export type Outbound = MessagingMessageResult$Outbound;
-}
-
-export function messagingMessageResultToJSON(
-  messagingMessageResult: MessagingMessageResult,
-): string {
-  return JSON.stringify(
-    MessagingMessageResult$outboundSchema.parse(messagingMessageResult),
-  );
-}
 
 export function messagingMessageResultFromJSON(
   jsonString: string,

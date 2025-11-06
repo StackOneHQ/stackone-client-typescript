@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Position,
-  Position$inboundSchema,
-  Position$Outbound,
-  Position$outboundSchema,
-} from "./position.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Position, Position$inboundSchema } from "./position.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type PositionResult = {
   data: Position;
@@ -33,39 +23,6 @@ export const PositionResult$inboundSchema: z.ZodType<
   data: Position$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type PositionResult$Outbound = {
-  data: Position$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const PositionResult$outboundSchema: z.ZodType<
-  PositionResult$Outbound,
-  z.ZodTypeDef,
-  PositionResult
-> = z.object({
-  data: Position$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PositionResult$ {
-  /** @deprecated use `PositionResult$inboundSchema` instead. */
-  export const inboundSchema = PositionResult$inboundSchema;
-  /** @deprecated use `PositionResult$outboundSchema` instead. */
-  export const outboundSchema = PositionResult$outboundSchema;
-  /** @deprecated use `PositionResult$Outbound` instead. */
-  export type Outbound = PositionResult$Outbound;
-}
-
-export function positionResultToJSON(positionResult: PositionResult): string {
-  return JSON.stringify(PositionResult$outboundSchema.parse(positionResult));
-}
 
 export function positionResultFromJSON(
   jsonString: string,

@@ -85,21 +85,6 @@ export type TicketingListTicketTypesResponse = {
 };
 
 /** @internal */
-export const TicketingListTicketTypesQueryParamFilter$inboundSchema: z.ZodType<
-  TicketingListTicketTypesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type TicketingListTicketTypesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -117,21 +102,6 @@ export const TicketingListTicketTypesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListTicketTypesQueryParamFilter$ {
-  /** @deprecated use `TicketingListTicketTypesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingListTicketTypesQueryParamFilter$inboundSchema;
-  /** @deprecated use `TicketingListTicketTypesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingListTicketTypesQueryParamFilter$outboundSchema;
-  /** @deprecated use `TicketingListTicketTypesQueryParamFilter$Outbound` instead. */
-  export type Outbound = TicketingListTicketTypesQueryParamFilter$Outbound;
-}
-
 export function ticketingListTicketTypesQueryParamFilterToJSON(
   ticketingListTicketTypesQueryParamFilter:
     TicketingListTicketTypesQueryParamFilter,
@@ -142,49 +112,6 @@ export function ticketingListTicketTypesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function ticketingListTicketTypesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingListTicketTypesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingListTicketTypesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingListTicketTypesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingListTicketTypesRequest$inboundSchema: z.ZodType<
-  TicketingListTicketTypesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => TicketingListTicketTypesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type TicketingListTicketTypesRequest$Outbound = {
@@ -224,19 +151,6 @@ export const TicketingListTicketTypesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListTicketTypesRequest$ {
-  /** @deprecated use `TicketingListTicketTypesRequest$inboundSchema` instead. */
-  export const inboundSchema = TicketingListTicketTypesRequest$inboundSchema;
-  /** @deprecated use `TicketingListTicketTypesRequest$outboundSchema` instead. */
-  export const outboundSchema = TicketingListTicketTypesRequest$outboundSchema;
-  /** @deprecated use `TicketingListTicketTypesRequest$Outbound` instead. */
-  export type Outbound = TicketingListTicketTypesRequest$Outbound;
-}
-
 export function ticketingListTicketTypesRequestToJSON(
   ticketingListTicketTypesRequest: TicketingListTicketTypesRequest,
 ): string {
@@ -244,16 +158,6 @@ export function ticketingListTicketTypesRequestToJSON(
     TicketingListTicketTypesRequest$outboundSchema.parse(
       ticketingListTicketTypesRequest,
     ),
-  );
-}
-
-export function ticketingListTicketTypesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingListTicketTypesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TicketingListTicketTypesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingListTicketTypesRequest' from JSON`,
   );
 }
 
@@ -279,64 +183,6 @@ export const TicketingListTicketTypesResponse$inboundSchema: z.ZodType<
     "TicketingTicketTypePaginated": "ticketingTicketTypePaginated",
   });
 });
-
-/** @internal */
-export type TicketingListTicketTypesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TicketingTicketTypePaginated?:
-    | shared.TicketingTicketTypePaginated$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const TicketingListTicketTypesResponse$outboundSchema: z.ZodType<
-  TicketingListTicketTypesResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingListTicketTypesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  ticketingTicketTypePaginated: shared
-    .TicketingTicketTypePaginated$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    ticketingTicketTypePaginated: "TicketingTicketTypePaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListTicketTypesResponse$ {
-  /** @deprecated use `TicketingListTicketTypesResponse$inboundSchema` instead. */
-  export const inboundSchema = TicketingListTicketTypesResponse$inboundSchema;
-  /** @deprecated use `TicketingListTicketTypesResponse$outboundSchema` instead. */
-  export const outboundSchema = TicketingListTicketTypesResponse$outboundSchema;
-  /** @deprecated use `TicketingListTicketTypesResponse$Outbound` instead. */
-  export type Outbound = TicketingListTicketTypesResponse$Outbound;
-}
-
-export function ticketingListTicketTypesResponseToJSON(
-  ticketingListTicketTypesResponse: TicketingListTicketTypesResponse,
-): string {
-  return JSON.stringify(
-    TicketingListTicketTypesResponse$outboundSchema.parse(
-      ticketingListTicketTypesResponse,
-    ),
-  );
-}
 
 export function ticketingListTicketTypesResponseFromJSON(
   jsonString: string,

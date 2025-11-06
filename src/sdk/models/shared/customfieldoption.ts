@@ -37,37 +37,6 @@ export const CustomFieldOption4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type CustomFieldOption4$Outbound = {};
-
-/** @internal */
-export const CustomFieldOption4$outboundSchema: z.ZodType<
-  CustomFieldOption4$Outbound,
-  z.ZodTypeDef,
-  CustomFieldOption4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldOption4$ {
-  /** @deprecated use `CustomFieldOption4$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldOption4$inboundSchema;
-  /** @deprecated use `CustomFieldOption4$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldOption4$outboundSchema;
-  /** @deprecated use `CustomFieldOption4$Outbound` instead. */
-  export type Outbound = CustomFieldOption4$Outbound;
-}
-
-export function customFieldOption4ToJSON(
-  customFieldOption4: CustomFieldOption4,
-): string {
-  return JSON.stringify(
-    CustomFieldOption4$outboundSchema.parse(customFieldOption4),
-  );
-}
-
 export function customFieldOption4FromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldOption4, SDKValidationError> {
@@ -90,48 +59,6 @@ export const CustomFieldOptionValue$inboundSchema: z.ZodType<
   z.lazy(() => CustomFieldOption4$inboundSchema),
   z.array(z.any()),
 ]);
-
-/** @internal */
-export type CustomFieldOptionValue$Outbound =
-  | string
-  | number
-  | boolean
-  | CustomFieldOption4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const CustomFieldOptionValue$outboundSchema: z.ZodType<
-  CustomFieldOptionValue$Outbound,
-  z.ZodTypeDef,
-  CustomFieldOptionValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => CustomFieldOption4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldOptionValue$ {
-  /** @deprecated use `CustomFieldOptionValue$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldOptionValue$inboundSchema;
-  /** @deprecated use `CustomFieldOptionValue$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldOptionValue$outboundSchema;
-  /** @deprecated use `CustomFieldOptionValue$Outbound` instead. */
-  export type Outbound = CustomFieldOptionValue$Outbound;
-}
-
-export function customFieldOptionValueToJSON(
-  customFieldOptionValue: CustomFieldOptionValue,
-): string {
-  return JSON.stringify(
-    CustomFieldOptionValue$outboundSchema.parse(customFieldOptionValue),
-  );
-}
 
 export function customFieldOptionValueFromJSON(
   jsonString: string,
@@ -158,49 +85,6 @@ export const CustomFieldOption$inboundSchema: z.ZodType<
     z.array(z.any()),
   ]),
 });
-
-/** @internal */
-export type CustomFieldOption$Outbound = {
-  id: string;
-  value: string | number | boolean | CustomFieldOption4$Outbound | Array<any>;
-};
-
-/** @internal */
-export const CustomFieldOption$outboundSchema: z.ZodType<
-  CustomFieldOption$Outbound,
-  z.ZodTypeDef,
-  CustomFieldOption
-> = z.object({
-  id: z.string(),
-  value: z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => CustomFieldOption4$outboundSchema),
-    z.array(z.any()),
-  ]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldOption$ {
-  /** @deprecated use `CustomFieldOption$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldOption$inboundSchema;
-  /** @deprecated use `CustomFieldOption$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldOption$outboundSchema;
-  /** @deprecated use `CustomFieldOption$Outbound` instead. */
-  export type Outbound = CustomFieldOption$Outbound;
-}
-
-export function customFieldOptionToJSON(
-  customFieldOption: CustomFieldOption,
-): string {
-  return JSON.stringify(
-    CustomFieldOption$outboundSchema.parse(customFieldOption),
-  );
-}
 
 export function customFieldOptionFromJSON(
   jsonString: string,

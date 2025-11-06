@@ -50,23 +50,6 @@ export type AtsGetLocationResponse = {
 };
 
 /** @internal */
-export const AtsGetLocationRequest$inboundSchema: z.ZodType<
-  AtsGetLocationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetLocationRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const AtsGetLocationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetLocationRequest$ {
-  /** @deprecated use `AtsGetLocationRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetLocationRequest$inboundSchema;
-  /** @deprecated use `AtsGetLocationRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetLocationRequest$outboundSchema;
-  /** @deprecated use `AtsGetLocationRequest$Outbound` instead. */
-  export type Outbound = AtsGetLocationRequest$Outbound;
-}
-
 export function atsGetLocationRequestToJSON(
   atsGetLocationRequest: AtsGetLocationRequest,
 ): string {
   return JSON.stringify(
     AtsGetLocationRequest$outboundSchema.parse(atsGetLocationRequest),
-  );
-}
-
-export function atsGetLocationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetLocationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetLocationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetLocationRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const AtsGetLocationResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetLocationResponse$Outbound = {
-  ATSLocationResult?: shared.ATSLocationResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetLocationResponse$outboundSchema: z.ZodType<
-  AtsGetLocationResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetLocationResponse
-> = z.object({
-  atsLocationResult: shared.ATSLocationResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    atsLocationResult: "ATSLocationResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetLocationResponse$ {
-  /** @deprecated use `AtsGetLocationResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetLocationResponse$inboundSchema;
-  /** @deprecated use `AtsGetLocationResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetLocationResponse$outboundSchema;
-  /** @deprecated use `AtsGetLocationResponse$Outbound` instead. */
-  export type Outbound = AtsGetLocationResponse$Outbound;
-}
-
-export function atsGetLocationResponseToJSON(
-  atsGetLocationResponse: AtsGetLocationResponse,
-): string {
-  return JSON.stringify(
-    AtsGetLocationResponse$outboundSchema.parse(atsGetLocationResponse),
-  );
-}
 
 export function atsGetLocationResponseFromJSON(
   jsonString: string,

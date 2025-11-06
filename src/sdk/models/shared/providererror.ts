@@ -40,33 +40,6 @@ export type ProviderError = {
 export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
   z.object({});
 
-/** @internal */
-export type Headers$Outbound = {};
-
-/** @internal */
-export const Headers$outboundSchema: z.ZodType<
-  Headers$Outbound,
-  z.ZodTypeDef,
-  Headers
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Headers$ {
-  /** @deprecated use `Headers$inboundSchema` instead. */
-  export const inboundSchema = Headers$inboundSchema;
-  /** @deprecated use `Headers$outboundSchema` instead. */
-  export const outboundSchema = Headers$outboundSchema;
-  /** @deprecated use `Headers$Outbound` instead. */
-  export type Outbound = Headers$Outbound;
-}
-
-export function headersToJSON(headers: Headers): string {
-  return JSON.stringify(Headers$outboundSchema.parse(headers));
-}
-
 export function headersFromJSON(
   jsonString: string,
 ): SafeParseResult<Headers, SDKValidationError> {
@@ -80,30 +53,6 @@ export function headersFromJSON(
 /** @internal */
 export const Raw$inboundSchema: z.ZodType<Raw, z.ZodTypeDef, unknown> = z
   .object({});
-
-/** @internal */
-export type Raw$Outbound = {};
-
-/** @internal */
-export const Raw$outboundSchema: z.ZodType<Raw$Outbound, z.ZodTypeDef, Raw> = z
-  .object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Raw$ {
-  /** @deprecated use `Raw$inboundSchema` instead. */
-  export const inboundSchema = Raw$inboundSchema;
-  /** @deprecated use `Raw$outboundSchema` instead. */
-  export const outboundSchema = Raw$outboundSchema;
-  /** @deprecated use `Raw$Outbound` instead. */
-  export type Outbound = Raw$Outbound;
-}
-
-export function rawToJSON(raw: Raw): string {
-  return JSON.stringify(Raw$outboundSchema.parse(raw));
-}
 
 export function rawFromJSON(
   jsonString: string,
@@ -126,43 +75,6 @@ export const ProviderError$inboundSchema: z.ZodType<
   status: z.nullable(z.number()).optional(),
   url: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ProviderError$Outbound = {
-  headers?: Headers$Outbound | null | undefined;
-  raw?: Raw$Outbound | null | undefined;
-  status?: number | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const ProviderError$outboundSchema: z.ZodType<
-  ProviderError$Outbound,
-  z.ZodTypeDef,
-  ProviderError
-> = z.object({
-  headers: z.nullable(z.lazy(() => Headers$outboundSchema)).optional(),
-  raw: z.nullable(z.lazy(() => Raw$outboundSchema)).optional(),
-  status: z.nullable(z.number()).optional(),
-  url: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProviderError$ {
-  /** @deprecated use `ProviderError$inboundSchema` instead. */
-  export const inboundSchema = ProviderError$inboundSchema;
-  /** @deprecated use `ProviderError$outboundSchema` instead. */
-  export const outboundSchema = ProviderError$outboundSchema;
-  /** @deprecated use `ProviderError$Outbound` instead. */
-  export type Outbound = ProviderError$Outbound;
-}
-
-export function providerErrorToJSON(providerError: ProviderError): string {
-  return JSON.stringify(ProviderError$outboundSchema.parse(providerError));
-}
 
 export function providerErrorFromJSON(
   jsonString: string,

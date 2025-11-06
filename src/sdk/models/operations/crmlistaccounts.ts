@@ -83,21 +83,6 @@ export type CrmListAccountsResponse = {
 };
 
 /** @internal */
-export const CrmListAccountsQueryParamFilter$inboundSchema: z.ZodType<
-  CrmListAccountsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type CrmListAccountsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,19 +100,6 @@ export const CrmListAccountsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListAccountsQueryParamFilter$ {
-  /** @deprecated use `CrmListAccountsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = CrmListAccountsQueryParamFilter$inboundSchema;
-  /** @deprecated use `CrmListAccountsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = CrmListAccountsQueryParamFilter$outboundSchema;
-  /** @deprecated use `CrmListAccountsQueryParamFilter$Outbound` instead. */
-  export type Outbound = CrmListAccountsQueryParamFilter$Outbound;
-}
-
 export function crmListAccountsQueryParamFilterToJSON(
   crmListAccountsQueryParamFilter: CrmListAccountsQueryParamFilter,
 ): string {
@@ -137,43 +109,6 @@ export function crmListAccountsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function crmListAccountsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmListAccountsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmListAccountsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmListAccountsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const CrmListAccountsRequest$inboundSchema: z.ZodType<
-  CrmListAccountsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => CrmListAccountsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type CrmListAccountsRequest$Outbound = {
@@ -213,34 +148,11 @@ export const CrmListAccountsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListAccountsRequest$ {
-  /** @deprecated use `CrmListAccountsRequest$inboundSchema` instead. */
-  export const inboundSchema = CrmListAccountsRequest$inboundSchema;
-  /** @deprecated use `CrmListAccountsRequest$outboundSchema` instead. */
-  export const outboundSchema = CrmListAccountsRequest$outboundSchema;
-  /** @deprecated use `CrmListAccountsRequest$Outbound` instead. */
-  export type Outbound = CrmListAccountsRequest$Outbound;
-}
-
 export function crmListAccountsRequestToJSON(
   crmListAccountsRequest: CrmListAccountsRequest,
 ): string {
   return JSON.stringify(
     CrmListAccountsRequest$outboundSchema.parse(crmListAccountsRequest),
-  );
-}
-
-export function crmListAccountsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmListAccountsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmListAccountsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmListAccountsRequest' from JSON`,
   );
 }
 
@@ -265,59 +177,6 @@ export const CrmListAccountsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type CrmListAccountsResponse$Outbound = {
-  AccountsPaginated?: shared.AccountsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmListAccountsResponse$outboundSchema: z.ZodType<
-  CrmListAccountsResponse$Outbound,
-  z.ZodTypeDef,
-  CrmListAccountsResponse
-> = z.object({
-  accountsPaginated: shared.AccountsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountsPaginated: "AccountsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListAccountsResponse$ {
-  /** @deprecated use `CrmListAccountsResponse$inboundSchema` instead. */
-  export const inboundSchema = CrmListAccountsResponse$inboundSchema;
-  /** @deprecated use `CrmListAccountsResponse$outboundSchema` instead. */
-  export const outboundSchema = CrmListAccountsResponse$outboundSchema;
-  /** @deprecated use `CrmListAccountsResponse$Outbound` instead. */
-  export type Outbound = CrmListAccountsResponse$Outbound;
-}
-
-export function crmListAccountsResponseToJSON(
-  crmListAccountsResponse: CrmListAccountsResponse,
-): string {
-  return JSON.stringify(
-    CrmListAccountsResponse$outboundSchema.parse(crmListAccountsResponse),
-  );
-}
 
 export function crmListAccountsResponseFromJSON(
   jsonString: string,

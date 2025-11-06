@@ -69,60 +69,6 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
     });
   });
 
-/** @internal */
-export type Company$Outbound = {
-  created_at?: string | null | undefined;
-  display_name?: string | null | undefined;
-  full_name?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Company$outboundSchema: z.ZodType<
-  Company$Outbound,
-  z.ZodTypeDef,
-  Company
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  displayName: z.nullable(z.string()).optional(),
-  fullName: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    displayName: "display_name",
-    fullName: "full_name",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Company$ {
-  /** @deprecated use `Company$inboundSchema` instead. */
-  export const inboundSchema = Company$inboundSchema;
-  /** @deprecated use `Company$outboundSchema` instead. */
-  export const outboundSchema = Company$outboundSchema;
-  /** @deprecated use `Company$Outbound` instead. */
-  export type Outbound = Company$Outbound;
-}
-
-export function companyToJSON(company: Company): string {
-  return JSON.stringify(Company$outboundSchema.parse(company));
-}
-
 export function companyFromJSON(
   jsonString: string,
 ): SafeParseResult<Company, SDKValidationError> {

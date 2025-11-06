@@ -50,23 +50,6 @@ export type AtsGetAssessmentsPackageResponse = {
 };
 
 /** @internal */
-export const AtsGetAssessmentsPackageRequest$inboundSchema: z.ZodType<
-  AtsGetAssessmentsPackageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetAssessmentsPackageRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const AtsGetAssessmentsPackageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetAssessmentsPackageRequest$ {
-  /** @deprecated use `AtsGetAssessmentsPackageRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetAssessmentsPackageRequest$inboundSchema;
-  /** @deprecated use `AtsGetAssessmentsPackageRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetAssessmentsPackageRequest$outboundSchema;
-  /** @deprecated use `AtsGetAssessmentsPackageRequest$Outbound` instead. */
-  export type Outbound = AtsGetAssessmentsPackageRequest$Outbound;
-}
-
 export function atsGetAssessmentsPackageRequestToJSON(
   atsGetAssessmentsPackageRequest: AtsGetAssessmentsPackageRequest,
 ): string {
@@ -112,16 +82,6 @@ export function atsGetAssessmentsPackageRequestToJSON(
     AtsGetAssessmentsPackageRequest$outboundSchema.parse(
       atsGetAssessmentsPackageRequest,
     ),
-  );
-}
-
-export function atsGetAssessmentsPackageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetAssessmentsPackageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetAssessmentsPackageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetAssessmentsPackageRequest' from JSON`,
   );
 }
 
@@ -147,62 +107,6 @@ export const AtsGetAssessmentsPackageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetAssessmentsPackageResponse$Outbound = {
-  AssessmentPackageResult?: shared.AssessmentPackageResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetAssessmentsPackageResponse$outboundSchema: z.ZodType<
-  AtsGetAssessmentsPackageResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetAssessmentsPackageResponse
-> = z.object({
-  assessmentPackageResult: shared.AssessmentPackageResult$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    assessmentPackageResult: "AssessmentPackageResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetAssessmentsPackageResponse$ {
-  /** @deprecated use `AtsGetAssessmentsPackageResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetAssessmentsPackageResponse$inboundSchema;
-  /** @deprecated use `AtsGetAssessmentsPackageResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetAssessmentsPackageResponse$outboundSchema;
-  /** @deprecated use `AtsGetAssessmentsPackageResponse$Outbound` instead. */
-  export type Outbound = AtsGetAssessmentsPackageResponse$Outbound;
-}
-
-export function atsGetAssessmentsPackageResponseToJSON(
-  atsGetAssessmentsPackageResponse: AtsGetAssessmentsPackageResponse,
-): string {
-  return JSON.stringify(
-    AtsGetAssessmentsPackageResponse$outboundSchema.parse(
-      atsGetAssessmentsPackageResponse,
-    ),
-  );
-}
 
 export function atsGetAssessmentsPackageResponseFromJSON(
   jsonString: string,

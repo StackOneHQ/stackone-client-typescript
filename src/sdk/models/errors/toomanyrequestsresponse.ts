@@ -62,36 +62,3 @@ export const TooManyRequestsResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type TooManyRequestsResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const TooManyRequestsResponse$outboundSchema: z.ZodType<
-  TooManyRequestsResponse$Outbound,
-  z.ZodTypeDef,
-  TooManyRequestsResponse
-> = z.instanceof(TooManyRequestsResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyRequestsResponse$ {
-  /** @deprecated use `TooManyRequestsResponse$inboundSchema` instead. */
-  export const inboundSchema = TooManyRequestsResponse$inboundSchema;
-  /** @deprecated use `TooManyRequestsResponse$outboundSchema` instead. */
-  export const outboundSchema = TooManyRequestsResponse$outboundSchema;
-  /** @deprecated use `TooManyRequestsResponse$Outbound` instead. */
-  export type Outbound = TooManyRequestsResponse$Outbound;
-}

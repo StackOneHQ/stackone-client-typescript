@@ -50,23 +50,6 @@ export type AtsGetRejectedReasonResponse = {
 };
 
 /** @internal */
-export const AtsGetRejectedReasonRequest$inboundSchema: z.ZodType<
-  AtsGetRejectedReasonRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetRejectedReasonRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const AtsGetRejectedReasonRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetRejectedReasonRequest$ {
-  /** @deprecated use `AtsGetRejectedReasonRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetRejectedReasonRequest$inboundSchema;
-  /** @deprecated use `AtsGetRejectedReasonRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetRejectedReasonRequest$outboundSchema;
-  /** @deprecated use `AtsGetRejectedReasonRequest$Outbound` instead. */
-  export type Outbound = AtsGetRejectedReasonRequest$Outbound;
-}
-
 export function atsGetRejectedReasonRequestToJSON(
   atsGetRejectedReasonRequest: AtsGetRejectedReasonRequest,
 ): string {
@@ -112,16 +82,6 @@ export function atsGetRejectedReasonRequestToJSON(
     AtsGetRejectedReasonRequest$outboundSchema.parse(
       atsGetRejectedReasonRequest,
     ),
-  );
-}
-
-export function atsGetRejectedReasonRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetRejectedReasonRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetRejectedReasonRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetRejectedReasonRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const AtsGetRejectedReasonResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetRejectedReasonResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  RejectedReasonResult?: shared.RejectedReasonResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetRejectedReasonResponse$outboundSchema: z.ZodType<
-  AtsGetRejectedReasonResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetRejectedReasonResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  rejectedReasonResult: shared.RejectedReasonResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    rejectedReasonResult: "RejectedReasonResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetRejectedReasonResponse$ {
-  /** @deprecated use `AtsGetRejectedReasonResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetRejectedReasonResponse$inboundSchema;
-  /** @deprecated use `AtsGetRejectedReasonResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetRejectedReasonResponse$outboundSchema;
-  /** @deprecated use `AtsGetRejectedReasonResponse$Outbound` instead. */
-  export type Outbound = AtsGetRejectedReasonResponse$Outbound;
-}
-
-export function atsGetRejectedReasonResponseToJSON(
-  atsGetRejectedReasonResponse: AtsGetRejectedReasonResponse,
-): string {
-  return JSON.stringify(
-    AtsGetRejectedReasonResponse$outboundSchema.parse(
-      atsGetRejectedReasonResponse,
-    ),
-  );
-}
 
 export function atsGetRejectedReasonResponseFromJSON(
   jsonString: string,

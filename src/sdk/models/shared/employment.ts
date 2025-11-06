@@ -5,24 +5,16 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EmploymentManagerApiModel,
   EmploymentManagerApiModel$inboundSchema,
-  EmploymentManagerApiModel$Outbound,
-  EmploymentManagerApiModel$outboundSchema,
 } from "./employmentmanagerapimodel.js";
 import {
   HRISCostCenter,
   HRISCostCenter$inboundSchema,
-  HRISCostCenter$Outbound,
-  HRISCostCenter$outboundSchema,
 } from "./hriscostcenter.js";
 
 export enum Employment2 {
@@ -886,57 +878,11 @@ export const Employment2$inboundSchema: z.ZodNativeEnum<typeof Employment2> = z
   .nativeEnum(Employment2);
 
 /** @internal */
-export const Employment2$outboundSchema: z.ZodNativeEnum<typeof Employment2> =
-  Employment2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Employment2$ {
-  /** @deprecated use `Employment2$inboundSchema` instead. */
-  export const inboundSchema = Employment2$inboundSchema;
-  /** @deprecated use `Employment2$outboundSchema` instead. */
-  export const outboundSchema = Employment2$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentActive$inboundSchema: z.ZodType<
   EmploymentActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Employment2$inboundSchema]);
-
-/** @internal */
-export type EmploymentActive$Outbound = boolean | string;
-
-/** @internal */
-export const EmploymentActive$outboundSchema: z.ZodType<
-  EmploymentActive$Outbound,
-  z.ZodTypeDef,
-  EmploymentActive
-> = z.union([z.boolean(), Employment2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentActive$ {
-  /** @deprecated use `EmploymentActive$inboundSchema` instead. */
-  export const inboundSchema = EmploymentActive$inboundSchema;
-  /** @deprecated use `EmploymentActive$outboundSchema` instead. */
-  export const outboundSchema = EmploymentActive$outboundSchema;
-  /** @deprecated use `EmploymentActive$Outbound` instead. */
-  export type Outbound = EmploymentActive$Outbound;
-}
-
-export function employmentActiveToJSON(
-  employmentActive: EmploymentActive,
-): string {
-  return JSON.stringify(
-    EmploymentActive$outboundSchema.parse(employmentActive),
-  );
-}
 
 export function employmentActiveFromJSON(
   jsonString: string,
@@ -954,39 +900,6 @@ export const EmploymentSchemasContractType4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasContractType4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasContractType4$outboundSchema: z.ZodType<
-  EmploymentSchemasContractType4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasContractType4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasContractType4$ {
-  /** @deprecated use `EmploymentSchemasContractType4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasContractType4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasContractType4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasContractType4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasContractType4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasContractType4$Outbound;
-}
-
-export function employmentSchemasContractType4ToJSON(
-  employmentSchemasContractType4: EmploymentSchemasContractType4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasContractType4$outboundSchema.parse(
-      employmentSchemasContractType4,
-    ),
-  );
-}
 
 export function employmentSchemasContractType4FromJSON(
   jsonString: string,
@@ -1010,53 +923,6 @@ export const EmploymentSchemasContractTypeSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => EmploymentSchemasContractType4$inboundSchema),
   z.array(z.any()),
 ]);
-
-/** @internal */
-export type EmploymentSchemasContractTypeSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasContractType4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasContractTypeSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasContractTypeSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasContractTypeSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasContractType4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasContractTypeSourceValue$ {
-  /** @deprecated use `EmploymentSchemasContractTypeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasContractTypeSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasContractTypeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasContractTypeSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasContractTypeSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasContractTypeSourceValue$Outbound;
-}
-
-export function employmentSchemasContractTypeSourceValueToJSON(
-  employmentSchemasContractTypeSourceValue:
-    EmploymentSchemasContractTypeSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasContractTypeSourceValue$outboundSchema.parse(
-      employmentSchemasContractTypeSourceValue,
-    ),
-  );
-}
 
 export function employmentSchemasContractTypeSourceValueFromJSON(
   jsonString: string,
@@ -1086,28 +952,6 @@ export const EmploymentSchemasContractTypeValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasContractTypeValue$outboundSchema: z.ZodType<
-  EmploymentSchemasContractTypeValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasContractTypeValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasContractTypeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasContractTypeValue$ {
-  /** @deprecated use `EmploymentSchemasContractTypeValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasContractTypeValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasContractTypeValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasContractTypeValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentSchemasContractTypeContractType$inboundSchema: z.ZodType<
   EmploymentSchemasContractTypeContractType,
   z.ZodTypeDef,
@@ -1129,69 +973,6 @@ export const EmploymentSchemasContractTypeContractType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type EmploymentSchemasContractTypeContractType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasContractType4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasContractTypeContractType$outboundSchema:
-  z.ZodType<
-    EmploymentSchemasContractTypeContractType$Outbound,
-    z.ZodTypeDef,
-    EmploymentSchemasContractTypeContractType
-  > = z.object({
-    sourceValue: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => EmploymentSchemasContractType4$outboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(EmploymentSchemasContractTypeValue$outboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      sourceValue: "source_value",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasContractTypeContractType$ {
-  /** @deprecated use `EmploymentSchemasContractTypeContractType$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasContractTypeContractType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasContractTypeContractType$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasContractTypeContractType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasContractTypeContractType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasContractTypeContractType$Outbound;
-}
-
-export function employmentSchemasContractTypeContractTypeToJSON(
-  employmentSchemasContractTypeContractType:
-    EmploymentSchemasContractTypeContractType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasContractTypeContractType$outboundSchema.parse(
-      employmentSchemasContractTypeContractType,
-    ),
-  );
-}
 
 export function employmentSchemasContractTypeContractTypeFromJSON(
   jsonString: string,
@@ -1228,59 +1009,6 @@ export const EmploymentSchemasContractType$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentSchemasContractType$Outbound = {
-  contract_type?:
-    | EmploymentSchemasContractTypeContractType$Outbound
-    | null
-    | undefined;
-  id?: string | null | undefined;
-  label?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasContractType$outboundSchema: z.ZodType<
-  EmploymentSchemasContractType$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasContractType
-> = z.object({
-  contractType: z.nullable(
-    z.lazy(() => EmploymentSchemasContractTypeContractType$outboundSchema),
-  ).optional(),
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contractType: "contract_type",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasContractType$ {
-  /** @deprecated use `EmploymentSchemasContractType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasContractType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasContractType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasContractType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasContractType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasContractType$Outbound;
-}
-
-export function employmentSchemasContractTypeToJSON(
-  employmentSchemasContractType: EmploymentSchemasContractType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasContractType$outboundSchema.parse(
-      employmentSchemasContractType,
-    ),
-  );
-}
-
 export function employmentSchemasContractTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasContractType, SDKValidationError> {
@@ -1297,39 +1025,6 @@ export const EmploymentSchemasCostCenter4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasCostCenter4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasCostCenter4$outboundSchema: z.ZodType<
-  EmploymentSchemasCostCenter4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasCostCenter4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasCostCenter4$ {
-  /** @deprecated use `EmploymentSchemasCostCenter4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasCostCenter4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenter4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasCostCenter4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenter4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasCostCenter4$Outbound;
-}
-
-export function employmentSchemasCostCenter4ToJSON(
-  employmentSchemasCostCenter4: EmploymentSchemasCostCenter4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasCostCenter4$outboundSchema.parse(
-      employmentSchemasCostCenter4,
-    ),
-  );
-}
 
 export function employmentSchemasCostCenter4FromJSON(
   jsonString: string,
@@ -1354,53 +1049,6 @@ export const EmploymentSchemasCostCenterSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasCostCenterSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasCostCenter4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasCostCenterSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasCostCenterSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasCostCenterSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasCostCenter4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasCostCenterSourceValue$ {
-  /** @deprecated use `EmploymentSchemasCostCenterSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasCostCenterSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenterSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasCostCenterSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenterSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasCostCenterSourceValue$Outbound;
-}
-
-export function employmentSchemasCostCenterSourceValueToJSON(
-  employmentSchemasCostCenterSourceValue:
-    EmploymentSchemasCostCenterSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasCostCenterSourceValue$outboundSchema.parse(
-      employmentSchemasCostCenterSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasCostCenterSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasCostCenterSourceValue, SDKValidationError> {
@@ -1424,27 +1072,6 @@ export const EmploymentSchemasCostCenterValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasCostCenterValue$outboundSchema: z.ZodType<
-  EmploymentSchemasCostCenterValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasCostCenterValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasCostCenterValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasCostCenterValue$ {
-  /** @deprecated use `EmploymentSchemasCostCenterValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasCostCenterValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenterValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasCostCenterValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentSchemasCostCenterType$inboundSchema: z.ZodType<
   EmploymentSchemasCostCenterType,
   z.ZodTypeDef,
@@ -1465,64 +1092,6 @@ export const EmploymentSchemasCostCenterType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type EmploymentSchemasCostCenterType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasCostCenter4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasCostCenterType$outboundSchema: z.ZodType<
-  EmploymentSchemasCostCenterType$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasCostCenterType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasCostCenter4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasCostCenterValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasCostCenterType$ {
-  /** @deprecated use `EmploymentSchemasCostCenterType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasCostCenterType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenterType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasCostCenterType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasCostCenterType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasCostCenterType$Outbound;
-}
-
-export function employmentSchemasCostCenterTypeToJSON(
-  employmentSchemasCostCenterType: EmploymentSchemasCostCenterType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasCostCenterType$outboundSchema.parse(
-      employmentSchemasCostCenterType,
-    ),
-  );
-}
 
 export function employmentSchemasCostCenterTypeFromJSON(
   jsonString: string,
@@ -1565,69 +1134,6 @@ export const CostCenter$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type CostCenter$Outbound = {
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  owner_ids?: Array<string> | null | undefined;
-  parent_ids?: Array<string> | null | undefined;
-  remote_company_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_ids?: Array<string> | null | undefined;
-  remote_parent_ids?: Array<string> | null | undefined;
-  type?: EmploymentSchemasCostCenterType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const CostCenter$outboundSchema: z.ZodType<
-  CostCenter$Outbound,
-  z.ZodTypeDef,
-  CostCenter
-> = z.object({
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerIds: z.nullable(z.array(z.string())).optional(),
-  parentIds: z.nullable(z.array(z.string())).optional(),
-  remoteCompanyId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
-  remoteParentIds: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(z.lazy(() => EmploymentSchemasCostCenterType$outboundSchema))
-    .optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    ownerIds: "owner_ids",
-    parentIds: "parent_ids",
-    remoteCompanyId: "remote_company_id",
-    remoteId: "remote_id",
-    remoteOwnerIds: "remote_owner_ids",
-    remoteParentIds: "remote_parent_ids",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CostCenter$ {
-  /** @deprecated use `CostCenter$inboundSchema` instead. */
-  export const inboundSchema = CostCenter$inboundSchema;
-  /** @deprecated use `CostCenter$outboundSchema` instead. */
-  export const outboundSchema = CostCenter$outboundSchema;
-  /** @deprecated use `CostCenter$Outbound` instead. */
-  export type Outbound = CostCenter$Outbound;
-}
-
-export function costCenterToJSON(costCenter: CostCenter): string {
-  return JSON.stringify(CostCenter$outboundSchema.parse(costCenter));
-}
-
 export function costCenterFromJSON(
   jsonString: string,
 ): SafeParseResult<CostCenter, SDKValidationError> {
@@ -1644,39 +1150,6 @@ export const EmploymentSchemasDepartment4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasDepartment4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasDepartment4$outboundSchema: z.ZodType<
-  EmploymentSchemasDepartment4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasDepartment4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDepartment4$ {
-  /** @deprecated use `EmploymentSchemasDepartment4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasDepartment4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartment4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasDepartment4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartment4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasDepartment4$Outbound;
-}
-
-export function employmentSchemasDepartment4ToJSON(
-  employmentSchemasDepartment4: EmploymentSchemasDepartment4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasDepartment4$outboundSchema.parse(
-      employmentSchemasDepartment4,
-    ),
-  );
-}
 
 export function employmentSchemasDepartment4FromJSON(
   jsonString: string,
@@ -1701,53 +1174,6 @@ export const EmploymentSchemasDepartmentSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasDepartmentSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasDepartment4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasDepartmentSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasDepartmentSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasDepartmentSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasDepartment4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDepartmentSourceValue$ {
-  /** @deprecated use `EmploymentSchemasDepartmentSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasDepartmentSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartmentSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasDepartmentSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartmentSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasDepartmentSourceValue$Outbound;
-}
-
-export function employmentSchemasDepartmentSourceValueToJSON(
-  employmentSchemasDepartmentSourceValue:
-    EmploymentSchemasDepartmentSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasDepartmentSourceValue$outboundSchema.parse(
-      employmentSchemasDepartmentSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasDepartmentSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasDepartmentSourceValue, SDKValidationError> {
@@ -1771,27 +1197,6 @@ export const EmploymentSchemasDepartmentValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasDepartmentValue$outboundSchema: z.ZodType<
-  EmploymentSchemasDepartmentValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasDepartmentValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasDepartmentValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDepartmentValue$ {
-  /** @deprecated use `EmploymentSchemasDepartmentValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasDepartmentValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartmentValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasDepartmentValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentSchemasDepartmentType$inboundSchema: z.ZodType<
   EmploymentSchemasDepartmentType,
   z.ZodTypeDef,
@@ -1812,64 +1217,6 @@ export const EmploymentSchemasDepartmentType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type EmploymentSchemasDepartmentType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasDepartment4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasDepartmentType$outboundSchema: z.ZodType<
-  EmploymentSchemasDepartmentType$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasDepartmentType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasDepartment4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasDepartmentValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDepartmentType$ {
-  /** @deprecated use `EmploymentSchemasDepartmentType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasDepartmentType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartmentType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasDepartmentType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasDepartmentType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasDepartmentType$Outbound;
-}
-
-export function employmentSchemasDepartmentTypeToJSON(
-  employmentSchemasDepartmentType: EmploymentSchemasDepartmentType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasDepartmentType$outboundSchema.parse(
-      employmentSchemasDepartmentType,
-    ),
-  );
-}
 
 export function employmentSchemasDepartmentTypeFromJSON(
   jsonString: string,
@@ -1912,73 +1259,6 @@ export const EmploymentDepartment$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentDepartment$Outbound = {
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  owner_ids?: Array<string> | null | undefined;
-  parent_ids?: Array<string> | null | undefined;
-  remote_company_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_ids?: Array<string> | null | undefined;
-  remote_parent_ids?: Array<string> | null | undefined;
-  type?: EmploymentSchemasDepartmentType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const EmploymentDepartment$outboundSchema: z.ZodType<
-  EmploymentDepartment$Outbound,
-  z.ZodTypeDef,
-  EmploymentDepartment
-> = z.object({
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerIds: z.nullable(z.array(z.string())).optional(),
-  parentIds: z.nullable(z.array(z.string())).optional(),
-  remoteCompanyId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
-  remoteParentIds: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(z.lazy(() => EmploymentSchemasDepartmentType$outboundSchema))
-    .optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    ownerIds: "owner_ids",
-    parentIds: "parent_ids",
-    remoteCompanyId: "remote_company_id",
-    remoteId: "remote_id",
-    remoteOwnerIds: "remote_owner_ids",
-    remoteParentIds: "remote_parent_ids",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentDepartment$ {
-  /** @deprecated use `EmploymentDepartment$inboundSchema` instead. */
-  export const inboundSchema = EmploymentDepartment$inboundSchema;
-  /** @deprecated use `EmploymentDepartment$outboundSchema` instead. */
-  export const outboundSchema = EmploymentDepartment$outboundSchema;
-  /** @deprecated use `EmploymentDepartment$Outbound` instead. */
-  export type Outbound = EmploymentDepartment$Outbound;
-}
-
-export function employmentDepartmentToJSON(
-  employmentDepartment: EmploymentDepartment,
-): string {
-  return JSON.stringify(
-    EmploymentDepartment$outboundSchema.parse(employmentDepartment),
-  );
-}
-
 export function employmentDepartmentFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentDepartment, SDKValidationError> {
@@ -1995,37 +1275,6 @@ export const EmploymentSchemasDivision4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasDivision4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasDivision4$outboundSchema: z.ZodType<
-  EmploymentSchemasDivision4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasDivision4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDivision4$ {
-  /** @deprecated use `EmploymentSchemasDivision4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasDivision4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDivision4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasDivision4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasDivision4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasDivision4$Outbound;
-}
-
-export function employmentSchemasDivision4ToJSON(
-  employmentSchemasDivision4: EmploymentSchemasDivision4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasDivision4$outboundSchema.parse(employmentSchemasDivision4),
-  );
-}
 
 export function employmentSchemasDivision4FromJSON(
   jsonString: string,
@@ -2050,52 +1299,6 @@ export const EmploymentSchemasDivisionSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasDivisionSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasDivision4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasDivisionSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasDivisionSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasDivisionSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasDivision4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDivisionSourceValue$ {
-  /** @deprecated use `EmploymentSchemasDivisionSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasDivisionSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDivisionSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasDivisionSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasDivisionSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasDivisionSourceValue$Outbound;
-}
-
-export function employmentSchemasDivisionSourceValueToJSON(
-  employmentSchemasDivisionSourceValue: EmploymentSchemasDivisionSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasDivisionSourceValue$outboundSchema.parse(
-      employmentSchemasDivisionSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasDivisionSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasDivisionSourceValue, SDKValidationError> {
@@ -2119,27 +1322,6 @@ export const EmploymentSchemasDivisionValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasDivisionValue$outboundSchema: z.ZodType<
-  EmploymentSchemasDivisionValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasDivisionValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasDivisionValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDivisionValue$ {
-  /** @deprecated use `EmploymentSchemasDivisionValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasDivisionValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDivisionValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasDivisionValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentSchemasDivisionType$inboundSchema: z.ZodType<
   EmploymentSchemasDivisionType,
   z.ZodTypeDef,
@@ -2160,64 +1342,6 @@ export const EmploymentSchemasDivisionType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type EmploymentSchemasDivisionType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasDivision4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasDivisionType$outboundSchema: z.ZodType<
-  EmploymentSchemasDivisionType$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasDivisionType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasDivision4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasDivisionValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasDivisionType$ {
-  /** @deprecated use `EmploymentSchemasDivisionType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasDivisionType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasDivisionType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasDivisionType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasDivisionType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasDivisionType$Outbound;
-}
-
-export function employmentSchemasDivisionTypeToJSON(
-  employmentSchemasDivisionType: EmploymentSchemasDivisionType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasDivisionType$outboundSchema.parse(
-      employmentSchemasDivisionType,
-    ),
-  );
-}
 
 export function employmentSchemasDivisionTypeFromJSON(
   jsonString: string,
@@ -2260,69 +1384,6 @@ export const Division$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type Division$Outbound = {
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  owner_ids?: Array<string> | null | undefined;
-  parent_ids?: Array<string> | null | undefined;
-  remote_company_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_ids?: Array<string> | null | undefined;
-  remote_parent_ids?: Array<string> | null | undefined;
-  type?: EmploymentSchemasDivisionType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const Division$outboundSchema: z.ZodType<
-  Division$Outbound,
-  z.ZodTypeDef,
-  Division
-> = z.object({
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerIds: z.nullable(z.array(z.string())).optional(),
-  parentIds: z.nullable(z.array(z.string())).optional(),
-  remoteCompanyId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
-  remoteParentIds: z.nullable(z.array(z.string())).optional(),
-  type: z.nullable(z.lazy(() => EmploymentSchemasDivisionType$outboundSchema))
-    .optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    ownerIds: "owner_ids",
-    parentIds: "parent_ids",
-    remoteCompanyId: "remote_company_id",
-    remoteId: "remote_id",
-    remoteOwnerIds: "remote_owner_ids",
-    remoteParentIds: "remote_parent_ids",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Division$ {
-  /** @deprecated use `Division$inboundSchema` instead. */
-  export const inboundSchema = Division$inboundSchema;
-  /** @deprecated use `Division$outboundSchema` instead. */
-  export const outboundSchema = Division$outboundSchema;
-  /** @deprecated use `Division$Outbound` instead. */
-  export type Outbound = Division$Outbound;
-}
-
-export function divisionToJSON(division: Division): string {
-  return JSON.stringify(Division$outboundSchema.parse(division));
-}
-
 export function divisionFromJSON(
   jsonString: string,
 ): SafeParseResult<Division, SDKValidationError> {
@@ -2339,33 +1400,6 @@ export const Employment4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type Employment4$Outbound = {};
-
-/** @internal */
-export const Employment4$outboundSchema: z.ZodType<
-  Employment4$Outbound,
-  z.ZodTypeDef,
-  Employment4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Employment4$ {
-  /** @deprecated use `Employment4$inboundSchema` instead. */
-  export const inboundSchema = Employment4$inboundSchema;
-  /** @deprecated use `Employment4$outboundSchema` instead. */
-  export const outboundSchema = Employment4$outboundSchema;
-  /** @deprecated use `Employment4$Outbound` instead. */
-  export type Outbound = Employment4$Outbound;
-}
-
-export function employment4ToJSON(employment4: Employment4): string {
-  return JSON.stringify(Employment4$outboundSchema.parse(employment4));
-}
 
 export function employment4FromJSON(
   jsonString: string,
@@ -2390,48 +1424,6 @@ export const EmploymentSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Employment4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSourceValue$outboundSchema: z.ZodType<
-  EmploymentSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Employment4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSourceValue$ {
-  /** @deprecated use `EmploymentSourceValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSourceValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSourceValue$Outbound;
-}
-
-export function employmentSourceValueToJSON(
-  employmentSourceValue: EmploymentSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSourceValue$outboundSchema.parse(employmentSourceValue),
-  );
-}
-
 export function employmentSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSourceValue, SDKValidationError> {
@@ -2452,27 +1444,6 @@ export const EmploymentValue$inboundSchema: z.ZodType<
     z.nativeEnum(EmploymentValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const EmploymentValue$outboundSchema: z.ZodType<
-  EmploymentValueOpen,
-  z.ZodTypeDef,
-  EmploymentValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentValue$ {
-  /** @deprecated use `EmploymentValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentValue$inboundSchema;
-  /** @deprecated use `EmploymentValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentValue$outboundSchema;
-}
 
 /** @internal */
 export const EmploymentEmploymentContractType$inboundSchema: z.ZodType<
@@ -2496,64 +1467,6 @@ export const EmploymentEmploymentContractType$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentEmploymentContractType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Employment4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentEmploymentContractType$outboundSchema: z.ZodType<
-  EmploymentEmploymentContractType$Outbound,
-  z.ZodTypeDef,
-  EmploymentEmploymentContractType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Employment4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentEmploymentContractType$ {
-  /** @deprecated use `EmploymentEmploymentContractType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentEmploymentContractType$inboundSchema;
-  /** @deprecated use `EmploymentEmploymentContractType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentEmploymentContractType$outboundSchema;
-  /** @deprecated use `EmploymentEmploymentContractType$Outbound` instead. */
-  export type Outbound = EmploymentEmploymentContractType$Outbound;
-}
-
-export function employmentEmploymentContractTypeToJSON(
-  employmentEmploymentContractType: EmploymentEmploymentContractType,
-): string {
-  return JSON.stringify(
-    EmploymentEmploymentContractType$outboundSchema.parse(
-      employmentEmploymentContractType,
-    ),
-  );
-}
-
 export function employmentEmploymentContractTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentEmploymentContractType, SDKValidationError> {
@@ -2570,37 +1483,6 @@ export const EmploymentSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemas4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemas4$outboundSchema: z.ZodType<
-  EmploymentSchemas4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemas4$ {
-  /** @deprecated use `EmploymentSchemas4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemas4$inboundSchema;
-  /** @deprecated use `EmploymentSchemas4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemas4$outboundSchema;
-  /** @deprecated use `EmploymentSchemas4$Outbound` instead. */
-  export type Outbound = EmploymentSchemas4$Outbound;
-}
-
-export function employmentSchemas4ToJSON(
-  employmentSchemas4: EmploymentSchemas4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemas4$outboundSchema.parse(employmentSchemas4),
-  );
-}
 
 export function employmentSchemas4FromJSON(
   jsonString: string,
@@ -2625,50 +1507,6 @@ export const EmploymentSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasSourceValue$ {
-  /** @deprecated use `EmploymentSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasSourceValue$Outbound;
-}
-
-export function employmentSchemasSourceValueToJSON(
-  employmentSchemasSourceValue: EmploymentSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasSourceValue$outboundSchema.parse(
-      employmentSchemasSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasSourceValue, SDKValidationError> {
@@ -2691,27 +1529,6 @@ export const EmploymentSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasValue$outboundSchema: z.ZodType<
-  EmploymentSchemasValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasValue$ {
-  /** @deprecated use `EmploymentSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentEmploymentType$inboundSchema: z.ZodType<
   EmploymentEmploymentType,
   z.ZodTypeDef,
@@ -2732,62 +1549,6 @@ export const EmploymentEmploymentType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type EmploymentEmploymentType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentEmploymentType$outboundSchema: z.ZodType<
-  EmploymentEmploymentType$Outbound,
-  z.ZodTypeDef,
-  EmploymentEmploymentType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentEmploymentType$ {
-  /** @deprecated use `EmploymentEmploymentType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentEmploymentType$inboundSchema;
-  /** @deprecated use `EmploymentEmploymentType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentEmploymentType$outboundSchema;
-  /** @deprecated use `EmploymentEmploymentType$Outbound` instead. */
-  export type Outbound = EmploymentEmploymentType$Outbound;
-}
-
-export function employmentEmploymentTypeToJSON(
-  employmentEmploymentType: EmploymentEmploymentType,
-): string {
-  return JSON.stringify(
-    EmploymentEmploymentType$outboundSchema.parse(employmentEmploymentType),
-  );
-}
 
 export function employmentEmploymentTypeFromJSON(
   jsonString: string,
@@ -2815,49 +1576,6 @@ export const EmploymentGrade$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentGrade$Outbound = {
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentGrade$outboundSchema: z.ZodType<
-  EmploymentGrade$Outbound,
-  z.ZodTypeDef,
-  EmploymentGrade
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentGrade$ {
-  /** @deprecated use `EmploymentGrade$inboundSchema` instead. */
-  export const inboundSchema = EmploymentGrade$inboundSchema;
-  /** @deprecated use `EmploymentGrade$outboundSchema` instead. */
-  export const outboundSchema = EmploymentGrade$outboundSchema;
-  /** @deprecated use `EmploymentGrade$Outbound` instead. */
-  export type Outbound = EmploymentGrade$Outbound;
-}
-
-export function employmentGradeToJSON(
-  employmentGrade: EmploymentGrade,
-): string {
-  return JSON.stringify(EmploymentGrade$outboundSchema.parse(employmentGrade));
-}
-
 export function employmentGradeFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentGrade, SDKValidationError> {
@@ -2876,37 +1594,6 @@ export const Description$inboundSchema: z.ZodType<
 > = z.object({
   text: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type Description$Outbound = {
-  text?: string | null | undefined;
-};
-
-/** @internal */
-export const Description$outboundSchema: z.ZodType<
-  Description$Outbound,
-  z.ZodTypeDef,
-  Description
-> = z.object({
-  text: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Description$ {
-  /** @deprecated use `Description$inboundSchema` instead. */
-  export const inboundSchema = Description$inboundSchema;
-  /** @deprecated use `Description$outboundSchema` instead. */
-  export const outboundSchema = Description$outboundSchema;
-  /** @deprecated use `Description$Outbound` instead. */
-  export type Outbound = Description$Outbound;
-}
-
-export function descriptionToJSON(description: Description): string {
-  return JSON.stringify(Description$outboundSchema.parse(description));
-}
 
 export function descriptionFromJSON(
   jsonString: string,
@@ -2938,53 +1625,6 @@ export const EmploymentJob$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentJob$Outbound = {
-  description?: Description$Outbound | null | undefined;
-  id?: string | null | undefined;
-  owner_id?: string | null | undefined;
-  parent_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  title?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentJob$outboundSchema: z.ZodType<
-  EmploymentJob$Outbound,
-  z.ZodTypeDef,
-  EmploymentJob
-> = z.object({
-  description: z.nullable(z.lazy(() => Description$outboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  parentId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ownerId: "owner_id",
-    parentId: "parent_id",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentJob$ {
-  /** @deprecated use `EmploymentJob$inboundSchema` instead. */
-  export const inboundSchema = EmploymentJob$inboundSchema;
-  /** @deprecated use `EmploymentJob$outboundSchema` instead. */
-  export const outboundSchema = EmploymentJob$outboundSchema;
-  /** @deprecated use `EmploymentJob$Outbound` instead. */
-  export type Outbound = EmploymentJob$Outbound;
-}
-
-export function employmentJobToJSON(employmentJob: EmploymentJob): string {
-  return JSON.stringify(EmploymentJob$outboundSchema.parse(employmentJob));
-}
-
 export function employmentJobFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentJob, SDKValidationError> {
@@ -3001,39 +1641,6 @@ export const EmploymentSchemasPayFrequency4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasPayFrequency4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasPayFrequency4$outboundSchema: z.ZodType<
-  EmploymentSchemasPayFrequency4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasPayFrequency4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasPayFrequency4$ {
-  /** @deprecated use `EmploymentSchemasPayFrequency4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasPayFrequency4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasPayFrequency4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasPayFrequency4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasPayFrequency4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasPayFrequency4$Outbound;
-}
-
-export function employmentSchemasPayFrequency4ToJSON(
-  employmentSchemasPayFrequency4: EmploymentSchemasPayFrequency4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasPayFrequency4$outboundSchema.parse(
-      employmentSchemasPayFrequency4,
-    ),
-  );
-}
 
 export function employmentSchemasPayFrequency4FromJSON(
   jsonString: string,
@@ -3057,53 +1664,6 @@ export const EmploymentSchemasPayFrequencySourceValue$inboundSchema: z.ZodType<
   z.lazy(() => EmploymentSchemasPayFrequency4$inboundSchema),
   z.array(z.any()),
 ]);
-
-/** @internal */
-export type EmploymentSchemasPayFrequencySourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasPayFrequency4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasPayFrequencySourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasPayFrequencySourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasPayFrequencySourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasPayFrequency4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasPayFrequencySourceValue$ {
-  /** @deprecated use `EmploymentSchemasPayFrequencySourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasPayFrequencySourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasPayFrequencySourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasPayFrequencySourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasPayFrequencySourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasPayFrequencySourceValue$Outbound;
-}
-
-export function employmentSchemasPayFrequencySourceValueToJSON(
-  employmentSchemasPayFrequencySourceValue:
-    EmploymentSchemasPayFrequencySourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasPayFrequencySourceValue$outboundSchema.parse(
-      employmentSchemasPayFrequencySourceValue,
-    ),
-  );
-}
 
 export function employmentSchemasPayFrequencySourceValueFromJSON(
   jsonString: string,
@@ -3133,28 +1693,6 @@ export const EmploymentSchemasPayFrequencyValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasPayFrequencyValue$outboundSchema: z.ZodType<
-  EmploymentSchemasPayFrequencyValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasPayFrequencyValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasPayFrequencyValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasPayFrequencyValue$ {
-  /** @deprecated use `EmploymentSchemasPayFrequencyValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasPayFrequencyValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasPayFrequencyValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasPayFrequencyValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentPayFrequency$inboundSchema: z.ZodType<
   EmploymentPayFrequency,
   z.ZodTypeDef,
@@ -3177,63 +1715,6 @@ export const EmploymentPayFrequency$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentPayFrequency$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasPayFrequency4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentPayFrequency$outboundSchema: z.ZodType<
-  EmploymentPayFrequency$Outbound,
-  z.ZodTypeDef,
-  EmploymentPayFrequency
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasPayFrequency4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasPayFrequencyValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentPayFrequency$ {
-  /** @deprecated use `EmploymentPayFrequency$inboundSchema` instead. */
-  export const inboundSchema = EmploymentPayFrequency$inboundSchema;
-  /** @deprecated use `EmploymentPayFrequency$outboundSchema` instead. */
-  export const outboundSchema = EmploymentPayFrequency$outboundSchema;
-  /** @deprecated use `EmploymentPayFrequency$Outbound` instead. */
-  export type Outbound = EmploymentPayFrequency$Outbound;
-}
-
-export function employmentPayFrequencyToJSON(
-  employmentPayFrequency: EmploymentPayFrequency,
-): string {
-  return JSON.stringify(
-    EmploymentPayFrequency$outboundSchema.parse(employmentPayFrequency),
-  );
-}
-
 export function employmentPayFrequencyFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentPayFrequency, SDKValidationError> {
@@ -3250,39 +1731,6 @@ export const EmploymentSchemasPayPeriod4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasPayPeriod4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasPayPeriod4$outboundSchema: z.ZodType<
-  EmploymentSchemasPayPeriod4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasPayPeriod4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasPayPeriod4$ {
-  /** @deprecated use `EmploymentSchemasPayPeriod4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasPayPeriod4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasPayPeriod4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasPayPeriod4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasPayPeriod4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasPayPeriod4$Outbound;
-}
-
-export function employmentSchemasPayPeriod4ToJSON(
-  employmentSchemasPayPeriod4: EmploymentSchemasPayPeriod4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasPayPeriod4$outboundSchema.parse(
-      employmentSchemasPayPeriod4,
-    ),
-  );
-}
 
 export function employmentSchemasPayPeriod4FromJSON(
   jsonString: string,
@@ -3307,52 +1755,6 @@ export const EmploymentSchemasPayPeriodSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasPayPeriodSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasPayPeriod4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasPayPeriodSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasPayPeriodSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasPayPeriodSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasPayPeriod4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasPayPeriodSourceValue$ {
-  /** @deprecated use `EmploymentSchemasPayPeriodSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasPayPeriodSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasPayPeriodSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasPayPeriodSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasPayPeriodSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasPayPeriodSourceValue$Outbound;
-}
-
-export function employmentSchemasPayPeriodSourceValueToJSON(
-  employmentSchemasPayPeriodSourceValue: EmploymentSchemasPayPeriodSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasPayPeriodSourceValue$outboundSchema.parse(
-      employmentSchemasPayPeriodSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasPayPeriodSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasPayPeriodSourceValue, SDKValidationError> {
@@ -3376,27 +1778,6 @@ export const EmploymentSchemasPayPeriodValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasPayPeriodValue$outboundSchema: z.ZodType<
-  EmploymentSchemasPayPeriodValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasPayPeriodValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasPayPeriodValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasPayPeriodValue$ {
-  /** @deprecated use `EmploymentSchemasPayPeriodValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasPayPeriodValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasPayPeriodValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasPayPeriodValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentPayPeriod$inboundSchema: z.ZodType<
   EmploymentPayPeriod,
   z.ZodTypeDef,
@@ -3418,62 +1799,6 @@ export const EmploymentPayPeriod$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentPayPeriod$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasPayPeriod4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentPayPeriod$outboundSchema: z.ZodType<
-  EmploymentPayPeriod$Outbound,
-  z.ZodTypeDef,
-  EmploymentPayPeriod
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasPayPeriod4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasPayPeriodValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentPayPeriod$ {
-  /** @deprecated use `EmploymentPayPeriod$inboundSchema` instead. */
-  export const inboundSchema = EmploymentPayPeriod$inboundSchema;
-  /** @deprecated use `EmploymentPayPeriod$outboundSchema` instead. */
-  export const outboundSchema = EmploymentPayPeriod$outboundSchema;
-  /** @deprecated use `EmploymentPayPeriod$Outbound` instead. */
-  export type Outbound = EmploymentPayPeriod$Outbound;
-}
-
-export function employmentPayPeriodToJSON(
-  employmentPayPeriod: EmploymentPayPeriod,
-): string {
-  return JSON.stringify(
-    EmploymentPayPeriod$outboundSchema.parse(employmentPayPeriod),
-  );
-}
-
 export function employmentPayPeriodFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentPayPeriod, SDKValidationError> {
@@ -3490,37 +1815,6 @@ export const EmploymentSchemasType4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasType4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasType4$outboundSchema: z.ZodType<
-  EmploymentSchemasType4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasType4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasType4$ {
-  /** @deprecated use `EmploymentSchemasType4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasType4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasType4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasType4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasType4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasType4$Outbound;
-}
-
-export function employmentSchemasType4ToJSON(
-  employmentSchemasType4: EmploymentSchemasType4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasType4$outboundSchema.parse(employmentSchemasType4),
-  );
-}
 
 export function employmentSchemasType4FromJSON(
   jsonString: string,
@@ -3545,50 +1839,6 @@ export const EmploymentSchemasTypeSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasTypeSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasType4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasTypeSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasTypeSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasTypeSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasType4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasTypeSourceValue$ {
-  /** @deprecated use `EmploymentSchemasTypeSourceValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasTypeSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasTypeSourceValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasTypeSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasTypeSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasTypeSourceValue$Outbound;
-}
-
-export function employmentSchemasTypeSourceValueToJSON(
-  employmentSchemasTypeSourceValue: EmploymentSchemasTypeSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasTypeSourceValue$outboundSchema.parse(
-      employmentSchemasTypeSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasTypeSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasTypeSourceValue, SDKValidationError> {
@@ -3611,27 +1861,6 @@ export const EmploymentSchemasTypeValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasTypeValue$outboundSchema: z.ZodType<
-  EmploymentSchemasTypeValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasTypeValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasTypeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasTypeValue$ {
-  /** @deprecated use `EmploymentSchemasTypeValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasTypeValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasTypeValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasTypeValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentSchemasTypeType$inboundSchema: z.ZodType<
   EmploymentSchemasTypeType,
   z.ZodTypeDef,
@@ -3652,62 +1881,6 @@ export const EmploymentSchemasTypeType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type EmploymentSchemasTypeType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasType4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasTypeType$outboundSchema: z.ZodType<
-  EmploymentSchemasTypeType$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasTypeType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasType4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasTypeValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasTypeType$ {
-  /** @deprecated use `EmploymentSchemasTypeType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasTypeType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasTypeType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasTypeType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasTypeType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasTypeType$Outbound;
-}
-
-export function employmentSchemasTypeTypeToJSON(
-  employmentSchemasTypeType: EmploymentSchemasTypeType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasTypeType$outboundSchema.parse(employmentSchemasTypeType),
-  );
-}
 
 export function employmentSchemasTypeTypeFromJSON(
   jsonString: string,
@@ -3736,52 +1909,6 @@ export const EmploymentSchemasType$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentSchemasType$Outbound = {
-  id?: string | null | undefined;
-  label?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: EmploymentSchemasTypeType$Outbound | null | undefined;
-};
-
-/** @internal */
-export const EmploymentSchemasType$outboundSchema: z.ZodType<
-  EmploymentSchemasType$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasType
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => EmploymentSchemasTypeType$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasType$ {
-  /** @deprecated use `EmploymentSchemasType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasType$inboundSchema;
-  /** @deprecated use `EmploymentSchemasType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasType$outboundSchema;
-  /** @deprecated use `EmploymentSchemasType$Outbound` instead. */
-  export type Outbound = EmploymentSchemasType$Outbound;
-}
-
-export function employmentSchemasTypeToJSON(
-  employmentSchemasType: EmploymentSchemasType,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasType$outboundSchema.parse(employmentSchemasType),
-  );
-}
-
 export function employmentSchemasTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasType, SDKValidationError> {
@@ -3798,37 +1925,6 @@ export const EmploymentSchemasWorkTime4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EmploymentSchemasWorkTime4$Outbound = {};
-
-/** @internal */
-export const EmploymentSchemasWorkTime4$outboundSchema: z.ZodType<
-  EmploymentSchemasWorkTime4$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasWorkTime4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasWorkTime4$ {
-  /** @deprecated use `EmploymentSchemasWorkTime4$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasWorkTime4$inboundSchema;
-  /** @deprecated use `EmploymentSchemasWorkTime4$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasWorkTime4$outboundSchema;
-  /** @deprecated use `EmploymentSchemasWorkTime4$Outbound` instead. */
-  export type Outbound = EmploymentSchemasWorkTime4$Outbound;
-}
-
-export function employmentSchemasWorkTime4ToJSON(
-  employmentSchemasWorkTime4: EmploymentSchemasWorkTime4,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasWorkTime4$outboundSchema.parse(employmentSchemasWorkTime4),
-  );
-}
 
 export function employmentSchemasWorkTime4FromJSON(
   jsonString: string,
@@ -3853,52 +1949,6 @@ export const EmploymentSchemasWorkTimeSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EmploymentSchemasWorkTimeSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EmploymentSchemasWorkTime4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EmploymentSchemasWorkTimeSourceValue$outboundSchema: z.ZodType<
-  EmploymentSchemasWorkTimeSourceValue$Outbound,
-  z.ZodTypeDef,
-  EmploymentSchemasWorkTimeSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EmploymentSchemasWorkTime4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasWorkTimeSourceValue$ {
-  /** @deprecated use `EmploymentSchemasWorkTimeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EmploymentSchemasWorkTimeSourceValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasWorkTimeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EmploymentSchemasWorkTimeSourceValue$outboundSchema;
-  /** @deprecated use `EmploymentSchemasWorkTimeSourceValue$Outbound` instead. */
-  export type Outbound = EmploymentSchemasWorkTimeSourceValue$Outbound;
-}
-
-export function employmentSchemasWorkTimeSourceValueToJSON(
-  employmentSchemasWorkTimeSourceValue: EmploymentSchemasWorkTimeSourceValue,
-): string {
-  return JSON.stringify(
-    EmploymentSchemasWorkTimeSourceValue$outboundSchema.parse(
-      employmentSchemasWorkTimeSourceValue,
-    ),
-  );
-}
-
 export function employmentSchemasWorkTimeSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentSchemasWorkTimeSourceValue, SDKValidationError> {
@@ -3922,27 +1972,6 @@ export const EmploymentSchemasWorkTimeValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const EmploymentSchemasWorkTimeValue$outboundSchema: z.ZodType<
-  EmploymentSchemasWorkTimeValueOpen,
-  z.ZodTypeDef,
-  EmploymentSchemasWorkTimeValueOpen
-> = z.union([
-  z.nativeEnum(EmploymentSchemasWorkTimeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentSchemasWorkTimeValue$ {
-  /** @deprecated use `EmploymentSchemasWorkTimeValue$inboundSchema` instead. */
-  export const inboundSchema = EmploymentSchemasWorkTimeValue$inboundSchema;
-  /** @deprecated use `EmploymentSchemasWorkTimeValue$outboundSchema` instead. */
-  export const outboundSchema = EmploymentSchemasWorkTimeValue$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentPeriod$inboundSchema: z.ZodType<
   EmploymentPeriod,
   z.ZodTypeDef,
@@ -3964,62 +1993,6 @@ export const EmploymentPeriod$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EmploymentPeriod$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EmploymentSchemasWorkTime4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmploymentPeriod$outboundSchema: z.ZodType<
-  EmploymentPeriod$Outbound,
-  z.ZodTypeDef,
-  EmploymentPeriod
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EmploymentSchemasWorkTime4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EmploymentSchemasWorkTimeValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentPeriod$ {
-  /** @deprecated use `EmploymentPeriod$inboundSchema` instead. */
-  export const inboundSchema = EmploymentPeriod$inboundSchema;
-  /** @deprecated use `EmploymentPeriod$outboundSchema` instead. */
-  export const outboundSchema = EmploymentPeriod$outboundSchema;
-  /** @deprecated use `EmploymentPeriod$Outbound` instead. */
-  export type Outbound = EmploymentPeriod$Outbound;
-}
-
-export function employmentPeriodToJSON(
-  employmentPeriod: EmploymentPeriod,
-): string {
-  return JSON.stringify(
-    EmploymentPeriod$outboundSchema.parse(employmentPeriod),
-  );
-}
-
 export function employmentPeriodFromJSON(
   jsonString: string,
 ): SafeParseResult<EmploymentPeriod, SDKValidationError> {
@@ -4039,43 +2012,6 @@ export const EmploymentWorkTime$inboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   period: z.nullable(z.lazy(() => EmploymentPeriod$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type EmploymentWorkTime$Outbound = {
-  duration?: string | null | undefined;
-  period?: EmploymentPeriod$Outbound | null | undefined;
-};
-
-/** @internal */
-export const EmploymentWorkTime$outboundSchema: z.ZodType<
-  EmploymentWorkTime$Outbound,
-  z.ZodTypeDef,
-  EmploymentWorkTime
-> = z.object({
-  duration: z.nullable(z.string()).optional(),
-  period: z.nullable(z.lazy(() => EmploymentPeriod$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentWorkTime$ {
-  /** @deprecated use `EmploymentWorkTime$inboundSchema` instead. */
-  export const inboundSchema = EmploymentWorkTime$inboundSchema;
-  /** @deprecated use `EmploymentWorkTime$outboundSchema` instead. */
-  export const outboundSchema = EmploymentWorkTime$outboundSchema;
-  /** @deprecated use `EmploymentWorkTime$Outbound` instead. */
-  export type Outbound = EmploymentWorkTime$Outbound;
-}
-
-export function employmentWorkTimeToJSON(
-  employmentWorkTime: EmploymentWorkTime,
-): string {
-  return JSON.stringify(
-    EmploymentWorkTime$outboundSchema.parse(employmentWorkTime),
-  );
-}
 
 export function employmentWorkTimeFromJSON(
   jsonString: string,
@@ -4171,136 +2107,6 @@ export const Employment$inboundSchema: z.ZodType<
     "work_time": "workTime",
   });
 });
-
-/** @internal */
-export type Employment$Outbound = {
-  active?: boolean | string | null | undefined;
-  contract_type?: EmploymentSchemasContractType$Outbound | null | undefined;
-  cost_center?: CostCenter$Outbound | null | undefined;
-  cost_centers?: Array<HRISCostCenter$Outbound> | null | undefined;
-  created_at?: string | null | undefined;
-  department?: EmploymentDepartment$Outbound | null | undefined;
-  division?: Division$Outbound | null | undefined;
-  effective_date?: string | null | undefined;
-  employee_id?: string | null | undefined;
-  employment_contract_type?:
-    | EmploymentEmploymentContractType$Outbound
-    | null
-    | undefined;
-  employment_type?: EmploymentEmploymentType$Outbound | null | undefined;
-  end_date?: string | null | undefined;
-  fte?: number | null | undefined;
-  grade?: EmploymentGrade$Outbound | null | undefined;
-  id?: string | null | undefined;
-  job?: EmploymentJob$Outbound | null | undefined;
-  job_title?: string | null | undefined;
-  manager?: Array<EmploymentManagerApiModel$Outbound> | null | undefined;
-  pay_currency?: string | null | undefined;
-  pay_frequency?: EmploymentPayFrequency$Outbound | null | undefined;
-  pay_period?: EmploymentPayPeriod$Outbound | null | undefined;
-  pay_rate?: string | null | undefined;
-  payroll_code?: string | null | undefined;
-  remote_employee_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  start_date?: string | null | undefined;
-  type?: EmploymentSchemasType$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-  work_time?: EmploymentWorkTime$Outbound | null | undefined;
-};
-
-/** @internal */
-export const Employment$outboundSchema: z.ZodType<
-  Employment$Outbound,
-  z.ZodTypeDef,
-  Employment
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), Employment2$outboundSchema]))
-    .optional(),
-  contractType: z.nullable(
-    z.lazy(() => EmploymentSchemasContractType$outboundSchema),
-  ).optional(),
-  costCenter: z.nullable(z.lazy(() => CostCenter$outboundSchema)).optional(),
-  costCenters: z.nullable(z.array(HRISCostCenter$outboundSchema)).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  department: z.nullable(z.lazy(() => EmploymentDepartment$outboundSchema))
-    .optional(),
-  division: z.nullable(z.lazy(() => Division$outboundSchema)).optional(),
-  effectiveDate: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  employeeId: z.nullable(z.string()).optional(),
-  employmentContractType: z.nullable(
-    z.lazy(() => EmploymentEmploymentContractType$outboundSchema),
-  ).optional(),
-  employmentType: z.nullable(
-    z.lazy(() => EmploymentEmploymentType$outboundSchema),
-  ).optional(),
-  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  fte: z.nullable(z.number()).optional(),
-  grade: z.nullable(z.lazy(() => EmploymentGrade$outboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  job: z.nullable(z.lazy(() => EmploymentJob$outboundSchema)).optional(),
-  jobTitle: z.nullable(z.string()).optional(),
-  manager: z.nullable(z.array(EmploymentManagerApiModel$outboundSchema))
-    .optional(),
-  payCurrency: z.nullable(z.string()).optional(),
-  payFrequency: z.nullable(z.lazy(() => EmploymentPayFrequency$outboundSchema))
-    .optional(),
-  payPeriod: z.nullable(z.lazy(() => EmploymentPayPeriod$outboundSchema))
-    .optional(),
-  payRate: z.nullable(z.string()).optional(),
-  payrollCode: z.nullable(z.string()).optional(),
-  remoteEmployeeId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  type: z.nullable(z.lazy(() => EmploymentSchemasType$outboundSchema))
-    .optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  workTime: z.nullable(z.lazy(() => EmploymentWorkTime$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contractType: "contract_type",
-    costCenter: "cost_center",
-    costCenters: "cost_centers",
-    createdAt: "created_at",
-    effectiveDate: "effective_date",
-    employeeId: "employee_id",
-    employmentContractType: "employment_contract_type",
-    employmentType: "employment_type",
-    endDate: "end_date",
-    jobTitle: "job_title",
-    payCurrency: "pay_currency",
-    payFrequency: "pay_frequency",
-    payPeriod: "pay_period",
-    payRate: "pay_rate",
-    payrollCode: "payroll_code",
-    remoteEmployeeId: "remote_employee_id",
-    remoteId: "remote_id",
-    startDate: "start_date",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-    workTime: "work_time",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Employment$ {
-  /** @deprecated use `Employment$inboundSchema` instead. */
-  export const inboundSchema = Employment$inboundSchema;
-  /** @deprecated use `Employment$outboundSchema` instead. */
-  export const outboundSchema = Employment$outboundSchema;
-  /** @deprecated use `Employment$Outbound` instead. */
-  export type Outbound = Employment$Outbound;
-}
-
-export function employmentToJSON(employment: Employment): string {
-  return JSON.stringify(Employment$outboundSchema.parse(employment));
-}
 
 export function employmentFromJSON(
   jsonString: string,

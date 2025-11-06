@@ -54,24 +54,6 @@ export type HrisGetEmploymentResponse = {
 };
 
 /** @internal */
-export const HrisGetEmploymentRequest$inboundSchema: z.ZodType<
-  HrisGetEmploymentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetEmploymentRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -99,34 +81,11 @@ export const HrisGetEmploymentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmploymentRequest$ {
-  /** @deprecated use `HrisGetEmploymentRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmploymentRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmploymentRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmploymentRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmploymentRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmploymentRequest$Outbound;
-}
-
 export function hrisGetEmploymentRequestToJSON(
   hrisGetEmploymentRequest: HrisGetEmploymentRequest,
 ): string {
   return JSON.stringify(
     HrisGetEmploymentRequest$outboundSchema.parse(hrisGetEmploymentRequest),
-  );
-}
-
-export function hrisGetEmploymentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetEmploymentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetEmploymentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetEmploymentRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const HrisGetEmploymentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetEmploymentResponse$Outbound = {
-  ContentType: string;
-  EmploymentResult?: shared.EmploymentResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetEmploymentResponse$outboundSchema: z.ZodType<
-  HrisGetEmploymentResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetEmploymentResponse
-> = z.object({
-  contentType: z.string(),
-  employmentResult: shared.EmploymentResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    employmentResult: "EmploymentResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmploymentResponse$ {
-  /** @deprecated use `HrisGetEmploymentResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmploymentResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmploymentResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmploymentResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmploymentResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmploymentResponse$Outbound;
-}
-
-export function hrisGetEmploymentResponseToJSON(
-  hrisGetEmploymentResponse: HrisGetEmploymentResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmploymentResponse$outboundSchema.parse(hrisGetEmploymentResponse),
-  );
-}
 
 export function hrisGetEmploymentResponseFromJSON(
   jsonString: string,

@@ -481,7 +481,7 @@ async function run() {
     },
     groupBy: "[\"connector\"]",
     include: [
-      Include.OperationDetails,
+      Include.ActionDetails,
     ],
   });
 

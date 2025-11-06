@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Campaign,
-  Campaign$inboundSchema,
-  Campaign$Outbound,
-  Campaign$outboundSchema,
-} from "./campaign.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Campaign, Campaign$inboundSchema } from "./campaign.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type CampaignsPaginated = {
   data: Array<Campaign>;
@@ -45,51 +35,6 @@ export const CampaignsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type CampaignsPaginated$Outbound = {
-  data: Array<Campaign$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const CampaignsPaginated$outboundSchema: z.ZodType<
-  CampaignsPaginated$Outbound,
-  z.ZodTypeDef,
-  CampaignsPaginated
-> = z.object({
-  data: z.array(Campaign$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CampaignsPaginated$ {
-  /** @deprecated use `CampaignsPaginated$inboundSchema` instead. */
-  export const inboundSchema = CampaignsPaginated$inboundSchema;
-  /** @deprecated use `CampaignsPaginated$outboundSchema` instead. */
-  export const outboundSchema = CampaignsPaginated$outboundSchema;
-  /** @deprecated use `CampaignsPaginated$Outbound` instead. */
-  export type Outbound = CampaignsPaginated$Outbound;
-}
-
-export function campaignsPaginatedToJSON(
-  campaignsPaginated: CampaignsPaginated,
-): string {
-  return JSON.stringify(
-    CampaignsPaginated$outboundSchema.parse(campaignsPaginated),
-  );
-}
 
 export function campaignsPaginatedFromJSON(
   jsonString: string,

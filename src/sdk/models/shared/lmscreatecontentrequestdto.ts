@@ -4,47 +4,34 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   AdditionalData,
-  AdditionalData$inboundSchema,
   AdditionalData$Outbound,
   AdditionalData$outboundSchema,
 } from "./additionaldata.js";
 import {
   AuthorModel,
-  AuthorModel$inboundSchema,
   AuthorModel$Outbound,
   AuthorModel$outboundSchema,
 } from "./authormodel.js";
 import {
   CreateCategoriesApiModel,
-  CreateCategoriesApiModel$inboundSchema,
   CreateCategoriesApiModel$Outbound,
   CreateCategoriesApiModel$outboundSchema,
 } from "./createcategoriesapimodel.js";
 import {
   CreateSkillsApiModel,
-  CreateSkillsApiModel$inboundSchema,
   CreateSkillsApiModel$Outbound,
   CreateSkillsApiModel$outboundSchema,
 } from "./createskillsapimodel.js";
 import {
   LanguageEnum,
-  LanguageEnum$inboundSchema,
   LanguageEnum$Outbound,
   LanguageEnum$outboundSchema,
 } from "./languageenum.js";
 import {
   LocalizationModel,
-  LocalizationModel$inboundSchema,
   LocalizationModel$Outbound,
   LocalizationModel$outboundSchema,
 } from "./localizationmodel.js";
@@ -207,32 +194,9 @@ export type LmsCreateContentRequestDto = {
 };
 
 /** @internal */
-export const LmsCreateContentRequestDto2$inboundSchema: z.ZodNativeEnum<
-  typeof LmsCreateContentRequestDto2
-> = z.nativeEnum(LmsCreateContentRequestDto2);
-
-/** @internal */
 export const LmsCreateContentRequestDto2$outboundSchema: z.ZodNativeEnum<
   typeof LmsCreateContentRequestDto2
-> = LmsCreateContentRequestDto2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDto2$ {
-  /** @deprecated use `LmsCreateContentRequestDto2$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateContentRequestDto2$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDto2$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateContentRequestDto2$outboundSchema;
-}
-
-/** @internal */
-export const LmsCreateContentRequestDtoActive$inboundSchema: z.ZodType<
-  LmsCreateContentRequestDtoActive,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), LmsCreateContentRequestDto2$inboundSchema]);
+> = z.nativeEnum(LmsCreateContentRequestDto2);
 
 /** @internal */
 export type LmsCreateContentRequestDtoActive$Outbound = boolean | string;
@@ -244,19 +208,6 @@ export const LmsCreateContentRequestDtoActive$outboundSchema: z.ZodType<
   LmsCreateContentRequestDtoActive
 > = z.union([z.boolean(), LmsCreateContentRequestDto2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDtoActive$ {
-  /** @deprecated use `LmsCreateContentRequestDtoActive$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateContentRequestDtoActive$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoActive$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateContentRequestDtoActive$outboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoActive$Outbound` instead. */
-  export type Outbound = LmsCreateContentRequestDtoActive$Outbound;
-}
-
 export function lmsCreateContentRequestDtoActiveToJSON(
   lmsCreateContentRequestDtoActive: LmsCreateContentRequestDtoActive,
 ): string {
@@ -266,23 +217,6 @@ export function lmsCreateContentRequestDtoActiveToJSON(
     ),
   );
 }
-
-export function lmsCreateContentRequestDtoActiveFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateContentRequestDtoActive, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsCreateContentRequestDtoActive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateContentRequestDtoActive' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateContentRequestDto4$inboundSchema: z.ZodType<
-  LmsCreateContentRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type LmsCreateContentRequestDto4$Outbound = {};
@@ -294,19 +228,6 @@ export const LmsCreateContentRequestDto4$outboundSchema: z.ZodType<
   LmsCreateContentRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDto4$ {
-  /** @deprecated use `LmsCreateContentRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateContentRequestDto4$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateContentRequestDto4$outboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDto4$Outbound` instead. */
-  export type Outbound = LmsCreateContentRequestDto4$Outbound;
-}
-
 export function lmsCreateContentRequestDto4ToJSON(
   lmsCreateContentRequestDto4: LmsCreateContentRequestDto4,
 ): string {
@@ -316,29 +237,6 @@ export function lmsCreateContentRequestDto4ToJSON(
     ),
   );
 }
-
-export function lmsCreateContentRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateContentRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsCreateContentRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateContentRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateContentRequestDtoSourceValue$inboundSchema: z.ZodType<
-  LmsCreateContentRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type LmsCreateContentRequestDtoSourceValue$Outbound =
@@ -361,21 +259,6 @@ export const LmsCreateContentRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDtoSourceValue$ {
-  /** @deprecated use `LmsCreateContentRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsCreateContentRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsCreateContentRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = LmsCreateContentRequestDtoSourceValue$Outbound;
-}
-
 export function lmsCreateContentRequestDtoSourceValueToJSON(
   lmsCreateContentRequestDtoSourceValue: LmsCreateContentRequestDtoSourceValue,
 ): string {
@@ -386,28 +269,6 @@ export function lmsCreateContentRequestDtoSourceValueToJSON(
   );
 }
 
-export function lmsCreateContentRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateContentRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsCreateContentRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateContentRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateContentRequestDtoValue$inboundSchema: z.ZodType<
-  LmsCreateContentRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(LmsCreateContentRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const LmsCreateContentRequestDtoValue$outboundSchema: z.ZodType<
   LmsCreateContentRequestDtoValueOpen,
@@ -417,39 +278,6 @@ export const LmsCreateContentRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(LmsCreateContentRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDtoValue$ {
-  /** @deprecated use `LmsCreateContentRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateContentRequestDtoValue$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateContentRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
-  LmsCreateContentRequestDtoContentType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(LmsCreateContentRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type LmsCreateContentRequestDtoContentType$Outbound = {
@@ -486,21 +314,6 @@ export const LmsCreateContentRequestDtoContentType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDtoContentType$ {
-  /** @deprecated use `LmsCreateContentRequestDtoContentType$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsCreateContentRequestDtoContentType$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoContentType$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsCreateContentRequestDtoContentType$outboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDtoContentType$Outbound` instead. */
-  export type Outbound = LmsCreateContentRequestDtoContentType$Outbound;
-}
-
 export function lmsCreateContentRequestDtoContentTypeToJSON(
   lmsCreateContentRequestDtoContentType: LmsCreateContentRequestDtoContentType,
 ): string {
@@ -510,69 +323,6 @@ export function lmsCreateContentRequestDtoContentTypeToJSON(
     ),
   );
 }
-
-export function lmsCreateContentRequestDtoContentTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateContentRequestDtoContentType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsCreateContentRequestDtoContentType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateContentRequestDtoContentType' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
-  LmsCreateContentRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.nullable(
-    z.union([z.boolean(), LmsCreateContentRequestDto2$inboundSchema]),
-  ).optional(),
-  additional_data: z.nullable(z.array(AdditionalData$inboundSchema)).optional(),
-  authors: z.nullable(z.array(AuthorModel$inboundSchema)).optional(),
-  categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
-    .optional(),
-  content_type: z.nullable(
-    z.lazy(() => LmsCreateContentRequestDtoContentType$inboundSchema),
-  ).optional(),
-  content_url: z.nullable(z.string()).optional(),
-  cover_url: z.nullable(z.string()).optional(),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  description: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.string()).optional(),
-  external_reference: z.string(),
-  languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
-  localizations: z.nullable(z.array(LocalizationModel$inboundSchema))
-    .optional(),
-  mobile_launch_content_url: z.nullable(z.string()).optional(),
-  order: z.nullable(z.number()).optional(),
-  short_description: z.nullable(z.string()).optional(),
-  skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  title: z.nullable(z.string()).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "additional_data": "additionalData",
-    "content_type": "contentType",
-    "content_url": "contentUrl",
-    "cover_url": "coverUrl",
-    "created_at": "createdAt",
-    "external_reference": "externalReference",
-    "mobile_launch_content_url": "mobileLaunchContentUrl",
-    "short_description": "shortDescription",
-    "unified_custom_fields": "unifiedCustomFields",
-    "updated_at": "updatedAt",
-  });
-});
 
 /** @internal */
 export type LmsCreateContentRequestDto$Outbound = {
@@ -650,33 +400,10 @@ export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsCreateContentRequestDto$ {
-  /** @deprecated use `LmsCreateContentRequestDto$inboundSchema` instead. */
-  export const inboundSchema = LmsCreateContentRequestDto$inboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDto$outboundSchema` instead. */
-  export const outboundSchema = LmsCreateContentRequestDto$outboundSchema;
-  /** @deprecated use `LmsCreateContentRequestDto$Outbound` instead. */
-  export type Outbound = LmsCreateContentRequestDto$Outbound;
-}
-
 export function lmsCreateContentRequestDtoToJSON(
   lmsCreateContentRequestDto: LmsCreateContentRequestDto,
 ): string {
   return JSON.stringify(
     LmsCreateContentRequestDto$outboundSchema.parse(lmsCreateContentRequestDto),
-  );
-}
-
-export function lmsCreateContentRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsCreateContentRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsCreateContentRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsCreateContentRequestDto' from JSON`,
   );
 }

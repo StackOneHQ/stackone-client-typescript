@@ -49,54 +49,6 @@ export const ScreeningPackage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ScreeningPackage$Outbound = {
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name: string;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const ScreeningPackage$outboundSchema: z.ZodType<
-  ScreeningPackage$Outbound,
-  z.ZodTypeDef,
-  ScreeningPackage
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.string(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningPackage$ {
-  /** @deprecated use `ScreeningPackage$inboundSchema` instead. */
-  export const inboundSchema = ScreeningPackage$inboundSchema;
-  /** @deprecated use `ScreeningPackage$outboundSchema` instead. */
-  export const outboundSchema = ScreeningPackage$outboundSchema;
-  /** @deprecated use `ScreeningPackage$Outbound` instead. */
-  export type Outbound = ScreeningPackage$Outbound;
-}
-
-export function screeningPackageToJSON(
-  screeningPackage: ScreeningPackage,
-): string {
-  return JSON.stringify(
-    ScreeningPackage$outboundSchema.parse(screeningPackage),
-  );
-}
-
 export function screeningPackageFromJSON(
   jsonString: string,
 ): SafeParseResult<ScreeningPackage, SDKValidationError> {

@@ -51,24 +51,6 @@ export type AtsGetJobApplicationStageResponse = {
 };
 
 /** @internal */
-export const AtsGetJobApplicationStageRequest$inboundSchema: z.ZodType<
-  AtsGetJobApplicationStageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetJobApplicationStageRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const AtsGetJobApplicationStageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobApplicationStageRequest$ {
-  /** @deprecated use `AtsGetJobApplicationStageRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetJobApplicationStageRequest$inboundSchema;
-  /** @deprecated use `AtsGetJobApplicationStageRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetJobApplicationStageRequest$outboundSchema;
-  /** @deprecated use `AtsGetJobApplicationStageRequest$Outbound` instead. */
-  export type Outbound = AtsGetJobApplicationStageRequest$Outbound;
-}
-
 export function atsGetJobApplicationStageRequestToJSON(
   atsGetJobApplicationStageRequest: AtsGetJobApplicationStageRequest,
 ): string {
@@ -116,16 +85,6 @@ export function atsGetJobApplicationStageRequestToJSON(
     AtsGetJobApplicationStageRequest$outboundSchema.parse(
       atsGetJobApplicationStageRequest,
     ),
-  );
-}
-
-export function atsGetJobApplicationStageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetJobApplicationStageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetJobApplicationStageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetJobApplicationStageRequest' from JSON`,
   );
 }
 
@@ -151,63 +110,6 @@ export const AtsGetJobApplicationStageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetJobApplicationStageResponse$Outbound = {
-  ApplicationStageResult?: shared.ApplicationStageResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetJobApplicationStageResponse$outboundSchema: z.ZodType<
-  AtsGetJobApplicationStageResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetJobApplicationStageResponse
-> = z.object({
-  applicationStageResult: shared.ApplicationStageResult$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    applicationStageResult: "ApplicationStageResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobApplicationStageResponse$ {
-  /** @deprecated use `AtsGetJobApplicationStageResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetJobApplicationStageResponse$inboundSchema;
-  /** @deprecated use `AtsGetJobApplicationStageResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetJobApplicationStageResponse$outboundSchema;
-  /** @deprecated use `AtsGetJobApplicationStageResponse$Outbound` instead. */
-  export type Outbound = AtsGetJobApplicationStageResponse$Outbound;
-}
-
-export function atsGetJobApplicationStageResponseToJSON(
-  atsGetJobApplicationStageResponse: AtsGetJobApplicationStageResponse,
-): string {
-  return JSON.stringify(
-    AtsGetJobApplicationStageResponse$outboundSchema.parse(
-      atsGetJobApplicationStageResponse,
-    ),
-  );
-}
 
 export function atsGetJobApplicationStageResponseFromJSON(
   jsonString: string,

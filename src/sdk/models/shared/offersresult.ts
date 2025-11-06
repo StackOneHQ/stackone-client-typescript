@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Offer,
-  Offer$inboundSchema,
-  Offer$Outbound,
-  Offer$outboundSchema,
-} from "./offer.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Offer, Offer$inboundSchema } from "./offer.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type OffersResult = {
   data: Offer;
@@ -33,39 +23,6 @@ export const OffersResult$inboundSchema: z.ZodType<
   data: Offer$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type OffersResult$Outbound = {
-  data: Offer$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const OffersResult$outboundSchema: z.ZodType<
-  OffersResult$Outbound,
-  z.ZodTypeDef,
-  OffersResult
-> = z.object({
-  data: Offer$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OffersResult$ {
-  /** @deprecated use `OffersResult$inboundSchema` instead. */
-  export const inboundSchema = OffersResult$inboundSchema;
-  /** @deprecated use `OffersResult$outboundSchema` instead. */
-  export const outboundSchema = OffersResult$outboundSchema;
-  /** @deprecated use `OffersResult$Outbound` instead. */
-  export type Outbound = OffersResult$Outbound;
-}
-
-export function offersResultToJSON(offersResult: OffersResult): string {
-  return JSON.stringify(OffersResult$outboundSchema.parse(offersResult));
-}
 
 export function offersResultFromJSON(
   jsonString: string,

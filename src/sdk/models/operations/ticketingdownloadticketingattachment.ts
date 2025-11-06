@@ -44,25 +44,6 @@ export type TicketingDownloadTicketingAttachmentResponse = {
 };
 
 /** @internal */
-export const TicketingDownloadTicketingAttachmentRequest$inboundSchema:
-  z.ZodType<
-    TicketingDownloadTicketingAttachmentRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    export_format: z.nullable(z.string()).optional(),
-    format: z.nullable(z.string()).optional(),
-    id: z.string(),
-    subResourceId: z.string(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "export_format": "exportFormat",
-      "x-account-id": "xAccountId",
-    });
-  });
-
-/** @internal */
 export type TicketingDownloadTicketingAttachmentRequest$Outbound = {
   export_format?: string | null | undefined;
   format?: string | null | undefined;
@@ -90,21 +71,6 @@ export const TicketingDownloadTicketingAttachmentRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingDownloadTicketingAttachmentRequest$ {
-  /** @deprecated use `TicketingDownloadTicketingAttachmentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingDownloadTicketingAttachmentRequest$inboundSchema;
-  /** @deprecated use `TicketingDownloadTicketingAttachmentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingDownloadTicketingAttachmentRequest$outboundSchema;
-  /** @deprecated use `TicketingDownloadTicketingAttachmentRequest$Outbound` instead. */
-  export type Outbound = TicketingDownloadTicketingAttachmentRequest$Outbound;
-}
-
 export function ticketingDownloadTicketingAttachmentRequestToJSON(
   ticketingDownloadTicketingAttachmentRequest:
     TicketingDownloadTicketingAttachmentRequest,
@@ -113,22 +79,6 @@ export function ticketingDownloadTicketingAttachmentRequestToJSON(
     TicketingDownloadTicketingAttachmentRequest$outboundSchema.parse(
       ticketingDownloadTicketingAttachmentRequest,
     ),
-  );
-}
-
-export function ticketingDownloadTicketingAttachmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingDownloadTicketingAttachmentRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingDownloadTicketingAttachmentRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingDownloadTicketingAttachmentRequest' from JSON`,
   );
 }
 
@@ -154,65 +104,6 @@ export const TicketingDownloadTicketingAttachmentResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type TicketingDownloadTicketingAttachmentResponse$Outbound = {
-  Body?: Uint8Array | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const TicketingDownloadTicketingAttachmentResponse$outboundSchema:
-  z.ZodType<
-    TicketingDownloadTicketingAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    TicketingDownloadTicketingAttachmentResponse
-  > = z.object({
-    body: b64$.zodOutbound.optional(),
-    contentType: z.string(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      body: "Body",
-      contentType: "ContentType",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingDownloadTicketingAttachmentResponse$ {
-  /** @deprecated use `TicketingDownloadTicketingAttachmentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingDownloadTicketingAttachmentResponse$inboundSchema;
-  /** @deprecated use `TicketingDownloadTicketingAttachmentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingDownloadTicketingAttachmentResponse$outboundSchema;
-  /** @deprecated use `TicketingDownloadTicketingAttachmentResponse$Outbound` instead. */
-  export type Outbound = TicketingDownloadTicketingAttachmentResponse$Outbound;
-}
-
-export function ticketingDownloadTicketingAttachmentResponseToJSON(
-  ticketingDownloadTicketingAttachmentResponse:
-    TicketingDownloadTicketingAttachmentResponse,
-): string {
-  return JSON.stringify(
-    TicketingDownloadTicketingAttachmentResponse$outboundSchema.parse(
-      ticketingDownloadTicketingAttachmentResponse,
-    ),
-  );
-}
 
 export function ticketingDownloadTicketingAttachmentResponseFromJSON(
   jsonString: string,

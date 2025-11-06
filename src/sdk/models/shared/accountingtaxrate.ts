@@ -55,58 +55,11 @@ export const AccountingTaxRate2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AccountingTaxRate2);
 
 /** @internal */
-export const AccountingTaxRate2$outboundSchema: z.ZodNativeEnum<
-  typeof AccountingTaxRate2
-> = AccountingTaxRate2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRate2$ {
-  /** @deprecated use `AccountingTaxRate2$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRate2$inboundSchema;
-  /** @deprecated use `AccountingTaxRate2$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRate2$outboundSchema;
-}
-
-/** @internal */
 export const AccountingTaxRateActive$inboundSchema: z.ZodType<
   AccountingTaxRateActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), AccountingTaxRate2$inboundSchema]);
-
-/** @internal */
-export type AccountingTaxRateActive$Outbound = boolean | string;
-
-/** @internal */
-export const AccountingTaxRateActive$outboundSchema: z.ZodType<
-  AccountingTaxRateActive$Outbound,
-  z.ZodTypeDef,
-  AccountingTaxRateActive
-> = z.union([z.boolean(), AccountingTaxRate2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRateActive$ {
-  /** @deprecated use `AccountingTaxRateActive$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRateActive$inboundSchema;
-  /** @deprecated use `AccountingTaxRateActive$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRateActive$outboundSchema;
-  /** @deprecated use `AccountingTaxRateActive$Outbound` instead. */
-  export type Outbound = AccountingTaxRateActive$Outbound;
-}
-
-export function accountingTaxRateActiveToJSON(
-  accountingTaxRateActive: AccountingTaxRateActive,
-): string {
-  return JSON.stringify(
-    AccountingTaxRateActive$outboundSchema.parse(accountingTaxRateActive),
-  );
-}
 
 export function accountingTaxRateActiveFromJSON(
   jsonString: string,
@@ -138,59 +91,6 @@ export const AccountingTaxRate$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type AccountingTaxRate$Outbound = {
-  active?: boolean | string | null | undefined;
-  code?: string | null | undefined;
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  percentage?: number | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const AccountingTaxRate$outboundSchema: z.ZodType<
-  AccountingTaxRate$Outbound,
-  z.ZodTypeDef,
-  AccountingTaxRate
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), AccountingTaxRate2$outboundSchema]))
-    .optional(),
-  code: z.nullable(z.string()).optional(),
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  percentage: z.nullable(z.number()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRate$ {
-  /** @deprecated use `AccountingTaxRate$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRate$inboundSchema;
-  /** @deprecated use `AccountingTaxRate$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRate$outboundSchema;
-  /** @deprecated use `AccountingTaxRate$Outbound` instead. */
-  export type Outbound = AccountingTaxRate$Outbound;
-}
-
-export function accountingTaxRateToJSON(
-  accountingTaxRate: AccountingTaxRate,
-): string {
-  return JSON.stringify(
-    AccountingTaxRate$outboundSchema.parse(accountingTaxRate),
-  );
-}
 
 export function accountingTaxRateFromJSON(
   jsonString: string,

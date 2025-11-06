@@ -4,30 +4,23 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CandidateEmail,
-  CandidateEmail$inboundSchema,
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
 import {
   CustomFields,
-  CustomFields$inboundSchema,
   CustomFields$Outbound,
   CustomFields$outboundSchema,
 } from "./customfields.js";
 import {
   PhoneNumber,
-  PhoneNumber$inboundSchema,
   PhoneNumber$Outbound,
   PhoneNumber$outboundSchema,
 } from "./phonenumber.js";
 import {
   SocialLink,
-  SocialLink$inboundSchema,
   SocialLink$Outbound,
   SocialLink$outboundSchema,
 } from "./sociallink.js";
@@ -102,43 +95,6 @@ export type AtsUpdateCandidateRequestDto = {
 };
 
 /** @internal */
-export const AtsUpdateCandidateRequestDto$inboundSchema: z.ZodType<
-  AtsUpdateCandidateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  application_ids: z.nullable(z.array(z.string())).optional(),
-  company: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
-  email: z.nullable(z.string()).optional(),
-  emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
-  first_name: z.nullable(z.string()).optional(),
-  hired_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  phone: z.nullable(z.string()).optional(),
-  phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
-  social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
-  title: z.nullable(z.string()).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "application_ids": "applicationIds",
-    "custom_fields": "customFields",
-    "first_name": "firstName",
-    "hired_at": "hiredAt",
-    "last_name": "lastName",
-    "phone_numbers": "phoneNumbers",
-    "social_links": "socialLinks",
-    "unified_custom_fields": "unifiedCustomFields",
-  });
-});
-
-/** @internal */
 export type AtsUpdateCandidateRequestDto$Outbound = {
   application_ids?: Array<string> | null | undefined;
   company?: string | null | undefined;
@@ -193,19 +149,6 @@ export const AtsUpdateCandidateRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateCandidateRequestDto$ {
-  /** @deprecated use `AtsUpdateCandidateRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateCandidateRequestDto$inboundSchema;
-  /** @deprecated use `AtsUpdateCandidateRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateCandidateRequestDto$outboundSchema;
-  /** @deprecated use `AtsUpdateCandidateRequestDto$Outbound` instead. */
-  export type Outbound = AtsUpdateCandidateRequestDto$Outbound;
-}
-
 export function atsUpdateCandidateRequestDtoToJSON(
   atsUpdateCandidateRequestDto: AtsUpdateCandidateRequestDto,
 ): string {
@@ -213,15 +156,5 @@ export function atsUpdateCandidateRequestDtoToJSON(
     AtsUpdateCandidateRequestDto$outboundSchema.parse(
       atsUpdateCandidateRequestDto,
     ),
-  );
-}
-
-export function atsUpdateCandidateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateCandidateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateCandidateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateCandidateRequestDto' from JSON`,
   );
 }

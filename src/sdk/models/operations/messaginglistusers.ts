@@ -83,21 +83,6 @@ export type MessagingListUsersResponse = {
 };
 
 /** @internal */
-export const MessagingListUsersQueryParamFilter$inboundSchema: z.ZodType<
-  MessagingListUsersQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type MessagingListUsersQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,20 +100,6 @@ export const MessagingListUsersQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListUsersQueryParamFilter$ {
-  /** @deprecated use `MessagingListUsersQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = MessagingListUsersQueryParamFilter$inboundSchema;
-  /** @deprecated use `MessagingListUsersQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingListUsersQueryParamFilter$outboundSchema;
-  /** @deprecated use `MessagingListUsersQueryParamFilter$Outbound` instead. */
-  export type Outbound = MessagingListUsersQueryParamFilter$Outbound;
-}
-
 export function messagingListUsersQueryParamFilterToJSON(
   messagingListUsersQueryParamFilter: MessagingListUsersQueryParamFilter,
 ): string {
@@ -138,44 +109,6 @@ export function messagingListUsersQueryParamFilterToJSON(
     ),
   );
 }
-
-export function messagingListUsersQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingListUsersQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MessagingListUsersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingListUsersQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const MessagingListUsersRequest$inboundSchema: z.ZodType<
-  MessagingListUsersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => MessagingListUsersQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type MessagingListUsersRequest$Outbound = {
@@ -215,34 +148,11 @@ export const MessagingListUsersRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListUsersRequest$ {
-  /** @deprecated use `MessagingListUsersRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingListUsersRequest$inboundSchema;
-  /** @deprecated use `MessagingListUsersRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagingListUsersRequest$outboundSchema;
-  /** @deprecated use `MessagingListUsersRequest$Outbound` instead. */
-  export type Outbound = MessagingListUsersRequest$Outbound;
-}
-
 export function messagingListUsersRequestToJSON(
   messagingListUsersRequest: MessagingListUsersRequest,
 ): string {
   return JSON.stringify(
     MessagingListUsersRequest$outboundSchema.parse(messagingListUsersRequest),
-  );
-}
-
-export function messagingListUsersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingListUsersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingListUsersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingListUsersRequest' from JSON`,
   );
 }
 
@@ -268,60 +178,6 @@ export const MessagingListUsersResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingListUsersResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MessagingUsersPaginated?: shared.MessagingUsersPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingListUsersResponse$outboundSchema: z.ZodType<
-  MessagingListUsersResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingListUsersResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  messagingUsersPaginated: shared.MessagingUsersPaginated$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    messagingUsersPaginated: "MessagingUsersPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListUsersResponse$ {
-  /** @deprecated use `MessagingListUsersResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingListUsersResponse$inboundSchema;
-  /** @deprecated use `MessagingListUsersResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagingListUsersResponse$outboundSchema;
-  /** @deprecated use `MessagingListUsersResponse$Outbound` instead. */
-  export type Outbound = MessagingListUsersResponse$Outbound;
-}
-
-export function messagingListUsersResponseToJSON(
-  messagingListUsersResponse: MessagingListUsersResponse,
-): string {
-  return JSON.stringify(
-    MessagingListUsersResponse$outboundSchema.parse(messagingListUsersResponse),
-  );
-}
 
 export function messagingListUsersResponseFromJSON(
   jsonString: string,

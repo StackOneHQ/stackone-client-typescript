@@ -87,21 +87,6 @@ export type IamListRolesResponse = {
 };
 
 /** @internal */
-export const IamListRolesQueryParamFilter$inboundSchema: z.ZodType<
-  IamListRolesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type IamListRolesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,19 +104,6 @@ export const IamListRolesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListRolesQueryParamFilter$ {
-  /** @deprecated use `IamListRolesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = IamListRolesQueryParamFilter$inboundSchema;
-  /** @deprecated use `IamListRolesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = IamListRolesQueryParamFilter$outboundSchema;
-  /** @deprecated use `IamListRolesQueryParamFilter$Outbound` instead. */
-  export type Outbound = IamListRolesQueryParamFilter$Outbound;
-}
-
 export function iamListRolesQueryParamFilterToJSON(
   iamListRolesQueryParamFilter: IamListRolesQueryParamFilter,
 ): string {
@@ -141,43 +113,6 @@ export function iamListRolesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function iamListRolesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<IamListRolesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamListRolesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamListRolesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamListRolesRequest$inboundSchema: z.ZodType<
-  IamListRolesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => IamListRolesQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type IamListRolesRequest$Outbound = {
@@ -218,34 +153,11 @@ export const IamListRolesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListRolesRequest$ {
-  /** @deprecated use `IamListRolesRequest$inboundSchema` instead. */
-  export const inboundSchema = IamListRolesRequest$inboundSchema;
-  /** @deprecated use `IamListRolesRequest$outboundSchema` instead. */
-  export const outboundSchema = IamListRolesRequest$outboundSchema;
-  /** @deprecated use `IamListRolesRequest$Outbound` instead. */
-  export type Outbound = IamListRolesRequest$Outbound;
-}
-
 export function iamListRolesRequestToJSON(
   iamListRolesRequest: IamListRolesRequest,
 ): string {
   return JSON.stringify(
     IamListRolesRequest$outboundSchema.parse(iamListRolesRequest),
-  );
-}
-
-export function iamListRolesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamListRolesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamListRolesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamListRolesRequest' from JSON`,
   );
 }
 
@@ -270,59 +182,6 @@ export const IamListRolesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamListRolesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  IamRolesPaginated?: shared.IamRolesPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamListRolesResponse$outboundSchema: z.ZodType<
-  IamListRolesResponse$Outbound,
-  z.ZodTypeDef,
-  IamListRolesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  iamRolesPaginated: shared.IamRolesPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    iamRolesPaginated: "IamRolesPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListRolesResponse$ {
-  /** @deprecated use `IamListRolesResponse$inboundSchema` instead. */
-  export const inboundSchema = IamListRolesResponse$inboundSchema;
-  /** @deprecated use `IamListRolesResponse$outboundSchema` instead. */
-  export const outboundSchema = IamListRolesResponse$outboundSchema;
-  /** @deprecated use `IamListRolesResponse$Outbound` instead. */
-  export type Outbound = IamListRolesResponse$Outbound;
-}
-
-export function iamListRolesResponseToJSON(
-  iamListRolesResponse: IamListRolesResponse,
-): string {
-  return JSON.stringify(
-    IamListRolesResponse$outboundSchema.parse(iamListRolesResponse),
-  );
-}
 
 export function iamListRolesResponseFromJSON(
   jsonString: string,

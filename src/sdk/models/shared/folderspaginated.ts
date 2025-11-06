@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Folders,
-  Folders$inboundSchema,
-  Folders$Outbound,
-  Folders$outboundSchema,
-} from "./folders.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Folders, Folders$inboundSchema } from "./folders.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type FoldersPaginated = {
   data: Array<Folders>;
@@ -35,45 +25,6 @@ export const FoldersPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type FoldersPaginated$Outbound = {
-  data: Array<Folders$Outbound>;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const FoldersPaginated$outboundSchema: z.ZodType<
-  FoldersPaginated$Outbound,
-  z.ZodTypeDef,
-  FoldersPaginated
-> = z.object({
-  data: z.array(Folders$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FoldersPaginated$ {
-  /** @deprecated use `FoldersPaginated$inboundSchema` instead. */
-  export const inboundSchema = FoldersPaginated$inboundSchema;
-  /** @deprecated use `FoldersPaginated$outboundSchema` instead. */
-  export const outboundSchema = FoldersPaginated$outboundSchema;
-  /** @deprecated use `FoldersPaginated$Outbound` instead. */
-  export type Outbound = FoldersPaginated$Outbound;
-}
-
-export function foldersPaginatedToJSON(
-  foldersPaginated: FoldersPaginated,
-): string {
-  return JSON.stringify(
-    FoldersPaginated$outboundSchema.parse(foldersPaginated),
-  );
-}
 
 export function foldersPaginatedFromJSON(
   jsonString: string,

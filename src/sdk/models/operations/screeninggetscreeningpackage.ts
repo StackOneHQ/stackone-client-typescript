@@ -50,23 +50,6 @@ export type ScreeningGetScreeningPackageResponse = {
 };
 
 /** @internal */
-export const ScreeningGetScreeningPackageRequest$inboundSchema: z.ZodType<
-  ScreeningGetScreeningPackageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type ScreeningGetScreeningPackageRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,21 +75,6 @@ export const ScreeningGetScreeningPackageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningGetScreeningPackageRequest$ {
-  /** @deprecated use `ScreeningGetScreeningPackageRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningGetScreeningPackageRequest$inboundSchema;
-  /** @deprecated use `ScreeningGetScreeningPackageRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningGetScreeningPackageRequest$outboundSchema;
-  /** @deprecated use `ScreeningGetScreeningPackageRequest$Outbound` instead. */
-  export type Outbound = ScreeningGetScreeningPackageRequest$Outbound;
-}
-
 export function screeningGetScreeningPackageRequestToJSON(
   screeningGetScreeningPackageRequest: ScreeningGetScreeningPackageRequest,
 ): string {
@@ -114,17 +82,6 @@ export function screeningGetScreeningPackageRequestToJSON(
     ScreeningGetScreeningPackageRequest$outboundSchema.parse(
       screeningGetScreeningPackageRequest,
     ),
-  );
-}
-
-export function screeningGetScreeningPackageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ScreeningGetScreeningPackageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ScreeningGetScreeningPackageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScreeningGetScreeningPackageRequest' from JSON`,
   );
 }
 
@@ -150,64 +107,6 @@ export const ScreeningGetScreeningPackageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type ScreeningGetScreeningPackageResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScreeningPackageResult?: shared.ScreeningPackageResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const ScreeningGetScreeningPackageResponse$outboundSchema: z.ZodType<
-  ScreeningGetScreeningPackageResponse$Outbound,
-  z.ZodTypeDef,
-  ScreeningGetScreeningPackageResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  screeningPackageResult: shared.ScreeningPackageResult$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    screeningPackageResult: "ScreeningPackageResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningGetScreeningPackageResponse$ {
-  /** @deprecated use `ScreeningGetScreeningPackageResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningGetScreeningPackageResponse$inboundSchema;
-  /** @deprecated use `ScreeningGetScreeningPackageResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningGetScreeningPackageResponse$outboundSchema;
-  /** @deprecated use `ScreeningGetScreeningPackageResponse$Outbound` instead. */
-  export type Outbound = ScreeningGetScreeningPackageResponse$Outbound;
-}
-
-export function screeningGetScreeningPackageResponseToJSON(
-  screeningGetScreeningPackageResponse: ScreeningGetScreeningPackageResponse,
-): string {
-  return JSON.stringify(
-    ScreeningGetScreeningPackageResponse$outboundSchema.parse(
-      screeningGetScreeningPackageResponse,
-    ),
-  );
-}
 
 export function screeningGetScreeningPackageResponseFromJSON(
   jsonString: string,

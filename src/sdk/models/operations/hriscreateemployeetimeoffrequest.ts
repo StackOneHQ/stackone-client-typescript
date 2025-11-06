@@ -39,22 +39,6 @@ export type HrisCreateEmployeeTimeOffRequestResponse = {
 };
 
 /** @internal */
-export const HrisCreateEmployeeTimeOffRequestRequest$inboundSchema: z.ZodType<
-  HrisCreateEmployeeTimeOffRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "HrisCreateTimeOffRequestDto": "hrisCreateTimeOffRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisCreateEmployeeTimeOffRequestRequest$Outbound = {
   HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$Outbound;
   id: string;
@@ -78,21 +62,6 @@ export const HrisCreateEmployeeTimeOffRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateEmployeeTimeOffRequestRequest$ {
-  /** @deprecated use `HrisCreateEmployeeTimeOffRequestRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateEmployeeTimeOffRequestRequest$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeTimeOffRequestRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateEmployeeTimeOffRequestRequest$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeTimeOffRequestRequest$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeTimeOffRequestRequest$Outbound;
-}
-
 export function hrisCreateEmployeeTimeOffRequestRequestToJSON(
   hrisCreateEmployeeTimeOffRequestRequest:
     HrisCreateEmployeeTimeOffRequestRequest,
@@ -101,22 +70,6 @@ export function hrisCreateEmployeeTimeOffRequestRequestToJSON(
     HrisCreateEmployeeTimeOffRequestRequest$outboundSchema.parse(
       hrisCreateEmployeeTimeOffRequestRequest,
     ),
-  );
-}
-
-export function hrisCreateEmployeeTimeOffRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisCreateEmployeeTimeOffRequestRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisCreateEmployeeTimeOffRequestRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisCreateEmployeeTimeOffRequestRequest' from JSON`,
   );
 }
 
@@ -141,64 +94,6 @@ export const HrisCreateEmployeeTimeOffRequestResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisCreateEmployeeTimeOffRequestResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisCreateEmployeeTimeOffRequestResponse$outboundSchema: z.ZodType<
-  HrisCreateEmployeeTimeOffRequestResponse$Outbound,
-  z.ZodTypeDef,
-  HrisCreateEmployeeTimeOffRequestResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateEmployeeTimeOffRequestResponse$ {
-  /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateEmployeeTimeOffRequestResponse$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateEmployeeTimeOffRequestResponse$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeTimeOffRequestResponse$Outbound;
-}
-
-export function hrisCreateEmployeeTimeOffRequestResponseToJSON(
-  hrisCreateEmployeeTimeOffRequestResponse:
-    HrisCreateEmployeeTimeOffRequestResponse,
-): string {
-  return JSON.stringify(
-    HrisCreateEmployeeTimeOffRequestResponse$outboundSchema.parse(
-      hrisCreateEmployeeTimeOffRequestResponse,
-    ),
-  );
-}
 
 export function hrisCreateEmployeeTimeOffRequestResponseFromJSON(
   jsonString: string,

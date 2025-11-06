@@ -90,21 +90,6 @@ export type AtsListCandidateNotesResponse = {
 };
 
 /** @internal */
-export const AtsListCandidateNotesQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListCandidateNotesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AtsListCandidateNotesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -122,21 +107,6 @@ export const AtsListCandidateNotesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListCandidateNotesQueryParamFilter$ {
-  /** @deprecated use `AtsListCandidateNotesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListCandidateNotesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListCandidateNotesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListCandidateNotesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListCandidateNotesQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListCandidateNotesQueryParamFilter$Outbound;
-}
-
 export function atsListCandidateNotesQueryParamFilterToJSON(
   atsListCandidateNotesQueryParamFilter: AtsListCandidateNotesQueryParamFilter,
 ): string {
@@ -146,47 +116,6 @@ export function atsListCandidateNotesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListCandidateNotesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListCandidateNotesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListCandidateNotesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListCandidateNotesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListCandidateNotesRequest$inboundSchema: z.ZodType<
-  AtsListCandidateNotesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListCandidateNotesQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListCandidateNotesRequest$Outbound = {
@@ -231,19 +160,6 @@ export const AtsListCandidateNotesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListCandidateNotesRequest$ {
-  /** @deprecated use `AtsListCandidateNotesRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListCandidateNotesRequest$inboundSchema;
-  /** @deprecated use `AtsListCandidateNotesRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListCandidateNotesRequest$outboundSchema;
-  /** @deprecated use `AtsListCandidateNotesRequest$Outbound` instead. */
-  export type Outbound = AtsListCandidateNotesRequest$Outbound;
-}
-
 export function atsListCandidateNotesRequestToJSON(
   atsListCandidateNotesRequest: AtsListCandidateNotesRequest,
 ): string {
@@ -251,16 +167,6 @@ export function atsListCandidateNotesRequestToJSON(
     AtsListCandidateNotesRequest$outboundSchema.parse(
       atsListCandidateNotesRequest,
     ),
-  );
-}
-
-export function atsListCandidateNotesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListCandidateNotesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListCandidateNotesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListCandidateNotesRequest' from JSON`,
   );
 }
 
@@ -285,61 +191,6 @@ export const AtsListCandidateNotesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListCandidateNotesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  NotesPaginated?: shared.NotesPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListCandidateNotesResponse$outboundSchema: z.ZodType<
-  AtsListCandidateNotesResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListCandidateNotesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  notesPaginated: shared.NotesPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    notesPaginated: "NotesPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListCandidateNotesResponse$ {
-  /** @deprecated use `AtsListCandidateNotesResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListCandidateNotesResponse$inboundSchema;
-  /** @deprecated use `AtsListCandidateNotesResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListCandidateNotesResponse$outboundSchema;
-  /** @deprecated use `AtsListCandidateNotesResponse$Outbound` instead. */
-  export type Outbound = AtsListCandidateNotesResponse$Outbound;
-}
-
-export function atsListCandidateNotesResponseToJSON(
-  atsListCandidateNotesResponse: AtsListCandidateNotesResponse,
-): string {
-  return JSON.stringify(
-    AtsListCandidateNotesResponse$outboundSchema.parse(
-      atsListCandidateNotesResponse,
-    ),
-  );
-}
 
 export function atsListCandidateNotesResponseFromJSON(
   jsonString: string,

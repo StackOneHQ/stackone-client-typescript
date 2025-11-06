@@ -71,63 +71,6 @@ export const TicketingComponent$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type TicketingComponent$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  organization_id?: string | null | undefined;
-  project_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingComponent$outboundSchema: z.ZodType<
-  TicketingComponent$Outbound,
-  z.ZodTypeDef,
-  TicketingComponent
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  organizationId: z.nullable(z.string()).optional(),
-  projectId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    organizationId: "organization_id",
-    projectId: "project_id",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingComponent$ {
-  /** @deprecated use `TicketingComponent$inboundSchema` instead. */
-  export const inboundSchema = TicketingComponent$inboundSchema;
-  /** @deprecated use `TicketingComponent$outboundSchema` instead. */
-  export const outboundSchema = TicketingComponent$outboundSchema;
-  /** @deprecated use `TicketingComponent$Outbound` instead. */
-  export type Outbound = TicketingComponent$Outbound;
-}
-
-export function ticketingComponentToJSON(
-  ticketingComponent: TicketingComponent,
-): string {
-  return JSON.stringify(
-    TicketingComponent$outboundSchema.parse(ticketingComponent),
-  );
-}
-
 export function ticketingComponentFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingComponent, SDKValidationError> {

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MessagingMessageSendRequestDto = {
   /**
@@ -21,17 +18,6 @@ export type MessagingMessageSendRequestDto = {
    */
   sender?: string | null | undefined;
 };
-
-/** @internal */
-export const MessagingMessageSendRequestDto$inboundSchema: z.ZodType<
-  MessagingMessageSendRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  content: z.nullable(z.string()).optional(),
-  recipient: z.nullable(z.string()).optional(),
-  sender: z.nullable(z.string()).optional(),
-});
 
 /** @internal */
 export type MessagingMessageSendRequestDto$Outbound = {
@@ -51,19 +37,6 @@ export const MessagingMessageSendRequestDto$outboundSchema: z.ZodType<
   sender: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageSendRequestDto$ {
-  /** @deprecated use `MessagingMessageSendRequestDto$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageSendRequestDto$inboundSchema;
-  /** @deprecated use `MessagingMessageSendRequestDto$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageSendRequestDto$outboundSchema;
-  /** @deprecated use `MessagingMessageSendRequestDto$Outbound` instead. */
-  export type Outbound = MessagingMessageSendRequestDto$Outbound;
-}
-
 export function messagingMessageSendRequestDtoToJSON(
   messagingMessageSendRequestDto: MessagingMessageSendRequestDto,
 ): string {
@@ -71,15 +44,5 @@ export function messagingMessageSendRequestDtoToJSON(
     MessagingMessageSendRequestDto$outboundSchema.parse(
       messagingMessageSendRequestDto,
     ),
-  );
-}
-
-export function messagingMessageSendRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingMessageSendRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingMessageSendRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingMessageSendRequestDto' from JSON`,
   );
 }

@@ -38,7 +38,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_list_actions_meta"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { StackoneListActionsMetaQueryParamInclude } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.listActionsMeta({\n    groupBy: \"[\\\"connector\\\"]\",\n    filter: {\n      connectors: \"connector1,connector2\",\n      accountIds: \"account1,account2\",\n      actionKey: \"action1\",\n    },\n    include: [\n      StackoneListActionsMetaQueryParamInclude.OperationDetails,\n    ],\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { StackoneListActionsMetaQueryParamInclude } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    username: \"\",\n    password: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.listActionsMeta({\n    groupBy: \"[\\\"connector\\\"]\",\n    filter: {\n      connectors: \"connector1,connector2\",\n      accountIds: \"account1,account2\",\n      actionKey: \"action1\",\n    },\n    include: [\n      StackoneListActionsMetaQueryParamInclude.ActionDetails,\n    ],\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/actions/rpc"]["post"]
     update:
       "x-codeSamples":
@@ -74,19 +74,19 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_mcp_delete"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpDelete({\n    basic: {\n      username: \"\",\n      password: \"\",\n    },\n  }, {\n    xAccountId: \"<id>\",\n    mcpSessionId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpDelete({\n    basic: {\n      username: \"\",\n      password: \"\",\n    },\n  }, {\n    mcpSessionId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/mcp"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_mcp_get"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpGet({\n    basic: {\n      username: \"\",\n      password: \"\",\n    },\n  }, {\n    xAccountId: \"<id>\",\n    mcpSessionId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpGet({\n    basic: {\n      username: \"\",\n      password: \"\",\n    },\n  }, {\n    mcpSessionId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/mcp"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_mcp_post"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpPost({\n    basic: {\n      username: \"\",\n      password: \"\",\n    },\n  }, {\n    xAccountId: \"<id>\",\n    jsonRpcMessageDto: {\n      jsonrpc: \"2.0\",\n      method: \"initialize\",\n      params: {},\n      id: {},\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpPost({\n    basic: {\n      username: \"\",\n      password: \"\",\n    },\n  }, {\n    jsonRpcMessageDto: {\n      jsonrpc: \"2.0\",\n      method: \"initialize\",\n      params: {},\n      id: {},\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/requests/logs"]["get"]
     update:
       "x-codeSamples":

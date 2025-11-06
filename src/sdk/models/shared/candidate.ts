@@ -10,33 +10,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
-  CandidateEmail$Outbound,
-  CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
-import {
-  CustomFields,
-  CustomFields$inboundSchema,
-  CustomFields$Outbound,
-  CustomFields$outboundSchema,
-} from "./customfields.js";
-import {
-  PhoneNumber,
-  PhoneNumber$inboundSchema,
-  PhoneNumber$Outbound,
-  PhoneNumber$outboundSchema,
-} from "./phonenumber.js";
-import {
-  SocialLink,
-  SocialLink$inboundSchema,
-  SocialLink$Outbound,
-  SocialLink$outboundSchema,
-} from "./sociallink.js";
-import {
-  Tag,
-  Tag$inboundSchema,
-  Tag$Outbound,
-  Tag$outboundSchema,
-} from "./tag.js";
+import { CustomFields, CustomFields$inboundSchema } from "./customfields.js";
+import { PhoneNumber, PhoneNumber$inboundSchema } from "./phonenumber.js";
+import { SocialLink, SocialLink$inboundSchema } from "./sociallink.js";
+import { Tag, Tag$inboundSchema } from "./tag.js";
 
 export type Candidate = {
   /**
@@ -176,92 +154,6 @@ export const Candidate$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type Candidate$Outbound = {
-  application_ids?: Array<string> | null | undefined;
-  company?: string | null | undefined;
-  country?: string | null | undefined;
-  created_at?: string | null | undefined;
-  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
-  email?: string | null | undefined;
-  emails?: Array<CandidateEmail$Outbound> | null | undefined;
-  first_name?: string | null | undefined;
-  hired_at?: string | null | undefined;
-  id?: string | null | undefined;
-  last_name?: string | null | undefined;
-  name?: string | null | undefined;
-  phone?: string | null | undefined;
-  phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
-  remote_application_ids?: Array<string> | null | undefined;
-  remote_id?: string | null | undefined;
-  social_links?: Array<SocialLink$Outbound> | null | undefined;
-  tags?: Array<Tag$Outbound> | null | undefined;
-  title?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Candidate$outboundSchema: z.ZodType<
-  Candidate$Outbound,
-  z.ZodTypeDef,
-  Candidate
-> = z.object({
-  applicationIds: z.nullable(z.array(z.string())).optional(),
-  company: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
-  email: z.nullable(z.string()).optional(),
-  emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  hiredAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  phone: z.nullable(z.string()).optional(),
-  phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
-  remoteApplicationIds: z.nullable(z.array(z.string())).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
-  tags: z.nullable(z.array(Tag$outboundSchema)).optional(),
-  title: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    applicationIds: "application_ids",
-    createdAt: "created_at",
-    customFields: "custom_fields",
-    firstName: "first_name",
-    hiredAt: "hired_at",
-    lastName: "last_name",
-    phoneNumbers: "phone_numbers",
-    remoteApplicationIds: "remote_application_ids",
-    remoteId: "remote_id",
-    socialLinks: "social_links",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Candidate$ {
-  /** @deprecated use `Candidate$inboundSchema` instead. */
-  export const inboundSchema = Candidate$inboundSchema;
-  /** @deprecated use `Candidate$outboundSchema` instead. */
-  export const outboundSchema = Candidate$outboundSchema;
-  /** @deprecated use `Candidate$Outbound` instead. */
-  export type Outbound = Candidate$Outbound;
-}
-
-export function candidateToJSON(candidate: Candidate): string {
-  return JSON.stringify(Candidate$outboundSchema.parse(candidate));
-}
 
 export function candidateFromJSON(
   jsonString: string,

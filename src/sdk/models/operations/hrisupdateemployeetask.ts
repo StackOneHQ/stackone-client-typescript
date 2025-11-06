@@ -40,23 +40,6 @@ export type HrisUpdateEmployeeTaskResponse = {
 };
 
 /** @internal */
-export const HrisUpdateEmployeeTaskRequest$inboundSchema: z.ZodType<
-  HrisUpdateEmployeeTaskRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  UpdateTaskRequestDto: shared.UpdateTaskRequestDto$inboundSchema,
-  id: z.string(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateTaskRequestDto": "updateTaskRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisUpdateEmployeeTaskRequest$Outbound = {
   UpdateTaskRequestDto: shared.UpdateTaskRequestDto$Outbound;
   id: string;
@@ -81,19 +64,6 @@ export const HrisUpdateEmployeeTaskRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmployeeTaskRequest$ {
-  /** @deprecated use `HrisUpdateEmployeeTaskRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisUpdateEmployeeTaskRequest$inboundSchema;
-  /** @deprecated use `HrisUpdateEmployeeTaskRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisUpdateEmployeeTaskRequest$outboundSchema;
-  /** @deprecated use `HrisUpdateEmployeeTaskRequest$Outbound` instead. */
-  export type Outbound = HrisUpdateEmployeeTaskRequest$Outbound;
-}
-
 export function hrisUpdateEmployeeTaskRequestToJSON(
   hrisUpdateEmployeeTaskRequest: HrisUpdateEmployeeTaskRequest,
 ): string {
@@ -101,16 +71,6 @@ export function hrisUpdateEmployeeTaskRequestToJSON(
     HrisUpdateEmployeeTaskRequest$outboundSchema.parse(
       hrisUpdateEmployeeTaskRequest,
     ),
-  );
-}
-
-export function hrisUpdateEmployeeTaskRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmployeeTaskRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisUpdateEmployeeTaskRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmployeeTaskRequest' from JSON`,
   );
 }
 
@@ -135,61 +95,6 @@ export const HrisUpdateEmployeeTaskResponse$inboundSchema: z.ZodType<
     "UpdateResult": "updateResult",
   });
 });
-
-/** @internal */
-export type HrisUpdateEmployeeTaskResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UpdateResult?: shared.UpdateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisUpdateEmployeeTaskResponse$outboundSchema: z.ZodType<
-  HrisUpdateEmployeeTaskResponse$Outbound,
-  z.ZodTypeDef,
-  HrisUpdateEmployeeTaskResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  updateResult: shared.UpdateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    updateResult: "UpdateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmployeeTaskResponse$ {
-  /** @deprecated use `HrisUpdateEmployeeTaskResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisUpdateEmployeeTaskResponse$inboundSchema;
-  /** @deprecated use `HrisUpdateEmployeeTaskResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisUpdateEmployeeTaskResponse$outboundSchema;
-  /** @deprecated use `HrisUpdateEmployeeTaskResponse$Outbound` instead. */
-  export type Outbound = HrisUpdateEmployeeTaskResponse$Outbound;
-}
-
-export function hrisUpdateEmployeeTaskResponseToJSON(
-  hrisUpdateEmployeeTaskResponse: HrisUpdateEmployeeTaskResponse,
-): string {
-  return JSON.stringify(
-    HrisUpdateEmployeeTaskResponse$outboundSchema.parse(
-      hrisUpdateEmployeeTaskResponse,
-    ),
-  );
-}
 
 export function hrisUpdateEmployeeTaskResponseFromJSON(
   jsonString: string,

@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -610,58 +606,11 @@ export const EntitySkills2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(EntitySkills2);
 
 /** @internal */
-export const EntitySkills2$outboundSchema: z.ZodNativeEnum<
-  typeof EntitySkills2
-> = EntitySkills2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkills2$ {
-  /** @deprecated use `EntitySkills2$inboundSchema` instead. */
-  export const inboundSchema = EntitySkills2$inboundSchema;
-  /** @deprecated use `EntitySkills2$outboundSchema` instead. */
-  export const outboundSchema = EntitySkills2$outboundSchema;
-}
-
-/** @internal */
 export const EntitySkillsActive$inboundSchema: z.ZodType<
   EntitySkillsActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), EntitySkills2$inboundSchema]);
-
-/** @internal */
-export type EntitySkillsActive$Outbound = boolean | string;
-
-/** @internal */
-export const EntitySkillsActive$outboundSchema: z.ZodType<
-  EntitySkillsActive$Outbound,
-  z.ZodTypeDef,
-  EntitySkillsActive
-> = z.union([z.boolean(), EntitySkills2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsActive$ {
-  /** @deprecated use `EntitySkillsActive$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsActive$inboundSchema;
-  /** @deprecated use `EntitySkillsActive$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsActive$outboundSchema;
-  /** @deprecated use `EntitySkillsActive$Outbound` instead. */
-  export type Outbound = EntitySkillsActive$Outbound;
-}
-
-export function entitySkillsActiveToJSON(
-  entitySkillsActive: EntitySkillsActive,
-): string {
-  return JSON.stringify(
-    EntitySkillsActive$outboundSchema.parse(entitySkillsActive),
-  );
-}
 
 export function entitySkillsActiveFromJSON(
   jsonString: string,
@@ -679,33 +628,6 @@ export const EntitySkills4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EntitySkills4$Outbound = {};
-
-/** @internal */
-export const EntitySkills4$outboundSchema: z.ZodType<
-  EntitySkills4$Outbound,
-  z.ZodTypeDef,
-  EntitySkills4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkills4$ {
-  /** @deprecated use `EntitySkills4$inboundSchema` instead. */
-  export const inboundSchema = EntitySkills4$inboundSchema;
-  /** @deprecated use `EntitySkills4$outboundSchema` instead. */
-  export const outboundSchema = EntitySkills4$outboundSchema;
-  /** @deprecated use `EntitySkills4$Outbound` instead. */
-  export type Outbound = EntitySkills4$Outbound;
-}
-
-export function entitySkills4ToJSON(entitySkills4: EntitySkills4): string {
-  return JSON.stringify(EntitySkills4$outboundSchema.parse(entitySkills4));
-}
 
 export function entitySkills4FromJSON(
   jsonString: string,
@@ -730,48 +652,6 @@ export const EntitySkillsSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EntitySkillsSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EntitySkills4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EntitySkillsSourceValue$outboundSchema: z.ZodType<
-  EntitySkillsSourceValue$Outbound,
-  z.ZodTypeDef,
-  EntitySkillsSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EntitySkills4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSourceValue$ {
-  /** @deprecated use `EntitySkillsSourceValue$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsSourceValue$inboundSchema;
-  /** @deprecated use `EntitySkillsSourceValue$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsSourceValue$outboundSchema;
-  /** @deprecated use `EntitySkillsSourceValue$Outbound` instead. */
-  export type Outbound = EntitySkillsSourceValue$Outbound;
-}
-
-export function entitySkillsSourceValueToJSON(
-  entitySkillsSourceValue: EntitySkillsSourceValue,
-): string {
-  return JSON.stringify(
-    EntitySkillsSourceValue$outboundSchema.parse(entitySkillsSourceValue),
-  );
-}
-
 export function entitySkillsSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EntitySkillsSourceValue, SDKValidationError> {
@@ -792,27 +672,6 @@ export const EntitySkillsValue$inboundSchema: z.ZodType<
     z.nativeEnum(EntitySkillsValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const EntitySkillsValue$outboundSchema: z.ZodType<
-  EntitySkillsValueOpen,
-  z.ZodTypeDef,
-  EntitySkillsValueOpen
-> = z.union([
-  z.nativeEnum(EntitySkillsValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsValue$ {
-  /** @deprecated use `EntitySkillsValue$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsValue$inboundSchema;
-  /** @deprecated use `EntitySkillsValue$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsValue$outboundSchema;
-}
 
 /** @internal */
 export const EntitySkillsLanguage$inboundSchema: z.ZodType<
@@ -836,62 +695,6 @@ export const EntitySkillsLanguage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type EntitySkillsLanguage$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EntitySkills4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const EntitySkillsLanguage$outboundSchema: z.ZodType<
-  EntitySkillsLanguage$Outbound,
-  z.ZodTypeDef,
-  EntitySkillsLanguage
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EntitySkills4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsLanguage$ {
-  /** @deprecated use `EntitySkillsLanguage$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsLanguage$inboundSchema;
-  /** @deprecated use `EntitySkillsLanguage$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsLanguage$outboundSchema;
-  /** @deprecated use `EntitySkillsLanguage$Outbound` instead. */
-  export type Outbound = EntitySkillsLanguage$Outbound;
-}
-
-export function entitySkillsLanguageToJSON(
-  entitySkillsLanguage: EntitySkillsLanguage,
-): string {
-  return JSON.stringify(
-    EntitySkillsLanguage$outboundSchema.parse(entitySkillsLanguage),
-  );
-}
-
 export function entitySkillsLanguageFromJSON(
   jsonString: string,
 ): SafeParseResult<EntitySkillsLanguage, SDKValidationError> {
@@ -908,37 +711,6 @@ export const EntitySkillsSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EntitySkillsSchemas4$Outbound = {};
-
-/** @internal */
-export const EntitySkillsSchemas4$outboundSchema: z.ZodType<
-  EntitySkillsSchemas4$Outbound,
-  z.ZodTypeDef,
-  EntitySkillsSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSchemas4$ {
-  /** @deprecated use `EntitySkillsSchemas4$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsSchemas4$inboundSchema;
-  /** @deprecated use `EntitySkillsSchemas4$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsSchemas4$outboundSchema;
-  /** @deprecated use `EntitySkillsSchemas4$Outbound` instead. */
-  export type Outbound = EntitySkillsSchemas4$Outbound;
-}
-
-export function entitySkillsSchemas4ToJSON(
-  entitySkillsSchemas4: EntitySkillsSchemas4,
-): string {
-  return JSON.stringify(
-    EntitySkillsSchemas4$outboundSchema.parse(entitySkillsSchemas4),
-  );
-}
 
 export function entitySkillsSchemas4FromJSON(
   jsonString: string,
@@ -963,50 +735,6 @@ export const EntitySkillsSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type EntitySkillsSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EntitySkillsSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EntitySkillsSchemasSourceValue$outboundSchema: z.ZodType<
-  EntitySkillsSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  EntitySkillsSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => EntitySkillsSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSchemasSourceValue$ {
-  /** @deprecated use `EntitySkillsSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsSchemasSourceValue$inboundSchema;
-  /** @deprecated use `EntitySkillsSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsSchemasSourceValue$outboundSchema;
-  /** @deprecated use `EntitySkillsSchemasSourceValue$Outbound` instead. */
-  export type Outbound = EntitySkillsSchemasSourceValue$Outbound;
-}
-
-export function entitySkillsSchemasSourceValueToJSON(
-  entitySkillsSchemasSourceValue: EntitySkillsSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    EntitySkillsSchemasSourceValue$outboundSchema.parse(
-      entitySkillsSchemasSourceValue,
-    ),
-  );
-}
-
 export function entitySkillsSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EntitySkillsSchemasSourceValue, SDKValidationError> {
@@ -1027,27 +755,6 @@ export const EntitySkillsSchemasValue$inboundSchema: z.ZodType<
     z.nativeEnum(EntitySkillsSchemasValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const EntitySkillsSchemasValue$outboundSchema: z.ZodType<
-  EntitySkillsSchemasValueOpen,
-  z.ZodTypeDef,
-  EntitySkillsSchemasValueOpen
-> = z.union([
-  z.nativeEnum(EntitySkillsSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSchemasValue$ {
-  /** @deprecated use `EntitySkillsSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillsSchemasValue$inboundSchema;
-  /** @deprecated use `EntitySkillsSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillsSchemasValue$outboundSchema;
-}
 
 /** @internal */
 export const MaximumProficiency$inboundSchema: z.ZodType<
@@ -1075,69 +782,6 @@ export const MaximumProficiency$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type MaximumProficiency$Outbound = {
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EntitySkillsSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const MaximumProficiency$outboundSchema: z.ZodType<
-  MaximumProficiency$Outbound,
-  z.ZodTypeDef,
-  MaximumProficiency
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EntitySkillsSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MaximumProficiency$ {
-  /** @deprecated use `MaximumProficiency$inboundSchema` instead. */
-  export const inboundSchema = MaximumProficiency$inboundSchema;
-  /** @deprecated use `MaximumProficiency$outboundSchema` instead. */
-  export const outboundSchema = MaximumProficiency$outboundSchema;
-  /** @deprecated use `MaximumProficiency$Outbound` instead. */
-  export type Outbound = MaximumProficiency$Outbound;
-}
-
-export function maximumProficiencyToJSON(
-  maximumProficiency: MaximumProficiency,
-): string {
-  return JSON.stringify(
-    MaximumProficiency$outboundSchema.parse(maximumProficiency),
-  );
-}
-
 export function maximumProficiencyFromJSON(
   jsonString: string,
 ): SafeParseResult<MaximumProficiency, SDKValidationError> {
@@ -1154,42 +798,6 @@ export const EntitySkillsSchemasMinimumProficiency4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type EntitySkillsSchemasMinimumProficiency4$Outbound = {};
-
-/** @internal */
-export const EntitySkillsSchemasMinimumProficiency4$outboundSchema: z.ZodType<
-  EntitySkillsSchemasMinimumProficiency4$Outbound,
-  z.ZodTypeDef,
-  EntitySkillsSchemasMinimumProficiency4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSchemasMinimumProficiency4$ {
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiency4$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsSchemasMinimumProficiency4$inboundSchema;
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiency4$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsSchemasMinimumProficiency4$outboundSchema;
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiency4$Outbound` instead. */
-  export type Outbound = EntitySkillsSchemasMinimumProficiency4$Outbound;
-}
-
-export function entitySkillsSchemasMinimumProficiency4ToJSON(
-  entitySkillsSchemasMinimumProficiency4:
-    EntitySkillsSchemasMinimumProficiency4,
-): string {
-  return JSON.stringify(
-    EntitySkillsSchemasMinimumProficiency4$outboundSchema.parse(
-      entitySkillsSchemasMinimumProficiency4,
-    ),
-  );
-}
 
 export function entitySkillsSchemasMinimumProficiency4FromJSON(
   jsonString: string,
@@ -1215,55 +823,6 @@ export const EntitySkillsSchemasMinimumProficiencySourceValue$inboundSchema:
     z.lazy(() => EntitySkillsSchemasMinimumProficiency4$inboundSchema),
     z.array(z.any()),
   ]);
-
-/** @internal */
-export type EntitySkillsSchemasMinimumProficiencySourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | EntitySkillsSchemasMinimumProficiency4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const EntitySkillsSchemasMinimumProficiencySourceValue$outboundSchema:
-  z.ZodType<
-    EntitySkillsSchemasMinimumProficiencySourceValue$Outbound,
-    z.ZodTypeDef,
-    EntitySkillsSchemasMinimumProficiencySourceValue
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => EntitySkillsSchemasMinimumProficiency4$outboundSchema),
-    z.array(z.any()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSchemasMinimumProficiencySourceValue$ {
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiencySourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsSchemasMinimumProficiencySourceValue$inboundSchema;
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiencySourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsSchemasMinimumProficiencySourceValue$outboundSchema;
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiencySourceValue$Outbound` instead. */
-  export type Outbound =
-    EntitySkillsSchemasMinimumProficiencySourceValue$Outbound;
-}
-
-export function entitySkillsSchemasMinimumProficiencySourceValueToJSON(
-  entitySkillsSchemasMinimumProficiencySourceValue:
-    EntitySkillsSchemasMinimumProficiencySourceValue,
-): string {
-  return JSON.stringify(
-    EntitySkillsSchemasMinimumProficiencySourceValue$outboundSchema.parse(
-      entitySkillsSchemasMinimumProficiencySourceValue,
-    ),
-  );
-}
 
 export function entitySkillsSchemasMinimumProficiencySourceValueFromJSON(
   jsonString: string,
@@ -1294,30 +853,6 @@ export const EntitySkillsSchemasMinimumProficiencyValue$inboundSchema:
     ]);
 
 /** @internal */
-export const EntitySkillsSchemasMinimumProficiencyValue$outboundSchema:
-  z.ZodType<
-    EntitySkillsSchemasMinimumProficiencyValueOpen,
-    z.ZodTypeDef,
-    EntitySkillsSchemasMinimumProficiencyValueOpen
-  > = z.union([
-    z.nativeEnum(EntitySkillsSchemasMinimumProficiencyValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillsSchemasMinimumProficiencyValue$ {
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiencyValue$inboundSchema` instead. */
-  export const inboundSchema =
-    EntitySkillsSchemasMinimumProficiencyValue$inboundSchema;
-  /** @deprecated use `EntitySkillsSchemasMinimumProficiencyValue$outboundSchema` instead. */
-  export const outboundSchema =
-    EntitySkillsSchemasMinimumProficiencyValue$outboundSchema;
-}
-
-/** @internal */
 export const MinimumProficiency$inboundSchema: z.ZodType<
   MinimumProficiency,
   z.ZodTypeDef,
@@ -1343,70 +878,6 @@ export const MinimumProficiency$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type MinimumProficiency$Outbound = {
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  source_value?:
-    | string
-    | number
-    | boolean
-    | EntitySkillsSchemasMinimumProficiency4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const MinimumProficiency$outboundSchema: z.ZodType<
-  MinimumProficiency$Outbound,
-  z.ZodTypeDef,
-  MinimumProficiency
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => EntitySkillsSchemasMinimumProficiency4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(EntitySkillsSchemasMinimumProficiencyValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MinimumProficiency$ {
-  /** @deprecated use `MinimumProficiency$inboundSchema` instead. */
-  export const inboundSchema = MinimumProficiency$inboundSchema;
-  /** @deprecated use `MinimumProficiency$outboundSchema` instead. */
-  export const outboundSchema = MinimumProficiency$outboundSchema;
-  /** @deprecated use `MinimumProficiency$Outbound` instead. */
-  export type Outbound = MinimumProficiency$Outbound;
-}
-
-export function minimumProficiencyToJSON(
-  minimumProficiency: MinimumProficiency,
-): string {
-  return JSON.stringify(
-    MinimumProficiency$outboundSchema.parse(minimumProficiency),
-  );
-}
 
 export function minimumProficiencyFromJSON(
   jsonString: string,
@@ -1444,61 +915,6 @@ export const EntitySkills$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type EntitySkills$Outbound = {
-  active?: boolean | string | null | undefined;
-  id?: string | null | undefined;
-  language?: EntitySkillsLanguage$Outbound | null | undefined;
-  maximum_proficiency?: MaximumProficiency$Outbound | null | undefined;
-  minimum_proficiency?: MinimumProficiency$Outbound | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const EntitySkills$outboundSchema: z.ZodType<
-  EntitySkills$Outbound,
-  z.ZodTypeDef,
-  EntitySkills
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), EntitySkills2$outboundSchema]))
-    .optional(),
-  id: z.nullable(z.string()).optional(),
-  language: z.nullable(z.lazy(() => EntitySkillsLanguage$outboundSchema))
-    .optional(),
-  maximumProficiency: z.nullable(
-    z.lazy(() => MaximumProficiency$outboundSchema),
-  ).optional(),
-  minimumProficiency: z.nullable(
-    z.lazy(() => MinimumProficiency$outboundSchema),
-  ).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    maximumProficiency: "maximum_proficiency",
-    minimumProficiency: "minimum_proficiency",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkills$ {
-  /** @deprecated use `EntitySkills$inboundSchema` instead. */
-  export const inboundSchema = EntitySkills$inboundSchema;
-  /** @deprecated use `EntitySkills$outboundSchema` instead. */
-  export const outboundSchema = EntitySkills$outboundSchema;
-  /** @deprecated use `EntitySkills$Outbound` instead. */
-  export type Outbound = EntitySkills$Outbound;
-}
-
-export function entitySkillsToJSON(entitySkills: EntitySkills): string {
-  return JSON.stringify(EntitySkills$outboundSchema.parse(entitySkills));
-}
 
 export function entitySkillsFromJSON(
   jsonString: string,

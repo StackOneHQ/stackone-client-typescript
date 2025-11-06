@@ -53,24 +53,6 @@ export type AtsDownloadApplicationDocumentResponse = {
 };
 
 /** @internal */
-export const AtsDownloadApplicationDocumentRequest$inboundSchema: z.ZodType<
-  AtsDownloadApplicationDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  export_format: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  id: z.string(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "export_format": "exportFormat",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsDownloadApplicationDocumentRequest$Outbound = {
   export_format?: string | null | undefined;
   format?: string | null | undefined;
@@ -97,21 +79,6 @@ export const AtsDownloadApplicationDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDownloadApplicationDocumentRequest$ {
-  /** @deprecated use `AtsDownloadApplicationDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDownloadApplicationDocumentRequest$inboundSchema;
-  /** @deprecated use `AtsDownloadApplicationDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDownloadApplicationDocumentRequest$outboundSchema;
-  /** @deprecated use `AtsDownloadApplicationDocumentRequest$Outbound` instead. */
-  export type Outbound = AtsDownloadApplicationDocumentRequest$Outbound;
-}
-
 export function atsDownloadApplicationDocumentRequestToJSON(
   atsDownloadApplicationDocumentRequest: AtsDownloadApplicationDocumentRequest,
 ): string {
@@ -119,17 +86,6 @@ export function atsDownloadApplicationDocumentRequestToJSON(
     AtsDownloadApplicationDocumentRequest$outboundSchema.parse(
       atsDownloadApplicationDocumentRequest,
     ),
-  );
-}
-
-export function atsDownloadApplicationDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDownloadApplicationDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDownloadApplicationDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDownloadApplicationDocumentRequest' from JSON`,
   );
 }
 
@@ -158,70 +114,6 @@ export const AtsDownloadApplicationDocumentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsDownloadApplicationDocumentResponse$Outbound = {
-  Body?: Uint8Array | undefined;
-  ContentType: string;
-  DownloadApiModel?: shared.DownloadApiModel$Outbound | undefined;
-  DownloadApiModel1?: string | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsDownloadApplicationDocumentResponse$outboundSchema: z.ZodType<
-  AtsDownloadApplicationDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  AtsDownloadApplicationDocumentResponse
-> = z.object({
-  body: b64$.zodOutbound.optional(),
-  contentType: z.string(),
-  downloadApiModel: shared.DownloadApiModel$outboundSchema.optional(),
-  downloadApiModel1: z.string().optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    body: "Body",
-    contentType: "ContentType",
-    downloadApiModel: "DownloadApiModel",
-    downloadApiModel1: "DownloadApiModel1",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDownloadApplicationDocumentResponse$ {
-  /** @deprecated use `AtsDownloadApplicationDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDownloadApplicationDocumentResponse$inboundSchema;
-  /** @deprecated use `AtsDownloadApplicationDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDownloadApplicationDocumentResponse$outboundSchema;
-  /** @deprecated use `AtsDownloadApplicationDocumentResponse$Outbound` instead. */
-  export type Outbound = AtsDownloadApplicationDocumentResponse$Outbound;
-}
-
-export function atsDownloadApplicationDocumentResponseToJSON(
-  atsDownloadApplicationDocumentResponse:
-    AtsDownloadApplicationDocumentResponse,
-): string {
-  return JSON.stringify(
-    AtsDownloadApplicationDocumentResponse$outboundSchema.parse(
-      atsDownloadApplicationDocumentResponse,
-    ),
-  );
-}
 
 export function atsDownloadApplicationDocumentResponseFromJSON(
   jsonString: string,

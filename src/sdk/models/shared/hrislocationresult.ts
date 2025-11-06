@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HRISLocation,
-  HRISLocation$inboundSchema,
-  HRISLocation$Outbound,
-  HRISLocation$outboundSchema,
-} from "./hrislocation.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HRISLocation, HRISLocation$inboundSchema } from "./hrislocation.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISLocationResult = {
   data: HRISLocation;
@@ -33,43 +23,6 @@ export const HRISLocationResult$inboundSchema: z.ZodType<
   data: HRISLocation$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISLocationResult$Outbound = {
-  data: HRISLocation$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISLocationResult$outboundSchema: z.ZodType<
-  HRISLocationResult$Outbound,
-  z.ZodTypeDef,
-  HRISLocationResult
-> = z.object({
-  data: HRISLocation$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISLocationResult$ {
-  /** @deprecated use `HRISLocationResult$inboundSchema` instead. */
-  export const inboundSchema = HRISLocationResult$inboundSchema;
-  /** @deprecated use `HRISLocationResult$outboundSchema` instead. */
-  export const outboundSchema = HRISLocationResult$outboundSchema;
-  /** @deprecated use `HRISLocationResult$Outbound` instead. */
-  export type Outbound = HRISLocationResult$Outbound;
-}
-
-export function hrisLocationResultToJSON(
-  hrisLocationResult: HRISLocationResult,
-): string {
-  return JSON.stringify(
-    HRISLocationResult$outboundSchema.parse(hrisLocationResult),
-  );
-}
 
 export function hrisLocationResultFromJSON(
   jsonString: string,

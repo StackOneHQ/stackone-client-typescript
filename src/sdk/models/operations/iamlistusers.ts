@@ -87,21 +87,6 @@ export type IamListUsersResponse = {
 };
 
 /** @internal */
-export const IamListUsersQueryParamFilter$inboundSchema: z.ZodType<
-  IamListUsersQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type IamListUsersQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,19 +104,6 @@ export const IamListUsersQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListUsersQueryParamFilter$ {
-  /** @deprecated use `IamListUsersQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = IamListUsersQueryParamFilter$inboundSchema;
-  /** @deprecated use `IamListUsersQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = IamListUsersQueryParamFilter$outboundSchema;
-  /** @deprecated use `IamListUsersQueryParamFilter$Outbound` instead. */
-  export type Outbound = IamListUsersQueryParamFilter$Outbound;
-}
-
 export function iamListUsersQueryParamFilterToJSON(
   iamListUsersQueryParamFilter: IamListUsersQueryParamFilter,
 ): string {
@@ -141,43 +113,6 @@ export function iamListUsersQueryParamFilterToJSON(
     ),
   );
 }
-
-export function iamListUsersQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<IamListUsersQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamListUsersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamListUsersQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamListUsersRequest$inboundSchema: z.ZodType<
-  IamListUsersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => IamListUsersQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type IamListUsersRequest$Outbound = {
@@ -218,34 +153,11 @@ export const IamListUsersRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListUsersRequest$ {
-  /** @deprecated use `IamListUsersRequest$inboundSchema` instead. */
-  export const inboundSchema = IamListUsersRequest$inboundSchema;
-  /** @deprecated use `IamListUsersRequest$outboundSchema` instead. */
-  export const outboundSchema = IamListUsersRequest$outboundSchema;
-  /** @deprecated use `IamListUsersRequest$Outbound` instead. */
-  export type Outbound = IamListUsersRequest$Outbound;
-}
-
 export function iamListUsersRequestToJSON(
   iamListUsersRequest: IamListUsersRequest,
 ): string {
   return JSON.stringify(
     IamListUsersRequest$outboundSchema.parse(iamListUsersRequest),
-  );
-}
-
-export function iamListUsersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamListUsersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamListUsersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamListUsersRequest' from JSON`,
   );
 }
 
@@ -270,59 +182,6 @@ export const IamListUsersResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamListUsersResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  IamUsersPaginated?: shared.IamUsersPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamListUsersResponse$outboundSchema: z.ZodType<
-  IamListUsersResponse$Outbound,
-  z.ZodTypeDef,
-  IamListUsersResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  iamUsersPaginated: shared.IamUsersPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    iamUsersPaginated: "IamUsersPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamListUsersResponse$ {
-  /** @deprecated use `IamListUsersResponse$inboundSchema` instead. */
-  export const inboundSchema = IamListUsersResponse$inboundSchema;
-  /** @deprecated use `IamListUsersResponse$outboundSchema` instead. */
-  export const outboundSchema = IamListUsersResponse$outboundSchema;
-  /** @deprecated use `IamListUsersResponse$Outbound` instead. */
-  export type Outbound = IamListUsersResponse$Outbound;
-}
-
-export function iamListUsersResponseToJSON(
-  iamListUsersResponse: IamListUsersResponse,
-): string {
-  return JSON.stringify(
-    IamListUsersResponse$outboundSchema.parse(iamListUsersResponse),
-  );
-}
 
 export function iamListUsersResponseFromJSON(
   jsonString: string,

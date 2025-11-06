@@ -27,6 +27,10 @@ export type StackoneProxyRequestResponse = {
   contentType: string;
   headers: { [k: string]: Array<string> };
   /**
+   * The proxy request was successful.
+   */
+  proxyResponseApiModel?: shared.ProxyResponseApiModel | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -35,21 +39,6 @@ export type StackoneProxyRequestResponse = {
    */
   rawResponse: Response;
 };
-
-/** @internal */
-export const StackoneProxyRequestRequest$inboundSchema: z.ZodType<
-  StackoneProxyRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ProxyRequestBody: shared.ProxyRequestBody$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "ProxyRequestBody": "proxyRequestBody",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type StackoneProxyRequestRequest$Outbound = {
@@ -72,19 +61,6 @@ export const StackoneProxyRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneProxyRequestRequest$ {
-  /** @deprecated use `StackoneProxyRequestRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneProxyRequestRequest$inboundSchema;
-  /** @deprecated use `StackoneProxyRequestRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneProxyRequestRequest$outboundSchema;
-  /** @deprecated use `StackoneProxyRequestRequest$Outbound` instead. */
-  export type Outbound = StackoneProxyRequestRequest$Outbound;
-}
-
 export function stackoneProxyRequestRequestToJSON(
   stackoneProxyRequestRequest: StackoneProxyRequestRequest,
 ): string {
@@ -92,16 +68,6 @@ export function stackoneProxyRequestRequestToJSON(
     StackoneProxyRequestRequest$outboundSchema.parse(
       stackoneProxyRequestRequest,
     ),
-  );
-}
-
-export function stackoneProxyRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneProxyRequestRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneProxyRequestRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneProxyRequestRequest' from JSON`,
   );
 }
 
@@ -114,68 +80,18 @@ export const StackoneProxyRequestResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
 
   Headers: z.record(z.array(z.string())).default({}),
+  ProxyResponseApiModel: shared.ProxyResponseApiModel$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "Headers": "headers",
+    "ProxyResponseApiModel": "proxyResponseApiModel",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneProxyRequestResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneProxyRequestResponse$outboundSchema: z.ZodType<
-  StackoneProxyRequestResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneProxyRequestResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneProxyRequestResponse$ {
-  /** @deprecated use `StackoneProxyRequestResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneProxyRequestResponse$inboundSchema;
-  /** @deprecated use `StackoneProxyRequestResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneProxyRequestResponse$outboundSchema;
-  /** @deprecated use `StackoneProxyRequestResponse$Outbound` instead. */
-  export type Outbound = StackoneProxyRequestResponse$Outbound;
-}
-
-export function stackoneProxyRequestResponseToJSON(
-  stackoneProxyRequestResponse: StackoneProxyRequestResponse,
-): string {
-  return JSON.stringify(
-    StackoneProxyRequestResponse$outboundSchema.parse(
-      stackoneProxyRequestResponse,
-    ),
-  );
-}
 
 export function stackoneProxyRequestResponseFromJSON(
   jsonString: string,

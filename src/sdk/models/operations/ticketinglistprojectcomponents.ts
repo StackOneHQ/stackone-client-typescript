@@ -86,22 +86,6 @@ export type TicketingListProjectComponentsResponse = {
 };
 
 /** @internal */
-export const TicketingListProjectComponentsQueryParamFilter$inboundSchema:
-  z.ZodType<
-    TicketingListProjectComponentsQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type TicketingListProjectComponentsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -121,22 +105,6 @@ export const TicketingListProjectComponentsQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListProjectComponentsQueryParamFilter$ {
-  /** @deprecated use `TicketingListProjectComponentsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingListProjectComponentsQueryParamFilter$inboundSchema;
-  /** @deprecated use `TicketingListProjectComponentsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingListProjectComponentsQueryParamFilter$outboundSchema;
-  /** @deprecated use `TicketingListProjectComponentsQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    TicketingListProjectComponentsQueryParamFilter$Outbound;
-}
-
 export function ticketingListProjectComponentsQueryParamFilterToJSON(
   ticketingListProjectComponentsQueryParamFilter:
     TicketingListProjectComponentsQueryParamFilter,
@@ -147,50 +115,6 @@ export function ticketingListProjectComponentsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function ticketingListProjectComponentsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  TicketingListProjectComponentsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingListProjectComponentsQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'TicketingListProjectComponentsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const TicketingListProjectComponentsRequest$inboundSchema: z.ZodType<
-  TicketingListProjectComponentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => TicketingListProjectComponentsQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type TicketingListProjectComponentsRequest$Outbound = {
@@ -235,21 +159,6 @@ export const TicketingListProjectComponentsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListProjectComponentsRequest$ {
-  /** @deprecated use `TicketingListProjectComponentsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingListProjectComponentsRequest$inboundSchema;
-  /** @deprecated use `TicketingListProjectComponentsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingListProjectComponentsRequest$outboundSchema;
-  /** @deprecated use `TicketingListProjectComponentsRequest$Outbound` instead. */
-  export type Outbound = TicketingListProjectComponentsRequest$Outbound;
-}
-
 export function ticketingListProjectComponentsRequestToJSON(
   ticketingListProjectComponentsRequest: TicketingListProjectComponentsRequest,
 ): string {
@@ -257,17 +166,6 @@ export function ticketingListProjectComponentsRequestToJSON(
     TicketingListProjectComponentsRequest$outboundSchema.parse(
       ticketingListProjectComponentsRequest,
     ),
-  );
-}
-
-export function ticketingListProjectComponentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TicketingListProjectComponentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      TicketingListProjectComponentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TicketingListProjectComponentsRequest' from JSON`,
   );
 }
 
@@ -293,67 +191,6 @@ export const TicketingListProjectComponentsResponse$inboundSchema: z.ZodType<
     "TicketingComponentsPaginated": "ticketingComponentsPaginated",
   });
 });
-
-/** @internal */
-export type TicketingListProjectComponentsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TicketingComponentsPaginated?:
-    | shared.TicketingComponentsPaginated$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const TicketingListProjectComponentsResponse$outboundSchema: z.ZodType<
-  TicketingListProjectComponentsResponse$Outbound,
-  z.ZodTypeDef,
-  TicketingListProjectComponentsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  ticketingComponentsPaginated: shared
-    .TicketingComponentsPaginated$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    ticketingComponentsPaginated: "TicketingComponentsPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingListProjectComponentsResponse$ {
-  /** @deprecated use `TicketingListProjectComponentsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    TicketingListProjectComponentsResponse$inboundSchema;
-  /** @deprecated use `TicketingListProjectComponentsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    TicketingListProjectComponentsResponse$outboundSchema;
-  /** @deprecated use `TicketingListProjectComponentsResponse$Outbound` instead. */
-  export type Outbound = TicketingListProjectComponentsResponse$Outbound;
-}
-
-export function ticketingListProjectComponentsResponseToJSON(
-  ticketingListProjectComponentsResponse:
-    TicketingListProjectComponentsResponse,
-): string {
-  return JSON.stringify(
-    TicketingListProjectComponentsResponse$outboundSchema.parse(
-      ticketingListProjectComponentsResponse,
-    ),
-  );
-}
 
 export function ticketingListProjectComponentsResponseFromJSON(
   jsonString: string,

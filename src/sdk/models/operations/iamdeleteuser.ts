@@ -38,20 +38,6 @@ export type IamDeleteUserResponse = {
 };
 
 /** @internal */
-export const IamDeleteUserRequest$inboundSchema: z.ZodType<
-  IamDeleteUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type IamDeleteUserRequest$Outbound = {
   id: string;
   "x-account-id": string;
@@ -71,34 +57,11 @@ export const IamDeleteUserRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamDeleteUserRequest$ {
-  /** @deprecated use `IamDeleteUserRequest$inboundSchema` instead. */
-  export const inboundSchema = IamDeleteUserRequest$inboundSchema;
-  /** @deprecated use `IamDeleteUserRequest$outboundSchema` instead. */
-  export const outboundSchema = IamDeleteUserRequest$outboundSchema;
-  /** @deprecated use `IamDeleteUserRequest$Outbound` instead. */
-  export type Outbound = IamDeleteUserRequest$Outbound;
-}
-
 export function iamDeleteUserRequestToJSON(
   iamDeleteUserRequest: IamDeleteUserRequest,
 ): string {
   return JSON.stringify(
     IamDeleteUserRequest$outboundSchema.parse(iamDeleteUserRequest),
-  );
-}
-
-export function iamDeleteUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamDeleteUserRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamDeleteUserRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamDeleteUserRequest' from JSON`,
   );
 }
 
@@ -123,59 +86,6 @@ export const IamDeleteUserResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamDeleteUserResponse$Outbound = {
-  ContentType: string;
-  DeleteResult?: shared.DeleteResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamDeleteUserResponse$outboundSchema: z.ZodType<
-  IamDeleteUserResponse$Outbound,
-  z.ZodTypeDef,
-  IamDeleteUserResponse
-> = z.object({
-  contentType: z.string(),
-  deleteResult: shared.DeleteResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    deleteResult: "DeleteResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamDeleteUserResponse$ {
-  /** @deprecated use `IamDeleteUserResponse$inboundSchema` instead. */
-  export const inboundSchema = IamDeleteUserResponse$inboundSchema;
-  /** @deprecated use `IamDeleteUserResponse$outboundSchema` instead. */
-  export const outboundSchema = IamDeleteUserResponse$outboundSchema;
-  /** @deprecated use `IamDeleteUserResponse$Outbound` instead. */
-  export type Outbound = IamDeleteUserResponse$Outbound;
-}
-
-export function iamDeleteUserResponseToJSON(
-  iamDeleteUserResponse: IamDeleteUserResponse,
-): string {
-  return JSON.stringify(
-    IamDeleteUserResponse$outboundSchema.parse(iamDeleteUserResponse),
-  );
-}
 
 export function iamDeleteUserResponseFromJSON(
   jsonString: string,

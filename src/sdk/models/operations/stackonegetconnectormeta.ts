@@ -38,16 +38,6 @@ export type StackoneGetConnectorMetaResponse = {
 };
 
 /** @internal */
-export const StackoneGetConnectorMetaRequest$inboundSchema: z.ZodType<
-  StackoneGetConnectorMetaRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  include: z.nullable(z.string()).optional(),
-  provider: z.string(),
-});
-
-/** @internal */
 export type StackoneGetConnectorMetaRequest$Outbound = {
   include?: string | null | undefined;
   provider: string;
@@ -63,19 +53,6 @@ export const StackoneGetConnectorMetaRequest$outboundSchema: z.ZodType<
   provider: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneGetConnectorMetaRequest$ {
-  /** @deprecated use `StackoneGetConnectorMetaRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneGetConnectorMetaRequest$inboundSchema;
-  /** @deprecated use `StackoneGetConnectorMetaRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneGetConnectorMetaRequest$outboundSchema;
-  /** @deprecated use `StackoneGetConnectorMetaRequest$Outbound` instead. */
-  export type Outbound = StackoneGetConnectorMetaRequest$Outbound;
-}
-
 export function stackoneGetConnectorMetaRequestToJSON(
   stackoneGetConnectorMetaRequest: StackoneGetConnectorMetaRequest,
 ): string {
@@ -83,16 +60,6 @@ export function stackoneGetConnectorMetaRequestToJSON(
     StackoneGetConnectorMetaRequest$outboundSchema.parse(
       stackoneGetConnectorMetaRequest,
     ),
-  );
-}
-
-export function stackoneGetConnectorMetaRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneGetConnectorMetaRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneGetConnectorMetaRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneGetConnectorMetaRequest' from JSON`,
   );
 }
 
@@ -117,61 +84,6 @@ export const StackoneGetConnectorMetaResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneGetConnectorMetaResponse$Outbound = {
-  ConnectorsMeta?: shared.ConnectorsMeta$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneGetConnectorMetaResponse$outboundSchema: z.ZodType<
-  StackoneGetConnectorMetaResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneGetConnectorMetaResponse
-> = z.object({
-  connectorsMeta: shared.ConnectorsMeta$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    connectorsMeta: "ConnectorsMeta",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneGetConnectorMetaResponse$ {
-  /** @deprecated use `StackoneGetConnectorMetaResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneGetConnectorMetaResponse$inboundSchema;
-  /** @deprecated use `StackoneGetConnectorMetaResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneGetConnectorMetaResponse$outboundSchema;
-  /** @deprecated use `StackoneGetConnectorMetaResponse$Outbound` instead. */
-  export type Outbound = StackoneGetConnectorMetaResponse$Outbound;
-}
-
-export function stackoneGetConnectorMetaResponseToJSON(
-  stackoneGetConnectorMetaResponse: StackoneGetConnectorMetaResponse,
-): string {
-  return JSON.stringify(
-    StackoneGetConnectorMetaResponse$outboundSchema.parse(
-      stackoneGetConnectorMetaResponse,
-    ),
-  );
-}
 
 export function stackoneGetConnectorMetaResponseFromJSON(
   jsonString: string,

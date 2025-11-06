@@ -62,7 +62,6 @@ export const CustomFields4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CustomFields4$Outbound = {};
 
@@ -73,23 +72,9 @@ export const CustomFields4$outboundSchema: z.ZodType<
   CustomFields4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFields4$ {
-  /** @deprecated use `CustomFields4$inboundSchema` instead. */
-  export const inboundSchema = CustomFields4$inboundSchema;
-  /** @deprecated use `CustomFields4$outboundSchema` instead. */
-  export const outboundSchema = CustomFields4$outboundSchema;
-  /** @deprecated use `CustomFields4$Outbound` instead. */
-  export type Outbound = CustomFields4$Outbound;
-}
-
 export function customFields4ToJSON(customFields4: CustomFields4): string {
   return JSON.stringify(CustomFields4$outboundSchema.parse(customFields4));
 }
-
 export function customFields4FromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFields4, SDKValidationError> {
@@ -113,7 +98,6 @@ export const CustomFieldsValue$inboundSchema: z.ZodType<
   z.array(z.any()),
   z.string().datetime({ offset: true }).transform(v => new Date(v)),
 ]);
-
 /** @internal */
 export type CustomFieldsValue$Outbound =
   | string
@@ -137,19 +121,6 @@ export const CustomFieldsValue$outboundSchema: z.ZodType<
   z.date().transform(v => v.toISOString()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldsValue$ {
-  /** @deprecated use `CustomFieldsValue$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldsValue$inboundSchema;
-  /** @deprecated use `CustomFieldsValue$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldsValue$outboundSchema;
-  /** @deprecated use `CustomFieldsValue$Outbound` instead. */
-  export type Outbound = CustomFieldsValue$Outbound;
-}
-
 export function customFieldsValueToJSON(
   customFieldsValue: CustomFieldsValue,
 ): string {
@@ -157,7 +128,6 @@ export function customFieldsValueToJSON(
     CustomFieldsValue$outboundSchema.parse(customFieldsValue),
   );
 }
-
 export function customFieldsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldsValue, SDKValidationError> {
@@ -196,7 +166,6 @@ export const CustomFields$inboundSchema: z.ZodType<
     "value_id": "valueId",
   });
 });
-
 /** @internal */
 export type CustomFields$Outbound = {
   id?: string | null | undefined;
@@ -244,23 +213,9 @@ export const CustomFields$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFields$ {
-  /** @deprecated use `CustomFields$inboundSchema` instead. */
-  export const inboundSchema = CustomFields$inboundSchema;
-  /** @deprecated use `CustomFields$outboundSchema` instead. */
-  export const outboundSchema = CustomFields$outboundSchema;
-  /** @deprecated use `CustomFields$Outbound` instead. */
-  export type Outbound = CustomFields$Outbound;
-}
-
 export function customFieldsToJSON(customFields: CustomFields): string {
   return JSON.stringify(CustomFields$outboundSchema.parse(customFields));
 }
-
 export function customFieldsFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFields, SDKValidationError> {

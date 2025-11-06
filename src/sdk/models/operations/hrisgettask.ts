@@ -54,24 +54,6 @@ export type HrisGetTaskResponse = {
 };
 
 /** @internal */
-export const HrisGetTaskRequest$inboundSchema: z.ZodType<
-  HrisGetTaskRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetTaskRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -99,34 +81,11 @@ export const HrisGetTaskRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTaskRequest$ {
-  /** @deprecated use `HrisGetTaskRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTaskRequest$inboundSchema;
-  /** @deprecated use `HrisGetTaskRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTaskRequest$outboundSchema;
-  /** @deprecated use `HrisGetTaskRequest$Outbound` instead. */
-  export type Outbound = HrisGetTaskRequest$Outbound;
-}
-
 export function hrisGetTaskRequestToJSON(
   hrisGetTaskRequest: HrisGetTaskRequest,
 ): string {
   return JSON.stringify(
     HrisGetTaskRequest$outboundSchema.parse(hrisGetTaskRequest),
-  );
-}
-
-export function hrisGetTaskRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetTaskRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetTaskRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetTaskRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const HrisGetTaskResponse$inboundSchema: z.ZodType<
     "TaskResult": "taskResult",
   });
 });
-
-/** @internal */
-export type HrisGetTaskResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TaskResult?: shared.TaskResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisGetTaskResponse$outboundSchema: z.ZodType<
-  HrisGetTaskResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetTaskResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  taskResult: shared.TaskResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    taskResult: "TaskResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTaskResponse$ {
-  /** @deprecated use `HrisGetTaskResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTaskResponse$inboundSchema;
-  /** @deprecated use `HrisGetTaskResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTaskResponse$outboundSchema;
-  /** @deprecated use `HrisGetTaskResponse$Outbound` instead. */
-  export type Outbound = HrisGetTaskResponse$Outbound;
-}
-
-export function hrisGetTaskResponseToJSON(
-  hrisGetTaskResponse: HrisGetTaskResponse,
-): string {
-  return JSON.stringify(
-    HrisGetTaskResponse$outboundSchema.parse(hrisGetTaskResponse),
-  );
-}
 
 export function hrisGetTaskResponseFromJSON(
   jsonString: string,

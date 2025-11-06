@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Assignment,
-  Assignment$inboundSchema,
-  Assignment$Outbound,
-  Assignment$outboundSchema,
-} from "./assignment.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Assignment, Assignment$inboundSchema } from "./assignment.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AssignmentsPaginated = {
   data: Array<Assignment>;
@@ -35,45 +25,6 @@ export const AssignmentsPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AssignmentsPaginated$Outbound = {
-  data: Array<Assignment$Outbound>;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AssignmentsPaginated$outboundSchema: z.ZodType<
-  AssignmentsPaginated$Outbound,
-  z.ZodTypeDef,
-  AssignmentsPaginated
-> = z.object({
-  data: z.array(Assignment$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentsPaginated$ {
-  /** @deprecated use `AssignmentsPaginated$inboundSchema` instead. */
-  export const inboundSchema = AssignmentsPaginated$inboundSchema;
-  /** @deprecated use `AssignmentsPaginated$outboundSchema` instead. */
-  export const outboundSchema = AssignmentsPaginated$outboundSchema;
-  /** @deprecated use `AssignmentsPaginated$Outbound` instead. */
-  export type Outbound = AssignmentsPaginated$Outbound;
-}
-
-export function assignmentsPaginatedToJSON(
-  assignmentsPaginated: AssignmentsPaginated,
-): string {
-  return JSON.stringify(
-    AssignmentsPaginated$outboundSchema.parse(assignmentsPaginated),
-  );
-}
 
 export function assignmentsPaginatedFromJSON(
   jsonString: string,
