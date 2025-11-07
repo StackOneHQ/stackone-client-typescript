@@ -24,9 +24,13 @@ export type StackoneMcpPostRequest = {
    */
   mcpSessionId?: string | undefined;
   /**
-   * Account secure id for the target provider account
+   * Account secure id for the target provider account (optional if x-account-id query parameter is provided)
    */
-  xAccountId: string;
+  xAccountId?: string | undefined;
+  /**
+   * Account secure id (alternative to x-account-id header)
+   */
+  xAccountIdQueryParameter?: any | undefined;
 };
 
 export type StackoneMcpPostResponse = {
@@ -44,20 +48,6 @@ export type StackoneMcpPostResponse = {
    */
   rawResponse: Response;
 };
-
-/** @internal */
-export const StackoneMcpPostSecurity$inboundSchema: z.ZodType<
-  StackoneMcpPostSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ApiKey: z.string().optional(),
-  basic: shared.SchemeBasic$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ApiKey": "apiKey",
-  });
-});
 
 /** @internal */
 export type StackoneMcpPostSecurity$Outbound = {
@@ -79,19 +69,6 @@ export const StackoneMcpPostSecurity$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpPostSecurity$ {
-  /** @deprecated use `StackoneMcpPostSecurity$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpPostSecurity$inboundSchema;
-  /** @deprecated use `StackoneMcpPostSecurity$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpPostSecurity$outboundSchema;
-  /** @deprecated use `StackoneMcpPostSecurity$Outbound` instead. */
-  export type Outbound = StackoneMcpPostSecurity$Outbound;
-}
-
 export function stackoneMcpPostSecurityToJSON(
   stackoneMcpPostSecurity: StackoneMcpPostSecurity,
 ): string {
@@ -100,38 +77,12 @@ export function stackoneMcpPostSecurityToJSON(
   );
 }
 
-export function stackoneMcpPostSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneMcpPostSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneMcpPostSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneMcpPostSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const StackoneMcpPostRequest$inboundSchema: z.ZodType<
-  StackoneMcpPostRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  JsonRpcMessageDto: shared.JsonRpcMessageDto$inboundSchema,
-  "mcp-session-id": z.string().optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "JsonRpcMessageDto": "jsonRpcMessageDto",
-    "mcp-session-id": "mcpSessionId",
-    "x-account-id": "xAccountId",
-  });
-});
-
 /** @internal */
 export type StackoneMcpPostRequest$Outbound = {
   JsonRpcMessageDto: shared.JsonRpcMessageDto$Outbound;
   "mcp-session-id"?: string | undefined;
-  "x-account-id": string;
+  "x-account-id"?: string | undefined;
+  "x-account-idQueryParameter"?: any | undefined;
 };
 
 /** @internal */
@@ -142,43 +93,22 @@ export const StackoneMcpPostRequest$outboundSchema: z.ZodType<
 > = z.object({
   jsonRpcMessageDto: shared.JsonRpcMessageDto$outboundSchema,
   mcpSessionId: z.string().optional(),
-  xAccountId: z.string(),
+  xAccountId: z.string().optional(),
+  xAccountIdQueryParameter: z.any().optional(),
 }).transform((v) => {
   return remap$(v, {
     jsonRpcMessageDto: "JsonRpcMessageDto",
     mcpSessionId: "mcp-session-id",
     xAccountId: "x-account-id",
+    xAccountIdQueryParameter: "x-account-idQueryParameter",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpPostRequest$ {
-  /** @deprecated use `StackoneMcpPostRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpPostRequest$inboundSchema;
-  /** @deprecated use `StackoneMcpPostRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpPostRequest$outboundSchema;
-  /** @deprecated use `StackoneMcpPostRequest$Outbound` instead. */
-  export type Outbound = StackoneMcpPostRequest$Outbound;
-}
 
 export function stackoneMcpPostRequestToJSON(
   stackoneMcpPostRequest: StackoneMcpPostRequest,
 ): string {
   return JSON.stringify(
     StackoneMcpPostRequest$outboundSchema.parse(stackoneMcpPostRequest),
-  );
-}
-
-export function stackoneMcpPostRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneMcpPostRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneMcpPostRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneMcpPostRequest' from JSON`,
   );
 }
 
@@ -201,56 +131,6 @@ export const StackoneMcpPostResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneMcpPostResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneMcpPostResponse$outboundSchema: z.ZodType<
-  StackoneMcpPostResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneMcpPostResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpPostResponse$ {
-  /** @deprecated use `StackoneMcpPostResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpPostResponse$inboundSchema;
-  /** @deprecated use `StackoneMcpPostResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpPostResponse$outboundSchema;
-  /** @deprecated use `StackoneMcpPostResponse$Outbound` instead. */
-  export type Outbound = StackoneMcpPostResponse$Outbound;
-}
-
-export function stackoneMcpPostResponseToJSON(
-  stackoneMcpPostResponse: StackoneMcpPostResponse,
-): string {
-  return JSON.stringify(
-    StackoneMcpPostResponse$outboundSchema.parse(stackoneMcpPostResponse),
-  );
-}
 
 export function stackoneMcpPostResponseFromJSON(
   jsonString: string,

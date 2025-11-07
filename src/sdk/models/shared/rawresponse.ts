@@ -21,7 +21,6 @@ export type RawResponse = {
 /** @internal */
 export const Body$inboundSchema: z.ZodType<Body, z.ZodTypeDef, unknown> = z
   .union([z.string(), z.record(z.any()), z.array(z.number().int())]);
-
 /** @internal */
 export type Body$Outbound = string | { [k: string]: any } | Array<number>;
 
@@ -29,23 +28,9 @@ export type Body$Outbound = string | { [k: string]: any } | Array<number>;
 export const Body$outboundSchema: z.ZodType<Body$Outbound, z.ZodTypeDef, Body> =
   z.union([z.string(), z.record(z.any()), z.array(z.number().int())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Body$ {
-  /** @deprecated use `Body$inboundSchema` instead. */
-  export const inboundSchema = Body$inboundSchema;
-  /** @deprecated use `Body$outboundSchema` instead. */
-  export const outboundSchema = Body$outboundSchema;
-  /** @deprecated use `Body$Outbound` instead. */
-  export type Outbound = Body$Outbound;
-}
-
 export function bodyToJSON(body: Body): string {
   return JSON.stringify(Body$outboundSchema.parse(body));
 }
-
 export function bodyFromJSON(
   jsonString: string,
 ): SafeParseResult<Body, SDKValidationError> {
@@ -62,7 +47,6 @@ export const ResponseT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.record(z.any()), z.array(z.any()), z.string()]);
-
 /** @internal */
 export type ResponseT$Outbound = { [k: string]: any } | Array<any> | string;
 
@@ -73,23 +57,9 @@ export const ResponseT$outboundSchema: z.ZodType<
   ResponseT
 > = z.union([z.record(z.any()), z.array(z.any()), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseT$ {
-  /** @deprecated use `ResponseT$inboundSchema` instead. */
-  export const inboundSchema = ResponseT$inboundSchema;
-  /** @deprecated use `ResponseT$outboundSchema` instead. */
-  export const outboundSchema = ResponseT$outboundSchema;
-  /** @deprecated use `ResponseT$Outbound` instead. */
-  export type Outbound = ResponseT$Outbound;
-}
-
 export function responseToJSON(responseT: ResponseT): string {
   return JSON.stringify(ResponseT$outboundSchema.parse(responseT));
 }
-
 export function responseFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseT, SDKValidationError> {
@@ -115,7 +85,6 @@ export const RawResponse$inboundSchema: z.ZodType<
   ).optional(),
   url: z.string(),
 });
-
 /** @internal */
 export type RawResponse$Outbound = {
   body?: string | { [k: string]: any } | Array<number> | null | undefined;
@@ -140,23 +109,9 @@ export const RawResponse$outboundSchema: z.ZodType<
   url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RawResponse$ {
-  /** @deprecated use `RawResponse$inboundSchema` instead. */
-  export const inboundSchema = RawResponse$inboundSchema;
-  /** @deprecated use `RawResponse$outboundSchema` instead. */
-  export const outboundSchema = RawResponse$outboundSchema;
-  /** @deprecated use `RawResponse$Outbound` instead. */
-  export type Outbound = RawResponse$Outbound;
-}
-
 export function rawResponseToJSON(rawResponse: RawResponse): string {
   return JSON.stringify(RawResponse$outboundSchema.parse(rawResponse));
 }
-
 export function rawResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RawResponse, SDKValidationError> {

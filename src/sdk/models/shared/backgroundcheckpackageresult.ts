@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BackgroundCheckPackage,
   BackgroundCheckPackage$inboundSchema,
-  BackgroundCheckPackage$Outbound,
-  BackgroundCheckPackage$outboundSchema,
 } from "./backgroundcheckpackage.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type BackgroundCheckPackageResult = {
   data: BackgroundCheckPackage;
@@ -33,45 +26,6 @@ export const BackgroundCheckPackageResult$inboundSchema: z.ZodType<
   data: BackgroundCheckPackage$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type BackgroundCheckPackageResult$Outbound = {
-  data: BackgroundCheckPackage$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const BackgroundCheckPackageResult$outboundSchema: z.ZodType<
-  BackgroundCheckPackageResult$Outbound,
-  z.ZodTypeDef,
-  BackgroundCheckPackageResult
-> = z.object({
-  data: BackgroundCheckPackage$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BackgroundCheckPackageResult$ {
-  /** @deprecated use `BackgroundCheckPackageResult$inboundSchema` instead. */
-  export const inboundSchema = BackgroundCheckPackageResult$inboundSchema;
-  /** @deprecated use `BackgroundCheckPackageResult$outboundSchema` instead. */
-  export const outboundSchema = BackgroundCheckPackageResult$outboundSchema;
-  /** @deprecated use `BackgroundCheckPackageResult$Outbound` instead. */
-  export type Outbound = BackgroundCheckPackageResult$Outbound;
-}
-
-export function backgroundCheckPackageResultToJSON(
-  backgroundCheckPackageResult: BackgroundCheckPackageResult,
-): string {
-  return JSON.stringify(
-    BackgroundCheckPackageResult$outboundSchema.parse(
-      backgroundCheckPackageResult,
-    ),
-  );
-}
 
 export function backgroundCheckPackageResultFromJSON(
   jsonString: string,

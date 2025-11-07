@@ -86,22 +86,6 @@ export type AtsGetJobCustomFieldDefinitionResponse = {
 };
 
 /** @internal */
-export const AtsGetJobCustomFieldDefinitionQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AtsGetJobCustomFieldDefinitionQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AtsGetJobCustomFieldDefinitionQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -121,22 +105,6 @@ export const AtsGetJobCustomFieldDefinitionQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobCustomFieldDefinitionQueryParamFilter$ {
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetJobCustomFieldDefinitionQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetJobCustomFieldDefinitionQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    AtsGetJobCustomFieldDefinitionQueryParamFilter$Outbound;
-}
-
 export function atsGetJobCustomFieldDefinitionQueryParamFilterToJSON(
   atsGetJobCustomFieldDefinitionQueryParamFilter:
     AtsGetJobCustomFieldDefinitionQueryParamFilter,
@@ -147,50 +115,6 @@ export function atsGetJobCustomFieldDefinitionQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsGetJobCustomFieldDefinitionQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsGetJobCustomFieldDefinitionQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsGetJobCustomFieldDefinitionQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsGetJobCustomFieldDefinitionQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsGetJobCustomFieldDefinitionRequest$inboundSchema: z.ZodType<
-  AtsGetJobCustomFieldDefinitionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsGetJobCustomFieldDefinitionQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsGetJobCustomFieldDefinitionRequest$Outbound = {
@@ -235,21 +159,6 @@ export const AtsGetJobCustomFieldDefinitionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobCustomFieldDefinitionRequest$ {
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetJobCustomFieldDefinitionRequest$inboundSchema;
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetJobCustomFieldDefinitionRequest$outboundSchema;
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionRequest$Outbound` instead. */
-  export type Outbound = AtsGetJobCustomFieldDefinitionRequest$Outbound;
-}
-
 export function atsGetJobCustomFieldDefinitionRequestToJSON(
   atsGetJobCustomFieldDefinitionRequest: AtsGetJobCustomFieldDefinitionRequest,
 ): string {
@@ -257,17 +166,6 @@ export function atsGetJobCustomFieldDefinitionRequestToJSON(
     AtsGetJobCustomFieldDefinitionRequest$outboundSchema.parse(
       atsGetJobCustomFieldDefinitionRequest,
     ),
-  );
-}
-
-export function atsGetJobCustomFieldDefinitionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetJobCustomFieldDefinitionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsGetJobCustomFieldDefinitionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetJobCustomFieldDefinitionRequest' from JSON`,
   );
 }
 
@@ -294,67 +192,6 @@ export const AtsGetJobCustomFieldDefinitionResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetJobCustomFieldDefinitionResponse$Outbound = {
-  ContentType: string;
-  CustomFieldDefinitionResultApiModel?:
-    | shared.CustomFieldDefinitionResultApiModel$Outbound
-    | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetJobCustomFieldDefinitionResponse$outboundSchema: z.ZodType<
-  AtsGetJobCustomFieldDefinitionResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetJobCustomFieldDefinitionResponse
-> = z.object({
-  contentType: z.string(),
-  customFieldDefinitionResultApiModel: shared
-    .CustomFieldDefinitionResultApiModel$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    customFieldDefinitionResultApiModel: "CustomFieldDefinitionResultApiModel",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobCustomFieldDefinitionResponse$ {
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsGetJobCustomFieldDefinitionResponse$inboundSchema;
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetJobCustomFieldDefinitionResponse$outboundSchema;
-  /** @deprecated use `AtsGetJobCustomFieldDefinitionResponse$Outbound` instead. */
-  export type Outbound = AtsGetJobCustomFieldDefinitionResponse$Outbound;
-}
-
-export function atsGetJobCustomFieldDefinitionResponseToJSON(
-  atsGetJobCustomFieldDefinitionResponse:
-    AtsGetJobCustomFieldDefinitionResponse,
-): string {
-  return JSON.stringify(
-    AtsGetJobCustomFieldDefinitionResponse$outboundSchema.parse(
-      atsGetJobCustomFieldDefinitionResponse,
-    ),
-  );
-}
 
 export function atsGetJobCustomFieldDefinitionResponseFromJSON(
   jsonString: string,

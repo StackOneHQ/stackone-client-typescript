@@ -96,13 +96,6 @@ export type LmsListCoursesResponse = {
 };
 
 /** @internal */
-export const QueryParamActive$inboundSchema: z.ZodType<
-  QueryParamActive,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), z.string()]);
-
-/** @internal */
 export type QueryParamActive$Outbound = boolean | string;
 
 /** @internal */
@@ -112,19 +105,6 @@ export const QueryParamActive$outboundSchema: z.ZodType<
   QueryParamActive
 > = z.union([z.boolean(), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamActive$ {
-  /** @deprecated use `QueryParamActive$inboundSchema` instead. */
-  export const inboundSchema = QueryParamActive$inboundSchema;
-  /** @deprecated use `QueryParamActive$outboundSchema` instead. */
-  export const outboundSchema = QueryParamActive$outboundSchema;
-  /** @deprecated use `QueryParamActive$Outbound` instead. */
-  export type Outbound = QueryParamActive$Outbound;
-}
-
 export function queryParamActiveToJSON(
   queryParamActive: QueryParamActive,
 ): string {
@@ -132,34 +112,6 @@ export function queryParamActiveToJSON(
     QueryParamActive$outboundSchema.parse(queryParamActive),
   );
 }
-
-export function queryParamActiveFromJSON(
-  jsonString: string,
-): SafeParseResult<QueryParamActive, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => QueryParamActive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'QueryParamActive' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListCoursesQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListCoursesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), z.string()])).optional(),
-  external_reference: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "external_reference": "externalReference",
-    "updated_after": "updatedAfter",
-  });
-});
 
 /** @internal */
 export type LmsListCoursesQueryParamFilter$Outbound = {
@@ -184,19 +136,6 @@ export const LmsListCoursesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCoursesQueryParamFilter$ {
-  /** @deprecated use `LmsListCoursesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListCoursesQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListCoursesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = LmsListCoursesQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListCoursesQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListCoursesQueryParamFilter$Outbound;
-}
-
 export function lmsListCoursesQueryParamFilterToJSON(
   lmsListCoursesQueryParamFilter: LmsListCoursesQueryParamFilter,
 ): string {
@@ -206,42 +145,6 @@ export function lmsListCoursesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListCoursesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListCoursesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListCoursesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListCoursesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListCoursesRequest$inboundSchema: z.ZodType<
-  LmsListCoursesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => LmsListCoursesQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListCoursesRequest$Outbound = {
@@ -281,34 +184,11 @@ export const LmsListCoursesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCoursesRequest$ {
-  /** @deprecated use `LmsListCoursesRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListCoursesRequest$inboundSchema;
-  /** @deprecated use `LmsListCoursesRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListCoursesRequest$outboundSchema;
-  /** @deprecated use `LmsListCoursesRequest$Outbound` instead. */
-  export type Outbound = LmsListCoursesRequest$Outbound;
-}
-
 export function lmsListCoursesRequestToJSON(
   lmsListCoursesRequest: LmsListCoursesRequest,
 ): string {
   return JSON.stringify(
     LmsListCoursesRequest$outboundSchema.parse(lmsListCoursesRequest),
-  );
-}
-
-export function lmsListCoursesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListCoursesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListCoursesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListCoursesRequest' from JSON`,
   );
 }
 
@@ -333,59 +213,6 @@ export const LmsListCoursesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsListCoursesResponse$Outbound = {
-  ContentType: string;
-  CoursePaginated?: shared.CoursePaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsListCoursesResponse$outboundSchema: z.ZodType<
-  LmsListCoursesResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListCoursesResponse
-> = z.object({
-  contentType: z.string(),
-  coursePaginated: shared.CoursePaginated$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    coursePaginated: "CoursePaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListCoursesResponse$ {
-  /** @deprecated use `LmsListCoursesResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListCoursesResponse$inboundSchema;
-  /** @deprecated use `LmsListCoursesResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListCoursesResponse$outboundSchema;
-  /** @deprecated use `LmsListCoursesResponse$Outbound` instead. */
-  export type Outbound = LmsListCoursesResponse$Outbound;
-}
-
-export function lmsListCoursesResponseToJSON(
-  lmsListCoursesResponse: LmsListCoursesResponse,
-): string {
-  return JSON.stringify(
-    LmsListCoursesResponse$outboundSchema.parse(lmsListCoursesResponse),
-  );
-}
 
 export function lmsListCoursesResponseFromJSON(
   jsonString: string,

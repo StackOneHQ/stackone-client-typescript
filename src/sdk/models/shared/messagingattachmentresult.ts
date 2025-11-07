@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type MessagingAttachmentResultData = {
   /**
@@ -62,58 +57,6 @@ export const MessagingAttachmentResultData$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type MessagingAttachmentResultData$Outbound = {
-  file_name?: string | null | undefined;
-  file_size?: number | null | undefined;
-  file_type?: string | null | undefined;
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingAttachmentResultData$outboundSchema: z.ZodType<
-  MessagingAttachmentResultData$Outbound,
-  z.ZodTypeDef,
-  MessagingAttachmentResultData
-> = z.object({
-  fileName: z.nullable(z.string()).optional(),
-  fileSize: z.nullable(z.number()).optional(),
-  fileType: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    fileName: "file_name",
-    fileSize: "file_size",
-    fileType: "file_type",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingAttachmentResultData$ {
-  /** @deprecated use `MessagingAttachmentResultData$inboundSchema` instead. */
-  export const inboundSchema = MessagingAttachmentResultData$inboundSchema;
-  /** @deprecated use `MessagingAttachmentResultData$outboundSchema` instead. */
-  export const outboundSchema = MessagingAttachmentResultData$outboundSchema;
-  /** @deprecated use `MessagingAttachmentResultData$Outbound` instead. */
-  export type Outbound = MessagingAttachmentResultData$Outbound;
-}
-
-export function messagingAttachmentResultDataToJSON(
-  messagingAttachmentResultData: MessagingAttachmentResultData,
-): string {
-  return JSON.stringify(
-    MessagingAttachmentResultData$outboundSchema.parse(
-      messagingAttachmentResultData,
-    ),
-  );
-}
-
 export function messagingAttachmentResultDataFromJSON(
   jsonString: string,
 ): SafeParseResult<MessagingAttachmentResultData, SDKValidationError> {
@@ -134,44 +77,6 @@ export const MessagingAttachmentResult$inboundSchema: z.ZodType<
     .optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type MessagingAttachmentResult$Outbound = {
-  data?: MessagingAttachmentResultData$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const MessagingAttachmentResult$outboundSchema: z.ZodType<
-  MessagingAttachmentResult$Outbound,
-  z.ZodTypeDef,
-  MessagingAttachmentResult
-> = z.object({
-  data: z.nullable(z.lazy(() => MessagingAttachmentResultData$outboundSchema))
-    .optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingAttachmentResult$ {
-  /** @deprecated use `MessagingAttachmentResult$inboundSchema` instead. */
-  export const inboundSchema = MessagingAttachmentResult$inboundSchema;
-  /** @deprecated use `MessagingAttachmentResult$outboundSchema` instead. */
-  export const outboundSchema = MessagingAttachmentResult$outboundSchema;
-  /** @deprecated use `MessagingAttachmentResult$Outbound` instead. */
-  export type Outbound = MessagingAttachmentResult$Outbound;
-}
-
-export function messagingAttachmentResultToJSON(
-  messagingAttachmentResult: MessagingAttachmentResult,
-): string {
-  return JSON.stringify(
-    MessagingAttachmentResult$outboundSchema.parse(messagingAttachmentResult),
-  );
-}
 
 export function messagingAttachmentResultFromJSON(
   jsonString: string,

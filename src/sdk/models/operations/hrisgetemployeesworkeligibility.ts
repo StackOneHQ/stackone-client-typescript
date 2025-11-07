@@ -51,24 +51,6 @@ export type HrisGetEmployeesWorkEligibilityResponse = {
 };
 
 /** @internal */
-export const HrisGetEmployeesWorkEligibilityRequest$inboundSchema: z.ZodType<
-  HrisGetEmployeesWorkEligibilityRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetEmployeesWorkEligibilityRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,21 +78,6 @@ export const HrisGetEmployeesWorkEligibilityRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeesWorkEligibilityRequest$ {
-  /** @deprecated use `HrisGetEmployeesWorkEligibilityRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisGetEmployeesWorkEligibilityRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmployeesWorkEligibilityRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisGetEmployeesWorkEligibilityRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmployeesWorkEligibilityRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmployeesWorkEligibilityRequest$Outbound;
-}
-
 export function hrisGetEmployeesWorkEligibilityRequestToJSON(
   hrisGetEmployeesWorkEligibilityRequest:
     HrisGetEmployeesWorkEligibilityRequest,
@@ -119,17 +86,6 @@ export function hrisGetEmployeesWorkEligibilityRequestToJSON(
     HrisGetEmployeesWorkEligibilityRequest$outboundSchema.parse(
       hrisGetEmployeesWorkEligibilityRequest,
     ),
-  );
-}
-
-export function hrisGetEmployeesWorkEligibilityRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetEmployeesWorkEligibilityRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisGetEmployeesWorkEligibilityRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetEmployeesWorkEligibilityRequest' from JSON`,
   );
 }
 
@@ -154,64 +110,6 @@ export const HrisGetEmployeesWorkEligibilityResponse$inboundSchema: z.ZodType<
     "WorkEligibilityResult": "workEligibilityResult",
   });
 });
-
-/** @internal */
-export type HrisGetEmployeesWorkEligibilityResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  WorkEligibilityResult?: shared.WorkEligibilityResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisGetEmployeesWorkEligibilityResponse$outboundSchema: z.ZodType<
-  HrisGetEmployeesWorkEligibilityResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetEmployeesWorkEligibilityResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  workEligibilityResult: shared.WorkEligibilityResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    workEligibilityResult: "WorkEligibilityResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeesWorkEligibilityResponse$ {
-  /** @deprecated use `HrisGetEmployeesWorkEligibilityResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisGetEmployeesWorkEligibilityResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmployeesWorkEligibilityResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisGetEmployeesWorkEligibilityResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmployeesWorkEligibilityResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmployeesWorkEligibilityResponse$Outbound;
-}
-
-export function hrisGetEmployeesWorkEligibilityResponseToJSON(
-  hrisGetEmployeesWorkEligibilityResponse:
-    HrisGetEmployeesWorkEligibilityResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmployeesWorkEligibilityResponse$outboundSchema.parse(
-      hrisGetEmployeesWorkEligibilityResponse,
-    ),
-  );
-}
 
 export function hrisGetEmployeesWorkEligibilityResponseFromJSON(
   jsonString: string,

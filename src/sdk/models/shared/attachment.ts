@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type Attachment4 = {};
 
@@ -67,13 +60,6 @@ export type Attachment = {
 };
 
 /** @internal */
-export const Attachment4$inboundSchema: z.ZodType<
-  Attachment4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type Attachment4$Outbound = {};
 
 /** @internal */
@@ -83,45 +69,9 @@ export const Attachment4$outboundSchema: z.ZodType<
   Attachment4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attachment4$ {
-  /** @deprecated use `Attachment4$inboundSchema` instead. */
-  export const inboundSchema = Attachment4$inboundSchema;
-  /** @deprecated use `Attachment4$outboundSchema` instead. */
-  export const outboundSchema = Attachment4$outboundSchema;
-  /** @deprecated use `Attachment4$Outbound` instead. */
-  export type Outbound = Attachment4$Outbound;
-}
-
 export function attachment4ToJSON(attachment4: Attachment4): string {
   return JSON.stringify(Attachment4$outboundSchema.parse(attachment4));
 }
-
-export function attachment4FromJSON(
-  jsonString: string,
-): SafeParseResult<Attachment4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Attachment4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attachment4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AttachmentSourceValue$inboundSchema: z.ZodType<
-  AttachmentSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Attachment4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type AttachmentSourceValue$Outbound =
@@ -144,19 +94,6 @@ export const AttachmentSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AttachmentSourceValue$ {
-  /** @deprecated use `AttachmentSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AttachmentSourceValue$inboundSchema;
-  /** @deprecated use `AttachmentSourceValue$outboundSchema` instead. */
-  export const outboundSchema = AttachmentSourceValue$outboundSchema;
-  /** @deprecated use `AttachmentSourceValue$Outbound` instead. */
-  export type Outbound = AttachmentSourceValue$Outbound;
-}
-
 export function attachmentSourceValueToJSON(
   attachmentSourceValue: AttachmentSourceValue,
 ): string {
@@ -164,27 +101,6 @@ export function attachmentSourceValueToJSON(
     AttachmentSourceValue$outboundSchema.parse(attachmentSourceValue),
   );
 }
-
-export function attachmentSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AttachmentSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AttachmentSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AttachmentSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AttachmentValue$inboundSchema: z.ZodType<
-  AttachmentValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AttachmentValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
 
 /** @internal */
 export const AttachmentValue$outboundSchema: z.ZodType<
@@ -195,39 +111,6 @@ export const AttachmentValue$outboundSchema: z.ZodType<
   z.nativeEnum(AttachmentValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AttachmentValue$ {
-  /** @deprecated use `AttachmentValue$inboundSchema` instead. */
-  export const inboundSchema = AttachmentValue$inboundSchema;
-  /** @deprecated use `AttachmentValue$outboundSchema` instead. */
-  export const outboundSchema = AttachmentValue$outboundSchema;
-}
-
-/** @internal */
-export const AttachmentContentType$inboundSchema: z.ZodType<
-  AttachmentContentType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Attachment4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AttachmentValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type AttachmentContentType$Outbound = {
@@ -264,19 +147,6 @@ export const AttachmentContentType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AttachmentContentType$ {
-  /** @deprecated use `AttachmentContentType$inboundSchema` instead. */
-  export const inboundSchema = AttachmentContentType$inboundSchema;
-  /** @deprecated use `AttachmentContentType$outboundSchema` instead. */
-  export const outboundSchema = AttachmentContentType$outboundSchema;
-  /** @deprecated use `AttachmentContentType$Outbound` instead. */
-  export type Outbound = AttachmentContentType$Outbound;
-}
-
 export function attachmentContentTypeToJSON(
   attachmentContentType: AttachmentContentType,
 ): string {
@@ -284,31 +154,6 @@ export function attachmentContentTypeToJSON(
     AttachmentContentType$outboundSchema.parse(attachmentContentType),
   );
 }
-
-export function attachmentContentTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<AttachmentContentType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AttachmentContentType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AttachmentContentType' from JSON`,
-  );
-}
-
-/** @internal */
-export const Attachment$inboundSchema: z.ZodType<
-  Attachment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  content_type: z.nullable(z.lazy(() => AttachmentContentType$inboundSchema))
-    .optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "content_type": "contentType",
-  });
-});
 
 /** @internal */
 export type Attachment$Outbound = {
@@ -331,29 +176,6 @@ export const Attachment$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attachment$ {
-  /** @deprecated use `Attachment$inboundSchema` instead. */
-  export const inboundSchema = Attachment$inboundSchema;
-  /** @deprecated use `Attachment$outboundSchema` instead. */
-  export const outboundSchema = Attachment$outboundSchema;
-  /** @deprecated use `Attachment$Outbound` instead. */
-  export type Outbound = Attachment$Outbound;
-}
-
 export function attachmentToJSON(attachment: Attachment): string {
   return JSON.stringify(Attachment$outboundSchema.parse(attachment));
-}
-
-export function attachmentFromJSON(
-  jsonString: string,
-): SafeParseResult<Attachment, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Attachment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attachment' from JSON`,
-  );
 }

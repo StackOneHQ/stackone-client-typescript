@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -150,37 +146,6 @@ export const LaborType$inboundSchema: z.ZodType<
   code: z.nullable(z.string()).optional(),
 });
 
-/** @internal */
-export type LaborType$Outbound = {
-  code?: string | null | undefined;
-};
-
-/** @internal */
-export const LaborType$outboundSchema: z.ZodType<
-  LaborType$Outbound,
-  z.ZodTypeDef,
-  LaborType
-> = z.object({
-  code: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LaborType$ {
-  /** @deprecated use `LaborType$inboundSchema` instead. */
-  export const inboundSchema = LaborType$inboundSchema;
-  /** @deprecated use `LaborType$outboundSchema` instead. */
-  export const outboundSchema = LaborType$outboundSchema;
-  /** @deprecated use `LaborType$Outbound` instead. */
-  export type Outbound = LaborType$Outbound;
-}
-
-export function laborTypeToJSON(laborType: LaborType): string {
-  return JSON.stringify(LaborType$outboundSchema.parse(laborType));
-}
-
 export function laborTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<LaborType, SDKValidationError> {
@@ -196,57 +161,11 @@ export const TimeEntries2$inboundSchema: z.ZodNativeEnum<typeof TimeEntries2> =
   z.nativeEnum(TimeEntries2);
 
 /** @internal */
-export const TimeEntries2$outboundSchema: z.ZodNativeEnum<typeof TimeEntries2> =
-  TimeEntries2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntries2$ {
-  /** @deprecated use `TimeEntries2$inboundSchema` instead. */
-  export const inboundSchema = TimeEntries2$inboundSchema;
-  /** @deprecated use `TimeEntries2$outboundSchema` instead. */
-  export const outboundSchema = TimeEntries2$outboundSchema;
-}
-
-/** @internal */
 export const TimeEntriesActive$inboundSchema: z.ZodType<
   TimeEntriesActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), TimeEntries2$inboundSchema]);
-
-/** @internal */
-export type TimeEntriesActive$Outbound = boolean | string;
-
-/** @internal */
-export const TimeEntriesActive$outboundSchema: z.ZodType<
-  TimeEntriesActive$Outbound,
-  z.ZodTypeDef,
-  TimeEntriesActive
-> = z.union([z.boolean(), TimeEntries2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntriesActive$ {
-  /** @deprecated use `TimeEntriesActive$inboundSchema` instead. */
-  export const inboundSchema = TimeEntriesActive$inboundSchema;
-  /** @deprecated use `TimeEntriesActive$outboundSchema` instead. */
-  export const outboundSchema = TimeEntriesActive$outboundSchema;
-  /** @deprecated use `TimeEntriesActive$Outbound` instead. */
-  export type Outbound = TimeEntriesActive$Outbound;
-}
-
-export function timeEntriesActiveToJSON(
-  timeEntriesActive: TimeEntriesActive,
-): string {
-  return JSON.stringify(
-    TimeEntriesActive$outboundSchema.parse(timeEntriesActive),
-  );
-}
 
 export function timeEntriesActiveFromJSON(
   jsonString: string,
@@ -275,48 +194,6 @@ export const Location$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type Location$Outbound = {
-  active?: boolean | string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Location$outboundSchema: z.ZodType<
-  Location$Outbound,
-  z.ZodTypeDef,
-  Location
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), TimeEntries2$outboundSchema]))
-    .optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Location$ {
-  /** @deprecated use `Location$inboundSchema` instead. */
-  export const inboundSchema = Location$inboundSchema;
-  /** @deprecated use `Location$outboundSchema` instead. */
-  export const outboundSchema = Location$outboundSchema;
-  /** @deprecated use `Location$Outbound` instead. */
-  export type Outbound = Location$Outbound;
-}
-
-export function locationToJSON(location: Location): string {
-  return JSON.stringify(Location$outboundSchema.parse(location));
-}
-
 export function locationFromJSON(
   jsonString: string,
 ): SafeParseResult<Location, SDKValidationError> {
@@ -333,33 +210,6 @@ export const TimeEntries4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type TimeEntries4$Outbound = {};
-
-/** @internal */
-export const TimeEntries4$outboundSchema: z.ZodType<
-  TimeEntries4$Outbound,
-  z.ZodTypeDef,
-  TimeEntries4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntries4$ {
-  /** @deprecated use `TimeEntries4$inboundSchema` instead. */
-  export const inboundSchema = TimeEntries4$inboundSchema;
-  /** @deprecated use `TimeEntries4$outboundSchema` instead. */
-  export const outboundSchema = TimeEntries4$outboundSchema;
-  /** @deprecated use `TimeEntries4$Outbound` instead. */
-  export type Outbound = TimeEntries4$Outbound;
-}
-
-export function timeEntries4ToJSON(timeEntries4: TimeEntries4): string {
-  return JSON.stringify(TimeEntries4$outboundSchema.parse(timeEntries4));
-}
 
 export function timeEntries4FromJSON(
   jsonString: string,
@@ -384,48 +234,6 @@ export const TimeEntriesSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TimeEntriesSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TimeEntries4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TimeEntriesSourceValue$outboundSchema: z.ZodType<
-  TimeEntriesSourceValue$Outbound,
-  z.ZodTypeDef,
-  TimeEntriesSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TimeEntries4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntriesSourceValue$ {
-  /** @deprecated use `TimeEntriesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TimeEntriesSourceValue$inboundSchema;
-  /** @deprecated use `TimeEntriesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = TimeEntriesSourceValue$outboundSchema;
-  /** @deprecated use `TimeEntriesSourceValue$Outbound` instead. */
-  export type Outbound = TimeEntriesSourceValue$Outbound;
-}
-
-export function timeEntriesSourceValueToJSON(
-  timeEntriesSourceValue: TimeEntriesSourceValue,
-): string {
-  return JSON.stringify(
-    TimeEntriesSourceValue$outboundSchema.parse(timeEntriesSourceValue),
-  );
-}
-
 export function timeEntriesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TimeEntriesSourceValue, SDKValidationError> {
@@ -448,27 +256,6 @@ export const TimeEntriesValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const TimeEntriesValue$outboundSchema: z.ZodType<
-  TimeEntriesValueOpen,
-  z.ZodTypeDef,
-  TimeEntriesValueOpen
-> = z.union([
-  z.nativeEnum(TimeEntriesValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntriesValue$ {
-  /** @deprecated use `TimeEntriesValue$inboundSchema` instead. */
-  export const inboundSchema = TimeEntriesValue$inboundSchema;
-  /** @deprecated use `TimeEntriesValue$outboundSchema` instead. */
-  export const outboundSchema = TimeEntriesValue$outboundSchema;
-}
-
-/** @internal */
 export const TimeEntriesStatus$inboundSchema: z.ZodType<
   TimeEntriesStatus,
   z.ZodTypeDef,
@@ -489,62 +276,6 @@ export const TimeEntriesStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type TimeEntriesStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TimeEntries4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const TimeEntriesStatus$outboundSchema: z.ZodType<
-  TimeEntriesStatus$Outbound,
-  z.ZodTypeDef,
-  TimeEntriesStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TimeEntries4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TimeEntriesValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntriesStatus$ {
-  /** @deprecated use `TimeEntriesStatus$inboundSchema` instead. */
-  export const inboundSchema = TimeEntriesStatus$inboundSchema;
-  /** @deprecated use `TimeEntriesStatus$outboundSchema` instead. */
-  export const outboundSchema = TimeEntriesStatus$outboundSchema;
-  /** @deprecated use `TimeEntriesStatus$Outbound` instead. */
-  export type Outbound = TimeEntriesStatus$Outbound;
-}
-
-export function timeEntriesStatusToJSON(
-  timeEntriesStatus: TimeEntriesStatus,
-): string {
-  return JSON.stringify(
-    TimeEntriesStatus$outboundSchema.parse(timeEntriesStatus),
-  );
-}
 
 export function timeEntriesStatusFromJSON(
   jsonString: string,
@@ -599,77 +330,6 @@ export const TimeEntries$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type TimeEntries$Outbound = {
-  break_duration?: number | null | undefined;
-  created_at?: string | null | undefined;
-  employee_id?: string | null | undefined;
-  end_time?: string | null | undefined;
-  hours_worked?: number | null | undefined;
-  id?: string | null | undefined;
-  labor_type?: LaborType$Outbound | null | undefined;
-  location?: Location$Outbound | null | undefined;
-  remote_employee_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  start_time?: string | null | undefined;
-  status?: TimeEntriesStatus$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TimeEntries$outboundSchema: z.ZodType<
-  TimeEntries$Outbound,
-  z.ZodTypeDef,
-  TimeEntries
-> = z.object({
-  breakDuration: z.nullable(z.number()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  employeeId: z.nullable(z.string()).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  hoursWorked: z.nullable(z.number()).optional(),
-  id: z.nullable(z.string()).optional(),
-  laborType: z.nullable(z.lazy(() => LaborType$outboundSchema)).optional(),
-  location: z.nullable(z.lazy(() => Location$outboundSchema)).optional(),
-  remoteEmployeeId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  status: z.nullable(z.lazy(() => TimeEntriesStatus$outboundSchema)).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    breakDuration: "break_duration",
-    createdAt: "created_at",
-    employeeId: "employee_id",
-    endTime: "end_time",
-    hoursWorked: "hours_worked",
-    laborType: "labor_type",
-    remoteEmployeeId: "remote_employee_id",
-    remoteId: "remote_id",
-    startTime: "start_time",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeEntries$ {
-  /** @deprecated use `TimeEntries$inboundSchema` instead. */
-  export const inboundSchema = TimeEntries$inboundSchema;
-  /** @deprecated use `TimeEntries$outboundSchema` instead. */
-  export const outboundSchema = TimeEntries$outboundSchema;
-  /** @deprecated use `TimeEntries$Outbound` instead. */
-  export type Outbound = TimeEntries$Outbound;
-}
-
-export function timeEntriesToJSON(timeEntries: TimeEntries): string {
-  return JSON.stringify(TimeEntries$outboundSchema.parse(timeEntries));
-}
 
 export function timeEntriesFromJSON(
   jsonString: string,

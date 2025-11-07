@@ -51,24 +51,6 @@ export type AccountingGetCompanyJournalResponse = {
 };
 
 /** @internal */
-export const AccountingGetCompanyJournalRequest$inboundSchema: z.ZodType<
-  AccountingGetCompanyJournalRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AccountingGetCompanyJournalRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,20 +78,6 @@ export const AccountingGetCompanyJournalRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingGetCompanyJournalRequest$ {
-  /** @deprecated use `AccountingGetCompanyJournalRequest$inboundSchema` instead. */
-  export const inboundSchema = AccountingGetCompanyJournalRequest$inboundSchema;
-  /** @deprecated use `AccountingGetCompanyJournalRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingGetCompanyJournalRequest$outboundSchema;
-  /** @deprecated use `AccountingGetCompanyJournalRequest$Outbound` instead. */
-  export type Outbound = AccountingGetCompanyJournalRequest$Outbound;
-}
-
 export function accountingGetCompanyJournalRequestToJSON(
   accountingGetCompanyJournalRequest: AccountingGetCompanyJournalRequest,
 ): string {
@@ -117,17 +85,6 @@ export function accountingGetCompanyJournalRequestToJSON(
     AccountingGetCompanyJournalRequest$outboundSchema.parse(
       accountingGetCompanyJournalRequest,
     ),
-  );
-}
-
-export function accountingGetCompanyJournalRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingGetCompanyJournalRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingGetCompanyJournalRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingGetCompanyJournalRequest' from JSON`,
   );
 }
 
@@ -153,64 +110,6 @@ export const AccountingGetCompanyJournalResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AccountingGetCompanyJournalResponse$Outbound = {
-  AccountingJournalResult?: shared.AccountingJournalResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AccountingGetCompanyJournalResponse$outboundSchema: z.ZodType<
-  AccountingGetCompanyJournalResponse$Outbound,
-  z.ZodTypeDef,
-  AccountingGetCompanyJournalResponse
-> = z.object({
-  accountingJournalResult: shared.AccountingJournalResult$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountingJournalResult: "AccountingJournalResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingGetCompanyJournalResponse$ {
-  /** @deprecated use `AccountingGetCompanyJournalResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingGetCompanyJournalResponse$inboundSchema;
-  /** @deprecated use `AccountingGetCompanyJournalResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingGetCompanyJournalResponse$outboundSchema;
-  /** @deprecated use `AccountingGetCompanyJournalResponse$Outbound` instead. */
-  export type Outbound = AccountingGetCompanyJournalResponse$Outbound;
-}
-
-export function accountingGetCompanyJournalResponseToJSON(
-  accountingGetCompanyJournalResponse: AccountingGetCompanyJournalResponse,
-): string {
-  return JSON.stringify(
-    AccountingGetCompanyJournalResponse$outboundSchema.parse(
-      accountingGetCompanyJournalResponse,
-    ),
-  );
-}
 
 export function accountingGetCompanyJournalResponseFromJSON(
   jsonString: string,

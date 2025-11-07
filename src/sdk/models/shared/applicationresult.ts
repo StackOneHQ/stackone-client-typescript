@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Application,
-  Application$inboundSchema,
-  Application$Outbound,
-  Application$outboundSchema,
-} from "./application.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Application, Application$inboundSchema } from "./application.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ApplicationResult = {
   data: Application;
@@ -33,43 +23,6 @@ export const ApplicationResult$inboundSchema: z.ZodType<
   data: Application$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ApplicationResult$Outbound = {
-  data: Application$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ApplicationResult$outboundSchema: z.ZodType<
-  ApplicationResult$Outbound,
-  z.ZodTypeDef,
-  ApplicationResult
-> = z.object({
-  data: Application$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationResult$ {
-  /** @deprecated use `ApplicationResult$inboundSchema` instead. */
-  export const inboundSchema = ApplicationResult$inboundSchema;
-  /** @deprecated use `ApplicationResult$outboundSchema` instead. */
-  export const outboundSchema = ApplicationResult$outboundSchema;
-  /** @deprecated use `ApplicationResult$Outbound` instead. */
-  export type Outbound = ApplicationResult$Outbound;
-}
-
-export function applicationResultToJSON(
-  applicationResult: ApplicationResult,
-): string {
-  return JSON.stringify(
-    ApplicationResult$outboundSchema.parse(applicationResult),
-  );
-}
 
 export function applicationResultFromJSON(
   jsonString: string,

@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Files,
-  Files$inboundSchema,
-  Files$Outbound,
-  Files$outboundSchema,
-} from "./files.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Files, Files$inboundSchema } from "./files.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type FileResult = {
   data: Files;
@@ -33,39 +23,6 @@ export const FileResult$inboundSchema: z.ZodType<
   data: Files$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type FileResult$Outbound = {
-  data: Files$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const FileResult$outboundSchema: z.ZodType<
-  FileResult$Outbound,
-  z.ZodTypeDef,
-  FileResult
-> = z.object({
-  data: Files$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileResult$ {
-  /** @deprecated use `FileResult$inboundSchema` instead. */
-  export const inboundSchema = FileResult$inboundSchema;
-  /** @deprecated use `FileResult$outboundSchema` instead. */
-  export const outboundSchema = FileResult$outboundSchema;
-  /** @deprecated use `FileResult$Outbound` instead. */
-  export type Outbound = FileResult$Outbound;
-}
-
-export function fileResultToJSON(fileResult: FileResult): string {
-  return JSON.stringify(FileResult$outboundSchema.parse(fileResult));
-}
 
 export function fileResultFromJSON(
   jsonString: string,

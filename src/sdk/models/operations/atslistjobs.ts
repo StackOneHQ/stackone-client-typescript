@@ -129,64 +129,12 @@ export type AtsListJobsResponse = {
 };
 
 /** @internal */
-export const JobStatus$inboundSchema: z.ZodNativeEnum<typeof JobStatus> = z
+export const JobStatus$outboundSchema: z.ZodNativeEnum<typeof JobStatus> = z
   .nativeEnum(JobStatus);
 
 /** @internal */
-export const JobStatus$outboundSchema: z.ZodNativeEnum<typeof JobStatus> =
-  JobStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobStatus$ {
-  /** @deprecated use `JobStatus$inboundSchema` instead. */
-  export const inboundSchema = JobStatus$inboundSchema;
-  /** @deprecated use `JobStatus$outboundSchema` instead. */
-  export const outboundSchema = JobStatus$outboundSchema;
-}
-
-/** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = z
   .nativeEnum(Status);
-
-/** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
-}
-
-/** @internal */
-export const AtsListJobsQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListJobsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  created_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  job_status: z.nullable(JobStatus$inboundSchema).optional(),
-  status: z.nullable(Status$inboundSchema).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "created_after": "createdAfter",
-    "job_status": "jobStatus",
-    "updated_after": "updatedAfter",
-  });
-});
 
 /** @internal */
 export type AtsListJobsQueryParamFilter$Outbound = {
@@ -214,19 +162,6 @@ export const AtsListJobsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListJobsQueryParamFilter$ {
-  /** @deprecated use `AtsListJobsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = AtsListJobsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListJobsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = AtsListJobsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListJobsQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListJobsQueryParamFilter$Outbound;
-}
-
 export function atsListJobsQueryParamFilterToJSON(
   atsListJobsQueryParamFilter: AtsListJobsQueryParamFilter,
 ): string {
@@ -236,46 +171,6 @@ export function atsListJobsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListJobsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListJobsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListJobsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListJobsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListJobsRequest$inboundSchema: z.ZodType<
-  AtsListJobsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => AtsListJobsQueryParamFilter$inboundSchema))
-    .optional(),
-  include: z.nullable(z.string()).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListJobsRequest$Outbound = {
@@ -321,34 +216,11 @@ export const AtsListJobsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListJobsRequest$ {
-  /** @deprecated use `AtsListJobsRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListJobsRequest$inboundSchema;
-  /** @deprecated use `AtsListJobsRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListJobsRequest$outboundSchema;
-  /** @deprecated use `AtsListJobsRequest$Outbound` instead. */
-  export type Outbound = AtsListJobsRequest$Outbound;
-}
-
 export function atsListJobsRequestToJSON(
   atsListJobsRequest: AtsListJobsRequest,
 ): string {
   return JSON.stringify(
     AtsListJobsRequest$outboundSchema.parse(atsListJobsRequest),
-  );
-}
-
-export function atsListJobsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListJobsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListJobsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListJobsRequest' from JSON`,
   );
 }
 
@@ -373,59 +245,6 @@ export const AtsListJobsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListJobsResponse$Outbound = {
-  AtsJobsPaginated?: shared.AtsJobsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListJobsResponse$outboundSchema: z.ZodType<
-  AtsListJobsResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListJobsResponse
-> = z.object({
-  atsJobsPaginated: shared.AtsJobsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    atsJobsPaginated: "AtsJobsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListJobsResponse$ {
-  /** @deprecated use `AtsListJobsResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListJobsResponse$inboundSchema;
-  /** @deprecated use `AtsListJobsResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListJobsResponse$outboundSchema;
-  /** @deprecated use `AtsListJobsResponse$Outbound` instead. */
-  export type Outbound = AtsListJobsResponse$Outbound;
-}
-
-export function atsListJobsResponseToJSON(
-  atsListJobsResponse: AtsListJobsResponse,
-): string {
-  return JSON.stringify(
-    AtsListJobsResponse$outboundSchema.parse(atsListJobsResponse),
-  );
-}
 
 export function atsListJobsResponseFromJSON(
   jsonString: string,

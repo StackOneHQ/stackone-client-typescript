@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export enum HrisCreateTimeOffRequestDto2 {
   True = "true",
@@ -188,32 +181,9 @@ export type HrisCreateTimeOffRequestDto = {
 };
 
 /** @internal */
-export const HrisCreateTimeOffRequestDto2$inboundSchema: z.ZodNativeEnum<
-  typeof HrisCreateTimeOffRequestDto2
-> = z.nativeEnum(HrisCreateTimeOffRequestDto2);
-
-/** @internal */
 export const HrisCreateTimeOffRequestDto2$outboundSchema: z.ZodNativeEnum<
   typeof HrisCreateTimeOffRequestDto2
-> = HrisCreateTimeOffRequestDto2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDto2$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDto2$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDto2$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDto2$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateTimeOffRequestDto2$outboundSchema;
-}
-
-/** @internal */
-export const EndHalfDay$inboundSchema: z.ZodType<
-  EndHalfDay,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), HrisCreateTimeOffRequestDto2$inboundSchema]);
+> = z.nativeEnum(HrisCreateTimeOffRequestDto2);
 
 /** @internal */
 export type EndHalfDay$Outbound = boolean | string;
@@ -225,47 +195,9 @@ export const EndHalfDay$outboundSchema: z.ZodType<
   EndHalfDay
 > = z.union([z.boolean(), HrisCreateTimeOffRequestDto2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EndHalfDay$ {
-  /** @deprecated use `EndHalfDay$inboundSchema` instead. */
-  export const inboundSchema = EndHalfDay$inboundSchema;
-  /** @deprecated use `EndHalfDay$outboundSchema` instead. */
-  export const outboundSchema = EndHalfDay$outboundSchema;
-  /** @deprecated use `EndHalfDay$Outbound` instead. */
-  export type Outbound = EndHalfDay$Outbound;
-}
-
 export function endHalfDayToJSON(endHalfDay: EndHalfDay): string {
   return JSON.stringify(EndHalfDay$outboundSchema.parse(endHalfDay));
 }
-
-export function endHalfDayFromJSON(
-  jsonString: string,
-): SafeParseResult<EndHalfDay, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EndHalfDay$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EndHalfDay' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoReason$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoReason,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-  });
-});
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoReason$Outbound = {
@@ -289,20 +221,6 @@ export const HrisCreateTimeOffRequestDtoReason$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoReason$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoReason$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDtoReason$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoReason$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoReason$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoReason$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDtoReason$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoReasonToJSON(
   hrisCreateTimeOffRequestDtoReason: HrisCreateTimeOffRequestDtoReason,
 ): string {
@@ -313,45 +231,11 @@ export function hrisCreateTimeOffRequestDtoReasonToJSON(
   );
 }
 
-export function hrisCreateTimeOffRequestDtoReasonFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDtoReason, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisCreateTimeOffRequestDtoReason$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDtoReason' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoSchemas2$inboundSchema: z.ZodNativeEnum<
-  typeof HrisCreateTimeOffRequestDtoSchemas2
-> = z.nativeEnum(HrisCreateTimeOffRequestDtoSchemas2);
-
 /** @internal */
 export const HrisCreateTimeOffRequestDtoSchemas2$outboundSchema:
-  z.ZodNativeEnum<typeof HrisCreateTimeOffRequestDtoSchemas2> =
-    HrisCreateTimeOffRequestDtoSchemas2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoSchemas2$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemas2$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateTimeOffRequestDtoSchemas2$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemas2$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoSchemas2$outboundSchema;
-}
-
-/** @internal */
-export const StartHalfDay$inboundSchema: z.ZodType<
-  StartHalfDay,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), HrisCreateTimeOffRequestDtoSchemas2$inboundSchema]);
+  z.ZodNativeEnum<typeof HrisCreateTimeOffRequestDtoSchemas2> = z.nativeEnum(
+    HrisCreateTimeOffRequestDtoSchemas2,
+  );
 
 /** @internal */
 export type StartHalfDay$Outbound = boolean | string;
@@ -363,39 +247,9 @@ export const StartHalfDay$outboundSchema: z.ZodType<
   StartHalfDay
 > = z.union([z.boolean(), HrisCreateTimeOffRequestDtoSchemas2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StartHalfDay$ {
-  /** @deprecated use `StartHalfDay$inboundSchema` instead. */
-  export const inboundSchema = StartHalfDay$inboundSchema;
-  /** @deprecated use `StartHalfDay$outboundSchema` instead. */
-  export const outboundSchema = StartHalfDay$outboundSchema;
-  /** @deprecated use `StartHalfDay$Outbound` instead. */
-  export type Outbound = StartHalfDay$Outbound;
-}
-
 export function startHalfDayToJSON(startHalfDay: StartHalfDay): string {
   return JSON.stringify(StartHalfDay$outboundSchema.parse(startHalfDay));
 }
-
-export function startHalfDayFromJSON(
-  jsonString: string,
-): SafeParseResult<StartHalfDay, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StartHalfDay$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StartHalfDay' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDto4$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type HrisCreateTimeOffRequestDto4$Outbound = {};
@@ -407,19 +261,6 @@ export const HrisCreateTimeOffRequestDto4$outboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDto4$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDto4$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateTimeOffRequestDto4$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDto4$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDto4$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDto4ToJSON(
   hrisCreateTimeOffRequestDto4: HrisCreateTimeOffRequestDto4,
 ): string {
@@ -429,29 +270,6 @@ export function hrisCreateTimeOffRequestDto4ToJSON(
     ),
   );
 }
-
-export function hrisCreateTimeOffRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisCreateTimeOffRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoSourceValue$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisCreateTimeOffRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoSourceValue$Outbound =
@@ -474,21 +292,6 @@ export const HrisCreateTimeOffRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoSourceValue$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateTimeOffRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDtoSourceValue$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoSourceValueToJSON(
   hrisCreateTimeOffRequestDtoSourceValue:
     HrisCreateTimeOffRequestDtoSourceValue,
@@ -500,28 +303,6 @@ export function hrisCreateTimeOffRequestDtoSourceValueToJSON(
   );
 }
 
-export function hrisCreateTimeOffRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisCreateTimeOffRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoValue$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(HrisCreateTimeOffRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const HrisCreateTimeOffRequestDtoValue$outboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDtoValueOpen,
@@ -531,39 +312,6 @@ export const HrisCreateTimeOffRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(HrisCreateTimeOffRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoValue$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDtoValue$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateTimeOffRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoStatus$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisCreateTimeOffRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisCreateTimeOffRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoStatus$Outbound = {
@@ -600,20 +348,6 @@ export const HrisCreateTimeOffRequestDtoStatus$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoStatus$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoStatus$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDtoStatus$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoStatus$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoStatus$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDtoStatus$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoStatusToJSON(
   hrisCreateTimeOffRequestDtoStatus: HrisCreateTimeOffRequestDtoStatus,
 ): string {
@@ -623,23 +357,6 @@ export function hrisCreateTimeOffRequestDtoStatusToJSON(
     ),
   );
 }
-
-export function hrisCreateTimeOffRequestDtoStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDtoStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisCreateTimeOffRequestDtoStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDtoStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoSchemas4$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoSchemas4$Outbound = {};
@@ -651,21 +368,6 @@ export const HrisCreateTimeOffRequestDtoSchemas4$outboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDtoSchemas4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoSchemas4$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemas4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateTimeOffRequestDtoSchemas4$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemas4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoSchemas4$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemas4$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDtoSchemas4$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoSchemas4ToJSON(
   hrisCreateTimeOffRequestDtoSchemas4: HrisCreateTimeOffRequestDtoSchemas4,
 ): string {
@@ -675,31 +377,6 @@ export function hrisCreateTimeOffRequestDtoSchemas4ToJSON(
     ),
   );
 }
-
-export function hrisCreateTimeOffRequestDtoSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDtoSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisCreateTimeOffRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDtoSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema:
-  z.ZodType<
-    HrisCreateTimeOffRequestDtoSchemasSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound =
@@ -723,21 +400,6 @@ export const HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoSchemasSourceValueToJSON(
   hrisCreateTimeOffRequestDtoSchemasSourceValue:
     HrisCreateTimeOffRequestDtoSchemasSourceValue,
@@ -749,33 +411,6 @@ export function hrisCreateTimeOffRequestDtoSchemasSourceValueToJSON(
   );
 }
 
-export function hrisCreateTimeOffRequestDtoSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisCreateTimeOffRequestDtoSchemasSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisCreateTimeOffRequestDtoSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoSchemasValue$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(HrisCreateTimeOffRequestDtoSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const HrisCreateTimeOffRequestDtoSchemasValue$outboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDtoSchemasValueOpen,
@@ -785,42 +420,6 @@ export const HrisCreateTimeOffRequestDtoSchemasValue$outboundSchema: z.ZodType<
   z.nativeEnum(HrisCreateTimeOffRequestDtoSchemasValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoSchemasValue$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateTimeOffRequestDtoSchemasValue$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateTimeOffRequestDtoSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDtoType$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDtoType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisCreateTimeOffRequestDtoSchemasValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type HrisCreateTimeOffRequestDtoType$Outbound = {
@@ -858,19 +457,6 @@ export const HrisCreateTimeOffRequestDtoType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDtoType$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDtoType$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDtoType$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoType$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateTimeOffRequestDtoType$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDtoType$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDtoType$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoTypeToJSON(
   hrisCreateTimeOffRequestDtoType: HrisCreateTimeOffRequestDtoType,
 ): string {
@@ -880,53 +466,6 @@ export function hrisCreateTimeOffRequestDtoTypeToJSON(
     ),
   );
 }
-
-export function hrisCreateTimeOffRequestDtoTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDtoType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisCreateTimeOffRequestDtoType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDtoType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
-  HrisCreateTimeOffRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  approver_id: z.nullable(z.string()).optional(),
-  comment: z.nullable(z.string()).optional(),
-  end_date: z.nullable(z.string()).optional(),
-  end_half_day: z.nullable(
-    z.union([z.boolean(), HrisCreateTimeOffRequestDto2$inboundSchema]),
-  ).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  reason: z.nullable(
-    z.lazy(() => HrisCreateTimeOffRequestDtoReason$inboundSchema),
-  ).optional(),
-  start_date: z.nullable(z.string()).optional(),
-  start_half_day: z.nullable(
-    z.union([z.boolean(), HrisCreateTimeOffRequestDtoSchemas2$inboundSchema]),
-  ).optional(),
-  status: z.nullable(
-    z.lazy(() => HrisCreateTimeOffRequestDtoStatus$inboundSchema),
-  ).optional(),
-  time_off_policy_id: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => HrisCreateTimeOffRequestDtoType$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "approver_id": "approverId",
-    "end_date": "endDate",
-    "end_half_day": "endHalfDay",
-    "start_date": "startDate",
-    "start_half_day": "startHalfDay",
-    "time_off_policy_id": "timeOffPolicyId",
-  });
-});
 
 /** @internal */
 export type HrisCreateTimeOffRequestDto$Outbound = {
@@ -980,19 +519,6 @@ export const HrisCreateTimeOffRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateTimeOffRequestDto$ {
-  /** @deprecated use `HrisCreateTimeOffRequestDto$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateTimeOffRequestDto$inboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDto$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateTimeOffRequestDto$outboundSchema;
-  /** @deprecated use `HrisCreateTimeOffRequestDto$Outbound` instead. */
-  export type Outbound = HrisCreateTimeOffRequestDto$Outbound;
-}
-
 export function hrisCreateTimeOffRequestDtoToJSON(
   hrisCreateTimeOffRequestDto: HrisCreateTimeOffRequestDto,
 ): string {
@@ -1000,15 +526,5 @@ export function hrisCreateTimeOffRequestDtoToJSON(
     HrisCreateTimeOffRequestDto$outboundSchema.parse(
       hrisCreateTimeOffRequestDto,
     ),
-  );
-}
-
-export function hrisCreateTimeOffRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateTimeOffRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisCreateTimeOffRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateTimeOffRequestDto' from JSON`,
   );
 }

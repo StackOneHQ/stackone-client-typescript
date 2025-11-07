@@ -89,21 +89,6 @@ export type AtsListRejectedReasonsResponse = {
 };
 
 /** @internal */
-export const AtsListRejectedReasonsQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListRejectedReasonsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AtsListRejectedReasonsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -121,21 +106,6 @@ export const AtsListRejectedReasonsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListRejectedReasonsQueryParamFilter$ {
-  /** @deprecated use `AtsListRejectedReasonsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListRejectedReasonsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListRejectedReasonsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListRejectedReasonsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListRejectedReasonsQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListRejectedReasonsQueryParamFilter$Outbound;
-}
-
 export function atsListRejectedReasonsQueryParamFilterToJSON(
   atsListRejectedReasonsQueryParamFilter:
     AtsListRejectedReasonsQueryParamFilter,
@@ -146,46 +116,6 @@ export function atsListRejectedReasonsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListRejectedReasonsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListRejectedReasonsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListRejectedReasonsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListRejectedReasonsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListRejectedReasonsRequest$inboundSchema: z.ZodType<
-  AtsListRejectedReasonsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListRejectedReasonsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListRejectedReasonsRequest$Outbound = {
@@ -228,19 +158,6 @@ export const AtsListRejectedReasonsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListRejectedReasonsRequest$ {
-  /** @deprecated use `AtsListRejectedReasonsRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListRejectedReasonsRequest$inboundSchema;
-  /** @deprecated use `AtsListRejectedReasonsRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListRejectedReasonsRequest$outboundSchema;
-  /** @deprecated use `AtsListRejectedReasonsRequest$Outbound` instead. */
-  export type Outbound = AtsListRejectedReasonsRequest$Outbound;
-}
-
 export function atsListRejectedReasonsRequestToJSON(
   atsListRejectedReasonsRequest: AtsListRejectedReasonsRequest,
 ): string {
@@ -248,16 +165,6 @@ export function atsListRejectedReasonsRequestToJSON(
     AtsListRejectedReasonsRequest$outboundSchema.parse(
       atsListRejectedReasonsRequest,
     ),
-  );
-}
-
-export function atsListRejectedReasonsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListRejectedReasonsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListRejectedReasonsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListRejectedReasonsRequest' from JSON`,
   );
 }
 
@@ -283,64 +190,6 @@ export const AtsListRejectedReasonsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListRejectedReasonsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  RejectedReasonsPaginated?:
-    | shared.RejectedReasonsPaginated$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListRejectedReasonsResponse$outboundSchema: z.ZodType<
-  AtsListRejectedReasonsResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListRejectedReasonsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  rejectedReasonsPaginated: shared.RejectedReasonsPaginated$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    rejectedReasonsPaginated: "RejectedReasonsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListRejectedReasonsResponse$ {
-  /** @deprecated use `AtsListRejectedReasonsResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListRejectedReasonsResponse$inboundSchema;
-  /** @deprecated use `AtsListRejectedReasonsResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListRejectedReasonsResponse$outboundSchema;
-  /** @deprecated use `AtsListRejectedReasonsResponse$Outbound` instead. */
-  export type Outbound = AtsListRejectedReasonsResponse$Outbound;
-}
-
-export function atsListRejectedReasonsResponseToJSON(
-  atsListRejectedReasonsResponse: AtsListRejectedReasonsResponse,
-): string {
-  return JSON.stringify(
-    AtsListRejectedReasonsResponse$outboundSchema.parse(
-      atsListRejectedReasonsResponse,
-    ),
-  );
-}
 
 export function atsListRejectedReasonsResponseFromJSON(
   jsonString: string,

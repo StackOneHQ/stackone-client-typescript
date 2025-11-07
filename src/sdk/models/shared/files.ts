@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -1367,33 +1363,6 @@ export type Files = {
 export const Files4$inboundSchema: z.ZodType<Files4, z.ZodTypeDef, unknown> = z
   .object({});
 
-/** @internal */
-export type Files4$Outbound = {};
-
-/** @internal */
-export const Files4$outboundSchema: z.ZodType<
-  Files4$Outbound,
-  z.ZodTypeDef,
-  Files4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Files4$ {
-  /** @deprecated use `Files4$inboundSchema` instead. */
-  export const inboundSchema = Files4$inboundSchema;
-  /** @deprecated use `Files4$outboundSchema` instead. */
-  export const outboundSchema = Files4$outboundSchema;
-  /** @deprecated use `Files4$Outbound` instead. */
-  export type Outbound = Files4$Outbound;
-}
-
-export function files4ToJSON(files4: Files4): string {
-  return JSON.stringify(Files4$outboundSchema.parse(files4));
-}
-
 export function files4FromJSON(
   jsonString: string,
 ): SafeParseResult<Files4, SDKValidationError> {
@@ -1417,48 +1386,6 @@ export const FilesSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type FilesSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Files4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const FilesSourceValue$outboundSchema: z.ZodType<
-  FilesSourceValue$Outbound,
-  z.ZodTypeDef,
-  FilesSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Files4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilesSourceValue$ {
-  /** @deprecated use `FilesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = FilesSourceValue$inboundSchema;
-  /** @deprecated use `FilesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = FilesSourceValue$outboundSchema;
-  /** @deprecated use `FilesSourceValue$Outbound` instead. */
-  export type Outbound = FilesSourceValue$Outbound;
-}
-
-export function filesSourceValueToJSON(
-  filesSourceValue: FilesSourceValue,
-): string {
-  return JSON.stringify(
-    FilesSourceValue$outboundSchema.parse(filesSourceValue),
-  );
-}
-
 export function filesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<FilesSourceValue, SDKValidationError> {
@@ -1479,27 +1406,6 @@ export const FilesValue$inboundSchema: z.ZodType<
     z.nativeEnum(FilesValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const FilesValue$outboundSchema: z.ZodType<
-  FilesValueOpen,
-  z.ZodTypeDef,
-  FilesValueOpen
-> = z.union([
-  z.nativeEnum(FilesValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilesValue$ {
-  /** @deprecated use `FilesValue$inboundSchema` instead. */
-  export const inboundSchema = FilesValue$inboundSchema;
-  /** @deprecated use `FilesValue$outboundSchema` instead. */
-  export const outboundSchema = FilesValue$outboundSchema;
-}
 
 /** @internal */
 export const FilesFileFormat$inboundSchema: z.ZodType<
@@ -1523,60 +1429,6 @@ export const FilesFileFormat$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type FilesFileFormat$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Files4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const FilesFileFormat$outboundSchema: z.ZodType<
-  FilesFileFormat$Outbound,
-  z.ZodTypeDef,
-  FilesFileFormat
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Files4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(FilesValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilesFileFormat$ {
-  /** @deprecated use `FilesFileFormat$inboundSchema` instead. */
-  export const inboundSchema = FilesFileFormat$inboundSchema;
-  /** @deprecated use `FilesFileFormat$outboundSchema` instead. */
-  export const outboundSchema = FilesFileFormat$outboundSchema;
-  /** @deprecated use `FilesFileFormat$Outbound` instead. */
-  export type Outbound = FilesFileFormat$Outbound;
-}
-
-export function filesFileFormatToJSON(
-  filesFileFormat: FilesFileFormat,
-): string {
-  return JSON.stringify(FilesFileFormat$outboundSchema.parse(filesFileFormat));
-}
-
 export function filesFileFormatFromJSON(
   jsonString: string,
 ): SafeParseResult<FilesFileFormat, SDKValidationError> {
@@ -1592,53 +1444,11 @@ export const Files2$inboundSchema: z.ZodNativeEnum<typeof Files2> = z
   .nativeEnum(Files2);
 
 /** @internal */
-export const Files2$outboundSchema: z.ZodNativeEnum<typeof Files2> =
-  Files2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Files2$ {
-  /** @deprecated use `Files2$inboundSchema` instead. */
-  export const inboundSchema = Files2$inboundSchema;
-  /** @deprecated use `Files2$outboundSchema` instead. */
-  export const outboundSchema = Files2$outboundSchema;
-}
-
-/** @internal */
 export const HasChildren$inboundSchema: z.ZodType<
   HasChildren,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Files2$inboundSchema]);
-
-/** @internal */
-export type HasChildren$Outbound = boolean | string;
-
-/** @internal */
-export const HasChildren$outboundSchema: z.ZodType<
-  HasChildren$Outbound,
-  z.ZodTypeDef,
-  HasChildren
-> = z.union([z.boolean(), Files2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HasChildren$ {
-  /** @deprecated use `HasChildren$inboundSchema` instead. */
-  export const inboundSchema = HasChildren$inboundSchema;
-  /** @deprecated use `HasChildren$outboundSchema` instead. */
-  export const outboundSchema = HasChildren$outboundSchema;
-  /** @deprecated use `HasChildren$Outbound` instead. */
-  export type Outbound = HasChildren$Outbound;
-}
-
-export function hasChildrenToJSON(hasChildren: HasChildren): string {
-  return JSON.stringify(HasChildren$outboundSchema.parse(hasChildren));
-}
 
 export function hasChildrenFromJSON(
   jsonString: string,
@@ -1656,54 +1466,11 @@ export const FilesSchemas2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FilesSchemas2);
 
 /** @internal */
-export const FilesSchemas2$outboundSchema: z.ZodNativeEnum<
-  typeof FilesSchemas2
-> = FilesSchemas2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilesSchemas2$ {
-  /** @deprecated use `FilesSchemas2$inboundSchema` instead. */
-  export const inboundSchema = FilesSchemas2$inboundSchema;
-  /** @deprecated use `FilesSchemas2$outboundSchema` instead. */
-  export const outboundSchema = FilesSchemas2$outboundSchema;
-}
-
-/** @internal */
 export const HasContent$inboundSchema: z.ZodType<
   HasContent,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), FilesSchemas2$inboundSchema]);
-
-/** @internal */
-export type HasContent$Outbound = boolean | string;
-
-/** @internal */
-export const HasContent$outboundSchema: z.ZodType<
-  HasContent$Outbound,
-  z.ZodTypeDef,
-  HasContent
-> = z.union([z.boolean(), FilesSchemas2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HasContent$ {
-  /** @deprecated use `HasContent$inboundSchema` instead. */
-  export const inboundSchema = HasContent$inboundSchema;
-  /** @deprecated use `HasContent$outboundSchema` instead. */
-  export const outboundSchema = HasContent$outboundSchema;
-  /** @deprecated use `HasContent$Outbound` instead. */
-  export type Outbound = HasContent$Outbound;
-}
-
-export function hasContentToJSON(hasContent: HasContent): string {
-  return JSON.stringify(HasContent$outboundSchema.parse(hasContent));
-}
 
 export function hasContentFromJSON(
   jsonString: string,
@@ -1765,98 +1532,6 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type Files$Outbound = {
-  all_parent_folder_ids?: Array<string> | null | undefined;
-  created_at?: string | null | undefined;
-  default_download_format?: string | null | undefined;
-  description?: string | null | undefined;
-  drive_id?: string | null | undefined;
-  export_formats?: Array<string> | null | undefined;
-  file_format?: FilesFileFormat$Outbound | null | undefined;
-  folder_id?: string | null | undefined;
-  has_children?: boolean | string | null | undefined;
-  has_content?: boolean | string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  owner_id?: string | null | undefined;
-  path?: string | null | undefined;
-  remote_drive_id?: string | null | undefined;
-  remote_folder_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_id?: string | null | undefined;
-  size?: number | null | undefined;
-  updated_at?: string | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const Files$outboundSchema: z.ZodType<
-  Files$Outbound,
-  z.ZodTypeDef,
-  Files
-> = z.object({
-  allParentFolderIds: z.nullable(z.array(z.string())).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  defaultDownloadFormat: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  driveId: z.nullable(z.string()).optional(),
-  exportFormats: z.nullable(z.array(z.string())).optional(),
-  fileFormat: z.nullable(z.lazy(() => FilesFileFormat$outboundSchema))
-    .optional(),
-  folderId: z.nullable(z.string()).optional(),
-  hasChildren: z.nullable(z.union([z.boolean(), Files2$outboundSchema]))
-    .optional(),
-  hasContent: z.nullable(z.union([z.boolean(), FilesSchemas2$outboundSchema]))
-    .optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
-  remoteDriveId: z.nullable(z.string()).optional(),
-  remoteFolderId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerId: z.nullable(z.string()).optional(),
-  size: z.nullable(z.number()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    allParentFolderIds: "all_parent_folder_ids",
-    createdAt: "created_at",
-    defaultDownloadFormat: "default_download_format",
-    driveId: "drive_id",
-    exportFormats: "export_formats",
-    fileFormat: "file_format",
-    folderId: "folder_id",
-    hasChildren: "has_children",
-    hasContent: "has_content",
-    ownerId: "owner_id",
-    remoteDriveId: "remote_drive_id",
-    remoteFolderId: "remote_folder_id",
-    remoteId: "remote_id",
-    remoteOwnerId: "remote_owner_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Files$ {
-  /** @deprecated use `Files$inboundSchema` instead. */
-  export const inboundSchema = Files$inboundSchema;
-  /** @deprecated use `Files$outboundSchema` instead. */
-  export const outboundSchema = Files$outboundSchema;
-  /** @deprecated use `Files$Outbound` instead. */
-  export type Outbound = Files$Outbound;
-}
-
-export function filesToJSON(files: Files): string {
-  return JSON.stringify(Files$outboundSchema.parse(files));
-}
 
 export function filesFromJSON(
   jsonString: string,

@@ -28,7 +28,7 @@ export type Filter = {
 };
 
 export enum Include {
-  OperationDetails = "operation_details",
+  ActionDetails = "action_details",
 }
 
 export type StackoneListActionsMetaRequest = {
@@ -81,19 +81,6 @@ export type StackoneListActionsMetaResponse = {
 };
 
 /** @internal */
-export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
-  .object({
-    account_ids: z.nullable(z.string()).optional(),
-    action_key: z.nullable(z.string()).optional(),
-    connectors: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "account_ids": "accountIds",
-      "action_key": "actionKey",
-    });
-  });
-
-/** @internal */
 export type Filter$Outbound = {
   account_ids?: string | null | undefined;
   action_key?: string | null | undefined;
@@ -116,70 +103,13 @@ export const Filter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Filter$ {
-  /** @deprecated use `Filter$inboundSchema` instead. */
-  export const inboundSchema = Filter$inboundSchema;
-  /** @deprecated use `Filter$outboundSchema` instead. */
-  export const outboundSchema = Filter$outboundSchema;
-  /** @deprecated use `Filter$Outbound` instead. */
-  export type Outbound = Filter$Outbound;
-}
-
 export function filterToJSON(filter: Filter): string {
   return JSON.stringify(Filter$outboundSchema.parse(filter));
 }
 
-export function filterFromJSON(
-  jsonString: string,
-): SafeParseResult<Filter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Filter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Filter' from JSON`,
-  );
-}
-
 /** @internal */
-export const Include$inboundSchema: z.ZodNativeEnum<typeof Include> = z
+export const Include$outboundSchema: z.ZodNativeEnum<typeof Include> = z
   .nativeEnum(Include);
-
-/** @internal */
-export const Include$outboundSchema: z.ZodNativeEnum<typeof Include> =
-  Include$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Include$ {
-  /** @deprecated use `Include$inboundSchema` instead. */
-  export const inboundSchema = Include$inboundSchema;
-  /** @deprecated use `Include$outboundSchema` instead. */
-  export const outboundSchema = Include$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListActionsMetaRequest$inboundSchema: z.ZodType<
-  StackoneListActionsMetaRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  filter: z.nullable(z.lazy(() => Filter$inboundSchema)).optional(),
-  group_by: z.nullable(z.string().default("connector")),
-  include: z.nullable(z.array(Include$inboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "group_by": "groupBy",
-    "page_size": "pageSize",
-  });
-});
 
 /** @internal */
 export type StackoneListActionsMetaRequest$Outbound = {
@@ -210,19 +140,6 @@ export const StackoneListActionsMetaRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListActionsMetaRequest$ {
-  /** @deprecated use `StackoneListActionsMetaRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneListActionsMetaRequest$inboundSchema;
-  /** @deprecated use `StackoneListActionsMetaRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneListActionsMetaRequest$outboundSchema;
-  /** @deprecated use `StackoneListActionsMetaRequest$Outbound` instead. */
-  export type Outbound = StackoneListActionsMetaRequest$Outbound;
-}
-
 export function stackoneListActionsMetaRequestToJSON(
   stackoneListActionsMetaRequest: StackoneListActionsMetaRequest,
 ): string {
@@ -230,16 +147,6 @@ export function stackoneListActionsMetaRequestToJSON(
     StackoneListActionsMetaRequest$outboundSchema.parse(
       stackoneListActionsMetaRequest,
     ),
-  );
-}
-
-export function stackoneListActionsMetaRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneListActionsMetaRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneListActionsMetaRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneListActionsMetaRequest' from JSON`,
   );
 }
 
@@ -264,61 +171,6 @@ export const StackoneListActionsMetaResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneListActionsMetaResponse$Outbound = {
-  ActionsMetaPaginated?: shared.ActionsMetaPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneListActionsMetaResponse$outboundSchema: z.ZodType<
-  StackoneListActionsMetaResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneListActionsMetaResponse
-> = z.object({
-  actionsMetaPaginated: shared.ActionsMetaPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    actionsMetaPaginated: "ActionsMetaPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListActionsMetaResponse$ {
-  /** @deprecated use `StackoneListActionsMetaResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneListActionsMetaResponse$inboundSchema;
-  /** @deprecated use `StackoneListActionsMetaResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneListActionsMetaResponse$outboundSchema;
-  /** @deprecated use `StackoneListActionsMetaResponse$Outbound` instead. */
-  export type Outbound = StackoneListActionsMetaResponse$Outbound;
-}
-
-export function stackoneListActionsMetaResponseToJSON(
-  stackoneListActionsMetaResponse: StackoneListActionsMetaResponse,
-): string {
-  return JSON.stringify(
-    StackoneListActionsMetaResponse$outboundSchema.parse(
-      stackoneListActionsMetaResponse,
-    ),
-  );
-}
 
 export function stackoneListActionsMetaResponseFromJSON(
   jsonString: string,

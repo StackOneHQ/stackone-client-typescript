@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  IamPolicy,
-  IamPolicy$inboundSchema,
-  IamPolicy$Outbound,
-  IamPolicy$outboundSchema,
-} from "./iampolicy.js";
+import { IamPolicy, IamPolicy$inboundSchema } from "./iampolicy.js";
 
 export type IamRole4 = {};
 
@@ -79,33 +70,6 @@ export const IamRole4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type IamRole4$Outbound = {};
-
-/** @internal */
-export const IamRole4$outboundSchema: z.ZodType<
-  IamRole4$Outbound,
-  z.ZodTypeDef,
-  IamRole4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamRole4$ {
-  /** @deprecated use `IamRole4$inboundSchema` instead. */
-  export const inboundSchema = IamRole4$inboundSchema;
-  /** @deprecated use `IamRole4$outboundSchema` instead. */
-  export const outboundSchema = IamRole4$outboundSchema;
-  /** @deprecated use `IamRole4$Outbound` instead. */
-  export type Outbound = IamRole4$Outbound;
-}
-
-export function iamRole4ToJSON(iamRole4: IamRole4): string {
-  return JSON.stringify(IamRole4$outboundSchema.parse(iamRole4));
-}
-
 export function iamRole4FromJSON(
   jsonString: string,
 ): SafeParseResult<IamRole4, SDKValidationError> {
@@ -129,48 +93,6 @@ export const IamRoleSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type IamRoleSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | IamRole4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const IamRoleSourceValue$outboundSchema: z.ZodType<
-  IamRoleSourceValue$Outbound,
-  z.ZodTypeDef,
-  IamRoleSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => IamRole4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamRoleSourceValue$ {
-  /** @deprecated use `IamRoleSourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamRoleSourceValue$inboundSchema;
-  /** @deprecated use `IamRoleSourceValue$outboundSchema` instead. */
-  export const outboundSchema = IamRoleSourceValue$outboundSchema;
-  /** @deprecated use `IamRoleSourceValue$Outbound` instead. */
-  export type Outbound = IamRoleSourceValue$Outbound;
-}
-
-export function iamRoleSourceValueToJSON(
-  iamRoleSourceValue: IamRoleSourceValue,
-): string {
-  return JSON.stringify(
-    IamRoleSourceValue$outboundSchema.parse(iamRoleSourceValue),
-  );
-}
-
 export function iamRoleSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<IamRoleSourceValue, SDKValidationError> {
@@ -193,27 +115,6 @@ export const IamRoleValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const IamRoleValue$outboundSchema: z.ZodType<
-  IamRoleValueOpen,
-  z.ZodTypeDef,
-  IamRoleValueOpen
-> = z.union([
-  z.nativeEnum(IamRoleValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamRoleValue$ {
-  /** @deprecated use `IamRoleValue$inboundSchema` instead. */
-  export const inboundSchema = IamRoleValue$inboundSchema;
-  /** @deprecated use `IamRoleValue$outboundSchema` instead. */
-  export const outboundSchema = IamRoleValue$outboundSchema;
-}
-
-/** @internal */
 export const IamRoleType$inboundSchema: z.ZodType<
   IamRoleType,
   z.ZodTypeDef,
@@ -234,58 +135,6 @@ export const IamRoleType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type IamRoleType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | IamRole4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const IamRoleType$outboundSchema: z.ZodType<
-  IamRoleType$Outbound,
-  z.ZodTypeDef,
-  IamRoleType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => IamRole4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(IamRoleValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamRoleType$ {
-  /** @deprecated use `IamRoleType$inboundSchema` instead. */
-  export const inboundSchema = IamRoleType$inboundSchema;
-  /** @deprecated use `IamRoleType$outboundSchema` instead. */
-  export const outboundSchema = IamRoleType$outboundSchema;
-  /** @deprecated use `IamRoleType$Outbound` instead. */
-  export type Outbound = IamRoleType$Outbound;
-}
-
-export function iamRoleTypeToJSON(iamRoleType: IamRoleType): string {
-  return JSON.stringify(IamRoleType$outboundSchema.parse(iamRoleType));
-}
 
 export function iamRoleTypeFromJSON(
   jsonString: string,
@@ -319,57 +168,6 @@ export const IamRole$inboundSchema: z.ZodType<IamRole, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type IamRole$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  policies?: Array<IamPolicy$Outbound> | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: IamRoleType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const IamRole$outboundSchema: z.ZodType<
-  IamRole$Outbound,
-  z.ZodTypeDef,
-  IamRole
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  policies: z.nullable(z.array(IamPolicy$outboundSchema)).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => IamRoleType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamRole$ {
-  /** @deprecated use `IamRole$inboundSchema` instead. */
-  export const inboundSchema = IamRole$inboundSchema;
-  /** @deprecated use `IamRole$outboundSchema` instead. */
-  export const outboundSchema = IamRole$outboundSchema;
-  /** @deprecated use `IamRole$Outbound` instead. */
-  export type Outbound = IamRole$Outbound;
-}
-
-export function iamRoleToJSON(iamRole: IamRole): string {
-  return JSON.stringify(IamRole$outboundSchema.parse(iamRole));
-}
 
 export function iamRoleFromJSON(
   jsonString: string,

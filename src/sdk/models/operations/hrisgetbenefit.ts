@@ -50,23 +50,6 @@ export type HrisGetBenefitResponse = {
 };
 
 /** @internal */
-export const HrisGetBenefitRequest$inboundSchema: z.ZodType<
-  HrisGetBenefitRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetBenefitRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const HrisGetBenefitRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetBenefitRequest$ {
-  /** @deprecated use `HrisGetBenefitRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetBenefitRequest$inboundSchema;
-  /** @deprecated use `HrisGetBenefitRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetBenefitRequest$outboundSchema;
-  /** @deprecated use `HrisGetBenefitRequest$Outbound` instead. */
-  export type Outbound = HrisGetBenefitRequest$Outbound;
-}
-
 export function hrisGetBenefitRequestToJSON(
   hrisGetBenefitRequest: HrisGetBenefitRequest,
 ): string {
   return JSON.stringify(
     HrisGetBenefitRequest$outboundSchema.parse(hrisGetBenefitRequest),
-  );
-}
-
-export function hrisGetBenefitRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetBenefitRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetBenefitRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetBenefitRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const HrisGetBenefitResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetBenefitResponse$Outbound = {
-  ContentType: string;
-  HRISBenefitResult?: shared.HRISBenefitResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetBenefitResponse$outboundSchema: z.ZodType<
-  HrisGetBenefitResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetBenefitResponse
-> = z.object({
-  contentType: z.string(),
-  hrisBenefitResult: shared.HRISBenefitResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisBenefitResult: "HRISBenefitResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetBenefitResponse$ {
-  /** @deprecated use `HrisGetBenefitResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetBenefitResponse$inboundSchema;
-  /** @deprecated use `HrisGetBenefitResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetBenefitResponse$outboundSchema;
-  /** @deprecated use `HrisGetBenefitResponse$Outbound` instead. */
-  export type Outbound = HrisGetBenefitResponse$Outbound;
-}
-
-export function hrisGetBenefitResponseToJSON(
-  hrisGetBenefitResponse: HrisGetBenefitResponse,
-): string {
-  return JSON.stringify(
-    HrisGetBenefitResponse$outboundSchema.parse(hrisGetBenefitResponse),
-  );
-}
 
 export function hrisGetBenefitResponseFromJSON(
   jsonString: string,

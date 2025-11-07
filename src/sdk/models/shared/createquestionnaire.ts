@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateAnswer,
-  CreateAnswer$inboundSchema,
   CreateAnswer$Outbound,
   CreateAnswer$outboundSchema,
 } from "./createanswer.js";
@@ -20,16 +16,6 @@ export type CreateQuestionnaire = {
    */
   id?: string | null | undefined;
 };
-
-/** @internal */
-export const CreateQuestionnaire$inboundSchema: z.ZodType<
-  CreateQuestionnaire,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  answers: z.nullable(z.array(CreateAnswer$inboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-});
 
 /** @internal */
 export type CreateQuestionnaire$Outbound = {
@@ -47,33 +33,10 @@ export const CreateQuestionnaire$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateQuestionnaire$ {
-  /** @deprecated use `CreateQuestionnaire$inboundSchema` instead. */
-  export const inboundSchema = CreateQuestionnaire$inboundSchema;
-  /** @deprecated use `CreateQuestionnaire$outboundSchema` instead. */
-  export const outboundSchema = CreateQuestionnaire$outboundSchema;
-  /** @deprecated use `CreateQuestionnaire$Outbound` instead. */
-  export type Outbound = CreateQuestionnaire$Outbound;
-}
-
 export function createQuestionnaireToJSON(
   createQuestionnaire: CreateQuestionnaire,
 ): string {
   return JSON.stringify(
     CreateQuestionnaire$outboundSchema.parse(createQuestionnaire),
-  );
-}
-
-export function createQuestionnaireFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateQuestionnaire, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateQuestionnaire$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateQuestionnaire' from JSON`,
   );
 }

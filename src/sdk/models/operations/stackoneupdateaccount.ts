@@ -35,20 +35,6 @@ export type StackoneUpdateAccountResponse = {
 };
 
 /** @internal */
-export const StackoneUpdateAccountRequest$inboundSchema: z.ZodType<
-  StackoneUpdateAccountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  PatchAccountExternalDto: shared.PatchAccountExternalDto$inboundSchema,
-  id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "PatchAccountExternalDto": "patchAccountExternalDto",
-  });
-});
-
-/** @internal */
 export type StackoneUpdateAccountRequest$Outbound = {
   PatchAccountExternalDto: shared.PatchAccountExternalDto$Outbound;
   id: string;
@@ -68,19 +54,6 @@ export const StackoneUpdateAccountRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneUpdateAccountRequest$ {
-  /** @deprecated use `StackoneUpdateAccountRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneUpdateAccountRequest$inboundSchema;
-  /** @deprecated use `StackoneUpdateAccountRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneUpdateAccountRequest$outboundSchema;
-  /** @deprecated use `StackoneUpdateAccountRequest$Outbound` instead. */
-  export type Outbound = StackoneUpdateAccountRequest$Outbound;
-}
-
 export function stackoneUpdateAccountRequestToJSON(
   stackoneUpdateAccountRequest: StackoneUpdateAccountRequest,
 ): string {
@@ -88,16 +61,6 @@ export function stackoneUpdateAccountRequestToJSON(
     StackoneUpdateAccountRequest$outboundSchema.parse(
       stackoneUpdateAccountRequest,
     ),
-  );
-}
-
-export function stackoneUpdateAccountRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneUpdateAccountRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneUpdateAccountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneUpdateAccountRequest' from JSON`,
   );
 }
 
@@ -122,61 +85,6 @@ export const StackoneUpdateAccountResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneUpdateAccountResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  LinkedAccount?: shared.LinkedAccount$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneUpdateAccountResponse$outboundSchema: z.ZodType<
-  StackoneUpdateAccountResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneUpdateAccountResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  linkedAccount: shared.LinkedAccount$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    linkedAccount: "LinkedAccount",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneUpdateAccountResponse$ {
-  /** @deprecated use `StackoneUpdateAccountResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneUpdateAccountResponse$inboundSchema;
-  /** @deprecated use `StackoneUpdateAccountResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneUpdateAccountResponse$outboundSchema;
-  /** @deprecated use `StackoneUpdateAccountResponse$Outbound` instead. */
-  export type Outbound = StackoneUpdateAccountResponse$Outbound;
-}
-
-export function stackoneUpdateAccountResponseToJSON(
-  stackoneUpdateAccountResponse: StackoneUpdateAccountResponse,
-): string {
-  return JSON.stringify(
-    StackoneUpdateAccountResponse$outboundSchema.parse(
-      stackoneUpdateAccountResponse,
-    ),
-  );
-}
 
 export function stackoneUpdateAccountResponseFromJSON(
   jsonString: string,

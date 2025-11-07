@@ -51,24 +51,6 @@ export type AtsGetApplicationNoteResponse = {
 };
 
 /** @internal */
-export const AtsGetApplicationNoteRequest$inboundSchema: z.ZodType<
-  AtsGetApplicationNoteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetApplicationNoteRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const AtsGetApplicationNoteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationNoteRequest$ {
-  /** @deprecated use `AtsGetApplicationNoteRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationNoteRequest$inboundSchema;
-  /** @deprecated use `AtsGetApplicationNoteRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationNoteRequest$outboundSchema;
-  /** @deprecated use `AtsGetApplicationNoteRequest$Outbound` instead. */
-  export type Outbound = AtsGetApplicationNoteRequest$Outbound;
-}
-
 export function atsGetApplicationNoteRequestToJSON(
   atsGetApplicationNoteRequest: AtsGetApplicationNoteRequest,
 ): string {
@@ -116,16 +85,6 @@ export function atsGetApplicationNoteRequestToJSON(
     AtsGetApplicationNoteRequest$outboundSchema.parse(
       atsGetApplicationNoteRequest,
     ),
-  );
-}
-
-export function atsGetApplicationNoteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetApplicationNoteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetApplicationNoteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetApplicationNoteRequest' from JSON`,
   );
 }
 
@@ -150,61 +109,6 @@ export const AtsGetApplicationNoteResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetApplicationNoteResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  NoteResult?: shared.NoteResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetApplicationNoteResponse$outboundSchema: z.ZodType<
-  AtsGetApplicationNoteResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetApplicationNoteResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  noteResult: shared.NoteResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    noteResult: "NoteResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationNoteResponse$ {
-  /** @deprecated use `AtsGetApplicationNoteResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationNoteResponse$inboundSchema;
-  /** @deprecated use `AtsGetApplicationNoteResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationNoteResponse$outboundSchema;
-  /** @deprecated use `AtsGetApplicationNoteResponse$Outbound` instead. */
-  export type Outbound = AtsGetApplicationNoteResponse$Outbound;
-}
-
-export function atsGetApplicationNoteResponseToJSON(
-  atsGetApplicationNoteResponse: AtsGetApplicationNoteResponse,
-): string {
-  return JSON.stringify(
-    AtsGetApplicationNoteResponse$outboundSchema.parse(
-      atsGetApplicationNoteResponse,
-    ),
-  );
-}
 
 export function atsGetApplicationNoteResponseFromJSON(
   jsonString: string,

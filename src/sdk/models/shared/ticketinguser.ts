@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -125,58 +121,11 @@ export const TicketingUser2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(TicketingUser2);
 
 /** @internal */
-export const TicketingUser2$outboundSchema: z.ZodNativeEnum<
-  typeof TicketingUser2
-> = TicketingUser2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUser2$ {
-  /** @deprecated use `TicketingUser2$inboundSchema` instead. */
-  export const inboundSchema = TicketingUser2$inboundSchema;
-  /** @deprecated use `TicketingUser2$outboundSchema` instead. */
-  export const outboundSchema = TicketingUser2$outboundSchema;
-}
-
-/** @internal */
 export const TicketingUserActive$inboundSchema: z.ZodType<
   TicketingUserActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), TicketingUser2$inboundSchema]);
-
-/** @internal */
-export type TicketingUserActive$Outbound = boolean | string;
-
-/** @internal */
-export const TicketingUserActive$outboundSchema: z.ZodType<
-  TicketingUserActive$Outbound,
-  z.ZodTypeDef,
-  TicketingUserActive
-> = z.union([z.boolean(), TicketingUser2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUserActive$ {
-  /** @deprecated use `TicketingUserActive$inboundSchema` instead. */
-  export const inboundSchema = TicketingUserActive$inboundSchema;
-  /** @deprecated use `TicketingUserActive$outboundSchema` instead. */
-  export const outboundSchema = TicketingUserActive$outboundSchema;
-  /** @deprecated use `TicketingUserActive$Outbound` instead. */
-  export type Outbound = TicketingUserActive$Outbound;
-}
-
-export function ticketingUserActiveToJSON(
-  ticketingUserActive: TicketingUserActive,
-): string {
-  return JSON.stringify(
-    TicketingUserActive$outboundSchema.parse(ticketingUserActive),
-  );
-}
 
 export function ticketingUserActiveFromJSON(
   jsonString: string,
@@ -194,33 +143,6 @@ export const TicketingUser4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type TicketingUser4$Outbound = {};
-
-/** @internal */
-export const TicketingUser4$outboundSchema: z.ZodType<
-  TicketingUser4$Outbound,
-  z.ZodTypeDef,
-  TicketingUser4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUser4$ {
-  /** @deprecated use `TicketingUser4$inboundSchema` instead. */
-  export const inboundSchema = TicketingUser4$inboundSchema;
-  /** @deprecated use `TicketingUser4$outboundSchema` instead. */
-  export const outboundSchema = TicketingUser4$outboundSchema;
-  /** @deprecated use `TicketingUser4$Outbound` instead. */
-  export type Outbound = TicketingUser4$Outbound;
-}
-
-export function ticketingUser4ToJSON(ticketingUser4: TicketingUser4): string {
-  return JSON.stringify(TicketingUser4$outboundSchema.parse(ticketingUser4));
-}
 
 export function ticketingUser4FromJSON(
   jsonString: string,
@@ -245,48 +167,6 @@ export const TicketingUserSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TicketingUserSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TicketingUser4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TicketingUserSourceValue$outboundSchema: z.ZodType<
-  TicketingUserSourceValue$Outbound,
-  z.ZodTypeDef,
-  TicketingUserSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TicketingUser4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUserSourceValue$ {
-  /** @deprecated use `TicketingUserSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TicketingUserSourceValue$inboundSchema;
-  /** @deprecated use `TicketingUserSourceValue$outboundSchema` instead. */
-  export const outboundSchema = TicketingUserSourceValue$outboundSchema;
-  /** @deprecated use `TicketingUserSourceValue$Outbound` instead. */
-  export type Outbound = TicketingUserSourceValue$Outbound;
-}
-
-export function ticketingUserSourceValueToJSON(
-  ticketingUserSourceValue: TicketingUserSourceValue,
-): string {
-  return JSON.stringify(
-    TicketingUserSourceValue$outboundSchema.parse(ticketingUserSourceValue),
-  );
-}
-
 export function ticketingUserSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingUserSourceValue, SDKValidationError> {
@@ -309,27 +189,6 @@ export const TicketingUserValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const TicketingUserValue$outboundSchema: z.ZodType<
-  TicketingUserValueOpen,
-  z.ZodTypeDef,
-  TicketingUserValueOpen
-> = z.union([
-  z.nativeEnum(TicketingUserValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUserValue$ {
-  /** @deprecated use `TicketingUserValue$inboundSchema` instead. */
-  export const inboundSchema = TicketingUserValue$inboundSchema;
-  /** @deprecated use `TicketingUserValue$outboundSchema` instead. */
-  export const outboundSchema = TicketingUserValue$outboundSchema;
-}
-
-/** @internal */
 export const TicketingUserType$inboundSchema: z.ZodType<
   TicketingUserType,
   z.ZodTypeDef,
@@ -350,62 +209,6 @@ export const TicketingUserType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type TicketingUserType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TicketingUser4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingUserType$outboundSchema: z.ZodType<
-  TicketingUserType$Outbound,
-  z.ZodTypeDef,
-  TicketingUserType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TicketingUser4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TicketingUserValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUserType$ {
-  /** @deprecated use `TicketingUserType$inboundSchema` instead. */
-  export const inboundSchema = TicketingUserType$inboundSchema;
-  /** @deprecated use `TicketingUserType$outboundSchema` instead. */
-  export const outboundSchema = TicketingUserType$outboundSchema;
-  /** @deprecated use `TicketingUserType$Outbound` instead. */
-  export type Outbound = TicketingUserType$Outbound;
-}
-
-export function ticketingUserTypeToJSON(
-  ticketingUserType: TicketingUserType,
-): string {
-  return JSON.stringify(
-    TicketingUserType$outboundSchema.parse(ticketingUserType),
-  );
-}
 
 export function ticketingUserTypeFromJSON(
   jsonString: string,
@@ -453,73 +256,6 @@ export const TicketingUser$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type TicketingUser$Outbound = {
-  active?: boolean | string | null | undefined;
-  created_at?: string | null | undefined;
-  customer_account_reference?: string | null | undefined;
-  first_name?: string | null | undefined;
-  id?: string | null | undefined;
-  last_name?: string | null | undefined;
-  name?: string | null | undefined;
-  primary_email?: string | null | undefined;
-  primary_phone?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: TicketingUserType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-  username?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingUser$outboundSchema: z.ZodType<
-  TicketingUser$Outbound,
-  z.ZodTypeDef,
-  TicketingUser
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), TicketingUser2$outboundSchema]))
-    .optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customerAccountReference: z.nullable(z.string()).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  primaryEmail: z.nullable(z.string()).optional(),
-  primaryPhone: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => TicketingUserType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  username: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    customerAccountReference: "customer_account_reference",
-    firstName: "first_name",
-    lastName: "last_name",
-    primaryEmail: "primary_email",
-    primaryPhone: "primary_phone",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingUser$ {
-  /** @deprecated use `TicketingUser$inboundSchema` instead. */
-  export const inboundSchema = TicketingUser$inboundSchema;
-  /** @deprecated use `TicketingUser$outboundSchema` instead. */
-  export const outboundSchema = TicketingUser$outboundSchema;
-  /** @deprecated use `TicketingUser$Outbound` instead. */
-  export type Outbound = TicketingUser$Outbound;
-}
-
-export function ticketingUserToJSON(ticketingUser: TicketingUser): string {
-  return JSON.stringify(TicketingUser$outboundSchema.parse(ticketingUser));
-}
 
 export function ticketingUserFromJSON(
   jsonString: string,

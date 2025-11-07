@@ -90,22 +90,6 @@ export type AtsListApplicationScorecardsResponse = {
 };
 
 /** @internal */
-export const AtsListApplicationScorecardsQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AtsListApplicationScorecardsQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AtsListApplicationScorecardsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -125,21 +109,6 @@ export const AtsListApplicationScorecardsQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationScorecardsQueryParamFilter$ {
-  /** @deprecated use `AtsListApplicationScorecardsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationScorecardsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListApplicationScorecardsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationScorecardsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListApplicationScorecardsQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListApplicationScorecardsQueryParamFilter$Outbound;
-}
-
 export function atsListApplicationScorecardsQueryParamFilterToJSON(
   atsListApplicationScorecardsQueryParamFilter:
     AtsListApplicationScorecardsQueryParamFilter,
@@ -150,52 +119,6 @@ export function atsListApplicationScorecardsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListApplicationScorecardsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationScorecardsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationScorecardsQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListApplicationScorecardsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListApplicationScorecardsRequest$inboundSchema: z.ZodType<
-  AtsListApplicationScorecardsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListApplicationScorecardsQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListApplicationScorecardsRequest$Outbound = {
@@ -243,21 +166,6 @@ export const AtsListApplicationScorecardsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationScorecardsRequest$ {
-  /** @deprecated use `AtsListApplicationScorecardsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationScorecardsRequest$inboundSchema;
-  /** @deprecated use `AtsListApplicationScorecardsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationScorecardsRequest$outboundSchema;
-  /** @deprecated use `AtsListApplicationScorecardsRequest$Outbound` instead. */
-  export type Outbound = AtsListApplicationScorecardsRequest$Outbound;
-}
-
 export function atsListApplicationScorecardsRequestToJSON(
   atsListApplicationScorecardsRequest: AtsListApplicationScorecardsRequest,
 ): string {
@@ -265,17 +173,6 @@ export function atsListApplicationScorecardsRequestToJSON(
     AtsListApplicationScorecardsRequest$outboundSchema.parse(
       atsListApplicationScorecardsRequest,
     ),
-  );
-}
-
-export function atsListApplicationScorecardsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListApplicationScorecardsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationScorecardsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListApplicationScorecardsRequest' from JSON`,
   );
 }
 
@@ -300,63 +197,6 @@ export const AtsListApplicationScorecardsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListApplicationScorecardsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScorecardsPaginated?: shared.ScorecardsPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListApplicationScorecardsResponse$outboundSchema: z.ZodType<
-  AtsListApplicationScorecardsResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListApplicationScorecardsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  scorecardsPaginated: shared.ScorecardsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    scorecardsPaginated: "ScorecardsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationScorecardsResponse$ {
-  /** @deprecated use `AtsListApplicationScorecardsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationScorecardsResponse$inboundSchema;
-  /** @deprecated use `AtsListApplicationScorecardsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationScorecardsResponse$outboundSchema;
-  /** @deprecated use `AtsListApplicationScorecardsResponse$Outbound` instead. */
-  export type Outbound = AtsListApplicationScorecardsResponse$Outbound;
-}
-
-export function atsListApplicationScorecardsResponseToJSON(
-  atsListApplicationScorecardsResponse: AtsListApplicationScorecardsResponse,
-): string {
-  return JSON.stringify(
-    AtsListApplicationScorecardsResponse$outboundSchema.parse(
-      atsListApplicationScorecardsResponse,
-    ),
-  );
-}
 
 export function atsListApplicationScorecardsResponseFromJSON(
   jsonString: string,

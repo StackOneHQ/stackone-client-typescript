@@ -10,15 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssessmentPackage,
   AssessmentPackage$inboundSchema,
-  AssessmentPackage$Outbound,
-  AssessmentPackage$outboundSchema,
 } from "./assessmentpackage.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AssessmentPackagePaginated = {
   data: Array<AssessmentPackage>;
@@ -45,51 +38,6 @@ export const AssessmentPackagePaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type AssessmentPackagePaginated$Outbound = {
-  data: Array<AssessmentPackage$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AssessmentPackagePaginated$outboundSchema: z.ZodType<
-  AssessmentPackagePaginated$Outbound,
-  z.ZodTypeDef,
-  AssessmentPackagePaginated
-> = z.object({
-  data: z.array(AssessmentPackage$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentPackagePaginated$ {
-  /** @deprecated use `AssessmentPackagePaginated$inboundSchema` instead. */
-  export const inboundSchema = AssessmentPackagePaginated$inboundSchema;
-  /** @deprecated use `AssessmentPackagePaginated$outboundSchema` instead. */
-  export const outboundSchema = AssessmentPackagePaginated$outboundSchema;
-  /** @deprecated use `AssessmentPackagePaginated$Outbound` instead. */
-  export type Outbound = AssessmentPackagePaginated$Outbound;
-}
-
-export function assessmentPackagePaginatedToJSON(
-  assessmentPackagePaginated: AssessmentPackagePaginated,
-): string {
-  return JSON.stringify(
-    AssessmentPackagePaginated$outboundSchema.parse(assessmentPackagePaginated),
-  );
-}
 
 export function assessmentPackagePaginatedFromJSON(
   jsonString: string,

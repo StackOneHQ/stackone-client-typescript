@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  Task,
-  Task$inboundSchema,
-  Task$Outbound,
-  Task$outboundSchema,
-} from "./task.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { Task, Task$inboundSchema } from "./task.js";
 
 export type TasksPaginated = {
   data?: Array<Task> | null | undefined;
@@ -35,41 +25,6 @@ export const TasksPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TasksPaginated$Outbound = {
-  data?: Array<Task$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TasksPaginated$outboundSchema: z.ZodType<
-  TasksPaginated$Outbound,
-  z.ZodTypeDef,
-  TasksPaginated
-> = z.object({
-  data: z.nullable(z.array(Task$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TasksPaginated$ {
-  /** @deprecated use `TasksPaginated$inboundSchema` instead. */
-  export const inboundSchema = TasksPaginated$inboundSchema;
-  /** @deprecated use `TasksPaginated$outboundSchema` instead. */
-  export const outboundSchema = TasksPaginated$outboundSchema;
-  /** @deprecated use `TasksPaginated$Outbound` instead. */
-  export type Outbound = TasksPaginated$Outbound;
-}
-
-export function tasksPaginatedToJSON(tasksPaginated: TasksPaginated): string {
-  return JSON.stringify(TasksPaginated$outboundSchema.parse(tasksPaginated));
-}
 
 export function tasksPaginatedFromJSON(
   jsonString: string,

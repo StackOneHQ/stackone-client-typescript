@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISCostCenter,
   HRISCostCenter$inboundSchema,
-  HRISCostCenter$Outbound,
-  HRISCostCenter$outboundSchema,
 } from "./hriscostcenter.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISCostCenterResult = {
   data: HRISCostCenter;
@@ -33,43 +26,6 @@ export const HRISCostCenterResult$inboundSchema: z.ZodType<
   data: HRISCostCenter$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISCostCenterResult$Outbound = {
-  data: HRISCostCenter$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISCostCenterResult$outboundSchema: z.ZodType<
-  HRISCostCenterResult$Outbound,
-  z.ZodTypeDef,
-  HRISCostCenterResult
-> = z.object({
-  data: HRISCostCenter$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISCostCenterResult$ {
-  /** @deprecated use `HRISCostCenterResult$inboundSchema` instead. */
-  export const inboundSchema = HRISCostCenterResult$inboundSchema;
-  /** @deprecated use `HRISCostCenterResult$outboundSchema` instead. */
-  export const outboundSchema = HRISCostCenterResult$outboundSchema;
-  /** @deprecated use `HRISCostCenterResult$Outbound` instead. */
-  export type Outbound = HRISCostCenterResult$Outbound;
-}
-
-export function hrisCostCenterResultToJSON(
-  hrisCostCenterResult: HRISCostCenterResult,
-): string {
-  return JSON.stringify(
-    HRISCostCenterResult$outboundSchema.parse(hrisCostCenterResult),
-  );
-}
 
 export function hrisCostCenterResultFromJSON(
   jsonString: string,

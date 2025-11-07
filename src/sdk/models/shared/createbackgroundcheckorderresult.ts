@@ -39,52 +39,6 @@ export const CreateBackgroundCheckOrderResult$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type CreateBackgroundCheckOrderResult$Outbound = {
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  test_url?: string | null | undefined;
-};
-
-/** @internal */
-export const CreateBackgroundCheckOrderResult$outboundSchema: z.ZodType<
-  CreateBackgroundCheckOrderResult$Outbound,
-  z.ZodTypeDef,
-  CreateBackgroundCheckOrderResult
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  testUrl: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    testUrl: "test_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateBackgroundCheckOrderResult$ {
-  /** @deprecated use `CreateBackgroundCheckOrderResult$inboundSchema` instead. */
-  export const inboundSchema = CreateBackgroundCheckOrderResult$inboundSchema;
-  /** @deprecated use `CreateBackgroundCheckOrderResult$outboundSchema` instead. */
-  export const outboundSchema = CreateBackgroundCheckOrderResult$outboundSchema;
-  /** @deprecated use `CreateBackgroundCheckOrderResult$Outbound` instead. */
-  export type Outbound = CreateBackgroundCheckOrderResult$Outbound;
-}
-
-export function createBackgroundCheckOrderResultToJSON(
-  createBackgroundCheckOrderResult: CreateBackgroundCheckOrderResult,
-): string {
-  return JSON.stringify(
-    CreateBackgroundCheckOrderResult$outboundSchema.parse(
-      createBackgroundCheckOrderResult,
-    ),
-  );
-}
-
 export function createBackgroundCheckOrderResultFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateBackgroundCheckOrderResult, SDKValidationError> {

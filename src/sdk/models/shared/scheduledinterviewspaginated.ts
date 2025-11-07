@@ -7,17 +7,10 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   ScheduledInterview,
   ScheduledInterview$inboundSchema,
-  ScheduledInterview$Outbound,
-  ScheduledInterview$outboundSchema,
 } from "./scheduledinterview.js";
 
 export type ScheduledInterviewsPaginated = {
@@ -45,53 +38,6 @@ export const ScheduledInterviewsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type ScheduledInterviewsPaginated$Outbound = {
-  data: Array<ScheduledInterview$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ScheduledInterviewsPaginated$outboundSchema: z.ZodType<
-  ScheduledInterviewsPaginated$Outbound,
-  z.ZodTypeDef,
-  ScheduledInterviewsPaginated
-> = z.object({
-  data: z.array(ScheduledInterview$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScheduledInterviewsPaginated$ {
-  /** @deprecated use `ScheduledInterviewsPaginated$inboundSchema` instead. */
-  export const inboundSchema = ScheduledInterviewsPaginated$inboundSchema;
-  /** @deprecated use `ScheduledInterviewsPaginated$outboundSchema` instead. */
-  export const outboundSchema = ScheduledInterviewsPaginated$outboundSchema;
-  /** @deprecated use `ScheduledInterviewsPaginated$Outbound` instead. */
-  export type Outbound = ScheduledInterviewsPaginated$Outbound;
-}
-
-export function scheduledInterviewsPaginatedToJSON(
-  scheduledInterviewsPaginated: ScheduledInterviewsPaginated,
-): string {
-  return JSON.stringify(
-    ScheduledInterviewsPaginated$outboundSchema.parse(
-      scheduledInterviewsPaginated,
-    ),
-  );
-}
 
 export function scheduledInterviewsPaginatedFromJSON(
   jsonString: string,

@@ -54,24 +54,6 @@ export type HrisGetTimeOffRequestResponse = {
 };
 
 /** @internal */
-export const HrisGetTimeOffRequestRequest$inboundSchema: z.ZodType<
-  HrisGetTimeOffRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetTimeOffRequestRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -99,19 +81,6 @@ export const HrisGetTimeOffRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTimeOffRequestRequest$ {
-  /** @deprecated use `HrisGetTimeOffRequestRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTimeOffRequestRequest$inboundSchema;
-  /** @deprecated use `HrisGetTimeOffRequestRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTimeOffRequestRequest$outboundSchema;
-  /** @deprecated use `HrisGetTimeOffRequestRequest$Outbound` instead. */
-  export type Outbound = HrisGetTimeOffRequestRequest$Outbound;
-}
-
 export function hrisGetTimeOffRequestRequestToJSON(
   hrisGetTimeOffRequestRequest: HrisGetTimeOffRequestRequest,
 ): string {
@@ -119,16 +88,6 @@ export function hrisGetTimeOffRequestRequestToJSON(
     HrisGetTimeOffRequestRequest$outboundSchema.parse(
       hrisGetTimeOffRequestRequest,
     ),
-  );
-}
-
-export function hrisGetTimeOffRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetTimeOffRequestRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetTimeOffRequestRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetTimeOffRequestRequest' from JSON`,
   );
 }
 
@@ -153,61 +112,6 @@ export const HrisGetTimeOffRequestResponse$inboundSchema: z.ZodType<
     "TimeOffResult": "timeOffResult",
   });
 });
-
-/** @internal */
-export type HrisGetTimeOffRequestResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TimeOffResult?: shared.TimeOffResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisGetTimeOffRequestResponse$outboundSchema: z.ZodType<
-  HrisGetTimeOffRequestResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetTimeOffRequestResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  timeOffResult: shared.TimeOffResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    timeOffResult: "TimeOffResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTimeOffRequestResponse$ {
-  /** @deprecated use `HrisGetTimeOffRequestResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTimeOffRequestResponse$inboundSchema;
-  /** @deprecated use `HrisGetTimeOffRequestResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTimeOffRequestResponse$outboundSchema;
-  /** @deprecated use `HrisGetTimeOffRequestResponse$Outbound` instead. */
-  export type Outbound = HrisGetTimeOffRequestResponse$Outbound;
-}
-
-export function hrisGetTimeOffRequestResponseToJSON(
-  hrisGetTimeOffRequestResponse: HrisGetTimeOffRequestResponse,
-): string {
-  return JSON.stringify(
-    HrisGetTimeOffRequestResponse$outboundSchema.parse(
-      hrisGetTimeOffRequestResponse,
-    ),
-  );
-}
 
 export function hrisGetTimeOffRequestResponseFromJSON(
   jsonString: string,

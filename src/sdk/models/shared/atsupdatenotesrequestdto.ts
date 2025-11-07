@@ -4,17 +4,9 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   NoteContentApiModel,
-  NoteContentApiModel$inboundSchema,
   NoteContentApiModel$Outbound,
   NoteContentApiModel$outboundSchema,
 } from "./notecontentapimodel.js";
@@ -84,13 +76,6 @@ export type AtsUpdateNotesRequestDto = {
 };
 
 /** @internal */
-export const AtsUpdateNotesRequestDto4$inboundSchema: z.ZodType<
-  AtsUpdateNotesRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type AtsUpdateNotesRequestDto4$Outbound = {};
 
 /** @internal */
@@ -100,19 +85,6 @@ export const AtsUpdateNotesRequestDto4$outboundSchema: z.ZodType<
   AtsUpdateNotesRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateNotesRequestDto4$ {
-  /** @deprecated use `AtsUpdateNotesRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateNotesRequestDto4$inboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateNotesRequestDto4$outboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDto4$Outbound` instead. */
-  export type Outbound = AtsUpdateNotesRequestDto4$Outbound;
-}
-
 export function atsUpdateNotesRequestDto4ToJSON(
   atsUpdateNotesRequestDto4: AtsUpdateNotesRequestDto4,
 ): string {
@@ -120,29 +92,6 @@ export function atsUpdateNotesRequestDto4ToJSON(
     AtsUpdateNotesRequestDto4$outboundSchema.parse(atsUpdateNotesRequestDto4),
   );
 }
-
-export function atsUpdateNotesRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateNotesRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateNotesRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateNotesRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateNotesRequestDtoSourceValue$inboundSchema: z.ZodType<
-  AtsUpdateNotesRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AtsUpdateNotesRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type AtsUpdateNotesRequestDtoSourceValue$Outbound =
@@ -165,21 +114,6 @@ export const AtsUpdateNotesRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateNotesRequestDtoSourceValue$ {
-  /** @deprecated use `AtsUpdateNotesRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateNotesRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateNotesRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = AtsUpdateNotesRequestDtoSourceValue$Outbound;
-}
-
 export function atsUpdateNotesRequestDtoSourceValueToJSON(
   atsUpdateNotesRequestDtoSourceValue: AtsUpdateNotesRequestDtoSourceValue,
 ): string {
@@ -190,28 +124,6 @@ export function atsUpdateNotesRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsUpdateNotesRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateNotesRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateNotesRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateNotesRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateNotesRequestDtoValue$inboundSchema: z.ZodType<
-  AtsUpdateNotesRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsUpdateNotesRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const AtsUpdateNotesRequestDtoValue$outboundSchema: z.ZodType<
   AtsUpdateNotesRequestDtoValueOpen,
@@ -221,39 +133,6 @@ export const AtsUpdateNotesRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(AtsUpdateNotesRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateNotesRequestDtoValue$ {
-  /** @deprecated use `AtsUpdateNotesRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateNotesRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateNotesRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsUpdateNotesRequestDtoVisibility$inboundSchema: z.ZodType<
-  AtsUpdateNotesRequestDtoVisibility,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AtsUpdateNotesRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AtsUpdateNotesRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type AtsUpdateNotesRequestDtoVisibility$Outbound = {
@@ -290,20 +169,6 @@ export const AtsUpdateNotesRequestDtoVisibility$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateNotesRequestDtoVisibility$ {
-  /** @deprecated use `AtsUpdateNotesRequestDtoVisibility$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateNotesRequestDtoVisibility$inboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDtoVisibility$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateNotesRequestDtoVisibility$outboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDtoVisibility$Outbound` instead. */
-  export type Outbound = AtsUpdateNotesRequestDtoVisibility$Outbound;
-}
-
 export function atsUpdateNotesRequestDtoVisibilityToJSON(
   atsUpdateNotesRequestDtoVisibility: AtsUpdateNotesRequestDtoVisibility,
 ): string {
@@ -313,35 +178,6 @@ export function atsUpdateNotesRequestDtoVisibilityToJSON(
     ),
   );
 }
-
-export function atsUpdateNotesRequestDtoVisibilityFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateNotesRequestDtoVisibility, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateNotesRequestDtoVisibility$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateNotesRequestDtoVisibility' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsUpdateNotesRequestDto$inboundSchema: z.ZodType<
-  AtsUpdateNotesRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  author_id: z.nullable(z.string()).optional(),
-  content: z.nullable(z.array(NoteContentApiModel$inboundSchema)).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  visibility: z.nullable(
-    z.lazy(() => AtsUpdateNotesRequestDtoVisibility$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "author_id": "authorId",
-  });
-});
 
 /** @internal */
 export type AtsUpdateNotesRequestDto$Outbound = {
@@ -369,33 +205,10 @@ export const AtsUpdateNotesRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateNotesRequestDto$ {
-  /** @deprecated use `AtsUpdateNotesRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateNotesRequestDto$inboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateNotesRequestDto$outboundSchema;
-  /** @deprecated use `AtsUpdateNotesRequestDto$Outbound` instead. */
-  export type Outbound = AtsUpdateNotesRequestDto$Outbound;
-}
-
 export function atsUpdateNotesRequestDtoToJSON(
   atsUpdateNotesRequestDto: AtsUpdateNotesRequestDto,
 ): string {
   return JSON.stringify(
     AtsUpdateNotesRequestDto$outboundSchema.parse(atsUpdateNotesRequestDto),
-  );
-}
-
-export function atsUpdateNotesRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateNotesRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateNotesRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateNotesRequestDto' from JSON`,
   );
 }

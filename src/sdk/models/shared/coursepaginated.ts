@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Course,
-  Course$inboundSchema,
-  Course$Outbound,
-  Course$outboundSchema,
-} from "./course.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Course, Course$inboundSchema } from "./course.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type CoursePaginated = {
   data: Array<Course>;
@@ -47,51 +37,6 @@ export const CoursePaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type CoursePaginated$Outbound = {
-  data: Array<Course$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-  total?: number | null | undefined;
-};
-
-/** @internal */
-export const CoursePaginated$outboundSchema: z.ZodType<
-  CoursePaginated$Outbound,
-  z.ZodTypeDef,
-  CoursePaginated
-> = z.object({
-  data: z.array(Course$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-  total: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CoursePaginated$ {
-  /** @deprecated use `CoursePaginated$inboundSchema` instead. */
-  export const inboundSchema = CoursePaginated$inboundSchema;
-  /** @deprecated use `CoursePaginated$outboundSchema` instead. */
-  export const outboundSchema = CoursePaginated$outboundSchema;
-  /** @deprecated use `CoursePaginated$Outbound` instead. */
-  export type Outbound = CoursePaginated$Outbound;
-}
-
-export function coursePaginatedToJSON(
-  coursePaginated: CoursePaginated,
-): string {
-  return JSON.stringify(CoursePaginated$outboundSchema.parse(coursePaginated));
-}
 
 export function coursePaginatedFromJSON(
   jsonString: string,

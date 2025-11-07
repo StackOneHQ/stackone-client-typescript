@@ -39,23 +39,6 @@ export type MarketingUpdateOmniChannelTemplateResponse = {
 };
 
 /** @internal */
-export const MarketingUpdateOmniChannelTemplateRequest$inboundSchema: z.ZodType<
-  MarketingUpdateOmniChannelTemplateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  MarketingCreateTemplateRequestDto:
-    shared.MarketingCreateTemplateRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "MarketingCreateTemplateRequestDto": "marketingCreateTemplateRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingUpdateOmniChannelTemplateRequest$Outbound = {
   MarketingCreateTemplateRequestDto:
     shared.MarketingCreateTemplateRequestDto$Outbound;
@@ -81,21 +64,6 @@ export const MarketingUpdateOmniChannelTemplateRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingUpdateOmniChannelTemplateRequest$ {
-  /** @deprecated use `MarketingUpdateOmniChannelTemplateRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingUpdateOmniChannelTemplateRequest$inboundSchema;
-  /** @deprecated use `MarketingUpdateOmniChannelTemplateRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingUpdateOmniChannelTemplateRequest$outboundSchema;
-  /** @deprecated use `MarketingUpdateOmniChannelTemplateRequest$Outbound` instead. */
-  export type Outbound = MarketingUpdateOmniChannelTemplateRequest$Outbound;
-}
-
 export function marketingUpdateOmniChannelTemplateRequestToJSON(
   marketingUpdateOmniChannelTemplateRequest:
     MarketingUpdateOmniChannelTemplateRequest,
@@ -104,22 +72,6 @@ export function marketingUpdateOmniChannelTemplateRequestToJSON(
     MarketingUpdateOmniChannelTemplateRequest$outboundSchema.parse(
       marketingUpdateOmniChannelTemplateRequest,
     ),
-  );
-}
-
-export function marketingUpdateOmniChannelTemplateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MarketingUpdateOmniChannelTemplateRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingUpdateOmniChannelTemplateRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MarketingUpdateOmniChannelTemplateRequest' from JSON`,
   );
 }
 
@@ -142,65 +94,6 @@ export const MarketingUpdateOmniChannelTemplateResponse$inboundSchema:
         "RawResponse": "rawResponse",
       });
     });
-
-/** @internal */
-export type MarketingUpdateOmniChannelTemplateResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingUpdateOmniChannelTemplateResponse$outboundSchema:
-  z.ZodType<
-    MarketingUpdateOmniChannelTemplateResponse$Outbound,
-    z.ZodTypeDef,
-    MarketingUpdateOmniChannelTemplateResponse
-  > = z.object({
-    contentType: z.string(),
-    createResult: shared.CreateResult$outboundSchema.optional(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      createResult: "CreateResult",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingUpdateOmniChannelTemplateResponse$ {
-  /** @deprecated use `MarketingUpdateOmniChannelTemplateResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingUpdateOmniChannelTemplateResponse$inboundSchema;
-  /** @deprecated use `MarketingUpdateOmniChannelTemplateResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingUpdateOmniChannelTemplateResponse$outboundSchema;
-  /** @deprecated use `MarketingUpdateOmniChannelTemplateResponse$Outbound` instead. */
-  export type Outbound = MarketingUpdateOmniChannelTemplateResponse$Outbound;
-}
-
-export function marketingUpdateOmniChannelTemplateResponseToJSON(
-  marketingUpdateOmniChannelTemplateResponse:
-    MarketingUpdateOmniChannelTemplateResponse,
-): string {
-  return JSON.stringify(
-    MarketingUpdateOmniChannelTemplateResponse$outboundSchema.parse(
-      marketingUpdateOmniChannelTemplateResponse,
-    ),
-  );
-}
 
 export function marketingUpdateOmniChannelTemplateResponseFromJSON(
   jsonString: string,

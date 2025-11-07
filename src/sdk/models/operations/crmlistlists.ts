@@ -83,21 +83,6 @@ export type CrmListListsResponse = {
 };
 
 /** @internal */
-export const CrmListListsQueryParamFilter$inboundSchema: z.ZodType<
-  CrmListListsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type CrmListListsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,19 +100,6 @@ export const CrmListListsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListListsQueryParamFilter$ {
-  /** @deprecated use `CrmListListsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = CrmListListsQueryParamFilter$inboundSchema;
-  /** @deprecated use `CrmListListsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = CrmListListsQueryParamFilter$outboundSchema;
-  /** @deprecated use `CrmListListsQueryParamFilter$Outbound` instead. */
-  export type Outbound = CrmListListsQueryParamFilter$Outbound;
-}
-
 export function crmListListsQueryParamFilterToJSON(
   crmListListsQueryParamFilter: CrmListListsQueryParamFilter,
 ): string {
@@ -137,42 +109,6 @@ export function crmListListsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function crmListListsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmListListsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmListListsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmListListsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const CrmListListsRequest$inboundSchema: z.ZodType<
-  CrmListListsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => CrmListListsQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type CrmListListsRequest$Outbound = {
@@ -211,34 +147,11 @@ export const CrmListListsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListListsRequest$ {
-  /** @deprecated use `CrmListListsRequest$inboundSchema` instead. */
-  export const inboundSchema = CrmListListsRequest$inboundSchema;
-  /** @deprecated use `CrmListListsRequest$outboundSchema` instead. */
-  export const outboundSchema = CrmListListsRequest$outboundSchema;
-  /** @deprecated use `CrmListListsRequest$Outbound` instead. */
-  export type Outbound = CrmListListsRequest$Outbound;
-}
-
 export function crmListListsRequestToJSON(
   crmListListsRequest: CrmListListsRequest,
 ): string {
   return JSON.stringify(
     CrmListListsRequest$outboundSchema.parse(crmListListsRequest),
-  );
-}
-
-export function crmListListsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmListListsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmListListsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmListListsRequest' from JSON`,
   );
 }
 
@@ -263,59 +176,6 @@ export const CrmListListsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type CrmListListsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ListsPaginated?: shared.ListsPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmListListsResponse$outboundSchema: z.ZodType<
-  CrmListListsResponse$Outbound,
-  z.ZodTypeDef,
-  CrmListListsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  listsPaginated: shared.ListsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    listsPaginated: "ListsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListListsResponse$ {
-  /** @deprecated use `CrmListListsResponse$inboundSchema` instead. */
-  export const inboundSchema = CrmListListsResponse$inboundSchema;
-  /** @deprecated use `CrmListListsResponse$outboundSchema` instead. */
-  export const outboundSchema = CrmListListsResponse$outboundSchema;
-  /** @deprecated use `CrmListListsResponse$Outbound` instead. */
-  export type Outbound = CrmListListsResponse$Outbound;
-}
-
-export function crmListListsResponseToJSON(
-  crmListListsResponse: CrmListListsResponse,
-): string {
-  return JSON.stringify(
-    CrmListListsResponse$outboundSchema.parse(crmListListsResponse),
-  );
-}
 
 export function crmListListsResponseFromJSON(
   jsonString: string,

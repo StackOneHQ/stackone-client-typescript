@@ -50,23 +50,6 @@ export type HrisGetShiftResponse = {
 };
 
 /** @internal */
-export const HrisGetShiftRequest$inboundSchema: z.ZodType<
-  HrisGetShiftRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetShiftRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const HrisGetShiftRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetShiftRequest$ {
-  /** @deprecated use `HrisGetShiftRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetShiftRequest$inboundSchema;
-  /** @deprecated use `HrisGetShiftRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetShiftRequest$outboundSchema;
-  /** @deprecated use `HrisGetShiftRequest$Outbound` instead. */
-  export type Outbound = HrisGetShiftRequest$Outbound;
-}
-
 export function hrisGetShiftRequestToJSON(
   hrisGetShiftRequest: HrisGetShiftRequest,
 ): string {
   return JSON.stringify(
     HrisGetShiftRequest$outboundSchema.parse(hrisGetShiftRequest),
-  );
-}
-
-export function hrisGetShiftRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetShiftRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetShiftRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetShiftRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const HrisGetShiftResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetShiftResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  HrisShiftResult?: shared.HrisShiftResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetShiftResponse$outboundSchema: z.ZodType<
-  HrisGetShiftResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetShiftResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  hrisShiftResult: shared.HrisShiftResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    hrisShiftResult: "HrisShiftResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetShiftResponse$ {
-  /** @deprecated use `HrisGetShiftResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetShiftResponse$inboundSchema;
-  /** @deprecated use `HrisGetShiftResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetShiftResponse$outboundSchema;
-  /** @deprecated use `HrisGetShiftResponse$Outbound` instead. */
-  export type Outbound = HrisGetShiftResponse$Outbound;
-}
-
-export function hrisGetShiftResponseToJSON(
-  hrisGetShiftResponse: HrisGetShiftResponse,
-): string {
-  return JSON.stringify(
-    HrisGetShiftResponse$outboundSchema.parse(hrisGetShiftResponse),
-  );
-}
 
 export function hrisGetShiftResponseFromJSON(
   jsonString: string,

@@ -38,20 +38,6 @@ export type AtsDeleteBackgroundCheckPackageResponse = {
 };
 
 /** @internal */
-export const AtsDeleteBackgroundCheckPackageRequest$inboundSchema: z.ZodType<
-  AtsDeleteBackgroundCheckPackageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsDeleteBackgroundCheckPackageRequest$Outbound = {
   id: string;
   "x-account-id": string;
@@ -71,21 +57,6 @@ export const AtsDeleteBackgroundCheckPackageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDeleteBackgroundCheckPackageRequest$ {
-  /** @deprecated use `AtsDeleteBackgroundCheckPackageRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDeleteBackgroundCheckPackageRequest$inboundSchema;
-  /** @deprecated use `AtsDeleteBackgroundCheckPackageRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDeleteBackgroundCheckPackageRequest$outboundSchema;
-  /** @deprecated use `AtsDeleteBackgroundCheckPackageRequest$Outbound` instead. */
-  export type Outbound = AtsDeleteBackgroundCheckPackageRequest$Outbound;
-}
-
 export function atsDeleteBackgroundCheckPackageRequestToJSON(
   atsDeleteBackgroundCheckPackageRequest:
     AtsDeleteBackgroundCheckPackageRequest,
@@ -94,17 +65,6 @@ export function atsDeleteBackgroundCheckPackageRequestToJSON(
     AtsDeleteBackgroundCheckPackageRequest$outboundSchema.parse(
       atsDeleteBackgroundCheckPackageRequest,
     ),
-  );
-}
-
-export function atsDeleteBackgroundCheckPackageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsDeleteBackgroundCheckPackageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsDeleteBackgroundCheckPackageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsDeleteBackgroundCheckPackageRequest' from JSON`,
   );
 }
 
@@ -129,64 +89,6 @@ export const AtsDeleteBackgroundCheckPackageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsDeleteBackgroundCheckPackageResponse$Outbound = {
-  ContentType: string;
-  DeleteResult?: shared.DeleteResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsDeleteBackgroundCheckPackageResponse$outboundSchema: z.ZodType<
-  AtsDeleteBackgroundCheckPackageResponse$Outbound,
-  z.ZodTypeDef,
-  AtsDeleteBackgroundCheckPackageResponse
-> = z.object({
-  contentType: z.string(),
-  deleteResult: shared.DeleteResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    deleteResult: "DeleteResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDeleteBackgroundCheckPackageResponse$ {
-  /** @deprecated use `AtsDeleteBackgroundCheckPackageResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsDeleteBackgroundCheckPackageResponse$inboundSchema;
-  /** @deprecated use `AtsDeleteBackgroundCheckPackageResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsDeleteBackgroundCheckPackageResponse$outboundSchema;
-  /** @deprecated use `AtsDeleteBackgroundCheckPackageResponse$Outbound` instead. */
-  export type Outbound = AtsDeleteBackgroundCheckPackageResponse$Outbound;
-}
-
-export function atsDeleteBackgroundCheckPackageResponseToJSON(
-  atsDeleteBackgroundCheckPackageResponse:
-    AtsDeleteBackgroundCheckPackageResponse,
-): string {
-  return JSON.stringify(
-    AtsDeleteBackgroundCheckPackageResponse$outboundSchema.parse(
-      atsDeleteBackgroundCheckPackageResponse,
-    ),
-  );
-}
 
 export function atsDeleteBackgroundCheckPackageResponseFromJSON(
   jsonString: string,

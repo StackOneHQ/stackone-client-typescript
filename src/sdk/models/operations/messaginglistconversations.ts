@@ -85,19 +85,6 @@ export type MessagingListConversationsResponse = {
 };
 
 /** @internal */
-export const MessagingListConversationsQueryParamFilter$inboundSchema:
-  z.ZodType<MessagingListConversationsQueryParamFilter, z.ZodTypeDef, unknown> =
-    z.object({
-      updated_after: z.nullable(
-        z.string().datetime({ offset: true }).transform(v => new Date(v)),
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "updated_after": "updatedAfter",
-      });
-    });
-
-/** @internal */
 export type MessagingListConversationsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -117,21 +104,6 @@ export const MessagingListConversationsQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListConversationsQueryParamFilter$ {
-  /** @deprecated use `MessagingListConversationsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingListConversationsQueryParamFilter$inboundSchema;
-  /** @deprecated use `MessagingListConversationsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingListConversationsQueryParamFilter$outboundSchema;
-  /** @deprecated use `MessagingListConversationsQueryParamFilter$Outbound` instead. */
-  export type Outbound = MessagingListConversationsQueryParamFilter$Outbound;
-}
-
 export function messagingListConversationsQueryParamFilterToJSON(
   messagingListConversationsQueryParamFilter:
     MessagingListConversationsQueryParamFilter,
@@ -142,49 +114,6 @@ export function messagingListConversationsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function messagingListConversationsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MessagingListConversationsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MessagingListConversationsQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MessagingListConversationsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const MessagingListConversationsRequest$inboundSchema: z.ZodType<
-  MessagingListConversationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => MessagingListConversationsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type MessagingListConversationsRequest$Outbound = {
@@ -227,20 +156,6 @@ export const MessagingListConversationsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListConversationsRequest$ {
-  /** @deprecated use `MessagingListConversationsRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingListConversationsRequest$inboundSchema;
-  /** @deprecated use `MessagingListConversationsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingListConversationsRequest$outboundSchema;
-  /** @deprecated use `MessagingListConversationsRequest$Outbound` instead. */
-  export type Outbound = MessagingListConversationsRequest$Outbound;
-}
-
 export function messagingListConversationsRequestToJSON(
   messagingListConversationsRequest: MessagingListConversationsRequest,
 ): string {
@@ -248,16 +163,6 @@ export function messagingListConversationsRequestToJSON(
     MessagingListConversationsRequest$outboundSchema.parse(
       messagingListConversationsRequest,
     ),
-  );
-}
-
-export function messagingListConversationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingListConversationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingListConversationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingListConversationsRequest' from JSON`,
   );
 }
 
@@ -283,65 +188,6 @@ export const MessagingListConversationsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingListConversationsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MessagingConversationsPaginated?:
-    | shared.MessagingConversationsPaginated$Outbound
-    | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingListConversationsResponse$outboundSchema: z.ZodType<
-  MessagingListConversationsResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingListConversationsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  messagingConversationsPaginated: shared
-    .MessagingConversationsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    messagingConversationsPaginated: "MessagingConversationsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingListConversationsResponse$ {
-  /** @deprecated use `MessagingListConversationsResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingListConversationsResponse$inboundSchema;
-  /** @deprecated use `MessagingListConversationsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingListConversationsResponse$outboundSchema;
-  /** @deprecated use `MessagingListConversationsResponse$Outbound` instead. */
-  export type Outbound = MessagingListConversationsResponse$Outbound;
-}
-
-export function messagingListConversationsResponseToJSON(
-  messagingListConversationsResponse: MessagingListConversationsResponse,
-): string {
-  return JSON.stringify(
-    MessagingListConversationsResponse$outboundSchema.parse(
-      messagingListConversationsResponse,
-    ),
-  );
-}
 
 export function messagingListConversationsResponseFromJSON(
   jsonString: string,

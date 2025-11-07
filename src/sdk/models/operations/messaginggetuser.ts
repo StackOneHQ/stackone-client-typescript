@@ -50,23 +50,6 @@ export type MessagingGetUserResponse = {
 };
 
 /** @internal */
-export const MessagingGetUserRequest$inboundSchema: z.ZodType<
-  MessagingGetUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MessagingGetUserRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const MessagingGetUserRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingGetUserRequest$ {
-  /** @deprecated use `MessagingGetUserRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingGetUserRequest$inboundSchema;
-  /** @deprecated use `MessagingGetUserRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagingGetUserRequest$outboundSchema;
-  /** @deprecated use `MessagingGetUserRequest$Outbound` instead. */
-  export type Outbound = MessagingGetUserRequest$Outbound;
-}
-
 export function messagingGetUserRequestToJSON(
   messagingGetUserRequest: MessagingGetUserRequest,
 ): string {
   return JSON.stringify(
     MessagingGetUserRequest$outboundSchema.parse(messagingGetUserRequest),
-  );
-}
-
-export function messagingGetUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingGetUserRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingGetUserRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingGetUserRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const MessagingGetUserResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingGetUserResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MessagingUserResult?: shared.MessagingUserResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingGetUserResponse$outboundSchema: z.ZodType<
-  MessagingGetUserResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingGetUserResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  messagingUserResult: shared.MessagingUserResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    messagingUserResult: "MessagingUserResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingGetUserResponse$ {
-  /** @deprecated use `MessagingGetUserResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingGetUserResponse$inboundSchema;
-  /** @deprecated use `MessagingGetUserResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagingGetUserResponse$outboundSchema;
-  /** @deprecated use `MessagingGetUserResponse$Outbound` instead. */
-  export type Outbound = MessagingGetUserResponse$Outbound;
-}
-
-export function messagingGetUserResponseToJSON(
-  messagingGetUserResponse: MessagingGetUserResponse,
-): string {
-  return JSON.stringify(
-    MessagingGetUserResponse$outboundSchema.parse(messagingGetUserResponse),
-  );
-}
 
 export function messagingGetUserResponseFromJSON(
   jsonString: string,

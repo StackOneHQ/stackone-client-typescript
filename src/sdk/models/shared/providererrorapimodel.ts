@@ -25,39 +25,6 @@ export const ProviderErrorApiModelHeaders$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type ProviderErrorApiModelHeaders$Outbound = {};
-
-/** @internal */
-export const ProviderErrorApiModelHeaders$outboundSchema: z.ZodType<
-  ProviderErrorApiModelHeaders$Outbound,
-  z.ZodTypeDef,
-  ProviderErrorApiModelHeaders
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProviderErrorApiModelHeaders$ {
-  /** @deprecated use `ProviderErrorApiModelHeaders$inboundSchema` instead. */
-  export const inboundSchema = ProviderErrorApiModelHeaders$inboundSchema;
-  /** @deprecated use `ProviderErrorApiModelHeaders$outboundSchema` instead. */
-  export const outboundSchema = ProviderErrorApiModelHeaders$outboundSchema;
-  /** @deprecated use `ProviderErrorApiModelHeaders$Outbound` instead. */
-  export type Outbound = ProviderErrorApiModelHeaders$Outbound;
-}
-
-export function providerErrorApiModelHeadersToJSON(
-  providerErrorApiModelHeaders: ProviderErrorApiModelHeaders,
-): string {
-  return JSON.stringify(
-    ProviderErrorApiModelHeaders$outboundSchema.parse(
-      providerErrorApiModelHeaders,
-    ),
-  );
-}
-
 export function providerErrorApiModelHeadersFromJSON(
   jsonString: string,
 ): SafeParseResult<ProviderErrorApiModelHeaders, SDKValidationError> {
@@ -74,37 +41,6 @@ export const ProviderErrorApiModelRaw$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type ProviderErrorApiModelRaw$Outbound = {};
-
-/** @internal */
-export const ProviderErrorApiModelRaw$outboundSchema: z.ZodType<
-  ProviderErrorApiModelRaw$Outbound,
-  z.ZodTypeDef,
-  ProviderErrorApiModelRaw
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProviderErrorApiModelRaw$ {
-  /** @deprecated use `ProviderErrorApiModelRaw$inboundSchema` instead. */
-  export const inboundSchema = ProviderErrorApiModelRaw$inboundSchema;
-  /** @deprecated use `ProviderErrorApiModelRaw$outboundSchema` instead. */
-  export const outboundSchema = ProviderErrorApiModelRaw$outboundSchema;
-  /** @deprecated use `ProviderErrorApiModelRaw$Outbound` instead. */
-  export type Outbound = ProviderErrorApiModelRaw$Outbound;
-}
-
-export function providerErrorApiModelRawToJSON(
-  providerErrorApiModelRaw: ProviderErrorApiModelRaw,
-): string {
-  return JSON.stringify(
-    ProviderErrorApiModelRaw$outboundSchema.parse(providerErrorApiModelRaw),
-  );
-}
 
 export function providerErrorApiModelRawFromJSON(
   jsonString: string,
@@ -129,49 +65,6 @@ export const ProviderErrorApiModel$inboundSchema: z.ZodType<
   status: z.nullable(z.number()).optional(),
   url: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ProviderErrorApiModel$Outbound = {
-  headers?: ProviderErrorApiModelHeaders$Outbound | null | undefined;
-  raw?: ProviderErrorApiModelRaw$Outbound | null | undefined;
-  status?: number | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const ProviderErrorApiModel$outboundSchema: z.ZodType<
-  ProviderErrorApiModel$Outbound,
-  z.ZodTypeDef,
-  ProviderErrorApiModel
-> = z.object({
-  headers: z.nullable(z.lazy(() => ProviderErrorApiModelHeaders$outboundSchema))
-    .optional(),
-  raw: z.nullable(z.lazy(() => ProviderErrorApiModelRaw$outboundSchema))
-    .optional(),
-  status: z.nullable(z.number()).optional(),
-  url: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProviderErrorApiModel$ {
-  /** @deprecated use `ProviderErrorApiModel$inboundSchema` instead. */
-  export const inboundSchema = ProviderErrorApiModel$inboundSchema;
-  /** @deprecated use `ProviderErrorApiModel$outboundSchema` instead. */
-  export const outboundSchema = ProviderErrorApiModel$outboundSchema;
-  /** @deprecated use `ProviderErrorApiModel$Outbound` instead. */
-  export type Outbound = ProviderErrorApiModel$Outbound;
-}
-
-export function providerErrorApiModelToJSON(
-  providerErrorApiModel: ProviderErrorApiModel,
-): string {
-  return JSON.stringify(
-    ProviderErrorApiModel$outboundSchema.parse(providerErrorApiModel),
-  );
-}
 
 export function providerErrorApiModelFromJSON(
   jsonString: string,

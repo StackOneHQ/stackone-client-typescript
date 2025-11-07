@@ -10,14 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ProviderErrorApiModel,
   ProviderErrorApiModel$inboundSchema,
-  ProviderErrorApiModel$Outbound,
-  ProviderErrorApiModel$outboundSchema,
 } from "./providererrorapimodel.js";
 import {
   UnifiedWarningApiModel,
   UnifiedWarningApiModel$inboundSchema,
-  UnifiedWarningApiModel$Outbound,
-  UnifiedWarningApiModel$outboundSchema,
 } from "./unifiedwarningapimodel.js";
 
 export type WriteResultApiModel = {
@@ -49,56 +45,6 @@ export const WriteResultApiModel$inboundSchema: z.ZodType<
     "unified_warnings": "unifiedWarnings",
   });
 });
-
-/** @internal */
-export type WriteResultApiModel$Outbound = {
-  message?: string | null | undefined;
-  provider_errors?: Array<ProviderErrorApiModel$Outbound> | null | undefined;
-  statusCode?: number | null | undefined;
-  timestamp?: string | null | undefined;
-  unified_warnings?: Array<UnifiedWarningApiModel$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const WriteResultApiModel$outboundSchema: z.ZodType<
-  WriteResultApiModel$Outbound,
-  z.ZodTypeDef,
-  WriteResultApiModel
-> = z.object({
-  message: z.nullable(z.string()).optional(),
-  providerErrors: z.nullable(z.array(ProviderErrorApiModel$outboundSchema))
-    .optional(),
-  statusCode: z.nullable(z.number()).optional(),
-  timestamp: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  unifiedWarnings: z.nullable(z.array(UnifiedWarningApiModel$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    providerErrors: "provider_errors",
-    unifiedWarnings: "unified_warnings",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WriteResultApiModel$ {
-  /** @deprecated use `WriteResultApiModel$inboundSchema` instead. */
-  export const inboundSchema = WriteResultApiModel$inboundSchema;
-  /** @deprecated use `WriteResultApiModel$outboundSchema` instead. */
-  export const outboundSchema = WriteResultApiModel$outboundSchema;
-  /** @deprecated use `WriteResultApiModel$Outbound` instead. */
-  export type Outbound = WriteResultApiModel$Outbound;
-}
-
-export function writeResultApiModelToJSON(
-  writeResultApiModel: WriteResultApiModel,
-): string {
-  return JSON.stringify(
-    WriteResultApiModel$outboundSchema.parse(writeResultApiModel),
-  );
-}
 
 export function writeResultApiModelFromJSON(
   jsonString: string,

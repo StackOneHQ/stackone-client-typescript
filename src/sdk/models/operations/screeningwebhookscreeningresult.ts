@@ -38,21 +38,6 @@ export type ScreeningWebhookScreeningResultResponse = {
 };
 
 /** @internal */
-export const ScreeningWebhookScreeningResultRequest$inboundSchema: z.ZodType<
-  ScreeningWebhookScreeningResultRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ScreeningResultWebhook: shared.ScreeningResultWebhook$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "ScreeningResultWebhook": "screeningResultWebhook",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type ScreeningWebhookScreeningResultRequest$Outbound = {
   ScreeningResultWebhook: shared.ScreeningResultWebhook$Outbound;
   "x-account-id": string;
@@ -73,21 +58,6 @@ export const ScreeningWebhookScreeningResultRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningWebhookScreeningResultRequest$ {
-  /** @deprecated use `ScreeningWebhookScreeningResultRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningWebhookScreeningResultRequest$inboundSchema;
-  /** @deprecated use `ScreeningWebhookScreeningResultRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningWebhookScreeningResultRequest$outboundSchema;
-  /** @deprecated use `ScreeningWebhookScreeningResultRequest$Outbound` instead. */
-  export type Outbound = ScreeningWebhookScreeningResultRequest$Outbound;
-}
-
 export function screeningWebhookScreeningResultRequestToJSON(
   screeningWebhookScreeningResultRequest:
     ScreeningWebhookScreeningResultRequest,
@@ -96,17 +66,6 @@ export function screeningWebhookScreeningResultRequestToJSON(
     ScreeningWebhookScreeningResultRequest$outboundSchema.parse(
       screeningWebhookScreeningResultRequest,
     ),
-  );
-}
-
-export function screeningWebhookScreeningResultRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ScreeningWebhookScreeningResultRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ScreeningWebhookScreeningResultRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScreeningWebhookScreeningResultRequest' from JSON`,
   );
 }
 
@@ -132,65 +91,6 @@ export const ScreeningWebhookScreeningResultResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type ScreeningWebhookScreeningResultResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScreeningResultWebhook?: shared.ScreeningResultWebhook$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const ScreeningWebhookScreeningResultResponse$outboundSchema: z.ZodType<
-  ScreeningWebhookScreeningResultResponse$Outbound,
-  z.ZodTypeDef,
-  ScreeningWebhookScreeningResultResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  screeningResultWebhook: shared.ScreeningResultWebhook$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    screeningResultWebhook: "ScreeningResultWebhook",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningWebhookScreeningResultResponse$ {
-  /** @deprecated use `ScreeningWebhookScreeningResultResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningWebhookScreeningResultResponse$inboundSchema;
-  /** @deprecated use `ScreeningWebhookScreeningResultResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningWebhookScreeningResultResponse$outboundSchema;
-  /** @deprecated use `ScreeningWebhookScreeningResultResponse$Outbound` instead. */
-  export type Outbound = ScreeningWebhookScreeningResultResponse$Outbound;
-}
-
-export function screeningWebhookScreeningResultResponseToJSON(
-  screeningWebhookScreeningResultResponse:
-    ScreeningWebhookScreeningResultResponse,
-): string {
-  return JSON.stringify(
-    ScreeningWebhookScreeningResultResponse$outboundSchema.parse(
-      screeningWebhookScreeningResultResponse,
-    ),
-  );
-}
 
 export function screeningWebhookScreeningResultResponseFromJSON(
   jsonString: string,

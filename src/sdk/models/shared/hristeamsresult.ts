@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HRISTeam,
-  HRISTeam$inboundSchema,
-  HRISTeam$Outbound,
-  HRISTeam$outboundSchema,
-} from "./hristeam.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HRISTeam, HRISTeam$inboundSchema } from "./hristeam.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISTeamsResult = {
   data: HRISTeam;
@@ -33,41 +23,6 @@ export const HRISTeamsResult$inboundSchema: z.ZodType<
   data: HRISTeam$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISTeamsResult$Outbound = {
-  data: HRISTeam$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISTeamsResult$outboundSchema: z.ZodType<
-  HRISTeamsResult$Outbound,
-  z.ZodTypeDef,
-  HRISTeamsResult
-> = z.object({
-  data: HRISTeam$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISTeamsResult$ {
-  /** @deprecated use `HRISTeamsResult$inboundSchema` instead. */
-  export const inboundSchema = HRISTeamsResult$inboundSchema;
-  /** @deprecated use `HRISTeamsResult$outboundSchema` instead. */
-  export const outboundSchema = HRISTeamsResult$outboundSchema;
-  /** @deprecated use `HRISTeamsResult$Outbound` instead. */
-  export type Outbound = HRISTeamsResult$Outbound;
-}
-
-export function hrisTeamsResultToJSON(
-  hrisTeamsResult: HRISTeamsResult,
-): string {
-  return JSON.stringify(HRISTeamsResult$outboundSchema.parse(hrisTeamsResult));
-}
 
 export function hrisTeamsResultFromJSON(
   jsonString: string,

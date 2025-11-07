@@ -37,15 +37,6 @@ export type StackoneListConnectorsMetaResponse = {
 };
 
 /** @internal */
-export const StackoneListConnectorsMetaRequest$inboundSchema: z.ZodType<
-  StackoneListConnectorsMetaRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  include: z.nullable(z.string()).optional(),
-});
-
-/** @internal */
 export type StackoneListConnectorsMetaRequest$Outbound = {
   include?: string | null | undefined;
 };
@@ -59,20 +50,6 @@ export const StackoneListConnectorsMetaRequest$outboundSchema: z.ZodType<
   include: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListConnectorsMetaRequest$ {
-  /** @deprecated use `StackoneListConnectorsMetaRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneListConnectorsMetaRequest$inboundSchema;
-  /** @deprecated use `StackoneListConnectorsMetaRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListConnectorsMetaRequest$outboundSchema;
-  /** @deprecated use `StackoneListConnectorsMetaRequest$Outbound` instead. */
-  export type Outbound = StackoneListConnectorsMetaRequest$Outbound;
-}
-
 export function stackoneListConnectorsMetaRequestToJSON(
   stackoneListConnectorsMetaRequest: StackoneListConnectorsMetaRequest,
 ): string {
@@ -80,16 +57,6 @@ export function stackoneListConnectorsMetaRequestToJSON(
     StackoneListConnectorsMetaRequest$outboundSchema.parse(
       stackoneListConnectorsMetaRequest,
     ),
-  );
-}
-
-export function stackoneListConnectorsMetaRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneListConnectorsMetaRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneListConnectorsMetaRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneListConnectorsMetaRequest' from JSON`,
   );
 }
 
@@ -113,61 +80,6 @@ export const StackoneListConnectorsMetaResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneListConnectorsMetaResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  classes?: Array<shared.ConnectorsMeta$Outbound> | undefined;
-};
-
-/** @internal */
-export const StackoneListConnectorsMetaResponse$outboundSchema: z.ZodType<
-  StackoneListConnectorsMetaResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneListConnectorsMetaResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  classes: z.array(shared.ConnectorsMeta$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListConnectorsMetaResponse$ {
-  /** @deprecated use `StackoneListConnectorsMetaResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneListConnectorsMetaResponse$inboundSchema;
-  /** @deprecated use `StackoneListConnectorsMetaResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListConnectorsMetaResponse$outboundSchema;
-  /** @deprecated use `StackoneListConnectorsMetaResponse$Outbound` instead. */
-  export type Outbound = StackoneListConnectorsMetaResponse$Outbound;
-}
-
-export function stackoneListConnectorsMetaResponseToJSON(
-  stackoneListConnectorsMetaResponse: StackoneListConnectorsMetaResponse,
-): string {
-  return JSON.stringify(
-    StackoneListConnectorsMetaResponse$outboundSchema.parse(
-      stackoneListConnectorsMetaResponse,
-    ),
-  );
-}
 
 export function stackoneListConnectorsMetaResponseFromJSON(
   jsonString: string,

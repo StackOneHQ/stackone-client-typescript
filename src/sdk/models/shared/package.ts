@@ -39,7 +39,6 @@ export const Package$inboundSchema: z.ZodType<Package, z.ZodTypeDef, unknown> =
       "remote_id": "remoteId",
     });
   });
-
 /** @internal */
 export type Package$Outbound = {
   description?: string | null | undefined;
@@ -64,23 +63,9 @@ export const Package$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Package$ {
-  /** @deprecated use `Package$inboundSchema` instead. */
-  export const inboundSchema = Package$inboundSchema;
-  /** @deprecated use `Package$outboundSchema` instead. */
-  export const outboundSchema = Package$outboundSchema;
-  /** @deprecated use `Package$Outbound` instead. */
-  export type Outbound = Package$Outbound;
-}
-
 export function packageToJSON(value: Package): string {
   return JSON.stringify(Package$outboundSchema.parse(value));
 }
-
 export function packageFromJSON(
   jsonString: string,
 ): SafeParseResult<Package, SDKValidationError> {

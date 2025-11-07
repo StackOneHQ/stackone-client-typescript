@@ -73,58 +73,11 @@ export const MessagingUser2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MessagingUser2);
 
 /** @internal */
-export const MessagingUser2$outboundSchema: z.ZodNativeEnum<
-  typeof MessagingUser2
-> = MessagingUser2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingUser2$ {
-  /** @deprecated use `MessagingUser2$inboundSchema` instead. */
-  export const inboundSchema = MessagingUser2$inboundSchema;
-  /** @deprecated use `MessagingUser2$outboundSchema` instead. */
-  export const outboundSchema = MessagingUser2$outboundSchema;
-}
-
-/** @internal */
 export const MessagingUserActive$inboundSchema: z.ZodType<
   MessagingUserActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), MessagingUser2$inboundSchema]);
-
-/** @internal */
-export type MessagingUserActive$Outbound = boolean | string;
-
-/** @internal */
-export const MessagingUserActive$outboundSchema: z.ZodType<
-  MessagingUserActive$Outbound,
-  z.ZodTypeDef,
-  MessagingUserActive
-> = z.union([z.boolean(), MessagingUser2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingUserActive$ {
-  /** @deprecated use `MessagingUserActive$inboundSchema` instead. */
-  export const inboundSchema = MessagingUserActive$inboundSchema;
-  /** @deprecated use `MessagingUserActive$outboundSchema` instead. */
-  export const outboundSchema = MessagingUserActive$outboundSchema;
-  /** @deprecated use `MessagingUserActive$Outbound` instead. */
-  export type Outbound = MessagingUserActive$Outbound;
-}
-
-export function messagingUserActiveToJSON(
-  messagingUserActive: MessagingUserActive,
-): string {
-  return JSON.stringify(
-    MessagingUserActive$outboundSchema.parse(messagingUserActive),
-  );
-}
 
 export function messagingUserActiveFromJSON(
   jsonString: string,
@@ -142,49 +95,9 @@ export const MessagingUserSchemas2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MessagingUserSchemas2);
 
 /** @internal */
-export const MessagingUserSchemas2$outboundSchema: z.ZodNativeEnum<
-  typeof MessagingUserSchemas2
-> = MessagingUserSchemas2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingUserSchemas2$ {
-  /** @deprecated use `MessagingUserSchemas2$inboundSchema` instead. */
-  export const inboundSchema = MessagingUserSchemas2$inboundSchema;
-  /** @deprecated use `MessagingUserSchemas2$outboundSchema` instead. */
-  export const outboundSchema = MessagingUserSchemas2$outboundSchema;
-}
-
-/** @internal */
 export const Bot$inboundSchema: z.ZodType<Bot, z.ZodTypeDef, unknown> = z.union(
   [z.boolean(), MessagingUserSchemas2$inboundSchema],
 );
-
-/** @internal */
-export type Bot$Outbound = boolean | string;
-
-/** @internal */
-export const Bot$outboundSchema: z.ZodType<Bot$Outbound, z.ZodTypeDef, Bot> = z
-  .union([z.boolean(), MessagingUserSchemas2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Bot$ {
-  /** @deprecated use `Bot$inboundSchema` instead. */
-  export const inboundSchema = Bot$inboundSchema;
-  /** @deprecated use `Bot$outboundSchema` instead. */
-  export const outboundSchema = Bot$outboundSchema;
-  /** @deprecated use `Bot$Outbound` instead. */
-  export type Outbound = Bot$Outbound;
-}
-
-export function botToJSON(bot: Bot): string {
-  return JSON.stringify(Bot$outboundSchema.parse(bot));
-}
 
 export function botFromJSON(
   jsonString: string,
@@ -220,61 +133,6 @@ export const MessagingUser$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type MessagingUser$Outbound = {
-  active?: boolean | string | null | undefined;
-  bot?: boolean | string | null | undefined;
-  email?: string | null | undefined;
-  first_name?: string | null | undefined;
-  id?: string | null | undefined;
-  last_name?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  username?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingUser$outboundSchema: z.ZodType<
-  MessagingUser$Outbound,
-  z.ZodTypeDef,
-  MessagingUser
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), MessagingUser2$outboundSchema]))
-    .optional(),
-  bot: z.nullable(z.union([z.boolean(), MessagingUserSchemas2$outboundSchema]))
-    .optional(),
-  email: z.nullable(z.string()).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  username: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingUser$ {
-  /** @deprecated use `MessagingUser$inboundSchema` instead. */
-  export const inboundSchema = MessagingUser$inboundSchema;
-  /** @deprecated use `MessagingUser$outboundSchema` instead. */
-  export const outboundSchema = MessagingUser$outboundSchema;
-  /** @deprecated use `MessagingUser$Outbound` instead. */
-  export type Outbound = MessagingUser$Outbound;
-}
-
-export function messagingUserToJSON(messagingUser: MessagingUser): string {
-  return JSON.stringify(MessagingUser$outboundSchema.parse(messagingUser));
-}
 
 export function messagingUserFromJSON(
   jsonString: string,

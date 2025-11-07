@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -77,53 +73,11 @@ export const Field2$inboundSchema: z.ZodNativeEnum<typeof Field2> = z
   .nativeEnum(Field2);
 
 /** @internal */
-export const Field2$outboundSchema: z.ZodNativeEnum<typeof Field2> =
-  Field2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Field2$ {
-  /** @deprecated use `Field2$inboundSchema` instead. */
-  export const inboundSchema = Field2$inboundSchema;
-  /** @deprecated use `Field2$outboundSchema` instead. */
-  export const outboundSchema = Field2$outboundSchema;
-}
-
-/** @internal */
 export const RequiredT$inboundSchema: z.ZodType<
   RequiredT,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Field2$inboundSchema]);
-
-/** @internal */
-export type RequiredT$Outbound = boolean | string;
-
-/** @internal */
-export const RequiredT$outboundSchema: z.ZodType<
-  RequiredT$Outbound,
-  z.ZodTypeDef,
-  RequiredT
-> = z.union([z.boolean(), Field2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequiredT$ {
-  /** @deprecated use `RequiredT$inboundSchema` instead. */
-  export const inboundSchema = RequiredT$inboundSchema;
-  /** @deprecated use `RequiredT$outboundSchema` instead. */
-  export const outboundSchema = RequiredT$outboundSchema;
-  /** @deprecated use `RequiredT$Outbound` instead. */
-  export type Outbound = RequiredT$Outbound;
-}
-
-export function requiredToJSON(requiredT: RequiredT): string {
-  return JSON.stringify(RequiredT$outboundSchema.parse(requiredT));
-}
 
 export function requiredFromJSON(
   jsonString: string,
@@ -147,27 +101,6 @@ export const FieldType$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const FieldType$outboundSchema: z.ZodType<
-  FieldTypeOpen,
-  z.ZodTypeDef,
-  FieldTypeOpen
-> = z.union([
-  z.nativeEnum(FieldType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FieldType$ {
-  /** @deprecated use `FieldType$inboundSchema` instead. */
-  export const inboundSchema = FieldType$inboundSchema;
-  /** @deprecated use `FieldType$outboundSchema` instead. */
-  export const outboundSchema = FieldType$outboundSchema;
-}
-
-/** @internal */
 export const Field$inboundSchema: z.ZodType<Field, z.ZodTypeDef, unknown> = z
   .object({
     id: z.nullable(z.string()).optional(),
@@ -182,52 +115,6 @@ export const Field$inboundSchema: z.ZodType<Field, z.ZodTypeDef, unknown> = z
       "remote_id": "remoteId",
     });
   });
-
-/** @internal */
-export type Field$Outbound = {
-  id?: string | null | undefined;
-  label?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  required?: boolean | string | null | undefined;
-  type?: string | null | undefined;
-  values?: Array<string> | null | undefined;
-};
-
-/** @internal */
-export const Field$outboundSchema: z.ZodType<
-  Field$Outbound,
-  z.ZodTypeDef,
-  Field
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  required: z.nullable(z.union([z.boolean(), Field2$outboundSchema]))
-    .optional(),
-  type: z.nullable(FieldType$outboundSchema).optional(),
-  values: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Field$ {
-  /** @deprecated use `Field$inboundSchema` instead. */
-  export const inboundSchema = Field$inboundSchema;
-  /** @deprecated use `Field$outboundSchema` instead. */
-  export const outboundSchema = Field$outboundSchema;
-  /** @deprecated use `Field$Outbound` instead. */
-  export type Outbound = Field$Outbound;
-}
-
-export function fieldToJSON(field: Field): string {
-  return JSON.stringify(Field$outboundSchema.parse(field));
-}
 
 export function fieldFromJSON(
   jsonString: string,

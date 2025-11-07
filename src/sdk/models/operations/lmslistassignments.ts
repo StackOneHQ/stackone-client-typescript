@@ -105,43 +105,9 @@ export type LmsListAssignmentsResponse = {
 };
 
 /** @internal */
-export const LmsListAssignmentsQueryParamStatus$inboundSchema: z.ZodNativeEnum<
-  typeof LmsListAssignmentsQueryParamStatus
-> = z.nativeEnum(LmsListAssignmentsQueryParamStatus);
-
-/** @internal */
 export const LmsListAssignmentsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
   typeof LmsListAssignmentsQueryParamStatus
-> = LmsListAssignmentsQueryParamStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListAssignmentsQueryParamStatus$ {
-  /** @deprecated use `LmsListAssignmentsQueryParamStatus$inboundSchema` instead. */
-  export const inboundSchema = LmsListAssignmentsQueryParamStatus$inboundSchema;
-  /** @deprecated use `LmsListAssignmentsQueryParamStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsListAssignmentsQueryParamStatus$outboundSchema;
-}
-
-/** @internal */
-export const LmsListAssignmentsQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListAssignmentsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  status: z.nullable(LmsListAssignmentsQueryParamStatus$inboundSchema)
-    .optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
+> = z.nativeEnum(LmsListAssignmentsQueryParamStatus);
 
 /** @internal */
 export type LmsListAssignmentsQueryParamFilter$Outbound = {
@@ -164,20 +130,6 @@ export const LmsListAssignmentsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListAssignmentsQueryParamFilter$ {
-  /** @deprecated use `LmsListAssignmentsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListAssignmentsQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListAssignmentsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsListAssignmentsQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListAssignmentsQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListAssignmentsQueryParamFilter$Outbound;
-}
-
 export function lmsListAssignmentsQueryParamFilterToJSON(
   lmsListAssignmentsQueryParamFilter: LmsListAssignmentsQueryParamFilter,
 ): string {
@@ -187,48 +139,6 @@ export function lmsListAssignmentsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListAssignmentsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListAssignmentsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsListAssignmentsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListAssignmentsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListAssignmentsRequest$inboundSchema: z.ZodType<
-  LmsListAssignmentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => LmsListAssignmentsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  remote_user_id: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  user_id: z.nullable(z.string()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "remote_user_id": "remoteUserId",
-    "updated_after": "updatedAfter",
-    "user_id": "userId",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListAssignmentsRequest$Outbound = {
@@ -274,34 +184,11 @@ export const LmsListAssignmentsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListAssignmentsRequest$ {
-  /** @deprecated use `LmsListAssignmentsRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListAssignmentsRequest$inboundSchema;
-  /** @deprecated use `LmsListAssignmentsRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListAssignmentsRequest$outboundSchema;
-  /** @deprecated use `LmsListAssignmentsRequest$Outbound` instead. */
-  export type Outbound = LmsListAssignmentsRequest$Outbound;
-}
-
 export function lmsListAssignmentsRequestToJSON(
   lmsListAssignmentsRequest: LmsListAssignmentsRequest,
 ): string {
   return JSON.stringify(
     LmsListAssignmentsRequest$outboundSchema.parse(lmsListAssignmentsRequest),
-  );
-}
-
-export function lmsListAssignmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListAssignmentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListAssignmentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListAssignmentsRequest' from JSON`,
   );
 }
 
@@ -326,59 +213,6 @@ export const LmsListAssignmentsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsListAssignmentsResponse$Outbound = {
-  AssignmentsPaginated?: shared.AssignmentsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsListAssignmentsResponse$outboundSchema: z.ZodType<
-  LmsListAssignmentsResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListAssignmentsResponse
-> = z.object({
-  assignmentsPaginated: shared.AssignmentsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    assignmentsPaginated: "AssignmentsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListAssignmentsResponse$ {
-  /** @deprecated use `LmsListAssignmentsResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListAssignmentsResponse$inboundSchema;
-  /** @deprecated use `LmsListAssignmentsResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListAssignmentsResponse$outboundSchema;
-  /** @deprecated use `LmsListAssignmentsResponse$Outbound` instead. */
-  export type Outbound = LmsListAssignmentsResponse$Outbound;
-}
-
-export function lmsListAssignmentsResponseToJSON(
-  lmsListAssignmentsResponse: LmsListAssignmentsResponse,
-): string {
-  return JSON.stringify(
-    LmsListAssignmentsResponse$outboundSchema.parse(lmsListAssignmentsResponse),
-  );
-}
 
 export function lmsListAssignmentsResponseFromJSON(
   jsonString: string,

@@ -5,30 +5,14 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  FileT,
-  FileT$inboundSchema,
-  FileT$Outbound,
-  FileT$outboundSchema,
-} from "./file.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { FileT, FileT$inboundSchema } from "./file.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   TaskCommentApiModel,
   TaskCommentApiModel$inboundSchema,
-  TaskCommentApiModel$Outbound,
-  TaskCommentApiModel$outboundSchema,
 } from "./taskcommentapimodel.js";
 
 export type TaskResult4 = {};
@@ -210,33 +194,6 @@ export const TaskResult4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type TaskResult4$Outbound = {};
-
-/** @internal */
-export const TaskResult4$outboundSchema: z.ZodType<
-  TaskResult4$Outbound,
-  z.ZodTypeDef,
-  TaskResult4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResult4$ {
-  /** @deprecated use `TaskResult4$inboundSchema` instead. */
-  export const inboundSchema = TaskResult4$inboundSchema;
-  /** @deprecated use `TaskResult4$outboundSchema` instead. */
-  export const outboundSchema = TaskResult4$outboundSchema;
-  /** @deprecated use `TaskResult4$Outbound` instead. */
-  export type Outbound = TaskResult4$Outbound;
-}
-
-export function taskResult4ToJSON(taskResult4: TaskResult4): string {
-  return JSON.stringify(TaskResult4$outboundSchema.parse(taskResult4));
-}
-
 export function taskResult4FromJSON(
   jsonString: string,
 ): SafeParseResult<TaskResult4, SDKValidationError> {
@@ -260,48 +217,6 @@ export const TaskResultSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TaskResultSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TaskResult4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TaskResultSourceValue$outboundSchema: z.ZodType<
-  TaskResultSourceValue$Outbound,
-  z.ZodTypeDef,
-  TaskResultSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TaskResult4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultSourceValue$ {
-  /** @deprecated use `TaskResultSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TaskResultSourceValue$inboundSchema;
-  /** @deprecated use `TaskResultSourceValue$outboundSchema` instead. */
-  export const outboundSchema = TaskResultSourceValue$outboundSchema;
-  /** @deprecated use `TaskResultSourceValue$Outbound` instead. */
-  export type Outbound = TaskResultSourceValue$Outbound;
-}
-
-export function taskResultSourceValueToJSON(
-  taskResultSourceValue: TaskResultSourceValue,
-): string {
-  return JSON.stringify(
-    TaskResultSourceValue$outboundSchema.parse(taskResultSourceValue),
-  );
-}
-
 export function taskResultSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TaskResultSourceValue, SDKValidationError> {
@@ -322,27 +237,6 @@ export const TaskResultValue$inboundSchema: z.ZodType<
     z.nativeEnum(TaskResultValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const TaskResultValue$outboundSchema: z.ZodType<
-  TaskResultValueOpen,
-  z.ZodTypeDef,
-  TaskResultValueOpen
-> = z.union([
-  z.nativeEnum(TaskResultValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultValue$ {
-  /** @deprecated use `TaskResultValue$inboundSchema` instead. */
-  export const inboundSchema = TaskResultValue$inboundSchema;
-  /** @deprecated use `TaskResultValue$outboundSchema` instead. */
-  export const outboundSchema = TaskResultValue$outboundSchema;
-}
 
 /** @internal */
 export const TaskResultStatus$inboundSchema: z.ZodType<
@@ -366,62 +260,6 @@ export const TaskResultStatus$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type TaskResultStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TaskResult4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const TaskResultStatus$outboundSchema: z.ZodType<
-  TaskResultStatus$Outbound,
-  z.ZodTypeDef,
-  TaskResultStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TaskResult4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TaskResultValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultStatus$ {
-  /** @deprecated use `TaskResultStatus$inboundSchema` instead. */
-  export const inboundSchema = TaskResultStatus$inboundSchema;
-  /** @deprecated use `TaskResultStatus$outboundSchema` instead. */
-  export const outboundSchema = TaskResultStatus$outboundSchema;
-  /** @deprecated use `TaskResultStatus$Outbound` instead. */
-  export type Outbound = TaskResultStatus$Outbound;
-}
-
-export function taskResultStatusToJSON(
-  taskResultStatus: TaskResultStatus,
-): string {
-  return JSON.stringify(
-    TaskResultStatus$outboundSchema.parse(taskResultStatus),
-  );
-}
-
 export function taskResultStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<TaskResultStatus, SDKValidationError> {
@@ -438,37 +276,6 @@ export const TaskResultSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type TaskResultSchemas4$Outbound = {};
-
-/** @internal */
-export const TaskResultSchemas4$outboundSchema: z.ZodType<
-  TaskResultSchemas4$Outbound,
-  z.ZodTypeDef,
-  TaskResultSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultSchemas4$ {
-  /** @deprecated use `TaskResultSchemas4$inboundSchema` instead. */
-  export const inboundSchema = TaskResultSchemas4$inboundSchema;
-  /** @deprecated use `TaskResultSchemas4$outboundSchema` instead. */
-  export const outboundSchema = TaskResultSchemas4$outboundSchema;
-  /** @deprecated use `TaskResultSchemas4$Outbound` instead. */
-  export type Outbound = TaskResultSchemas4$Outbound;
-}
-
-export function taskResultSchemas4ToJSON(
-  taskResultSchemas4: TaskResultSchemas4,
-): string {
-  return JSON.stringify(
-    TaskResultSchemas4$outboundSchema.parse(taskResultSchemas4),
-  );
-}
 
 export function taskResultSchemas4FromJSON(
   jsonString: string,
@@ -493,50 +300,6 @@ export const TaskResultSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TaskResultSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TaskResultSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TaskResultSchemasSourceValue$outboundSchema: z.ZodType<
-  TaskResultSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  TaskResultSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TaskResultSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultSchemasSourceValue$ {
-  /** @deprecated use `TaskResultSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TaskResultSchemasSourceValue$inboundSchema;
-  /** @deprecated use `TaskResultSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = TaskResultSchemasSourceValue$outboundSchema;
-  /** @deprecated use `TaskResultSchemasSourceValue$Outbound` instead. */
-  export type Outbound = TaskResultSchemasSourceValue$Outbound;
-}
-
-export function taskResultSchemasSourceValueToJSON(
-  taskResultSchemasSourceValue: TaskResultSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    TaskResultSchemasSourceValue$outboundSchema.parse(
-      taskResultSchemasSourceValue,
-    ),
-  );
-}
-
 export function taskResultSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TaskResultSchemasSourceValue, SDKValidationError> {
@@ -559,27 +322,6 @@ export const TaskResultSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const TaskResultSchemasValue$outboundSchema: z.ZodType<
-  TaskResultSchemasValueOpen,
-  z.ZodTypeDef,
-  TaskResultSchemasValueOpen
-> = z.union([
-  z.nativeEnum(TaskResultSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultSchemasValue$ {
-  /** @deprecated use `TaskResultSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = TaskResultSchemasValue$inboundSchema;
-  /** @deprecated use `TaskResultSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = TaskResultSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const TaskResultType$inboundSchema: z.ZodType<
   TaskResultType,
   z.ZodTypeDef,
@@ -600,58 +342,6 @@ export const TaskResultType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type TaskResultType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TaskResultSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const TaskResultType$outboundSchema: z.ZodType<
-  TaskResultType$Outbound,
-  z.ZodTypeDef,
-  TaskResultType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TaskResultSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TaskResultSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultType$ {
-  /** @deprecated use `TaskResultType$inboundSchema` instead. */
-  export const inboundSchema = TaskResultType$inboundSchema;
-  /** @deprecated use `TaskResultType$outboundSchema` instead. */
-  export const outboundSchema = TaskResultType$outboundSchema;
-  /** @deprecated use `TaskResultType$Outbound` instead. */
-  export type Outbound = TaskResultType$Outbound;
-}
-
-export function taskResultTypeToJSON(taskResultType: TaskResultType): string {
-  return JSON.stringify(TaskResultType$outboundSchema.parse(taskResultType));
-}
 
 export function taskResultTypeFromJSON(
   jsonString: string,
@@ -713,89 +403,6 @@ export const TaskResultData$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type TaskResultData$Outbound = {
-  assigned_by_employee_id?: string | null | undefined;
-  assigned_by_employee_name?: string | null | undefined;
-  attachments?: Array<FileT$Outbound> | null | undefined;
-  comments?: Array<TaskCommentApiModel$Outbound> | null | undefined;
-  completion_date?: string | null | undefined;
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  due_date?: string | null | undefined;
-  employee_id?: string | null | undefined;
-  extracted_links?: Array<string> | null | undefined;
-  id?: string | null | undefined;
-  link_to_task?: string | null | undefined;
-  name?: string | null | undefined;
-  next_task_id?: string | null | undefined;
-  parent_process_name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  status?: TaskResultStatus$Outbound | null | undefined;
-  type?: TaskResultType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TaskResultData$outboundSchema: z.ZodType<
-  TaskResultData$Outbound,
-  z.ZodTypeDef,
-  TaskResultData
-> = z.object({
-  assignedByEmployeeId: z.nullable(z.string()).optional(),
-  assignedByEmployeeName: z.nullable(z.string()).optional(),
-  attachments: z.nullable(z.array(FileT$outboundSchema)).optional(),
-  comments: z.nullable(z.array(TaskCommentApiModel$outboundSchema)).optional(),
-  completionDate: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  employeeId: z.nullable(z.string()).optional(),
-  extractedLinks: z.nullable(z.array(z.string())).optional(),
-  id: z.nullable(z.string()).optional(),
-  linkToTask: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  nextTaskId: z.nullable(z.string()).optional(),
-  parentProcessName: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => TaskResultStatus$outboundSchema)).optional(),
-  type: z.nullable(z.lazy(() => TaskResultType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    assignedByEmployeeId: "assigned_by_employee_id",
-    assignedByEmployeeName: "assigned_by_employee_name",
-    completionDate: "completion_date",
-    createdAt: "created_at",
-    dueDate: "due_date",
-    employeeId: "employee_id",
-    extractedLinks: "extracted_links",
-    linkToTask: "link_to_task",
-    nextTaskId: "next_task_id",
-    parentProcessName: "parent_process_name",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResultData$ {
-  /** @deprecated use `TaskResultData$inboundSchema` instead. */
-  export const inboundSchema = TaskResultData$inboundSchema;
-  /** @deprecated use `TaskResultData$outboundSchema` instead. */
-  export const outboundSchema = TaskResultData$outboundSchema;
-  /** @deprecated use `TaskResultData$Outbound` instead. */
-  export type Outbound = TaskResultData$Outbound;
-}
-
-export function taskResultDataToJSON(taskResultData: TaskResultData): string {
-  return JSON.stringify(TaskResultData$outboundSchema.parse(taskResultData));
-}
-
 export function taskResultDataFromJSON(
   jsonString: string,
 ): SafeParseResult<TaskResultData, SDKValidationError> {
@@ -815,39 +422,6 @@ export const TaskResult$inboundSchema: z.ZodType<
   data: z.nullable(z.lazy(() => TaskResultData$inboundSchema)).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TaskResult$Outbound = {
-  data?: TaskResultData$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TaskResult$outboundSchema: z.ZodType<
-  TaskResult$Outbound,
-  z.ZodTypeDef,
-  TaskResult
-> = z.object({
-  data: z.nullable(z.lazy(() => TaskResultData$outboundSchema)).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TaskResult$ {
-  /** @deprecated use `TaskResult$inboundSchema` instead. */
-  export const inboundSchema = TaskResult$inboundSchema;
-  /** @deprecated use `TaskResult$outboundSchema` instead. */
-  export const outboundSchema = TaskResult$outboundSchema;
-  /** @deprecated use `TaskResult$Outbound` instead. */
-  export type Outbound = TaskResult$Outbound;
-}
-
-export function taskResultToJSON(taskResult: TaskResult): string {
-  return JSON.stringify(TaskResult$outboundSchema.parse(taskResult));
-}
 
 export function taskResultFromJSON(
   jsonString: string,

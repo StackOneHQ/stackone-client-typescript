@@ -38,22 +38,6 @@ export type MessagingSendMessageResponse = {
 };
 
 /** @internal */
-export const MessagingSendMessageRequest$inboundSchema: z.ZodType<
-  MessagingSendMessageRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  MessagingMessageSendRequestDto:
-    shared.MessagingMessageSendRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "MessagingMessageSendRequestDto": "messagingMessageSendRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MessagingSendMessageRequest$Outbound = {
   MessagingMessageSendRequestDto:
     shared.MessagingMessageSendRequestDto$Outbound;
@@ -76,19 +60,6 @@ export const MessagingSendMessageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingSendMessageRequest$ {
-  /** @deprecated use `MessagingSendMessageRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagingSendMessageRequest$inboundSchema;
-  /** @deprecated use `MessagingSendMessageRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagingSendMessageRequest$outboundSchema;
-  /** @deprecated use `MessagingSendMessageRequest$Outbound` instead. */
-  export type Outbound = MessagingSendMessageRequest$Outbound;
-}
-
 export function messagingSendMessageRequestToJSON(
   messagingSendMessageRequest: MessagingSendMessageRequest,
 ): string {
@@ -96,16 +67,6 @@ export function messagingSendMessageRequestToJSON(
     MessagingSendMessageRequest$outboundSchema.parse(
       messagingSendMessageRequest,
     ),
-  );
-}
-
-export function messagingSendMessageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingSendMessageRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagingSendMessageRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingSendMessageRequest' from JSON`,
   );
 }
 
@@ -130,61 +91,6 @@ export const MessagingSendMessageResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MessagingSendMessageResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingSendMessageResponse$outboundSchema: z.ZodType<
-  MessagingSendMessageResponse$Outbound,
-  z.ZodTypeDef,
-  MessagingSendMessageResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingSendMessageResponse$ {
-  /** @deprecated use `MessagingSendMessageResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagingSendMessageResponse$inboundSchema;
-  /** @deprecated use `MessagingSendMessageResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagingSendMessageResponse$outboundSchema;
-  /** @deprecated use `MessagingSendMessageResponse$Outbound` instead. */
-  export type Outbound = MessagingSendMessageResponse$Outbound;
-}
-
-export function messagingSendMessageResponseToJSON(
-  messagingSendMessageResponse: MessagingSendMessageResponse,
-): string {
-  return JSON.stringify(
-    MessagingSendMessageResponse$outboundSchema.parse(
-      messagingSendMessageResponse,
-    ),
-  );
-}
 
 export function messagingSendMessageResponseFromJSON(
   jsonString: string,

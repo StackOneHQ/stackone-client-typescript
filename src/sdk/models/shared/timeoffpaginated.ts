@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  TimeOff,
-  TimeOff$inboundSchema,
-  TimeOff$Outbound,
-  TimeOff$outboundSchema,
-} from "./timeoff.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { TimeOff, TimeOff$inboundSchema } from "./timeoff.js";
 
 export type TimeOffPaginated = {
   data: Array<TimeOff>;
@@ -45,51 +35,6 @@ export const TimeOffPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type TimeOffPaginated$Outbound = {
-  data: Array<TimeOff$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TimeOffPaginated$outboundSchema: z.ZodType<
-  TimeOffPaginated$Outbound,
-  z.ZodTypeDef,
-  TimeOffPaginated
-> = z.object({
-  data: z.array(TimeOff$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPaginated$ {
-  /** @deprecated use `TimeOffPaginated$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPaginated$inboundSchema;
-  /** @deprecated use `TimeOffPaginated$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPaginated$outboundSchema;
-  /** @deprecated use `TimeOffPaginated$Outbound` instead. */
-  export type Outbound = TimeOffPaginated$Outbound;
-}
-
-export function timeOffPaginatedToJSON(
-  timeOffPaginated: TimeOffPaginated,
-): string {
-  return JSON.stringify(
-    TimeOffPaginated$outboundSchema.parse(timeOffPaginated),
-  );
-}
 
 export function timeOffPaginatedFromJSON(
   jsonString: string,

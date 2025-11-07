@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type HrisUpdateEmploymentRequestDtoSchemasContractType4 = {};
 
@@ -521,14 +514,6 @@ export type HrisUpdateEmploymentRequestDto = {
 };
 
 /** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasContractType4,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-
-/** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound = {};
 
 /** @internal */
@@ -538,22 +523,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema:
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasContractType4
   > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasContractType4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractType4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasContractType4$Outbound;
-}
 
 export function hrisUpdateEmploymentRequestDtoSchemasContractType4ToJSON(
   hrisUpdateEmploymentRequestDtoSchemasContractType4:
@@ -565,38 +534,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasContractType4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasContractType4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasContractType4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasContractType4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema
-    ),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$Outbound =
@@ -622,22 +559,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$outbou
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue:
     HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue,
@@ -647,33 +568,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValueToJS
       .parse(hrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasContractTypeValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
 
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$outboundSchema:
@@ -685,46 +579,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$outboundSche
     z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasContractTypeValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasContractType,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() =>
-          HrisUpdateEmploymentRequestDtoSchemasContractType4$inboundSchema
-        ),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(
-      HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$inboundSchema,
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasContractType$Outbound = {
@@ -766,22 +620,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasContractType$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasContractType$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractType$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasContractType$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasContractType$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasContractType$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasContractTypeToJSON(
   hrisUpdateEmploymentRequestDtoSchemasContractType:
     HrisUpdateEmploymentRequestDtoSchemasContractType,
@@ -792,41 +630,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasContractTypeToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasContractTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasContractType,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasContractType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoContractType$inboundSchema:
-  z.ZodType<HrisUpdateEmploymentRequestDtoContractType, z.ZodTypeDef, unknown> =
-    z.object({
-      contract_type: z.nullable(
-        z.lazy(() =>
-          HrisUpdateEmploymentRequestDtoSchemasContractType$inboundSchema
-        ),
-      ).optional(),
-      id: z.nullable(z.string()).optional(),
-      label: z.nullable(z.string()).optional(),
-      remote_id: z.nullable(z.string()).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "contract_type": "contractType",
-        "remote_id": "remoteId",
-      });
-    });
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoContractType$Outbound = {
@@ -861,21 +664,6 @@ export const HrisUpdateEmploymentRequestDtoContractType$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoContractType$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoContractType$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoContractType$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoContractType$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoContractType$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoContractType$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoContractType$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoContractTypeToJSON(
   hrisUpdateEmploymentRequestDtoContractType:
     HrisUpdateEmploymentRequestDtoContractType,
@@ -887,29 +675,6 @@ export function hrisUpdateEmploymentRequestDtoContractTypeToJSON(
   );
 }
 
-export function hrisUpdateEmploymentRequestDtoContractTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoContractType,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoContractType$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoContractType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDto4$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
 /** @internal */
 export type HrisUpdateEmploymentRequestDto4$Outbound = {};
 
@@ -920,19 +685,6 @@ export const HrisUpdateEmploymentRequestDto4$outboundSchema: z.ZodType<
   HrisUpdateEmploymentRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDto4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = HrisUpdateEmploymentRequestDto4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = HrisUpdateEmploymentRequestDto4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDto4$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDto4$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDto4ToJSON(
   hrisUpdateEmploymentRequestDto4: HrisUpdateEmploymentRequestDto4,
 ): string {
@@ -942,29 +694,6 @@ export function hrisUpdateEmploymentRequestDto4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisUpdateEmploymentRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSourceValue$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisUpdateEmploymentRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSourceValue$Outbound =
@@ -988,21 +717,6 @@ export const HrisUpdateEmploymentRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoSourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSourceValue:
     HrisUpdateEmploymentRequestDtoSourceValue,
@@ -1014,33 +728,6 @@ export function hrisUpdateEmploymentRequestDtoSourceValueToJSON(
   );
 }
 
-export function hrisUpdateEmploymentRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoValue$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoValue$outboundSchema: z.ZodType<
   HrisUpdateEmploymentRequestDtoValueOpen,
@@ -1050,43 +737,6 @@ export const HrisUpdateEmploymentRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(HrisUpdateEmploymentRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoEmploymentContractType,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => HrisUpdateEmploymentRequestDto4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(HrisUpdateEmploymentRequestDtoValue$inboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoEmploymentContractType$Outbound = {
@@ -1125,22 +775,6 @@ export const HrisUpdateEmploymentRequestDtoEmploymentContractType$outboundSchema
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoEmploymentContractType$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoEmploymentContractType$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoEmploymentContractType$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoEmploymentContractType$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoEmploymentContractType$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoEmploymentContractTypeToJSON(
   hrisUpdateEmploymentRequestDtoEmploymentContractType:
     HrisUpdateEmploymentRequestDtoEmploymentContractType,
@@ -1152,29 +786,6 @@ export function hrisUpdateEmploymentRequestDtoEmploymentContractTypeToJSON(
   );
 }
 
-export function hrisUpdateEmploymentRequestDtoEmploymentContractTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoEmploymentContractType,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoEmploymentContractType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemas4$Outbound = {};
 
@@ -1184,21 +795,6 @@ export const HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisUpdateEmploymentRequestDtoSchemas4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemas4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemas4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemas4$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoSchemas4$Outbound;
-}
 
 export function hrisUpdateEmploymentRequestDtoSchemas4ToJSON(
   hrisUpdateEmploymentRequestDtoSchemas4:
@@ -1210,31 +806,6 @@ export function hrisUpdateEmploymentRequestDtoSchemas4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDtoSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasSourceValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasSourceValue$Outbound =
@@ -1258,22 +829,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasSourceValue$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasSourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasSourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSchemasSourceValue:
     HrisUpdateEmploymentRequestDtoSchemasSourceValue,
@@ -1285,34 +840,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasSourceValueToJSON(
   );
 }
 
-export function hrisUpdateEmploymentRequestDtoSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasValue$outboundSchema:
   z.ZodType<
@@ -1323,43 +850,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasValue$outboundSchema:
     z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoEmploymentType,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => HrisUpdateEmploymentRequestDtoSchemas4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(HrisUpdateEmploymentRequestDtoSchemasValue$inboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoEmploymentType$Outbound = {
@@ -1398,21 +888,6 @@ export const HrisUpdateEmploymentRequestDtoEmploymentType$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoEmploymentType$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoEmploymentType$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoEmploymentType$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoEmploymentType$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoEmploymentType$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoEmploymentTypeToJSON(
   hrisUpdateEmploymentRequestDtoEmploymentType:
     HrisUpdateEmploymentRequestDtoEmploymentType,
@@ -1423,38 +898,6 @@ export function hrisUpdateEmploymentRequestDtoEmploymentTypeToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoEmploymentTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoEmploymentType,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoEmploymentType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoGrade$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoGrade,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-  });
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoGrade$Outbound = {
@@ -1480,21 +923,6 @@ export const HrisUpdateEmploymentRequestDtoGrade$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoGrade$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoGrade$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoGrade$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoGrade$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoGrade$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoGrade$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoGrade$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoGradeToJSON(
   hrisUpdateEmploymentRequestDtoGrade: HrisUpdateEmploymentRequestDtoGrade,
 ): string {
@@ -1504,25 +932,6 @@ export function hrisUpdateEmploymentRequestDtoGradeToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoGradeFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDtoGrade, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoGrade$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoGrade' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequency4,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound = {};
@@ -1535,22 +944,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema:
     HrisUpdateEmploymentRequestDtoSchemasPayFrequency4
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasPayFrequency4ToJSON(
   hrisUpdateEmploymentRequestDtoSchemasPayFrequency4:
     HrisUpdateEmploymentRequestDtoSchemasPayFrequency4,
@@ -1561,38 +954,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasPayFrequency4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasPayFrequency4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasPayFrequency4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasPayFrequency4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema
-    ),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$Outbound =
@@ -1618,22 +979,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$outbou
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue:
     HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue,
@@ -1643,33 +988,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValueToJS
       .parse(hrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
 
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$outboundSchema:
@@ -1681,43 +999,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$outboundSche
     z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema:
-  z.ZodType<HrisUpdateEmploymentRequestDtoPayFrequency, z.ZodTypeDef, unknown> =
-    z.object({
-      source_value: z.nullable(
-        z.union([
-          z.string(),
-          z.number(),
-          z.boolean(),
-          z.lazy(() =>
-            HrisUpdateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema
-          ),
-          z.array(z.any()),
-        ]),
-      ).optional(),
-      value: z.nullable(
-        HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$inboundSchema,
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "source_value": "sourceValue",
-      });
-    });
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPayFrequency$Outbound = {
@@ -1759,21 +1040,6 @@ export const HrisUpdateEmploymentRequestDtoPayFrequency$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoPayFrequency$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPayFrequency$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoPayFrequency$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPayFrequency$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoPayFrequency$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoPayFrequencyToJSON(
   hrisUpdateEmploymentRequestDtoPayFrequency:
     HrisUpdateEmploymentRequestDtoPayFrequency,
@@ -1784,30 +1050,6 @@ export function hrisUpdateEmploymentRequestDtoPayFrequencyToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoPayFrequencyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoPayFrequency,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoPayFrequency' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriod4,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound = {};
@@ -1820,22 +1062,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema:
     HrisUpdateEmploymentRequestDtoSchemasPayPeriod4
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasPayPeriod4ToJSON(
   hrisUpdateEmploymentRequestDtoSchemasPayPeriod4:
     HrisUpdateEmploymentRequestDtoSchemasPayPeriod4,
@@ -1846,36 +1072,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasPayPeriod4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasPayPeriod4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasPayPeriod4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasPayPeriod4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$Outbound =
@@ -1901,22 +1097,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$outboundS
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue:
     HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue,
@@ -1926,33 +1106,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValueToJSON(
       .parse(hrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
 
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$outboundSchema:
@@ -1964,45 +1117,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$outboundSchema:
     z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoPayPeriod,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() =>
-        HrisUpdateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema
-      ),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$inboundSchema,
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPayPeriod$Outbound = {
@@ -2043,21 +1157,6 @@ export const HrisUpdateEmploymentRequestDtoPayPeriod$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoPayPeriod$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPayPeriod$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoPayPeriod$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPayPeriod$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoPayPeriod$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoPayPeriodToJSON(
   hrisUpdateEmploymentRequestDtoPayPeriod:
     HrisUpdateEmploymentRequestDtoPayPeriod,
@@ -2068,27 +1167,6 @@ export function hrisUpdateEmploymentRequestDtoPayPeriodToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoPayPeriodFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoPayPeriod,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoPayPeriod' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema:
-  z.ZodType<HrisUpdateEmploymentRequestDtoSchemasType4, z.ZodTypeDef, unknown> =
-    z.object({});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasType4$Outbound = {};
@@ -2101,21 +1179,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema:
     HrisUpdateEmploymentRequestDtoSchemasType4
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasType4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasType4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasType4$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoSchemasType4$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasType4ToJSON(
   hrisUpdateEmploymentRequestDtoSchemasType4:
     HrisUpdateEmploymentRequestDtoSchemasType4,
@@ -2126,36 +1189,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasType4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasType4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasType4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasType4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$Outbound =
@@ -2179,22 +1212,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$outboundSchema
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasTypeSourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSchemasTypeSourceValue:
     HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue,
@@ -2206,34 +1223,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasTypeSourceValueToJSON(
   );
 }
 
-export function hrisUpdateEmploymentRequestDtoSchemasTypeSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasTypeSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasTypeValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasTypeValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasTypeValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
-
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasTypeValue$outboundSchema:
   z.ZodType<
@@ -2244,43 +1233,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasTypeValue$outboundSchema:
     z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasTypeValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasTypeValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasTypeValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasTypeValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasTypeValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasTypeValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoSchemasType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(
-    HrisUpdateEmploymentRequestDtoSchemasTypeValue$inboundSchema,
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasType$Outbound = {
@@ -2320,21 +1272,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasType$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasType$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasType$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasType$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasType$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoSchemasType$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasTypeToJSON(
   hrisUpdateEmploymentRequestDtoSchemasType:
     HrisUpdateEmploymentRequestDtoSchemasType,
@@ -2345,40 +1282,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasTypeToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasType,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoType$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasType$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-  });
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoType$Outbound = {
@@ -2406,20 +1309,6 @@ export const HrisUpdateEmploymentRequestDtoType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoType$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoType$inboundSchema` instead. */
-  export const inboundSchema = HrisUpdateEmploymentRequestDtoType$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoType$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoType$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoType$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoType$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoTypeToJSON(
   hrisUpdateEmploymentRequestDtoType: HrisUpdateEmploymentRequestDtoType,
 ): string {
@@ -2429,25 +1318,6 @@ export function hrisUpdateEmploymentRequestDtoTypeToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDtoType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoType' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasWorkTime4,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound = {};
@@ -2460,22 +1330,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema:
     HrisUpdateEmploymentRequestDtoSchemasWorkTime4
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasWorkTime4$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTime4$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTime4$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasWorkTime4ToJSON(
   hrisUpdateEmploymentRequestDtoSchemasWorkTime4:
     HrisUpdateEmploymentRequestDtoSchemasWorkTime4,
@@ -2486,36 +1340,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasWorkTime4ToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasWorkTime4FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasWorkTime4,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasWorkTime4' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$Outbound =
@@ -2539,22 +1363,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$outboundSc
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$Outbound` instead. */
-  export type Outbound =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValueToJSON(
   hrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue:
     HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue,
@@ -2564,33 +1372,6 @@ export function hrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValueToJSON(
       .parse(hrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$inboundSchema:
-  z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeValueOpen,
-    z.ZodTypeDef,
-    unknown
-  > = z
-    .union([
-      z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
 
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema:
@@ -2602,45 +1383,6 @@ export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema:
     z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema;
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoPeriod$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoPeriod,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() =>
-        HrisUpdateEmploymentRequestDtoSchemasWorkTime4$inboundSchema
-      ),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$inboundSchema,
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPeriod$Outbound = {
@@ -2681,21 +1423,6 @@ export const HrisUpdateEmploymentRequestDtoPeriod$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoPeriod$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPeriod$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoPeriod$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPeriod$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoPeriod$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoPeriod$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoPeriod$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoPeriodToJSON(
   hrisUpdateEmploymentRequestDtoPeriod: HrisUpdateEmploymentRequestDtoPeriod,
 ): string {
@@ -2705,29 +1432,6 @@ export function hrisUpdateEmploymentRequestDtoPeriodToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoPeriodFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDtoPeriod, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoPeriod$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoPeriod' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDtoWorkTime$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoWorkTime,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  duration: z.nullable(z.string()).optional(),
-  period: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoPeriod$inboundSchema),
-  ).optional(),
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoWorkTime$Outbound = {
@@ -2747,21 +1451,6 @@ export const HrisUpdateEmploymentRequestDtoWorkTime$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDtoWorkTime$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoWorkTime$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisUpdateEmploymentRequestDtoWorkTime$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoWorkTime$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUpdateEmploymentRequestDtoWorkTime$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDtoWorkTime$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDtoWorkTime$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoWorkTimeToJSON(
   hrisUpdateEmploymentRequestDtoWorkTime:
     HrisUpdateEmploymentRequestDtoWorkTime,
@@ -2772,79 +1461,6 @@ export function hrisUpdateEmploymentRequestDtoWorkTimeToJSON(
     ),
   );
 }
-
-export function hrisUpdateEmploymentRequestDtoWorkTimeFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDtoWorkTime, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisUpdateEmploymentRequestDtoWorkTime$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDtoWorkTime' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisUpdateEmploymentRequestDto$inboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  contract_type: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoContractType$inboundSchema),
-  ).optional(),
-  effective_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  employment_contract_type: z.nullable(
-    z.lazy(() =>
-      HrisUpdateEmploymentRequestDtoEmploymentContractType$inboundSchema
-    ),
-  ).optional(),
-  employment_type: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoEmploymentType$inboundSchema),
-  ).optional(),
-  end_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  grade: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoGrade$inboundSchema),
-  ).optional(),
-  job_title: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  pay_currency: z.nullable(z.string()).optional(),
-  pay_frequency: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoPayFrequency$inboundSchema),
-  ).optional(),
-  pay_period: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoPayPeriod$inboundSchema),
-  ).optional(),
-  pay_rate: z.nullable(z.string()).optional(),
-  payroll_code: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoType$inboundSchema),
-  ).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  work_time: z.nullable(
-    z.lazy(() => HrisUpdateEmploymentRequestDtoWorkTime$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "contract_type": "contractType",
-    "effective_date": "effectiveDate",
-    "employment_contract_type": "employmentContractType",
-    "employment_type": "employmentType",
-    "end_date": "endDate",
-    "job_title": "jobTitle",
-    "pay_currency": "payCurrency",
-    "pay_frequency": "payFrequency",
-    "pay_period": "payPeriod",
-    "pay_rate": "payRate",
-    "payroll_code": "payrollCode",
-    "unified_custom_fields": "unifiedCustomFields",
-    "work_time": "workTime",
-  });
-});
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDto$Outbound = {
@@ -2943,19 +1559,6 @@ export const HrisUpdateEmploymentRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUpdateEmploymentRequestDto$ {
-  /** @deprecated use `HrisUpdateEmploymentRequestDto$inboundSchema` instead. */
-  export const inboundSchema = HrisUpdateEmploymentRequestDto$inboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDto$outboundSchema` instead. */
-  export const outboundSchema = HrisUpdateEmploymentRequestDto$outboundSchema;
-  /** @deprecated use `HrisUpdateEmploymentRequestDto$Outbound` instead. */
-  export type Outbound = HrisUpdateEmploymentRequestDto$Outbound;
-}
-
 export function hrisUpdateEmploymentRequestDtoToJSON(
   hrisUpdateEmploymentRequestDto: HrisUpdateEmploymentRequestDto,
 ): string {
@@ -2963,15 +1566,5 @@ export function hrisUpdateEmploymentRequestDtoToJSON(
     HrisUpdateEmploymentRequestDto$outboundSchema.parse(
       hrisUpdateEmploymentRequestDto,
     ),
-  );
-}
-
-export function hrisUpdateEmploymentRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUpdateEmploymentRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisUpdateEmploymentRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUpdateEmploymentRequestDto' from JSON`,
   );
 }

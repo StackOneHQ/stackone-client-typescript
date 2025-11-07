@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum MessagingCreateConversationRequestDto2 {
   True = "true",
@@ -35,39 +32,10 @@ export type MessagingCreateConversationRequestDto = {
 };
 
 /** @internal */
-export const MessagingCreateConversationRequestDto2$inboundSchema:
+export const MessagingCreateConversationRequestDto2$outboundSchema:
   z.ZodNativeEnum<typeof MessagingCreateConversationRequestDto2> = z.nativeEnum(
     MessagingCreateConversationRequestDto2,
   );
-
-/** @internal */
-export const MessagingCreateConversationRequestDto2$outboundSchema:
-  z.ZodNativeEnum<typeof MessagingCreateConversationRequestDto2> =
-    MessagingCreateConversationRequestDto2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingCreateConversationRequestDto2$ {
-  /** @deprecated use `MessagingCreateConversationRequestDto2$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingCreateConversationRequestDto2$inboundSchema;
-  /** @deprecated use `MessagingCreateConversationRequestDto2$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingCreateConversationRequestDto2$outboundSchema;
-}
-
-/** @internal */
-export const MessagingCreateConversationRequestDtoPrivate$inboundSchema:
-  z.ZodType<
-    MessagingCreateConversationRequestDtoPrivate,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.boolean(),
-    MessagingCreateConversationRequestDto2$inboundSchema,
-  ]);
 
 /** @internal */
 export type MessagingCreateConversationRequestDtoPrivate$Outbound =
@@ -85,21 +53,6 @@ export const MessagingCreateConversationRequestDtoPrivate$outboundSchema:
     MessagingCreateConversationRequestDto2$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingCreateConversationRequestDtoPrivate$ {
-  /** @deprecated use `MessagingCreateConversationRequestDtoPrivate$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingCreateConversationRequestDtoPrivate$inboundSchema;
-  /** @deprecated use `MessagingCreateConversationRequestDtoPrivate$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingCreateConversationRequestDtoPrivate$outboundSchema;
-  /** @deprecated use `MessagingCreateConversationRequestDtoPrivate$Outbound` instead. */
-  export type Outbound = MessagingCreateConversationRequestDtoPrivate$Outbound;
-}
-
 export function messagingCreateConversationRequestDtoPrivateToJSON(
   messagingCreateConversationRequestDtoPrivate:
     MessagingCreateConversationRequestDtoPrivate,
@@ -110,38 +63,6 @@ export function messagingCreateConversationRequestDtoPrivateToJSON(
     ),
   );
 }
-
-export function messagingCreateConversationRequestDtoPrivateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MessagingCreateConversationRequestDtoPrivate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MessagingCreateConversationRequestDtoPrivate$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MessagingCreateConversationRequestDtoPrivate' from JSON`,
-  );
-}
-
-/** @internal */
-export const MessagingCreateConversationRequestDto$inboundSchema: z.ZodType<
-  MessagingCreateConversationRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.nullable(z.string()).optional(),
-  participants: z.nullable(z.array(z.string())).optional(),
-  private: z.nullable(
-    z.union([
-      z.boolean(),
-      MessagingCreateConversationRequestDto2$inboundSchema,
-    ]),
-  ).optional(),
-});
 
 /** @internal */
 export type MessagingCreateConversationRequestDto$Outbound = {
@@ -166,21 +87,6 @@ export const MessagingCreateConversationRequestDto$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingCreateConversationRequestDto$ {
-  /** @deprecated use `MessagingCreateConversationRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingCreateConversationRequestDto$inboundSchema;
-  /** @deprecated use `MessagingCreateConversationRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingCreateConversationRequestDto$outboundSchema;
-  /** @deprecated use `MessagingCreateConversationRequestDto$Outbound` instead. */
-  export type Outbound = MessagingCreateConversationRequestDto$Outbound;
-}
-
 export function messagingCreateConversationRequestDtoToJSON(
   messagingCreateConversationRequestDto: MessagingCreateConversationRequestDto,
 ): string {
@@ -188,16 +94,5 @@ export function messagingCreateConversationRequestDtoToJSON(
     MessagingCreateConversationRequestDto$outboundSchema.parse(
       messagingCreateConversationRequestDto,
     ),
-  );
-}
-
-export function messagingCreateConversationRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagingCreateConversationRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MessagingCreateConversationRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagingCreateConversationRequestDto' from JSON`,
   );
 }

@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   StepLogPartial,
   StepLogPartial$inboundSchema,
-  StepLogPartial$Outbound,
-  StepLogPartial$outboundSchema,
 } from "./steplogpartial.js";
 
 export type StepLogsPaginated = {
@@ -27,43 +25,6 @@ export const StepLogsPaginated$inboundSchema: z.ZodType<
   data: z.array(StepLogPartial$inboundSchema),
   next: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type StepLogsPaginated$Outbound = {
-  data: Array<StepLogPartial$Outbound>;
-  next?: string | null | undefined;
-};
-
-/** @internal */
-export const StepLogsPaginated$outboundSchema: z.ZodType<
-  StepLogsPaginated$Outbound,
-  z.ZodTypeDef,
-  StepLogsPaginated
-> = z.object({
-  data: z.array(StepLogPartial$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StepLogsPaginated$ {
-  /** @deprecated use `StepLogsPaginated$inboundSchema` instead. */
-  export const inboundSchema = StepLogsPaginated$inboundSchema;
-  /** @deprecated use `StepLogsPaginated$outboundSchema` instead. */
-  export const outboundSchema = StepLogsPaginated$outboundSchema;
-  /** @deprecated use `StepLogsPaginated$Outbound` instead. */
-  export type Outbound = StepLogsPaginated$Outbound;
-}
-
-export function stepLogsPaginatedToJSON(
-  stepLogsPaginated: StepLogsPaginated,
-): string {
-  return JSON.stringify(
-    StepLogsPaginated$outboundSchema.parse(stepLogsPaginated),
-  );
-}
 
 export function stepLogsPaginatedFromJSON(
   jsonString: string,

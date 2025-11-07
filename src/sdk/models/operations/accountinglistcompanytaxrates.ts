@@ -84,22 +84,6 @@ export type AccountingListCompanyTaxRatesResponse = {
 };
 
 /** @internal */
-export const AccountingListCompanyTaxRatesQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AccountingListCompanyTaxRatesQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AccountingListCompanyTaxRatesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,21 +103,6 @@ export const AccountingListCompanyTaxRatesQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingListCompanyTaxRatesQueryParamFilter$ {
-  /** @deprecated use `AccountingListCompanyTaxRatesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingListCompanyTaxRatesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AccountingListCompanyTaxRatesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingListCompanyTaxRatesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AccountingListCompanyTaxRatesQueryParamFilter$Outbound` instead. */
-  export type Outbound = AccountingListCompanyTaxRatesQueryParamFilter$Outbound;
-}
-
 export function accountingListCompanyTaxRatesQueryParamFilterToJSON(
   accountingListCompanyTaxRatesQueryParamFilter:
     AccountingListCompanyTaxRatesQueryParamFilter,
@@ -144,50 +113,6 @@ export function accountingListCompanyTaxRatesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function accountingListCompanyTaxRatesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AccountingListCompanyTaxRatesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingListCompanyTaxRatesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AccountingListCompanyTaxRatesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountingListCompanyTaxRatesRequest$inboundSchema: z.ZodType<
-  AccountingListCompanyTaxRatesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AccountingListCompanyTaxRatesQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AccountingListCompanyTaxRatesRequest$Outbound = {
@@ -232,21 +157,6 @@ export const AccountingListCompanyTaxRatesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingListCompanyTaxRatesRequest$ {
-  /** @deprecated use `AccountingListCompanyTaxRatesRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingListCompanyTaxRatesRequest$inboundSchema;
-  /** @deprecated use `AccountingListCompanyTaxRatesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingListCompanyTaxRatesRequest$outboundSchema;
-  /** @deprecated use `AccountingListCompanyTaxRatesRequest$Outbound` instead. */
-  export type Outbound = AccountingListCompanyTaxRatesRequest$Outbound;
-}
-
 export function accountingListCompanyTaxRatesRequestToJSON(
   accountingListCompanyTaxRatesRequest: AccountingListCompanyTaxRatesRequest,
 ): string {
@@ -254,17 +164,6 @@ export function accountingListCompanyTaxRatesRequestToJSON(
     AccountingListCompanyTaxRatesRequest$outboundSchema.parse(
       accountingListCompanyTaxRatesRequest,
     ),
-  );
-}
-
-export function accountingListCompanyTaxRatesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingListCompanyTaxRatesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingListCompanyTaxRatesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingListCompanyTaxRatesRequest' from JSON`,
   );
 }
 
@@ -290,66 +189,6 @@ export const AccountingListCompanyTaxRatesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AccountingListCompanyTaxRatesResponse$Outbound = {
-  AccountingTaxRatesPaginated?:
-    | shared.AccountingTaxRatesPaginated$Outbound
-    | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AccountingListCompanyTaxRatesResponse$outboundSchema: z.ZodType<
-  AccountingListCompanyTaxRatesResponse$Outbound,
-  z.ZodTypeDef,
-  AccountingListCompanyTaxRatesResponse
-> = z.object({
-  accountingTaxRatesPaginated: shared.AccountingTaxRatesPaginated$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    accountingTaxRatesPaginated: "AccountingTaxRatesPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingListCompanyTaxRatesResponse$ {
-  /** @deprecated use `AccountingListCompanyTaxRatesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingListCompanyTaxRatesResponse$inboundSchema;
-  /** @deprecated use `AccountingListCompanyTaxRatesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingListCompanyTaxRatesResponse$outboundSchema;
-  /** @deprecated use `AccountingListCompanyTaxRatesResponse$Outbound` instead. */
-  export type Outbound = AccountingListCompanyTaxRatesResponse$Outbound;
-}
-
-export function accountingListCompanyTaxRatesResponseToJSON(
-  accountingListCompanyTaxRatesResponse: AccountingListCompanyTaxRatesResponse,
-): string {
-  return JSON.stringify(
-    AccountingListCompanyTaxRatesResponse$outboundSchema.parse(
-      accountingListCompanyTaxRatesResponse,
-    ),
-  );
-}
 
 export function accountingListCompanyTaxRatesResponseFromJSON(
   jsonString: string,

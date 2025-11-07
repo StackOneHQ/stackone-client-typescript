@@ -62,36 +62,3 @@ export const ForbiddenResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type ForbiddenResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const ForbiddenResponse$outboundSchema: z.ZodType<
-  ForbiddenResponse$Outbound,
-  z.ZodTypeDef,
-  ForbiddenResponse
-> = z.instanceof(ForbiddenResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ForbiddenResponse$ {
-  /** @deprecated use `ForbiddenResponse$inboundSchema` instead. */
-  export const inboundSchema = ForbiddenResponse$inboundSchema;
-  /** @deprecated use `ForbiddenResponse$outboundSchema` instead. */
-  export const outboundSchema = ForbiddenResponse$outboundSchema;
-  /** @deprecated use `ForbiddenResponse$Outbound` instead. */
-  export type Outbound = ForbiddenResponse$Outbound;
-}

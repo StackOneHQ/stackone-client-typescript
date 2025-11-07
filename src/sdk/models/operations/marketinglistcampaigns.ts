@@ -83,21 +83,6 @@ export type MarketingListCampaignsResponse = {
 };
 
 /** @internal */
-export const MarketingListCampaignsQueryParamFilter$inboundSchema: z.ZodType<
-  MarketingListCampaignsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type MarketingListCampaignsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,21 +100,6 @@ export const MarketingListCampaignsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingListCampaignsQueryParamFilter$ {
-  /** @deprecated use `MarketingListCampaignsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingListCampaignsQueryParamFilter$inboundSchema;
-  /** @deprecated use `MarketingListCampaignsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingListCampaignsQueryParamFilter$outboundSchema;
-  /** @deprecated use `MarketingListCampaignsQueryParamFilter$Outbound` instead. */
-  export type Outbound = MarketingListCampaignsQueryParamFilter$Outbound;
-}
-
 export function marketingListCampaignsQueryParamFilterToJSON(
   marketingListCampaignsQueryParamFilter:
     MarketingListCampaignsQueryParamFilter,
@@ -140,44 +110,6 @@ export function marketingListCampaignsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function marketingListCampaignsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingListCampaignsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingListCampaignsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingListCampaignsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const MarketingListCampaignsRequest$inboundSchema: z.ZodType<
-  MarketingListCampaignsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => MarketingListCampaignsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type MarketingListCampaignsRequest$Outbound = {
@@ -217,19 +149,6 @@ export const MarketingListCampaignsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingListCampaignsRequest$ {
-  /** @deprecated use `MarketingListCampaignsRequest$inboundSchema` instead. */
-  export const inboundSchema = MarketingListCampaignsRequest$inboundSchema;
-  /** @deprecated use `MarketingListCampaignsRequest$outboundSchema` instead. */
-  export const outboundSchema = MarketingListCampaignsRequest$outboundSchema;
-  /** @deprecated use `MarketingListCampaignsRequest$Outbound` instead. */
-  export type Outbound = MarketingListCampaignsRequest$Outbound;
-}
-
 export function marketingListCampaignsRequestToJSON(
   marketingListCampaignsRequest: MarketingListCampaignsRequest,
 ): string {
@@ -237,16 +156,6 @@ export function marketingListCampaignsRequestToJSON(
     MarketingListCampaignsRequest$outboundSchema.parse(
       marketingListCampaignsRequest,
     ),
-  );
-}
-
-export function marketingListCampaignsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingListCampaignsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MarketingListCampaignsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingListCampaignsRequest' from JSON`,
   );
 }
 
@@ -271,61 +180,6 @@ export const MarketingListCampaignsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingListCampaignsResponse$Outbound = {
-  CampaignsPaginated?: shared.CampaignsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingListCampaignsResponse$outboundSchema: z.ZodType<
-  MarketingListCampaignsResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingListCampaignsResponse
-> = z.object({
-  campaignsPaginated: shared.CampaignsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    campaignsPaginated: "CampaignsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingListCampaignsResponse$ {
-  /** @deprecated use `MarketingListCampaignsResponse$inboundSchema` instead. */
-  export const inboundSchema = MarketingListCampaignsResponse$inboundSchema;
-  /** @deprecated use `MarketingListCampaignsResponse$outboundSchema` instead. */
-  export const outboundSchema = MarketingListCampaignsResponse$outboundSchema;
-  /** @deprecated use `MarketingListCampaignsResponse$Outbound` instead. */
-  export type Outbound = MarketingListCampaignsResponse$Outbound;
-}
-
-export function marketingListCampaignsResponseToJSON(
-  marketingListCampaignsResponse: MarketingListCampaignsResponse,
-): string {
-  return JSON.stringify(
-    MarketingListCampaignsResponse$outboundSchema.parse(
-      marketingListCampaignsResponse,
-    ),
-  );
-}
 
 export function marketingListCampaignsResponseFromJSON(
   jsonString: string,

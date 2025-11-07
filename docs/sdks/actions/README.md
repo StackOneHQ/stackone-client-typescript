@@ -37,7 +37,7 @@ async function run() {
     },
     groupBy: "[\"connector\"]",
     include: [
-      Include.OperationDetails,
+      Include.ActionDetails,
     ],
   });
 
@@ -76,7 +76,7 @@ async function run() {
     },
     groupBy: "[\"connector\"]",
     include: [
-      Include.OperationDetails,
+      Include.ActionDetails,
     ],
   });
   if (res.ok) {

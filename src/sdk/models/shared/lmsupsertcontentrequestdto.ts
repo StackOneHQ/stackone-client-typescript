@@ -4,47 +4,34 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   AdditionalData,
-  AdditionalData$inboundSchema,
   AdditionalData$Outbound,
   AdditionalData$outboundSchema,
 } from "./additionaldata.js";
 import {
   AuthorModel,
-  AuthorModel$inboundSchema,
   AuthorModel$Outbound,
   AuthorModel$outboundSchema,
 } from "./authormodel.js";
 import {
   CreateCategoriesApiModel,
-  CreateCategoriesApiModel$inboundSchema,
   CreateCategoriesApiModel$Outbound,
   CreateCategoriesApiModel$outboundSchema,
 } from "./createcategoriesapimodel.js";
 import {
   CreateSkillsApiModel,
-  CreateSkillsApiModel$inboundSchema,
   CreateSkillsApiModel$Outbound,
   CreateSkillsApiModel$outboundSchema,
 } from "./createskillsapimodel.js";
 import {
   LanguageEnum,
-  LanguageEnum$inboundSchema,
   LanguageEnum$Outbound,
   LanguageEnum$outboundSchema,
 } from "./languageenum.js";
 import {
   LocalizationModel,
-  LocalizationModel$inboundSchema,
   LocalizationModel$Outbound,
   LocalizationModel$outboundSchema,
 } from "./localizationmodel.js";
@@ -207,32 +194,9 @@ export type LmsUpsertContentRequestDto = {
 };
 
 /** @internal */
-export const LmsUpsertContentRequestDto2$inboundSchema: z.ZodNativeEnum<
-  typeof LmsUpsertContentRequestDto2
-> = z.nativeEnum(LmsUpsertContentRequestDto2);
-
-/** @internal */
 export const LmsUpsertContentRequestDto2$outboundSchema: z.ZodNativeEnum<
   typeof LmsUpsertContentRequestDto2
-> = LmsUpsertContentRequestDto2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDto2$ {
-  /** @deprecated use `LmsUpsertContentRequestDto2$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDto2$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDto2$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDto2$outboundSchema;
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDtoActive$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDtoActive,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]);
+> = z.nativeEnum(LmsUpsertContentRequestDto2);
 
 /** @internal */
 export type LmsUpsertContentRequestDtoActive$Outbound = boolean | string;
@@ -244,19 +208,6 @@ export const LmsUpsertContentRequestDtoActive$outboundSchema: z.ZodType<
   LmsUpsertContentRequestDtoActive
 > = z.union([z.boolean(), LmsUpsertContentRequestDto2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDtoActive$ {
-  /** @deprecated use `LmsUpsertContentRequestDtoActive$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDtoActive$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoActive$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDtoActive$outboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoActive$Outbound` instead. */
-  export type Outbound = LmsUpsertContentRequestDtoActive$Outbound;
-}
-
 export function lmsUpsertContentRequestDtoActiveToJSON(
   lmsUpsertContentRequestDtoActive: LmsUpsertContentRequestDtoActive,
 ): string {
@@ -266,23 +217,6 @@ export function lmsUpsertContentRequestDtoActiveToJSON(
     ),
   );
 }
-
-export function lmsUpsertContentRequestDtoActiveFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsUpsertContentRequestDtoActive, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsUpsertContentRequestDtoActive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpsertContentRequestDtoActive' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDto4$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type LmsUpsertContentRequestDto4$Outbound = {};
@@ -294,19 +228,6 @@ export const LmsUpsertContentRequestDto4$outboundSchema: z.ZodType<
   LmsUpsertContentRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDto4$ {
-  /** @deprecated use `LmsUpsertContentRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDto4$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDto4$outboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDto4$Outbound` instead. */
-  export type Outbound = LmsUpsertContentRequestDto4$Outbound;
-}
-
 export function lmsUpsertContentRequestDto4ToJSON(
   lmsUpsertContentRequestDto4: LmsUpsertContentRequestDto4,
 ): string {
@@ -316,29 +237,6 @@ export function lmsUpsertContentRequestDto4ToJSON(
     ),
   );
 }
-
-export function lmsUpsertContentRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<LmsUpsertContentRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsUpsertContentRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpsertContentRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDtoSourceValue$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => LmsUpsertContentRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type LmsUpsertContentRequestDtoSourceValue$Outbound =
@@ -361,21 +259,6 @@ export const LmsUpsertContentRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDtoSourceValue$ {
-  /** @deprecated use `LmsUpsertContentRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsUpsertContentRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsUpsertContentRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = LmsUpsertContentRequestDtoSourceValue$Outbound;
-}
-
 export function lmsUpsertContentRequestDtoSourceValueToJSON(
   lmsUpsertContentRequestDtoSourceValue: LmsUpsertContentRequestDtoSourceValue,
 ): string {
@@ -386,28 +269,6 @@ export function lmsUpsertContentRequestDtoSourceValueToJSON(
   );
 }
 
-export function lmsUpsertContentRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsUpsertContentRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsUpsertContentRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpsertContentRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDtoValue$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(LmsUpsertContentRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const LmsUpsertContentRequestDtoValue$outboundSchema: z.ZodType<
   LmsUpsertContentRequestDtoValueOpen,
@@ -417,39 +278,6 @@ export const LmsUpsertContentRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(LmsUpsertContentRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDtoValue$ {
-  /** @deprecated use `LmsUpsertContentRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDtoValue$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDtoContentType$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDtoContentType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => LmsUpsertContentRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(LmsUpsertContentRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type LmsUpsertContentRequestDtoContentType$Outbound = {
@@ -486,21 +314,6 @@ export const LmsUpsertContentRequestDtoContentType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDtoContentType$ {
-  /** @deprecated use `LmsUpsertContentRequestDtoContentType$inboundSchema` instead. */
-  export const inboundSchema =
-    LmsUpsertContentRequestDtoContentType$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoContentType$outboundSchema` instead. */
-  export const outboundSchema =
-    LmsUpsertContentRequestDtoContentType$outboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoContentType$Outbound` instead. */
-  export type Outbound = LmsUpsertContentRequestDtoContentType$Outbound;
-}
-
 export function lmsUpsertContentRequestDtoContentTypeToJSON(
   lmsUpsertContentRequestDtoContentType: LmsUpsertContentRequestDtoContentType,
 ): string {
@@ -510,69 +323,6 @@ export function lmsUpsertContentRequestDtoContentTypeToJSON(
     ),
   );
 }
-
-export function lmsUpsertContentRequestDtoContentTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsUpsertContentRequestDtoContentType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      LmsUpsertContentRequestDtoContentType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpsertContentRequestDtoContentType' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.nullable(
-    z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]),
-  ).optional(),
-  additional_data: z.nullable(z.array(AdditionalData$inboundSchema)).optional(),
-  authors: z.nullable(z.array(AuthorModel$inboundSchema)).optional(),
-  categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
-    .optional(),
-  content_type: z.nullable(
-    z.lazy(() => LmsUpsertContentRequestDtoContentType$inboundSchema),
-  ).optional(),
-  content_url: z.nullable(z.string()).optional(),
-  cover_url: z.nullable(z.string()).optional(),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  description: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.string()).optional(),
-  external_reference: z.string(),
-  languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
-  localizations: z.nullable(z.array(LocalizationModel$inboundSchema))
-    .optional(),
-  mobile_launch_content_url: z.nullable(z.string()).optional(),
-  order: z.nullable(z.number()).optional(),
-  short_description: z.nullable(z.string()).optional(),
-  skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  title: z.nullable(z.string()).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "additional_data": "additionalData",
-    "content_type": "contentType",
-    "content_url": "contentUrl",
-    "cover_url": "coverUrl",
-    "created_at": "createdAt",
-    "external_reference": "externalReference",
-    "mobile_launch_content_url": "mobileLaunchContentUrl",
-    "short_description": "shortDescription",
-    "unified_custom_fields": "unifiedCustomFields",
-    "updated_at": "updatedAt",
-  });
-});
 
 /** @internal */
 export type LmsUpsertContentRequestDto$Outbound = {
@@ -650,33 +400,10 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDto$ {
-  /** @deprecated use `LmsUpsertContentRequestDto$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDto$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDto$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDto$outboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDto$Outbound` instead. */
-  export type Outbound = LmsUpsertContentRequestDto$Outbound;
-}
-
 export function lmsUpsertContentRequestDtoToJSON(
   lmsUpsertContentRequestDto: LmsUpsertContentRequestDto,
 ): string {
   return JSON.stringify(
     LmsUpsertContentRequestDto$outboundSchema.parse(lmsUpsertContentRequestDto),
-  );
-}
-
-export function lmsUpsertContentRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsUpsertContentRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsUpsertContentRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpsertContentRequestDto' from JSON`,
   );
 }

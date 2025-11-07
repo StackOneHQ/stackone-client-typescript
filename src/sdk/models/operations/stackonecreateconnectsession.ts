@@ -52,66 +52,6 @@ export const StackoneCreateConnectSessionResponse$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type StackoneCreateConnectSessionResponse$Outbound = {
-  ConnectSessionTokenAuthLink?:
-    | shared.ConnectSessionTokenAuthLink$Outbound
-    | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneCreateConnectSessionResponse$outboundSchema: z.ZodType<
-  StackoneCreateConnectSessionResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneCreateConnectSessionResponse
-> = z.object({
-  connectSessionTokenAuthLink: shared.ConnectSessionTokenAuthLink$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    connectSessionTokenAuthLink: "ConnectSessionTokenAuthLink",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneCreateConnectSessionResponse$ {
-  /** @deprecated use `StackoneCreateConnectSessionResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneCreateConnectSessionResponse$inboundSchema;
-  /** @deprecated use `StackoneCreateConnectSessionResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneCreateConnectSessionResponse$outboundSchema;
-  /** @deprecated use `StackoneCreateConnectSessionResponse$Outbound` instead. */
-  export type Outbound = StackoneCreateConnectSessionResponse$Outbound;
-}
-
-export function stackoneCreateConnectSessionResponseToJSON(
-  stackoneCreateConnectSessionResponse: StackoneCreateConnectSessionResponse,
-): string {
-  return JSON.stringify(
-    StackoneCreateConnectSessionResponse$outboundSchema.parse(
-      stackoneCreateConnectSessionResponse,
-    ),
-  );
-}
-
 export function stackoneCreateConnectSessionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<StackoneCreateConnectSessionResponse, SDKValidationError> {

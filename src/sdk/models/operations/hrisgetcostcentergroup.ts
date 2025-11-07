@@ -50,23 +50,6 @@ export type HrisGetCostCenterGroupResponse = {
 };
 
 /** @internal */
-export const HrisGetCostCenterGroupRequest$inboundSchema: z.ZodType<
-  HrisGetCostCenterGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetCostCenterGroupRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const HrisGetCostCenterGroupRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetCostCenterGroupRequest$ {
-  /** @deprecated use `HrisGetCostCenterGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetCostCenterGroupRequest$inboundSchema;
-  /** @deprecated use `HrisGetCostCenterGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetCostCenterGroupRequest$outboundSchema;
-  /** @deprecated use `HrisGetCostCenterGroupRequest$Outbound` instead. */
-  export type Outbound = HrisGetCostCenterGroupRequest$Outbound;
-}
-
 export function hrisGetCostCenterGroupRequestToJSON(
   hrisGetCostCenterGroupRequest: HrisGetCostCenterGroupRequest,
 ): string {
@@ -112,16 +82,6 @@ export function hrisGetCostCenterGroupRequestToJSON(
     HrisGetCostCenterGroupRequest$outboundSchema.parse(
       hrisGetCostCenterGroupRequest,
     ),
-  );
-}
-
-export function hrisGetCostCenterGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetCostCenterGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetCostCenterGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetCostCenterGroupRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const HrisGetCostCenterGroupResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetCostCenterGroupResponse$Outbound = {
-  ContentType: string;
-  HRISCostCenterResult?: shared.HRISCostCenterResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetCostCenterGroupResponse$outboundSchema: z.ZodType<
-  HrisGetCostCenterGroupResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetCostCenterGroupResponse
-> = z.object({
-  contentType: z.string(),
-  hrisCostCenterResult: shared.HRISCostCenterResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisCostCenterResult: "HRISCostCenterResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetCostCenterGroupResponse$ {
-  /** @deprecated use `HrisGetCostCenterGroupResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetCostCenterGroupResponse$inboundSchema;
-  /** @deprecated use `HrisGetCostCenterGroupResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetCostCenterGroupResponse$outboundSchema;
-  /** @deprecated use `HrisGetCostCenterGroupResponse$Outbound` instead. */
-  export type Outbound = HrisGetCostCenterGroupResponse$Outbound;
-}
-
-export function hrisGetCostCenterGroupResponseToJSON(
-  hrisGetCostCenterGroupResponse: HrisGetCostCenterGroupResponse,
-): string {
-  return JSON.stringify(
-    HrisGetCostCenterGroupResponse$outboundSchema.parse(
-      hrisGetCostCenterGroupResponse,
-    ),
-  );
-}
 
 export function hrisGetCostCenterGroupResponseFromJSON(
   jsonString: string,

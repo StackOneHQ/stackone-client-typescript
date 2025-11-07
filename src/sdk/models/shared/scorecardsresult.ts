@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  Scorecard,
-  Scorecard$inboundSchema,
-  Scorecard$Outbound,
-  Scorecard$outboundSchema,
-} from "./scorecard.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { Scorecard, Scorecard$inboundSchema } from "./scorecard.js";
 
 export type ScorecardsResult = {
   data: Scorecard;
@@ -33,43 +23,6 @@ export const ScorecardsResult$inboundSchema: z.ZodType<
   data: Scorecard$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ScorecardsResult$Outbound = {
-  data: Scorecard$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ScorecardsResult$outboundSchema: z.ZodType<
-  ScorecardsResult$Outbound,
-  z.ZodTypeDef,
-  ScorecardsResult
-> = z.object({
-  data: Scorecard$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScorecardsResult$ {
-  /** @deprecated use `ScorecardsResult$inboundSchema` instead. */
-  export const inboundSchema = ScorecardsResult$inboundSchema;
-  /** @deprecated use `ScorecardsResult$outboundSchema` instead. */
-  export const outboundSchema = ScorecardsResult$outboundSchema;
-  /** @deprecated use `ScorecardsResult$Outbound` instead. */
-  export type Outbound = ScorecardsResult$Outbound;
-}
-
-export function scorecardsResultToJSON(
-  scorecardsResult: ScorecardsResult,
-): string {
-  return JSON.stringify(
-    ScorecardsResult$outboundSchema.parse(scorecardsResult),
-  );
-}
 
 export function scorecardsResultFromJSON(
   jsonString: string,

@@ -89,21 +89,6 @@ export type AtsListLocationsResponse = {
 };
 
 /** @internal */
-export const AtsListLocationsQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListLocationsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type AtsListLocationsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -121,19 +106,6 @@ export const AtsListLocationsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListLocationsQueryParamFilter$ {
-  /** @deprecated use `AtsListLocationsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = AtsListLocationsQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListLocationsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = AtsListLocationsQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListLocationsQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListLocationsQueryParamFilter$Outbound;
-}
-
 export function atsListLocationsQueryParamFilterToJSON(
   atsListLocationsQueryParamFilter: AtsListLocationsQueryParamFilter,
 ): string {
@@ -143,45 +115,6 @@ export function atsListLocationsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListLocationsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListLocationsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListLocationsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListLocationsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListLocationsRequest$inboundSchema: z.ZodType<
-  AtsListLocationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListLocationsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  sync_token: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "sync_token": "syncToken",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListLocationsRequest$Outbound = {
@@ -224,34 +157,11 @@ export const AtsListLocationsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListLocationsRequest$ {
-  /** @deprecated use `AtsListLocationsRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListLocationsRequest$inboundSchema;
-  /** @deprecated use `AtsListLocationsRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListLocationsRequest$outboundSchema;
-  /** @deprecated use `AtsListLocationsRequest$Outbound` instead. */
-  export type Outbound = AtsListLocationsRequest$Outbound;
-}
-
 export function atsListLocationsRequestToJSON(
   atsListLocationsRequest: AtsListLocationsRequest,
 ): string {
   return JSON.stringify(
     AtsListLocationsRequest$outboundSchema.parse(atsListLocationsRequest),
-  );
-}
-
-export function atsListLocationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListLocationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListLocationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListLocationsRequest' from JSON`,
   );
 }
 
@@ -276,59 +186,6 @@ export const AtsListLocationsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListLocationsResponse$Outbound = {
-  ATSLocationsPaginated?: shared.ATSLocationsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListLocationsResponse$outboundSchema: z.ZodType<
-  AtsListLocationsResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListLocationsResponse
-> = z.object({
-  atsLocationsPaginated: shared.ATSLocationsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    atsLocationsPaginated: "ATSLocationsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListLocationsResponse$ {
-  /** @deprecated use `AtsListLocationsResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListLocationsResponse$inboundSchema;
-  /** @deprecated use `AtsListLocationsResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsListLocationsResponse$outboundSchema;
-  /** @deprecated use `AtsListLocationsResponse$Outbound` instead. */
-  export type Outbound = AtsListLocationsResponse$Outbound;
-}
-
-export function atsListLocationsResponseToJSON(
-  atsListLocationsResponse: AtsListLocationsResponse,
-): string {
-  return JSON.stringify(
-    AtsListLocationsResponse$outboundSchema.parse(atsListLocationsResponse),
-  );
-}
 
 export function atsListLocationsResponseFromJSON(
   jsonString: string,

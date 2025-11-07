@@ -39,23 +39,6 @@ export type HrisUploadEmployeeDocumentResponse = {
 };
 
 /** @internal */
-export const HrisUploadEmployeeDocumentRequest$inboundSchema: z.ZodType<
-  HrisUploadEmployeeDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  HrisDocumentsUploadRequestDto:
-    shared.HrisDocumentsUploadRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "HrisDocumentsUploadRequestDto": "hrisDocumentsUploadRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisUploadEmployeeDocumentRequest$Outbound = {
   HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$Outbound;
   id: string;
@@ -79,20 +62,6 @@ export const HrisUploadEmployeeDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUploadEmployeeDocumentRequest$ {
-  /** @deprecated use `HrisUploadEmployeeDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisUploadEmployeeDocumentRequest$inboundSchema;
-  /** @deprecated use `HrisUploadEmployeeDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUploadEmployeeDocumentRequest$outboundSchema;
-  /** @deprecated use `HrisUploadEmployeeDocumentRequest$Outbound` instead. */
-  export type Outbound = HrisUploadEmployeeDocumentRequest$Outbound;
-}
-
 export function hrisUploadEmployeeDocumentRequestToJSON(
   hrisUploadEmployeeDocumentRequest: HrisUploadEmployeeDocumentRequest,
 ): string {
@@ -100,16 +69,6 @@ export function hrisUploadEmployeeDocumentRequestToJSON(
     HrisUploadEmployeeDocumentRequest$outboundSchema.parse(
       hrisUploadEmployeeDocumentRequest,
     ),
-  );
-}
-
-export function hrisUploadEmployeeDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisUploadEmployeeDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisUploadEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisUploadEmployeeDocumentRequest' from JSON`,
   );
 }
 
@@ -134,62 +93,6 @@ export const HrisUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
     "WriteResultApiModel": "writeResultApiModel",
   });
 });
-
-/** @internal */
-export type HrisUploadEmployeeDocumentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  WriteResultApiModel?: shared.WriteResultApiModel$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisUploadEmployeeDocumentResponse$outboundSchema: z.ZodType<
-  HrisUploadEmployeeDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  HrisUploadEmployeeDocumentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  writeResultApiModel: shared.WriteResultApiModel$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    writeResultApiModel: "WriteResultApiModel",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisUploadEmployeeDocumentResponse$ {
-  /** @deprecated use `HrisUploadEmployeeDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisUploadEmployeeDocumentResponse$inboundSchema;
-  /** @deprecated use `HrisUploadEmployeeDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisUploadEmployeeDocumentResponse$outboundSchema;
-  /** @deprecated use `HrisUploadEmployeeDocumentResponse$Outbound` instead. */
-  export type Outbound = HrisUploadEmployeeDocumentResponse$Outbound;
-}
-
-export function hrisUploadEmployeeDocumentResponseToJSON(
-  hrisUploadEmployeeDocumentResponse: HrisUploadEmployeeDocumentResponse,
-): string {
-  return JSON.stringify(
-    HrisUploadEmployeeDocumentResponse$outboundSchema.parse(
-      hrisUploadEmployeeDocumentResponse,
-    ),
-  );
-}
 
 export function hrisUploadEmployeeDocumentResponseFromJSON(
   jsonString: string,

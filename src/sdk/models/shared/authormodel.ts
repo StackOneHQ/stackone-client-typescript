@@ -27,7 +27,6 @@ export const AuthorModel$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type AuthorModel$Outbound = {
   id?: string | null | undefined;
@@ -44,23 +43,9 @@ export const AuthorModel$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthorModel$ {
-  /** @deprecated use `AuthorModel$inboundSchema` instead. */
-  export const inboundSchema = AuthorModel$inboundSchema;
-  /** @deprecated use `AuthorModel$outboundSchema` instead. */
-  export const outboundSchema = AuthorModel$outboundSchema;
-  /** @deprecated use `AuthorModel$Outbound` instead. */
-  export type Outbound = AuthorModel$Outbound;
-}
-
 export function authorModelToJSON(authorModel: AuthorModel): string {
   return JSON.stringify(AuthorModel$outboundSchema.parse(authorModel));
 }
-
 export function authorModelFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthorModel, SDKValidationError> {

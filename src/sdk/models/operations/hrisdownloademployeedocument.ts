@@ -53,24 +53,6 @@ export type HrisDownloadEmployeeDocumentResponse = {
 };
 
 /** @internal */
-export const HrisDownloadEmployeeDocumentRequest$inboundSchema: z.ZodType<
-  HrisDownloadEmployeeDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  export_format: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  id: z.string(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "export_format": "exportFormat",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisDownloadEmployeeDocumentRequest$Outbound = {
   export_format?: string | null | undefined;
   format?: string | null | undefined;
@@ -97,21 +79,6 @@ export const HrisDownloadEmployeeDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDownloadEmployeeDocumentRequest$ {
-  /** @deprecated use `HrisDownloadEmployeeDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisDownloadEmployeeDocumentRequest$inboundSchema;
-  /** @deprecated use `HrisDownloadEmployeeDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisDownloadEmployeeDocumentRequest$outboundSchema;
-  /** @deprecated use `HrisDownloadEmployeeDocumentRequest$Outbound` instead. */
-  export type Outbound = HrisDownloadEmployeeDocumentRequest$Outbound;
-}
-
 export function hrisDownloadEmployeeDocumentRequestToJSON(
   hrisDownloadEmployeeDocumentRequest: HrisDownloadEmployeeDocumentRequest,
 ): string {
@@ -119,17 +86,6 @@ export function hrisDownloadEmployeeDocumentRequestToJSON(
     HrisDownloadEmployeeDocumentRequest$outboundSchema.parse(
       hrisDownloadEmployeeDocumentRequest,
     ),
-  );
-}
-
-export function hrisDownloadEmployeeDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisDownloadEmployeeDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisDownloadEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisDownloadEmployeeDocumentRequest' from JSON`,
   );
 }
 
@@ -158,69 +114,6 @@ export const HrisDownloadEmployeeDocumentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisDownloadEmployeeDocumentResponse$Outbound = {
-  Body?: Uint8Array | undefined;
-  ContentType: string;
-  DownloadApiModel?: shared.DownloadApiModel$Outbound | undefined;
-  DownloadApiModel1?: string | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisDownloadEmployeeDocumentResponse$outboundSchema: z.ZodType<
-  HrisDownloadEmployeeDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  HrisDownloadEmployeeDocumentResponse
-> = z.object({
-  body: b64$.zodOutbound.optional(),
-  contentType: z.string(),
-  downloadApiModel: shared.DownloadApiModel$outboundSchema.optional(),
-  downloadApiModel1: z.string().optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    body: "Body",
-    contentType: "ContentType",
-    downloadApiModel: "DownloadApiModel",
-    downloadApiModel1: "DownloadApiModel1",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisDownloadEmployeeDocumentResponse$ {
-  /** @deprecated use `HrisDownloadEmployeeDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisDownloadEmployeeDocumentResponse$inboundSchema;
-  /** @deprecated use `HrisDownloadEmployeeDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisDownloadEmployeeDocumentResponse$outboundSchema;
-  /** @deprecated use `HrisDownloadEmployeeDocumentResponse$Outbound` instead. */
-  export type Outbound = HrisDownloadEmployeeDocumentResponse$Outbound;
-}
-
-export function hrisDownloadEmployeeDocumentResponseToJSON(
-  hrisDownloadEmployeeDocumentResponse: HrisDownloadEmployeeDocumentResponse,
-): string {
-  return JSON.stringify(
-    HrisDownloadEmployeeDocumentResponse$outboundSchema.parse(
-      hrisDownloadEmployeeDocumentResponse,
-    ),
-  );
-}
 
 export function hrisDownloadEmployeeDocumentResponseFromJSON(
   jsonString: string,

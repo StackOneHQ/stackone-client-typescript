@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export enum AccountingTaxRateResult2 {
   True = "true",
@@ -66,60 +61,11 @@ export const AccountingTaxRateResult2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AccountingTaxRateResult2);
 
 /** @internal */
-export const AccountingTaxRateResult2$outboundSchema: z.ZodNativeEnum<
-  typeof AccountingTaxRateResult2
-> = AccountingTaxRateResult2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRateResult2$ {
-  /** @deprecated use `AccountingTaxRateResult2$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRateResult2$inboundSchema;
-  /** @deprecated use `AccountingTaxRateResult2$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRateResult2$outboundSchema;
-}
-
-/** @internal */
 export const AccountingTaxRateResultActive$inboundSchema: z.ZodType<
   AccountingTaxRateResultActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), AccountingTaxRateResult2$inboundSchema]);
-
-/** @internal */
-export type AccountingTaxRateResultActive$Outbound = boolean | string;
-
-/** @internal */
-export const AccountingTaxRateResultActive$outboundSchema: z.ZodType<
-  AccountingTaxRateResultActive$Outbound,
-  z.ZodTypeDef,
-  AccountingTaxRateResultActive
-> = z.union([z.boolean(), AccountingTaxRateResult2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRateResultActive$ {
-  /** @deprecated use `AccountingTaxRateResultActive$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRateResultActive$inboundSchema;
-  /** @deprecated use `AccountingTaxRateResultActive$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRateResultActive$outboundSchema;
-  /** @deprecated use `AccountingTaxRateResultActive$Outbound` instead. */
-  export type Outbound = AccountingTaxRateResultActive$Outbound;
-}
-
-export function accountingTaxRateResultActiveToJSON(
-  accountingTaxRateResultActive: AccountingTaxRateResultActive,
-): string {
-  return JSON.stringify(
-    AccountingTaxRateResultActive$outboundSchema.parse(
-      accountingTaxRateResultActive,
-    ),
-  );
-}
 
 export function accountingTaxRateResultActiveFromJSON(
   jsonString: string,
@@ -153,62 +99,6 @@ export const AccountingTaxRateResultData$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type AccountingTaxRateResultData$Outbound = {
-  active?: boolean | string | null | undefined;
-  code?: string | null | undefined;
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  percentage?: number | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const AccountingTaxRateResultData$outboundSchema: z.ZodType<
-  AccountingTaxRateResultData$Outbound,
-  z.ZodTypeDef,
-  AccountingTaxRateResultData
-> = z.object({
-  active: z.nullable(
-    z.union([z.boolean(), AccountingTaxRateResult2$outboundSchema]),
-  ).optional(),
-  code: z.nullable(z.string()).optional(),
-  companyId: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  percentage: z.nullable(z.number()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    companyId: "company_id",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRateResultData$ {
-  /** @deprecated use `AccountingTaxRateResultData$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRateResultData$inboundSchema;
-  /** @deprecated use `AccountingTaxRateResultData$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRateResultData$outboundSchema;
-  /** @deprecated use `AccountingTaxRateResultData$Outbound` instead. */
-  export type Outbound = AccountingTaxRateResultData$Outbound;
-}
-
-export function accountingTaxRateResultDataToJSON(
-  accountingTaxRateResultData: AccountingTaxRateResultData,
-): string {
-  return JSON.stringify(
-    AccountingTaxRateResultData$outboundSchema.parse(
-      accountingTaxRateResultData,
-    ),
-  );
-}
-
 export function accountingTaxRateResultDataFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountingTaxRateResultData, SDKValidationError> {
@@ -229,44 +119,6 @@ export const AccountingTaxRateResult$inboundSchema: z.ZodType<
     .optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AccountingTaxRateResult$Outbound = {
-  data?: AccountingTaxRateResultData$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AccountingTaxRateResult$outboundSchema: z.ZodType<
-  AccountingTaxRateResult$Outbound,
-  z.ZodTypeDef,
-  AccountingTaxRateResult
-> = z.object({
-  data: z.nullable(z.lazy(() => AccountingTaxRateResultData$outboundSchema))
-    .optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingTaxRateResult$ {
-  /** @deprecated use `AccountingTaxRateResult$inboundSchema` instead. */
-  export const inboundSchema = AccountingTaxRateResult$inboundSchema;
-  /** @deprecated use `AccountingTaxRateResult$outboundSchema` instead. */
-  export const outboundSchema = AccountingTaxRateResult$outboundSchema;
-  /** @deprecated use `AccountingTaxRateResult$Outbound` instead. */
-  export type Outbound = AccountingTaxRateResult$Outbound;
-}
-
-export function accountingTaxRateResultToJSON(
-  accountingTaxRateResult: AccountingTaxRateResult,
-): string {
-  return JSON.stringify(
-    AccountingTaxRateResult$outboundSchema.parse(accountingTaxRateResult),
-  );
-}
 
 export function accountingTaxRateResultFromJSON(
   jsonString: string,

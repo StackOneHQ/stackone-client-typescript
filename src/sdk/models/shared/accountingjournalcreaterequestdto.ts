@@ -4,17 +4,9 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   CreateJournalLine,
-  CreateJournalLine$inboundSchema,
   CreateJournalLine$Outbound,
   CreateJournalLine$outboundSchema,
 } from "./createjournalline.js";
@@ -244,13 +236,6 @@ export type AccountingJournalCreateRequestDto = {
 };
 
 /** @internal */
-export const AccountingJournalCreateRequestDto4$inboundSchema: z.ZodType<
-  AccountingJournalCreateRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type AccountingJournalCreateRequestDto4$Outbound = {};
 
 /** @internal */
@@ -259,20 +244,6 @@ export const AccountingJournalCreateRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountingJournalCreateRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalCreateRequestDto4$ {
-  /** @deprecated use `AccountingJournalCreateRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalCreateRequestDto4$inboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDto4$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingJournalCreateRequestDto4$outboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDto4$Outbound` instead. */
-  export type Outbound = AccountingJournalCreateRequestDto4$Outbound;
-}
 
 export function accountingJournalCreateRequestDto4ToJSON(
   accountingJournalCreateRequestDto4: AccountingJournalCreateRequestDto4,
@@ -283,31 +254,6 @@ export function accountingJournalCreateRequestDto4ToJSON(
     ),
   );
 }
-
-export function accountingJournalCreateRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingJournalCreateRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingJournalCreateRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingJournalCreateRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountingJournalCreateRequestDtoSourceValue$inboundSchema:
-  z.ZodType<
-    AccountingJournalCreateRequestDtoSourceValue,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.string(),
-    z.number(),
-    z.boolean(),
-    z.lazy(() => AccountingJournalCreateRequestDto4$inboundSchema),
-    z.array(z.any()),
-  ]);
 
 /** @internal */
 export type AccountingJournalCreateRequestDtoSourceValue$Outbound =
@@ -331,21 +277,6 @@ export const AccountingJournalCreateRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalCreateRequestDtoSourceValue$ {
-  /** @deprecated use `AccountingJournalCreateRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingJournalCreateRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingJournalCreateRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = AccountingJournalCreateRequestDtoSourceValue$Outbound;
-}
-
 export function accountingJournalCreateRequestDtoSourceValueToJSON(
   accountingJournalCreateRequestDtoSourceValue:
     AccountingJournalCreateRequestDtoSourceValue,
@@ -357,33 +288,6 @@ export function accountingJournalCreateRequestDtoSourceValueToJSON(
   );
 }
 
-export function accountingJournalCreateRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AccountingJournalCreateRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingJournalCreateRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AccountingJournalCreateRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountingJournalCreateRequestDtoValue$inboundSchema: z.ZodType<
-  AccountingJournalCreateRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AccountingJournalCreateRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const AccountingJournalCreateRequestDtoValue$outboundSchema: z.ZodType<
   AccountingJournalCreateRequestDtoValueOpen,
@@ -393,42 +297,6 @@ export const AccountingJournalCreateRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(AccountingJournalCreateRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalCreateRequestDtoValue$ {
-  /** @deprecated use `AccountingJournalCreateRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingJournalCreateRequestDtoValue$inboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingJournalCreateRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const CurrencyCode$inboundSchema: z.ZodType<
-  CurrencyCode,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AccountingJournalCreateRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AccountingJournalCreateRequestDtoValue$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type CurrencyCode$Outbound = {
@@ -466,55 +334,9 @@ export const CurrencyCode$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CurrencyCode$ {
-  /** @deprecated use `CurrencyCode$inboundSchema` instead. */
-  export const inboundSchema = CurrencyCode$inboundSchema;
-  /** @deprecated use `CurrencyCode$outboundSchema` instead. */
-  export const outboundSchema = CurrencyCode$outboundSchema;
-  /** @deprecated use `CurrencyCode$Outbound` instead. */
-  export type Outbound = CurrencyCode$Outbound;
-}
-
 export function currencyCodeToJSON(currencyCode: CurrencyCode): string {
   return JSON.stringify(CurrencyCode$outboundSchema.parse(currencyCode));
 }
-
-export function currencyCodeFromJSON(
-  jsonString: string,
-): SafeParseResult<CurrencyCode, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CurrencyCode$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CurrencyCode' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountingJournalCreateRequestDto$inboundSchema: z.ZodType<
-  AccountingJournalCreateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  currency_code: z.nullable(z.lazy(() => CurrencyCode$inboundSchema))
-    .optional(),
-  exchange_rate: z.nullable(z.number()).optional(),
-  lines: z.nullable(z.array(CreateJournalLine$inboundSchema)).optional(),
-  memo: z.nullable(z.string()).optional(),
-  reference: z.nullable(z.string()).optional(),
-  transaction_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "currency_code": "currencyCode",
-    "exchange_rate": "exchangeRate",
-    "transaction_date": "transactionDate",
-  });
-});
 
 /** @internal */
 export type AccountingJournalCreateRequestDto$Outbound = {
@@ -548,20 +370,6 @@ export const AccountingJournalCreateRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalCreateRequestDto$ {
-  /** @deprecated use `AccountingJournalCreateRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AccountingJournalCreateRequestDto$inboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingJournalCreateRequestDto$outboundSchema;
-  /** @deprecated use `AccountingJournalCreateRequestDto$Outbound` instead. */
-  export type Outbound = AccountingJournalCreateRequestDto$Outbound;
-}
-
 export function accountingJournalCreateRequestDtoToJSON(
   accountingJournalCreateRequestDto: AccountingJournalCreateRequestDto,
 ): string {
@@ -569,15 +377,5 @@ export function accountingJournalCreateRequestDtoToJSON(
     AccountingJournalCreateRequestDto$outboundSchema.parse(
       accountingJournalCreateRequestDto,
     ),
-  );
-}
-
-export function accountingJournalCreateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingJournalCreateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AccountingJournalCreateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingJournalCreateRequestDto' from JSON`,
   );
 }

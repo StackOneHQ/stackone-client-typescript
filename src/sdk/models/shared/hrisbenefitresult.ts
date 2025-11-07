@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HRISBenefit,
-  HRISBenefit$inboundSchema,
-  HRISBenefit$Outbound,
-  HRISBenefit$outboundSchema,
-} from "./hrisbenefit.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HRISBenefit, HRISBenefit$inboundSchema } from "./hrisbenefit.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISBenefitResult = {
   data: HRISBenefit;
@@ -33,43 +23,6 @@ export const HRISBenefitResult$inboundSchema: z.ZodType<
   data: HRISBenefit$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISBenefitResult$Outbound = {
-  data: HRISBenefit$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISBenefitResult$outboundSchema: z.ZodType<
-  HRISBenefitResult$Outbound,
-  z.ZodTypeDef,
-  HRISBenefitResult
-> = z.object({
-  data: HRISBenefit$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISBenefitResult$ {
-  /** @deprecated use `HRISBenefitResult$inboundSchema` instead. */
-  export const inboundSchema = HRISBenefitResult$inboundSchema;
-  /** @deprecated use `HRISBenefitResult$outboundSchema` instead. */
-  export const outboundSchema = HRISBenefitResult$outboundSchema;
-  /** @deprecated use `HRISBenefitResult$Outbound` instead. */
-  export type Outbound = HRISBenefitResult$Outbound;
-}
-
-export function hrisBenefitResultToJSON(
-  hrisBenefitResult: HRISBenefitResult,
-): string {
-  return JSON.stringify(
-    HRISBenefitResult$outboundSchema.parse(hrisBenefitResult),
-  );
-}
 
 export function hrisBenefitResultFromJSON(
   jsonString: string,

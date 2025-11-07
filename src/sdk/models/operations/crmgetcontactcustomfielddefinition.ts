@@ -89,22 +89,6 @@ export type CrmGetContactCustomFieldDefinitionResponse = {
 };
 
 /** @internal */
-export const CrmGetContactCustomFieldDefinitionQueryParamFilter$inboundSchema:
-  z.ZodType<
-    CrmGetContactCustomFieldDefinitionQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type CrmGetContactCustomFieldDefinitionQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -124,22 +108,6 @@ export const CrmGetContactCustomFieldDefinitionQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetContactCustomFieldDefinitionQueryParamFilter$ {
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    CrmGetContactCustomFieldDefinitionQueryParamFilter$inboundSchema;
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    CrmGetContactCustomFieldDefinitionQueryParamFilter$outboundSchema;
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    CrmGetContactCustomFieldDefinitionQueryParamFilter$Outbound;
-}
-
 export function crmGetContactCustomFieldDefinitionQueryParamFilterToJSON(
   crmGetContactCustomFieldDefinitionQueryParamFilter:
     CrmGetContactCustomFieldDefinitionQueryParamFilter,
@@ -150,52 +118,6 @@ export function crmGetContactCustomFieldDefinitionQueryParamFilterToJSON(
     ),
   );
 }
-
-export function crmGetContactCustomFieldDefinitionQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CrmGetContactCustomFieldDefinitionQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CrmGetContactCustomFieldDefinitionQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CrmGetContactCustomFieldDefinitionQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const CrmGetContactCustomFieldDefinitionRequest$inboundSchema: z.ZodType<
-  CrmGetContactCustomFieldDefinitionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() =>
-      CrmGetContactCustomFieldDefinitionQueryParamFilter$inboundSchema
-    ),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type CrmGetContactCustomFieldDefinitionRequest$Outbound = {
@@ -244,21 +166,6 @@ export const CrmGetContactCustomFieldDefinitionRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetContactCustomFieldDefinitionRequest$ {
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CrmGetContactCustomFieldDefinitionRequest$inboundSchema;
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CrmGetContactCustomFieldDefinitionRequest$outboundSchema;
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionRequest$Outbound` instead. */
-  export type Outbound = CrmGetContactCustomFieldDefinitionRequest$Outbound;
-}
-
 export function crmGetContactCustomFieldDefinitionRequestToJSON(
   crmGetContactCustomFieldDefinitionRequest:
     CrmGetContactCustomFieldDefinitionRequest,
@@ -267,22 +174,6 @@ export function crmGetContactCustomFieldDefinitionRequestToJSON(
     CrmGetContactCustomFieldDefinitionRequest$outboundSchema.parse(
       crmGetContactCustomFieldDefinitionRequest,
     ),
-  );
-}
-
-export function crmGetContactCustomFieldDefinitionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CrmGetContactCustomFieldDefinitionRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CrmGetContactCustomFieldDefinitionRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CrmGetContactCustomFieldDefinitionRequest' from JSON`,
   );
 }
 
@@ -307,69 +198,6 @@ export const CrmGetContactCustomFieldDefinitionResponse$inboundSchema:
         "RawResponse": "rawResponse",
       });
     });
-
-/** @internal */
-export type CrmGetContactCustomFieldDefinitionResponse$Outbound = {
-  ContentType: string;
-  CustomFieldDefinitionResultApiModel?:
-    | shared.CustomFieldDefinitionResultApiModel$Outbound
-    | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmGetContactCustomFieldDefinitionResponse$outboundSchema:
-  z.ZodType<
-    CrmGetContactCustomFieldDefinitionResponse$Outbound,
-    z.ZodTypeDef,
-    CrmGetContactCustomFieldDefinitionResponse
-  > = z.object({
-    contentType: z.string(),
-    customFieldDefinitionResultApiModel: shared
-      .CustomFieldDefinitionResultApiModel$outboundSchema.optional(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      customFieldDefinitionResultApiModel:
-        "CustomFieldDefinitionResultApiModel",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetContactCustomFieldDefinitionResponse$ {
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    CrmGetContactCustomFieldDefinitionResponse$inboundSchema;
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    CrmGetContactCustomFieldDefinitionResponse$outboundSchema;
-  /** @deprecated use `CrmGetContactCustomFieldDefinitionResponse$Outbound` instead. */
-  export type Outbound = CrmGetContactCustomFieldDefinitionResponse$Outbound;
-}
-
-export function crmGetContactCustomFieldDefinitionResponseToJSON(
-  crmGetContactCustomFieldDefinitionResponse:
-    CrmGetContactCustomFieldDefinitionResponse,
-): string {
-  return JSON.stringify(
-    CrmGetContactCustomFieldDefinitionResponse$outboundSchema.parse(
-      crmGetContactCustomFieldDefinitionResponse,
-    ),
-  );
-}
 
 export function crmGetContactCustomFieldDefinitionResponseFromJSON(
   jsonString: string,

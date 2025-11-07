@@ -39,52 +39,6 @@ export const CreateAssessmentOrderResult$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type CreateAssessmentOrderResult$Outbound = {
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  test_url?: string | null | undefined;
-};
-
-/** @internal */
-export const CreateAssessmentOrderResult$outboundSchema: z.ZodType<
-  CreateAssessmentOrderResult$Outbound,
-  z.ZodTypeDef,
-  CreateAssessmentOrderResult
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  testUrl: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    testUrl: "test_url",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAssessmentOrderResult$ {
-  /** @deprecated use `CreateAssessmentOrderResult$inboundSchema` instead. */
-  export const inboundSchema = CreateAssessmentOrderResult$inboundSchema;
-  /** @deprecated use `CreateAssessmentOrderResult$outboundSchema` instead. */
-  export const outboundSchema = CreateAssessmentOrderResult$outboundSchema;
-  /** @deprecated use `CreateAssessmentOrderResult$Outbound` instead. */
-  export type Outbound = CreateAssessmentOrderResult$Outbound;
-}
-
-export function createAssessmentOrderResultToJSON(
-  createAssessmentOrderResult: CreateAssessmentOrderResult,
-): string {
-  return JSON.stringify(
-    CreateAssessmentOrderResult$outboundSchema.parse(
-      createAssessmentOrderResult,
-    ),
-  );
-}
-
 export function createAssessmentOrderResultFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAssessmentOrderResult, SDKValidationError> {

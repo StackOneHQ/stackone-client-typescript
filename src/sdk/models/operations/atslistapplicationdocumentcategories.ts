@@ -86,22 +86,6 @@ export type AtsListApplicationDocumentCategoriesResponse = {
 };
 
 /** @internal */
-export const AtsListApplicationDocumentCategoriesQueryParamFilter$inboundSchema:
-  z.ZodType<
-    AtsListApplicationDocumentCategoriesQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type AtsListApplicationDocumentCategoriesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -121,22 +105,6 @@ export const AtsListApplicationDocumentCategoriesQueryParamFilter$outboundSchema
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationDocumentCategoriesQueryParamFilter$ {
-  /** @deprecated use `AtsListApplicationDocumentCategoriesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationDocumentCategoriesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListApplicationDocumentCategoriesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationDocumentCategoriesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListApplicationDocumentCategoriesQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    AtsListApplicationDocumentCategoriesQueryParamFilter$Outbound;
-}
-
 export function atsListApplicationDocumentCategoriesQueryParamFilterToJSON(
   atsListApplicationDocumentCategoriesQueryParamFilter:
     AtsListApplicationDocumentCategoriesQueryParamFilter,
@@ -147,52 +115,6 @@ export function atsListApplicationDocumentCategoriesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListApplicationDocumentCategoriesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationDocumentCategoriesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationDocumentCategoriesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListApplicationDocumentCategoriesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListApplicationDocumentCategoriesRequest$inboundSchema:
-  z.ZodType<
-    AtsListApplicationDocumentCategoriesRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(
-      z.lazy(() =>
-        AtsListApplicationDocumentCategoriesQueryParamFilter$inboundSchema
-      ),
-    ).optional(),
-    next: z.nullable(z.string()).optional(),
-    page: z.nullable(z.string()).optional(),
-    page_size: z.nullable(z.string()).optional(),
-    proxy: z.nullable(z.record(z.any())).optional(),
-    raw: z.nullable(z.boolean()).optional(),
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "page_size": "pageSize",
-      "updated_after": "updatedAfter",
-      "x-account-id": "xAccountId",
-    });
-  });
 
 /** @internal */
 export type AtsListApplicationDocumentCategoriesRequest$Outbound = {
@@ -239,21 +161,6 @@ export const AtsListApplicationDocumentCategoriesRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationDocumentCategoriesRequest$ {
-  /** @deprecated use `AtsListApplicationDocumentCategoriesRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationDocumentCategoriesRequest$inboundSchema;
-  /** @deprecated use `AtsListApplicationDocumentCategoriesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationDocumentCategoriesRequest$outboundSchema;
-  /** @deprecated use `AtsListApplicationDocumentCategoriesRequest$Outbound` instead. */
-  export type Outbound = AtsListApplicationDocumentCategoriesRequest$Outbound;
-}
-
 export function atsListApplicationDocumentCategoriesRequestToJSON(
   atsListApplicationDocumentCategoriesRequest:
     AtsListApplicationDocumentCategoriesRequest,
@@ -262,22 +169,6 @@ export function atsListApplicationDocumentCategoriesRequestToJSON(
     AtsListApplicationDocumentCategoriesRequest$outboundSchema.parse(
       atsListApplicationDocumentCategoriesRequest,
     ),
-  );
-}
-
-export function atsListApplicationDocumentCategoriesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationDocumentCategoriesRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationDocumentCategoriesRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListApplicationDocumentCategoriesRequest' from JSON`,
   );
 }
 
@@ -303,65 +194,6 @@ export const AtsListApplicationDocumentCategoriesResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type AtsListApplicationDocumentCategoriesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ReferencePaginated?: shared.ReferencePaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListApplicationDocumentCategoriesResponse$outboundSchema:
-  z.ZodType<
-    AtsListApplicationDocumentCategoriesResponse$Outbound,
-    z.ZodTypeDef,
-    AtsListApplicationDocumentCategoriesResponse
-  > = z.object({
-    contentType: z.string(),
-    headers: z.record(z.array(z.string())),
-    referencePaginated: shared.ReferencePaginated$outboundSchema.optional(),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      headers: "Headers",
-      referencePaginated: "ReferencePaginated",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationDocumentCategoriesResponse$ {
-  /** @deprecated use `AtsListApplicationDocumentCategoriesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationDocumentCategoriesResponse$inboundSchema;
-  /** @deprecated use `AtsListApplicationDocumentCategoriesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationDocumentCategoriesResponse$outboundSchema;
-  /** @deprecated use `AtsListApplicationDocumentCategoriesResponse$Outbound` instead. */
-  export type Outbound = AtsListApplicationDocumentCategoriesResponse$Outbound;
-}
-
-export function atsListApplicationDocumentCategoriesResponseToJSON(
-  atsListApplicationDocumentCategoriesResponse:
-    AtsListApplicationDocumentCategoriesResponse,
-): string {
-  return JSON.stringify(
-    AtsListApplicationDocumentCategoriesResponse$outboundSchema.parse(
-      atsListApplicationDocumentCategoriesResponse,
-    ),
-  );
-}
 
 export function atsListApplicationDocumentCategoriesResponseFromJSON(
   jsonString: string,

@@ -50,23 +50,6 @@ export type HrisGetTimeOffPolicyResponse = {
 };
 
 /** @internal */
-export const HrisGetTimeOffPolicyRequest$inboundSchema: z.ZodType<
-  HrisGetTimeOffPolicyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetTimeOffPolicyRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const HrisGetTimeOffPolicyRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTimeOffPolicyRequest$ {
-  /** @deprecated use `HrisGetTimeOffPolicyRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTimeOffPolicyRequest$inboundSchema;
-  /** @deprecated use `HrisGetTimeOffPolicyRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTimeOffPolicyRequest$outboundSchema;
-  /** @deprecated use `HrisGetTimeOffPolicyRequest$Outbound` instead. */
-  export type Outbound = HrisGetTimeOffPolicyRequest$Outbound;
-}
-
 export function hrisGetTimeOffPolicyRequestToJSON(
   hrisGetTimeOffPolicyRequest: HrisGetTimeOffPolicyRequest,
 ): string {
@@ -112,16 +82,6 @@ export function hrisGetTimeOffPolicyRequestToJSON(
     HrisGetTimeOffPolicyRequest$outboundSchema.parse(
       hrisGetTimeOffPolicyRequest,
     ),
-  );
-}
-
-export function hrisGetTimeOffPolicyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetTimeOffPolicyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetTimeOffPolicyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetTimeOffPolicyRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const HrisGetTimeOffPolicyResponse$inboundSchema: z.ZodType<
     "TimeOffPolicyResult": "timeOffPolicyResult",
   });
 });
-
-/** @internal */
-export type HrisGetTimeOffPolicyResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TimeOffPolicyResult?: shared.TimeOffPolicyResult$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisGetTimeOffPolicyResponse$outboundSchema: z.ZodType<
-  HrisGetTimeOffPolicyResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetTimeOffPolicyResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  timeOffPolicyResult: shared.TimeOffPolicyResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    timeOffPolicyResult: "TimeOffPolicyResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetTimeOffPolicyResponse$ {
-  /** @deprecated use `HrisGetTimeOffPolicyResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetTimeOffPolicyResponse$inboundSchema;
-  /** @deprecated use `HrisGetTimeOffPolicyResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetTimeOffPolicyResponse$outboundSchema;
-  /** @deprecated use `HrisGetTimeOffPolicyResponse$Outbound` instead. */
-  export type Outbound = HrisGetTimeOffPolicyResponse$Outbound;
-}
-
-export function hrisGetTimeOffPolicyResponseToJSON(
-  hrisGetTimeOffPolicyResponse: HrisGetTimeOffPolicyResponse,
-): string {
-  return JSON.stringify(
-    HrisGetTimeOffPolicyResponse$outboundSchema.parse(
-      hrisGetTimeOffPolicyResponse,
-    ),
-  );
-}
 
 export function hrisGetTimeOffPolicyResponseFromJSON(
   jsonString: string,

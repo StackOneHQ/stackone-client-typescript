@@ -50,23 +50,6 @@ export type CrmGetListResponse = {
 };
 
 /** @internal */
-export const CrmGetListRequest$inboundSchema: z.ZodType<
-  CrmGetListRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type CrmGetListRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const CrmGetListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetListRequest$ {
-  /** @deprecated use `CrmGetListRequest$inboundSchema` instead. */
-  export const inboundSchema = CrmGetListRequest$inboundSchema;
-  /** @deprecated use `CrmGetListRequest$outboundSchema` instead. */
-  export const outboundSchema = CrmGetListRequest$outboundSchema;
-  /** @deprecated use `CrmGetListRequest$Outbound` instead. */
-  export type Outbound = CrmGetListRequest$Outbound;
-}
-
 export function crmGetListRequestToJSON(
   crmGetListRequest: CrmGetListRequest,
 ): string {
   return JSON.stringify(
     CrmGetListRequest$outboundSchema.parse(crmGetListRequest),
-  );
-}
-
-export function crmGetListRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmGetListRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmGetListRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmGetListRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const CrmGetListResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type CrmGetListResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ListResult?: shared.ListResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmGetListResponse$outboundSchema: z.ZodType<
-  CrmGetListResponse$Outbound,
-  z.ZodTypeDef,
-  CrmGetListResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  listResult: shared.ListResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    listResult: "ListResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetListResponse$ {
-  /** @deprecated use `CrmGetListResponse$inboundSchema` instead. */
-  export const inboundSchema = CrmGetListResponse$inboundSchema;
-  /** @deprecated use `CrmGetListResponse$outboundSchema` instead. */
-  export const outboundSchema = CrmGetListResponse$outboundSchema;
-  /** @deprecated use `CrmGetListResponse$Outbound` instead. */
-  export type Outbound = CrmGetListResponse$Outbound;
-}
-
-export function crmGetListResponseToJSON(
-  crmGetListResponse: CrmGetListResponse,
-): string {
-  return JSON.stringify(
-    CrmGetListResponse$outboundSchema.parse(crmGetListResponse),
-  );
-}
 
 export function crmGetListResponseFromJSON(
   jsonString: string,

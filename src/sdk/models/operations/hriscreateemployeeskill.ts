@@ -39,23 +39,6 @@ export type HrisCreateEmployeeSkillResponse = {
 };
 
 /** @internal */
-export const HrisCreateEmployeeSkillRequest$inboundSchema: z.ZodType<
-  HrisCreateEmployeeSkillRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  EntitySkillsCreateRequestDto:
-    shared.EntitySkillsCreateRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "EntitySkillsCreateRequestDto": "entitySkillsCreateRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisCreateEmployeeSkillRequest$Outbound = {
   EntitySkillsCreateRequestDto: shared.EntitySkillsCreateRequestDto$Outbound;
   id: string;
@@ -79,19 +62,6 @@ export const HrisCreateEmployeeSkillRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateEmployeeSkillRequest$ {
-  /** @deprecated use `HrisCreateEmployeeSkillRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateEmployeeSkillRequest$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeSkillRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateEmployeeSkillRequest$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeSkillRequest$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeSkillRequest$Outbound;
-}
-
 export function hrisCreateEmployeeSkillRequestToJSON(
   hrisCreateEmployeeSkillRequest: HrisCreateEmployeeSkillRequest,
 ): string {
@@ -99,16 +69,6 @@ export function hrisCreateEmployeeSkillRequestToJSON(
     HrisCreateEmployeeSkillRequest$outboundSchema.parse(
       hrisCreateEmployeeSkillRequest,
     ),
-  );
-}
-
-export function hrisCreateEmployeeSkillRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateEmployeeSkillRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisCreateEmployeeSkillRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateEmployeeSkillRequest' from JSON`,
   );
 }
 
@@ -133,61 +93,6 @@ export const HrisCreateEmployeeSkillResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisCreateEmployeeSkillResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisCreateEmployeeSkillResponse$outboundSchema: z.ZodType<
-  HrisCreateEmployeeSkillResponse$Outbound,
-  z.ZodTypeDef,
-  HrisCreateEmployeeSkillResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateEmployeeSkillResponse$ {
-  /** @deprecated use `HrisCreateEmployeeSkillResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisCreateEmployeeSkillResponse$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeSkillResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisCreateEmployeeSkillResponse$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeSkillResponse$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeSkillResponse$Outbound;
-}
-
-export function hrisCreateEmployeeSkillResponseToJSON(
-  hrisCreateEmployeeSkillResponse: HrisCreateEmployeeSkillResponse,
-): string {
-  return JSON.stringify(
-    HrisCreateEmployeeSkillResponse$outboundSchema.parse(
-      hrisCreateEmployeeSkillResponse,
-    ),
-  );
-}
 
 export function hrisCreateEmployeeSkillResponseFromJSON(
   jsonString: string,

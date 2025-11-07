@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Answer,
-  Answer$inboundSchema,
-  Answer$Outbound,
-  Answer$outboundSchema,
-} from "./answer.js";
+import { Answer, Answer$inboundSchema } from "./answer.js";
 
 export type Questionnaire = {
   answers?: Array<Answer> | null | undefined;
@@ -40,45 +35,6 @@ export const Questionnaire$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type Questionnaire$Outbound = {
-  answers?: Array<Answer$Outbound> | null | undefined;
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Questionnaire$outboundSchema: z.ZodType<
-  Questionnaire$Outbound,
-  z.ZodTypeDef,
-  Questionnaire
-> = z.object({
-  answers: z.nullable(z.array(Answer$outboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Questionnaire$ {
-  /** @deprecated use `Questionnaire$inboundSchema` instead. */
-  export const inboundSchema = Questionnaire$inboundSchema;
-  /** @deprecated use `Questionnaire$outboundSchema` instead. */
-  export const outboundSchema = Questionnaire$outboundSchema;
-  /** @deprecated use `Questionnaire$Outbound` instead. */
-  export type Outbound = Questionnaire$Outbound;
-}
-
-export function questionnaireToJSON(questionnaire: Questionnaire): string {
-  return JSON.stringify(Questionnaire$outboundSchema.parse(questionnaire));
-}
 
 export function questionnaireFromJSON(
   jsonString: string,

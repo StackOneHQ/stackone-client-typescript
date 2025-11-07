@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Employee,
-  Employee$inboundSchema,
-  Employee$Outbound,
-  Employee$outboundSchema,
-} from "./employee.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Employee, Employee$inboundSchema } from "./employee.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type EmployeesPaginated = {
   data: Array<Employee>;
@@ -45,51 +35,6 @@ export const EmployeesPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type EmployeesPaginated$Outbound = {
-  data: Array<Employee$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const EmployeesPaginated$outboundSchema: z.ZodType<
-  EmployeesPaginated$Outbound,
-  z.ZodTypeDef,
-  EmployeesPaginated
-> = z.object({
-  data: z.array(Employee$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeesPaginated$ {
-  /** @deprecated use `EmployeesPaginated$inboundSchema` instead. */
-  export const inboundSchema = EmployeesPaginated$inboundSchema;
-  /** @deprecated use `EmployeesPaginated$outboundSchema` instead. */
-  export const outboundSchema = EmployeesPaginated$outboundSchema;
-  /** @deprecated use `EmployeesPaginated$Outbound` instead. */
-  export type Outbound = EmployeesPaginated$Outbound;
-}
-
-export function employeesPaginatedToJSON(
-  employeesPaginated: EmployeesPaginated,
-): string {
-  return JSON.stringify(
-    EmployeesPaginated$outboundSchema.parse(employeesPaginated),
-  );
-}
 
 export function employeesPaginatedFromJSON(
   jsonString: string,

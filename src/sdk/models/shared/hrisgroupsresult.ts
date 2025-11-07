@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HRISGroup,
-  HRISGroup$inboundSchema,
-  HRISGroup$Outbound,
-  HRISGroup$outboundSchema,
-} from "./hrisgroup.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HRISGroup, HRISGroup$inboundSchema } from "./hrisgroup.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISGroupsResult = {
   data: HRISGroup;
@@ -33,43 +23,6 @@ export const HRISGroupsResult$inboundSchema: z.ZodType<
   data: HRISGroup$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISGroupsResult$Outbound = {
-  data: HRISGroup$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISGroupsResult$outboundSchema: z.ZodType<
-  HRISGroupsResult$Outbound,
-  z.ZodTypeDef,
-  HRISGroupsResult
-> = z.object({
-  data: HRISGroup$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISGroupsResult$ {
-  /** @deprecated use `HRISGroupsResult$inboundSchema` instead. */
-  export const inboundSchema = HRISGroupsResult$inboundSchema;
-  /** @deprecated use `HRISGroupsResult$outboundSchema` instead. */
-  export const outboundSchema = HRISGroupsResult$outboundSchema;
-  /** @deprecated use `HRISGroupsResult$Outbound` instead. */
-  export type Outbound = HRISGroupsResult$Outbound;
-}
-
-export function hrisGroupsResultToJSON(
-  hrisGroupsResult: HRISGroupsResult,
-): string {
-  return JSON.stringify(
-    HRISGroupsResult$outboundSchema.parse(hrisGroupsResult),
-  );
-}
 
 export function hrisGroupsResultFromJSON(
   jsonString: string,

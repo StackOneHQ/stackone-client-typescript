@@ -10,8 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MessagingAttachment,
   MessagingAttachment$inboundSchema,
-  MessagingAttachment$Outbound,
-  MessagingAttachment$outboundSchema,
 } from "./messagingattachment.js";
 
 export enum MessagingMessage2 {
@@ -125,58 +123,11 @@ export const MessagingMessage2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MessagingMessage2);
 
 /** @internal */
-export const MessagingMessage2$outboundSchema: z.ZodNativeEnum<
-  typeof MessagingMessage2
-> = MessagingMessage2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessage2$ {
-  /** @deprecated use `MessagingMessage2$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessage2$inboundSchema;
-  /** @deprecated use `MessagingMessage2$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessage2$outboundSchema;
-}
-
-/** @internal */
 export const MessagingMessageActive$inboundSchema: z.ZodType<
   MessagingMessageActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), MessagingMessage2$inboundSchema]);
-
-/** @internal */
-export type MessagingMessageActive$Outbound = boolean | string;
-
-/** @internal */
-export const MessagingMessageActive$outboundSchema: z.ZodType<
-  MessagingMessageActive$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageActive
-> = z.union([z.boolean(), MessagingMessage2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageActive$ {
-  /** @deprecated use `MessagingMessageActive$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageActive$inboundSchema;
-  /** @deprecated use `MessagingMessageActive$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageActive$outboundSchema;
-  /** @deprecated use `MessagingMessageActive$Outbound` instead. */
-  export type Outbound = MessagingMessageActive$Outbound;
-}
-
-export function messagingMessageActiveToJSON(
-  messagingMessageActive: MessagingMessageActive,
-): string {
-  return JSON.stringify(
-    MessagingMessageActive$outboundSchema.parse(messagingMessageActive),
-  );
-}
 
 export function messagingMessageActiveFromJSON(
   jsonString: string,
@@ -217,65 +168,6 @@ export const Author$inboundSchema: z.ZodType<Author, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Author$Outbound = {
-  active?: boolean | string | null | undefined;
-  created_at?: string | null | undefined;
-  email?: string | null | undefined;
-  external_reference?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  phone_number?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Author$outboundSchema: z.ZodType<
-  Author$Outbound,
-  z.ZodTypeDef,
-  Author
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), MessagingMessage2$outboundSchema]))
-    .optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  email: z.nullable(z.string()).optional(),
-  externalReference: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  phoneNumber: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    externalReference: "external_reference",
-    phoneNumber: "phone_number",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Author$ {
-  /** @deprecated use `Author$inboundSchema` instead. */
-  export const inboundSchema = Author$inboundSchema;
-  /** @deprecated use `Author$outboundSchema` instead. */
-  export const outboundSchema = Author$outboundSchema;
-  /** @deprecated use `Author$Outbound` instead. */
-  export type Outbound = Author$Outbound;
-}
-
-export function authorToJSON(author: Author): string {
-  return JSON.stringify(Author$outboundSchema.parse(author));
-}
-
 export function authorFromJSON(
   jsonString: string,
 ): SafeParseResult<Author, SDKValidationError> {
@@ -295,43 +187,6 @@ export const MessagingMessageContent$inboundSchema: z.ZodType<
   html: z.nullable(z.string()).optional(),
   plain: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type MessagingMessageContent$Outbound = {
-  html?: string | null | undefined;
-  plain?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingMessageContent$outboundSchema: z.ZodType<
-  MessagingMessageContent$Outbound,
-  z.ZodTypeDef,
-  MessagingMessageContent
-> = z.object({
-  html: z.nullable(z.string()).optional(),
-  plain: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessageContent$ {
-  /** @deprecated use `MessagingMessageContent$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessageContent$inboundSchema;
-  /** @deprecated use `MessagingMessageContent$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessageContent$outboundSchema;
-  /** @deprecated use `MessagingMessageContent$Outbound` instead. */
-  export type Outbound = MessagingMessageContent$Outbound;
-}
-
-export function messagingMessageContentToJSON(
-  messagingMessageContent: MessagingMessageContent,
-): string {
-  return JSON.stringify(
-    MessagingMessageContent$outboundSchema.parse(messagingMessageContent),
-  );
-}
 
 export function messagingMessageContentFromJSON(
   jsonString: string,
@@ -371,64 +226,6 @@ export const MessagingMessage$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type MessagingMessage$Outbound = {
-  attachments?: Array<MessagingAttachment$Outbound> | null | undefined;
-  author?: Author$Outbound | null | undefined;
-  content?: MessagingMessageContent$Outbound | null | undefined;
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  parent_message_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const MessagingMessage$outboundSchema: z.ZodType<
-  MessagingMessage$Outbound,
-  z.ZodTypeDef,
-  MessagingMessage
-> = z.object({
-  attachments: z.nullable(z.array(MessagingAttachment$outboundSchema))
-    .optional(),
-  author: z.nullable(z.lazy(() => Author$outboundSchema)).optional(),
-  content: z.nullable(z.lazy(() => MessagingMessageContent$outboundSchema))
-    .optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  parentMessageId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    parentMessageId: "parent_message_id",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingMessage$ {
-  /** @deprecated use `MessagingMessage$inboundSchema` instead. */
-  export const inboundSchema = MessagingMessage$inboundSchema;
-  /** @deprecated use `MessagingMessage$outboundSchema` instead. */
-  export const outboundSchema = MessagingMessage$outboundSchema;
-  /** @deprecated use `MessagingMessage$Outbound` instead. */
-  export type Outbound = MessagingMessage$Outbound;
-}
-
-export function messagingMessageToJSON(
-  messagingMessage: MessagingMessage,
-): string {
-  return JSON.stringify(
-    MessagingMessage$outboundSchema.parse(messagingMessage),
-  );
-}
 
 export function messagingMessageFromJSON(
   jsonString: string,

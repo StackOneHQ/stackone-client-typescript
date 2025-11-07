@@ -30,40 +30,6 @@ export const Tag$inboundSchema: z.ZodType<Tag, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Tag$Outbound = {
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Tag$outboundSchema: z.ZodType<Tag$Outbound, z.ZodTypeDef, Tag> = z
-  .object({
-    name: z.nullable(z.string()).optional(),
-    remoteId: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      remoteId: "remote_id",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Tag$ {
-  /** @deprecated use `Tag$inboundSchema` instead. */
-  export const inboundSchema = Tag$inboundSchema;
-  /** @deprecated use `Tag$outboundSchema` instead. */
-  export const outboundSchema = Tag$outboundSchema;
-  /** @deprecated use `Tag$Outbound` instead. */
-  export type Outbound = Tag$Outbound;
-}
-
-export function tagToJSON(tag: Tag): string {
-  return JSON.stringify(Tag$outboundSchema.parse(tag));
-}
-
 export function tagFromJSON(
   jsonString: string,
 ): SafeParseResult<Tag, SDKValidationError> {

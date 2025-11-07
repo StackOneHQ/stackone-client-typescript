@@ -50,23 +50,6 @@ export type AtsGetDepartmentResponse = {
 };
 
 /** @internal */
-export const AtsGetDepartmentRequest$inboundSchema: z.ZodType<
-  AtsGetDepartmentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetDepartmentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const AtsGetDepartmentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetDepartmentRequest$ {
-  /** @deprecated use `AtsGetDepartmentRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetDepartmentRequest$inboundSchema;
-  /** @deprecated use `AtsGetDepartmentRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetDepartmentRequest$outboundSchema;
-  /** @deprecated use `AtsGetDepartmentRequest$Outbound` instead. */
-  export type Outbound = AtsGetDepartmentRequest$Outbound;
-}
-
 export function atsGetDepartmentRequestToJSON(
   atsGetDepartmentRequest: AtsGetDepartmentRequest,
 ): string {
   return JSON.stringify(
     AtsGetDepartmentRequest$outboundSchema.parse(atsGetDepartmentRequest),
-  );
-}
-
-export function atsGetDepartmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetDepartmentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetDepartmentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetDepartmentRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const AtsGetDepartmentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetDepartmentResponse$Outbound = {
-  ContentType: string;
-  DepartmentResult?: shared.DepartmentResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetDepartmentResponse$outboundSchema: z.ZodType<
-  AtsGetDepartmentResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetDepartmentResponse
-> = z.object({
-  contentType: z.string(),
-  departmentResult: shared.DepartmentResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    departmentResult: "DepartmentResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetDepartmentResponse$ {
-  /** @deprecated use `AtsGetDepartmentResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetDepartmentResponse$inboundSchema;
-  /** @deprecated use `AtsGetDepartmentResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetDepartmentResponse$outboundSchema;
-  /** @deprecated use `AtsGetDepartmentResponse$Outbound` instead. */
-  export type Outbound = AtsGetDepartmentResponse$Outbound;
-}
-
-export function atsGetDepartmentResponseToJSON(
-  atsGetDepartmentResponse: AtsGetDepartmentResponse,
-): string {
-  return JSON.stringify(
-    AtsGetDepartmentResponse$outboundSchema.parse(atsGetDepartmentResponse),
-  );
-}
 
 export function atsGetDepartmentResponseFromJSON(
   jsonString: string,

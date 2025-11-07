@@ -62,36 +62,3 @@ export const NotFoundResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type NotFoundResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const NotFoundResponse$outboundSchema: z.ZodType<
-  NotFoundResponse$Outbound,
-  z.ZodTypeDef,
-  NotFoundResponse
-> = z.instanceof(NotFoundResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFoundResponse$ {
-  /** @deprecated use `NotFoundResponse$inboundSchema` instead. */
-  export const inboundSchema = NotFoundResponse$inboundSchema;
-  /** @deprecated use `NotFoundResponse$outboundSchema` instead. */
-  export const outboundSchema = NotFoundResponse$outboundSchema;
-  /** @deprecated use `NotFoundResponse$Outbound` instead. */
-  export type Outbound = NotFoundResponse$Outbound;
-}

@@ -39,23 +39,6 @@ export type AtsRejectApplicationResponse = {
 };
 
 /** @internal */
-export const AtsRejectApplicationRequest$inboundSchema: z.ZodType<
-  AtsRejectApplicationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsRejectApplicationRequestDto:
-    shared.AtsRejectApplicationRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsRejectApplicationRequestDto": "atsRejectApplicationRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsRejectApplicationRequest$Outbound = {
   AtsRejectApplicationRequestDto:
     shared.AtsRejectApplicationRequestDto$Outbound;
@@ -80,19 +63,6 @@ export const AtsRejectApplicationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsRejectApplicationRequest$ {
-  /** @deprecated use `AtsRejectApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsRejectApplicationRequest$inboundSchema;
-  /** @deprecated use `AtsRejectApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsRejectApplicationRequest$outboundSchema;
-  /** @deprecated use `AtsRejectApplicationRequest$Outbound` instead. */
-  export type Outbound = AtsRejectApplicationRequest$Outbound;
-}
-
 export function atsRejectApplicationRequestToJSON(
   atsRejectApplicationRequest: AtsRejectApplicationRequest,
 ): string {
@@ -100,16 +70,6 @@ export function atsRejectApplicationRequestToJSON(
     AtsRejectApplicationRequest$outboundSchema.parse(
       atsRejectApplicationRequest,
     ),
-  );
-}
-
-export function atsRejectApplicationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsRejectApplicationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsRejectApplicationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsRejectApplicationRequest' from JSON`,
   );
 }
 
@@ -135,62 +95,6 @@ export const AtsRejectApplicationResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsRejectApplicationResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  RejectApplicationResult?: shared.RejectApplicationResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsRejectApplicationResponse$outboundSchema: z.ZodType<
-  AtsRejectApplicationResponse$Outbound,
-  z.ZodTypeDef,
-  AtsRejectApplicationResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  rejectApplicationResult: shared.RejectApplicationResult$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    rejectApplicationResult: "RejectApplicationResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsRejectApplicationResponse$ {
-  /** @deprecated use `AtsRejectApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsRejectApplicationResponse$inboundSchema;
-  /** @deprecated use `AtsRejectApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsRejectApplicationResponse$outboundSchema;
-  /** @deprecated use `AtsRejectApplicationResponse$Outbound` instead. */
-  export type Outbound = AtsRejectApplicationResponse$Outbound;
-}
-
-export function atsRejectApplicationResponseToJSON(
-  atsRejectApplicationResponse: AtsRejectApplicationResponse,
-): string {
-  return JSON.stringify(
-    AtsRejectApplicationResponse$outboundSchema.parse(
-      atsRejectApplicationResponse,
-    ),
-  );
-}
 
 export function atsRejectApplicationResponseFromJSON(
   jsonString: string,

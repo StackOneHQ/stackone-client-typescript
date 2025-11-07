@@ -91,24 +91,6 @@ export type LmsListUsersResponse = {
 };
 
 /** @internal */
-export const LmsListUsersQueryParamFilter$inboundSchema: z.ZodType<
-  LmsListUsersQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  external_reference: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "external_reference": "externalReference",
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type LmsListUsersQueryParamFilter$Outbound = {
   email?: string | null | undefined;
   external_reference?: string | null | undefined;
@@ -131,19 +113,6 @@ export const LmsListUsersQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListUsersQueryParamFilter$ {
-  /** @deprecated use `LmsListUsersQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = LmsListUsersQueryParamFilter$inboundSchema;
-  /** @deprecated use `LmsListUsersQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = LmsListUsersQueryParamFilter$outboundSchema;
-  /** @deprecated use `LmsListUsersQueryParamFilter$Outbound` instead. */
-  export type Outbound = LmsListUsersQueryParamFilter$Outbound;
-}
-
 export function lmsListUsersQueryParamFilterToJSON(
   lmsListUsersQueryParamFilter: LmsListUsersQueryParamFilter,
 ): string {
@@ -153,42 +122,6 @@ export function lmsListUsersQueryParamFilterToJSON(
     ),
   );
 }
-
-export function lmsListUsersQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListUsersQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListUsersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListUsersQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const LmsListUsersRequest$inboundSchema: z.ZodType<
-  LmsListUsersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(z.lazy(() => LmsListUsersQueryParamFilter$inboundSchema))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type LmsListUsersRequest$Outbound = {
@@ -227,34 +160,11 @@ export const LmsListUsersRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListUsersRequest$ {
-  /** @deprecated use `LmsListUsersRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsListUsersRequest$inboundSchema;
-  /** @deprecated use `LmsListUsersRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsListUsersRequest$outboundSchema;
-  /** @deprecated use `LmsListUsersRequest$Outbound` instead. */
-  export type Outbound = LmsListUsersRequest$Outbound;
-}
-
 export function lmsListUsersRequestToJSON(
   lmsListUsersRequest: LmsListUsersRequest,
 ): string {
   return JSON.stringify(
     LmsListUsersRequest$outboundSchema.parse(lmsListUsersRequest),
-  );
-}
-
-export function lmsListUsersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsListUsersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsListUsersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsListUsersRequest' from JSON`,
   );
 }
 
@@ -279,59 +189,6 @@ export const LmsListUsersResponse$inboundSchema: z.ZodType<
     "UsersPaginated": "usersPaginated",
   });
 });
-
-/** @internal */
-export type LmsListUsersResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UsersPaginated?: shared.UsersPaginated$Outbound | undefined;
-};
-
-/** @internal */
-export const LmsListUsersResponse$outboundSchema: z.ZodType<
-  LmsListUsersResponse$Outbound,
-  z.ZodTypeDef,
-  LmsListUsersResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  usersPaginated: shared.UsersPaginated$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    usersPaginated: "UsersPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsListUsersResponse$ {
-  /** @deprecated use `LmsListUsersResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsListUsersResponse$inboundSchema;
-  /** @deprecated use `LmsListUsersResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsListUsersResponse$outboundSchema;
-  /** @deprecated use `LmsListUsersResponse$Outbound` instead. */
-  export type Outbound = LmsListUsersResponse$Outbound;
-}
-
-export function lmsListUsersResponseToJSON(
-  lmsListUsersResponse: LmsListUsersResponse,
-): string {
-  return JSON.stringify(
-    LmsListUsersResponse$outboundSchema.parse(lmsListUsersResponse),
-  );
-}
 
 export function lmsListUsersResponseFromJSON(
   jsonString: string,

@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  IamUser,
-  IamUser$inboundSchema,
-  IamUser$Outbound,
-  IamUser$outboundSchema,
-} from "./iamuser.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { IamUser, IamUser$inboundSchema } from "./iamuser.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type IamUsersPaginated = {
   data: Array<IamUser>;
@@ -45,51 +35,6 @@ export const IamUsersPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type IamUsersPaginated$Outbound = {
-  data: Array<IamUser$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const IamUsersPaginated$outboundSchema: z.ZodType<
-  IamUsersPaginated$Outbound,
-  z.ZodTypeDef,
-  IamUsersPaginated
-> = z.object({
-  data: z.array(IamUser$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUsersPaginated$ {
-  /** @deprecated use `IamUsersPaginated$inboundSchema` instead. */
-  export const inboundSchema = IamUsersPaginated$inboundSchema;
-  /** @deprecated use `IamUsersPaginated$outboundSchema` instead. */
-  export const outboundSchema = IamUsersPaginated$outboundSchema;
-  /** @deprecated use `IamUsersPaginated$Outbound` instead. */
-  export type Outbound = IamUsersPaginated$Outbound;
-}
-
-export function iamUsersPaginatedToJSON(
-  iamUsersPaginated: IamUsersPaginated,
-): string {
-  return JSON.stringify(
-    IamUsersPaginated$outboundSchema.parse(iamUsersPaginated),
-  );
-}
 
 export function iamUsersPaginatedFromJSON(
   jsonString: string,

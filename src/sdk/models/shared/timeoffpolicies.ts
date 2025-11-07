@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Reason,
-  Reason$inboundSchema,
-  Reason$Outbound,
-  Reason$outboundSchema,
-} from "./reason.js";
+import { Reason, Reason$inboundSchema } from "./reason.js";
 
 export type TimeOffPolicies4 = {};
 
@@ -169,37 +160,6 @@ export const TimeOffPolicies4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type TimeOffPolicies4$Outbound = {};
-
-/** @internal */
-export const TimeOffPolicies4$outboundSchema: z.ZodType<
-  TimeOffPolicies4$Outbound,
-  z.ZodTypeDef,
-  TimeOffPolicies4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPolicies4$ {
-  /** @deprecated use `TimeOffPolicies4$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPolicies4$inboundSchema;
-  /** @deprecated use `TimeOffPolicies4$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPolicies4$outboundSchema;
-  /** @deprecated use `TimeOffPolicies4$Outbound` instead. */
-  export type Outbound = TimeOffPolicies4$Outbound;
-}
-
-export function timeOffPolicies4ToJSON(
-  timeOffPolicies4: TimeOffPolicies4,
-): string {
-  return JSON.stringify(
-    TimeOffPolicies4$outboundSchema.parse(timeOffPolicies4),
-  );
-}
-
 export function timeOffPolicies4FromJSON(
   jsonString: string,
 ): SafeParseResult<TimeOffPolicies4, SDKValidationError> {
@@ -223,48 +183,6 @@ export const TimeOffPoliciesSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TimeOffPoliciesSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TimeOffPolicies4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TimeOffPoliciesSourceValue$outboundSchema: z.ZodType<
-  TimeOffPoliciesSourceValue$Outbound,
-  z.ZodTypeDef,
-  TimeOffPoliciesSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TimeOffPolicies4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesSourceValue$ {
-  /** @deprecated use `TimeOffPoliciesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesSourceValue$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPoliciesSourceValue$outboundSchema;
-  /** @deprecated use `TimeOffPoliciesSourceValue$Outbound` instead. */
-  export type Outbound = TimeOffPoliciesSourceValue$Outbound;
-}
-
-export function timeOffPoliciesSourceValueToJSON(
-  timeOffPoliciesSourceValue: TimeOffPoliciesSourceValue,
-): string {
-  return JSON.stringify(
-    TimeOffPoliciesSourceValue$outboundSchema.parse(timeOffPoliciesSourceValue),
-  );
-}
-
 export function timeOffPoliciesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TimeOffPoliciesSourceValue, SDKValidationError> {
@@ -285,27 +203,6 @@ export const TimeOffPoliciesValue$inboundSchema: z.ZodType<
     z.nativeEnum(TimeOffPoliciesValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const TimeOffPoliciesValue$outboundSchema: z.ZodType<
-  TimeOffPoliciesValueOpen,
-  z.ZodTypeDef,
-  TimeOffPoliciesValueOpen
-> = z.union([
-  z.nativeEnum(TimeOffPoliciesValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesValue$ {
-  /** @deprecated use `TimeOffPoliciesValue$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesValue$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesValue$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPoliciesValue$outboundSchema;
-}
 
 /** @internal */
 export const DurationUnit$inboundSchema: z.ZodType<
@@ -329,58 +226,6 @@ export const DurationUnit$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type DurationUnit$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TimeOffPolicies4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const DurationUnit$outboundSchema: z.ZodType<
-  DurationUnit$Outbound,
-  z.ZodTypeDef,
-  DurationUnit
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TimeOffPolicies4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TimeOffPoliciesValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DurationUnit$ {
-  /** @deprecated use `DurationUnit$inboundSchema` instead. */
-  export const inboundSchema = DurationUnit$inboundSchema;
-  /** @deprecated use `DurationUnit$outboundSchema` instead. */
-  export const outboundSchema = DurationUnit$outboundSchema;
-  /** @deprecated use `DurationUnit$Outbound` instead. */
-  export type Outbound = DurationUnit$Outbound;
-}
-
-export function durationUnitToJSON(durationUnit: DurationUnit): string {
-  return JSON.stringify(DurationUnit$outboundSchema.parse(durationUnit));
-}
-
 export function durationUnitFromJSON(
   jsonString: string,
 ): SafeParseResult<DurationUnit, SDKValidationError> {
@@ -397,37 +242,6 @@ export const TimeOffPoliciesSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type TimeOffPoliciesSchemas4$Outbound = {};
-
-/** @internal */
-export const TimeOffPoliciesSchemas4$outboundSchema: z.ZodType<
-  TimeOffPoliciesSchemas4$Outbound,
-  z.ZodTypeDef,
-  TimeOffPoliciesSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesSchemas4$ {
-  /** @deprecated use `TimeOffPoliciesSchemas4$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesSchemas4$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesSchemas4$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPoliciesSchemas4$outboundSchema;
-  /** @deprecated use `TimeOffPoliciesSchemas4$Outbound` instead. */
-  export type Outbound = TimeOffPoliciesSchemas4$Outbound;
-}
-
-export function timeOffPoliciesSchemas4ToJSON(
-  timeOffPoliciesSchemas4: TimeOffPoliciesSchemas4,
-): string {
-  return JSON.stringify(
-    TimeOffPoliciesSchemas4$outboundSchema.parse(timeOffPoliciesSchemas4),
-  );
-}
 
 export function timeOffPoliciesSchemas4FromJSON(
   jsonString: string,
@@ -452,51 +266,6 @@ export const TimeOffPoliciesSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type TimeOffPoliciesSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | TimeOffPoliciesSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const TimeOffPoliciesSchemasSourceValue$outboundSchema: z.ZodType<
-  TimeOffPoliciesSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  TimeOffPoliciesSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => TimeOffPoliciesSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesSchemasSourceValue$ {
-  /** @deprecated use `TimeOffPoliciesSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesSchemasSourceValue$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    TimeOffPoliciesSchemasSourceValue$outboundSchema;
-  /** @deprecated use `TimeOffPoliciesSchemasSourceValue$Outbound` instead. */
-  export type Outbound = TimeOffPoliciesSchemasSourceValue$Outbound;
-}
-
-export function timeOffPoliciesSchemasSourceValueToJSON(
-  timeOffPoliciesSchemasSourceValue: TimeOffPoliciesSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    TimeOffPoliciesSchemasSourceValue$outboundSchema.parse(
-      timeOffPoliciesSchemasSourceValue,
-    ),
-  );
-}
-
 export function timeOffPoliciesSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<TimeOffPoliciesSchemasSourceValue, SDKValidationError> {
@@ -519,27 +288,6 @@ export const TimeOffPoliciesSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const TimeOffPoliciesSchemasValue$outboundSchema: z.ZodType<
-  TimeOffPoliciesSchemasValueOpen,
-  z.ZodTypeDef,
-  TimeOffPoliciesSchemasValueOpen
-> = z.union([
-  z.nativeEnum(TimeOffPoliciesSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesSchemasValue$ {
-  /** @deprecated use `TimeOffPoliciesSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesSchemasValue$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPoliciesSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const TimeOffPoliciesType$inboundSchema: z.ZodType<
   TimeOffPoliciesType,
   z.ZodTypeDef,
@@ -560,62 +308,6 @@ export const TimeOffPoliciesType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type TimeOffPoliciesType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | TimeOffPoliciesSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const TimeOffPoliciesType$outboundSchema: z.ZodType<
-  TimeOffPoliciesType$Outbound,
-  z.ZodTypeDef,
-  TimeOffPoliciesType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => TimeOffPoliciesSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(TimeOffPoliciesSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesType$ {
-  /** @deprecated use `TimeOffPoliciesType$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesType$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesType$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPoliciesType$outboundSchema;
-  /** @deprecated use `TimeOffPoliciesType$Outbound` instead. */
-  export type Outbound = TimeOffPoliciesType$Outbound;
-}
-
-export function timeOffPoliciesTypeToJSON(
-  timeOffPoliciesType: TimeOffPoliciesType,
-): string {
-  return JSON.stringify(
-    TimeOffPoliciesType$outboundSchema.parse(timeOffPoliciesType),
-  );
-}
 
 export function timeOffPoliciesTypeFromJSON(
   jsonString: string,
@@ -655,63 +347,6 @@ export const TimeOffPolicies$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type TimeOffPolicies$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  duration_unit?: DurationUnit$Outbound | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  reasons?: Array<Reason$Outbound> | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: TimeOffPoliciesType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TimeOffPolicies$outboundSchema: z.ZodType<
-  TimeOffPolicies$Outbound,
-  z.ZodTypeDef,
-  TimeOffPolicies
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  durationUnit: z.nullable(z.lazy(() => DurationUnit$outboundSchema))
-    .optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  reasons: z.nullable(z.array(Reason$outboundSchema)).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => TimeOffPoliciesType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    durationUnit: "duration_unit",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPolicies$ {
-  /** @deprecated use `TimeOffPolicies$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPolicies$inboundSchema;
-  /** @deprecated use `TimeOffPolicies$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPolicies$outboundSchema;
-  /** @deprecated use `TimeOffPolicies$Outbound` instead. */
-  export type Outbound = TimeOffPolicies$Outbound;
-}
-
-export function timeOffPoliciesToJSON(
-  timeOffPolicies: TimeOffPolicies,
-): string {
-  return JSON.stringify(TimeOffPolicies$outboundSchema.parse(timeOffPolicies));
-}
 
 export function timeOffPoliciesFromJSON(
   jsonString: string,

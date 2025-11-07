@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountingJournalCreateRequestDto,
-  AccountingJournalCreateRequestDto$inboundSchema,
   AccountingJournalCreateRequestDto$Outbound,
   AccountingJournalCreateRequestDto$outboundSchema,
 } from "./accountingjournalcreaterequestdto.js";
@@ -19,15 +15,6 @@ export type AccountingJournalBatchCreateRequestDto = {
    */
   items: Array<AccountingJournalCreateRequestDto>;
 };
-
-/** @internal */
-export const AccountingJournalBatchCreateRequestDto$inboundSchema: z.ZodType<
-  AccountingJournalBatchCreateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  items: z.array(AccountingJournalCreateRequestDto$inboundSchema),
-});
 
 /** @internal */
 export type AccountingJournalBatchCreateRequestDto$Outbound = {
@@ -43,21 +30,6 @@ export const AccountingJournalBatchCreateRequestDto$outboundSchema: z.ZodType<
   items: z.array(AccountingJournalCreateRequestDto$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingJournalBatchCreateRequestDto$ {
-  /** @deprecated use `AccountingJournalBatchCreateRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingJournalBatchCreateRequestDto$inboundSchema;
-  /** @deprecated use `AccountingJournalBatchCreateRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingJournalBatchCreateRequestDto$outboundSchema;
-  /** @deprecated use `AccountingJournalBatchCreateRequestDto$Outbound` instead. */
-  export type Outbound = AccountingJournalBatchCreateRequestDto$Outbound;
-}
-
 export function accountingJournalBatchCreateRequestDtoToJSON(
   accountingJournalBatchCreateRequestDto:
     AccountingJournalBatchCreateRequestDto,
@@ -66,16 +38,5 @@ export function accountingJournalBatchCreateRequestDtoToJSON(
     AccountingJournalBatchCreateRequestDto$outboundSchema.parse(
       accountingJournalBatchCreateRequestDto,
     ),
-  );
-}
-
-export function accountingJournalBatchCreateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountingJournalBatchCreateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingJournalBatchCreateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountingJournalBatchCreateRequestDto' from JSON`,
   );
 }

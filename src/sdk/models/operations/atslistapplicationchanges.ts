@@ -86,40 +86,8 @@ export type AtsListApplicationChangesResponse = {
 };
 
 /** @internal */
-export const ChangeType$inboundSchema: z.ZodNativeEnum<typeof ChangeType> = z
+export const ChangeType$outboundSchema: z.ZodNativeEnum<typeof ChangeType> = z
   .nativeEnum(ChangeType);
-
-/** @internal */
-export const ChangeType$outboundSchema: z.ZodNativeEnum<typeof ChangeType> =
-  ChangeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChangeType$ {
-  /** @deprecated use `ChangeType$inboundSchema` instead. */
-  export const inboundSchema = ChangeType$inboundSchema;
-  /** @deprecated use `ChangeType$outboundSchema` instead. */
-  export const outboundSchema = ChangeType$outboundSchema;
-}
-
-/** @internal */
-export const AtsListApplicationChangesQueryParamFilter$inboundSchema: z.ZodType<
-  AtsListApplicationChangesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  change_type: z.nullable(ChangeType$inboundSchema).optional(),
-  created_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "change_type": "changeType",
-    "created_after": "createdAfter",
-  });
-});
 
 /** @internal */
 export type AtsListApplicationChangesQueryParamFilter$Outbound = {
@@ -144,21 +112,6 @@ export const AtsListApplicationChangesQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationChangesQueryParamFilter$ {
-  /** @deprecated use `AtsListApplicationChangesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsListApplicationChangesQueryParamFilter$inboundSchema;
-  /** @deprecated use `AtsListApplicationChangesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationChangesQueryParamFilter$outboundSchema;
-  /** @deprecated use `AtsListApplicationChangesQueryParamFilter$Outbound` instead. */
-  export type Outbound = AtsListApplicationChangesQueryParamFilter$Outbound;
-}
-
 export function atsListApplicationChangesQueryParamFilterToJSON(
   atsListApplicationChangesQueryParamFilter:
     AtsListApplicationChangesQueryParamFilter,
@@ -169,45 +122,6 @@ export function atsListApplicationChangesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function atsListApplicationChangesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsListApplicationChangesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsListApplicationChangesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsListApplicationChangesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsListApplicationChangesRequest$inboundSchema: z.ZodType<
-  AtsListApplicationChangesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AtsListApplicationChangesQueryParamFilter$inboundSchema),
-  ).optional(),
-  id: z.string(),
-  next: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type AtsListApplicationChangesRequest$Outbound = {
@@ -247,19 +161,6 @@ export const AtsListApplicationChangesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationChangesRequest$ {
-  /** @deprecated use `AtsListApplicationChangesRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsListApplicationChangesRequest$inboundSchema;
-  /** @deprecated use `AtsListApplicationChangesRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsListApplicationChangesRequest$outboundSchema;
-  /** @deprecated use `AtsListApplicationChangesRequest$Outbound` instead. */
-  export type Outbound = AtsListApplicationChangesRequest$Outbound;
-}
-
 export function atsListApplicationChangesRequestToJSON(
   atsListApplicationChangesRequest: AtsListApplicationChangesRequest,
 ): string {
@@ -267,16 +168,6 @@ export function atsListApplicationChangesRequestToJSON(
     AtsListApplicationChangesRequest$outboundSchema.parse(
       atsListApplicationChangesRequest,
     ),
-  );
-}
-
-export function atsListApplicationChangesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsListApplicationChangesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsListApplicationChangesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsListApplicationChangesRequest' from JSON`,
   );
 }
 
@@ -302,65 +193,6 @@ export const AtsListApplicationChangesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsListApplicationChangesResponse$Outbound = {
-  ApplicationChangesPaginated?:
-    | shared.ApplicationChangesPaginated$Outbound
-    | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsListApplicationChangesResponse$outboundSchema: z.ZodType<
-  AtsListApplicationChangesResponse$Outbound,
-  z.ZodTypeDef,
-  AtsListApplicationChangesResponse
-> = z.object({
-  applicationChangesPaginated: shared.ApplicationChangesPaginated$outboundSchema
-    .optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    applicationChangesPaginated: "ApplicationChangesPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsListApplicationChangesResponse$ {
-  /** @deprecated use `AtsListApplicationChangesResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsListApplicationChangesResponse$inboundSchema;
-  /** @deprecated use `AtsListApplicationChangesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsListApplicationChangesResponse$outboundSchema;
-  /** @deprecated use `AtsListApplicationChangesResponse$Outbound` instead. */
-  export type Outbound = AtsListApplicationChangesResponse$Outbound;
-}
-
-export function atsListApplicationChangesResponseToJSON(
-  atsListApplicationChangesResponse: AtsListApplicationChangesResponse,
-): string {
-  return JSON.stringify(
-    AtsListApplicationChangesResponse$outboundSchema.parse(
-      atsListApplicationChangesResponse,
-    ),
-  );
-}
 
 export function atsListApplicationChangesResponseFromJSON(
   jsonString: string,

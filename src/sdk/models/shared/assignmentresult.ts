@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Assignment,
-  Assignment$inboundSchema,
-  Assignment$Outbound,
-  Assignment$outboundSchema,
-} from "./assignment.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Assignment, Assignment$inboundSchema } from "./assignment.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AssignmentResult = {
   data: Assignment;
@@ -33,43 +23,6 @@ export const AssignmentResult$inboundSchema: z.ZodType<
   data: Assignment$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AssignmentResult$Outbound = {
-  data: Assignment$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AssignmentResult$outboundSchema: z.ZodType<
-  AssignmentResult$Outbound,
-  z.ZodTypeDef,
-  AssignmentResult
-> = z.object({
-  data: Assignment$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignmentResult$ {
-  /** @deprecated use `AssignmentResult$inboundSchema` instead. */
-  export const inboundSchema = AssignmentResult$inboundSchema;
-  /** @deprecated use `AssignmentResult$outboundSchema` instead. */
-  export const outboundSchema = AssignmentResult$outboundSchema;
-  /** @deprecated use `AssignmentResult$Outbound` instead. */
-  export type Outbound = AssignmentResult$Outbound;
-}
-
-export function assignmentResultToJSON(
-  assignmentResult: AssignmentResult,
-): string {
-  return JSON.stringify(
-    AssignmentResult$outboundSchema.parse(assignmentResult),
-  );
-}
 
 export function assignmentResultFromJSON(
   jsonString: string,

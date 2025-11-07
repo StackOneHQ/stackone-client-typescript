@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdatePackage = {
   /**
@@ -21,17 +18,6 @@ export type UpdatePackage = {
    */
   name?: string | null | undefined;
 };
-
-/** @internal */
-export const UpdatePackage$inboundSchema: z.ZodType<
-  UpdatePackage,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-});
 
 /** @internal */
 export type UpdatePackage$Outbound = {
@@ -51,29 +37,6 @@ export const UpdatePackage$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdatePackage$ {
-  /** @deprecated use `UpdatePackage$inboundSchema` instead. */
-  export const inboundSchema = UpdatePackage$inboundSchema;
-  /** @deprecated use `UpdatePackage$outboundSchema` instead. */
-  export const outboundSchema = UpdatePackage$outboundSchema;
-  /** @deprecated use `UpdatePackage$Outbound` instead. */
-  export type Outbound = UpdatePackage$Outbound;
-}
-
 export function updatePackageToJSON(updatePackage: UpdatePackage): string {
   return JSON.stringify(UpdatePackage$outboundSchema.parse(updatePackage));
-}
-
-export function updatePackageFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdatePackage, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdatePackage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatePackage' from JSON`,
-  );
 }

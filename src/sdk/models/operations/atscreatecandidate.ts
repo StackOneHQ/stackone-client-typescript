@@ -38,22 +38,6 @@ export type AtsCreateCandidateResponse = {
 };
 
 /** @internal */
-export const AtsCreateCandidateRequest$inboundSchema: z.ZodType<
-  AtsCreateCandidateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsCreateCandidateRequestDto:
-    shared.AtsCreateCandidateRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsCreateCandidateRequestDto": "atsCreateCandidateRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsCreateCandidateRequest$Outbound = {
   AtsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$Outbound;
   "x-account-id": string;
@@ -75,34 +59,11 @@ export const AtsCreateCandidateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateCandidateRequest$ {
-  /** @deprecated use `AtsCreateCandidateRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateCandidateRequest$inboundSchema;
-  /** @deprecated use `AtsCreateCandidateRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateCandidateRequest$outboundSchema;
-  /** @deprecated use `AtsCreateCandidateRequest$Outbound` instead. */
-  export type Outbound = AtsCreateCandidateRequest$Outbound;
-}
-
 export function atsCreateCandidateRequestToJSON(
   atsCreateCandidateRequest: AtsCreateCandidateRequest,
 ): string {
   return JSON.stringify(
     AtsCreateCandidateRequest$outboundSchema.parse(atsCreateCandidateRequest),
-  );
-}
-
-export function atsCreateCandidateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateCandidateRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateCandidateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateCandidateRequest' from JSON`,
   );
 }
 
@@ -127,59 +88,6 @@ export const AtsCreateCandidateResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsCreateCandidateResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsCreateCandidateResponse$outboundSchema: z.ZodType<
-  AtsCreateCandidateResponse$Outbound,
-  z.ZodTypeDef,
-  AtsCreateCandidateResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateCandidateResponse$ {
-  /** @deprecated use `AtsCreateCandidateResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateCandidateResponse$inboundSchema;
-  /** @deprecated use `AtsCreateCandidateResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateCandidateResponse$outboundSchema;
-  /** @deprecated use `AtsCreateCandidateResponse$Outbound` instead. */
-  export type Outbound = AtsCreateCandidateResponse$Outbound;
-}
-
-export function atsCreateCandidateResponseToJSON(
-  atsCreateCandidateResponse: AtsCreateCandidateResponse,
-): string {
-  return JSON.stringify(
-    AtsCreateCandidateResponse$outboundSchema.parse(atsCreateCandidateResponse),
-  );
-}
 
 export function atsCreateCandidateResponseFromJSON(
   jsonString: string,

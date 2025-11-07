@@ -39,21 +39,6 @@ export type HrisCancelEmployeeTimeOffRequestResponse = {
 };
 
 /** @internal */
-export const HrisCancelEmployeeTimeOffRequestRequest$inboundSchema: z.ZodType<
-  HrisCancelEmployeeTimeOffRequestRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisCancelEmployeeTimeOffRequestRequest$Outbound = {
   id: string;
   subResourceId: string;
@@ -75,21 +60,6 @@ export const HrisCancelEmployeeTimeOffRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCancelEmployeeTimeOffRequestRequest$ {
-  /** @deprecated use `HrisCancelEmployeeTimeOffRequestRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCancelEmployeeTimeOffRequestRequest$inboundSchema;
-  /** @deprecated use `HrisCancelEmployeeTimeOffRequestRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCancelEmployeeTimeOffRequestRequest$outboundSchema;
-  /** @deprecated use `HrisCancelEmployeeTimeOffRequestRequest$Outbound` instead. */
-  export type Outbound = HrisCancelEmployeeTimeOffRequestRequest$Outbound;
-}
-
 export function hrisCancelEmployeeTimeOffRequestRequestToJSON(
   hrisCancelEmployeeTimeOffRequestRequest:
     HrisCancelEmployeeTimeOffRequestRequest,
@@ -98,22 +68,6 @@ export function hrisCancelEmployeeTimeOffRequestRequestToJSON(
     HrisCancelEmployeeTimeOffRequestRequest$outboundSchema.parse(
       hrisCancelEmployeeTimeOffRequestRequest,
     ),
-  );
-}
-
-export function hrisCancelEmployeeTimeOffRequestRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisCancelEmployeeTimeOffRequestRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisCancelEmployeeTimeOffRequestRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisCancelEmployeeTimeOffRequestRequest' from JSON`,
   );
 }
 
@@ -138,64 +92,6 @@ export const HrisCancelEmployeeTimeOffRequestResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisCancelEmployeeTimeOffRequestResponse$Outbound = {
-  ContentType: string;
-  DeleteResult?: shared.DeleteResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisCancelEmployeeTimeOffRequestResponse$outboundSchema: z.ZodType<
-  HrisCancelEmployeeTimeOffRequestResponse$Outbound,
-  z.ZodTypeDef,
-  HrisCancelEmployeeTimeOffRequestResponse
-> = z.object({
-  contentType: z.string(),
-  deleteResult: shared.DeleteResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    deleteResult: "DeleteResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCancelEmployeeTimeOffRequestResponse$ {
-  /** @deprecated use `HrisCancelEmployeeTimeOffRequestResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCancelEmployeeTimeOffRequestResponse$inboundSchema;
-  /** @deprecated use `HrisCancelEmployeeTimeOffRequestResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCancelEmployeeTimeOffRequestResponse$outboundSchema;
-  /** @deprecated use `HrisCancelEmployeeTimeOffRequestResponse$Outbound` instead. */
-  export type Outbound = HrisCancelEmployeeTimeOffRequestResponse$Outbound;
-}
-
-export function hrisCancelEmployeeTimeOffRequestResponseToJSON(
-  hrisCancelEmployeeTimeOffRequestResponse:
-    HrisCancelEmployeeTimeOffRequestResponse,
-): string {
-  return JSON.stringify(
-    HrisCancelEmployeeTimeOffRequestResponse$outboundSchema.parse(
-      hrisCancelEmployeeTimeOffRequestResponse,
-    ),
-  );
-}
 
 export function hrisCancelEmployeeTimeOffRequestResponseFromJSON(
   jsonString: string,

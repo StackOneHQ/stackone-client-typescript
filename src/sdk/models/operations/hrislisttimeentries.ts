@@ -95,27 +95,6 @@ export type HrisListTimeEntriesResponse = {
 };
 
 /** @internal */
-export const HrisListTimeEntriesQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListTimeEntriesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  employee_id: z.nullable(z.string()).optional(),
-  end_time: z.nullable(z.string()).optional(),
-  start_time: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "employee_id": "employeeId",
-    "end_time": "endTime",
-    "start_time": "startTime",
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListTimeEntriesQueryParamFilter$Outbound = {
   employee_id?: string | null | undefined;
   end_time?: string | null | undefined;
@@ -142,21 +121,6 @@ export const HrisListTimeEntriesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTimeEntriesQueryParamFilter$ {
-  /** @deprecated use `HrisListTimeEntriesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListTimeEntriesQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListTimeEntriesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListTimeEntriesQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListTimeEntriesQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListTimeEntriesQueryParamFilter$Outbound;
-}
-
 export function hrisListTimeEntriesQueryParamFilterToJSON(
   hrisListTimeEntriesQueryParamFilter: HrisListTimeEntriesQueryParamFilter,
 ): string {
@@ -166,44 +130,6 @@ export function hrisListTimeEntriesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListTimeEntriesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListTimeEntriesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListTimeEntriesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListTimeEntriesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListTimeEntriesRequest$inboundSchema: z.ZodType<
-  HrisListTimeEntriesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListTimeEntriesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListTimeEntriesRequest$Outbound = {
@@ -243,34 +169,11 @@ export const HrisListTimeEntriesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTimeEntriesRequest$ {
-  /** @deprecated use `HrisListTimeEntriesRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListTimeEntriesRequest$inboundSchema;
-  /** @deprecated use `HrisListTimeEntriesRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListTimeEntriesRequest$outboundSchema;
-  /** @deprecated use `HrisListTimeEntriesRequest$Outbound` instead. */
-  export type Outbound = HrisListTimeEntriesRequest$Outbound;
-}
-
 export function hrisListTimeEntriesRequestToJSON(
   hrisListTimeEntriesRequest: HrisListTimeEntriesRequest,
 ): string {
   return JSON.stringify(
     HrisListTimeEntriesRequest$outboundSchema.parse(hrisListTimeEntriesRequest),
-  );
-}
-
-export function hrisListTimeEntriesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListTimeEntriesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListTimeEntriesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListTimeEntriesRequest' from JSON`,
   );
 }
 
@@ -295,61 +198,6 @@ export const HrisListTimeEntriesResponse$inboundSchema: z.ZodType<
     "TimeEntriesPaginated": "timeEntriesPaginated",
   });
 });
-
-/** @internal */
-export type HrisListTimeEntriesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  TimeEntriesPaginated?: shared.TimeEntriesPaginated$Outbound | undefined;
-};
-
-/** @internal */
-export const HrisListTimeEntriesResponse$outboundSchema: z.ZodType<
-  HrisListTimeEntriesResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListTimeEntriesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  timeEntriesPaginated: shared.TimeEntriesPaginated$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    timeEntriesPaginated: "TimeEntriesPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListTimeEntriesResponse$ {
-  /** @deprecated use `HrisListTimeEntriesResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListTimeEntriesResponse$inboundSchema;
-  /** @deprecated use `HrisListTimeEntriesResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListTimeEntriesResponse$outboundSchema;
-  /** @deprecated use `HrisListTimeEntriesResponse$Outbound` instead. */
-  export type Outbound = HrisListTimeEntriesResponse$Outbound;
-}
-
-export function hrisListTimeEntriesResponseToJSON(
-  hrisListTimeEntriesResponse: HrisListTimeEntriesResponse,
-): string {
-  return JSON.stringify(
-    HrisListTimeEntriesResponse$outboundSchema.parse(
-      hrisListTimeEntriesResponse,
-    ),
-  );
-}
 
 export function hrisListTimeEntriesResponseFromJSON(
   jsonString: string,

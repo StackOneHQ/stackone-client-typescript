@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  InAppTemplate,
-  InAppTemplate$inboundSchema,
-  InAppTemplate$Outbound,
-  InAppTemplate$outboundSchema,
-} from "./inapptemplate.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { InAppTemplate, InAppTemplate$inboundSchema } from "./inapptemplate.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type InAppTemplatesPaginated = {
   data: Array<InAppTemplate>;
@@ -45,51 +35,6 @@ export const InAppTemplatesPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type InAppTemplatesPaginated$Outbound = {
-  data: Array<InAppTemplate$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const InAppTemplatesPaginated$outboundSchema: z.ZodType<
-  InAppTemplatesPaginated$Outbound,
-  z.ZodTypeDef,
-  InAppTemplatesPaginated
-> = z.object({
-  data: z.array(InAppTemplate$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InAppTemplatesPaginated$ {
-  /** @deprecated use `InAppTemplatesPaginated$inboundSchema` instead. */
-  export const inboundSchema = InAppTemplatesPaginated$inboundSchema;
-  /** @deprecated use `InAppTemplatesPaginated$outboundSchema` instead. */
-  export const outboundSchema = InAppTemplatesPaginated$outboundSchema;
-  /** @deprecated use `InAppTemplatesPaginated$Outbound` instead. */
-  export type Outbound = InAppTemplatesPaginated$Outbound;
-}
-
-export function inAppTemplatesPaginatedToJSON(
-  inAppTemplatesPaginated: InAppTemplatesPaginated,
-): string {
-  return JSON.stringify(
-    InAppTemplatesPaginated$outboundSchema.parse(inAppTemplatesPaginated),
-  );
-}
 
 export function inAppTemplatesPaginatedFromJSON(
   jsonString: string,

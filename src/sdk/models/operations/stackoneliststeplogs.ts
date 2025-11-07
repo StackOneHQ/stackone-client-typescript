@@ -133,42 +133,6 @@ export type StackoneListStepLogsResponse = {
 };
 
 /** @internal */
-export const StackoneListStepLogsQueryParamFilter$inboundSchema: z.ZodType<
-  StackoneListStepLogsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_ids: z.nullable(z.string()).optional(),
-  actions: z.nullable(z.string()).optional(),
-  child_resources: z.nullable(z.string()).optional(),
-  end_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  http_methods: z.nullable(z.string()).optional(),
-  providers: z.nullable(z.string()).optional(),
-  request_ids: z.nullable(z.string()).optional(),
-  resources: z.nullable(z.string()).optional(),
-  services: z.nullable(z.string()).optional(),
-  start_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  status_codes: z.nullable(z.string()).optional(),
-  sub_resources: z.nullable(z.string()).optional(),
-  success: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_ids": "accountIds",
-    "child_resources": "childResources",
-    "end_date": "endDate",
-    "http_methods": "httpMethods",
-    "request_ids": "requestIds",
-    "start_date": "startDate",
-    "status_codes": "statusCodes",
-    "sub_resources": "subResources",
-  });
-});
-
-/** @internal */
 export type StackoneListStepLogsQueryParamFilter$Outbound = {
   account_ids?: string | null | undefined;
   actions?: string | null | undefined;
@@ -217,21 +181,6 @@ export const StackoneListStepLogsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsQueryParamFilter$ {
-  /** @deprecated use `StackoneListStepLogsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListStepLogsQueryParamFilter$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListStepLogsQueryParamFilter$outboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamFilter$Outbound` instead. */
-  export type Outbound = StackoneListStepLogsQueryParamFilter$Outbound;
-}
-
 export function stackoneListStepLogsQueryParamFilterToJSON(
   stackoneListStepLogsQueryParamFilter: StackoneListStepLogsQueryParamFilter,
 ): string {
@@ -242,87 +191,16 @@ export function stackoneListStepLogsQueryParamFilterToJSON(
   );
 }
 
-export function stackoneListStepLogsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneListStepLogsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      StackoneListStepLogsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneListStepLogsQueryParamFilter' from JSON`,
-  );
-}
-
 /** @internal */
-export const StackoneListStepLogsQueryParamOrderBy$inboundSchema:
+export const StackoneListStepLogsQueryParamOrderBy$outboundSchema:
   z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamOrderBy> = z.nativeEnum(
     StackoneListStepLogsQueryParamOrderBy,
   );
 
 /** @internal */
-export const StackoneListStepLogsQueryParamOrderBy$outboundSchema:
-  z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamOrderBy> =
-    StackoneListStepLogsQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsQueryParamOrderBy$ {
-  /** @deprecated use `StackoneListStepLogsQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListStepLogsQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListStepLogsQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListStepLogsQueryParamOrderDirection$inboundSchema:
+export const StackoneListStepLogsQueryParamOrderDirection$outboundSchema:
   z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamOrderDirection> = z
     .nativeEnum(StackoneListStepLogsQueryParamOrderDirection);
-
-/** @internal */
-export const StackoneListStepLogsQueryParamOrderDirection$outboundSchema:
-  z.ZodNativeEnum<typeof StackoneListStepLogsQueryParamOrderDirection> =
-    StackoneListStepLogsQueryParamOrderDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsQueryParamOrderDirection$ {
-  /** @deprecated use `StackoneListStepLogsQueryParamOrderDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListStepLogsQueryParamOrderDirection$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsQueryParamOrderDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListStepLogsQueryParamOrderDirection$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListStepLogsRequest$inboundSchema: z.ZodType<
-  StackoneListStepLogsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  filter: z.nullable(
-    z.lazy(() => StackoneListStepLogsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  order_by: z.nullable(StackoneListStepLogsQueryParamOrderBy$inboundSchema)
-    .optional(),
-  order_direction: z.nullable(
-    StackoneListStepLogsQueryParamOrderDirection$inboundSchema,
-  ).optional(),
-  page_size: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "order_by": "orderBy",
-    "order_direction": "orderDirection",
-    "page_size": "pageSize",
-  });
-});
 
 /** @internal */
 export type StackoneListStepLogsRequest$Outbound = {
@@ -357,19 +235,6 @@ export const StackoneListStepLogsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsRequest$ {
-  /** @deprecated use `StackoneListStepLogsRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneListStepLogsRequest$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneListStepLogsRequest$outboundSchema;
-  /** @deprecated use `StackoneListStepLogsRequest$Outbound` instead. */
-  export type Outbound = StackoneListStepLogsRequest$Outbound;
-}
-
 export function stackoneListStepLogsRequestToJSON(
   stackoneListStepLogsRequest: StackoneListStepLogsRequest,
 ): string {
@@ -377,16 +242,6 @@ export function stackoneListStepLogsRequestToJSON(
     StackoneListStepLogsRequest$outboundSchema.parse(
       stackoneListStepLogsRequest,
     ),
-  );
-}
-
-export function stackoneListStepLogsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneListStepLogsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneListStepLogsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneListStepLogsRequest' from JSON`,
   );
 }
 
@@ -411,61 +266,6 @@ export const StackoneListStepLogsResponse$inboundSchema: z.ZodType<
     "StepLogsPaginated": "stepLogsPaginated",
   });
 });
-
-/** @internal */
-export type StackoneListStepLogsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  StepLogsPaginated?: shared.StepLogsPaginated$Outbound | undefined;
-};
-
-/** @internal */
-export const StackoneListStepLogsResponse$outboundSchema: z.ZodType<
-  StackoneListStepLogsResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneListStepLogsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  stepLogsPaginated: shared.StepLogsPaginated$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    stepLogsPaginated: "StepLogsPaginated",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListStepLogsResponse$ {
-  /** @deprecated use `StackoneListStepLogsResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneListStepLogsResponse$inboundSchema;
-  /** @deprecated use `StackoneListStepLogsResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneListStepLogsResponse$outboundSchema;
-  /** @deprecated use `StackoneListStepLogsResponse$Outbound` instead. */
-  export type Outbound = StackoneListStepLogsResponse$Outbound;
-}
-
-export function stackoneListStepLogsResponseToJSON(
-  stackoneListStepLogsResponse: StackoneListStepLogsResponse,
-): string {
-  return JSON.stringify(
-    StackoneListStepLogsResponse$outboundSchema.parse(
-      stackoneListStepLogsResponse,
-    ),
-  );
-}
 
 export function stackoneListStepLogsResponseFromJSON(
   jsonString: string,

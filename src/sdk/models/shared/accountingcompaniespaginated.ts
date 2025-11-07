@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountingCompany,
   AccountingCompany$inboundSchema,
-  AccountingCompany$Outbound,
-  AccountingCompany$outboundSchema,
 } from "./accountingcompany.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AccountingCompaniesPaginated = {
   data?: Array<AccountingCompany> | null | undefined;
@@ -35,47 +28,6 @@ export const AccountingCompaniesPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AccountingCompaniesPaginated$Outbound = {
-  data?: Array<AccountingCompany$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AccountingCompaniesPaginated$outboundSchema: z.ZodType<
-  AccountingCompaniesPaginated$Outbound,
-  z.ZodTypeDef,
-  AccountingCompaniesPaginated
-> = z.object({
-  data: z.nullable(z.array(AccountingCompany$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingCompaniesPaginated$ {
-  /** @deprecated use `AccountingCompaniesPaginated$inboundSchema` instead. */
-  export const inboundSchema = AccountingCompaniesPaginated$inboundSchema;
-  /** @deprecated use `AccountingCompaniesPaginated$outboundSchema` instead. */
-  export const outboundSchema = AccountingCompaniesPaginated$outboundSchema;
-  /** @deprecated use `AccountingCompaniesPaginated$Outbound` instead. */
-  export type Outbound = AccountingCompaniesPaginated$Outbound;
-}
-
-export function accountingCompaniesPaginatedToJSON(
-  accountingCompaniesPaginated: AccountingCompaniesPaginated,
-): string {
-  return JSON.stringify(
-    AccountingCompaniesPaginated$outboundSchema.parse(
-      accountingCompaniesPaginated,
-    ),
-  );
-}
 
 export function accountingCompaniesPaginatedFromJSON(
   jsonString: string,

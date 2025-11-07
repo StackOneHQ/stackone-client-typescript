@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -83,37 +79,6 @@ export const JobPostingContentSection4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type JobPostingContentSection4$Outbound = {};
-
-/** @internal */
-export const JobPostingContentSection4$outboundSchema: z.ZodType<
-  JobPostingContentSection4$Outbound,
-  z.ZodTypeDef,
-  JobPostingContentSection4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingContentSection4$ {
-  /** @deprecated use `JobPostingContentSection4$inboundSchema` instead. */
-  export const inboundSchema = JobPostingContentSection4$inboundSchema;
-  /** @deprecated use `JobPostingContentSection4$outboundSchema` instead. */
-  export const outboundSchema = JobPostingContentSection4$outboundSchema;
-  /** @deprecated use `JobPostingContentSection4$Outbound` instead. */
-  export type Outbound = JobPostingContentSection4$Outbound;
-}
-
-export function jobPostingContentSection4ToJSON(
-  jobPostingContentSection4: JobPostingContentSection4,
-): string {
-  return JSON.stringify(
-    JobPostingContentSection4$outboundSchema.parse(jobPostingContentSection4),
-  );
-}
-
 export function jobPostingContentSection4FromJSON(
   jsonString: string,
 ): SafeParseResult<JobPostingContentSection4, SDKValidationError> {
@@ -136,52 +101,6 @@ export const JobPostingContentSectionSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => JobPostingContentSection4$inboundSchema),
   z.array(z.any()),
 ]);
-
-/** @internal */
-export type JobPostingContentSectionSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | JobPostingContentSection4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const JobPostingContentSectionSourceValue$outboundSchema: z.ZodType<
-  JobPostingContentSectionSourceValue$Outbound,
-  z.ZodTypeDef,
-  JobPostingContentSectionSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => JobPostingContentSection4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingContentSectionSourceValue$ {
-  /** @deprecated use `JobPostingContentSectionSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    JobPostingContentSectionSourceValue$inboundSchema;
-  /** @deprecated use `JobPostingContentSectionSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    JobPostingContentSectionSourceValue$outboundSchema;
-  /** @deprecated use `JobPostingContentSectionSourceValue$Outbound` instead. */
-  export type Outbound = JobPostingContentSectionSourceValue$Outbound;
-}
-
-export function jobPostingContentSectionSourceValueToJSON(
-  jobPostingContentSectionSourceValue: JobPostingContentSectionSourceValue,
-): string {
-  return JSON.stringify(
-    JobPostingContentSectionSourceValue$outboundSchema.parse(
-      jobPostingContentSectionSourceValue,
-    ),
-  );
-}
 
 export function jobPostingContentSectionSourceValueFromJSON(
   jsonString: string,
@@ -206,27 +125,6 @@ export const JobPostingContentSectionValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const JobPostingContentSectionValue$outboundSchema: z.ZodType<
-  JobPostingContentSectionValueOpen,
-  z.ZodTypeDef,
-  JobPostingContentSectionValueOpen
-> = z.union([
-  z.nativeEnum(JobPostingContentSectionValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingContentSectionValue$ {
-  /** @deprecated use `JobPostingContentSectionValue$inboundSchema` instead. */
-  export const inboundSchema = JobPostingContentSectionValue$inboundSchema;
-  /** @deprecated use `JobPostingContentSectionValue$outboundSchema` instead. */
-  export const outboundSchema = JobPostingContentSectionValue$outboundSchema;
-}
-
-/** @internal */
 export const JobPostingContentSectionType$inboundSchema: z.ZodType<
   JobPostingContentSectionType,
   z.ZodTypeDef,
@@ -247,64 +145,6 @@ export const JobPostingContentSectionType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type JobPostingContentSectionType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | JobPostingContentSection4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const JobPostingContentSectionType$outboundSchema: z.ZodType<
-  JobPostingContentSectionType$Outbound,
-  z.ZodTypeDef,
-  JobPostingContentSectionType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => JobPostingContentSection4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(JobPostingContentSectionValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingContentSectionType$ {
-  /** @deprecated use `JobPostingContentSectionType$inboundSchema` instead. */
-  export const inboundSchema = JobPostingContentSectionType$inboundSchema;
-  /** @deprecated use `JobPostingContentSectionType$outboundSchema` instead. */
-  export const outboundSchema = JobPostingContentSectionType$outboundSchema;
-  /** @deprecated use `JobPostingContentSectionType$Outbound` instead. */
-  export type Outbound = JobPostingContentSectionType$Outbound;
-}
-
-export function jobPostingContentSectionTypeToJSON(
-  jobPostingContentSectionType: JobPostingContentSectionType,
-): string {
-  return JSON.stringify(
-    JobPostingContentSectionType$outboundSchema.parse(
-      jobPostingContentSectionType,
-    ),
-  );
-}
 
 export function jobPostingContentSectionTypeFromJSON(
   jsonString: string,
@@ -333,54 +173,6 @@ export const JobPostingContentSection$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type JobPostingContentSection$Outbound = {
-  content?: string | null | undefined;
-  id?: string | null | undefined;
-  label?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: JobPostingContentSectionType$Outbound | null | undefined;
-};
-
-/** @internal */
-export const JobPostingContentSection$outboundSchema: z.ZodType<
-  JobPostingContentSection$Outbound,
-  z.ZodTypeDef,
-  JobPostingContentSection
-> = z.object({
-  content: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => JobPostingContentSectionType$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingContentSection$ {
-  /** @deprecated use `JobPostingContentSection$inboundSchema` instead. */
-  export const inboundSchema = JobPostingContentSection$inboundSchema;
-  /** @deprecated use `JobPostingContentSection$outboundSchema` instead. */
-  export const outboundSchema = JobPostingContentSection$outboundSchema;
-  /** @deprecated use `JobPostingContentSection$Outbound` instead. */
-  export type Outbound = JobPostingContentSection$Outbound;
-}
-
-export function jobPostingContentSectionToJSON(
-  jobPostingContentSection: JobPostingContentSection,
-): string {
-  return JSON.stringify(
-    JobPostingContentSection$outboundSchema.parse(jobPostingContentSection),
-  );
-}
 
 export function jobPostingContentSectionFromJSON(
   jsonString: string,

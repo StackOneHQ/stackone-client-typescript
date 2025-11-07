@@ -83,21 +83,6 @@ export type HrisListCostCenterGroupsResponse = {
 };
 
 /** @internal */
-export const HrisListCostCenterGroupsQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListCostCenterGroupsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListCostCenterGroupsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,21 +100,6 @@ export const HrisListCostCenterGroupsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListCostCenterGroupsQueryParamFilter$ {
-  /** @deprecated use `HrisListCostCenterGroupsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListCostCenterGroupsQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListCostCenterGroupsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListCostCenterGroupsQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListCostCenterGroupsQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListCostCenterGroupsQueryParamFilter$Outbound;
-}
-
 export function hrisListCostCenterGroupsQueryParamFilterToJSON(
   hrisListCostCenterGroupsQueryParamFilter:
     HrisListCostCenterGroupsQueryParamFilter,
@@ -140,49 +110,6 @@ export function hrisListCostCenterGroupsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListCostCenterGroupsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisListCostCenterGroupsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListCostCenterGroupsQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisListCostCenterGroupsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListCostCenterGroupsRequest$inboundSchema: z.ZodType<
-  HrisListCostCenterGroupsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListCostCenterGroupsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListCostCenterGroupsRequest$Outbound = {
@@ -222,19 +149,6 @@ export const HrisListCostCenterGroupsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListCostCenterGroupsRequest$ {
-  /** @deprecated use `HrisListCostCenterGroupsRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListCostCenterGroupsRequest$inboundSchema;
-  /** @deprecated use `HrisListCostCenterGroupsRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListCostCenterGroupsRequest$outboundSchema;
-  /** @deprecated use `HrisListCostCenterGroupsRequest$Outbound` instead. */
-  export type Outbound = HrisListCostCenterGroupsRequest$Outbound;
-}
-
 export function hrisListCostCenterGroupsRequestToJSON(
   hrisListCostCenterGroupsRequest: HrisListCostCenterGroupsRequest,
 ): string {
@@ -242,16 +156,6 @@ export function hrisListCostCenterGroupsRequestToJSON(
     HrisListCostCenterGroupsRequest$outboundSchema.parse(
       hrisListCostCenterGroupsRequest,
     ),
-  );
-}
-
-export function hrisListCostCenterGroupsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListCostCenterGroupsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListCostCenterGroupsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListCostCenterGroupsRequest' from JSON`,
   );
 }
 
@@ -277,62 +181,6 @@ export const HrisListCostCenterGroupsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisListCostCenterGroupsResponse$Outbound = {
-  ContentType: string;
-  HRISCostCenterPaginated?: shared.HRISCostCenterPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisListCostCenterGroupsResponse$outboundSchema: z.ZodType<
-  HrisListCostCenterGroupsResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListCostCenterGroupsResponse
-> = z.object({
-  contentType: z.string(),
-  hrisCostCenterPaginated: shared.HRISCostCenterPaginated$outboundSchema
-    .optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisCostCenterPaginated: "HRISCostCenterPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListCostCenterGroupsResponse$ {
-  /** @deprecated use `HrisListCostCenterGroupsResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListCostCenterGroupsResponse$inboundSchema;
-  /** @deprecated use `HrisListCostCenterGroupsResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListCostCenterGroupsResponse$outboundSchema;
-  /** @deprecated use `HrisListCostCenterGroupsResponse$Outbound` instead. */
-  export type Outbound = HrisListCostCenterGroupsResponse$Outbound;
-}
-
-export function hrisListCostCenterGroupsResponseToJSON(
-  hrisListCostCenterGroupsResponse: HrisListCostCenterGroupsResponse,
-): string {
-  return JSON.stringify(
-    HrisListCostCenterGroupsResponse$outboundSchema.parse(
-      hrisListCostCenterGroupsResponse,
-    ),
-  );
-}
 
 export function hrisListCostCenterGroupsResponseFromJSON(
   jsonString: string,

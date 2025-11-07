@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HrisInviteEmployeeRequestDto = {
   /**
@@ -13,15 +10,6 @@ export type HrisInviteEmployeeRequestDto = {
    */
   passthrough?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const HrisInviteEmployeeRequestDto$inboundSchema: z.ZodType<
-  HrisInviteEmployeeRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  passthrough: z.nullable(z.record(z.any())).optional(),
-});
 
 /** @internal */
 export type HrisInviteEmployeeRequestDto$Outbound = {
@@ -37,19 +25,6 @@ export const HrisInviteEmployeeRequestDto$outboundSchema: z.ZodType<
   passthrough: z.nullable(z.record(z.any())).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisInviteEmployeeRequestDto$ {
-  /** @deprecated use `HrisInviteEmployeeRequestDto$inboundSchema` instead. */
-  export const inboundSchema = HrisInviteEmployeeRequestDto$inboundSchema;
-  /** @deprecated use `HrisInviteEmployeeRequestDto$outboundSchema` instead. */
-  export const outboundSchema = HrisInviteEmployeeRequestDto$outboundSchema;
-  /** @deprecated use `HrisInviteEmployeeRequestDto$Outbound` instead. */
-  export type Outbound = HrisInviteEmployeeRequestDto$Outbound;
-}
-
 export function hrisInviteEmployeeRequestDtoToJSON(
   hrisInviteEmployeeRequestDto: HrisInviteEmployeeRequestDto,
 ): string {
@@ -57,15 +32,5 @@ export function hrisInviteEmployeeRequestDtoToJSON(
     HrisInviteEmployeeRequestDto$outboundSchema.parse(
       hrisInviteEmployeeRequestDto,
     ),
-  );
-}
-
-export function hrisInviteEmployeeRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisInviteEmployeeRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisInviteEmployeeRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisInviteEmployeeRequestDto' from JSON`,
   );
 }

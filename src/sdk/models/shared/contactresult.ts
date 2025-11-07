@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Contact,
-  Contact$inboundSchema,
-  Contact$Outbound,
-  Contact$outboundSchema,
-} from "./contact.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Contact, Contact$inboundSchema } from "./contact.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ContactResult = {
   data: Contact;
@@ -33,39 +23,6 @@ export const ContactResult$inboundSchema: z.ZodType<
   data: Contact$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ContactResult$Outbound = {
-  data: Contact$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ContactResult$outboundSchema: z.ZodType<
-  ContactResult$Outbound,
-  z.ZodTypeDef,
-  ContactResult
-> = z.object({
-  data: Contact$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContactResult$ {
-  /** @deprecated use `ContactResult$inboundSchema` instead. */
-  export const inboundSchema = ContactResult$inboundSchema;
-  /** @deprecated use `ContactResult$outboundSchema` instead. */
-  export const outboundSchema = ContactResult$outboundSchema;
-  /** @deprecated use `ContactResult$Outbound` instead. */
-  export type Outbound = ContactResult$Outbound;
-}
-
-export function contactResultToJSON(contactResult: ContactResult): string {
-  return JSON.stringify(ContactResult$outboundSchema.parse(contactResult));
-}
 
 export function contactResultFromJSON(
   jsonString: string,

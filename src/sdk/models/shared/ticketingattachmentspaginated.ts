@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   TicketingAttachment,
   TicketingAttachment$inboundSchema,
-  TicketingAttachment$Outbound,
-  TicketingAttachment$outboundSchema,
 } from "./ticketingattachment.js";
 
 export type TicketingAttachmentsPaginated = {
@@ -35,47 +28,6 @@ export const TicketingAttachmentsPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TicketingAttachmentsPaginated$Outbound = {
-  data?: Array<TicketingAttachment$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TicketingAttachmentsPaginated$outboundSchema: z.ZodType<
-  TicketingAttachmentsPaginated$Outbound,
-  z.ZodTypeDef,
-  TicketingAttachmentsPaginated
-> = z.object({
-  data: z.nullable(z.array(TicketingAttachment$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingAttachmentsPaginated$ {
-  /** @deprecated use `TicketingAttachmentsPaginated$inboundSchema` instead. */
-  export const inboundSchema = TicketingAttachmentsPaginated$inboundSchema;
-  /** @deprecated use `TicketingAttachmentsPaginated$outboundSchema` instead. */
-  export const outboundSchema = TicketingAttachmentsPaginated$outboundSchema;
-  /** @deprecated use `TicketingAttachmentsPaginated$Outbound` instead. */
-  export type Outbound = TicketingAttachmentsPaginated$Outbound;
-}
-
-export function ticketingAttachmentsPaginatedToJSON(
-  ticketingAttachmentsPaginated: TicketingAttachmentsPaginated,
-): string {
-  return JSON.stringify(
-    TicketingAttachmentsPaginated$outboundSchema.parse(
-      ticketingAttachmentsPaginated,
-    ),
-  );
-}
 
 export function ticketingAttachmentsPaginatedFromJSON(
   jsonString: string,

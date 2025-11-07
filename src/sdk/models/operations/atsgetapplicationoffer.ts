@@ -51,24 +51,6 @@ export type AtsGetApplicationOfferResponse = {
 };
 
 /** @internal */
-export const AtsGetApplicationOfferRequest$inboundSchema: z.ZodType<
-  AtsGetApplicationOfferRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetApplicationOfferRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const AtsGetApplicationOfferRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationOfferRequest$ {
-  /** @deprecated use `AtsGetApplicationOfferRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationOfferRequest$inboundSchema;
-  /** @deprecated use `AtsGetApplicationOfferRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationOfferRequest$outboundSchema;
-  /** @deprecated use `AtsGetApplicationOfferRequest$Outbound` instead. */
-  export type Outbound = AtsGetApplicationOfferRequest$Outbound;
-}
-
 export function atsGetApplicationOfferRequestToJSON(
   atsGetApplicationOfferRequest: AtsGetApplicationOfferRequest,
 ): string {
@@ -116,16 +85,6 @@ export function atsGetApplicationOfferRequestToJSON(
     AtsGetApplicationOfferRequest$outboundSchema.parse(
       atsGetApplicationOfferRequest,
     ),
-  );
-}
-
-export function atsGetApplicationOfferRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetApplicationOfferRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetApplicationOfferRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetApplicationOfferRequest' from JSON`,
   );
 }
 
@@ -150,61 +109,6 @@ export const AtsGetApplicationOfferResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetApplicationOfferResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  OffersResult?: shared.OffersResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetApplicationOfferResponse$outboundSchema: z.ZodType<
-  AtsGetApplicationOfferResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetApplicationOfferResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  offersResult: shared.OffersResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    offersResult: "OffersResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationOfferResponse$ {
-  /** @deprecated use `AtsGetApplicationOfferResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationOfferResponse$inboundSchema;
-  /** @deprecated use `AtsGetApplicationOfferResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationOfferResponse$outboundSchema;
-  /** @deprecated use `AtsGetApplicationOfferResponse$Outbound` instead. */
-  export type Outbound = AtsGetApplicationOfferResponse$Outbound;
-}
-
-export function atsGetApplicationOfferResponseToJSON(
-  atsGetApplicationOfferResponse: AtsGetApplicationOfferResponse,
-): string {
-  return JSON.stringify(
-    AtsGetApplicationOfferResponse$outboundSchema.parse(
-      atsGetApplicationOfferResponse,
-    ),
-  );
-}
 
 export function atsGetApplicationOfferResponseFromJSON(
   jsonString: string,

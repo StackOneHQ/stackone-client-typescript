@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ActionsMeta,
-  ActionsMeta$inboundSchema,
-  ActionsMeta$Outbound,
-  ActionsMeta$outboundSchema,
-} from "./actionsmeta.js";
+import { ActionsMeta, ActionsMeta$inboundSchema } from "./actionsmeta.js";
 
 export type ActionsMetaPaginated = {
   /**
@@ -33,43 +28,6 @@ export const ActionsMetaPaginated$inboundSchema: z.ZodType<
   data: z.nullable(z.array(ActionsMeta$inboundSchema)).optional(),
   next: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ActionsMetaPaginated$Outbound = {
-  data?: Array<ActionsMeta$Outbound> | null | undefined;
-  next?: string | null | undefined;
-};
-
-/** @internal */
-export const ActionsMetaPaginated$outboundSchema: z.ZodType<
-  ActionsMetaPaginated$Outbound,
-  z.ZodTypeDef,
-  ActionsMetaPaginated
-> = z.object({
-  data: z.nullable(z.array(ActionsMeta$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionsMetaPaginated$ {
-  /** @deprecated use `ActionsMetaPaginated$inboundSchema` instead. */
-  export const inboundSchema = ActionsMetaPaginated$inboundSchema;
-  /** @deprecated use `ActionsMetaPaginated$outboundSchema` instead. */
-  export const outboundSchema = ActionsMetaPaginated$outboundSchema;
-  /** @deprecated use `ActionsMetaPaginated$Outbound` instead. */
-  export type Outbound = ActionsMetaPaginated$Outbound;
-}
-
-export function actionsMetaPaginatedToJSON(
-  actionsMetaPaginated: ActionsMetaPaginated,
-): string {
-  return JSON.stringify(
-    ActionsMetaPaginated$outboundSchema.parse(actionsMetaPaginated),
-  );
-}
 
 export function actionsMetaPaginatedFromJSON(
   jsonString: string,

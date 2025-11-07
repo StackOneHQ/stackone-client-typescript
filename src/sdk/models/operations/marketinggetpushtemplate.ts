@@ -50,23 +50,6 @@ export type MarketingGetPushTemplateResponse = {
 };
 
 /** @internal */
-export const MarketingGetPushTemplateRequest$inboundSchema: z.ZodType<
-  MarketingGetPushTemplateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingGetPushTemplateRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const MarketingGetPushTemplateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetPushTemplateRequest$ {
-  /** @deprecated use `MarketingGetPushTemplateRequest$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetPushTemplateRequest$inboundSchema;
-  /** @deprecated use `MarketingGetPushTemplateRequest$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetPushTemplateRequest$outboundSchema;
-  /** @deprecated use `MarketingGetPushTemplateRequest$Outbound` instead. */
-  export type Outbound = MarketingGetPushTemplateRequest$Outbound;
-}
-
 export function marketingGetPushTemplateRequestToJSON(
   marketingGetPushTemplateRequest: MarketingGetPushTemplateRequest,
 ): string {
@@ -112,16 +82,6 @@ export function marketingGetPushTemplateRequestToJSON(
     MarketingGetPushTemplateRequest$outboundSchema.parse(
       marketingGetPushTemplateRequest,
     ),
-  );
-}
-
-export function marketingGetPushTemplateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingGetPushTemplateRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MarketingGetPushTemplateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingGetPushTemplateRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const MarketingGetPushTemplateResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingGetPushTemplateResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  PushTemplateResult?: shared.PushTemplateResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingGetPushTemplateResponse$outboundSchema: z.ZodType<
-  MarketingGetPushTemplateResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingGetPushTemplateResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  pushTemplateResult: shared.PushTemplateResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    pushTemplateResult: "PushTemplateResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetPushTemplateResponse$ {
-  /** @deprecated use `MarketingGetPushTemplateResponse$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetPushTemplateResponse$inboundSchema;
-  /** @deprecated use `MarketingGetPushTemplateResponse$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetPushTemplateResponse$outboundSchema;
-  /** @deprecated use `MarketingGetPushTemplateResponse$Outbound` instead. */
-  export type Outbound = MarketingGetPushTemplateResponse$Outbound;
-}
-
-export function marketingGetPushTemplateResponseToJSON(
-  marketingGetPushTemplateResponse: MarketingGetPushTemplateResponse,
-): string {
-  return JSON.stringify(
-    MarketingGetPushTemplateResponse$outboundSchema.parse(
-      marketingGetPushTemplateResponse,
-    ),
-  );
-}
 
 export function marketingGetPushTemplateResponseFromJSON(
   jsonString: string,

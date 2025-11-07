@@ -103,7 +103,6 @@ export const EmailMessagesMessageContent$inboundSchema: z.ZodType<
     "reply-to": "replyTo",
   });
 });
-
 /** @internal */
 export type EmailMessagesMessageContent$Outbound = {
   body?: string | null | undefined;
@@ -130,19 +129,6 @@ export const EmailMessagesMessageContent$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailMessagesMessageContent$ {
-  /** @deprecated use `EmailMessagesMessageContent$inboundSchema` instead. */
-  export const inboundSchema = EmailMessagesMessageContent$inboundSchema;
-  /** @deprecated use `EmailMessagesMessageContent$outboundSchema` instead. */
-  export const outboundSchema = EmailMessagesMessageContent$outboundSchema;
-  /** @deprecated use `EmailMessagesMessageContent$Outbound` instead. */
-  export type Outbound = EmailMessagesMessageContent$Outbound;
-}
-
 export function emailMessagesMessageContentToJSON(
   emailMessagesMessageContent: EmailMessagesMessageContent,
 ): string {
@@ -152,7 +138,6 @@ export function emailMessagesMessageContentToJSON(
     ),
   );
 }
-
 export function emailMessagesMessageContentFromJSON(
   jsonString: string,
 ): SafeParseResult<EmailMessagesMessageContent, SDKValidationError> {
@@ -169,7 +154,6 @@ export const EmailMessages4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type EmailMessages4$Outbound = {};
 
@@ -180,23 +164,9 @@ export const EmailMessages4$outboundSchema: z.ZodType<
   EmailMessages4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailMessages4$ {
-  /** @deprecated use `EmailMessages4$inboundSchema` instead. */
-  export const inboundSchema = EmailMessages4$inboundSchema;
-  /** @deprecated use `EmailMessages4$outboundSchema` instead. */
-  export const outboundSchema = EmailMessages4$outboundSchema;
-  /** @deprecated use `EmailMessages4$Outbound` instead. */
-  export type Outbound = EmailMessages4$Outbound;
-}
-
 export function emailMessages4ToJSON(emailMessages4: EmailMessages4): string {
   return JSON.stringify(EmailMessages4$outboundSchema.parse(emailMessages4));
 }
-
 export function emailMessages4FromJSON(
   jsonString: string,
 ): SafeParseResult<EmailMessages4, SDKValidationError> {
@@ -219,7 +189,6 @@ export const EmailMessagesSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => EmailMessages4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type EmailMessagesSourceValue$Outbound =
   | string
@@ -241,19 +210,6 @@ export const EmailMessagesSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailMessagesSourceValue$ {
-  /** @deprecated use `EmailMessagesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = EmailMessagesSourceValue$inboundSchema;
-  /** @deprecated use `EmailMessagesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = EmailMessagesSourceValue$outboundSchema;
-  /** @deprecated use `EmailMessagesSourceValue$Outbound` instead. */
-  export type Outbound = EmailMessagesSourceValue$Outbound;
-}
-
 export function emailMessagesSourceValueToJSON(
   emailMessagesSourceValue: EmailMessagesSourceValue,
 ): string {
@@ -261,7 +217,6 @@ export function emailMessagesSourceValueToJSON(
     EmailMessagesSourceValue$outboundSchema.parse(emailMessagesSourceValue),
   );
 }
-
 export function emailMessagesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EmailMessagesSourceValue, SDKValidationError> {
@@ -282,7 +237,6 @@ export const EmailMessagesValue$inboundSchema: z.ZodType<
     z.nativeEnum(EmailMessagesValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const EmailMessagesValue$outboundSchema: z.ZodType<
   EmailMessagesValueOpen,
@@ -292,17 +246,6 @@ export const EmailMessagesValue$outboundSchema: z.ZodType<
   z.nativeEnum(EmailMessagesValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailMessagesValue$ {
-  /** @deprecated use `EmailMessagesValue$inboundSchema` instead. */
-  export const inboundSchema = EmailMessagesValue$inboundSchema;
-  /** @deprecated use `EmailMessagesValue$outboundSchema` instead. */
-  export const outboundSchema = EmailMessagesValue$outboundSchema;
-}
 
 /** @internal */
 export const EmailMessagesMessageType$inboundSchema: z.ZodType<
@@ -325,7 +268,6 @@ export const EmailMessagesMessageType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type EmailMessagesMessageType$Outbound = {
   source_value?:
@@ -361,19 +303,6 @@ export const EmailMessagesMessageType$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailMessagesMessageType$ {
-  /** @deprecated use `EmailMessagesMessageType$inboundSchema` instead. */
-  export const inboundSchema = EmailMessagesMessageType$inboundSchema;
-  /** @deprecated use `EmailMessagesMessageType$outboundSchema` instead. */
-  export const outboundSchema = EmailMessagesMessageType$outboundSchema;
-  /** @deprecated use `EmailMessagesMessageType$Outbound` instead. */
-  export type Outbound = EmailMessagesMessageType$Outbound;
-}
-
 export function emailMessagesMessageTypeToJSON(
   emailMessagesMessageType: EmailMessagesMessageType,
 ): string {
@@ -381,7 +310,6 @@ export function emailMessagesMessageTypeToJSON(
     EmailMessagesMessageType$outboundSchema.parse(emailMessagesMessageType),
   );
 }
-
 export function emailMessagesMessageTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<EmailMessagesMessageType, SDKValidationError> {
@@ -413,7 +341,6 @@ export const EmailMessages$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
 /** @internal */
 export type EmailMessages$Outbound = {
   id?: string | null | undefined;
@@ -445,23 +372,9 @@ export const EmailMessages$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailMessages$ {
-  /** @deprecated use `EmailMessages$inboundSchema` instead. */
-  export const inboundSchema = EmailMessages$inboundSchema;
-  /** @deprecated use `EmailMessages$outboundSchema` instead. */
-  export const outboundSchema = EmailMessages$outboundSchema;
-  /** @deprecated use `EmailMessages$Outbound` instead. */
-  export type Outbound = EmailMessages$Outbound;
-}
-
 export function emailMessagesToJSON(emailMessages: EmailMessages): string {
   return JSON.stringify(EmailMessages$outboundSchema.parse(emailMessages));
 }
-
 export function emailMessagesFromJSON(
   jsonString: string,
 ): SafeParseResult<EmailMessages, SDKValidationError> {

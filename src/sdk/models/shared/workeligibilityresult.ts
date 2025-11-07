@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   WorkEligibility,
   WorkEligibility$inboundSchema,
-  WorkEligibility$Outbound,
-  WorkEligibility$outboundSchema,
 } from "./workeligibility.js";
 
 export type WorkEligibilityResult = {
@@ -33,43 +26,6 @@ export const WorkEligibilityResult$inboundSchema: z.ZodType<
   data: WorkEligibility$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type WorkEligibilityResult$Outbound = {
-  data: WorkEligibility$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const WorkEligibilityResult$outboundSchema: z.ZodType<
-  WorkEligibilityResult$Outbound,
-  z.ZodTypeDef,
-  WorkEligibilityResult
-> = z.object({
-  data: WorkEligibility$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkEligibilityResult$ {
-  /** @deprecated use `WorkEligibilityResult$inboundSchema` instead. */
-  export const inboundSchema = WorkEligibilityResult$inboundSchema;
-  /** @deprecated use `WorkEligibilityResult$outboundSchema` instead. */
-  export const outboundSchema = WorkEligibilityResult$outboundSchema;
-  /** @deprecated use `WorkEligibilityResult$Outbound` instead. */
-  export type Outbound = WorkEligibilityResult$Outbound;
-}
-
-export function workEligibilityResultToJSON(
-  workEligibilityResult: WorkEligibilityResult,
-): string {
-  return JSON.stringify(
-    WorkEligibilityResult$outboundSchema.parse(workEligibilityResult),
-  );
-}
 
 export function workEligibilityResultFromJSON(
   jsonString: string,

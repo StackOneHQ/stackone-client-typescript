@@ -10,8 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TicketingContent,
   TicketingContent$inboundSchema,
-  TicketingContent$Outbound,
-  TicketingContent$outboundSchema,
 } from "./ticketingcontent.js";
 
 export enum TicketingComment2 {
@@ -65,58 +63,11 @@ export const TicketingComment2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(TicketingComment2);
 
 /** @internal */
-export const TicketingComment2$outboundSchema: z.ZodNativeEnum<
-  typeof TicketingComment2
-> = TicketingComment2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingComment2$ {
-  /** @deprecated use `TicketingComment2$inboundSchema` instead. */
-  export const inboundSchema = TicketingComment2$inboundSchema;
-  /** @deprecated use `TicketingComment2$outboundSchema` instead. */
-  export const outboundSchema = TicketingComment2$outboundSchema;
-}
-
-/** @internal */
 export const TicketingCommentInternal$inboundSchema: z.ZodType<
   TicketingCommentInternal,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), TicketingComment2$inboundSchema]);
-
-/** @internal */
-export type TicketingCommentInternal$Outbound = boolean | string;
-
-/** @internal */
-export const TicketingCommentInternal$outboundSchema: z.ZodType<
-  TicketingCommentInternal$Outbound,
-  z.ZodTypeDef,
-  TicketingCommentInternal
-> = z.union([z.boolean(), TicketingComment2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingCommentInternal$ {
-  /** @deprecated use `TicketingCommentInternal$inboundSchema` instead. */
-  export const inboundSchema = TicketingCommentInternal$inboundSchema;
-  /** @deprecated use `TicketingCommentInternal$outboundSchema` instead. */
-  export const outboundSchema = TicketingCommentInternal$outboundSchema;
-  /** @deprecated use `TicketingCommentInternal$Outbound` instead. */
-  export type Outbound = TicketingCommentInternal$Outbound;
-}
-
-export function ticketingCommentInternalToJSON(
-  ticketingCommentInternal: TicketingCommentInternal,
-): string {
-  return JSON.stringify(
-    TicketingCommentInternal$outboundSchema.parse(ticketingCommentInternal),
-  );
-}
 
 export function ticketingCommentInternalFromJSON(
   jsonString: string,
@@ -156,64 +107,6 @@ export const TicketingComment$inboundSchema: z.ZodType<
     "user_id": "userId",
   });
 });
-
-/** @internal */
-export type TicketingComment$Outbound = {
-  content?: Array<TicketingContent$Outbound> | null | undefined;
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  internal?: boolean | string | null | undefined;
-  remote_id?: string | null | undefined;
-  ticket_id: string;
-  updated_at?: string | null | undefined;
-  user_id?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingComment$outboundSchema: z.ZodType<
-  TicketingComment$Outbound,
-  z.ZodTypeDef,
-  TicketingComment
-> = z.object({
-  content: z.nullable(z.array(TicketingContent$outboundSchema)).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  internal: z.nullable(z.union([z.boolean(), TicketingComment2$outboundSchema]))
-    .optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  ticketId: z.string(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  userId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    ticketId: "ticket_id",
-    updatedAt: "updated_at",
-    userId: "user_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingComment$ {
-  /** @deprecated use `TicketingComment$inboundSchema` instead. */
-  export const inboundSchema = TicketingComment$inboundSchema;
-  /** @deprecated use `TicketingComment$outboundSchema` instead. */
-  export const outboundSchema = TicketingComment$outboundSchema;
-  /** @deprecated use `TicketingComment$Outbound` instead. */
-  export type Outbound = TicketingComment$Outbound;
-}
-
-export function ticketingCommentToJSON(
-  ticketingComment: TicketingComment,
-): string {
-  return JSON.stringify(
-    TicketingComment$outboundSchema.parse(ticketingComment),
-  );
-}
 
 export function ticketingCommentFromJSON(
   jsonString: string,

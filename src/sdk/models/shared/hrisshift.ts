@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ShiftBreak,
-  ShiftBreak$inboundSchema,
-  ShiftBreak$Outbound,
-  ShiftBreak$outboundSchema,
-} from "./shiftbreak.js";
+import { ShiftBreak, ShiftBreak$inboundSchema } from "./shiftbreak.js";
 
 export type HrisShift4 = {};
 
@@ -164,33 +155,6 @@ export const HrisShift4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type HrisShift4$Outbound = {};
-
-/** @internal */
-export const HrisShift4$outboundSchema: z.ZodType<
-  HrisShift4$Outbound,
-  z.ZodTypeDef,
-  HrisShift4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShift4$ {
-  /** @deprecated use `HrisShift4$inboundSchema` instead. */
-  export const inboundSchema = HrisShift4$inboundSchema;
-  /** @deprecated use `HrisShift4$outboundSchema` instead. */
-  export const outboundSchema = HrisShift4$outboundSchema;
-  /** @deprecated use `HrisShift4$Outbound` instead. */
-  export type Outbound = HrisShift4$Outbound;
-}
-
-export function hrisShift4ToJSON(hrisShift4: HrisShift4): string {
-  return JSON.stringify(HrisShift4$outboundSchema.parse(hrisShift4));
-}
-
 export function hrisShift4FromJSON(
   jsonString: string,
 ): SafeParseResult<HrisShift4, SDKValidationError> {
@@ -214,48 +178,6 @@ export const HrisShiftSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HrisShiftSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HrisShift4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HrisShiftSourceValue$outboundSchema: z.ZodType<
-  HrisShiftSourceValue$Outbound,
-  z.ZodTypeDef,
-  HrisShiftSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisShift4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftSourceValue$ {
-  /** @deprecated use `HrisShiftSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftSourceValue$inboundSchema;
-  /** @deprecated use `HrisShiftSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftSourceValue$outboundSchema;
-  /** @deprecated use `HrisShiftSourceValue$Outbound` instead. */
-  export type Outbound = HrisShiftSourceValue$Outbound;
-}
-
-export function hrisShiftSourceValueToJSON(
-  hrisShiftSourceValue: HrisShiftSourceValue,
-): string {
-  return JSON.stringify(
-    HrisShiftSourceValue$outboundSchema.parse(hrisShiftSourceValue),
-  );
-}
-
 export function hrisShiftSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisShiftSourceValue, SDKValidationError> {
@@ -276,27 +198,6 @@ export const HrisShiftValue$inboundSchema: z.ZodType<
     z.nativeEnum(HrisShiftValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const HrisShiftValue$outboundSchema: z.ZodType<
-  HrisShiftValueOpen,
-  z.ZodTypeDef,
-  HrisShiftValueOpen
-> = z.union([
-  z.nativeEnum(HrisShiftValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftValue$ {
-  /** @deprecated use `HrisShiftValue$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftValue$inboundSchema;
-  /** @deprecated use `HrisShiftValue$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftValue$outboundSchema;
-}
 
 /** @internal */
 export const ApprovalStatus$inboundSchema: z.ZodType<
@@ -320,58 +221,6 @@ export const ApprovalStatus$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ApprovalStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HrisShift4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ApprovalStatus$outboundSchema: z.ZodType<
-  ApprovalStatus$Outbound,
-  z.ZodTypeDef,
-  ApprovalStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisShift4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisShiftValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApprovalStatus$ {
-  /** @deprecated use `ApprovalStatus$inboundSchema` instead. */
-  export const inboundSchema = ApprovalStatus$inboundSchema;
-  /** @deprecated use `ApprovalStatus$outboundSchema` instead. */
-  export const outboundSchema = ApprovalStatus$outboundSchema;
-  /** @deprecated use `ApprovalStatus$Outbound` instead. */
-  export type Outbound = ApprovalStatus$Outbound;
-}
-
-export function approvalStatusToJSON(approvalStatus: ApprovalStatus): string {
-  return JSON.stringify(ApprovalStatus$outboundSchema.parse(approvalStatus));
-}
-
 export function approvalStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<ApprovalStatus, SDKValidationError> {
@@ -388,37 +237,6 @@ export const HrisShiftSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type HrisShiftSchemas4$Outbound = {};
-
-/** @internal */
-export const HrisShiftSchemas4$outboundSchema: z.ZodType<
-  HrisShiftSchemas4$Outbound,
-  z.ZodTypeDef,
-  HrisShiftSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftSchemas4$ {
-  /** @deprecated use `HrisShiftSchemas4$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftSchemas4$inboundSchema;
-  /** @deprecated use `HrisShiftSchemas4$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftSchemas4$outboundSchema;
-  /** @deprecated use `HrisShiftSchemas4$Outbound` instead. */
-  export type Outbound = HrisShiftSchemas4$Outbound;
-}
-
-export function hrisShiftSchemas4ToJSON(
-  hrisShiftSchemas4: HrisShiftSchemas4,
-): string {
-  return JSON.stringify(
-    HrisShiftSchemas4$outboundSchema.parse(hrisShiftSchemas4),
-  );
-}
 
 export function hrisShiftSchemas4FromJSON(
   jsonString: string,
@@ -443,50 +261,6 @@ export const HrisShiftSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type HrisShiftSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | HrisShiftSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const HrisShiftSchemasSourceValue$outboundSchema: z.ZodType<
-  HrisShiftSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  HrisShiftSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => HrisShiftSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftSchemasSourceValue$ {
-  /** @deprecated use `HrisShiftSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftSchemasSourceValue$inboundSchema;
-  /** @deprecated use `HrisShiftSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftSchemasSourceValue$outboundSchema;
-  /** @deprecated use `HrisShiftSchemasSourceValue$Outbound` instead. */
-  export type Outbound = HrisShiftSchemasSourceValue$Outbound;
-}
-
-export function hrisShiftSchemasSourceValueToJSON(
-  hrisShiftSchemasSourceValue: HrisShiftSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    HrisShiftSchemasSourceValue$outboundSchema.parse(
-      hrisShiftSchemasSourceValue,
-    ),
-  );
-}
-
 export function hrisShiftSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<HrisShiftSchemasSourceValue, SDKValidationError> {
@@ -509,27 +283,6 @@ export const HrisShiftSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const HrisShiftSchemasValue$outboundSchema: z.ZodType<
-  HrisShiftSchemasValueOpen,
-  z.ZodTypeDef,
-  HrisShiftSchemasValueOpen
-> = z.union([
-  z.nativeEnum(HrisShiftSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftSchemasValue$ {
-  /** @deprecated use `HrisShiftSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftSchemasValue$inboundSchema;
-  /** @deprecated use `HrisShiftSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const HrisShiftStatus$inboundSchema: z.ZodType<
   HrisShiftStatus,
   z.ZodTypeDef,
@@ -550,60 +303,6 @@ export const HrisShiftStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type HrisShiftStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | HrisShiftSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisShiftStatus$outboundSchema: z.ZodType<
-  HrisShiftStatus$Outbound,
-  z.ZodTypeDef,
-  HrisShiftStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => HrisShiftSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisShiftSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShiftStatus$ {
-  /** @deprecated use `HrisShiftStatus$inboundSchema` instead. */
-  export const inboundSchema = HrisShiftStatus$inboundSchema;
-  /** @deprecated use `HrisShiftStatus$outboundSchema` instead. */
-  export const outboundSchema = HrisShiftStatus$outboundSchema;
-  /** @deprecated use `HrisShiftStatus$Outbound` instead. */
-  export type Outbound = HrisShiftStatus$Outbound;
-}
-
-export function hrisShiftStatusToJSON(
-  hrisShiftStatus: HrisShiftStatus,
-): string {
-  return JSON.stringify(HrisShiftStatus$outboundSchema.parse(hrisShiftStatus));
-}
 
 export function hrisShiftStatusFromJSON(
   jsonString: string,
@@ -653,75 +352,6 @@ export const HrisShift$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type HrisShift$Outbound = {
-  approval_status?: ApprovalStatus$Outbound | null | undefined;
-  break_duration?: string | null | undefined;
-  breaks?: Array<ShiftBreak$Outbound> | null | undefined;
-  company_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  employee_id?: string | null | undefined;
-  end_time?: string | null | undefined;
-  id?: string | null | undefined;
-  location_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  start_time?: string | null | undefined;
-  status?: HrisShiftStatus$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const HrisShift$outboundSchema: z.ZodType<
-  HrisShift$Outbound,
-  z.ZodTypeDef,
-  HrisShift
-> = z.object({
-  approvalStatus: z.nullable(z.lazy(() => ApprovalStatus$outboundSchema))
-    .optional(),
-  breakDuration: z.nullable(z.string()).optional(),
-  breaks: z.nullable(z.array(ShiftBreak$outboundSchema)).optional(),
-  companyId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  employeeId: z.nullable(z.string()).optional(),
-  endTime: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  locationId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => HrisShiftStatus$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    approvalStatus: "approval_status",
-    breakDuration: "break_duration",
-    companyId: "company_id",
-    createdAt: "created_at",
-    employeeId: "employee_id",
-    endTime: "end_time",
-    locationId: "location_id",
-    remoteId: "remote_id",
-    startTime: "start_time",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisShift$ {
-  /** @deprecated use `HrisShift$inboundSchema` instead. */
-  export const inboundSchema = HrisShift$inboundSchema;
-  /** @deprecated use `HrisShift$outboundSchema` instead. */
-  export const outboundSchema = HrisShift$outboundSchema;
-  /** @deprecated use `HrisShift$Outbound` instead. */
-  export type Outbound = HrisShift$Outbound;
-}
-
-export function hrisShiftToJSON(hrisShift: HrisShift): string {
-  return JSON.stringify(HrisShift$outboundSchema.parse(hrisShift));
-}
 
 export function hrisShiftFromJSON(
   jsonString: string,

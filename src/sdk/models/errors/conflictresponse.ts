@@ -62,36 +62,3 @@ export const ConflictResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type ConflictResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const ConflictResponse$outboundSchema: z.ZodType<
-  ConflictResponse$Outbound,
-  z.ZodTypeDef,
-  ConflictResponse
-> = z.instanceof(ConflictResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConflictResponse$ {
-  /** @deprecated use `ConflictResponse$inboundSchema` instead. */
-  export const inboundSchema = ConflictResponse$inboundSchema;
-  /** @deprecated use `ConflictResponse$outboundSchema` instead. */
-  export const outboundSchema = ConflictResponse$outboundSchema;
-  /** @deprecated use `ConflictResponse$Outbound` instead. */
-  export type Outbound = ConflictResponse$Outbound;
-}

@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  PlatformLog,
-  PlatformLog$inboundSchema,
-  PlatformLog$Outbound,
-  PlatformLog$outboundSchema,
-} from "./platformlog.js";
+import { PlatformLog, PlatformLog$inboundSchema } from "./platformlog.js";
 
 export type PlatformLogsPaginated = {
   data: Array<PlatformLog>;
@@ -27,43 +22,6 @@ export const PlatformLogsPaginated$inboundSchema: z.ZodType<
   data: z.array(PlatformLog$inboundSchema),
   next: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type PlatformLogsPaginated$Outbound = {
-  data: Array<PlatformLog$Outbound>;
-  next?: string | null | undefined;
-};
-
-/** @internal */
-export const PlatformLogsPaginated$outboundSchema: z.ZodType<
-  PlatformLogsPaginated$Outbound,
-  z.ZodTypeDef,
-  PlatformLogsPaginated
-> = z.object({
-  data: z.array(PlatformLog$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PlatformLogsPaginated$ {
-  /** @deprecated use `PlatformLogsPaginated$inboundSchema` instead. */
-  export const inboundSchema = PlatformLogsPaginated$inboundSchema;
-  /** @deprecated use `PlatformLogsPaginated$outboundSchema` instead. */
-  export const outboundSchema = PlatformLogsPaginated$outboundSchema;
-  /** @deprecated use `PlatformLogsPaginated$Outbound` instead. */
-  export type Outbound = PlatformLogsPaginated$Outbound;
-}
-
-export function platformLogsPaginatedToJSON(
-  platformLogsPaginated: PlatformLogsPaginated,
-): string {
-  return JSON.stringify(
-    PlatformLogsPaginated$outboundSchema.parse(platformLogsPaginated),
-  );
-}
 
 export function platformLogsPaginatedFromJSON(
   jsonString: string,

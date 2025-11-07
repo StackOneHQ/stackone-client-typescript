@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Drives,
-  Drives$inboundSchema,
-  Drives$Outbound,
-  Drives$outboundSchema,
-} from "./drives.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Drives, Drives$inboundSchema } from "./drives.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type DrivesPaginated = {
   data: Array<Drives>;
@@ -35,43 +25,6 @@ export const DrivesPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type DrivesPaginated$Outbound = {
-  data: Array<Drives$Outbound>;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const DrivesPaginated$outboundSchema: z.ZodType<
-  DrivesPaginated$Outbound,
-  z.ZodTypeDef,
-  DrivesPaginated
-> = z.object({
-  data: z.array(Drives$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DrivesPaginated$ {
-  /** @deprecated use `DrivesPaginated$inboundSchema` instead. */
-  export const inboundSchema = DrivesPaginated$inboundSchema;
-  /** @deprecated use `DrivesPaginated$outboundSchema` instead. */
-  export const outboundSchema = DrivesPaginated$outboundSchema;
-  /** @deprecated use `DrivesPaginated$Outbound` instead. */
-  export type Outbound = DrivesPaginated$Outbound;
-}
-
-export function drivesPaginatedToJSON(
-  drivesPaginated: DrivesPaginated,
-): string {
-  return JSON.stringify(DrivesPaginated$outboundSchema.parse(drivesPaginated));
-}
 
 export function drivesPaginatedFromJSON(
   jsonString: string,

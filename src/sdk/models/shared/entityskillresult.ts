@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  EntitySkills,
-  EntitySkills$inboundSchema,
-  EntitySkills$Outbound,
-  EntitySkills$outboundSchema,
-} from "./entityskills.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { EntitySkills, EntitySkills$inboundSchema } from "./entityskills.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type EntitySkillResult = {
   data: EntitySkills;
@@ -33,43 +23,6 @@ export const EntitySkillResult$inboundSchema: z.ZodType<
   data: EntitySkills$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type EntitySkillResult$Outbound = {
-  data: EntitySkills$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const EntitySkillResult$outboundSchema: z.ZodType<
-  EntitySkillResult$Outbound,
-  z.ZodTypeDef,
-  EntitySkillResult
-> = z.object({
-  data: EntitySkills$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitySkillResult$ {
-  /** @deprecated use `EntitySkillResult$inboundSchema` instead. */
-  export const inboundSchema = EntitySkillResult$inboundSchema;
-  /** @deprecated use `EntitySkillResult$outboundSchema` instead. */
-  export const outboundSchema = EntitySkillResult$outboundSchema;
-  /** @deprecated use `EntitySkillResult$Outbound` instead. */
-  export type Outbound = EntitySkillResult$Outbound;
-}
-
-export function entitySkillResultToJSON(
-  entitySkillResult: EntitySkillResult,
-): string {
-  return JSON.stringify(
-    EntitySkillResult$outboundSchema.parse(entitySkillResult),
-  );
-}
 
 export function entitySkillResultFromJSON(
   jsonString: string,

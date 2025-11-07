@@ -33,45 +33,6 @@ export const AuthenticationMetaItem$inboundSchema: z.ZodType<
   type: z.nullable(z.string()).optional(),
 });
 
-/** @internal */
-export type AuthenticationMetaItem$Outbound = {
-  key?: string | null | undefined;
-  label?: string | null | undefined;
-  type?: string | null | undefined;
-};
-
-/** @internal */
-export const AuthenticationMetaItem$outboundSchema: z.ZodType<
-  AuthenticationMetaItem$Outbound,
-  z.ZodTypeDef,
-  AuthenticationMetaItem
-> = z.object({
-  key: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  type: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthenticationMetaItem$ {
-  /** @deprecated use `AuthenticationMetaItem$inboundSchema` instead. */
-  export const inboundSchema = AuthenticationMetaItem$inboundSchema;
-  /** @deprecated use `AuthenticationMetaItem$outboundSchema` instead. */
-  export const outboundSchema = AuthenticationMetaItem$outboundSchema;
-  /** @deprecated use `AuthenticationMetaItem$Outbound` instead. */
-  export type Outbound = AuthenticationMetaItem$Outbound;
-}
-
-export function authenticationMetaItemToJSON(
-  authenticationMetaItem: AuthenticationMetaItem,
-): string {
-  return JSON.stringify(
-    AuthenticationMetaItem$outboundSchema.parse(authenticationMetaItem),
-  );
-}
-
 export function authenticationMetaItemFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthenticationMetaItem, SDKValidationError> {

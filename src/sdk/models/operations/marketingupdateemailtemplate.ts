@@ -40,24 +40,6 @@ export type MarketingUpdateEmailTemplateResponse = {
 };
 
 /** @internal */
-export const MarketingUpdateEmailTemplateRequest$inboundSchema: z.ZodType<
-  MarketingUpdateEmailTemplateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  MarketingCreateEmailTemplateRequestDto:
-    shared.MarketingCreateEmailTemplateRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "MarketingCreateEmailTemplateRequestDto":
-      "marketingCreateEmailTemplateRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingUpdateEmailTemplateRequest$Outbound = {
   MarketingCreateEmailTemplateRequestDto:
     shared.MarketingCreateEmailTemplateRequestDto$Outbound;
@@ -83,21 +65,6 @@ export const MarketingUpdateEmailTemplateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingUpdateEmailTemplateRequest$ {
-  /** @deprecated use `MarketingUpdateEmailTemplateRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingUpdateEmailTemplateRequest$inboundSchema;
-  /** @deprecated use `MarketingUpdateEmailTemplateRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingUpdateEmailTemplateRequest$outboundSchema;
-  /** @deprecated use `MarketingUpdateEmailTemplateRequest$Outbound` instead. */
-  export type Outbound = MarketingUpdateEmailTemplateRequest$Outbound;
-}
-
 export function marketingUpdateEmailTemplateRequestToJSON(
   marketingUpdateEmailTemplateRequest: MarketingUpdateEmailTemplateRequest,
 ): string {
@@ -105,17 +72,6 @@ export function marketingUpdateEmailTemplateRequestToJSON(
     MarketingUpdateEmailTemplateRequest$outboundSchema.parse(
       marketingUpdateEmailTemplateRequest,
     ),
-  );
-}
-
-export function marketingUpdateEmailTemplateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingUpdateEmailTemplateRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingUpdateEmailTemplateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingUpdateEmailTemplateRequest' from JSON`,
   );
 }
 
@@ -140,63 +96,6 @@ export const MarketingUpdateEmailTemplateResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingUpdateEmailTemplateResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingUpdateEmailTemplateResponse$outboundSchema: z.ZodType<
-  MarketingUpdateEmailTemplateResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingUpdateEmailTemplateResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingUpdateEmailTemplateResponse$ {
-  /** @deprecated use `MarketingUpdateEmailTemplateResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingUpdateEmailTemplateResponse$inboundSchema;
-  /** @deprecated use `MarketingUpdateEmailTemplateResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingUpdateEmailTemplateResponse$outboundSchema;
-  /** @deprecated use `MarketingUpdateEmailTemplateResponse$Outbound` instead. */
-  export type Outbound = MarketingUpdateEmailTemplateResponse$Outbound;
-}
-
-export function marketingUpdateEmailTemplateResponseToJSON(
-  marketingUpdateEmailTemplateResponse: MarketingUpdateEmailTemplateResponse,
-): string {
-  return JSON.stringify(
-    MarketingUpdateEmailTemplateResponse$outboundSchema.parse(
-      marketingUpdateEmailTemplateResponse,
-    ),
-  );
-}
 
 export function marketingUpdateEmailTemplateResponseFromJSON(
   jsonString: string,

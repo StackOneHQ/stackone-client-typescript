@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   ScreeningPackage,
   ScreeningPackage$inboundSchema,
-  ScreeningPackage$Outbound,
-  ScreeningPackage$outboundSchema,
 } from "./screeningpackage.js";
 
 export type ScreeningPackageResult = {
@@ -33,43 +26,6 @@ export const ScreeningPackageResult$inboundSchema: z.ZodType<
   data: ScreeningPackage$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ScreeningPackageResult$Outbound = {
-  data: ScreeningPackage$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ScreeningPackageResult$outboundSchema: z.ZodType<
-  ScreeningPackageResult$Outbound,
-  z.ZodTypeDef,
-  ScreeningPackageResult
-> = z.object({
-  data: ScreeningPackage$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningPackageResult$ {
-  /** @deprecated use `ScreeningPackageResult$inboundSchema` instead. */
-  export const inboundSchema = ScreeningPackageResult$inboundSchema;
-  /** @deprecated use `ScreeningPackageResult$outboundSchema` instead. */
-  export const outboundSchema = ScreeningPackageResult$outboundSchema;
-  /** @deprecated use `ScreeningPackageResult$Outbound` instead. */
-  export type Outbound = ScreeningPackageResult$Outbound;
-}
-
-export function screeningPackageResultToJSON(
-  screeningPackageResult: ScreeningPackageResult,
-): string {
-  return JSON.stringify(
-    ScreeningPackageResult$outboundSchema.parse(screeningPackageResult),
-  );
-}
 
 export function screeningPackageResultFromJSON(
   jsonString: string,

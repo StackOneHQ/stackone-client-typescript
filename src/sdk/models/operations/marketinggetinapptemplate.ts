@@ -50,23 +50,6 @@ export type MarketingGetInAppTemplateResponse = {
 };
 
 /** @internal */
-export const MarketingGetInAppTemplateRequest$inboundSchema: z.ZodType<
-  MarketingGetInAppTemplateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingGetInAppTemplateRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const MarketingGetInAppTemplateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetInAppTemplateRequest$ {
-  /** @deprecated use `MarketingGetInAppTemplateRequest$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetInAppTemplateRequest$inboundSchema;
-  /** @deprecated use `MarketingGetInAppTemplateRequest$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetInAppTemplateRequest$outboundSchema;
-  /** @deprecated use `MarketingGetInAppTemplateRequest$Outbound` instead. */
-  export type Outbound = MarketingGetInAppTemplateRequest$Outbound;
-}
-
 export function marketingGetInAppTemplateRequestToJSON(
   marketingGetInAppTemplateRequest: MarketingGetInAppTemplateRequest,
 ): string {
@@ -112,16 +82,6 @@ export function marketingGetInAppTemplateRequestToJSON(
     MarketingGetInAppTemplateRequest$outboundSchema.parse(
       marketingGetInAppTemplateRequest,
     ),
-  );
-}
-
-export function marketingGetInAppTemplateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingGetInAppTemplateRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MarketingGetInAppTemplateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingGetInAppTemplateRequest' from JSON`,
   );
 }
 
@@ -146,62 +106,6 @@ export const MarketingGetInAppTemplateResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingGetInAppTemplateResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  InAppTemplateResult?: shared.InAppTemplateResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingGetInAppTemplateResponse$outboundSchema: z.ZodType<
-  MarketingGetInAppTemplateResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingGetInAppTemplateResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  inAppTemplateResult: shared.InAppTemplateResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    inAppTemplateResult: "InAppTemplateResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetInAppTemplateResponse$ {
-  /** @deprecated use `MarketingGetInAppTemplateResponse$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetInAppTemplateResponse$inboundSchema;
-  /** @deprecated use `MarketingGetInAppTemplateResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingGetInAppTemplateResponse$outboundSchema;
-  /** @deprecated use `MarketingGetInAppTemplateResponse$Outbound` instead. */
-  export type Outbound = MarketingGetInAppTemplateResponse$Outbound;
-}
-
-export function marketingGetInAppTemplateResponseToJSON(
-  marketingGetInAppTemplateResponse: MarketingGetInAppTemplateResponse,
-): string {
-  return JSON.stringify(
-    MarketingGetInAppTemplateResponse$outboundSchema.parse(
-      marketingGetInAppTemplateResponse,
-    ),
-  );
-}
 
 export function marketingGetInAppTemplateResponseFromJSON(
   jsonString: string,

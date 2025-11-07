@@ -62,36 +62,3 @@ export const InternalServerErrorResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type InternalServerErrorResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const InternalServerErrorResponse$outboundSchema: z.ZodType<
-  InternalServerErrorResponse$Outbound,
-  z.ZodTypeDef,
-  InternalServerErrorResponse
-> = z.instanceof(InternalServerErrorResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InternalServerErrorResponse$ {
-  /** @deprecated use `InternalServerErrorResponse$inboundSchema` instead. */
-  export const inboundSchema = InternalServerErrorResponse$inboundSchema;
-  /** @deprecated use `InternalServerErrorResponse$outboundSchema` instead. */
-  export const outboundSchema = InternalServerErrorResponse$outboundSchema;
-  /** @deprecated use `InternalServerErrorResponse$Outbound` instead. */
-  export type Outbound = InternalServerErrorResponse$Outbound;
-}

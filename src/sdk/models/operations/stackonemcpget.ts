@@ -20,9 +20,13 @@ export type StackoneMcpGetRequest = {
    */
   mcpSessionId: string;
   /**
-   * Account secure id for the target provider account
+   * Account secure id for the target provider account (optional if x-account-id query parameter is provided)
    */
-  xAccountId: string;
+  xAccountId?: string | undefined;
+  /**
+   * Account secure id (alternative to x-account-id header)
+   */
+  xAccountIdQueryParameter?: any | undefined;
 };
 
 export type StackoneMcpGetResponse = {
@@ -40,20 +44,6 @@ export type StackoneMcpGetResponse = {
    */
   rawResponse: Response;
 };
-
-/** @internal */
-export const StackoneMcpGetSecurity$inboundSchema: z.ZodType<
-  StackoneMcpGetSecurity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ApiKey: z.string().optional(),
-  basic: shared.SchemeBasic$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ApiKey": "apiKey",
-  });
-});
 
 /** @internal */
 export type StackoneMcpGetSecurity$Outbound = {
@@ -75,19 +65,6 @@ export const StackoneMcpGetSecurity$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpGetSecurity$ {
-  /** @deprecated use `StackoneMcpGetSecurity$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpGetSecurity$inboundSchema;
-  /** @deprecated use `StackoneMcpGetSecurity$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpGetSecurity$outboundSchema;
-  /** @deprecated use `StackoneMcpGetSecurity$Outbound` instead. */
-  export type Outbound = StackoneMcpGetSecurity$Outbound;
-}
-
 export function stackoneMcpGetSecurityToJSON(
   stackoneMcpGetSecurity: StackoneMcpGetSecurity,
 ): string {
@@ -96,35 +73,11 @@ export function stackoneMcpGetSecurityToJSON(
   );
 }
 
-export function stackoneMcpGetSecurityFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneMcpGetSecurity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneMcpGetSecurity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneMcpGetSecurity' from JSON`,
-  );
-}
-
-/** @internal */
-export const StackoneMcpGetRequest$inboundSchema: z.ZodType<
-  StackoneMcpGetRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "mcp-session-id": z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "mcp-session-id": "mcpSessionId",
-    "x-account-id": "xAccountId",
-  });
-});
-
 /** @internal */
 export type StackoneMcpGetRequest$Outbound = {
   "mcp-session-id": string;
-  "x-account-id": string;
+  "x-account-id"?: string | undefined;
+  "x-account-idQueryParameter"?: any | undefined;
 };
 
 /** @internal */
@@ -134,42 +87,21 @@ export const StackoneMcpGetRequest$outboundSchema: z.ZodType<
   StackoneMcpGetRequest
 > = z.object({
   mcpSessionId: z.string(),
-  xAccountId: z.string(),
+  xAccountId: z.string().optional(),
+  xAccountIdQueryParameter: z.any().optional(),
 }).transform((v) => {
   return remap$(v, {
     mcpSessionId: "mcp-session-id",
     xAccountId: "x-account-id",
+    xAccountIdQueryParameter: "x-account-idQueryParameter",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpGetRequest$ {
-  /** @deprecated use `StackoneMcpGetRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpGetRequest$inboundSchema;
-  /** @deprecated use `StackoneMcpGetRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpGetRequest$outboundSchema;
-  /** @deprecated use `StackoneMcpGetRequest$Outbound` instead. */
-  export type Outbound = StackoneMcpGetRequest$Outbound;
-}
 
 export function stackoneMcpGetRequestToJSON(
   stackoneMcpGetRequest: StackoneMcpGetRequest,
 ): string {
   return JSON.stringify(
     StackoneMcpGetRequest$outboundSchema.parse(stackoneMcpGetRequest),
-  );
-}
-
-export function stackoneMcpGetRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneMcpGetRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneMcpGetRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneMcpGetRequest' from JSON`,
   );
 }
 
@@ -192,56 +124,6 @@ export const StackoneMcpGetResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneMcpGetResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneMcpGetResponse$outboundSchema: z.ZodType<
-  StackoneMcpGetResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneMcpGetResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneMcpGetResponse$ {
-  /** @deprecated use `StackoneMcpGetResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneMcpGetResponse$inboundSchema;
-  /** @deprecated use `StackoneMcpGetResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneMcpGetResponse$outboundSchema;
-  /** @deprecated use `StackoneMcpGetResponse$Outbound` instead. */
-  export type Outbound = StackoneMcpGetResponse$Outbound;
-}
-
-export function stackoneMcpGetResponseToJSON(
-  stackoneMcpGetResponse: StackoneMcpGetResponse,
-): string {
-  return JSON.stringify(
-    StackoneMcpGetResponse$outboundSchema.parse(stackoneMcpGetResponse),
-  );
-}
 
 export function stackoneMcpGetResponseFromJSON(
   jsonString: string,

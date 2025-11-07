@@ -10,21 +10,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomMappingError,
   CustomMappingError$inboundSchema,
-  CustomMappingError$Outbound,
-  CustomMappingError$outboundSchema,
 } from "./custommappingerror.js";
-import {
-  ProviderError,
-  ProviderError$inboundSchema,
-  ProviderError$Outbound,
-  ProviderError$outboundSchema,
-} from "./providererror.js";
-import {
-  StepLog,
-  StepLog$inboundSchema,
-  StepLog$Outbound,
-  StepLog$outboundSchema,
-} from "./steplog.js";
+import { ProviderError, ProviderError$inboundSchema } from "./providererror.js";
+import { StepLog, StepLog$inboundSchema } from "./steplog.js";
 
 /**
  * The request URL data
@@ -211,47 +199,6 @@ export const UnifiedLogsUrl$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type UnifiedLogsUrl$Outbound = {
-  hostname?: string | null | undefined;
-  path?: string | null | undefined;
-  query_params?: { [k: string]: any } | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const UnifiedLogsUrl$outboundSchema: z.ZodType<
-  UnifiedLogsUrl$Outbound,
-  z.ZodTypeDef,
-  UnifiedLogsUrl
-> = z.object({
-  hostname: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
-  queryParams: z.nullable(z.record(z.any())).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    queryParams: "query_params",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedLogsUrl$ {
-  /** @deprecated use `UnifiedLogsUrl$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogsUrl$inboundSchema;
-  /** @deprecated use `UnifiedLogsUrl$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogsUrl$outboundSchema;
-  /** @deprecated use `UnifiedLogsUrl$Outbound` instead. */
-  export type Outbound = UnifiedLogsUrl$Outbound;
-}
-
-export function unifiedLogsUrlToJSON(unifiedLogsUrl: UnifiedLogsUrl): string {
-  return JSON.stringify(UnifiedLogsUrl$outboundSchema.parse(unifiedLogsUrl));
-}
-
 export function unifiedLogsUrlFromJSON(
   jsonString: string,
 ): SafeParseResult<UnifiedLogsUrl, SDKValidationError> {
@@ -274,49 +221,6 @@ export const UnifiedLogsRequest$inboundSchema: z.ZodType<
   method: z.nullable(z.string()).optional(),
   url: z.nullable(z.lazy(() => UnifiedLogsUrl$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type UnifiedLogsRequest$Outbound = {
-  body?: any | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  id?: string | null | undefined;
-  method?: string | null | undefined;
-  url?: UnifiedLogsUrl$Outbound | null | undefined;
-};
-
-/** @internal */
-export const UnifiedLogsRequest$outboundSchema: z.ZodType<
-  UnifiedLogsRequest$Outbound,
-  z.ZodTypeDef,
-  UnifiedLogsRequest
-> = z.object({
-  body: z.nullable(z.any()).optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  id: z.nullable(z.string()).optional(),
-  method: z.nullable(z.string()).optional(),
-  url: z.nullable(z.lazy(() => UnifiedLogsUrl$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedLogsRequest$ {
-  /** @deprecated use `UnifiedLogsRequest$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogsRequest$inboundSchema;
-  /** @deprecated use `UnifiedLogsRequest$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogsRequest$outboundSchema;
-  /** @deprecated use `UnifiedLogsRequest$Outbound` instead. */
-  export type Outbound = UnifiedLogsRequest$Outbound;
-}
-
-export function unifiedLogsRequestToJSON(
-  unifiedLogsRequest: UnifiedLogsRequest,
-): string {
-  return JSON.stringify(
-    UnifiedLogsRequest$outboundSchema.parse(unifiedLogsRequest),
-  );
-}
 
 export function unifiedLogsRequestFromJSON(
   jsonString: string,
@@ -347,56 +251,6 @@ export const UnifiedLogsResponse$inboundSchema: z.ZodType<
     "status_code": "statusCode",
   });
 });
-
-/** @internal */
-export type UnifiedLogsResponse$Outbound = {
-  body?: any | null | undefined;
-  custom_mapping_errors?: Array<CustomMappingError$Outbound> | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  provider_errors?: Array<ProviderError$Outbound> | null | undefined;
-  status_code?: number | null | undefined;
-};
-
-/** @internal */
-export const UnifiedLogsResponse$outboundSchema: z.ZodType<
-  UnifiedLogsResponse$Outbound,
-  z.ZodTypeDef,
-  UnifiedLogsResponse
-> = z.object({
-  body: z.nullable(z.any()).optional(),
-  customMappingErrors: z.nullable(z.array(CustomMappingError$outboundSchema))
-    .optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  providerErrors: z.nullable(z.array(ProviderError$outboundSchema)).optional(),
-  statusCode: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    customMappingErrors: "custom_mapping_errors",
-    providerErrors: "provider_errors",
-    statusCode: "status_code",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedLogsResponse$ {
-  /** @deprecated use `UnifiedLogsResponse$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogsResponse$inboundSchema;
-  /** @deprecated use `UnifiedLogsResponse$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogsResponse$outboundSchema;
-  /** @deprecated use `UnifiedLogsResponse$Outbound` instead. */
-  export type Outbound = UnifiedLogsResponse$Outbound;
-}
-
-export function unifiedLogsResponseToJSON(
-  unifiedLogsResponse: UnifiedLogsResponse,
-): string {
-  return JSON.stringify(
-    UnifiedLogsResponse$outboundSchema.parse(unifiedLogsResponse),
-  );
-}
 
 export function unifiedLogsResponseFromJSON(
   jsonString: string,
@@ -467,108 +321,6 @@ export const UnifiedLogs$inboundSchema: z.ZodType<
     "sub_resource": "subResource",
   });
 });
-
-/** @internal */
-export type UnifiedLogs$Outbound = {
-  account_id?: string | null | undefined;
-  action?: string | null | undefined;
-  child_resource?: string | null | undefined;
-  duration?: number | null | undefined;
-  end_time?: string | null | undefined;
-  event_datetime?: string | null | undefined;
-  http_method?: string | null | undefined;
-  is_worker?: boolean | null | undefined;
-  path?: string | null | undefined;
-  project_id?: string | null | undefined;
-  provider?: string | null | undefined;
-  request?: UnifiedLogsRequest$Outbound | null | undefined;
-  request_id?: string | null | undefined;
-  resource?: string | null | undefined;
-  response?: UnifiedLogsResponse$Outbound | null | undefined;
-  service?: string | null | undefined;
-  source_id?: string | null | undefined;
-  source_ip?: string | null | undefined;
-  source_type?: string | null | undefined;
-  source_value?: string | null | undefined;
-  start_time?: string | null | undefined;
-  status?: number | null | undefined;
-  step_requests?: Array<StepLog$Outbound> | null | undefined;
-  sub_resource?: string | null | undefined;
-  success?: boolean | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const UnifiedLogs$outboundSchema: z.ZodType<
-  UnifiedLogs$Outbound,
-  z.ZodTypeDef,
-  UnifiedLogs
-> = z.object({
-  accountId: z.nullable(z.string()).optional(),
-  action: z.nullable(z.string()).optional(),
-  childResource: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  eventDatetime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  httpMethod: z.nullable(z.string()).optional(),
-  isWorker: z.nullable(z.boolean()).optional(),
-  path: z.nullable(z.string()).optional(),
-  projectId: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
-  request: z.nullable(z.lazy(() => UnifiedLogsRequest$outboundSchema))
-    .optional(),
-  requestId: z.nullable(z.string()).optional(),
-  resource: z.nullable(z.string()).optional(),
-  response: z.nullable(z.lazy(() => UnifiedLogsResponse$outboundSchema))
-    .optional(),
-  service: z.nullable(z.string()).optional(),
-  sourceId: z.nullable(z.string()).optional(),
-  sourceIp: z.nullable(z.string()).optional(),
-  sourceType: z.nullable(z.string()).optional(),
-  sourceValue: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  status: z.nullable(z.number()).optional(),
-  stepRequests: z.nullable(z.array(StepLog$outboundSchema)).optional(),
-  subResource: z.nullable(z.string()).optional(),
-  success: z.nullable(z.boolean()).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountId: "account_id",
-    childResource: "child_resource",
-    endTime: "end_time",
-    eventDatetime: "event_datetime",
-    httpMethod: "http_method",
-    isWorker: "is_worker",
-    projectId: "project_id",
-    requestId: "request_id",
-    sourceId: "source_id",
-    sourceIp: "source_ip",
-    sourceType: "source_type",
-    sourceValue: "source_value",
-    startTime: "start_time",
-    stepRequests: "step_requests",
-    subResource: "sub_resource",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedLogs$ {
-  /** @deprecated use `UnifiedLogs$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogs$inboundSchema;
-  /** @deprecated use `UnifiedLogs$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogs$outboundSchema;
-  /** @deprecated use `UnifiedLogs$Outbound` instead. */
-  export type Outbound = UnifiedLogs$Outbound;
-}
-
-export function unifiedLogsToJSON(unifiedLogs: UnifiedLogs): string {
-  return JSON.stringify(UnifiedLogs$outboundSchema.parse(unifiedLogs));
-}
 
 export function unifiedLogsFromJSON(
   jsonString: string,

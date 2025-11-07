@@ -87,21 +87,6 @@ export type CrmListContactsResponse = {
 };
 
 /** @internal */
-export const CrmListContactsQueryParamFilter$inboundSchema: z.ZodType<
-  CrmListContactsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type CrmListContactsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -119,19 +104,6 @@ export const CrmListContactsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListContactsQueryParamFilter$ {
-  /** @deprecated use `CrmListContactsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = CrmListContactsQueryParamFilter$inboundSchema;
-  /** @deprecated use `CrmListContactsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema = CrmListContactsQueryParamFilter$outboundSchema;
-  /** @deprecated use `CrmListContactsQueryParamFilter$Outbound` instead. */
-  export type Outbound = CrmListContactsQueryParamFilter$Outbound;
-}
-
 export function crmListContactsQueryParamFilterToJSON(
   crmListContactsQueryParamFilter: CrmListContactsQueryParamFilter,
 ): string {
@@ -141,44 +113,6 @@ export function crmListContactsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function crmListContactsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmListContactsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmListContactsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmListContactsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const CrmListContactsRequest$inboundSchema: z.ZodType<
-  CrmListContactsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => CrmListContactsQueryParamFilter$inboundSchema),
-  ).optional(),
-  include: z.nullable(z.string()).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type CrmListContactsRequest$Outbound = {
@@ -220,34 +154,11 @@ export const CrmListContactsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListContactsRequest$ {
-  /** @deprecated use `CrmListContactsRequest$inboundSchema` instead. */
-  export const inboundSchema = CrmListContactsRequest$inboundSchema;
-  /** @deprecated use `CrmListContactsRequest$outboundSchema` instead. */
-  export const outboundSchema = CrmListContactsRequest$outboundSchema;
-  /** @deprecated use `CrmListContactsRequest$Outbound` instead. */
-  export type Outbound = CrmListContactsRequest$Outbound;
-}
-
 export function crmListContactsRequestToJSON(
   crmListContactsRequest: CrmListContactsRequest,
 ): string {
   return JSON.stringify(
     CrmListContactsRequest$outboundSchema.parse(crmListContactsRequest),
-  );
-}
-
-export function crmListContactsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmListContactsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmListContactsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmListContactsRequest' from JSON`,
   );
 }
 
@@ -272,59 +183,6 @@ export const CrmListContactsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type CrmListContactsResponse$Outbound = {
-  ContactsPaginated?: shared.ContactsPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmListContactsResponse$outboundSchema: z.ZodType<
-  CrmListContactsResponse$Outbound,
-  z.ZodTypeDef,
-  CrmListContactsResponse
-> = z.object({
-  contactsPaginated: shared.ContactsPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contactsPaginated: "ContactsPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmListContactsResponse$ {
-  /** @deprecated use `CrmListContactsResponse$inboundSchema` instead. */
-  export const inboundSchema = CrmListContactsResponse$inboundSchema;
-  /** @deprecated use `CrmListContactsResponse$outboundSchema` instead. */
-  export const outboundSchema = CrmListContactsResponse$outboundSchema;
-  /** @deprecated use `CrmListContactsResponse$Outbound` instead. */
-  export type Outbound = CrmListContactsResponse$Outbound;
-}
-
-export function crmListContactsResponseToJSON(
-  crmListContactsResponse: CrmListContactsResponse,
-): string {
-  return JSON.stringify(
-    CrmListContactsResponse$outboundSchema.parse(crmListContactsResponse),
-  );
-}
 
 export function crmListContactsResponseFromJSON(
   jsonString: string,

@@ -51,24 +51,6 @@ export type AtsGetApplicationScorecardResponse = {
 };
 
 /** @internal */
-export const AtsGetApplicationScorecardRequest$inboundSchema: z.ZodType<
-  AtsGetApplicationScorecardRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetApplicationScorecardRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,20 +78,6 @@ export const AtsGetApplicationScorecardRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationScorecardRequest$ {
-  /** @deprecated use `AtsGetApplicationScorecardRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationScorecardRequest$inboundSchema;
-  /** @deprecated use `AtsGetApplicationScorecardRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetApplicationScorecardRequest$outboundSchema;
-  /** @deprecated use `AtsGetApplicationScorecardRequest$Outbound` instead. */
-  export type Outbound = AtsGetApplicationScorecardRequest$Outbound;
-}
-
 export function atsGetApplicationScorecardRequestToJSON(
   atsGetApplicationScorecardRequest: AtsGetApplicationScorecardRequest,
 ): string {
@@ -117,16 +85,6 @@ export function atsGetApplicationScorecardRequestToJSON(
     AtsGetApplicationScorecardRequest$outboundSchema.parse(
       atsGetApplicationScorecardRequest,
     ),
-  );
-}
-
-export function atsGetApplicationScorecardRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetApplicationScorecardRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetApplicationScorecardRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetApplicationScorecardRequest' from JSON`,
   );
 }
 
@@ -151,62 +109,6 @@ export const AtsGetApplicationScorecardResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetApplicationScorecardResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  ScorecardsResult?: shared.ScorecardsResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetApplicationScorecardResponse$outboundSchema: z.ZodType<
-  AtsGetApplicationScorecardResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetApplicationScorecardResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  scorecardsResult: shared.ScorecardsResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    scorecardsResult: "ScorecardsResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationScorecardResponse$ {
-  /** @deprecated use `AtsGetApplicationScorecardResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationScorecardResponse$inboundSchema;
-  /** @deprecated use `AtsGetApplicationScorecardResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetApplicationScorecardResponse$outboundSchema;
-  /** @deprecated use `AtsGetApplicationScorecardResponse$Outbound` instead. */
-  export type Outbound = AtsGetApplicationScorecardResponse$Outbound;
-}
-
-export function atsGetApplicationScorecardResponseToJSON(
-  atsGetApplicationScorecardResponse: AtsGetApplicationScorecardResponse,
-): string {
-  return JSON.stringify(
-    AtsGetApplicationScorecardResponse$outboundSchema.parse(
-      atsGetApplicationScorecardResponse,
-    ),
-  );
-}
 
 export function atsGetApplicationScorecardResponseFromJSON(
   jsonString: string,

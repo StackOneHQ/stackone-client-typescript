@@ -83,21 +83,6 @@ export type HrisListCompaniesResponse = {
 };
 
 /** @internal */
-export const HrisListCompaniesQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListCompaniesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListCompaniesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,20 +100,6 @@ export const HrisListCompaniesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListCompaniesQueryParamFilter$ {
-  /** @deprecated use `HrisListCompaniesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = HrisListCompaniesQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListCompaniesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListCompaniesQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListCompaniesQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListCompaniesQueryParamFilter$Outbound;
-}
-
 export function hrisListCompaniesQueryParamFilterToJSON(
   hrisListCompaniesQueryParamFilter: HrisListCompaniesQueryParamFilter,
 ): string {
@@ -138,43 +109,6 @@ export function hrisListCompaniesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListCompaniesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListCompaniesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListCompaniesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListCompaniesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListCompaniesRequest$inboundSchema: z.ZodType<
-  HrisListCompaniesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListCompaniesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListCompaniesRequest$Outbound = {
@@ -214,34 +148,11 @@ export const HrisListCompaniesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListCompaniesRequest$ {
-  /** @deprecated use `HrisListCompaniesRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListCompaniesRequest$inboundSchema;
-  /** @deprecated use `HrisListCompaniesRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListCompaniesRequest$outboundSchema;
-  /** @deprecated use `HrisListCompaniesRequest$Outbound` instead. */
-  export type Outbound = HrisListCompaniesRequest$Outbound;
-}
-
 export function hrisListCompaniesRequestToJSON(
   hrisListCompaniesRequest: HrisListCompaniesRequest,
 ): string {
   return JSON.stringify(
     HrisListCompaniesRequest$outboundSchema.parse(hrisListCompaniesRequest),
-  );
-}
-
-export function hrisListCompaniesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListCompaniesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListCompaniesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListCompaniesRequest' from JSON`,
   );
 }
 
@@ -266,59 +177,6 @@ export const HrisListCompaniesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisListCompaniesResponse$Outbound = {
-  CompaniesPaginated?: shared.CompaniesPaginated$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisListCompaniesResponse$outboundSchema: z.ZodType<
-  HrisListCompaniesResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListCompaniesResponse
-> = z.object({
-  companiesPaginated: shared.CompaniesPaginated$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    companiesPaginated: "CompaniesPaginated",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListCompaniesResponse$ {
-  /** @deprecated use `HrisListCompaniesResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListCompaniesResponse$inboundSchema;
-  /** @deprecated use `HrisListCompaniesResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListCompaniesResponse$outboundSchema;
-  /** @deprecated use `HrisListCompaniesResponse$Outbound` instead. */
-  export type Outbound = HrisListCompaniesResponse$Outbound;
-}
-
-export function hrisListCompaniesResponseToJSON(
-  hrisListCompaniesResponse: HrisListCompaniesResponse,
-): string {
-  return JSON.stringify(
-    HrisListCompaniesResponse$outboundSchema.parse(hrisListCompaniesResponse),
-  );
-}
 
 export function hrisListCompaniesResponseFromJSON(
   jsonString: string,

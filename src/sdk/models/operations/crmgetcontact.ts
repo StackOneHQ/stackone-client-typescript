@@ -54,24 +54,6 @@ export type CrmGetContactResponse = {
 };
 
 /** @internal */
-export const CrmGetContactRequest$inboundSchema: z.ZodType<
-  CrmGetContactRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  include: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type CrmGetContactRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -99,34 +81,11 @@ export const CrmGetContactRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetContactRequest$ {
-  /** @deprecated use `CrmGetContactRequest$inboundSchema` instead. */
-  export const inboundSchema = CrmGetContactRequest$inboundSchema;
-  /** @deprecated use `CrmGetContactRequest$outboundSchema` instead. */
-  export const outboundSchema = CrmGetContactRequest$outboundSchema;
-  /** @deprecated use `CrmGetContactRequest$Outbound` instead. */
-  export type Outbound = CrmGetContactRequest$Outbound;
-}
-
 export function crmGetContactRequestToJSON(
   crmGetContactRequest: CrmGetContactRequest,
 ): string {
   return JSON.stringify(
     CrmGetContactRequest$outboundSchema.parse(crmGetContactRequest),
-  );
-}
-
-export function crmGetContactRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmGetContactRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmGetContactRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmGetContactRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const CrmGetContactResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type CrmGetContactResponse$Outbound = {
-  ContactResult?: shared.ContactResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const CrmGetContactResponse$outboundSchema: z.ZodType<
-  CrmGetContactResponse$Outbound,
-  z.ZodTypeDef,
-  CrmGetContactResponse
-> = z.object({
-  contactResult: shared.ContactResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contactResult: "ContactResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmGetContactResponse$ {
-  /** @deprecated use `CrmGetContactResponse$inboundSchema` instead. */
-  export const inboundSchema = CrmGetContactResponse$inboundSchema;
-  /** @deprecated use `CrmGetContactResponse$outboundSchema` instead. */
-  export const outboundSchema = CrmGetContactResponse$outboundSchema;
-  /** @deprecated use `CrmGetContactResponse$Outbound` instead. */
-  export type Outbound = CrmGetContactResponse$Outbound;
-}
-
-export function crmGetContactResponseToJSON(
-  crmGetContactResponse: CrmGetContactResponse,
-): string {
-  return JSON.stringify(
-    CrmGetContactResponse$outboundSchema.parse(crmGetContactResponse),
-  );
-}
 
 export function crmGetContactResponseFromJSON(
   jsonString: string,

@@ -5,19 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export enum AccountingAccountResult2 {
   True = "true",
@@ -116,60 +107,11 @@ export const AccountingAccountResult2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AccountingAccountResult2);
 
 /** @internal */
-export const AccountingAccountResult2$outboundSchema: z.ZodNativeEnum<
-  typeof AccountingAccountResult2
-> = AccountingAccountResult2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResult2$ {
-  /** @deprecated use `AccountingAccountResult2$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResult2$inboundSchema;
-  /** @deprecated use `AccountingAccountResult2$outboundSchema` instead. */
-  export const outboundSchema = AccountingAccountResult2$outboundSchema;
-}
-
-/** @internal */
 export const AccountingAccountResultActive$inboundSchema: z.ZodType<
   AccountingAccountResultActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), AccountingAccountResult2$inboundSchema]);
-
-/** @internal */
-export type AccountingAccountResultActive$Outbound = boolean | string;
-
-/** @internal */
-export const AccountingAccountResultActive$outboundSchema: z.ZodType<
-  AccountingAccountResultActive$Outbound,
-  z.ZodTypeDef,
-  AccountingAccountResultActive
-> = z.union([z.boolean(), AccountingAccountResult2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResultActive$ {
-  /** @deprecated use `AccountingAccountResultActive$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResultActive$inboundSchema;
-  /** @deprecated use `AccountingAccountResultActive$outboundSchema` instead. */
-  export const outboundSchema = AccountingAccountResultActive$outboundSchema;
-  /** @deprecated use `AccountingAccountResultActive$Outbound` instead. */
-  export type Outbound = AccountingAccountResultActive$Outbound;
-}
-
-export function accountingAccountResultActiveToJSON(
-  accountingAccountResultActive: AccountingAccountResultActive,
-): string {
-  return JSON.stringify(
-    AccountingAccountResultActive$outboundSchema.parse(
-      accountingAccountResultActive,
-    ),
-  );
-}
 
 export function accountingAccountResultActiveFromJSON(
   jsonString: string,
@@ -187,37 +129,6 @@ export const AccountingAccountResult4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type AccountingAccountResult4$Outbound = {};
-
-/** @internal */
-export const AccountingAccountResult4$outboundSchema: z.ZodType<
-  AccountingAccountResult4$Outbound,
-  z.ZodTypeDef,
-  AccountingAccountResult4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResult4$ {
-  /** @deprecated use `AccountingAccountResult4$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResult4$inboundSchema;
-  /** @deprecated use `AccountingAccountResult4$outboundSchema` instead. */
-  export const outboundSchema = AccountingAccountResult4$outboundSchema;
-  /** @deprecated use `AccountingAccountResult4$Outbound` instead. */
-  export type Outbound = AccountingAccountResult4$Outbound;
-}
-
-export function accountingAccountResult4ToJSON(
-  accountingAccountResult4: AccountingAccountResult4,
-): string {
-  return JSON.stringify(
-    AccountingAccountResult4$outboundSchema.parse(accountingAccountResult4),
-  );
-}
 
 export function accountingAccountResult4FromJSON(
   jsonString: string,
@@ -242,51 +153,6 @@ export const AccountingAccountResultSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type AccountingAccountResultSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | AccountingAccountResult4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const AccountingAccountResultSourceValue$outboundSchema: z.ZodType<
-  AccountingAccountResultSourceValue$Outbound,
-  z.ZodTypeDef,
-  AccountingAccountResultSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AccountingAccountResult4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResultSourceValue$ {
-  /** @deprecated use `AccountingAccountResultSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResultSourceValue$inboundSchema;
-  /** @deprecated use `AccountingAccountResultSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingAccountResultSourceValue$outboundSchema;
-  /** @deprecated use `AccountingAccountResultSourceValue$Outbound` instead. */
-  export type Outbound = AccountingAccountResultSourceValue$Outbound;
-}
-
-export function accountingAccountResultSourceValueToJSON(
-  accountingAccountResultSourceValue: AccountingAccountResultSourceValue,
-): string {
-  return JSON.stringify(
-    AccountingAccountResultSourceValue$outboundSchema.parse(
-      accountingAccountResultSourceValue,
-    ),
-  );
-}
-
 export function accountingAccountResultSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<AccountingAccountResultSourceValue, SDKValidationError> {
@@ -310,27 +176,6 @@ export const AccountingAccountResultValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const AccountingAccountResultValue$outboundSchema: z.ZodType<
-  AccountingAccountResultValueOpen,
-  z.ZodTypeDef,
-  AccountingAccountResultValueOpen
-> = z.union([
-  z.nativeEnum(AccountingAccountResultValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResultValue$ {
-  /** @deprecated use `AccountingAccountResultValue$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResultValue$inboundSchema;
-  /** @deprecated use `AccountingAccountResultValue$outboundSchema` instead. */
-  export const outboundSchema = AccountingAccountResultValue$outboundSchema;
-}
-
-/** @internal */
 export const AccountingAccountResultType$inboundSchema: z.ZodType<
   AccountingAccountResultType,
   z.ZodTypeDef,
@@ -351,64 +196,6 @@ export const AccountingAccountResultType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type AccountingAccountResultType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | AccountingAccountResult4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const AccountingAccountResultType$outboundSchema: z.ZodType<
-  AccountingAccountResultType$Outbound,
-  z.ZodTypeDef,
-  AccountingAccountResultType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => AccountingAccountResult4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AccountingAccountResultValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResultType$ {
-  /** @deprecated use `AccountingAccountResultType$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResultType$inboundSchema;
-  /** @deprecated use `AccountingAccountResultType$outboundSchema` instead. */
-  export const outboundSchema = AccountingAccountResultType$outboundSchema;
-  /** @deprecated use `AccountingAccountResultType$Outbound` instead. */
-  export type Outbound = AccountingAccountResultType$Outbound;
-}
-
-export function accountingAccountResultTypeToJSON(
-  accountingAccountResultType: AccountingAccountResultType,
-): string {
-  return JSON.stringify(
-    AccountingAccountResultType$outboundSchema.parse(
-      accountingAccountResultType,
-    ),
-  );
-}
 
 export function accountingAccountResultTypeFromJSON(
   jsonString: string,
@@ -440,54 +227,6 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Data$Outbound = {
-  active?: boolean | string | null | undefined;
-  code?: string | null | undefined;
-  company_id?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: AccountingAccountResultType$Outbound | null | undefined;
-};
-
-/** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    active: z.nullable(
-      z.union([z.boolean(), AccountingAccountResult2$outboundSchema]),
-    ).optional(),
-    code: z.nullable(z.string()).optional(),
-    companyId: z.nullable(z.string()).optional(),
-    id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    remoteId: z.nullable(z.string()).optional(),
-    type: z.nullable(z.lazy(() => AccountingAccountResultType$outboundSchema))
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      companyId: "company_id",
-      remoteId: "remote_id",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
-}
-
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
-}
-
 export function dataFromJSON(
   jsonString: string,
 ): SafeParseResult<Data, SDKValidationError> {
@@ -507,43 +246,6 @@ export const AccountingAccountResult$inboundSchema: z.ZodType<
   data: z.nullable(z.lazy(() => Data$inboundSchema)).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AccountingAccountResult$Outbound = {
-  data?: Data$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AccountingAccountResult$outboundSchema: z.ZodType<
-  AccountingAccountResult$Outbound,
-  z.ZodTypeDef,
-  AccountingAccountResult
-> = z.object({
-  data: z.nullable(z.lazy(() => Data$outboundSchema)).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingAccountResult$ {
-  /** @deprecated use `AccountingAccountResult$inboundSchema` instead. */
-  export const inboundSchema = AccountingAccountResult$inboundSchema;
-  /** @deprecated use `AccountingAccountResult$outboundSchema` instead. */
-  export const outboundSchema = AccountingAccountResult$outboundSchema;
-  /** @deprecated use `AccountingAccountResult$Outbound` instead. */
-  export type Outbound = AccountingAccountResult$Outbound;
-}
-
-export function accountingAccountResultToJSON(
-  accountingAccountResult: AccountingAccountResult,
-): string {
-  return JSON.stringify(
-    AccountingAccountResult$outboundSchema.parse(accountingAccountResult),
-  );
-}
 
 export function accountingAccountResultFromJSON(
   jsonString: string,

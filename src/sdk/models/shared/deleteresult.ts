@@ -24,41 +24,6 @@ export const DeleteResult$inboundSchema: z.ZodType<
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
 
-/** @internal */
-export type DeleteResult$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const DeleteResult$outboundSchema: z.ZodType<
-  DeleteResult$Outbound,
-  z.ZodTypeDef,
-  DeleteResult
-> = z.object({
-  message: z.string(),
-  statusCode: z.number(),
-  timestamp: z.date().transform(v => v.toISOString()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteResult$ {
-  /** @deprecated use `DeleteResult$inboundSchema` instead. */
-  export const inboundSchema = DeleteResult$inboundSchema;
-  /** @deprecated use `DeleteResult$outboundSchema` instead. */
-  export const outboundSchema = DeleteResult$outboundSchema;
-  /** @deprecated use `DeleteResult$Outbound` instead. */
-  export type Outbound = DeleteResult$Outbound;
-}
-
-export function deleteResultToJSON(deleteResult: DeleteResult): string {
-  return JSON.stringify(DeleteResult$outboundSchema.parse(deleteResult));
-}
-
 export function deleteResultFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteResult, SDKValidationError> {

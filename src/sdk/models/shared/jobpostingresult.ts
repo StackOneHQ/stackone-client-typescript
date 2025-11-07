@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  JobPosting,
-  JobPosting$inboundSchema,
-  JobPosting$Outbound,
-  JobPosting$outboundSchema,
-} from "./jobposting.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { JobPosting, JobPosting$inboundSchema } from "./jobposting.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type JobPostingResult = {
   data: JobPosting;
@@ -33,43 +23,6 @@ export const JobPostingResult$inboundSchema: z.ZodType<
   data: JobPosting$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type JobPostingResult$Outbound = {
-  data: JobPosting$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const JobPostingResult$outboundSchema: z.ZodType<
-  JobPostingResult$Outbound,
-  z.ZodTypeDef,
-  JobPostingResult
-> = z.object({
-  data: JobPosting$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingResult$ {
-  /** @deprecated use `JobPostingResult$inboundSchema` instead. */
-  export const inboundSchema = JobPostingResult$inboundSchema;
-  /** @deprecated use `JobPostingResult$outboundSchema` instead. */
-  export const outboundSchema = JobPostingResult$outboundSchema;
-  /** @deprecated use `JobPostingResult$Outbound` instead. */
-  export type Outbound = JobPostingResult$Outbound;
-}
-
-export function jobPostingResultToJSON(
-  jobPostingResult: JobPostingResult,
-): string {
-  return JSON.stringify(
-    JobPostingResult$outboundSchema.parse(jobPostingResult),
-  );
-}
 
 export function jobPostingResultFromJSON(
   jsonString: string,

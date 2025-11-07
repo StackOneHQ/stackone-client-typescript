@@ -103,25 +103,6 @@ export type DocumentsListFoldersResponse = {
 };
 
 /** @internal */
-export const DocumentsListFoldersQueryParamFilter$inboundSchema: z.ZodType<
-  DocumentsListFoldersQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  drive_id: z.nullable(z.string()).optional(),
-  folder_id: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "drive_id": "driveId",
-    "folder_id": "folderId",
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type DocumentsListFoldersQueryParamFilter$Outbound = {
   drive_id?: string | null | undefined;
   folder_id?: string | null | undefined;
@@ -145,21 +126,6 @@ export const DocumentsListFoldersQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListFoldersQueryParamFilter$ {
-  /** @deprecated use `DocumentsListFoldersQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    DocumentsListFoldersQueryParamFilter$inboundSchema;
-  /** @deprecated use `DocumentsListFoldersQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentsListFoldersQueryParamFilter$outboundSchema;
-  /** @deprecated use `DocumentsListFoldersQueryParamFilter$Outbound` instead. */
-  export type Outbound = DocumentsListFoldersQueryParamFilter$Outbound;
-}
-
 export function documentsListFoldersQueryParamFilterToJSON(
   documentsListFoldersQueryParamFilter: DocumentsListFoldersQueryParamFilter,
 ): string {
@@ -169,49 +135,6 @@ export function documentsListFoldersQueryParamFilterToJSON(
     ),
   );
 }
-
-export function documentsListFoldersQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsListFoldersQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DocumentsListFoldersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsListFoldersQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const DocumentsListFoldersRequest$inboundSchema: z.ZodType<
-  DocumentsListFoldersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => DocumentsListFoldersQueryParamFilter$inboundSchema),
-  ).optional(),
-  folder_id: z.nullable(z.string()).optional(),
-  include: z.nullable(z.string()).optional(),
-  nested_items: z.nullable(z.string().default("false")),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-    "nested_items": "nestedItems",
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type DocumentsListFoldersRequest$Outbound = {
@@ -259,19 +182,6 @@ export const DocumentsListFoldersRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListFoldersRequest$ {
-  /** @deprecated use `DocumentsListFoldersRequest$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListFoldersRequest$inboundSchema;
-  /** @deprecated use `DocumentsListFoldersRequest$outboundSchema` instead. */
-  export const outboundSchema = DocumentsListFoldersRequest$outboundSchema;
-  /** @deprecated use `DocumentsListFoldersRequest$Outbound` instead. */
-  export type Outbound = DocumentsListFoldersRequest$Outbound;
-}
-
 export function documentsListFoldersRequestToJSON(
   documentsListFoldersRequest: DocumentsListFoldersRequest,
 ): string {
@@ -279,16 +189,6 @@ export function documentsListFoldersRequestToJSON(
     DocumentsListFoldersRequest$outboundSchema.parse(
       documentsListFoldersRequest,
     ),
-  );
-}
-
-export function documentsListFoldersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsListFoldersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsListFoldersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsListFoldersRequest' from JSON`,
   );
 }
 
@@ -313,61 +213,6 @@ export const DocumentsListFoldersResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type DocumentsListFoldersResponse$Outbound = {
-  ContentType: string;
-  FoldersPaginated?: shared.FoldersPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const DocumentsListFoldersResponse$outboundSchema: z.ZodType<
-  DocumentsListFoldersResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentsListFoldersResponse
-> = z.object({
-  contentType: z.string(),
-  foldersPaginated: shared.FoldersPaginated$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    foldersPaginated: "FoldersPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListFoldersResponse$ {
-  /** @deprecated use `DocumentsListFoldersResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListFoldersResponse$inboundSchema;
-  /** @deprecated use `DocumentsListFoldersResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentsListFoldersResponse$outboundSchema;
-  /** @deprecated use `DocumentsListFoldersResponse$Outbound` instead. */
-  export type Outbound = DocumentsListFoldersResponse$Outbound;
-}
-
-export function documentsListFoldersResponseToJSON(
-  documentsListFoldersResponse: DocumentsListFoldersResponse,
-): string {
-  return JSON.stringify(
-    DocumentsListFoldersResponse$outboundSchema.parse(
-      documentsListFoldersResponse,
-    ),
-  );
-}
 
 export function documentsListFoldersResponseFromJSON(
   jsonString: string,

@@ -58,7 +58,6 @@ export const InterviewStage$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
 /** @internal */
 export type InterviewStage$Outbound = {
   created_at?: string | null | undefined;
@@ -92,23 +91,9 @@ export const InterviewStage$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterviewStage$ {
-  /** @deprecated use `InterviewStage$inboundSchema` instead. */
-  export const inboundSchema = InterviewStage$inboundSchema;
-  /** @deprecated use `InterviewStage$outboundSchema` instead. */
-  export const outboundSchema = InterviewStage$outboundSchema;
-  /** @deprecated use `InterviewStage$Outbound` instead. */
-  export type Outbound = InterviewStage$Outbound;
-}
-
 export function interviewStageToJSON(interviewStage: InterviewStage): string {
   return JSON.stringify(InterviewStage$outboundSchema.parse(interviewStage));
 }
-
 export function interviewStageFromJSON(
   jsonString: string,
 ): SafeParseResult<InterviewStage, SDKValidationError> {

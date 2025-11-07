@@ -50,23 +50,6 @@ export type LmsGetCompletionResponse = {
 };
 
 /** @internal */
-export const LmsGetCompletionRequest$inboundSchema: z.ZodType<
-  LmsGetCompletionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type LmsGetCompletionRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,34 +75,11 @@ export const LmsGetCompletionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetCompletionRequest$ {
-  /** @deprecated use `LmsGetCompletionRequest$inboundSchema` instead. */
-  export const inboundSchema = LmsGetCompletionRequest$inboundSchema;
-  /** @deprecated use `LmsGetCompletionRequest$outboundSchema` instead. */
-  export const outboundSchema = LmsGetCompletionRequest$outboundSchema;
-  /** @deprecated use `LmsGetCompletionRequest$Outbound` instead. */
-  export type Outbound = LmsGetCompletionRequest$Outbound;
-}
-
 export function lmsGetCompletionRequestToJSON(
   lmsGetCompletionRequest: LmsGetCompletionRequest,
 ): string {
   return JSON.stringify(
     LmsGetCompletionRequest$outboundSchema.parse(lmsGetCompletionRequest),
-  );
-}
-
-export function lmsGetCompletionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsGetCompletionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsGetCompletionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsGetCompletionRequest' from JSON`,
   );
 }
 
@@ -144,59 +104,6 @@ export const LmsGetCompletionResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type LmsGetCompletionResponse$Outbound = {
-  CompletionResult?: shared.CompletionResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const LmsGetCompletionResponse$outboundSchema: z.ZodType<
-  LmsGetCompletionResponse$Outbound,
-  z.ZodTypeDef,
-  LmsGetCompletionResponse
-> = z.object({
-  completionResult: shared.CompletionResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    completionResult: "CompletionResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsGetCompletionResponse$ {
-  /** @deprecated use `LmsGetCompletionResponse$inboundSchema` instead. */
-  export const inboundSchema = LmsGetCompletionResponse$inboundSchema;
-  /** @deprecated use `LmsGetCompletionResponse$outboundSchema` instead. */
-  export const outboundSchema = LmsGetCompletionResponse$outboundSchema;
-  /** @deprecated use `LmsGetCompletionResponse$Outbound` instead. */
-  export type Outbound = LmsGetCompletionResponse$Outbound;
-}
-
-export function lmsGetCompletionResponseToJSON(
-  lmsGetCompletionResponse: LmsGetCompletionResponse,
-): string {
-  return JSON.stringify(
-    LmsGetCompletionResponse$outboundSchema.parse(lmsGetCompletionResponse),
-  );
-}
 
 export function lmsGetCompletionResponseFromJSON(
   jsonString: string,

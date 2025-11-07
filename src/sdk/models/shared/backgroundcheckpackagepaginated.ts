@@ -10,15 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BackgroundCheckPackage,
   BackgroundCheckPackage$inboundSchema,
-  BackgroundCheckPackage$Outbound,
-  BackgroundCheckPackage$outboundSchema,
 } from "./backgroundcheckpackage.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type BackgroundCheckPackagePaginated = {
   data: Array<BackgroundCheckPackage>;
@@ -45,53 +38,6 @@ export const BackgroundCheckPackagePaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type BackgroundCheckPackagePaginated$Outbound = {
-  data: Array<BackgroundCheckPackage$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const BackgroundCheckPackagePaginated$outboundSchema: z.ZodType<
-  BackgroundCheckPackagePaginated$Outbound,
-  z.ZodTypeDef,
-  BackgroundCheckPackagePaginated
-> = z.object({
-  data: z.array(BackgroundCheckPackage$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BackgroundCheckPackagePaginated$ {
-  /** @deprecated use `BackgroundCheckPackagePaginated$inboundSchema` instead. */
-  export const inboundSchema = BackgroundCheckPackagePaginated$inboundSchema;
-  /** @deprecated use `BackgroundCheckPackagePaginated$outboundSchema` instead. */
-  export const outboundSchema = BackgroundCheckPackagePaginated$outboundSchema;
-  /** @deprecated use `BackgroundCheckPackagePaginated$Outbound` instead. */
-  export type Outbound = BackgroundCheckPackagePaginated$Outbound;
-}
-
-export function backgroundCheckPackagePaginatedToJSON(
-  backgroundCheckPackagePaginated: BackgroundCheckPackagePaginated,
-): string {
-  return JSON.stringify(
-    BackgroundCheckPackagePaginated$outboundSchema.parse(
-      backgroundCheckPackagePaginated,
-    ),
-  );
-}
 
 export function backgroundCheckPackagePaginatedFromJSON(
   jsonString: string,

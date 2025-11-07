@@ -39,23 +39,6 @@ export type AtsMoveApplicationResponse = {
 };
 
 /** @internal */
-export const AtsMoveApplicationRequest$inboundSchema: z.ZodType<
-  AtsMoveApplicationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsMoveApplicationRequestDto:
-    shared.AtsMoveApplicationRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsMoveApplicationRequestDto": "atsMoveApplicationRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsMoveApplicationRequest$Outbound = {
   AtsMoveApplicationRequestDto: shared.AtsMoveApplicationRequestDto$Outbound;
   id: string;
@@ -79,34 +62,11 @@ export const AtsMoveApplicationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsMoveApplicationRequest$ {
-  /** @deprecated use `AtsMoveApplicationRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsMoveApplicationRequest$inboundSchema;
-  /** @deprecated use `AtsMoveApplicationRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsMoveApplicationRequest$outboundSchema;
-  /** @deprecated use `AtsMoveApplicationRequest$Outbound` instead. */
-  export type Outbound = AtsMoveApplicationRequest$Outbound;
-}
-
 export function atsMoveApplicationRequestToJSON(
   atsMoveApplicationRequest: AtsMoveApplicationRequest,
 ): string {
   return JSON.stringify(
     AtsMoveApplicationRequest$outboundSchema.parse(atsMoveApplicationRequest),
-  );
-}
-
-export function atsMoveApplicationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsMoveApplicationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsMoveApplicationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsMoveApplicationRequest' from JSON`,
   );
 }
 
@@ -131,59 +91,6 @@ export const AtsMoveApplicationResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsMoveApplicationResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  MoveApplicationResult?: shared.MoveApplicationResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsMoveApplicationResponse$outboundSchema: z.ZodType<
-  AtsMoveApplicationResponse$Outbound,
-  z.ZodTypeDef,
-  AtsMoveApplicationResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  moveApplicationResult: shared.MoveApplicationResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    moveApplicationResult: "MoveApplicationResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsMoveApplicationResponse$ {
-  /** @deprecated use `AtsMoveApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsMoveApplicationResponse$inboundSchema;
-  /** @deprecated use `AtsMoveApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsMoveApplicationResponse$outboundSchema;
-  /** @deprecated use `AtsMoveApplicationResponse$Outbound` instead. */
-  export type Outbound = AtsMoveApplicationResponse$Outbound;
-}
-
-export function atsMoveApplicationResponseToJSON(
-  atsMoveApplicationResponse: AtsMoveApplicationResponse,
-): string {
-  return JSON.stringify(
-    AtsMoveApplicationResponse$outboundSchema.parse(atsMoveApplicationResponse),
-  );
-}
 
 export function atsMoveApplicationResponseFromJSON(
   jsonString: string,

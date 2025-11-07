@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  PushTemplate,
-  PushTemplate$inboundSchema,
-  PushTemplate$Outbound,
-  PushTemplate$outboundSchema,
-} from "./pushtemplate.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { PushTemplate, PushTemplate$inboundSchema } from "./pushtemplate.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type PushTemplateResult = {
   data: PushTemplate;
@@ -33,43 +23,6 @@ export const PushTemplateResult$inboundSchema: z.ZodType<
   data: PushTemplate$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type PushTemplateResult$Outbound = {
-  data: PushTemplate$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const PushTemplateResult$outboundSchema: z.ZodType<
-  PushTemplateResult$Outbound,
-  z.ZodTypeDef,
-  PushTemplateResult
-> = z.object({
-  data: PushTemplate$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PushTemplateResult$ {
-  /** @deprecated use `PushTemplateResult$inboundSchema` instead. */
-  export const inboundSchema = PushTemplateResult$inboundSchema;
-  /** @deprecated use `PushTemplateResult$outboundSchema` instead. */
-  export const outboundSchema = PushTemplateResult$outboundSchema;
-  /** @deprecated use `PushTemplateResult$Outbound` instead. */
-  export type Outbound = PushTemplateResult$Outbound;
-}
-
-export function pushTemplateResultToJSON(
-  pushTemplateResult: PushTemplateResult,
-): string {
-  return JSON.stringify(
-    PushTemplateResult$outboundSchema.parse(pushTemplateResult),
-  );
-}
 
 export function pushTemplateResultFromJSON(
   jsonString: string,

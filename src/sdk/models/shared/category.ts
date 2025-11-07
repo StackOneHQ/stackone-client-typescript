@@ -615,21 +615,9 @@ export type Category = {
 /** @internal */
 export const Category2$inboundSchema: z.ZodNativeEnum<typeof Category2> = z
   .nativeEnum(Category2);
-
 /** @internal */
 export const Category2$outboundSchema: z.ZodNativeEnum<typeof Category2> =
   Category2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Category2$ {
-  /** @deprecated use `Category2$inboundSchema` instead. */
-  export const inboundSchema = Category2$inboundSchema;
-  /** @deprecated use `Category2$outboundSchema` instead. */
-  export const outboundSchema = Category2$outboundSchema;
-}
 
 /** @internal */
 export const CategoryActive$inboundSchema: z.ZodType<
@@ -637,7 +625,6 @@ export const CategoryActive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Category2$inboundSchema]);
-
 /** @internal */
 export type CategoryActive$Outbound = boolean | string;
 
@@ -648,23 +635,9 @@ export const CategoryActive$outboundSchema: z.ZodType<
   CategoryActive
 > = z.union([z.boolean(), Category2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategoryActive$ {
-  /** @deprecated use `CategoryActive$inboundSchema` instead. */
-  export const inboundSchema = CategoryActive$inboundSchema;
-  /** @deprecated use `CategoryActive$outboundSchema` instead. */
-  export const outboundSchema = CategoryActive$outboundSchema;
-  /** @deprecated use `CategoryActive$Outbound` instead. */
-  export type Outbound = CategoryActive$Outbound;
-}
-
 export function categoryActiveToJSON(categoryActive: CategoryActive): string {
   return JSON.stringify(CategoryActive$outboundSchema.parse(categoryActive));
 }
-
 export function categoryActiveFromJSON(
   jsonString: string,
 ): SafeParseResult<CategoryActive, SDKValidationError> {
@@ -681,7 +654,6 @@ export const Category4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type Category4$Outbound = {};
 
@@ -692,23 +664,9 @@ export const Category4$outboundSchema: z.ZodType<
   Category4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Category4$ {
-  /** @deprecated use `Category4$inboundSchema` instead. */
-  export const inboundSchema = Category4$inboundSchema;
-  /** @deprecated use `Category4$outboundSchema` instead. */
-  export const outboundSchema = Category4$outboundSchema;
-  /** @deprecated use `Category4$Outbound` instead. */
-  export type Outbound = Category4$Outbound;
-}
-
 export function category4ToJSON(category4: Category4): string {
   return JSON.stringify(Category4$outboundSchema.parse(category4));
 }
-
 export function category4FromJSON(
   jsonString: string,
 ): SafeParseResult<Category4, SDKValidationError> {
@@ -731,7 +689,6 @@ export const CategorySourceValue$inboundSchema: z.ZodType<
   z.lazy(() => Category4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type CategorySourceValue$Outbound =
   | string
@@ -753,19 +710,6 @@ export const CategorySourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySourceValue$ {
-  /** @deprecated use `CategorySourceValue$inboundSchema` instead. */
-  export const inboundSchema = CategorySourceValue$inboundSchema;
-  /** @deprecated use `CategorySourceValue$outboundSchema` instead. */
-  export const outboundSchema = CategorySourceValue$outboundSchema;
-  /** @deprecated use `CategorySourceValue$Outbound` instead. */
-  export type Outbound = CategorySourceValue$Outbound;
-}
-
 export function categorySourceValueToJSON(
   categorySourceValue: CategorySourceValue,
 ): string {
@@ -773,7 +717,6 @@ export function categorySourceValueToJSON(
     CategorySourceValue$outboundSchema.parse(categorySourceValue),
   );
 }
-
 export function categorySourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CategorySourceValue, SDKValidationError> {
@@ -794,7 +737,6 @@ export const CategoryValue$inboundSchema: z.ZodType<
     z.nativeEnum(CategoryValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const CategoryValue$outboundSchema: z.ZodType<
   CategoryValueOpen,
@@ -804,17 +746,6 @@ export const CategoryValue$outboundSchema: z.ZodType<
   z.nativeEnum(CategoryValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategoryValue$ {
-  /** @deprecated use `CategoryValue$inboundSchema` instead. */
-  export const inboundSchema = CategoryValue$inboundSchema;
-  /** @deprecated use `CategoryValue$outboundSchema` instead. */
-  export const outboundSchema = CategoryValue$outboundSchema;
-}
 
 /** @internal */
 export const Hierarchy$inboundSchema: z.ZodType<
@@ -837,7 +768,6 @@ export const Hierarchy$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type Hierarchy$Outbound = {
   source_value?:
@@ -873,23 +803,9 @@ export const Hierarchy$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Hierarchy$ {
-  /** @deprecated use `Hierarchy$inboundSchema` instead. */
-  export const inboundSchema = Hierarchy$inboundSchema;
-  /** @deprecated use `Hierarchy$outboundSchema` instead. */
-  export const outboundSchema = Hierarchy$outboundSchema;
-  /** @deprecated use `Hierarchy$Outbound` instead. */
-  export type Outbound = Hierarchy$Outbound;
-}
-
 export function hierarchyToJSON(hierarchy: Hierarchy): string {
   return JSON.stringify(Hierarchy$outboundSchema.parse(hierarchy));
 }
-
 export function hierarchyFromJSON(
   jsonString: string,
 ): SafeParseResult<Hierarchy, SDKValidationError> {
@@ -906,7 +822,6 @@ export const CategorySchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CategorySchemas4$Outbound = {};
 
@@ -917,19 +832,6 @@ export const CategorySchemas4$outboundSchema: z.ZodType<
   CategorySchemas4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySchemas4$ {
-  /** @deprecated use `CategorySchemas4$inboundSchema` instead. */
-  export const inboundSchema = CategorySchemas4$inboundSchema;
-  /** @deprecated use `CategorySchemas4$outboundSchema` instead. */
-  export const outboundSchema = CategorySchemas4$outboundSchema;
-  /** @deprecated use `CategorySchemas4$Outbound` instead. */
-  export type Outbound = CategorySchemas4$Outbound;
-}
-
 export function categorySchemas4ToJSON(
   categorySchemas4: CategorySchemas4,
 ): string {
@@ -937,7 +839,6 @@ export function categorySchemas4ToJSON(
     CategorySchemas4$outboundSchema.parse(categorySchemas4),
   );
 }
-
 export function categorySchemas4FromJSON(
   jsonString: string,
 ): SafeParseResult<CategorySchemas4, SDKValidationError> {
@@ -960,7 +861,6 @@ export const CategorySchemasSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => CategorySchemas4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type CategorySchemasSourceValue$Outbound =
   | string
@@ -982,19 +882,6 @@ export const CategorySchemasSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySchemasSourceValue$ {
-  /** @deprecated use `CategorySchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CategorySchemasSourceValue$inboundSchema;
-  /** @deprecated use `CategorySchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CategorySchemasSourceValue$outboundSchema;
-  /** @deprecated use `CategorySchemasSourceValue$Outbound` instead. */
-  export type Outbound = CategorySchemasSourceValue$Outbound;
-}
-
 export function categorySchemasSourceValueToJSON(
   categorySchemasSourceValue: CategorySchemasSourceValue,
 ): string {
@@ -1002,7 +889,6 @@ export function categorySchemasSourceValueToJSON(
     CategorySchemasSourceValue$outboundSchema.parse(categorySchemasSourceValue),
   );
 }
-
 export function categorySchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CategorySchemasSourceValue, SDKValidationError> {
@@ -1023,7 +909,6 @@ export const CategorySchemasValue$inboundSchema: z.ZodType<
     z.nativeEnum(CategorySchemasValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const CategorySchemasValue$outboundSchema: z.ZodType<
   CategorySchemasValueOpen,
@@ -1033,17 +918,6 @@ export const CategorySchemasValue$outboundSchema: z.ZodType<
   z.nativeEnum(CategorySchemasValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySchemasValue$ {
-  /** @deprecated use `CategorySchemasValue$inboundSchema` instead. */
-  export const inboundSchema = CategorySchemasValue$inboundSchema;
-  /** @deprecated use `CategorySchemasValue$outboundSchema` instead. */
-  export const outboundSchema = CategorySchemasValue$outboundSchema;
-}
 
 /** @internal */
 export const Language$inboundSchema: z.ZodType<
@@ -1066,7 +940,6 @@ export const Language$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type Language$Outbound = {
   source_value?:
@@ -1102,23 +975,9 @@ export const Language$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Language$ {
-  /** @deprecated use `Language$inboundSchema` instead. */
-  export const inboundSchema = Language$inboundSchema;
-  /** @deprecated use `Language$outboundSchema` instead. */
-  export const outboundSchema = Language$outboundSchema;
-  /** @deprecated use `Language$Outbound` instead. */
-  export type Outbound = Language$Outbound;
-}
-
 export function languageToJSON(language: Language): string {
   return JSON.stringify(Language$outboundSchema.parse(language));
 }
-
 export function languageFromJSON(
   jsonString: string,
 ): SafeParseResult<Language, SDKValidationError> {
@@ -1135,7 +994,6 @@ export const CategorySchemasLevel4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CategorySchemasLevel4$Outbound = {};
 
@@ -1146,19 +1004,6 @@ export const CategorySchemasLevel4$outboundSchema: z.ZodType<
   CategorySchemasLevel4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySchemasLevel4$ {
-  /** @deprecated use `CategorySchemasLevel4$inboundSchema` instead. */
-  export const inboundSchema = CategorySchemasLevel4$inboundSchema;
-  /** @deprecated use `CategorySchemasLevel4$outboundSchema` instead. */
-  export const outboundSchema = CategorySchemasLevel4$outboundSchema;
-  /** @deprecated use `CategorySchemasLevel4$Outbound` instead. */
-  export type Outbound = CategorySchemasLevel4$Outbound;
-}
-
 export function categorySchemasLevel4ToJSON(
   categorySchemasLevel4: CategorySchemasLevel4,
 ): string {
@@ -1166,7 +1011,6 @@ export function categorySchemasLevel4ToJSON(
     CategorySchemasLevel4$outboundSchema.parse(categorySchemasLevel4),
   );
 }
-
 export function categorySchemasLevel4FromJSON(
   jsonString: string,
 ): SafeParseResult<CategorySchemasLevel4, SDKValidationError> {
@@ -1189,7 +1033,6 @@ export const CategorySchemasLevelSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => CategorySchemasLevel4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type CategorySchemasLevelSourceValue$Outbound =
   | string
@@ -1211,19 +1054,6 @@ export const CategorySchemasLevelSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySchemasLevelSourceValue$ {
-  /** @deprecated use `CategorySchemasLevelSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CategorySchemasLevelSourceValue$inboundSchema;
-  /** @deprecated use `CategorySchemasLevelSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CategorySchemasLevelSourceValue$outboundSchema;
-  /** @deprecated use `CategorySchemasLevelSourceValue$Outbound` instead. */
-  export type Outbound = CategorySchemasLevelSourceValue$Outbound;
-}
-
 export function categorySchemasLevelSourceValueToJSON(
   categorySchemasLevelSourceValue: CategorySchemasLevelSourceValue,
 ): string {
@@ -1233,7 +1063,6 @@ export function categorySchemasLevelSourceValueToJSON(
     ),
   );
 }
-
 export function categorySchemasLevelSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CategorySchemasLevelSourceValue, SDKValidationError> {
@@ -1254,7 +1083,6 @@ export const CategorySchemasLevelValue$inboundSchema: z.ZodType<
     z.nativeEnum(CategorySchemasLevelValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const CategorySchemasLevelValue$outboundSchema: z.ZodType<
   CategorySchemasLevelValueOpen,
@@ -1264,17 +1092,6 @@ export const CategorySchemasLevelValue$outboundSchema: z.ZodType<
   z.nativeEnum(CategorySchemasLevelValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategorySchemasLevelValue$ {
-  /** @deprecated use `CategorySchemasLevelValue$inboundSchema` instead. */
-  export const inboundSchema = CategorySchemasLevelValue$inboundSchema;
-  /** @deprecated use `CategorySchemasLevelValue$outboundSchema` instead. */
-  export const outboundSchema = CategorySchemasLevelValue$outboundSchema;
-}
 
 /** @internal */
 export const Level$inboundSchema: z.ZodType<Level, z.ZodTypeDef, unknown> = z
@@ -1294,7 +1111,6 @@ export const Level$inboundSchema: z.ZodType<Level, z.ZodTypeDef, unknown> = z
       "source_value": "sourceValue",
     });
   });
-
 /** @internal */
 export type Level$Outbound = {
   source_value?:
@@ -1330,23 +1146,9 @@ export const Level$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Level$ {
-  /** @deprecated use `Level$inboundSchema` instead. */
-  export const inboundSchema = Level$inboundSchema;
-  /** @deprecated use `Level$outboundSchema` instead. */
-  export const outboundSchema = Level$outboundSchema;
-  /** @deprecated use `Level$Outbound` instead. */
-  export type Outbound = Level$Outbound;
-}
-
 export function levelToJSON(level: Level): string {
   return JSON.stringify(Level$outboundSchema.parse(level));
 }
-
 export function levelFromJSON(
   jsonString: string,
 ): SafeParseResult<Level, SDKValidationError> {
@@ -1378,7 +1180,6 @@ export const Category$inboundSchema: z.ZodType<
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
-
 /** @internal */
 export type Category$Outbound = {
   active?: boolean | string | null | undefined;
@@ -1413,23 +1214,9 @@ export const Category$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Category$ {
-  /** @deprecated use `Category$inboundSchema` instead. */
-  export const inboundSchema = Category$inboundSchema;
-  /** @deprecated use `Category$outboundSchema` instead. */
-  export const outboundSchema = Category$outboundSchema;
-  /** @deprecated use `Category$Outbound` instead. */
-  export type Outbound = Category$Outbound;
-}
-
 export function categoryToJSON(category: Category): string {
   return JSON.stringify(Category$outboundSchema.parse(category));
 }
-
 export function categoryFromJSON(
   jsonString: string,
 ): SafeParseResult<Category, SDKValidationError> {

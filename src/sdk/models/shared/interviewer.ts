@@ -43,53 +43,6 @@ export const Interviewer$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type Interviewer$Outbound = {
-  email?: string | null | undefined;
-  first_name?: string | null | undefined;
-  id?: string | null | undefined;
-  last_name?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Interviewer$outboundSchema: z.ZodType<
-  Interviewer$Outbound,
-  z.ZodTypeDef,
-  Interviewer
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Interviewer$ {
-  /** @deprecated use `Interviewer$inboundSchema` instead. */
-  export const inboundSchema = Interviewer$inboundSchema;
-  /** @deprecated use `Interviewer$outboundSchema` instead. */
-  export const outboundSchema = Interviewer$outboundSchema;
-  /** @deprecated use `Interviewer$Outbound` instead. */
-  export type Outbound = Interviewer$Outbound;
-}
-
-export function interviewerToJSON(interviewer: Interviewer): string {
-  return JSON.stringify(Interviewer$outboundSchema.parse(interviewer));
-}
-
 export function interviewerFromJSON(
   jsonString: string,
 ): SafeParseResult<Interviewer, SDKValidationError> {

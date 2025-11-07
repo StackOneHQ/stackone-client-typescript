@@ -32,45 +32,6 @@ export const Reason$inboundSchema: z.ZodType<Reason, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Reason$Outbound = {
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Reason$outboundSchema: z.ZodType<
-  Reason$Outbound,
-  z.ZodTypeDef,
-  Reason
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Reason$ {
-  /** @deprecated use `Reason$inboundSchema` instead. */
-  export const inboundSchema = Reason$inboundSchema;
-  /** @deprecated use `Reason$outboundSchema` instead. */
-  export const outboundSchema = Reason$outboundSchema;
-  /** @deprecated use `Reason$Outbound` instead. */
-  export type Outbound = Reason$Outbound;
-}
-
-export function reasonToJSON(reason: Reason): string {
-  return JSON.stringify(Reason$outboundSchema.parse(reason));
-}
-
 export function reasonFromJSON(
   jsonString: string,
 ): SafeParseResult<Reason, SDKValidationError> {

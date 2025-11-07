@@ -40,25 +40,6 @@ export type AccountingBatchCreateCompanyJournalsResponse = {
 };
 
 /** @internal */
-export const AccountingBatchCreateCompanyJournalsRequest$inboundSchema:
-  z.ZodType<
-    AccountingBatchCreateCompanyJournalsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    AccountingJournalBatchCreateRequestDto:
-      shared.AccountingJournalBatchCreateRequestDto$inboundSchema,
-    id: z.string(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "AccountingJournalBatchCreateRequestDto":
-        "accountingJournalBatchCreateRequestDto",
-      "x-account-id": "xAccountId",
-    });
-  });
-
-/** @internal */
 export type AccountingBatchCreateCompanyJournalsRequest$Outbound = {
   AccountingJournalBatchCreateRequestDto:
     shared.AccountingJournalBatchCreateRequestDto$Outbound;
@@ -85,21 +66,6 @@ export const AccountingBatchCreateCompanyJournalsRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingBatchCreateCompanyJournalsRequest$ {
-  /** @deprecated use `AccountingBatchCreateCompanyJournalsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingBatchCreateCompanyJournalsRequest$inboundSchema;
-  /** @deprecated use `AccountingBatchCreateCompanyJournalsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingBatchCreateCompanyJournalsRequest$outboundSchema;
-  /** @deprecated use `AccountingBatchCreateCompanyJournalsRequest$Outbound` instead. */
-  export type Outbound = AccountingBatchCreateCompanyJournalsRequest$Outbound;
-}
-
 export function accountingBatchCreateCompanyJournalsRequestToJSON(
   accountingBatchCreateCompanyJournalsRequest:
     AccountingBatchCreateCompanyJournalsRequest,
@@ -108,22 +74,6 @@ export function accountingBatchCreateCompanyJournalsRequestToJSON(
     AccountingBatchCreateCompanyJournalsRequest$outboundSchema.parse(
       accountingBatchCreateCompanyJournalsRequest,
     ),
-  );
-}
-
-export function accountingBatchCreateCompanyJournalsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AccountingBatchCreateCompanyJournalsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AccountingBatchCreateCompanyJournalsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AccountingBatchCreateCompanyJournalsRequest' from JSON`,
   );
 }
 
@@ -149,65 +99,6 @@ export const AccountingBatchCreateCompanyJournalsResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type AccountingBatchCreateCompanyJournalsResponse$Outbound = {
-  BatchResultApiModel?: shared.BatchResultApiModel$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AccountingBatchCreateCompanyJournalsResponse$outboundSchema:
-  z.ZodType<
-    AccountingBatchCreateCompanyJournalsResponse$Outbound,
-    z.ZodTypeDef,
-    AccountingBatchCreateCompanyJournalsResponse
-  > = z.object({
-    batchResultApiModel: shared.BatchResultApiModel$outboundSchema.optional(),
-    contentType: z.string(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      batchResultApiModel: "BatchResultApiModel",
-      contentType: "ContentType",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountingBatchCreateCompanyJournalsResponse$ {
-  /** @deprecated use `AccountingBatchCreateCompanyJournalsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AccountingBatchCreateCompanyJournalsResponse$inboundSchema;
-  /** @deprecated use `AccountingBatchCreateCompanyJournalsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AccountingBatchCreateCompanyJournalsResponse$outboundSchema;
-  /** @deprecated use `AccountingBatchCreateCompanyJournalsResponse$Outbound` instead. */
-  export type Outbound = AccountingBatchCreateCompanyJournalsResponse$Outbound;
-}
-
-export function accountingBatchCreateCompanyJournalsResponseToJSON(
-  accountingBatchCreateCompanyJournalsResponse:
-    AccountingBatchCreateCompanyJournalsResponse,
-): string {
-  return JSON.stringify(
-    AccountingBatchCreateCompanyJournalsResponse$outboundSchema.parse(
-      accountingBatchCreateCompanyJournalsResponse,
-    ),
-  );
-}
 
 export function accountingBatchCreateCompanyJournalsResponseFromJSON(
   jsonString: string,

@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  HRISDivision,
-  HRISDivision$inboundSchema,
-  HRISDivision$Outbound,
-  HRISDivision$outboundSchema,
-} from "./hrisdivision.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { HRISDivision, HRISDivision$inboundSchema } from "./hrisdivision.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type HRISDivisionsResult = {
   data: HRISDivision;
@@ -33,43 +23,6 @@ export const HRISDivisionsResult$inboundSchema: z.ZodType<
   data: HRISDivision$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type HRISDivisionsResult$Outbound = {
-  data: HRISDivision$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const HRISDivisionsResult$outboundSchema: z.ZodType<
-  HRISDivisionsResult$Outbound,
-  z.ZodTypeDef,
-  HRISDivisionsResult
-> = z.object({
-  data: HRISDivision$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HRISDivisionsResult$ {
-  /** @deprecated use `HRISDivisionsResult$inboundSchema` instead. */
-  export const inboundSchema = HRISDivisionsResult$inboundSchema;
-  /** @deprecated use `HRISDivisionsResult$outboundSchema` instead. */
-  export const outboundSchema = HRISDivisionsResult$outboundSchema;
-  /** @deprecated use `HRISDivisionsResult$Outbound` instead. */
-  export type Outbound = HRISDivisionsResult$Outbound;
-}
-
-export function hrisDivisionsResultToJSON(
-  hrisDivisionsResult: HRISDivisionsResult,
-): string {
-  return JSON.stringify(
-    HRISDivisionsResult$outboundSchema.parse(hrisDivisionsResult),
-  );
-}
 
 export function hrisDivisionsResultFromJSON(
   jsonString: string,

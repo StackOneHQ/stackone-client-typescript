@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFields,
-  CustomFields$inboundSchema,
   CustomFields$Outbound,
   CustomFields$outboundSchema,
 } from "./customfields.js";
@@ -54,33 +50,6 @@ export type CrmCreateContactRequestDto = {
 };
 
 /** @internal */
-export const CrmCreateContactRequestDto$inboundSchema: z.ZodType<
-  CrmCreateContactRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_ids: z.nullable(z.array(z.string())).optional(),
-  company_name: z.nullable(z.string()).optional(),
-  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
-  deal_ids: z.nullable(z.array(z.string())).optional(),
-  emails: z.nullable(z.array(z.string())).optional(),
-  first_name: z.nullable(z.string()).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  phone_numbers: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_ids": "accountIds",
-    "company_name": "companyName",
-    "custom_fields": "customFields",
-    "deal_ids": "dealIds",
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "phone_numbers": "phoneNumbers",
-  });
-});
-
-/** @internal */
 export type CrmCreateContactRequestDto$Outbound = {
   account_ids?: Array<string> | null | undefined;
   company_name?: string | null | undefined;
@@ -120,33 +89,10 @@ export const CrmCreateContactRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CrmCreateContactRequestDto$ {
-  /** @deprecated use `CrmCreateContactRequestDto$inboundSchema` instead. */
-  export const inboundSchema = CrmCreateContactRequestDto$inboundSchema;
-  /** @deprecated use `CrmCreateContactRequestDto$outboundSchema` instead. */
-  export const outboundSchema = CrmCreateContactRequestDto$outboundSchema;
-  /** @deprecated use `CrmCreateContactRequestDto$Outbound` instead. */
-  export type Outbound = CrmCreateContactRequestDto$Outbound;
-}
-
 export function crmCreateContactRequestDtoToJSON(
   crmCreateContactRequestDto: CrmCreateContactRequestDto,
 ): string {
   return JSON.stringify(
     CrmCreateContactRequestDto$outboundSchema.parse(crmCreateContactRequestDto),
-  );
-}
-
-export function crmCreateContactRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<CrmCreateContactRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CrmCreateContactRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CrmCreateContactRequestDto' from JSON`,
   );
 }

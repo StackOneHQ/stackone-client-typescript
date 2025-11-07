@@ -47,25 +47,6 @@ export type DocumentsDownloadFileResponse = {
 };
 
 /** @internal */
-export const DocumentsDownloadFileRequest$inboundSchema: z.ZodType<
-  DocumentsDownloadFileRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  export_format: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  id: z.string(),
-  "x-account-id": z.string(),
-  "x-stackone-api-session-token": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "export_format": "exportFormat",
-    "x-account-id": "xAccountId",
-    "x-stackone-api-session-token": "xStackoneApiSessionToken",
-  });
-});
-
-/** @internal */
 export type DocumentsDownloadFileRequest$Outbound = {
   export_format?: string | null | undefined;
   format?: string | null | undefined;
@@ -93,19 +74,6 @@ export const DocumentsDownloadFileRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsDownloadFileRequest$ {
-  /** @deprecated use `DocumentsDownloadFileRequest$inboundSchema` instead. */
-  export const inboundSchema = DocumentsDownloadFileRequest$inboundSchema;
-  /** @deprecated use `DocumentsDownloadFileRequest$outboundSchema` instead. */
-  export const outboundSchema = DocumentsDownloadFileRequest$outboundSchema;
-  /** @deprecated use `DocumentsDownloadFileRequest$Outbound` instead. */
-  export type Outbound = DocumentsDownloadFileRequest$Outbound;
-}
-
 export function documentsDownloadFileRequestToJSON(
   documentsDownloadFileRequest: DocumentsDownloadFileRequest,
 ): string {
@@ -113,16 +81,6 @@ export function documentsDownloadFileRequestToJSON(
     DocumentsDownloadFileRequest$outboundSchema.parse(
       documentsDownloadFileRequest,
     ),
-  );
-}
-
-export function documentsDownloadFileRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsDownloadFileRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsDownloadFileRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsDownloadFileRequest' from JSON`,
   );
 }
 
@@ -147,61 +105,6 @@ export const DocumentsDownloadFileResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type DocumentsDownloadFileResponse$Outbound = {
-  Body?: Uint8Array | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const DocumentsDownloadFileResponse$outboundSchema: z.ZodType<
-  DocumentsDownloadFileResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentsDownloadFileResponse
-> = z.object({
-  body: b64$.zodOutbound.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    body: "Body",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsDownloadFileResponse$ {
-  /** @deprecated use `DocumentsDownloadFileResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentsDownloadFileResponse$inboundSchema;
-  /** @deprecated use `DocumentsDownloadFileResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentsDownloadFileResponse$outboundSchema;
-  /** @deprecated use `DocumentsDownloadFileResponse$Outbound` instead. */
-  export type Outbound = DocumentsDownloadFileResponse$Outbound;
-}
-
-export function documentsDownloadFileResponseToJSON(
-  documentsDownloadFileResponse: DocumentsDownloadFileResponse,
-): string {
-  return JSON.stringify(
-    DocumentsDownloadFileResponse$outboundSchema.parse(
-      documentsDownloadFileResponse,
-    ),
-  );
-}
 
 export function documentsDownloadFileResponseFromJSON(
   jsonString: string,

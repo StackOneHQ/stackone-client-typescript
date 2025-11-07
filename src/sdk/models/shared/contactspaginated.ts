@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Contact,
-  Contact$inboundSchema,
-  Contact$Outbound,
-  Contact$outboundSchema,
-} from "./contact.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Contact, Contact$inboundSchema } from "./contact.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ContactsPaginated = {
   data: Array<Contact>;
@@ -45,51 +35,6 @@ export const ContactsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type ContactsPaginated$Outbound = {
-  data: Array<Contact$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ContactsPaginated$outboundSchema: z.ZodType<
-  ContactsPaginated$Outbound,
-  z.ZodTypeDef,
-  ContactsPaginated
-> = z.object({
-  data: z.array(Contact$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContactsPaginated$ {
-  /** @deprecated use `ContactsPaginated$inboundSchema` instead. */
-  export const inboundSchema = ContactsPaginated$inboundSchema;
-  /** @deprecated use `ContactsPaginated$outboundSchema` instead. */
-  export const outboundSchema = ContactsPaginated$outboundSchema;
-  /** @deprecated use `ContactsPaginated$Outbound` instead. */
-  export type Outbound = ContactsPaginated$Outbound;
-}
-
-export function contactsPaginatedToJSON(
-  contactsPaginated: ContactsPaginated,
-): string {
-  return JSON.stringify(
-    ContactsPaginated$outboundSchema.parse(contactsPaginated),
-  );
-}
 
 export function contactsPaginatedFromJSON(
   jsonString: string,

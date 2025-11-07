@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ScreeningOrderCandidate = {
   /**
@@ -22,22 +19,6 @@ export type ScreeningOrderCandidate = {
    */
   lastName?: string | null | undefined;
 };
-
-/** @internal */
-export const ScreeningOrderCandidate$inboundSchema: z.ZodType<
-  ScreeningOrderCandidate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.nullable(z.string()).optional(),
-  first_name: z.nullable(z.string()).optional(),
-  last_name: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-  });
-});
 
 /** @internal */
 export type ScreeningOrderCandidate$Outbound = {
@@ -62,33 +43,10 @@ export const ScreeningOrderCandidate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningOrderCandidate$ {
-  /** @deprecated use `ScreeningOrderCandidate$inboundSchema` instead. */
-  export const inboundSchema = ScreeningOrderCandidate$inboundSchema;
-  /** @deprecated use `ScreeningOrderCandidate$outboundSchema` instead. */
-  export const outboundSchema = ScreeningOrderCandidate$outboundSchema;
-  /** @deprecated use `ScreeningOrderCandidate$Outbound` instead. */
-  export type Outbound = ScreeningOrderCandidate$Outbound;
-}
-
 export function screeningOrderCandidateToJSON(
   screeningOrderCandidate: ScreeningOrderCandidate,
 ): string {
   return JSON.stringify(
     ScreeningOrderCandidate$outboundSchema.parse(screeningOrderCandidate),
-  );
-}
-
-export function screeningOrderCandidateFromJSON(
-  jsonString: string,
-): SafeParseResult<ScreeningOrderCandidate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ScreeningOrderCandidate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScreeningOrderCandidate' from JSON`,
   );
 }

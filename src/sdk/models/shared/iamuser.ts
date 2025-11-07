@@ -5,37 +5,16 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Content,
-  Content$inboundSchema,
-  Content$Outbound,
-  Content$outboundSchema,
-} from "./content.js";
-import {
-  IamGroup,
-  IamGroup$inboundSchema,
-  IamGroup$Outbound,
-  IamGroup$outboundSchema,
-} from "./iamgroup.js";
+import { Content, Content$inboundSchema } from "./content.js";
+import { IamGroup, IamGroup$inboundSchema } from "./iamgroup.js";
 import {
   IamMfaTypeEnum,
   IamMfaTypeEnum$inboundSchema,
-  IamMfaTypeEnum$Outbound,
-  IamMfaTypeEnum$outboundSchema,
 } from "./iammfatypeenum.js";
-import {
-  IamRole,
-  IamRole$inboundSchema,
-  IamRole$Outbound,
-  IamRole$outboundSchema,
-} from "./iamrole.js";
+import { IamRole, IamRole$inboundSchema } from "./iamrole.js";
 
 export type IamUserSchemasAvatar4 = {};
 
@@ -1478,37 +1457,6 @@ export const IamUserSchemasAvatar4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type IamUserSchemasAvatar4$Outbound = {};
-
-/** @internal */
-export const IamUserSchemasAvatar4$outboundSchema: z.ZodType<
-  IamUserSchemasAvatar4$Outbound,
-  z.ZodTypeDef,
-  IamUserSchemasAvatar4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserSchemasAvatar4$ {
-  /** @deprecated use `IamUserSchemasAvatar4$inboundSchema` instead. */
-  export const inboundSchema = IamUserSchemasAvatar4$inboundSchema;
-  /** @deprecated use `IamUserSchemasAvatar4$outboundSchema` instead. */
-  export const outboundSchema = IamUserSchemasAvatar4$outboundSchema;
-  /** @deprecated use `IamUserSchemasAvatar4$Outbound` instead. */
-  export type Outbound = IamUserSchemasAvatar4$Outbound;
-}
-
-export function iamUserSchemasAvatar4ToJSON(
-  iamUserSchemasAvatar4: IamUserSchemasAvatar4,
-): string {
-  return JSON.stringify(
-    IamUserSchemasAvatar4$outboundSchema.parse(iamUserSchemasAvatar4),
-  );
-}
-
 export function iamUserSchemasAvatar4FromJSON(
   jsonString: string,
 ): SafeParseResult<IamUserSchemasAvatar4, SDKValidationError> {
@@ -1531,50 +1479,6 @@ export const IamUserSchemasAvatarSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
   z.array(z.any()),
 ]);
-
-/** @internal */
-export type IamUserSchemasAvatarSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | IamUserSchemasAvatar4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const IamUserSchemasAvatarSourceValue$outboundSchema: z.ZodType<
-  IamUserSchemasAvatarSourceValue$Outbound,
-  z.ZodTypeDef,
-  IamUserSchemasAvatarSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => IamUserSchemasAvatar4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserSchemasAvatarSourceValue$ {
-  /** @deprecated use `IamUserSchemasAvatarSourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamUserSchemasAvatarSourceValue$inboundSchema;
-  /** @deprecated use `IamUserSchemasAvatarSourceValue$outboundSchema` instead. */
-  export const outboundSchema = IamUserSchemasAvatarSourceValue$outboundSchema;
-  /** @deprecated use `IamUserSchemasAvatarSourceValue$Outbound` instead. */
-  export type Outbound = IamUserSchemasAvatarSourceValue$Outbound;
-}
-
-export function iamUserSchemasAvatarSourceValueToJSON(
-  iamUserSchemasAvatarSourceValue: IamUserSchemasAvatarSourceValue,
-): string {
-  return JSON.stringify(
-    IamUserSchemasAvatarSourceValue$outboundSchema.parse(
-      iamUserSchemasAvatarSourceValue,
-    ),
-  );
-}
 
 export function iamUserSchemasAvatarSourceValueFromJSON(
   jsonString: string,
@@ -1608,60 +1512,6 @@ export const IamUserCategory$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type IamUserCategory$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | IamUserSchemasAvatar4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const IamUserCategory$outboundSchema: z.ZodType<
-  IamUserCategory$Outbound,
-  z.ZodTypeDef,
-  IamUserCategory
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => IamUserSchemasAvatar4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserCategory$ {
-  /** @deprecated use `IamUserCategory$inboundSchema` instead. */
-  export const inboundSchema = IamUserCategory$inboundSchema;
-  /** @deprecated use `IamUserCategory$outboundSchema` instead. */
-  export const outboundSchema = IamUserCategory$outboundSchema;
-  /** @deprecated use `IamUserCategory$Outbound` instead. */
-  export type Outbound = IamUserCategory$Outbound;
-}
-
-export function iamUserCategoryToJSON(
-  iamUserCategory: IamUserCategory,
-): string {
-  return JSON.stringify(IamUserCategory$outboundSchema.parse(iamUserCategory));
-}
-
 export function iamUserCategoryFromJSON(
   jsonString: string,
 ): SafeParseResult<IamUserCategory, SDKValidationError> {
@@ -1678,35 +1528,6 @@ export const IamUserSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type IamUserSchemas4$Outbound = {};
-
-/** @internal */
-export const IamUserSchemas4$outboundSchema: z.ZodType<
-  IamUserSchemas4$Outbound,
-  z.ZodTypeDef,
-  IamUserSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserSchemas4$ {
-  /** @deprecated use `IamUserSchemas4$inboundSchema` instead. */
-  export const inboundSchema = IamUserSchemas4$inboundSchema;
-  /** @deprecated use `IamUserSchemas4$outboundSchema` instead. */
-  export const outboundSchema = IamUserSchemas4$outboundSchema;
-  /** @deprecated use `IamUserSchemas4$Outbound` instead. */
-  export type Outbound = IamUserSchemas4$Outbound;
-}
-
-export function iamUserSchemas4ToJSON(
-  iamUserSchemas4: IamUserSchemas4,
-): string {
-  return JSON.stringify(IamUserSchemas4$outboundSchema.parse(iamUserSchemas4));
-}
 
 export function iamUserSchemas4FromJSON(
   jsonString: string,
@@ -1731,48 +1552,6 @@ export const IamUserSchemasSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type IamUserSchemasSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | IamUserSchemas4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const IamUserSchemasSourceValue$outboundSchema: z.ZodType<
-  IamUserSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  IamUserSchemasSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => IamUserSchemas4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserSchemasSourceValue$ {
-  /** @deprecated use `IamUserSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamUserSchemasSourceValue$inboundSchema;
-  /** @deprecated use `IamUserSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = IamUserSchemasSourceValue$outboundSchema;
-  /** @deprecated use `IamUserSchemasSourceValue$Outbound` instead. */
-  export type Outbound = IamUserSchemasSourceValue$Outbound;
-}
-
-export function iamUserSchemasSourceValueToJSON(
-  iamUserSchemasSourceValue: IamUserSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    IamUserSchemasSourceValue$outboundSchema.parse(iamUserSchemasSourceValue),
-  );
-}
-
 export function iamUserSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<IamUserSchemasSourceValue, SDKValidationError> {
@@ -1795,27 +1574,6 @@ export const IamUserSchemasValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const IamUserSchemasValue$outboundSchema: z.ZodType<
-  IamUserSchemasValueOpen,
-  z.ZodTypeDef,
-  IamUserSchemasValueOpen
-> = z.union([
-  z.nativeEnum(IamUserSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserSchemasValue$ {
-  /** @deprecated use `IamUserSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = IamUserSchemasValue$inboundSchema;
-  /** @deprecated use `IamUserSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = IamUserSchemasValue$outboundSchema;
-}
-
-/** @internal */
 export const IamUserFileFormat$inboundSchema: z.ZodType<
   IamUserFileFormat,
   z.ZodTypeDef,
@@ -1836,62 +1594,6 @@ export const IamUserFileFormat$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type IamUserFileFormat$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | IamUserSchemas4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const IamUserFileFormat$outboundSchema: z.ZodType<
-  IamUserFileFormat$Outbound,
-  z.ZodTypeDef,
-  IamUserFileFormat
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => IamUserSchemas4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(IamUserSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserFileFormat$ {
-  /** @deprecated use `IamUserFileFormat$inboundSchema` instead. */
-  export const inboundSchema = IamUserFileFormat$inboundSchema;
-  /** @deprecated use `IamUserFileFormat$outboundSchema` instead. */
-  export const outboundSchema = IamUserFileFormat$outboundSchema;
-  /** @deprecated use `IamUserFileFormat$Outbound` instead. */
-  export type Outbound = IamUserFileFormat$Outbound;
-}
-
-export function iamUserFileFormatToJSON(
-  iamUserFileFormat: IamUserFileFormat,
-): string {
-  return JSON.stringify(
-    IamUserFileFormat$outboundSchema.parse(iamUserFileFormat),
-  );
-}
 
 export function iamUserFileFormatFromJSON(
   jsonString: string,
@@ -1935,65 +1637,6 @@ export const IamUserAvatar$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type IamUserAvatar$Outbound = {
-  category?: IamUserCategory$Outbound | null | undefined;
-  category_id?: string | null | undefined;
-  contents?: Array<Content$Outbound> | null | undefined;
-  created_at?: string | null | undefined;
-  file_format?: IamUserFileFormat$Outbound | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_url?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const IamUserAvatar$outboundSchema: z.ZodType<
-  IamUserAvatar$Outbound,
-  z.ZodTypeDef,
-  IamUserAvatar
-> = z.object({
-  category: z.nullable(z.lazy(() => IamUserCategory$outboundSchema)).optional(),
-  categoryId: z.nullable(z.string()).optional(),
-  contents: z.nullable(z.array(Content$outboundSchema)).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  fileFormat: z.nullable(z.lazy(() => IamUserFileFormat$outboundSchema))
-    .optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteUrl: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    categoryId: "category_id",
-    createdAt: "created_at",
-    fileFormat: "file_format",
-    remoteId: "remote_id",
-    remoteUrl: "remote_url",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserAvatar$ {
-  /** @deprecated use `IamUserAvatar$inboundSchema` instead. */
-  export const inboundSchema = IamUserAvatar$inboundSchema;
-  /** @deprecated use `IamUserAvatar$outboundSchema` instead. */
-  export const outboundSchema = IamUserAvatar$outboundSchema;
-  /** @deprecated use `IamUserAvatar$Outbound` instead. */
-  export type Outbound = IamUserAvatar$Outbound;
-}
-
-export function iamUserAvatarToJSON(iamUserAvatar: IamUserAvatar): string {
-  return JSON.stringify(IamUserAvatar$outboundSchema.parse(iamUserAvatar));
-}
-
 export function iamUserAvatarFromJSON(
   jsonString: string,
 ): SafeParseResult<IamUserAvatar, SDKValidationError> {
@@ -2009,57 +1652,11 @@ export const IamUser2$inboundSchema: z.ZodNativeEnum<typeof IamUser2> = z
   .nativeEnum(IamUser2);
 
 /** @internal */
-export const IamUser2$outboundSchema: z.ZodNativeEnum<typeof IamUser2> =
-  IamUser2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUser2$ {
-  /** @deprecated use `IamUser2$inboundSchema` instead. */
-  export const inboundSchema = IamUser2$inboundSchema;
-  /** @deprecated use `IamUser2$outboundSchema` instead. */
-  export const outboundSchema = IamUser2$outboundSchema;
-}
-
-/** @internal */
 export const IamUserIsBotUser$inboundSchema: z.ZodType<
   IamUserIsBotUser,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), IamUser2$inboundSchema]);
-
-/** @internal */
-export type IamUserIsBotUser$Outbound = boolean | string;
-
-/** @internal */
-export const IamUserIsBotUser$outboundSchema: z.ZodType<
-  IamUserIsBotUser$Outbound,
-  z.ZodTypeDef,
-  IamUserIsBotUser
-> = z.union([z.boolean(), IamUser2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserIsBotUser$ {
-  /** @deprecated use `IamUserIsBotUser$inboundSchema` instead. */
-  export const inboundSchema = IamUserIsBotUser$inboundSchema;
-  /** @deprecated use `IamUserIsBotUser$outboundSchema` instead. */
-  export const outboundSchema = IamUserIsBotUser$outboundSchema;
-  /** @deprecated use `IamUserIsBotUser$Outbound` instead. */
-  export type Outbound = IamUserIsBotUser$Outbound;
-}
-
-export function iamUserIsBotUserToJSON(
-  iamUserIsBotUser: IamUserIsBotUser,
-): string {
-  return JSON.stringify(
-    IamUserIsBotUser$outboundSchema.parse(iamUserIsBotUser),
-  );
-}
 
 export function iamUserIsBotUserFromJSON(
   jsonString: string,
@@ -2077,33 +1674,6 @@ export const IamUser4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type IamUser4$Outbound = {};
-
-/** @internal */
-export const IamUser4$outboundSchema: z.ZodType<
-  IamUser4$Outbound,
-  z.ZodTypeDef,
-  IamUser4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUser4$ {
-  /** @deprecated use `IamUser4$inboundSchema` instead. */
-  export const inboundSchema = IamUser4$inboundSchema;
-  /** @deprecated use `IamUser4$outboundSchema` instead. */
-  export const outboundSchema = IamUser4$outboundSchema;
-  /** @deprecated use `IamUser4$Outbound` instead. */
-  export type Outbound = IamUser4$Outbound;
-}
-
-export function iamUser4ToJSON(iamUser4: IamUser4): string {
-  return JSON.stringify(IamUser4$outboundSchema.parse(iamUser4));
-}
 
 export function iamUser4FromJSON(
   jsonString: string,
@@ -2128,48 +1698,6 @@ export const IamUserSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type IamUserSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | IamUser4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const IamUserSourceValue$outboundSchema: z.ZodType<
-  IamUserSourceValue$Outbound,
-  z.ZodTypeDef,
-  IamUserSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => IamUser4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserSourceValue$ {
-  /** @deprecated use `IamUserSourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamUserSourceValue$inboundSchema;
-  /** @deprecated use `IamUserSourceValue$outboundSchema` instead. */
-  export const outboundSchema = IamUserSourceValue$outboundSchema;
-  /** @deprecated use `IamUserSourceValue$Outbound` instead. */
-  export type Outbound = IamUserSourceValue$Outbound;
-}
-
-export function iamUserSourceValueToJSON(
-  iamUserSourceValue: IamUserSourceValue,
-): string {
-  return JSON.stringify(
-    IamUserSourceValue$outboundSchema.parse(iamUserSourceValue),
-  );
-}
-
 export function iamUserSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<IamUserSourceValue, SDKValidationError> {
@@ -2192,27 +1720,6 @@ export const IamUserValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const IamUserValue$outboundSchema: z.ZodType<
-  IamUserValueOpen,
-  z.ZodTypeDef,
-  IamUserValueOpen
-> = z.union([
-  z.nativeEnum(IamUserValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserValue$ {
-  /** @deprecated use `IamUserValue$inboundSchema` instead. */
-  export const inboundSchema = IamUserValue$inboundSchema;
-  /** @deprecated use `IamUserValue$outboundSchema` instead. */
-  export const outboundSchema = IamUserValue$outboundSchema;
-}
-
-/** @internal */
 export const IamUserStatus$inboundSchema: z.ZodType<
   IamUserStatus,
   z.ZodTypeDef,
@@ -2233,58 +1740,6 @@ export const IamUserStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type IamUserStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | IamUser4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const IamUserStatus$outboundSchema: z.ZodType<
-  IamUserStatus$Outbound,
-  z.ZodTypeDef,
-  IamUserStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => IamUser4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(IamUserValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUserStatus$ {
-  /** @deprecated use `IamUserStatus$inboundSchema` instead. */
-  export const inboundSchema = IamUserStatus$inboundSchema;
-  /** @deprecated use `IamUserStatus$outboundSchema` instead. */
-  export const outboundSchema = IamUserStatus$outboundSchema;
-  /** @deprecated use `IamUserStatus$Outbound` instead. */
-  export type Outbound = IamUserStatus$Outbound;
-}
-
-export function iamUserStatusToJSON(iamUserStatus: IamUserStatus): string {
-  return JSON.stringify(IamUserStatus$outboundSchema.parse(iamUserStatus));
-}
 
 export function iamUserStatusFromJSON(
   jsonString: string,
@@ -2342,87 +1797,6 @@ export const IamUser$inboundSchema: z.ZodType<IamUser, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type IamUser$Outbound = {
-  avatar?: IamUserAvatar$Outbound | null | undefined;
-  created_at?: string | null | undefined;
-  first_name?: string | null | undefined;
-  groups?: Array<IamGroup$Outbound> | null | undefined;
-  id?: string | null | undefined;
-  is_bot_user?: boolean | string | null | undefined;
-  last_active_at?: string | null | undefined;
-  last_login_at?: string | null | undefined;
-  last_name?: string | null | undefined;
-  multi_factor_enabled?: Array<IamMfaTypeEnum$Outbound> | null | undefined;
-  name?: string | null | undefined;
-  primary_email_address?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  roles?: Array<IamRole$Outbound> | null | undefined;
-  status?: IamUserStatus$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-  username?: string | null | undefined;
-};
-
-/** @internal */
-export const IamUser$outboundSchema: z.ZodType<
-  IamUser$Outbound,
-  z.ZodTypeDef,
-  IamUser
-> = z.object({
-  avatar: z.nullable(z.lazy(() => IamUserAvatar$outboundSchema)).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  groups: z.nullable(z.array(IamGroup$outboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  isBotUser: z.nullable(z.union([z.boolean(), IamUser2$outboundSchema]))
-    .optional(),
-  lastActiveAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  lastLoginAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  multiFactorEnabled: z.nullable(z.array(IamMfaTypeEnum$outboundSchema))
-    .optional(),
-  name: z.nullable(z.string()).optional(),
-  primaryEmailAddress: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  roles: z.nullable(z.array(IamRole$outboundSchema)).optional(),
-  status: z.nullable(z.lazy(() => IamUserStatus$outboundSchema)).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  username: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    firstName: "first_name",
-    isBotUser: "is_bot_user",
-    lastActiveAt: "last_active_at",
-    lastLoginAt: "last_login_at",
-    lastName: "last_name",
-    multiFactorEnabled: "multi_factor_enabled",
-    primaryEmailAddress: "primary_email_address",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUser$ {
-  /** @deprecated use `IamUser$inboundSchema` instead. */
-  export const inboundSchema = IamUser$inboundSchema;
-  /** @deprecated use `IamUser$outboundSchema` instead. */
-  export const outboundSchema = IamUser$outboundSchema;
-  /** @deprecated use `IamUser$Outbound` instead. */
-  export type Outbound = IamUser$Outbound;
-}
-
-export function iamUserToJSON(iamUser: IamUser): string {
-  return JSON.stringify(IamUser$outboundSchema.parse(iamUser));
-}
 
 export function iamUserFromJSON(
   jsonString: string,

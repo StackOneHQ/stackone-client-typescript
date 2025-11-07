@@ -33,43 +33,6 @@ export const ListItem$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ListItem$Outbound = {
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const ListItem$outboundSchema: z.ZodType<
-  ListItem$Outbound,
-  z.ZodTypeDef,
-  ListItem
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListItem$ {
-  /** @deprecated use `ListItem$inboundSchema` instead. */
-  export const inboundSchema = ListItem$inboundSchema;
-  /** @deprecated use `ListItem$outboundSchema` instead. */
-  export const outboundSchema = ListItem$outboundSchema;
-  /** @deprecated use `ListItem$Outbound` instead. */
-  export type Outbound = ListItem$Outbound;
-}
-
-export function listItemToJSON(listItem: ListItem): string {
-  return JSON.stringify(ListItem$outboundSchema.parse(listItem));
-}
-
 export function listItemFromJSON(
   jsonString: string,
 ): SafeParseResult<ListItem, SDKValidationError> {

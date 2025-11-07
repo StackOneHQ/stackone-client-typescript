@@ -33,45 +33,6 @@ export const CustomMappingError$inboundSchema: z.ZodType<
   targetField: z.nullable(z.string()).optional(),
 });
 
-/** @internal */
-export type CustomMappingError$Outbound = {
-  id?: string | null | undefined;
-  message?: string | null | undefined;
-  targetField?: string | null | undefined;
-};
-
-/** @internal */
-export const CustomMappingError$outboundSchema: z.ZodType<
-  CustomMappingError$Outbound,
-  z.ZodTypeDef,
-  CustomMappingError
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  message: z.nullable(z.string()).optional(),
-  targetField: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMappingError$ {
-  /** @deprecated use `CustomMappingError$inboundSchema` instead. */
-  export const inboundSchema = CustomMappingError$inboundSchema;
-  /** @deprecated use `CustomMappingError$outboundSchema` instead. */
-  export const outboundSchema = CustomMappingError$outboundSchema;
-  /** @deprecated use `CustomMappingError$Outbound` instead. */
-  export type Outbound = CustomMappingError$Outbound;
-}
-
-export function customMappingErrorToJSON(
-  customMappingError: CustomMappingError,
-): string {
-  return JSON.stringify(
-    CustomMappingError$outboundSchema.parse(customMappingError),
-  );
-}
-
 export function customMappingErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMappingError, SDKValidationError> {

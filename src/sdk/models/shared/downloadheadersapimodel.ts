@@ -58,60 +58,6 @@ export const DownloadHeadersApiModel$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type DownloadHeadersApiModel$Outbound = {
-  "content-disposition"?: string | null | undefined;
-  "content-encoding"?: string | null | undefined;
-  "content-length"?: number | null | undefined;
-  "content-range"?: string | null | undefined;
-  "content-type"?: string | null | undefined;
-  "transfer-encoding"?: string | null | undefined;
-};
-
-/** @internal */
-export const DownloadHeadersApiModel$outboundSchema: z.ZodType<
-  DownloadHeadersApiModel$Outbound,
-  z.ZodTypeDef,
-  DownloadHeadersApiModel
-> = z.object({
-  contentDisposition: z.nullable(z.string()).optional(),
-  contentEncoding: z.nullable(z.string()).optional(),
-  contentLength: z.nullable(z.number()).optional(),
-  contentRange: z.nullable(z.string()).optional(),
-  contentType: z.nullable(z.string()).optional(),
-  transferEncoding: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentDisposition: "content-disposition",
-    contentEncoding: "content-encoding",
-    contentLength: "content-length",
-    contentRange: "content-range",
-    contentType: "content-type",
-    transferEncoding: "transfer-encoding",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DownloadHeadersApiModel$ {
-  /** @deprecated use `DownloadHeadersApiModel$inboundSchema` instead. */
-  export const inboundSchema = DownloadHeadersApiModel$inboundSchema;
-  /** @deprecated use `DownloadHeadersApiModel$outboundSchema` instead. */
-  export const outboundSchema = DownloadHeadersApiModel$outboundSchema;
-  /** @deprecated use `DownloadHeadersApiModel$Outbound` instead. */
-  export type Outbound = DownloadHeadersApiModel$Outbound;
-}
-
-export function downloadHeadersApiModelToJSON(
-  downloadHeadersApiModel: DownloadHeadersApiModel,
-): string {
-  return JSON.stringify(
-    DownloadHeadersApiModel$outboundSchema.parse(downloadHeadersApiModel),
-  );
-}
-
 export function downloadHeadersApiModelFromJSON(
   jsonString: string,
 ): SafeParseResult<DownloadHeadersApiModel, SDKValidationError> {

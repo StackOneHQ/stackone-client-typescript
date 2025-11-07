@@ -38,22 +38,6 @@ export type ScreeningCreateScreeningOrderResponse = {
 };
 
 /** @internal */
-export const ScreeningCreateScreeningOrderRequest$inboundSchema: z.ZodType<
-  ScreeningCreateScreeningOrderRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ScreeningCreateOrderRequestDto:
-    shared.ScreeningCreateOrderRequestDto$inboundSchema,
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "ScreeningCreateOrderRequestDto": "screeningCreateOrderRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type ScreeningCreateScreeningOrderRequest$Outbound = {
   ScreeningCreateOrderRequestDto:
     shared.ScreeningCreateOrderRequestDto$Outbound;
@@ -76,21 +60,6 @@ export const ScreeningCreateScreeningOrderRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningCreateScreeningOrderRequest$ {
-  /** @deprecated use `ScreeningCreateScreeningOrderRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningCreateScreeningOrderRequest$inboundSchema;
-  /** @deprecated use `ScreeningCreateScreeningOrderRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningCreateScreeningOrderRequest$outboundSchema;
-  /** @deprecated use `ScreeningCreateScreeningOrderRequest$Outbound` instead. */
-  export type Outbound = ScreeningCreateScreeningOrderRequest$Outbound;
-}
-
 export function screeningCreateScreeningOrderRequestToJSON(
   screeningCreateScreeningOrderRequest: ScreeningCreateScreeningOrderRequest,
 ): string {
@@ -98,17 +67,6 @@ export function screeningCreateScreeningOrderRequestToJSON(
     ScreeningCreateScreeningOrderRequest$outboundSchema.parse(
       screeningCreateScreeningOrderRequest,
     ),
-  );
-}
-
-export function screeningCreateScreeningOrderRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ScreeningCreateScreeningOrderRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ScreeningCreateScreeningOrderRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ScreeningCreateScreeningOrderRequest' from JSON`,
   );
 }
 
@@ -133,63 +91,6 @@ export const ScreeningCreateScreeningOrderResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type ScreeningCreateScreeningOrderResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const ScreeningCreateScreeningOrderResponse$outboundSchema: z.ZodType<
-  ScreeningCreateScreeningOrderResponse$Outbound,
-  z.ZodTypeDef,
-  ScreeningCreateScreeningOrderResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningCreateScreeningOrderResponse$ {
-  /** @deprecated use `ScreeningCreateScreeningOrderResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    ScreeningCreateScreeningOrderResponse$inboundSchema;
-  /** @deprecated use `ScreeningCreateScreeningOrderResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ScreeningCreateScreeningOrderResponse$outboundSchema;
-  /** @deprecated use `ScreeningCreateScreeningOrderResponse$Outbound` instead. */
-  export type Outbound = ScreeningCreateScreeningOrderResponse$Outbound;
-}
-
-export function screeningCreateScreeningOrderResponseToJSON(
-  screeningCreateScreeningOrderResponse: ScreeningCreateScreeningOrderResponse,
-): string {
-  return JSON.stringify(
-    ScreeningCreateScreeningOrderResponse$outboundSchema.parse(
-      screeningCreateScreeningOrderResponse,
-    ),
-  );
-}
 
 export function screeningCreateScreeningOrderResponseFromJSON(
   jsonString: string,

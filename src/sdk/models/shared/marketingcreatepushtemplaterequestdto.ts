@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PushMessages,
-  PushMessages$inboundSchema,
   PushMessages$Outbound,
   PushMessages$outboundSchema,
 } from "./pushmessages.js";
@@ -22,18 +18,6 @@ export type MarketingCreatePushTemplateRequestDto = {
   passthrough?: { [k: string]: any } | null | undefined;
   tags?: Array<string> | null | undefined;
 };
-
-/** @internal */
-export const MarketingCreatePushTemplateRequestDto$inboundSchema: z.ZodType<
-  MarketingCreatePushTemplateRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  messages: z.nullable(z.array(PushMessages$inboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-});
 
 /** @internal */
 export type MarketingCreatePushTemplateRequestDto$Outbound = {
@@ -55,21 +39,6 @@ export const MarketingCreatePushTemplateRequestDto$outboundSchema: z.ZodType<
   tags: z.nullable(z.array(z.string())).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingCreatePushTemplateRequestDto$ {
-  /** @deprecated use `MarketingCreatePushTemplateRequestDto$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingCreatePushTemplateRequestDto$inboundSchema;
-  /** @deprecated use `MarketingCreatePushTemplateRequestDto$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingCreatePushTemplateRequestDto$outboundSchema;
-  /** @deprecated use `MarketingCreatePushTemplateRequestDto$Outbound` instead. */
-  export type Outbound = MarketingCreatePushTemplateRequestDto$Outbound;
-}
-
 export function marketingCreatePushTemplateRequestDtoToJSON(
   marketingCreatePushTemplateRequestDto: MarketingCreatePushTemplateRequestDto,
 ): string {
@@ -77,16 +46,5 @@ export function marketingCreatePushTemplateRequestDtoToJSON(
     MarketingCreatePushTemplateRequestDto$outboundSchema.parse(
       marketingCreatePushTemplateRequestDto,
     ),
-  );
-}
-
-export function marketingCreatePushTemplateRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingCreatePushTemplateRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingCreatePushTemplateRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingCreatePushTemplateRequestDto' from JSON`,
   );
 }

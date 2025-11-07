@@ -5,18 +5,12 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NoteContentApiModel,
   NoteContentApiModel$inboundSchema,
-  NoteContentApiModel$Outbound,
-  NoteContentApiModel$outboundSchema,
 } from "./notecontentapimodel.js";
 
 export type Note4 = {};
@@ -104,33 +98,6 @@ export type Note = {
 export const Note4$inboundSchema: z.ZodType<Note4, z.ZodTypeDef, unknown> = z
   .object({});
 
-/** @internal */
-export type Note4$Outbound = {};
-
-/** @internal */
-export const Note4$outboundSchema: z.ZodType<
-  Note4$Outbound,
-  z.ZodTypeDef,
-  Note4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Note4$ {
-  /** @deprecated use `Note4$inboundSchema` instead. */
-  export const inboundSchema = Note4$inboundSchema;
-  /** @deprecated use `Note4$outboundSchema` instead. */
-  export const outboundSchema = Note4$outboundSchema;
-  /** @deprecated use `Note4$Outbound` instead. */
-  export type Outbound = Note4$Outbound;
-}
-
-export function note4ToJSON(note4: Note4): string {
-  return JSON.stringify(Note4$outboundSchema.parse(note4));
-}
-
 export function note4FromJSON(
   jsonString: string,
 ): SafeParseResult<Note4, SDKValidationError> {
@@ -154,46 +121,6 @@ export const NoteSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type NoteSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Note4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const NoteSourceValue$outboundSchema: z.ZodType<
-  NoteSourceValue$Outbound,
-  z.ZodTypeDef,
-  NoteSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Note4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NoteSourceValue$ {
-  /** @deprecated use `NoteSourceValue$inboundSchema` instead. */
-  export const inboundSchema = NoteSourceValue$inboundSchema;
-  /** @deprecated use `NoteSourceValue$outboundSchema` instead. */
-  export const outboundSchema = NoteSourceValue$outboundSchema;
-  /** @deprecated use `NoteSourceValue$Outbound` instead. */
-  export type Outbound = NoteSourceValue$Outbound;
-}
-
-export function noteSourceValueToJSON(
-  noteSourceValue: NoteSourceValue,
-): string {
-  return JSON.stringify(NoteSourceValue$outboundSchema.parse(noteSourceValue));
-}
-
 export function noteSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<NoteSourceValue, SDKValidationError> {
@@ -216,27 +143,6 @@ export const NoteValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const NoteValue$outboundSchema: z.ZodType<
-  NoteValueOpen,
-  z.ZodTypeDef,
-  NoteValueOpen
-> = z.union([
-  z.nativeEnum(NoteValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NoteValue$ {
-  /** @deprecated use `NoteValue$inboundSchema` instead. */
-  export const inboundSchema = NoteValue$inboundSchema;
-  /** @deprecated use `NoteValue$outboundSchema` instead. */
-  export const outboundSchema = NoteValue$outboundSchema;
-}
-
-/** @internal */
 export const NoteVisibility$inboundSchema: z.ZodType<
   NoteVisibility,
   z.ZodTypeDef,
@@ -257,58 +163,6 @@ export const NoteVisibility$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type NoteVisibility$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Note4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const NoteVisibility$outboundSchema: z.ZodType<
-  NoteVisibility$Outbound,
-  z.ZodTypeDef,
-  NoteVisibility
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Note4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(NoteValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NoteVisibility$ {
-  /** @deprecated use `NoteVisibility$inboundSchema` instead. */
-  export const inboundSchema = NoteVisibility$inboundSchema;
-  /** @deprecated use `NoteVisibility$outboundSchema` instead. */
-  export const outboundSchema = NoteVisibility$outboundSchema;
-  /** @deprecated use `NoteVisibility$Outbound` instead. */
-  export type Outbound = NoteVisibility$Outbound;
-}
-
-export function noteVisibilityToJSON(noteVisibility: NoteVisibility): string {
-  return JSON.stringify(NoteVisibility$outboundSchema.parse(noteVisibility));
-}
 
 export function noteVisibilityFromJSON(
   jsonString: string,
@@ -351,63 +205,6 @@ export const Note$inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type Note$Outbound = {
-  author_id?: string | null | undefined;
-  content?: Array<NoteContentApiModel$Outbound> | null | undefined;
-  created_at?: string | null | undefined;
-  deleted_at?: string | null | undefined;
-  id?: string | null | undefined;
-  remote_author_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-  visibility?: NoteVisibility$Outbound | null | undefined;
-};
-
-/** @internal */
-export const Note$outboundSchema: z.ZodType<Note$Outbound, z.ZodTypeDef, Note> =
-  z.object({
-    authorId: z.nullable(z.string()).optional(),
-    content: z.nullable(z.array(NoteContentApiModel$outboundSchema)).optional(),
-    createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    id: z.nullable(z.string()).optional(),
-    remoteAuthorId: z.nullable(z.string()).optional(),
-    remoteId: z.nullable(z.string()).optional(),
-    unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-    updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    visibility: z.nullable(z.lazy(() => NoteVisibility$outboundSchema))
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      authorId: "author_id",
-      createdAt: "created_at",
-      deletedAt: "deleted_at",
-      remoteAuthorId: "remote_author_id",
-      remoteId: "remote_id",
-      unifiedCustomFields: "unified_custom_fields",
-      updatedAt: "updated_at",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Note$ {
-  /** @deprecated use `Note$inboundSchema` instead. */
-  export const inboundSchema = Note$inboundSchema;
-  /** @deprecated use `Note$outboundSchema` instead. */
-  export const outboundSchema = Note$outboundSchema;
-  /** @deprecated use `Note$Outbound` instead. */
-  export type Outbound = Note$Outbound;
-}
-
-export function noteToJSON(note: Note): string {
-  return JSON.stringify(Note$outboundSchema.parse(note));
-}
 
 export function noteFromJSON(
   jsonString: string,

@@ -44,25 +44,6 @@ export type MessagingDownloadMessagingAttachmentResponse = {
 };
 
 /** @internal */
-export const MessagingDownloadMessagingAttachmentRequest$inboundSchema:
-  z.ZodType<
-    MessagingDownloadMessagingAttachmentRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    export_format: z.nullable(z.string()).optional(),
-    format: z.nullable(z.string()).optional(),
-    id: z.string(),
-    subResourceId: z.string(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "export_format": "exportFormat",
-      "x-account-id": "xAccountId",
-    });
-  });
-
-/** @internal */
 export type MessagingDownloadMessagingAttachmentRequest$Outbound = {
   export_format?: string | null | undefined;
   format?: string | null | undefined;
@@ -90,21 +71,6 @@ export const MessagingDownloadMessagingAttachmentRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingDownloadMessagingAttachmentRequest$ {
-  /** @deprecated use `MessagingDownloadMessagingAttachmentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingDownloadMessagingAttachmentRequest$inboundSchema;
-  /** @deprecated use `MessagingDownloadMessagingAttachmentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingDownloadMessagingAttachmentRequest$outboundSchema;
-  /** @deprecated use `MessagingDownloadMessagingAttachmentRequest$Outbound` instead. */
-  export type Outbound = MessagingDownloadMessagingAttachmentRequest$Outbound;
-}
-
 export function messagingDownloadMessagingAttachmentRequestToJSON(
   messagingDownloadMessagingAttachmentRequest:
     MessagingDownloadMessagingAttachmentRequest,
@@ -113,22 +79,6 @@ export function messagingDownloadMessagingAttachmentRequestToJSON(
     MessagingDownloadMessagingAttachmentRequest$outboundSchema.parse(
       messagingDownloadMessagingAttachmentRequest,
     ),
-  );
-}
-
-export function messagingDownloadMessagingAttachmentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MessagingDownloadMessagingAttachmentRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MessagingDownloadMessagingAttachmentRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MessagingDownloadMessagingAttachmentRequest' from JSON`,
   );
 }
 
@@ -154,65 +104,6 @@ export const MessagingDownloadMessagingAttachmentResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type MessagingDownloadMessagingAttachmentResponse$Outbound = {
-  Body?: Uint8Array | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MessagingDownloadMessagingAttachmentResponse$outboundSchema:
-  z.ZodType<
-    MessagingDownloadMessagingAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    MessagingDownloadMessagingAttachmentResponse
-  > = z.object({
-    body: b64$.zodOutbound.optional(),
-    contentType: z.string(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      body: "Body",
-      contentType: "ContentType",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingDownloadMessagingAttachmentResponse$ {
-  /** @deprecated use `MessagingDownloadMessagingAttachmentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    MessagingDownloadMessagingAttachmentResponse$inboundSchema;
-  /** @deprecated use `MessagingDownloadMessagingAttachmentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MessagingDownloadMessagingAttachmentResponse$outboundSchema;
-  /** @deprecated use `MessagingDownloadMessagingAttachmentResponse$Outbound` instead. */
-  export type Outbound = MessagingDownloadMessagingAttachmentResponse$Outbound;
-}
-
-export function messagingDownloadMessagingAttachmentResponseToJSON(
-  messagingDownloadMessagingAttachmentResponse:
-    MessagingDownloadMessagingAttachmentResponse,
-): string {
-  return JSON.stringify(
-    MessagingDownloadMessagingAttachmentResponse$outboundSchema.parse(
-      messagingDownloadMessagingAttachmentResponse,
-    ),
-  );
-}
 
 export function messagingDownloadMessagingAttachmentResponseFromJSON(
   jsonString: string,

@@ -35,51 +35,6 @@ export const QuestionMultipleChoiceAnswers$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type QuestionMultipleChoiceAnswers$Outbound = {
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  text?: string | null | undefined;
-};
-
-/** @internal */
-export const QuestionMultipleChoiceAnswers$outboundSchema: z.ZodType<
-  QuestionMultipleChoiceAnswers$Outbound,
-  z.ZodTypeDef,
-  QuestionMultipleChoiceAnswers
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  text: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QuestionMultipleChoiceAnswers$ {
-  /** @deprecated use `QuestionMultipleChoiceAnswers$inboundSchema` instead. */
-  export const inboundSchema = QuestionMultipleChoiceAnswers$inboundSchema;
-  /** @deprecated use `QuestionMultipleChoiceAnswers$outboundSchema` instead. */
-  export const outboundSchema = QuestionMultipleChoiceAnswers$outboundSchema;
-  /** @deprecated use `QuestionMultipleChoiceAnswers$Outbound` instead. */
-  export type Outbound = QuestionMultipleChoiceAnswers$Outbound;
-}
-
-export function questionMultipleChoiceAnswersToJSON(
-  questionMultipleChoiceAnswers: QuestionMultipleChoiceAnswers,
-): string {
-  return JSON.stringify(
-    QuestionMultipleChoiceAnswers$outboundSchema.parse(
-      questionMultipleChoiceAnswers,
-    ),
-  );
-}
-
 export function questionMultipleChoiceAnswersFromJSON(
   jsonString: string,
 ): SafeParseResult<QuestionMultipleChoiceAnswers, SDKValidationError> {

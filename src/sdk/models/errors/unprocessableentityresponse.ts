@@ -62,36 +62,3 @@ export const UnprocessableEntityResponse$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type UnprocessableEntityResponse$Outbound = {
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const UnprocessableEntityResponse$outboundSchema: z.ZodType<
-  UnprocessableEntityResponse$Outbound,
-  z.ZodTypeDef,
-  UnprocessableEntityResponse
-> = z.instanceof(UnprocessableEntityResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    message: z.string(),
-    statusCode: z.number(),
-    timestamp: z.date().transform(v => v.toISOString()),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnprocessableEntityResponse$ {
-  /** @deprecated use `UnprocessableEntityResponse$inboundSchema` instead. */
-  export const inboundSchema = UnprocessableEntityResponse$inboundSchema;
-  /** @deprecated use `UnprocessableEntityResponse$outboundSchema` instead. */
-  export const outboundSchema = UnprocessableEntityResponse$outboundSchema;
-  /** @deprecated use `UnprocessableEntityResponse$Outbound` instead. */
-  export type Outbound = UnprocessableEntityResponse$Outbound;
-}

@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  Reference,
-  Reference$inboundSchema,
-  Reference$Outbound,
-  Reference$outboundSchema,
-} from "./reference.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { Reference, Reference$inboundSchema } from "./reference.js";
 
 export type ReferencePaginated = {
   data: Array<Reference>;
@@ -45,51 +35,6 @@ export const ReferencePaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type ReferencePaginated$Outbound = {
-  data: Array<Reference$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ReferencePaginated$outboundSchema: z.ZodType<
-  ReferencePaginated$Outbound,
-  z.ZodTypeDef,
-  ReferencePaginated
-> = z.object({
-  data: z.array(Reference$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReferencePaginated$ {
-  /** @deprecated use `ReferencePaginated$inboundSchema` instead. */
-  export const inboundSchema = ReferencePaginated$inboundSchema;
-  /** @deprecated use `ReferencePaginated$outboundSchema` instead. */
-  export const outboundSchema = ReferencePaginated$outboundSchema;
-  /** @deprecated use `ReferencePaginated$Outbound` instead. */
-  export type Outbound = ReferencePaginated$Outbound;
-}
-
-export function referencePaginatedToJSON(
-  referencePaginated: ReferencePaginated,
-): string {
-  return JSON.stringify(
-    ReferencePaginated$outboundSchema.parse(referencePaginated),
-  );
-}
 
 export function referencePaginatedFromJSON(
   jsonString: string,

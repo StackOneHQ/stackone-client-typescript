@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AtsRejectApplicationRequestDto = {
   /**
@@ -18,20 +15,6 @@ export type AtsRejectApplicationRequestDto = {
    */
   rejectedReasonId?: string | null | undefined;
 };
-
-/** @internal */
-export const AtsRejectApplicationRequestDto$inboundSchema: z.ZodType<
-  AtsRejectApplicationRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  rejected_reason_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "rejected_reason_id": "rejectedReasonId",
-  });
-});
 
 /** @internal */
 export type AtsRejectApplicationRequestDto$Outbound = {
@@ -53,19 +36,6 @@ export const AtsRejectApplicationRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsRejectApplicationRequestDto$ {
-  /** @deprecated use `AtsRejectApplicationRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsRejectApplicationRequestDto$inboundSchema;
-  /** @deprecated use `AtsRejectApplicationRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsRejectApplicationRequestDto$outboundSchema;
-  /** @deprecated use `AtsRejectApplicationRequestDto$Outbound` instead. */
-  export type Outbound = AtsRejectApplicationRequestDto$Outbound;
-}
-
 export function atsRejectApplicationRequestDtoToJSON(
   atsRejectApplicationRequestDto: AtsRejectApplicationRequestDto,
 ): string {
@@ -73,15 +43,5 @@ export function atsRejectApplicationRequestDtoToJSON(
     AtsRejectApplicationRequestDto$outboundSchema.parse(
       atsRejectApplicationRequestDto,
     ),
-  );
-}
-
-export function atsRejectApplicationRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsRejectApplicationRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsRejectApplicationRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsRejectApplicationRequestDto' from JSON`,
   );
 }

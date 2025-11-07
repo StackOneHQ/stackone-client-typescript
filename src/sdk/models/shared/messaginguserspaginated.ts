@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  MessagingUser,
-  MessagingUser$inboundSchema,
-  MessagingUser$Outbound,
-  MessagingUser$outboundSchema,
-} from "./messaginguser.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { MessagingUser, MessagingUser$inboundSchema } from "./messaginguser.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type MessagingUsersPaginated = {
   data?: Array<MessagingUser> | null | undefined;
@@ -35,45 +25,6 @@ export const MessagingUsersPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type MessagingUsersPaginated$Outbound = {
-  data?: Array<MessagingUser$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const MessagingUsersPaginated$outboundSchema: z.ZodType<
-  MessagingUsersPaginated$Outbound,
-  z.ZodTypeDef,
-  MessagingUsersPaginated
-> = z.object({
-  data: z.nullable(z.array(MessagingUser$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagingUsersPaginated$ {
-  /** @deprecated use `MessagingUsersPaginated$inboundSchema` instead. */
-  export const inboundSchema = MessagingUsersPaginated$inboundSchema;
-  /** @deprecated use `MessagingUsersPaginated$outboundSchema` instead. */
-  export const outboundSchema = MessagingUsersPaginated$outboundSchema;
-  /** @deprecated use `MessagingUsersPaginated$Outbound` instead. */
-  export type Outbound = MessagingUsersPaginated$Outbound;
-}
-
-export function messagingUsersPaginatedToJSON(
-  messagingUsersPaginated: MessagingUsersPaginated,
-): string {
-  return JSON.stringify(
-    MessagingUsersPaginated$outboundSchema.parse(messagingUsersPaginated),
-  );
-}
 
 export function messagingUsersPaginatedFromJSON(
   jsonString: string,

@@ -40,23 +40,6 @@ export type AtsUpdateApplicationNoteResponse = {
 };
 
 /** @internal */
-export const AtsUpdateApplicationNoteRequest$inboundSchema: z.ZodType<
-  AtsUpdateApplicationNoteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto$inboundSchema,
-  id: z.string(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsUpdateNotesRequestDto": "atsUpdateNotesRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsUpdateApplicationNoteRequest$Outbound = {
   AtsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto$Outbound;
   id: string;
@@ -81,19 +64,6 @@ export const AtsUpdateApplicationNoteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateApplicationNoteRequest$ {
-  /** @deprecated use `AtsUpdateApplicationNoteRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateApplicationNoteRequest$inboundSchema;
-  /** @deprecated use `AtsUpdateApplicationNoteRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateApplicationNoteRequest$outboundSchema;
-  /** @deprecated use `AtsUpdateApplicationNoteRequest$Outbound` instead. */
-  export type Outbound = AtsUpdateApplicationNoteRequest$Outbound;
-}
-
 export function atsUpdateApplicationNoteRequestToJSON(
   atsUpdateApplicationNoteRequest: AtsUpdateApplicationNoteRequest,
 ): string {
@@ -101,16 +71,6 @@ export function atsUpdateApplicationNoteRequestToJSON(
     AtsUpdateApplicationNoteRequest$outboundSchema.parse(
       atsUpdateApplicationNoteRequest,
     ),
-  );
-}
-
-export function atsUpdateApplicationNoteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateApplicationNoteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsUpdateApplicationNoteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateApplicationNoteRequest' from JSON`,
   );
 }
 
@@ -135,61 +95,6 @@ export const AtsUpdateApplicationNoteResponse$inboundSchema: z.ZodType<
     "UpdateResult": "updateResult",
   });
 });
-
-/** @internal */
-export type AtsUpdateApplicationNoteResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UpdateResult?: shared.UpdateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const AtsUpdateApplicationNoteResponse$outboundSchema: z.ZodType<
-  AtsUpdateApplicationNoteResponse$Outbound,
-  z.ZodTypeDef,
-  AtsUpdateApplicationNoteResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  updateResult: shared.UpdateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    updateResult: "UpdateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateApplicationNoteResponse$ {
-  /** @deprecated use `AtsUpdateApplicationNoteResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsUpdateApplicationNoteResponse$inboundSchema;
-  /** @deprecated use `AtsUpdateApplicationNoteResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsUpdateApplicationNoteResponse$outboundSchema;
-  /** @deprecated use `AtsUpdateApplicationNoteResponse$Outbound` instead. */
-  export type Outbound = AtsUpdateApplicationNoteResponse$Outbound;
-}
-
-export function atsUpdateApplicationNoteResponseToJSON(
-  atsUpdateApplicationNoteResponse: AtsUpdateApplicationNoteResponse,
-): string {
-  return JSON.stringify(
-    AtsUpdateApplicationNoteResponse$outboundSchema.parse(
-      atsUpdateApplicationNoteResponse,
-    ),
-  );
-}
 
 export function atsUpdateApplicationNoteResponseFromJSON(
   jsonString: string,

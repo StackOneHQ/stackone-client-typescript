@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The value of the additional data
@@ -29,10 +26,6 @@ export type AdditionalData = {
 };
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.array(z.string())]);
-
-/** @internal */
 export type Value$Outbound = string | Array<string>;
 
 /** @internal */
@@ -42,47 +35,9 @@ export const Value$outboundSchema: z.ZodType<
   Value
 > = z.union([z.string(), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Value$ {
-  /** @deprecated use `Value$inboundSchema` instead. */
-  export const inboundSchema = Value$inboundSchema;
-  /** @deprecated use `Value$outboundSchema` instead. */
-  export const outboundSchema = Value$outboundSchema;
-  /** @deprecated use `Value$Outbound` instead. */
-  export type Outbound = Value$Outbound;
-}
-
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
 }
-
-export function valueFromJSON(
-  jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
-  );
-}
-
-/** @internal */
-export const AdditionalData$inboundSchema: z.ZodType<
-  AdditionalData,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-  value: z.nullable(z.union([z.string(), z.array(z.string())])).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-  });
-});
 
 /** @internal */
 export type AdditionalData$Outbound = {
@@ -106,29 +61,6 @@ export const AdditionalData$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AdditionalData$ {
-  /** @deprecated use `AdditionalData$inboundSchema` instead. */
-  export const inboundSchema = AdditionalData$inboundSchema;
-  /** @deprecated use `AdditionalData$outboundSchema` instead. */
-  export const outboundSchema = AdditionalData$outboundSchema;
-  /** @deprecated use `AdditionalData$Outbound` instead. */
-  export type Outbound = AdditionalData$Outbound;
-}
-
 export function additionalDataToJSON(additionalData: AdditionalData): string {
   return JSON.stringify(AdditionalData$outboundSchema.parse(additionalData));
-}
-
-export function additionalDataFromJSON(
-  jsonString: string,
-): SafeParseResult<AdditionalData, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AdditionalData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AdditionalData' from JSON`,
-  );
 }

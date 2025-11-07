@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -119,33 +115,6 @@ export const InterviewPart4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type InterviewPart4$Outbound = {};
-
-/** @internal */
-export const InterviewPart4$outboundSchema: z.ZodType<
-  InterviewPart4$Outbound,
-  z.ZodTypeDef,
-  InterviewPart4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterviewPart4$ {
-  /** @deprecated use `InterviewPart4$inboundSchema` instead. */
-  export const inboundSchema = InterviewPart4$inboundSchema;
-  /** @deprecated use `InterviewPart4$outboundSchema` instead. */
-  export const outboundSchema = InterviewPart4$outboundSchema;
-  /** @deprecated use `InterviewPart4$Outbound` instead. */
-  export type Outbound = InterviewPart4$Outbound;
-}
-
-export function interviewPart4ToJSON(interviewPart4: InterviewPart4): string {
-  return JSON.stringify(InterviewPart4$outboundSchema.parse(interviewPart4));
-}
-
 export function interviewPart4FromJSON(
   jsonString: string,
 ): SafeParseResult<InterviewPart4, SDKValidationError> {
@@ -169,48 +138,6 @@ export const InterviewPartSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type InterviewPartSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | InterviewPart4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const InterviewPartSourceValue$outboundSchema: z.ZodType<
-  InterviewPartSourceValue$Outbound,
-  z.ZodTypeDef,
-  InterviewPartSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => InterviewPart4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterviewPartSourceValue$ {
-  /** @deprecated use `InterviewPartSourceValue$inboundSchema` instead. */
-  export const inboundSchema = InterviewPartSourceValue$inboundSchema;
-  /** @deprecated use `InterviewPartSourceValue$outboundSchema` instead. */
-  export const outboundSchema = InterviewPartSourceValue$outboundSchema;
-  /** @deprecated use `InterviewPartSourceValue$Outbound` instead. */
-  export type Outbound = InterviewPartSourceValue$Outbound;
-}
-
-export function interviewPartSourceValueToJSON(
-  interviewPartSourceValue: InterviewPartSourceValue,
-): string {
-  return JSON.stringify(
-    InterviewPartSourceValue$outboundSchema.parse(interviewPartSourceValue),
-  );
-}
-
 export function interviewPartSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<InterviewPartSourceValue, SDKValidationError> {
@@ -233,27 +160,6 @@ export const InterviewPartValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const InterviewPartValue$outboundSchema: z.ZodType<
-  InterviewPartValueOpen,
-  z.ZodTypeDef,
-  InterviewPartValueOpen
-> = z.union([
-  z.nativeEnum(InterviewPartValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterviewPartValue$ {
-  /** @deprecated use `InterviewPartValue$inboundSchema` instead. */
-  export const inboundSchema = InterviewPartValue$inboundSchema;
-  /** @deprecated use `InterviewPartValue$outboundSchema` instead. */
-  export const outboundSchema = InterviewPartValue$outboundSchema;
-}
-
-/** @internal */
 export const InterviewPartType$inboundSchema: z.ZodType<
   InterviewPartType,
   z.ZodTypeDef,
@@ -274,62 +180,6 @@ export const InterviewPartType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type InterviewPartType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | InterviewPart4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const InterviewPartType$outboundSchema: z.ZodType<
-  InterviewPartType$Outbound,
-  z.ZodTypeDef,
-  InterviewPartType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => InterviewPart4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(InterviewPartValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterviewPartType$ {
-  /** @deprecated use `InterviewPartType$inboundSchema` instead. */
-  export const inboundSchema = InterviewPartType$inboundSchema;
-  /** @deprecated use `InterviewPartType$outboundSchema` instead. */
-  export const outboundSchema = InterviewPartType$outboundSchema;
-  /** @deprecated use `InterviewPartType$Outbound` instead. */
-  export type Outbound = InterviewPartType$Outbound;
-}
-
-export function interviewPartTypeToJSON(
-  interviewPartType: InterviewPartType,
-): string {
-  return JSON.stringify(
-    InterviewPartType$outboundSchema.parse(interviewPartType),
-  );
-}
 
 export function interviewPartTypeFromJSON(
   jsonString: string,
@@ -380,71 +230,6 @@ export const InterviewPart$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type InterviewPart$Outbound = {
-  created_at?: string | null | undefined;
-  end_at?: string | null | undefined;
-  id?: string | null | undefined;
-  interviewer_ids?: Array<string> | null | undefined;
-  meeting_provider?: string | null | undefined;
-  meeting_url?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_interviewer_ids?: Array<string> | null | undefined;
-  start_at?: string | null | undefined;
-  title?: string | null | undefined;
-  type?: InterviewPartType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const InterviewPart$outboundSchema: z.ZodType<
-  InterviewPart$Outbound,
-  z.ZodTypeDef,
-  InterviewPart
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  endAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  interviewerIds: z.nullable(z.array(z.string())).optional(),
-  meetingProvider: z.nullable(z.string()).optional(),
-  meetingUrl: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteInterviewerIds: z.nullable(z.array(z.string())).optional(),
-  startAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  title: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => InterviewPartType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    endAt: "end_at",
-    interviewerIds: "interviewer_ids",
-    meetingProvider: "meeting_provider",
-    meetingUrl: "meeting_url",
-    remoteId: "remote_id",
-    remoteInterviewerIds: "remote_interviewer_ids",
-    startAt: "start_at",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterviewPart$ {
-  /** @deprecated use `InterviewPart$inboundSchema` instead. */
-  export const inboundSchema = InterviewPart$inboundSchema;
-  /** @deprecated use `InterviewPart$outboundSchema` instead. */
-  export const outboundSchema = InterviewPart$outboundSchema;
-  /** @deprecated use `InterviewPart$Outbound` instead. */
-  export type Outbound = InterviewPart$Outbound;
-}
-
-export function interviewPartToJSON(interviewPart: InterviewPart): string {
-  return JSON.stringify(InterviewPart$outboundSchema.parse(interviewPart));
-}
 
 export function interviewPartFromJSON(
   jsonString: string,

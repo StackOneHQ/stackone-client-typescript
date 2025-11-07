@@ -611,21 +611,9 @@ export type Skills = {
 /** @internal */
 export const Skills2$inboundSchema: z.ZodNativeEnum<typeof Skills2> = z
   .nativeEnum(Skills2);
-
 /** @internal */
 export const Skills2$outboundSchema: z.ZodNativeEnum<typeof Skills2> =
   Skills2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Skills2$ {
-  /** @deprecated use `Skills2$inboundSchema` instead. */
-  export const inboundSchema = Skills2$inboundSchema;
-  /** @deprecated use `Skills2$outboundSchema` instead. */
-  export const outboundSchema = Skills2$outboundSchema;
-}
 
 /** @internal */
 export const SkillsActive$inboundSchema: z.ZodType<
@@ -633,7 +621,6 @@ export const SkillsActive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Skills2$inboundSchema]);
-
 /** @internal */
 export type SkillsActive$Outbound = boolean | string;
 
@@ -644,23 +631,9 @@ export const SkillsActive$outboundSchema: z.ZodType<
   SkillsActive
 > = z.union([z.boolean(), Skills2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsActive$ {
-  /** @deprecated use `SkillsActive$inboundSchema` instead. */
-  export const inboundSchema = SkillsActive$inboundSchema;
-  /** @deprecated use `SkillsActive$outboundSchema` instead. */
-  export const outboundSchema = SkillsActive$outboundSchema;
-  /** @deprecated use `SkillsActive$Outbound` instead. */
-  export type Outbound = SkillsActive$Outbound;
-}
-
 export function skillsActiveToJSON(skillsActive: SkillsActive): string {
   return JSON.stringify(SkillsActive$outboundSchema.parse(skillsActive));
 }
-
 export function skillsActiveFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsActive, SDKValidationError> {
@@ -674,7 +647,6 @@ export function skillsActiveFromJSON(
 /** @internal */
 export const Skills4$inboundSchema: z.ZodType<Skills4, z.ZodTypeDef, unknown> =
   z.object({});
-
 /** @internal */
 export type Skills4$Outbound = {};
 
@@ -685,23 +657,9 @@ export const Skills4$outboundSchema: z.ZodType<
   Skills4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Skills4$ {
-  /** @deprecated use `Skills4$inboundSchema` instead. */
-  export const inboundSchema = Skills4$inboundSchema;
-  /** @deprecated use `Skills4$outboundSchema` instead. */
-  export const outboundSchema = Skills4$outboundSchema;
-  /** @deprecated use `Skills4$Outbound` instead. */
-  export type Outbound = Skills4$Outbound;
-}
-
 export function skills4ToJSON(skills4: Skills4): string {
   return JSON.stringify(Skills4$outboundSchema.parse(skills4));
 }
-
 export function skills4FromJSON(
   jsonString: string,
 ): SafeParseResult<Skills4, SDKValidationError> {
@@ -724,7 +682,6 @@ export const SkillsSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => Skills4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type SkillsSourceValue$Outbound =
   | string
@@ -746,19 +703,6 @@ export const SkillsSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSourceValue$ {
-  /** @deprecated use `SkillsSourceValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsSourceValue$inboundSchema;
-  /** @deprecated use `SkillsSourceValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsSourceValue$outboundSchema;
-  /** @deprecated use `SkillsSourceValue$Outbound` instead. */
-  export type Outbound = SkillsSourceValue$Outbound;
-}
-
 export function skillsSourceValueToJSON(
   skillsSourceValue: SkillsSourceValue,
 ): string {
@@ -766,7 +710,6 @@ export function skillsSourceValueToJSON(
     SkillsSourceValue$outboundSchema.parse(skillsSourceValue),
   );
 }
-
 export function skillsSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsSourceValue, SDKValidationError> {
@@ -787,7 +730,6 @@ export const SkillsValue$inboundSchema: z.ZodType<
     z.nativeEnum(SkillsValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const SkillsValue$outboundSchema: z.ZodType<
   SkillsValueOpen,
@@ -797,17 +739,6 @@ export const SkillsValue$outboundSchema: z.ZodType<
   z.nativeEnum(SkillsValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsValue$ {
-  /** @deprecated use `SkillsValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsValue$inboundSchema;
-  /** @deprecated use `SkillsValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsValue$outboundSchema;
-}
 
 /** @internal */
 export const SkillsHierarchy$inboundSchema: z.ZodType<
@@ -830,7 +761,6 @@ export const SkillsHierarchy$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type SkillsHierarchy$Outbound = {
   source_value?:
@@ -866,25 +796,11 @@ export const SkillsHierarchy$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsHierarchy$ {
-  /** @deprecated use `SkillsHierarchy$inboundSchema` instead. */
-  export const inboundSchema = SkillsHierarchy$inboundSchema;
-  /** @deprecated use `SkillsHierarchy$outboundSchema` instead. */
-  export const outboundSchema = SkillsHierarchy$outboundSchema;
-  /** @deprecated use `SkillsHierarchy$Outbound` instead. */
-  export type Outbound = SkillsHierarchy$Outbound;
-}
-
 export function skillsHierarchyToJSON(
   skillsHierarchy: SkillsHierarchy,
 ): string {
   return JSON.stringify(SkillsHierarchy$outboundSchema.parse(skillsHierarchy));
 }
-
 export function skillsHierarchyFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsHierarchy, SDKValidationError> {
@@ -901,7 +817,6 @@ export const SkillsSchemas4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type SkillsSchemas4$Outbound = {};
 
@@ -912,23 +827,9 @@ export const SkillsSchemas4$outboundSchema: z.ZodType<
   SkillsSchemas4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemas4$ {
-  /** @deprecated use `SkillsSchemas4$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemas4$inboundSchema;
-  /** @deprecated use `SkillsSchemas4$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemas4$outboundSchema;
-  /** @deprecated use `SkillsSchemas4$Outbound` instead. */
-  export type Outbound = SkillsSchemas4$Outbound;
-}
-
 export function skillsSchemas4ToJSON(skillsSchemas4: SkillsSchemas4): string {
   return JSON.stringify(SkillsSchemas4$outboundSchema.parse(skillsSchemas4));
 }
-
 export function skillsSchemas4FromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsSchemas4, SDKValidationError> {
@@ -951,7 +852,6 @@ export const SkillsSchemasSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => SkillsSchemas4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type SkillsSchemasSourceValue$Outbound =
   | string
@@ -973,19 +873,6 @@ export const SkillsSchemasSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasSourceValue$ {
-  /** @deprecated use `SkillsSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasSourceValue$inboundSchema;
-  /** @deprecated use `SkillsSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasSourceValue$outboundSchema;
-  /** @deprecated use `SkillsSchemasSourceValue$Outbound` instead. */
-  export type Outbound = SkillsSchemasSourceValue$Outbound;
-}
-
 export function skillsSchemasSourceValueToJSON(
   skillsSchemasSourceValue: SkillsSchemasSourceValue,
 ): string {
@@ -993,7 +880,6 @@ export function skillsSchemasSourceValueToJSON(
     SkillsSchemasSourceValue$outboundSchema.parse(skillsSchemasSourceValue),
   );
 }
-
 export function skillsSchemasSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsSchemasSourceValue, SDKValidationError> {
@@ -1014,7 +900,6 @@ export const SkillsSchemasValue$inboundSchema: z.ZodType<
     z.nativeEnum(SkillsSchemasValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const SkillsSchemasValue$outboundSchema: z.ZodType<
   SkillsSchemasValueOpen,
@@ -1024,17 +909,6 @@ export const SkillsSchemasValue$outboundSchema: z.ZodType<
   z.nativeEnum(SkillsSchemasValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasValue$ {
-  /** @deprecated use `SkillsSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasValue$inboundSchema;
-  /** @deprecated use `SkillsSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasValue$outboundSchema;
-}
 
 /** @internal */
 export const SkillsLanguage$inboundSchema: z.ZodType<
@@ -1057,7 +931,6 @@ export const SkillsLanguage$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type SkillsLanguage$Outbound = {
   source_value?:
@@ -1093,23 +966,9 @@ export const SkillsLanguage$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsLanguage$ {
-  /** @deprecated use `SkillsLanguage$inboundSchema` instead. */
-  export const inboundSchema = SkillsLanguage$inboundSchema;
-  /** @deprecated use `SkillsLanguage$outboundSchema` instead. */
-  export const outboundSchema = SkillsLanguage$outboundSchema;
-  /** @deprecated use `SkillsLanguage$Outbound` instead. */
-  export type Outbound = SkillsLanguage$Outbound;
-}
-
 export function skillsLanguageToJSON(skillsLanguage: SkillsLanguage): string {
   return JSON.stringify(SkillsLanguage$outboundSchema.parse(skillsLanguage));
 }
-
 export function skillsLanguageFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsLanguage, SDKValidationError> {
@@ -1126,7 +985,6 @@ export const SkillsSchemasLevel4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type SkillsSchemasLevel4$Outbound = {};
 
@@ -1137,19 +995,6 @@ export const SkillsSchemasLevel4$outboundSchema: z.ZodType<
   SkillsSchemasLevel4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasLevel4$ {
-  /** @deprecated use `SkillsSchemasLevel4$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasLevel4$inboundSchema;
-  /** @deprecated use `SkillsSchemasLevel4$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasLevel4$outboundSchema;
-  /** @deprecated use `SkillsSchemasLevel4$Outbound` instead. */
-  export type Outbound = SkillsSchemasLevel4$Outbound;
-}
-
 export function skillsSchemasLevel4ToJSON(
   skillsSchemasLevel4: SkillsSchemasLevel4,
 ): string {
@@ -1157,7 +1002,6 @@ export function skillsSchemasLevel4ToJSON(
     SkillsSchemasLevel4$outboundSchema.parse(skillsSchemasLevel4),
   );
 }
-
 export function skillsSchemasLevel4FromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsSchemasLevel4, SDKValidationError> {
@@ -1180,7 +1024,6 @@ export const SkillsSchemasLevelSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => SkillsSchemasLevel4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type SkillsSchemasLevelSourceValue$Outbound =
   | string
@@ -1202,19 +1045,6 @@ export const SkillsSchemasLevelSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasLevelSourceValue$ {
-  /** @deprecated use `SkillsSchemasLevelSourceValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasLevelSourceValue$inboundSchema;
-  /** @deprecated use `SkillsSchemasLevelSourceValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasLevelSourceValue$outboundSchema;
-  /** @deprecated use `SkillsSchemasLevelSourceValue$Outbound` instead. */
-  export type Outbound = SkillsSchemasLevelSourceValue$Outbound;
-}
-
 export function skillsSchemasLevelSourceValueToJSON(
   skillsSchemasLevelSourceValue: SkillsSchemasLevelSourceValue,
 ): string {
@@ -1224,7 +1054,6 @@ export function skillsSchemasLevelSourceValueToJSON(
     ),
   );
 }
-
 export function skillsSchemasLevelSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsSchemasLevelSourceValue, SDKValidationError> {
@@ -1245,7 +1074,6 @@ export const SkillsSchemasLevelValue$inboundSchema: z.ZodType<
     z.nativeEnum(SkillsSchemasLevelValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const SkillsSchemasLevelValue$outboundSchema: z.ZodType<
   SkillsSchemasLevelValueOpen,
@@ -1255,17 +1083,6 @@ export const SkillsSchemasLevelValue$outboundSchema: z.ZodType<
   z.nativeEnum(SkillsSchemasLevelValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsSchemasLevelValue$ {
-  /** @deprecated use `SkillsSchemasLevelValue$inboundSchema` instead. */
-  export const inboundSchema = SkillsSchemasLevelValue$inboundSchema;
-  /** @deprecated use `SkillsSchemasLevelValue$outboundSchema` instead. */
-  export const outboundSchema = SkillsSchemasLevelValue$outboundSchema;
-}
 
 /** @internal */
 export const SkillsLevel$inboundSchema: z.ZodType<
@@ -1288,7 +1105,6 @@ export const SkillsLevel$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type SkillsLevel$Outbound = {
   source_value?:
@@ -1324,23 +1140,9 @@ export const SkillsLevel$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SkillsLevel$ {
-  /** @deprecated use `SkillsLevel$inboundSchema` instead. */
-  export const inboundSchema = SkillsLevel$inboundSchema;
-  /** @deprecated use `SkillsLevel$outboundSchema` instead. */
-  export const outboundSchema = SkillsLevel$outboundSchema;
-  /** @deprecated use `SkillsLevel$Outbound` instead. */
-  export type Outbound = SkillsLevel$Outbound;
-}
-
 export function skillsLevelToJSON(skillsLevel: SkillsLevel): string {
   return JSON.stringify(SkillsLevel$outboundSchema.parse(skillsLevel));
 }
-
 export function skillsLevelFromJSON(
   jsonString: string,
 ): SafeParseResult<SkillsLevel, SDKValidationError> {
@@ -1368,7 +1170,6 @@ export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
       "remote_id": "remoteId",
     });
   });
-
 /** @internal */
 export type Skills$Outbound = {
   active?: boolean | string | null | undefined;
@@ -1400,23 +1201,9 @@ export const Skills$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Skills$ {
-  /** @deprecated use `Skills$inboundSchema` instead. */
-  export const inboundSchema = Skills$inboundSchema;
-  /** @deprecated use `Skills$outboundSchema` instead. */
-  export const outboundSchema = Skills$outboundSchema;
-  /** @deprecated use `Skills$Outbound` instead. */
-  export type Outbound = Skills$Outbound;
-}
-
 export function skillsToJSON(skills: Skills): string {
   return JSON.stringify(Skills$outboundSchema.parse(skills));
 }
-
 export function skillsFromJSON(
   jsonString: string,
 ): SafeParseResult<Skills, SDKValidationError> {

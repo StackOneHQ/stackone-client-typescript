@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateResultDataApiModel,
   CreateResultDataApiModel$inboundSchema,
-  CreateResultDataApiModel$Outbound,
-  CreateResultDataApiModel$outboundSchema,
 } from "./createresultdataapimodel.js";
 
 export type InviteEmployeeResult = {
@@ -31,47 +29,6 @@ export const InviteEmployeeResult$inboundSchema: z.ZodType<
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
-/** @internal */
-export type InviteEmployeeResult$Outbound = {
-  data: CreateResultDataApiModel$Outbound;
-  message: string;
-  statusCode: number;
-  timestamp: string;
-};
-
-/** @internal */
-export const InviteEmployeeResult$outboundSchema: z.ZodType<
-  InviteEmployeeResult$Outbound,
-  z.ZodTypeDef,
-  InviteEmployeeResult
-> = z.object({
-  data: CreateResultDataApiModel$outboundSchema,
-  message: z.string(),
-  statusCode: z.number(),
-  timestamp: z.date().transform(v => v.toISOString()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteEmployeeResult$ {
-  /** @deprecated use `InviteEmployeeResult$inboundSchema` instead. */
-  export const inboundSchema = InviteEmployeeResult$inboundSchema;
-  /** @deprecated use `InviteEmployeeResult$outboundSchema` instead. */
-  export const outboundSchema = InviteEmployeeResult$outboundSchema;
-  /** @deprecated use `InviteEmployeeResult$Outbound` instead. */
-  export type Outbound = InviteEmployeeResult$Outbound;
-}
-
-export function inviteEmployeeResultToJSON(
-  inviteEmployeeResult: InviteEmployeeResult,
-): string {
-  return JSON.stringify(
-    InviteEmployeeResult$outboundSchema.parse(inviteEmployeeResult),
-  );
-}
 
 export function inviteEmployeeResultFromJSON(
   jsonString: string,

@@ -66,53 +66,11 @@ export const LmsUser2$inboundSchema: z.ZodNativeEnum<typeof LmsUser2> = z
   .nativeEnum(LmsUser2);
 
 /** @internal */
-export const LmsUser2$outboundSchema: z.ZodNativeEnum<typeof LmsUser2> =
-  LmsUser2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUser2$ {
-  /** @deprecated use `LmsUser2$inboundSchema` instead. */
-  export const inboundSchema = LmsUser2$inboundSchema;
-  /** @deprecated use `LmsUser2$outboundSchema` instead. */
-  export const outboundSchema = LmsUser2$outboundSchema;
-}
-
-/** @internal */
 export const LmsUserActive$inboundSchema: z.ZodType<
   LmsUserActive,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), LmsUser2$inboundSchema]);
-
-/** @internal */
-export type LmsUserActive$Outbound = boolean | string;
-
-/** @internal */
-export const LmsUserActive$outboundSchema: z.ZodType<
-  LmsUserActive$Outbound,
-  z.ZodTypeDef,
-  LmsUserActive
-> = z.union([z.boolean(), LmsUser2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUserActive$ {
-  /** @deprecated use `LmsUserActive$inboundSchema` instead. */
-  export const inboundSchema = LmsUserActive$inboundSchema;
-  /** @deprecated use `LmsUserActive$outboundSchema` instead. */
-  export const outboundSchema = LmsUserActive$outboundSchema;
-  /** @deprecated use `LmsUserActive$Outbound` instead. */
-  export type Outbound = LmsUserActive$Outbound;
-}
-
-export function lmsUserActiveToJSON(lmsUserActive: LmsUserActive): string {
-  return JSON.stringify(LmsUserActive$outboundSchema.parse(lmsUserActive));
-}
 
 export function lmsUserActiveFromJSON(
   jsonString: string,
@@ -152,65 +110,6 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type LmsUser$Outbound = {
-  active?: boolean | string | null | undefined;
-  created_at?: string | null | undefined;
-  email?: string | null | undefined;
-  external_reference?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  phone_number?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const LmsUser$outboundSchema: z.ZodType<
-  LmsUser$Outbound,
-  z.ZodTypeDef,
-  LmsUser
-> = z.object({
-  active: z.nullable(z.union([z.boolean(), LmsUser2$outboundSchema]))
-    .optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  email: z.nullable(z.string()).optional(),
-  externalReference: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  phoneNumber: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    externalReference: "external_reference",
-    phoneNumber: "phone_number",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUser$ {
-  /** @deprecated use `LmsUser$inboundSchema` instead. */
-  export const inboundSchema = LmsUser$inboundSchema;
-  /** @deprecated use `LmsUser$outboundSchema` instead. */
-  export const outboundSchema = LmsUser$outboundSchema;
-  /** @deprecated use `LmsUser$Outbound` instead. */
-  export type Outbound = LmsUser$Outbound;
-}
-
-export function lmsUserToJSON(lmsUser: LmsUser): string {
-  return JSON.stringify(LmsUser$outboundSchema.parse(lmsUser));
-}
 
 export function lmsUserFromJSON(
   jsonString: string,

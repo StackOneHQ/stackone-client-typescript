@@ -39,23 +39,6 @@ export type HrisCreateEmployeeEmploymentResponse = {
 };
 
 /** @internal */
-export const HrisCreateEmployeeEmploymentRequest$inboundSchema: z.ZodType<
-  HrisCreateEmployeeEmploymentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  HrisCreateEmploymentRequestDto:
-    shared.HrisCreateEmploymentRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "HrisCreateEmploymentRequestDto": "hrisCreateEmploymentRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisCreateEmployeeEmploymentRequest$Outbound = {
   HrisCreateEmploymentRequestDto:
     shared.HrisCreateEmploymentRequestDto$Outbound;
@@ -80,21 +63,6 @@ export const HrisCreateEmployeeEmploymentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateEmployeeEmploymentRequest$ {
-  /** @deprecated use `HrisCreateEmployeeEmploymentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateEmployeeEmploymentRequest$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeEmploymentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateEmployeeEmploymentRequest$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeEmploymentRequest$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeEmploymentRequest$Outbound;
-}
-
 export function hrisCreateEmployeeEmploymentRequestToJSON(
   hrisCreateEmployeeEmploymentRequest: HrisCreateEmployeeEmploymentRequest,
 ): string {
@@ -102,17 +70,6 @@ export function hrisCreateEmployeeEmploymentRequestToJSON(
     HrisCreateEmployeeEmploymentRequest$outboundSchema.parse(
       hrisCreateEmployeeEmploymentRequest,
     ),
-  );
-}
-
-export function hrisCreateEmployeeEmploymentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisCreateEmployeeEmploymentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisCreateEmployeeEmploymentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisCreateEmployeeEmploymentRequest' from JSON`,
   );
 }
 
@@ -137,63 +94,6 @@ export const HrisCreateEmployeeEmploymentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisCreateEmployeeEmploymentResponse$Outbound = {
-  ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisCreateEmployeeEmploymentResponse$outboundSchema: z.ZodType<
-  HrisCreateEmployeeEmploymentResponse$Outbound,
-  z.ZodTypeDef,
-  HrisCreateEmployeeEmploymentResponse
-> = z.object({
-  contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    createResult: "CreateResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisCreateEmployeeEmploymentResponse$ {
-  /** @deprecated use `HrisCreateEmployeeEmploymentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisCreateEmployeeEmploymentResponse$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeEmploymentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisCreateEmployeeEmploymentResponse$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeEmploymentResponse$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeEmploymentResponse$Outbound;
-}
-
-export function hrisCreateEmployeeEmploymentResponseToJSON(
-  hrisCreateEmployeeEmploymentResponse: HrisCreateEmployeeEmploymentResponse,
-): string {
-  return JSON.stringify(
-    HrisCreateEmployeeEmploymentResponse$outboundSchema.parse(
-      hrisCreateEmployeeEmploymentResponse,
-    ),
-  );
-}
 
 export function hrisCreateEmployeeEmploymentResponseFromJSON(
   jsonString: string,

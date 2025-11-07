@@ -83,21 +83,6 @@ export type DocumentsListDrivesResponse = {
 };
 
 /** @internal */
-export const DocumentsListDrivesQueryParamFilter$inboundSchema: z.ZodType<
-  DocumentsListDrivesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type DocumentsListDrivesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,21 +100,6 @@ export const DocumentsListDrivesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListDrivesQueryParamFilter$ {
-  /** @deprecated use `DocumentsListDrivesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    DocumentsListDrivesQueryParamFilter$inboundSchema;
-  /** @deprecated use `DocumentsListDrivesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentsListDrivesQueryParamFilter$outboundSchema;
-  /** @deprecated use `DocumentsListDrivesQueryParamFilter$Outbound` instead. */
-  export type Outbound = DocumentsListDrivesQueryParamFilter$Outbound;
-}
-
 export function documentsListDrivesQueryParamFilterToJSON(
   documentsListDrivesQueryParamFilter: DocumentsListDrivesQueryParamFilter,
 ): string {
@@ -139,44 +109,6 @@ export function documentsListDrivesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function documentsListDrivesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsListDrivesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DocumentsListDrivesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsListDrivesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const DocumentsListDrivesRequest$inboundSchema: z.ZodType<
-  DocumentsListDrivesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => DocumentsListDrivesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type DocumentsListDrivesRequest$Outbound = {
@@ -216,34 +148,11 @@ export const DocumentsListDrivesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListDrivesRequest$ {
-  /** @deprecated use `DocumentsListDrivesRequest$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListDrivesRequest$inboundSchema;
-  /** @deprecated use `DocumentsListDrivesRequest$outboundSchema` instead. */
-  export const outboundSchema = DocumentsListDrivesRequest$outboundSchema;
-  /** @deprecated use `DocumentsListDrivesRequest$Outbound` instead. */
-  export type Outbound = DocumentsListDrivesRequest$Outbound;
-}
-
 export function documentsListDrivesRequestToJSON(
   documentsListDrivesRequest: DocumentsListDrivesRequest,
 ): string {
   return JSON.stringify(
     DocumentsListDrivesRequest$outboundSchema.parse(documentsListDrivesRequest),
-  );
-}
-
-export function documentsListDrivesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsListDrivesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsListDrivesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsListDrivesRequest' from JSON`,
   );
 }
 
@@ -268,61 +177,6 @@ export const DocumentsListDrivesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type DocumentsListDrivesResponse$Outbound = {
-  ContentType: string;
-  DrivesPaginated?: shared.DrivesPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const DocumentsListDrivesResponse$outboundSchema: z.ZodType<
-  DocumentsListDrivesResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentsListDrivesResponse
-> = z.object({
-  contentType: z.string(),
-  drivesPaginated: shared.DrivesPaginated$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    drivesPaginated: "DrivesPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListDrivesResponse$ {
-  /** @deprecated use `DocumentsListDrivesResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListDrivesResponse$inboundSchema;
-  /** @deprecated use `DocumentsListDrivesResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentsListDrivesResponse$outboundSchema;
-  /** @deprecated use `DocumentsListDrivesResponse$Outbound` instead. */
-  export type Outbound = DocumentsListDrivesResponse$Outbound;
-}
-
-export function documentsListDrivesResponseToJSON(
-  documentsListDrivesResponse: DocumentsListDrivesResponse,
-): string {
-  return JSON.stringify(
-    DocumentsListDrivesResponse$outboundSchema.parse(
-      documentsListDrivesResponse,
-    ),
-  );
-}
 
 export function documentsListDrivesResponseFromJSON(
   jsonString: string,

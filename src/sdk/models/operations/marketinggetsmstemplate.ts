@@ -50,23 +50,6 @@ export type MarketingGetSmsTemplateResponse = {
 };
 
 /** @internal */
-export const MarketingGetSmsTemplateRequest$inboundSchema: z.ZodType<
-  MarketingGetSmsTemplateRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type MarketingGetSmsTemplateRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -92,19 +75,6 @@ export const MarketingGetSmsTemplateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetSmsTemplateRequest$ {
-  /** @deprecated use `MarketingGetSmsTemplateRequest$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetSmsTemplateRequest$inboundSchema;
-  /** @deprecated use `MarketingGetSmsTemplateRequest$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetSmsTemplateRequest$outboundSchema;
-  /** @deprecated use `MarketingGetSmsTemplateRequest$Outbound` instead. */
-  export type Outbound = MarketingGetSmsTemplateRequest$Outbound;
-}
-
 export function marketingGetSmsTemplateRequestToJSON(
   marketingGetSmsTemplateRequest: MarketingGetSmsTemplateRequest,
 ): string {
@@ -112,16 +82,6 @@ export function marketingGetSmsTemplateRequestToJSON(
     MarketingGetSmsTemplateRequest$outboundSchema.parse(
       marketingGetSmsTemplateRequest,
     ),
-  );
-}
-
-export function marketingGetSmsTemplateRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingGetSmsTemplateRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MarketingGetSmsTemplateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingGetSmsTemplateRequest' from JSON`,
   );
 }
 
@@ -146,61 +106,6 @@ export const MarketingGetSmsTemplateResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingGetSmsTemplateResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  SmsTemplateResult?: shared.SmsTemplateResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingGetSmsTemplateResponse$outboundSchema: z.ZodType<
-  MarketingGetSmsTemplateResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingGetSmsTemplateResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  smsTemplateResult: shared.SmsTemplateResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    smsTemplateResult: "SmsTemplateResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingGetSmsTemplateResponse$ {
-  /** @deprecated use `MarketingGetSmsTemplateResponse$inboundSchema` instead. */
-  export const inboundSchema = MarketingGetSmsTemplateResponse$inboundSchema;
-  /** @deprecated use `MarketingGetSmsTemplateResponse$outboundSchema` instead. */
-  export const outboundSchema = MarketingGetSmsTemplateResponse$outboundSchema;
-  /** @deprecated use `MarketingGetSmsTemplateResponse$Outbound` instead. */
-  export type Outbound = MarketingGetSmsTemplateResponse$Outbound;
-}
-
-export function marketingGetSmsTemplateResponseToJSON(
-  marketingGetSmsTemplateResponse: MarketingGetSmsTemplateResponse,
-): string {
-  return JSON.stringify(
-    MarketingGetSmsTemplateResponse$outboundSchema.parse(
-      marketingGetSmsTemplateResponse,
-    ),
-  );
-}
 
 export function marketingGetSmsTemplateResponseFromJSON(
   jsonString: string,

@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  LmsUser,
-  LmsUser$inboundSchema,
-  LmsUser$Outbound,
-  LmsUser$outboundSchema,
-} from "./lmsuser.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { LmsUser, LmsUser$inboundSchema } from "./lmsuser.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type UsersPaginated = {
   data: Array<LmsUser>;
@@ -35,41 +25,6 @@ export const UsersPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type UsersPaginated$Outbound = {
-  data: Array<LmsUser$Outbound>;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const UsersPaginated$outboundSchema: z.ZodType<
-  UsersPaginated$Outbound,
-  z.ZodTypeDef,
-  UsersPaginated
-> = z.object({
-  data: z.array(LmsUser$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UsersPaginated$ {
-  /** @deprecated use `UsersPaginated$inboundSchema` instead. */
-  export const inboundSchema = UsersPaginated$inboundSchema;
-  /** @deprecated use `UsersPaginated$outboundSchema` instead. */
-  export const outboundSchema = UsersPaginated$outboundSchema;
-  /** @deprecated use `UsersPaginated$Outbound` instead. */
-  export type Outbound = UsersPaginated$Outbound;
-}
-
-export function usersPaginatedToJSON(usersPaginated: UsersPaginated): string {
-  return JSON.stringify(UsersPaginated$outboundSchema.parse(usersPaginated));
-}
 
 export function usersPaginatedFromJSON(
   jsonString: string,

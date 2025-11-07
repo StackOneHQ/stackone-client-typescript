@@ -9,14 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ActionMetaItem,
   ActionMetaItem$inboundSchema,
-  ActionMetaItem$Outbound,
-  ActionMetaItem$outboundSchema,
 } from "./actionmetaitem.js";
 import {
   AuthenticationMetaItem,
   AuthenticationMetaItem$inboundSchema,
-  AuthenticationMetaItem$Outbound,
-  AuthenticationMetaItem$outboundSchema,
 } from "./authenticationmetaitem.js";
 
 export type ActionsMeta = {
@@ -65,50 +61,6 @@ export const ActionsMeta$inboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   version: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ActionsMeta$Outbound = {
-  actions?: Array<ActionMetaItem$Outbound> | null | undefined;
-  authentication?: Array<AuthenticationMetaItem$Outbound> | null | undefined;
-  description?: string | null | undefined;
-  icon?: string | null | undefined;
-  key?: string | null | undefined;
-  name?: string | null | undefined;
-  version?: string | null | undefined;
-};
-
-/** @internal */
-export const ActionsMeta$outboundSchema: z.ZodType<
-  ActionsMeta$Outbound,
-  z.ZodTypeDef,
-  ActionsMeta
-> = z.object({
-  actions: z.nullable(z.array(ActionMetaItem$outboundSchema)).optional(),
-  authentication: z.nullable(z.array(AuthenticationMetaItem$outboundSchema))
-    .optional(),
-  description: z.nullable(z.string()).optional(),
-  icon: z.nullable(z.string()).optional(),
-  key: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  version: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionsMeta$ {
-  /** @deprecated use `ActionsMeta$inboundSchema` instead. */
-  export const inboundSchema = ActionsMeta$inboundSchema;
-  /** @deprecated use `ActionsMeta$outboundSchema` instead. */
-  export const outboundSchema = ActionsMeta$outboundSchema;
-  /** @deprecated use `ActionsMeta$Outbound` instead. */
-  export type Outbound = ActionsMeta$Outbound;
-}
-
-export function actionsMetaToJSON(actionsMeta: ActionsMeta): string {
-  return JSON.stringify(ActionsMeta$outboundSchema.parse(actionsMeta));
-}
 
 export function actionsMetaFromJSON(
   jsonString: string,

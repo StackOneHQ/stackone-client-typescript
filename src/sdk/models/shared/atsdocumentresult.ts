@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AtsDocumentApiModel,
   AtsDocumentApiModel$inboundSchema,
-  AtsDocumentApiModel$Outbound,
-  AtsDocumentApiModel$outboundSchema,
 } from "./atsdocumentapimodel.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type AtsDocumentResult = {
   data: AtsDocumentApiModel;
@@ -33,43 +26,6 @@ export const AtsDocumentResult$inboundSchema: z.ZodType<
   data: AtsDocumentApiModel$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type AtsDocumentResult$Outbound = {
-  data: AtsDocumentApiModel$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const AtsDocumentResult$outboundSchema: z.ZodType<
-  AtsDocumentResult$Outbound,
-  z.ZodTypeDef,
-  AtsDocumentResult
-> = z.object({
-  data: AtsDocumentApiModel$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsDocumentResult$ {
-  /** @deprecated use `AtsDocumentResult$inboundSchema` instead. */
-  export const inboundSchema = AtsDocumentResult$inboundSchema;
-  /** @deprecated use `AtsDocumentResult$outboundSchema` instead. */
-  export const outboundSchema = AtsDocumentResult$outboundSchema;
-  /** @deprecated use `AtsDocumentResult$Outbound` instead. */
-  export type Outbound = AtsDocumentResult$Outbound;
-}
-
-export function atsDocumentResultToJSON(
-  atsDocumentResult: AtsDocumentResult,
-): string {
-  return JSON.stringify(
-    AtsDocumentResult$outboundSchema.parse(atsDocumentResult),
-  );
-}
 
 export function atsDocumentResultFromJSON(
   jsonString: string,

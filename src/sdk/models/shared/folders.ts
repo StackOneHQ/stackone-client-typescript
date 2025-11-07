@@ -122,57 +122,11 @@ export const Folders2$inboundSchema: z.ZodNativeEnum<typeof Folders2> = z
   .nativeEnum(Folders2);
 
 /** @internal */
-export const Folders2$outboundSchema: z.ZodNativeEnum<typeof Folders2> =
-  Folders2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Folders2$ {
-  /** @deprecated use `Folders2$inboundSchema` instead. */
-  export const inboundSchema = Folders2$inboundSchema;
-  /** @deprecated use `Folders2$outboundSchema` instead. */
-  export const outboundSchema = Folders2$outboundSchema;
-}
-
-/** @internal */
 export const FoldersHasChildren$inboundSchema: z.ZodType<
   FoldersHasChildren,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), Folders2$inboundSchema]);
-
-/** @internal */
-export type FoldersHasChildren$Outbound = boolean | string;
-
-/** @internal */
-export const FoldersHasChildren$outboundSchema: z.ZodType<
-  FoldersHasChildren$Outbound,
-  z.ZodTypeDef,
-  FoldersHasChildren
-> = z.union([z.boolean(), Folders2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FoldersHasChildren$ {
-  /** @deprecated use `FoldersHasChildren$inboundSchema` instead. */
-  export const inboundSchema = FoldersHasChildren$inboundSchema;
-  /** @deprecated use `FoldersHasChildren$outboundSchema` instead. */
-  export const outboundSchema = FoldersHasChildren$outboundSchema;
-  /** @deprecated use `FoldersHasChildren$Outbound` instead. */
-  export type Outbound = FoldersHasChildren$Outbound;
-}
-
-export function foldersHasChildrenToJSON(
-  foldersHasChildren: FoldersHasChildren,
-): string {
-  return JSON.stringify(
-    FoldersHasChildren$outboundSchema.parse(foldersHasChildren),
-  );
-}
 
 export function foldersHasChildrenFromJSON(
   jsonString: string,
@@ -190,58 +144,11 @@ export const FoldersSchemas2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FoldersSchemas2);
 
 /** @internal */
-export const FoldersSchemas2$outboundSchema: z.ZodNativeEnum<
-  typeof FoldersSchemas2
-> = FoldersSchemas2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FoldersSchemas2$ {
-  /** @deprecated use `FoldersSchemas2$inboundSchema` instead. */
-  export const inboundSchema = FoldersSchemas2$inboundSchema;
-  /** @deprecated use `FoldersSchemas2$outboundSchema` instead. */
-  export const outboundSchema = FoldersSchemas2$outboundSchema;
-}
-
-/** @internal */
 export const FoldersHasContent$inboundSchema: z.ZodType<
   FoldersHasContent,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), FoldersSchemas2$inboundSchema]);
-
-/** @internal */
-export type FoldersHasContent$Outbound = boolean | string;
-
-/** @internal */
-export const FoldersHasContent$outboundSchema: z.ZodType<
-  FoldersHasContent$Outbound,
-  z.ZodTypeDef,
-  FoldersHasContent
-> = z.union([z.boolean(), FoldersSchemas2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FoldersHasContent$ {
-  /** @deprecated use `FoldersHasContent$inboundSchema` instead. */
-  export const inboundSchema = FoldersHasContent$inboundSchema;
-  /** @deprecated use `FoldersHasContent$outboundSchema` instead. */
-  export const outboundSchema = FoldersHasContent$outboundSchema;
-  /** @deprecated use `FoldersHasContent$Outbound` instead. */
-  export type Outbound = FoldersHasContent$Outbound;
-}
-
-export function foldersHasContentToJSON(
-  foldersHasContent: FoldersHasContent,
-): string {
-  return JSON.stringify(
-    FoldersHasContent$outboundSchema.parse(foldersHasContent),
-  );
-}
 
 export function foldersHasContentFromJSON(
   jsonString: string,
@@ -259,51 +166,8 @@ export const FoldersSchemasIsRoot2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FoldersSchemasIsRoot2);
 
 /** @internal */
-export const FoldersSchemasIsRoot2$outboundSchema: z.ZodNativeEnum<
-  typeof FoldersSchemasIsRoot2
-> = FoldersSchemasIsRoot2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FoldersSchemasIsRoot2$ {
-  /** @deprecated use `FoldersSchemasIsRoot2$inboundSchema` instead. */
-  export const inboundSchema = FoldersSchemasIsRoot2$inboundSchema;
-  /** @deprecated use `FoldersSchemasIsRoot2$outboundSchema` instead. */
-  export const outboundSchema = FoldersSchemasIsRoot2$outboundSchema;
-}
-
-/** @internal */
 export const IsRoot$inboundSchema: z.ZodType<IsRoot, z.ZodTypeDef, unknown> = z
   .union([z.boolean(), FoldersSchemasIsRoot2$inboundSchema]);
-
-/** @internal */
-export type IsRoot$Outbound = boolean | string;
-
-/** @internal */
-export const IsRoot$outboundSchema: z.ZodType<
-  IsRoot$Outbound,
-  z.ZodTypeDef,
-  IsRoot
-> = z.union([z.boolean(), FoldersSchemasIsRoot2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IsRoot$ {
-  /** @deprecated use `IsRoot$inboundSchema` instead. */
-  export const inboundSchema = IsRoot$inboundSchema;
-  /** @deprecated use `IsRoot$outboundSchema` instead. */
-  export const outboundSchema = IsRoot$outboundSchema;
-  /** @deprecated use `IsRoot$Outbound` instead. */
-  export type Outbound = IsRoot$Outbound;
-}
-
-export function isRootToJSON(isRoot: IsRoot): string {
-  return JSON.stringify(IsRoot$outboundSchema.parse(isRoot));
-}
 
 export function isRootFromJSON(
   jsonString: string,
@@ -363,93 +227,6 @@ export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
       "updated_at": "updatedAt",
     });
   });
-
-/** @internal */
-export type Folders$Outbound = {
-  all_parent_folder_ids?: Array<string> | null | undefined;
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  drive_id?: string | null | undefined;
-  has_children?: boolean | string | null | undefined;
-  has_content?: boolean | string | null | undefined;
-  id?: string | null | undefined;
-  is_root?: boolean | string | null | undefined;
-  name?: string | null | undefined;
-  owner_id?: string | null | undefined;
-  parent_folder_id?: string | null | undefined;
-  path?: string | null | undefined;
-  remote_drive_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_owner_id?: string | null | undefined;
-  remote_parent_folder_id?: string | null | undefined;
-  size?: number | null | undefined;
-  updated_at?: string | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const Folders$outboundSchema: z.ZodType<
-  Folders$Outbound,
-  z.ZodTypeDef,
-  Folders
-> = z.object({
-  allParentFolderIds: z.nullable(z.array(z.string())).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  driveId: z.nullable(z.string()).optional(),
-  hasChildren: z.nullable(z.union([z.boolean(), Folders2$outboundSchema]))
-    .optional(),
-  hasContent: z.nullable(z.union([z.boolean(), FoldersSchemas2$outboundSchema]))
-    .optional(),
-  id: z.nullable(z.string()).optional(),
-  isRoot: z.nullable(
-    z.union([z.boolean(), FoldersSchemasIsRoot2$outboundSchema]),
-  ).optional(),
-  name: z.nullable(z.string()).optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  parentFolderId: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
-  remoteDriveId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteOwnerId: z.nullable(z.string()).optional(),
-  remoteParentFolderId: z.nullable(z.string()).optional(),
-  size: z.nullable(z.number()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    allParentFolderIds: "all_parent_folder_ids",
-    createdAt: "created_at",
-    driveId: "drive_id",
-    hasChildren: "has_children",
-    hasContent: "has_content",
-    isRoot: "is_root",
-    ownerId: "owner_id",
-    parentFolderId: "parent_folder_id",
-    remoteDriveId: "remote_drive_id",
-    remoteId: "remote_id",
-    remoteOwnerId: "remote_owner_id",
-    remoteParentFolderId: "remote_parent_folder_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Folders$ {
-  /** @deprecated use `Folders$inboundSchema` instead. */
-  export const inboundSchema = Folders$inboundSchema;
-  /** @deprecated use `Folders$outboundSchema` instead. */
-  export const outboundSchema = Folders$outboundSchema;
-  /** @deprecated use `Folders$Outbound` instead. */
-  export type Outbound = Folders$Outbound;
-}
-
-export function foldersToJSON(folders: Folders): string {
-  return JSON.stringify(Folders$outboundSchema.parse(folders));
-}
 
 export function foldersFromJSON(
   jsonString: string,

@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export enum IamUpdateUserRequestDto2 {
   True = "true",
@@ -87,32 +80,9 @@ export type IamUpdateUserRequestDto = {
 };
 
 /** @internal */
-export const IamUpdateUserRequestDto2$inboundSchema: z.ZodNativeEnum<
-  typeof IamUpdateUserRequestDto2
-> = z.nativeEnum(IamUpdateUserRequestDto2);
-
-/** @internal */
 export const IamUpdateUserRequestDto2$outboundSchema: z.ZodNativeEnum<
   typeof IamUpdateUserRequestDto2
-> = IamUpdateUserRequestDto2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUpdateUserRequestDto2$ {
-  /** @deprecated use `IamUpdateUserRequestDto2$inboundSchema` instead. */
-  export const inboundSchema = IamUpdateUserRequestDto2$inboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDto2$outboundSchema` instead. */
-  export const outboundSchema = IamUpdateUserRequestDto2$outboundSchema;
-}
-
-/** @internal */
-export const IsBotUser$inboundSchema: z.ZodType<
-  IsBotUser,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), IamUpdateUserRequestDto2$inboundSchema]);
+> = z.nativeEnum(IamUpdateUserRequestDto2);
 
 /** @internal */
 export type IsBotUser$Outbound = boolean | string;
@@ -124,39 +94,9 @@ export const IsBotUser$outboundSchema: z.ZodType<
   IsBotUser
 > = z.union([z.boolean(), IamUpdateUserRequestDto2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IsBotUser$ {
-  /** @deprecated use `IsBotUser$inboundSchema` instead. */
-  export const inboundSchema = IsBotUser$inboundSchema;
-  /** @deprecated use `IsBotUser$outboundSchema` instead. */
-  export const outboundSchema = IsBotUser$outboundSchema;
-  /** @deprecated use `IsBotUser$Outbound` instead. */
-  export type Outbound = IsBotUser$Outbound;
-}
-
 export function isBotUserToJSON(isBotUser: IsBotUser): string {
   return JSON.stringify(IsBotUser$outboundSchema.parse(isBotUser));
 }
-
-export function isBotUserFromJSON(
-  jsonString: string,
-): SafeParseResult<IsBotUser, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IsBotUser$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IsBotUser' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamUpdateUserRequestDto4$inboundSchema: z.ZodType<
-  IamUpdateUserRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type IamUpdateUserRequestDto4$Outbound = {};
@@ -168,19 +108,6 @@ export const IamUpdateUserRequestDto4$outboundSchema: z.ZodType<
   IamUpdateUserRequestDto4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUpdateUserRequestDto4$ {
-  /** @deprecated use `IamUpdateUserRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = IamUpdateUserRequestDto4$inboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = IamUpdateUserRequestDto4$outboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDto4$Outbound` instead. */
-  export type Outbound = IamUpdateUserRequestDto4$Outbound;
-}
-
 export function iamUpdateUserRequestDto4ToJSON(
   iamUpdateUserRequestDto4: IamUpdateUserRequestDto4,
 ): string {
@@ -188,29 +115,6 @@ export function iamUpdateUserRequestDto4ToJSON(
     IamUpdateUserRequestDto4$outboundSchema.parse(iamUpdateUserRequestDto4),
   );
 }
-
-export function iamUpdateUserRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<IamUpdateUserRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamUpdateUserRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUpdateUserRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamUpdateUserRequestDtoSourceValue$inboundSchema: z.ZodType<
-  IamUpdateUserRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => IamUpdateUserRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type IamUpdateUserRequestDtoSourceValue$Outbound =
@@ -233,20 +137,6 @@ export const IamUpdateUserRequestDtoSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUpdateUserRequestDtoSourceValue$ {
-  /** @deprecated use `IamUpdateUserRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamUpdateUserRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    IamUpdateUserRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = IamUpdateUserRequestDtoSourceValue$Outbound;
-}
-
 export function iamUpdateUserRequestDtoSourceValueToJSON(
   iamUpdateUserRequestDtoSourceValue: IamUpdateUserRequestDtoSourceValue,
 ): string {
@@ -257,28 +147,6 @@ export function iamUpdateUserRequestDtoSourceValueToJSON(
   );
 }
 
-export function iamUpdateUserRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<IamUpdateUserRequestDtoSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      IamUpdateUserRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUpdateUserRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamUpdateUserRequestDtoValue$inboundSchema: z.ZodType<
-  IamUpdateUserRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(IamUpdateUserRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const IamUpdateUserRequestDtoValue$outboundSchema: z.ZodType<
   IamUpdateUserRequestDtoValueOpen,
@@ -288,39 +156,6 @@ export const IamUpdateUserRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(IamUpdateUserRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUpdateUserRequestDtoValue$ {
-  /** @deprecated use `IamUpdateUserRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema = IamUpdateUserRequestDtoValue$inboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema = IamUpdateUserRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const IamUpdateUserRequestDtoStatus$inboundSchema: z.ZodType<
-  IamUpdateUserRequestDtoStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => IamUpdateUserRequestDto4$inboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(IamUpdateUserRequestDtoValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
 
 /** @internal */
 export type IamUpdateUserRequestDtoStatus$Outbound = {
@@ -357,19 +192,6 @@ export const IamUpdateUserRequestDtoStatus$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUpdateUserRequestDtoStatus$ {
-  /** @deprecated use `IamUpdateUserRequestDtoStatus$inboundSchema` instead. */
-  export const inboundSchema = IamUpdateUserRequestDtoStatus$inboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDtoStatus$outboundSchema` instead. */
-  export const outboundSchema = IamUpdateUserRequestDtoStatus$outboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDtoStatus$Outbound` instead. */
-  export type Outbound = IamUpdateUserRequestDtoStatus$Outbound;
-}
-
 export function iamUpdateUserRequestDtoStatusToJSON(
   iamUpdateUserRequestDtoStatus: IamUpdateUserRequestDtoStatus,
 ): string {
@@ -379,42 +201,6 @@ export function iamUpdateUserRequestDtoStatusToJSON(
     ),
   );
 }
-
-export function iamUpdateUserRequestDtoStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<IamUpdateUserRequestDtoStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamUpdateUserRequestDtoStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUpdateUserRequestDtoStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const IamUpdateUserRequestDto$inboundSchema: z.ZodType<
-  IamUpdateUserRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  first_name: z.nullable(z.string()).optional(),
-  is_bot_user: z.nullable(
-    z.union([z.boolean(), IamUpdateUserRequestDto2$inboundSchema]),
-  ).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  primary_email_address: z.nullable(z.string()).optional(),
-  status: z.nullable(z.lazy(() => IamUpdateUserRequestDtoStatus$inboundSchema))
-    .optional(),
-  username: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "first_name": "firstName",
-    "is_bot_user": "isBotUser",
-    "last_name": "lastName",
-    "primary_email_address": "primaryEmailAddress",
-  });
-});
 
 /** @internal */
 export type IamUpdateUserRequestDto$Outbound = {
@@ -454,33 +240,10 @@ export const IamUpdateUserRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamUpdateUserRequestDto$ {
-  /** @deprecated use `IamUpdateUserRequestDto$inboundSchema` instead. */
-  export const inboundSchema = IamUpdateUserRequestDto$inboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDto$outboundSchema` instead. */
-  export const outboundSchema = IamUpdateUserRequestDto$outboundSchema;
-  /** @deprecated use `IamUpdateUserRequestDto$Outbound` instead. */
-  export type Outbound = IamUpdateUserRequestDto$Outbound;
-}
-
 export function iamUpdateUserRequestDtoToJSON(
   iamUpdateUserRequestDto: IamUpdateUserRequestDto,
 ): string {
   return JSON.stringify(
     IamUpdateUserRequestDto$outboundSchema.parse(iamUpdateUserRequestDto),
-  );
-}
-
-export function iamUpdateUserRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<IamUpdateUserRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamUpdateUserRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUpdateUserRequestDto' from JSON`,
   );
 }

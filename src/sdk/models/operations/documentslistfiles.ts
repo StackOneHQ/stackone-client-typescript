@@ -119,31 +119,6 @@ export type DocumentsListFilesResponse = {
 };
 
 /** @internal */
-export const DocumentsListFilesQueryParamFilter$inboundSchema: z.ZodType<
-  DocumentsListFilesQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  content: z.nullable(z.string()).optional(),
-  created_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  drive_id: z.nullable(z.string()).optional(),
-  folder_id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "created_after": "createdAfter",
-    "drive_id": "driveId",
-    "folder_id": "folderId",
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type DocumentsListFilesQueryParamFilter$Outbound = {
   content?: string | null | undefined;
   created_after?: string | null | undefined;
@@ -174,20 +149,6 @@ export const DocumentsListFilesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListFilesQueryParamFilter$ {
-  /** @deprecated use `DocumentsListFilesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListFilesQueryParamFilter$inboundSchema;
-  /** @deprecated use `DocumentsListFilesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentsListFilesQueryParamFilter$outboundSchema;
-  /** @deprecated use `DocumentsListFilesQueryParamFilter$Outbound` instead. */
-  export type Outbound = DocumentsListFilesQueryParamFilter$Outbound;
-}
-
 export function documentsListFilesQueryParamFilterToJSON(
   documentsListFilesQueryParamFilter: DocumentsListFilesQueryParamFilter,
 ): string {
@@ -197,51 +158,6 @@ export function documentsListFilesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function documentsListFilesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsListFilesQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DocumentsListFilesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsListFilesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const DocumentsListFilesRequest$inboundSchema: z.ZodType<
-  DocumentsListFilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => DocumentsListFilesQueryParamFilter$inboundSchema),
-  ).optional(),
-  folder_id: z.nullable(z.string()).optional(),
-  include: z.nullable(z.string()).optional(),
-  nested_items: z.nullable(z.string().default("false")),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-  "x-stackone-api-session-token": z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-    "nested_items": "nestedItems",
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-    "x-stackone-api-session-token": "xStackoneApiSessionToken",
-  });
-});
 
 /** @internal */
 export type DocumentsListFilesRequest$Outbound = {
@@ -292,34 +208,11 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListFilesRequest$ {
-  /** @deprecated use `DocumentsListFilesRequest$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListFilesRequest$inboundSchema;
-  /** @deprecated use `DocumentsListFilesRequest$outboundSchema` instead. */
-  export const outboundSchema = DocumentsListFilesRequest$outboundSchema;
-  /** @deprecated use `DocumentsListFilesRequest$Outbound` instead. */
-  export type Outbound = DocumentsListFilesRequest$Outbound;
-}
-
 export function documentsListFilesRequestToJSON(
   documentsListFilesRequest: DocumentsListFilesRequest,
 ): string {
   return JSON.stringify(
     DocumentsListFilesRequest$outboundSchema.parse(documentsListFilesRequest),
-  );
-}
-
-export function documentsListFilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentsListFilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentsListFilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentsListFilesRequest' from JSON`,
   );
 }
 
@@ -344,59 +237,6 @@ export const DocumentsListFilesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type DocumentsListFilesResponse$Outbound = {
-  ContentType: string;
-  FilesPaginated?: shared.FilesPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const DocumentsListFilesResponse$outboundSchema: z.ZodType<
-  DocumentsListFilesResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentsListFilesResponse
-> = z.object({
-  contentType: z.string(),
-  filesPaginated: shared.FilesPaginated$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    filesPaginated: "FilesPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentsListFilesResponse$ {
-  /** @deprecated use `DocumentsListFilesResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentsListFilesResponse$inboundSchema;
-  /** @deprecated use `DocumentsListFilesResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentsListFilesResponse$outboundSchema;
-  /** @deprecated use `DocumentsListFilesResponse$Outbound` instead. */
-  export type Outbound = DocumentsListFilesResponse$Outbound;
-}
-
-export function documentsListFilesResponseToJSON(
-  documentsListFilesResponse: DocumentsListFilesResponse,
-): string {
-  return JSON.stringify(
-    DocumentsListFilesResponse$outboundSchema.parse(documentsListFilesResponse),
-  );
-}
 
 export function documentsListFilesResponseFromJSON(
   jsonString: string,

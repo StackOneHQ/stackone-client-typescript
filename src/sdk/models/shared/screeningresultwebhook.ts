@@ -58,7 +58,6 @@ export const Event$inboundSchema: z.ZodType<EventOpen, z.ZodTypeDef, unknown> =
       z.nativeEnum(Event),
       z.string().transform(catchUnrecognizedEnum),
     ]);
-
 /** @internal */
 export const Event$outboundSchema: z.ZodType<
   EventOpen,
@@ -68,17 +67,6 @@ export const Event$outboundSchema: z.ZodType<
   z.nativeEnum(Event),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event$ {
-  /** @deprecated use `Event$inboundSchema` instead. */
-  export const inboundSchema = Event$inboundSchema;
-  /** @deprecated use `Event$outboundSchema` instead. */
-  export const outboundSchema = Event$outboundSchema;
-}
 
 /** @internal */
 export const ScreeningResultWebhook$inboundSchema: z.ZodType<
@@ -90,7 +78,6 @@ export const ScreeningResultWebhook$inboundSchema: z.ZodType<
   event: Event$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type ScreeningResultWebhook$Outbound = {
   data: ScreeningResult$Outbound;
@@ -109,19 +96,6 @@ export const ScreeningResultWebhook$outboundSchema: z.ZodType<
   raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningResultWebhook$ {
-  /** @deprecated use `ScreeningResultWebhook$inboundSchema` instead. */
-  export const inboundSchema = ScreeningResultWebhook$inboundSchema;
-  /** @deprecated use `ScreeningResultWebhook$outboundSchema` instead. */
-  export const outboundSchema = ScreeningResultWebhook$outboundSchema;
-  /** @deprecated use `ScreeningResultWebhook$Outbound` instead. */
-  export type Outbound = ScreeningResultWebhook$Outbound;
-}
-
 export function screeningResultWebhookToJSON(
   screeningResultWebhook: ScreeningResultWebhook,
 ): string {
@@ -129,7 +103,6 @@ export function screeningResultWebhookToJSON(
     ScreeningResultWebhook$outboundSchema.parse(screeningResultWebhook),
   );
 }
-
 export function screeningResultWebhookFromJSON(
   jsonString: string,
 ): SafeParseResult<ScreeningResultWebhook, SDKValidationError> {

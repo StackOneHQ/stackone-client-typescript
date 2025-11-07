@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   TicketingTicketType,
   TicketingTicketType$inboundSchema,
-  TicketingTicketType$Outbound,
-  TicketingTicketType$outboundSchema,
 } from "./ticketingtickettype.js";
 
 export type TicketingTicketTypePaginated = {
@@ -35,47 +28,6 @@ export const TicketingTicketTypePaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TicketingTicketTypePaginated$Outbound = {
-  data?: Array<TicketingTicketType$Outbound> | null | undefined;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TicketingTicketTypePaginated$outboundSchema: z.ZodType<
-  TicketingTicketTypePaginated$Outbound,
-  z.ZodTypeDef,
-  TicketingTicketTypePaginated
-> = z.object({
-  data: z.nullable(z.array(TicketingTicketType$outboundSchema)).optional(),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingTicketTypePaginated$ {
-  /** @deprecated use `TicketingTicketTypePaginated$inboundSchema` instead. */
-  export const inboundSchema = TicketingTicketTypePaginated$inboundSchema;
-  /** @deprecated use `TicketingTicketTypePaginated$outboundSchema` instead. */
-  export const outboundSchema = TicketingTicketTypePaginated$outboundSchema;
-  /** @deprecated use `TicketingTicketTypePaginated$Outbound` instead. */
-  export type Outbound = TicketingTicketTypePaginated$Outbound;
-}
-
-export function ticketingTicketTypePaginatedToJSON(
-  ticketingTicketTypePaginated: TicketingTicketTypePaginated,
-): string {
-  return JSON.stringify(
-    TicketingTicketTypePaginated$outboundSchema.parse(
-      ticketingTicketTypePaginated,
-    ),
-  );
-}
 
 export function ticketingTicketTypePaginatedFromJSON(
   jsonString: string,

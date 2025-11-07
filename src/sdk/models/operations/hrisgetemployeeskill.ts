@@ -51,24 +51,6 @@ export type HrisGetEmployeeSkillResponse = {
 };
 
 /** @internal */
-export const HrisGetEmployeeSkillRequest$inboundSchema: z.ZodType<
-  HrisGetEmployeeSkillRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type HrisGetEmployeeSkillRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const HrisGetEmployeeSkillRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeSkillRequest$ {
-  /** @deprecated use `HrisGetEmployeeSkillRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeSkillRequest$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeSkillRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeSkillRequest$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeSkillRequest$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeSkillRequest$Outbound;
-}
-
 export function hrisGetEmployeeSkillRequestToJSON(
   hrisGetEmployeeSkillRequest: HrisGetEmployeeSkillRequest,
 ): string {
@@ -116,16 +85,6 @@ export function hrisGetEmployeeSkillRequestToJSON(
     HrisGetEmployeeSkillRequest$outboundSchema.parse(
       hrisGetEmployeeSkillRequest,
     ),
-  );
-}
-
-export function hrisGetEmployeeSkillRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisGetEmployeeSkillRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisGetEmployeeSkillRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisGetEmployeeSkillRequest' from JSON`,
   );
 }
 
@@ -150,61 +109,6 @@ export const HrisGetEmployeeSkillResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisGetEmployeeSkillResponse$Outbound = {
-  ContentType: string;
-  EntitySkillResult?: shared.EntitySkillResult$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisGetEmployeeSkillResponse$outboundSchema: z.ZodType<
-  HrisGetEmployeeSkillResponse$Outbound,
-  z.ZodTypeDef,
-  HrisGetEmployeeSkillResponse
-> = z.object({
-  contentType: z.string(),
-  entitySkillResult: shared.EntitySkillResult$outboundSchema.optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    entitySkillResult: "EntitySkillResult",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisGetEmployeeSkillResponse$ {
-  /** @deprecated use `HrisGetEmployeeSkillResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisGetEmployeeSkillResponse$inboundSchema;
-  /** @deprecated use `HrisGetEmployeeSkillResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisGetEmployeeSkillResponse$outboundSchema;
-  /** @deprecated use `HrisGetEmployeeSkillResponse$Outbound` instead. */
-  export type Outbound = HrisGetEmployeeSkillResponse$Outbound;
-}
-
-export function hrisGetEmployeeSkillResponseToJSON(
-  hrisGetEmployeeSkillResponse: HrisGetEmployeeSkillResponse,
-): string {
-  return JSON.stringify(
-    HrisGetEmployeeSkillResponse$outboundSchema.parse(
-      hrisGetEmployeeSkillResponse,
-    ),
-  );
-}
 
 export function hrisGetEmployeeSkillResponseFromJSON(
   jsonString: string,

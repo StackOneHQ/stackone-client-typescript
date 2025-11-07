@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  UnifiedLogs,
-  UnifiedLogs$inboundSchema,
-  UnifiedLogs$Outbound,
-  UnifiedLogs$outboundSchema,
-} from "./unifiedlogs.js";
+import { UnifiedLogs, UnifiedLogs$inboundSchema } from "./unifiedlogs.js";
 
 export type UnifiedLogResult = {
   data: UnifiedLogs;
@@ -25,41 +20,6 @@ export const UnifiedLogResult$inboundSchema: z.ZodType<
 > = z.object({
   data: UnifiedLogs$inboundSchema,
 });
-
-/** @internal */
-export type UnifiedLogResult$Outbound = {
-  data: UnifiedLogs$Outbound;
-};
-
-/** @internal */
-export const UnifiedLogResult$outboundSchema: z.ZodType<
-  UnifiedLogResult$Outbound,
-  z.ZodTypeDef,
-  UnifiedLogResult
-> = z.object({
-  data: UnifiedLogs$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedLogResult$ {
-  /** @deprecated use `UnifiedLogResult$inboundSchema` instead. */
-  export const inboundSchema = UnifiedLogResult$inboundSchema;
-  /** @deprecated use `UnifiedLogResult$outboundSchema` instead. */
-  export const outboundSchema = UnifiedLogResult$outboundSchema;
-  /** @deprecated use `UnifiedLogResult$Outbound` instead. */
-  export type Outbound = UnifiedLogResult$Outbound;
-}
-
-export function unifiedLogResultToJSON(
-  unifiedLogResult: UnifiedLogResult,
-): string {
-  return JSON.stringify(
-    UnifiedLogResult$outboundSchema.parse(unifiedLogResult),
-  );
-}
 
 export function unifiedLogResultFromJSON(
   jsonString: string,

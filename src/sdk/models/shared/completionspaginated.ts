@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Completion,
-  Completion$inboundSchema,
-  Completion$Outbound,
-  Completion$outboundSchema,
-} from "./completion.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Completion, Completion$inboundSchema } from "./completion.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type CompletionsPaginated = {
   data: Array<Completion>;
@@ -35,45 +25,6 @@ export const CompletionsPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type CompletionsPaginated$Outbound = {
-  data: Array<Completion$Outbound>;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const CompletionsPaginated$outboundSchema: z.ZodType<
-  CompletionsPaginated$Outbound,
-  z.ZodTypeDef,
-  CompletionsPaginated
-> = z.object({
-  data: z.array(Completion$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompletionsPaginated$ {
-  /** @deprecated use `CompletionsPaginated$inboundSchema` instead. */
-  export const inboundSchema = CompletionsPaginated$inboundSchema;
-  /** @deprecated use `CompletionsPaginated$outboundSchema` instead. */
-  export const outboundSchema = CompletionsPaginated$outboundSchema;
-  /** @deprecated use `CompletionsPaginated$Outbound` instead. */
-  export type Outbound = CompletionsPaginated$Outbound;
-}
-
-export function completionsPaginatedToJSON(
-  completionsPaginated: CompletionsPaginated,
-): string {
-  return JSON.stringify(
-    CompletionsPaginated$outboundSchema.parse(completionsPaginated),
-  );
-}
 
 export function completionsPaginatedFromJSON(
   jsonString: string,

@@ -32,39 +32,6 @@ export const ActionsRpcResponseData$inboundSchema: z.ZodType<
   unknown
 > = z.union([z.record(z.any()), z.array(z.record(z.any()))]);
 
-/** @internal */
-export type ActionsRpcResponseData$Outbound =
-  | { [k: string]: any }
-  | Array<{ [k: string]: any }>;
-
-/** @internal */
-export const ActionsRpcResponseData$outboundSchema: z.ZodType<
-  ActionsRpcResponseData$Outbound,
-  z.ZodTypeDef,
-  ActionsRpcResponseData
-> = z.union([z.record(z.any()), z.array(z.record(z.any()))]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionsRpcResponseData$ {
-  /** @deprecated use `ActionsRpcResponseData$inboundSchema` instead. */
-  export const inboundSchema = ActionsRpcResponseData$inboundSchema;
-  /** @deprecated use `ActionsRpcResponseData$outboundSchema` instead. */
-  export const outboundSchema = ActionsRpcResponseData$outboundSchema;
-  /** @deprecated use `ActionsRpcResponseData$Outbound` instead. */
-  export type Outbound = ActionsRpcResponseData$Outbound;
-}
-
-export function actionsRpcResponseDataToJSON(
-  actionsRpcResponseData: ActionsRpcResponseData,
-): string {
-  return JSON.stringify(
-    ActionsRpcResponseData$outboundSchema.parse(actionsRpcResponseData),
-  );
-}
-
 export function actionsRpcResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<ActionsRpcResponseData, SDKValidationError> {
@@ -85,44 +52,6 @@ export const ActionsRpcResponse$inboundSchema: z.ZodType<
     .optional(),
   next: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type ActionsRpcResponse$Outbound = {
-  data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
-  next?: string | null | undefined;
-};
-
-/** @internal */
-export const ActionsRpcResponse$outboundSchema: z.ZodType<
-  ActionsRpcResponse$Outbound,
-  z.ZodTypeDef,
-  ActionsRpcResponse
-> = z.object({
-  data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))]))
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActionsRpcResponse$ {
-  /** @deprecated use `ActionsRpcResponse$inboundSchema` instead. */
-  export const inboundSchema = ActionsRpcResponse$inboundSchema;
-  /** @deprecated use `ActionsRpcResponse$outboundSchema` instead. */
-  export const outboundSchema = ActionsRpcResponse$outboundSchema;
-  /** @deprecated use `ActionsRpcResponse$Outbound` instead. */
-  export type Outbound = ActionsRpcResponse$Outbound;
-}
-
-export function actionsRpcResponseToJSON(
-  actionsRpcResponse: ActionsRpcResponse,
-): string {
-  return JSON.stringify(
-    ActionsRpcResponse$outboundSchema.parse(actionsRpcResponse),
-  );
-}
 
 export function actionsRpcResponseFromJSON(
   jsonString: string,

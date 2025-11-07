@@ -51,24 +51,6 @@ export type AtsGetApplicationDocumentResponse = {
 };
 
 /** @internal */
-export const AtsGetApplicationDocumentRequest$inboundSchema: z.ZodType<
-  AtsGetApplicationDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  subResourceId: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetApplicationDocumentRequest$Outbound = {
   fields?: string | null | undefined;
   id: string;
@@ -96,19 +78,6 @@ export const AtsGetApplicationDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationDocumentRequest$ {
-  /** @deprecated use `AtsGetApplicationDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationDocumentRequest$inboundSchema;
-  /** @deprecated use `AtsGetApplicationDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetApplicationDocumentRequest$outboundSchema;
-  /** @deprecated use `AtsGetApplicationDocumentRequest$Outbound` instead. */
-  export type Outbound = AtsGetApplicationDocumentRequest$Outbound;
-}
-
 export function atsGetApplicationDocumentRequestToJSON(
   atsGetApplicationDocumentRequest: AtsGetApplicationDocumentRequest,
 ): string {
@@ -116,16 +85,6 @@ export function atsGetApplicationDocumentRequestToJSON(
     AtsGetApplicationDocumentRequest$outboundSchema.parse(
       atsGetApplicationDocumentRequest,
     ),
-  );
-}
-
-export function atsGetApplicationDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetApplicationDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetApplicationDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetApplicationDocumentRequest' from JSON`,
   );
 }
 
@@ -150,62 +109,6 @@ export const AtsGetApplicationDocumentResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetApplicationDocumentResponse$Outbound = {
-  AtsDocumentResult?: shared.AtsDocumentResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetApplicationDocumentResponse$outboundSchema: z.ZodType<
-  AtsGetApplicationDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetApplicationDocumentResponse
-> = z.object({
-  atsDocumentResult: shared.AtsDocumentResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    atsDocumentResult: "AtsDocumentResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetApplicationDocumentResponse$ {
-  /** @deprecated use `AtsGetApplicationDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetApplicationDocumentResponse$inboundSchema;
-  /** @deprecated use `AtsGetApplicationDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsGetApplicationDocumentResponse$outboundSchema;
-  /** @deprecated use `AtsGetApplicationDocumentResponse$Outbound` instead. */
-  export type Outbound = AtsGetApplicationDocumentResponse$Outbound;
-}
-
-export function atsGetApplicationDocumentResponseToJSON(
-  atsGetApplicationDocumentResponse: AtsGetApplicationDocumentResponse,
-): string {
-  return JSON.stringify(
-    AtsGetApplicationDocumentResponse$outboundSchema.parse(
-      atsGetApplicationDocumentResponse,
-    ),
-  );
-}
 
 export function atsGetApplicationDocumentResponseFromJSON(
   jsonString: string,

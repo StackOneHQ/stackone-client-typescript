@@ -166,97 +166,15 @@ export type StackoneListPlatformLogsResponse = {
 };
 
 /** @internal */
-export const StackoneListPlatformLogsQueryParamRequestLogsOrderBy$inboundSchema:
-  z.ZodNativeEnum<typeof StackoneListPlatformLogsQueryParamRequestLogsOrderBy> =
-    z.nativeEnum(StackoneListPlatformLogsQueryParamRequestLogsOrderBy);
-
-/** @internal */
 export const StackoneListPlatformLogsQueryParamRequestLogsOrderBy$outboundSchema:
   z.ZodNativeEnum<typeof StackoneListPlatformLogsQueryParamRequestLogsOrderBy> =
-    StackoneListPlatformLogsQueryParamRequestLogsOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsQueryParamRequestLogsOrderBy$ {
-  /** @deprecated use `StackoneListPlatformLogsQueryParamRequestLogsOrderBy$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListPlatformLogsQueryParamRequestLogsOrderBy$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsQueryParamRequestLogsOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListPlatformLogsQueryParamRequestLogsOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$inboundSchema:
-  z.ZodNativeEnum<
-    typeof StackoneListPlatformLogsQueryParamRequestLogsOrderDirection
-  > = z.nativeEnum(StackoneListPlatformLogsQueryParamRequestLogsOrderDirection);
+    z.nativeEnum(StackoneListPlatformLogsQueryParamRequestLogsOrderBy);
 
 /** @internal */
 export const StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$outboundSchema:
   z.ZodNativeEnum<
     typeof StackoneListPlatformLogsQueryParamRequestLogsOrderDirection
-  > = StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$ {
-  /** @deprecated use `StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListPlatformLogsQueryParamFilter$inboundSchema: z.ZodType<
-  StackoneListPlatformLogsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account_ids: z.nullable(z.string()).optional(),
-  actions: z.nullable(z.string()).optional(),
-  categories: z.nullable(z.string()).optional(),
-  end_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  http_methods: z.nullable(z.string()).optional(),
-  order_by: z.nullable(
-    StackoneListPlatformLogsQueryParamRequestLogsOrderBy$inboundSchema,
-  ).optional(),
-  order_direction: z.nullable(
-    StackoneListPlatformLogsQueryParamRequestLogsOrderDirection$inboundSchema,
-  ).optional(),
-  request_ids: z.nullable(z.string()).optional(),
-  resources: z.nullable(z.string()).optional(),
-  source_ids: z.nullable(z.string()).optional(),
-  source_types: z.nullable(z.string()).optional(),
-  source_values: z.nullable(z.string()).optional(),
-  start_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  status_codes: z.nullable(z.string()).optional(),
-  success: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_ids": "accountIds",
-    "end_date": "endDate",
-    "http_methods": "httpMethods",
-    "order_by": "orderBy",
-    "order_direction": "orderDirection",
-    "request_ids": "requestIds",
-    "source_ids": "sourceIds",
-    "source_types": "sourceTypes",
-    "source_values": "sourceValues",
-    "start_date": "startDate",
-    "status_codes": "statusCodes",
-  });
-});
+  > = z.nativeEnum(StackoneListPlatformLogsQueryParamRequestLogsOrderDirection);
 
 /** @internal */
 export type StackoneListPlatformLogsQueryParamFilter$Outbound = {
@@ -318,21 +236,6 @@ export const StackoneListPlatformLogsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsQueryParamFilter$ {
-  /** @deprecated use `StackoneListPlatformLogsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListPlatformLogsQueryParamFilter$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListPlatformLogsQueryParamFilter$outboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsQueryParamFilter$Outbound` instead. */
-  export type Outbound = StackoneListPlatformLogsQueryParamFilter$Outbound;
-}
-
 export function stackoneListPlatformLogsQueryParamFilterToJSON(
   stackoneListPlatformLogsQueryParamFilter:
     StackoneListPlatformLogsQueryParamFilter,
@@ -344,91 +247,15 @@ export function stackoneListPlatformLogsQueryParamFilterToJSON(
   );
 }
 
-export function stackoneListPlatformLogsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  StackoneListPlatformLogsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      StackoneListPlatformLogsQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'StackoneListPlatformLogsQueryParamFilter' from JSON`,
-  );
-}
-
 /** @internal */
-export const StackoneListPlatformLogsQueryParamOrderBy$inboundSchema:
+export const StackoneListPlatformLogsQueryParamOrderBy$outboundSchema:
   z.ZodNativeEnum<typeof StackoneListPlatformLogsQueryParamOrderBy> = z
     .nativeEnum(StackoneListPlatformLogsQueryParamOrderBy);
 
 /** @internal */
-export const StackoneListPlatformLogsQueryParamOrderBy$outboundSchema:
-  z.ZodNativeEnum<typeof StackoneListPlatformLogsQueryParamOrderBy> =
-    StackoneListPlatformLogsQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsQueryParamOrderBy$ {
-  /** @deprecated use `StackoneListPlatformLogsQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListPlatformLogsQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListPlatformLogsQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListPlatformLogsQueryParamOrderDirection$inboundSchema:
+export const StackoneListPlatformLogsQueryParamOrderDirection$outboundSchema:
   z.ZodNativeEnum<typeof StackoneListPlatformLogsQueryParamOrderDirection> = z
     .nativeEnum(StackoneListPlatformLogsQueryParamOrderDirection);
-
-/** @internal */
-export const StackoneListPlatformLogsQueryParamOrderDirection$outboundSchema:
-  z.ZodNativeEnum<typeof StackoneListPlatformLogsQueryParamOrderDirection> =
-    StackoneListPlatformLogsQueryParamOrderDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsQueryParamOrderDirection$ {
-  /** @deprecated use `StackoneListPlatformLogsQueryParamOrderDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    StackoneListPlatformLogsQueryParamOrderDirection$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsQueryParamOrderDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    StackoneListPlatformLogsQueryParamOrderDirection$outboundSchema;
-}
-
-/** @internal */
-export const StackoneListPlatformLogsRequest$inboundSchema: z.ZodType<
-  StackoneListPlatformLogsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  filter: z.nullable(
-    z.lazy(() => StackoneListPlatformLogsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  order_by: z.nullable(StackoneListPlatformLogsQueryParamOrderBy$inboundSchema)
-    .optional(),
-  order_direction: z.nullable(
-    StackoneListPlatformLogsQueryParamOrderDirection$inboundSchema,
-  ).optional(),
-  page_size: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "order_by": "orderBy",
-    "order_direction": "orderDirection",
-    "page_size": "pageSize",
-  });
-});
 
 /** @internal */
 export type StackoneListPlatformLogsRequest$Outbound = {
@@ -463,19 +290,6 @@ export const StackoneListPlatformLogsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsRequest$ {
-  /** @deprecated use `StackoneListPlatformLogsRequest$inboundSchema` instead. */
-  export const inboundSchema = StackoneListPlatformLogsRequest$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsRequest$outboundSchema` instead. */
-  export const outboundSchema = StackoneListPlatformLogsRequest$outboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsRequest$Outbound` instead. */
-  export type Outbound = StackoneListPlatformLogsRequest$Outbound;
-}
-
 export function stackoneListPlatformLogsRequestToJSON(
   stackoneListPlatformLogsRequest: StackoneListPlatformLogsRequest,
 ): string {
@@ -483,16 +297,6 @@ export function stackoneListPlatformLogsRequestToJSON(
     StackoneListPlatformLogsRequest$outboundSchema.parse(
       stackoneListPlatformLogsRequest,
     ),
-  );
-}
-
-export function stackoneListPlatformLogsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<StackoneListPlatformLogsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StackoneListPlatformLogsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StackoneListPlatformLogsRequest' from JSON`,
   );
 }
 
@@ -517,61 +321,6 @@ export const StackoneListPlatformLogsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type StackoneListPlatformLogsResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  PlatformLogsPaginated?: shared.PlatformLogsPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const StackoneListPlatformLogsResponse$outboundSchema: z.ZodType<
-  StackoneListPlatformLogsResponse$Outbound,
-  z.ZodTypeDef,
-  StackoneListPlatformLogsResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  platformLogsPaginated: shared.PlatformLogsPaginated$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    platformLogsPaginated: "PlatformLogsPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StackoneListPlatformLogsResponse$ {
-  /** @deprecated use `StackoneListPlatformLogsResponse$inboundSchema` instead. */
-  export const inboundSchema = StackoneListPlatformLogsResponse$inboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsResponse$outboundSchema` instead. */
-  export const outboundSchema = StackoneListPlatformLogsResponse$outboundSchema;
-  /** @deprecated use `StackoneListPlatformLogsResponse$Outbound` instead. */
-  export type Outbound = StackoneListPlatformLogsResponse$Outbound;
-}
-
-export function stackoneListPlatformLogsResponseToJSON(
-  stackoneListPlatformLogsResponse: StackoneListPlatformLogsResponse,
-): string {
-  return JSON.stringify(
-    StackoneListPlatformLogsResponse$outboundSchema.parse(
-      stackoneListPlatformLogsResponse,
-    ),
-  );
-}
 
 export function stackoneListPlatformLogsResponseFromJSON(
   jsonString: string,

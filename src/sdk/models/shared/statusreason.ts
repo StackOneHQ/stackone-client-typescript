@@ -24,41 +24,6 @@ export const StatusReason$inboundSchema: z.ZodType<
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
 
-/** @internal */
-export type StatusReason$Outbound = {
-  code?: string | null | undefined;
-  description?: string | null | undefined;
-  timestamp: string;
-};
-
-/** @internal */
-export const StatusReason$outboundSchema: z.ZodType<
-  StatusReason$Outbound,
-  z.ZodTypeDef,
-  StatusReason
-> = z.object({
-  code: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  timestamp: z.date().transform(v => v.toISOString()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatusReason$ {
-  /** @deprecated use `StatusReason$inboundSchema` instead. */
-  export const inboundSchema = StatusReason$inboundSchema;
-  /** @deprecated use `StatusReason$outboundSchema` instead. */
-  export const outboundSchema = StatusReason$outboundSchema;
-  /** @deprecated use `StatusReason$Outbound` instead. */
-  export type Outbound = StatusReason$Outbound;
-}
-
-export function statusReasonToJSON(statusReason: StatusReason): string {
-  return JSON.stringify(StatusReason$outboundSchema.parse(statusReason));
-}
-
 export function statusReasonFromJSON(
   jsonString: string,
 ): SafeParseResult<StatusReason, SDKValidationError> {

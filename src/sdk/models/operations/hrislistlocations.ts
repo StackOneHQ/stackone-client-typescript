@@ -83,21 +83,6 @@ export type HrisListLocationsResponse = {
 };
 
 /** @internal */
-export const HrisListLocationsQueryParamFilter$inboundSchema: z.ZodType<
-  HrisListLocationsQueryParamFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "updated_after": "updatedAfter",
-  });
-});
-
-/** @internal */
 export type HrisListLocationsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,20 +100,6 @@ export const HrisListLocationsQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListLocationsQueryParamFilter$ {
-  /** @deprecated use `HrisListLocationsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema = HrisListLocationsQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListLocationsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListLocationsQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListLocationsQueryParamFilter$Outbound` instead. */
-  export type Outbound = HrisListLocationsQueryParamFilter$Outbound;
-}
-
 export function hrisListLocationsQueryParamFilterToJSON(
   hrisListLocationsQueryParamFilter: HrisListLocationsQueryParamFilter,
 ): string {
@@ -138,43 +109,6 @@ export function hrisListLocationsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListLocationsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListLocationsQueryParamFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListLocationsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListLocationsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListLocationsRequest$inboundSchema: z.ZodType<
-  HrisListLocationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => HrisListLocationsQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type HrisListLocationsRequest$Outbound = {
@@ -214,34 +148,11 @@ export const HrisListLocationsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListLocationsRequest$ {
-  /** @deprecated use `HrisListLocationsRequest$inboundSchema` instead. */
-  export const inboundSchema = HrisListLocationsRequest$inboundSchema;
-  /** @deprecated use `HrisListLocationsRequest$outboundSchema` instead. */
-  export const outboundSchema = HrisListLocationsRequest$outboundSchema;
-  /** @deprecated use `HrisListLocationsRequest$Outbound` instead. */
-  export type Outbound = HrisListLocationsRequest$Outbound;
-}
-
 export function hrisListLocationsRequestToJSON(
   hrisListLocationsRequest: HrisListLocationsRequest,
 ): string {
   return JSON.stringify(
     HrisListLocationsRequest$outboundSchema.parse(hrisListLocationsRequest),
-  );
-}
-
-export function hrisListLocationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<HrisListLocationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => HrisListLocationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HrisListLocationsRequest' from JSON`,
   );
 }
 
@@ -267,60 +178,6 @@ export const HrisListLocationsResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type HrisListLocationsResponse$Outbound = {
-  ContentType: string;
-  HRISLocationsPaginated?: shared.HRISLocationsPaginated$Outbound | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisListLocationsResponse$outboundSchema: z.ZodType<
-  HrisListLocationsResponse$Outbound,
-  z.ZodTypeDef,
-  HrisListLocationsResponse
-> = z.object({
-  contentType: z.string(),
-  hrisLocationsPaginated: shared.HRISLocationsPaginated$outboundSchema
-    .optional(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    hrisLocationsPaginated: "HRISLocationsPaginated",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListLocationsResponse$ {
-  /** @deprecated use `HrisListLocationsResponse$inboundSchema` instead. */
-  export const inboundSchema = HrisListLocationsResponse$inboundSchema;
-  /** @deprecated use `HrisListLocationsResponse$outboundSchema` instead. */
-  export const outboundSchema = HrisListLocationsResponse$outboundSchema;
-  /** @deprecated use `HrisListLocationsResponse$Outbound` instead. */
-  export type Outbound = HrisListLocationsResponse$Outbound;
-}
-
-export function hrisListLocationsResponseToJSON(
-  hrisListLocationsResponse: HrisListLocationsResponse,
-): string {
-  return JSON.stringify(
-    HrisListLocationsResponse$outboundSchema.parse(hrisListLocationsResponse),
-  );
-}
 
 export function hrisListLocationsResponseFromJSON(
   jsonString: string,

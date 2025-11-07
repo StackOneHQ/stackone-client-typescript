@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreatePackage = {
   /**
@@ -17,16 +14,6 @@ export type CreatePackage = {
    */
   name?: string | null | undefined;
 };
-
-/** @internal */
-export const CreatePackage$inboundSchema: z.ZodType<
-  CreatePackage,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-});
 
 /** @internal */
 export type CreatePackage$Outbound = {
@@ -44,29 +31,6 @@ export const CreatePackage$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatePackage$ {
-  /** @deprecated use `CreatePackage$inboundSchema` instead. */
-  export const inboundSchema = CreatePackage$inboundSchema;
-  /** @deprecated use `CreatePackage$outboundSchema` instead. */
-  export const outboundSchema = CreatePackage$outboundSchema;
-  /** @deprecated use `CreatePackage$Outbound` instead. */
-  export type Outbound = CreatePackage$Outbound;
-}
-
 export function createPackageToJSON(createPackage: CreatePackage): string {
   return JSON.stringify(CreatePackage$outboundSchema.parse(createPackage));
-}
-
-export function createPackageFromJSON(
-  jsonString: string,
-): SafeParseResult<CreatePackage, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreatePackage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatePackage' from JSON`,
-  );
 }

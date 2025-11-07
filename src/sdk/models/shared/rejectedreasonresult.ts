@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   RejectedReason,
   RejectedReason$inboundSchema,
-  RejectedReason$Outbound,
-  RejectedReason$outboundSchema,
 } from "./rejectedreason.js";
 
 export type RejectedReasonResult = {
@@ -33,43 +26,6 @@ export const RejectedReasonResult$inboundSchema: z.ZodType<
   data: RejectedReason$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type RejectedReasonResult$Outbound = {
-  data: RejectedReason$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const RejectedReasonResult$outboundSchema: z.ZodType<
-  RejectedReasonResult$Outbound,
-  z.ZodTypeDef,
-  RejectedReasonResult
-> = z.object({
-  data: RejectedReason$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RejectedReasonResult$ {
-  /** @deprecated use `RejectedReasonResult$inboundSchema` instead. */
-  export const inboundSchema = RejectedReasonResult$inboundSchema;
-  /** @deprecated use `RejectedReasonResult$outboundSchema` instead. */
-  export const outboundSchema = RejectedReasonResult$outboundSchema;
-  /** @deprecated use `RejectedReasonResult$Outbound` instead. */
-  export type Outbound = RejectedReasonResult$Outbound;
-}
-
-export function rejectedReasonResultToJSON(
-  rejectedReasonResult: RejectedReasonResult,
-): string {
-  return JSON.stringify(
-    RejectedReasonResult$outboundSchema.parse(rejectedReasonResult),
-  );
-}
 
 export function rejectedReasonResultFromJSON(
   jsonString: string,

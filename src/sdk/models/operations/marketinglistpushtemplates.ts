@@ -83,19 +83,6 @@ export type MarketingListPushTemplatesResponse = {
 };
 
 /** @internal */
-export const MarketingListPushTemplatesQueryParamFilter$inboundSchema:
-  z.ZodType<MarketingListPushTemplatesQueryParamFilter, z.ZodTypeDef, unknown> =
-    z.object({
-      updated_after: z.nullable(
-        z.string().datetime({ offset: true }).transform(v => new Date(v)),
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "updated_after": "updatedAfter",
-      });
-    });
-
-/** @internal */
 export type MarketingListPushTemplatesQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -115,21 +102,6 @@ export const MarketingListPushTemplatesQueryParamFilter$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingListPushTemplatesQueryParamFilter$ {
-  /** @deprecated use `MarketingListPushTemplatesQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    MarketingListPushTemplatesQueryParamFilter$inboundSchema;
-  /** @deprecated use `MarketingListPushTemplatesQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingListPushTemplatesQueryParamFilter$outboundSchema;
-  /** @deprecated use `MarketingListPushTemplatesQueryParamFilter$Outbound` instead. */
-  export type Outbound = MarketingListPushTemplatesQueryParamFilter$Outbound;
-}
-
 export function marketingListPushTemplatesQueryParamFilterToJSON(
   marketingListPushTemplatesQueryParamFilter:
     MarketingListPushTemplatesQueryParamFilter,
@@ -140,49 +112,6 @@ export function marketingListPushTemplatesQueryParamFilterToJSON(
     ),
   );
 }
-
-export function marketingListPushTemplatesQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  MarketingListPushTemplatesQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      MarketingListPushTemplatesQueryParamFilter$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'MarketingListPushTemplatesQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const MarketingListPushTemplatesRequest$inboundSchema: z.ZodType<
-  MarketingListPushTemplatesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => MarketingListPushTemplatesQueryParamFilter$inboundSchema),
-  ).optional(),
-  next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
-  page_size: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  updated_after: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "updated_after": "updatedAfter",
-    "x-account-id": "xAccountId",
-  });
-});
 
 /** @internal */
 export type MarketingListPushTemplatesRequest$Outbound = {
@@ -225,20 +154,6 @@ export const MarketingListPushTemplatesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingListPushTemplatesRequest$ {
-  /** @deprecated use `MarketingListPushTemplatesRequest$inboundSchema` instead. */
-  export const inboundSchema = MarketingListPushTemplatesRequest$inboundSchema;
-  /** @deprecated use `MarketingListPushTemplatesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingListPushTemplatesRequest$outboundSchema;
-  /** @deprecated use `MarketingListPushTemplatesRequest$Outbound` instead. */
-  export type Outbound = MarketingListPushTemplatesRequest$Outbound;
-}
-
 export function marketingListPushTemplatesRequestToJSON(
   marketingListPushTemplatesRequest: MarketingListPushTemplatesRequest,
 ): string {
@@ -246,16 +161,6 @@ export function marketingListPushTemplatesRequestToJSON(
     MarketingListPushTemplatesRequest$outboundSchema.parse(
       marketingListPushTemplatesRequest,
     ),
-  );
-}
-
-export function marketingListPushTemplatesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MarketingListPushTemplatesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MarketingListPushTemplatesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MarketingListPushTemplatesRequest' from JSON`,
   );
 }
 
@@ -281,63 +186,6 @@ export const MarketingListPushTemplatesResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type MarketingListPushTemplatesResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  PushTemplatesPaginated?: shared.PushTemplatesPaginated$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const MarketingListPushTemplatesResponse$outboundSchema: z.ZodType<
-  MarketingListPushTemplatesResponse$Outbound,
-  z.ZodTypeDef,
-  MarketingListPushTemplatesResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  pushTemplatesPaginated: shared.PushTemplatesPaginated$outboundSchema
-    .optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    pushTemplatesPaginated: "PushTemplatesPaginated",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MarketingListPushTemplatesResponse$ {
-  /** @deprecated use `MarketingListPushTemplatesResponse$inboundSchema` instead. */
-  export const inboundSchema = MarketingListPushTemplatesResponse$inboundSchema;
-  /** @deprecated use `MarketingListPushTemplatesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    MarketingListPushTemplatesResponse$outboundSchema;
-  /** @deprecated use `MarketingListPushTemplatesResponse$Outbound` instead. */
-  export type Outbound = MarketingListPushTemplatesResponse$Outbound;
-}
-
-export function marketingListPushTemplatesResponseToJSON(
-  marketingListPushTemplatesResponse: MarketingListPushTemplatesResponse,
-): string {
-  return JSON.stringify(
-    MarketingListPushTemplatesResponse$outboundSchema.parse(
-      marketingListPushTemplatesResponse,
-    ),
-  );
-}
 
 export function marketingListPushTemplatesResponseFromJSON(
   jsonString: string,

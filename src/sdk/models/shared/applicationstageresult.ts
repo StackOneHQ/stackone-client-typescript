@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationStage,
   ApplicationStage$inboundSchema,
-  ApplicationStage$Outbound,
-  ApplicationStage$outboundSchema,
 } from "./applicationstage.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type ApplicationStageResult = {
   data: ApplicationStage;
@@ -33,43 +26,6 @@ export const ApplicationStageResult$inboundSchema: z.ZodType<
   data: ApplicationStage$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ApplicationStageResult$Outbound = {
-  data: ApplicationStage$Outbound;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const ApplicationStageResult$outboundSchema: z.ZodType<
-  ApplicationStageResult$Outbound,
-  z.ZodTypeDef,
-  ApplicationStageResult
-> = z.object({
-  data: ApplicationStage$outboundSchema,
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationStageResult$ {
-  /** @deprecated use `ApplicationStageResult$inboundSchema` instead. */
-  export const inboundSchema = ApplicationStageResult$inboundSchema;
-  /** @deprecated use `ApplicationStageResult$outboundSchema` instead. */
-  export const outboundSchema = ApplicationStageResult$outboundSchema;
-  /** @deprecated use `ApplicationStageResult$Outbound` instead. */
-  export type Outbound = ApplicationStageResult$Outbound;
-}
-
-export function applicationStageResultToJSON(
-  applicationStageResult: ApplicationStageResult,
-): string {
-  return JSON.stringify(
-    ApplicationStageResult$outboundSchema.parse(applicationStageResult),
-  );
-}
 
 export function applicationStageResultFromJSON(
   jsonString: string,

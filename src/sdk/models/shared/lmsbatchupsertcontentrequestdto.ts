@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LmsUpsertContentRequestDto,
-  LmsUpsertContentRequestDto$inboundSchema,
   LmsUpsertContentRequestDto$Outbound,
   LmsUpsertContentRequestDto$outboundSchema,
 } from "./lmsupsertcontentrequestdto.js";
@@ -19,15 +15,6 @@ export type LmsBatchUpsertContentRequestDto = {
    */
   items: Array<LmsUpsertContentRequestDto>;
 };
-
-/** @internal */
-export const LmsBatchUpsertContentRequestDto$inboundSchema: z.ZodType<
-  LmsBatchUpsertContentRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  items: z.array(LmsUpsertContentRequestDto$inboundSchema),
-});
 
 /** @internal */
 export type LmsBatchUpsertContentRequestDto$Outbound = {
@@ -43,19 +30,6 @@ export const LmsBatchUpsertContentRequestDto$outboundSchema: z.ZodType<
   items: z.array(LmsUpsertContentRequestDto$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsBatchUpsertContentRequestDto$ {
-  /** @deprecated use `LmsBatchUpsertContentRequestDto$inboundSchema` instead. */
-  export const inboundSchema = LmsBatchUpsertContentRequestDto$inboundSchema;
-  /** @deprecated use `LmsBatchUpsertContentRequestDto$outboundSchema` instead. */
-  export const outboundSchema = LmsBatchUpsertContentRequestDto$outboundSchema;
-  /** @deprecated use `LmsBatchUpsertContentRequestDto$Outbound` instead. */
-  export type Outbound = LmsBatchUpsertContentRequestDto$Outbound;
-}
-
 export function lmsBatchUpsertContentRequestDtoToJSON(
   lmsBatchUpsertContentRequestDto: LmsBatchUpsertContentRequestDto,
 ): string {
@@ -63,15 +37,5 @@ export function lmsBatchUpsertContentRequestDtoToJSON(
     LmsBatchUpsertContentRequestDto$outboundSchema.parse(
       lmsBatchUpsertContentRequestDto,
     ),
-  );
-}
-
-export function lmsBatchUpsertContentRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<LmsBatchUpsertContentRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => LmsBatchUpsertContentRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsBatchUpsertContentRequestDto' from JSON`,
   );
 }

@@ -39,23 +39,6 @@ export type AtsUploadApplicationDocumentResponse = {
 };
 
 /** @internal */
-export const AtsUploadApplicationDocumentRequest$inboundSchema: z.ZodType<
-  AtsUploadApplicationDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsDocumentsUploadRequestDto:
-    shared.AtsDocumentsUploadRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsDocumentsUploadRequestDto": "atsDocumentsUploadRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsUploadApplicationDocumentRequest$Outbound = {
   AtsDocumentsUploadRequestDto: shared.AtsDocumentsUploadRequestDto$Outbound;
   id: string;
@@ -79,21 +62,6 @@ export const AtsUploadApplicationDocumentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUploadApplicationDocumentRequest$ {
-  /** @deprecated use `AtsUploadApplicationDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUploadApplicationDocumentRequest$inboundSchema;
-  /** @deprecated use `AtsUploadApplicationDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUploadApplicationDocumentRequest$outboundSchema;
-  /** @deprecated use `AtsUploadApplicationDocumentRequest$Outbound` instead. */
-  export type Outbound = AtsUploadApplicationDocumentRequest$Outbound;
-}
-
 export function atsUploadApplicationDocumentRequestToJSON(
   atsUploadApplicationDocumentRequest: AtsUploadApplicationDocumentRequest,
 ): string {
@@ -101,17 +69,6 @@ export function atsUploadApplicationDocumentRequestToJSON(
     AtsUploadApplicationDocumentRequest$outboundSchema.parse(
       atsUploadApplicationDocumentRequest,
     ),
-  );
-}
-
-export function atsUploadApplicationDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUploadApplicationDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUploadApplicationDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUploadApplicationDocumentRequest' from JSON`,
   );
 }
 
@@ -136,63 +93,6 @@ export const AtsUploadApplicationDocumentResponse$inboundSchema: z.ZodType<
     "WriteResultApiModel": "writeResultApiModel",
   });
 });
-
-/** @internal */
-export type AtsUploadApplicationDocumentResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  WriteResultApiModel?: shared.WriteResultApiModel$Outbound | undefined;
-};
-
-/** @internal */
-export const AtsUploadApplicationDocumentResponse$outboundSchema: z.ZodType<
-  AtsUploadApplicationDocumentResponse$Outbound,
-  z.ZodTypeDef,
-  AtsUploadApplicationDocumentResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  writeResultApiModel: shared.WriteResultApiModel$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    writeResultApiModel: "WriteResultApiModel",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUploadApplicationDocumentResponse$ {
-  /** @deprecated use `AtsUploadApplicationDocumentResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUploadApplicationDocumentResponse$inboundSchema;
-  /** @deprecated use `AtsUploadApplicationDocumentResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUploadApplicationDocumentResponse$outboundSchema;
-  /** @deprecated use `AtsUploadApplicationDocumentResponse$Outbound` instead. */
-  export type Outbound = AtsUploadApplicationDocumentResponse$Outbound;
-}
-
-export function atsUploadApplicationDocumentResponseToJSON(
-  atsUploadApplicationDocumentResponse: AtsUploadApplicationDocumentResponse,
-): string {
-  return JSON.stringify(
-    AtsUploadApplicationDocumentResponse$outboundSchema.parse(
-      atsUploadApplicationDocumentResponse,
-    ),
-  );
-}
 
 export function atsUploadApplicationDocumentResponseFromJSON(
   jsonString: string,

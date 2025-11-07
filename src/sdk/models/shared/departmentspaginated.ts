@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Department,
-  Department$inboundSchema,
-  Department$Outbound,
-  Department$outboundSchema,
-} from "./department.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { Department, Department$inboundSchema } from "./department.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type DepartmentsPaginated = {
   data: Array<Department>;
@@ -45,51 +35,6 @@ export const DepartmentsPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type DepartmentsPaginated$Outbound = {
-  data: Array<Department$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const DepartmentsPaginated$outboundSchema: z.ZodType<
-  DepartmentsPaginated$Outbound,
-  z.ZodTypeDef,
-  DepartmentsPaginated
-> = z.object({
-  data: z.array(Department$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DepartmentsPaginated$ {
-  /** @deprecated use `DepartmentsPaginated$inboundSchema` instead. */
-  export const inboundSchema = DepartmentsPaginated$inboundSchema;
-  /** @deprecated use `DepartmentsPaginated$outboundSchema` instead. */
-  export const outboundSchema = DepartmentsPaginated$outboundSchema;
-  /** @deprecated use `DepartmentsPaginated$Outbound` instead. */
-  export type Outbound = DepartmentsPaginated$Outbound;
-}
-
-export function departmentsPaginatedToJSON(
-  departmentsPaginated: DepartmentsPaginated,
-): string {
-  return JSON.stringify(
-    DepartmentsPaginated$outboundSchema.parse(departmentsPaginated),
-  );
-}
 
 export function departmentsPaginatedFromJSON(
   jsonString: string,

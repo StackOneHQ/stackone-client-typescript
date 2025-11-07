@@ -41,48 +41,6 @@ export const Department$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type Department$Outbound = {
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const Department$outboundSchema: z.ZodType<
-  Department$Outbound,
-  z.ZodTypeDef,
-  Department
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Department$ {
-  /** @deprecated use `Department$inboundSchema` instead. */
-  export const inboundSchema = Department$inboundSchema;
-  /** @deprecated use `Department$outboundSchema` instead. */
-  export const outboundSchema = Department$outboundSchema;
-  /** @deprecated use `Department$Outbound` instead. */
-  export type Outbound = Department$Outbound;
-}
-
-export function departmentToJSON(department: Department): string {
-  return JSON.stringify(Department$outboundSchema.parse(department));
-}
-
 export function departmentFromJSON(
   jsonString: string,
 ): SafeParseResult<Department, SDKValidationError> {

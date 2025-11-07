@@ -302,7 +302,6 @@ export const CountryCodeEnum4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CountryCodeEnum4$Outbound = {};
 
@@ -313,19 +312,6 @@ export const CountryCodeEnum4$outboundSchema: z.ZodType<
   CountryCodeEnum4
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CountryCodeEnum4$ {
-  /** @deprecated use `CountryCodeEnum4$inboundSchema` instead. */
-  export const inboundSchema = CountryCodeEnum4$inboundSchema;
-  /** @deprecated use `CountryCodeEnum4$outboundSchema` instead. */
-  export const outboundSchema = CountryCodeEnum4$outboundSchema;
-  /** @deprecated use `CountryCodeEnum4$Outbound` instead. */
-  export type Outbound = CountryCodeEnum4$Outbound;
-}
-
 export function countryCodeEnum4ToJSON(
   countryCodeEnum4: CountryCodeEnum4,
 ): string {
@@ -333,7 +319,6 @@ export function countryCodeEnum4ToJSON(
     CountryCodeEnum4$outboundSchema.parse(countryCodeEnum4),
   );
 }
-
 export function countryCodeEnum4FromJSON(
   jsonString: string,
 ): SafeParseResult<CountryCodeEnum4, SDKValidationError> {
@@ -356,7 +341,6 @@ export const CountryCodeEnumSourceValue$inboundSchema: z.ZodType<
   z.lazy(() => CountryCodeEnum4$inboundSchema),
   z.array(z.any()),
 ]);
-
 /** @internal */
 export type CountryCodeEnumSourceValue$Outbound =
   | string
@@ -378,19 +362,6 @@ export const CountryCodeEnumSourceValue$outboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CountryCodeEnumSourceValue$ {
-  /** @deprecated use `CountryCodeEnumSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CountryCodeEnumSourceValue$inboundSchema;
-  /** @deprecated use `CountryCodeEnumSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CountryCodeEnumSourceValue$outboundSchema;
-  /** @deprecated use `CountryCodeEnumSourceValue$Outbound` instead. */
-  export type Outbound = CountryCodeEnumSourceValue$Outbound;
-}
-
 export function countryCodeEnumSourceValueToJSON(
   countryCodeEnumSourceValue: CountryCodeEnumSourceValue,
 ): string {
@@ -398,7 +369,6 @@ export function countryCodeEnumSourceValueToJSON(
     CountryCodeEnumSourceValue$outboundSchema.parse(countryCodeEnumSourceValue),
   );
 }
-
 export function countryCodeEnumSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CountryCodeEnumSourceValue, SDKValidationError> {
@@ -419,7 +389,6 @@ export const CountryCodeEnumValue$inboundSchema: z.ZodType<
     z.nativeEnum(CountryCodeEnumValue),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
 /** @internal */
 export const CountryCodeEnumValue$outboundSchema: z.ZodType<
   CountryCodeEnumValueOpen,
@@ -429,17 +398,6 @@ export const CountryCodeEnumValue$outboundSchema: z.ZodType<
   z.nativeEnum(CountryCodeEnumValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CountryCodeEnumValue$ {
-  /** @deprecated use `CountryCodeEnumValue$inboundSchema` instead. */
-  export const inboundSchema = CountryCodeEnumValue$inboundSchema;
-  /** @deprecated use `CountryCodeEnumValue$outboundSchema` instead. */
-  export const outboundSchema = CountryCodeEnumValue$outboundSchema;
-}
 
 /** @internal */
 export const CountryCodeEnum$inboundSchema: z.ZodType<
@@ -462,7 +420,6 @@ export const CountryCodeEnum$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
 /** @internal */
 export type CountryCodeEnum$Outbound = {
   source_value?:
@@ -498,25 +455,11 @@ export const CountryCodeEnum$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CountryCodeEnum$ {
-  /** @deprecated use `CountryCodeEnum$inboundSchema` instead. */
-  export const inboundSchema = CountryCodeEnum$inboundSchema;
-  /** @deprecated use `CountryCodeEnum$outboundSchema` instead. */
-  export const outboundSchema = CountryCodeEnum$outboundSchema;
-  /** @deprecated use `CountryCodeEnum$Outbound` instead. */
-  export type Outbound = CountryCodeEnum$Outbound;
-}
-
 export function countryCodeEnumToJSON(
   countryCodeEnum: CountryCodeEnum,
 ): string {
   return JSON.stringify(CountryCodeEnum$outboundSchema.parse(countryCodeEnum));
 }
-
 export function countryCodeEnumFromJSON(
   jsonString: string,
 ): SafeParseResult<CountryCodeEnum, SDKValidationError> {

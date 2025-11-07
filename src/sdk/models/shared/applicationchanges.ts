@@ -5,18 +5,12 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationChangesDataModel,
   ApplicationChangesDataModel$inboundSchema,
-  ApplicationChangesDataModel$Outbound,
-  ApplicationChangesDataModel$outboundSchema,
 } from "./applicationchangesdatamodel.js";
 
 /**
@@ -124,43 +118,6 @@ export const Actor$inboundSchema: z.ZodType<Actor, z.ZodTypeDef, unknown> = z
     });
   });
 
-/** @internal */
-export type Actor$Outbound = {
-  id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Actor$outboundSchema: z.ZodType<
-  Actor$Outbound,
-  z.ZodTypeDef,
-  Actor
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Actor$ {
-  /** @deprecated use `Actor$inboundSchema` instead. */
-  export const inboundSchema = Actor$inboundSchema;
-  /** @deprecated use `Actor$outboundSchema` instead. */
-  export const outboundSchema = Actor$outboundSchema;
-  /** @deprecated use `Actor$Outbound` instead. */
-  export type Outbound = Actor$Outbound;
-}
-
-export function actorToJSON(actor: Actor): string {
-  return JSON.stringify(Actor$outboundSchema.parse(actor));
-}
-
 export function actorFromJSON(
   jsonString: string,
 ): SafeParseResult<Actor, SDKValidationError> {
@@ -177,37 +134,6 @@ export const ApplicationChanges4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type ApplicationChanges4$Outbound = {};
-
-/** @internal */
-export const ApplicationChanges4$outboundSchema: z.ZodType<
-  ApplicationChanges4$Outbound,
-  z.ZodTypeDef,
-  ApplicationChanges4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationChanges4$ {
-  /** @deprecated use `ApplicationChanges4$inboundSchema` instead. */
-  export const inboundSchema = ApplicationChanges4$inboundSchema;
-  /** @deprecated use `ApplicationChanges4$outboundSchema` instead. */
-  export const outboundSchema = ApplicationChanges4$outboundSchema;
-  /** @deprecated use `ApplicationChanges4$Outbound` instead. */
-  export type Outbound = ApplicationChanges4$Outbound;
-}
-
-export function applicationChanges4ToJSON(
-  applicationChanges4: ApplicationChanges4,
-): string {
-  return JSON.stringify(
-    ApplicationChanges4$outboundSchema.parse(applicationChanges4),
-  );
-}
 
 export function applicationChanges4FromJSON(
   jsonString: string,
@@ -232,50 +158,6 @@ export const ApplicationChangesSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type ApplicationChangesSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | ApplicationChanges4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const ApplicationChangesSourceValue$outboundSchema: z.ZodType<
-  ApplicationChangesSourceValue$Outbound,
-  z.ZodTypeDef,
-  ApplicationChangesSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => ApplicationChanges4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationChangesSourceValue$ {
-  /** @deprecated use `ApplicationChangesSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ApplicationChangesSourceValue$inboundSchema;
-  /** @deprecated use `ApplicationChangesSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ApplicationChangesSourceValue$outboundSchema;
-  /** @deprecated use `ApplicationChangesSourceValue$Outbound` instead. */
-  export type Outbound = ApplicationChangesSourceValue$Outbound;
-}
-
-export function applicationChangesSourceValueToJSON(
-  applicationChangesSourceValue: ApplicationChangesSourceValue,
-): string {
-  return JSON.stringify(
-    ApplicationChangesSourceValue$outboundSchema.parse(
-      applicationChangesSourceValue,
-    ),
-  );
-}
-
 export function applicationChangesSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationChangesSourceValue, SDKValidationError> {
@@ -298,27 +180,6 @@ export const ApplicationChangesValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const ApplicationChangesValue$outboundSchema: z.ZodType<
-  ApplicationChangesValueOpen,
-  z.ZodTypeDef,
-  ApplicationChangesValueOpen
-> = z.union([
-  z.nativeEnum(ApplicationChangesValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationChangesValue$ {
-  /** @deprecated use `ApplicationChangesValue$inboundSchema` instead. */
-  export const inboundSchema = ApplicationChangesValue$inboundSchema;
-  /** @deprecated use `ApplicationChangesValue$outboundSchema` instead. */
-  export const outboundSchema = ApplicationChangesValue$outboundSchema;
-}
-
-/** @internal */
 export const ChangeType$inboundSchema: z.ZodType<
   ChangeType,
   z.ZodTypeDef,
@@ -339,58 +200,6 @@ export const ChangeType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type ChangeType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | ApplicationChanges4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ChangeType$outboundSchema: z.ZodType<
-  ChangeType$Outbound,
-  z.ZodTypeDef,
-  ChangeType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => ApplicationChanges4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ApplicationChangesValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChangeType$ {
-  /** @deprecated use `ChangeType$inboundSchema` instead. */
-  export const inboundSchema = ChangeType$inboundSchema;
-  /** @deprecated use `ChangeType$outboundSchema` instead. */
-  export const outboundSchema = ChangeType$outboundSchema;
-  /** @deprecated use `ChangeType$Outbound` instead. */
-  export type Outbound = ChangeType$Outbound;
-}
-
-export function changeTypeToJSON(changeType: ChangeType): string {
-  return JSON.stringify(ChangeType$outboundSchema.parse(changeType));
-}
 
 export function changeTypeFromJSON(
   jsonString: string,
@@ -426,61 +235,6 @@ export const ApplicationChanges$inboundSchema: z.ZodType<
     "remote_id": "remoteId",
   });
 });
-
-/** @internal */
-export type ApplicationChanges$Outbound = {
-  actor?: Actor$Outbound | null | undefined;
-  change_type?: ChangeType$Outbound | null | undefined;
-  created_at: string;
-  effective_at?: string | null | undefined;
-  id?: string | null | undefined;
-  new_values: ApplicationChangesDataModel$Outbound;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationChanges$outboundSchema: z.ZodType<
-  ApplicationChanges$Outbound,
-  z.ZodTypeDef,
-  ApplicationChanges
-> = z.object({
-  actor: z.nullable(z.lazy(() => Actor$outboundSchema)).optional(),
-  changeType: z.nullable(z.lazy(() => ChangeType$outboundSchema)).optional(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  effectiveAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  newValues: ApplicationChangesDataModel$outboundSchema,
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    changeType: "change_type",
-    createdAt: "created_at",
-    effectiveAt: "effective_at",
-    newValues: "new_values",
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationChanges$ {
-  /** @deprecated use `ApplicationChanges$inboundSchema` instead. */
-  export const inboundSchema = ApplicationChanges$inboundSchema;
-  /** @deprecated use `ApplicationChanges$outboundSchema` instead. */
-  export const outboundSchema = ApplicationChanges$outboundSchema;
-  /** @deprecated use `ApplicationChanges$Outbound` instead. */
-  export type Outbound = ApplicationChanges$Outbound;
-}
-
-export function applicationChangesToJSON(
-  applicationChanges: ApplicationChanges,
-): string {
-  return JSON.stringify(
-    ApplicationChanges$outboundSchema.parse(applicationChanges),
-  );
-}
 
 export function applicationChangesFromJSON(
   jsonString: string,

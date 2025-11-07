@@ -4,41 +4,29 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
   AtsDocumentsUploadRequestDto,
-  AtsDocumentsUploadRequestDto$inboundSchema,
   AtsDocumentsUploadRequestDto$Outbound,
   AtsDocumentsUploadRequestDto$outboundSchema,
 } from "./atsdocumentsuploadrequestdto.js";
 import {
   CreateQuestionnaire,
-  CreateQuestionnaire$inboundSchema,
   CreateQuestionnaire$Outbound,
   CreateQuestionnaire$outboundSchema,
 } from "./createquestionnaire.js";
 import {
   CustomFields,
-  CustomFields$inboundSchema,
   CustomFields$Outbound,
   CustomFields$outboundSchema,
 } from "./customfields.js";
 import {
   PhoneNumber,
-  PhoneNumber$inboundSchema,
   PhoneNumber$Outbound,
   PhoneNumber$outboundSchema,
 } from "./phonenumber.js";
 import {
   SocialLink,
-  SocialLink$inboundSchema,
   SocialLink$Outbound,
   SocialLink$outboundSchema,
 } from "./sociallink.js";
@@ -221,13 +209,6 @@ export type AtsCreateApplicationRequestDto = {
 };
 
 /** @internal */
-export const AtsCreateApplicationRequestDto4$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequestDto4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type AtsCreateApplicationRequestDto4$Outbound = {};
 
 /** @internal */
@@ -236,19 +217,6 @@ export const AtsCreateApplicationRequestDto4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsCreateApplicationRequestDto4
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDto4$ {
-  /** @deprecated use `AtsCreateApplicationRequestDto4$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateApplicationRequestDto4$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDto4$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateApplicationRequestDto4$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDto4$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationRequestDto4$Outbound;
-}
 
 export function atsCreateApplicationRequestDto4ToJSON(
   atsCreateApplicationRequestDto4: AtsCreateApplicationRequestDto4,
@@ -259,29 +227,6 @@ export function atsCreateApplicationRequestDto4ToJSON(
     ),
   );
 }
-
-export function atsCreateApplicationRequestDto4FromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateApplicationRequestDto4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateApplicationRequestDto4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateApplicationRequestDto4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateApplicationRequestDtoSourceValue$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequestDtoSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
-  z.array(z.any()),
-]);
 
 /** @internal */
 export type AtsCreateApplicationRequestDtoSourceValue$Outbound =
@@ -305,21 +250,6 @@ export const AtsCreateApplicationRequestDtoSourceValue$outboundSchema:
     z.array(z.any()),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDtoSourceValue$ {
-  /** @deprecated use `AtsCreateApplicationRequestDtoSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateApplicationRequestDtoSourceValue$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateApplicationRequestDtoSourceValue$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoSourceValue$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationRequestDtoSourceValue$Outbound;
-}
-
 export function atsCreateApplicationRequestDtoSourceValueToJSON(
   atsCreateApplicationRequestDtoSourceValue:
     AtsCreateApplicationRequestDtoSourceValue,
@@ -331,33 +261,6 @@ export function atsCreateApplicationRequestDtoSourceValueToJSON(
   );
 }
 
-export function atsCreateApplicationRequestDtoSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateApplicationRequestDtoSourceValue,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateApplicationRequestDtoSourceValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateApplicationRequestDtoSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateApplicationRequestDtoValue$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequestDtoValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AtsCreateApplicationRequestDtoValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
 /** @internal */
 export const AtsCreateApplicationRequestDtoValue$outboundSchema: z.ZodType<
   AtsCreateApplicationRequestDtoValueOpen,
@@ -367,43 +270,6 @@ export const AtsCreateApplicationRequestDtoValue$outboundSchema: z.ZodType<
   z.nativeEnum(AtsCreateApplicationRequestDtoValue),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDtoValue$ {
-  /** @deprecated use `AtsCreateApplicationRequestDtoValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateApplicationRequestDtoValue$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateApplicationRequestDtoValue$outboundSchema;
-}
-
-/** @internal */
-export const AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema:
-  z.ZodType<
-    AtsCreateApplicationRequestDtoApplicationStatus,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(AtsCreateApplicationRequestDtoValue$inboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
 
 /** @internal */
 export type AtsCreateApplicationRequestDtoApplicationStatus$Outbound = {
@@ -442,22 +308,6 @@ export const AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
-  /** @deprecated use `AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoApplicationStatus$Outbound` instead. */
-  export type Outbound =
-    AtsCreateApplicationRequestDtoApplicationStatus$Outbound;
-}
-
 export function atsCreateApplicationRequestDtoApplicationStatusToJSON(
   atsCreateApplicationRequestDtoApplicationStatus:
     AtsCreateApplicationRequestDtoApplicationStatus,
@@ -468,57 +318,6 @@ export function atsCreateApplicationRequestDtoApplicationStatusToJSON(
     ),
   );
 }
-
-export function atsCreateApplicationRequestDtoApplicationStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateApplicationRequestDtoApplicationStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateApplicationRequestDtoApplicationStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateApplicationRequestDtoCandidate$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequestDtoCandidate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  company: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
-  email: z.nullable(z.string()).optional(),
-  first_name: z.nullable(z.string()).optional(),
-  hired_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  phone_number: z.nullable(z.string()).optional(),
-  phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
-  social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
-  title: z.nullable(z.string()).optional(),
-  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_fields": "customFields",
-    "first_name": "firstName",
-    "hired_at": "hiredAt",
-    "last_name": "lastName",
-    "phone_number": "phoneNumber",
-    "phone_numbers": "phoneNumbers",
-    "social_links": "socialLinks",
-    "unified_custom_fields": "unifiedCustomFields",
-  });
-});
 
 /** @internal */
 export type AtsCreateApplicationRequestDtoCandidate$Outbound = {
@@ -571,21 +370,6 @@ export const AtsCreateApplicationRequestDtoCandidate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDtoCandidate$ {
-  /** @deprecated use `AtsCreateApplicationRequestDtoCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateApplicationRequestDtoCandidate$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateApplicationRequestDtoCandidate$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoCandidate$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationRequestDtoCandidate$Outbound;
-}
-
 export function atsCreateApplicationRequestDtoCandidateToJSON(
   atsCreateApplicationRequestDtoCandidate:
     AtsCreateApplicationRequestDtoCandidate,
@@ -596,32 +380,6 @@ export function atsCreateApplicationRequestDtoCandidateToJSON(
     ),
   );
 }
-
-export function atsCreateApplicationRequestDtoCandidateFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AtsCreateApplicationRequestDtoCandidate,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateApplicationRequestDtoCandidate$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AtsCreateApplicationRequestDtoCandidate' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateApplicationRequestDtoSource$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequestDtoSource,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-});
 
 /** @internal */
 export type AtsCreateApplicationRequestDtoSource$Outbound = {
@@ -639,21 +397,6 @@ export const AtsCreateApplicationRequestDtoSource$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDtoSource$ {
-  /** @deprecated use `AtsCreateApplicationRequestDtoSource$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsCreateApplicationRequestDtoSource$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoSource$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsCreateApplicationRequestDtoSource$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDtoSource$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationRequestDtoSource$Outbound;
-}
-
 export function atsCreateApplicationRequestDtoSourceToJSON(
   atsCreateApplicationRequestDtoSource: AtsCreateApplicationRequestDtoSource,
 ): string {
@@ -663,51 +406,6 @@ export function atsCreateApplicationRequestDtoSourceToJSON(
     ),
   );
 }
-
-export function atsCreateApplicationRequestDtoSourceFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateApplicationRequestDtoSource, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsCreateApplicationRequestDtoSource$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateApplicationRequestDtoSource' from JSON`,
-  );
-}
-
-/** @internal */
-export const AtsCreateApplicationRequestDto$inboundSchema: z.ZodType<
-  AtsCreateApplicationRequestDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  application_status: z.nullable(
-    z.lazy(() => AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema),
-  ).optional(),
-  candidate: z.nullable(
-    z.lazy(() => AtsCreateApplicationRequestDtoCandidate$inboundSchema),
-  ).optional(),
-  candidate_id: z.nullable(z.string()).optional(),
-  documents: z.nullable(z.array(AtsDocumentsUploadRequestDto$inboundSchema))
-    .optional(),
-  job_id: z.nullable(z.string()).optional(),
-  job_posting_id: z.nullable(z.string()).optional(),
-  location_id: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
-  questionnaires: z.nullable(z.array(CreateQuestionnaire$inboundSchema))
-    .optional(),
-  source: z.nullable(
-    z.lazy(() => AtsCreateApplicationRequestDtoSource$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "application_status": "applicationStatus",
-    "candidate_id": "candidateId",
-    "job_id": "jobId",
-    "job_posting_id": "jobPostingId",
-    "location_id": "locationId",
-  });
-});
 
 /** @internal */
 export type AtsCreateApplicationRequestDto$Outbound = {
@@ -765,19 +463,6 @@ export const AtsCreateApplicationRequestDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsCreateApplicationRequestDto$ {
-  /** @deprecated use `AtsCreateApplicationRequestDto$inboundSchema` instead. */
-  export const inboundSchema = AtsCreateApplicationRequestDto$inboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDto$outboundSchema` instead. */
-  export const outboundSchema = AtsCreateApplicationRequestDto$outboundSchema;
-  /** @deprecated use `AtsCreateApplicationRequestDto$Outbound` instead. */
-  export type Outbound = AtsCreateApplicationRequestDto$Outbound;
-}
-
 export function atsCreateApplicationRequestDtoToJSON(
   atsCreateApplicationRequestDto: AtsCreateApplicationRequestDto,
 ): string {
@@ -785,15 +470,5 @@ export function atsCreateApplicationRequestDtoToJSON(
     AtsCreateApplicationRequestDto$outboundSchema.parse(
       atsCreateApplicationRequestDto,
     ),
-  );
-}
-
-export function atsCreateApplicationRequestDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsCreateApplicationRequestDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsCreateApplicationRequestDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsCreateApplicationRequestDto' from JSON`,
   );
 }

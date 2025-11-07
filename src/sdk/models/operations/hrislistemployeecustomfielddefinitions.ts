@@ -88,22 +88,6 @@ export type HrisListEmployeeCustomFieldDefinitionsResponse = {
 };
 
 /** @internal */
-export const HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$inboundSchema:
-  z.ZodType<
-    HrisListEmployeeCustomFieldDefinitionsQueryParamFilter,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "updated_after": "updatedAfter",
-    });
-  });
-
-/** @internal */
 export type HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
@@ -123,22 +107,6 @@ export const HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$outboundSche
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$ {
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$inboundSchema;
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$outboundSchema;
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$Outbound` instead. */
-  export type Outbound =
-    HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$Outbound;
-}
-
 export function hrisListEmployeeCustomFieldDefinitionsQueryParamFilterToJSON(
   hrisListEmployeeCustomFieldDefinitionsQueryParamFilter:
     HrisListEmployeeCustomFieldDefinitionsQueryParamFilter,
@@ -149,51 +117,6 @@ export function hrisListEmployeeCustomFieldDefinitionsQueryParamFilterToJSON(
     ),
   );
 }
-
-export function hrisListEmployeeCustomFieldDefinitionsQueryParamFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisListEmployeeCustomFieldDefinitionsQueryParamFilter,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'HrisListEmployeeCustomFieldDefinitionsQueryParamFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const HrisListEmployeeCustomFieldDefinitionsRequest$inboundSchema:
-  z.ZodType<
-    HrisListEmployeeCustomFieldDefinitionsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    fields: z.nullable(z.string()).optional(),
-    filter: z.nullable(
-      z.lazy(() =>
-        HrisListEmployeeCustomFieldDefinitionsQueryParamFilter$inboundSchema
-      ),
-    ).optional(),
-    next: z.nullable(z.string()).optional(),
-    page: z.nullable(z.string()).optional(),
-    page_size: z.nullable(z.string()).optional(),
-    proxy: z.nullable(z.record(z.any())).optional(),
-    raw: z.nullable(z.boolean()).optional(),
-    updated_after: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ).optional(),
-    "x-account-id": z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "page_size": "pageSize",
-      "updated_after": "updatedAfter",
-      "x-account-id": "xAccountId",
-    });
-  });
 
 /** @internal */
 export type HrisListEmployeeCustomFieldDefinitionsRequest$Outbound = {
@@ -240,21 +163,6 @@ export const HrisListEmployeeCustomFieldDefinitionsRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListEmployeeCustomFieldDefinitionsRequest$ {
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListEmployeeCustomFieldDefinitionsRequest$inboundSchema;
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListEmployeeCustomFieldDefinitionsRequest$outboundSchema;
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsRequest$Outbound` instead. */
-  export type Outbound = HrisListEmployeeCustomFieldDefinitionsRequest$Outbound;
-}
-
 export function hrisListEmployeeCustomFieldDefinitionsRequestToJSON(
   hrisListEmployeeCustomFieldDefinitionsRequest:
     HrisListEmployeeCustomFieldDefinitionsRequest,
@@ -263,22 +171,6 @@ export function hrisListEmployeeCustomFieldDefinitionsRequestToJSON(
     HrisListEmployeeCustomFieldDefinitionsRequest$outboundSchema.parse(
       hrisListEmployeeCustomFieldDefinitionsRequest,
     ),
-  );
-}
-
-export function hrisListEmployeeCustomFieldDefinitionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  HrisListEmployeeCustomFieldDefinitionsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      HrisListEmployeeCustomFieldDefinitionsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'HrisListEmployeeCustomFieldDefinitionsRequest' from JSON`,
   );
 }
 
@@ -305,69 +197,6 @@ export const HrisListEmployeeCustomFieldDefinitionsResponse$inboundSchema:
       "RawResponse": "rawResponse",
     });
   });
-
-/** @internal */
-export type HrisListEmployeeCustomFieldDefinitionsResponse$Outbound = {
-  ContentType: string;
-  CustomFieldDefinitionsPaginated?:
-    | shared.CustomFieldDefinitionsPaginated$Outbound
-    | undefined;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const HrisListEmployeeCustomFieldDefinitionsResponse$outboundSchema:
-  z.ZodType<
-    HrisListEmployeeCustomFieldDefinitionsResponse$Outbound,
-    z.ZodTypeDef,
-    HrisListEmployeeCustomFieldDefinitionsResponse
-  > = z.object({
-    contentType: z.string(),
-    customFieldDefinitionsPaginated: shared
-      .CustomFieldDefinitionsPaginated$outboundSchema.optional(),
-    headers: z.record(z.array(z.string())),
-    statusCode: z.number().int(),
-    rawResponse: z.instanceof(Response).transform(() => {
-      throw new Error("Response cannot be serialized");
-    }),
-  }).transform((v) => {
-    return remap$(v, {
-      contentType: "ContentType",
-      customFieldDefinitionsPaginated: "CustomFieldDefinitionsPaginated",
-      headers: "Headers",
-      statusCode: "StatusCode",
-      rawResponse: "RawResponse",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HrisListEmployeeCustomFieldDefinitionsResponse$ {
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    HrisListEmployeeCustomFieldDefinitionsResponse$inboundSchema;
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    HrisListEmployeeCustomFieldDefinitionsResponse$outboundSchema;
-  /** @deprecated use `HrisListEmployeeCustomFieldDefinitionsResponse$Outbound` instead. */
-  export type Outbound =
-    HrisListEmployeeCustomFieldDefinitionsResponse$Outbound;
-}
-
-export function hrisListEmployeeCustomFieldDefinitionsResponseToJSON(
-  hrisListEmployeeCustomFieldDefinitionsResponse:
-    HrisListEmployeeCustomFieldDefinitionsResponse,
-): string {
-  return JSON.stringify(
-    HrisListEmployeeCustomFieldDefinitionsResponse$outboundSchema.parse(
-      hrisListEmployeeCustomFieldDefinitionsResponse,
-    ),
-  );
-}
 
 export function hrisListEmployeeCustomFieldDefinitionsResponseFromJSON(
   jsonString: string,

@@ -5,11 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -84,33 +80,6 @@ export const IamResource4$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type IamResource4$Outbound = {};
-
-/** @internal */
-export const IamResource4$outboundSchema: z.ZodType<
-  IamResource4$Outbound,
-  z.ZodTypeDef,
-  IamResource4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamResource4$ {
-  /** @deprecated use `IamResource4$inboundSchema` instead. */
-  export const inboundSchema = IamResource4$inboundSchema;
-  /** @deprecated use `IamResource4$outboundSchema` instead. */
-  export const outboundSchema = IamResource4$outboundSchema;
-  /** @deprecated use `IamResource4$Outbound` instead. */
-  export type Outbound = IamResource4$Outbound;
-}
-
-export function iamResource4ToJSON(iamResource4: IamResource4): string {
-  return JSON.stringify(IamResource4$outboundSchema.parse(iamResource4));
-}
-
 export function iamResource4FromJSON(
   jsonString: string,
 ): SafeParseResult<IamResource4, SDKValidationError> {
@@ -134,48 +103,6 @@ export const IamResourceSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type IamResourceSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | IamResource4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const IamResourceSourceValue$outboundSchema: z.ZodType<
-  IamResourceSourceValue$Outbound,
-  z.ZodTypeDef,
-  IamResourceSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => IamResource4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamResourceSourceValue$ {
-  /** @deprecated use `IamResourceSourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamResourceSourceValue$inboundSchema;
-  /** @deprecated use `IamResourceSourceValue$outboundSchema` instead. */
-  export const outboundSchema = IamResourceSourceValue$outboundSchema;
-  /** @deprecated use `IamResourceSourceValue$Outbound` instead. */
-  export type Outbound = IamResourceSourceValue$Outbound;
-}
-
-export function iamResourceSourceValueToJSON(
-  iamResourceSourceValue: IamResourceSourceValue,
-): string {
-  return JSON.stringify(
-    IamResourceSourceValue$outboundSchema.parse(iamResourceSourceValue),
-  );
-}
-
 export function iamResourceSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<IamResourceSourceValue, SDKValidationError> {
@@ -198,27 +125,6 @@ export const IamResourceValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const IamResourceValue$outboundSchema: z.ZodType<
-  IamResourceValueOpen,
-  z.ZodTypeDef,
-  IamResourceValueOpen
-> = z.union([
-  z.nativeEnum(IamResourceValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamResourceValue$ {
-  /** @deprecated use `IamResourceValue$inboundSchema` instead. */
-  export const inboundSchema = IamResourceValue$inboundSchema;
-  /** @deprecated use `IamResourceValue$outboundSchema` instead. */
-  export const outboundSchema = IamResourceValue$outboundSchema;
-}
-
-/** @internal */
 export const IamResourceType$inboundSchema: z.ZodType<
   IamResourceType,
   z.ZodTypeDef,
@@ -239,60 +145,6 @@ export const IamResourceType$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type IamResourceType$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | IamResource4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const IamResourceType$outboundSchema: z.ZodType<
-  IamResourceType$Outbound,
-  z.ZodTypeDef,
-  IamResourceType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => IamResource4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(IamResourceValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamResourceType$ {
-  /** @deprecated use `IamResourceType$inboundSchema` instead. */
-  export const inboundSchema = IamResourceType$inboundSchema;
-  /** @deprecated use `IamResourceType$outboundSchema` instead. */
-  export const outboundSchema = IamResourceType$outboundSchema;
-  /** @deprecated use `IamResourceType$Outbound` instead. */
-  export type Outbound = IamResourceType$Outbound;
-}
-
-export function iamResourceTypeToJSON(
-  iamResourceType: IamResourceType,
-): string {
-  return JSON.stringify(IamResourceType$outboundSchema.parse(iamResourceType));
-}
 
 export function iamResourceTypeFromJSON(
   jsonString: string,
@@ -329,57 +181,6 @@ export const IamResource$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type IamResource$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  location?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  type?: IamResourceType$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const IamResource$outboundSchema: z.ZodType<
-  IamResource$Outbound,
-  z.ZodTypeDef,
-  IamResource
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  location: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => IamResourceType$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamResource$ {
-  /** @deprecated use `IamResource$inboundSchema` instead. */
-  export const inboundSchema = IamResource$inboundSchema;
-  /** @deprecated use `IamResource$outboundSchema` instead. */
-  export const outboundSchema = IamResource$outboundSchema;
-  /** @deprecated use `IamResource$Outbound` instead. */
-  export type Outbound = IamResource$Outbound;
-}
-
-export function iamResourceToJSON(iamResource: IamResource): string {
-  return JSON.stringify(IamResource$outboundSchema.parse(iamResource));
-}
 
 export function iamResourceFromJSON(
   jsonString: string,

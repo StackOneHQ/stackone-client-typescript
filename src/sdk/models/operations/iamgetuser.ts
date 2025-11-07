@@ -54,24 +54,6 @@ export type IamGetUserResponse = {
 };
 
 /** @internal */
-export const IamGetUserRequest$inboundSchema: z.ZodType<
-  IamGetUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type IamGetUserRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -99,34 +81,11 @@ export const IamGetUserRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamGetUserRequest$ {
-  /** @deprecated use `IamGetUserRequest$inboundSchema` instead. */
-  export const inboundSchema = IamGetUserRequest$inboundSchema;
-  /** @deprecated use `IamGetUserRequest$outboundSchema` instead. */
-  export const outboundSchema = IamGetUserRequest$outboundSchema;
-  /** @deprecated use `IamGetUserRequest$Outbound` instead. */
-  export type Outbound = IamGetUserRequest$Outbound;
-}
-
 export function iamGetUserRequestToJSON(
   iamGetUserRequest: IamGetUserRequest,
 ): string {
   return JSON.stringify(
     IamGetUserRequest$outboundSchema.parse(iamGetUserRequest),
-  );
-}
-
-export function iamGetUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IamGetUserRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IamGetUserRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamGetUserRequest' from JSON`,
   );
 }
 
@@ -151,59 +110,6 @@ export const IamGetUserResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type IamGetUserResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  IamUserResult?: shared.IamUserResult$Outbound | undefined;
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const IamGetUserResponse$outboundSchema: z.ZodType<
-  IamGetUserResponse$Outbound,
-  z.ZodTypeDef,
-  IamGetUserResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  iamUserResult: shared.IamUserResult$outboundSchema.optional(),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    iamUserResult: "IamUserResult",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IamGetUserResponse$ {
-  /** @deprecated use `IamGetUserResponse$inboundSchema` instead. */
-  export const inboundSchema = IamGetUserResponse$inboundSchema;
-  /** @deprecated use `IamGetUserResponse$outboundSchema` instead. */
-  export const outboundSchema = IamGetUserResponse$outboundSchema;
-  /** @deprecated use `IamGetUserResponse$Outbound` instead. */
-  export type Outbound = IamGetUserResponse$Outbound;
-}
-
-export function iamGetUserResponseToJSON(
-  iamGetUserResponse: IamGetUserResponse,
-): string {
-  return JSON.stringify(
-    IamGetUserResponse$outboundSchema.parse(iamGetUserResponse),
-  );
-}
 
 export function iamGetUserResponseFromJSON(
   jsonString: string,

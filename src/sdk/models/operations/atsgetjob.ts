@@ -58,25 +58,6 @@ export type AtsGetJobResponse = {
 };
 
 /** @internal */
-export const AtsGetJobRequest$inboundSchema: z.ZodType<
-  AtsGetJobRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expand: z.nullable(z.string()).optional(),
-  fields: z.nullable(z.string()).optional(),
-  id: z.string(),
-  include: z.nullable(z.string()).optional(),
-  proxy: z.nullable(z.record(z.any())).optional(),
-  raw: z.nullable(z.boolean()).optional(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsGetJobRequest$Outbound = {
   expand?: string | null | undefined;
   fields?: string | null | undefined;
@@ -106,34 +87,11 @@ export const AtsGetJobRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobRequest$ {
-  /** @deprecated use `AtsGetJobRequest$inboundSchema` instead. */
-  export const inboundSchema = AtsGetJobRequest$inboundSchema;
-  /** @deprecated use `AtsGetJobRequest$outboundSchema` instead. */
-  export const outboundSchema = AtsGetJobRequest$outboundSchema;
-  /** @deprecated use `AtsGetJobRequest$Outbound` instead. */
-  export type Outbound = AtsGetJobRequest$Outbound;
-}
-
 export function atsGetJobRequestToJSON(
   atsGetJobRequest: AtsGetJobRequest,
 ): string {
   return JSON.stringify(
     AtsGetJobRequest$outboundSchema.parse(atsGetJobRequest),
-  );
-}
-
-export function atsGetJobRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsGetJobRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtsGetJobRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsGetJobRequest' from JSON`,
   );
 }
 
@@ -158,59 +116,6 @@ export const AtsGetJobResponse$inboundSchema: z.ZodType<
     "RawResponse": "rawResponse",
   });
 });
-
-/** @internal */
-export type AtsGetJobResponse$Outbound = {
-  AtsJobResult?: shared.AtsJobResult$Outbound | undefined;
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-};
-
-/** @internal */
-export const AtsGetJobResponse$outboundSchema: z.ZodType<
-  AtsGetJobResponse$Outbound,
-  z.ZodTypeDef,
-  AtsGetJobResponse
-> = z.object({
-  atsJobResult: shared.AtsJobResult$outboundSchema.optional(),
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-}).transform((v) => {
-  return remap$(v, {
-    atsJobResult: "AtsJobResult",
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsGetJobResponse$ {
-  /** @deprecated use `AtsGetJobResponse$inboundSchema` instead. */
-  export const inboundSchema = AtsGetJobResponse$inboundSchema;
-  /** @deprecated use `AtsGetJobResponse$outboundSchema` instead. */
-  export const outboundSchema = AtsGetJobResponse$outboundSchema;
-  /** @deprecated use `AtsGetJobResponse$Outbound` instead. */
-  export type Outbound = AtsGetJobResponse$Outbound;
-}
-
-export function atsGetJobResponseToJSON(
-  atsGetJobResponse: AtsGetJobResponse,
-): string {
-  return JSON.stringify(
-    AtsGetJobResponse$outboundSchema.parse(atsGetJobResponse),
-  );
-}
 
 export function atsGetJobResponseFromJSON(
   jsonString: string,

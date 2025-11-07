@@ -7,18 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
-import {
-  SmsTemplate,
-  SmsTemplate$inboundSchema,
-  SmsTemplate$Outbound,
-  SmsTemplate$outboundSchema,
-} from "./smstemplate.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
+import { SmsTemplate, SmsTemplate$inboundSchema } from "./smstemplate.js";
 
 export type SmsTemplatesPaginated = {
   data: Array<SmsTemplate>;
@@ -45,51 +35,6 @@ export const SmsTemplatesPaginated$inboundSchema: z.ZodType<
     "next_page": "nextPage",
   });
 });
-
-/** @internal */
-export type SmsTemplatesPaginated$Outbound = {
-  data: Array<SmsTemplate$Outbound>;
-  next?: string | null | undefined;
-  next_page?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const SmsTemplatesPaginated$outboundSchema: z.ZodType<
-  SmsTemplatesPaginated$Outbound,
-  z.ZodTypeDef,
-  SmsTemplatesPaginated
-> = z.object({
-  data: z.array(SmsTemplate$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  nextPage: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    nextPage: "next_page",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsTemplatesPaginated$ {
-  /** @deprecated use `SmsTemplatesPaginated$inboundSchema` instead. */
-  export const inboundSchema = SmsTemplatesPaginated$inboundSchema;
-  /** @deprecated use `SmsTemplatesPaginated$outboundSchema` instead. */
-  export const outboundSchema = SmsTemplatesPaginated$outboundSchema;
-  /** @deprecated use `SmsTemplatesPaginated$Outbound` instead. */
-  export type Outbound = SmsTemplatesPaginated$Outbound;
-}
-
-export function smsTemplatesPaginatedToJSON(
-  smsTemplatesPaginated: SmsTemplatesPaginated,
-): string {
-  return JSON.stringify(
-    SmsTemplatesPaginated$outboundSchema.parse(smsTemplatesPaginated),
-  );
-}
 
 export function smsTemplatesPaginatedFromJSON(
   jsonString: string,

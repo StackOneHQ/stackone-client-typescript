@@ -5,67 +5,30 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationAttachment,
   ApplicationAttachment$inboundSchema,
-  ApplicationAttachment$Outbound,
-  ApplicationAttachment$outboundSchema,
 } from "./applicationattachment.js";
 import {
   AtsDocumentApiModel,
   AtsDocumentApiModel$inboundSchema,
-  AtsDocumentApiModel$Outbound,
-  AtsDocumentApiModel$outboundSchema,
 } from "./atsdocumentapimodel.js";
 import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
-  CandidateEmail$Outbound,
-  CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
-import {
-  CustomFields,
-  CustomFields$inboundSchema,
-  CustomFields$Outbound,
-  CustomFields$outboundSchema,
-} from "./customfields.js";
-import {
-  PhoneNumber,
-  PhoneNumber$inboundSchema,
-  PhoneNumber$Outbound,
-  PhoneNumber$outboundSchema,
-} from "./phonenumber.js";
-import {
-  Questionnaire,
-  Questionnaire$inboundSchema,
-  Questionnaire$Outbound,
-  Questionnaire$outboundSchema,
-} from "./questionnaire.js";
+import { CustomFields, CustomFields$inboundSchema } from "./customfields.js";
+import { PhoneNumber, PhoneNumber$inboundSchema } from "./phonenumber.js";
+import { Questionnaire, Questionnaire$inboundSchema } from "./questionnaire.js";
 import {
   RejectedReason,
   RejectedReason$inboundSchema,
-  RejectedReason$Outbound,
-  RejectedReason$outboundSchema,
 } from "./rejectedreason.js";
-import {
-  ResultLink,
-  ResultLink$inboundSchema,
-  ResultLink$Outbound,
-  ResultLink$outboundSchema,
-} from "./resultlink.js";
-import {
-  SocialLink,
-  SocialLink$inboundSchema,
-  SocialLink$Outbound,
-  SocialLink$outboundSchema,
-} from "./sociallink.js";
+import { ResultLink, ResultLink$inboundSchema } from "./resultlink.js";
+import { SocialLink, SocialLink$inboundSchema } from "./sociallink.js";
 
 export type ApplicationApplicationStage = {
   /**
@@ -385,62 +348,6 @@ export const ApplicationApplicationStage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ApplicationApplicationStage$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  order?: number | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationApplicationStage$outboundSchema: z.ZodType<
-  ApplicationApplicationStage$Outbound,
-  z.ZodTypeDef,
-  ApplicationApplicationStage
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  order: z.nullable(z.number()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationApplicationStage$ {
-  /** @deprecated use `ApplicationApplicationStage$inboundSchema` instead. */
-  export const inboundSchema = ApplicationApplicationStage$inboundSchema;
-  /** @deprecated use `ApplicationApplicationStage$outboundSchema` instead. */
-  export const outboundSchema = ApplicationApplicationStage$outboundSchema;
-  /** @deprecated use `ApplicationApplicationStage$Outbound` instead. */
-  export type Outbound = ApplicationApplicationStage$Outbound;
-}
-
-export function applicationApplicationStageToJSON(
-  applicationApplicationStage: ApplicationApplicationStage,
-): string {
-  return JSON.stringify(
-    ApplicationApplicationStage$outboundSchema.parse(
-      applicationApplicationStage,
-    ),
-  );
-}
-
 export function applicationApplicationStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationApplicationStage, SDKValidationError> {
@@ -457,33 +364,6 @@ export const Application4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type Application4$Outbound = {};
-
-/** @internal */
-export const Application4$outboundSchema: z.ZodType<
-  Application4$Outbound,
-  z.ZodTypeDef,
-  Application4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Application4$ {
-  /** @deprecated use `Application4$inboundSchema` instead. */
-  export const inboundSchema = Application4$inboundSchema;
-  /** @deprecated use `Application4$outboundSchema` instead. */
-  export const outboundSchema = Application4$outboundSchema;
-  /** @deprecated use `Application4$Outbound` instead. */
-  export type Outbound = Application4$Outbound;
-}
-
-export function application4ToJSON(application4: Application4): string {
-  return JSON.stringify(Application4$outboundSchema.parse(application4));
-}
 
 export function application4FromJSON(
   jsonString: string,
@@ -508,48 +388,6 @@ export const ApplicationSourceValue$inboundSchema: z.ZodType<
   z.array(z.any()),
 ]);
 
-/** @internal */
-export type ApplicationSourceValue$Outbound =
-  | string
-  | number
-  | boolean
-  | Application4$Outbound
-  | Array<any>;
-
-/** @internal */
-export const ApplicationSourceValue$outboundSchema: z.ZodType<
-  ApplicationSourceValue$Outbound,
-  z.ZodTypeDef,
-  ApplicationSourceValue
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => Application4$outboundSchema),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationSourceValue$ {
-  /** @deprecated use `ApplicationSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ApplicationSourceValue$inboundSchema;
-  /** @deprecated use `ApplicationSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ApplicationSourceValue$outboundSchema;
-  /** @deprecated use `ApplicationSourceValue$Outbound` instead. */
-  export type Outbound = ApplicationSourceValue$Outbound;
-}
-
-export function applicationSourceValueToJSON(
-  applicationSourceValue: ApplicationSourceValue,
-): string {
-  return JSON.stringify(
-    ApplicationSourceValue$outboundSchema.parse(applicationSourceValue),
-  );
-}
-
 export function applicationSourceValueFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationSourceValue, SDKValidationError> {
@@ -572,27 +410,6 @@ export const ApplicationValue$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const ApplicationValue$outboundSchema: z.ZodType<
-  ApplicationValueOpen,
-  z.ZodTypeDef,
-  ApplicationValueOpen
-> = z.union([
-  z.nativeEnum(ApplicationValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationValue$ {
-  /** @deprecated use `ApplicationValue$inboundSchema` instead. */
-  export const inboundSchema = ApplicationValue$inboundSchema;
-  /** @deprecated use `ApplicationValue$outboundSchema` instead. */
-  export const outboundSchema = ApplicationValue$outboundSchema;
-}
-
-/** @internal */
 export const ApplicationStatus$inboundSchema: z.ZodType<
   ApplicationStatus,
   z.ZodTypeDef,
@@ -613,62 +430,6 @@ export const ApplicationStatus$inboundSchema: z.ZodType<
     "source_value": "sourceValue",
   });
 });
-
-/** @internal */
-export type ApplicationStatus$Outbound = {
-  source_value?:
-    | string
-    | number
-    | boolean
-    | Application4$Outbound
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationStatus$outboundSchema: z.ZodType<
-  ApplicationStatus$Outbound,
-  z.ZodTypeDef,
-  ApplicationStatus
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.lazy(() => Application4$outboundSchema),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ApplicationValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationStatus$ {
-  /** @deprecated use `ApplicationStatus$inboundSchema` instead. */
-  export const inboundSchema = ApplicationStatus$inboundSchema;
-  /** @deprecated use `ApplicationStatus$outboundSchema` instead. */
-  export const outboundSchema = ApplicationStatus$outboundSchema;
-  /** @deprecated use `ApplicationStatus$Outbound` instead. */
-  export type Outbound = ApplicationStatus$Outbound;
-}
-
-export function applicationStatusToJSON(
-  applicationStatus: ApplicationStatus,
-): string {
-  return JSON.stringify(
-    ApplicationStatus$outboundSchema.parse(applicationStatus),
-  );
-}
 
 export function applicationStatusFromJSON(
   jsonString: string,
@@ -703,64 +464,6 @@ export const ApplicationCandidate$inboundSchema: z.ZodType<
     "social_links": "socialLinks",
   });
 });
-
-/** @internal */
-export type ApplicationCandidate$Outbound = {
-  company?: string | null | undefined;
-  email?: string | null | undefined;
-  emails?: Array<CandidateEmail$Outbound> | null | undefined;
-  first_name?: string | null | undefined;
-  last_name?: string | null | undefined;
-  name?: string | null | undefined;
-  phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
-  social_links?: Array<SocialLink$Outbound> | null | undefined;
-  title?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationCandidate$outboundSchema: z.ZodType<
-  ApplicationCandidate$Outbound,
-  z.ZodTypeDef,
-  ApplicationCandidate
-> = z.object({
-  company: z.nullable(z.string()).optional(),
-  email: z.nullable(z.string()).optional(),
-  emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
-  firstName: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
-  socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
-  title: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    phoneNumbers: "phone_numbers",
-    socialLinks: "social_links",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationCandidate$ {
-  /** @deprecated use `ApplicationCandidate$inboundSchema` instead. */
-  export const inboundSchema = ApplicationCandidate$inboundSchema;
-  /** @deprecated use `ApplicationCandidate$outboundSchema` instead. */
-  export const outboundSchema = ApplicationCandidate$outboundSchema;
-  /** @deprecated use `ApplicationCandidate$Outbound` instead. */
-  export type Outbound = ApplicationCandidate$Outbound;
-}
-
-export function applicationCandidateToJSON(
-  applicationCandidate: ApplicationCandidate,
-): string {
-  return JSON.stringify(
-    ApplicationCandidate$outboundSchema.parse(applicationCandidate),
-  );
-}
 
 export function applicationCandidateFromJSON(
   jsonString: string,
@@ -798,60 +501,6 @@ export const ApplicationInterviewStage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type ApplicationInterviewStage$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  order?: number | null | undefined;
-  remote_id?: string | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationInterviewStage$outboundSchema: z.ZodType<
-  ApplicationInterviewStage$Outbound,
-  z.ZodTypeDef,
-  ApplicationInterviewStage
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  order: z.nullable(z.number()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationInterviewStage$ {
-  /** @deprecated use `ApplicationInterviewStage$inboundSchema` instead. */
-  export const inboundSchema = ApplicationInterviewStage$inboundSchema;
-  /** @deprecated use `ApplicationInterviewStage$outboundSchema` instead. */
-  export const outboundSchema = ApplicationInterviewStage$outboundSchema;
-  /** @deprecated use `ApplicationInterviewStage$Outbound` instead. */
-  export type Outbound = ApplicationInterviewStage$Outbound;
-}
-
-export function applicationInterviewStageToJSON(
-  applicationInterviewStage: ApplicationInterviewStage,
-): string {
-  return JSON.stringify(
-    ApplicationInterviewStage$outboundSchema.parse(applicationInterviewStage),
-  );
-}
-
 export function applicationInterviewStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApplicationInterviewStage, SDKValidationError> {
@@ -873,45 +522,6 @@ export const Source$inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> = z
       "remote_id": "remoteId",
     });
   });
-
-/** @internal */
-export type Source$Outbound = {
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const Source$outboundSchema: z.ZodType<
-  Source$Outbound,
-  z.ZodTypeDef,
-  Source
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Source$ {
-  /** @deprecated use `Source$inboundSchema` instead. */
-  export const inboundSchema = Source$inboundSchema;
-  /** @deprecated use `Source$outboundSchema` instead. */
-  export const outboundSchema = Source$outboundSchema;
-  /** @deprecated use `Source$Outbound` instead. */
-  export type Outbound = Source$Outbound;
-}
-
-export function sourceToJSON(source: Source): string {
-  return JSON.stringify(Source$outboundSchema.parse(source));
-}
 
 export function sourceFromJSON(
   jsonString: string,
@@ -1003,133 +613,6 @@ export const Application$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type Application$Outbound = {
-  application_stage?: ApplicationApplicationStage$Outbound | null | undefined;
-  application_stage_id?: string | null | undefined;
-  application_status?: ApplicationStatus$Outbound | null | undefined;
-  attachments?: Array<ApplicationAttachment$Outbound> | null | undefined;
-  candidate?: ApplicationCandidate$Outbound | null | undefined;
-  candidate_id?: string | null | undefined;
-  created_at?: string | null | undefined;
-  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
-  documents?: Array<AtsDocumentApiModel$Outbound> | null | undefined;
-  id?: string | null | undefined;
-  interview_stage?: ApplicationInterviewStage$Outbound | null | undefined;
-  interview_stage_id?: string | null | undefined;
-  job_id?: string | null | undefined;
-  location_id?: string | null | undefined;
-  location_ids?: Array<string> | null | undefined;
-  questionnaires?: Array<Questionnaire$Outbound> | null | undefined;
-  rejected_at?: string | null | undefined;
-  rejected_reason_ids?: Array<string> | null | undefined;
-  rejected_reasons?: Array<RejectedReason$Outbound> | null | undefined;
-  remote_application_stage_id?: string | null | undefined;
-  remote_candidate_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  remote_interview_stage_id?: string | null | undefined;
-  remote_job_id?: string | null | undefined;
-  remote_location_id?: string | null | undefined;
-  remote_location_ids?: Array<string> | null | undefined;
-  remote_rejected_reason_ids?: Array<string> | null | undefined;
-  result_links?: Array<ResultLink$Outbound> | null | undefined;
-  source?: Source$Outbound | null | undefined;
-  unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const Application$outboundSchema: z.ZodType<
-  Application$Outbound,
-  z.ZodTypeDef,
-  Application
-> = z.object({
-  applicationStage: z.nullable(
-    z.lazy(() => ApplicationApplicationStage$outboundSchema),
-  ).optional(),
-  applicationStageId: z.nullable(z.string()).optional(),
-  applicationStatus: z.nullable(z.lazy(() => ApplicationStatus$outboundSchema))
-    .optional(),
-  attachments: z.nullable(z.array(ApplicationAttachment$outboundSchema))
-    .optional(),
-  candidate: z.nullable(z.lazy(() => ApplicationCandidate$outboundSchema))
-    .optional(),
-  candidateId: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
-  documents: z.nullable(z.array(AtsDocumentApiModel$outboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  interviewStage: z.nullable(
-    z.lazy(() => ApplicationInterviewStage$outboundSchema),
-  ).optional(),
-  interviewStageId: z.nullable(z.string()).optional(),
-  jobId: z.nullable(z.string()).optional(),
-  locationId: z.nullable(z.string()).optional(),
-  locationIds: z.nullable(z.array(z.string())).optional(),
-  questionnaires: z.nullable(z.array(Questionnaire$outboundSchema)).optional(),
-  rejectedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  rejectedReasonIds: z.nullable(z.array(z.string())).optional(),
-  rejectedReasons: z.nullable(z.array(RejectedReason$outboundSchema))
-    .optional(),
-  remoteApplicationStageId: z.nullable(z.string()).optional(),
-  remoteCandidateId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  remoteInterviewStageId: z.nullable(z.string()).optional(),
-  remoteJobId: z.nullable(z.string()).optional(),
-  remoteLocationId: z.nullable(z.string()).optional(),
-  remoteLocationIds: z.nullable(z.array(z.string())).optional(),
-  remoteRejectedReasonIds: z.nullable(z.array(z.string())).optional(),
-  resultLinks: z.nullable(z.array(ResultLink$outboundSchema)).optional(),
-  source: z.nullable(z.lazy(() => Source$outboundSchema)).optional(),
-  unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    applicationStage: "application_stage",
-    applicationStageId: "application_stage_id",
-    applicationStatus: "application_status",
-    candidateId: "candidate_id",
-    createdAt: "created_at",
-    customFields: "custom_fields",
-    interviewStage: "interview_stage",
-    interviewStageId: "interview_stage_id",
-    jobId: "job_id",
-    locationId: "location_id",
-    locationIds: "location_ids",
-    rejectedAt: "rejected_at",
-    rejectedReasonIds: "rejected_reason_ids",
-    rejectedReasons: "rejected_reasons",
-    remoteApplicationStageId: "remote_application_stage_id",
-    remoteCandidateId: "remote_candidate_id",
-    remoteId: "remote_id",
-    remoteInterviewStageId: "remote_interview_stage_id",
-    remoteJobId: "remote_job_id",
-    remoteLocationId: "remote_location_id",
-    remoteLocationIds: "remote_location_ids",
-    remoteRejectedReasonIds: "remote_rejected_reason_ids",
-    resultLinks: "result_links",
-    unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Application$ {
-  /** @deprecated use `Application$inboundSchema` instead. */
-  export const inboundSchema = Application$inboundSchema;
-  /** @deprecated use `Application$outboundSchema` instead. */
-  export const outboundSchema = Application$outboundSchema;
-  /** @deprecated use `Application$Outbound` instead. */
-  export type Outbound = Application$Outbound;
-}
-
-export function applicationToJSON(application: Application): string {
-  return JSON.stringify(Application$outboundSchema.parse(application));
-}
 
 export function applicationFromJSON(
   jsonString: string,

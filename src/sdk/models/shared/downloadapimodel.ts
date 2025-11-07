@@ -10,8 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DownloadHeadersApiModel,
   DownloadHeadersApiModel$inboundSchema,
-  DownloadHeadersApiModel$Outbound,
-  DownloadHeadersApiModel$outboundSchema,
 } from "./downloadheadersapimodel.js";
 
 export type DownloadApiModel = {
@@ -34,43 +32,6 @@ export const DownloadApiModel$inboundSchema: z.ZodType<
   data: b64$.zodInbound,
   headers: DownloadHeadersApiModel$inboundSchema,
 });
-
-/** @internal */
-export type DownloadApiModel$Outbound = {
-  data: Uint8Array;
-  headers: DownloadHeadersApiModel$Outbound;
-};
-
-/** @internal */
-export const DownloadApiModel$outboundSchema: z.ZodType<
-  DownloadApiModel$Outbound,
-  z.ZodTypeDef,
-  DownloadApiModel
-> = z.object({
-  data: b64$.zodOutbound,
-  headers: DownloadHeadersApiModel$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DownloadApiModel$ {
-  /** @deprecated use `DownloadApiModel$inboundSchema` instead. */
-  export const inboundSchema = DownloadApiModel$inboundSchema;
-  /** @deprecated use `DownloadApiModel$outboundSchema` instead. */
-  export const outboundSchema = DownloadApiModel$outboundSchema;
-  /** @deprecated use `DownloadApiModel$Outbound` instead. */
-  export type Outbound = DownloadApiModel$Outbound;
-}
-
-export function downloadApiModelToJSON(
-  downloadApiModel: DownloadApiModel,
-): string {
-  return JSON.stringify(
-    DownloadApiModel$outboundSchema.parse(downloadApiModel),
-  );
-}
 
 export function downloadApiModelFromJSON(
   jsonString: string,

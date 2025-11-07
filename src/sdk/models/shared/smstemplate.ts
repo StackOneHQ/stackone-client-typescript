@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  SmsMessages,
-  SmsMessages$inboundSchema,
-  SmsMessages$Outbound,
-  SmsMessages$outboundSchema,
-} from "./smsmessages.js";
+import { SmsMessages, SmsMessages$inboundSchema } from "./smsmessages.js";
 
 export type SmsTemplate = {
   /**
@@ -60,55 +55,6 @@ export const SmsTemplate$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
-
-/** @internal */
-export type SmsTemplate$Outbound = {
-  created_at?: string | null | undefined;
-  id?: string | null | undefined;
-  messages?: Array<SmsMessages$Outbound> | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  tags?: Array<string> | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const SmsTemplate$outboundSchema: z.ZodType<
-  SmsTemplate$Outbound,
-  z.ZodTypeDef,
-  SmsTemplate
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.nullable(z.string()).optional(),
-  messages: z.nullable(z.array(SmsMessages$outboundSchema)).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  tags: z.nullable(z.array(z.string())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SmsTemplate$ {
-  /** @deprecated use `SmsTemplate$inboundSchema` instead. */
-  export const inboundSchema = SmsTemplate$inboundSchema;
-  /** @deprecated use `SmsTemplate$outboundSchema` instead. */
-  export const outboundSchema = SmsTemplate$outboundSchema;
-  /** @deprecated use `SmsTemplate$Outbound` instead. */
-  export type Outbound = SmsTemplate$Outbound;
-}
-
-export function smsTemplateToJSON(smsTemplate: SmsTemplate): string {
-  return JSON.stringify(SmsTemplate$outboundSchema.parse(smsTemplate));
-}
 
 export function smsTemplateFromJSON(
   jsonString: string,

@@ -7,12 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type TicketingComponentResultData = {
   /**
@@ -82,65 +77,6 @@ export const TicketingComponentResultData$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type TicketingComponentResultData$Outbound = {
-  created_at?: string | null | undefined;
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  organization_id?: string | null | undefined;
-  project_id?: string | null | undefined;
-  remote_id?: string | null | undefined;
-  updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const TicketingComponentResultData$outboundSchema: z.ZodType<
-  TicketingComponentResultData$Outbound,
-  z.ZodTypeDef,
-  TicketingComponentResultData
-> = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  organizationId: z.nullable(z.string()).optional(),
-  projectId: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    organizationId: "organization_id",
-    projectId: "project_id",
-    remoteId: "remote_id",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingComponentResultData$ {
-  /** @deprecated use `TicketingComponentResultData$inboundSchema` instead. */
-  export const inboundSchema = TicketingComponentResultData$inboundSchema;
-  /** @deprecated use `TicketingComponentResultData$outboundSchema` instead. */
-  export const outboundSchema = TicketingComponentResultData$outboundSchema;
-  /** @deprecated use `TicketingComponentResultData$Outbound` instead. */
-  export type Outbound = TicketingComponentResultData$Outbound;
-}
-
-export function ticketingComponentResultDataToJSON(
-  ticketingComponentResultData: TicketingComponentResultData,
-): string {
-  return JSON.stringify(
-    TicketingComponentResultData$outboundSchema.parse(
-      ticketingComponentResultData,
-    ),
-  );
-}
-
 export function ticketingComponentResultDataFromJSON(
   jsonString: string,
 ): SafeParseResult<TicketingComponentResultData, SDKValidationError> {
@@ -161,44 +97,6 @@ export const TicketingComponentResult$inboundSchema: z.ZodType<
     .optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TicketingComponentResult$Outbound = {
-  data?: TicketingComponentResultData$Outbound | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TicketingComponentResult$outboundSchema: z.ZodType<
-  TicketingComponentResult$Outbound,
-  z.ZodTypeDef,
-  TicketingComponentResult
-> = z.object({
-  data: z.nullable(z.lazy(() => TicketingComponentResultData$outboundSchema))
-    .optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TicketingComponentResult$ {
-  /** @deprecated use `TicketingComponentResult$inboundSchema` instead. */
-  export const inboundSchema = TicketingComponentResult$inboundSchema;
-  /** @deprecated use `TicketingComponentResult$outboundSchema` instead. */
-  export const outboundSchema = TicketingComponentResult$outboundSchema;
-  /** @deprecated use `TicketingComponentResult$Outbound` instead. */
-  export type Outbound = TicketingComponentResult$Outbound;
-}
-
-export function ticketingComponentResultToJSON(
-  ticketingComponentResult: TicketingComponentResult,
-): string {
-  return JSON.stringify(
-    TicketingComponentResult$outboundSchema.parse(ticketingComponentResult),
-  );
-}
 
 export function ticketingComponentResultFromJSON(
   jsonString: string,

@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RawResponse,
-  RawResponse$inboundSchema,
-  RawResponse$Outbound,
-  RawResponse$outboundSchema,
-} from "./rawresponse.js";
+import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 import {
   TimeOffPolicies,
   TimeOffPolicies$inboundSchema,
-  TimeOffPolicies$Outbound,
-  TimeOffPolicies$outboundSchema,
 } from "./timeoffpolicies.js";
 
 export type TimeOffPoliciesPaginated = {
@@ -35,45 +28,6 @@ export const TimeOffPoliciesPaginated$inboundSchema: z.ZodType<
   next: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type TimeOffPoliciesPaginated$Outbound = {
-  data: Array<TimeOffPolicies$Outbound>;
-  next?: string | null | undefined;
-  raw?: Array<RawResponse$Outbound> | null | undefined;
-};
-
-/** @internal */
-export const TimeOffPoliciesPaginated$outboundSchema: z.ZodType<
-  TimeOffPoliciesPaginated$Outbound,
-  z.ZodTypeDef,
-  TimeOffPoliciesPaginated
-> = z.object({
-  data: z.array(TimeOffPolicies$outboundSchema),
-  next: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffPoliciesPaginated$ {
-  /** @deprecated use `TimeOffPoliciesPaginated$inboundSchema` instead. */
-  export const inboundSchema = TimeOffPoliciesPaginated$inboundSchema;
-  /** @deprecated use `TimeOffPoliciesPaginated$outboundSchema` instead. */
-  export const outboundSchema = TimeOffPoliciesPaginated$outboundSchema;
-  /** @deprecated use `TimeOffPoliciesPaginated$Outbound` instead. */
-  export type Outbound = TimeOffPoliciesPaginated$Outbound;
-}
-
-export function timeOffPoliciesPaginatedToJSON(
-  timeOffPoliciesPaginated: TimeOffPoliciesPaginated,
-): string {
-  return JSON.stringify(
-    TimeOffPoliciesPaginated$outboundSchema.parse(timeOffPoliciesPaginated),
-  );
-}
 
 export function timeOffPoliciesPaginatedFromJSON(
   jsonString: string,

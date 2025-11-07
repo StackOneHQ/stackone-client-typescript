@@ -4,14 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { OpenEnum, Unrecognized } from "../../types/enums.js";
 
 export type PatchAccountExternalDtoCredentials = {};
 
@@ -56,13 +49,6 @@ export type PatchAccountExternalDto = {
 };
 
 /** @internal */
-export const PatchAccountExternalDtoCredentials$inboundSchema: z.ZodType<
-  PatchAccountExternalDtoCredentials,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
 export type PatchAccountExternalDtoCredentials$Outbound = {};
 
 /** @internal */
@@ -71,20 +57,6 @@ export const PatchAccountExternalDtoCredentials$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchAccountExternalDtoCredentials
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccountExternalDtoCredentials$ {
-  /** @deprecated use `PatchAccountExternalDtoCredentials$inboundSchema` instead. */
-  export const inboundSchema = PatchAccountExternalDtoCredentials$inboundSchema;
-  /** @deprecated use `PatchAccountExternalDtoCredentials$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchAccountExternalDtoCredentials$outboundSchema;
-  /** @deprecated use `PatchAccountExternalDtoCredentials$Outbound` instead. */
-  export type Outbound = PatchAccountExternalDtoCredentials$Outbound;
-}
 
 export function patchAccountExternalDtoCredentialsToJSON(
   patchAccountExternalDtoCredentials: PatchAccountExternalDtoCredentials,
@@ -96,21 +68,6 @@ export function patchAccountExternalDtoCredentialsToJSON(
   );
 }
 
-export function patchAccountExternalDtoCredentialsFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchAccountExternalDtoCredentials, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchAccountExternalDtoCredentials$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchAccountExternalDtoCredentials' from JSON`,
-  );
-}
-
-/** @internal */
-export const Label$inboundSchema: z.ZodType<Label, z.ZodTypeDef, unknown> = z
-  .object({});
-
 /** @internal */
 export type Label$Outbound = {};
 
@@ -121,39 +78,9 @@ export const Label$outboundSchema: z.ZodType<
   Label
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Label$ {
-  /** @deprecated use `Label$inboundSchema` instead. */
-  export const inboundSchema = Label$inboundSchema;
-  /** @deprecated use `Label$outboundSchema` instead. */
-  export const outboundSchema = Label$outboundSchema;
-  /** @deprecated use `Label$Outbound` instead. */
-  export type Outbound = Label$Outbound;
-}
-
 export function labelToJSON(label: Label): string {
   return JSON.stringify(Label$outboundSchema.parse(label));
 }
-
-export function labelFromJSON(
-  jsonString: string,
-): SafeParseResult<Label, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Label$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Label' from JSON`,
-  );
-}
-
-/** @internal */
-export const PatchAccountExternalDtoMetadata$inboundSchema: z.ZodType<
-  PatchAccountExternalDtoMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type PatchAccountExternalDtoMetadata$Outbound = {};
@@ -165,19 +92,6 @@ export const PatchAccountExternalDtoMetadata$outboundSchema: z.ZodType<
   PatchAccountExternalDtoMetadata
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccountExternalDtoMetadata$ {
-  /** @deprecated use `PatchAccountExternalDtoMetadata$inboundSchema` instead. */
-  export const inboundSchema = PatchAccountExternalDtoMetadata$inboundSchema;
-  /** @deprecated use `PatchAccountExternalDtoMetadata$outboundSchema` instead. */
-  export const outboundSchema = PatchAccountExternalDtoMetadata$outboundSchema;
-  /** @deprecated use `PatchAccountExternalDtoMetadata$Outbound` instead. */
-  export type Outbound = PatchAccountExternalDtoMetadata$Outbound;
-}
-
 export function patchAccountExternalDtoMetadataToJSON(
   patchAccountExternalDtoMetadata: PatchAccountExternalDtoMetadata,
 ): string {
@@ -187,20 +101,6 @@ export function patchAccountExternalDtoMetadataToJSON(
     ),
   );
 }
-
-export function patchAccountExternalDtoMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchAccountExternalDtoMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchAccountExternalDtoMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchAccountExternalDtoMetadata' from JSON`,
-  );
-}
-
-/** @internal */
-export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
-  z.object({});
 
 /** @internal */
 export type Secrets$Outbound = {};
@@ -212,39 +112,9 @@ export const Secrets$outboundSchema: z.ZodType<
   Secrets
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Secrets$ {
-  /** @deprecated use `Secrets$inboundSchema` instead. */
-  export const inboundSchema = Secrets$inboundSchema;
-  /** @deprecated use `Secrets$outboundSchema` instead. */
-  export const outboundSchema = Secrets$outboundSchema;
-  /** @deprecated use `Secrets$Outbound` instead. */
-  export type Outbound = Secrets$Outbound;
-}
-
 export function secretsToJSON(secrets: Secrets): string {
   return JSON.stringify(Secrets$outboundSchema.parse(secrets));
 }
-
-export function secretsFromJSON(
-  jsonString: string,
-): SafeParseResult<Secrets, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Secrets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Secrets' from JSON`,
-  );
-}
-
-/** @internal */
-export const SetupInformation$inboundSchema: z.ZodType<
-  SetupInformation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type SetupInformation$Outbound = {};
@@ -256,19 +126,6 @@ export const SetupInformation$outboundSchema: z.ZodType<
   SetupInformation
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SetupInformation$ {
-  /** @deprecated use `SetupInformation$inboundSchema` instead. */
-  export const inboundSchema = SetupInformation$inboundSchema;
-  /** @deprecated use `SetupInformation$outboundSchema` instead. */
-  export const outboundSchema = SetupInformation$outboundSchema;
-  /** @deprecated use `SetupInformation$Outbound` instead. */
-  export type Outbound = SetupInformation$Outbound;
-}
-
 export function setupInformationToJSON(
   setupInformation: SetupInformation,
 ): string {
@@ -276,27 +133,6 @@ export function setupInformationToJSON(
     SetupInformation$outboundSchema.parse(setupInformation),
   );
 }
-
-export function setupInformationFromJSON(
-  jsonString: string,
-): SafeParseResult<SetupInformation, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SetupInformation$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SetupInformation' from JSON`,
-  );
-}
-
-/** @internal */
-export const PatchAccountExternalDtoType$inboundSchema: z.ZodType<
-  PatchAccountExternalDtoTypeOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(PatchAccountExternalDtoType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
 
 /** @internal */
 export const PatchAccountExternalDtoType$outboundSchema: z.ZodType<
@@ -307,50 +143,6 @@ export const PatchAccountExternalDtoType$outboundSchema: z.ZodType<
   z.nativeEnum(PatchAccountExternalDtoType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccountExternalDtoType$ {
-  /** @deprecated use `PatchAccountExternalDtoType$inboundSchema` instead. */
-  export const inboundSchema = PatchAccountExternalDtoType$inboundSchema;
-  /** @deprecated use `PatchAccountExternalDtoType$outboundSchema` instead. */
-  export const outboundSchema = PatchAccountExternalDtoType$outboundSchema;
-}
-
-/** @internal */
-export const PatchAccountExternalDto$inboundSchema: z.ZodType<
-  PatchAccountExternalDto,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  authentication_config_key: z.nullable(z.string()).optional(),
-  credentials: z.nullable(
-    z.lazy(() => PatchAccountExternalDtoCredentials$inboundSchema),
-  ).optional(),
-  environment: z.nullable(z.string()).optional(),
-  label: z.nullable(z.lazy(() => Label$inboundSchema)).optional(),
-  metadata: z.nullable(
-    z.lazy(() => PatchAccountExternalDtoMetadata$inboundSchema),
-  ).optional(),
-  origin_owner_id: z.nullable(z.string()).optional(),
-  origin_owner_name: z.nullable(z.string()).optional(),
-  origin_username: z.nullable(z.string()).optional(),
-  provider: z.nullable(z.string()).optional(),
-  secrets: z.nullable(z.lazy(() => Secrets$inboundSchema)).optional(),
-  setup_information: z.nullable(z.lazy(() => SetupInformation$inboundSchema))
-    .optional(),
-  type: z.nullable(PatchAccountExternalDtoType$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "authentication_config_key": "authenticationConfigKey",
-    "origin_owner_id": "originOwnerId",
-    "origin_owner_name": "originOwnerName",
-    "origin_username": "originUsername",
-    "setup_information": "setupInformation",
-  });
-});
 
 /** @internal */
 export type PatchAccountExternalDto$Outbound = {
@@ -401,33 +193,10 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAccountExternalDto$ {
-  /** @deprecated use `PatchAccountExternalDto$inboundSchema` instead. */
-  export const inboundSchema = PatchAccountExternalDto$inboundSchema;
-  /** @deprecated use `PatchAccountExternalDto$outboundSchema` instead. */
-  export const outboundSchema = PatchAccountExternalDto$outboundSchema;
-  /** @deprecated use `PatchAccountExternalDto$Outbound` instead. */
-  export type Outbound = PatchAccountExternalDto$Outbound;
-}
-
 export function patchAccountExternalDtoToJSON(
   patchAccountExternalDto: PatchAccountExternalDto,
 ): string {
   return JSON.stringify(
     PatchAccountExternalDto$outboundSchema.parse(patchAccountExternalDto),
-  );
-}
-
-export function patchAccountExternalDtoFromJSON(
-  jsonString: string,
-): SafeParseResult<PatchAccountExternalDto, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PatchAccountExternalDto$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchAccountExternalDto' from JSON`,
   );
 }

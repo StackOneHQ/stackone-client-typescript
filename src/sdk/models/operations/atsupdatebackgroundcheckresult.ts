@@ -40,24 +40,6 @@ export type AtsUpdateBackgroundCheckResultResponse = {
 };
 
 /** @internal */
-export const AtsUpdateBackgroundCheckResultRequest$inboundSchema: z.ZodType<
-  AtsUpdateBackgroundCheckResultRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  AtsUpdateBackgroundCheckResultRequestDto:
-    shared.AtsUpdateBackgroundCheckResultRequestDto$inboundSchema,
-  id: z.string(),
-  "x-account-id": z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "AtsUpdateBackgroundCheckResultRequestDto":
-      "atsUpdateBackgroundCheckResultRequestDto",
-    "x-account-id": "xAccountId",
-  });
-});
-
-/** @internal */
 export type AtsUpdateBackgroundCheckResultRequest$Outbound = {
   AtsUpdateBackgroundCheckResultRequestDto:
     shared.AtsUpdateBackgroundCheckResultRequestDto$Outbound;
@@ -83,21 +65,6 @@ export const AtsUpdateBackgroundCheckResultRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultRequest$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultRequest$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultRequest$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultRequest$Outbound` instead. */
-  export type Outbound = AtsUpdateBackgroundCheckResultRequest$Outbound;
-}
-
 export function atsUpdateBackgroundCheckResultRequestToJSON(
   atsUpdateBackgroundCheckResultRequest: AtsUpdateBackgroundCheckResultRequest,
 ): string {
@@ -105,17 +72,6 @@ export function atsUpdateBackgroundCheckResultRequestToJSON(
     AtsUpdateBackgroundCheckResultRequest$outboundSchema.parse(
       atsUpdateBackgroundCheckResultRequest,
     ),
-  );
-}
-
-export function atsUpdateBackgroundCheckResultRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AtsUpdateBackgroundCheckResultRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AtsUpdateBackgroundCheckResultRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtsUpdateBackgroundCheckResultRequest' from JSON`,
   );
 }
 
@@ -140,64 +96,6 @@ export const AtsUpdateBackgroundCheckResultResponse$inboundSchema: z.ZodType<
     "UpdateResult": "updateResult",
   });
 });
-
-/** @internal */
-export type AtsUpdateBackgroundCheckResultResponse$Outbound = {
-  ContentType: string;
-  Headers: { [k: string]: Array<string> };
-  StatusCode: number;
-  RawResponse: never;
-  UpdateResult?: shared.UpdateResult$Outbound | undefined;
-};
-
-/** @internal */
-export const AtsUpdateBackgroundCheckResultResponse$outboundSchema: z.ZodType<
-  AtsUpdateBackgroundCheckResultResponse$Outbound,
-  z.ZodTypeDef,
-  AtsUpdateBackgroundCheckResultResponse
-> = z.object({
-  contentType: z.string(),
-  headers: z.record(z.array(z.string())),
-  statusCode: z.number().int(),
-  rawResponse: z.instanceof(Response).transform(() => {
-    throw new Error("Response cannot be serialized");
-  }),
-  updateResult: shared.UpdateResult$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "ContentType",
-    headers: "Headers",
-    statusCode: "StatusCode",
-    rawResponse: "RawResponse",
-    updateResult: "UpdateResult",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtsUpdateBackgroundCheckResultResponse$ {
-  /** @deprecated use `AtsUpdateBackgroundCheckResultResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    AtsUpdateBackgroundCheckResultResponse$inboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    AtsUpdateBackgroundCheckResultResponse$outboundSchema;
-  /** @deprecated use `AtsUpdateBackgroundCheckResultResponse$Outbound` instead. */
-  export type Outbound = AtsUpdateBackgroundCheckResultResponse$Outbound;
-}
-
-export function atsUpdateBackgroundCheckResultResponseToJSON(
-  atsUpdateBackgroundCheckResultResponse:
-    AtsUpdateBackgroundCheckResultResponse,
-): string {
-  return JSON.stringify(
-    AtsUpdateBackgroundCheckResultResponse$outboundSchema.parse(
-      atsUpdateBackgroundCheckResultResponse,
-    ),
-  );
-}
 
 export function atsUpdateBackgroundCheckResultResponseFromJSON(
   jsonString: string,

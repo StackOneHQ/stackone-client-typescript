@@ -43,51 +43,6 @@ export const AssessmentPackage$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type AssessmentPackage$Outbound = {
-  description?: string | null | undefined;
-  id?: string | null | undefined;
-  name?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const AssessmentPackage$outboundSchema: z.ZodType<
-  AssessmentPackage$Outbound,
-  z.ZodTypeDef,
-  AssessmentPackage
-> = z.object({
-  description: z.nullable(z.string()).optional(),
-  id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentPackage$ {
-  /** @deprecated use `AssessmentPackage$inboundSchema` instead. */
-  export const inboundSchema = AssessmentPackage$inboundSchema;
-  /** @deprecated use `AssessmentPackage$outboundSchema` instead. */
-  export const outboundSchema = AssessmentPackage$outboundSchema;
-  /** @deprecated use `AssessmentPackage$Outbound` instead. */
-  export type Outbound = AssessmentPackage$Outbound;
-}
-
-export function assessmentPackageToJSON(
-  assessmentPackage: AssessmentPackage,
-): string {
-  return JSON.stringify(
-    AssessmentPackage$outboundSchema.parse(assessmentPackage),
-  );
-}
-
 export function assessmentPackageFromJSON(
   jsonString: string,
 ): SafeParseResult<AssessmentPackage, SDKValidationError> {
