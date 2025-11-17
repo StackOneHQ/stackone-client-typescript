@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChannelsEnum, ChannelsEnum$inboundSchema } from "./channelsenum.js";
@@ -251,11 +252,7 @@ export const CampaignValue$inboundSchema: z.ZodType<
   CampaignValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(CampaignValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(CampaignValue);
 
 /** @internal */
 export const ScheduleType$inboundSchema: z.ZodType<
@@ -334,11 +331,7 @@ export const CampaignSchemasValue$inboundSchema: z.ZodType<
   CampaignSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(CampaignSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(CampaignSchemasValue);
 
 /** @internal */
 export const CampaignStatus$inboundSchema: z.ZodType<

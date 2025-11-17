@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type CreateSkillsApiModel4 = {};
 
@@ -638,13 +639,10 @@ export function createSkillsApiModelSourceValueToJSON(
 
 /** @internal */
 export const CreateSkillsApiModelValue$outboundSchema: z.ZodType<
-  CreateSkillsApiModelValueOpen,
+  string,
   z.ZodTypeDef,
   CreateSkillsApiModelValueOpen
-> = z.union([
-  z.nativeEnum(CreateSkillsApiModelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateSkillsApiModelValue);
 
 /** @internal */
 export type CreateSkillsApiModelHierarchy$Outbound = {
@@ -745,13 +743,10 @@ export function createSkillsApiModelSchemasSourceValueToJSON(
 
 /** @internal */
 export const CreateSkillsApiModelSchemasValue$outboundSchema: z.ZodType<
-  CreateSkillsApiModelSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   CreateSkillsApiModelSchemasValueOpen
-> = z.union([
-  z.nativeEnum(CreateSkillsApiModelSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateSkillsApiModelSchemasValue);
 
 /** @internal */
 export type CreateSkillsApiModelLanguage$Outbound = {
@@ -853,13 +848,10 @@ export function createSkillsApiModelSchemasLevelSourceValueToJSON(
 
 /** @internal */
 export const CreateSkillsApiModelSchemasLevelValue$outboundSchema: z.ZodType<
-  CreateSkillsApiModelSchemasLevelValueOpen,
+  string,
   z.ZodTypeDef,
   CreateSkillsApiModelSchemasLevelValueOpen
-> = z.union([
-  z.nativeEnum(CreateSkillsApiModelSchemasLevelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateSkillsApiModelSchemasLevelValue);
 
 /** @internal */
 export type CreateSkillsApiModelLevel$Outbound = {

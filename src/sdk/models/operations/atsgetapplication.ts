@@ -103,7 +103,6 @@ export const AtsGetApplicationResponse$inboundSchema: z.ZodType<
 > = z.object({
   ApplicationResult: shared.ApplicationResult$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

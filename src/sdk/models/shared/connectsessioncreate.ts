@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export enum ConnectSessionCreateCategories {
   Ats = "ats",
@@ -119,13 +120,10 @@ export function connectSessionCreateMetadataToJSON(
 
 /** @internal */
 export const ConnectSessionCreateType$outboundSchema: z.ZodType<
-  ConnectSessionCreateTypeOpen,
+  string,
   z.ZodTypeDef,
   ConnectSessionCreateTypeOpen
-> = z.union([
-  z.nativeEnum(ConnectSessionCreateType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(ConnectSessionCreateType);
 
 /** @internal */
 export type ConnectSessionCreate$Outbound = {

@@ -5,11 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -590,20 +587,13 @@ export const NationalIdentityNumberApiModelValue$inboundSchema: z.ZodType<
   NationalIdentityNumberApiModelValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(NationalIdentityNumberApiModelValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(NationalIdentityNumberApiModelValue);
 /** @internal */
 export const NationalIdentityNumberApiModelValue$outboundSchema: z.ZodType<
-  NationalIdentityNumberApiModelValueOpen,
+  string,
   z.ZodTypeDef,
   NationalIdentityNumberApiModelValueOpen
-> = z.union([
-  z.nativeEnum(NationalIdentityNumberApiModelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(NationalIdentityNumberApiModelValue);
 
 /** @internal */
 export const NationalIdentityNumberApiModelCountry$inboundSchema: z.ZodType<
@@ -787,21 +777,14 @@ export const NationalIdentityNumberApiModelSchemasValue$inboundSchema:
     NationalIdentityNumberApiModelSchemasValueOpen,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(NationalIdentityNumberApiModelSchemasValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(NationalIdentityNumberApiModelSchemasValue);
 /** @internal */
 export const NationalIdentityNumberApiModelSchemasValue$outboundSchema:
   z.ZodType<
-    NationalIdentityNumberApiModelSchemasValueOpen,
+    string,
     z.ZodTypeDef,
     NationalIdentityNumberApiModelSchemasValueOpen
-  > = z.union([
-    z.nativeEnum(NationalIdentityNumberApiModelSchemasValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(NationalIdentityNumberApiModelSchemasValue);
 
 /** @internal */
 export const NationalIdentityNumberApiModelType$inboundSchema: z.ZodType<

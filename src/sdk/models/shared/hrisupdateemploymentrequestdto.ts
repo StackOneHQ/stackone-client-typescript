@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type HrisUpdateEmploymentRequestDtoSchemasContractType4 = {};
 
@@ -228,7 +229,7 @@ export type HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValueOpen =
   OpenEnum<typeof HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue>;
 
 /**
- * The pay frequency
+ * How often the employee is paid
  */
 export type HrisUpdateEmploymentRequestDtoPayFrequency = {
   /**
@@ -289,7 +290,7 @@ export type HrisUpdateEmploymentRequestDtoSchemasPayPeriodValueOpen = OpenEnum<
 >;
 
 /**
- * The pay period
+ * The time period over which the pay rate is calculated
  */
 export type HrisUpdateEmploymentRequestDtoPayPeriod = {
   /**
@@ -487,15 +488,15 @@ export type HrisUpdateEmploymentRequestDto = {
    */
   payCurrency?: string | null | undefined;
   /**
-   * The pay frequency
+   * How often the employee is paid
    */
   payFrequency?: HrisUpdateEmploymentRequestDtoPayFrequency | null | undefined;
   /**
-   * The pay period
+   * The time period over which the pay rate is calculated
    */
   payPeriod?: HrisUpdateEmploymentRequestDtoPayPeriod | null | undefined;
   /**
-   * The pay rate for the employee
+   * The amount of compensation for the employee
    */
   payRate?: string | null | undefined;
   /**
@@ -572,13 +573,12 @@ export function hrisUpdateEmploymentRequestDtoSchemasContractTypeSourceValueToJS
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasContractTypeValue$outboundSchema:
   z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasContractTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasContractTypeValueOpen
-  > = z.union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasContractTypeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisUpdateEmploymentRequestDtoSchemasContractTypeValue,
+  );
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasContractType$Outbound = {
@@ -730,13 +730,10 @@ export function hrisUpdateEmploymentRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoValue$outboundSchema: z.ZodType<
-  HrisUpdateEmploymentRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   HrisUpdateEmploymentRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(HrisUpdateEmploymentRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(HrisUpdateEmploymentRequestDtoValue);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoEmploymentContractType$Outbound = {
@@ -843,13 +840,10 @@ export function hrisUpdateEmploymentRequestDtoSchemasSourceValueToJSON(
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasValue$outboundSchema:
   z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasValueOpen,
+    string,
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasValueOpen
-  > = z.union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(HrisUpdateEmploymentRequestDtoSchemasValue);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoEmploymentType$Outbound = {
@@ -992,13 +986,12 @@ export function hrisUpdateEmploymentRequestDtoSchemasPayFrequencySourceValueToJS
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue$outboundSchema:
   z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValueOpen,
+    string,
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValueOpen
-  > = z.union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisUpdateEmploymentRequestDtoSchemasPayFrequencyValue,
+  );
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPayFrequency$Outbound = {
@@ -1110,13 +1103,12 @@ export function hrisUpdateEmploymentRequestDtoSchemasPayPeriodSourceValueToJSON(
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue$outboundSchema:
   z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasPayPeriodValueOpen,
+    string,
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasPayPeriodValueOpen
-  > = z.union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisUpdateEmploymentRequestDtoSchemasPayPeriodValue,
+  );
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPayPeriod$Outbound = {
@@ -1226,13 +1218,10 @@ export function hrisUpdateEmploymentRequestDtoSchemasTypeSourceValueToJSON(
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasTypeValue$outboundSchema:
   z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasTypeValueOpen
-  > = z.union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasTypeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(HrisUpdateEmploymentRequestDtoSchemasTypeValue);
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoSchemasType$Outbound = {
@@ -1376,13 +1365,12 @@ export function hrisUpdateEmploymentRequestDtoSchemasWorkTimeSourceValueToJSON(
 /** @internal */
 export const HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue$outboundSchema:
   z.ZodType<
-    HrisUpdateEmploymentRequestDtoSchemasWorkTimeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisUpdateEmploymentRequestDtoSchemasWorkTimeValueOpen
-  > = z.union([
-    z.nativeEnum(HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisUpdateEmploymentRequestDtoSchemasWorkTimeValue,
+  );
 
 /** @internal */
 export type HrisUpdateEmploymentRequestDtoPeriod$Outbound = {

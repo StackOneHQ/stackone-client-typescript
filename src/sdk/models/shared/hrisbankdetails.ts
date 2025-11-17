@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ClearingCode, ClearingCode$inboundSchema } from "./clearingcode.js";
@@ -645,11 +646,7 @@ export const HRISBankDetailsValue$inboundSchema: z.ZodType<
   HRISBankDetailsValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HRISBankDetailsValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HRISBankDetailsValue);
 
 /** @internal */
 export const AccountType$inboundSchema: z.ZodType<
@@ -728,11 +725,7 @@ export const HRISBankDetailsSchemasValue$inboundSchema: z.ZodType<
   HRISBankDetailsSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HRISBankDetailsSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HRISBankDetailsSchemasValue);
 
 /** @internal */
 export const CountryCode$inboundSchema: z.ZodType<
@@ -819,11 +812,7 @@ export const HRISBankDetailsSchemasCurrencyCodeValue$inboundSchema: z.ZodType<
   HRISBankDetailsSchemasCurrencyCodeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HRISBankDetailsSchemasCurrencyCodeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HRISBankDetailsSchemasCurrencyCodeValue);
 
 /** @internal */
 export const HRISBankDetailsCurrencyCode$inboundSchema: z.ZodType<

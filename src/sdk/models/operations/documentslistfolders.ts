@@ -200,7 +200,6 @@ export const DocumentsListFoldersResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   FoldersPaginated: shared.FoldersPaginated$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type CreateEmploymentApiModelSchemasContractType4 = {};
 
@@ -227,7 +228,7 @@ export type CreateEmploymentApiModelSchemasPayFrequencyValueOpen = OpenEnum<
 >;
 
 /**
- * The pay frequency
+ * How often the employee is paid
  */
 export type PayFrequency = {
   /**
@@ -288,7 +289,7 @@ export type CreateEmploymentApiModelSchemasPayPeriodValueOpen = OpenEnum<
 >;
 
 /**
- * The pay period
+ * The time period over which the pay rate is calculated
  */
 export type PayPeriod = {
   /**
@@ -474,15 +475,15 @@ export type CreateEmploymentApiModel = {
    */
   payCurrency?: string | null | undefined;
   /**
-   * The pay frequency
+   * How often the employee is paid
    */
   payFrequency?: PayFrequency | null | undefined;
   /**
-   * The pay period
+   * The time period over which the pay rate is calculated
    */
   payPeriod?: PayPeriod | null | undefined;
   /**
-   * The pay rate for the employee
+   * The amount of compensation for the employee
    */
   payRate?: string | null | undefined;
   /**
@@ -558,13 +559,12 @@ export function createEmploymentApiModelSchemasContractTypeSourceValueToJSON(
 /** @internal */
 export const CreateEmploymentApiModelSchemasContractTypeValue$outboundSchema:
   z.ZodType<
-    CreateEmploymentApiModelSchemasContractTypeValueOpen,
+    string,
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasContractTypeValueOpen
-  > = z.union([
-    z.nativeEnum(CreateEmploymentApiModelSchemasContractTypeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    CreateEmploymentApiModelSchemasContractTypeValue,
+  );
 
 /** @internal */
 export type CreateEmploymentApiModelContractType$Outbound = {
@@ -698,13 +698,10 @@ export function createEmploymentApiModelSourceValueToJSON(
 
 /** @internal */
 export const CreateEmploymentApiModelValue$outboundSchema: z.ZodType<
-  CreateEmploymentApiModelValueOpen,
+  string,
   z.ZodTypeDef,
   CreateEmploymentApiModelValueOpen
-> = z.union([
-  z.nativeEnum(CreateEmploymentApiModelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateEmploymentApiModelValue);
 
 /** @internal */
 export type EmploymentContractType$Outbound = {
@@ -804,13 +801,10 @@ export function createEmploymentApiModelSchemasSourceValueToJSON(
 
 /** @internal */
 export const CreateEmploymentApiModelSchemasValue$outboundSchema: z.ZodType<
-  CreateEmploymentApiModelSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   CreateEmploymentApiModelSchemasValueOpen
-> = z.union([
-  z.nativeEnum(CreateEmploymentApiModelSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateEmploymentApiModelSchemasValue);
 
 /** @internal */
 export type EmploymentType$Outbound = {
@@ -938,13 +932,12 @@ export function createEmploymentApiModelSchemasPayFrequencySourceValueToJSON(
 /** @internal */
 export const CreateEmploymentApiModelSchemasPayFrequencyValue$outboundSchema:
   z.ZodType<
-    CreateEmploymentApiModelSchemasPayFrequencyValueOpen,
+    string,
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasPayFrequencyValueOpen
-  > = z.union([
-    z.nativeEnum(CreateEmploymentApiModelSchemasPayFrequencyValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    CreateEmploymentApiModelSchemasPayFrequencyValue,
+  );
 
 /** @internal */
 export type PayFrequency$Outbound = {
@@ -1045,13 +1038,10 @@ export function createEmploymentApiModelSchemasPayPeriodSourceValueToJSON(
 /** @internal */
 export const CreateEmploymentApiModelSchemasPayPeriodValue$outboundSchema:
   z.ZodType<
-    CreateEmploymentApiModelSchemasPayPeriodValueOpen,
+    string,
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasPayPeriodValueOpen
-  > = z.union([
-    z.nativeEnum(CreateEmploymentApiModelSchemasPayPeriodValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(CreateEmploymentApiModelSchemasPayPeriodValue);
 
 /** @internal */
 export type PayPeriod$Outbound = {
@@ -1149,13 +1139,10 @@ export function createEmploymentApiModelSchemasTypeSourceValueToJSON(
 
 /** @internal */
 export const CreateEmploymentApiModelSchemasTypeValue$outboundSchema: z.ZodType<
-  CreateEmploymentApiModelSchemasTypeValueOpen,
+  string,
   z.ZodTypeDef,
   CreateEmploymentApiModelSchemasTypeValueOpen
-> = z.union([
-  z.nativeEnum(CreateEmploymentApiModelSchemasTypeValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateEmploymentApiModelSchemasTypeValue);
 
 /** @internal */
 export type CreateEmploymentApiModelSchemasType$Outbound = {
@@ -1296,13 +1283,10 @@ export function createEmploymentApiModelSchemasWorkTimeSourceValueToJSON(
 /** @internal */
 export const CreateEmploymentApiModelSchemasWorkTimeValue$outboundSchema:
   z.ZodType<
-    CreateEmploymentApiModelSchemasWorkTimeValueOpen,
+    string,
     z.ZodTypeDef,
     CreateEmploymentApiModelSchemasWorkTimeValueOpen
-  > = z.union([
-    z.nativeEnum(CreateEmploymentApiModelSchemasWorkTimeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(CreateEmploymentApiModelSchemasWorkTimeValue);
 
 /** @internal */
 export type Period$Outbound = {

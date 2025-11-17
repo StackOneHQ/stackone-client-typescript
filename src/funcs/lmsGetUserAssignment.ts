@@ -32,6 +32,13 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get User Assignment
+ *
+ * @remarks
+ * Retrieve an assignment type learning record for a user by its identifier.
+ *
+ * This is the record linking a user to a learning object.
+ *
+ * It can be pending, in progress, or completed.
  */
 export function lmsGetUserAssignment(
   client: StackOneCore,

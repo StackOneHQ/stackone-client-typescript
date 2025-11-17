@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   CustomFields,
   CustomFields$Outbound,
@@ -155,13 +156,10 @@ export function atsUpdateApplicationRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const AtsUpdateApplicationRequestDtoValue$outboundSchema: z.ZodType<
-  AtsUpdateApplicationRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   AtsUpdateApplicationRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(AtsUpdateApplicationRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AtsUpdateApplicationRequestDtoValue);
 
 /** @internal */
 export type AtsUpdateApplicationRequestDtoApplicationStatus$Outbound = {

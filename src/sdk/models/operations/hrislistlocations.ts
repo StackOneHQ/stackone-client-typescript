@@ -165,7 +165,6 @@ export const HrisListLocationsResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   HRISLocationsPaginated: shared.HRISLocationsPaginated$inboundSchema
     .optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

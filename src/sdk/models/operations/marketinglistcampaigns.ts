@@ -167,7 +167,6 @@ export const MarketingListCampaignsResponse$inboundSchema: z.ZodType<
 > = z.object({
   CampaignsPaginated: shared.CampaignsPaginated$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

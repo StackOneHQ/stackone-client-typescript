@@ -163,7 +163,6 @@ export const MessagingListUsersResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   MessagingUsersPaginated: shared.MessagingUsersPaginated$inboundSchema
     .optional(),

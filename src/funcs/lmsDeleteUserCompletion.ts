@@ -27,6 +27,11 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Delete User Completion
+ *
+ * @remarks
+ * Delete a completion type learning record for a user.
+ *
+ * This is a record of a user completing a learning object.
  */
 export function lmsDeleteUserCompletion(
   client: StackOneCore,

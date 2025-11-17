@@ -102,7 +102,6 @@ export const HrisGetEmployeeEmploymentResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   EmploymentResult: shared.EmploymentResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

@@ -26,7 +26,12 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Batch Upsert Content
+ * Batch Upsert External Linking Learning Objects
+ *
+ * @remarks
+ * Batch upsert multiple external linking learning objects that redirect users to a provider platform for consumption and progress tracking.
+ *
+ * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
  */
 export function lmsBatchUpsertContent(
   client: StackOneCore,

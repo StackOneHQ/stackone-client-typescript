@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -287,11 +288,7 @@ export const AssignmentValue$inboundSchema: z.ZodType<
   AssignmentValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AssignmentValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AssignmentValue);
 
 /** @internal */
 export const LearningObjectType$inboundSchema: z.ZodType<
@@ -370,11 +367,7 @@ export const AssignmentSchemasValue$inboundSchema: z.ZodType<
   AssignmentSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AssignmentSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AssignmentSchemasValue);
 
 /** @internal */
 export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
@@ -451,11 +444,7 @@ export const AssignmentSchemasStatusValue$inboundSchema: z.ZodType<
   AssignmentSchemasStatusValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AssignmentSchemasStatusValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AssignmentSchemasStatusValue);
 
 /** @internal */
 export const AssignmentStatus$inboundSchema: z.ZodType<

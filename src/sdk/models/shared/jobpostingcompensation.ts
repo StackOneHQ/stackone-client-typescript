@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -226,11 +227,7 @@ export const JobPostingCompensationValue$inboundSchema: z.ZodType<
   JobPostingCompensationValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(JobPostingCompensationValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(JobPostingCompensationValue);
 
 /** @internal */
 export const JobPostingCompensationPayFrequency$inboundSchema: z.ZodType<
@@ -316,11 +313,7 @@ export const JobPostingCompensationSchemasValue$inboundSchema: z.ZodType<
   JobPostingCompensationSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(JobPostingCompensationSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(JobPostingCompensationSchemasValue);
 
 /** @internal */
 export const JobPostingCompensationPayPeriod$inboundSchema: z.ZodType<
@@ -408,11 +401,7 @@ export const JobPostingCompensationSchemasTypeValue$inboundSchema: z.ZodType<
   JobPostingCompensationSchemasTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(JobPostingCompensationSchemasTypeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(JobPostingCompensationSchemasTypeValue);
 
 /** @internal */
 export const JobPostingCompensationType$inboundSchema: z.ZodType<

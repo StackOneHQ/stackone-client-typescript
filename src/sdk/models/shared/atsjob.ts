@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -166,11 +167,7 @@ export const AtsJobConfidential$inboundSchema: z.ZodType<
   AtsJobConfidentialOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AtsJobConfidential),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AtsJobConfidential);
 
 /** @internal */
 export const AtsJob4$inboundSchema: z.ZodType<AtsJob4, z.ZodTypeDef, unknown> =
@@ -214,11 +211,7 @@ export const AtsJobValue$inboundSchema: z.ZodType<
   AtsJobValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AtsJobValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AtsJobValue);
 
 /** @internal */
 export const AtsJobJobStatus$inboundSchema: z.ZodType<

@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -260,11 +261,7 @@ export const CompletionValue$inboundSchema: z.ZodType<
   CompletionValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(CompletionValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(CompletionValue);
 
 /** @internal */
 export const CompletionLearningObjectType$inboundSchema: z.ZodType<
@@ -343,11 +340,7 @@ export const CompletionSchemasValue$inboundSchema: z.ZodType<
   CompletionSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(CompletionSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(CompletionSchemasValue);
 
 /** @internal */
 export const CompletionSchemasResult$inboundSchema: z.ZodType<

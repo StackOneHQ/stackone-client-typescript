@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Reason, Reason$inboundSchema } from "./reason.js";
@@ -317,11 +318,7 @@ export const TimeOffBalancesValue$inboundSchema: z.ZodType<
   TimeOffBalancesValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffBalancesValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffBalancesValue);
 
 /** @internal */
 export const BalanceUnit$inboundSchema: z.ZodType<
@@ -422,11 +419,7 @@ export const TimeOffBalancesSchemasValue$inboundSchema: z.ZodType<
   TimeOffBalancesSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffBalancesSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffBalancesSchemasValue);
 
 /** @internal */
 export const TimeOffBalancesDurationUnit$inboundSchema: z.ZodType<
@@ -511,11 +504,7 @@ export const TimeOffBalancesSchemasPolicyValue$inboundSchema: z.ZodType<
   TimeOffBalancesSchemasPolicyValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffBalancesSchemasPolicyValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffBalancesSchemasPolicyValue);
 
 /** @internal */
 export const TimeOffBalancesType$inboundSchema: z.ZodType<

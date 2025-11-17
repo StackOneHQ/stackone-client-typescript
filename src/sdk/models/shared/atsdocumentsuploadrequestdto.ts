@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The category name to associate with the file
@@ -1375,13 +1376,10 @@ export type AtsDocumentsUploadRequestDto = {
 
 /** @internal */
 export const AtsDocumentsUploadRequestDtoValue$outboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   AtsDocumentsUploadRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(AtsDocumentsUploadRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AtsDocumentsUploadRequestDtoValue);
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoCategory$Outbound = {
@@ -1468,13 +1466,10 @@ export function atsDocumentsUploadRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const AtsDocumentsUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
-  AtsDocumentsUploadRequestDtoSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   AtsDocumentsUploadRequestDtoSchemasValueOpen
-> = z.union([
-  z.nativeEnum(AtsDocumentsUploadRequestDtoSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AtsDocumentsUploadRequestDtoSchemasValue);
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoConfidential$Outbound = {
@@ -1579,13 +1574,12 @@ export function atsDocumentsUploadRequestDtoSchemasSourceValueToJSON(
 /** @internal */
 export const AtsDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema:
   z.ZodType<
-    AtsDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
+    string,
     z.ZodTypeDef,
     AtsDocumentsUploadRequestDtoSchemasFileFormatValueOpen
-  > = z.union([
-    z.nativeEnum(AtsDocumentsUploadRequestDtoSchemasFileFormatValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    AtsDocumentsUploadRequestDtoSchemasFileFormatValue,
+  );
 
 /** @internal */
 export type AtsDocumentsUploadRequestDtoFileFormat$Outbound = {

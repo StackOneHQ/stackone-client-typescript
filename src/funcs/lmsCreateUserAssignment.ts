@@ -27,6 +27,13 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Create User Assignment
+ *
+ * @remarks
+ * Create an assignment type learning record for a user.
+ *
+ * This is the record linking a user to a learning object.
+ *
+ * It can be pending or in progress.
  */
 export function lmsCreateUserAssignment(
   client: StackOneCore,

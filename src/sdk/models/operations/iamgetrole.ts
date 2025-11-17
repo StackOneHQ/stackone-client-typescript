@@ -96,7 +96,6 @@ export const IamGetRoleResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   IamRoleResult: shared.IamRoleResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

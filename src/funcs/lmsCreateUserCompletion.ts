@@ -27,6 +27,11 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Create User Completion
+ *
+ * @remarks
+ * Create a completed learning record for a user.
+ *
+ * This is the record of a user completing a learning object.
  */
 export function lmsCreateUserCompletion(
   client: StackOneCore,

@@ -173,7 +173,6 @@ export const MarketingListEmailTemplatesResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   EmailTemplatesPaginated: shared.EmailTemplatesPaginated$inboundSchema
     .optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

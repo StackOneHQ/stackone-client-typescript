@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   CreateJournalLine,
   CreateJournalLine$Outbound,
@@ -290,13 +291,10 @@ export function accountingJournalCreateRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const AccountingJournalCreateRequestDtoValue$outboundSchema: z.ZodType<
-  AccountingJournalCreateRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   AccountingJournalCreateRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(AccountingJournalCreateRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AccountingJournalCreateRequestDtoValue);
 
 /** @internal */
 export type CurrencyCode$Outbound = {

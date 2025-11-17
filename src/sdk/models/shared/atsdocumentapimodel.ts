@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Content, Content$inboundSchema } from "./content.js";
@@ -1516,11 +1517,7 @@ export const AtsDocumentApiModelValue$inboundSchema: z.ZodType<
   AtsDocumentApiModelValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AtsDocumentApiModelValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AtsDocumentApiModelValue);
 
 /** @internal */
 export const FileFormat$inboundSchema: z.ZodType<
@@ -1605,11 +1602,7 @@ export const AtsDocumentApiModelSchemasValue$inboundSchema: z.ZodType<
   AtsDocumentApiModelSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AtsDocumentApiModelSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AtsDocumentApiModelSchemasValue);
 
 /** @internal */
 export const AtsDocumentApiModelType$inboundSchema: z.ZodType<

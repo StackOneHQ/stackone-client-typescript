@@ -91,7 +91,6 @@ export const HrisGetGroupResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISGroupsResult: shared.HRISGroupsResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

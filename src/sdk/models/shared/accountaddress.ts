@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -410,11 +411,7 @@ export const AccountAddressSchemasValue$inboundSchema: z.ZodType<
   AccountAddressSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AccountAddressSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AccountAddressSchemasValue);
 
 /** @internal */
 export const Country$inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> =
@@ -490,11 +487,7 @@ export const AccountAddressValue$inboundSchema: z.ZodType<
   AccountAddressValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(AccountAddressValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(AccountAddressValue);
 
 /** @internal */
 export const LocationType$inboundSchema: z.ZodType<

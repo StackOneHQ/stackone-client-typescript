@@ -175,7 +175,6 @@ export const AtsListApplicationStagesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   InterviewStagesPaginated: shared.InterviewStagesPaginated$inboundSchema
     .optional(),

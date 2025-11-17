@@ -83,7 +83,6 @@ export const MarketingUpdateEmailTemplateResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   CreateResult: shared.CreateResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

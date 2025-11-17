@@ -90,7 +90,6 @@ export const LmsGetSkillResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   SkillResult: shared.SkillResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

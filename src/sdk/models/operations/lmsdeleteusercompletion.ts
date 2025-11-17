@@ -78,7 +78,6 @@ export const LmsDeleteUserCompletionResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   DeleteResult: shared.DeleteResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

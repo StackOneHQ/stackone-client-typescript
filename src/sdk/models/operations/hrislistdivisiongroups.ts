@@ -168,7 +168,6 @@ export const HrisListDivisionGroupsResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   HRISDivisionsPaginated: shared.HRISDivisionsPaginated$inboundSchema
     .optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

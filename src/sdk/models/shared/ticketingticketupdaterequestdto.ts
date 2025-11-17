@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   TicketingContent,
   TicketingContent$Outbound,
@@ -235,13 +236,10 @@ export function ticketingTicketUpdateRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const TicketingTicketUpdateRequestDtoValue$outboundSchema: z.ZodType<
-  TicketingTicketUpdateRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   TicketingTicketUpdateRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(TicketingTicketUpdateRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(TicketingTicketUpdateRequestDtoValue);
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoPriority$Outbound = {
@@ -349,13 +347,10 @@ export function ticketingTicketUpdateRequestDtoSchemasSourceValueToJSON(
 /** @internal */
 export const TicketingTicketUpdateRequestDtoSchemasValue$outboundSchema:
   z.ZodType<
-    TicketingTicketUpdateRequestDtoSchemasValueOpen,
+    string,
     z.ZodTypeDef,
     TicketingTicketUpdateRequestDtoSchemasValueOpen
-  > = z.union([
-    z.nativeEnum(TicketingTicketUpdateRequestDtoSchemasValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(TicketingTicketUpdateRequestDtoSchemasValue);
 
 /** @internal */
 export type TicketingTicketUpdateRequestDtoType$Outbound = {

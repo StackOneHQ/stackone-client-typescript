@@ -90,7 +90,6 @@ export const MessagingGetUserResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   MessagingUserResult: shared.MessagingUserResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

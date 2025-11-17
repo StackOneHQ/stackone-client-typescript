@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type CreateCategoriesApiModel4 = {};
 
@@ -642,13 +643,10 @@ export function createCategoriesApiModelSourceValueToJSON(
 
 /** @internal */
 export const CreateCategoriesApiModelValue$outboundSchema: z.ZodType<
-  CreateCategoriesApiModelValueOpen,
+  string,
   z.ZodTypeDef,
   CreateCategoriesApiModelValueOpen
-> = z.union([
-  z.nativeEnum(CreateCategoriesApiModelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateCategoriesApiModelValue);
 
 /** @internal */
 export type CreateCategoriesApiModelHierarchy$Outbound = {
@@ -750,13 +748,10 @@ export function createCategoriesApiModelSchemasSourceValueToJSON(
 
 /** @internal */
 export const CreateCategoriesApiModelSchemasValue$outboundSchema: z.ZodType<
-  CreateCategoriesApiModelSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   CreateCategoriesApiModelSchemasValueOpen
-> = z.union([
-  z.nativeEnum(CreateCategoriesApiModelSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateCategoriesApiModelSchemasValue);
 
 /** @internal */
 export type CreateCategoriesApiModelLanguage$Outbound = {
@@ -860,13 +855,10 @@ export function createCategoriesApiModelSchemasLevelSourceValueToJSON(
 /** @internal */
 export const CreateCategoriesApiModelSchemasLevelValue$outboundSchema:
   z.ZodType<
-    CreateCategoriesApiModelSchemasLevelValueOpen,
+    string,
     z.ZodTypeDef,
     CreateCategoriesApiModelSchemasLevelValueOpen
-  > = z.union([
-    z.nativeEnum(CreateCategoriesApiModelSchemasLevelValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(CreateCategoriesApiModelSchemasLevelValue);
 
 /** @internal */
 export type CreateCategoriesApiModelLevel$Outbound = {

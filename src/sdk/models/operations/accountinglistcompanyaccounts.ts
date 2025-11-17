@@ -176,7 +176,6 @@ export const AccountingListCompanyAccountsResponse$inboundSchema: z.ZodType<
   AccountingAccountsPaginated: shared.AccountingAccountsPaginated$inboundSchema
     .optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

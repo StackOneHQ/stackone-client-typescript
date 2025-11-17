@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ShiftBreak, ShiftBreak$inboundSchema } from "./shiftbreak.js";
@@ -193,11 +194,7 @@ export const HrisShiftValue$inboundSchema: z.ZodType<
   HrisShiftValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HrisShiftValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HrisShiftValue);
 
 /** @internal */
 export const ApprovalStatus$inboundSchema: z.ZodType<
@@ -276,11 +273,7 @@ export const HrisShiftSchemasValue$inboundSchema: z.ZodType<
   HrisShiftSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HrisShiftSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HrisShiftSchemasValue);
 
 /** @internal */
 export const HrisShiftStatus$inboundSchema: z.ZodType<

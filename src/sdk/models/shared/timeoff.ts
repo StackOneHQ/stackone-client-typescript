@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Reason, Reason$inboundSchema } from "./reason.js";
@@ -426,11 +427,7 @@ export const TimeOffSchemasPolicyValue$inboundSchema: z.ZodType<
   TimeOffSchemasPolicyValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffSchemasPolicyValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffSchemasPolicyValue);
 
 /** @internal */
 export const TimeOffDurationUnit$inboundSchema: z.ZodType<
@@ -510,11 +507,7 @@ export const TimeOffSchemasPolicyTypeValue$inboundSchema: z.ZodType<
   TimeOffSchemasPolicyTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffSchemasPolicyTypeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffSchemasPolicyTypeValue);
 
 /** @internal */
 export const TimeOffSchemasType$inboundSchema: z.ZodType<
@@ -676,11 +669,7 @@ export const TimeOffValue$inboundSchema: z.ZodType<
   TimeOffValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffValue);
 
 /** @internal */
 export const TimeOffStatus$inboundSchema: z.ZodType<
@@ -759,11 +748,7 @@ export const TimeOffSchemasValue$inboundSchema: z.ZodType<
   TimeOffSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffSchemasValue);
 
 /** @internal */
 export const TimeOffType$inboundSchema: z.ZodType<

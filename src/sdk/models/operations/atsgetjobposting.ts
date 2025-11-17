@@ -96,7 +96,6 @@ export const AtsGetJobPostingResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   JobPostingResult: shared.JobPostingResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

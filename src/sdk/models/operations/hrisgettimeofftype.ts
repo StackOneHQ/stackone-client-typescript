@@ -90,7 +90,6 @@ export const HrisGetTimeOffTypeResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   ReferenceResult: shared.ReferenceResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

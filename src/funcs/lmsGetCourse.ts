@@ -27,6 +27,11 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get Course
+ *
+ * @remarks
+ * Retrieve a course type learning object by its identifier.
+ *
+ * These are collections of content type learning objects that are grouped together for a specific learning purpose.
  */
 export function lmsGetCourse(
   client: StackOneCore,

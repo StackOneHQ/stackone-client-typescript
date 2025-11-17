@@ -171,7 +171,6 @@ export const AtsListOffersResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   OffersPaginated: shared.OffersPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),

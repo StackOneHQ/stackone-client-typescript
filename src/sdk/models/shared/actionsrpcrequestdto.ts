@@ -52,7 +52,6 @@ export const Query$outboundSchema: z.ZodType<
   Query
 > = z.object({
   additionalProperties: z.record(z.any()).optional(),
-
   debug: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return {

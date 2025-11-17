@@ -37,7 +37,6 @@ export const StackoneRpcActionResponse$inboundSchema: z.ZodType<
 > = z.object({
   ActionsRpcResponse: shared.ActionsRpcResponse$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

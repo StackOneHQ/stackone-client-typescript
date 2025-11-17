@@ -71,7 +71,6 @@ export const StackoneGetConnectorMetaResponse$inboundSchema: z.ZodType<
 > = z.object({
   ConnectorsMeta: shared.ConnectorsMeta$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

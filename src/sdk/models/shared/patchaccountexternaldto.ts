@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type PatchAccountExternalDtoCredentials = {};
 
@@ -136,13 +137,10 @@ export function setupInformationToJSON(
 
 /** @internal */
 export const PatchAccountExternalDtoType$outboundSchema: z.ZodType<
-  PatchAccountExternalDtoTypeOpen,
+  string,
   z.ZodTypeDef,
   PatchAccountExternalDtoTypeOpen
-> = z.union([
-  z.nativeEnum(PatchAccountExternalDtoType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(PatchAccountExternalDtoType);
 
 /** @internal */
 export type PatchAccountExternalDto$Outbound = {

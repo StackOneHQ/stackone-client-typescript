@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 4e61b7ebb6f7537f0f63788428d9f306
+  docChecksum: 9194cae7fa40b577dc27a18e3abf47b4
   docVersion: 1.0.0
-  speakeasyVersion: 1.650.0
-  generationVersion: 2.743.2
-  releaseVersion: 4.32.0
-  configChecksum: 6016e041041e188b1c1d72fa10fa1954
+  speakeasyVersion: 1.658.1
+  generationVersion: 2.755.6
+  releaseVersion: 4.32.1
+  configChecksum: 8f2854643cdebfb3f94d5bccea91dd8b
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -17,7 +17,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.26.3
+    core: 3.26.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -14593,4 +14593,4 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Changed**\n* `stackone.mcp.mcpDelete()`:  `request` **Changed**\n* `stackone.mcp.mcpGet()`:  `request` **Changed**\n* `stackone.mcp.mcpPost()`:  `request` **Changed**\n* `stackone.proxy.proxyRequest()`:  `response` **Changed**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `stackone.mcp.mcpPost()`: \n  *  `request.jsonRpcMessageDto.params` **Changed**\n"

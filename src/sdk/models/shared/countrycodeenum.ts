@@ -5,11 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -384,20 +381,13 @@ export const CountryCodeEnumValue$inboundSchema: z.ZodType<
   CountryCodeEnumValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(CountryCodeEnumValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(CountryCodeEnumValue);
 /** @internal */
 export const CountryCodeEnumValue$outboundSchema: z.ZodType<
-  CountryCodeEnumValueOpen,
+  string,
   z.ZodTypeDef,
   CountryCodeEnumValueOpen
-> = z.union([
-  z.nativeEnum(CountryCodeEnumValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CountryCodeEnumValue);
 
 /** @internal */
 export const CountryCodeEnum$inboundSchema: z.ZodType<

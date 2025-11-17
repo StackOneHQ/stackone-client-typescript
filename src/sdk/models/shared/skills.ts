@@ -5,11 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -725,20 +722,13 @@ export const SkillsValue$inboundSchema: z.ZodType<
   SkillsValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(SkillsValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(SkillsValue);
 /** @internal */
 export const SkillsValue$outboundSchema: z.ZodType<
-  SkillsValueOpen,
+  string,
   z.ZodTypeDef,
   SkillsValueOpen
-> = z.union([
-  z.nativeEnum(SkillsValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(SkillsValue);
 
 /** @internal */
 export const SkillsHierarchy$inboundSchema: z.ZodType<
@@ -895,20 +885,13 @@ export const SkillsSchemasValue$inboundSchema: z.ZodType<
   SkillsSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(SkillsSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(SkillsSchemasValue);
 /** @internal */
 export const SkillsSchemasValue$outboundSchema: z.ZodType<
-  SkillsSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   SkillsSchemasValueOpen
-> = z.union([
-  z.nativeEnum(SkillsSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(SkillsSchemasValue);
 
 /** @internal */
 export const SkillsLanguage$inboundSchema: z.ZodType<
@@ -1069,20 +1052,13 @@ export const SkillsSchemasLevelValue$inboundSchema: z.ZodType<
   SkillsSchemasLevelValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(SkillsSchemasLevelValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(SkillsSchemasLevelValue);
 /** @internal */
 export const SkillsSchemasLevelValue$outboundSchema: z.ZodType<
-  SkillsSchemasLevelValueOpen,
+  string,
   z.ZodTypeDef,
   SkillsSchemasLevelValueOpen
-> = z.union([
-  z.nativeEnum(SkillsSchemasLevelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(SkillsSchemasLevelValue);
 
 /** @internal */
 export const SkillsLevel$inboundSchema: z.ZodType<

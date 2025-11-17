@@ -158,7 +158,6 @@ export const StackoneListActionsMetaResponse$inboundSchema: z.ZodType<
 > = z.object({
   ActionsMetaPaginated: shared.ActionsMetaPaginated$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

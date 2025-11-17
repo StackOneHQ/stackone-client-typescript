@@ -91,7 +91,6 @@ export const HrisGetCompanyResponse$inboundSchema: z.ZodType<
 > = z.object({
   CompanyResult: shared.CompanyResult$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

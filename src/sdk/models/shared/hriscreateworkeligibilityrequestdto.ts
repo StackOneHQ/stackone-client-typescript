@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   Content,
   Content$Outbound,
@@ -1842,13 +1843,12 @@ export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSour
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$outboundSchema:
   z.ZodType<
-    HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue,
+  );
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound = {
@@ -2011,13 +2011,10 @@ export function hrisCreateWorkEligibilityRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoValue$outboundSchema: z.ZodType<
-  HrisCreateWorkEligibilityRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   HrisCreateWorkEligibilityRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(HrisCreateWorkEligibilityRequestDtoValue);
 
 /** @internal */
 export type IssuedBy$Outbound = {
@@ -2117,13 +2114,10 @@ export function hrisCreateWorkEligibilityRequestDtoSchemasSourceValueToJSON(
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemasValue$outboundSchema:
   z.ZodType<
-    HrisCreateWorkEligibilityRequestDtoSchemasValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateWorkEligibilityRequestDtoSchemasValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(HrisCreateWorkEligibilityRequestDtoSchemasValue);
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoType$Outbound = {

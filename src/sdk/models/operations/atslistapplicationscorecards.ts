@@ -183,7 +183,6 @@ export const AtsListApplicationScorecardsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   ScorecardsPaginated: shared.ScorecardsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),

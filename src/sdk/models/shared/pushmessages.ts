@@ -5,11 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -214,20 +211,13 @@ export const PushMessagesValue$inboundSchema: z.ZodType<
   PushMessagesValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(PushMessagesValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(PushMessagesValue);
 /** @internal */
 export const PushMessagesValue$outboundSchema: z.ZodType<
-  PushMessagesValueOpen,
+  string,
   z.ZodTypeDef,
   PushMessagesValueOpen
-> = z.union([
-  z.nativeEnum(PushMessagesValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(PushMessagesValue);
 
 /** @internal */
 export const PushMessagesMessageType$inboundSchema: z.ZodType<

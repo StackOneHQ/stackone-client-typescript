@@ -103,7 +103,6 @@ export const AtsGetJobResponse$inboundSchema: z.ZodType<
 > = z.object({
   AtsJobResult: shared.AtsJobResult$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

@@ -76,7 +76,6 @@ export const ScreeningWebhookScreeningResultResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   ScreeningResultWebhook: shared.ScreeningResultWebhook$inboundSchema
     .optional(),
