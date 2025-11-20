@@ -91,7 +91,6 @@ export const LmsGetContentResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentResult: shared.ContentResult$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

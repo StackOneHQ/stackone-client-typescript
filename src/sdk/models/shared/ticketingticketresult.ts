@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
@@ -347,11 +348,7 @@ export const TicketingTicketResultValue$inboundSchema: z.ZodType<
   TicketingTicketResultValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TicketingTicketResultValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TicketingTicketResultValue);
 
 /** @internal */
 export const TicketingTicketResultPriority$inboundSchema: z.ZodType<
@@ -437,11 +434,7 @@ export const TicketingTicketResultSchemasValue$inboundSchema: z.ZodType<
   TicketingTicketResultSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TicketingTicketResultSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TicketingTicketResultSchemasValue);
 
 /** @internal */
 export const TicketingTicketResultSchemasType$inboundSchema: z.ZodType<

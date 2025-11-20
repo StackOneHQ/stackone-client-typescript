@@ -22,7 +22,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 4.32.0
+  version: 4.32.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -63,6 +63,7 @@ typescript:
   responseFormat: envelope
   sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
   usageSDKInitImports: []
   useIndexModules: true
   zodVersion: v3

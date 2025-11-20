@@ -93,7 +93,6 @@ export const HrisGetDepartmentGroupResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISDepartmentsResult: shared.HRISDepartmentsResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

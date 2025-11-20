@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -667,11 +668,7 @@ export const EntitySkillsValue$inboundSchema: z.ZodType<
   EntitySkillsValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EntitySkillsValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EntitySkillsValue);
 
 /** @internal */
 export const EntitySkillsLanguage$inboundSchema: z.ZodType<
@@ -750,11 +747,7 @@ export const EntitySkillsSchemasValue$inboundSchema: z.ZodType<
   EntitySkillsSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EntitySkillsSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EntitySkillsSchemasValue);
 
 /** @internal */
 export const MaximumProficiency$inboundSchema: z.ZodType<
@@ -846,11 +839,7 @@ export const EntitySkillsSchemasMinimumProficiencyValue$inboundSchema:
     EntitySkillsSchemasMinimumProficiencyValueOpen,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(EntitySkillsSchemasMinimumProficiencyValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(EntitySkillsSchemasMinimumProficiencyValue);
 
 /** @internal */
 export const MinimumProficiency$inboundSchema: z.ZodType<

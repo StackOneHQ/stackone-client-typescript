@@ -178,7 +178,6 @@ export const AtsListJobCustomFieldDefinitionsResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   CustomFieldDefinitionsPaginated: shared
     .CustomFieldDefinitionsPaginated$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

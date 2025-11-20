@@ -96,7 +96,6 @@ export const HrisGetEmployeeSkillResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   EntitySkillResult: shared.EntitySkillResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

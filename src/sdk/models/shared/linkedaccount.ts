@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { StatusReason, StatusReason$inboundSchema } from "./statusreason.js";
@@ -15,6 +16,9 @@ export type Credentials = {};
 export enum LinkedAccountStatus {
   Active = "active",
   Inactive = "inactive",
+  Suspended = "suspended",
+  Archived = "archived",
+  Expired = "expired",
   Error = "error",
 }
 export type LinkedAccountStatusOpen = OpenEnum<typeof LinkedAccountStatus>;
@@ -74,22 +78,14 @@ export const LinkedAccountStatus$inboundSchema: z.ZodType<
   LinkedAccountStatusOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(LinkedAccountStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(LinkedAccountStatus);
 
 /** @internal */
 export const LinkedAccountType$inboundSchema: z.ZodType<
   LinkedAccountTypeOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(LinkedAccountType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(LinkedAccountType);
 
 /** @internal */
 export const LinkedAccount$inboundSchema: z.ZodType<

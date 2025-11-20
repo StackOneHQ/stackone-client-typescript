@@ -95,7 +95,6 @@ export const AtsGetApplicationNoteResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   NoteResult: shared.NoteResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

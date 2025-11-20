@@ -164,7 +164,6 @@ export const HrisListGroupsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISGroupsPaginated: shared.HRISGroupsPaginated$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Reason, Reason$inboundSchema } from "./reason.js";
@@ -198,11 +199,7 @@ export const TimeOffPoliciesValue$inboundSchema: z.ZodType<
   TimeOffPoliciesValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffPoliciesValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffPoliciesValue);
 
 /** @internal */
 export const DurationUnit$inboundSchema: z.ZodType<
@@ -281,11 +278,7 @@ export const TimeOffPoliciesSchemasValue$inboundSchema: z.ZodType<
   TimeOffPoliciesSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TimeOffPoliciesSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TimeOffPoliciesSchemasValue);
 
 /** @internal */
 export const TimeOffPoliciesType$inboundSchema: z.ZodType<

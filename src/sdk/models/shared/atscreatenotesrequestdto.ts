@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   NoteContentApiModel,
   NoteContentApiModel$Outbound,
@@ -126,13 +127,10 @@ export function atsCreateNotesRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const AtsCreateNotesRequestDtoValue$outboundSchema: z.ZodType<
-  AtsCreateNotesRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   AtsCreateNotesRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(AtsCreateNotesRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AtsCreateNotesRequestDtoValue);
 
 /** @internal */
 export type Visibility$Outbound = {

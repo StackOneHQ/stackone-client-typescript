@@ -33,7 +33,12 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Lms extends ClientSDK {
   /**
-   * Batch Upsert Content
+   * Batch Upsert External Linking Learning Objects
+   *
+   * @remarks
+   * Batch upsert multiple external linking learning objects that redirect users to a provider platform for consumption and progress tracking.
+   *
+   * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
    */
   async batchUpsertContent(
     request: operations.LmsBatchUpsertContentRequest,
@@ -48,6 +53,13 @@ export class Lms extends ClientSDK {
 
   /**
    * Create User Assignment
+   *
+   * @remarks
+   * Create an assignment type learning record for a user.
+   *
+   * This is the record linking a user to a learning object.
+   *
+   * It can be pending or in progress.
    */
   async createUserAssignment(
     request: operations.LmsCreateUserAssignmentRequest,
@@ -62,6 +74,11 @@ export class Lms extends ClientSDK {
 
   /**
    * Create User Completion
+   *
+   * @remarks
+   * Create a completed learning record for a user.
+   *
+   * This is the record of a user completing a learning object.
    */
   async createUserCompletion(
     request: operations.LmsCreateUserCompletionRequest,
@@ -76,6 +93,11 @@ export class Lms extends ClientSDK {
 
   /**
    * Delete User Completion
+   *
+   * @remarks
+   * Delete a completion type learning record for a user.
+   *
+   * This is a record of a user completing a learning object.
    */
   async deleteUserCompletion(
     request: operations.LmsDeleteUserCompletionRequest,
@@ -90,6 +112,13 @@ export class Lms extends ClientSDK {
 
   /**
    * Get Assignment
+   *
+   * @remarks
+   * Retrieve an assignment type learning record by its identifier.
+   *
+   * This is the record linking a user to a learning object.
+   *
+   * It can be pending, in progress, or completed.
    */
   async getAssignment(
     request: operations.LmsGetAssignmentRequest,
@@ -118,6 +147,9 @@ export class Lms extends ClientSDK {
 
   /**
    * Get Completion
+   *
+   * @remarks
+   * Retrieve a completed learning record by its identifier. This is the record of a user completing a learning object.
    */
   async getCompletion(
     request: operations.LmsGetCompletionRequest,
@@ -132,6 +164,13 @@ export class Lms extends ClientSDK {
 
   /**
    * Get Content
+   *
+   * @remarks
+   * Retrieve a content type learning object by its identifier.
+   *
+   * These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+   *
+   * Only content objects for which the platform supports progress and completion tracking are returned.
    */
   async getContent(
     request: operations.LmsGetContentRequest,
@@ -146,6 +185,11 @@ export class Lms extends ClientSDK {
 
   /**
    * Get Course
+   *
+   * @remarks
+   * Retrieve a course type learning object by its identifier.
+   *
+   * These are collections of content type learning objects that are grouped together for a specific learning purpose.
    */
   async getCourse(
     request: operations.LmsGetCourseRequest,
@@ -188,6 +232,13 @@ export class Lms extends ClientSDK {
 
   /**
    * Get User Assignment
+   *
+   * @remarks
+   * Retrieve an assignment type learning record for a user by its identifier.
+   *
+   * This is the record linking a user to a learning object.
+   *
+   * It can be pending, in progress, or completed.
    */
   async getUserAssignment(
     request: operations.LmsGetUserAssignmentRequest,
@@ -202,6 +253,11 @@ export class Lms extends ClientSDK {
 
   /**
    * Get User Completion
+   *
+   * @remarks
+   * Retrieve a completed learning record for a user by its identifier.
+   *
+   * This is the record of a user completing a learning object.
    */
   async getUserCompletion(
     request: operations.LmsGetUserCompletionRequest,
@@ -216,6 +272,13 @@ export class Lms extends ClientSDK {
 
   /**
    * List Assignments
+   *
+   * @remarks
+   * Retrieve a list of assignment type learning records.
+   *
+   * These are the records linking a user to a learning object.
+   *
+   * They can be pending, in progress, or completed.
    */
   async listAssignments(
     request: operations.LmsListAssignmentsRequest,
@@ -248,6 +311,9 @@ export class Lms extends ClientSDK {
 
   /**
    * List Completions
+   *
+   * @remarks
+   * Retrieve a list of completed learning records. These are the records of a user completing learning objects.
    */
   async listCompletions(
     request: operations.LmsListCompletionsRequest,
@@ -264,6 +330,13 @@ export class Lms extends ClientSDK {
 
   /**
    * List Content
+   *
+   * @remarks
+   * Retrieve a list of content type learning objects.
+   *
+   * These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+   *
+   * Only content objects for which the platform supports progress and completion tracking are returned.
    */
   async listContent(
     request: operations.LmsListContentRequest,
@@ -280,6 +353,11 @@ export class Lms extends ClientSDK {
 
   /**
    * List Courses
+   *
+   * @remarks
+   * Retrieve a list of course type learning objects.
+   *
+   * These are collections of content type learning objects that are grouped together for a specific learning purpose.
    */
   async listCourses(
     request: operations.LmsListCoursesRequest,
@@ -312,6 +390,13 @@ export class Lms extends ClientSDK {
 
   /**
    * List User Assignments
+   *
+   * @remarks
+   * Retrieve a list of assignment type learning records for a user.
+   *
+   * These are the records linking a user to learning objects.
+   *
+   * They can be pending, in progress, or completed.
    */
   async listUserAssignments(
     request: operations.LmsListUserAssignmentsRequest,
@@ -328,6 +413,11 @@ export class Lms extends ClientSDK {
 
   /**
    * List User Completions
+   *
+   * @remarks
+   * Retrieve a list of completed learning records for a user.
+   *
+   * These are the records of a user completing learning objects.
    */
   async listUserCompletions(
     request: operations.LmsListUserCompletionsRequest,
@@ -359,7 +449,12 @@ export class Lms extends ClientSDK {
   }
 
   /**
-   * Update Content
+   * Update External Linking Learning Objects
+   *
+   * @remarks
+   * Update an external linking learning object that redirects users to a provider platform for consumption and progress tracking.
+   *
+   * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
    */
   async updateContent(
     request: operations.LmsUpdateContentRequest,
@@ -373,7 +468,12 @@ export class Lms extends ClientSDK {
   }
 
   /**
-   * Upsert Content
+   * Upsert External Linking Learning Objects
+   *
+   * @remarks
+   * Create or update an external linking learning object that redirects users to a provider platform for consumption and progress tracking.
+   *
+   * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
    */
   async upsertContent(
     request: operations.LmsUpsertContentRequest,

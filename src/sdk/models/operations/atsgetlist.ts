@@ -90,7 +90,6 @@ export const AtsGetListResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   ListResult: shared.ListResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The category name to associate with the file
@@ -1385,13 +1386,10 @@ export type HrisDocumentsUploadRequestDto = {
 
 /** @internal */
 export const HrisDocumentsUploadRequestDtoValue$outboundSchema: z.ZodType<
-  HrisDocumentsUploadRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   HrisDocumentsUploadRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(HrisDocumentsUploadRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(HrisDocumentsUploadRequestDtoValue);
 
 /** @internal */
 export type HrisDocumentsUploadRequestDtoCategory$Outbound = {
@@ -1479,13 +1477,10 @@ export function hrisDocumentsUploadRequestDtoSourceValueToJSON(
 /** @internal */
 export const HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema:
   z.ZodType<
-    HrisDocumentsUploadRequestDtoSchemasValueOpen,
+    string,
     z.ZodTypeDef,
     HrisDocumentsUploadRequestDtoSchemasValueOpen
-  > = z.union([
-    z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(HrisDocumentsUploadRequestDtoSchemasValue);
 
 /** @internal */
 export type HrisDocumentsUploadRequestDtoConfidential$Outbound = {
@@ -1591,13 +1586,12 @@ export function hrisDocumentsUploadRequestDtoSchemasSourceValueToJSON(
 /** @internal */
 export const HrisDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema:
   z.ZodType<
-    HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
+    string,
     z.ZodTypeDef,
     HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen
-  > = z.union([
-    z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  );
 
 /** @internal */
 export type HrisDocumentsUploadRequestDtoFileFormat$Outbound = {

@@ -4,11 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -53,20 +50,10 @@ export type ScreeningResultWebhook = {
 
 /** @internal */
 export const Event$inboundSchema: z.ZodType<EventOpen, z.ZodTypeDef, unknown> =
-  z
-    .union([
-      z.nativeEnum(Event),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  openEnums.inboundSchema(Event);
 /** @internal */
-export const Event$outboundSchema: z.ZodType<
-  EventOpen,
-  z.ZodTypeDef,
-  EventOpen
-> = z.union([
-  z.nativeEnum(Event),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+export const Event$outboundSchema: z.ZodType<string, z.ZodTypeDef, EventOpen> =
+  openEnums.outboundSchema(Event);
 
 /** @internal */
 export const ScreeningResultWebhook$inboundSchema: z.ZodType<

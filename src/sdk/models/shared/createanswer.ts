@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type CreateAnswer4 = {};
 
@@ -121,13 +122,10 @@ export function createAnswerSourceValueToJSON(
 
 /** @internal */
 export const CreateAnswerValue$outboundSchema: z.ZodType<
-  CreateAnswerValueOpen,
+  string,
   z.ZodTypeDef,
   CreateAnswerValueOpen
-> = z.union([
-  z.nativeEnum(CreateAnswerValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(CreateAnswerValue);
 
 /** @internal */
 export type CreateAnswerType$Outbound = {

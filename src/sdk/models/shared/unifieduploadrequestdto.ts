@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
@@ -1424,13 +1425,10 @@ export function unifiedUploadRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const UnifiedUploadRequestDtoValue$outboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   UnifiedUploadRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(UnifiedUploadRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(UnifiedUploadRequestDtoValue);
 
 /** @internal */
 export type UnifiedUploadRequestDtoConfidential$Outbound = {
@@ -1532,13 +1530,10 @@ export function unifiedUploadRequestDtoSchemasSourceValueToJSON(
 
 /** @internal */
 export const UnifiedUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
-  UnifiedUploadRequestDtoSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   UnifiedUploadRequestDtoSchemasValueOpen
-> = z.union([
-  z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(UnifiedUploadRequestDtoSchemasValue);
 
 /** @internal */
 export type UnifiedUploadRequestDtoFileFormat$Outbound = {

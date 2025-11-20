@@ -98,7 +98,6 @@ export const AtsGetApplicationScheduledInterviewResponse$inboundSchema:
     unknown
   > = z.object({
     ContentType: z.string(),
-
     Headers: z.record(z.array(z.string())).default({}),
     ScheduledInterviewsResult: shared.ScheduledInterviewsResult$inboundSchema
       .optional(),

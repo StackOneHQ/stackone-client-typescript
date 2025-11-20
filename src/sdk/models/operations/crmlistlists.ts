@@ -162,7 +162,6 @@ export const CrmListListsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   ListsPaginated: shared.ListsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),

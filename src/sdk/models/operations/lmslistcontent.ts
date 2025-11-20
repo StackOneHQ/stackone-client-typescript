@@ -189,7 +189,6 @@ export const LmsListContentResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentPaginated: shared.ContentPaginated$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

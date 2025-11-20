@@ -332,7 +332,7 @@ run();
 
 ### [lms](docs/sdks/lms/README.md)
 
-* [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
+* [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert External Linking Learning Objects
 * [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 * [deleteUserCompletion](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
@@ -354,8 +354,8 @@ run();
 * [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
-* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
-* [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
+* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update External Linking Learning Objects
+* [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 
 ### [marketing](docs/sdks/marketing/README.md)
 
@@ -986,7 +986,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`iamListRoles`](docs/sdks/iam/README.md#listroles) - List Roles
 - [`iamListUsers`](docs/sdks/iam/README.md#listusers) - List Users
 - [`iamUpdateUser`](docs/sdks/iam/README.md#updateuser) - Update User
-- [`lmsBatchUpsertContent`](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
+- [`lmsBatchUpsertContent`](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert External Linking Learning Objects
 - [`lmsCreateUserAssignment`](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 - [`lmsCreateUserCompletion`](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 - [`lmsDeleteUserCompletion`](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
@@ -1008,8 +1008,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsListUserAssignments`](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 - [`lmsListUserCompletions`](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 - [`lmsListUsers`](docs/sdks/lms/README.md#listusers) - List Users
-- [`lmsUpdateContent`](docs/sdks/lms/README.md#updatecontent) - Update Content
-- [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
+- [`lmsUpdateContent`](docs/sdks/lms/README.md#updatecontent) - Update External Linking Learning Objects
+- [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 - [`marketingCreateContentBlock`](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 - [`marketingCreateEmailTemplate`](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
 - [`marketingCreateInAppTemplate`](docs/sdks/marketing/README.md#createinapptemplate) - Create In-App Template

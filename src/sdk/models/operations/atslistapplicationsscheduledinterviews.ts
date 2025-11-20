@@ -194,7 +194,6 @@ export const AtsListApplicationsScheduledInterviewsResponse$inboundSchema:
     unknown
   > = z.object({
     ContentType: z.string(),
-
     Headers: z.record(z.array(z.string())).default({}),
     ScheduledInterviewsPaginated: shared
       .ScheduledInterviewsPaginated$inboundSchema.optional(),

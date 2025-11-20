@@ -90,7 +90,6 @@ export const HrisGetJobResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   HrisJobResult: shared.HrisJobResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

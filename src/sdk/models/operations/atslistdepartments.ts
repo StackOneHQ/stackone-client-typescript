@@ -173,7 +173,6 @@ export const AtsListDepartmentsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   DepartmentsPaginated: shared.DepartmentsPaginated$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

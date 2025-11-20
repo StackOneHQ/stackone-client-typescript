@@ -171,7 +171,6 @@ export const MarketingListSmsTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   SmsTemplatesPaginated: shared.SmsTemplatesPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),

@@ -64,7 +64,6 @@ export const StackoneDeleteAccountResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   LinkedAccount: shared.LinkedAccount$inboundSchema.optional(),
   StatusCode: z.number().int(),

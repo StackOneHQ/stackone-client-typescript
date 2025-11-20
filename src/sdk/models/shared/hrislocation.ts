@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -455,11 +456,7 @@ export const HRISLocationValue$inboundSchema: z.ZodType<
   HRISLocationValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HRISLocationValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HRISLocationValue);
 
 /** @internal */
 export const HRISLocationCountry$inboundSchema: z.ZodType<
@@ -538,11 +535,7 @@ export const HRISLocationSchemasValue$inboundSchema: z.ZodType<
   HRISLocationSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HRISLocationSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HRISLocationSchemasValue);
 
 /** @internal */
 export const HRISLocationLocationType$inboundSchema: z.ZodType<

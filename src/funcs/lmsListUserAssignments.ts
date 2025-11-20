@@ -34,6 +34,13 @@ import {
 
 /**
  * List User Assignments
+ *
+ * @remarks
+ * Retrieve a list of assignment type learning records for a user.
+ *
+ * These are the records linking a user to learning objects.
+ *
+ * They can be pending, in progress, or completed.
  */
 export function lmsListUserAssignments(
   client: StackOneCore,

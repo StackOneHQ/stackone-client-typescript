@@ -30,7 +30,7 @@ export type JsonRpcMessageDto = {
   /**
    * Method parameters (arbitrary JSON)
    */
-  params?: Params | undefined;
+  params?: Params | null | undefined;
 };
 
 /** @internal */
@@ -63,7 +63,7 @@ export type JsonRpcMessageDto$Outbound = {
   id?: Id$Outbound | undefined;
   jsonrpc: string;
   method: string;
-  params?: Params$Outbound | undefined;
+  params?: Params$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -75,7 +75,7 @@ export const JsonRpcMessageDto$outboundSchema: z.ZodType<
   id: z.lazy(() => Id$outboundSchema).optional(),
   jsonrpc: z.string(),
   method: z.string(),
-  params: z.lazy(() => Params$outboundSchema).optional(),
+  params: z.nullable(z.lazy(() => Params$outboundSchema)).optional(),
 });
 
 export function jsonRpcMessageDtoToJSON(

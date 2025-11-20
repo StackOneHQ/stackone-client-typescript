@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -543,7 +544,7 @@ export type EmploymentSchemasPayFrequencyValueOpen = OpenEnum<
 >;
 
 /**
- * The pay frequency
+ * How often the employee is paid
  */
 export type EmploymentPayFrequency = {
   /**
@@ -601,7 +602,7 @@ export type EmploymentSchemasPayPeriodValueOpen = OpenEnum<
 >;
 
 /**
- * The pay period
+ * The time period over which the pay rate is calculated
  */
 export type EmploymentPayPeriod = {
   /**
@@ -829,15 +830,15 @@ export type Employment = {
    */
   payCurrency?: string | null | undefined;
   /**
-   * The pay frequency
+   * How often the employee is paid
    */
   payFrequency?: EmploymentPayFrequency | null | undefined;
   /**
-   * The pay period
+   * The time period over which the pay rate is calculated
    */
   payPeriod?: EmploymentPayPeriod | null | undefined;
   /**
-   * The pay rate for the employee
+   * The amount of compensation for the employee
    */
   payRate?: string | null | undefined;
   /**
@@ -945,11 +946,7 @@ export const EmploymentSchemasContractTypeValue$inboundSchema: z.ZodType<
   EmploymentSchemasContractTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasContractTypeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasContractTypeValue);
 
 /** @internal */
 export const EmploymentSchemasContractTypeContractType$inboundSchema: z.ZodType<
@@ -1065,11 +1062,7 @@ export const EmploymentSchemasCostCenterValue$inboundSchema: z.ZodType<
   EmploymentSchemasCostCenterValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasCostCenterValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasCostCenterValue);
 
 /** @internal */
 export const EmploymentSchemasCostCenterType$inboundSchema: z.ZodType<
@@ -1190,11 +1183,7 @@ export const EmploymentSchemasDepartmentValue$inboundSchema: z.ZodType<
   EmploymentSchemasDepartmentValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasDepartmentValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasDepartmentValue);
 
 /** @internal */
 export const EmploymentSchemasDepartmentType$inboundSchema: z.ZodType<
@@ -1315,11 +1304,7 @@ export const EmploymentSchemasDivisionValue$inboundSchema: z.ZodType<
   EmploymentSchemasDivisionValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasDivisionValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasDivisionValue);
 
 /** @internal */
 export const EmploymentSchemasDivisionType$inboundSchema: z.ZodType<
@@ -1439,11 +1424,7 @@ export const EmploymentValue$inboundSchema: z.ZodType<
   EmploymentValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentValue);
 
 /** @internal */
 export const EmploymentEmploymentContractType$inboundSchema: z.ZodType<
@@ -1522,11 +1503,7 @@ export const EmploymentSchemasValue$inboundSchema: z.ZodType<
   EmploymentSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasValue);
 
 /** @internal */
 export const EmploymentEmploymentType$inboundSchema: z.ZodType<
@@ -1686,11 +1663,7 @@ export const EmploymentSchemasPayFrequencyValue$inboundSchema: z.ZodType<
   EmploymentSchemasPayFrequencyValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasPayFrequencyValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasPayFrequencyValue);
 
 /** @internal */
 export const EmploymentPayFrequency$inboundSchema: z.ZodType<
@@ -1771,11 +1744,7 @@ export const EmploymentSchemasPayPeriodValue$inboundSchema: z.ZodType<
   EmploymentSchemasPayPeriodValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasPayPeriodValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasPayPeriodValue);
 
 /** @internal */
 export const EmploymentPayPeriod$inboundSchema: z.ZodType<
@@ -1854,11 +1823,7 @@ export const EmploymentSchemasTypeValue$inboundSchema: z.ZodType<
   EmploymentSchemasTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasTypeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasTypeValue);
 
 /** @internal */
 export const EmploymentSchemasTypeType$inboundSchema: z.ZodType<
@@ -1965,11 +1930,7 @@ export const EmploymentSchemasWorkTimeValue$inboundSchema: z.ZodType<
   EmploymentSchemasWorkTimeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentSchemasWorkTimeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentSchemasWorkTimeValue);
 
 /** @internal */
 export const EmploymentPeriod$inboundSchema: z.ZodType<

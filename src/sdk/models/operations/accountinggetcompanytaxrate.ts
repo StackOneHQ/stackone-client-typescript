@@ -97,7 +97,6 @@ export const AccountingGetCompanyTaxRateResponse$inboundSchema: z.ZodType<
   AccountingTaxRateResult: shared.AccountingTaxRateResult$inboundSchema
     .optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

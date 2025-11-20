@@ -91,7 +91,6 @@ export const HrisGetBenefitResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISBenefitResult: shared.HRISBenefitResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

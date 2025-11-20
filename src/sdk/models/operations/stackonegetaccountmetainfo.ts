@@ -64,7 +64,6 @@ export const StackoneGetAccountMetaInfoResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   LinkedAccountMeta: shared.LinkedAccountMeta$inboundSchema.optional(),
   StatusCode: z.number().int(),

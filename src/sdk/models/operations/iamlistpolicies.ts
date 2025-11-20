@@ -169,7 +169,6 @@ export const IamListPoliciesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   IamPoliciesPaginated: shared.IamPoliciesPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),

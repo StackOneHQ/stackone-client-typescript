@@ -99,7 +99,6 @@ export const HrisDownloadEmployeeDocumentResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   DownloadApiModel: shared.DownloadApiModel$inboundSchema.optional(),
   DownloadApiModel1: z.string().optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

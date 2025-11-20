@@ -39,6 +39,9 @@ import {
 
 /**
  * List Completions
+ *
+ * @remarks
+ * Retrieve a list of completed learning records. These are the records of a user completing learning objects.
  */
 export function lmsListCompletions(
   client: StackOneCore,

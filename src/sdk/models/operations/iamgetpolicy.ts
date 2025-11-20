@@ -96,7 +96,6 @@ export const IamGetPolicyResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   IamPolicyResult: shared.IamPolicyResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

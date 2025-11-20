@@ -180,7 +180,6 @@ export const AtsListApplicationDocumentCategoriesResponse$inboundSchema:
     unknown
   > = z.object({
     ContentType: z.string(),
-
     Headers: z.record(z.array(z.string())).default({}),
     ReferencePaginated: shared.ReferencePaginated$inboundSchema.optional(),
     StatusCode: z.number().int(),

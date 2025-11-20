@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FileT, FileT$inboundSchema } from "./file.js";
@@ -232,11 +233,7 @@ export const TaskResultValue$inboundSchema: z.ZodType<
   TaskResultValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TaskResultValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TaskResultValue);
 
 /** @internal */
 export const TaskResultStatus$inboundSchema: z.ZodType<
@@ -315,11 +312,7 @@ export const TaskResultSchemasValue$inboundSchema: z.ZodType<
   TaskResultSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(TaskResultSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(TaskResultSchemasValue);
 
 /** @internal */
 export const TaskResultType$inboundSchema: z.ZodType<

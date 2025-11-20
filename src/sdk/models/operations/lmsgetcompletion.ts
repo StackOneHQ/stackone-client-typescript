@@ -91,7 +91,6 @@ export const LmsGetCompletionResponse$inboundSchema: z.ZodType<
 > = z.object({
   CompletionResult: shared.CompletionResult$inboundSchema.optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

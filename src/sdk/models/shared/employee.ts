@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CostCenters, CostCenters$inboundSchema } from "./costcenters.js";
@@ -2125,11 +2126,7 @@ export const EmployeeValue$inboundSchema: z.ZodType<
   EmployeeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeValue);
 
 /** @internal */
 export const EmployeeEmploymentContractType$inboundSchema: z.ZodType<
@@ -2208,11 +2205,7 @@ export const EmployeeSchemasValue$inboundSchema: z.ZodType<
   EmployeeSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasValue);
 
 /** @internal */
 export const EmploymentStatus$inboundSchema: z.ZodType<
@@ -2297,11 +2290,7 @@ export const EmployeeSchemasEmploymentTypeValue$inboundSchema: z.ZodType<
   EmployeeSchemasEmploymentTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasEmploymentTypeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasEmploymentTypeValue);
 
 /** @internal */
 export const EmployeeEmploymentType$inboundSchema: z.ZodType<
@@ -2382,11 +2371,7 @@ export const EmployeeSchemasEthnicityValue$inboundSchema: z.ZodType<
   EmployeeSchemasEthnicityValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasEthnicityValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasEthnicityValue);
 
 /** @internal */
 export const Ethnicity$inboundSchema: z.ZodType<
@@ -2465,11 +2450,7 @@ export const EmployeeSchemasGenderValue$inboundSchema: z.ZodType<
   EmployeeSchemasGenderValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasGenderValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasGenderValue);
 
 /** @internal */
 export const Gender$inboundSchema: z.ZodType<Gender, z.ZodTypeDef, unknown> = z
@@ -2546,11 +2527,7 @@ export const EmployeeSchemasHomeLocationValue$inboundSchema: z.ZodType<
   EmployeeSchemasHomeLocationValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasHomeLocationValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasHomeLocationValue);
 
 /** @internal */
 export const EmployeeCountry$inboundSchema: z.ZodType<
@@ -2643,11 +2620,7 @@ export const EmployeeSchemasHomeLocationLocationTypeValue$inboundSchema:
     EmployeeSchemasHomeLocationLocationTypeValueOpen,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(EmployeeSchemasHomeLocationLocationTypeValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(EmployeeSchemasHomeLocationLocationTypeValue);
 
 /** @internal */
 export const EmployeeLocationType$inboundSchema: z.ZodType<
@@ -2805,11 +2778,7 @@ export const EmployeeSchemasMaritalStatusValue$inboundSchema: z.ZodType<
   EmployeeSchemasMaritalStatusValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasMaritalStatusValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasMaritalStatusValue);
 
 /** @internal */
 export const MaritalStatus$inboundSchema: z.ZodType<
@@ -2897,11 +2866,7 @@ export const EmployeeSchemasNationalIdentityNumberValue$inboundSchema:
     EmployeeSchemasNationalIdentityNumberValueOpen,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(EmployeeSchemasNationalIdentityNumberValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(EmployeeSchemasNationalIdentityNumberValue);
 
 /** @internal */
 export const EmployeeSchemasCountry$inboundSchema: z.ZodType<
@@ -2993,11 +2958,7 @@ export const EmployeeSchemasNationalIdentityNumberTypeValue$inboundSchema:
     EmployeeSchemasNationalIdentityNumberTypeValueOpen,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(EmployeeSchemasNationalIdentityNumberTypeValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(EmployeeSchemasNationalIdentityNumberTypeValue);
 
 /** @internal */
 export const EmployeeType$inboundSchema: z.ZodType<
@@ -3107,11 +3068,7 @@ export const EmployeeSchemasPreferredLanguageValue$inboundSchema: z.ZodType<
   EmployeeSchemasPreferredLanguageValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasPreferredLanguageValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasPreferredLanguageValue);
 
 /** @internal */
 export const PreferredLanguage$inboundSchema: z.ZodType<
@@ -3192,11 +3149,7 @@ export const EmployeeSchemasWorkLocationValue$inboundSchema: z.ZodType<
   EmployeeSchemasWorkLocationValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmployeeSchemasWorkLocationValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmployeeSchemasWorkLocationValue);
 
 /** @internal */
 export const EmployeeSchemasWorkLocationCountry$inboundSchema: z.ZodType<
@@ -3290,11 +3243,7 @@ export const EmployeeSchemasWorkLocationLocationTypeValue$inboundSchema:
     EmployeeSchemasWorkLocationLocationTypeValueOpen,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(EmployeeSchemasWorkLocationLocationTypeValue),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(EmployeeSchemasWorkLocationLocationTypeValue);
 
 /** @internal */
 export const EmployeeSchemasLocationType$inboundSchema: z.ZodType<

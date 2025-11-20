@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   CountryCodeEnum,
   CountryCodeEnum$Outbound,
@@ -278,7 +279,7 @@ export type HrisCreateEmployeeRequestDtoSchemasEmploymentValueOpen = OpenEnum<
 >;
 
 /**
- * The pay frequency
+ * How often the employee is paid
  */
 export type HrisCreateEmployeeRequestDtoPayFrequency = {
   /**
@@ -338,7 +339,7 @@ export type HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValueOpen =
   OpenEnum<typeof HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue>;
 
 /**
- * The pay period
+ * The time period over which the pay rate is calculated
  */
 export type HrisCreateEmployeeRequestDtoPayPeriod = {
   /**
@@ -545,15 +546,15 @@ export type HrisCreateEmployeeRequestDtoEmployment = {
    */
   payCurrency?: string | null | undefined;
   /**
-   * The pay frequency
+   * How often the employee is paid
    */
   payFrequency?: HrisCreateEmployeeRequestDtoPayFrequency | null | undefined;
   /**
-   * The pay period
+   * The time period over which the pay rate is calculated
    */
   payPeriod?: HrisCreateEmployeeRequestDtoPayPeriod | null | undefined;
   /**
-   * The pay rate for the employee
+   * The amount of compensation for the employee
    */
   payRate?: string | null | undefined;
   /**
@@ -2505,15 +2506,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentContractTypeSourceV
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentContractTypeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentContractTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentContractTypeValueOpen
-  > = z.union([
-    z.nativeEnum(
-      HrisCreateEmployeeRequestDtoSchemasEmploymentContractTypeValue,
-    ),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentContractTypeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasContractType$Outbound = {
@@ -2672,15 +2670,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractT
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValueOpen
-  > = z.union([
-    z.nativeEnum(
-      HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValue,
-    ),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentContractTypeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasEmploymentContractType$Outbound =
@@ -2794,15 +2789,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeSourc
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValueOpen
-  > = z.union([
-    z.nativeEnum(
-      HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue,
-    ),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentEmploymentTypeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasEmploymentType$Outbound = {
@@ -2946,13 +2938,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentSourceValueToJSON(
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoPayFrequency$Outbound = {
@@ -3063,13 +3054,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodSourceValu
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentPayPeriodValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoPayPeriod$Outbound = {
@@ -3180,13 +3170,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeSourceValue
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasEmploymentTypeType$Outbound = {
@@ -3340,13 +3329,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeSourceValue
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentWorkTimeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoPeriod$Outbound = {
@@ -3586,13 +3574,10 @@ export function hrisCreateEmployeeRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const HrisCreateEmployeeRequestDtoValue$outboundSchema: z.ZodType<
-  HrisCreateEmployeeRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   HrisCreateEmployeeRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(HrisCreateEmployeeRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(HrisCreateEmployeeRequestDtoValue);
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound = {
@@ -3697,13 +3682,10 @@ export function hrisCreateEmployeeRequestDtoSchemasSourceValueToJSON(
 
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasValue$outboundSchema: z.ZodType<
-  HrisCreateEmployeeRequestDtoSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   HrisCreateEmployeeRequestDtoSchemasValueOpen
-> = z.union([
-  z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(HrisCreateEmployeeRequestDtoSchemasValue);
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound = {
@@ -3812,13 +3794,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValueToJS
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoEmploymentType$Outbound = {
@@ -3928,13 +3909,12 @@ export function hrisCreateEmployeeRequestDtoSchemasEthnicitySourceValueToJSON(
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoEthnicity$Outbound = {
@@ -4043,13 +4023,10 @@ export function hrisCreateEmployeeRequestDtoSchemasGenderSourceValueToJSON(
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasGenderValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasGenderValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasGenderValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(HrisCreateEmployeeRequestDtoSchemasGenderValue);
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoGender$Outbound = {
@@ -4157,13 +4134,12 @@ export function hrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValueToJSON
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoCountry$Outbound = {
@@ -4422,13 +4398,12 @@ export function hrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValueToJSO
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoMaritalStatus$Outbound = {
@@ -4542,15 +4517,12 @@ export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceV
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValueOpen
-  > = z.union([
-    z.nativeEnum(
-      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-    ),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasCountry$Outbound = {
@@ -4664,15 +4636,12 @@ export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSou
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen
-  > = z.union([
-    z.nativeEnum(
-      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-    ),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasType$Outbound = {
@@ -4820,13 +4789,12 @@ export function hrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValueT
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound = {
@@ -4938,13 +4906,12 @@ export function hrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValueToJSON
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen,
+    string,
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen
-  > = z.union([
-    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
+  > = openEnums.outboundSchema(
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  );
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound = {

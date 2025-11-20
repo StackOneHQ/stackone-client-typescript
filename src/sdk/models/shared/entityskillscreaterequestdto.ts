@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type EntitySkillsCreateRequestDto4 = {};
 
@@ -181,13 +182,10 @@ export function entitySkillsCreateRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const EntitySkillsCreateRequestDtoValue$outboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   EntitySkillsCreateRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(EntitySkillsCreateRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(EntitySkillsCreateRequestDtoValue);
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoMaximumProficiency$Outbound = {
@@ -299,13 +297,10 @@ export function entitySkillsCreateRequestDtoSchemasSourceValueToJSON(
 
 /** @internal */
 export const EntitySkillsCreateRequestDtoSchemasValue$outboundSchema: z.ZodType<
-  EntitySkillsCreateRequestDtoSchemasValueOpen,
+  string,
   z.ZodTypeDef,
   EntitySkillsCreateRequestDtoSchemasValueOpen
-> = z.union([
-  z.nativeEnum(EntitySkillsCreateRequestDtoSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(EntitySkillsCreateRequestDtoSchemasValue);
 
 /** @internal */
 export type EntitySkillsCreateRequestDtoMinimumProficiency$Outbound = {

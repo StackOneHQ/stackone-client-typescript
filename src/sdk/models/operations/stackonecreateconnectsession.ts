@@ -38,7 +38,6 @@ export const StackoneCreateConnectSessionResponse$inboundSchema: z.ZodType<
   ConnectSessionTokenAuthLink: shared.ConnectSessionTokenAuthLink$inboundSchema
     .optional(),
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

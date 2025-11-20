@@ -91,7 +91,6 @@ export const AtsGetDepartmentResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   DepartmentResult: shared.DepartmentResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

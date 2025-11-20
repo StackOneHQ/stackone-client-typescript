@@ -81,7 +81,6 @@ export const AtsOrderAssessmentsRequestResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   CreateAssessmentOrderResult: shared.CreateAssessmentOrderResult$inboundSchema
     .optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

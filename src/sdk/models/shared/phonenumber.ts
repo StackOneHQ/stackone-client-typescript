@@ -4,11 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -45,20 +42,13 @@ export const PhoneNumberType$inboundSchema: z.ZodType<
   PhoneNumberTypeOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(PhoneNumberType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(PhoneNumberType);
 /** @internal */
 export const PhoneNumberType$outboundSchema: z.ZodType<
-  PhoneNumberTypeOpen,
+  string,
   z.ZodTypeDef,
   PhoneNumberTypeOpen
-> = z.union([
-  z.nativeEnum(PhoneNumberType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(PhoneNumberType);
 
 /** @internal */
 export const PhoneNumber$inboundSchema: z.ZodType<

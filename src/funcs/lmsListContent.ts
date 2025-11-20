@@ -39,6 +39,13 @@ import {
 
 /**
  * List Content
+ *
+ * @remarks
+ * Retrieve a list of content type learning objects.
+ *
+ * These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+ *
+ * Only content objects for which the platform supports progress and completion tracking are returned.
  */
 export function lmsListContent(
   client: StackOneCore,

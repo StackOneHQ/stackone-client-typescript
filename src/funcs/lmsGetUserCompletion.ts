@@ -32,6 +32,11 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get User Completion
+ *
+ * @remarks
+ * Retrieve a completed learning record for a user by its identifier.
+ *
+ * This is the record of a user completing a learning object.
  */
 export function lmsGetUserCompletion(
   client: StackOneCore,

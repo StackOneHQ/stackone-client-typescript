@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Content, Content$inboundSchema } from "./content.js";
@@ -1808,11 +1809,7 @@ export const WorkEligibilitySchemasDocumentValue$inboundSchema: z.ZodType<
   WorkEligibilitySchemasDocumentValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(WorkEligibilitySchemasDocumentValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(WorkEligibilitySchemasDocumentValue);
 
 /** @internal */
 export const WorkEligibilityFileFormat$inboundSchema: z.ZodType<
@@ -1935,11 +1932,7 @@ export const WorkEligibilityValue$inboundSchema: z.ZodType<
   WorkEligibilityValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(WorkEligibilityValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(WorkEligibilityValue);
 
 /** @internal */
 export const WorkEligibilityIssuedBy$inboundSchema: z.ZodType<
@@ -2018,11 +2011,7 @@ export const WorkEligibilitySchemasValue$inboundSchema: z.ZodType<
   WorkEligibilitySchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(WorkEligibilitySchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(WorkEligibilitySchemasValue);
 
 /** @internal */
 export const WorkEligibilityType$inboundSchema: z.ZodType<

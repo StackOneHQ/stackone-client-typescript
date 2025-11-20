@@ -189,7 +189,6 @@ export const HrisListEmployeesResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   EmployeesPaginated: shared.EmployeesPaginated$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),

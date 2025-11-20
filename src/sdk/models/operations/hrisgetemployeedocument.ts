@@ -95,7 +95,6 @@ export const HrisGetEmployeeDocumentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   HrisDocumentResult: shared.HrisDocumentResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

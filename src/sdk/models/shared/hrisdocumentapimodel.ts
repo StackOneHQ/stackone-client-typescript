@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Content, Content$inboundSchema } from "./content.js";
@@ -1490,11 +1491,7 @@ export const HrisDocumentApiModelValue$inboundSchema: z.ZodType<
   HrisDocumentApiModelValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HrisDocumentApiModelValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HrisDocumentApiModelValue);
 
 /** @internal */
 export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
@@ -1574,11 +1571,7 @@ export const HrisDocumentApiModelSchemasValue$inboundSchema: z.ZodType<
   HrisDocumentApiModelSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HrisDocumentApiModelSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HrisDocumentApiModelSchemasValue);
 
 /** @internal */
 export const HrisDocumentApiModelFileFormat$inboundSchema: z.ZodType<
@@ -1661,11 +1654,7 @@ export const HrisDocumentApiModelSchemasTypeValue$inboundSchema: z.ZodType<
   HrisDocumentApiModelSchemasTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(HrisDocumentApiModelSchemasTypeValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(HrisDocumentApiModelSchemasTypeValue);
 
 /** @internal */
 export const HrisDocumentApiModelType$inboundSchema: z.ZodType<

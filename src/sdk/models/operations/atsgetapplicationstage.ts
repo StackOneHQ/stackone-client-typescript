@@ -92,7 +92,6 @@ export const AtsGetApplicationStageResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   InterviewStageResult: shared.InterviewStageResult$inboundSchema.optional(),
   StatusCode: z.number().int(),

@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -333,11 +334,7 @@ export const JournalLineValue$inboundSchema: z.ZodType<
   JournalLineValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(JournalLineValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(JournalLineValue);
 
 /** @internal */
 export const JournalLineAccountType$inboundSchema: z.ZodType<
@@ -416,11 +413,7 @@ export const JournalLineSchemasValue$inboundSchema: z.ZodType<
   JournalLineSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(JournalLineSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(JournalLineSchemasValue);
 
 /** @internal */
 export const JournalLineCurrencyCode$inboundSchema: z.ZodType<

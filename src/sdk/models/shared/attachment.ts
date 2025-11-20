@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export type Attachment4 = {};
 
@@ -104,13 +105,10 @@ export function attachmentSourceValueToJSON(
 
 /** @internal */
 export const AttachmentValue$outboundSchema: z.ZodType<
-  AttachmentValueOpen,
+  string,
   z.ZodTypeDef,
   AttachmentValueOpen
-> = z.union([
-  z.nativeEnum(AttachmentValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AttachmentValue);
 
 /** @internal */
 export type AttachmentContentType$Outbound = {

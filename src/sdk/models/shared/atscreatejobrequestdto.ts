@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import {
   AtsJobHiringTeam,
   AtsJobHiringTeam$Outbound,
@@ -148,13 +149,10 @@ export type AtsCreateJobRequestDto = {
 
 /** @internal */
 export const Confidential$outboundSchema: z.ZodType<
-  ConfidentialOpen,
+  string,
   z.ZodTypeDef,
   ConfidentialOpen
-> = z.union([
-  z.nativeEnum(Confidential),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(Confidential);
 
 /** @internal */
 export type AtsCreateJobRequestDto4$Outbound = {};
@@ -207,13 +205,10 @@ export function atsCreateJobRequestDtoSourceValueToJSON(
 
 /** @internal */
 export const AtsCreateJobRequestDtoValue$outboundSchema: z.ZodType<
-  AtsCreateJobRequestDtoValueOpen,
+  string,
   z.ZodTypeDef,
   AtsCreateJobRequestDtoValueOpen
-> = z.union([
-  z.nativeEnum(AtsCreateJobRequestDtoValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(AtsCreateJobRequestDtoValue);
 
 /** @internal */
 export type JobStatus$Outbound = {

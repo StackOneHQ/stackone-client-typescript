@@ -39,6 +39,11 @@ import {
 
 /**
  * List Courses
+ *
+ * @remarks
+ * Retrieve a list of course type learning objects.
+ *
+ * These are collections of content type learning objects that are grouped together for a specific learning purpose.
  */
 export function lmsListCourses(
   client: StackOneCore,

@@ -95,7 +95,6 @@ export const MessagingGetAttachmentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-
   Headers: z.record(z.array(z.string())).default({}),
   MessagingAttachmentResult: shared.MessagingAttachmentResult$inboundSchema
     .optional(),

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { OpenEnum, Unrecognized } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The method of the request
@@ -45,13 +46,10 @@ export type ProxyRequestBody = {
 
 /** @internal */
 export const Method$outboundSchema: z.ZodType<
-  MethodOpen,
+  string,
   z.ZodTypeDef,
   MethodOpen
-> = z.union([
-  z.nativeEnum(Method),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
+> = openEnums.outboundSchema(Method);
 
 /** @internal */
 export type ProxyRequestBody$Outbound = {

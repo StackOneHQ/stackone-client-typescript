@@ -91,7 +91,6 @@ export const HrisGetTeamGroupResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISTeamsResult: shared.HRISTeamsResult$inboundSchema.optional(),
-
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
