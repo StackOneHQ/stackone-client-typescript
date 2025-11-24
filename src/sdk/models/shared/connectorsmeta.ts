@@ -27,6 +27,7 @@ export enum ConnectorsMetaCategory {
   Screening = "screening",
   Messaging = "messaging",
   Accounting = "accounting",
+  Scheduling = "scheduling",
 }
 /**
  * The provider service category

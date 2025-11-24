@@ -26,3 +26,4 @@ let value: ConnectSessionTokenAuthLinkCategories =
 | `Screening`  | screening    |
 | `Messaging`  | messaging    |
 | `Accounting` | accounting   |
+| `Scheduling` | scheduling   |
