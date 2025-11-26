@@ -27,4 +27,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Screening`            | screening              |
 | `Messaging`            | messaging              |
 | `Accounting`           | accounting             |
+| `Scheduling`           | scheduling             |
 | -                      | `Unrecognized<string>` |

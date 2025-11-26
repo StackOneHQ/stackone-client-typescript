@@ -24,6 +24,7 @@ export enum ConnectSessionTokenAuthLinkCategories {
   Screening = "screening",
   Messaging = "messaging",
   Accounting = "accounting",
+  Scheduling = "scheduling",
 }
 
 /**

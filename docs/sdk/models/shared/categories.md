@@ -25,3 +25,4 @@ let value: Categories = Categories.Hris;
 | `Screening`  | screening    |
 | `Messaging`  | messaging    |
 | `Accounting` | accounting   |
+| `Scheduling` | scheduling   |

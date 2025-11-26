@@ -699,6 +699,28 @@ export type JobDescription = {
   text?: string | null | undefined;
 };
 
+/**
+ * The employee manager details
+ */
+export type Manager = {
+  /**
+   * The manager email
+   */
+  email?: string | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * The manager name
+   */
+  name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+};
+
 export type EmployeeSchemasMaritalStatus4 = {};
 
 export type EmployeeSchemasMaritalStatusSourceValue =
@@ -1931,6 +1953,10 @@ export type Employee = {
    */
   lastName?: string | null | undefined;
   /**
+   * The employee manager details
+   */
+  manager?: Manager | null | undefined;
+  /**
    * The employee manager ID
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -2728,6 +2754,29 @@ export function jobDescriptionFromJSON(
 }
 
 /** @internal */
+export const Manager$inboundSchema: z.ZodType<Manager, z.ZodTypeDef, unknown> =
+  z.object({
+    email: z.nullable(z.string()).optional(),
+    id: z.nullable(z.string()).optional(),
+    name: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "remote_id": "remoteId",
+    });
+  });
+
+export function managerFromJSON(
+  jsonString: string,
+): SafeParseResult<Manager, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Manager$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Manager' from JSON`,
+  );
+}
+
+/** @internal */
 export const EmployeeSchemasMaritalStatus4$inboundSchema: z.ZodType<
   EmployeeSchemasMaritalStatus4,
   z.ZodTypeDef,
@@ -3387,6 +3436,7 @@ export const Employee$inboundSchema: z.ZodType<
   job_id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
   last_name: z.nullable(z.string()).optional(),
+  manager: z.nullable(z.lazy(() => Manager$inboundSchema)).optional(),
   manager_id: z.nullable(z.string()).optional(),
   marital_status: z.nullable(z.lazy(() => MaritalStatus$inboundSchema))
     .optional(),
