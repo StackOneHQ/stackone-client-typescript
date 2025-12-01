@@ -75,10 +75,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployees({
-    expand:
-      "company,employments,work_location,home_location,groups,skills,manager",
+    expand: "company,employments,work_location,home_location,groups,skills",
     fields:
-      "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,manager,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
+      "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -137,6 +136,7 @@ run();
 * [createBackgroundCheckPackage](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
+* [createInterviewNote](docs/sdks/ats/README.md#createinterviewnote) - Create Interview Note
 * [createJob](docs/sdks/ats/README.md#createjob) - Create Job
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Create Offer
 * [deleteBackgroundCheckPackage](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
@@ -204,6 +204,7 @@ run();
 * [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 * [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
+* [updateInterviewNote](docs/sdks/ats/README.md#updateinterviewnote) - Update Interview Note
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
 
@@ -355,7 +356,6 @@ run();
 * [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
-* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update External Linking Learning Objects
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 
 ### [marketing](docs/sdks/marketing/README.md)
@@ -816,6 +816,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsCreateBackgroundCheckPackage`](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 - [`atsCreateCandidate`](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 - [`atsCreateCandidateNote`](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
+- [`atsCreateInterviewNote`](docs/sdks/ats/README.md#createinterviewnote) - Create Interview Note
 - [`atsCreateJob`](docs/sdks/ats/README.md#createjob) - Create Job
 - [`atsCreateOffer`](docs/sdks/ats/README.md#createoffer) - Create Offer
 - [`atsDeleteBackgroundCheckPackage`](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
@@ -881,6 +882,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsUpdateBackgroundCheckPackage`](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 - [`atsUpdateBackgroundCheckResult`](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 - [`atsUpdateCandidate`](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
+- [`atsUpdateInterviewNote`](docs/sdks/ats/README.md#updateinterviewnote) - Update Interview Note
 - [`atsUpdateJob`](docs/sdks/ats/README.md#updatejob) - Update Job
 - [`atsUploadApplicationDocument`](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
 - [`connectorsGetConnectorMeta`](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
@@ -1009,7 +1011,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsListUserAssignments`](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 - [`lmsListUserCompletions`](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 - [`lmsListUsers`](docs/sdks/lms/README.md#listusers) - List Users
-- [`lmsUpdateContent`](docs/sdks/lms/README.md#updatecontent) - Update External Linking Learning Objects
 - [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 - [`marketingCreateContentBlock`](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 - [`marketingCreateEmailTemplate`](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates

@@ -1,14 +1,14 @@
-# LmsUpdateContentResponse
+# AtsUpdateInterviewNoteResponse
 
 ## Example Usage
 
 ```typescript
-import { LmsUpdateContentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { AtsUpdateInterviewNoteResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: LmsUpdateContentResponse = {
+let value: AtsUpdateInterviewNoteResponse = {
   contentType: "<value>",
   headers: {},
-  statusCode: 92740,
+  statusCode: 282516,
 };
 ```
 
@@ -20,4 +20,4 @@ let value: LmsUpdateContentResponse = {
 | `headers`                                                             | Record<string, *string*[]>                                            | :heavy_check_mark:                                                    | N/A                                                                   |
 | `statusCode`                                                          | *number*                                                              | :heavy_check_mark:                                                    | HTTP response status code for this operation                          |
 | `rawResponse`                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) | :heavy_check_mark:                                                    | Raw HTTP response; suitable for custom response parsing               |
-| `updateResult`                                                        | [shared.UpdateResult](../../../sdk/models/shared/updateresult.md)     | :heavy_minus_sign:                                                    | The content was updated successfully.                                 |
+| `updateResult`                                                        | [shared.UpdateResult](../../../sdk/models/shared/updateresult.md)     | :heavy_minus_sign:                                                    | Record updated successfully.                                          |

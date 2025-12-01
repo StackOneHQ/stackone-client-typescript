@@ -9,16 +9,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
-export type LmsUpdateContentRequest = {
-  lmsCreateContentRequestDto: shared.LmsCreateContentRequestDto;
+export type AtsUpdateInterviewNoteRequest = {
+  atsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto;
   id: string;
+  subResourceId: string;
   /**
    * The account identifier
    */
   xAccountId: string;
 };
 
-export type LmsUpdateContentResponse = {
+export type AtsUpdateInterviewNoteResponse = {
   /**
    * HTTP response content type for this operation
    */
@@ -33,45 +34,49 @@ export type LmsUpdateContentResponse = {
    */
   rawResponse: Response;
   /**
-   * The content was updated successfully.
+   * Record updated successfully.
    */
   updateResult?: shared.UpdateResult | undefined;
 };
 
 /** @internal */
-export type LmsUpdateContentRequest$Outbound = {
-  LmsCreateContentRequestDto: shared.LmsCreateContentRequestDto$Outbound;
+export type AtsUpdateInterviewNoteRequest$Outbound = {
+  AtsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto$Outbound;
   id: string;
+  subResourceId: string;
   "x-account-id": string;
 };
 
 /** @internal */
-export const LmsUpdateContentRequest$outboundSchema: z.ZodType<
-  LmsUpdateContentRequest$Outbound,
+export const AtsUpdateInterviewNoteRequest$outboundSchema: z.ZodType<
+  AtsUpdateInterviewNoteRequest$Outbound,
   z.ZodTypeDef,
-  LmsUpdateContentRequest
+  AtsUpdateInterviewNoteRequest
 > = z.object({
-  lmsCreateContentRequestDto: shared.LmsCreateContentRequestDto$outboundSchema,
+  atsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto$outboundSchema,
   id: z.string(),
+  subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    lmsCreateContentRequestDto: "LmsCreateContentRequestDto",
+    atsUpdateNotesRequestDto: "AtsUpdateNotesRequestDto",
     xAccountId: "x-account-id",
   });
 });
 
-export function lmsUpdateContentRequestToJSON(
-  lmsUpdateContentRequest: LmsUpdateContentRequest,
+export function atsUpdateInterviewNoteRequestToJSON(
+  atsUpdateInterviewNoteRequest: AtsUpdateInterviewNoteRequest,
 ): string {
   return JSON.stringify(
-    LmsUpdateContentRequest$outboundSchema.parse(lmsUpdateContentRequest),
+    AtsUpdateInterviewNoteRequest$outboundSchema.parse(
+      atsUpdateInterviewNoteRequest,
+    ),
   );
 }
 
 /** @internal */
-export const LmsUpdateContentResponse$inboundSchema: z.ZodType<
-  LmsUpdateContentResponse,
+export const AtsUpdateInterviewNoteResponse$inboundSchema: z.ZodType<
+  AtsUpdateInterviewNoteResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -90,12 +95,12 @@ export const LmsUpdateContentResponse$inboundSchema: z.ZodType<
   });
 });
 
-export function lmsUpdateContentResponseFromJSON(
+export function atsUpdateInterviewNoteResponseFromJSON(
   jsonString: string,
-): SafeParseResult<LmsUpdateContentResponse, SDKValidationError> {
+): SafeParseResult<AtsUpdateInterviewNoteResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LmsUpdateContentResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LmsUpdateContentResponse' from JSON`,
+    (x) => AtsUpdateInterviewNoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateInterviewNoteResponse' from JSON`,
   );
 }

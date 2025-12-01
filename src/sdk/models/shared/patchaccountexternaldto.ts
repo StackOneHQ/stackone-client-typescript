@@ -35,6 +35,7 @@ export type PatchAccountExternalDto = {
   authenticationConfigKey?: string | null | undefined;
   credentials?: PatchAccountExternalDtoCredentials | null | undefined;
   environment?: string | null | undefined;
+  integrationId?: string | null | undefined;
   label?: Label | null | undefined;
   metadata?: PatchAccountExternalDtoMetadata | null | undefined;
   originOwnerId?: string | null | undefined;
@@ -147,6 +148,7 @@ export type PatchAccountExternalDto$Outbound = {
   authentication_config_key?: string | null | undefined;
   credentials?: PatchAccountExternalDtoCredentials$Outbound | null | undefined;
   environment?: string | null | undefined;
+  integration_id?: string | null | undefined;
   label?: Label$Outbound | null | undefined;
   metadata?: PatchAccountExternalDtoMetadata$Outbound | null | undefined;
   origin_owner_id?: string | null | undefined;
@@ -169,6 +171,7 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
     z.lazy(() => PatchAccountExternalDtoCredentials$outboundSchema),
   ).optional(),
   environment: z.nullable(z.string()).optional(),
+  integrationId: z.nullable(z.string()).optional(),
   label: z.nullable(z.lazy(() => Label$outboundSchema)).optional(),
   metadata: z.nullable(
     z.lazy(() => PatchAccountExternalDtoMetadata$outboundSchema),
@@ -184,6 +187,7 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     authenticationConfigKey: "authentication_config_key",
+    integrationId: "integration_id",
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",
     originUsername: "origin_username",

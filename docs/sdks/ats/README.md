@@ -10,6 +10,7 @@
 * [createBackgroundCheckPackage](#createbackgroundcheckpackage) - Create Background Check Package
 * [createCandidate](#createcandidate) - Create Candidate
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
+* [createInterviewNote](#createinterviewnote) - Create Interview Note
 * [createJob](#createjob) - Create Job
 * [createOffer](#createoffer) - Create Offer
 * [deleteBackgroundCheckPackage](#deletebackgroundcheckpackage) - Delete Background Check Package
@@ -77,6 +78,7 @@
 * [updateBackgroundCheckPackage](#updatebackgroundcheckpackage) - Update Background Check Package
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
 * [updateCandidate](#updatecandidate) - Update Candidate
+* [updateInterviewNote](#updateinterviewnote) - Update Interview Note
 * [updateJob](#updatejob) - Update Job
 * [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
 
@@ -904,6 +906,131 @@ run();
 ### Response
 
 **Promise\<[operations.AtsCreateCandidateNoteResponse](../../sdk/models/operations/atscreatecandidatenoteresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## createInterviewNote
+
+Create Interview Note
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="ats_create_interview_note" method="post" path="/unified/ats/interviews/{id}/notes" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.createInterviewNote({
+    atsCreateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsCreateNotesRequestDtoValue.Public,
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsCreateInterviewNote } from "@stackone/stackone-client-ts/funcs/atsCreateInterviewNote.js";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsCreateInterviewNote(stackOne, {
+    atsCreateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsCreateNotesRequestDtoValue.Public,
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsCreateInterviewNote failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsCreateInterviewNoteRequest](../../sdk/models/operations/atscreateinterviewnoterequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsCreateInterviewNoteResponse](../../sdk/models/operations/atscreateinterviewnoteresponse.md)\>**
 
 ### Errors
 
@@ -8583,6 +8710,133 @@ run();
 ### Response
 
 **Promise\<[operations.AtsUpdateCandidateResponse](../../sdk/models/operations/atsupdatecandidateresponse.md)\>**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.BadRequestResponse          | 400                                | application/json                   |
+| errors.UnauthorizedResponse        | 401                                | application/json                   |
+| errors.ForbiddenResponse           | 403                                | application/json                   |
+| errors.NotFoundResponse            | 404                                | application/json                   |
+| errors.RequestTimedOutResponse     | 408                                | application/json                   |
+| errors.ConflictResponse            | 409                                | application/json                   |
+| errors.PreconditionFailedResponse  | 412                                | application/json                   |
+| errors.UnprocessableEntityResponse | 422                                | application/json                   |
+| errors.TooManyRequestsResponse     | 429                                | application/json                   |
+| errors.InternalServerErrorResponse | 500                                | application/json                   |
+| errors.NotImplementedResponse      | 501                                | application/json                   |
+| errors.BadGatewayResponse          | 502                                | application/json                   |
+| errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## updateInterviewNote
+
+Update Interview Note
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="ats_update_interview_note" method="patch" path="/unified/ats/interviews/{id}/notes/{subResourceId}" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsUpdateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.updateInterviewNote({
+    atsUpdateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsUpdateNotesRequestDtoValue.Public,
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsUpdateInterviewNote } from "@stackone/stackone-client-ts/funcs/atsUpdateInterviewNote.js";
+import { AtsUpdateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsUpdateInterviewNote(stackOne, {
+    atsUpdateNotesRequestDto: {
+      authorId: "1234567890",
+      content: [
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      visibility: {
+        sourceValue: "Public",
+        value: AtsUpdateNotesRequestDtoValue.Public,
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsUpdateInterviewNote failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsUpdateInterviewNoteRequest](../../sdk/models/operations/atsupdateinterviewnoterequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsUpdateInterviewNoteResponse](../../sdk/models/operations/atsupdateinterviewnoteresponse.md)\>**
 
 ### Errors
 

@@ -26,20 +26,15 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Update External Linking Learning Objects
- *
- * @remarks
- * Update an external linking learning object that redirects users to a provider platform for consumption and progress tracking.
- *
- * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
+ * Update Interview Note
  */
-export function lmsUpdateContent(
+export function atsUpdateInterviewNote(
   client: StackOneCore,
-  request: operations.LmsUpdateContentRequest,
+  request: operations.AtsUpdateInterviewNoteRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.LmsUpdateContentResponse,
+    operations.AtsUpdateInterviewNoteResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -71,12 +66,12 @@ export function lmsUpdateContent(
 
 async function $do(
   client: StackOneCore,
-  request: operations.LmsUpdateContentRequest,
+  request: operations.AtsUpdateInterviewNoteRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.LmsUpdateContentResponse,
+      operations.AtsUpdateInterviewNoteResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -103,14 +98,15 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.LmsUpdateContentRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.AtsUpdateInterviewNoteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.LmsCreateContentRequestDto, {
+  const body = encodeJSON("body", payload.AtsUpdateNotesRequestDto, {
     explode: true,
   });
 
@@ -119,9 +115,15 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
+    subResourceId: encodeSimple("subResourceId", payload.subResourceId, {
+      explode: false,
+      charEncoding: "percent",
+    }),
   };
 
-  const path = pathToFunc("/unified/lms/content/{id}")(pathParams);
+  const path = pathToFunc("/unified/ats/interviews/{id}/notes/{subResourceId}")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -138,7 +140,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "lms_update_content",
+    operationID: "ats_update_interview_note",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -210,7 +212,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.LmsUpdateContentResponse,
+    operations.AtsUpdateInterviewNoteResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -232,7 +234,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, operations.LmsUpdateContentResponse$inboundSchema, {
+    M.json(200, operations.AtsUpdateInterviewNoteResponse$inboundSchema, {
       key: "UpdateResult",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),

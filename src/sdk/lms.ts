@@ -24,7 +24,6 @@ import { lmsListSkills } from "../funcs/lmsListSkills.js";
 import { lmsListUserAssignments } from "../funcs/lmsListUserAssignments.js";
 import { lmsListUserCompletions } from "../funcs/lmsListUserCompletions.js";
 import { lmsListUsers } from "../funcs/lmsListUsers.js";
-import { lmsUpdateContent } from "../funcs/lmsUpdateContent.js";
 import { lmsUpsertContent } from "../funcs/lmsUpsertContent.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
@@ -37,6 +36,8 @@ export class Lms extends ClientSDK {
    *
    * @remarks
    * Batch upsert multiple external linking learning objects that redirect users to a provider platform for consumption and progress tracking.
+   *
+   * **Note:** Partial updates are not supported. When updating content, you must provide all the same fields that are required when creating content.
    *
    * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
    */
@@ -449,29 +450,12 @@ export class Lms extends ClientSDK {
   }
 
   /**
-   * Update External Linking Learning Objects
-   *
-   * @remarks
-   * Update an external linking learning object that redirects users to a provider platform for consumption and progress tracking.
-   *
-   * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
-   */
-  async updateContent(
-    request: operations.LmsUpdateContentRequest,
-    options?: RequestOptions,
-  ): Promise<operations.LmsUpdateContentResponse> {
-    return unwrapAsync(lmsUpdateContent(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Upsert External Linking Learning Objects
    *
    * @remarks
    * Create or update an external linking learning object that redirects users to a provider platform for consumption and progress tracking.
+   *
+   * **Note:** Partial updates are not supported. When updating content, you must provide all the same fields that are required when creating content.
    *
    * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
    */
