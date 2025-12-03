@@ -26,22 +26,15 @@ import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Upsert External Linking Learning Objects
- *
- * @remarks
- * Create or update an external linking learning object that redirects users to a provider platform for consumption and progress tracking.
- *
- * **Note:** Partial updates are not supported. When updating content, you must provide all the same fields that are required when creating content.
- *
- * See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
+ * Create Interview Note
  */
-export function lmsUpsertContent(
+export function atsCreateInterviewNote(
   client: StackOneCore,
-  request: operations.LmsUpsertContentRequest,
+  request: operations.AtsCreateInterviewNoteRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.LmsUpsertContentResponse,
+    operations.AtsCreateInterviewNoteResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -73,12 +66,12 @@ export function lmsUpsertContent(
 
 async function $do(
   client: StackOneCore,
-  request: operations.LmsUpsertContentRequest,
+  request: operations.AtsCreateInterviewNoteRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.LmsUpsertContentResponse,
+      operations.AtsCreateInterviewNoteResponse,
       | errors.BadRequestResponse
       | errors.UnauthorizedResponse
       | errors.ForbiddenResponse
@@ -105,18 +98,26 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.LmsUpsertContentRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.AtsCreateInterviewNoteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.LmsUpsertContentRequestDto, {
+  const body = encodeJSON("body", payload.AtsCreateNotesRequestDto, {
     explode: true,
   });
 
-  const path = pathToFunc("/unified/lms/content")();
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/unified/ats/interviews/{id}/notes")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -133,7 +134,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "lms_upsert_content",
+    operationID: "ats_create_interview_note",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -157,7 +158,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PUT",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -205,7 +206,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.LmsUpsertContentResponse,
+    operations.AtsCreateInterviewNoteResponse,
     | errors.BadRequestResponse
     | errors.UnauthorizedResponse
     | errors.ForbiddenResponse
@@ -227,8 +228,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, operations.LmsUpsertContentResponse$inboundSchema, {
-      key: "UpsertResult",
+    M.json(201, operations.AtsCreateInterviewNoteResponse$inboundSchema, {
+      key: "CreateResult",
     }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),

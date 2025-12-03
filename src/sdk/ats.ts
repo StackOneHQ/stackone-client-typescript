@@ -7,6 +7,7 @@ import { atsCreateApplicationNote } from "../funcs/atsCreateApplicationNote.js";
 import { atsCreateBackgroundCheckPackage } from "../funcs/atsCreateBackgroundCheckPackage.js";
 import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsCreateCandidateNote } from "../funcs/atsCreateCandidateNote.js";
+import { atsCreateInterviewNote } from "../funcs/atsCreateInterviewNote.js";
 import { atsCreateJob } from "../funcs/atsCreateJob.js";
 import { atsCreateOffer } from "../funcs/atsCreateOffer.js";
 import { atsDeleteBackgroundCheckPackage } from "../funcs/atsDeleteBackgroundCheckPackage.js";
@@ -77,6 +78,7 @@ import { atsUpdateAssessmentsResult } from "../funcs/atsUpdateAssessmentsResult.
 import { atsUpdateBackgroundCheckPackage } from "../funcs/atsUpdateBackgroundCheckPackage.js";
 import { atsUpdateBackgroundCheckResult } from "../funcs/atsUpdateBackgroundCheckResult.js";
 import { atsUpdateCandidate } from "../funcs/atsUpdateCandidate.js";
+import { atsUpdateInterviewNote } from "../funcs/atsUpdateInterviewNote.js";
 import { atsUpdateJob } from "../funcs/atsUpdateJob.js";
 import { atsUploadApplicationDocument } from "../funcs/atsUploadApplicationDocument.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -151,6 +153,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsCreateCandidateNoteResponse> {
     return unwrapAsync(atsCreateCandidateNote(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Interview Note
+   */
+  async createInterviewNote(
+    request: operations.AtsCreateInterviewNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateInterviewNoteResponse> {
+    return unwrapAsync(atsCreateInterviewNote(
       this,
       request,
       options,
@@ -1186,6 +1202,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsUpdateCandidateResponse> {
     return unwrapAsync(atsUpdateCandidate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Interview Note
+   */
+  async updateInterviewNote(
+    request: operations.AtsUpdateInterviewNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateInterviewNoteResponse> {
+    return unwrapAsync(atsUpdateInterviewNote(
       this,
       request,
       options,

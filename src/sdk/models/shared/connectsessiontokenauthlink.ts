@@ -57,6 +57,10 @@ export type ConnectSessionTokenAuthLink = {
    */
   externalTriggerToken?: string | null | undefined;
   id: number;
+  /**
+   * The integration ID (UUID) associated with this connect session
+   */
+  integrationId?: string | null | undefined;
   label?: string | null | undefined;
   /**
    * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
@@ -120,6 +124,7 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   external_trigger_token: z.nullable(z.string()).optional(),
   id: z.number(),
+  integration_id: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(
     z.lazy(() => ConnectSessionTokenAuthLinkMetadata$inboundSchema),
@@ -138,6 +143,7 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
     "auth_link_url": "authLinkUrl",
     "created_at": "createdAt",
     "external_trigger_token": "externalTriggerToken",
+    "integration_id": "integrationId",
     "organization_id": "organizationId",
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",

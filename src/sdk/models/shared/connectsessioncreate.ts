@@ -57,6 +57,10 @@ export type ConnectSessionCreate = {
    */
   expiresIn?: number | null | undefined;
   /**
+   * The integration ID associated with this connect session
+   */
+  integrationId?: string | null | undefined;
+  /**
    * The label to be applied to the account associated with this connect session.
    */
   label?: string | null | undefined;
@@ -131,6 +135,7 @@ export type ConnectSessionCreate$Outbound = {
   account_id?: string | null | undefined;
   categories?: Array<string> | null | undefined;
   expires_in: number | null;
+  integration_id?: string | null | undefined;
   label?: string | null | undefined;
   metadata?: ConnectSessionCreateMetadata$Outbound | null | undefined;
   multiple: boolean | null;
@@ -152,6 +157,7 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
   categories: z.nullable(z.array(ConnectSessionCreateCategories$outboundSchema))
     .optional(),
   expiresIn: z.nullable(z.number().default(1800)),
+  integrationId: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(
     z.lazy(() => ConnectSessionCreateMetadata$outboundSchema),
@@ -171,6 +177,7 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
   return remap$(v, {
     accountId: "account_id",
     expiresIn: "expires_in",
+    integrationId: "integration_id",
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",
     originUsername: "origin_username",

@@ -72,9 +72,17 @@ export type Role = {
 
 export type EmploymentManagerApiModel = {
   /**
+   * The manager email
+   */
+  email?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
+  /**
+   * The manager name
+   */
+  name?: string | null | undefined;
   /**
    * Provider's unique identifier
    */
@@ -195,7 +203,9 @@ export const EmploymentManagerApiModel$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  email: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   role: z.nullable(z.lazy(() => Role$inboundSchema)).optional(),
 }).transform((v) => {

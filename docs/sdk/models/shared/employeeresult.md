@@ -10,6 +10,7 @@ import {
   EmployeeSchemasHomeLocationValue,
   EmployeeSchemasPreferredLanguageValue,
   EmployeeSchemasWorkLocationLocationTypeValue,
+  EmployeeSchemasWorkLocationValue,
   EmploymentSchemasDepartmentValue,
   EmploymentSchemasDivisionValue,
   EmploymentSchemasPayFrequencyValue,
@@ -220,7 +221,9 @@ let value: EmployeeResult = {
         jobTitle: "Software Engineer",
         manager: [
           {
+            email: "john.doe@example.com",
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "John Doe",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             role: null,
           },
@@ -322,12 +325,6 @@ let value: EmployeeResult = {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     jobTitle: "Physicist",
     lastName: "Newton",
-    manager: {
-      email: "john.doe@example.com",
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      name: "John Doe",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    },
     maritalStatus: {},
     name: "Isaac Newton",
     nationalIdentityNumbers: [
@@ -381,7 +378,9 @@ let value: EmployeeResult = {
     workEmail: "newton@example.com",
     workLocation: {
       city: "Grantham",
-      country: null,
+      country: {
+        value: EmployeeSchemasWorkLocationValue.Us,
+      },
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

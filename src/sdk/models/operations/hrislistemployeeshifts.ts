@@ -21,7 +21,7 @@ export enum QueryParamStatus {
 }
 
 /**
- * HRIS Shifts filters
+ * HRIS Employee Shifts filters
  */
 export type HrisListEmployeeShiftsQueryParamFilter = {
   /**
@@ -48,7 +48,7 @@ export type HrisListEmployeeShiftsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * HRIS Shifts filters
+   * HRIS Employee Shifts filters
    */
   filter?: HrisListEmployeeShiftsQueryParamFilter | null | undefined;
   id: string;

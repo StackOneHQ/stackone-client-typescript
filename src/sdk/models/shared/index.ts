@@ -256,7 +256,6 @@ export * from "./listspaginated.js";
 export * from "./lmsbatchupsertcontentrequestdto.js";
 export * from "./lmscreateassignmentrequestdto.js";
 export * from "./lmscreatecompletionrequestdto.js";
-export * from "./lmscreatecontentrequestdto.js";
 export * from "./lmsupsertcontentrequestdto.js";
 export * from "./lmsuser.js";
 export * from "./localizationmodel.js";
