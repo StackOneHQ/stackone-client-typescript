@@ -19,7 +19,7 @@ permissions:
         - cron: 0 9 * * 1
 jobs:
     generate:
-        uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
+        uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@3fdab59e74dda7831d7401f7aa1bb55d706913d7 # v15
         with:
             force: ${{ github.event.inputs.force }}
             mode: pr
