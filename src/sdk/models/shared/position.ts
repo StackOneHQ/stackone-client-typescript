@@ -27,6 +27,7 @@ export type PositionSourceValue =
  */
 export enum PositionValue {
   Open = "open",
+  Draft = "draft",
   Closed = "closed",
   Paused = "paused",
   UnmappedValue = "unmapped_value",

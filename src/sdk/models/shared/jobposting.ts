@@ -216,9 +216,9 @@ export type JobPosting = {
    */
   remoteId?: string | null | undefined;
   /**
-   * Provider's unique identifier of the job posting
+   * Provider's unique identifier of the job
    */
-  remoteJobPostingId?: string | null | undefined;
+  remoteJobId?: string | null | undefined;
   /**
    * The posting start date
    */
@@ -529,7 +529,7 @@ export const JobPosting$inboundSchema: z.ZodType<
   questionnaires: z.nullable(z.array(JobPostingQuestionnaire$inboundSchema))
     .optional(),
   remote_id: z.nullable(z.string()).optional(),
-  remote_job_posting_id: z.nullable(z.string()).optional(),
+  remote_job_id: z.nullable(z.string()).optional(),
   start_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -548,7 +548,7 @@ export const JobPosting$inboundSchema: z.ZodType<
     "external_url": "externalUrl",
     "job_id": "jobId",
     "remote_id": "remoteId",
-    "remote_job_posting_id": "remoteJobPostingId",
+    "remote_job_id": "remoteJobId",
     "start_date": "startDate",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",

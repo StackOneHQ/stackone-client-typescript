@@ -5742,6 +5742,7 @@ async function run() {
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
@@ -5779,6 +5780,7 @@ async function run() {
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     id: "<id>",
@@ -7028,6 +7030,7 @@ async function run() {
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     xAccountId: "<id>",
@@ -7063,6 +7066,7 @@ async function run() {
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
+      createdAfter: new Date("2020-01-01T00:00:00.000Z"),
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     xAccountId: "<id>",

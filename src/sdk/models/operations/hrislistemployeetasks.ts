@@ -14,6 +14,10 @@ import * as shared from "../shared/index.js";
  */
 export type HrisListEmployeeTasksQueryParamFilter = {
   /**
+   * Use a string with a date to only select results created after that given date
+   */
+  createdAfter?: Date | null | undefined;
+  /**
    * Use a string with a date to only select results updated after that given date
    */
   updatedAfter?: Date | null | undefined;
@@ -89,6 +93,7 @@ export type HrisListEmployeeTasksResponse = {
 
 /** @internal */
 export type HrisListEmployeeTasksQueryParamFilter$Outbound = {
+  created_after?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -98,9 +103,11 @@ export const HrisListEmployeeTasksQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListEmployeeTasksQueryParamFilter
 > = z.object({
+  createdAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAfter: "created_after",
     updatedAfter: "updated_after",
   });
 });

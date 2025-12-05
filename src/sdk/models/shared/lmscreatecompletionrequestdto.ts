@@ -55,6 +55,20 @@ export type LmsCreateCompletionRequestDtoResult = {
   value?: LmsCreateCompletionRequestDtoValueOpen | null | undefined;
 };
 
+/**
+ * The score associated with this completion
+ */
+export type LmsCreateCompletionRequestDtoScore = {
+  /**
+   * The score percentage
+   */
+  percentage?: number | null | undefined;
+  /**
+   * The raw string score value
+   */
+  rawValue?: string | null | undefined;
+};
+
 export type LmsCreateCompletionRequestDto = {
   /**
    * The date the content was completed
@@ -88,6 +102,10 @@ export type LmsCreateCompletionRequestDto = {
    * The result of the completion
    */
   result?: LmsCreateCompletionRequestDtoResult | null | undefined;
+  /**
+   * The score associated with this completion
+   */
+  score?: LmsCreateCompletionRequestDtoScore | null | undefined;
   /**
    * ISO 8601 duration format representing the time spent on completing the learning object
    */
@@ -200,6 +218,36 @@ export function lmsCreateCompletionRequestDtoResultToJSON(
 }
 
 /** @internal */
+export type LmsCreateCompletionRequestDtoScore$Outbound = {
+  percentage?: number | null | undefined;
+  raw_value?: string | null | undefined;
+};
+
+/** @internal */
+export const LmsCreateCompletionRequestDtoScore$outboundSchema: z.ZodType<
+  LmsCreateCompletionRequestDtoScore$Outbound,
+  z.ZodTypeDef,
+  LmsCreateCompletionRequestDtoScore
+> = z.object({
+  percentage: z.nullable(z.number()).optional(),
+  rawValue: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    rawValue: "raw_value",
+  });
+});
+
+export function lmsCreateCompletionRequestDtoScoreToJSON(
+  lmsCreateCompletionRequestDtoScore: LmsCreateCompletionRequestDtoScore,
+): string {
+  return JSON.stringify(
+    LmsCreateCompletionRequestDtoScore$outboundSchema.parse(
+      lmsCreateCompletionRequestDtoScore,
+    ),
+  );
+}
+
+/** @internal */
 export type LmsCreateCompletionRequestDto$Outbound = {
   completed_at?: string | null | undefined;
   content_external_reference?: string | null | undefined;
@@ -208,6 +256,7 @@ export type LmsCreateCompletionRequestDto$Outbound = {
   learning_object_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   result?: LmsCreateCompletionRequestDtoResult$Outbound | null | undefined;
+  score?: LmsCreateCompletionRequestDtoScore$Outbound | null | undefined;
   time_spent?: string | null | undefined;
 };
 
@@ -225,6 +274,9 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
   passthrough: z.nullable(z.record(z.any())).optional(),
   result: z.nullable(
     z.lazy(() => LmsCreateCompletionRequestDtoResult$outboundSchema),
+  ).optional(),
+  score: z.nullable(
+    z.lazy(() => LmsCreateCompletionRequestDtoScore$outboundSchema),
   ).optional(),
   timeSpent: z.nullable(z.string()).optional(),
 }).transform((v) => {

@@ -8,6 +8,7 @@ import { AssignmentSchemasStatusValue, AssignmentsPaginated } from "@stackone/st
 let value: AssignmentsPaginated = {
   data: [
     {
+      assignedAt: new Date("2021-07-21T14:00:00.000Z"),
       certificateUrl: "https://example.com/certificate/12345",
       completedAt: new Date("2021-07-21T14:00:00.000Z"),
       createdAt: new Date("2021-07-21T14:00:00.000Z"),

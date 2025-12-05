@@ -13,6 +13,10 @@ let value: LmsCreateUserCompletionRequest = {
     passthrough: {
       "other_known_names": "John Doe",
     },
+    score: {
+      percentage: 87,
+      rawValue: "87 / 100",
+    },
     timeSpent: "PT1H30M45S",
   },
   id: "<id>",

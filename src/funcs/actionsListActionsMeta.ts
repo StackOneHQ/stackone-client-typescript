@@ -136,7 +136,6 @@ async function $do(
       "group_by": payload.group_by,
       "include": payload.include,
       "next": payload.next,
-      "page": payload.page,
       "page_size": payload.page_size,
     }),
   );
