@@ -17,6 +17,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
 | `Open`                 | open                   |
+| `Draft`                | draft                  |
 | `Closed`               | closed                 |
 | `Paused`               | paused                 |
 | `UnmappedValue`        | unmapped_value         |

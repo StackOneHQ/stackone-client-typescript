@@ -24,6 +24,7 @@ export type HrisListPositionsQueryParamFilter = {
  */
 export enum HrisListPositionsQueryParamStatus {
   Open = "open",
+  Draft = "draft",
   Closed = "closed",
   Paused = "paused",
   UnmappedValue = "unmapped_value",

@@ -315,7 +315,7 @@ let value: JobPostingResult = {
       },
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    remoteJobPostingId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+    remoteJobId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     startDate: new Date("2021-01-01T00:00:00.000Z"),
     status: null,
     title: "Software Engineer",

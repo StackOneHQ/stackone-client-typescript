@@ -105,6 +105,20 @@ export type CompletionSchemasResult = {
   value?: CompletionSchemasValueOpen | null | undefined;
 };
 
+/**
+ * The score associated with this completion
+ */
+export type CompletionScore = {
+  /**
+   * The score percentage
+   */
+  percentage?: number | null | undefined;
+  /**
+   * The raw string score value
+   */
+  rawValue?: string | null | undefined;
+};
+
 export type Completion = {
   /**
    * The certification URL associated with this completion
@@ -198,6 +212,10 @@ export type Completion = {
    * The result of the completion
    */
   result?: CompletionSchemasResult | null | undefined;
+  /**
+   * The score associated with this completion
+   */
+  score?: CompletionScore | null | undefined;
   /**
    * ISO 8601 duration format representing the time spent on completing the learning object
    */
@@ -375,6 +393,30 @@ export function completionSchemasResultFromJSON(
 }
 
 /** @internal */
+export const CompletionScore$inboundSchema: z.ZodType<
+  CompletionScore,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  percentage: z.nullable(z.number()).optional(),
+  raw_value: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "raw_value": "rawValue",
+  });
+});
+
+export function completionScoreFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionScore, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionScore$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionScore' from JSON`,
+  );
+}
+
+/** @internal */
 export const Completion$inboundSchema: z.ZodType<
   Completion,
   z.ZodTypeDef,
@@ -406,6 +448,7 @@ export const Completion$inboundSchema: z.ZodType<
   remote_user_id: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$inboundSchema))
     .optional(),
+  score: z.nullable(z.lazy(() => CompletionScore$inboundSchema)).optional(),
   time_spent: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(

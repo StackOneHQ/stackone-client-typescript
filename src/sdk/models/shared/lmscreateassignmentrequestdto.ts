@@ -58,9 +58,9 @@ export type LmsCreateAssignmentRequestDtoStatus = {
 
 export type LmsCreateAssignmentRequestDto = {
   /**
-   * The date the assignment was created
+   * The date the assignment was assigned
    */
-  createdAt?: Date | null | undefined;
+  assignedAt?: Date | null | undefined;
   /**
    * The date the assignment is due to be completed
    */
@@ -200,7 +200,7 @@ export function lmsCreateAssignmentRequestDtoStatusToJSON(
 
 /** @internal */
 export type LmsCreateAssignmentRequestDto$Outbound = {
-  created_at?: string | null | undefined;
+  assigned_at?: string | null | undefined;
   due_date?: string | null | undefined;
   external_reference?: string | null | undefined;
   learning_object_external_reference: string;
@@ -216,7 +216,7 @@ export const LmsCreateAssignmentRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsCreateAssignmentRequestDto
 > = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  assignedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   dueDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   externalReference: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.string(),
@@ -228,7 +228,7 @@ export const LmsCreateAssignmentRequestDto$outboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
-    createdAt: "created_at",
+    assignedAt: "assigned_at",
     dueDate: "due_date",
     externalReference: "external_reference",
     learningObjectExternalReference: "learning_object_external_reference",

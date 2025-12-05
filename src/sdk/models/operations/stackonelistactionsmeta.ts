@@ -49,12 +49,6 @@ export type StackoneListActionsMetaRequest = {
    */
   next?: string | null | undefined;
   /**
-   * The page number of the results to fetch
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  page?: string | null | undefined;
-  /**
    * The number of results per page (default value is 25)
    */
   pageSize?: string | null | undefined;
@@ -117,7 +111,6 @@ export type StackoneListActionsMetaRequest$Outbound = {
   group_by: string | null;
   include?: Array<string> | null | undefined;
   next?: string | null | undefined;
-  page?: string | null | undefined;
   page_size?: string | null | undefined;
 };
 
@@ -131,7 +124,6 @@ export const StackoneListActionsMetaRequest$outboundSchema: z.ZodType<
   groupBy: z.nullable(z.string().default("connector")),
   include: z.nullable(z.array(Include$outboundSchema)).optional(),
   next: z.nullable(z.string()).optional(),
-  page: z.nullable(z.string()).optional(),
   pageSize: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

@@ -22,7 +22,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 4.33.0
+  version: 4.33.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -34,7 +34,7 @@ typescript:
   author: StackOne
   baseErrorName: StackOneError
   clientServerStatusCodesAsErrors: true
-  constFieldsAlwaysOptional: true
+  constFieldsAlwaysOptional: false
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: true
@@ -66,6 +66,7 @@ typescript:
   multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
+  preApplyUnionDiscriminators: true
   responseFormat: envelope
   sseFlatResponse: false
   templateVersion: v2

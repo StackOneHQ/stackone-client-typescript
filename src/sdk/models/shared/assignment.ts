@@ -156,6 +156,10 @@ export type AssignmentStatus = {
 
 export type Assignment = {
   /**
+   * The date the assignment was assigned
+   */
+  assignedAt?: Date | null | undefined;
+  /**
    * The certification URL associated with this assignment
    */
   certificateUrl?: string | null | undefined;
@@ -484,6 +488,9 @@ export const Assignment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  assigned_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   certificate_url: z.nullable(z.string()).optional(),
   completed_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -516,6 +523,7 @@ export const Assignment$inboundSchema: z.ZodType<
   user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "assigned_at": "assignedAt",
     "certificate_url": "certificateUrl",
     "completed_at": "completedAt",
     "course_id": "courseId",
