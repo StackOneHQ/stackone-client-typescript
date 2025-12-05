@@ -12,7 +12,7 @@ permissions:
     workflow_dispatch: {}
 jobs:
     tag:
-        uses: speakeasy-api/sdk-generation-action/.github/workflows/tag.yaml@v15
+        uses: speakeasy-api/sdk-generation-action/.github/workflows/tag.yaml@3fdab59e74dda7831d7401f7aa1bb55d706913d7 # v15
         with:
             registry_tags: main
         secrets:
