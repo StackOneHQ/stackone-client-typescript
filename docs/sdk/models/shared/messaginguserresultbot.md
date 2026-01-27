@@ -15,6 +15,6 @@ const value: boolean = false;
 
 ```typescript
 const value: shared.MessagingUserResultSchemas2 =
-  MessagingUserResultSchemas2.False;
+  MessagingUserResultSchemas2.True;
 ```
 

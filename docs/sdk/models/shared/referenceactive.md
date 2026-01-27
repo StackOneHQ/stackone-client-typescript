@@ -14,6 +14,6 @@ const value: boolean = true;
 ### `shared.Reference2`
 
 ```typescript
-const value: shared.Reference2 = Reference2.True;
+const value: shared.Reference2 = Reference2.False;
 ```
 

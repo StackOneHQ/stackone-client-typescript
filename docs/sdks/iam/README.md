@@ -1,5 +1,4 @@
 # Iam
-(*iam*)
 
 ## Overview
 
@@ -35,6 +34,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.deleteUser({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -64,6 +64,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamDeleteUser(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -128,6 +129,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.getGroup({
+    prefer: "heartbeat",
     expand: "roles",
     fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -159,6 +161,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamGetGroup(stackOne, {
+    prefer: "heartbeat",
     expand: "roles",
     fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -225,6 +228,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.getPolicy({
+    prefer: "heartbeat",
     expand: "permissions",
     fields: "id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -256,6 +260,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamGetPolicy(stackOne, {
+    prefer: "heartbeat",
     expand: "permissions",
     fields: "id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -322,6 +327,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.getRole({
+    prefer: "heartbeat",
     expand: "policies",
     fields: "id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -353,6 +359,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamGetRole(stackOne, {
+    prefer: "heartbeat",
     expand: "policies",
     fields: "id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -419,6 +426,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.getUser({
+    prefer: "heartbeat",
     expand: "roles,groups",
     fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields",
     id: "<id>",
@@ -450,6 +458,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamGetUser(stackOne, {
+    prefer: "heartbeat",
     expand: "roles,groups",
     fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields",
     id: "<id>",
@@ -516,6 +525,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.listGroups({
+    prefer: "heartbeat",
     expand: "roles",
     fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -552,6 +562,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamListGroups(stackOne, {
+    prefer: "heartbeat",
     expand: "roles",
     fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -623,6 +634,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.listPolicies({
+    prefer: "heartbeat",
     expand: "permissions",
     fields: "id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -659,6 +671,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamListPolicies(stackOne, {
+    prefer: "heartbeat",
     expand: "permissions",
     fields: "id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -730,6 +743,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.listRoles({
+    prefer: "heartbeat",
     expand: "policies",
     fields: "id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -766,6 +780,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamListRoles(stackOne, {
+    prefer: "heartbeat",
     expand: "policies",
     fields: "id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -837,6 +852,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.iam.listUsers({
+    prefer: "heartbeat",
     expand: "roles,groups",
     fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields",
     filter: {
@@ -873,6 +889,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await iamListUsers(stackOne, {
+    prefer: "heartbeat",
     expand: "roles,groups",
     fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields",
     filter: {
@@ -959,6 +976,7 @@ async function run() {
       },
       username: "hansolo1977",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1003,6 +1021,7 @@ async function run() {
       },
       username: "hansolo1977",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });

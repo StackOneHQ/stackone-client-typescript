@@ -14,7 +14,7 @@ const value: string = "Salary";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 
 ### `boolean`
@@ -33,7 +33,9 @@ const value: shared.JobPostingCompensationSchemasType4 = {};
 
 ```typescript
 const value: any[] = [
-  "Salary",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

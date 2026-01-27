@@ -133,10 +133,12 @@ async function $do(
       "filter": payload.filter,
     }),
     encodeFormQuery({
+      "exclude": payload.exclude,
       "group_by": payload.group_by,
       "include": payload.include,
       "next": payload.next,
       "page_size": payload.page_size,
+      "search": payload.search,
     }),
   );
 

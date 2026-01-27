@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type HrisCreateEmployeeSkillRequest = {
   entitySkillsCreateRequestDto: shared.EntitySkillsCreateRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -41,6 +45,7 @@ export type HrisCreateEmployeeSkillResponse = {
 /** @internal */
 export type HrisCreateEmployeeSkillRequest$Outbound = {
   EntitySkillsCreateRequestDto: shared.EntitySkillsCreateRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -53,11 +58,13 @@ export const HrisCreateEmployeeSkillRequest$outboundSchema: z.ZodType<
 > = z.object({
   entitySkillsCreateRequestDto:
     shared.EntitySkillsCreateRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     entitySkillsCreateRequestDto: "EntitySkillsCreateRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

@@ -12,7 +12,7 @@ const value: string = "public";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 
 ### `boolean`
@@ -31,7 +31,9 @@ const value: shared.HrisDocumentsUploadRequestDto4 = {};
 
 ```typescript
 const value: any[] = [
-  "public",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

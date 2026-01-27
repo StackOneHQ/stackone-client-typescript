@@ -35,6 +35,10 @@ export type LmsListAssignmentsQueryParamFilter = {
 
 export type LmsListAssignmentsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -142,6 +146,7 @@ export function lmsListAssignmentsQueryParamFilterToJSON(
 
 /** @internal */
 export type LmsListAssignmentsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: LmsListAssignmentsQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
@@ -161,6 +166,7 @@ export const LmsListAssignmentsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListAssignmentsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => LmsListAssignmentsQueryParamFilter$outboundSchema),
@@ -176,6 +182,7 @@ export const LmsListAssignmentsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     remoteUserId: "remote_user_id",
     updatedAfter: "updated_after",

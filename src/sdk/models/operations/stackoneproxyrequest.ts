@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type StackoneProxyRequestRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The request body
    */
   proxyRequestBody: shared.ProxyRequestBody;
@@ -42,6 +46,7 @@ export type StackoneProxyRequestResponse = {
 
 /** @internal */
 export type StackoneProxyRequestRequest$Outbound = {
+  Prefer?: string | undefined;
   ProxyRequestBody: shared.ProxyRequestBody$Outbound;
   "x-account-id": string;
 };
@@ -52,10 +57,12 @@ export const StackoneProxyRequestRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneProxyRequestRequest
 > = z.object({
+  prefer: z.string().optional(),
   proxyRequestBody: shared.ProxyRequestBody$outboundSchema,
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     proxyRequestBody: "ProxyRequestBody",
     xAccountId: "x-account-id",
   });

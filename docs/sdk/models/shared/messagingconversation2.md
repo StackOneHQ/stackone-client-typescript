@@ -5,7 +5,7 @@
 ```typescript
 import { MessagingConversation2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: MessagingConversation2 = MessagingConversation2.True;
+let value: MessagingConversation2 = MessagingConversation2.False;
 ```
 
 ## Values

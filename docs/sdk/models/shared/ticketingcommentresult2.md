@@ -5,7 +5,7 @@
 ```typescript
 import { TicketingCommentResult2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TicketingCommentResult2 = TicketingCommentResult2.False;
+let value: TicketingCommentResult2 = TicketingCommentResult2.True;
 ```
 
 ## Values

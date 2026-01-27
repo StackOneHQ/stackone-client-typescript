@@ -12,6 +12,10 @@ import * as shared from "../shared/index.js";
 export type AccountingBatchCreateCompanyJournalsRequest = {
   accountingJournalBatchCreateRequestDto:
     shared.AccountingJournalBatchCreateRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -43,6 +47,7 @@ export type AccountingBatchCreateCompanyJournalsResponse = {
 export type AccountingBatchCreateCompanyJournalsRequest$Outbound = {
   AccountingJournalBatchCreateRequestDto:
     shared.AccountingJournalBatchCreateRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -56,12 +61,14 @@ export const AccountingBatchCreateCompanyJournalsRequest$outboundSchema:
   > = z.object({
     accountingJournalBatchCreateRequestDto:
       shared.AccountingJournalBatchCreateRequestDto$outboundSchema,
+    prefer: z.string().optional(),
     id: z.string(),
     xAccountId: z.string(),
   }).transform((v) => {
     return remap$(v, {
       accountingJournalBatchCreateRequestDto:
         "AccountingJournalBatchCreateRequestDto",
+      prefer: "Prefer",
       xAccountId: "x-account-id",
     });
   });

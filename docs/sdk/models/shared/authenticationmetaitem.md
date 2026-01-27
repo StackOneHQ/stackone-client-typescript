@@ -10,8 +10,9 @@ let value: AuthenticationMetaItem = {};
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `key`                    | *string*                 | :heavy_minus_sign:       | The authentication key   |
-| `label`                  | *string*                 | :heavy_minus_sign:       | The authentication label |
-| `type`                   | *string*                 | :heavy_minus_sign:       | The authentication type  |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `key`                                              | *string*                                           | :heavy_minus_sign:                                 | The authentication key                             |
+| `label`                                            | *string*                                           | :heavy_minus_sign:                                 | The authentication label                           |
+| `requiredScopes`                                   | *string*[]                                         | :heavy_minus_sign:                                 | The required scopes for this authentication method |
+| `type`                                             | *string*                                           | :heavy_minus_sign:                                 | The authentication type                            |

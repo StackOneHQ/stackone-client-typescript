@@ -12,6 +12,10 @@ import * as shared from "../shared/index.js";
 export type LmsUpsertContentRequest = {
   lmsUpsertContentRequestDto: shared.LmsUpsertContentRequestDto;
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The account identifier
    */
   xAccountId: string;
@@ -40,6 +44,7 @@ export type LmsUpsertContentResponse = {
 /** @internal */
 export type LmsUpsertContentRequest$Outbound = {
   LmsUpsertContentRequestDto: shared.LmsUpsertContentRequestDto$Outbound;
+  Prefer?: string | undefined;
   "x-account-id": string;
 };
 
@@ -50,10 +55,12 @@ export const LmsUpsertContentRequest$outboundSchema: z.ZodType<
   LmsUpsertContentRequest
 > = z.object({
   lmsUpsertContentRequestDto: shared.LmsUpsertContentRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     lmsUpsertContentRequestDto: "LmsUpsertContentRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

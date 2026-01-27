@@ -14,7 +14,7 @@ const value: string = "Hour";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 
 ### `boolean`
@@ -34,7 +34,9 @@ const value: shared.HrisUpdateEmployeeRequestDtoSchemasEmploymentPayPeriod4 =
 
 ```typescript
 const value: any[] = [
-  "Hour",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

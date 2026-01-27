@@ -14,7 +14,7 @@ const value: string = "RejectedByOrg";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 
 ### `boolean`
@@ -33,7 +33,9 @@ const value: shared.RejectedReason4 = {};
 
 ```typescript
 const value: any[] = [
-  "RejectedByOrg",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

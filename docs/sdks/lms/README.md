@@ -1,5 +1,4 @@
 # Lms
-(*lms*)
 
 ## Overview
 
@@ -232,6 +231,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -440,6 +440,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -521,6 +522,7 @@ async function run() {
         value: LmsCreateAssignmentRequestDtoValue.InProgress,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -564,6 +566,7 @@ async function run() {
         value: LmsCreateAssignmentRequestDtoValue.InProgress,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -643,6 +646,7 @@ async function run() {
       },
       timeSpent: "PT1H30M45S",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -685,6 +689,7 @@ async function run() {
       },
       timeSpent: "PT1H30M45S",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -751,6 +756,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.deleteUserCompletion({
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -781,6 +787,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsDeleteUserCompletion(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -850,6 +857,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getAssignment({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -879,6 +887,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetAssignment(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -943,6 +952,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCategory({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,level,language,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -973,6 +983,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCategory(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,level,language,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1038,6 +1049,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCompletion({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1067,6 +1079,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCompletion(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1135,6 +1148,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1165,6 +1179,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1232,6 +1247,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCourse({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1262,6 +1278,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCourse(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1327,6 +1344,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getSkill({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,language,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1357,6 +1375,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetSkill(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,language,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1422,6 +1441,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getUser({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1452,6 +1472,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetUser(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1521,6 +1542,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getUserAssignment({
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -1551,6 +1573,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetUserAssignment(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -1618,6 +1641,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getUserCompletion({
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -1648,6 +1672,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetUserCompletion(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -1717,6 +1742,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listAssignments({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,assigned_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1754,6 +1780,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListAssignments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,assigned_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1826,6 +1853,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCategories({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,level,language,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1861,6 +1889,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCategories(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,level,language,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1931,6 +1960,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCompletions({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,score,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1966,6 +1996,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCompletions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,score,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2040,6 +2071,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2075,6 +2107,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2147,6 +2180,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCourses({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2182,6 +2216,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCourses(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2252,6 +2287,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listSkills({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,language,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2287,6 +2323,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListSkills(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,hierarchy,language,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2361,6 +2398,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUserAssignments({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,assigned_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2399,6 +2437,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUserAssignments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,assigned_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2474,6 +2513,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUserCompletions({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,score,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2510,6 +2550,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUserCompletions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,score,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2581,6 +2622,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUsers({
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2616,6 +2658,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUsers(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2758,6 +2801,9 @@ async function run() {
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
       skills: [
         {
           id: "12345",
@@ -2775,6 +2821,7 @@ async function run() {
       },
       updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -2871,6 +2918,9 @@ async function run() {
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
       skills: [
         {
           id: "12345",
@@ -2888,6 +2938,7 @@ async function run() {
       },
       updatedAt: new Date("2021-07-21T14:00:00.000Z"),
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {

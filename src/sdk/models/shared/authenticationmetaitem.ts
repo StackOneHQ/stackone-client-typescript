@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -17,6 +18,10 @@ export type AuthenticationMetaItem = {
    */
   label?: string | null | undefined;
   /**
+   * The required scopes for this authentication method
+   */
+  requiredScopes?: Array<string> | null | undefined;
+  /**
    * The authentication type
    */
   type?: string | null | undefined;
@@ -30,7 +35,12 @@ export const AuthenticationMetaItem$inboundSchema: z.ZodType<
 > = z.object({
   key: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  required_scopes: z.nullable(z.array(z.string())).optional(),
   type: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "required_scopes": "requiredScopes",
+  });
 });
 
 export function authenticationMetaItemFromJSON(

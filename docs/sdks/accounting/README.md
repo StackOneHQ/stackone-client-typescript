@@ -1,5 +1,4 @@
 # Accounting
-(*accounting*)
 
 ## Overview
 
@@ -38,6 +37,7 @@ async function run() {
     accountingJournalBatchCreateRequestDto: {
       items: [],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -70,6 +70,7 @@ async function run() {
     accountingJournalBatchCreateRequestDto: {
       items: [],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -154,6 +155,7 @@ async function run() {
       reference: "JRN-2024-001",
       transactionDate: new Date("2024-03-20T10:00:00Z"),
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -203,6 +205,7 @@ async function run() {
       reference: "JRN-2024-001",
       transactionDate: new Date("2024-03-20T10:00:00Z"),
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -267,6 +270,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.getCompany({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -297,6 +301,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingGetCompany(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -362,6 +367,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.getCompanyAccount({
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -393,6 +399,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingGetCompanyAccount(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -459,6 +466,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.getCompanyJournal({
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -490,6 +498,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingGetCompanyJournal(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -556,6 +565,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.getCompanyTaxRate({
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -587,6 +597,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingGetCompanyTaxRate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -653,6 +664,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.listCompanies({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -687,6 +699,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingListCompanies(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -756,6 +769,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.listCompanyAccounts({
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields",
     filter: null,
     id: "<id>",
@@ -789,6 +803,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingListCompanyAccounts(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields",
     filter: null,
     id: "<id>",
@@ -857,6 +872,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.listCompanyJournals({
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields",
     filter: null,
     id: "<id>",
@@ -890,6 +906,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingListCompanyJournals(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields",
     filter: null,
     id: "<id>",
@@ -958,6 +975,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounting.listCompanyTaxRates({
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -993,6 +1011,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountingListCompanyTaxRates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),

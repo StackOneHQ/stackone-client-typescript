@@ -12,6 +12,10 @@ import * as shared from "../shared/index.js";
 export type CrmCreateContactRequest = {
   crmCreateContactRequestDto: shared.CrmCreateContactRequestDto;
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The account identifier
    */
   xAccountId: string;
@@ -40,6 +44,7 @@ export type CrmCreateContactResponse = {
 /** @internal */
 export type CrmCreateContactRequest$Outbound = {
   CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$Outbound;
+  Prefer?: string | undefined;
   "x-account-id": string;
 };
 
@@ -50,10 +55,12 @@ export const CrmCreateContactRequest$outboundSchema: z.ZodType<
   CrmCreateContactRequest
 > = z.object({
   crmCreateContactRequestDto: shared.CrmCreateContactRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     crmCreateContactRequestDto: "CrmCreateContactRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

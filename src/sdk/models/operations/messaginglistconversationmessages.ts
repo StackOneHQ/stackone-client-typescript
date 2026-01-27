@@ -21,6 +21,10 @@ export type MessagingListConversationMessagesQueryParamFilter = {
 
 export type MessagingListConversationMessagesRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -116,6 +120,7 @@ export function messagingListConversationMessagesQueryParamFilterToJSON(
 
 /** @internal */
 export type MessagingListConversationMessagesRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?:
     | MessagingListConversationMessagesQueryParamFilter$Outbound
@@ -137,6 +142,7 @@ export const MessagingListConversationMessagesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MessagingListConversationMessagesRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() =>
@@ -153,6 +159,7 @@ export const MessagingListConversationMessagesRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

@@ -25,6 +25,10 @@ export type AtsListJobPostingsQueryParamFilter = {
 
 export type AtsListJobPostingsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -129,6 +133,7 @@ export function atsListJobPostingsQueryParamFilterToJSON(
 
 /** @internal */
 export type AtsListJobPostingsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: AtsListJobPostingsQueryParamFilter$Outbound | null | undefined;
   include?: string | null | undefined;
@@ -148,6 +153,7 @@ export const AtsListJobPostingsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListJobPostingsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => AtsListJobPostingsQueryParamFilter$outboundSchema),
@@ -163,6 +169,7 @@ export const AtsListJobPostingsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     syncToken: "sync_token",
     updatedAfter: "updated_after",

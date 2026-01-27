@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -14,8 +15,16 @@ import {
   AuthenticationMetaItem,
   AuthenticationMetaItem$inboundSchema,
 } from "./authenticationmetaitem.js";
+import {
+  ScopeDefinitionMetaItem,
+  ScopeDefinitionMetaItem$inboundSchema,
+} from "./scopedefinitionmetaitem.js";
 
 export type ActionsMeta = {
+  /**
+   * The account ID this metadata applies to (only present when filtering by account_ids)
+   */
+  accountId?: string | null | undefined;
   /**
    * The list of actions available for this provider
    */
@@ -33,6 +42,10 @@ export type ActionsMeta = {
    */
   icon?: string | null | undefined;
   /**
+   * The integration ID this metadata applies to (only present when filtering by account_ids)
+   */
+  integrationId?: string | null | undefined;
+  /**
    * The unique key for the provider
    */
   key?: string | null | undefined;
@@ -40,6 +53,14 @@ export type ActionsMeta = {
    * The name of the provider
    */
   name?: string | null | undefined;
+  /**
+   * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage connectors, please contact support.
+   */
+  releaseStage?: string | null | undefined;
+  /**
+   * The list of scope definitions available for this provider
+   */
+  scopeDefinitions?: Array<ScopeDefinitionMetaItem> | null | undefined;
   /**
    * The version of the actions metadata
    */
@@ -52,14 +73,26 @@ export const ActionsMeta$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  account_id: z.nullable(z.string()).optional(),
   actions: z.nullable(z.array(ActionMetaItem$inboundSchema)).optional(),
   authentication: z.nullable(z.array(AuthenticationMetaItem$inboundSchema))
     .optional(),
   description: z.nullable(z.string()).optional(),
   icon: z.nullable(z.string()).optional(),
+  integration_id: z.nullable(z.string()).optional(),
   key: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  release_stage: z.nullable(z.string()).optional(),
+  scope_definitions: z.nullable(z.array(ScopeDefinitionMetaItem$inboundSchema))
+    .optional(),
   version: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "account_id": "accountId",
+    "integration_id": "integrationId",
+    "release_stage": "releaseStage",
+    "scope_definitions": "scopeDefinitions",
+  });
 });
 
 export function actionsMetaFromJSON(

@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type IamUpdateUserRequest = {
   iamUpdateUserRequestDto: shared.IamUpdateUserRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -41,6 +45,7 @@ export type IamUpdateUserResponse = {
 /** @internal */
 export type IamUpdateUserRequest$Outbound = {
   IamUpdateUserRequestDto: shared.IamUpdateUserRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -52,11 +57,13 @@ export const IamUpdateUserRequest$outboundSchema: z.ZodType<
   IamUpdateUserRequest
 > = z.object({
   iamUpdateUserRequestDto: shared.IamUpdateUserRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     iamUpdateUserRequestDto: "IamUpdateUserRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

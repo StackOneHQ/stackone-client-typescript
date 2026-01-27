@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ScreeningCreateScreeningOrderRequest = {
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   screeningCreateOrderRequestDto: shared.ScreeningCreateOrderRequestDto;
   /**
    * The account identifier
@@ -39,6 +43,7 @@ export type ScreeningCreateScreeningOrderResponse = {
 
 /** @internal */
 export type ScreeningCreateScreeningOrderRequest$Outbound = {
+  Prefer?: string | undefined;
   ScreeningCreateOrderRequestDto:
     shared.ScreeningCreateOrderRequestDto$Outbound;
   "x-account-id": string;
@@ -50,11 +55,13 @@ export const ScreeningCreateScreeningOrderRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ScreeningCreateScreeningOrderRequest
 > = z.object({
+  prefer: z.string().optional(),
   screeningCreateOrderRequestDto:
     shared.ScreeningCreateOrderRequestDto$outboundSchema,
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     screeningCreateOrderRequestDto: "ScreeningCreateOrderRequestDto",
     xAccountId: "x-account-id",
   });

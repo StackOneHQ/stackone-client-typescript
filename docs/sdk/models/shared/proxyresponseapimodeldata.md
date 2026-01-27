@@ -18,26 +18,19 @@ const value: { [k: string]: any } = {
 ### `{ [k: string]: any }[]`
 
 ```typescript
-const value: { [k: string]: any }[] = [
-  {
-    "id": "123",
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-  },
-];
+const value: { [k: string]: any }[] = [];
 ```
 
 ### `string`
 
 ```typescript
-const value: string =
-  "{\"id\":\"123\",\"name\":\"John Doe\",\"email\":\"john.doe@example.com\"}";
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = [object Object];
+const value: number = 1284.03;
 ```
 
 ### `boolean`

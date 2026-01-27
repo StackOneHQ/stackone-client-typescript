@@ -1,5 +1,4 @@
 # Marketing
-(*marketing*)
 
 ## Overview
 
@@ -61,6 +60,7 @@ async function run() {
         value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -99,6 +99,7 @@ async function run() {
         value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -194,6 +195,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -254,6 +256,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -349,6 +352,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -409,6 +413,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -496,6 +501,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -546,6 +552,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -633,6 +640,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -685,6 +693,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -780,6 +789,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -840,6 +850,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -903,6 +914,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getCampaign({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -933,6 +945,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetCampaign(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -998,6 +1011,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getContentBlock({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1028,6 +1042,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetContentBlock(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1093,6 +1108,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getEmailTemplate({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1123,6 +1139,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetEmailTemplate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1188,6 +1205,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getInAppTemplate({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1218,6 +1236,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetInAppTemplate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1285,6 +1304,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getOmniChannelTemplate({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1315,6 +1335,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetOmniChannelTemplate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1380,6 +1401,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getPushTemplate({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1410,6 +1432,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetPushTemplate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1475,6 +1498,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getSmsTemplate({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1505,6 +1529,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingGetSmsTemplate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1570,6 +1595,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listCampaigns({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1605,6 +1631,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListCampaigns(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1675,6 +1702,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listContentBlocks({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1710,6 +1738,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListContentBlocks(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1780,6 +1809,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listEmailTemplates({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1815,6 +1845,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListEmailTemplates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1885,6 +1916,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listInAppTemplates({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1920,6 +1952,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListInAppTemplates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1992,6 +2025,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listOmniChannelTemplates({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2027,6 +2061,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListOmniChannelTemplates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2097,6 +2132,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listPushTemplates({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2132,6 +2168,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListPushTemplates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2202,6 +2239,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listSmsTemplates({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2237,6 +2275,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await marketingListSmsTemplates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2317,6 +2356,7 @@ async function run() {
         value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2356,6 +2396,7 @@ async function run() {
         value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2436,6 +2477,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2481,6 +2523,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2561,6 +2604,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2606,6 +2650,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2687,6 +2732,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2731,6 +2777,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2819,6 +2866,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2872,6 +2920,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2952,6 +3001,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2997,6 +3047,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });

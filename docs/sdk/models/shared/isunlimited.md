@@ -14,6 +14,6 @@ const value: boolean = true;
 ### `shared.TimeOffBalances2`
 
 ```typescript
-const value: shared.TimeOffBalances2 = TimeOffBalances2.True;
+const value: shared.TimeOffBalances2 = TimeOffBalances2.False;
 ```
 

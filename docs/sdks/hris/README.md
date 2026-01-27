@@ -1,5 +1,4 @@
 # Hris
-(*hris*)
 
 ## Overview
 
@@ -144,6 +143,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -218,6 +218,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -282,6 +283,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.cancelEmployeeTimeOffRequest({
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -312,6 +314,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisCancelEmployeeTimeOffRequest(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -582,6 +585,7 @@ async function run() {
       },
       workPhoneNumber: "+1234567890",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -815,6 +819,7 @@ async function run() {
       },
       workPhoneNumber: "+1234567890",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -931,6 +936,7 @@ async function run() {
         },
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1013,6 +1019,7 @@ async function run() {
         },
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1091,6 +1098,7 @@ async function run() {
       },
       name: "Information-Technology",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1134,6 +1142,7 @@ async function run() {
       },
       name: "Information-Technology",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1214,6 +1223,7 @@ async function run() {
       startHalfDay: true,
       timeOffPolicyId: "cx280928933",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1259,6 +1269,7 @@ async function run() {
       startHalfDay: true,
       timeOffPolicyId: "cx280928933",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1354,6 +1365,7 @@ async function run() {
       validFrom: new Date("2021-01-01T00:00:00.000Z"),
       validTo: new Date("2021-01-01T00:00:00.000Z"),
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1414,6 +1426,7 @@ async function run() {
       validFrom: new Date("2021-01-01T00:00:00.000Z"),
       validTo: new Date("2021-01-01T00:00:00.000Z"),
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1478,6 +1491,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.downloadEmployeeDocument({
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -1510,6 +1524,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisDownloadEmployeeDocument(stackOne, {
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -1577,6 +1592,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getBenefit({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1607,6 +1623,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetBenefit(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1672,6 +1689,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getCompany({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1702,6 +1720,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetCompany(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1767,6 +1786,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getCompanyGroup({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1797,6 +1817,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetCompanyGroup(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1862,6 +1883,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getCostCenterGroup({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1892,6 +1914,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetCostCenterGroup(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1957,6 +1980,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getDepartmentGroup({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -1987,6 +2011,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetDepartmentGroup(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2052,6 +2077,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getDivisionGroup({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2082,6 +2108,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetDivisionGroup(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2147,6 +2174,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployee({
+    prefer: "heartbeat",
     expand: "company,employments,work_location,home_location,groups,skills",
     fields: "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
     id: "<id>",
@@ -2179,6 +2207,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployee(stackOne, {
+    prefer: "heartbeat",
     expand: "company,employments,work_location,home_location,groups,skills",
     fields: "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
     id: "<id>",
@@ -2246,6 +2275,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeCustomFieldDefinition({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2280,6 +2310,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeCustomFieldDefinition(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2349,6 +2380,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2380,6 +2412,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeDocument(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2446,6 +2479,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeDocumentCategory({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2476,6 +2510,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeDocumentCategory(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2541,6 +2576,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeEmployment({
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     id: "<id>",
@@ -2573,6 +2609,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeEmployment(stackOne, {
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     id: "<id>",
@@ -2640,6 +2677,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeShift({
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2670,6 +2708,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeShift(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -2735,6 +2774,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeSkill({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2766,6 +2806,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeSkill(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2832,6 +2873,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeTask({
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -2864,6 +2906,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeTask(stackOne, {
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -2931,6 +2974,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeTimeOffBalance({
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,is_unlimited,updated_at,unified_custom_fields",
     id: "<id>",
@@ -2963,6 +3007,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeeTimeOffBalance(stackOne, {
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,is_unlimited,updated_at,unified_custom_fields",
     id: "<id>",
@@ -3030,6 +3075,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeesTimeOffRequest({
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     id: "<id>",
@@ -3062,6 +3108,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeesTimeOffRequest(stackOne, {
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     id: "<id>",
@@ -3129,6 +3176,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeesWorkEligibility({
+    prefer: "heartbeat",
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -3160,6 +3208,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployeesWorkEligibility(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -3226,6 +3275,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployment({
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     id: "<id>",
@@ -3257,6 +3307,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetEmployment(stackOne, {
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     id: "<id>",
@@ -3323,6 +3374,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getGroup({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3353,6 +3405,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetGroup(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3418,6 +3471,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getJob({
+    prefer: "heartbeat",
     fields: "id,remote_id,code,title,description,status,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3448,6 +3502,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetJob(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,code,title,description,status,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3513,6 +3568,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getLocation({
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3543,6 +3599,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetLocation(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3608,6 +3665,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getPosition({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3637,6 +3695,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetPosition(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3701,6 +3760,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getShift({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3730,6 +3790,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetShift(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -3794,6 +3855,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTask({
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -3825,6 +3887,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTask(stackOne, {
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -3891,6 +3954,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTeamGroup({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3921,6 +3985,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTeamGroup(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3986,6 +4051,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeEntries({
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4016,6 +4082,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTimeEntries(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4081,6 +4148,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeOffPolicy({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4111,6 +4179,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTimeOffPolicy(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4176,6 +4245,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeOffRequest({
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     id: "<id>",
@@ -4207,6 +4277,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTimeOffRequest(stackOne, {
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     id: "<id>",
@@ -4275,6 +4346,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeOffType({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4305,6 +4377,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisGetTimeOffType(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4375,6 +4448,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4409,6 +4483,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -4473,6 +4548,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listBenefits({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4508,6 +4584,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListBenefits(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4578,6 +4655,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listCompanies({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4613,6 +4691,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListCompanies(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4683,6 +4762,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listCompaniesGroups({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4717,6 +4797,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListCompaniesGroups(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4786,6 +4867,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listCostCenterGroups({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4821,6 +4903,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListCostCenterGroups(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4891,6 +4974,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listDepartmentGroups({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4926,6 +5010,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListDepartmentGroups(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4996,6 +5081,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listDivisionGroups({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5030,6 +5116,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListDivisionGroups(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5099,6 +5186,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeCategories({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5134,6 +5222,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeCategories(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5204,6 +5293,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeCustomFieldDefinitions({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5239,6 +5329,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeCustomFieldDefinitions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5309,6 +5400,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeDocuments({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5345,6 +5437,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeDocuments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5416,6 +5509,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeEmployments({
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     filter: {
@@ -5453,6 +5547,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeEmployments(stackOne, {
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     filter: {
@@ -5525,6 +5620,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeShifts({
+    prefer: "heartbeat",
     filter: {
       endsBefore: "2024-01-15T17:00",
       startsAfter: "2024-01-15T09:00",
@@ -5561,6 +5657,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeShifts(stackOne, {
+    prefer: "heartbeat",
     filter: {
       endsBefore: "2024-01-15T17:00",
       startsAfter: "2024-01-15T09:00",
@@ -5632,6 +5729,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeSkills({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5668,6 +5766,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeSkills(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5739,6 +5838,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeTasks({
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -5777,6 +5877,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeTasks(stackOne, {
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -5850,6 +5951,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffBalances({
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,is_unlimited,updated_at,unified_custom_fields",
     filter: {
@@ -5887,6 +5989,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeTimeOffBalances(stackOne, {
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,is_unlimited,updated_at,unified_custom_fields",
     filter: {
@@ -5959,6 +6062,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffPolicies({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5995,6 +6099,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeTimeOffPolicies(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6066,6 +6171,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffRequests({
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     filter: {
@@ -6105,6 +6211,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeTimeOffRequests(stackOne, {
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     filter: {
@@ -6179,6 +6286,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeWorkEligibility({
+    prefer: "heartbeat",
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6215,6 +6323,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployeeWorkEligibility(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6286,6 +6395,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployees({
+    prefer: "heartbeat",
     expand: "company,employments,work_location,home_location,groups,skills",
     fields: "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
     filter: {
@@ -6323,6 +6433,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployees(stackOne, {
+    prefer: "heartbeat",
     expand: "company,employments,work_location,home_location,groups,skills",
     fields: "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
     filter: {
@@ -6395,6 +6506,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployments({
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     filter: {
@@ -6431,6 +6543,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListEmployments(stackOne, {
+    prefer: "heartbeat",
     expand: "groups",
     fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields",
     filter: {
@@ -6502,6 +6615,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listGroups({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6537,6 +6651,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListGroups(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6607,6 +6722,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listJobs({
+    prefer: "heartbeat",
     fields: "id,remote_id,code,title,description,status,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6642,6 +6758,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListJobs(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,code,title,description,status,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6712,6 +6829,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listLocations({
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6747,6 +6865,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListLocations(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6818,6 +6937,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listPositions({
+    prefer: "heartbeat",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -6853,6 +6973,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListPositions(stackOne, {
+    prefer: "heartbeat",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -6922,6 +7043,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listShifts({
+    prefer: "heartbeat",
     filter: {
       endsBefore: "2024-01-15T17:00",
       startsAfter: "2024-01-15T09:00",
@@ -6957,6 +7079,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListShifts(stackOne, {
+    prefer: "heartbeat",
     filter: {
       endsBefore: "2024-01-15T17:00",
       startsAfter: "2024-01-15T09:00",
@@ -7027,6 +7150,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTasks({
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -7063,6 +7187,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTasks(stackOne, {
+    prefer: "heartbeat",
     expand: "attachments",
     fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -7134,6 +7259,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTeamGroups({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7169,6 +7295,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTeamGroups(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7239,6 +7366,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeEntries({
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at,unified_custom_fields",
     filter: {
       endTime: "2020-01-01T00:00:00.000Z",
@@ -7276,6 +7404,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTimeEntries(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at,unified_custom_fields",
     filter: {
       endTime: "2020-01-01T00:00:00.000Z",
@@ -7348,6 +7477,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeOffPolicies({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7383,6 +7513,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTimeOffPolicies(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7453,6 +7584,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeOffRequests({
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     filter: {
@@ -7491,6 +7623,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTimeOffRequests(stackOne, {
+    prefer: "heartbeat",
     expand: "policy",
     fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields",
     filter: {
@@ -7566,6 +7699,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeOffTypes({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7601,6 +7735,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisListTimeOffTypes(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7842,6 +7977,7 @@ async function run() {
       },
       workPhoneNumber: "+1234567890",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8042,6 +8178,7 @@ async function run() {
       },
       workPhoneNumber: "+1234567890",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8158,6 +8295,7 @@ async function run() {
         },
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8240,6 +8378,7 @@ async function run() {
         },
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8306,6 +8445,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.updateEmployeeTask({
+    prefer: "heartbeat",
     updateTaskRequestDto: {
       comment: "All required documents have been submitted",
       status: {
@@ -8343,6 +8483,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisUpdateEmployeeTask(stackOne, {
+    prefer: "heartbeat",
     updateTaskRequestDto: {
       comment: "All required documents have been submitted",
       status: {
@@ -8430,6 +8571,7 @@ async function run() {
       startHalfDay: true,
       timeOffPolicyId: "cx280928933",
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8476,6 +8618,7 @@ async function run() {
       startHalfDay: true,
       timeOffPolicyId: "cx280928933",
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8572,6 +8715,7 @@ async function run() {
       validFrom: new Date("2021-01-01T00:00:00.000Z"),
       validTo: new Date("2021-01-01T00:00:00.000Z"),
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8633,6 +8777,7 @@ async function run() {
       validFrom: new Date("2021-01-01T00:00:00.000Z"),
       validTo: new Date("2021-01-01T00:00:00.000Z"),
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8717,6 +8862,7 @@ async function run() {
       name: "weather-forecast",
       path: "/path/to/file",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8765,6 +8911,7 @@ async function run() {
       name: "weather-forecast",
       path: "/path/to/file",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });

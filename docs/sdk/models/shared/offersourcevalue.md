@@ -14,7 +14,7 @@ const value: string = "Pending";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 
 ### `boolean`
@@ -33,7 +33,9 @@ const value: shared.Offer4 = {};
 
 ```typescript
 const value: any[] = [
-  "Pending",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

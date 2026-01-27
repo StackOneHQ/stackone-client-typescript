@@ -5,7 +5,7 @@
 ```typescript
 import { Field2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Field2 = Field2.True;
+let value: Field2 = Field2.False;
 ```
 
 ## Values

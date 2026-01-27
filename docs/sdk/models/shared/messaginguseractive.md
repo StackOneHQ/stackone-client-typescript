@@ -14,6 +14,6 @@ const value: boolean = true;
 ### `shared.MessagingUser2`
 
 ```typescript
-const value: shared.MessagingUser2 = MessagingUser2.True;
+const value: shared.MessagingUser2 = MessagingUser2.False;
 ```
 

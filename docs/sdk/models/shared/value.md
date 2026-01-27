@@ -15,7 +15,8 @@ const value: string = "This is additional data";
 
 ```typescript
 const value: string[] = [
-  "This is additional data",
+  "<value 1>",
+  "<value 2>",
 ];
 ```
 

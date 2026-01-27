@@ -21,6 +21,10 @@ export type AtsListAssessmentsPackagesQueryParamFilter = {
 
 export type AtsListAssessmentsPackagesRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields to return in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -115,6 +119,7 @@ export function atsListAssessmentsPackagesQueryParamFilterToJSON(
 
 /** @internal */
 export type AtsListAssessmentsPackagesRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?:
     | AtsListAssessmentsPackagesQueryParamFilter$Outbound
@@ -135,6 +140,7 @@ export const AtsListAssessmentsPackagesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListAssessmentsPackagesRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => AtsListAssessmentsPackagesQueryParamFilter$outboundSchema),
@@ -148,6 +154,7 @@ export const AtsListAssessmentsPackagesRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

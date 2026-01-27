@@ -5,7 +5,7 @@
 ```typescript
 import { FoldersSchemasIsRoot2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: FoldersSchemasIsRoot2 = FoldersSchemasIsRoot2.True;
+let value: FoldersSchemasIsRoot2 = FoldersSchemasIsRoot2.False;
 ```
 
 ## Values

@@ -14,6 +14,10 @@ import {
 
 export type ActionMetaItem = {
   /**
+   * The action details for the action
+   */
+  actionDetails?: { [k: string]: any } | null | undefined;
+  /**
    * The authentication methods supported by this action
    */
   authentication?: Array<AuthenticationMetaItem> | null | undefined;
@@ -30,9 +34,9 @@ export type ActionMetaItem = {
    */
   label?: string | null | undefined;
   /**
-   * The operation details for the action
+   * The required scopes for the action
    */
-  operationDetails?: { [k: string]: any } | null | undefined;
+  requiredScopes?: Array<string> | null | undefined;
   /**
    * The schema type for the action
    */
@@ -49,17 +53,19 @@ export const ActionMetaItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action_details: z.nullable(z.record(z.any())).optional(),
   authentication: z.nullable(z.array(AuthenticationMetaItem$inboundSchema))
     .optional(),
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  operation_details: z.nullable(z.record(z.any())).optional(),
+  required_scopes: z.nullable(z.array(z.string())).optional(),
   schema_type: z.nullable(z.string()).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "operation_details": "operationDetails",
+    "action_details": "actionDetails",
+    "required_scopes": "requiredScopes",
     "schema_type": "schemaType",
   });
 });

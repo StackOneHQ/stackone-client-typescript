@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type AtsUpdateJobRequest = {
   atsUpdateJobRequestDto: shared.AtsUpdateJobRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -41,6 +45,7 @@ export type AtsUpdateJobResponse = {
 /** @internal */
 export type AtsUpdateJobRequest$Outbound = {
   AtsUpdateJobRequestDto: shared.AtsUpdateJobRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -52,11 +57,13 @@ export const AtsUpdateJobRequest$outboundSchema: z.ZodType<
   AtsUpdateJobRequest
 > = z.object({
   atsUpdateJobRequestDto: shared.AtsUpdateJobRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     atsUpdateJobRequestDto: "AtsUpdateJobRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

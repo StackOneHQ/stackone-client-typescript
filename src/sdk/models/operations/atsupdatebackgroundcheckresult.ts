@@ -12,6 +12,10 @@ import * as shared from "../shared/index.js";
 export type AtsUpdateBackgroundCheckResultRequest = {
   atsUpdateBackgroundCheckResultRequestDto:
     shared.AtsUpdateBackgroundCheckResultRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -43,6 +47,7 @@ export type AtsUpdateBackgroundCheckResultResponse = {
 export type AtsUpdateBackgroundCheckResultRequest$Outbound = {
   AtsUpdateBackgroundCheckResultRequestDto:
     shared.AtsUpdateBackgroundCheckResultRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -55,12 +60,14 @@ export const AtsUpdateBackgroundCheckResultRequest$outboundSchema: z.ZodType<
 > = z.object({
   atsUpdateBackgroundCheckResultRequestDto:
     shared.AtsUpdateBackgroundCheckResultRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     atsUpdateBackgroundCheckResultRequestDto:
       "AtsUpdateBackgroundCheckResultRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

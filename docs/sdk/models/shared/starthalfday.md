@@ -15,6 +15,6 @@ const value: boolean = true;
 
 ```typescript
 const value: shared.HrisCreateTimeOffRequestDtoSchemas2 =
-  HrisCreateTimeOffRequestDtoSchemas2.True;
+  HrisCreateTimeOffRequestDtoSchemas2.False;
 ```
 

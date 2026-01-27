@@ -1,5 +1,4 @@
 # Documents
-(*documents*)
 
 ## Overview
 
@@ -33,6 +32,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.downloadFile({
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -64,6 +64,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsDownloadFile(stackOne, {
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -130,6 +131,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getDrive({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -160,6 +162,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetDrive(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -225,6 +228,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFile({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
@@ -256,6 +260,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFile(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
@@ -322,6 +327,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.getFolder({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
@@ -353,6 +359,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsGetFolder(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     id: "<id>",
     include: "all_parent_folder_ids",
@@ -419,6 +426,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listDrives({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -454,6 +462,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListDrives(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -524,6 +533,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFiles({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       content: "FAQ of the project",
@@ -567,6 +577,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFiles(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       content: "FAQ of the project",
@@ -645,6 +656,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.listFolders({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       driveId: "1234567890",
@@ -685,6 +697,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsListFolders(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields",
     filter: {
       driveId: "1234567890",
@@ -761,6 +774,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.uploadFile({
+    prefer: "heartbeat",
     unifiedUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
@@ -808,6 +822,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsUploadFile(stackOne, {
+    prefer: "heartbeat",
     unifiedUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",

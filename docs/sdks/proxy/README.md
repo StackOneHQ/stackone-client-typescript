@@ -1,5 +1,4 @@
 # Proxy
-(*proxy*)
 
 ## Overview
 
@@ -28,6 +27,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.proxy.proxyRequest({
+    prefer: "heartbeat",
     proxyRequestBody: {
       headers: {
         "Content-Type": "application/json",
@@ -63,6 +63,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await proxyProxyRequest(stackOne, {
+    prefer: "heartbeat",
     proxyRequestBody: {
       headers: {
         "Content-Type": "application/json",

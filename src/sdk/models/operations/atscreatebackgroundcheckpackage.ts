@@ -13,6 +13,10 @@ export type AtsCreateBackgroundCheckPackageRequest = {
   atsCreateBackgroundCheckPackagesRequestDto:
     shared.AtsCreateBackgroundCheckPackagesRequestDto;
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The account identifier
    */
   xAccountId: string;
@@ -42,6 +46,7 @@ export type AtsCreateBackgroundCheckPackageResponse = {
 export type AtsCreateBackgroundCheckPackageRequest$Outbound = {
   AtsCreateBackgroundCheckPackagesRequestDto:
     shared.AtsCreateBackgroundCheckPackagesRequestDto$Outbound;
+  Prefer?: string | undefined;
   "x-account-id": string;
 };
 
@@ -53,11 +58,13 @@ export const AtsCreateBackgroundCheckPackageRequest$outboundSchema: z.ZodType<
 > = z.object({
   atsCreateBackgroundCheckPackagesRequestDto:
     shared.AtsCreateBackgroundCheckPackagesRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     atsCreateBackgroundCheckPackagesRequestDto:
       "AtsCreateBackgroundCheckPackagesRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

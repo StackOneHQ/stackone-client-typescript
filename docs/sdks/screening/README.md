@@ -1,5 +1,4 @@
 # Screening
-(*screening*)
 
 ## Overview
 
@@ -29,6 +28,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.screening.createScreeningOrder({
+    prefer: "heartbeat",
     screeningCreateOrderRequestDto: {
       candidate: {
         email: "john.doe@example.com",
@@ -72,6 +72,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await screeningCreateScreeningOrder(stackOne, {
+    prefer: "heartbeat",
     screeningCreateOrderRequestDto: {
       candidate: {
         email: "john.doe@example.com",
@@ -150,6 +151,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.screening.getScreeningPackage({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -180,6 +182,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await screeningGetScreeningPackage(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -245,6 +248,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.screening.listScreeningPackages({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -279,6 +283,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await screeningListScreeningPackages(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -349,6 +354,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.screening.webhookScreeningResult({
+    prefer: "heartbeat",
     screeningResultWebhook: {
       data: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -401,6 +407,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await screeningWebhookScreeningResult(stackOne, {
+    prefer: "heartbeat",
     screeningResultWebhook: {
       data: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
