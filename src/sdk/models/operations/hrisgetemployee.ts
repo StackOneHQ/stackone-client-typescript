@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeeRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be expanded in the response
    */
   expand?: string | null | undefined;
@@ -59,6 +63,7 @@ export type HrisGetEmployeeResponse = {
 
 /** @internal */
 export type HrisGetEmployeeRequest$Outbound = {
+  Prefer?: string | undefined;
   expand?: string | null | undefined;
   fields?: string | null | undefined;
   id: string;
@@ -74,6 +79,7 @@ export const HrisGetEmployeeRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisGetEmployeeRequest
 > = z.object({
+  prefer: z.string().optional(),
   expand: z.nullable(z.string()).optional(),
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
@@ -83,6 +89,7 @@ export const HrisGetEmployeeRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

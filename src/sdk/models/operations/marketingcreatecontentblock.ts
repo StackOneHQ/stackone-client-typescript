@@ -13,6 +13,10 @@ export type MarketingCreateContentBlockRequest = {
   marketingCreateContentBlocksRequestDto:
     shared.MarketingCreateContentBlocksRequestDto;
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The account identifier
    */
   xAccountId: string;
@@ -42,6 +46,7 @@ export type MarketingCreateContentBlockResponse = {
 export type MarketingCreateContentBlockRequest$Outbound = {
   MarketingCreateContentBlocksRequestDto:
     shared.MarketingCreateContentBlocksRequestDto$Outbound;
+  Prefer?: string | undefined;
   "x-account-id": string;
 };
 
@@ -53,11 +58,13 @@ export const MarketingCreateContentBlockRequest$outboundSchema: z.ZodType<
 > = z.object({
   marketingCreateContentBlocksRequestDto:
     shared.MarketingCreateContentBlocksRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     marketingCreateContentBlocksRequestDto:
       "MarketingCreateContentBlocksRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

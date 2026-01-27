@@ -167,6 +167,10 @@ export type LmsUpsertContentRequestDto = {
    */
   order?: number | null | undefined;
   /**
+   * Value to pass through to the provider
+   */
+  passthrough?: { [k: string]: any } | null | undefined;
+  /**
    * A short description or summary for the content
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -342,6 +346,7 @@ export type LmsUpsertContentRequestDto$Outbound = {
   localizations?: Array<LocalizationModel$Outbound> | null | undefined;
   mobile_launch_content_url?: string | null | undefined;
   order?: number | null | undefined;
+  passthrough?: { [k: string]: any } | null | undefined;
   short_description?: string | null | undefined;
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   tags?: Array<string> | null | undefined;
@@ -377,6 +382,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
     .optional(),
   mobileLaunchContentUrl: z.nullable(z.string()).optional(),
   order: z.nullable(z.number()).optional(),
+  passthrough: z.nullable(z.record(z.any())).optional(),
   shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   tags: z.nullable(z.array(z.string())).optional(),

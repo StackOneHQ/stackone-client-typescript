@@ -1,5 +1,4 @@
 # Mcp
-(*mcp*)
 
 ## Overview
 

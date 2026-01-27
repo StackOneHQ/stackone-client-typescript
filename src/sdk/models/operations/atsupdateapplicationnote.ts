@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type AtsUpdateApplicationNoteRequest = {
   atsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   subResourceId: string;
   /**
@@ -42,6 +46,7 @@ export type AtsUpdateApplicationNoteResponse = {
 /** @internal */
 export type AtsUpdateApplicationNoteRequest$Outbound = {
   AtsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   subResourceId: string;
   "x-account-id": string;
@@ -54,12 +59,14 @@ export const AtsUpdateApplicationNoteRequest$outboundSchema: z.ZodType<
   AtsUpdateApplicationNoteRequest
 > = z.object({
   atsUpdateNotesRequestDto: shared.AtsUpdateNotesRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     atsUpdateNotesRequestDto: "AtsUpdateNotesRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

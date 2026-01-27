@@ -5,7 +5,7 @@
 ```typescript
 import { TimeEntries2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeEntries2 = TimeEntries2.True;
+let value: TimeEntries2 = TimeEntries2.False;
 ```
 
 ## Values

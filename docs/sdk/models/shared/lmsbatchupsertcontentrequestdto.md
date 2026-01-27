@@ -65,6 +65,9 @@ let value: LmsBatchUpsertContentRequestDto = {
       ],
       mobileLaunchContentUrl: "https://www.mobile.youtube.com/watch?v=16873",
       order: 1,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
       skills: [
         {
           id: "12345",

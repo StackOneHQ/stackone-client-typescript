@@ -9,6 +9,10 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
+export enum ExcludeT {
+  Actions = "actions",
+}
+
 /**
  * Actions Metadata filters
  */
@@ -33,6 +37,10 @@ export enum Include {
 
 export type StackoneListActionsMetaRequest = {
   /**
+   * Data to exclude from the response
+   */
+  exclude?: Array<ExcludeT> | null | undefined;
+  /**
    * Actions Metadata filters
    */
   filter?: Filter | null | undefined;
@@ -52,6 +60,10 @@ export type StackoneListActionsMetaRequest = {
    * The number of results per page (default value is 25)
    */
   pageSize?: string | null | undefined;
+  /**
+   * Text search across provider names, action labels, and action descriptions
+   */
+  search?: string | null | undefined;
 };
 
 export type StackoneListActionsMetaResponse = {
@@ -73,6 +85,10 @@ export type StackoneListActionsMetaResponse = {
    */
   rawResponse: Response;
 };
+
+/** @internal */
+export const ExcludeT$outboundSchema: z.ZodNativeEnum<typeof ExcludeT> = z
+  .nativeEnum(ExcludeT);
 
 /** @internal */
 export type Filter$Outbound = {
@@ -107,11 +123,13 @@ export const Include$outboundSchema: z.ZodNativeEnum<typeof Include> = z
 
 /** @internal */
 export type StackoneListActionsMetaRequest$Outbound = {
+  exclude?: Array<string> | null | undefined;
   filter?: Filter$Outbound | null | undefined;
   group_by: string | null;
   include?: Array<string> | null | undefined;
   next?: string | null | undefined;
   page_size?: string | null | undefined;
+  search?: string | null | undefined;
 };
 
 /** @internal */
@@ -120,11 +138,13 @@ export const StackoneListActionsMetaRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneListActionsMetaRequest
 > = z.object({
+  exclude: z.nullable(z.array(ExcludeT$outboundSchema)).optional(),
   filter: z.nullable(z.lazy(() => Filter$outboundSchema)).optional(),
   groupBy: z.nullable(z.string().default("connector")),
   include: z.nullable(z.array(Include$outboundSchema)).optional(),
   next: z.nullable(z.string()).optional(),
   pageSize: z.nullable(z.string()).optional(),
+  search: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     groupBy: "group_by",

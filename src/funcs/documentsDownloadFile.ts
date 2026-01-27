@@ -124,6 +124,10 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "*/*",
+    "Prefer": encodeSimple("Prefer", payload.Prefer, {
+      explode: false,
+      charEncoding: "none",
+    }),
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",

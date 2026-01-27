@@ -1,5 +1,4 @@
 # Connectors
-(*connectors*)
 
 ## Overview
 

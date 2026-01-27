@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type TicketingCreateTicketRequest = {
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   ticketingTicketCreateRequestDto: shared.TicketingTicketCreateRequestDto;
   /**
    * The account identifier
@@ -39,6 +43,7 @@ export type TicketingCreateTicketResponse = {
 
 /** @internal */
 export type TicketingCreateTicketRequest$Outbound = {
+  Prefer?: string | undefined;
   TicketingTicketCreateRequestDto:
     shared.TicketingTicketCreateRequestDto$Outbound;
   "x-account-id": string;
@@ -50,11 +55,13 @@ export const TicketingCreateTicketRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingCreateTicketRequest
 > = z.object({
+  prefer: z.string().optional(),
   ticketingTicketCreateRequestDto:
     shared.TicketingTicketCreateRequestDto$outboundSchema,
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     ticketingTicketCreateRequestDto: "TicketingTicketCreateRequestDto",
     xAccountId: "x-account-id",
   });

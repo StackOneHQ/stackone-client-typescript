@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsDeleteBackgroundCheckPackageRequest = {
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -39,6 +43,7 @@ export type AtsDeleteBackgroundCheckPackageResponse = {
 
 /** @internal */
 export type AtsDeleteBackgroundCheckPackageRequest$Outbound = {
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -49,10 +54,12 @@ export const AtsDeleteBackgroundCheckPackageRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsDeleteBackgroundCheckPackageRequest
 > = z.object({
+  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

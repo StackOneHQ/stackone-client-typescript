@@ -1,5 +1,4 @@
 # ConnectSessions
-(*connectSessions*)
 
 ## Overview
 

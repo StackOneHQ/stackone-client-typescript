@@ -32,6 +32,8 @@ export enum Categories {
  */
 export type Metadata = {};
 
+export type OrganizationId = string | number;
+
 /**
  * The connect session account type
  */
@@ -63,7 +65,7 @@ export type ConnectSession = {
    * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
    */
   metadata?: Metadata | null | undefined;
-  organizationId: number;
+  organizationId: string | number;
   originOwnerId: string;
   originOwnerName: string;
   originUsername?: string | null | undefined;
@@ -97,6 +99,23 @@ export function metadataFromJSON(
 }
 
 /** @internal */
+export const OrganizationId$inboundSchema: z.ZodType<
+  OrganizationId,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number().int()]);
+
+export function organizationIdFromJSON(
+  jsonString: string,
+): SafeParseResult<OrganizationId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrganizationId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrganizationId' from JSON`,
+  );
+}
+
+/** @internal */
 export const ConnectSessionType$inboundSchema: z.ZodType<
   ConnectSessionTypeOpen,
   z.ZodTypeDef,
@@ -117,7 +136,7 @@ export const ConnectSession$inboundSchema: z.ZodType<
   integration_id: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
-  organization_id: z.number(),
+  organization_id: z.union([z.string(), z.number().int()]),
   origin_owner_id: z.string(),
   origin_owner_name: z.string(),
   origin_username: z.nullable(z.string()).optional(),

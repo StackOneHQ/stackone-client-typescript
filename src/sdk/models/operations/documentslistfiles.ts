@@ -41,6 +41,10 @@ export type DocumentsListFilesQueryParamFilter = {
 
 export type DocumentsListFilesRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -161,6 +165,7 @@ export function documentsListFilesQueryParamFilterToJSON(
 
 /** @internal */
 export type DocumentsListFilesRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: DocumentsListFilesQueryParamFilter$Outbound | null | undefined;
   folder_id?: string | null | undefined;
@@ -182,6 +187,7 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentsListFilesRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => DocumentsListFilesQueryParamFilter$outboundSchema),
@@ -199,6 +205,7 @@ export const DocumentsListFilesRequest$outboundSchema: z.ZodType<
   xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     folderId: "folder_id",
     nestedItems: "nested_items",
     pageSize: "page_size",

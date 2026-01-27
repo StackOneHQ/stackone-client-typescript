@@ -32,6 +32,10 @@ export enum HrisListPositionsQueryParamStatus {
 
 export type HrisListPositionsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields to return in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -132,6 +136,7 @@ export const HrisListPositionsQueryParamStatus$outboundSchema: z.ZodNativeEnum<
 
 /** @internal */
 export type HrisListPositionsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: HrisListPositionsQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
@@ -150,6 +155,7 @@ export const HrisListPositionsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListPositionsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => HrisListPositionsQueryParamFilter$outboundSchema),
@@ -165,6 +171,7 @@ export const HrisListPositionsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

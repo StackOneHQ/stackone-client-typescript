@@ -21,6 +21,10 @@ export type AtsListLocationsQueryParamFilter = {
 
 export type AtsListLocationsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -118,6 +122,7 @@ export function atsListLocationsQueryParamFilterToJSON(
 
 /** @internal */
 export type AtsListLocationsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: AtsListLocationsQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
@@ -136,6 +141,7 @@ export const AtsListLocationsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListLocationsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => AtsListLocationsQueryParamFilter$outboundSchema),
@@ -150,6 +156,7 @@ export const AtsListLocationsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     syncToken: "sync_token",
     updatedAfter: "updated_after",

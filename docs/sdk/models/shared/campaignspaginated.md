@@ -39,8 +39,7 @@ let value: CampaignsPaginated = {
         {
           id: "message-id-2",
           messageContent: {
-            body: "<h1>This is an example</h1>\n"
-              + "            <p>email body</p>",
+            body: "<h1>This is an example</h1>\n            <p>email body</p>",
             from: "Jane Smith",
             preheader: "This is the preheader of the email.",
             replyTo: "reply@example.com",

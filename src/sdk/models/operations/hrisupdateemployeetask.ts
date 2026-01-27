@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisUpdateEmployeeTaskRequest = {
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   updateTaskRequestDto: shared.UpdateTaskRequestDto;
   id: string;
   subResourceId: string;
@@ -41,6 +45,7 @@ export type HrisUpdateEmployeeTaskResponse = {
 
 /** @internal */
 export type HrisUpdateEmployeeTaskRequest$Outbound = {
+  Prefer?: string | undefined;
   UpdateTaskRequestDto: shared.UpdateTaskRequestDto$Outbound;
   id: string;
   subResourceId: string;
@@ -53,12 +58,14 @@ export const HrisUpdateEmployeeTaskRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisUpdateEmployeeTaskRequest
 > = z.object({
+  prefer: z.string().optional(),
   updateTaskRequestDto: shared.UpdateTaskRequestDto$outboundSchema,
   id: z.string(),
   subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     updateTaskRequestDto: "UpdateTaskRequestDto",
     xAccountId: "x-account-id",
   });

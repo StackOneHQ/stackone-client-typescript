@@ -5,7 +5,7 @@
 ```typescript
 import { ShiftBreak2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ShiftBreak2 = ShiftBreak2.True;
+let value: ShiftBreak2 = ShiftBreak2.False;
 ```
 
 ## Values

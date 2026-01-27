@@ -1,5 +1,4 @@
 # Crm
-(*crm*)
 
 ## Overview
 
@@ -75,6 +74,7 @@ async function run() {
         "123-456-7890",
       ],
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -143,6 +143,7 @@ async function run() {
         "123-456-7890",
       ],
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -206,6 +207,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getAccount({
+    prefer: "heartbeat",
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -236,6 +238,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmGetAccount(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -301,6 +304,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getContact({
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     include: "custom_fields",
@@ -332,6 +336,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmGetContact(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     include: "custom_fields",
@@ -398,6 +403,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getContactCustomFieldDefinition({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -432,6 +438,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmGetContactCustomFieldDefinition(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -501,6 +508,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getList({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -531,6 +539,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmGetList(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -596,6 +605,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listAccounts({
+    prefer: "heartbeat",
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -631,6 +641,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmListAccounts(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -701,6 +712,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listContactCustomFieldDefinitions({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -736,6 +748,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmListContactCustomFieldDefinitions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -806,6 +819,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listContacts({
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -842,6 +856,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmListContacts(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -913,6 +928,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listLists({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -948,6 +964,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await crmListLists(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1058,6 +1075,7 @@ async function run() {
         "123-456-7890",
       ],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1127,6 +1145,7 @@ async function run() {
         "123-456-7890",
       ],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });

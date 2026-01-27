@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type HrisUpdateEmployeeRequest = {
   hrisUpdateEmployeeRequestDto: shared.HrisUpdateEmployeeRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -41,6 +45,7 @@ export type HrisUpdateEmployeeResponse = {
 /** @internal */
 export type HrisUpdateEmployeeRequest$Outbound = {
   HrisUpdateEmployeeRequestDto: shared.HrisUpdateEmployeeRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -53,11 +58,13 @@ export const HrisUpdateEmployeeRequest$outboundSchema: z.ZodType<
 > = z.object({
   hrisUpdateEmployeeRequestDto:
     shared.HrisUpdateEmployeeRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     hrisUpdateEmployeeRequestDto: "HrisUpdateEmployeeRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

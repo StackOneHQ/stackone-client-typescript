@@ -14,7 +14,7 @@ const value: string = "Short Text";
 ### `number`
 
 ```typescript
-const value: number = NaN;
+const value: number = 1284.03;
 ```
 
 ### `boolean`
@@ -33,7 +33,9 @@ const value: shared.Answer4 = {};
 
 ```typescript
 const value: any[] = [
-  "Short Text",
+  "<value 1>",
+  "<value 2>",
+  "<value 3>",
 ];
 ```
 

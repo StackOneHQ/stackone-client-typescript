@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type DocumentsGetFileRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -59,6 +63,7 @@ export type DocumentsGetFileResponse = {
 
 /** @internal */
 export type DocumentsGetFileRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   id: string;
   include?: string | null | undefined;
@@ -74,6 +79,7 @@ export const DocumentsGetFileRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentsGetFileRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   id: z.string(),
   include: z.nullable(z.string()).optional(),
@@ -83,6 +89,7 @@ export const DocumentsGetFileRequest$outboundSchema: z.ZodType<
   xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     xAccountId: "x-account-id",
     xStackoneApiSessionToken: "x-stackone-api-session-token",
   });

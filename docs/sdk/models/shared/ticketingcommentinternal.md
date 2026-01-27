@@ -14,6 +14,6 @@ const value: boolean = false;
 ### `shared.TicketingComment2`
 
 ```typescript
-const value: shared.TicketingComment2 = TicketingComment2.False;
+const value: shared.TicketingComment2 = TicketingComment2.True;
 ```
 

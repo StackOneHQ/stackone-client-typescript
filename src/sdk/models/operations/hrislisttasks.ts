@@ -25,6 +25,10 @@ export type HrisListTasksQueryParamFilter = {
 
 export type HrisListTasksRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be expanded in the response
    */
   expand?: string | null | undefined;
@@ -123,6 +127,7 @@ export function hrisListTasksQueryParamFilterToJSON(
 
 /** @internal */
 export type HrisListTasksRequest$Outbound = {
+  Prefer?: string | undefined;
   expand?: string | null | undefined;
   fields?: string | null | undefined;
   filter?: HrisListTasksQueryParamFilter$Outbound | null | undefined;
@@ -141,6 +146,7 @@ export const HrisListTasksRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListTasksRequest
 > = z.object({
+  prefer: z.string().optional(),
   expand: z.nullable(z.string()).optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(z.lazy(() => HrisListTasksQueryParamFilter$outboundSchema))
@@ -154,6 +160,7 @@ export const HrisListTasksRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

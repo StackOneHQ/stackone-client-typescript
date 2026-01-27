@@ -14,6 +14,6 @@ const value: boolean = true;
 ### `shared.Content2`
 
 ```typescript
-const value: shared.Content2 = Content2.True;
+const value: shared.Content2 = Content2.False;
 ```
 

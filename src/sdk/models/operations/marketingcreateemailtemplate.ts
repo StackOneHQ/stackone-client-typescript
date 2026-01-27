@@ -13,6 +13,10 @@ export type MarketingCreateEmailTemplateRequest = {
   marketingCreateEmailTemplateRequestDto:
     shared.MarketingCreateEmailTemplateRequestDto;
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The account identifier
    */
   xAccountId: string;
@@ -42,6 +46,7 @@ export type MarketingCreateEmailTemplateResponse = {
 export type MarketingCreateEmailTemplateRequest$Outbound = {
   MarketingCreateEmailTemplateRequestDto:
     shared.MarketingCreateEmailTemplateRequestDto$Outbound;
+  Prefer?: string | undefined;
   "x-account-id": string;
 };
 
@@ -53,11 +58,13 @@ export const MarketingCreateEmailTemplateRequest$outboundSchema: z.ZodType<
 > = z.object({
   marketingCreateEmailTemplateRequestDto:
     shared.MarketingCreateEmailTemplateRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     marketingCreateEmailTemplateRequestDto:
       "MarketingCreateEmailTemplateRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

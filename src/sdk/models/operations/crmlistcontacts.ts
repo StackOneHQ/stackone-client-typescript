@@ -21,6 +21,10 @@ export type CrmListContactsQueryParamFilter = {
 
 export type CrmListContactsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -116,6 +120,7 @@ export function crmListContactsQueryParamFilterToJSON(
 
 /** @internal */
 export type CrmListContactsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: CrmListContactsQueryParamFilter$Outbound | null | undefined;
   include?: string | null | undefined;
@@ -134,6 +139,7 @@ export const CrmListContactsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CrmListContactsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => CrmListContactsQueryParamFilter$outboundSchema),
@@ -148,6 +154,7 @@ export const CrmListContactsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

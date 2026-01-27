@@ -1,5 +1,4 @@
 # Ticketing
-(*ticketing*)
 
 ## Overview
 
@@ -45,6 +44,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.createTicket({
+    prefer: "heartbeat",
     ticketingTicketCreateRequestDto: {
       assignees: [
         "user-001",
@@ -118,6 +118,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingCreateTicket(stackOne, {
+    prefer: "heartbeat",
     ticketingTicketCreateRequestDto: {
       assignees: [
         "user-001",
@@ -225,6 +226,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.downloadTicketingAttachment({
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -257,6 +259,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingDownloadTicketingAttachment(stackOne, {
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -324,6 +327,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getAttachment({
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -355,6 +359,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetAttachment(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -421,6 +426,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getComment({
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -452,6 +458,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetComment(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -518,6 +525,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getProject({
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -548,6 +556,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetProject(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -613,6 +622,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getProjectComponent({
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -644,6 +654,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetProjectComponent(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -710,6 +721,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getTicket({
+    prefer: "heartbeat",
     fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -740,6 +752,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetTicket(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -805,6 +818,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getTicketType({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,project_id,remote_project_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -835,6 +849,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetTicketType(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,project_id,remote_project_id,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -900,6 +915,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.getUser({
+    prefer: "heartbeat",
     fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -930,6 +946,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingGetUser(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -995,6 +1012,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listAttachments({
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1031,6 +1049,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListAttachments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1102,6 +1121,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listComments({
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1138,6 +1158,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListComments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1209,6 +1230,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listProjectComponents({
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields",
     filter: null,
     id: "<id>",
@@ -1242,6 +1264,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListProjectComponents(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields",
     filter: null,
     id: "<id>",
@@ -1310,6 +1333,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listProjectTicketTypes({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,project_id,remote_project_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1345,6 +1369,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListProjectTicketTypes(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,project_id,remote_project_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1415,6 +1440,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listProjects({
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1449,6 +1475,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListProjects(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1518,6 +1545,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listTicketStatuses({
+    prefer: "heartbeat",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1553,6 +1581,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListTicketStatuses(stackOne, {
+    prefer: "heartbeat",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -1623,6 +1652,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listTicketTypes({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,project_id,remote_project_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1658,6 +1688,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListTicketTypes(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,project_id,remote_project_id,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1728,6 +1759,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listTickets({
+    prefer: "heartbeat",
     fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1763,6 +1795,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListTickets(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1833,6 +1866,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.listUsers({
+    prefer: "heartbeat",
     fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1868,6 +1902,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingListUsers(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1942,6 +1977,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.updateTicket({
+    prefer: "heartbeat",
     ticketingTicketUpdateRequestDto: {
       assignees: [
         "user-001",
@@ -2020,6 +2056,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingUpdateTicket(stackOne, {
+    prefer: "heartbeat",
     ticketingTicketUpdateRequestDto: {
       assignees: [
         "user-001",

@@ -14,6 +14,6 @@ const value: boolean = true;
 ### `shared.AccountingTaxRate2`
 
 ```typescript
-const value: shared.AccountingTaxRate2 = AccountingTaxRate2.True;
+const value: shared.AccountingTaxRate2 = AccountingTaxRate2.False;
 ```
 

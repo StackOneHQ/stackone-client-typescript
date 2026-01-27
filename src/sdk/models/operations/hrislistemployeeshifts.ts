@@ -44,6 +44,10 @@ export type HrisListEmployeeShiftsQueryParamFilter = {
 
 export type HrisListEmployeeShiftsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields to return in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -150,6 +154,7 @@ export function hrisListEmployeeShiftsQueryParamFilterToJSON(
 
 /** @internal */
 export type HrisListEmployeeShiftsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: HrisListEmployeeShiftsQueryParamFilter$Outbound | null | undefined;
   id: string;
@@ -168,6 +173,7 @@ export const HrisListEmployeeShiftsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListEmployeeShiftsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => HrisListEmployeeShiftsQueryParamFilter$outboundSchema),
@@ -182,6 +188,7 @@ export const HrisListEmployeeShiftsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

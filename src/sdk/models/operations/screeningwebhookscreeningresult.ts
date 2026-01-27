@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type ScreeningWebhookScreeningResultRequest = {
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   screeningResultWebhook: shared.ScreeningResultWebhook;
   /**
    * The account identifier
@@ -39,6 +43,7 @@ export type ScreeningWebhookScreeningResultResponse = {
 
 /** @internal */
 export type ScreeningWebhookScreeningResultRequest$Outbound = {
+  Prefer?: string | undefined;
   ScreeningResultWebhook: shared.ScreeningResultWebhook$Outbound;
   "x-account-id": string;
 };
@@ -49,10 +54,12 @@ export const ScreeningWebhookScreeningResultRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ScreeningWebhookScreeningResultRequest
 > = z.object({
+  prefer: z.string().optional(),
   screeningResultWebhook: shared.ScreeningResultWebhook$outboundSchema,
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     screeningResultWebhook: "ScreeningResultWebhook",
     xAccountId: "x-account-id",
   });

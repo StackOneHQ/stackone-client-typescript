@@ -5,7 +5,7 @@
 ```typescript
 import { AccountingTaxRateResult2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AccountingTaxRateResult2 = AccountingTaxRateResult2.True;
+let value: AccountingTaxRateResult2 = AccountingTaxRateResult2.False;
 ```
 
 ## Values

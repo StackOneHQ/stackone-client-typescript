@@ -12,6 +12,10 @@ import * as shared from "../shared/index.js";
 export type HrisUpdateEmployeeWorkEligibilityRequestRequest = {
   hrisCreateWorkEligibilityRequestDto:
     shared.HrisCreateWorkEligibilityRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   subResourceId: string;
   /**
@@ -40,6 +44,7 @@ export type HrisUpdateEmployeeWorkEligibilityRequestResponse = {
 export type HrisUpdateEmployeeWorkEligibilityRequestRequest$Outbound = {
   HrisCreateWorkEligibilityRequestDto:
     shared.HrisCreateWorkEligibilityRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   subResourceId: string;
   "x-account-id": string;
@@ -54,6 +59,7 @@ export const HrisUpdateEmployeeWorkEligibilityRequestRequest$outboundSchema:
   > = z.object({
     hrisCreateWorkEligibilityRequestDto:
       shared.HrisCreateWorkEligibilityRequestDto$outboundSchema,
+    prefer: z.string().optional(),
     id: z.string(),
     subResourceId: z.string(),
     xAccountId: z.string(),
@@ -61,6 +67,7 @@ export const HrisUpdateEmployeeWorkEligibilityRequestRequest$outboundSchema:
     return remap$(v, {
       hrisCreateWorkEligibilityRequestDto:
         "HrisCreateWorkEligibilityRequestDto",
+      prefer: "Prefer",
       xAccountId: "x-account-id",
     });
   });

@@ -21,6 +21,10 @@ export type MarketingListCampaignsQueryParamFilter = {
 
 export type MarketingListCampaignsRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -113,6 +117,7 @@ export function marketingListCampaignsQueryParamFilterToJSON(
 
 /** @internal */
 export type MarketingListCampaignsRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: MarketingListCampaignsQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
@@ -130,6 +135,7 @@ export const MarketingListCampaignsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MarketingListCampaignsRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => MarketingListCampaignsQueryParamFilter$outboundSchema),
@@ -143,6 +149,7 @@ export const MarketingListCampaignsRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

@@ -1,5 +1,4 @@
 # Ats
-(*ats*)
 
 ## Overview
 
@@ -186,6 +185,7 @@ async function run() {
         name: "LinkedIn",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -299,6 +299,7 @@ async function run() {
         name: "LinkedIn",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -384,6 +385,7 @@ async function run() {
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -435,6 +437,7 @@ async function run() {
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -520,6 +523,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -569,6 +573,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -677,6 +682,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -750,6 +756,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -832,6 +839,7 @@ async function run() {
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -880,6 +888,7 @@ async function run() {
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -960,6 +969,7 @@ async function run() {
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1005,6 +1015,7 @@ async function run() {
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1172,6 +1183,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -1303,6 +1315,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -1384,6 +1397,7 @@ async function run() {
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -1430,6 +1444,7 @@ async function run() {
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -1493,6 +1508,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.deleteBackgroundCheckPackage({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1522,6 +1538,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsDeleteBackgroundCheckPackage(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -1586,6 +1603,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.downloadApplicationDocument({
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -1618,6 +1636,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsDownloadApplicationDocument(stackOne, {
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -1685,6 +1704,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplication({
+    prefer: "heartbeat",
     expand: "documents",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields",
     id: "<id>",
@@ -1717,6 +1737,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplication(stackOne, {
+    prefer: "heartbeat",
     expand: "documents",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields",
     id: "<id>",
@@ -1784,6 +1805,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationCustomFieldDefinition({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1818,6 +1840,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationCustomFieldDefinition(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1887,6 +1910,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationDocument({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -1918,6 +1942,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationDocument(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -1984,6 +2009,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationDocumentCategory({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2014,6 +2040,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationDocumentCategory(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2079,6 +2106,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationNote({
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2110,6 +2138,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationNote(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2176,6 +2205,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationOffer({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2207,6 +2237,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationOffer(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2273,6 +2304,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationScheduledInterview({
+    prefer: "heartbeat",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2304,6 +2336,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationScheduledInterview(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2370,6 +2403,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationScorecard({
+    prefer: "heartbeat",
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2401,6 +2435,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationScorecard(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2467,6 +2502,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationStage({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2497,6 +2533,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetApplicationStage(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2562,6 +2599,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getAssessmentsPackage({
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2591,6 +2629,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetAssessmentsPackage(stackOne, {
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2655,6 +2694,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getBackgroundCheckPackage({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,tests,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2685,6 +2725,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetBackgroundCheckPackage(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,tests,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -2750,6 +2791,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidate({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     include: "custom_fields",
@@ -2781,6 +2823,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetCandidate(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     include: "custom_fields",
@@ -2847,6 +2890,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidateCustomFieldDefinition({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2881,6 +2925,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetCandidateCustomFieldDefinition(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -2950,6 +2995,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidateNote({
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -2981,6 +3027,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetCandidateNote(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -3047,6 +3094,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getDepartment({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3077,6 +3125,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetDepartment(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3142,6 +3191,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getInterview({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3172,6 +3222,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetInterview(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3239,6 +3290,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getInterviewStage({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3269,6 +3321,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetInterviewStage(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3334,6 +3387,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJob({
+    prefer: "heartbeat",
     expand: "job_postings,interview_stages",
     fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -3366,6 +3420,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetJob(stackOne, {
+    prefer: "heartbeat",
     expand: "job_postings,interview_stages",
     fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields",
     id: "<id>",
@@ -3433,6 +3488,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJobApplicationStage({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -3464,6 +3520,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetJobApplicationStage(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -3530,6 +3587,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJobCustomFieldDefinition({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -3564,6 +3622,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetJobCustomFieldDefinition(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -3633,6 +3692,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJobPosting({
+    prefer: "heartbeat",
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields",
     id: "<id>",
     include: "questionnaires",
@@ -3664,6 +3724,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetJobPosting(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields",
     id: "<id>",
     include: "questionnaires",
@@ -3730,6 +3791,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getList({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3760,6 +3822,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetList(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3825,6 +3888,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getLocation({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3855,6 +3919,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetLocation(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3920,6 +3985,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getOffer({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -3950,6 +4016,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetOffer(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4015,6 +4082,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getRejectedReason({
+    prefer: "heartbeat",
     fields: "id,remote_id,label,type,rejected_reason_type,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4045,6 +4113,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetRejectedReason(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,label,type,rejected_reason_type,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4110,6 +4179,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getUser({
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4140,6 +4210,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetUser(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -4205,6 +4276,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationChanges({
+    prefer: "heartbeat",
     fields: "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4240,6 +4312,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationChanges(stackOne, {
+    prefer: "heartbeat",
     fields: "event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4310,6 +4383,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationCustomFieldDefinitions({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4345,6 +4419,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationCustomFieldDefinitions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4415,6 +4490,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationDocumentCategories({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4449,6 +4525,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationDocumentCategories(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4518,6 +4595,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4554,6 +4632,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationDocuments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4625,6 +4704,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationNotes({
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4661,6 +4741,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationNotes(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4732,6 +4813,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationScorecards({
+    prefer: "heartbeat",
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4768,6 +4850,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationScorecards(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4839,6 +4922,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationStages({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4873,6 +4957,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationStages(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -4942,6 +5027,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplications({
+    prefer: "heartbeat",
     expand: "documents",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields",
     filter: {
@@ -4981,6 +5067,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplications(stackOne, {
+    prefer: "heartbeat",
     expand: "documents",
     fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,application_stage,application_stage_id,remote_application_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields",
     filter: {
@@ -5055,6 +5142,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationsOffers({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5091,6 +5179,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationsOffers(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5162,6 +5251,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationsScheduledInterviews({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5198,6 +5288,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListApplicationsScheduledInterviews(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5269,6 +5360,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listAssessmentsPackages({
+    prefer: "heartbeat",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -5303,6 +5395,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListAssessmentsPackages(stackOne, {
+    prefer: "heartbeat",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
@@ -5372,6 +5465,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listBackgroundCheckPackages({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,tests,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5407,6 +5501,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListBackgroundCheckPackages(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,tests,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5477,6 +5572,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidateCustomFieldDefinitions({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5512,6 +5608,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListCandidateCustomFieldDefinitions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5582,6 +5679,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidateNotes({
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5618,6 +5716,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListCandidateNotes(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5689,6 +5788,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidates({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5726,6 +5826,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListCandidates(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5798,6 +5899,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listDepartments({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5833,6 +5935,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListDepartments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5905,6 +6008,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listInterviewStages({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -5940,6 +6044,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListInterviewStages(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6010,6 +6115,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listInterviews({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6046,6 +6152,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListInterviews(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6117,6 +6224,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobApplicationStages({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6152,6 +6260,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListJobApplicationStages(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,order,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6222,6 +6331,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobCustomFieldDefinitions({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6257,6 +6367,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListJobCustomFieldDefinitions(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,description,type,options,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6327,6 +6438,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobPostings({
+    prefer: "heartbeat",
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6364,6 +6476,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListJobPostings(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields",
     filter: {
       createdAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6436,6 +6549,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobs({
+    prefer: "heartbeat",
     expand: "job_postings,interview_stages",
     fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -6474,6 +6588,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListJobs(stackOne, {
+    prefer: "heartbeat",
     expand: "job_postings,interview_stages",
     fields: "id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields",
     filter: {
@@ -6547,6 +6662,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listLists({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6582,6 +6698,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListLists(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6652,6 +6769,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listLocations({
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6687,6 +6805,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListLocations(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,name,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6757,6 +6876,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listOffers({
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6792,6 +6912,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListOffers(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6862,6 +6983,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listRejectedReasons({
+    prefer: "heartbeat",
     fields: "id,remote_id,label,type,rejected_reason_type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6897,6 +7019,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListRejectedReasons(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,label,type,rejected_reason_type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -6967,6 +7090,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listUsers({
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7002,6 +7126,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListUsers(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -7078,6 +7203,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -7113,6 +7239,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -7244,6 +7371,7 @@ async function run() {
       },
       resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -7339,6 +7467,7 @@ async function run() {
       },
       resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -7494,6 +7623,7 @@ async function run() {
       },
       resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -7614,6 +7744,7 @@ async function run() {
       },
       resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -7683,6 +7814,7 @@ async function run() {
       },
       rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -7718,6 +7850,7 @@ async function run() {
       },
       rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -7822,6 +7955,7 @@ async function run() {
         name: "LinkedIn",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -7891,6 +8025,7 @@ async function run() {
         name: "LinkedIn",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -7971,6 +8106,7 @@ async function run() {
         value: AtsUpdateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8017,6 +8153,7 @@ async function run() {
         value: AtsUpdateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8115,6 +8252,7 @@ async function run() {
       submissionDate: new Date("2021-01-01T01:01:01.000Z"),
       summary: "Test is passed",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8177,6 +8315,7 @@ async function run() {
       submissionDate: new Date("2021-01-01T01:01:01.000Z"),
       summary: "Test is passed",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8260,6 +8399,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8308,6 +8448,7 @@ async function run() {
         },
       ],
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8405,6 +8546,7 @@ async function run() {
       submissionDate: new Date("2021-01-01T01:01:01.000Z"),
       summary: "Test is passed",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8467,6 +8609,7 @@ async function run() {
       submissionDate: new Date("2021-01-01T01:01:01.000Z"),
       summary: "Test is passed",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8593,6 +8736,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8684,6 +8828,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -8764,6 +8909,7 @@ async function run() {
         value: AtsUpdateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8810,6 +8956,7 @@ async function run() {
         value: AtsUpdateNotesRequestDtoValue.Public,
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     subResourceId: "<id>",
     xAccountId: "<id>",
@@ -8950,6 +9097,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -9054,6 +9202,7 @@ async function run() {
         "my_project_custom_field_2": "some other value",
       },
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -9137,6 +9286,7 @@ async function run() {
       name: "weather-forecast",
       path: "/path/to/file",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -9185,6 +9335,7 @@ async function run() {
       name: "weather-forecast",
       path: "/path/to/file",
     },
+    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });

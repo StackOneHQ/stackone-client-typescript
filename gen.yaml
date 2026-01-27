@@ -10,6 +10,7 @@ generation:
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -17,12 +18,13 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 4.33.1
+  version: 4.33.2
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -41,6 +43,7 @@ typescript:
   enableReactQuery: false
   enumFormat: enum
   exportZodModelNamespace: false
+  flatAdditionalProperties: false
   flattenGlobalSecurity: false
   flatteningOrder: body-first
   formStringArrayEncodeMode: encoded-string
@@ -59,6 +62,7 @@ typescript:
   inputModelSuffix: input
   jsonpath: legacy
   laxMode: strict
+  legacyFileNaming: true
   maxMethodParams: 0
   methodArguments: require-security-and-request
   modelPropertyCasing: camel
@@ -67,6 +71,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
   preApplyUnionDiscriminators: true
+  preserveModelFieldNames: false
   responseFormat: envelope
   sseFlatResponse: false
   templateVersion: v2

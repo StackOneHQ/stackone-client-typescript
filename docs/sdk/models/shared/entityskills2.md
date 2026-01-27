@@ -5,7 +5,7 @@
 ```typescript
 import { EntitySkills2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EntitySkills2 = EntitySkills2.True;
+let value: EntitySkills2 = EntitySkills2.False;
 ```
 
 ## Values

@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type HrisUpdateEmployeeTimeOffRequestRequest = {
   hrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto;
+  /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
   id: string;
   subResourceId: string;
   /**
@@ -42,6 +46,7 @@ export type HrisUpdateEmployeeTimeOffRequestResponse = {
 /** @internal */
 export type HrisUpdateEmployeeTimeOffRequestRequest$Outbound = {
   HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$Outbound;
+  Prefer?: string | undefined;
   id: string;
   subResourceId: string;
   "x-account-id": string;
@@ -55,12 +60,14 @@ export const HrisUpdateEmployeeTimeOffRequestRequest$outboundSchema: z.ZodType<
 > = z.object({
   hrisCreateTimeOffRequestDto:
     shared.HrisCreateTimeOffRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   id: z.string(),
   subResourceId: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     hrisCreateTimeOffRequestDto: "HrisCreateTimeOffRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

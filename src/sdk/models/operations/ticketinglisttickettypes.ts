@@ -21,6 +21,10 @@ export type TicketingListTicketTypesQueryParamFilter = {
 
 export type TicketingListTicketTypesRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -115,6 +119,7 @@ export function ticketingListTicketTypesQueryParamFilterToJSON(
 
 /** @internal */
 export type TicketingListTicketTypesRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: TicketingListTicketTypesQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
@@ -132,6 +137,7 @@ export const TicketingListTicketTypesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TicketingListTicketTypesRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => TicketingListTicketTypesQueryParamFilter$outboundSchema),
@@ -145,6 +151,7 @@ export const TicketingListTicketTypesRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

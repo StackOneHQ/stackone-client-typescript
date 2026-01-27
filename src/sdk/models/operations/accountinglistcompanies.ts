@@ -21,6 +21,10 @@ export type AccountingListCompaniesQueryParamFilter = {
 
 export type AccountingListCompaniesRequest = {
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
    */
   fields?: string | null | undefined;
@@ -115,6 +119,7 @@ export function accountingListCompaniesQueryParamFilterToJSON(
 
 /** @internal */
 export type AccountingListCompaniesRequest$Outbound = {
+  Prefer?: string | undefined;
   fields?: string | null | undefined;
   filter?: AccountingListCompaniesQueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
@@ -132,6 +137,7 @@ export const AccountingListCompaniesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AccountingListCompaniesRequest
 > = z.object({
+  prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
   filter: z.nullable(
     z.lazy(() => AccountingListCompaniesQueryParamFilter$outboundSchema),
@@ -145,6 +151,7 @@ export const AccountingListCompaniesRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    prefer: "Prefer",
     pageSize: "page_size",
     updatedAfter: "updated_after",
     xAccountId: "x-account-id",

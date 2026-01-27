@@ -12,6 +12,10 @@ import * as shared from "../shared/index.js";
 export type AtsCreateApplicationRequest = {
   atsCreateApplicationRequestDto: shared.AtsCreateApplicationRequestDto;
   /**
+   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+   */
+  prefer?: string | undefined;
+  /**
    * The account identifier
    */
   xAccountId: string;
@@ -41,6 +45,7 @@ export type AtsCreateApplicationResponse = {
 export type AtsCreateApplicationRequest$Outbound = {
   AtsCreateApplicationRequestDto:
     shared.AtsCreateApplicationRequestDto$Outbound;
+  Prefer?: string | undefined;
   "x-account-id": string;
 };
 
@@ -52,10 +57,12 @@ export const AtsCreateApplicationRequest$outboundSchema: z.ZodType<
 > = z.object({
   atsCreateApplicationRequestDto:
     shared.AtsCreateApplicationRequestDto$outboundSchema,
+  prefer: z.string().optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     atsCreateApplicationRequestDto: "AtsCreateApplicationRequestDto",
+    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

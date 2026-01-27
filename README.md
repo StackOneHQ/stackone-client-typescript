@@ -75,6 +75,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployees({
+    prefer: "heartbeat",
     expand: "company,employments,work_location,home_location,groups,skills",
     fields:
       "id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields",
@@ -103,7 +104,7 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [accounting](docs/sdks/accounting/README.md)
+### [Accounting](docs/sdks/accounting/README.md)
 
 * [batchCreateCompanyJournals](docs/sdks/accounting/README.md#batchcreatecompanyjournals) - Batch Create Journals
 * [createCompanyJournal](docs/sdks/accounting/README.md#createcompanyjournal) - Create Journal
@@ -116,7 +117,7 @@ run();
 * [listCompanyJournals](docs/sdks/accounting/README.md#listcompanyjournals) - List Journals
 * [listCompanyTaxRates](docs/sdks/accounting/README.md#listcompanytaxrates) - List Tax Rates
 
-### [accounts](docs/sdks/accounts/README.md)
+### [Accounts](docs/sdks/accounts/README.md)
 
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
@@ -124,12 +125,14 @@ run();
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
 
-### [actions](docs/sdks/actions/README.md)
+### [Actions](docs/sdks/actions/README.md)
 
+* [buildActionEmbeddings](docs/sdks/actions/README.md#buildactionembeddings) - Rebuild action embeddings for semantic search
 * [listActionsMeta](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
 * [rpcAction](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
+* [searchActions](docs/sdks/actions/README.md#searchactions) - Search connector actions by semantic similarity
 
-### [ats](docs/sdks/ats/README.md)
+### [Ats](docs/sdks/ats/README.md)
 
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
 * [createApplicationNote](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
@@ -208,17 +211,17 @@ run();
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
 
-### [connectors](docs/sdks/connectors/README.md)
-
-* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
-* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
-
-### [connectSessions](docs/sdks/connectsessions/README.md)
+### [ConnectSessions](docs/sdks/connectsessions/README.md)
 
 * [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 * [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
 
-### [crm](docs/sdks/crm/README.md)
+### [Connectors](docs/sdks/connectors/README.md)
+
+* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
+* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
+
+### [Crm](docs/sdks/crm/README.md)
 
 * [createContact](docs/sdks/crm/README.md#createcontact) - Create Contact
 * [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
@@ -231,7 +234,7 @@ run();
 * [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 
-### [documents](docs/sdks/documents/README.md)
+### [Documents](docs/sdks/documents/README.md)
 
 * [downloadFile](docs/sdks/documents/README.md#downloadfile) - Download File
 * [getDrive](docs/sdks/documents/README.md#getdrive) - Get Drive
@@ -242,7 +245,7 @@ run();
 * [listFolders](docs/sdks/documents/README.md#listfolders) - List Folders
 * [uploadFile](docs/sdks/documents/README.md#uploadfile) - Upload File
 
-### [hris](docs/sdks/hris/README.md)
+### [Hris](docs/sdks/hris/README.md)
 
 * [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 * [cancelEmployeeTimeOffRequest](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
@@ -319,7 +322,7 @@ run();
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
 
-### [iam](docs/sdks/iam/README.md)
+### [Iam](docs/sdks/iam/README.md)
 
 * [deleteUser](docs/sdks/iam/README.md#deleteuser) - Delete User
 * [getGroup](docs/sdks/iam/README.md#getgroup) - Get Group
@@ -332,7 +335,7 @@ run();
 * [listUsers](docs/sdks/iam/README.md#listusers) - List Users
 * [updateUser](docs/sdks/iam/README.md#updateuser) - Update User
 
-### [lms](docs/sdks/lms/README.md)
+### [Lms](docs/sdks/lms/README.md)
 
 * [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert External Linking Learning Objects
 * [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
@@ -358,7 +361,7 @@ run();
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 
-### [marketing](docs/sdks/marketing/README.md)
+### [Marketing](docs/sdks/marketing/README.md)
 
 * [createContentBlock](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
@@ -387,13 +390,13 @@ run();
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 * [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 
-### [mcp](docs/sdks/mcp/README.md)
+### [Mcp](docs/sdks/mcp/README.md)
 
 * [mcpDelete](docs/sdks/mcp/README.md#mcpdelete) - Delete MCP session
 * [mcpGet](docs/sdks/mcp/README.md#mcpget) - Open MCP SSE stream
 * [mcpPost](docs/sdks/mcp/README.md#mcppost) - Send MCP JSON-RPC message
 
-### [messaging](docs/sdks/messaging/README.md)
+### [Messaging](docs/sdks/messaging/README.md)
 
 * [createConversation](docs/sdks/messaging/README.md#createconversation) - Create Conversation
 * [downloadMessagingAttachment](docs/sdks/messaging/README.md#downloadmessagingattachment) - Download Attachment
@@ -407,25 +410,25 @@ run();
 * [listUsers](docs/sdks/messaging/README.md#listusers) - List Users
 * [sendMessage](docs/sdks/messaging/README.md#sendmessage) - Send Message
 
-### [proxy](docs/sdks/proxy/README.md)
+### [Proxy](docs/sdks/proxy/README.md)
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 
-### [requestLogs](docs/sdks/requestlogs/README.md)
+### [RequestLogs](docs/sdks/requestlogs/README.md)
 
 * [getLog](docs/sdks/requestlogs/README.md#getlog) - Get Log
 * [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
 * [listPlatformLogs](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 * [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 
-### [screening](docs/sdks/screening/README.md)
+### [Screening](docs/sdks/screening/README.md)
 
 * [createScreeningOrder](docs/sdks/screening/README.md#createscreeningorder) - Create Screening Order
 * [getScreeningPackage](docs/sdks/screening/README.md#getscreeningpackage) - Get Screening Package
 * [listScreeningPackages](docs/sdks/screening/README.md#listscreeningpackages) - List Screening Packages
 * [webhookScreeningResult](docs/sdks/screening/README.md#webhookscreeningresult) - Webhook Screening Result
 
-### [ticketing](docs/sdks/ticketing/README.md)
+### [Ticketing](docs/sdks/ticketing/README.md)
 
 * [createTicket](docs/sdks/ticketing/README.md#createticket) - Create Ticket
 * [downloadTicketingAttachment](docs/sdks/ticketing/README.md#downloadticketingattachment) - Download Attachment
@@ -464,7 +467,10 @@ Here's an example of one such pagination call:
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { Include } from "@stackone/stackone-client-ts/sdk/models/operations";
+import {
+  ExcludeT,
+  Include,
+} from "@stackone/stackone-client-ts/sdk/models/operations";
 
 const stackOne = new StackOne({
   security: {
@@ -475,6 +481,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.actions.listActionsMeta({
+    exclude: [
+      ExcludeT.Actions,
+    ],
     filter: {
       accountIds: "account1,account2",
       actionKey: "action1",
@@ -484,6 +493,7 @@ async function run() {
     include: [
       Include.ActionDetails,
     ],
+    search: "employee",
   });
 
   for await (const page of result) {
@@ -809,8 +819,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
+- [`actionsBuildActionEmbeddings`](docs/sdks/actions/README.md#buildactionembeddings) - Rebuild action embeddings for semantic search
 - [`actionsListActionsMeta`](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
 - [`actionsRpcAction`](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
+- [`actionsSearchActions`](docs/sdks/actions/README.md#searchactions) - Search connector actions by semantic similarity
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
 - [`atsCreateApplicationNote`](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 - [`atsCreateBackgroundCheckPackage`](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package

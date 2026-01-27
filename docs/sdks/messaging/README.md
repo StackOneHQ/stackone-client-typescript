@@ -1,5 +1,4 @@
 # Messaging
-(*messaging*)
 
 ## Overview
 
@@ -44,6 +43,7 @@ async function run() {
       ],
       private: true,
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -80,6 +80,7 @@ async function run() {
       ],
       private: true,
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
@@ -143,6 +144,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.downloadMessagingAttachment({
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -175,6 +177,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingDownloadMessagingAttachment(stackOne, {
+    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -242,6 +245,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getAttachment({
+    prefer: "heartbeat",
     fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -273,6 +277,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetAttachment(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     id: "<id>",
     subResourceId: "<id>",
@@ -339,6 +344,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getConversation({
+    prefer: "heartbeat",
     fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -369,6 +375,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetConversation(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -434,6 +441,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getMessage({
+    prefer: "heartbeat",
     fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -464,6 +472,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetMessage(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -529,6 +538,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.getUser({
+    prefer: "heartbeat",
     fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -559,6 +569,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingGetUser(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     id: "<id>",
     xAccountId: "<id>",
@@ -624,6 +635,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listAttachments({
+    prefer: "heartbeat",
     fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -659,6 +671,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListAttachments(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,file_name,file_size,file_type,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -729,6 +742,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listConversationMessages({
+    prefer: "heartbeat",
     fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -764,6 +778,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListConversationMessages(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -834,6 +849,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listConversations({
+    prefer: "heartbeat",
     fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -868,6 +884,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListConversations(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -937,6 +954,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.messaging.listUsers({
+    prefer: "heartbeat",
     fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -971,6 +989,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await messagingListUsers(stackOne, {
+    prefer: "heartbeat",
     fields: "id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields",
     filter: {
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
@@ -1045,6 +1064,7 @@ async function run() {
       recipient: "c28xyrc55866bvuv",
       sender: "+34820398402",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
 
@@ -1078,6 +1098,7 @@ async function run() {
       recipient: "c28xyrc55866bvuv",
       sender: "+34820398402",
     },
+    prefer: "heartbeat",
     xAccountId: "<id>",
   });
   if (res.ok) {
