@@ -11,18 +11,11 @@ let value: StackoneCreateConnectSessionResponse = {
     "key": [
       "<value 1>",
       "<value 2>",
-    ],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
-    ],
-    "key2": [
-      "<value 1>",
-      "<value 2>",
       "<value 3>",
     ],
+    "key1": [],
   },
-  statusCode: 180158,
+  statusCode: 163694,
 };
 ```
 

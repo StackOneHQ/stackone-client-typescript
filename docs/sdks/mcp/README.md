@@ -188,9 +188,9 @@ run();
 
 Send JSON-RPC request to the MCP server over HTTP streaming transport
 
-### Example Usage
+### Example Usage: initialize
 
-<!-- UsageSnippet language="typescript" operationID="stackone_mcp_post" method="post" path="/mcp" -->
+<!-- UsageSnippet language="typescript" operationID="stackone_mcp_post" method="post" path="/mcp" example="initialize" -->
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -235,6 +235,128 @@ async function run() {
       id: {},
       jsonrpc: "2.0",
       method: "initialize",
+      params: {},
+    },
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("mcpMCPPost failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: toolsCall
+
+<!-- UsageSnippet language="typescript" operationID="stackone_mcp_post" method="post" path="/mcp" example="toolsCall" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne();
+
+async function run() {
+  const result = await stackOne.mcp.mcpPost({
+    apiKey: "<YOUR_API_KEY_HERE>",
+  }, {
+    jsonRpcMessageDto: {
+      id: {},
+      jsonrpc: "2.0",
+      method: "tools/call",
+      params: {},
+    },
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { mcpMCPPost } from "@stackone/stackone-client-ts/funcs/mcpMCPPost.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore();
+
+async function run() {
+  const res = await mcpMCPPost(stackOne, {
+    apiKey: "<YOUR_API_KEY_HERE>",
+  }, {
+    jsonRpcMessageDto: {
+      id: {},
+      jsonrpc: "2.0",
+      method: "tools/call",
+      params: {},
+    },
+    xAccountId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("mcpMCPPost failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: toolsList
+
+<!-- UsageSnippet language="typescript" operationID="stackone_mcp_post" method="post" path="/mcp" example="toolsList" -->
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne();
+
+async function run() {
+  const result = await stackOne.mcp.mcpPost({
+    apiKey: "<YOUR_API_KEY_HERE>",
+  }, {
+    jsonRpcMessageDto: {
+      id: {},
+      jsonrpc: "2.0",
+      method: "tools/list",
+      params: {},
+    },
+    xAccountId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { mcpMCPPost } from "@stackone/stackone-client-ts/funcs/mcpMCPPost.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore();
+
+async function run() {
+  const res = await mcpMCPPost(stackOne, {
+    apiKey: "<YOUR_API_KEY_HERE>",
+  }, {
+    jsonRpcMessageDto: {
+      id: {},
+      jsonrpc: "2.0",
+      method: "tools/list",
       params: {},
     },
     xAccountId: "<id>",

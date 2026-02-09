@@ -32,8 +32,6 @@ export enum ConnectSessionTokenAuthLinkCategories {
  */
 export type ConnectSessionTokenAuthLinkMetadata = {};
 
-export type ConnectSessionTokenAuthLinkOrganizationId = string | number;
-
 /**
  * The connect session account type
  */
@@ -68,7 +66,7 @@ export type ConnectSessionTokenAuthLink = {
    * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
    */
   metadata?: ConnectSessionTokenAuthLinkMetadata | null | undefined;
-  organizationId: string | number;
+  organizationId: string;
   originOwnerId: string;
   originOwnerName: string;
   originUsername?: string | null | undefined;
@@ -106,29 +104,6 @@ export function connectSessionTokenAuthLinkMetadataFromJSON(
 }
 
 /** @internal */
-export const ConnectSessionTokenAuthLinkOrganizationId$inboundSchema: z.ZodType<
-  ConnectSessionTokenAuthLinkOrganizationId,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.number().int()]);
-
-export function connectSessionTokenAuthLinkOrganizationIdFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  ConnectSessionTokenAuthLinkOrganizationId,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ConnectSessionTokenAuthLinkOrganizationId$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'ConnectSessionTokenAuthLinkOrganizationId' from JSON`,
-  );
-}
-
-/** @internal */
 export const ConnectSessionTokenAuthLinkType$inboundSchema: z.ZodType<
   ConnectSessionTokenAuthLinkTypeOpen,
   z.ZodTypeDef,
@@ -154,7 +129,7 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   metadata: z.nullable(
     z.lazy(() => ConnectSessionTokenAuthLinkMetadata$inboundSchema),
   ).optional(),
-  organization_id: z.union([z.string(), z.number().int()]),
+  organization_id: z.string(),
   origin_owner_id: z.string(),
   origin_owner_name: z.string(),
   origin_username: z.nullable(z.string()).optional(),

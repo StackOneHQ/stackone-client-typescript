@@ -1,6 +1,6 @@
 {
   "name": "@stackone/stackone-client-ts",
-  "version": "4.33.2",
+  "version": "4.34.0",
   "author": "StackOne",
   "main": "./index.js",
   "sideEffects": false,
@@ -18,8 +18,8 @@
     
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "eslint": "^9.19.0",
+    "@eslint/js": "^9.26.0",
+    "eslint": "^9.26.0",
     "globals": "^15.14.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.26.0"
