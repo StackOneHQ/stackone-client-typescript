@@ -33,6 +33,7 @@ export type Filter = {
 
 export enum Include {
   ActionDetails = "action_details",
+  AuthenticationGuides = "authentication_guides",
 }
 
 export type StackoneListActionsMetaRequest = {

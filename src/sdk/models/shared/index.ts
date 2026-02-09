@@ -173,6 +173,8 @@ export * from "./filespaginated.js";
 export * from "./folderresult.js";
 export * from "./folders.js";
 export * from "./folderspaginated.js";
+export * from "./guidesectionmeta.js";
+export * from "./guidestepmeta.js";
 export * from "./hrisbankdetails.js";
 export * from "./hrisbatchdocumentuploadrequestdto.js";
 export * from "./hrisbenefit.js";

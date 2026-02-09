@@ -12,15 +12,16 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * Build status
  */
 export enum ActionBuildResponseDtoStatus {
+  Accepted = "accepted",
   Success = "success",
   Error = "error",
 }
 
 export type ActionBuildResponseDto = {
   /**
-   * Number of actions indexed
+   * Number of actions indexed (only for synchronous builds)
    */
-  actionsIndexed: number;
+  actionsIndexed?: number | undefined;
   /**
    * Connector filter applied
    */
@@ -29,6 +30,10 @@ export type ActionBuildResponseDto = {
    * Error message if status is error
    */
   error?: string | undefined;
+  /**
+   * Status message
+   */
+  message?: string | undefined;
   /**
    * Build status
    */
@@ -46,9 +51,10 @@ export const ActionBuildResponseDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  actions_indexed: z.number(),
+  actions_indexed: z.number().optional(),
   connector_filter: z.string().optional(),
   error: z.string().optional(),
+  message: z.string().optional(),
   status: ActionBuildResponseDtoStatus$inboundSchema,
 }).transform((v) => {
   return remap$(v, {

@@ -7,6 +7,70 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  GuideSectionMeta,
+  GuideSectionMeta$inboundSchema,
+} from "./guidesectionmeta.js";
+
+/**
+ * Configuration guide
+ */
+export type Config = {
+  /**
+   * The guide sections
+   */
+  sections: Array<GuideSectionMeta>;
+  /**
+   * Warning text for the guide
+   */
+  warning?: string | null | undefined;
+};
+
+/**
+ * Account linking guide
+ */
+export type Setup = {
+  /**
+   * The guide sections
+   */
+  sections: Array<GuideSectionMeta>;
+  /**
+   * Warning text for the guide
+   */
+  warning?: string | null | undefined;
+};
+
+/**
+ * Authentication guides for this authentication type
+ */
+export type Guides = {
+  /**
+   * Configuration guide
+   */
+  config?: Config | null | undefined;
+  /**
+   * Account linking guide
+   */
+  setup?: Setup | null | undefined;
+};
+
+/**
+ * The support information for this authentication method, including configuration and account linking guides
+ */
+export type Support = {
+  /**
+   * Support description
+   */
+  description?: string | null | undefined;
+  /**
+   * Authentication guides for this authentication type
+   */
+  guides?: Guides | null | undefined;
+  /**
+   * Link to support documentation
+   */
+  link?: string | null | undefined;
+};
 
 export type AuthenticationMetaItem = {
   /**
@@ -22,10 +86,83 @@ export type AuthenticationMetaItem = {
    */
   requiredScopes?: Array<string> | null | undefined;
   /**
+   * The support information for this authentication method, including configuration and account linking guides
+   */
+  support?: Support | null | undefined;
+  /**
    * The authentication type
    */
   type?: string | null | undefined;
 };
+
+/** @internal */
+export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
+  .object({
+    sections: z.array(GuideSectionMeta$inboundSchema),
+    warning: z.nullable(z.string()).optional(),
+  });
+
+export function configFromJSON(
+  jsonString: string,
+): SafeParseResult<Config, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Config$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Config' from JSON`,
+  );
+}
+
+/** @internal */
+export const Setup$inboundSchema: z.ZodType<Setup, z.ZodTypeDef, unknown> = z
+  .object({
+    sections: z.array(GuideSectionMeta$inboundSchema),
+    warning: z.nullable(z.string()).optional(),
+  });
+
+export function setupFromJSON(
+  jsonString: string,
+): SafeParseResult<Setup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Setup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Setup' from JSON`,
+  );
+}
+
+/** @internal */
+export const Guides$inboundSchema: z.ZodType<Guides, z.ZodTypeDef, unknown> = z
+  .object({
+    config: z.nullable(z.lazy(() => Config$inboundSchema)).optional(),
+    setup: z.nullable(z.lazy(() => Setup$inboundSchema)).optional(),
+  });
+
+export function guidesFromJSON(
+  jsonString: string,
+): SafeParseResult<Guides, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Guides$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Guides' from JSON`,
+  );
+}
+
+/** @internal */
+export const Support$inboundSchema: z.ZodType<Support, z.ZodTypeDef, unknown> =
+  z.object({
+    description: z.nullable(z.string()).optional(),
+    guides: z.nullable(z.lazy(() => Guides$inboundSchema)).optional(),
+    link: z.nullable(z.string()).optional(),
+  });
+
+export function supportFromJSON(
+  jsonString: string,
+): SafeParseResult<Support, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Support$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Support' from JSON`,
+  );
+}
 
 /** @internal */
 export const AuthenticationMetaItem$inboundSchema: z.ZodType<
@@ -36,6 +173,7 @@ export const AuthenticationMetaItem$inboundSchema: z.ZodType<
   key: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   required_scopes: z.nullable(z.array(z.string())).optional(),
+  support: z.nullable(z.lazy(() => Support$inboundSchema)).optional(),
   type: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

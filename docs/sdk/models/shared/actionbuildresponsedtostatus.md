@@ -7,12 +7,13 @@ Build status
 ```typescript
 import { ActionBuildResponseDtoStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ActionBuildResponseDtoStatus = ActionBuildResponseDtoStatus.Error;
+let value: ActionBuildResponseDtoStatus = ActionBuildResponseDtoStatus.Accepted;
 ```
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Success` | success   |
-| `Error`   | error     |
+| Name       | Value      |
+| ---------- | ---------- |
+| `Accepted` | accepted   |
+| `Success`  | success    |
+| `Error`    | error      |
