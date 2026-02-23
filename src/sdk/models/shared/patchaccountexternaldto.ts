@@ -44,6 +44,7 @@ export type PatchAccountExternalDto = {
   provider?: string | null | undefined;
   secrets?: Secrets | null | undefined;
   setupInformation?: SetupInformation | null | undefined;
+  shared?: boolean | null | undefined;
   /**
    * The account type
    */
@@ -157,6 +158,7 @@ export type PatchAccountExternalDto$Outbound = {
   provider?: string | null | undefined;
   secrets?: Secrets$Outbound | null | undefined;
   setup_information?: SetupInformation$Outbound | null | undefined;
+  shared?: boolean | null | undefined;
   type?: string | null | undefined;
 };
 
@@ -183,6 +185,7 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
   secrets: z.nullable(z.lazy(() => Secrets$outboundSchema)).optional(),
   setupInformation: z.nullable(z.lazy(() => SetupInformation$outboundSchema))
     .optional(),
+  shared: z.nullable(z.boolean()).optional(),
   type: z.nullable(PatchAccountExternalDtoType$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {

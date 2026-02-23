@@ -12,6 +12,7 @@ let value: DocumentsListFoldersRequest = {
   filter: {
     driveId: "1234567890",
     folderId: "1234567890",
+    name: "Engineering",
     updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
   },
   folderId: "1234567890",

@@ -10,10 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type DocumentsUploadFileRequest = {
-  /**
-   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-   */
-  prefer?: string | undefined;
   unifiedUploadRequestDto: shared.UnifiedUploadRequestDto;
   /**
    * The account identifier
@@ -47,7 +43,6 @@ export type DocumentsUploadFileResponse = {
 
 /** @internal */
 export type DocumentsUploadFileRequest$Outbound = {
-  Prefer?: string | undefined;
   UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$Outbound;
   "x-account-id": string;
   "x-stackone-api-session-token"?: string | undefined;
@@ -59,13 +54,11 @@ export const DocumentsUploadFileRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentsUploadFileRequest
 > = z.object({
-  prefer: z.string().optional(),
   unifiedUploadRequestDto: shared.UnifiedUploadRequestDto$outboundSchema,
   xAccountId: z.string(),
   xStackoneApiSessionToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    prefer: "Prefer",
     unifiedUploadRequestDto: "UnifiedUploadRequestDto",
     xAccountId: "x-account-id",
     xStackoneApiSessionToken: "x-stackone-api-session-token",

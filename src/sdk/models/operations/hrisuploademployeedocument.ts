@@ -11,10 +11,6 @@ import * as shared from "../shared/index.js";
 
 export type HrisUploadEmployeeDocumentRequest = {
   hrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto;
-  /**
-   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-   */
-  prefer?: string | undefined;
   id: string;
   /**
    * The account identifier
@@ -45,7 +41,6 @@ export type HrisUploadEmployeeDocumentResponse = {
 /** @internal */
 export type HrisUploadEmployeeDocumentRequest$Outbound = {
   HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$Outbound;
-  Prefer?: string | undefined;
   id: string;
   "x-account-id": string;
 };
@@ -58,13 +53,11 @@ export const HrisUploadEmployeeDocumentRequest$outboundSchema: z.ZodType<
 > = z.object({
   hrisDocumentsUploadRequestDto:
     shared.HrisDocumentsUploadRequestDto$outboundSchema,
-  prefer: z.string().optional(),
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     hrisDocumentsUploadRequestDto: "HrisDocumentsUploadRequestDto",
-    prefer: "Prefer",
     xAccountId: "x-account-id",
   });
 });

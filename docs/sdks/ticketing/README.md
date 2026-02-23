@@ -226,7 +226,6 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ticketing.downloadTicketingAttachment({
-    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -259,7 +258,6 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await ticketingDownloadTicketingAttachment(stackOne, {
-    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",

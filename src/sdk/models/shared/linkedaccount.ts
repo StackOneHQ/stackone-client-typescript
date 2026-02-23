@@ -47,6 +47,7 @@ export type LinkedAccount = {
   provider: string;
   providerName?: string | null | undefined;
   setupInformation?: { [k: string]: any } | null | undefined;
+  shared?: boolean | null | undefined;
   status: LinkedAccountStatusOpen;
   statusReasons?: Array<StatusReason> | null | undefined;
   /**
@@ -103,6 +104,7 @@ export const LinkedAccount$inboundSchema: z.ZodType<
   provider: z.string(),
   provider_name: z.nullable(z.string()).optional(),
   setup_information: z.nullable(z.record(z.any())).optional(),
+  shared: z.nullable(z.boolean()).optional(),
   status: LinkedAccountStatus$inboundSchema,
   status_reasons: z.nullable(z.array(StatusReason$inboundSchema)).optional(),
   type: z.nullable(LinkedAccountType$inboundSchema).optional(),
