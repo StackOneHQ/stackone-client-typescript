@@ -11,10 +11,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MessagingDownloadMessagingAttachmentRequest = {
   /**
-   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-   */
-  prefer?: string | undefined;
-  /**
    * The export format of the file
    */
   exportFormat?: string | null | undefined;
@@ -49,7 +45,6 @@ export type MessagingDownloadMessagingAttachmentResponse = {
 
 /** @internal */
 export type MessagingDownloadMessagingAttachmentRequest$Outbound = {
-  Prefer?: string | undefined;
   export_format?: string | null | undefined;
   format?: string | null | undefined;
   id: string;
@@ -64,7 +59,6 @@ export const MessagingDownloadMessagingAttachmentRequest$outboundSchema:
     z.ZodTypeDef,
     MessagingDownloadMessagingAttachmentRequest
   > = z.object({
-    prefer: z.string().optional(),
     exportFormat: z.nullable(z.string()).optional(),
     format: z.nullable(z.string()).optional(),
     id: z.string(),
@@ -72,7 +66,6 @@ export const MessagingDownloadMessagingAttachmentRequest$outboundSchema:
     xAccountId: z.string(),
   }).transform((v) => {
     return remap$(v, {
-      prefer: "Prefer",
       exportFormat: "export_format",
       xAccountId: "x-account-id",
     });

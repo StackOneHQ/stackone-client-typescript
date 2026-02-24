@@ -12,10 +12,6 @@ import * as shared from "../shared/index.js";
 
 export type AtsDownloadApplicationDocumentRequest = {
   /**
-   * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
-   */
-  prefer?: string | undefined;
-  /**
    * The export format of the file
    */
   exportFormat?: string | null | undefined;
@@ -58,7 +54,6 @@ export type AtsDownloadApplicationDocumentResponse = {
 
 /** @internal */
 export type AtsDownloadApplicationDocumentRequest$Outbound = {
-  Prefer?: string | undefined;
   export_format?: string | null | undefined;
   format?: string | null | undefined;
   id: string;
@@ -72,7 +67,6 @@ export const AtsDownloadApplicationDocumentRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsDownloadApplicationDocumentRequest
 > = z.object({
-  prefer: z.string().optional(),
   exportFormat: z.nullable(z.string()).optional(),
   format: z.nullable(z.string()).optional(),
   id: z.string(),
@@ -80,7 +74,6 @@ export const AtsDownloadApplicationDocumentRequest$outboundSchema: z.ZodType<
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    prefer: "Prefer",
     exportFormat: "export_format",
     xAccountId: "x-account-id",
   });

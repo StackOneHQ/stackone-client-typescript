@@ -1603,7 +1603,6 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.downloadApplicationDocument({
-    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -1636,7 +1635,6 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsDownloadApplicationDocument(stackOne, {
-    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -9286,7 +9284,6 @@ async function run() {
       name: "weather-forecast",
       path: "/path/to/file",
     },
-    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -9335,7 +9332,6 @@ async function run() {
       name: "weather-forecast",
       path: "/path/to/file",
     },
-    prefer: "heartbeat",
     id: "<id>",
     xAccountId: "<id>",
   });

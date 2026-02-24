@@ -22,6 +22,10 @@ export type DocumentsListFoldersQueryParamFilter = {
    */
   folderId?: string | null | undefined;
   /**
+   * Search if the name of the folder contains the string
+   */
+  name?: string | null | undefined;
+  /**
    * Use a string with a date to only select results updated after that given date
    */
   updatedAfter?: Date | null | undefined;
@@ -110,6 +114,7 @@ export type DocumentsListFoldersResponse = {
 export type DocumentsListFoldersQueryParamFilter$Outbound = {
   drive_id?: string | null | undefined;
   folder_id?: string | null | undefined;
+  name?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -121,6 +126,7 @@ export const DocumentsListFoldersQueryParamFilter$outboundSchema: z.ZodType<
 > = z.object({
   driveId: z.nullable(z.string()).optional(),
   folderId: z.nullable(z.string()).optional(),
+  name: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {

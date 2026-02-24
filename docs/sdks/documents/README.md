@@ -32,7 +32,6 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.downloadFile({
-    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -64,7 +63,6 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsDownloadFile(stackOne, {
-    prefer: "heartbeat",
     exportFormat: "text/plain",
     format: "base64",
     id: "<id>",
@@ -661,6 +659,7 @@ async function run() {
     filter: {
       driveId: "1234567890",
       folderId: "1234567890",
+      name: "Engineering",
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     folderId: "1234567890",
@@ -702,6 +701,7 @@ async function run() {
     filter: {
       driveId: "1234567890",
       folderId: "1234567890",
+      name: "Engineering",
       updatedAfter: new Date("2020-01-01T00:00:00.000Z"),
     },
     folderId: "1234567890",
@@ -774,7 +774,6 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.documents.uploadFile({
-    prefer: "heartbeat",
     unifiedUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
@@ -822,7 +821,6 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await documentsUploadFile(stackOne, {
-    prefer: "heartbeat",
     unifiedUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
