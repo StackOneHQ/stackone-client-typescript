@@ -1,41 +1,41 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 9bb76b6901ce9643c9b3d28aab28ba7b
+  docChecksum: bdd7d515ca743e45fb24b74de4bc97f7
   docVersion: 1.0.0
-  speakeasyVersion: 1.724.0
-  generationVersion: 2.836.4
-  releaseVersion: 4.34.1
-  configChecksum: deb30fe731b013efaa4789f0a84204c4
+  speakeasyVersion: 1.736.3
+  generationVersion: 2.845.15
+  releaseVersion: 4.34.2
+  configChecksum: 8888af90bb655cc3182a0bb2779b486c
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 persistentEdits:
-  generation_id: b71cc73f-4aaf-480e-bcad-b6476c461b3c
-  pristine_commit_hash: f13c15b913abc51751487ededf5b2d4fe792fc38
-  pristine_tree_hash: 12c1a17b4b5375e2c58a00078f11a8c3e68db48c
+  generation_id: 64468577-ada7-4720-8b5c-b3a1a859d54c
+  pristine_commit_hash: dea33e2c96fffa4789b9efed479f3ad9fb7e6b66
+  pristine_tree_hash: 1c8400e480e64d8edd7db5cbbd74d087d3e41727
 features:
   typescript:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.3
-    constsAndDefaults: 0.1.13
-    core: 3.26.31
+    constsAndDefaults: 0.1.14
+    core: 3.26.38
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    examples: 2.82.4
+    examples: 2.82.5
     globalSecurity: 2.82.15
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.83.0
+    globalServerURLs: 2.83.1
     groups: 2.81.3
     methodSecurity: 2.82.7
     nameOverrides: 2.81.4
     nullables: 0.1.1
     openEnums: 0.1.2
-    pagination: 2.83.0
+    pagination: 2.83.2
     responseFormat: 0.3.0
     retries: 2.83.0
     sdkHooks: 0.4.0
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: 113eead5093c17d43a46159132885318f281a68a
   .npmignore:
     id: aa70c1f807c3
-    last_write_checksum: sha1:3d5eb92f81539175db1ff0280e0aefbdd701f200
-    pristine_git_object: cf98a6bf092538eb10ff0edc915102682ce9a6e6
+    last_write_checksum: sha1:425e91786e3b6cddd2b364bf3f9f9cd38e3c3e1a
+    pristine_git_object: 134e78a629b846b88e408199011801852bacc600
   FUNCTIONS.md:
     id: 21b9df02aaeb
     last_write_checksum: sha1:8e09e7fa5837c50c504c9ce744f60e692fcce808
@@ -3251,8 +3251,8 @@ trackedFiles:
     pristine_git_object: 89f63a9c8d81c3bde0a5db5a9e317130315cd0b0
   docs/sdk/models/shared/actionsearchdto.md:
     id: 201691a0ee34
-    last_write_checksum: sha1:a2b3a30c78618b2d6d6f940f825c8eca5e9192cf
-    pristine_git_object: 8ad866fc132811cc9ae65cd96ef339096b113d06
+    last_write_checksum: sha1:9f259bdebb5996e075993cf04e873bf4480d4cbb
+    pristine_git_object: 6b78d04d2444c6fbe77e8ed876960c959a0ba4b1
   docs/sdk/models/shared/actionsearchresponsedto.md:
     id: 32e7565d12b1
     last_write_checksum: sha1:c9a14644f27b404d3868eaa0b70547d914c2e91c
@@ -9899,12 +9899,12 @@ trackedFiles:
     pristine_git_object: 59b07d716a5a829bb20315725a027a555c897fad
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:1022bf02ae01b6f7ac22d1d0d1503c50e24033f3
-    pristine_git_object: 5cdef410f2eafbe07b41c575ceebed4c83d3ce80
+    last_write_checksum: sha1:abccda6d41f6a4e7ae49d6edc2e81c3995863185
+    pristine_git_object: baac3aa6f139812eca24c9128db278d9e53abd9f
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:10edc45d5d8ecc978e9f1436869fc57365d7693c
-    pristine_git_object: ec80113b0dc58925dd5c0fd586fe4826f46b472b
+    last_write_checksum: sha1:8451334bc1eaef71e278f2ff7f7ff85947ae0133
+    pristine_git_object: 57db644de653cb030a4791207d9d0477da3d10d2
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:548d01dbd4f51d5b691421fd49f593b899550bd5
@@ -11099,8 +11099,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:dfcc8df7d2b271b178e3c992e87e9316bcfe51fa
-    pristine_git_object: a287c0b62fb91b598995be48e4f25593df0a1e77
+    last_write_checksum: sha1:e270435276c8f67ba0da1c3d26c695cb3cd0aaa9
+    pristine_git_object: 50e9806356d1a46d6270ff27a3b00136bb102230
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -12543,8 +12543,8 @@ trackedFiles:
     pristine_git_object: 9e0b1abdc87a390ef30a6d4db2cc57d3e1d5c9bc
   src/sdk/models/shared/actionsearchdto.ts:
     id: a1b9b1b1ea9e
-    last_write_checksum: sha1:1fdb1ab8fee2a129ae417e4d453c04210bd8a622
-    pristine_git_object: da0b391480bcd4468558b8576f2a4b5fb7a937f8
+    last_write_checksum: sha1:85f607778305a396b19f15cde44ac96fc39ab766
+    pristine_git_object: a2612cb654501f46dabd46d3fc02bd10c36d75cf
   src/sdk/models/shared/actionsearchresponsedto.ts:
     id: ab1579b207d1
     last_write_checksum: sha1:64128eb2cd3e72d9cde19e7f581ba4ae867b3c50
@@ -25637,7 +25637,7 @@ examples:
   stackone_search_actions:
     speakeasy-default-stackone-search-actions:
       requestBody:
-        application/json: {"connector": "slack", "query": "send a message", "top_k": 100}
+        application/json: {"connector": "slack", "min_similarity": 0.4, "query": "send a message", "top_k": 100}
       responses:
         "200":
           application/json: {"query": "<value>", "results": [{"action_name": "<value>", "connector_key": "<value>", "description": "which ignorance against deny", "label": "<value>", "project_id": "<id>", "similarity_score": 1820.37}], "total_count": 7184.27}
@@ -25665,7 +25665,7 @@ examples:
           application/json: {"message": "Bad Gateway", "statusCode": 502, "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `stackone.hris.batchUploadEmployeeDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.messaging.downloadMessagingAttachment()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.ticketing.downloadTicketingAttachment()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.hris.uploadEmployeeDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.ats.downloadApplicationDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.ats.uploadApplicationDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.documents.uploadFile()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.documents.downloadFile()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.hris.downloadEmployeeDocument()`: \n  *  `request.prefer` **Removed** (Breaking ⚠️)\n* `stackone.accounts.deleteAccount()`:  `response.shared` **Added**\n* `stackone.accounts.getAccount()`:  `response.shared` **Added**\n* `stackone.accounts.updateAccount()`: \n  *  `request.patchAccountExternalDto.shared` **Added**\n  *  `response.shared` **Added**\n* `stackone.documents.listFolders()`: \n  *  `request.filter` **Changed**\n* `stackone.accounts.listLinkedAccounts()`:  `response.[].shared` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `stackone.actions.searchActions()`: \n  *  `request.minSimilarity` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
