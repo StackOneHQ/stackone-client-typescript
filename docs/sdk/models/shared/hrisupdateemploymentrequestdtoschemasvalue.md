@@ -9,11 +9,11 @@ import { HrisUpdateEmploymentRequestDtoSchemasValue } from "@stackone/stackone-c
 
 let value: HrisUpdateEmploymentRequestDtoSchemasValue =
   HrisUpdateEmploymentRequestDtoSchemasValue.Permanent;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

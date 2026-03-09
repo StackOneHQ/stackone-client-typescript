@@ -9,11 +9,11 @@ import { HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue } from "
 
 let value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue =
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

@@ -9,11 +9,11 @@ import { AccountingJournalCreateRequestDtoValue } from "@stackone/stackone-clien
 
 let value: AccountingJournalCreateRequestDtoValue =
   AccountingJournalCreateRequestDtoValue.Usd;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

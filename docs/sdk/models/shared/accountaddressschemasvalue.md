@@ -8,11 +8,11 @@ The ISO 3166-1 alpha-2 code of the country.
 import { AccountAddressSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AccountAddressSchemasValue = AccountAddressSchemasValue.Gb;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

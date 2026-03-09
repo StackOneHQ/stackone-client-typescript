@@ -8,11 +8,11 @@ The ISO3166-1 Alpha2 Code of the Country
 import { HRISBankDetailsSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISBankDetailsSchemasValue = HRISBankDetailsSchemasValue.Us;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
