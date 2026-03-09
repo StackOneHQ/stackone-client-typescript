@@ -9,11 +9,11 @@ import { UnifiedUploadRequestDtoSchemasValue } from "@stackone/stackone-client-t
 
 let value: UnifiedUploadRequestDtoSchemasValue =
   UnifiedUploadRequestDtoSchemasValue.Pdf;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                      | Value                     |
 | ------------------------- | ------------------------- |

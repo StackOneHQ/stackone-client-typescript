@@ -8,11 +8,11 @@ The type of the interview.
 import { InterviewPartValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: InterviewPartValue = InterviewPartValue.OnSite;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

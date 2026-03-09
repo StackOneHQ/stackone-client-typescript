@@ -8,11 +8,11 @@ The type of the question's condition
 import { QuestionSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: QuestionSchemasValue = QuestionSchemasValue.EqualsTo;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

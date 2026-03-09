@@ -8,11 +8,11 @@ The unified category level. For write operations: provide one of the listed enum
 import { CategoryValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CategoryValue = CategoryValue.Primary;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
