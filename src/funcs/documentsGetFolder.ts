@@ -118,7 +118,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/documents/folders/{id}")(pathParams);
 
   const query = queryJoin(

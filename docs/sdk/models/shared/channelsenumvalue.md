@@ -8,11 +8,11 @@ The Channels of the campaign.
 import { ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ChannelsEnumValue = ChannelsEnumValue.Sms;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

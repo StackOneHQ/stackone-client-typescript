@@ -8,11 +8,11 @@ The type of the permission, e.g. read, read_write, delete, etc.
 import { IamPermissionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamPermissionValue = IamPermissionValue.ReadWrite;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

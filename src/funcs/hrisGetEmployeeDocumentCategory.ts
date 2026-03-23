@@ -121,7 +121,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/hris/documents/employee_categories/{id}")(
     pathParams,
   );

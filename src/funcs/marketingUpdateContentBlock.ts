@@ -118,7 +118,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/marketing/content_blocks/{id}")(pathParams);
 
   const headers = new Headers(compactMap({

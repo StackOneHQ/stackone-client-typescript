@@ -112,7 +112,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/accounts/{id}/meta")(pathParams);
 
   const headers = new Headers(compactMap({

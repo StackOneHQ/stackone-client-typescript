@@ -132,7 +132,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/hris/employees/{id}/documents")(pathParams);
 
   const query = queryJoin(

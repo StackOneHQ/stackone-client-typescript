@@ -8,11 +8,11 @@ The method of the request
 import { Method } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Method = Method.Post;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

@@ -120,7 +120,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/unified/ats/custom_field_definitions/candidates/{id}",
   )(pathParams);

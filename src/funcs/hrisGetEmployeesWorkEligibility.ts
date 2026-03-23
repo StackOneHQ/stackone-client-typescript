@@ -125,7 +125,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/unified/hris/employees/{id}/work_eligibility/{subResourceId}",
   )(pathParams);

@@ -120,7 +120,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/background_checks/packages/{id}")(
     pathParams,
   );

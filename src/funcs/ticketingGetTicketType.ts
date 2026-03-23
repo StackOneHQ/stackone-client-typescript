@@ -122,7 +122,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ticketing/ticket_types/{id}")(pathParams);
 
   const query = queryJoin(

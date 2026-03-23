@@ -119,7 +119,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/marketing/campaigns/{id}")(pathParams);
 
   const query = queryJoin(

@@ -9,11 +9,11 @@ import { EmploymentSchemasPayPeriodValue } from "@stackone/stackone-client-ts/sd
 
 let value: EmploymentSchemasPayPeriodValue =
   EmploymentSchemasPayPeriodValue.Hour;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

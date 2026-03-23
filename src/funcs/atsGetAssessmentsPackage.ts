@@ -114,7 +114,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/assessments/packages/{id}")(pathParams);
 
   const query = encodeFormQuery({

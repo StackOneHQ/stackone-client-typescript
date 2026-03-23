@@ -11,6 +11,10 @@ export type ActionSearchDto = {
    */
   connector?: string | undefined;
   /**
+   * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+   */
+  minSimilarity?: number | undefined;
+  /**
    * Search query for finding connector actions
    */
   query: string;
@@ -23,6 +27,7 @@ export type ActionSearchDto = {
 /** @internal */
 export type ActionSearchDto$Outbound = {
   connector?: string | undefined;
+  min_similarity: number;
   query: string;
   top_k: number;
 };
@@ -34,10 +39,12 @@ export const ActionSearchDto$outboundSchema: z.ZodType<
   ActionSearchDto
 > = z.object({
   connector: z.string().optional(),
+  minSimilarity: z.number().default(0.4),
   query: z.string(),
   topK: z.number().default(100),
 }).transform((v) => {
   return remap$(v, {
+    minSimilarity: "min_similarity",
     topK: "top_k",
   });
 });

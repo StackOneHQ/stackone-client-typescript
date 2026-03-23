@@ -124,7 +124,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/unified/ats/applications/{id}/scheduled_interviews/{subResourceId}",
   )(pathParams);

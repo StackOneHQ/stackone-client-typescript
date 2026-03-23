@@ -171,7 +171,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/unified/ats/applications/{id}/documents/{subResourceId}/download",
   )(pathParams);

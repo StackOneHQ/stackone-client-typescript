@@ -120,7 +120,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/marketing/templates/email/{id}")(
     pathParams,
   );

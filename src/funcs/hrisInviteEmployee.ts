@@ -115,7 +115,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/hris/employees/{id}/invite")(pathParams);
 
   const headers = new Headers(compactMap({

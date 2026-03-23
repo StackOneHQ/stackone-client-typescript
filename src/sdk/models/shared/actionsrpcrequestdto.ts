@@ -26,6 +26,10 @@ export type ActionsRpcRequestDto = {
    */
   body?: { [k: string]: any } | null | undefined;
   /**
+   * Override the account-level defender setting for this request
+   */
+  defenderEnabled?: boolean | null | undefined;
+  /**
    * Headers for the action
    */
   headers?: { [k: string]: any } | null | undefined;
@@ -70,6 +74,7 @@ export function queryToJSON(query: Query): string {
 export type ActionsRpcRequestDto$Outbound = {
   action: string;
   body?: { [k: string]: any } | null | undefined;
+  defender_enabled?: boolean | null | undefined;
   headers?: { [k: string]: any } | null | undefined;
   path?: { [k: string]: any } | null | undefined;
   query?: Query$Outbound | null | undefined;
@@ -83,9 +88,14 @@ export const ActionsRpcRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   action: z.string(),
   body: z.nullable(z.record(z.any())).optional(),
+  defenderEnabled: z.nullable(z.boolean()).optional(),
   headers: z.nullable(z.record(z.any())).optional(),
   path: z.nullable(z.record(z.any())).optional(),
   query: z.nullable(z.lazy(() => Query$outboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    defenderEnabled: "defender_enabled",
+  });
 });
 
 export function actionsRpcRequestDtoToJSON(

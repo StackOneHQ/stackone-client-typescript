@@ -121,7 +121,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/unified/crm/custom_field_definitions/contacts/{id}",
   )(pathParams);

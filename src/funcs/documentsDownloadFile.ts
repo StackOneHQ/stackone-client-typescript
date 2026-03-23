@@ -114,7 +114,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/documents/files/{id}/download")(pathParams);
 
   const query = encodeFormQuery({

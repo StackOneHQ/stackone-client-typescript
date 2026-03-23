@@ -118,7 +118,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/accounting/companies/{id}/journals")(
     pathParams,
   );

@@ -119,7 +119,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/rejected_reasons/{id}")(pathParams);
 
   const query = queryJoin(

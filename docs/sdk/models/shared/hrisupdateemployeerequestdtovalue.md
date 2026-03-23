@@ -7,11 +7,11 @@ import { HrisUpdateEmployeeRequestDtoValue } from "@stackone/stackone-client-ts/
 
 let value: HrisUpdateEmployeeRequestDtoValue =
   HrisUpdateEmployeeRequestDtoValue.UnmappedValue;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

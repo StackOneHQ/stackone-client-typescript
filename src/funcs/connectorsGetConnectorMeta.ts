@@ -112,7 +112,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/connectors/meta/{provider}")(pathParams);
 
   const query = encodeFormQuery({

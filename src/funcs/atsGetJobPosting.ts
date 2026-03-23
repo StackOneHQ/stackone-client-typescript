@@ -118,7 +118,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/job_postings/{id}")(pathParams);
 
   const query = queryJoin(

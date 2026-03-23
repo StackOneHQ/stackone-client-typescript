@@ -116,7 +116,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/applications/{id}/reject")(pathParams);
 
   const headers = new Headers(compactMap({

@@ -8,11 +8,11 @@ The schedule type of the campaign.
 import { CampaignValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CampaignValue = CampaignValue.Immediate;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

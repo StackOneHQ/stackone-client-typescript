@@ -121,7 +121,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/lms/users/{id}/completions")(pathParams);
 
   const headers = new Headers(compactMap({

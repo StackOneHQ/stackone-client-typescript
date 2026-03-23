@@ -8,11 +8,33 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { GuideStepMeta, GuideStepMeta$inboundSchema } from "./guidestepmeta.js";
 
+/**
+ * An image for the section
+ */
+export type Image = {
+  /**
+   * The image alt text
+   */
+  alt: string;
+  /**
+   * The image source URL or relative path
+   */
+  src: string;
+};
+
 export type GuideSectionMeta = {
+  /**
+   * The scopes for which this section is applicable
+   */
+  applicableScopes?: Array<string> | null | undefined;
   /**
    * The content of the section, includes markdown formatting
    */
   content: string;
+  /**
+   * An image for the section
+   */
+  image?: Image | null | undefined;
   /**
    * List items for the section
    */
@@ -28,12 +50,31 @@ export type GuideSectionMeta = {
 };
 
 /** @internal */
+export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> = z
+  .object({
+    alt: z.string(),
+    src: z.string(),
+  });
+
+export function imageFromJSON(
+  jsonString: string,
+): SafeParseResult<Image, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Image$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Image' from JSON`,
+  );
+}
+
+/** @internal */
 export const GuideSectionMeta$inboundSchema: z.ZodType<
   GuideSectionMeta,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  applicableScopes: z.nullable(z.array(z.string())).optional(),
   content: z.string(),
+  image: z.nullable(z.lazy(() => Image$inboundSchema)).optional(),
   list: z.nullable(z.array(z.string())).optional(),
   steps: z.nullable(z.array(GuideStepMeta$inboundSchema)).optional(),
   title: z.string(),

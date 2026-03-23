@@ -128,7 +128,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/unified/ticketing/projects/{id}/components/{subResourceId}",
   )(pathParams);

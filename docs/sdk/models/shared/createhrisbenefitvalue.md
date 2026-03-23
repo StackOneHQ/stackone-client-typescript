@@ -8,11 +8,11 @@ The type of the benefit
 import { CreateHRISBenefitValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateHRISBenefitValue = CreateHRISBenefitValue.HealthSavings;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

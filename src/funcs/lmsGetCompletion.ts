@@ -116,7 +116,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/lms/completions/{id}")(pathParams);
 
   const query = encodeFormQuery({

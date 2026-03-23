@@ -116,7 +116,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/interviews/{id}/notes")(pathParams);
 
   const headers = new Headers(compactMap({

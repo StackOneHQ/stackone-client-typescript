@@ -244,6 +244,7 @@ async function run() {
     body: {
       "data": "example",
     },
+    defenderEnabled: true,
     headers: {
       "Content-Type": "application/json",
     },
@@ -284,6 +285,7 @@ async function run() {
     body: {
       "data": "example",
     },
+    defenderEnabled: true,
     headers: {
       "Content-Type": "application/json",
     },

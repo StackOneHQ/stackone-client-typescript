@@ -9,11 +9,11 @@ import { AtsDocumentsUploadRequestDtoSchemasValue } from "@stackone/stackone-cli
 
 let value: AtsDocumentsUploadRequestDtoSchemasValue =
   AtsDocumentsUploadRequestDtoSchemasValue.True;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

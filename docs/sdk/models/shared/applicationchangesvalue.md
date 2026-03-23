@@ -8,11 +8,11 @@ The type of change that occurred to the application
 import { ApplicationChangesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ApplicationChangesValue = ApplicationChangesValue.ApplicationStatus;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

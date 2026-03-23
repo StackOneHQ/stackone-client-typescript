@@ -8,11 +8,11 @@ The status of the user, e.g. whether the user is enabled, has been disabled (eg.
 import { IamUserValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamUserValue = IamUserValue.Enabled;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
