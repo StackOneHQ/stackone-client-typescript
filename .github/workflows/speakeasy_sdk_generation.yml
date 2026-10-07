@@ -21,6 +21,7 @@ jobs:
     generate:
         uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@3fdab59e74dda7831d7401f7aa1bb55d706913d7 # v15
         with:
+            runs-on: warp-ubuntu-2204-x64-4x
             force: ${{ github.event.inputs.force }}
             mode: pr
             push_code_samples_only: ${{ fromJSON(github.event.inputs.push_code_samples_only != '' && github.event.inputs.push_code_samples_only || 'false') }}

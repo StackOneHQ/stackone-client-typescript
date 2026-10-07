@@ -8,6 +8,8 @@ name: Publish
 jobs:
     publish:
         uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@3fdab59e74dda7831d7401f7aa1bb55d706913d7 # v15
+        with:
+            runs-on: warp-ubuntu-2204-x64-4x
         secrets:
             github_access_token: ${{ secrets.GITHUB_TOKEN }}
             npm_token: ${{ secrets.NPM_TOKEN }}
