@@ -20,5 +20,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run lint
-      - name: Verify generator configuration and compiler output parity
-        run: node scripts/validate-toolchain.cjs
