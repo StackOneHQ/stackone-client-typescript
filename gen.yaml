@@ -30,10 +30,12 @@ typescript:
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
-    devDependencies: {}
+    devDependencies:
+      "@typescript/native": "npm:typescript@7.0.2"
     peerDependencies: {}
   additionalPackageJSON: {}
-  additionalScripts: {}
+  additionalScripts:
+    build: node node_modules/@typescript/native/bin/tsc --rootDir src --types estree,json-schema
   alwaysIncludeInboundAndOutbound: false
   author: StackOne
   baseErrorName: StackOneError
