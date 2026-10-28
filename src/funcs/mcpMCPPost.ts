@@ -4,6 +4,7 @@
 
 import { StackOneCore } from "../core.js";
 import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -45,6 +46,7 @@ export function mcpMCPPost(
     | errors.NotFoundResponse
     | errors.RequestTimedOutResponse
     | errors.ConflictResponse
+    | errors.PreconditionFailedResponse
     | errors.UnprocessableEntityResponse
     | errors.TooManyRequestsResponse
     | errors.InternalServerErrorResponse
@@ -83,6 +85,7 @@ async function $do(
       | errors.NotFoundResponse
       | errors.RequestTimedOutResponse
       | errors.ConflictResponse
+      | errors.PreconditionFailedResponse
       | errors.UnprocessableEntityResponse
       | errors.TooManyRequestsResponse
       | errors.InternalServerErrorResponse
@@ -114,17 +117,16 @@ async function $do(
   const path = pathToFunc("/mcp")();
 
   const query = encodeFormQuery({
+    "apps": payload.apps,
+    "instructions": payload.instructions,
+    "param-style": payload["param-style"],
+    "tool-mode": payload["tool-mode"],
     "x-account-id": payload["x-account-idQueryParameter"],
   });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "mcp-session-id": encodeSimple(
-      "mcp-session-id",
-      payload["mcp-session-id"],
-      { explode: false, charEncoding: "none" },
-    ),
     "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
@@ -193,21 +195,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "408",
-      "409",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "501",
-      "502",
-      "5XX",
-    ],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -232,6 +221,7 @@ async function $do(
     | errors.NotFoundResponse
     | errors.RequestTimedOutResponse
     | errors.ConflictResponse
+    | errors.PreconditionFailedResponse
     | errors.UnprocessableEntityResponse
     | errors.TooManyRequestsResponse
     | errors.InternalServerErrorResponse
@@ -246,7 +236,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil(200, operations.StackoneMcpPostResponse$inboundSchema),
+    M.json(200, operations.StackoneMcpPostResponse$inboundSchema, {
+      key: "object",
+    }),
     M.jsonErr(400, errors.BadRequestResponse$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenResponse$inboundSchema),
@@ -255,6 +247,7 @@ async function $do(
       hdrs: true,
     }),
     M.jsonErr(409, errors.ConflictResponse$inboundSchema),
+    M.jsonErr(412, errors.PreconditionFailedResponse$inboundSchema),
     M.jsonErr(422, errors.UnprocessableEntityResponse$inboundSchema),
     M.jsonErr(429, errors.TooManyRequestsResponse$inboundSchema),
     M.jsonErr(500, errors.InternalServerErrorResponse$inboundSchema),

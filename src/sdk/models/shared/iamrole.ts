@@ -9,7 +9,22 @@ import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { IamPermission, IamPermission$inboundSchema } from "./iampermission.js";
 import { IamPolicy, IamPolicy$inboundSchema } from "./iampolicy.js";
+
+/**
+ * Optional scope describing where this role applies (e.g. group, organization, department).
+ */
+export type Scope = {
+  /**
+   * The id of the specific resource the role applies to. Omitted = all of type.
+   */
+  resourceId?: string | null | undefined;
+  /**
+   * The kind of resource the role applies to (e.g. group, organization, department).
+   */
+  resourceType?: string | null | undefined;
+};
 
 export type IamRole4 = {};
 
@@ -53,16 +68,48 @@ export type IamRole = {
   id?: string | null | undefined;
   name?: string | null | undefined;
   /**
+   * The permissions granted by this role.
+   */
+  permissions?: Array<IamPermission> | null | undefined;
+  /**
    * The set of policies associated with the role.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   policies?: Array<IamPolicy> | null | undefined;
   /**
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * Optional scope describing where this role applies (e.g. group, organization, department).
+   */
+  scope?: Scope | null | undefined;
   type?: IamRoleType | null | undefined;
   updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> = z
+  .object({
+    resource_id: z.nullable(z.string()).optional(),
+    resource_type: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "resource_id": "resourceId",
+      "resource_type": "resourceType",
+    });
+  });
+
+export function scopeFromJSON(
+  jsonString: string,
+): SafeParseResult<Scope, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Scope$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Scope' from JSON`,
+  );
+}
 
 /** @internal */
 export const IamRole4$inboundSchema: z.ZodType<
@@ -152,8 +199,10 @@ export const IamRole$inboundSchema: z.ZodType<IamRole, z.ZodTypeDef, unknown> =
     description: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
+    permissions: z.nullable(z.array(IamPermission$inboundSchema)).optional(),
     policies: z.nullable(z.array(IamPolicy$inboundSchema)).optional(),
     remote_id: z.nullable(z.string()).optional(),
+    scope: z.nullable(z.lazy(() => Scope$inboundSchema)).optional(),
     type: z.nullable(z.lazy(() => IamRoleType$inboundSchema)).optional(),
     updated_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),

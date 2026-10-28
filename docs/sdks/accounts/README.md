@@ -8,7 +8,7 @@ Chart of accounts.
 
 * [deleteAccount](#deleteaccount) - Delete Account
 * [getAccount](#getaccount) - Get Account
-* [getAccountMetaInfo](#getaccountmetainfo) - Get Account Meta Information
+* [~~getAccountMetaInfo~~](#getaccountmetainfo) - Get Account Meta Information (Legacy) :warning: **Deprecated**
 * [listLinkedAccounts](#listlinkedaccounts) - List Accounts
 * [updateAccount](#updateaccount) - Update Account
 
@@ -192,9 +192,11 @@ run();
 | errors.BadGatewayResponse          | 502                                | application/json                   |
 | errors.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
-## getAccountMetaInfo
+## ~~getAccountMetaInfo~~
 
-Get Account Meta Information
+Get Account Meta Information (Legacy)
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

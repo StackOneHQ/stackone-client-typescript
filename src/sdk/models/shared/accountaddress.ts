@@ -10,22 +10,22 @@ import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type AccountAddressSchemas4 = {};
+export type AccountAddress4 = {};
 
 /**
  * The source value of the ISO 3166-1 alpha-2 code of the country.
  */
-export type AccountAddressSchemasSourceValue =
+export type AccountAddressSourceValue =
   | string
   | number
   | boolean
-  | AccountAddressSchemas4
+  | AccountAddress4
   | Array<any>;
 
 /**
  * The ISO 3166-1 alpha-2 code of the country.
  */
-export enum AccountAddressSchemasValue {
+export enum AccountAddressValue {
   Af = "AF",
   Al = "AL",
   Dz = "DZ",
@@ -279,9 +279,7 @@ export enum AccountAddressSchemasValue {
 /**
  * The ISO 3166-1 alpha-2 code of the country.
  */
-export type AccountAddressSchemasValueOpen = OpenEnum<
-  typeof AccountAddressSchemasValue
->;
+export type AccountAddressValueOpen = OpenEnum<typeof AccountAddressValue>;
 
 /**
  * The country code
@@ -294,32 +292,32 @@ export type Country = {
     | string
     | number
     | boolean
-    | AccountAddressSchemas4
+    | AccountAddress4
     | Array<any>
     | null
     | undefined;
   /**
    * The ISO 3166-1 alpha-2 code of the country.
    */
-  value?: AccountAddressSchemasValueOpen | null | undefined;
+  value?: AccountAddressValueOpen | null | undefined;
 };
 
-export type AccountAddress4 = {};
+export type AccountAddressSchemas4 = {};
 
 /**
  * The source value of the location type.
  */
-export type AccountAddressSourceValue =
+export type AccountAddressSchemasSourceValue =
   | string
   | number
   | boolean
-  | AccountAddress4
+  | AccountAddressSchemas4
   | Array<any>;
 
 /**
  * The type of the location.
  */
-export enum AccountAddressValue {
+export enum AccountAddressSchemasValue {
   Home = "home",
   Work = "work",
   UnmappedValue = "unmapped_value",
@@ -327,7 +325,9 @@ export enum AccountAddressValue {
 /**
  * The type of the location.
  */
-export type AccountAddressValueOpen = OpenEnum<typeof AccountAddressValue>;
+export type AccountAddressSchemasValueOpen = OpenEnum<
+  typeof AccountAddressSchemasValue
+>;
 
 /**
  * The location type
@@ -340,14 +340,14 @@ export type LocationType = {
     | string
     | number
     | boolean
-    | AccountAddress4
+    | AccountAddressSchemas4
     | Array<any>
     | null
     | undefined;
   /**
    * The type of the location.
    */
-  value?: AccountAddressValueOpen | null | undefined;
+  value?: AccountAddressSchemasValueOpen | null | undefined;
 };
 
 export type AccountAddress = {
@@ -365,82 +365,6 @@ export type AccountAddress = {
   street2?: string | null | undefined;
   zipCode?: string | null | undefined;
 };
-
-/** @internal */
-export const AccountAddressSchemas4$inboundSchema: z.ZodType<
-  AccountAddressSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function accountAddressSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<AccountAddressSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AccountAddressSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountAddressSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountAddressSchemasSourceValue$inboundSchema: z.ZodType<
-  AccountAddressSchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.lazy(() => AccountAddressSchemas4$inboundSchema),
-  z.array(z.any()),
-]);
-
-export function accountAddressSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AccountAddressSchemasSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AccountAddressSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AccountAddressSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AccountAddressSchemasValue$inboundSchema: z.ZodType<
-  AccountAddressSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = openEnums.inboundSchema(AccountAddressSchemasValue);
-
-/** @internal */
-export const Country$inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> =
-  z.object({
-    source_value: z.nullable(
-      z.union([
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.lazy(() => AccountAddressSchemas4$inboundSchema),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(AccountAddressSchemasValue$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
-  });
-
-export function countryFromJSON(
-  jsonString: string,
-): SafeParseResult<Country, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Country$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Country' from JSON`,
-  );
-}
 
 /** @internal */
 export const AccountAddress4$inboundSchema: z.ZodType<
@@ -490,6 +414,82 @@ export const AccountAddressValue$inboundSchema: z.ZodType<
 > = openEnums.inboundSchema(AccountAddressValue);
 
 /** @internal */
+export const Country$inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> =
+  z.object({
+    source_value: z.nullable(
+      z.union([
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.lazy(() => AccountAddress4$inboundSchema),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(AccountAddressValue$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "source_value": "sourceValue",
+    });
+  });
+
+export function countryFromJSON(
+  jsonString: string,
+): SafeParseResult<Country, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Country$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Country' from JSON`,
+  );
+}
+
+/** @internal */
+export const AccountAddressSchemas4$inboundSchema: z.ZodType<
+  AccountAddressSchemas4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function accountAddressSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddressSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddressSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddressSchemas4' from JSON`,
+  );
+}
+
+/** @internal */
+export const AccountAddressSchemasSourceValue$inboundSchema: z.ZodType<
+  AccountAddressSchemasSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.lazy(() => AccountAddressSchemas4$inboundSchema),
+  z.array(z.any()),
+]);
+
+export function accountAddressSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddressSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddressSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddressSchemasSourceValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const AccountAddressSchemasValue$inboundSchema: z.ZodType<
+  AccountAddressSchemasValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AccountAddressSchemasValue);
+
+/** @internal */
 export const LocationType$inboundSchema: z.ZodType<
   LocationType,
   z.ZodTypeDef,
@@ -500,11 +500,11 @@ export const LocationType$inboundSchema: z.ZodType<
       z.string(),
       z.number(),
       z.boolean(),
-      z.lazy(() => AccountAddress4$inboundSchema),
+      z.lazy(() => AccountAddressSchemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(AccountAddressValue$inboundSchema).optional(),
+  value: z.nullable(AccountAddressSchemasValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",

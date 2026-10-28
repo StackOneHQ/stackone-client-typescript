@@ -27,6 +27,30 @@ export enum Categories {
   Scheduling = "scheduling",
 }
 
+export enum ConnectSessionStatus {
+  Pending = "pending",
+  Authenticated = "authenticated",
+  Error = "error",
+  Cancelled = "cancelled",
+}
+export type ConnectSessionStatusOpen = OpenEnum<typeof ConnectSessionStatus>;
+
+/**
+ * The most recent connection attempt initiated against this session, if any. Use this to poll for OAuth completion: when status is "authenticated", the resulting account is at account_secure_id.
+ */
+export type LatestConnectionAttempt = {
+  /**
+   * The secure id of the account created/updated by this attempt. Populated only after a successful authentication.
+   */
+  accountSecureId?: string | null | undefined;
+  createdAt: Date;
+  id: string;
+  oauthErrorCode?: string | null | undefined;
+  oauthErrorDescription?: string | null | undefined;
+  status?: ConnectSessionStatusOpen | null | undefined;
+  updatedAt: Date;
+};
+
 /**
  * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
  */
@@ -48,6 +72,14 @@ export type ConnectSessionTypeOpen = OpenEnum<typeof ConnectSessionType>;
 export type ConnectSession = {
   accountId?: string | null | undefined;
   categories?: Array<Categories> | null | undefined;
+  /**
+   * The connector profile ID associated with this connect session
+   */
+  connectorProfileId?: string | null | undefined;
+  /**
+   * The ordered connector profile IDs this connect session is restricted to, or null when it is not restricted to a list.
+   */
+  connectorProfileIds?: Array<string> | null | undefined;
   createdAt: Date;
   /**
    * External trigger token to be used to trigger actions on the account
@@ -55,10 +87,16 @@ export type ConnectSession = {
   externalTriggerToken?: string | null | undefined;
   id: number;
   /**
-   * The integration ID (UUID) associated with this connect session
+   * Deprecated: use `connector_profile_id` instead. The integration ID (UUID) associated with this connect session.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   integrationId?: string | null | undefined;
   label?: string | null | undefined;
+  /**
+   * The most recent connection attempt initiated against this session, if any. Use this to poll for OAuth completion: when status is "authenticated", the resulting account is at account_secure_id.
+   */
+  latestConnectionAttempt?: LatestConnectionAttempt | null | undefined;
   /**
    * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
    */
@@ -78,6 +116,46 @@ export type ConnectSession = {
 /** @internal */
 export const Categories$inboundSchema: z.ZodNativeEnum<typeof Categories> = z
   .nativeEnum(Categories);
+
+/** @internal */
+export const ConnectSessionStatus$inboundSchema: z.ZodType<
+  ConnectSessionStatusOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ConnectSessionStatus);
+
+/** @internal */
+export const LatestConnectionAttempt$inboundSchema: z.ZodType<
+  LatestConnectionAttempt,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  account_secure_id: z.nullable(z.string()).optional(),
+  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  id: z.string(),
+  oauth_error_code: z.nullable(z.string()).optional(),
+  oauth_error_description: z.nullable(z.string()).optional(),
+  status: z.nullable(ConnectSessionStatus$inboundSchema).optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+}).transform((v) => {
+  return remap$(v, {
+    "account_secure_id": "accountSecureId",
+    "created_at": "createdAt",
+    "oauth_error_code": "oauthErrorCode",
+    "oauth_error_description": "oauthErrorDescription",
+    "updated_at": "updatedAt",
+  });
+});
+
+export function latestConnectionAttemptFromJSON(
+  jsonString: string,
+): SafeParseResult<LatestConnectionAttempt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LatestConnectionAttempt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LatestConnectionAttempt' from JSON`,
+  );
+}
 
 /** @internal */
 export const Metadata$inboundSchema: z.ZodType<
@@ -111,11 +189,16 @@ export const ConnectSession$inboundSchema: z.ZodType<
 > = z.object({
   account_id: z.nullable(z.string()).optional(),
   categories: z.nullable(z.array(Categories$inboundSchema)).optional(),
+  connector_profile_id: z.nullable(z.string()).optional(),
+  connector_profile_ids: z.nullable(z.array(z.string())).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   external_trigger_token: z.nullable(z.string()).optional(),
   id: z.number(),
   integration_id: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  latest_connection_attempt: z.nullable(
+    z.lazy(() => LatestConnectionAttempt$inboundSchema),
+  ).optional(),
   metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
   organization_id: z.string(),
   origin_owner_id: z.string(),
@@ -127,9 +210,12 @@ export const ConnectSession$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
+    "connector_profile_id": "connectorProfileId",
+    "connector_profile_ids": "connectorProfileIds",
     "created_at": "createdAt",
     "external_trigger_token": "externalTriggerToken",
     "integration_id": "integrationId",
+    "latest_connection_attempt": "latestConnectionAttempt",
     "organization_id": "organizationId",
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",

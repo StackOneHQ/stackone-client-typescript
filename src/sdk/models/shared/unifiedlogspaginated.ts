@@ -6,15 +6,44 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  UnifiedLogsPartial,
-  UnifiedLogsPartial$inboundSchema,
-} from "./unifiedlogspartial.js";
+import { UnifiedLog, UnifiedLog$inboundSchema } from "./unifiedlog.js";
+
+/**
+ * Pagination metadata
+ */
+export type UnifiedLogsPaginatedQuery = {};
 
 export type UnifiedLogsPaginated = {
-  data: Array<UnifiedLogsPartial>;
-  next?: string | null | undefined;
+  /**
+   * The list of unified logs
+   */
+  data: Array<UnifiedLog>;
+  /**
+   * Pagination metadata
+   */
+  query?: UnifiedLogsPaginatedQuery | null | undefined;
+  /**
+   * Total number of logs
+   */
+  total?: number | null | undefined;
 };
+
+/** @internal */
+export const UnifiedLogsPaginatedQuery$inboundSchema: z.ZodType<
+  UnifiedLogsPaginatedQuery,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function unifiedLogsPaginatedQueryFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedLogsPaginatedQuery, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedLogsPaginatedQuery$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedLogsPaginatedQuery' from JSON`,
+  );
+}
 
 /** @internal */
 export const UnifiedLogsPaginated$inboundSchema: z.ZodType<
@@ -22,8 +51,10 @@ export const UnifiedLogsPaginated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(UnifiedLogsPartial$inboundSchema),
-  next: z.nullable(z.string()).optional(),
+  data: z.array(UnifiedLog$inboundSchema),
+  query: z.nullable(z.lazy(() => UnifiedLogsPaginatedQuery$inboundSchema))
+    .optional(),
+  total: z.nullable(z.number()).optional(),
 });
 
 export function unifiedLogsPaginatedFromJSON(

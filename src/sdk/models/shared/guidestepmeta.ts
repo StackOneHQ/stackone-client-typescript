@@ -7,11 +7,37 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * An image for the step
+ */
+export type GuideStepMetaImage = {
+  /**
+   * The image alt text
+   */
+  alt: string;
+  /**
+   * The image source URL or relative path
+   */
+  src: string;
+};
+
 export type GuideStepMeta = {
+  /**
+   * The scopes for which this step is applicable
+   */
+  applicableScopes?: Array<string> | null | undefined;
   /**
    * The content of the step, includes markdown formatting
    */
   content: string;
+  /**
+   * When true, the step should display scopes
+   */
+  displayScopes?: boolean | null | undefined;
+  /**
+   * An image for the step
+   */
+  image?: GuideStepMetaImage | null | undefined;
   /**
    * List items for the step
    */
@@ -23,12 +49,35 @@ export type GuideStepMeta = {
 };
 
 /** @internal */
+export const GuideStepMetaImage$inboundSchema: z.ZodType<
+  GuideStepMetaImage,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alt: z.string(),
+  src: z.string(),
+});
+
+export function guideStepMetaImageFromJSON(
+  jsonString: string,
+): SafeParseResult<GuideStepMetaImage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GuideStepMetaImage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GuideStepMetaImage' from JSON`,
+  );
+}
+
+/** @internal */
 export const GuideStepMeta$inboundSchema: z.ZodType<
   GuideStepMeta,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  applicableScopes: z.nullable(z.array(z.string())).optional(),
   content: z.string(),
+  displayScopes: z.nullable(z.boolean()).optional(),
+  image: z.nullable(z.lazy(() => GuideStepMetaImage$inboundSchema)).optional(),
   list: z.nullable(z.array(z.string())).optional(),
   title: z.string(),
 });

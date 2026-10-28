@@ -15,6 +15,7 @@ let value: FolderResult = {
     driveId: "c28xyrc55866bvuv",
     hasChildren: true,
     hasContent: true,
+    icon: "📁",
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     isRoot: true,
     name: "Information-Technology",

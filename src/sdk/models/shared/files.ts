@@ -1315,6 +1315,10 @@ export type Files = {
    */
   hasContent?: boolean | FilesSchemas2 | null | undefined;
   /**
+   * The icon of the file, either an emoji character or an image url
+   */
+  icon?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -1497,6 +1501,7 @@ export const Files$inboundSchema: z.ZodType<Files, z.ZodTypeDef, unknown> = z
       .optional(),
     has_content: z.nullable(z.union([z.boolean(), FilesSchemas2$inboundSchema]))
       .optional(),
+    icon: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
     owner_id: z.nullable(z.string()).optional(),

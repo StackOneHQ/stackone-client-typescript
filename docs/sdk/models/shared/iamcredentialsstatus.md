@@ -1,0 +1,18 @@
+# IamCredentialsStatus
+
+## Example Usage
+
+```typescript
+import { IamCredentialsSchemasValue, IamCredentialsStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamCredentialsStatus = {
+  value: IamCredentialsSchemasValue.Enabled,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   | Example                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                                                                 | *shared.IamCredentialsSchemasSourceValue*                                                                                                                     | :heavy_minus_sign:                                                                                                                                            | N/A                                                                                                                                                           |                                                                                                                                                               |
+| `value`                                                                                                                                                       | [shared.IamCredentialsSchemasValue](../../../sdk/models/shared/iamcredentialsschemasvalue.md)                                                                 | :heavy_minus_sign:                                                                                                                                            | The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin). | enabled                                                                                                                                                       |

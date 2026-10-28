@@ -15,6 +15,7 @@ import {
   AuthenticationMetaItem,
   AuthenticationMetaItem$inboundSchema,
 } from "./authenticationmetaitem.js";
+import { EventMetaItem, EventMetaItem$inboundSchema } from "./eventmetaitem.js";
 import {
   ScopeDefinitionMetaItem,
   ScopeDefinitionMetaItem$inboundSchema,
@@ -34,15 +35,29 @@ export type ActionsMeta = {
    */
   authentication?: Array<AuthenticationMetaItem> | null | undefined;
   /**
+   * The categories associated with this provider (e.g., hris, ats, crm)
+   */
+  categories?: Array<string> | null | undefined;
+  /**
+   * The connector profile ID this metadata applies to (only present when filtering by account_ids)
+   */
+  connectorProfileId?: string | null | undefined;
+  /**
    * The description of the provider
    */
   description?: string | null | undefined;
+  /**
+   * The list of events available for this provider
+   */
+  eventActions?: Array<EventMetaItem> | null | undefined;
   /**
    * The icon URL for the provider
    */
   icon?: string | null | undefined;
   /**
-   * The integration ID this metadata applies to (only present when filtering by account_ids)
+   * Deprecated: use `connector_profile_id` instead. The integration ID this metadata applies to (only present when filtering by account_ids).
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   integrationId?: string | null | undefined;
   /**
@@ -77,7 +92,10 @@ export const ActionsMeta$inboundSchema: z.ZodType<
   actions: z.nullable(z.array(ActionMetaItem$inboundSchema)).optional(),
   authentication: z.nullable(z.array(AuthenticationMetaItem$inboundSchema))
     .optional(),
+  categories: z.nullable(z.array(z.string())).optional(),
+  connector_profile_id: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
+  event_actions: z.nullable(z.array(EventMetaItem$inboundSchema)).optional(),
   icon: z.nullable(z.string()).optional(),
   integration_id: z.nullable(z.string()).optional(),
   key: z.nullable(z.string()).optional(),
@@ -89,6 +107,8 @@ export const ActionsMeta$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
+    "connector_profile_id": "connectorProfileId",
+    "event_actions": "eventActions",
     "integration_id": "integrationId",
     "release_stage": "releaseStage",
     "scope_definitions": "scopeDefinitions",

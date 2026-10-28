@@ -7,12 +7,8 @@ import { IamListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/op
 
 let value: IamListUsersResponse = {
   contentType: "<value>",
-  headers: {
-    "key": [
-      "<value 1>",
-    ],
-  },
-  statusCode: 541447,
+  headers: {},
+  statusCode: 874916,
 };
 ```
 

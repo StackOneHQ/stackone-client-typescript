@@ -27,6 +27,32 @@ export enum ConnectSessionTokenAuthLinkCategories {
   Scheduling = "scheduling",
 }
 
+export enum ConnectSessionTokenAuthLinkStatus {
+  Pending = "pending",
+  Authenticated = "authenticated",
+  Error = "error",
+  Cancelled = "cancelled",
+}
+export type ConnectSessionTokenAuthLinkStatusOpen = OpenEnum<
+  typeof ConnectSessionTokenAuthLinkStatus
+>;
+
+/**
+ * The most recent connection attempt initiated against this session, if any. Use this to poll for OAuth completion: when status is "authenticated", the resulting account is at account_secure_id.
+ */
+export type ConnectSessionTokenAuthLinkLatestConnectionAttempt = {
+  /**
+   * The secure id of the account created/updated by this attempt. Populated only after a successful authentication.
+   */
+  accountSecureId?: string | null | undefined;
+  createdAt: Date;
+  id: string;
+  oauthErrorCode?: string | null | undefined;
+  oauthErrorDescription?: string | null | undefined;
+  status?: ConnectSessionTokenAuthLinkStatusOpen | null | undefined;
+  updatedAt: Date;
+};
+
 /**
  * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
  */
@@ -51,6 +77,14 @@ export type ConnectSessionTokenAuthLink = {
   accountId?: string | null | undefined;
   authLinkUrl: string;
   categories?: Array<ConnectSessionTokenAuthLinkCategories> | null | undefined;
+  /**
+   * The connector profile ID associated with this connect session
+   */
+  connectorProfileId?: string | null | undefined;
+  /**
+   * The ordered connector profile IDs this connect session is restricted to, or null when it is not restricted to a list.
+   */
+  connectorProfileIds?: Array<string> | null | undefined;
   createdAt: Date;
   /**
    * External trigger token to be used to trigger actions on the account
@@ -58,10 +92,19 @@ export type ConnectSessionTokenAuthLink = {
   externalTriggerToken?: string | null | undefined;
   id: number;
   /**
-   * The integration ID (UUID) associated with this connect session
+   * Deprecated: use `connector_profile_id` instead. The integration ID (UUID) associated with this connect session.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   integrationId?: string | null | undefined;
   label?: string | null | undefined;
+  /**
+   * The most recent connection attempt initiated against this session, if any. Use this to poll for OAuth completion: when status is "authenticated", the resulting account is at account_secure_id.
+   */
+  latestConnectionAttempt?:
+    | ConnectSessionTokenAuthLinkLatestConnectionAttempt
+    | null
+    | undefined;
   /**
    * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
    */
@@ -84,6 +127,58 @@ export const ConnectSessionTokenAuthLinkCategories$inboundSchema:
   z.ZodNativeEnum<typeof ConnectSessionTokenAuthLinkCategories> = z.nativeEnum(
     ConnectSessionTokenAuthLinkCategories,
   );
+
+/** @internal */
+export const ConnectSessionTokenAuthLinkStatus$inboundSchema: z.ZodType<
+  ConnectSessionTokenAuthLinkStatusOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ConnectSessionTokenAuthLinkStatus);
+
+/** @internal */
+export const ConnectSessionTokenAuthLinkLatestConnectionAttempt$inboundSchema:
+  z.ZodType<
+    ConnectSessionTokenAuthLinkLatestConnectionAttempt,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    account_secure_id: z.nullable(z.string()).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    id: z.string(),
+    oauth_error_code: z.nullable(z.string()).optional(),
+    oauth_error_description: z.nullable(z.string()).optional(),
+    status: z.nullable(ConnectSessionTokenAuthLinkStatus$inboundSchema)
+      .optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_secure_id": "accountSecureId",
+      "created_at": "createdAt",
+      "oauth_error_code": "oauthErrorCode",
+      "oauth_error_description": "oauthErrorDescription",
+      "updated_at": "updatedAt",
+    });
+  });
+
+export function connectSessionTokenAuthLinkLatestConnectionAttemptFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ConnectSessionTokenAuthLinkLatestConnectionAttempt,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ConnectSessionTokenAuthLinkLatestConnectionAttempt$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ConnectSessionTokenAuthLinkLatestConnectionAttempt' from JSON`,
+  );
+}
 
 /** @internal */
 export const ConnectSessionTokenAuthLinkMetadata$inboundSchema: z.ZodType<
@@ -121,11 +216,18 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   categories: z.nullable(
     z.array(ConnectSessionTokenAuthLinkCategories$inboundSchema),
   ).optional(),
+  connector_profile_id: z.nullable(z.string()).optional(),
+  connector_profile_ids: z.nullable(z.array(z.string())).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   external_trigger_token: z.nullable(z.string()).optional(),
   id: z.number(),
   integration_id: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  latest_connection_attempt: z.nullable(
+    z.lazy(() =>
+      ConnectSessionTokenAuthLinkLatestConnectionAttempt$inboundSchema
+    ),
+  ).optional(),
   metadata: z.nullable(
     z.lazy(() => ConnectSessionTokenAuthLinkMetadata$inboundSchema),
   ).optional(),
@@ -141,9 +243,12 @@ export const ConnectSessionTokenAuthLink$inboundSchema: z.ZodType<
   return remap$(v, {
     "account_id": "accountId",
     "auth_link_url": "authLinkUrl",
+    "connector_profile_id": "connectorProfileId",
+    "connector_profile_ids": "connectorProfileIds",
     "created_at": "createdAt",
     "external_trigger_token": "externalTriggerToken",
     "integration_id": "integrationId",
+    "latest_connection_attempt": "latestConnectionAttempt",
     "organization_id": "organizationId",
     "origin_owner_id": "originOwnerId",
     "origin_owner_name": "originOwnerName",

@@ -8,11 +8,11 @@ The type of the user.
 import { TicketingUserResultValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TicketingUserResultValue = TicketingUserResultValue.Agent;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

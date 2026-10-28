@@ -5,7 +5,16 @@
 ```typescript
 import { ActionsMetaPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ActionsMetaPaginated = {};
+let value: ActionsMetaPaginated = {
+  data: [
+    {
+      categories: [
+        "hris",
+        "ats",
+      ],
+    },
+  ],
+};
 ```
 
 ## Fields

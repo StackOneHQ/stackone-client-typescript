@@ -1,16 +1,19 @@
 # Id
 
-Request id (arbitrary JSON scalar)
+Request id (string or number). Echoed back in the response.
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Id } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: Id = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 1284.03;
+```
+

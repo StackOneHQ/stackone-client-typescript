@@ -5,40 +5,40 @@
 import * as z from "zod/v3";
 
 /**
- * Request id (arbitrary JSON scalar)
+ * Request id (string or number). Echoed back in the response.
  */
-export type Id = {};
+export type Id = string | number;
 
 /**
- * Method parameters (arbitrary JSON)
+ * Method parameters. Shape varies by method — see the request body examples.
  */
 export type Params = {};
 
 export type JsonRpcMessageDto = {
   /**
-   * Request id (arbitrary JSON scalar)
+   * Request id (string or number). Echoed back in the response.
    */
-  id?: Id | undefined;
+  id?: string | number | null | undefined;
   /**
    * JSON-RPC protocol version
    */
   jsonrpc: string;
   /**
-   * JSON-RPC method name
+   * JSON-RPC method name. Supported values: initialize, tools/list, tools/call.
    */
   method: string;
   /**
-   * Method parameters (arbitrary JSON)
+   * Method parameters. Shape varies by method — see the request body examples.
    */
   params?: Params | null | undefined;
 };
 
 /** @internal */
-export type Id$Outbound = {};
+export type Id$Outbound = string | number;
 
 /** @internal */
 export const Id$outboundSchema: z.ZodType<Id$Outbound, z.ZodTypeDef, Id> = z
-  .object({});
+  .union([z.string(), z.number()]);
 
 export function idToJSON(id: Id): string {
   return JSON.stringify(Id$outboundSchema.parse(id));
@@ -60,7 +60,7 @@ export function paramsToJSON(params: Params): string {
 
 /** @internal */
 export type JsonRpcMessageDto$Outbound = {
-  id?: Id$Outbound | undefined;
+  id?: string | number | null | undefined;
   jsonrpc: string;
   method: string;
   params?: Params$Outbound | null | undefined;
@@ -72,7 +72,7 @@ export const JsonRpcMessageDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   JsonRpcMessageDto
 > = z.object({
-  id: z.lazy(() => Id$outboundSchema).optional(),
+  id: z.nullable(z.union([z.string(), z.number()])).optional(),
   jsonrpc: z.string(),
   method: z.string(),
   params: z.nullable(z.lazy(() => Params$outboundSchema)).optional(),

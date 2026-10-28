@@ -27,6 +27,10 @@ export type ActionBuildResponseDto = {
    */
   connectorFilter?: string | undefined;
   /**
+   * Connector keys the build fanned out to, when no `connector_key` was given. Absent for a single-connector build.
+   */
+  connectorsDispatched?: Array<string> | undefined;
+  /**
    * Error message if status is error
    */
   error?: string | undefined;
@@ -53,6 +57,7 @@ export const ActionBuildResponseDto$inboundSchema: z.ZodType<
 > = z.object({
   actions_indexed: z.number().optional(),
   connector_filter: z.string().optional(),
+  connectors_dispatched: z.array(z.string()).optional(),
   error: z.string().optional(),
   message: z.string().optional(),
   status: ActionBuildResponseDtoStatus$inboundSchema,
@@ -60,6 +65,7 @@ export const ActionBuildResponseDto$inboundSchema: z.ZodType<
   return remap$(v, {
     "actions_indexed": "actionsIndexed",
     "connector_filter": "connectorFilter",
+    "connectors_dispatched": "connectorsDispatched",
   });
 });
 

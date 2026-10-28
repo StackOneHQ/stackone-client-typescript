@@ -8,11 +8,11 @@ The file format of the file, expressed as a file extension
 import { TicketingAttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TicketingAttachmentValue = TicketingAttachmentValue.Pdf;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                      | Value                     |
 | ------------------------- | ------------------------- |

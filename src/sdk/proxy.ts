@@ -9,7 +9,9 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Proxy extends ClientSDK {
   /**
-   * Proxy Request
+   * Proxy Request (Legacy)
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async proxyRequest(
     request: operations.StackoneProxyRequestRequest,

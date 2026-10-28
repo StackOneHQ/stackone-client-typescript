@@ -3,14 +3,29 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PlatformLog, PlatformLog$inboundSchema } from "./platformlog.js";
 
 export type PlatformLogsPaginated = {
+  /**
+   * The list of platform logs
+   */
   data: Array<PlatformLog>;
-  next?: string | null | undefined;
+  /**
+   * The page number returned
+   */
+  page: number;
+  /**
+   * The number of results per page
+   */
+  pageSize: number;
+  /**
+   * Total number of logs matching the filters
+   */
+  total: number;
 };
 
 /** @internal */
@@ -20,7 +35,13 @@ export const PlatformLogsPaginated$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.array(PlatformLog$inboundSchema),
-  next: z.nullable(z.string()).optional(),
+  page: z.number(),
+  page_size: z.number(),
+  total: z.number(),
+}).transform((v) => {
+  return remap$(v, {
+    "page_size": "pageSize",
+  });
 });
 
 export function platformLogsPaginatedFromJSON(

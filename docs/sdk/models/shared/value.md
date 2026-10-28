@@ -1,22 +1,26 @@
 # Value
 
-The value of the additional data
+The type of the resource, e.g. user, group, permission, etc.
 
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "This is additional data";
+import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Value = Value.File;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
-### `string[]`
+## Values
 
-```typescript
-const value: string[] = [
-  "<value 1>",
-  "<value 2>",
-];
-```
-
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Project`              | project                |
+| `File`                 | file                   |
+| `Folder`               | folder                 |
+| `Product`              | product                |
+| `Property`             | property               |
+| `User`                 | user                   |
+| `UnmappedValue`        | unmapped_value         |
+| -                      | `Unrecognized<string>` |

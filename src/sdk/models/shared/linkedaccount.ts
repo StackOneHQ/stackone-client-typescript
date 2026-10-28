@@ -37,6 +37,10 @@ export enum LinkedAccountType {
 export type LinkedAccountTypeOpen = OpenEnum<typeof LinkedAccountType>;
 
 export type LinkedAccount = {
+  /**
+   * The categories this provider belongs to (e.g., hris, ats, crm)
+   */
+  categories?: Array<string> | null | undefined;
   createdAt: Date;
   credentials?: Credentials | null | undefined;
   id: string;
@@ -94,6 +98,7 @@ export const LinkedAccount$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  categories: z.nullable(z.array(z.string())).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   credentials: z.nullable(z.lazy(() => Credentials$inboundSchema)).optional(),
   id: z.string(),

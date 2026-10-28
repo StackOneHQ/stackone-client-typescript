@@ -8,11 +8,11 @@ The unified skill level. For write operations: provide one of the listed enum va
 import { CreateSkillsApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateSkillsApiModelValue = CreateSkillsApiModelValue.UnmappedValue;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

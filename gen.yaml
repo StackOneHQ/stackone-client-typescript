@@ -12,6 +12,7 @@ generation:
     sharedErrorComponentsApr2025: false
     sharedNestedComponentsJan2026: false
     nameOverrideFeb2026: false
+    openSingleValueEnumsOct2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -26,7 +27,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 4.34.1
+  version: 4.35.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -35,6 +36,7 @@ typescript:
   additionalPackageJSON: {}
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: StackOne
   baseErrorName: StackOneError
   clientServerStatusCodesAsErrors: true
@@ -44,7 +46,9 @@ typescript:
   enableMCPServer: true
   enableReactQuery: false
   enumFormat: enum
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
+  fixEnumNameSanitization: false
   flatAdditionalProperties: false
   flattenGlobalSecurity: false
   flatteningOrder: body-first
@@ -70,14 +74,19 @@ typescript:
   modelPropertyCasing: camel
   moduleFormat: commonjs
   multipartArrayFormat: legacy
+  numericEnumMemberNames: legacy
   outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: envelope
   sseFlatResponse: false
   templateVersion: v2
   unionStrategy: left-to-right
   usageSDKInitImports: []
   useIndexModules: true
+  useOxlint: false
+  useTsgo: false
   zodVersion: v3

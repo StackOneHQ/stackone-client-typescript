@@ -9,6 +9,10 @@ import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  IamPermissionScope,
+  IamPermissionScope$inboundSchema,
+} from "./iampermissionscope.js";
 import { IamResource, IamResource$inboundSchema } from "./iamresource.js";
 
 export type IamPermission4 = {};
@@ -25,11 +29,15 @@ export type IamPermissionSourceValue =
  */
 export enum IamPermissionValue {
   Read = "read",
+  Delete = "delete",
+  Export = "export",
   ReadWrite = "read_write",
   Approve = "approve",
-  Delete = "delete",
   Use = "use",
-  Export = "export",
+  Write = "write",
+  Comment = "comment",
+  Create = "create",
+  Edit = "edit",
   UnmappedValue = "unmapped_value",
 }
 /**
@@ -69,8 +77,14 @@ export type IamPermission = {
   remoteId?: string | null | undefined;
   /**
    * The resources that the permission applies to.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   resources?: Array<IamResource> | null | undefined;
+  /**
+   * Resource-type / resource-id targets for this permission. Omitted resource_id = all of type.
+   */
+  scopes?: Array<IamPermissionScope> | null | undefined;
   type?: IamPermissionType | null | undefined;
   updatedAt?: Date | null | undefined;
 };
@@ -168,6 +182,7 @@ export const IamPermission$inboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   resources: z.nullable(z.array(IamResource$inboundSchema)).optional(),
+  scopes: z.nullable(z.array(IamPermissionScope$inboundSchema)).optional(),
   type: z.nullable(z.lazy(() => IamPermissionType$inboundSchema)).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),

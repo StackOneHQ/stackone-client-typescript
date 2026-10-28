@@ -27,12 +27,6 @@ actions:
         - "lang": "typescript"
           "label": "stackone_update_account"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { PatchAccountExternalDtoType } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.accounts.updateAccount({\n    patchAccountExternalDto: {\n      type: PatchAccountExternalDtoType.Test,\n    },\n    id: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/accounts/{id}/meta"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "stackone_get_account_meta_info"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.accounts.getAccountMetaInfo({\n    id: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/actions"]["get"]
     update:
       "x-codeSamples":
@@ -50,13 +44,25 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_rpc_action"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.rpcAction({\n    action: \"create_employee\",\n    body: {\n      \"data\": \"example\",\n    },\n    headers: {\n      \"Content-Type\": \"application/json\",\n    },\n    path: {\n      \"id\": \"123\",\n    },\n    query: {\n      debug: false,\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.rpcAction({\n    actionsRpcRequestDto: {\n      action: \"create_employee\",\n      body: {\n        \"data\": \"example\",\n      },\n      defenderConfig: {\n        blockHighRisk: false,\n        enabled: true,\n        useTier1Classification: true,\n        useTier2Classification: true,\n      },\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      path: {\n        \"id\": \"123\",\n      },\n      query: {\n        debug: false,\n      },\n    },\n    debug: false,\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/actions/rpc/synced"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_rpc_action_synced"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.rpcActionSynced({\n    actionsRpcSyncedRequestDto: {\n      action: \"create_employee\",\n      aggs: {\n        \"by_status\": {\n          \"terms\": {\n            \"field\": \"employment_status\",\n          },\n        },\n      },\n      filter: {\n        \"match\": {\n          \"description\": \"onboarding\",\n        },\n      },\n      search: \"onboarding safety\",\n      sort: [\n        {\n          \"last_name\": \"desc\",\n        },\n      ],\n      source: [\n        \"first_name\",\n        \"email\",\n      ],\n      syncId: \"sch_01J8Z3Q4\",\n    },\n    pageSize: 25,\n    skip: 0,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/actions/rpc/synced/queryable_fields"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_rpc_action_synced_queryable_fields"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.rpcActionSyncedQueryableFields({\n    actionsRpcSyncedQueryableFieldsRequestDto: {\n      action: \"hris_list_employees\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/actions/search"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_search_actions"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.searchActions({\n    connector: \"slack\",\n    query: \"send a message\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.searchActions({\n    connector: \"slack\",\n    connectorVersions: {\n      \"slack\": [\n        \"1.2.0\",\n        \"1.3.1\",\n      ],\n      \"hubspot\": [\n        \"*\",\n      ],\n    },\n    query: \"send a message\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/connect_sessions"]["post"]
     update:
       "x-codeSamples":
@@ -69,60 +75,174 @@ actions:
         - "lang": "typescript"
           "label": "stackone_authenticate_connect_session"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectSessions.authenticateConnectSession({\n    token: \"<value>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/connectors/meta"]["get"]
+  - target: $["paths"]["/connect_sessions/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "stackone_list_connectors_meta"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectors.listConnectorsMeta({\n    include: \"field_path,unmapped_fields,resources,inactive,webhooks,static_fields\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/connectors/meta/{provider}"]["get"]
+          "label": "stackone_get_connect_session"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectSessions.getConnectSession({\n    id: 9637.9,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/connector_profiles"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "stackone_get_connector_meta"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectors.getConnectorMeta({\n    include: \"field_path,unmapped_fields,resources,inactive,webhooks,static_fields\",\n    provider: \"<value>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/mcp"]["delete"]
+          "label": "stackone_list_connector_profiles"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectorProfiles.listConnectorProfiles({\n    connectorKey: \"salesforce\",\n    enabled: true,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/connector_profiles/{connectorProfileId}/pinned_version"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "stackone_mcp_delete"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpDelete({\n    apiKey: \"<YOUR_API_KEY_HERE>\",\n  }, {\n    mcpSessionId: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/mcp"]["get"]
+          "label": "stackone_delete_connector_profile_pinned_version"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectorProfiles.deleteConnectorProfilePinnedVersion({\n    connectorProfileId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/connector_profiles/{connectorProfileId}/pinned_version"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "stackone_mcp_get"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpGet({\n    apiKey: \"<YOUR_API_KEY_HERE>\",\n  }, {\n    mcpSessionId: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "label": "stackone_get_connector_profile_pinned_version"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectorProfiles.getConnectorProfilePinnedVersion({\n    connectorProfileId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/connector_profiles/{connectorProfileId}/pinned_version"]["put"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_upsert_connector_profile_pinned_version"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectorProfiles.upsertConnectorProfilePinnedVersion({\n    upsertConnectorProfilePinnedVersion: {\n      pinnedVersion: \"<value>\",\n    },\n    connectorProfileId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/connector_profiles/{connectorProfileId}/versions"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_connector_profile_versions"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.connectorProfiles.listConnectorProfileVersions({\n    connectorProfileId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { LogsPostDtoRiskLevel } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listLogs({\n    logsPostDto: {\n      filters: {\n        accountSecureId: [\n          \"45355976281015164504\",\n        ],\n        action: [\n          \"create_employee\",\n        ],\n        actionId: [\n          \"get_employees\",\n        ],\n        actionRunId: [\n          \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n        ],\n        actionType: [\n          \"sync\",\n        ],\n        category: [\n          \"hris\",\n        ],\n        connectorKey: [\n          \"slack\",\n        ],\n        connectorVersion: [\n          \"1.0.0\",\n        ],\n        endTime: \"2025-01-31T23:59:59.999Z\",\n        logId: [\n          \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n        ],\n        mode: [\n          \"production\",\n        ],\n        originOwnerId: [\n          \"owner-123\",\n        ],\n        provider: [\n          \"hibob\",\n        ],\n        requestId: [\n          \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n        ],\n        resource: [\n          \"employees\",\n        ],\n        riskLevel: [\n          LogsPostDtoRiskLevel.High,\n          LogsPostDtoRiskLevel.Critical,\n        ],\n        service: [\n          \"hris\",\n        ],\n        sourceId: [\n          \"1234567890\",\n        ],\n        sourceType: [\n          \"DASHBOARD\",\n        ],\n        startTime: \"2025-01-01T00:00:00.000Z\",\n        statusCode: [\n          \"200\",\n        ],\n        subResource: [\n          \"documents\",\n        ],\n        success: true,\n      },\n      page: 1,\n      pageSize: 25,\n    },\n    expand: \"connector\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_action_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listActionLogs({\n    filters: {\n      accountSecureId: [\n        \"45355976281015164504\",\n      ],\n      actionId: [\n        \"get_employees\",\n      ],\n      actionRunId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      actionType: [\n        \"sync\",\n      ],\n      category: [\n        \"hris\",\n      ],\n      connectorKey: [\n        \"slack\",\n      ],\n      connectorVersion: [\n        \"1.0.0\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      mode: [\n        \"production\",\n      ],\n      originOwnerId: [\n        \"owner-123\",\n      ],\n      sourceId: [\n        \"1234567890\",\n      ],\n      sourceType: [\n        \"DASHBOARD\",\n      ],\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      statusCode: [\n        \"200\",\n      ],\n      success: true,\n    },\n    page: 1,\n    pageSize: 25,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_action_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getActionLog({\n    actionRunId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}/advanced"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_action_advanced_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getActionAdvancedLog({\n    actionRunId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}/defender"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_action_defender_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getActionDefenderLog({\n    actionRunId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}/policy"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_action_policy_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getActionPolicyLog({\n    actionRunId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}/steps"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_action_step_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listActionStepLogs({\n    actionRunId: \"<id>\",\n    page: 2239.51,\n    pageSize: 6392.8,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}/steps/{stepIndex}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_step_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getStepLog({\n    actionRunId: \"<id>\",\n    stepIndex: 6773,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/actions/{actionRunId}/steps/{stepIndex}/advanced"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_step_advanced_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getStepAdvancedLog({\n    actionRunId: \"<id>\",\n    stepIndex: 7982.24,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/platform"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_platform_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listPlatformLogs({\n    filters: {\n      action: [\n        \"create\",\n        \"delete\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      eventType: [\n        \"account_create\",\n        \"account_delete\",\n      ],\n      isRead: false,\n      resource: [\n        \"account\",\n        \"webhook\",\n      ],\n      resourceId: [\n        \"45355976281015164504\",\n      ],\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      statusCode: [\n        \"200\",\n        \"404\",\n      ],\n      success: true,\n      userEmail: [\n        \"person@example.com\",\n      ],\n    },\n    page: 1,\n    pageSize: 25,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/platform/dimensions"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_platform_log_dimensions"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getPlatformLogDimensions({\n    dimensions: [],\n    filters: {\n      action: [\n        \"create\",\n        \"delete\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      eventType: [\n        \"account_create\",\n        \"account_delete\",\n      ],\n      isRead: false,\n      resource: [\n        \"account\",\n        \"webhook\",\n      ],\n      resourceId: [\n        \"45355976281015164504\",\n      ],\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      statusCode: [\n        \"200\",\n        \"404\",\n      ],\n      success: true,\n      userEmail: [\n        \"person@example.com\",\n      ],\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/provider"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_provider_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listProviderLogs({\n    filters: {\n      accountSecureId: [\n        \"45355976281015164504\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      requestId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      success: true,\n    },\n    page: 1,\n    pageSize: 25,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/stats/aggregate"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_logs_stats_aggregate"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getLogsStatsAggregate({\n    filters: null,\n    intervalPeriod: 1,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/stats/dimensions"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_logs_stats_dimensions"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { DimensionsPostDtoRiskLevel } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getLogsStatsDimensions({\n    dimensions: [],\n    filters: {\n      accountSecureId: [\n        \"45355976281015164504\",\n      ],\n      action: [\n        \"create_employee\",\n      ],\n      actionId: [\n        \"get_employees\",\n      ],\n      actionRunId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      actionType: [\n        \"sync\",\n      ],\n      category: [\n        \"hris\",\n      ],\n      connectorKey: [\n        \"slack\",\n      ],\n      connectorVersion: [\n        \"1.0.0\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      logId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      mode: [\n        \"production\",\n      ],\n      originOwnerId: [\n        \"owner-123\",\n      ],\n      provider: [\n        \"hibob\",\n      ],\n      requestId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      resource: [\n        \"employees\",\n      ],\n      riskLevel: [\n        DimensionsPostDtoRiskLevel.High,\n        DimensionsPostDtoRiskLevel.Critical,\n      ],\n      service: [\n        \"hris\",\n      ],\n      sourceId: [\n        \"1234567890\",\n      ],\n      sourceType: [\n        \"DASHBOARD\",\n      ],\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      statusCode: [\n        \"200\",\n      ],\n      subResource: [\n        \"documents\",\n      ],\n      success: true,\n    },\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/steps"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_step_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listStepLogs({\n    filters: {\n      accountSecureId: [\n        \"45355976281015164504\",\n      ],\n      actionRunId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      success: true,\n    },\n    page: 1,\n    pageSize: 25,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/unified"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_unified_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listUnifiedLogs({\n    filters: {\n      accountSecureId: [\n        \"45355976281015164504\",\n      ],\n      action: [\n        \"create_employee\",\n      ],\n      connectorKey: [\n        \"slack\",\n      ],\n      endTime: \"2025-01-31T23:59:59.999Z\",\n      mode: [\n        \"production\",\n      ],\n      originOwnerId: [\n        \"owner-123\",\n      ],\n      requestId: [\n        \"adbf752f-6457-4ddd-89b3-98ae2252b83b\",\n      ],\n      resource: [\n        \"employees\",\n      ],\n      service: [\n        \"hris\",\n      ],\n      sourceId: [\n        \"1234567890\",\n      ],\n      sourceType: [\n        \"DASHBOARD\",\n      ],\n      startTime: \"2025-01-01T00:00:00.000Z\",\n      statusCode: [\n        \"200\",\n      ],\n      success: true,\n    },\n    page: 1,\n    pageSize: 25,\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/unified/{requestId}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_unified_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getUnifiedLog({\n    requestId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/unified/{requestId}/advanced"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_unified_advanced_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getUnifiedAdvancedLog({\n    requestId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/unified/{requestId}/provider"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_list_unified_provider_logs"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.listUnifiedProviderLogs({\n    page: 6031.38,\n    pageSize: 6484.47,\n    requestId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/unified/{requestId}/provider/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_provider_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getProviderLog({\n    id: \"<id>\",\n    requestId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/logs/unified/{requestId}/provider/{id}/advanced"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_get_provider_advanced_log"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.logs.getProviderAdvancedLog({\n    id: \"<id>\",\n    requestId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/mcp"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "stackone_mcp_post"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpPost({\n    apiKey: \"<YOUR_API_KEY_HERE>\",\n  }, {\n    jsonRpcMessageDto: {\n      id: {},\n      jsonrpc: \"2.0\",\n      method: \"initialize\",\n      params: {},\n    },\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/requests/logs"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "stackone_list_logs"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport {\n  OrderBy,\n  OrderDirection,\n  QueryParamOrderBy,\n  QueryParamOrderDirection,\n  StackoneListLogsQueryParamInclude,\n} from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.listLogs({\n    filter: {\n      accountIds: \"45355976281015164504,45355976281015164505\",\n      actions: \"download,upload\",\n      childResources: \"documents,time-off\",\n      endDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      httpMethods: \"GET,POST\",\n      orderBy: QueryParamOrderBy.Service,\n      orderDirection: QueryParamOrderDirection.Asc,\n      providers: \"ashby,greenhouse\",\n      requestIds: \"adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c\",\n      resources: \"employees,users\",\n      services: \"hris,ats\",\n      sourceTypes: \"DASHBOARD,SYNTHETIC_WEBHOOK\",\n      startDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      statusCodes: \"200,400\",\n      subResources: \"documents,employees\",\n      success: true,\n    },\n    include: StackoneListLogsQueryParamInclude.StepLogs,\n    orderBy: OrderBy.Duration,\n    orderDirection: OrderDirection.Asc,\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/requests/logs/steps"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "stackone_list_step_logs"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport {\n  StackoneListStepLogsQueryParamOrderBy,\n  StackoneListStepLogsQueryParamOrderDirection,\n} from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.listStepLogs({\n    filter: {\n      accountIds: \"45355976281015164504,45355976281015164505\",\n      actions: \"download,upload\",\n      childResources: \"documents,time-off\",\n      endDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      httpMethods: \"GET,POST\",\n      providers: \"ashby,greenhouse\",\n      requestIds: \"adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c\",\n      resources: \"employees,users\",\n      services: \"hris,ats\",\n      startDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      statusCodes: \"200,400\",\n      subResources: \"documents,employees\",\n      success: true,\n    },\n    orderBy: StackoneListStepLogsQueryParamOrderBy.EventDatetime,\n    orderDirection: StackoneListStepLogsQueryParamOrderDirection.Asc,\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/requests/logs/{id}"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "stackone_get_log"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { QueryParamInclude } from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.getLog({\n    id: \"<id>\",\n    include: QueryParamInclude.StepLogs,\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/requests/platform-logs"]["get"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "stackone_list_platform_logs"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport {\n  StackoneListPlatformLogsQueryParamOrderBy,\n  StackoneListPlatformLogsQueryParamOrderDirection,\n  StackoneListPlatformLogsQueryParamRequestLogsOrderBy,\n  StackoneListPlatformLogsQueryParamRequestLogsOrderDirection,\n} from \"@stackone/stackone-client-ts/sdk/models/operations\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.requestLogs.listPlatformLogs({\n    filter: {\n      accountIds: \"45355976281015164504,45355976281015164505\",\n      actions: \"download,upload\",\n      categories: \"hris,ats\",\n      endDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      httpMethods: \"GET,POST\",\n      orderBy: StackoneListPlatformLogsQueryParamRequestLogsOrderBy.EventDatetime,\n      orderDirection: StackoneListPlatformLogsQueryParamRequestLogsOrderDirection.Asc,\n      requestIds: \"adbf752f-6457-4ddd-89b3-98ae2252b83b,adbf752f-6457-4ddd-89b3-98ae2252b83c\",\n      resources: \"employees,users\",\n      sourceTypes: \"DASHBOARD,SYNTHETIC_WEBHOOK\",\n      startDate: new Date(\"2020-01-01T00:00:00.000Z\"),\n      statusCodes: \"200,400\",\n      success: true,\n    },\n    orderBy: StackoneListPlatformLogsQueryParamOrderBy.Duration,\n    orderDirection: StackoneListPlatformLogsQueryParamOrderDirection.Asc,\n  });\n\n  console.log(result);\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne();\n\nasync function run() {\n  const result = await stackOne.mcp.mcpPost({\n    apiKey: \"<YOUR_API_KEY_HERE>\",\n  }, {\n    jsonRpcMessageDto: {\n      id: \"init-1\",\n      jsonrpc: \"2.0\",\n      method: \"initialize\",\n      params: {},\n    },\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/accounting/companies"]["get"]
     update:
       "x-codeSamples":
@@ -627,6 +747,12 @@ actions:
         - "lang": "typescript"
           "label": "ats_get_user"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.ats.getUser({\n    prefer: \"heartbeat\",\n    fields: \"id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields\",\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/check_permissions"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "stackone_check_permissions"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\nimport { Action } from \"@stackone/stackone-client-ts/sdk/models/shared\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.actions.checkPermissions({\n    checkPermissionsRequestDto: {\n      action: Action.Read,\n      email: \"user@company.com\",\n      resourceId: \"C08G6QB90LU\",\n      resourceType: \"channel\",\n      userId: \"U08FW4R4N6S\",\n    },\n    prefer: \"heartbeat\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/crm/accounts"]["get"]
     update:
       "x-codeSamples":
@@ -1179,6 +1305,24 @@ actions:
         - "lang": "typescript"
           "label": "iam_get_group"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.getGroup({\n    prefer: \"heartbeat\",\n    expand: \"roles\",\n    fields: \"id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields\",\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/iam/me"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "iam_get_me"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.getMe({\n    prefer: \"heartbeat\",\n    fields: \"name,auth_type,scopes,permissions,last_accessed_at,user,unified_custom_fields\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/iam/organizations"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "iam_list_organizations"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.listOrganizations({\n    prefer: \"heartbeat\",\n    fields: \"id,remote_id,remote_remote_id,name,created_at,updated_at,unified_custom_fields\",\n    filter: null,\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/unified/iam/organizations/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "iam_get_organization"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.getOrganization({\n    prefer: \"heartbeat\",\n    fields: \"id,remote_id,remote_remote_id,name,created_at,updated_at,unified_custom_fields\",\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/iam/policies"]["get"]
     update:
       "x-codeSamples":
@@ -1191,6 +1335,18 @@ actions:
         - "lang": "typescript"
           "label": "iam_get_policy"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.getPolicy({\n    prefer: \"heartbeat\",\n    expand: \"permissions\",\n    fields: \"id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields\",\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/iam/resource_types"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "iam_list_resource_types"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.listResourceTypes({\n    prefer: \"heartbeat\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/unified/iam/resource_users"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "iam_list_resource_users"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.listResourceUsers({\n    prefer: \"heartbeat\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    resourceId: \"02xcytpi2f2g0na\",\n    resourceType: \"group\",\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/iam/roles"]["get"]
     update:
       "x-codeSamples":
@@ -1208,7 +1364,7 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "iam_list_users"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.listUsers({\n    prefer: \"heartbeat\",\n    expand: \"roles,groups\",\n    fields: \"id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields\",\n    filter: {\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
+          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.iam.listUsers({\n    prefer: \"heartbeat\",\n    expand: \"roles,groups\",\n    fields: \"id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields\",\n    filter: {\n      email: \"user@example.com\",\n      groupId: \"group_123\",\n      organizationId: \"org_456\",\n      roleId: \"role_admin\",\n      updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    },\n    updatedAfter: new Date(\"2020-01-01T00:00:00.000Z\"),\n    xAccountId: \"<id>\",\n  });\n\n  for await (const page of result) {\n    console.log(page);\n  }\n}\n\nrun();"
   - target: $["paths"]["/unified/iam/users/{id}"]["delete"]
     update:
       "x-codeSamples":
@@ -1563,12 +1719,6 @@ actions:
         - "lang": "typescript"
           "label": "messaging_get_user"
           "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.messaging.getUser({\n    prefer: \"heartbeat\",\n    fields: \"id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields\",\n    id: \"<id>\",\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/unified/proxy"]["post"]
-    update:
-      "x-codeSamples":
-        - "lang": "typescript"
-          "label": "stackone_proxy_request"
-          "source": "import { StackOne } from \"@stackone/stackone-client-ts\";\n\nconst stackOne = new StackOne({\n  security: {\n    password: \"\",\n    username: \"\",\n  },\n});\n\nasync function run() {\n  const result = await stackOne.proxy.proxyRequest({\n    prefer: \"heartbeat\",\n    proxyRequestBody: {\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      path: \"/employees/directory\",\n      url: \"https://api.sample-integration.com/v1\",\n    },\n    xAccountId: \"<id>\",\n  });\n\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/unified/screening/orders"]["post"]
     update:
       "x-codeSamples":
