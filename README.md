@@ -132,15 +132,18 @@ run();
 
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
-* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
+* [~~getAccountMetaInfo~~](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information (Legacy) :warning: **Deprecated**
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
 
 ### [Actions](docs/sdks/actions/README.md)
 
 * [buildActionEmbeddings](docs/sdks/actions/README.md#buildactionembeddings) - Rebuild action embeddings for semantic search
-* [listActionsMeta](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
+* [checkPermissions](docs/sdks/actions/README.md#checkpermissions) - Check user permissions on a resource
+* [listActionsMeta](docs/sdks/actions/README.md#listactionsmeta) - List all connectors & actions metadata
 * [rpcAction](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
+* [rpcActionSynced](docs/sdks/actions/README.md#rpcactionsynced) - Read synced action data from the datasync index
+* [rpcActionSyncedQueryableFields](docs/sdks/actions/README.md#rpcactionsyncedqueryablefields) - List the fields a synced action's data can be queried by
 * [searchActions](docs/sdks/actions/README.md#searchactions) - Search connector actions by semantic similarity
 
 ### [Ats](docs/sdks/ats/README.md)
@@ -222,15 +225,28 @@ run();
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
 
+### [~~AuthConfigs~~](docs/sdks/authconfigs/README.md)
+
+* [~~listAuthConfigs~~](docs/sdks/authconfigs/README.md#listauthconfigs) - List Auth Configs :warning: **Deprecated**
+
 ### [ConnectSessions](docs/sdks/connectsessions/README.md)
 
 * [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 * [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
+* [getConnectSession](docs/sdks/connectsessions/README.md#getconnectsession) - Get Connect Session
 
-### [Connectors](docs/sdks/connectors/README.md)
+### [ConnectorProfiles](docs/sdks/connectorprofiles/README.md)
 
-* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
-* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
+* [deleteConnectorProfilePinnedVersion](docs/sdks/connectorprofiles/README.md#deleteconnectorprofilepinnedversion) - Delete Connector Profile Pinned Version
+* [getConnectorProfilePinnedVersion](docs/sdks/connectorprofiles/README.md#getconnectorprofilepinnedversion) - Get Connector Profile Pinned Version
+* [listConnectorProfileVersions](docs/sdks/connectorprofiles/README.md#listconnectorprofileversions) - List Connector Profile Versions
+* [listConnectorProfiles](docs/sdks/connectorprofiles/README.md#listconnectorprofiles) - List Connector Profiles
+* [upsertConnectorProfilePinnedVersion](docs/sdks/connectorprofiles/README.md#upsertconnectorprofilepinnedversion) - Upsert Connector Profile Pinned Version
+
+### [~~Connectors~~](docs/sdks/connectors/README.md)
+
+* [~~getConnectorMeta~~](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information (Legacy) :warning: **Deprecated**
+* [~~listConnectorsMeta~~](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information (Legacy) :warning: **Deprecated**
 
 ### [Crm](docs/sdks/crm/README.md)
 
@@ -337,11 +353,16 @@ run();
 
 * [deleteUser](docs/sdks/iam/README.md#deleteuser) - Delete User
 * [getGroup](docs/sdks/iam/README.md#getgroup) - Get Group
+* [getMe](docs/sdks/iam/README.md#getme) - Get Me
+* [getOrganization](docs/sdks/iam/README.md#getorganization) - Get Organization
 * [getPolicy](docs/sdks/iam/README.md#getpolicy) - Get Policy
 * [getRole](docs/sdks/iam/README.md#getrole) - Get Role
 * [getUser](docs/sdks/iam/README.md#getuser) - Get User
 * [listGroups](docs/sdks/iam/README.md#listgroups) - List Groups
+* [listOrganizations](docs/sdks/iam/README.md#listorganizations) - List Organizations
 * [listPolicies](docs/sdks/iam/README.md#listpolicies) - List Policies
+* [listResourceTypes](docs/sdks/iam/README.md#listresourcetypes) - List Resource Types
+* [listResourceUsers](docs/sdks/iam/README.md#listresourceusers) - List Resource Users
 * [listRoles](docs/sdks/iam/README.md#listroles) - List Roles
 * [listUsers](docs/sdks/iam/README.md#listusers) - List Users
 * [updateUser](docs/sdks/iam/README.md#updateuser) - Update User
@@ -371,6 +392,30 @@ run();
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
+
+### [Logs](docs/sdks/logs/README.md)
+
+* [getActionAdvancedLog](docs/sdks/logs/README.md#getactionadvancedlog) - Get Action Advanced Log
+* [getActionDefenderLog](docs/sdks/logs/README.md#getactiondefenderlog) - Get Action Defender Log
+* [getActionLog](docs/sdks/logs/README.md#getactionlog) - Get Action Log
+* [getActionPolicyLog](docs/sdks/logs/README.md#getactionpolicylog) - Get Action Policy Log
+* [getLogsStatsAggregate](docs/sdks/logs/README.md#getlogsstatsaggregate) - Get Logs Stats Aggregate
+* [getLogsStatsDimensions](docs/sdks/logs/README.md#getlogsstatsdimensions) - Get Logs Stats Dimensions
+* [getPlatformLogDimensions](docs/sdks/logs/README.md#getplatformlogdimensions) - Get Platform Log Dimensions
+* [getProviderAdvancedLog](docs/sdks/logs/README.md#getprovideradvancedlog) - Get Provider Advanced Log
+* [getProviderLog](docs/sdks/logs/README.md#getproviderlog) - Get Provider Log
+* [getStepAdvancedLog](docs/sdks/logs/README.md#getstepadvancedlog) - Get Step Advanced Log
+* [getStepLog](docs/sdks/logs/README.md#getsteplog) - Get Step Log
+* [getUnifiedAdvancedLog](docs/sdks/logs/README.md#getunifiedadvancedlog) - Get Unified Advanced Log
+* [getUnifiedLog](docs/sdks/logs/README.md#getunifiedlog) - Get Unified Log
+* [listActionLogs](docs/sdks/logs/README.md#listactionlogs) - List Action Logs
+* [listActionStepLogs](docs/sdks/logs/README.md#listactionsteplogs) - List Action Step Logs
+* [listLogs](docs/sdks/logs/README.md#listlogs) - List Logs
+* [listPlatformLogs](docs/sdks/logs/README.md#listplatformlogs) - List Platform Logs
+* [listProviderLogs](docs/sdks/logs/README.md#listproviderlogs) - List Provider Logs
+* [listStepLogs](docs/sdks/logs/README.md#liststeplogs) - List Step Logs
+* [listUnifiedLogs](docs/sdks/logs/README.md#listunifiedlogs) - List Unified Logs
+* [listUnifiedProviderLogs](docs/sdks/logs/README.md#listunifiedproviderlogs) - List Unified Provider Logs
 
 ### [Marketing](docs/sdks/marketing/README.md)
 
@@ -403,8 +448,6 @@ run();
 
 ### [Mcp](docs/sdks/mcp/README.md)
 
-* [mcpDelete](docs/sdks/mcp/README.md#mcpdelete) - Delete MCP session
-* [mcpGet](docs/sdks/mcp/README.md#mcpget) - Open MCP SSE stream
 * [mcpPost](docs/sdks/mcp/README.md#mcppost) - Send MCP JSON-RPC message
 
 ### [Messaging](docs/sdks/messaging/README.md)
@@ -421,16 +464,9 @@ run();
 * [listUsers](docs/sdks/messaging/README.md#listusers) - List Users
 * [sendMessage](docs/sdks/messaging/README.md#sendmessage) - Send Message
 
-### [Proxy](docs/sdks/proxy/README.md)
+### [~~Proxy~~](docs/sdks/proxy/README.md)
 
-* [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
-
-### [RequestLogs](docs/sdks/requestlogs/README.md)
-
-* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get Log
-* [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
-* [listPlatformLogs](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
-* [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
+* [~~proxyRequest~~](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request (Legacy) :warning: **Deprecated**
 
 ### [Screening](docs/sdks/screening/README.md)
 
@@ -577,10 +613,10 @@ run();
 ### Error Classes
 **Primary errors:**
 * [`StackOneError`](./src/sdk/models/errors/stackoneerror.ts): The base class for HTTP error responses.
-  * [`BadRequestResponse`](./src/sdk/models/errors/badrequestresponse.ts): Invalid request. Status code `400`.
+  * [`BadRequestResponse`](./src/sdk/models/errors/badrequestresponse.ts): Status code `400`.
   * [`UnauthorizedResponse`](./src/sdk/models/errors/unauthorizedresponse.ts): Unauthorized access. Status code `401`.
-  * [`ForbiddenResponse`](./src/sdk/models/errors/forbiddenresponse.ts): Forbidden. Status code `403`.
-  * [`NotFoundResponse`](./src/sdk/models/errors/notfoundresponse.ts): Resource not found. Status code `404`.
+  * [`ForbiddenResponse`](./src/sdk/models/errors/forbiddenresponse.ts): Status code `403`.
+  * [`NotFoundResponse`](./src/sdk/models/errors/notfoundresponse.ts): Status code `404`.
   * [`RequestTimedOutResponse`](./src/sdk/models/errors/requesttimedoutresponse.ts): The request has timed out. Status code `408`.
   * [`ConflictResponse`](./src/sdk/models/errors/conflictresponse.ts): Conflict with current state. Status code `409`.
   * [`UnprocessableEntityResponse`](./src/sdk/models/errors/unprocessableentityresponse.ts): Validation error. Status code `422`.
@@ -588,7 +624,7 @@ run();
   * [`InternalServerErrorResponse`](./src/sdk/models/errors/internalservererrorresponse.ts): Server error while executing the request. Status code `500`.
   * [`NotImplementedResponse`](./src/sdk/models/errors/notimplementedresponse.ts): This functionality is not implemented. Status code `501`.
   * [`BadGatewayResponse`](./src/sdk/models/errors/badgatewayresponse.ts): Bad gateway error. Status code `502`.
-  * [`PreconditionFailedResponse`](./src/sdk/models/errors/preconditionfailedresponse.ts): Precondition failed: linked account belongs to a disabled integration. Status code `412`. *
+  * [`PreconditionFailedResponse`](./src/sdk/models/errors/preconditionfailedresponse.ts): Precondition failed: the linked account is suspended, expired, archived, or in an error state. `errorCode` identifies which. Status code `412`. *
 
 <details><summary>Less common errors (6)</summary>
 
@@ -712,8 +748,13 @@ import { StackOne } from "@stackone/stackone-client-ts";
 const stackOne = new StackOne();
 
 async function run() {
-  const result = await stackOne.mcp.mcpDelete({}, {
-    mcpSessionId: "<id>",
+  const result = await stackOne.mcp.mcpPost({}, {
+    jsonRpcMessageDto: {
+      id: "init-1",
+      jsonrpc: "2.0",
+      method: "initialize",
+      params: {},
+    },
     xAccountId: "<id>",
   });
 
@@ -831,12 +872,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accountingListCompanyTaxRates`](docs/sdks/accounting/README.md#listcompanytaxrates) - List Tax Rates
 - [`accountsDeleteAccount`](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 - [`accountsGetAccount`](docs/sdks/accounts/README.md#getaccount) - Get Account
-- [`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
 - [`actionsBuildActionEmbeddings`](docs/sdks/actions/README.md#buildactionembeddings) - Rebuild action embeddings for semantic search
-- [`actionsListActionsMeta`](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
+- [`actionsCheckPermissions`](docs/sdks/actions/README.md#checkpermissions) - Check user permissions on a resource
+- [`actionsListActionsMeta`](docs/sdks/actions/README.md#listactionsmeta) - List all connectors & actions metadata
 - [`actionsRpcAction`](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
+- [`actionsRpcActionSynced`](docs/sdks/actions/README.md#rpcactionsynced) - Read synced action data from the datasync index
+- [`actionsRpcActionSyncedQueryableFields`](docs/sdks/actions/README.md#rpcactionsyncedqueryablefields) - List the fields a synced action's data can be queried by
 - [`actionsSearchActions`](docs/sdks/actions/README.md#searchactions) - Search connector actions by semantic similarity
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
 - [`atsCreateApplicationNote`](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
@@ -912,10 +955,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsUpdateInterviewNote`](docs/sdks/ats/README.md#updateinterviewnote) - Update Interview Note
 - [`atsUpdateJob`](docs/sdks/ats/README.md#updatejob) - Update Job
 - [`atsUploadApplicationDocument`](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
-- [`connectorsGetConnectorMeta`](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
-- [`connectorsListConnectorsMeta`](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
+- [`connectorProfilesDeleteConnectorProfilePinnedVersion`](docs/sdks/connectorprofiles/README.md#deleteconnectorprofilepinnedversion) - Delete Connector Profile Pinned Version
+- [`connectorProfilesGetConnectorProfilePinnedVersion`](docs/sdks/connectorprofiles/README.md#getconnectorprofilepinnedversion) - Get Connector Profile Pinned Version
+- [`connectorProfilesListConnectorProfiles`](docs/sdks/connectorprofiles/README.md#listconnectorprofiles) - List Connector Profiles
+- [`connectorProfilesListConnectorProfileVersions`](docs/sdks/connectorprofiles/README.md#listconnectorprofileversions) - List Connector Profile Versions
+- [`connectorProfilesUpsertConnectorProfilePinnedVersion`](docs/sdks/connectorprofiles/README.md#upsertconnectorprofilepinnedversion) - Upsert Connector Profile Pinned Version
 - [`connectSessionsAuthenticateConnectSession`](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 - [`connectSessionsCreateConnectSession`](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
+- [`connectSessionsGetConnectSession`](docs/sdks/connectsessions/README.md#getconnectsession) - Get Connect Session
 - [`crmCreateContact`](docs/sdks/crm/README.md#createcontact) - Create Contact
 - [`crmGetAccount`](docs/sdks/crm/README.md#getaccount) - Get Account
 - [`crmGetContact`](docs/sdks/crm/README.md#getcontact) - Get Contact
@@ -1008,11 +1055,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisUploadEmployeeDocument`](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
 - [`iamDeleteUser`](docs/sdks/iam/README.md#deleteuser) - Delete User
 - [`iamGetGroup`](docs/sdks/iam/README.md#getgroup) - Get Group
+- [`iamGetMe`](docs/sdks/iam/README.md#getme) - Get Me
+- [`iamGetOrganization`](docs/sdks/iam/README.md#getorganization) - Get Organization
 - [`iamGetPolicy`](docs/sdks/iam/README.md#getpolicy) - Get Policy
 - [`iamGetRole`](docs/sdks/iam/README.md#getrole) - Get Role
 - [`iamGetUser`](docs/sdks/iam/README.md#getuser) - Get User
 - [`iamListGroups`](docs/sdks/iam/README.md#listgroups) - List Groups
+- [`iamListOrganizations`](docs/sdks/iam/README.md#listorganizations) - List Organizations
 - [`iamListPolicies`](docs/sdks/iam/README.md#listpolicies) - List Policies
+- [`iamListResourceTypes`](docs/sdks/iam/README.md#listresourcetypes) - List Resource Types
+- [`iamListResourceUsers`](docs/sdks/iam/README.md#listresourceusers) - List Resource Users
 - [`iamListRoles`](docs/sdks/iam/README.md#listroles) - List Roles
 - [`iamListUsers`](docs/sdks/iam/README.md#listusers) - List Users
 - [`iamUpdateUser`](docs/sdks/iam/README.md#updateuser) - Update User
@@ -1039,6 +1091,27 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsListUserCompletions`](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 - [`lmsListUsers`](docs/sdks/lms/README.md#listusers) - List Users
 - [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
+- [`logsGetActionAdvancedLog`](docs/sdks/logs/README.md#getactionadvancedlog) - Get Action Advanced Log
+- [`logsGetActionDefenderLog`](docs/sdks/logs/README.md#getactiondefenderlog) - Get Action Defender Log
+- [`logsGetActionLog`](docs/sdks/logs/README.md#getactionlog) - Get Action Log
+- [`logsGetActionPolicyLog`](docs/sdks/logs/README.md#getactionpolicylog) - Get Action Policy Log
+- [`logsGetLogsStatsAggregate`](docs/sdks/logs/README.md#getlogsstatsaggregate) - Get Logs Stats Aggregate
+- [`logsGetLogsStatsDimensions`](docs/sdks/logs/README.md#getlogsstatsdimensions) - Get Logs Stats Dimensions
+- [`logsGetPlatformLogDimensions`](docs/sdks/logs/README.md#getplatformlogdimensions) - Get Platform Log Dimensions
+- [`logsGetProviderAdvancedLog`](docs/sdks/logs/README.md#getprovideradvancedlog) - Get Provider Advanced Log
+- [`logsGetProviderLog`](docs/sdks/logs/README.md#getproviderlog) - Get Provider Log
+- [`logsGetStepAdvancedLog`](docs/sdks/logs/README.md#getstepadvancedlog) - Get Step Advanced Log
+- [`logsGetStepLog`](docs/sdks/logs/README.md#getsteplog) - Get Step Log
+- [`logsGetUnifiedAdvancedLog`](docs/sdks/logs/README.md#getunifiedadvancedlog) - Get Unified Advanced Log
+- [`logsGetUnifiedLog`](docs/sdks/logs/README.md#getunifiedlog) - Get Unified Log
+- [`logsListActionLogs`](docs/sdks/logs/README.md#listactionlogs) - List Action Logs
+- [`logsListActionStepLogs`](docs/sdks/logs/README.md#listactionsteplogs) - List Action Step Logs
+- [`logsListLogs`](docs/sdks/logs/README.md#listlogs) - List Logs
+- [`logsListPlatformLogs`](docs/sdks/logs/README.md#listplatformlogs) - List Platform Logs
+- [`logsListProviderLogs`](docs/sdks/logs/README.md#listproviderlogs) - List Provider Logs
+- [`logsListStepLogs`](docs/sdks/logs/README.md#liststeplogs) - List Step Logs
+- [`logsListUnifiedLogs`](docs/sdks/logs/README.md#listunifiedlogs) - List Unified Logs
+- [`logsListUnifiedProviderLogs`](docs/sdks/logs/README.md#listunifiedproviderlogs) - List Unified Provider Logs
 - [`marketingCreateContentBlock`](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 - [`marketingCreateEmailTemplate`](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
 - [`marketingCreateInAppTemplate`](docs/sdks/marketing/README.md#createinapptemplate) - Create In-App Template
@@ -1061,8 +1134,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdateInAppTemplate`](docs/sdks/marketing/README.md#updateinapptemplate) - Update In-App Template
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
-- [`mcpMCPDelete`](docs/sdks/mcp/README.md#mcpdelete) - Delete MCP session
-- [`mcpMCPGet`](docs/sdks/mcp/README.md#mcpget) - Open MCP SSE stream
 - [`mcpMCPPost`](docs/sdks/mcp/README.md#mcppost) - Send MCP JSON-RPC message
 - [`messagingCreateConversation`](docs/sdks/messaging/README.md#createconversation) - Create Conversation
 - [`messagingDownloadMessagingAttachment`](docs/sdks/messaging/README.md#downloadmessagingattachment) - Download Attachment
@@ -1075,11 +1146,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`messagingListConversations`](docs/sdks/messaging/README.md#listconversations) - List Conversations
 - [`messagingListUsers`](docs/sdks/messaging/README.md#listusers) - List Users
 - [`messagingSendMessage`](docs/sdks/messaging/README.md#sendmessage) - Send Message
-- [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
-- [`requestLogsGetLog`](docs/sdks/requestlogs/README.md#getlog) - Get Log
-- [`requestLogsListLogs`](docs/sdks/requestlogs/README.md#listlogs) - List Logs
-- [`requestLogsListPlatformLogs`](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
-- [`requestLogsListStepLogs`](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
 - [`screeningCreateScreeningOrder`](docs/sdks/screening/README.md#createscreeningorder) - Create Screening Order
 - [`screeningGetScreeningPackage`](docs/sdks/screening/README.md#getscreeningpackage) - Get Screening Package
 - [`screeningListScreeningPackages`](docs/sdks/screening/README.md#listscreeningpackages) - List Screening Packages
@@ -1103,14 +1169,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ticketingListTicketTypes`](docs/sdks/ticketing/README.md#listtickettypes) - List Ticket Types
 - [`ticketingListUsers`](docs/sdks/ticketing/README.md#listusers) - List Users
 - [`ticketingUpdateTicket`](docs/sdks/ticketing/README.md#updateticket) - Update Ticket
+- ~~[`accountsGetAccountMetaInfo`](docs/sdks/accounts/README.md#getaccountmetainfo)~~ - Get Account Meta Information (Legacy) :warning: **Deprecated**
 - ~~[`atsGetInterviewStage`](docs/sdks/ats/README.md#getinterviewstage)~~ - Get Interview Stage :warning: **Deprecated**
 - ~~[`atsListInterviewStages`](docs/sdks/ats/README.md#listinterviewstages)~~ - List Interview Stages :warning: **Deprecated**
+- ~~[`authConfigsListAuthConfigs`](docs/sdks/authconfigs/README.md#listauthconfigs)~~ - List Auth Configs :warning: **Deprecated**
+- ~~[`connectorsGetConnectorMeta`](docs/sdks/connectors/README.md#getconnectormeta)~~ - Get Connector Meta Information (Legacy) :warning: **Deprecated**
+- ~~[`connectorsListConnectorsMeta`](docs/sdks/connectors/README.md#listconnectorsmeta)~~ - List Connector Meta Information (Legacy) :warning: **Deprecated**
 - ~~[`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype)~~ - Get time off type :warning: **Deprecated**
 - ~~[`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes)~~ - List time off types :warning: **Deprecated**
 - ~~[`marketingCreateOmniChannelTemplate`](docs/sdks/marketing/README.md#createomnichanneltemplate)~~ - Create Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingGetOmniChannelTemplate`](docs/sdks/marketing/README.md#getomnichanneltemplate)~~ - Get Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingListOmniChannelTemplates`](docs/sdks/marketing/README.md#listomnichanneltemplates)~~ - List Omni-Channel Templates :warning: **Deprecated**
 - ~~[`marketingUpdateOmniChannelTemplate`](docs/sdks/marketing/README.md#updateomnichanneltemplate)~~ - Update Omni-Channel Template :warning: **Deprecated**
+- ~~[`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest)~~ - Proxy Request (Legacy) :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

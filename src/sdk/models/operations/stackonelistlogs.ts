@@ -9,154 +9,12 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
-/**
- * The field to order the results by.
- */
-export enum QueryParamOrderBy {
-  Provider = "provider",
-  Service = "service",
-  Status = "status",
-  EventDatetime = "eventDatetime",
-  Duration = "duration",
-}
-
-/**
- * The direction to order the results by.
- */
-export enum QueryParamOrderDirection {
-  Asc = "asc",
-  Desc = "desc",
-}
-
-/**
- * Filter parameters that allow greater customisation of the list response
- */
-export type QueryParamFilter = {
-  /**
-   * A comma-separated list of account IDs to filter the results by.
-   */
-  accountIds?: string | null | undefined;
-  /**
-   * A comma-separated list of actions to filter the results by.
-   */
-  actions?: string | null | undefined;
-  /**
-   * A comma-separated list of child resources to filter the results by.
-   */
-  childResources?: string | null | undefined;
-  /**
-   * A ISO8601 date string to filter the results by end_date.
-   */
-  endDate?: Date | null | undefined;
-  /**
-   * A comma-separated list of HTTP methods to filter the results by.
-   */
-  httpMethods?: string | null | undefined;
-  /**
-   * The field to order the results by.
-   */
-  orderBy?: QueryParamOrderBy | null | undefined;
-  /**
-   * The direction to order the results by.
-   */
-  orderDirection?: QueryParamOrderDirection | null | undefined;
-  /**
-   * A comma-separated list of provider keys to filter the results by.
-   */
-  providers?: string | null | undefined;
-  /**
-   * A comma-separated list of request IDs to filter the results by.
-   */
-  requestIds?: string | null | undefined;
-  /**
-   * A comma-separated list of resources to filter the results by.
-   */
-  resources?: string | null | undefined;
-  /**
-   * A comma-separated list of services to filter the results by.
-   */
-  services?: string | null | undefined;
-  /**
-   * A comma-separated list of source IDs to filter the results by.
-   */
-  sourceIds?: string | null | undefined;
-  /**
-   * A comma-separated list of source types to filter the results by.
-   */
-  sourceTypes?: string | null | undefined;
-  /**
-   * A comma-separated list of source values to filter the results by.
-   */
-  sourceValues?: string | null | undefined;
-  /**
-   * A ISO8601 date string to filter the results by start_date.
-   */
-  startDate?: Date | null | undefined;
-  /**
-   * A comma-separated list of status codes to filter the results by.
-   */
-  statusCodes?: string | null | undefined;
-  /**
-   * A comma-separated list of sub resources to filter the results by.
-   */
-  subResources?: string | null | undefined;
-  /**
-   * A boolean value to filter the results by success or failure.
-   */
-  success?: boolean | null | undefined;
-};
-
-/**
- * The include parameter allows you to include additional data in the response.
- */
-export enum StackoneListLogsQueryParamInclude {
-  StepLogs = "step_logs",
-}
-
-/**
- * The field to order the results by.
- */
-export enum OrderBy {
-  Provider = "provider",
-  Service = "service",
-  Status = "status",
-  EventDatetime = "eventDatetime",
-  Duration = "duration",
-}
-
-/**
- * The direction to order the results by.
- */
-export enum OrderDirection {
-  Asc = "asc",
-  Desc = "desc",
-}
-
 export type StackoneListLogsRequest = {
+  logsPostDto: shared.LogsPostDto;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * A comma-separated list of additional fields to expand. Supported values: `connector` (the connector display data — name, logo, categories — for each row). Omitted unless requested, as resolving it is more expensive. `connector_key`, `connector_version` and `connector_owner` are always returned regardless.
    */
-  filter?: QueryParamFilter | null | undefined;
-  /**
-   * The include parameter allows you to include additional data in the response.
-   */
-  include?: StackoneListLogsQueryParamInclude | null | undefined;
-  /**
-   * The unified cursor
-   */
-  next?: string | null | undefined;
-  /**
-   * The field to order the results by.
-   */
-  orderBy?: OrderBy | null | undefined;
-  /**
-   * The direction to order the results by.
-   */
-  orderDirection?: OrderDirection | null | undefined;
-  /**
-   * The number of results per page (default value is 25)
-   */
-  pageSize?: number | null | undefined;
+  expand?: string | null | undefined;
 };
 
 export type StackoneListLogsResponse = {
@@ -166,6 +24,10 @@ export type StackoneListLogsResponse = {
   contentType: string;
   headers: { [k: string]: Array<string> };
   /**
+   * The list of logs was retrieved.
+   */
+  logsPaginated?: shared.LogsPaginated | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -173,117 +35,12 @@ export type StackoneListLogsResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The list of logs was retrieved.
-   */
-  unifiedLogsPaginated?: shared.UnifiedLogsPaginated | undefined;
 };
-
-/** @internal */
-export const QueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamOrderBy
-> = z.nativeEnum(QueryParamOrderBy);
-
-/** @internal */
-export const QueryParamOrderDirection$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamOrderDirection
-> = z.nativeEnum(QueryParamOrderDirection);
-
-/** @internal */
-export type QueryParamFilter$Outbound = {
-  account_ids?: string | null | undefined;
-  actions?: string | null | undefined;
-  child_resources?: string | null | undefined;
-  end_date?: string | null | undefined;
-  http_methods?: string | null | undefined;
-  order_by?: string | null | undefined;
-  order_direction?: string | null | undefined;
-  providers?: string | null | undefined;
-  request_ids?: string | null | undefined;
-  resources?: string | null | undefined;
-  services?: string | null | undefined;
-  source_ids?: string | null | undefined;
-  source_types?: string | null | undefined;
-  source_values?: string | null | undefined;
-  start_date?: string | null | undefined;
-  status_codes?: string | null | undefined;
-  sub_resources?: string | null | undefined;
-  success?: boolean | null | undefined;
-};
-
-/** @internal */
-export const QueryParamFilter$outboundSchema: z.ZodType<
-  QueryParamFilter$Outbound,
-  z.ZodTypeDef,
-  QueryParamFilter
-> = z.object({
-  accountIds: z.nullable(z.string()).optional(),
-  actions: z.nullable(z.string()).optional(),
-  childResources: z.nullable(z.string()).optional(),
-  endDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  httpMethods: z.nullable(z.string()).optional(),
-  orderBy: z.nullable(QueryParamOrderBy$outboundSchema).optional(),
-  orderDirection: z.nullable(QueryParamOrderDirection$outboundSchema)
-    .optional(),
-  providers: z.nullable(z.string()).optional(),
-  requestIds: z.nullable(z.string()).optional(),
-  resources: z.nullable(z.string()).optional(),
-  services: z.nullable(z.string()).optional(),
-  sourceIds: z.nullable(z.string()).optional(),
-  sourceTypes: z.nullable(z.string()).optional(),
-  sourceValues: z.nullable(z.string()).optional(),
-  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  statusCodes: z.nullable(z.string()).optional(),
-  subResources: z.nullable(z.string()).optional(),
-  success: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountIds: "account_ids",
-    childResources: "child_resources",
-    endDate: "end_date",
-    httpMethods: "http_methods",
-    orderBy: "order_by",
-    orderDirection: "order_direction",
-    requestIds: "request_ids",
-    sourceIds: "source_ids",
-    sourceTypes: "source_types",
-    sourceValues: "source_values",
-    startDate: "start_date",
-    statusCodes: "status_codes",
-    subResources: "sub_resources",
-  });
-});
-
-export function queryParamFilterToJSON(
-  queryParamFilter: QueryParamFilter,
-): string {
-  return JSON.stringify(
-    QueryParamFilter$outboundSchema.parse(queryParamFilter),
-  );
-}
-
-/** @internal */
-export const StackoneListLogsQueryParamInclude$outboundSchema: z.ZodNativeEnum<
-  typeof StackoneListLogsQueryParamInclude
-> = z.nativeEnum(StackoneListLogsQueryParamInclude);
-
-/** @internal */
-export const OrderBy$outboundSchema: z.ZodNativeEnum<typeof OrderBy> = z
-  .nativeEnum(OrderBy);
-
-/** @internal */
-export const OrderDirection$outboundSchema: z.ZodNativeEnum<
-  typeof OrderDirection
-> = z.nativeEnum(OrderDirection);
 
 /** @internal */
 export type StackoneListLogsRequest$Outbound = {
-  filter?: QueryParamFilter$Outbound | null | undefined;
-  include?: string | null | undefined;
-  next?: string | null | undefined;
-  order_by?: string | null | undefined;
-  order_direction?: string | null | undefined;
-  page_size?: number | null | undefined;
+  LogsPostDto: shared.LogsPostDto$Outbound;
+  expand?: string | null | undefined;
 };
 
 /** @internal */
@@ -292,18 +49,11 @@ export const StackoneListLogsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneListLogsRequest
 > = z.object({
-  filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
-  include: z.nullable(StackoneListLogsQueryParamInclude$outboundSchema)
-    .optional(),
-  next: z.nullable(z.string()).optional(),
-  orderBy: z.nullable(OrderBy$outboundSchema).optional(),
-  orderDirection: z.nullable(OrderDirection$outboundSchema).optional(),
-  pageSize: z.nullable(z.number()).optional(),
+  logsPostDto: shared.LogsPostDto$outboundSchema,
+  expand: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    orderBy: "order_by",
-    orderDirection: "order_direction",
-    pageSize: "page_size",
+    logsPostDto: "LogsPostDto",
   });
 });
 
@@ -323,16 +73,16 @@ export const StackoneListLogsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())).default({}),
+  LogsPaginated: shared.LogsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  UnifiedLogsPaginated: shared.UnifiedLogsPaginated$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "Headers": "headers",
+    "LogsPaginated": "logsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "UnifiedLogsPaginated": "unifiedLogsPaginated",
   });
 });
 

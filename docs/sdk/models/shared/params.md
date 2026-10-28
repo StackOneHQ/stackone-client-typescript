@@ -1,6 +1,6 @@
 # Params
 
-Method parameters (arbitrary JSON)
+Method parameters. Shape varies by method — see the request body examples.
 
 ## Example Usage
 

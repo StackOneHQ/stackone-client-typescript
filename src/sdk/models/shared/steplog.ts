@@ -5,285 +5,142 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CustomMappingError,
-  CustomMappingError$inboundSchema,
-} from "./custommappingerror.js";
-import { ProviderError, ProviderError$inboundSchema } from "./providererror.js";
 
 /**
- * The request URL data
+ * The type of log
  */
-export type Url = {
-  /**
-   * The request URL hostname
-   */
-  hostname?: string | null | undefined;
-  /**
-   * The request path
-   */
-  path?: string | null | undefined;
-  /**
-   * The request query parameters
-   */
-  queryParams?: { [k: string]: any } | null | undefined;
-  /**
-   * The request URL
-   */
-  url?: string | null | undefined;
-};
-
+export enum StepLogLogType {
+  Step = "step",
+}
 /**
- * The advanced log request data
+ * The type of log
  */
-export type RequestT = {
-  body?: any | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  /**
-   * The request ID
-   */
-  id?: string | null | undefined;
-  /**
-   * The request method
-   */
-  method?: string | null | undefined;
-  /**
-   * The request URL data
-   */
-  url?: Url | null | undefined;
-};
-
-/**
- * The advanced log response data
- */
-export type StepLogResponse = {
-  body?: any | null | undefined;
-  /**
-   * The custom mapping errors
-   */
-  customMappingErrors?: Array<CustomMappingError> | null | undefined;
-  headers?: { [k: string]: any } | null | undefined;
-  /**
-   * The provider errors
-   */
-  providerErrors?: Array<ProviderError> | null | undefined;
-  /**
-   * The response status code
-   */
-  statusCode?: number | null | undefined;
-};
+export type StepLogLogTypeOpen = OpenEnum<typeof StepLogLogType>;
 
 export type StepLog = {
   /**
-   * The account ID of the request
+   * The account ID
    */
   accountId?: string | null | undefined;
   /**
-   * The requested action
+   * The action run ID
    */
-  action?: string | null | undefined;
+  actionRunId: string;
   /**
-   * The requested child resource
+   * The duration in milliseconds
    */
-  childResource?: string | null | undefined;
-  /**
-   * The request duration in milliseconds
-   */
-  duration?: number | null | undefined;
+  durationMs?: number | null | undefined;
   /**
    * The request end time ISO8601 date string
    */
   endTime?: Date | null | undefined;
   /**
-   * The requested HTTP method
+   * The event ISO8601 date string
    */
-  httpMethod?: string | null | undefined;
+  eventTime?: Date | null | undefined;
   /**
-   * The provider request ID
+   * The type of log
    */
-  id?: string | null | undefined;
+  logType: StepLogLogTypeOpen;
   /**
-   * The asynchronous worker flag
+   * The message
    */
-  isWorker?: boolean | null | undefined;
+  message?: string | null | undefined;
   /**
-   * The requested path
-   */
-  path?: string | null | undefined;
-  /**
-   * The project ID of the request
+   * The project ID
    */
   projectId?: string | null | undefined;
   /**
-   * The requested provider
+   * Whether the step was skipped
    */
-  provider?: string | null | undefined;
-  /**
-   * The advanced log request data
-   */
-  request?: RequestT | null | undefined;
-  /**
-   * The request ID
-   */
-  requestId?: string | null | undefined;
-  /**
-   * The requested resource
-   */
-  resource?: string | null | undefined;
-  /**
-   * The advanced log response data
-   */
-  response?: StepLogResponse | null | undefined;
-  /**
-   * The requested service
-   */
-  service?: string | null | undefined;
-  /**
-   * The requests source IPV4 ip address
-   */
-  sourceIp?: string | null | undefined;
+  skipped?: boolean | null | undefined;
   /**
    * The request start time ISO8601 date string
    */
   startTime?: Date | null | undefined;
   /**
-   * The requests response status code
+   * The HTTP status code
    */
-  status?: number | null | undefined;
+  statusCode?: number | null | undefined;
   /**
-   * The requested sub resource
+   * The step function name
    */
-  subResource?: string | null | undefined;
+  stepFunctionName?: string | null | undefined;
   /**
-   * The request success flag
+   * The step function version
+   */
+  stepFunctionVersion?: string | null | undefined;
+  /**
+   * The step ID
+   */
+  stepId?: string | null | undefined;
+  /**
+   * The step index
+   */
+  stepIndex: number;
+  /**
+   * The number of iterations
+   */
+  stepIterations?: number | null | undefined;
+  /**
+   * The success flag
    */
   success?: boolean | null | undefined;
-  /**
-   * The requested URL
-   */
-  url?: string | null | undefined;
 };
 
 /** @internal */
-export const Url$inboundSchema: z.ZodType<Url, z.ZodTypeDef, unknown> = z
-  .object({
-    hostname: z.nullable(z.string()).optional(),
-    path: z.nullable(z.string()).optional(),
-    query_params: z.nullable(z.record(z.any())).optional(),
-    url: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "query_params": "queryParams",
-    });
-  });
-
-export function urlFromJSON(
-  jsonString: string,
-): SafeParseResult<Url, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Url$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Url' from JSON`,
-  );
-}
-
-/** @internal */
-export const RequestT$inboundSchema: z.ZodType<
-  RequestT,
+export const StepLogLogType$inboundSchema: z.ZodType<
+  StepLogLogTypeOpen,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  body: z.nullable(z.any()).optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  id: z.nullable(z.string()).optional(),
-  method: z.nullable(z.string()).optional(),
-  url: z.nullable(z.lazy(() => Url$inboundSchema)).optional(),
-});
-
-export function requestFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestT, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestT' from JSON`,
-  );
-}
-
-/** @internal */
-export const StepLogResponse$inboundSchema: z.ZodType<
-  StepLogResponse,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  body: z.nullable(z.any()).optional(),
-  custom_mapping_errors: z.nullable(z.array(CustomMappingError$inboundSchema))
-    .optional(),
-  headers: z.nullable(z.record(z.any())).optional(),
-  provider_errors: z.nullable(z.array(ProviderError$inboundSchema)).optional(),
-  status_code: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_mapping_errors": "customMappingErrors",
-    "provider_errors": "providerErrors",
-    "status_code": "statusCode",
-  });
-});
-
-export function stepLogResponseFromJSON(
-  jsonString: string,
-): SafeParseResult<StepLogResponse, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StepLogResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StepLogResponse' from JSON`,
-  );
-}
+> = openEnums.inboundSchema(StepLogLogType);
 
 /** @internal */
 export const StepLog$inboundSchema: z.ZodType<StepLog, z.ZodTypeDef, unknown> =
   z.object({
     account_id: z.nullable(z.string()).optional(),
-    action: z.nullable(z.string()).optional(),
-    child_resource: z.nullable(z.string()).optional(),
-    duration: z.nullable(z.number()).optional(),
+    action_run_id: z.string(),
+    duration_ms: z.nullable(z.number()).optional(),
     end_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
-    http_method: z.nullable(z.string()).optional(),
-    id: z.nullable(z.string()).optional(),
-    is_worker: z.nullable(z.boolean()).optional(),
-    path: z.nullable(z.string()).optional(),
+    event_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    log_type: StepLogLogType$inboundSchema,
+    message: z.nullable(z.string()).optional(),
     project_id: z.nullable(z.string()).optional(),
-    provider: z.nullable(z.string()).optional(),
-    request: z.nullable(z.lazy(() => RequestT$inboundSchema)).optional(),
-    request_id: z.nullable(z.string()).optional(),
-    resource: z.nullable(z.string()).optional(),
-    response: z.nullable(z.lazy(() => StepLogResponse$inboundSchema))
-      .optional(),
-    service: z.nullable(z.string()).optional(),
-    source_ip: z.nullable(z.string()).optional(),
+    skipped: z.nullable(z.boolean()).optional(),
     start_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
-    status: z.nullable(z.number()).optional(),
-    sub_resource: z.nullable(z.string()).optional(),
+    status_code: z.nullable(z.number()).optional(),
+    step_function_name: z.nullable(z.string()).optional(),
+    step_function_version: z.nullable(z.string()).optional(),
+    step_id: z.nullable(z.string()).optional(),
+    step_index: z.number(),
+    step_iterations: z.nullable(z.number()).optional(),
     success: z.nullable(z.boolean()).optional(),
-    url: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "account_id": "accountId",
-      "child_resource": "childResource",
+      "action_run_id": "actionRunId",
+      "duration_ms": "durationMs",
       "end_time": "endTime",
-      "http_method": "httpMethod",
-      "is_worker": "isWorker",
+      "event_time": "eventTime",
+      "log_type": "logType",
       "project_id": "projectId",
-      "request_id": "requestId",
-      "source_ip": "sourceIp",
       "start_time": "startTime",
-      "sub_resource": "subResource",
+      "status_code": "statusCode",
+      "step_function_name": "stepFunctionName",
+      "step_function_version": "stepFunctionVersion",
+      "step_id": "stepId",
+      "step_index": "stepIndex",
+      "step_iterations": "stepIterations",
     });
   });
 

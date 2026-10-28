@@ -10,12 +10,17 @@ import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Four = {};
+export type ChannelsEnum4 = {};
 
 /**
  * The source value of the Channels.
  */
-export type SourceValue = string | number | boolean | Four | Array<any>;
+export type ChannelsEnumSourceValue =
+  | string
+  | number
+  | boolean
+  | ChannelsEnum4
+  | Array<any>;
 
 /**
  * The Channels of the campaign.
@@ -42,7 +47,7 @@ export type ChannelsEnum = {
     | string
     | number
     | boolean
-    | Four
+    | ChannelsEnum4
     | Array<any>
     | null
     | undefined;
@@ -53,39 +58,42 @@ export type ChannelsEnum = {
 };
 
 /** @internal */
-export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
-  .object({});
+export const ChannelsEnum4$inboundSchema: z.ZodType<
+  ChannelsEnum4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
-export function fourFromJSON(
+export function channelsEnum4FromJSON(
   jsonString: string,
-): SafeParseResult<Four, SDKValidationError> {
+): SafeParseResult<ChannelsEnum4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Four$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Four' from JSON`,
+    (x) => ChannelsEnum4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelsEnum4' from JSON`,
   );
 }
 
 /** @internal */
-export const SourceValue$inboundSchema: z.ZodType<
-  SourceValue,
+export const ChannelsEnumSourceValue$inboundSchema: z.ZodType<
+  ChannelsEnumSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
   z.string(),
   z.number(),
   z.boolean(),
-  z.lazy(() => Four$inboundSchema),
+  z.lazy(() => ChannelsEnum4$inboundSchema),
   z.array(z.any()),
 ]);
 
-export function sourceValueFromJSON(
+export function channelsEnumSourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<SourceValue, SDKValidationError> {
+): SafeParseResult<ChannelsEnumSourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SourceValue' from JSON`,
+    (x) => ChannelsEnumSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelsEnumSourceValue' from JSON`,
   );
 }
 
@@ -107,7 +115,7 @@ export const ChannelsEnum$inboundSchema: z.ZodType<
       z.string(),
       z.number(),
       z.boolean(),
-      z.lazy(() => Four$inboundSchema),
+      z.lazy(() => ChannelsEnum4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),

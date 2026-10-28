@@ -9,9 +9,25 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
+export type StackoneRpcActionRequest = {
+  actionsRpcRequestDto: shared.ActionsRpcRequestDto;
+  /**
+   * Enable debug mode for the action execution
+   */
+  debug?: boolean | null | undefined;
+  /**
+   * The account identifier
+   */
+  xAccountId: string;
+  /**
+   * Overrides the connector profile associated with the account for this request. The profile must exist in the same project and belong to the same connector as the account, otherwise the request is rejected with a 400 Bad Request.
+   */
+  xConnectorProfileId?: string | undefined;
+};
+
 export type StackoneRpcActionResponse = {
   /**
-   * Action response
+   * Action response.
    */
   actionsRpcResponse?: shared.ActionsRpcResponse | undefined;
   /**
@@ -28,6 +44,40 @@ export type StackoneRpcActionResponse = {
    */
   rawResponse: Response;
 };
+
+/** @internal */
+export type StackoneRpcActionRequest$Outbound = {
+  ActionsRpcRequestDto: shared.ActionsRpcRequestDto$Outbound;
+  debug?: boolean | null | undefined;
+  "x-account-id": string;
+  "x-connector-profile-id"?: string | undefined;
+};
+
+/** @internal */
+export const StackoneRpcActionRequest$outboundSchema: z.ZodType<
+  StackoneRpcActionRequest$Outbound,
+  z.ZodTypeDef,
+  StackoneRpcActionRequest
+> = z.object({
+  actionsRpcRequestDto: shared.ActionsRpcRequestDto$outboundSchema,
+  debug: z.nullable(z.boolean()).optional(),
+  xAccountId: z.string(),
+  xConnectorProfileId: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    actionsRpcRequestDto: "ActionsRpcRequestDto",
+    xAccountId: "x-account-id",
+    xConnectorProfileId: "x-connector-profile-id",
+  });
+});
+
+export function stackoneRpcActionRequestToJSON(
+  stackoneRpcActionRequest: StackoneRpcActionRequest,
+): string {
+  return JSON.stringify(
+    StackoneRpcActionRequest$outboundSchema.parse(stackoneRpcActionRequest),
+  );
+}
 
 /** @internal */
 export const StackoneRpcActionResponse$inboundSchema: z.ZodType<

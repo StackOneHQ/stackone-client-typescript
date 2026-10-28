@@ -7,14 +7,8 @@ import { StackoneSearchActionsResponse } from "@stackone/stackone-client-ts/sdk/
 
 let value: StackoneSearchActionsResponse = {
   contentType: "<value>",
-  headers: {
-    "key": [],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
-    ],
-  },
-  statusCode: 114229,
+  headers: {},
+  statusCode: 661405,
 };
 ```
 

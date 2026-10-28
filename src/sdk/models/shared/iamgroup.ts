@@ -10,6 +10,7 @@ import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IamRole, IamRole$inboundSchema } from "./iamrole.js";
+import { IamUser, IamUser$inboundSchema } from "./iamuser.js";
 
 export type IamGroup4 = {};
 
@@ -44,6 +45,10 @@ export type IamGroupType = {
 };
 
 export type IamGroup = {
+  /**
+   * Ids of groups whose parent_id is this group.
+   */
+  childGroupIds?: Array<string> | null | undefined;
   createdAt?: Date | null | undefined;
   description?: string | null | undefined;
   /**
@@ -51,6 +56,10 @@ export type IamGroup = {
    */
   id?: string | null | undefined;
   name?: string | null | undefined;
+  /**
+   * Id of the organization this group belongs to.
+   */
+  organizationId?: string | null | undefined;
   /**
    * The parent group id for when a group belongs to another group.
    */
@@ -66,6 +75,10 @@ export type IamGroup = {
   roles?: Array<IamRole> | null | undefined;
   type?: IamGroupType | null | undefined;
   updatedAt?: Date | null | undefined;
+  /**
+   * Members of the group. Populated when expand=users is requested.
+   */
+  users?: Array<IamUser> | null | undefined;
 };
 
 /** @internal */
@@ -153,12 +166,14 @@ export const IamGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  child_group_ids: z.nullable(z.array(z.string())).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  organization_id: z.nullable(z.string()).optional(),
   parent_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_parent_id: z.nullable(z.string()).optional(),
@@ -167,9 +182,12 @@ export const IamGroup$inboundSchema: z.ZodType<
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  users: z.nullable(z.array(z.lazy(() => IamUser$inboundSchema))).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "child_group_ids": "childGroupIds",
     "created_at": "createdAt",
+    "organization_id": "organizationId",
     "parent_id": "parentId",
     "remote_id": "remoteId",
     "remote_parent_id": "remoteParentId",

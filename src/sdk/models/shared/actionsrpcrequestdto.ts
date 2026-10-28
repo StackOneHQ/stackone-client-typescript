@@ -6,9 +6,31 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 
 /**
+ * Per-request defender configuration. Takes precedence over defender_enabled and project settings.
+ */
+export type DefenderConfig = {
+  /**
+   * Whether to block tool execution when a HIGH risk score is detected
+   */
+  blockHighRisk?: boolean | null | undefined;
+  /**
+   * Whether to run defender at all
+   */
+  enabled?: boolean | null | undefined;
+  /**
+   * Whether to run tier 1 pattern-based detection
+   */
+  useTier1Classification?: boolean | null | undefined;
+  /**
+   * Whether to run tier 2 ML-based detection
+   */
+  useTier2Classification?: boolean | null | undefined;
+};
+
+/**
  * Query parameters for the action
  */
-export type Query = {
+export type ActionsRpcRequestDtoQuery = {
   /**
    * Enable debug mode for the action execution
    */
@@ -26,6 +48,16 @@ export type ActionsRpcRequestDto = {
    */
   body?: { [k: string]: any } | null | undefined;
   /**
+   * Per-request defender configuration. Takes precedence over defender_enabled and project settings.
+   */
+  defenderConfig?: DefenderConfig | null | undefined;
+  /**
+   * Override the account-level defender enabled setting for this request. Deprecated: use defender_config instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  defenderEnabled?: boolean | null | undefined;
+  /**
    * Headers for the action
    */
   headers?: { [k: string]: any } | null | undefined;
@@ -36,20 +68,50 @@ export type ActionsRpcRequestDto = {
   /**
    * Query parameters for the action
    */
-  query?: Query | null | undefined;
+  query?: ActionsRpcRequestDtoQuery | null | undefined;
 };
 
 /** @internal */
-export type Query$Outbound = {
+export type DefenderConfig$Outbound = {
+  block_high_risk?: boolean | null | undefined;
+  enabled?: boolean | null | undefined;
+  use_tier1_classification?: boolean | null | undefined;
+  use_tier2_classification?: boolean | null | undefined;
+};
+
+/** @internal */
+export const DefenderConfig$outboundSchema: z.ZodType<
+  DefenderConfig$Outbound,
+  z.ZodTypeDef,
+  DefenderConfig
+> = z.object({
+  blockHighRisk: z.nullable(z.boolean()).optional(),
+  enabled: z.nullable(z.boolean()).optional(),
+  useTier1Classification: z.nullable(z.boolean()).optional(),
+  useTier2Classification: z.nullable(z.boolean()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    blockHighRisk: "block_high_risk",
+    useTier1Classification: "use_tier1_classification",
+    useTier2Classification: "use_tier2_classification",
+  });
+});
+
+export function defenderConfigToJSON(defenderConfig: DefenderConfig): string {
+  return JSON.stringify(DefenderConfig$outboundSchema.parse(defenderConfig));
+}
+
+/** @internal */
+export type ActionsRpcRequestDtoQuery$Outbound = {
   debug?: boolean | null | undefined;
   [additionalProperties: string]: unknown;
 };
 
 /** @internal */
-export const Query$outboundSchema: z.ZodType<
-  Query$Outbound,
+export const ActionsRpcRequestDtoQuery$outboundSchema: z.ZodType<
+  ActionsRpcRequestDtoQuery$Outbound,
   z.ZodTypeDef,
-  Query
+  ActionsRpcRequestDtoQuery
 > = z.object({
   additionalProperties: z.record(z.any()).optional(),
   debug: z.nullable(z.boolean()).optional(),
@@ -62,17 +124,23 @@ export const Query$outboundSchema: z.ZodType<
   };
 });
 
-export function queryToJSON(query: Query): string {
-  return JSON.stringify(Query$outboundSchema.parse(query));
+export function actionsRpcRequestDtoQueryToJSON(
+  actionsRpcRequestDtoQuery: ActionsRpcRequestDtoQuery,
+): string {
+  return JSON.stringify(
+    ActionsRpcRequestDtoQuery$outboundSchema.parse(actionsRpcRequestDtoQuery),
+  );
 }
 
 /** @internal */
 export type ActionsRpcRequestDto$Outbound = {
   action: string;
   body?: { [k: string]: any } | null | undefined;
+  defender_config?: DefenderConfig$Outbound | null | undefined;
+  defender_enabled?: boolean | null | undefined;
   headers?: { [k: string]: any } | null | undefined;
   path?: { [k: string]: any } | null | undefined;
-  query?: Query$Outbound | null | undefined;
+  query?: ActionsRpcRequestDtoQuery$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -83,9 +151,18 @@ export const ActionsRpcRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   action: z.string(),
   body: z.nullable(z.record(z.any())).optional(),
+  defenderConfig: z.nullable(z.lazy(() => DefenderConfig$outboundSchema))
+    .optional(),
+  defenderEnabled: z.nullable(z.boolean()).optional(),
   headers: z.nullable(z.record(z.any())).optional(),
   path: z.nullable(z.record(z.any())).optional(),
-  query: z.nullable(z.lazy(() => Query$outboundSchema)).optional(),
+  query: z.nullable(z.lazy(() => ActionsRpcRequestDtoQuery$outboundSchema))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    defenderConfig: "defender_config",
+    defenderEnabled: "defender_enabled",
+  });
 });
 
 export function actionsRpcRequestDtoToJSON(

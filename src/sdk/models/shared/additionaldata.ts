@@ -8,7 +8,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 /**
  * The value of the additional data
  */
-export type Value = string | Array<string>;
+export type AdditionalDataValue = string | Array<string>;
 
 export type AdditionalData = {
   /**
@@ -26,17 +26,21 @@ export type AdditionalData = {
 };
 
 /** @internal */
-export type Value$Outbound = string | Array<string>;
+export type AdditionalDataValue$Outbound = string | Array<string>;
 
 /** @internal */
-export const Value$outboundSchema: z.ZodType<
-  Value$Outbound,
+export const AdditionalDataValue$outboundSchema: z.ZodType<
+  AdditionalDataValue$Outbound,
   z.ZodTypeDef,
-  Value
+  AdditionalDataValue
 > = z.union([z.string(), z.array(z.string())]);
 
-export function valueToJSON(value: Value): string {
-  return JSON.stringify(Value$outboundSchema.parse(value));
+export function additionalDataValueToJSON(
+  additionalDataValue: AdditionalDataValue,
+): string {
+  return JSON.stringify(
+    AdditionalDataValue$outboundSchema.parse(additionalDataValue),
+  );
 }
 
 /** @internal */

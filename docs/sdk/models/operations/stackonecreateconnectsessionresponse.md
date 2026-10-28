@@ -15,7 +15,7 @@ let value: StackoneCreateConnectSessionResponse = {
     ],
     "key1": [],
   },
-  statusCode: 163694,
+  statusCode: 419952,
 };
 ```
 

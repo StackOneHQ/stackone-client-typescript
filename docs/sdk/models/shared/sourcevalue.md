@@ -1,14 +1,12 @@
 # SourceValue
 
-The source value of the Channels.
-
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = "SMS";
+const value: string = "<value>";
 ```
 
 ### `number`

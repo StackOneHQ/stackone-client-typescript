@@ -5,7 +5,7 @@
 ```typescript
 import { Include } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: Include = Include.AuthenticationGuides;
+let value: Include = Include.EventGuides;
 ```
 
 ## Values
@@ -14,3 +14,4 @@ let value: Include = Include.AuthenticationGuides;
 | ---------------------- | ---------------------- |
 | `ActionDetails`        | action_details         |
 | `AuthenticationGuides` | authentication_guides  |
+| `EventGuides`          | event_guides           |

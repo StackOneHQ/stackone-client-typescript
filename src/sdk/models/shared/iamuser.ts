@@ -10,31 +10,33 @@ import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Content, Content$inboundSchema } from "./content.js";
+import { FileT, FileT$inboundSchema } from "./file.js";
 import { IamGroup, IamGroup$inboundSchema } from "./iamgroup.js";
 import {
   IamMfaTypeEnum,
   IamMfaTypeEnum$inboundSchema,
 } from "./iammfatypeenum.js";
+import { IamPermission, IamPermission$inboundSchema } from "./iampermission.js";
 import { IamRole, IamRole$inboundSchema } from "./iamrole.js";
 
-export type IamUserSchemasAvatar4 = {};
+export type SchemasFile4 = {};
 
-export type IamUserSchemasAvatarSourceValue =
+export type SchemasFileSourceValue =
   | string
   | number
   | boolean
-  | IamUserSchemasAvatar4
+  | SchemasFile4
   | Array<any>;
 
 /**
  * The category of the file
  */
-export type IamUserCategory = {
+export type SchemasCategory = {
   sourceValue?:
     | string
     | number
     | boolean
-    | IamUserSchemasAvatar4
+    | SchemasFile4
     | Array<any>
     | null
     | undefined;
@@ -44,19 +46,19 @@ export type IamUserCategory = {
   value?: string | null | undefined;
 };
 
-export type IamUserSchemas4 = {};
+export type Schemas4 = {};
 
-export type IamUserSchemasSourceValue =
+export type SchemasSourceValue =
   | string
   | number
   | boolean
-  | IamUserSchemas4
+  | Schemas4
   | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
  */
-export enum IamUserSchemasValue {
+export enum SchemasValue {
   UnmappedValue = "unmapped_value",
   Ez = "ez",
   Aw = "aw",
@@ -1272,34 +1274,31 @@ export enum IamUserSchemasValue {
 /**
  * The file format of the file, expressed as a file extension
  */
-export type IamUserSchemasValueOpen = OpenEnum<typeof IamUserSchemasValue>;
+export type SchemasValueOpen = OpenEnum<typeof SchemasValue>;
 
 /**
  * The file format of the file
  */
-export type IamUserFileFormat = {
+export type FileFormat = {
   sourceValue?:
     | string
     | number
     | boolean
-    | IamUserSchemas4
+    | Schemas4
     | Array<any>
     | null
     | undefined;
   /**
    * The file format of the file, expressed as a file extension
    */
-  value?: IamUserSchemasValueOpen | null | undefined;
+  value?: SchemasValueOpen | null | undefined;
 };
 
-/**
- * The user's avatar data. This generally contains a URL within this property's 'contents' array.
- */
-export type IamUserAvatar = {
+export type FileSchemas = {
   /**
    * The category of the file
    */
-  category?: IamUserCategory | null | undefined;
+  category?: SchemasCategory | null | undefined;
   /**
    * The categoryId of the documents
    */
@@ -1317,7 +1316,7 @@ export type IamUserAvatar = {
   /**
    * The file format of the file
    */
-  fileFormat?: IamUserFileFormat | null | undefined;
+  fileFormat?: FileFormat | null | undefined;
   /**
    * Unique identifier
    */
@@ -1339,6 +1338,11 @@ export type IamUserAvatar = {
    */
   updatedAt?: Date | null | undefined;
 };
+
+/**
+ * The user's avatar data. This generally contains a URL within this property's 'contents' array. May be either a single File object or an array of File objects depending on the connector — both forms are supported.
+ */
+export type IamUserAvatar = FileSchemas | Array<FileT>;
 
 export enum IamUser2 {
   True = "true",
@@ -1390,9 +1394,9 @@ export type IamUserStatus = {
 
 export type IamUser = {
   /**
-   * The user's avatar data. This generally contains a URL within this property's 'contents' array.
+   * The user's avatar data. This generally contains a URL within this property's 'contents' array. May be either a single File object or an array of File objects depending on the connector — both forms are supported.
    */
-  avatar?: IamUserAvatar | null | undefined;
+  avatar?: FileSchemas | Array<FileT> | null | undefined;
   /**
    * The date the user was created
    */
@@ -1428,6 +1432,77 @@ export type IamUser = {
    */
   name?: string | null | undefined;
   /**
+   * Direct permissions granted to the user (not inherited via roles or groups).
+   */
+  permissions?: Array<IamPermission> | null | undefined;
+  /**
+   * Primary email address of the user. This is generally a work email address.
+   */
+  primaryEmailAddress?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+  /**
+   * List of roles the user is assigned to
+   */
+  roles?: Array<IamRole> | null | undefined;
+  status?: IamUserStatus | null | undefined;
+  /**
+   * Custom Unified Fields configured in your StackOne project
+   */
+  unifiedCustomFields?: { [k: string]: any } | null | undefined;
+  /**
+   * The date the user was created
+   */
+  updatedAt?: Date | null | undefined;
+  username?: string | null | undefined;
+};
+
+export type IamUserInput = {
+  /**
+   * The user's avatar data. This generally contains a URL within this property's 'contents' array. May be either a single File object or an array of File objects depending on the connector — both forms are supported.
+   */
+  avatar?: FileSchemas | Array<FileT> | null | undefined;
+  /**
+   * The date the user was created
+   */
+  createdAt?: Date | null | undefined;
+  firstName?: string | null | undefined;
+  /**
+   * List of groups the user is assigned to
+   */
+  groups?: Array<IamGroup> | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  /**
+   * Indicates if the user is a bot or service user
+   */
+  isBotUser?: boolean | IamUser2 | null | undefined;
+  /**
+   * The date this user was last active
+   */
+  lastActiveAt?: Date | null | undefined;
+  /**
+   * The date this user last logged in
+   */
+  lastLoginAt?: Date | null | undefined;
+  lastName?: string | null | undefined;
+  /**
+   * The list of Multi-Factor Authentication (MFA) types enabled for the user.
+   */
+  multiFactorEnabled?: Array<IamMfaTypeEnum> | null | undefined;
+  /**
+   * User's name which (can be a full name or display name)
+   */
+  name?: string | null | undefined;
+  /**
+   * Direct permissions granted to the user (not inherited via roles or groups).
+   */
+  permissions?: Array<IamPermission> | null | undefined;
+  /**
    * Primary email address of the user. This is generally a work email address.
    */
   primaryEmailAddress?: string | null | undefined;
@@ -1452,48 +1527,48 @@ export type IamUser = {
 };
 
 /** @internal */
-export const IamUserSchemasAvatar4$inboundSchema: z.ZodType<
-  IamUserSchemasAvatar4,
+export const SchemasFile4$inboundSchema: z.ZodType<
+  SchemasFile4,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function iamUserSchemasAvatar4FromJSON(
+export function schemasFile4FromJSON(
   jsonString: string,
-): SafeParseResult<IamUserSchemasAvatar4, SDKValidationError> {
+): SafeParseResult<SchemasFile4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamUserSchemasAvatar4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUserSchemasAvatar4' from JSON`,
+    (x) => SchemasFile4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasFile4' from JSON`,
   );
 }
 
 /** @internal */
-export const IamUserSchemasAvatarSourceValue$inboundSchema: z.ZodType<
-  IamUserSchemasAvatarSourceValue,
+export const SchemasFileSourceValue$inboundSchema: z.ZodType<
+  SchemasFileSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
   z.string(),
   z.number(),
   z.boolean(),
-  z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
+  z.lazy(() => SchemasFile4$inboundSchema),
   z.array(z.any()),
 ]);
 
-export function iamUserSchemasAvatarSourceValueFromJSON(
+export function schemasFileSourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<IamUserSchemasAvatarSourceValue, SDKValidationError> {
+): SafeParseResult<SchemasFileSourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamUserSchemasAvatarSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUserSchemasAvatarSourceValue' from JSON`,
+    (x) => SchemasFileSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasFileSourceValue' from JSON`,
   );
 }
 
 /** @internal */
-export const IamUserCategory$inboundSchema: z.ZodType<
-  IamUserCategory,
+export const SchemasCategory$inboundSchema: z.ZodType<
+  SchemasCategory,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1502,7 +1577,7 @@ export const IamUserCategory$inboundSchema: z.ZodType<
       z.string(),
       z.number(),
       z.boolean(),
-      z.lazy(() => IamUserSchemasAvatar4$inboundSchema),
+      z.lazy(() => SchemasFile4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
@@ -1513,66 +1588,66 @@ export const IamUserCategory$inboundSchema: z.ZodType<
   });
 });
 
-export function iamUserCategoryFromJSON(
+export function schemasCategoryFromJSON(
   jsonString: string,
-): SafeParseResult<IamUserCategory, SDKValidationError> {
+): SafeParseResult<SchemasCategory, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamUserCategory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUserCategory' from JSON`,
+    (x) => SchemasCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasCategory' from JSON`,
   );
 }
 
 /** @internal */
-export const IamUserSchemas4$inboundSchema: z.ZodType<
-  IamUserSchemas4,
+export const Schemas4$inboundSchema: z.ZodType<
+  Schemas4,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function iamUserSchemas4FromJSON(
+export function schemas4FromJSON(
   jsonString: string,
-): SafeParseResult<IamUserSchemas4, SDKValidationError> {
+): SafeParseResult<Schemas4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamUserSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUserSchemas4' from JSON`,
+    (x) => Schemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schemas4' from JSON`,
   );
 }
 
 /** @internal */
-export const IamUserSchemasSourceValue$inboundSchema: z.ZodType<
-  IamUserSchemasSourceValue,
+export const SchemasSourceValue$inboundSchema: z.ZodType<
+  SchemasSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
   z.string(),
   z.number(),
   z.boolean(),
-  z.lazy(() => IamUserSchemas4$inboundSchema),
+  z.lazy(() => Schemas4$inboundSchema),
   z.array(z.any()),
 ]);
 
-export function iamUserSchemasSourceValueFromJSON(
+export function schemasSourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<IamUserSchemasSourceValue, SDKValidationError> {
+): SafeParseResult<SchemasSourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamUserSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUserSchemasSourceValue' from JSON`,
+    (x) => SchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchemasSourceValue' from JSON`,
   );
 }
 
 /** @internal */
-export const IamUserSchemasValue$inboundSchema: z.ZodType<
-  IamUserSchemasValueOpen,
+export const SchemasValue$inboundSchema: z.ZodType<
+  SchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(IamUserSchemasValue);
+> = openEnums.inboundSchema(SchemasValue);
 
 /** @internal */
-export const IamUserFileFormat$inboundSchema: z.ZodType<
-  IamUserFileFormat,
+export const FileFormat$inboundSchema: z.ZodType<
+  FileFormat,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1581,41 +1656,40 @@ export const IamUserFileFormat$inboundSchema: z.ZodType<
       z.string(),
       z.number(),
       z.boolean(),
-      z.lazy(() => IamUserSchemas4$inboundSchema),
+      z.lazy(() => Schemas4$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(IamUserSchemasValue$inboundSchema).optional(),
+  value: z.nullable(SchemasValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
   });
 });
 
-export function iamUserFileFormatFromJSON(
+export function fileFormatFromJSON(
   jsonString: string,
-): SafeParseResult<IamUserFileFormat, SDKValidationError> {
+): SafeParseResult<FileFormat, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamUserFileFormat$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamUserFileFormat' from JSON`,
+    (x) => FileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FileFormat' from JSON`,
   );
 }
 
 /** @internal */
-export const IamUserAvatar$inboundSchema: z.ZodType<
-  IamUserAvatar,
+export const FileSchemas$inboundSchema: z.ZodType<
+  FileSchemas,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  category: z.nullable(z.lazy(() => IamUserCategory$inboundSchema)).optional(),
+  category: z.nullable(z.lazy(() => SchemasCategory$inboundSchema)).optional(),
   category_id: z.nullable(z.string()).optional(),
   contents: z.nullable(z.array(Content$inboundSchema)).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  file_format: z.nullable(z.lazy(() => IamUserFileFormat$inboundSchema))
-    .optional(),
+  file_format: z.nullable(z.lazy(() => FileFormat$inboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
@@ -1633,6 +1707,26 @@ export const IamUserAvatar$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
   });
 });
+
+export function fileSchemasFromJSON(
+  jsonString: string,
+): SafeParseResult<FileSchemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FileSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FileSchemas' from JSON`,
+  );
+}
+
+/** @internal */
+export const IamUserAvatar$inboundSchema: z.ZodType<
+  IamUserAvatar,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => FileSchemas$inboundSchema),
+  z.array(FileT$inboundSchema),
+]);
 
 export function iamUserAvatarFromJSON(
   jsonString: string,
@@ -1747,12 +1841,18 @@ export function iamUserStatusFromJSON(
 /** @internal */
 export const IamUser$inboundSchema: z.ZodType<IamUser, z.ZodTypeDef, unknown> =
   z.object({
-    avatar: z.nullable(z.lazy(() => IamUserAvatar$inboundSchema)).optional(),
+    avatar: z.nullable(
+      z.union([
+        z.lazy(() => FileSchemas$inboundSchema),
+        z.array(FileT$inboundSchema),
+      ]),
+    ).optional(),
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
     first_name: z.nullable(z.string()).optional(),
-    groups: z.nullable(z.array(IamGroup$inboundSchema)).optional(),
+    groups: z.nullable(z.array(z.lazy(() => IamGroup$inboundSchema)))
+      .optional(),
     id: z.nullable(z.string()).optional(),
     is_bot_user: z.nullable(z.union([z.boolean(), IamUser2$inboundSchema]))
       .optional(),
@@ -1766,6 +1866,7 @@ export const IamUser$inboundSchema: z.ZodType<IamUser, z.ZodTypeDef, unknown> =
     multi_factor_enabled: z.nullable(z.array(IamMfaTypeEnum$inboundSchema))
       .optional(),
     name: z.nullable(z.string()).optional(),
+    permissions: z.nullable(z.array(IamPermission$inboundSchema)).optional(),
     primary_email_address: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
     roles: z.nullable(z.array(IamRole$inboundSchema)).optional(),
@@ -1798,5 +1899,71 @@ export function iamUserFromJSON(
     jsonString,
     (x) => IamUser$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'IamUser' from JSON`,
+  );
+}
+
+/** @internal */
+export const IamUserInput$inboundSchema: z.ZodType<
+  IamUserInput,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: z.nullable(
+    z.union([
+      z.lazy(() => FileSchemas$inboundSchema),
+      z.array(FileT$inboundSchema),
+    ]),
+  ).optional(),
+  created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  first_name: z.nullable(z.string()).optional(),
+  groups: z.nullable(z.array(IamGroup$inboundSchema)).optional(),
+  id: z.nullable(z.string()).optional(),
+  is_bot_user: z.nullable(z.union([z.boolean(), IamUser2$inboundSchema]))
+    .optional(),
+  last_active_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  last_login_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  last_name: z.nullable(z.string()).optional(),
+  multi_factor_enabled: z.nullable(z.array(IamMfaTypeEnum$inboundSchema))
+    .optional(),
+  name: z.nullable(z.string()).optional(),
+  permissions: z.nullable(z.array(IamPermission$inboundSchema)).optional(),
+  primary_email_address: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+  roles: z.nullable(z.array(IamRole$inboundSchema)).optional(),
+  status: z.nullable(z.lazy(() => IamUserStatus$inboundSchema)).optional(),
+  unified_custom_fields: z.nullable(z.record(z.any())).optional(),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  username: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
+    "first_name": "firstName",
+    "is_bot_user": "isBotUser",
+    "last_active_at": "lastActiveAt",
+    "last_login_at": "lastLoginAt",
+    "last_name": "lastName",
+    "multi_factor_enabled": "multiFactorEnabled",
+    "primary_email_address": "primaryEmailAddress",
+    "remote_id": "remoteId",
+    "unified_custom_fields": "unifiedCustomFields",
+    "updated_at": "updatedAt",
+  });
+});
+
+export function iamUserInputFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserInput' from JSON`,
   );
 }

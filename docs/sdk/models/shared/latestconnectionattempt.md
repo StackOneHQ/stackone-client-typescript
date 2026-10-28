@@ -1,0 +1,28 @@
+# LatestConnectionAttempt
+
+The most recent connection attempt initiated against this session, if any. Use this to poll for OAuth completion: when status is "authenticated", the resulting account is at account_secure_id.
+
+## Example Usage
+
+```typescript
+import { ConnectSessionStatus, LatestConnectionAttempt } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LatestConnectionAttempt = {
+  createdAt: new Date("2025-09-14T08:46:11.173Z"),
+  id: "<id>",
+  status: ConnectSessionStatus.Pending,
+  updatedAt: new Date("2024-01-30T10:38:49.554Z"),
+};
+```
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     | Example                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `accountSecureId`                                                                                               | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | The secure id of the account created/updated by this attempt. Populated only after a successful authentication. |                                                                                                                 |
+| `createdAt`                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                   | :heavy_check_mark:                                                                                              | N/A                                                                                                             |                                                                                                                 |
+| `id`                                                                                                            | *string*                                                                                                        | :heavy_check_mark:                                                                                              | N/A                                                                                                             |                                                                                                                 |
+| `oauthErrorCode`                                                                                                | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |                                                                                                                 |
+| `oauthErrorDescription`                                                                                         | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |                                                                                                                 |
+| `status`                                                                                                        | [shared.ConnectSessionStatus](../../../sdk/models/shared/connectsessionstatus.md)                               | :heavy_minus_sign:                                                                                              | N/A                                                                                                             | pending                                                                                                         |
+| `updatedAt`                                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                   | :heavy_check_mark:                                                                                              | N/A                                                                                                             |                                                                                                                 |

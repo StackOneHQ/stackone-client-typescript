@@ -3,45 +3,35 @@
 ## Example Usage
 
 ```typescript
-import { IamResourceValue, IamRoleResult, IamRoleValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { IamPermissionValue, IamRoleResult, IamRoleValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamRoleResult = {
   data: {
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    policies: [
+    permissions: [
       {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "Remote Contractor Policy",
-        permissions: [
+        name: "read:users",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        scopes: [
           {
-            createdAt: new Date("2021-01-01T01:01:01.000Z"),
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "read:users",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            resources: [
-              {
-                createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                location: "s3://bucket-name/folder-name",
-                name: "Company History Records",
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                type: {
-                  value: IamResourceValue.File,
-                },
-                updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-              },
-            ],
-            type: null,
-            updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+            resourceId: "C0123456789",
+            resourceType: "channel",
           },
         ],
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        type: {
+          value: IamPermissionValue.ReadWrite,
+        },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    scope: {
+      resourceId: "group_abc123",
+      resourceType: "group",
+    },
     type: {
       value: IamRoleValue.Admin,
     },

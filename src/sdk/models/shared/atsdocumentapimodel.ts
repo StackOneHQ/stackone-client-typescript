@@ -21,6 +21,33 @@ export type AtsDocumentApiModelSourceValue =
   | Array<any>;
 
 /**
+ * The category of the file
+ */
+export enum AtsDocumentApiModelValue {
+  Resume = "resume",
+  Avatar = "avatar",
+  CoverLetter = "cover_letter",
+  ProfilePicture = "profile_picture",
+  Policy = "policy",
+  Passport = "passport",
+  Assessment = "assessment",
+  InterviewAttachment = "interview_attachment",
+  TakeHomeTest = "take_home_test",
+  OfferLetter = "offer_letter",
+  SignedOfferLetter = "signed_offer_letter",
+  NationalId = "national_id",
+  OfferPacket = "offer_packet",
+  Other = "other",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The category of the file
+ */
+export type AtsDocumentApiModelValueOpen = OpenEnum<
+  typeof AtsDocumentApiModelValue
+>;
+
+/**
  * The category of the the document
  */
 export type AtsDocumentApiModelCategory = {
@@ -35,7 +62,7 @@ export type AtsDocumentApiModelCategory = {
   /**
    * The category of the file
    */
-  value?: string | null | undefined;
+  value?: AtsDocumentApiModelValueOpen | null | undefined;
 };
 
 export type AtsDocumentApiModelSchemas4 = {};
@@ -50,7 +77,7 @@ export type AtsDocumentApiModelSchemasSourceValue =
 /**
  * The file format of the file, expressed as a file extension
  */
-export enum AtsDocumentApiModelValue {
+export enum AtsDocumentApiModelSchemasValue {
   UnmappedValue = "unmapped_value",
   Ez = "ez",
   Aw = "aw",
@@ -1266,14 +1293,14 @@ export enum AtsDocumentApiModelValue {
 /**
  * The file format of the file, expressed as a file extension
  */
-export type AtsDocumentApiModelValueOpen = OpenEnum<
-  typeof AtsDocumentApiModelValue
+export type AtsDocumentApiModelSchemasValueOpen = OpenEnum<
+  typeof AtsDocumentApiModelSchemasValue
 >;
 
 /**
  * The file format of the file
  */
-export type FileFormat = {
+export type AtsDocumentApiModelFileFormat = {
   sourceValue?:
     | string
     | number
@@ -1285,7 +1312,7 @@ export type FileFormat = {
   /**
    * The file format of the file, expressed as a file extension
    */
-  value?: AtsDocumentApiModelValueOpen | null | undefined;
+  value?: AtsDocumentApiModelSchemasValueOpen | null | undefined;
 };
 
 export type AtsDocumentApiModelSchemasType4 = {};
@@ -1300,7 +1327,7 @@ export type AtsDocumentApiModelSchemasTypeSourceValue =
 /**
  * The category of the file
  */
-export enum AtsDocumentApiModelSchemasValue {
+export enum AtsDocumentApiModelSchemasTypeValue {
   Resume = "resume",
   Avatar = "avatar",
   CoverLetter = "cover_letter",
@@ -1320,8 +1347,8 @@ export enum AtsDocumentApiModelSchemasValue {
 /**
  * The category of the file
  */
-export type AtsDocumentApiModelSchemasValueOpen = OpenEnum<
-  typeof AtsDocumentApiModelSchemasValue
+export type AtsDocumentApiModelSchemasTypeValueOpen = OpenEnum<
+  typeof AtsDocumentApiModelSchemasTypeValue
 >;
 
 /**
@@ -1341,7 +1368,7 @@ export type AtsDocumentApiModelType = {
   /**
    * The category of the file
    */
-  value?: AtsDocumentApiModelSchemasValueOpen | null | undefined;
+  value?: AtsDocumentApiModelSchemasTypeValueOpen | null | undefined;
 };
 
 export type AtsDocumentApiModel = {
@@ -1366,7 +1393,7 @@ export type AtsDocumentApiModel = {
   /**
    * The file format of the file
    */
-  fileFormat?: FileFormat | null | undefined;
+  fileFormat?: AtsDocumentApiModelFileFormat | null | undefined;
   /**
    * Unique identifier
    */
@@ -1440,6 +1467,13 @@ export function atsDocumentApiModelSourceValueFromJSON(
 }
 
 /** @internal */
+export const AtsDocumentApiModelValue$inboundSchema: z.ZodType<
+  AtsDocumentApiModelValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AtsDocumentApiModelValue);
+
+/** @internal */
 export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
   AtsDocumentApiModelCategory,
   z.ZodTypeDef,
@@ -1454,7 +1488,7 @@ export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.string()).optional(),
+  value: z.nullable(AtsDocumentApiModelValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -1513,15 +1547,15 @@ export function atsDocumentApiModelSchemasSourceValueFromJSON(
 }
 
 /** @internal */
-export const AtsDocumentApiModelValue$inboundSchema: z.ZodType<
-  AtsDocumentApiModelValueOpen,
+export const AtsDocumentApiModelSchemasValue$inboundSchema: z.ZodType<
+  AtsDocumentApiModelSchemasValueOpen,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AtsDocumentApiModelValue);
+> = openEnums.inboundSchema(AtsDocumentApiModelSchemasValue);
 
 /** @internal */
-export const FileFormat$inboundSchema: z.ZodType<
-  FileFormat,
+export const AtsDocumentApiModelFileFormat$inboundSchema: z.ZodType<
+  AtsDocumentApiModelFileFormat,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1534,20 +1568,20 @@ export const FileFormat$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(AtsDocumentApiModelValue$inboundSchema).optional(),
+  value: z.nullable(AtsDocumentApiModelSchemasValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
   });
 });
 
-export function fileFormatFromJSON(
+export function atsDocumentApiModelFileFormatFromJSON(
   jsonString: string,
-): SafeParseResult<FileFormat, SDKValidationError> {
+): SafeParseResult<AtsDocumentApiModelFileFormat, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FileFormat$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FileFormat' from JSON`,
+    (x) => AtsDocumentApiModelFileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelFileFormat' from JSON`,
   );
 }
 
@@ -1598,11 +1632,11 @@ export function atsDocumentApiModelSchemasTypeSourceValueFromJSON(
 }
 
 /** @internal */
-export const AtsDocumentApiModelSchemasValue$inboundSchema: z.ZodType<
-  AtsDocumentApiModelSchemasValueOpen,
+export const AtsDocumentApiModelSchemasTypeValue$inboundSchema: z.ZodType<
+  AtsDocumentApiModelSchemasTypeValueOpen,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AtsDocumentApiModelSchemasValue);
+> = openEnums.inboundSchema(AtsDocumentApiModelSchemasTypeValue);
 
 /** @internal */
 export const AtsDocumentApiModelType$inboundSchema: z.ZodType<
@@ -1619,7 +1653,8 @@ export const AtsDocumentApiModelType$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(AtsDocumentApiModelSchemasValue$inboundSchema).optional(),
+  value: z.nullable(AtsDocumentApiModelSchemasTypeValue$inboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -1649,7 +1684,9 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  file_format: z.nullable(z.lazy(() => FileFormat$inboundSchema)).optional(),
+  file_format: z.nullable(
+    z.lazy(() => AtsDocumentApiModelFileFormat$inboundSchema),
+  ).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),

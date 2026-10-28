@@ -10,7 +10,9 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Connectors extends ClientSDK {
   /**
-   * Get Connector Meta Information
+   * Get Connector Meta Information (Legacy)
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getConnectorMeta(
     request: operations.StackoneGetConnectorMetaRequest,
@@ -24,7 +26,9 @@ export class Connectors extends ClientSDK {
   }
 
   /**
-   * List Connector Meta Information
+   * List Connector Meta Information (Legacy)
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listConnectorsMeta(
     request: operations.StackoneListConnectorsMetaRequest,

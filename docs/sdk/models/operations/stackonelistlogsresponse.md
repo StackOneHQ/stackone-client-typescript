@@ -8,24 +8,23 @@ import { StackoneListLogsResponse } from "@stackone/stackone-client-ts/sdk/model
 let value: StackoneListLogsResponse = {
   contentType: "<value>",
   headers: {
-    "key": [
+    "key": [],
+    "key1": [],
+    "key2": [
       "<value 1>",
       "<value 2>",
-      "<value 3>",
     ],
-    "key1": [],
-    "key2": [],
   },
-  statusCode: 734244,
+  statusCode: 438650,
 };
 ```
 
 ## Fields
 
-| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `contentType`                                                                     | *string*                                                                          | :heavy_check_mark:                                                                | HTTP response content type for this operation                                     |
-| `headers`                                                                         | Record<string, *string*[]>                                                        | :heavy_check_mark:                                                                | N/A                                                                               |
-| `statusCode`                                                                      | *number*                                                                          | :heavy_check_mark:                                                                | HTTP response status code for this operation                                      |
-| `rawResponse`                                                                     | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)             | :heavy_check_mark:                                                                | Raw HTTP response; suitable for custom response parsing                           |
-| `unifiedLogsPaginated`                                                            | [shared.UnifiedLogsPaginated](../../../sdk/models/shared/unifiedlogspaginated.md) | :heavy_minus_sign:                                                                | The list of logs was retrieved.                                                   |
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `contentType`                                                         | *string*                                                              | :heavy_check_mark:                                                    | HTTP response content type for this operation                         |
+| `headers`                                                             | Record<string, *string*[]>                                            | :heavy_check_mark:                                                    | N/A                                                                   |
+| `logsPaginated`                                                       | [shared.LogsPaginated](../../../sdk/models/shared/logspaginated.md)   | :heavy_minus_sign:                                                    | The list of logs was retrieved.                                       |
+| `statusCode`                                                          | *number*                                                              | :heavy_check_mark:                                                    | HTTP response status code for this operation                          |
+| `rawResponse`                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) | :heavy_check_mark:                                                    | Raw HTTP response; suitable for custom response parsing               |

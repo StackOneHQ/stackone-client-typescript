@@ -3,9 +3,63 @@
  */
 
 import * as z from "zod/v3";
+import { safeParse } from "../../../lib/schemas.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import * as shared from "../shared/index.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import { StackOneError } from "./stackoneerror.js";
 
+/**
+ * The account status that blocked the request
+ */
+export enum Status {
+  Suspended = "suspended",
+  Expired = "expired",
+  Archived = "archived",
+  Error = "error",
+}
+/**
+ * The account status that blocked the request
+ */
+export type StatusOpen = OpenEnum<typeof Status>;
+
+export type Details = {
+  /**
+   * When the test account expired. Present when status is expired
+   */
+  expiresAt?: Date | null | undefined;
+  /**
+   * The account status that blocked the request
+   */
+  status: StatusOpen;
+  /**
+   * Why the account is in an error state. Present when status is error
+   */
+  statusReasons?: Array<shared.StatusReason> | null | undefined;
+};
+
+/**
+ * Identifies which account status blocked the request
+ */
+export enum ErrorCode {
+  AccountSuspendedError = "AccountSuspendedError",
+  AccountExpiredError = "AccountExpiredError",
+  AccountArchivedError = "AccountArchivedError",
+  AccountErrorStatus = "AccountErrorStatus",
+}
+/**
+ * Identifies which account status blocked the request
+ */
+export type ErrorCodeOpen = OpenEnum<typeof ErrorCode>;
+
 export type PreconditionFailedResponseData = {
+  details?: Details | null | undefined;
+  /**
+   * Identifies which account status blocked the request
+   */
+  errorCode: ErrorCodeOpen;
   /**
    * Error message
    */
@@ -21,6 +75,11 @@ export type PreconditionFailedResponseData = {
 };
 
 export class PreconditionFailedResponse extends StackOneError {
+  details?: Details | null | undefined;
+  /**
+   * Identifies which account status blocked the request
+   */
+  errorCode: ErrorCodeOpen;
   /**
    * Timestamp when the error occurred
    */
@@ -36,6 +95,8 @@ export class PreconditionFailedResponse extends StackOneError {
     const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
+    if (err.details != null) this.details = err.details;
+    this.errorCode = err.errorCode;
     this.timestamp = err.timestamp;
 
     this.name = "PreconditionFailedResponse";
@@ -43,11 +104,48 @@ export class PreconditionFailedResponse extends StackOneError {
 }
 
 /** @internal */
+export const Status$inboundSchema: z.ZodType<
+  StatusOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(Status);
+
+/** @internal */
+export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
+  z.object({
+    expiresAt: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    status: Status$inboundSchema,
+    statusReasons: z.nullable(z.array(shared.StatusReason$inboundSchema))
+      .optional(),
+  });
+
+export function detailsFromJSON(
+  jsonString: string,
+): SafeParseResult<Details, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Details$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Details' from JSON`,
+  );
+}
+
+/** @internal */
+export const ErrorCode$inboundSchema: z.ZodType<
+  ErrorCodeOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ErrorCode);
+
+/** @internal */
 export const PreconditionFailedResponse$inboundSchema: z.ZodType<
   PreconditionFailedResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  details: z.nullable(z.lazy(() => Details$inboundSchema)).optional(),
+  errorCode: ErrorCode$inboundSchema,
   message: z.string(),
   statusCode: z.number(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),

@@ -46,6 +46,13 @@ export type StackoneListLinkedAccountsRequest = {
   status?: Array<string> | undefined;
 };
 
+/**
+ * The list of accounts was retrieved.
+ */
+export type StackoneListLinkedAccountsResponseBody =
+  | shared.LinkedAccountsPaginated
+  | Array<shared.LinkedAccount>;
+
 export type StackoneListLinkedAccountsResponse = {
   /**
    * HTTP response content type for this operation
@@ -63,7 +70,10 @@ export type StackoneListLinkedAccountsResponse = {
   /**
    * The list of accounts was retrieved.
    */
-  classes?: Array<shared.LinkedAccount> | undefined;
+  oneOf?:
+    | shared.LinkedAccountsPaginated
+    | Array<shared.LinkedAccount>
+    | undefined;
 };
 
 /** @internal */
@@ -112,6 +122,27 @@ export function stackoneListLinkedAccountsRequestToJSON(
 }
 
 /** @internal */
+export const StackoneListLinkedAccountsResponseBody$inboundSchema: z.ZodType<
+  StackoneListLinkedAccountsResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  shared.LinkedAccountsPaginated$inboundSchema,
+  z.array(shared.LinkedAccount$inboundSchema),
+]);
+
+export function stackoneListLinkedAccountsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneListLinkedAccountsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StackoneListLinkedAccountsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneListLinkedAccountsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const StackoneListLinkedAccountsResponse$inboundSchema: z.ZodType<
   StackoneListLinkedAccountsResponse,
   z.ZodTypeDef,
@@ -121,7 +152,10 @@ export const StackoneListLinkedAccountsResponse$inboundSchema: z.ZodType<
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  classes: z.array(shared.LinkedAccount$inboundSchema).optional(),
+  oneOf: z.union([
+    shared.LinkedAccountsPaginated$inboundSchema,
+    z.array(shared.LinkedAccount$inboundSchema),
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
