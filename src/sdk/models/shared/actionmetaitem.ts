@@ -54,6 +54,10 @@ export type ActionMetaItem = {
    */
   supportsIncremental?: boolean | null | undefined;
   /**
+   * Whether the action supports deletion verification, so its sync config can set `verify_deletions`.
+   */
+  supportsVerifyDeletions?: boolean | null | undefined;
+  /**
    * Whether this action can be synced with the datasync v2 sync engine.
    */
   syncable?: boolean | null | undefined;
@@ -80,6 +84,7 @@ export const ActionMetaItem$inboundSchema: z.ZodType<
   required_scopes: z.nullable(z.array(z.string())).optional(),
   schema_type: z.nullable(z.string()).optional(),
   supports_incremental: z.nullable(z.boolean()).optional(),
+  supports_verify_deletions: z.nullable(z.boolean()).optional(),
   syncable: z.nullable(z.boolean()).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
@@ -90,6 +95,7 @@ export const ActionMetaItem$inboundSchema: z.ZodType<
     "required_scopes": "requiredScopes",
     "schema_type": "schemaType",
     "supports_incremental": "supportsIncremental",
+    "supports_verify_deletions": "supportsVerifyDeletions",
   });
 });
 
