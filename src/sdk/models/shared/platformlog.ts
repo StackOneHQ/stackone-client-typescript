@@ -131,11 +131,11 @@ export type PlatformLog = {
    */
   userAgent?: string | null | undefined;
   /**
-   * The actor's email, as authenticated by the IDP — for a dashboard user session, for a signed internal call whose forwarded session resolved an authorization context naming the same user the signature did, or for an IDP user api key whose verification returned its owner's email. Absent for project api keys, and for signed internal calls without that context, which carry a user id alone. On an event with no resolved user at all — a failed sign-in, which has neither a user id nor an organization — it is the only thing identifying who acted.
+   * The actor's email, as authenticated by the IDP — for a dashboard user session, for a signed internal call whose forwarded session resolved an authorization context naming the same user the signature did, for an IDP user api key whose verification returned its owner's email, or for a personal api key, as the email stored on the key when it was created. Absent for project api keys, and for signed internal calls without that context, which carry a user id alone. On an event with no resolved user at all — a failed sign-in, which has neither a user id nor an organization — it is the only thing identifying who acted.
    */
   userEmail?: string | null | undefined;
   /**
-   * The user the operation is attributed to. Always an identity the credential actually authenticated — a dashboard user session, the signature-covered user id on internal calls, or the verified owner of an IDP user api key. Absent for project api keys and minted session tokens, which carry no dashboard-user identity.
+   * The user the operation is attributed to. Always an identity the credential actually authenticated — a dashboard user session, the signature-covered user id on internal calls, the verified owner of an IDP user api key, or the owner of a personal api key. Absent for project api keys and minted session tokens, which carry no dashboard-user identity.
    */
   userId?: string | null | undefined;
 };

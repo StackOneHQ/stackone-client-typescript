@@ -11,6 +11,10 @@ import * as shared from "../shared/index.js";
 
 export type StackoneGetActionLogRequest = {
   actionRunId: string;
+  /**
+   * A comma-separated list of additional fields to expand. Supported values: `connector` (the connector display data — name, logo, categories — for each row) and `effects` (what each action row's action does to the external system, such as `read` or `write`). Both are returned only when requested. `connector_key`, `connector_version` and `connector_owner` are always returned regardless.
+   */
+  expand?: string | null | undefined;
 };
 
 export type StackoneGetActionLogResponse = {
@@ -36,6 +40,7 @@ export type StackoneGetActionLogResponse = {
 /** @internal */
 export type StackoneGetActionLogRequest$Outbound = {
   actionRunId: string;
+  expand?: string | null | undefined;
 };
 
 /** @internal */
@@ -45,6 +50,7 @@ export const StackoneGetActionLogRequest$outboundSchema: z.ZodType<
   StackoneGetActionLogRequest
 > = z.object({
   actionRunId: z.string(),
+  expand: z.nullable(z.string()).optional(),
 });
 
 export function stackoneGetActionLogRequestToJSON(

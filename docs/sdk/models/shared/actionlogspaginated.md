@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ActionLogsPaginated, LogType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ActionLogsPaginated, Effects, LogType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ActionLogsPaginated = {
   data: [
@@ -31,6 +31,9 @@ let value: ActionLogsPaginated = {
       connectorProfileId: "profile-123",
       connectorVersion: "1.0.0",
       durationMs: 356,
+      effects: [
+        Effects.Read,
+      ],
       endTime: new Date("2021-01-01T00:00:00Z"),
       eventTime: new Date("2021-01-01T00:00:00Z"),
       httpMethod: "GET",

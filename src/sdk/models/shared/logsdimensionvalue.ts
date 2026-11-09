@@ -13,7 +13,7 @@ export type LogsDimensionValue = {
    */
   count: number;
   /**
-   * A human-readable label for the value. Currently only resolved for the `connector_key` dimension, where it is the connector display name (falling back to the key itself when the connector is unknown). Absent for every other dimension.
+   * A human-readable label for the value. Resolved for the `connector_key` dimension, where it is the connector display name (falling back to the key itself when the connector is unknown), and for the `account_secure_id` dimension, where it is the account name (falling back to the account ID when the account is unknown or has no name). Absent for every other dimension.
    */
   label?: string | null | undefined;
   /**

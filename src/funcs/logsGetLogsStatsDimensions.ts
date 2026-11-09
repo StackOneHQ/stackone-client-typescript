@@ -31,7 +31,7 @@ import { Result } from "../sdk/types/fp.js";
  * Get Logs Stats Dimensions
  *
  * @remarks
- * Returns the distinct values available for the requested dimensions (for example connector, account, or status code). Use to populate filter controls and build breakdowns. Values of the `connector_key` dimension also carry a `label` holding the connector display name.
+ * Returns the distinct values available for the requested dimensions (for example connector, account, or status code). Use to populate filter controls and build breakdowns. Values of the `connector_key` dimension also carry a `label` holding the connector display name, and values of the `account_secure_id` dimension carry a `label` holding the account name (the account ID when the account has no name).
  *
  * If set, this operation will use {@link Security.password} from the global security.
  */

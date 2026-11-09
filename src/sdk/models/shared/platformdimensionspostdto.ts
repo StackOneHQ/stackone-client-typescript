@@ -142,7 +142,7 @@ export type PlatformDimensionsPostDtoFilters = {
    */
   transportType?: Array<string> | null | undefined;
   /**
-   * Filter by the actor's email. Recorded when the request carried a dashboard user session, whose identity the IDP authenticated; absent for api keys and for signed internal calls, which carry a user id alone. On an event with no resolved user at all — a failed sign-in, which has neither a user id nor an organization — it is the only thing identifying who acted.
+   * Filter by the actor's email. Recorded when the request carried a dashboard user session, whose identity the IDP authenticated; recorded too for a personal api key, as the email stored on the key when it was created; absent for project api keys and for signed internal calls, which carry a user id alone. On an event with no resolved user at all — a failed sign-in, which has neither a user id nor an organization — it is the only thing identifying who acted.
    */
   userEmail?: Array<string> | null | undefined;
   /**

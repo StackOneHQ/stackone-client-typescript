@@ -9,6 +9,14 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
+export type StackoneListActionLogsRequest = {
+  actionLogsPostDto: shared.ActionLogsPostDto;
+  /**
+   * A comma-separated list of additional fields to expand. Supported values: `connector` (the connector display data — name, logo, categories — for each row) and `effects` (what each action row's action does to the external system, such as `read` or `write`). Both are returned only when requested. `connector_key`, `connector_version` and `connector_owner` are always returned regardless.
+   */
+  expand?: string | null | undefined;
+};
+
 export type StackoneListActionLogsResponse = {
   /**
    * The list of action logs was retrieved.
@@ -28,6 +36,36 @@ export type StackoneListActionLogsResponse = {
    */
   rawResponse: Response;
 };
+
+/** @internal */
+export type StackoneListActionLogsRequest$Outbound = {
+  ActionLogsPostDto: shared.ActionLogsPostDto$Outbound;
+  expand?: string | null | undefined;
+};
+
+/** @internal */
+export const StackoneListActionLogsRequest$outboundSchema: z.ZodType<
+  StackoneListActionLogsRequest$Outbound,
+  z.ZodTypeDef,
+  StackoneListActionLogsRequest
+> = z.object({
+  actionLogsPostDto: shared.ActionLogsPostDto$outboundSchema,
+  expand: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    actionLogsPostDto: "ActionLogsPostDto",
+  });
+});
+
+export function stackoneListActionLogsRequestToJSON(
+  stackoneListActionLogsRequest: StackoneListActionLogsRequest,
+): string {
+  return JSON.stringify(
+    StackoneListActionLogsRequest$outboundSchema.parse(
+      stackoneListActionLogsRequest,
+    ),
+  );
+}
 
 /** @internal */
 export const StackoneListActionLogsResponse$inboundSchema: z.ZodType<

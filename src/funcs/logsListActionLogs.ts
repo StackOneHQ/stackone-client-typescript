@@ -3,7 +3,7 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -23,7 +23,6 @@ import { ResponseValidationError } from "../sdk/models/errors/responsevalidation
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import { StackOneError } from "../sdk/models/errors/stackoneerror.js";
 import * as operations from "../sdk/models/operations/index.js";
-import * as shared from "../sdk/models/shared/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
@@ -37,7 +36,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function logsListActionLogs(
   client: StackOneCore,
-  request: shared.ActionLogsPostDto,
+  request: operations.StackoneListActionLogsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -72,7 +71,7 @@ export function logsListActionLogs(
 
 async function $do(
   client: StackOneCore,
-  request: shared.ActionLogsPostDto,
+  request: operations.StackoneListActionLogsRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -103,16 +102,21 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.ActionLogsPostDto$outboundSchema.parse(value),
+    (value) =>
+      operations.StackoneListActionLogsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.ActionLogsPostDto, { explode: true });
 
   const path = pathToFunc("/logs/actions")();
+
+  const query = encodeFormQuery({
+    "expand": payload.expand,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -153,6 +157,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

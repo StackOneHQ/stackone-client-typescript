@@ -228,6 +228,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.logs.getActionLog({
     actionRunId: "<id>",
+    expand: "connector,effects",
   });
 
   console.log(result);
@@ -256,6 +257,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await logsGetActionLog(stackOne, {
     actionRunId: "<id>",
+    expand: "connector,effects",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -482,7 +484,7 @@ run();
 
 ## getLogsStatsDimensions
 
-Returns the distinct values available for the requested dimensions (for example connector, account, or status code). Use to populate filter controls and build breakdowns. Values of the `connector_key` dimension also carry a `label` holding the connector display name.
+Returns the distinct values available for the requested dimensions (for example connector, account, or status code). Use to populate filter controls and build breakdowns. Values of the `connector_key` dimension also carry a `label` holding the connector display name, and values of the `account_secure_id` dimension carry a `label` holding the account name (the account ID when the account has no name).
 
 ### Example Usage
 
@@ -1417,49 +1419,52 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.logs.listActionLogs({
-    filters: {
-      accountSecureId: [
-        "45355976281015164504",
-      ],
-      actionId: [
-        "get_employees",
-      ],
-      actionRunId: [
-        "adbf752f-6457-4ddd-89b3-98ae2252b83b",
-      ],
-      actionType: [
-        "sync",
-      ],
-      category: [
-        "hris",
-      ],
-      connectorKey: [
-        "slack",
-      ],
-      connectorVersion: [
-        "1.0.0",
-      ],
-      endTime: "2025-01-31T23:59:59.999Z",
-      mode: [
-        "production",
-      ],
-      originOwnerId: [
-        "owner-123",
-      ],
-      sourceId: [
-        "1234567890",
-      ],
-      sourceType: [
-        "DASHBOARD",
-      ],
-      startTime: "2025-01-01T00:00:00.000Z",
-      statusCode: [
-        "200",
-      ],
-      success: true,
+    actionLogsPostDto: {
+      filters: {
+        accountSecureId: [
+          "45355976281015164504",
+        ],
+        actionId: [
+          "get_employees",
+        ],
+        actionRunId: [
+          "adbf752f-6457-4ddd-89b3-98ae2252b83b",
+        ],
+        actionType: [
+          "sync",
+        ],
+        category: [
+          "hris",
+        ],
+        connectorKey: [
+          "slack",
+        ],
+        connectorVersion: [
+          "1.0.0",
+        ],
+        endTime: "2025-01-31T23:59:59.999Z",
+        mode: [
+          "production",
+        ],
+        originOwnerId: [
+          "owner-123",
+        ],
+        sourceId: [
+          "1234567890",
+        ],
+        sourceType: [
+          "DASHBOARD",
+        ],
+        startTime: "2025-01-01T00:00:00.000Z",
+        statusCode: [
+          "200",
+        ],
+        success: true,
+      },
+      page: 1,
+      pageSize: 25,
     },
-    page: 1,
-    pageSize: 25,
+    expand: "connector,effects",
   });
 
   console.log(result);
@@ -1487,49 +1492,52 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await logsListActionLogs(stackOne, {
-    filters: {
-      accountSecureId: [
-        "45355976281015164504",
-      ],
-      actionId: [
-        "get_employees",
-      ],
-      actionRunId: [
-        "adbf752f-6457-4ddd-89b3-98ae2252b83b",
-      ],
-      actionType: [
-        "sync",
-      ],
-      category: [
-        "hris",
-      ],
-      connectorKey: [
-        "slack",
-      ],
-      connectorVersion: [
-        "1.0.0",
-      ],
-      endTime: "2025-01-31T23:59:59.999Z",
-      mode: [
-        "production",
-      ],
-      originOwnerId: [
-        "owner-123",
-      ],
-      sourceId: [
-        "1234567890",
-      ],
-      sourceType: [
-        "DASHBOARD",
-      ],
-      startTime: "2025-01-01T00:00:00.000Z",
-      statusCode: [
-        "200",
-      ],
-      success: true,
+    actionLogsPostDto: {
+      filters: {
+        accountSecureId: [
+          "45355976281015164504",
+        ],
+        actionId: [
+          "get_employees",
+        ],
+        actionRunId: [
+          "adbf752f-6457-4ddd-89b3-98ae2252b83b",
+        ],
+        actionType: [
+          "sync",
+        ],
+        category: [
+          "hris",
+        ],
+        connectorKey: [
+          "slack",
+        ],
+        connectorVersion: [
+          "1.0.0",
+        ],
+        endTime: "2025-01-31T23:59:59.999Z",
+        mode: [
+          "production",
+        ],
+        originOwnerId: [
+          "owner-123",
+        ],
+        sourceId: [
+          "1234567890",
+        ],
+        sourceType: [
+          "DASHBOARD",
+        ],
+        startTime: "2025-01-01T00:00:00.000Z",
+        statusCode: [
+          "200",
+        ],
+        success: true,
+      },
+      page: 1,
+      pageSize: 25,
     },
-    page: 1,
-    pageSize: 25,
+    expand: "connector,effects",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1546,7 +1554,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [shared.ActionLogsPostDto](../../sdk/models/shared/actionlogspostdto.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.StackoneListActionLogsRequest](../../sdk/models/operations/stackonelistactionlogsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
