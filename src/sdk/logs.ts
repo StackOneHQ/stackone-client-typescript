@@ -118,7 +118,7 @@ export class Logs extends ClientSDK {
    * Get Logs Stats Dimensions
    *
    * @remarks
-   * Returns the distinct values available for the requested dimensions (for example connector, account, or status code). Use to populate filter controls and build breakdowns. Values of the `connector_key` dimension also carry a `label` holding the connector display name.
+   * Returns the distinct values available for the requested dimensions (for example connector, account, or status code). Use to populate filter controls and build breakdowns. Values of the `connector_key` dimension also carry a `label` holding the connector display name, and values of the `account_secure_id` dimension carry a `label` holding the account name (the account ID when the account has no name).
    */
   async getLogsStatsDimensions(
     request: shared.DimensionsPostDto,
@@ -257,7 +257,7 @@ export class Logs extends ClientSDK {
    * Returns a paginated list of action logs. Each row summarises a single action or RPC execution and includes an `action_run_id` for drilling into its detail, steps, and advanced payloads.
    */
   async listActionLogs(
-    request: shared.ActionLogsPostDto,
+    request: operations.StackoneListActionLogsRequest,
     options?: RequestOptions,
   ): Promise<operations.StackoneListActionLogsResponse> {
     return unwrapAsync(logsListActionLogs(

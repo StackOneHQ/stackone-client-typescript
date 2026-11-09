@@ -40,6 +40,15 @@ export type Connector = {
   version: string | null;
 };
 
+export enum Effects {
+  Read = "read",
+  Write = "write",
+  Delete = "delete",
+  Search = "search",
+  Execute = "execute",
+  UnmappedValue = "unmapped_value",
+}
+
 /**
  * The type of log
  */
@@ -108,6 +117,10 @@ export type ActionLog = {
    * The duration in milliseconds
    */
   durationMs?: number | null | undefined;
+  /**
+   * What the action does to the external system, as declared by the connector version the call ran on. Returned only with `?expand=effects`, and `null` otherwise. Empty when the action declares none. `null` when the effects can't be determined: a legacy connector version, or a connector or action that's no longer available to the project.
+   */
+  effects?: Array<Effects> | null | undefined;
   /**
    * The request end time ISO8601 date string
    */
@@ -235,6 +248,10 @@ export function connectorFromJSON(
 }
 
 /** @internal */
+export const Effects$inboundSchema: z.ZodNativeEnum<typeof Effects> = z
+  .nativeEnum(Effects);
+
+/** @internal */
 export const LogType$inboundSchema: z.ZodType<
   LogTypeOpen,
   z.ZodTypeDef,
@@ -261,6 +278,7 @@ export const ActionLog$inboundSchema: z.ZodType<
   connector_profile_id: z.nullable(z.string()).optional(),
   connector_version: z.nullable(z.string()).optional(),
   duration_ms: z.nullable(z.number()).optional(),
+  effects: z.nullable(z.array(Effects$inboundSchema)).optional(),
   end_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),

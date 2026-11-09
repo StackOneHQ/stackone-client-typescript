@@ -30,6 +30,9 @@ const value: shared.ActionLog = {
   connectorProfileId: "profile-123",
   connectorVersion: "1.0.0",
   durationMs: 356,
+  effects: [
+    Effects.Read,
+  ],
   endTime: new Date("2021-01-01T00:00:00Z"),
   eventTime: new Date("2021-01-01T00:00:00Z"),
   httpMethod: "GET",
