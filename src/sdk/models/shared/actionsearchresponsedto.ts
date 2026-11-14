@@ -27,9 +27,17 @@ export type ActionSearchResponseDto = {
   query: string;
   results: Array<ActionSearchResultDto>;
   /**
+   * Per connector key, the number of rows returned in this result window, seeded to 0 for every connector key the caller asked for. This is a window count, not a match count: read 0 as "not indexed yet" only when `truncated` is false, since a full window can crowd out a connector that is fully indexed.
+   */
+  returnedByConnector?: { [k: string]: number } | undefined;
+  /**
    * Total number of results returned
    */
   totalCount: number;
+  /**
+   * Whether the vector store filled the entire top_k budget, so results were cut off.
+   */
+  truncated?: boolean | undefined;
 };
 
 /** @internal */
@@ -42,11 +50,14 @@ export const ActionSearchResponseDto$inboundSchema: z.ZodType<
   project_filter: z.string().optional(),
   query: z.string(),
   results: z.array(ActionSearchResultDto$inboundSchema),
+  returned_by_connector: z.record(z.number()).optional(),
   total_count: z.number(),
+  truncated: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     "connector_filter": "connectorFilter",
     "project_filter": "projectFilter",
+    "returned_by_connector": "returnedByConnector",
     "total_count": "totalCount",
   });
 });

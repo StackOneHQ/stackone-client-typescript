@@ -12,8 +12,12 @@ let value: StackoneAuthenticateConnectSessionResponse = {
       "<value 1>",
       "<value 2>",
     ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+    ],
   },
-  statusCode: 714797,
+  statusCode: 703003,
 };
 ```
 

@@ -3,8 +3,11 @@
  */
 
 import { actionsBuildActionEmbeddings } from "../funcs/actionsBuildActionEmbeddings.js";
+import { actionsCheckPermissions } from "../funcs/actionsCheckPermissions.js";
 import { actionsListActionsMeta } from "../funcs/actionsListActionsMeta.js";
 import { actionsRpcAction } from "../funcs/actionsRpcAction.js";
+import { actionsRpcActionSynced } from "../funcs/actionsRpcActionSynced.js";
+import { actionsRpcActionSyncedQueryableFields } from "../funcs/actionsRpcActionSyncedQueryableFields.js";
 import { actionsSearchActions } from "../funcs/actionsSearchActions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { PageIterator, unwrapResultIterator } from "../sdk/types/operations.js";
@@ -28,10 +31,27 @@ export class Actions extends ClientSDK {
   }
 
   /**
-   * List all actions metadata
+   * Check user permissions on a resource
    *
    * @remarks
-   * Retrieves a list of all actions metadata
+   * Checks what permissions a user has on a given resource. Delegates to the connected provider's `unified_check_permissions` action.
+   */
+  async checkPermissions(
+    request: operations.StackoneCheckPermissionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneCheckPermissionsResponse> {
+    return unwrapAsync(actionsCheckPermissions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List all connectors & actions metadata
+   *
+   * @remarks
+   * Retrieves metadata for all connectors and their actions available on the platform. Use this endpoint to discover which connectors and actions are available, including those that have not yet been configured, for example to display the full catalog of integrations and actions.
    */
   async listActionsMeta(
     request: operations.StackoneListActionsMetaRequest,
@@ -53,7 +73,7 @@ export class Actions extends ClientSDK {
    * Makes a remote procedure call to the specified action
    */
   async rpcAction(
-    request: shared.ActionsRpcRequestDto,
+    request: operations.StackoneRpcActionRequest,
     options?: RequestOptions,
   ): Promise<operations.StackoneRpcActionResponse> {
     return unwrapAsync(actionsRpcAction(
@@ -64,7 +84,44 @@ export class Actions extends ClientSDK {
   }
 
   /**
+   * Read synced action data from the datasync index
+   *
+   * @remarks
+   * Returns previously synced data for an action, read from the Data Sync index rather than the provider. Responds with a refusal when no sync can be selected to serve the read.
+   */
+  async rpcActionSynced(
+    request: operations.StackoneRpcActionSyncedRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneRpcActionSyncedResponse> {
+    return unwrapAsync(actionsRpcActionSynced(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List the fields a synced action's data can be queried by
+   *
+   * @remarks
+   * Returns the field names and types accepted by `filter`, `sort`, `source` and `aggs` on `POST /actions/rpc/synced`, discovered from this account's synced records. Returns an empty `fields` list when the action is not sync-enabled for the account or has no readable sync yet.
+   */
+  async rpcActionSyncedQueryableFields(
+    request: operations.StackoneRpcActionSyncedQueryableFieldsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneRpcActionSyncedQueryableFieldsResponse> {
+    return unwrapAsync(actionsRpcActionSyncedQueryableFields(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Search connector actions by semantic similarity
+   *
+   * @remarks
+   * Ranks the project's connector actions by how closely they match a natural-language query, so an agent can find the right action without reading the whole catalog.
    */
   async searchActions(
     request: shared.ActionSearchDto,

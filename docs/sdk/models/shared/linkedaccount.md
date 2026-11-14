@@ -6,6 +6,10 @@
 import { LinkedAccount, LinkedAccountStatus, LinkedAccountType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LinkedAccount = {
+  categories: [
+    "hris",
+    "ats",
+  ],
   createdAt: new Date("2026-06-23T01:46:11.129Z"),
   id: "<id>",
   originOwnerId: "<id>",
@@ -21,6 +25,7 @@ let value: LinkedAccount = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `categories`                                                                                  | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | The categories this provider belongs to (e.g., hris, ats, crm)                                | [<br/>"hris",<br/>"ats"<br/>]                                                                 |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `credentials`                                                                                 | [shared.Credentials](../../../sdk/models/shared/credentials.md)                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
 | `id`                                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |

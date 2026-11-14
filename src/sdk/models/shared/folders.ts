@@ -64,6 +64,10 @@ export type Folders = {
    */
   hasContent?: boolean | FoldersSchemas2 | null | undefined;
   /**
+   * The icon of the folder, either an emoji character or an image url
+   */
+  icon?: string | null | undefined;
+  /**
    * Unique identifier
    */
   id?: string | null | undefined;
@@ -193,6 +197,7 @@ export const Folders$inboundSchema: z.ZodType<Folders, z.ZodTypeDef, unknown> =
     has_content: z.nullable(
       z.union([z.boolean(), FoldersSchemas2$inboundSchema]),
     ).optional(),
+    icon: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     is_root: z.nullable(
       z.union([z.boolean(), FoldersSchemasIsRoot2$inboundSchema]),

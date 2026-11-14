@@ -12,7 +12,7 @@ import * as shared from "../shared/index.js";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type AccountingListCompaniesQueryParamFilter = {
+export type QueryParamFilter = {
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -31,7 +31,7 @@ export type AccountingListCompaniesRequest = {
   /**
    * Filter parameters that allow greater customisation of the list response
    */
-  filter?: AccountingListCompaniesQueryParamFilter | null | undefined;
+  filter?: QueryParamFilter | null | undefined;
   /**
    * The unified cursor
    */
@@ -89,15 +89,15 @@ export type AccountingListCompaniesResponse = {
 };
 
 /** @internal */
-export type AccountingListCompaniesQueryParamFilter$Outbound = {
+export type QueryParamFilter$Outbound = {
   updated_after?: string | null | undefined;
 };
 
 /** @internal */
-export const AccountingListCompaniesQueryParamFilter$outboundSchema: z.ZodType<
-  AccountingListCompaniesQueryParamFilter$Outbound,
+export const QueryParamFilter$outboundSchema: z.ZodType<
+  QueryParamFilter$Outbound,
   z.ZodTypeDef,
-  AccountingListCompaniesQueryParamFilter
+  QueryParamFilter
 > = z.object({
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
@@ -106,14 +106,11 @@ export const AccountingListCompaniesQueryParamFilter$outboundSchema: z.ZodType<
   });
 });
 
-export function accountingListCompaniesQueryParamFilterToJSON(
-  accountingListCompaniesQueryParamFilter:
-    AccountingListCompaniesQueryParamFilter,
+export function queryParamFilterToJSON(
+  queryParamFilter: QueryParamFilter,
 ): string {
   return JSON.stringify(
-    AccountingListCompaniesQueryParamFilter$outboundSchema.parse(
-      accountingListCompaniesQueryParamFilter,
-    ),
+    QueryParamFilter$outboundSchema.parse(queryParamFilter),
   );
 }
 
@@ -121,7 +118,7 @@ export function accountingListCompaniesQueryParamFilterToJSON(
 export type AccountingListCompaniesRequest$Outbound = {
   Prefer?: string | undefined;
   fields?: string | null | undefined;
-  filter?: AccountingListCompaniesQueryParamFilter$Outbound | null | undefined;
+  filter?: QueryParamFilter$Outbound | null | undefined;
   next?: string | null | undefined;
   page?: string | null | undefined;
   page_size?: string | null | undefined;
@@ -139,9 +136,7 @@ export const AccountingListCompaniesRequest$outboundSchema: z.ZodType<
 > = z.object({
   prefer: z.string().optional(),
   fields: z.nullable(z.string()).optional(),
-  filter: z.nullable(
-    z.lazy(() => AccountingListCompaniesQueryParamFilter$outboundSchema),
-  ).optional(),
+  filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
   next: z.nullable(z.string()).optional(),
   page: z.nullable(z.string()).optional(),
   pageSize: z.nullable(z.string()).optional(),

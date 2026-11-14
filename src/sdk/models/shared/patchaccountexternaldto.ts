@@ -33,8 +33,17 @@ export type PatchAccountExternalDtoTypeOpen = OpenEnum<
 
 export type PatchAccountExternalDto = {
   authenticationConfigKey?: string | null | undefined;
+  /**
+   * The ID of the connector profile to associate the account with.
+   */
+  connectorProfileId?: string | null | undefined;
   credentials?: PatchAccountExternalDtoCredentials | null | undefined;
   environment?: string | null | undefined;
+  /**
+   * Deprecated: use `connector_profile_id` instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   integrationId?: string | null | undefined;
   label?: Label | null | undefined;
   metadata?: PatchAccountExternalDtoMetadata | null | undefined;
@@ -147,6 +156,7 @@ export const PatchAccountExternalDtoType$outboundSchema: z.ZodType<
 /** @internal */
 export type PatchAccountExternalDto$Outbound = {
   authentication_config_key?: string | null | undefined;
+  connector_profile_id?: string | null | undefined;
   credentials?: PatchAccountExternalDtoCredentials$Outbound | null | undefined;
   environment?: string | null | undefined;
   integration_id?: string | null | undefined;
@@ -169,6 +179,7 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
   PatchAccountExternalDto
 > = z.object({
   authenticationConfigKey: z.nullable(z.string()).optional(),
+  connectorProfileId: z.nullable(z.string()).optional(),
   credentials: z.nullable(
     z.lazy(() => PatchAccountExternalDtoCredentials$outboundSchema),
   ).optional(),
@@ -190,6 +201,7 @@ export const PatchAccountExternalDto$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     authenticationConfigKey: "authentication_config_key",
+    connectorProfileId: "connector_profile_id",
     integrationId: "integration_id",
     originOwnerId: "origin_owner_id",
     originOwnerName: "origin_owner_name",

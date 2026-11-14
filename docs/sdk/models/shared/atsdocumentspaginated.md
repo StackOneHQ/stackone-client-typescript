@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AtsDocumentApiModelValue, AtsDocumentsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsDocumentApiModelSchemasValue, AtsDocumentsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsDocumentsPaginated = {
   data: [
@@ -13,7 +13,7 @@ let value: AtsDocumentsPaginated = {
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       fileFormat: {
         sourceValue: "application/pdf",
-        value: AtsDocumentApiModelValue.Pdf,
+        value: AtsDocumentApiModelSchemasValue.Pdf,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "My Document",
@@ -31,9 +31,9 @@ let value: AtsDocumentsPaginated = {
 
 ## Fields
 
-| Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `data`                                                                                                                  | [shared.AtsDocumentApiModel](../../../sdk/models/shared/atsdocumentapimodel.md)[]                                       | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
-| `next`                                                                                                                  | *string*                                                                                                                | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
-| ~~`nextPage`~~                                                                                                          | *string*                                                                                                                | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
-| `raw`                                                                                                                   | [shared.RawResponse](../../../sdk/models/shared/rawresponse.md)[]                                                       | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                               | [shared.AtsDocumentApiModel](../../../sdk/models/shared/atsdocumentapimodel.md)[]                                    | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `next`                                                                                                               | *string*                                                                                                             | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| ~~`nextPage`~~                                                                                                       | *string*                                                                                                             | :heavy_minus_sign:                                                                                                   | :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. |
+| `raw`                                                                                                                | [shared.RawResponse](../../../sdk/models/shared/rawresponse.md)[]                                                    | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |

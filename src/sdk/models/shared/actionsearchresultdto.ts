@@ -10,25 +10,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ActionSearchResultDto = {
   /**
-   * Unique action identifier
+   * Opaque action identifier. Do not parse it: a connector key and an action id may both contain "_" and a scope may contain "/", so it does not split into fixed parts. Resolve it against the connector registry instead.
    */
-  actionName: string;
+  id: string;
   /**
-   * Connector key
+   * Prerequisite action IDs that should be run first to obtain IDs this action needs
    */
-  connectorKey: string;
-  /**
-   * Action description
-   */
-  description: string;
-  /**
-   * Human-readable action label
-   */
-  label: string;
-  /**
-   * Project ID of the action (global for shared actions)
-   */
-  projectId: string;
+  prerequisiteActions?: Array<string> | undefined;
   /**
    * Cosine similarity score (0-1)
    */
@@ -41,17 +29,12 @@ export const ActionSearchResultDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action_name: z.string(),
-  connector_key: z.string(),
-  description: z.string(),
-  label: z.string(),
-  project_id: z.string(),
+  id: z.string(),
+  prerequisite_actions: z.array(z.string()).optional(),
   similarity_score: z.number(),
 }).transform((v) => {
   return remap$(v, {
-    "action_name": "actionName",
-    "connector_key": "connectorKey",
-    "project_id": "projectId",
+    "prerequisite_actions": "prerequisiteActions",
     "similarity_score": "similarityScore",
   });
 });

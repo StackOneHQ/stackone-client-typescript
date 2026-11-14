@@ -8,11 +8,11 @@ The unified value for the duration unit. If the provider does not specify this u
 import { TimeOffBalancesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TimeOffBalancesValue = TimeOffBalancesValue.Hours;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

@@ -14,23 +14,104 @@ export type StackoneMcpPostSecurity = {
   basic?: shared.SchemeBasic | undefined;
 };
 
+/**
+ * MCP Apps panel: "off" (default) omits it, "on" registers the interactive toolset explorer. Only set it for hosts that render MCP Apps — a client with no iframe (a terminal) gets a tool whose result it cannot display
+ */
+export enum Apps {
+  On = "on",
+  Off = "off",
+}
+
+/**
+ * Server `instructions` (returned in the MCP initialize handshake) that teach the model the path/query/body/headers parameter envelope: "off" (default) omits them, "on" includes envelope guidance matched to the active param-style
+ */
+export enum Instructions {
+  On = "on",
+  Off = "off",
+}
+
+/**
+ * Parameter schema style: "flat_prefixed" (default) flattens with location prefix, "nested" groups by location, "flat_smart" flattens and only prefixes on name collision
+ */
+export enum ParamStyle {
+  Nested = "nested",
+  FlatPrefixed = "flat_prefixed",
+  FlatSmart = "flat_smart",
+}
+
+/**
+ * Tool registration mode: "individual" (default) registers each action as a separate tool; "search_execute" registers two tools per linked account for a search-then-execute flow
+ */
+export enum ToolMode {
+  Individual = "individual",
+  SearchExecute = "search_execute",
+}
+
 export type StackoneMcpPostRequest = {
   /**
    * JSON-RPC 2.0 message
    */
   jsonRpcMessageDto: shared.JsonRpcMessageDto;
   /**
-   * Session id; omit for initialize, include for subsequent calls
+   * MCP Apps panel: "off" (default) omits it, "on" registers the interactive toolset explorer. Only set it for hosts that render MCP Apps — a client with no iframe (a terminal) gets a tool whose result it cannot display
    */
-  mcpSessionId?: string | undefined;
+  apps?: Apps | undefined;
   /**
-   * Account secure id for the target provider account (optional if x-account-id query parameter is provided)
+   * Server `instructions` (returned in the MCP initialize handshake) that teach the model the path/query/body/headers parameter envelope: "off" (default) omits them, "on" includes envelope guidance matched to the active param-style
+   */
+  instructions?: Instructions | undefined;
+  /**
+   * Parameter schema style: "flat_prefixed" (default) flattens with location prefix, "nested" groups by location, "flat_smart" flattens and only prefixes on name collision
+   */
+  paramStyle?: ParamStyle | undefined;
+  /**
+   * Tool registration mode: "individual" (default) registers each action as a separate tool; "search_execute" registers two tools per linked account for a search-then-execute flow
+   */
+  toolMode?: ToolMode | undefined;
+  /**
+   * Account secure id for the target provider account. With an API key, a comma-separated list of up to 50 of them lists and runs tools across several accounts (optional if x-account-id query parameter is provided)
    */
   xAccountId?: string | undefined;
   /**
-   * Account secure id (alternative to x-account-id header)
+   * Account secure id, or with an API key a comma-separated list of up to 50 of them (alternative to x-account-id header)
    */
   xAccountIdQueryParameter?: any | undefined;
+};
+
+/**
+ * Present on protocol-level failure. Tool-level failures use result with isError: true instead.
+ */
+export type ErrorT = {
+  code?: number | undefined;
+  /**
+   * Additional error context
+   */
+  data?: any | null | undefined;
+  message?: string | undefined;
+};
+
+/**
+ * Echoes the id from the request. null for protocol-level errors where the id could not be determined.
+ */
+export type Id = string | number;
+
+/**
+ * Processed successfully
+ */
+export type StackoneMcpPostResponseBody = {
+  /**
+   * Present on protocol-level failure. Tool-level failures use result with isError: true instead.
+   */
+  error?: ErrorT | undefined;
+  /**
+   * Echoes the id from the request. null for protocol-level errors where the id could not be determined.
+   */
+  id?: string | number | null | undefined;
+  jsonrpc?: string | undefined;
+  /**
+   * Present on success. Shape varies by method — see response examples.
+   */
+  result?: any | null | undefined;
 };
 
 export type StackoneMcpPostResponse = {
@@ -47,6 +128,10 @@ export type StackoneMcpPostResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
+  /**
+   * Processed successfully
+   */
+  object?: StackoneMcpPostResponseBody | undefined;
 };
 
 /** @internal */
@@ -78,9 +163,29 @@ export function stackoneMcpPostSecurityToJSON(
 }
 
 /** @internal */
+export const Apps$outboundSchema: z.ZodNativeEnum<typeof Apps> = z.nativeEnum(
+  Apps,
+);
+
+/** @internal */
+export const Instructions$outboundSchema: z.ZodNativeEnum<typeof Instructions> =
+  z.nativeEnum(Instructions);
+
+/** @internal */
+export const ParamStyle$outboundSchema: z.ZodNativeEnum<typeof ParamStyle> = z
+  .nativeEnum(ParamStyle);
+
+/** @internal */
+export const ToolMode$outboundSchema: z.ZodNativeEnum<typeof ToolMode> = z
+  .nativeEnum(ToolMode);
+
+/** @internal */
 export type StackoneMcpPostRequest$Outbound = {
   JsonRpcMessageDto: shared.JsonRpcMessageDto$Outbound;
-  "mcp-session-id"?: string | undefined;
+  apps?: string | undefined;
+  instructions?: string | undefined;
+  "param-style"?: string | undefined;
+  "tool-mode"?: string | undefined;
   "x-account-id"?: string | undefined;
   "x-account-idQueryParameter"?: any | undefined;
 };
@@ -92,13 +197,17 @@ export const StackoneMcpPostRequest$outboundSchema: z.ZodType<
   StackoneMcpPostRequest
 > = z.object({
   jsonRpcMessageDto: shared.JsonRpcMessageDto$outboundSchema,
-  mcpSessionId: z.string().optional(),
+  apps: Apps$outboundSchema.optional(),
+  instructions: Instructions$outboundSchema.optional(),
+  paramStyle: ParamStyle$outboundSchema.optional(),
+  toolMode: ToolMode$outboundSchema.optional(),
   xAccountId: z.string().optional(),
   xAccountIdQueryParameter: z.any().optional(),
 }).transform((v) => {
   return remap$(v, {
     jsonRpcMessageDto: "JsonRpcMessageDto",
-    mcpSessionId: "mcp-session-id",
+    paramStyle: "param-style",
+    toolMode: "tool-mode",
     xAccountId: "x-account-id",
     xAccountIdQueryParameter: "x-account-idQueryParameter",
   });
@@ -113,6 +222,62 @@ export function stackoneMcpPostRequestToJSON(
 }
 
 /** @internal */
+export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
+  .object({
+    code: z.number().optional(),
+    data: z.nullable(z.any()).optional(),
+    message: z.string().optional(),
+  });
+
+export function errorFromJSON(
+  jsonString: string,
+): SafeParseResult<ErrorT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ErrorT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ErrorT' from JSON`,
+  );
+}
+
+/** @internal */
+export const Id$inboundSchema: z.ZodType<Id, z.ZodTypeDef, unknown> = z.union([
+  z.string(),
+  z.number(),
+]);
+
+export function idFromJSON(
+  jsonString: string,
+): SafeParseResult<Id, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Id$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Id' from JSON`,
+  );
+}
+
+/** @internal */
+export const StackoneMcpPostResponseBody$inboundSchema: z.ZodType<
+  StackoneMcpPostResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.lazy(() => ErrorT$inboundSchema).optional(),
+  id: z.nullable(z.union([z.string(), z.number()])).optional(),
+  jsonrpc: z.string().optional(),
+  result: z.nullable(z.any()).optional(),
+});
+
+export function stackoneMcpPostResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneMcpPostResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneMcpPostResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneMcpPostResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const StackoneMcpPostResponse$inboundSchema: z.ZodType<
   StackoneMcpPostResponse,
   z.ZodTypeDef,
@@ -122,6 +287,7 @@ export const StackoneMcpPostResponse$inboundSchema: z.ZodType<
   Headers: z.record(z.array(z.string())).default({}),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
+  object: z.lazy(() => StackoneMcpPostResponseBody$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",

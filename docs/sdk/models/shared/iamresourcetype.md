@@ -1,18 +1,21 @@
 # IamResourceType
 
-## Example Usage
+The resource type identifier. Falcon connectors emit a plain string from the connector-defined set returned by GET /unified/iam/resource_types (e.g. "file", "channel", "group"). Legacy V2 connectors emit the {value, source_value} envelope where value is from the IamResourceTypeEnum fixed set. Either shape validates.
+
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { IamResourceType, IamResourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+const value: string = "file";
+```
 
-let value: IamResourceType = {
-  value: IamResourceValue.File,
+### `shared.IamResourceTypeEnumSchemas`
+
+```typescript
+const value: shared.IamResourceTypeEnumSchemas = {
+  value: Value.File,
 };
 ```
 
-## Fields
-
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `sourceValue`                                                             | *shared.IamResourceSourceValue*                                           | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
-| `value`                                                                   | [shared.IamResourceValue](../../../sdk/models/shared/iamresourcevalue.md) | :heavy_minus_sign:                                                        | The type of the resource, e.g. user, group, permission, etc.              | file                                                                      |

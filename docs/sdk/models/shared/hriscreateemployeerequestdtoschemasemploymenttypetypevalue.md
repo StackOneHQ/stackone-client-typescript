@@ -7,11 +7,11 @@ import { HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValue } from "@sta
 
 let value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValue =
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeTypeValue.Temporary;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

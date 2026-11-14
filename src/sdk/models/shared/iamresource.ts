@@ -10,19 +10,14 @@ import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type IamResource4 = {};
+export type Four = {};
 
-export type IamResourceSourceValue =
-  | string
-  | number
-  | boolean
-  | IamResource4
-  | Array<any>;
+export type SourceValue = string | number | boolean | Four | Array<any>;
 
 /**
  * The type of the resource, e.g. user, group, permission, etc.
  */
-export enum IamResourceValue {
+export enum Value {
   Project = "project",
   File = "file",
   Folder = "folder",
@@ -34,22 +29,27 @@ export enum IamResourceValue {
 /**
  * The type of the resource, e.g. user, group, permission, etc.
  */
-export type IamResourceValueOpen = OpenEnum<typeof IamResourceValue>;
+export type ValueOpen = OpenEnum<typeof Value>;
 
-export type IamResourceType = {
+export type IamResourceTypeEnumSchemas = {
   sourceValue?:
     | string
     | number
     | boolean
-    | IamResource4
+    | Four
     | Array<any>
     | null
     | undefined;
   /**
    * The type of the resource, e.g. user, group, permission, etc.
    */
-  value?: IamResourceValueOpen | null | undefined;
+  value?: ValueOpen | null | undefined;
 };
+
+/**
+ * The resource type identifier. Falcon connectors emit a plain string from the connector-defined set returned by GET /unified/iam/resource_types (e.g. "file", "channel", "group"). Legacy V2 connectors emit the {value, source_value} envelope where value is from the IamResourceTypeEnum fixed set. Either shape validates.
+ */
+export type IamResourceType = string | IamResourceTypeEnumSchemas;
 
 export type IamResource = {
   createdAt?: Date | null | undefined;
@@ -70,60 +70,57 @@ export type IamResource = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
-  type?: IamResourceType | null | undefined;
+  /**
+   * The resource type identifier. Falcon connectors emit a plain string from the connector-defined set returned by GET /unified/iam/resource_types (e.g. "file", "channel", "group"). Legacy V2 connectors emit the {value, source_value} envelope where value is from the IamResourceTypeEnum fixed set. Either shape validates.
+   */
+  type?: string | IamResourceTypeEnumSchemas | null | undefined;
   updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
-export const IamResource4$inboundSchema: z.ZodType<
-  IamResource4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
+  .object({});
 
-export function iamResource4FromJSON(
+export function fourFromJSON(
   jsonString: string,
-): SafeParseResult<IamResource4, SDKValidationError> {
+): SafeParseResult<Four, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamResource4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamResource4' from JSON`,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
   );
 }
 
 /** @internal */
-export const IamResourceSourceValue$inboundSchema: z.ZodType<
-  IamResourceSourceValue,
+export const SourceValue$inboundSchema: z.ZodType<
+  SourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
   z.string(),
   z.number(),
   z.boolean(),
-  z.lazy(() => IamResource4$inboundSchema),
+  z.lazy(() => Four$inboundSchema),
   z.array(z.any()),
 ]);
 
-export function iamResourceSourceValueFromJSON(
+export function sourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<IamResourceSourceValue, SDKValidationError> {
+): SafeParseResult<SourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => IamResourceSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IamResourceSourceValue' from JSON`,
+    (x) => SourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SourceValue' from JSON`,
   );
 }
 
 /** @internal */
-export const IamResourceValue$inboundSchema: z.ZodType<
-  IamResourceValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = openEnums.inboundSchema(IamResourceValue);
+export const Value$inboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(Value);
 
 /** @internal */
-export const IamResourceType$inboundSchema: z.ZodType<
-  IamResourceType,
+export const IamResourceTypeEnumSchemas$inboundSchema: z.ZodType<
+  IamResourceTypeEnumSchemas,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -132,16 +129,36 @@ export const IamResourceType$inboundSchema: z.ZodType<
       z.string(),
       z.number(),
       z.boolean(),
-      z.lazy(() => IamResource4$inboundSchema),
+      z.lazy(() => Four$inboundSchema),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(IamResourceValue$inboundSchema).optional(),
+  value: z.nullable(Value$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
   });
 });
+
+export function iamResourceTypeEnumSchemasFromJSON(
+  jsonString: string,
+): SafeParseResult<IamResourceTypeEnumSchemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamResourceTypeEnumSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamResourceTypeEnumSchemas' from JSON`,
+  );
+}
+
+/** @internal */
+export const IamResourceType$inboundSchema: z.ZodType<
+  IamResourceType,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.string(),
+  z.lazy(() => IamResourceTypeEnumSchemas$inboundSchema),
+]);
 
 export function iamResourceTypeFromJSON(
   jsonString: string,
@@ -167,7 +184,12 @@ export const IamResource$inboundSchema: z.ZodType<
   location: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => IamResourceType$inboundSchema)).optional(),
+  type: z.nullable(
+    z.union([
+      z.string(),
+      z.lazy(() => IamResourceTypeEnumSchemas$inboundSchema),
+    ]),
+  ).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),

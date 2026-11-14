@@ -7,6 +7,8 @@ import { Accounting } from "./accounting.js";
 import { Accounts } from "./accounts.js";
 import { Actions } from "./actions.js";
 import { Ats } from "./ats.js";
+import { AuthConfigs } from "./authconfigs.js";
+import { ConnectorProfiles } from "./connectorprofiles.js";
 import { Connectors } from "./connectors.js";
 import { ConnectSessions } from "./connectsessions.js";
 import { Crm } from "./crm.js";
@@ -14,11 +16,11 @@ import { Documents } from "./documents.js";
 import { Hris } from "./hris.js";
 import { Iam } from "./iam.js";
 import { Lms } from "./lms.js";
+import { Logs } from "./logs.js";
 import { Marketing } from "./marketing.js";
 import { Mcp } from "./mcp.js";
 import { Messaging } from "./messaging.js";
 import { Proxy } from "./proxy.js";
-import { RequestLogs } from "./requestlogs.js";
 import { Screening } from "./screening.js";
 import { Ticketing } from "./ticketing.js";
 
@@ -33,9 +35,19 @@ export class StackOne extends ClientSDK {
     return (this._actions ??= new Actions(this._options));
   }
 
+  private _authConfigs?: AuthConfigs;
+  get authConfigs(): AuthConfigs {
+    return (this._authConfigs ??= new AuthConfigs(this._options));
+  }
+
   private _connectSessions?: ConnectSessions;
   get connectSessions(): ConnectSessions {
     return (this._connectSessions ??= new ConnectSessions(this._options));
+  }
+
+  private _connectorProfiles?: ConnectorProfiles;
+  get connectorProfiles(): ConnectorProfiles {
+    return (this._connectorProfiles ??= new ConnectorProfiles(this._options));
   }
 
   private _connectors?: Connectors;
@@ -43,14 +55,14 @@ export class StackOne extends ClientSDK {
     return (this._connectors ??= new Connectors(this._options));
   }
 
+  private _logs?: Logs;
+  get logs(): Logs {
+    return (this._logs ??= new Logs(this._options));
+  }
+
   private _mcp?: Mcp;
   get mcp(): Mcp {
     return (this._mcp ??= new Mcp(this._options));
-  }
-
-  private _requestLogs?: RequestLogs;
-  get requestLogs(): RequestLogs {
-    return (this._requestLogs ??= new RequestLogs(this._options));
   }
 
   private _accounting?: Accounting;

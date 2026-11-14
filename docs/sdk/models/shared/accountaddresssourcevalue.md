@@ -1,6 +1,6 @@
 # AccountAddressSourceValue
 
-The source value of the location type.
+The source value of the ISO 3166-1 alpha-2 code of the country.
 
 
 ## Supported Types
@@ -8,7 +8,7 @@ The source value of the location type.
 ### `string`
 
 ```typescript
-const value: string = "Home";
+const value: string = "GB";
 ```
 
 ### `number`

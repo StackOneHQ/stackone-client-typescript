@@ -10,9 +10,25 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * Filter parameters that allow greater customisation of the list response. Filter support varies per connector — unsupported keys are ignored.
  */
 export type IamListUsersQueryParamFilter = {
+  /**
+   * Filter users by primary email address.
+   */
+  email?: string | null | undefined;
+  /**
+   * Filter users by group membership.
+   */
+  groupId?: string | null | undefined;
+  /**
+   * Filter users by owning organization / tenant.
+   */
+  organizationId?: string | null | undefined;
+  /**
+   * Filter users by role assignment.
+   */
+  roleId?: string | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -33,7 +49,7 @@ export type IamListUsersRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * Filter parameters that allow greater customisation of the list response. Filter support varies per connector — unsupported keys are ignored.
    */
   filter?: IamListUsersQueryParamFilter | null | undefined;
   /**
@@ -92,6 +108,10 @@ export type IamListUsersResponse = {
 
 /** @internal */
 export type IamListUsersQueryParamFilter$Outbound = {
+  email?: string | null | undefined;
+  group_id?: string | null | undefined;
+  organization_id?: string | null | undefined;
+  role_id?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -101,9 +121,16 @@ export const IamListUsersQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IamListUsersQueryParamFilter
 > = z.object({
+  email: z.nullable(z.string()).optional(),
+  groupId: z.nullable(z.string()).optional(),
+  organizationId: z.nullable(z.string()).optional(),
+  roleId: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    groupId: "group_id",
+    organizationId: "organization_id",
+    roleId: "role_id",
     updatedAfter: "updated_after",
   });
 });

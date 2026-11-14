@@ -53,11 +53,21 @@ export type ConnectSessionCreate = {
    */
   categories?: Array<ConnectSessionCreateCategories> | null | undefined;
   /**
+   * The ID of the connector profile to use for this connect session. Use this to route to a non-default connector profile — for example when you have multiple profiles for the same provider, or when migrating end users to a new connector major version. Retrieve the ID from GET /connector_profiles. When omitted, the session binds to the project default connector profile when the caller may use it, otherwise to another connector profile for the provider that the caller may use.
+   */
+  connectorProfileId?: string | null | undefined;
+  /**
+   * An ordered list of connector profile IDs the hub should offer for this connect session, so end users can only link through these profiles. Each ID must belong to an active connector profile in the project; retrieve them from GET /connector_profiles. Duplicates are ignored and an empty list means no restriction. Accepts at most 50 IDs. Cannot be combined with connector_profile_id, integration_id, provider, provider_version or categories. When account_id is set, every profile must belong to the account's connector.
+   */
+  connectorProfileIds?: Array<string> | null | undefined;
+  /**
    * How long the session should be valid for in seconds
    */
   expiresIn?: number | null | undefined;
   /**
-   * The integration ID associated with this connect session
+   * Deprecated: use `connector_profile_id` instead (this is an alias for it). The ID of the connector profile to use for this connect session. Use this to route to a non-default connector profile — for example when you have multiple profiles for the same provider, or when migrating end users to a new connector major version. Retrieve the ID from GET /connector_profiles. When omitted, the session binds to the project default connector profile when the caller may use it, otherwise to another connector profile for the provider that the caller may use.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   integrationId?: string | null | undefined;
   /**
@@ -73,11 +83,11 @@ export type ConnectSessionCreate = {
    */
   multiple?: boolean | null | undefined;
   /**
-   * The origin owner identifier
+   * The unique identifier for the organization in your system (e.g. your customer's org ID). Combined with origin_owner_name and provider, this determines whether a new linked account is created or an existing one is updated.
    */
   originOwnerId: string;
   /**
-   * The origin owner name
+   * A human-readable name for the organization. Stored against the linked account in StackOne for identification purposes.
    */
   originOwnerName: string;
   /**
@@ -85,11 +95,13 @@ export type ConnectSessionCreate = {
    */
   originUsername?: string | null | undefined;
   /**
-   * The provider to connect to
+   * The provider key to connect to (e.g. "salesforce", "bamboohr"). When provided, the hub opens directly at the credential entry step for this provider. The session binds to the project default connector profile when the caller may use it, otherwise to another connector profile for the provider that the caller may use; if none is usable the request is refused. Omit to show the full provider selection screen. To target a specific connector profile, use connector_profile_id instead.
    */
   provider?: string | null | undefined;
   /**
-   * The provider version to connect to
+   * Deprecated. When supplied, provider_version restricts binding to connector profiles of that version, so a version with no usable profile causes session creation to fail. Omit it to bind the default connector profile (or another the caller may use). To target a specific connector profile, use connector_profile_id.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   providerVersion?: string | null | undefined;
   /**
@@ -134,6 +146,8 @@ export const ConnectSessionCreateType$outboundSchema: z.ZodType<
 export type ConnectSessionCreate$Outbound = {
   account_id?: string | null | undefined;
   categories?: Array<string> | null | undefined;
+  connector_profile_id?: string | null | undefined;
+  connector_profile_ids?: Array<string> | null | undefined;
   expires_in: number | null;
   integration_id?: string | null | undefined;
   label?: string | null | undefined;
@@ -156,6 +170,8 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
   accountId: z.nullable(z.string()).optional(),
   categories: z.nullable(z.array(ConnectSessionCreateCategories$outboundSchema))
     .optional(),
+  connectorProfileId: z.nullable(z.string()).optional(),
+  connectorProfileIds: z.nullable(z.array(z.string())).optional(),
   expiresIn: z.nullable(z.number().default(1800)),
   integrationId: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
@@ -176,6 +192,8 @@ export const ConnectSessionCreate$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",
+    connectorProfileId: "connector_profile_id",
+    connectorProfileIds: "connector_profile_ids",
     expiresIn: "expires_in",
     integrationId: "integration_id",
     originOwnerId: "origin_owner_id",

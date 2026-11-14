@@ -4,6 +4,7 @@
 
 import { connectSessionsAuthenticateConnectSession } from "../funcs/connectSessionsAuthenticateConnectSession.js";
 import { connectSessionsCreateConnectSession } from "../funcs/connectSessionsCreateConnectSession.js";
+import { connectSessionsGetConnectSession } from "../funcs/connectSessionsGetConnectSession.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
 import * as shared from "./models/shared/index.js";
@@ -12,6 +13,9 @@ import { unwrapAsync } from "./types/fp.js";
 export class ConnectSessions extends ClientSDK {
   /**
    * Authenticate Connect Session
+   *
+   * @remarks
+   * Exchanges a connect session token for the session it belongs to.
    */
   async authenticateConnectSession(
     request: shared.ConnectSessionAuthenticate,
@@ -26,12 +30,32 @@ export class ConnectSessions extends ClientSDK {
 
   /**
    * Create Connect Session
+   *
+   * @remarks
+   * Creates a short-lived connect session and returns the token and auth link that open the account-linking flow for one end-user.
    */
   async createConnectSession(
     request: shared.ConnectSessionCreate,
     options?: RequestOptions,
   ): Promise<operations.StackoneCreateConnectSessionResponse> {
     return unwrapAsync(connectSessionsCreateConnectSession(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Connect Session
+   *
+   * @remarks
+   * Returns a connect session and the state of its most recent connection attempt.
+   */
+  async getConnectSession(
+    request: operations.StackoneGetConnectSessionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneGetConnectSessionResponse> {
+    return unwrapAsync(connectSessionsGetConnectSession(
       this,
       request,
       options,

@@ -3,13 +3,13 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
 import {
   encodeDeepObjectQuery,
   encodeFormQuery,
   encodeSimple,
   queryJoin,
 } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -42,6 +42,8 @@ import {
  *
  * @remarks
  * Retrieve a paginated list of statuses for a ticket.
+ *
+ * If set, this operation will use {@link Security.password} from the global security.
  */
 export function ticketingListTicketStatuses(
   client: StackOneCore,
@@ -135,7 +137,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ticketing/tickets/{id}/statuses")(
     pathParams,
   );
@@ -168,7 +169,7 @@ async function $do(
   }));
 
   const securityInput = await extractSecurity(client._options.security);
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,
@@ -213,22 +214,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "408",
-      "409",
-      "412",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "501",
-      "502",
-      "5XX",
-    ],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -326,7 +313,7 @@ async function $do(
     >;
     "~next"?: { cursor: string };
   } => {
-    const nextCursor = dlv(responseData, "next");
+    const nextCursor = (responseData as { next?: unknown | null }).next;
     if (typeof nextCursor !== "string") {
       return { next: () => null };
     }

@@ -3,7 +3,8 @@
  */
 
 import { StackOneCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,7 +23,6 @@ import { ResponseValidationError } from "../sdk/models/errors/responsevalidation
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
 import { StackOneError } from "../sdk/models/errors/stackoneerror.js";
 import * as operations from "../sdk/models/operations/index.js";
-import * as shared from "../sdk/models/shared/index.js";
 import { APICall, APIPromise } from "../sdk/types/async.js";
 import { Result } from "../sdk/types/fp.js";
 
@@ -31,10 +31,12 @@ import { Result } from "../sdk/types/fp.js";
  *
  * @remarks
  * Makes a remote procedure call to the specified action
+ *
+ * If set, this operation will use {@link Security.password} from the global security.
  */
 export function actionsRpcAction(
   client: StackOneCore,
-  request: shared.ActionsRpcRequestDto,
+  request: operations.StackoneRpcActionRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -45,6 +47,7 @@ export function actionsRpcAction(
     | errors.NotFoundResponse
     | errors.RequestTimedOutResponse
     | errors.ConflictResponse
+    | errors.PreconditionFailedResponse
     | errors.UnprocessableEntityResponse
     | errors.TooManyRequestsResponse
     | errors.InternalServerErrorResponse
@@ -69,7 +72,7 @@ export function actionsRpcAction(
 
 async function $do(
   client: StackOneCore,
-  request: shared.ActionsRpcRequestDto,
+  request: operations.StackoneRpcActionRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,6 +84,7 @@ async function $do(
       | errors.NotFoundResponse
       | errors.RequestTimedOutResponse
       | errors.ConflictResponse
+      | errors.PreconditionFailedResponse
       | errors.UnprocessableEntityResponse
       | errors.TooManyRequestsResponse
       | errors.InternalServerErrorResponse
@@ -100,24 +104,39 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.ActionsRpcRequestDto$outboundSchema.parse(value),
+    (value) => operations.StackoneRpcActionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.ActionsRpcRequestDto, {
+    explode: true,
+  });
 
   const path = pathToFunc("/actions/rpc")();
+
+  const query = encodeFormQuery({
+    "debug": payload.debug,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
+    "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
+      explode: false,
+      charEncoding: "none",
+    }),
+    "x-connector-profile-id": encodeSimple(
+      "x-connector-profile-id",
+      payload["x-connector-profile-id"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
   const securityInput = await extractSecurity(client._options.security);
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,
@@ -150,6 +169,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -161,21 +181,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "408",
-      "409",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "501",
-      "502",
-      "5XX",
-    ],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -200,6 +207,7 @@ async function $do(
     | errors.NotFoundResponse
     | errors.RequestTimedOutResponse
     | errors.ConflictResponse
+    | errors.PreconditionFailedResponse
     | errors.UnprocessableEntityResponse
     | errors.TooManyRequestsResponse
     | errors.InternalServerErrorResponse
@@ -225,6 +233,7 @@ async function $do(
       hdrs: true,
     }),
     M.jsonErr(409, errors.ConflictResponse$inboundSchema),
+    M.jsonErr(412, errors.PreconditionFailedResponse$inboundSchema),
     M.jsonErr(422, errors.UnprocessableEntityResponse$inboundSchema),
     M.jsonErr(429, errors.TooManyRequestsResponse$inboundSchema),
     M.jsonErr(500, errors.InternalServerErrorResponse$inboundSchema),

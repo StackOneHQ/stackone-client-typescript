@@ -7,11 +7,11 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { IamUser, IamUser$inboundSchema } from "./iamuser.js";
+import { IamUserInput, IamUserInput$inboundSchema } from "./iamuser.js";
 import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type IamUsersPaginated = {
-  data: Array<IamUser>;
+  data: Array<IamUserInput>;
   next?: string | null | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -26,7 +26,7 @@ export const IamUsersPaginated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(IamUser$inboundSchema),
+  data: z.array(IamUserInput$inboundSchema),
   next: z.nullable(z.string()).optional(),
   next_page: z.nullable(z.string()).optional(),
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),

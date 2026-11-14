@@ -26,6 +26,10 @@ export type ActionMetaItem = {
    */
   description?: string | null | undefined;
   /**
+   * Whether this action requires parameters to be supplied when it is synced. Such actions cannot be linked automatically for every account — each schedule must be created with its parameter values.
+   */
+  hasRequiredParameters?: boolean | null | undefined;
+  /**
    * The action ID
    */
   id?: string | null | undefined;
@@ -34,6 +38,10 @@ export type ActionMetaItem = {
    */
   label?: string | null | undefined;
   /**
+   * The default lookback window for this action, as an ISO 8601 duration (e.g. `P2Y`). A new sync config starts its `lookback_start` this far before today. `null` when the action does not support lookback.
+   */
+  lookbackDefaultWindow?: string | null | undefined;
+  /**
    * The required scopes for the action
    */
   requiredScopes?: Array<string> | null | undefined;
@@ -41,6 +49,14 @@ export type ActionMetaItem = {
    * The schema type for the action
    */
   schemaType?: string | null | undefined;
+  /**
+   * Whether this action supports incremental syncs (has an incremental strategy).
+   */
+  supportsIncremental?: boolean | null | undefined;
+  /**
+   * Whether this action can be synced with the datasync v2 sync engine.
+   */
+  syncable?: boolean | null | undefined;
   /**
    * The tags associated with this action
    */
@@ -57,16 +73,23 @@ export const ActionMetaItem$inboundSchema: z.ZodType<
   authentication: z.nullable(z.array(AuthenticationMetaItem$inboundSchema))
     .optional(),
   description: z.nullable(z.string()).optional(),
+  has_required_parameters: z.nullable(z.boolean()).optional(),
   id: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  lookback_default_window: z.nullable(z.string()).optional(),
   required_scopes: z.nullable(z.array(z.string())).optional(),
   schema_type: z.nullable(z.string()).optional(),
+  supports_incremental: z.nullable(z.boolean()).optional(),
+  syncable: z.nullable(z.boolean()).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "action_details": "actionDetails",
+    "has_required_parameters": "hasRequiredParameters",
+    "lookback_default_window": "lookbackDefaultWindow",
     "required_scopes": "requiredScopes",
     "schema_type": "schemaType",
+    "supports_incremental": "supportsIncremental",
   });
 });
 

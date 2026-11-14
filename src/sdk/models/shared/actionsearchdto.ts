@@ -7,9 +7,17 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 
 export type ActionSearchDto = {
   /**
-   * Filter by connector key
+   * Filter by connector key, at any version. Shorthand for `connector_versions: { "<key>": ["*"] }`, which takes priority when both are sent.
    */
   connector?: string | undefined;
+  /**
+   * Connector versions to search, keyed by connector key. Takes priority over `connector`. At most 100 connector keys and 500 versions in total. `latest` is not accepted — pass resolved versions such as `1.2.0`, or `*` for any version of that connector. `*` cannot be mixed with explicit versions in the same list. Explicit versions are returned as-is; `*` is deduplicated to the highest semver per action, and one map may mix the two forms across connectors.
+   */
+  connectorVersions?: { [k: string]: Array<string> } | undefined;
+  /**
+   * Minimum similarity score threshold (0-1). Results below this score are filtered out.
+   */
+  minSimilarity?: number | undefined;
   /**
    * Search query for finding connector actions
    */
@@ -23,6 +31,8 @@ export type ActionSearchDto = {
 /** @internal */
 export type ActionSearchDto$Outbound = {
   connector?: string | undefined;
+  connector_versions?: { [k: string]: Array<string> } | undefined;
+  min_similarity: number;
   query: string;
   top_k: number;
 };
@@ -34,10 +44,14 @@ export const ActionSearchDto$outboundSchema: z.ZodType<
   ActionSearchDto
 > = z.object({
   connector: z.string().optional(),
+  connectorVersions: z.record(z.array(z.string())).optional(),
+  minSimilarity: z.number().default(0.2),
   query: z.string(),
   topK: z.number().default(100),
 }).transform((v) => {
   return remap$(v, {
+    connectorVersions: "connector_versions",
+    minSimilarity: "min_similarity",
     topK: "top_k",
   });
 });

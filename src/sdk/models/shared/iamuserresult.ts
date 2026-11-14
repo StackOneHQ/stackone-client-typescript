@@ -6,11 +6,11 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { IamUser, IamUser$inboundSchema } from "./iamuser.js";
+import { IamUserInput, IamUserInput$inboundSchema } from "./iamuser.js";
 import { RawResponse, RawResponse$inboundSchema } from "./rawresponse.js";
 
 export type IamUserResult = {
-  data: IamUser;
+  data: IamUserInput;
   raw?: Array<RawResponse> | null | undefined;
 };
 
@@ -20,7 +20,7 @@ export const IamUserResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: IamUser$inboundSchema,
+  data: IamUserInput$inboundSchema,
   raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
 

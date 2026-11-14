@@ -5,95 +5,147 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The type of log
+ */
+export enum PlatformLogLogType {
+  Platform = "platform",
+}
+/**
+ * The type of log
+ */
+export type PlatformLogLogTypeOpen = OpenEnum<typeof PlatformLogLogType>;
+
 export type PlatformLog = {
   /**
-   * The account ID of the request
-   */
-  accountId?: string | null | undefined;
-  /**
-   * The requested action
+   * The verb, without its resource prefix
    */
   action?: string | null | undefined;
   /**
-   * The requested category
+   * The agent ID
    */
-  category?: string | null | undefined;
+  agentId?: string | null | undefined;
   /**
-   * The requested child resource
+   * The authentication ID
    */
-  childResource?: string | null | undefined;
+  authId?: string | null | undefined;
   /**
-   * The request duration in milliseconds
+   * The authentication type
    */
-  duration?: number | null | undefined;
+  authType?: string | null | undefined;
+  /**
+   * Everything about the event with no column of its own — the HTTP method, path and originating request id, the actor's display name (`user_name`, where a guard authenticated one), plus whatever describes the thing acted on. An account write records its id and label, the tenant it connects to (`owner_id`, `account_name`, `owner_username`), the connector key, the connector's display name (`connector_name`), the resolved connector version, and the connector's owner (`connector_owner` — an identifier, `stackone` for a built-in connector, absent where none resolves); reads carry a smaller set. Its shape varies by the service that emitted the event and by the event type, so treat it as display detail rather than a contract. Not filterable; use the columns for that.
+   */
+  details?: { [k: string]: any } | null | undefined;
+  /**
+   * The duration in milliseconds
+   */
+  durationMs?: number | null | undefined;
   /**
    * The request end time ISO8601 date string
    */
   endTime?: Date | null | undefined;
   /**
+   * The unique identifier for this event
+   */
+  eventId: string;
+  /**
    * The event ISO8601 date string
    */
-  eventDatetime?: Date | null | undefined;
+  eventTime?: Date | null | undefined;
   /**
-   * The requested HTTP method
+   * What happened, as `<resource>_<action>`
    */
-  httpMethod?: string | null | undefined;
+  eventType: string;
   /**
-   * The requested path
+   * The IP address
    */
-  path?: string | null | undefined;
+  ipAddress?: string | null | undefined;
   /**
-   * The project ID of the request
+   * Whether the operation only read state. `false` covers everything that changed something or had a side effect.
+   */
+  isRead?: boolean | null | undefined;
+  /**
+   * The unique log identifier
+   */
+  logId: string;
+  /**
+   * The type of log
+   */
+  logType: PlatformLogLogTypeOpen;
+  /**
+   * The project ID
    */
   projectId?: string | null | undefined;
   /**
-   * The request ID
-   */
-  requestId?: string | null | undefined;
-  /**
-   * The requested resource
+   * What was acted on, without the verb
    */
   resource?: string | null | undefined;
   /**
-   * The requests source ID
+   * The id of the thing acted on — an account id, a webhook id
+   */
+  resourceId?: string | null | undefined;
+  /**
+   * The service that emitted the event
+   */
+  service: string;
+  /**
+   * The session ID
+   */
+  sessionId?: string | null | undefined;
+  /**
+   * The source ID
    */
   sourceId?: string | null | undefined;
   /**
-   * The requests source IPV4 ip address
-   */
-  sourceIp?: string | null | undefined;
-  /**
-   * The requests source type
+   * The source type
    */
   sourceType?: string | null | undefined;
-  /**
-   * The requests source value
-   */
-  sourceValue?: string | null | undefined;
   /**
    * The request start time ISO8601 date string
    */
   startTime?: Date | null | undefined;
   /**
-   * The requests response status code
+   * The HTTP status, where the event came from a request
    */
-  status?: number | null | undefined;
+  statusCode?: number | null | undefined;
   /**
-   * The requested sub resource
+   * The stream type
    */
-  subResource?: string | null | undefined;
+  streamType?: string | null | undefined;
   /**
-   * The request success flag
+   * The success flag
    */
   success?: boolean | null | undefined;
   /**
-   * The requested URL
+   * The transport type
    */
-  url?: string | null | undefined;
+  transportType?: string | null | undefined;
+  /**
+   * The user agent
+   */
+  userAgent?: string | null | undefined;
+  /**
+   * The actor's email, as authenticated by the IDP — for a dashboard user session, for a signed internal call whose forwarded session resolved an authorization context naming the same user the signature did, or for an IDP user api key whose verification returned its owner's email. Absent for project api keys, and for signed internal calls without that context, which carry a user id alone. On an event with no resolved user at all — a failed sign-in, which has neither a user id nor an organization — it is the only thing identifying who acted.
+   */
+  userEmail?: string | null | undefined;
+  /**
+   * The user the operation is attributed to. Always an identity the credential actually authenticated — a dashboard user session, the signature-covered user id on internal calls, or the verified owner of an IDP user api key. Absent for project api keys and minted session tokens, which carry no dashboard-user identity.
+   */
+  userId?: string | null | undefined;
 };
+
+/** @internal */
+export const PlatformLogLogType$inboundSchema: z.ZodType<
+  PlatformLogLogTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PlatformLogLogType);
 
 /** @internal */
 export const PlatformLog$inboundSchema: z.ZodType<
@@ -101,48 +153,67 @@ export const PlatformLog$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  account_id: z.nullable(z.string()).optional(),
   action: z.nullable(z.string()).optional(),
-  category: z.nullable(z.string()).optional(),
-  child_resource: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
+  agent_id: z.nullable(z.string()).optional(),
+  auth_id: z.nullable(z.string()).optional(),
+  auth_type: z.nullable(z.string()).optional(),
+  details: z.nullable(z.record(z.any())).optional(),
+  duration_ms: z.nullable(z.number()).optional(),
   end_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  event_datetime: z.nullable(
+  event_id: z.string(),
+  event_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  http_method: z.nullable(z.string()).optional(),
-  path: z.nullable(z.string()).optional(),
+  event_type: z.string(),
+  ip_address: z.nullable(z.string()).optional(),
+  is_read: z.nullable(z.boolean()).optional(),
+  log_id: z.string(),
+  log_type: PlatformLogLogType$inboundSchema,
   project_id: z.nullable(z.string()).optional(),
-  request_id: z.nullable(z.string()).optional(),
   resource: z.nullable(z.string()).optional(),
+  resource_id: z.nullable(z.string()).optional(),
+  service: z.string(),
+  session_id: z.nullable(z.string()).optional(),
   source_id: z.nullable(z.string()).optional(),
-  source_ip: z.nullable(z.string()).optional(),
   source_type: z.nullable(z.string()).optional(),
-  source_value: z.nullable(z.string()).optional(),
   start_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  status: z.nullable(z.number()).optional(),
-  sub_resource: z.nullable(z.string()).optional(),
+  status_code: z.nullable(z.number()).optional(),
+  stream_type: z.nullable(z.string()).optional(),
   success: z.nullable(z.boolean()).optional(),
-  url: z.nullable(z.string()).optional(),
+  transport_type: z.nullable(z.string()).optional(),
+  user_agent: z.nullable(z.string()).optional(),
+  user_email: z.nullable(z.string()).optional(),
+  user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "account_id": "accountId",
-    "child_resource": "childResource",
+    "agent_id": "agentId",
+    "auth_id": "authId",
+    "auth_type": "authType",
+    "duration_ms": "durationMs",
     "end_time": "endTime",
-    "event_datetime": "eventDatetime",
-    "http_method": "httpMethod",
+    "event_id": "eventId",
+    "event_time": "eventTime",
+    "event_type": "eventType",
+    "ip_address": "ipAddress",
+    "is_read": "isRead",
+    "log_id": "logId",
+    "log_type": "logType",
     "project_id": "projectId",
-    "request_id": "requestId",
+    "resource_id": "resourceId",
+    "session_id": "sessionId",
     "source_id": "sourceId",
-    "source_ip": "sourceIp",
     "source_type": "sourceType",
-    "source_value": "sourceValue",
     "start_time": "startTime",
-    "sub_resource": "subResource",
+    "status_code": "statusCode",
+    "stream_type": "streamType",
+    "transport_type": "transportType",
+    "user_agent": "userAgent",
+    "user_email": "userEmail",
+    "user_id": "userId",
   });
 });
 

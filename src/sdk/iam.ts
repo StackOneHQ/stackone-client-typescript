@@ -4,11 +4,16 @@
 
 import { iamDeleteUser } from "../funcs/iamDeleteUser.js";
 import { iamGetGroup } from "../funcs/iamGetGroup.js";
+import { iamGetMe } from "../funcs/iamGetMe.js";
+import { iamGetOrganization } from "../funcs/iamGetOrganization.js";
 import { iamGetPolicy } from "../funcs/iamGetPolicy.js";
 import { iamGetRole } from "../funcs/iamGetRole.js";
 import { iamGetUser } from "../funcs/iamGetUser.js";
 import { iamListGroups } from "../funcs/iamListGroups.js";
+import { iamListOrganizations } from "../funcs/iamListOrganizations.js";
 import { iamListPolicies } from "../funcs/iamListPolicies.js";
+import { iamListResourceTypes } from "../funcs/iamListResourceTypes.js";
+import { iamListResourceUsers } from "../funcs/iamListResourceUsers.js";
 import { iamListRoles } from "../funcs/iamListRoles.js";
 import { iamListUsers } from "../funcs/iamListUsers.js";
 import { iamUpdateUser } from "../funcs/iamUpdateUser.js";
@@ -40,6 +45,34 @@ export class Iam extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.IamGetGroupResponse> {
     return unwrapAsync(iamGetGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Me
+   */
+  async getMe(
+    request: operations.IamGetMeRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamGetMeResponse> {
+    return unwrapAsync(iamGetMe(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Organization
+   */
+  async getOrganization(
+    request: operations.IamGetOrganizationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamGetOrganizationResponse> {
+    return unwrapAsync(iamGetOrganization(
       this,
       request,
       options,
@@ -105,6 +138,22 @@ export class Iam extends ClientSDK {
   }
 
   /**
+   * List Organizations
+   */
+  async listOrganizations(
+    request: operations.IamListOrganizationsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.IamListOrganizationsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(iamListOrganizations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Policies
    */
   async listPolicies(
@@ -114,6 +163,36 @@ export class Iam extends ClientSDK {
     PageIterator<operations.IamListPoliciesResponse, { cursor: string }>
   > {
     return unwrapResultIterator(iamListPolicies(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Resource Types
+   */
+  async listResourceTypes(
+    request: operations.IamListResourceTypesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamListResourceTypesResponse> {
+    return unwrapAsync(iamListResourceTypes(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Resource Users
+   */
+  async listResourceUsers(
+    request: operations.IamListResourceUsersRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.IamListResourceUsersResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(iamListResourceUsers(
       this,
       request,
       options,

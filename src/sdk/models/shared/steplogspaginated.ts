@@ -6,15 +6,44 @@ import * as z from "zod/v3";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  StepLogPartial,
-  StepLogPartial$inboundSchema,
-} from "./steplogpartial.js";
+import { StepLog, StepLog$inboundSchema } from "./steplog.js";
+
+/**
+ * Pagination metadata
+ */
+export type StepLogsPaginatedQuery = {};
 
 export type StepLogsPaginated = {
-  data: Array<StepLogPartial>;
-  next?: string | null | undefined;
+  /**
+   * The list of step logs
+   */
+  data: Array<StepLog>;
+  /**
+   * Pagination metadata
+   */
+  query?: StepLogsPaginatedQuery | null | undefined;
+  /**
+   * Total number of logs
+   */
+  total?: number | null | undefined;
 };
+
+/** @internal */
+export const StepLogsPaginatedQuery$inboundSchema: z.ZodType<
+  StepLogsPaginatedQuery,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function stepLogsPaginatedQueryFromJSON(
+  jsonString: string,
+): SafeParseResult<StepLogsPaginatedQuery, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StepLogsPaginatedQuery$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StepLogsPaginatedQuery' from JSON`,
+  );
+}
 
 /** @internal */
 export const StepLogsPaginated$inboundSchema: z.ZodType<
@@ -22,8 +51,10 @@ export const StepLogsPaginated$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(StepLogPartial$inboundSchema),
-  next: z.nullable(z.string()).optional(),
+  data: z.array(StepLog$inboundSchema),
+  query: z.nullable(z.lazy(() => StepLogsPaginatedQuery$inboundSchema))
+    .optional(),
+  total: z.nullable(z.number()).optional(),
 });
 
 export function stepLogsPaginatedFromJSON(

@@ -9,6 +9,7 @@ import {
   encodeSimple,
   queryJoin,
 } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -32,6 +33,8 @@ import { Result } from "../sdk/types/fp.js";
 
 /**
  * Get Job Custom Field Definition
+ *
+ * If set, this operation will use {@link Security.password} from the global security.
  */
 export function atsGetJobCustomFieldDefinition(
   client: StackOneCore,
@@ -121,7 +124,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/unified/ats/custom_field_definitions/jobs/{id}")(
     pathParams,
   );
@@ -154,7 +156,7 @@ async function $do(
   }));
 
   const securityInput = await extractSecurity(client._options.security);
-  const requestSecurity = resolveGlobalSecurity(securityInput);
+  const requestSecurity = resolveGlobalSecurity(securityInput, [0]);
 
   const context = {
     options: client._options,
@@ -199,22 +201,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: [
-      "400",
-      "401",
-      "403",
-      "404",
-      "408",
-      "409",
-      "412",
-      "422",
-      "429",
-      "4XX",
-      "500",
-      "501",
-      "502",
-      "5XX",
-    ],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });

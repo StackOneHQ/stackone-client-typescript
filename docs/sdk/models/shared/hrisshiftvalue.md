@@ -8,11 +8,11 @@ The approval status of the shift
 import { HrisShiftValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisShiftValue = HrisShiftValue.Approved;
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
-
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |

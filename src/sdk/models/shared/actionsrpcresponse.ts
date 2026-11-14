@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,9 +21,21 @@ export type ActionsRpcResponse = {
    */
   data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
   /**
+   * Success message. Only set by the `stackone_submit_feedback` action
+   */
+  message?: string | null | undefined;
+  /**
    * Cursor for fetching the next page of results
    */
   next?: string | null | undefined;
+  /**
+   * Session id the feedback was attached to (join key); null when none was resolved. Only set by the `stackone_submit_feedback` action
+   */
+  sessionId?: string | null | undefined;
+  /**
+   * ISO 8601 timestamp of submission. Only set by the `stackone_submit_feedback` action
+   */
+  submittedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -50,7 +63,15 @@ export const ActionsRpcResponse$inboundSchema: z.ZodType<
 > = z.object({
   data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))]))
     .optional(),
+  message: z.nullable(z.string()).optional(),
   next: z.nullable(z.string()).optional(),
+  session_id: z.nullable(z.string()).optional(),
+  submitted_at: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "session_id": "sessionId",
+    "submitted_at": "submittedAt",
+  });
 });
 
 export function actionsRpcResponseFromJSON(

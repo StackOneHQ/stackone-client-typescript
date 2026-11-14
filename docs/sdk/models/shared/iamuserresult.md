@@ -3,7 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { IamGroupValue, IamMfaTypeEnumValue, IamRoleValue, IamUserResult, IamUserValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  IamGroupValue,
+  IamMfaTypeEnumValue,
+  IamPermissionValue,
+  IamRoleValue,
+  IamUserResult,
+  IamUserValue,
+  SchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamUserResult = {
   data: {
@@ -11,7 +19,10 @@ let value: IamUserResult = {
       category: {},
       categoryId: "6530",
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
-      fileFormat: null,
+      fileFormat: {
+        sourceValue: "application/pdf",
+        value: SchemasValue.Pdf,
+      },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "My Document",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -30,8 +41,12 @@ let value: IamUserResult = {
           {
             createdAt: new Date("2021-01-01T01:01:01.000Z"),
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            policies: null,
+            permissions: null,
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            scope: {
+              resourceId: "group_abc123",
+              resourceType: "group",
+            },
             type: {
               value: IamRoleValue.Admin,
             },
@@ -55,14 +70,36 @@ let value: IamUserResult = {
       },
     ],
     name: "Han Solo",
+    permissions: [
+      {
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "read:users",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        scopes: [
+          {
+            resourceId: "C0123456789",
+            resourceType: "channel",
+          },
+        ],
+        type: {
+          value: IamPermissionValue.ReadWrite,
+        },
+        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+      },
+    ],
     primaryEmailAddress: "han@stackone.com",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     roles: [
       {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        policies: null,
+        permissions: null,
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        scope: {
+          resourceId: "group_abc123",
+          resourceType: "group",
+        },
         type: {
           value: IamRoleValue.Admin,
         },
@@ -86,5 +123,5 @@ let value: IamUserResult = {
 
 | Field                                                             | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `data`                                                            | [shared.IamUser](../../../sdk/models/shared/iamuser.md)           | :heavy_check_mark:                                                | N/A                                                               |
+| `data`                                                            | [shared.IamUserInput](../../../sdk/models/shared/iamuserinput.md) | :heavy_check_mark:                                                | N/A                                                               |
 | `raw`                                                             | [shared.RawResponse](../../../sdk/models/shared/rawresponse.md)[] | :heavy_minus_sign:                                                | N/A                                                               |

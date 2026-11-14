@@ -7,7 +7,13 @@ import { IamGetPolicyResponse } from "@stackone/stackone-client-ts/sdk/models/op
 
 let value: IamGetPolicyResponse = {
   contentType: "<value>",
-  headers: {},
+  headers: {
+    "key": [],
+    "key1": [
+      "<value 1>",
+    ],
+    "key2": [],
+  },
   statusCode: 20419,
 };
 ```

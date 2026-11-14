@@ -15,9 +15,10 @@ let value: StackoneListActionsMetaResponse = {
     "key1": [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
   },
-  statusCode: 965276,
+  statusCode: 659858,
 };
 ```
 
