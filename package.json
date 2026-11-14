@@ -11,13 +11,14 @@
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
-    "build": "tsc",
+    "build": "node node_modules/@typescript/native/bin/tsc --rootDir src --types estree,json-schema",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     
   },
   "devDependencies": {
+    "@typescript/native": "npm:typescript@7.0.2",
     "@eslint/js": "^9.26.0",
     "eslint": "^9.26.0",
     "globals": "^15.14.0",
